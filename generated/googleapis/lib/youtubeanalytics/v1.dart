@@ -67,7 +67,7 @@ class BatchReportDefinitionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BatchReportDefinitionList> list(core.String onBehalfOfContentOwner) {
     var _url = null;
@@ -81,7 +81,6 @@ class BatchReportDefinitionsResourceApi {
       throw new core.ArgumentError("Parameter onBehalfOfContentOwner is required.");
     }
     _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-
 
     _url = 'batchReportDefinitions';
 
@@ -122,7 +121,7 @@ class BatchReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BatchReportList> list(core.String batchReportDefinitionId, core.String onBehalfOfContentOwner) {
     var _url = null;
@@ -140,7 +139,6 @@ class BatchReportsResourceApi {
       throw new core.ArgumentError("Parameter onBehalfOfContentOwner is required.");
     }
     _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-
 
     _url = 'batchReports';
 
@@ -188,7 +186,7 @@ class GroupItemsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -246,7 +244,7 @@ class GroupItemsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<GroupItem> insert(GroupItem request, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -262,7 +260,6 @@ class GroupItemsResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-
 
     _url = 'groupItems';
 
@@ -303,7 +300,7 @@ class GroupItemsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<GroupItemListResponse> list(core.String groupId, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -320,7 +317,6 @@ class GroupItemsResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-
 
     _url = 'groupItems';
 
@@ -368,7 +364,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -426,7 +422,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Group> insert(Group request, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -442,7 +438,6 @@ class GroupsResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-
 
     _url = 'groups';
 
@@ -489,7 +484,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<GroupListResponse> list({core.String id, core.bool mine, core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -508,7 +503,6 @@ class GroupsResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-
 
     _url = 'groups';
 
@@ -548,7 +542,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Group> update(Group request, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -564,7 +558,6 @@ class GroupsResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-
 
     _url = 'groups';
 
@@ -655,7 +648,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ResultTable> query(core.String ids, core.String start_date, core.String end_date, core.String metrics, {core.String currency, core.String dimensions, core.String filters, core.int max_results, core.String sort, core.int start_index}) {
     var _url = null;
@@ -700,7 +693,6 @@ class ReportsResourceApi {
       _queryParams["start-index"] = ["${start_index}"];
     }
 
-
     _url = 'reports';
 
     var _response = _requester.request(_url,
@@ -723,13 +715,10 @@ class BatchReportOutputs {
    * minutes.
    */
   core.String downloadUrl;
-
   /** Format of the output. */
   core.String format;
-
   /** Type of the output. */
   core.String type;
-
 
   BatchReportOutputs();
 
@@ -760,7 +749,6 @@ class BatchReportOutputs {
   }
 }
 
-
 /**
  * Period included in the report. For reports containing all entities endTime is
  * not set. Both startTime and endTime are inclusive.
@@ -771,10 +759,8 @@ class BatchReportTimeSpan {
    * all entities endTime is not set.
    */
   core.DateTime endTime;
-
   /** Start of the period included in the report. Inclusive. */
   core.DateTime startTime;
-
 
   BatchReportTimeSpan();
 
@@ -799,33 +785,26 @@ class BatchReportTimeSpan {
   }
 }
 
-
 /** Contains single batchReport resource. */
 class BatchReport {
   /** The ID that YouTube assigns and uses to uniquely identify the report. */
   core.String id;
-
   /**
    * This value specifies the type of data of this item. For batch report the
    * kind property value is youtubeAnalytics#batchReport.
    */
   core.String kind;
-
   /** Report outputs. */
   core.List<BatchReportOutputs> outputs;
-
   /** The ID of the the report definition. */
   core.String reportId;
-
   /**
    * Period included in the report. For reports containing all entities endTime
    * is not set. Both startTime and endTime are inclusive.
    */
   BatchReportTimeSpan timeSpan;
-
   /** The time when the report was updated. */
   core.DateTime timeUpdated;
-
 
   BatchReport();
 
@@ -874,7 +853,6 @@ class BatchReport {
   }
 }
 
-
 /** Contains single batchReportDefinition resource. */
 class BatchReportDefinition {
   /**
@@ -882,23 +860,18 @@ class BatchReportDefinition {
    * definition.
    */
   core.String id;
-
   /**
    * This value specifies the type of data of this item. For batch report
    * definition the kind property value is
    * youtubeAnalytics#batchReportDefinition.
    */
   core.String kind;
-
   /** Name of the report definition. */
   core.String name;
-
   /** Status of the report definition. */
   core.String status;
-
   /** Type of the report definition. */
   core.String type;
-
 
   BatchReportDefinition();
 
@@ -941,7 +914,6 @@ class BatchReportDefinition {
   }
 }
 
-
 /**
  * A paginated list of batchReportDefinition resources returned in response to a
  * youtubeAnalytics.batchReportDefinitions.list request.
@@ -951,14 +923,12 @@ class BatchReportDefinitionList {
    * A list of batchReportDefinition resources that match the request criteria.
    */
   core.List<BatchReportDefinition> items;
-
   /**
    * This value specifies the type of data included in the API response. For the
    * list method, the kind property value is
    * youtubeAnalytics#batchReportDefinitionList.
    */
   core.String kind;
-
 
   BatchReportDefinitionList();
 
@@ -983,7 +953,6 @@ class BatchReportDefinitionList {
   }
 }
 
-
 /**
  * A paginated list of batchReport resources returned in response to a
  * youtubeAnalytics.batchReport.list request.
@@ -991,13 +960,11 @@ class BatchReportDefinitionList {
 class BatchReportList {
   /** A list of batchReport resources that match the request criteria. */
   core.List<BatchReport> items;
-
   /**
    * This value specifies the type of data included in the API response. For the
    * list method, the kind property value is youtubeAnalytics#batchReportList.
    */
   core.String kind;
-
 
   BatchReportList();
 
@@ -1022,12 +989,9 @@ class BatchReportList {
   }
 }
 
-
 class GroupContentDetails {
   core.String itemCount;
-
   core.String itemType;
-
 
   GroupContentDetails();
 
@@ -1052,12 +1016,9 @@ class GroupContentDetails {
   }
 }
 
-
 class GroupSnippet {
   core.DateTime publishedAt;
-
   core.String title;
-
 
   GroupSnippet();
 
@@ -1082,18 +1043,12 @@ class GroupSnippet {
   }
 }
 
-
 class Group {
   GroupContentDetails contentDetails;
-
   core.String etag;
-
   core.String id;
-
   core.String kind;
-
   GroupSnippet snippet;
-
 
   Group();
 
@@ -1136,12 +1091,9 @@ class Group {
   }
 }
 
-
 class GroupItemResource {
   core.String id;
-
   core.String kind;
-
 
   GroupItemResource();
 
@@ -1166,18 +1118,12 @@ class GroupItemResource {
   }
 }
 
-
 class GroupItem {
   core.String etag;
-
   core.String groupId;
-
   core.String id;
-
   core.String kind;
-
   GroupItemResource resource;
-
 
   GroupItem();
 
@@ -1220,18 +1166,14 @@ class GroupItem {
   }
 }
 
-
 /**
  * A paginated list of grouList resources returned in response to a
  * youtubeAnalytics.groupApi.list request.
  */
 class GroupItemListResponse {
   core.String etag;
-
   core.List<GroupItem> items;
-
   core.String kind;
-
 
   GroupItemListResponse();
 
@@ -1262,18 +1204,14 @@ class GroupItemListResponse {
   }
 }
 
-
 /**
  * A paginated list of grouList resources returned in response to a
  * youtubeAnalytics.groupApi.list request.
  */
 class GroupListResponse {
   core.String etag;
-
   core.List<Group> items;
-
   core.String kind;
-
 
   GroupListResponse();
 
@@ -1304,17 +1242,13 @@ class GroupListResponse {
   }
 }
 
-
 class ResultTableColumnHeaders {
   /** The type of the column (DIMENSION or METRIC). */
   core.String columnType;
-
   /** The type of the data in the column (STRING, INTEGER, FLOAT, etc.). */
   core.String dataType;
-
   /** The name of the dimension or metric. */
   core.String name;
-
 
   ResultTableColumnHeaders();
 
@@ -1345,7 +1279,6 @@ class ResultTableColumnHeaders {
   }
 }
 
-
 /**
  * Contains a single result table. The table is returned as an array of rows
  * that contain the values for the cells of the table. Depending on the metric
@@ -1365,13 +1298,11 @@ class ResultTable {
    * return columns in this order: ageGroup,gender,viewerPercentage.
    */
   core.List<ResultTableColumnHeaders> columnHeaders;
-
   /**
    * This value specifies the type of data included in the API response. For the
    * query method, the kind property value will be youtubeAnalytics#resultTable.
    */
   core.String kind;
-
   /**
    * The list contains all rows of the result table. Each item in the list is an
    * array that contains comma-delimited data corresponding to a single row of
@@ -1385,7 +1316,6 @@ class ResultTable {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.List<core.Object>> rows;
-
 
   ResultTable();
 

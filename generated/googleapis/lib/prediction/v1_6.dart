@@ -67,7 +67,7 @@ class HostedmodelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Output> predict(Input request, core.String project, core.String hostedModelName) {
     var _url = null;
@@ -86,7 +86,6 @@ class HostedmodelsResourceApi {
     if (hostedModelName == null) {
       throw new core.ArgumentError("Parameter hostedModelName is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/hostedmodels/' + commons.Escaper.ecapeVariable('$hostedModelName') + '/predict';
 
@@ -124,7 +123,7 @@ class TrainedmodelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Analyze> analyze(core.String project, core.String id) {
     var _url = null;
@@ -140,7 +139,6 @@ class TrainedmodelsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels/' + commons.Escaper.ecapeVariable('$id') + '/analyze';
 
@@ -167,7 +165,7 @@ class TrainedmodelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String project, core.String id) {
     var _url = null;
@@ -213,7 +211,7 @@ class TrainedmodelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Insert2> get(core.String project, core.String id) {
     var _url = null;
@@ -229,7 +227,6 @@ class TrainedmodelsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels/' + commons.Escaper.ecapeVariable('$id');
 
@@ -258,7 +255,7 @@ class TrainedmodelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Insert2> insert(Insert request, core.String project) {
     var _url = null;
@@ -274,7 +271,6 @@ class TrainedmodelsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels';
 
@@ -305,7 +301,7 @@ class TrainedmodelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<List> list(core.String project, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -324,7 +320,6 @@ class TrainedmodelsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels/list';
 
@@ -355,7 +350,7 @@ class TrainedmodelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Output> predict(Input request, core.String project, core.String id) {
     var _url = null;
@@ -374,7 +369,6 @@ class TrainedmodelsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels/' + commons.Escaper.ecapeVariable('$id') + '/predict';
 
@@ -405,7 +399,7 @@ class TrainedmodelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Insert2> update(Update request, core.String project, core.String id) {
     var _url = null;
@@ -424,7 +418,6 @@ class TrainedmodelsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels/' + commons.Escaper.ecapeVariable('$id');
 
@@ -445,10 +438,8 @@ class TrainedmodelsResourceApi {
 class AnalyzeDataDescriptionFeaturesCategoricalValues {
   /** Number of times this feature had this value. */
   core.String count;
-
   /** The category name. */
   core.String value;
-
 
   AnalyzeDataDescriptionFeaturesCategoricalValues();
 
@@ -473,15 +464,12 @@ class AnalyzeDataDescriptionFeaturesCategoricalValues {
   }
 }
 
-
 /** Description of the categorical values of this feature. */
 class AnalyzeDataDescriptionFeaturesCategorical {
   /** Number of categorical values for this feature in the data. */
   core.String count;
-
   /** List of all the categories for this feature in the data set. */
   core.List<AnalyzeDataDescriptionFeaturesCategoricalValues> values;
-
 
   AnalyzeDataDescriptionFeaturesCategorical();
 
@@ -506,18 +494,14 @@ class AnalyzeDataDescriptionFeaturesCategorical {
   }
 }
 
-
 /** Description of the numeric values of this feature. */
 class AnalyzeDataDescriptionFeaturesNumeric {
   /** Number of numeric values for this feature in the data set. */
   core.String count;
-
   /** Mean of the numeric values of this feature in the data set. */
   core.String mean;
-
   /** Variance of the numeric values of this feature in the data set. */
   core.String variance;
-
 
   AnalyzeDataDescriptionFeaturesNumeric();
 
@@ -548,12 +532,10 @@ class AnalyzeDataDescriptionFeaturesNumeric {
   }
 }
 
-
 /** Description of multiple-word text values of this feature. */
 class AnalyzeDataDescriptionFeaturesText {
   /** Number of multiple-word text values for this feature. */
   core.String count;
-
 
   AnalyzeDataDescriptionFeaturesText();
 
@@ -572,20 +554,15 @@ class AnalyzeDataDescriptionFeaturesText {
   }
 }
 
-
 class AnalyzeDataDescriptionFeatures {
   /** Description of the categorical values of this feature. */
   AnalyzeDataDescriptionFeaturesCategorical categorical;
-
   /** The feature index. */
   core.String index;
-
   /** Description of the numeric values of this feature. */
   AnalyzeDataDescriptionFeaturesNumeric numeric;
-
   /** Description of multiple-word text values of this feature. */
   AnalyzeDataDescriptionFeaturesText text;
-
 
   AnalyzeDataDescriptionFeatures();
 
@@ -622,18 +599,14 @@ class AnalyzeDataDescriptionFeatures {
   }
 }
 
-
 /** Description of the output values in the data set. */
 class AnalyzeDataDescriptionOutputFeatureNumeric {
   /** Number of numeric output values in the data set. */
   core.String count;
-
   /** Mean of the output values in the data set. */
   core.String mean;
-
   /** Variance of the output values in the data set. */
   core.String variance;
-
 
   AnalyzeDataDescriptionOutputFeatureNumeric();
 
@@ -664,14 +637,11 @@ class AnalyzeDataDescriptionOutputFeatureNumeric {
   }
 }
 
-
 class AnalyzeDataDescriptionOutputFeatureText {
   /** Number of times the output label occurred in the data set. */
   core.String count;
-
   /** The output label. */
   core.String value;
-
 
   AnalyzeDataDescriptionOutputFeatureText();
 
@@ -696,15 +666,12 @@ class AnalyzeDataDescriptionOutputFeatureText {
   }
 }
 
-
 /** Description of the output value or label. */
 class AnalyzeDataDescriptionOutputFeature {
   /** Description of the output values in the data set. */
   AnalyzeDataDescriptionOutputFeatureNumeric numeric;
-
   /** Description of the output labels in the data set. */
   core.List<AnalyzeDataDescriptionOutputFeatureText> text;
-
 
   AnalyzeDataDescriptionOutputFeature();
 
@@ -729,15 +696,12 @@ class AnalyzeDataDescriptionOutputFeature {
   }
 }
 
-
 /** Description of the data the model was trained on. */
 class AnalyzeDataDescription {
   /** Description of the input features in the data set. */
   core.List<AnalyzeDataDescriptionFeatures> features;
-
   /** Description of the output value or label. */
   AnalyzeDataDescriptionOutputFeature outputFeature;
-
 
   AnalyzeDataDescription();
 
@@ -762,7 +726,6 @@ class AnalyzeDataDescription {
   }
 }
 
-
 /** Description of the model. */
 class AnalyzeModelDescription {
   /**
@@ -774,13 +737,10 @@ class AnalyzeModelDescription {
    * (Categorical models only).
    */
   core.Map<core.String, core.Map<core.String, core.String>> confusionMatrix;
-
   /** A list of the confusion matrix row totals. */
   core.Map<core.String, core.String> confusionMatrixRowTotals;
-
   /** Basic information about the model. */
   Insert2 modelinfo;
-
 
   AnalyzeModelDescription();
 
@@ -811,26 +771,19 @@ class AnalyzeModelDescription {
   }
 }
 
-
 class Analyze {
   /** Description of the data the model was trained on. */
   AnalyzeDataDescription dataDescription;
-
   /** List of errors with the data. */
   core.List<core.Map<core.String, core.String>> errors;
-
   /** The unique name for the predictive model. */
   core.String id;
-
   /** What kind of resource this is. */
   core.String kind;
-
   /** Description of the model. */
   AnalyzeModelDescription modelDescription;
-
   /** A URL to re-request this resource. */
   core.String selfLink;
-
 
   Analyze();
 
@@ -879,7 +832,6 @@ class Analyze {
   }
 }
 
-
 /** Input to the model for a prediction. */
 class InputInput {
   /**
@@ -889,7 +841,6 @@ class InputInput {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Object> csvInstance;
-
 
   InputInput();
 
@@ -908,11 +859,9 @@ class InputInput {
   }
 }
 
-
 class Input {
   /** Input to the model for a prediction. */
   InputInput input;
-
 
   Input();
 
@@ -931,7 +880,6 @@ class Input {
   }
 }
 
-
 class InsertTrainingInstances {
   /**
    * The input features for this instance.
@@ -940,10 +888,8 @@ class InsertTrainingInstances {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Object> csvInstance;
-
   /** The generic output value - could be regression or class label. */
   core.String output;
-
 
   InsertTrainingInstances();
 
@@ -968,35 +914,26 @@ class InsertTrainingInstances {
   }
 }
 
-
 class Insert {
   /** The unique name for the predictive model. */
   core.String id;
-
   /** Type of predictive model (classification or regression). */
   core.String modelType;
-
   /** The Id of the model to be copied over. */
   core.String sourceModel;
-
   /** Google storage location of the training data file. */
   core.String storageDataLocation;
-
   /** Google storage location of the preprocessing pmml file. */
   core.String storagePMMLLocation;
-
   /** Google storage location of the pmml model file. */
   core.String storagePMMLModelLocation;
-
   /** Instances to train model on. */
   core.List<InsertTrainingInstances> trainingInstances;
-
   /**
    * A class weighting function, which allows the importance weights for class
    * labels to be specified (Categorical models only).
    */
   core.List<core.Map<core.String, core.double>> utility;
-
 
   Insert();
 
@@ -1057,7 +994,6 @@ class Insert {
   }
 }
 
-
 /** Model metadata. */
 class Insert2ModelInfo {
   /**
@@ -1065,7 +1001,6 @@ class Insert2ModelInfo {
    * (Categorical models only).
    */
   core.String classWeightedAccuracy;
-
   /**
    * A number between 0.0 and 1.0, where 1.0 is 100% accurate. This is an
    * estimate, based on the amount and quality of the training data, of the
@@ -1075,22 +1010,17 @@ class Insert2ModelInfo {
    * (Categorical models only).
    */
   core.String classificationAccuracy;
-
   /**
    * An estimated mean squared error. The can be used to measure the quality of
    * the predicted model (Regression models only).
    */
   core.String meanSquaredError;
-
   /** Type of predictive model (CLASSIFICATION or REGRESSION). */
   core.String modelType;
-
   /** Number of valid data instances used in the trained model. */
   core.String numberInstances;
-
   /** Number of class labels in the trained model (Categorical models only). */
   core.String numberLabels;
-
 
   Insert2ModelInfo();
 
@@ -1139,44 +1069,32 @@ class Insert2ModelInfo {
   }
 }
 
-
 class Insert2 {
   /** Insert time of the model (as a RFC 3339 timestamp). */
   core.DateTime created;
-
   /** The unique name for the predictive model. */
   core.String id;
-
   /** What kind of resource this is. */
   core.String kind;
-
   /** Model metadata. */
   Insert2ModelInfo modelInfo;
-
   /** Type of predictive model (CLASSIFICATION or REGRESSION). */
   core.String modelType;
-
   /** A URL to re-request this resource. */
   core.String selfLink;
-
   /** Google storage location of the training data file. */
   core.String storageDataLocation;
-
   /** Google storage location of the preprocessing pmml file. */
   core.String storagePMMLLocation;
-
   /** Google storage location of the pmml model file. */
   core.String storagePMMLModelLocation;
-
   /** Training completion time (as a RFC 3339 timestamp). */
   core.DateTime trainingComplete;
-
   /**
    * The current status of the training job. This can be one of following:
    * RUNNING; DONE; ERROR; ERROR: TRAINING JOB NOT FOUND
    */
   core.String trainingStatus;
-
 
   Insert2();
 
@@ -1255,20 +1173,15 @@ class Insert2 {
   }
 }
 
-
 class List {
   /** List of models. */
   core.List<Insert2> items;
-
   /** What kind of resource this is. */
   core.String kind;
-
   /** Pagination token to fetch the next page, if one exists. */
   core.String nextPageToken;
-
   /** A URL to re-request this resource. */
   core.String selfLink;
-
 
   List();
 
@@ -1305,14 +1218,11 @@ class List {
   }
 }
 
-
 class OutputOutputMulti {
   /** The class label. */
   core.String label;
-
   /** The probability of the class label. */
   core.String score;
-
 
   OutputOutputMulti();
 
@@ -1337,29 +1247,22 @@ class OutputOutputMulti {
   }
 }
 
-
 class Output {
   /** The unique name for the predictive model. */
   core.String id;
-
   /** What kind of resource this is. */
   core.String kind;
-
   /** The most likely class label (Categorical models only). */
   core.String outputLabel;
-
   /**
    * A list of class labels with their estimated probabilities (Categorical
    * models only).
    */
   core.List<OutputOutputMulti> outputMulti;
-
   /** The estimated regression value (Regression models only). */
   core.double outputValue;
-
   /** A URL to re-request this resource. */
   core.String selfLink;
-
 
   Output();
 
@@ -1408,7 +1311,6 @@ class Output {
   }
 }
 
-
 class Update {
   /**
    * The input features for this instance.
@@ -1417,10 +1319,8 @@ class Update {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Object> csvInstance;
-
   /** The generic output value - could be regression or class label. */
   core.String output;
-
 
   Update();
 

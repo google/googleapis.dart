@@ -6,7 +6,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/jfVz2w61e7LPgd-72fW_8rrOqOc\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/0UthvGQqQqHJHLht0Zicmoq2uPc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -134,6 +134,15 @@
                         "$ref": "IdentitytoolkitRelyingpartyGetPublicKeysResponse"
                     }
                 },
+                "getRecaptchaParam": {
+                    "description": "Get recaptcha secure param.",
+                    "httpMethod": "GET",
+                    "id": "identitytoolkit.relyingparty.getRecaptchaParam",
+                    "path": "getRecaptchaParam",
+                    "response": {
+                        "$ref": "GetRecaptchaParamResponse"
+                    }
+                },
                 "resetPassword": {
                     "description": "Reset password for a user.",
                     "httpMethod": "POST",
@@ -197,7 +206,7 @@
             }
         }
     },
-    "revision": "20141009",
+    "revision": "20150508",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -302,6 +311,26 @@
             },
             "type": "object"
         },
+        "GetRecaptchaParamResponse": {
+            "description": "Response of getting recaptcha param.",
+            "id": "GetRecaptchaParamResponse",
+            "properties": {
+                "kind": {
+                    "default": "identitytoolkit#GetRecaptchaParamResponse",
+                    "description": "The fixed string \"identitytoolkit#GetRecaptchaParamResponse\".",
+                    "type": "string"
+                },
+                "recaptchaSiteKey": {
+                    "description": "Site key registered at recaptcha.",
+                    "type": "string"
+                },
+                "recaptchaStoken": {
+                    "description": "The stoken field for the recaptcha widget, used to request captcha challenge.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "IdentitytoolkitRelyingpartyCreateAuthUriRequest": {
             "description": "Request to get the IDP authentication URL.",
             "id": "IdentitytoolkitRelyingpartyCreateAuthUriRequest",
@@ -324,6 +353,14 @@
                 },
                 "identifier": {
                     "description": "The email or federated ID of the user.",
+                    "type": "string"
+                },
+                "oauthConsumerKey": {
+                    "description": "The developer's consumer key for OpenId OAuth Extension",
+                    "type": "string"
+                },
+                "oauthScope": {
+                    "description": "Additional oauth scopes, beyond the basid user profile, that the user would be prompted to grant",
                     "type": "string"
                 },
                 "openidRealm": {
@@ -436,6 +473,10 @@
                     "description": "Response to the captcha.",
                     "type": "string"
                 },
+                "disableUser": {
+                    "description": "Whether to disable the user.",
+                    "type": "boolean"
+                },
                 "displayName": {
                     "description": "The name of the user.",
                     "type": "string"
@@ -474,6 +515,11 @@
                 "upgradeToFederatedLogin": {
                     "description": "Mark the user to upgrade to federated login.",
                     "type": "boolean"
+                },
+                "validSince": {
+                    "description": "Timestamp in seconds for valid login token.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -531,6 +577,10 @@
                 "requestUri": {
                     "description": "The URI to which the IDP redirects the user back. It may contain federated login result params added by the IDP.",
                     "type": "string"
+                },
+                "returnRefreshToken": {
+                    "description": "Whether to return refresh tokens.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -697,6 +747,10 @@
             "description": "Template for an individual account info.",
             "id": "UserInfo",
             "properties": {
+                "disabled": {
+                    "description": "Whether the user is disabled.",
+                    "type": "boolean"
+                },
                 "displayName": {
                     "description": "The name of the user.",
                     "type": "string"
@@ -755,6 +809,11 @@
                 "salt": {
                     "description": "The user's password salt.",
                     "format": "byte",
+                    "type": "string"
+                },
+                "validSince": {
+                    "description": "Timestamp in seconds for valid login token.",
+                    "format": "int64",
                     "type": "string"
                 },
                 "version": {
@@ -849,6 +908,19 @@
                 "nickName": {
                     "description": "The nick name of the user.",
                     "type": "string"
+                },
+                "oauthAccessToken": {
+                    "description": "The OAuth2 access token.",
+                    "type": "string"
+                },
+                "oauthAuthorizationCode": {
+                    "description": "The OAuth2 authorization code.",
+                    "type": "string"
+                },
+                "oauthExpireIn": {
+                    "description": "The lifetime in seconds of the OAuth2 access token.",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "oauthRequestToken": {
                     "description": "The user approved request token for the OpenID OAuth extension.",

@@ -71,7 +71,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> get(core.String accountId) {
     var _url = null;
@@ -84,7 +84,6 @@ class AccountsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -109,7 +108,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListAccountsResponse> list() {
     var _url = null;
@@ -118,7 +117,6 @@ class AccountsResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'accounts';
@@ -151,7 +149,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> update(Account request, core.String accountId, {core.String fingerprint}) {
     var _url = null;
@@ -170,7 +168,6 @@ class AccountsResourceApi {
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -215,7 +212,7 @@ class AccountsContainersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Container> create(Container request, core.String accountId) {
     var _url = null;
@@ -231,7 +228,6 @@ class AccountsContainersResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers';
 
@@ -258,7 +254,7 @@ class AccountsContainersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String containerId) {
     var _url = null;
@@ -304,7 +300,7 @@ class AccountsContainersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Container> get(core.String accountId, core.String containerId) {
     var _url = null;
@@ -320,7 +316,6 @@ class AccountsContainersResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId');
 
@@ -347,7 +342,7 @@ class AccountsContainersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListContainersResponse> list(core.String accountId) {
     var _url = null;
@@ -360,7 +355,6 @@ class AccountsContainersResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers';
 
@@ -394,7 +388,7 @@ class AccountsContainersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Container> update(Container request, core.String accountId, core.String containerId, {core.String fingerprint}) {
     var _url = null;
@@ -416,7 +410,6 @@ class AccountsContainersResourceApi {
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId');
 
@@ -456,7 +449,7 @@ class AccountsContainersMacrosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Macro> create(Macro request, core.String accountId, core.String containerId) {
     var _url = null;
@@ -475,7 +468,6 @@ class AccountsContainersMacrosResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros';
 
@@ -504,7 +496,7 @@ class AccountsContainersMacrosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String containerId, core.String macroId) {
     var _url = null;
@@ -555,7 +547,7 @@ class AccountsContainersMacrosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Macro> get(core.String accountId, core.String containerId, core.String macroId) {
     var _url = null;
@@ -574,7 +566,6 @@ class AccountsContainersMacrosResourceApi {
     if (macroId == null) {
       throw new core.ArgumentError("Parameter macroId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros/' + commons.Escaper.ecapeVariable('$macroId');
 
@@ -603,7 +594,7 @@ class AccountsContainersMacrosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListMacrosResponse> list(core.String accountId, core.String containerId) {
     var _url = null;
@@ -619,7 +610,6 @@ class AccountsContainersMacrosResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros';
 
@@ -655,7 +645,7 @@ class AccountsContainersMacrosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Macro> update(Macro request, core.String accountId, core.String containerId, core.String macroId, {core.String fingerprint}) {
     var _url = null;
@@ -680,7 +670,6 @@ class AccountsContainersMacrosResourceApi {
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros/' + commons.Escaper.ecapeVariable('$macroId');
 
@@ -720,7 +709,7 @@ class AccountsContainersRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Rule> create(Rule request, core.String accountId, core.String containerId) {
     var _url = null;
@@ -739,7 +728,6 @@ class AccountsContainersRulesResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules';
 
@@ -768,7 +756,7 @@ class AccountsContainersRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String containerId, core.String ruleId) {
     var _url = null;
@@ -819,7 +807,7 @@ class AccountsContainersRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Rule> get(core.String accountId, core.String containerId, core.String ruleId) {
     var _url = null;
@@ -838,7 +826,6 @@ class AccountsContainersRulesResourceApi {
     if (ruleId == null) {
       throw new core.ArgumentError("Parameter ruleId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules/' + commons.Escaper.ecapeVariable('$ruleId');
 
@@ -867,7 +854,7 @@ class AccountsContainersRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListRulesResponse> list(core.String accountId, core.String containerId) {
     var _url = null;
@@ -883,7 +870,6 @@ class AccountsContainersRulesResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules';
 
@@ -919,7 +905,7 @@ class AccountsContainersRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Rule> update(Rule request, core.String accountId, core.String containerId, core.String ruleId, {core.String fingerprint}) {
     var _url = null;
@@ -944,7 +930,6 @@ class AccountsContainersRulesResourceApi {
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules/' + commons.Escaper.ecapeVariable('$ruleId');
 
@@ -984,7 +969,7 @@ class AccountsContainersTagsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Tag> create(Tag request, core.String accountId, core.String containerId) {
     var _url = null;
@@ -1003,7 +988,6 @@ class AccountsContainersTagsResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/tags';
 
@@ -1032,7 +1016,7 @@ class AccountsContainersTagsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String containerId, core.String tagId) {
     var _url = null;
@@ -1083,7 +1067,7 @@ class AccountsContainersTagsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Tag> get(core.String accountId, core.String containerId, core.String tagId) {
     var _url = null;
@@ -1102,7 +1086,6 @@ class AccountsContainersTagsResourceApi {
     if (tagId == null) {
       throw new core.ArgumentError("Parameter tagId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/tags/' + commons.Escaper.ecapeVariable('$tagId');
 
@@ -1131,7 +1114,7 @@ class AccountsContainersTagsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListTagsResponse> list(core.String accountId, core.String containerId) {
     var _url = null;
@@ -1147,7 +1130,6 @@ class AccountsContainersTagsResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/tags';
 
@@ -1183,7 +1165,7 @@ class AccountsContainersTagsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Tag> update(Tag request, core.String accountId, core.String containerId, core.String tagId, {core.String fingerprint}) {
     var _url = null;
@@ -1208,7 +1190,6 @@ class AccountsContainersTagsResourceApi {
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/tags/' + commons.Escaper.ecapeVariable('$tagId');
 
@@ -1248,7 +1229,7 @@ class AccountsContainersTriggersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Trigger> create(Trigger request, core.String accountId, core.String containerId) {
     var _url = null;
@@ -1267,7 +1248,6 @@ class AccountsContainersTriggersResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/triggers';
 
@@ -1296,7 +1276,7 @@ class AccountsContainersTriggersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String containerId, core.String triggerId) {
     var _url = null;
@@ -1347,7 +1327,7 @@ class AccountsContainersTriggersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Trigger> get(core.String accountId, core.String containerId, core.String triggerId) {
     var _url = null;
@@ -1366,7 +1346,6 @@ class AccountsContainersTriggersResourceApi {
     if (triggerId == null) {
       throw new core.ArgumentError("Parameter triggerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/triggers/' + commons.Escaper.ecapeVariable('$triggerId');
 
@@ -1395,7 +1374,7 @@ class AccountsContainersTriggersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListTriggersResponse> list(core.String accountId, core.String containerId) {
     var _url = null;
@@ -1411,7 +1390,6 @@ class AccountsContainersTriggersResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/triggers';
 
@@ -1447,7 +1425,7 @@ class AccountsContainersTriggersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Trigger> update(Trigger request, core.String accountId, core.String containerId, core.String triggerId, {core.String fingerprint}) {
     var _url = null;
@@ -1472,7 +1450,6 @@ class AccountsContainersTriggersResourceApi {
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/triggers/' + commons.Escaper.ecapeVariable('$triggerId');
 
@@ -1512,7 +1489,7 @@ class AccountsContainersVariablesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Variable> create(Variable request, core.String accountId, core.String containerId) {
     var _url = null;
@@ -1531,7 +1508,6 @@ class AccountsContainersVariablesResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/variables';
 
@@ -1560,7 +1536,7 @@ class AccountsContainersVariablesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String containerId, core.String variableId) {
     var _url = null;
@@ -1611,7 +1587,7 @@ class AccountsContainersVariablesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Variable> get(core.String accountId, core.String containerId, core.String variableId) {
     var _url = null;
@@ -1630,7 +1606,6 @@ class AccountsContainersVariablesResourceApi {
     if (variableId == null) {
       throw new core.ArgumentError("Parameter variableId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/variables/' + commons.Escaper.ecapeVariable('$variableId');
 
@@ -1659,7 +1634,7 @@ class AccountsContainersVariablesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListVariablesResponse> list(core.String accountId, core.String containerId) {
     var _url = null;
@@ -1675,7 +1650,6 @@ class AccountsContainersVariablesResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/variables';
 
@@ -1711,7 +1685,7 @@ class AccountsContainersVariablesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Variable> update(Variable request, core.String accountId, core.String containerId, core.String variableId, {core.String fingerprint}) {
     var _url = null;
@@ -1736,7 +1710,6 @@ class AccountsContainersVariablesResourceApi {
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/variables/' + commons.Escaper.ecapeVariable('$variableId');
 
@@ -1776,7 +1749,7 @@ class AccountsContainersVersionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreateContainerVersionResponse> create(CreateContainerVersionRequestVersionOptions request, core.String accountId, core.String containerId) {
     var _url = null;
@@ -1795,7 +1768,6 @@ class AccountsContainersVersionsResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions';
 
@@ -1824,7 +1796,7 @@ class AccountsContainersVersionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String containerId, core.String containerVersionId) {
     var _url = null;
@@ -1876,7 +1848,7 @@ class AccountsContainersVersionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ContainerVersion> get(core.String accountId, core.String containerId, core.String containerVersionId) {
     var _url = null;
@@ -1895,7 +1867,6 @@ class AccountsContainersVersionsResourceApi {
     if (containerVersionId == null) {
       throw new core.ArgumentError("Parameter containerVersionId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions/' + commons.Escaper.ecapeVariable('$containerVersionId');
 
@@ -1926,7 +1897,7 @@ class AccountsContainersVersionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListContainerVersionsResponse> list(core.String accountId, core.String containerId, {core.bool headers}) {
     var _url = null;
@@ -1945,7 +1916,6 @@ class AccountsContainersVersionsResourceApi {
     if (headers != null) {
       _queryParams["headers"] = ["${headers}"];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions';
 
@@ -1979,7 +1949,7 @@ class AccountsContainersVersionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PublishContainerVersionResponse> publish(core.String accountId, core.String containerId, core.String containerVersionId, {core.String fingerprint}) {
     var _url = null;
@@ -2001,7 +1971,6 @@ class AccountsContainersVersionsResourceApi {
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions/' + commons.Escaper.ecapeVariable('$containerVersionId') + '/publish';
 
@@ -2035,7 +2004,7 @@ class AccountsContainersVersionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ContainerVersion> restore(core.String accountId, core.String containerId, core.String containerVersionId) {
     var _url = null;
@@ -2054,7 +2023,6 @@ class AccountsContainersVersionsResourceApi {
     if (containerVersionId == null) {
       throw new core.ArgumentError("Parameter containerVersionId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions/' + commons.Escaper.ecapeVariable('$containerVersionId') + '/restore';
 
@@ -2085,7 +2053,7 @@ class AccountsContainersVersionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ContainerVersion> undelete(core.String accountId, core.String containerId, core.String containerVersionId) {
     var _url = null;
@@ -2104,7 +2072,6 @@ class AccountsContainersVersionsResourceApi {
     if (containerVersionId == null) {
       throw new core.ArgumentError("Parameter containerVersionId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions/' + commons.Escaper.ecapeVariable('$containerVersionId') + '/undelete';
 
@@ -2140,7 +2107,7 @@ class AccountsContainersVersionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ContainerVersion> update(ContainerVersion request, core.String accountId, core.String containerId, core.String containerVersionId, {core.String fingerprint}) {
     var _url = null;
@@ -2165,7 +2132,6 @@ class AccountsContainersVersionsResourceApi {
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions/' + commons.Escaper.ecapeVariable('$containerVersionId');
 
@@ -2203,7 +2169,7 @@ class AccountsPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserAccess> create(UserAccess request, core.String accountId) {
     var _url = null;
@@ -2219,7 +2185,6 @@ class AccountsPermissionsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/permissions';
 
@@ -2247,7 +2212,7 @@ class AccountsPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String permissionId) {
     var _url = null;
@@ -2293,7 +2258,7 @@ class AccountsPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserAccess> get(core.String accountId, core.String permissionId) {
     var _url = null;
@@ -2309,7 +2274,6 @@ class AccountsPermissionsResourceApi {
     if (permissionId == null) {
       throw new core.ArgumentError("Parameter permissionId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
@@ -2338,7 +2302,7 @@ class AccountsPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListAccountUsersResponse> list(core.String accountId) {
     var _url = null;
@@ -2351,7 +2315,6 @@ class AccountsPermissionsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/permissions';
 
@@ -2382,7 +2345,7 @@ class AccountsPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserAccess> update(UserAccess request, core.String accountId, core.String permissionId) {
     var _url = null;
@@ -2401,7 +2364,6 @@ class AccountsPermissionsResourceApi {
     if (permissionId == null) {
       throw new core.ArgumentError("Parameter permissionId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
@@ -2423,19 +2385,15 @@ class AccountsPermissionsResourceApi {
 class Account {
   /** The Account ID uniquely identifies the GTM Account. */
   core.String accountId;
-
   /**
    * The fingerprint of the GTM Account as computed at storage time. This value
    * is recomputed whenever the account is modified.
    */
   core.String fingerprint;
-
   /** Account display name. */
   core.String name;
-
   /** Whether the account shares data anonymously with Google and others. */
   core.bool shareData;
-
 
   Account();
 
@@ -2472,14 +2430,12 @@ class Account {
   }
 }
 
-
 /** Defines the Google Tag Manager Account access permissions. */
 class AccountAccess {
   /**
    * List of Account permissions. Valid account permissions are read and manage.
    */
   core.List<core.String> permission;
-
 
   AccountAccess();
 
@@ -2498,7 +2454,6 @@ class AccountAccess {
   }
 }
 
-
 /** Represents a predicate. */
 class Condition {
   /**
@@ -2514,7 +2469,6 @@ class Condition {
    * parameter that is set to true.
    */
   core.List<Parameter> parameter;
-
   /**
    * The type of operator for this condition.
    * Possible string values are:
@@ -2529,7 +2483,6 @@ class Condition {
    * - "startsWith"
    */
   core.String type;
-
 
   Condition();
 
@@ -2554,18 +2507,14 @@ class Condition {
   }
 }
 
-
 /** Represents a Google Tag Manager Container. */
 class Container {
   /** GTM Account ID. */
   core.String accountId;
-
   /** The Container ID uniquely identifies the GTM Container. */
   core.String containerId;
-
   /** Optional list of domain names associated with the Container. */
   core.List<core.String> domainName;
-
   /**
    * List of enabled built-in variables. Valid values include: pageUrl,
    * pageHostname, pagePath, referrer, event, clickElement, clickClasses,
@@ -2575,34 +2524,26 @@ class Container {
    * historySource, containerVersion, debugMode, randomNumber, containerId.
    */
   core.List<core.String> enabledBuiltInVariable;
-
   /**
    * The fingerprint of the GTM Container as computed at storage time. This
    * value is recomputed whenever the account is modified.
    */
   core.String fingerprint;
-
   /** Container display name. */
   core.String name;
-
   /** Container Notes. */
   core.String notes;
-
   /** Container Public ID. */
   core.String publicId;
-
   /** Container Country ID. */
   core.String timeZoneCountryId;
-
   /** Container Time Zone ID. */
   core.String timeZoneId;
-
   /**
    * List of Usage Contexts for the Container. Valid values include: web,
    * android, ios.
    */
   core.List<core.String> usageContext;
-
 
   Container();
 
@@ -2681,18 +2622,15 @@ class Container {
   }
 }
 
-
 /** Defines the Google Tag Manager Container access permissions. */
 class ContainerAccess {
   /** GTM Container ID. */
   core.String containerId;
-
   /**
    * List of Container permissions. Valid container permissions are: read, edit,
    * delete, publish.
    */
   core.List<core.String> permission;
-
 
   ContainerAccess();
 
@@ -2717,53 +2655,39 @@ class ContainerAccess {
   }
 }
 
-
 /** Represents a Google Tag Manager Container Version. */
 class ContainerVersion {
   /** GTM Account ID. */
   core.String accountId;
-
   /** The container that this version was taken from. */
   Container container;
-
   /** GTM Container ID. */
   core.String containerId;
-
   /**
    * The Container Version ID uniquely identifies the GTM Container Version.
    */
   core.String containerVersionId;
-
   /** A value of true indicates this container version has been deleted. */
   core.bool deleted;
-
   /**
    * The fingerprint of the GTM Container Version as computed at storage time.
    * This value is recomputed whenever the container version is modified.
    */
   core.String fingerprint;
-
   /** The macros in the container that this version was taken from. */
   core.List<Macro> macro;
-
   /** Container version display name. */
   core.String name;
-
   /** User notes on how to apply this container version in the container. */
   core.String notes;
-
   /** The rules in the container that this version was taken from. */
   core.List<Rule> rule;
-
   /** The tags in the container that this version was taken from. */
   core.List<Tag> tag;
-
   /** The triggers in the container that this version was taken from. */
   core.List<Trigger> trigger;
-
   /** The variables in the container that this version was taken from. */
   core.List<Variable> variable;
-
 
   ContainerVersion();
 
@@ -2854,41 +2778,30 @@ class ContainerVersion {
   }
 }
 
-
 /** Represents a Google Tag Manager Container Version Header. */
 class ContainerVersionHeader {
   /** GTM Account ID. */
   core.String accountId;
-
   /** GTM Container ID. */
   core.String containerId;
-
   /**
    * The Container Version ID uniquely identifies the GTM Container Version.
    */
   core.String containerVersionId;
-
   /** A value of true indicates this container version has been deleted. */
   core.bool deleted;
-
   /** Container version display name. */
   core.String name;
-
   /** Number of macros in the container version. */
   core.String numMacros;
-
   /** Number of rules in the container version. */
   core.String numRules;
-
   /** Number of tags in the container version. */
   core.String numTags;
-
   /** Number of triggers in the container version. */
   core.String numTriggers;
-
   /** Number of variables in the container version. */
   core.String numVariables;
-
 
   ContainerVersionHeader();
 
@@ -2961,21 +2874,17 @@ class ContainerVersionHeader {
   }
 }
 
-
 /** Options for new container versions. */
 class CreateContainerVersionRequestVersionOptions {
   /** The name of the container version to be created. */
   core.String name;
-
   /** The notes of the container version to be created. */
   core.String notes;
-
   /**
    * The creation of this version may be for quick preview and shouldn't be
    * saved.
    */
   core.bool quickPreview;
-
 
   CreateContainerVersionRequestVersionOptions();
 
@@ -3006,15 +2915,12 @@ class CreateContainerVersionRequestVersionOptions {
   }
 }
 
-
 /** Create container versions response. */
 class CreateContainerVersionResponse {
   /** Compiler errors or not. */
   core.bool compilerError;
-
   /** The container version created. */
   ContainerVersion containerVersion;
-
 
   CreateContainerVersionResponse();
 
@@ -3039,12 +2945,10 @@ class CreateContainerVersionResponse {
   }
 }
 
-
 /** List AccountUsers Response. */
 class ListAccountUsersResponse {
   /** All GTM AccountUsers of a GTM Account. */
   core.List<UserAccess> userAccess;
-
 
   ListAccountUsersResponse();
 
@@ -3063,12 +2967,10 @@ class ListAccountUsersResponse {
   }
 }
 
-
 /** List Accounts Response. */
 class ListAccountsResponse {
   /** List of GTM Accounts that a user has access to. */
   core.List<Account> accounts;
-
 
   ListAccountsResponse();
 
@@ -3087,15 +2989,12 @@ class ListAccountsResponse {
   }
 }
 
-
 /** List container versions response. */
 class ListContainerVersionsResponse {
   /** All versions of a GTM Container. */
   core.List<ContainerVersion> containerVersion;
-
   /** All container version headers of a GTM Container. */
   core.List<ContainerVersionHeader> containerVersionHeader;
-
 
   ListContainerVersionsResponse();
 
@@ -3120,12 +3019,10 @@ class ListContainerVersionsResponse {
   }
 }
 
-
 /** List Containers Response. */
 class ListContainersResponse {
   /** All Containers of a GTM Account. */
   core.List<Container> containers;
-
 
   ListContainersResponse();
 
@@ -3144,12 +3041,10 @@ class ListContainersResponse {
   }
 }
 
-
 /** List Macros Response. */
 class ListMacrosResponse {
   /** All GTM Macros of a GTM Container. */
   core.List<Macro> macros;
-
 
   ListMacrosResponse();
 
@@ -3168,12 +3063,10 @@ class ListMacrosResponse {
   }
 }
 
-
 /** List Rules Response. */
 class ListRulesResponse {
   /** All GTM Rules of a GTM Container. */
   core.List<Rule> rules;
-
 
   ListRulesResponse();
 
@@ -3192,12 +3085,10 @@ class ListRulesResponse {
   }
 }
 
-
 /** List Tags Response. */
 class ListTagsResponse {
   /** All GTM Tags of a GTM Container. */
   core.List<Tag> tags;
-
 
   ListTagsResponse();
 
@@ -3216,12 +3107,10 @@ class ListTagsResponse {
   }
 }
 
-
 /** List triggers response. */
 class ListTriggersResponse {
   /** All GTM Triggers of a GTM Container. */
   core.List<Trigger> triggers;
-
 
   ListTriggersResponse();
 
@@ -3240,12 +3129,10 @@ class ListTriggersResponse {
   }
 }
 
-
 /** List Variables Response. */
 class ListVariablesResponse {
   /** All GTM Variables of a GTM Container. */
   core.List<Variable> variables;
-
 
   ListVariablesResponse();
 
@@ -3264,56 +3151,43 @@ class ListVariablesResponse {
   }
 }
 
-
 /** Represents a Google Tag Manager Macro. */
 class Macro {
   /** GTM Account ID. */
   core.String accountId;
-
   /** GTM Container ID. */
   core.String containerId;
-
   /**
    * For mobile containers only: A list of rule IDs for disabling conditional
    * macros; the macro is enabled if one of the enabling rules is true while all
    * the disabling rules are false. Treated as an unordered set.
    */
   core.List<core.String> disablingRuleId;
-
   /**
    * For mobile containers only: A list of rule IDs for enabling conditional
    * macros; the macro is enabled if one of the enabling rules is true while all
    * the disabling rules are false. Treated as an unordered set.
    */
   core.List<core.String> enablingRuleId;
-
   /**
    * The fingerprint of the GTM Macro as computed at storage time. This value is
    * recomputed whenever the macro is modified.
    */
   core.String fingerprint;
-
   /** The Macro ID uniquely identifies the GTM Macro. */
   core.String macroId;
-
   /** Macro display name. */
   core.String name;
-
   /** User notes on how to apply this macro in the container. */
   core.String notes;
-
   /** The macro's parameters. */
   core.List<Parameter> parameter;
-
   /** The end timestamp in milliseconds to schedule a macro. */
   core.String scheduleEndMs;
-
   /** The start timestamp in milliseconds to schedule a macro. */
   core.String scheduleStartMs;
-
   /** GTM Macro Type. */
   core.String type;
-
 
   Macro();
 
@@ -3398,7 +3272,6 @@ class Macro {
   }
 }
 
-
 /** Represents a Google Tag Manager Parameter. */
 class Parameter {
   /**
@@ -3406,13 +3279,10 @@ class Parameter {
    * parameters, as well as map values. Ignored for list values.
    */
   core.String key;
-
   /** This list parameter's parameters (keys will be ignored). */
   core.List<Parameter> list;
-
   /** This map parameter's parameters (must have keys; keys must be unique). */
   core.List<Parameter> map;
-
   /**
    * The parameter type. Valid values are:
    * - boolean: The value represents a boolean, represented as 'true' or 'false'
@@ -3429,13 +3299,11 @@ class Parameter {
    * - "template"
    */
   core.String type;
-
   /**
    * A parameter's value (may contain macro references such as "{{myMacro}}") as
    * appropriate to the specified type.
    */
   core.String value;
-
 
   Parameter();
 
@@ -3478,15 +3346,12 @@ class Parameter {
   }
 }
 
-
 /** Publish container version response. */
 class PublishContainerVersionResponse {
   /** Compiler errors or not. */
   core.bool compilerError;
-
   /** The container version created. */
   ContainerVersion containerVersion;
-
 
   PublishContainerVersionResponse();
 
@@ -3511,35 +3376,27 @@ class PublishContainerVersionResponse {
   }
 }
 
-
 /** Represents a Google Tag Manager Rule. */
 class Rule {
   /** GTM Account ID. */
   core.String accountId;
-
   /**
    * The list of conditions that make up this rule (implicit AND between them).
    */
   core.List<Condition> condition;
-
   /** GTM Container ID. */
   core.String containerId;
-
   /**
    * The fingerprint of the GTM Rule as computed at storage time. This value is
    * recomputed whenever the rule is modified.
    */
   core.String fingerprint;
-
   /** Rule display name. */
   core.String name;
-
   /** User notes on how to apply this rule in the container. */
   core.String notes;
-
   /** The Rule ID uniquely identifies the GTM Rule. */
   core.String ruleId;
-
 
   Rule();
 
@@ -3594,79 +3451,62 @@ class Rule {
   }
 }
 
-
 /** Represents a Google Tag Manager Tag. */
 class Tag {
   /** GTM Account ID. */
   core.String accountId;
-
   /**
    * Blocking rule IDs. If any of the listed rules evaluate to true, the tag
    * will not fire.
    */
   core.List<core.String> blockingRuleId;
-
   /**
    * Blocking trigger IDs. If any of the listed triggers evaluate to true, the
    * tag will not fire.
    */
   core.List<core.String> blockingTriggerId;
-
   /** GTM Container ID. */
   core.String containerId;
-
   /**
    * The fingerprint of the GTM Tag as computed at storage time. This value is
    * recomputed whenever the tag is modified.
    */
   core.String fingerprint;
-
   /**
    * Firing rule IDs. A tag will fire when any of the listed rules are true and
    * all of its blockingRuleIds (if any specified) are false.
    */
   core.List<core.String> firingRuleId;
-
   /**
    * Firing trigger IDs. A tag will fire when any of the listed triggers are
    * true and all of its blockingTriggerIds (if any specified) are false.
    */
   core.List<core.String> firingTriggerId;
-
   /**
    * If set to true, this tag will only fire in the live environment (e.g. not
    * in preview or debug mode).
    */
   core.bool liveOnly;
-
   /** Tag display name. */
   core.String name;
-
   /** User notes on how to apply this tag in the container. */
   core.String notes;
-
   /** The tag's parameters. */
   core.List<Parameter> parameter;
-
   /**
    * User defined numeric priority of the tag. Tags are fired asynchronously in
    * order of priority. Tags with higher numeric value fire first. A tag's
    * priority can be a positive or negative value. The default value is 0.
    */
   Parameter priority;
-
   /** The end timestamp in milliseconds to schedule a tag. */
   core.String scheduleEndMs;
-
   /** The start timestamp in milliseconds to schedule a tag. */
   core.String scheduleStartMs;
-
   /** The Tag ID uniquely identifies the GTM Tag. */
   core.String tagId;
-
   /** GTM Tag Type. */
   core.String type;
-
 
   Tag();
 
@@ -3775,69 +3615,55 @@ class Tag {
   }
 }
 
-
 /** Represents a Google Tag Manager Trigger */
 class Trigger {
   /** GTM Account ID. */
   core.String accountId;
-
   /** Used in the case of auto event tracking. */
   core.List<Condition> autoEventFilter;
-
   /**
    * Whether or not we should only fire tags if the form submit or link click
    * event is not cancelled by some other event handler (e.g. because of
    * validation). Only valid for Form Submission and Link Click triggers.
    */
   Parameter checkValidation;
-
   /** GTM Container ID. */
   core.String containerId;
-
   /**
    * Used in the case of custom event, which is fired iff all Conditions are
    * true.
    */
   core.List<Condition> customEventFilter;
-
   /**
    * Reloads the videos in the page that don't already have the YT API enabled.
    * If false, only capture events from videos that already have the API
    * enabled. Only valid for YouTube triggers.
    */
   Parameter enableAllVideos;
-
   /** Name of the GTM event that is fired. Only valid for Timer triggers. */
   Parameter eventName;
-
   /** The trigger will only fire iff all Conditions are true. */
   core.List<Condition> filter;
-
   /**
    * The fingerprint of the GTM Trigger as computed at storage time. This value
    * is recomputed whenever the trigger is modified.
    */
   core.String fingerprint;
-
   /**
    * Time between triggering recurring Timer Events (in milliseconds). Only
    * valid for Timer triggers.
    */
   Parameter interval;
-
   /**
    * Limit of the number of GTM events this Timer Trigger will fire. If no limit
    * is set, we will continue to fire GTM events until the user leaves the page.
    * Only valid for Timer triggers.
    */
   Parameter limit;
-
   /** Trigger display name. */
   core.String name;
-
   /** The Trigger ID uniquely identifies the GTM Trigger. */
   core.String triggerId;
-
   /**
    * Defines the data layer event that causes this trigger.
    * Possible string values are:
@@ -3856,7 +3682,6 @@ class Trigger {
    * - "youTube"
    */
   core.String type;
-
   /**
    * Globally unique id of the trigger that auto-generates this (a Form Submit,
    * Link Click or Timer listener) if any. Used to make incompatible auto-events
@@ -3866,13 +3691,11 @@ class Trigger {
    * triggers.
    */
   Parameter uniqueTriggerId;
-
   /**
    * List of integer percentage values. The trigger will fire as each percentage
    * is reached in any instrumented videos. Only valid for YouTube triggers.
    */
   Parameter videoPercentageList;
-
   /**
    * Whether or not we should delay the form submissions or link opening until
    * all of the tags have fired (by preventing the default action and later
@@ -3880,14 +3703,12 @@ class Trigger {
    * Click triggers.
    */
   Parameter waitForTags;
-
   /**
    * How long to wait (in milliseconds) for tags to fire when 'waits_for_tags'
    * above evaluates to true. Only valid for Form Submission and Link Click
    * triggers.
    */
   Parameter waitForTagsTimeout;
-
 
   Trigger();
 
@@ -4008,24 +3829,18 @@ class Trigger {
   }
 }
 
-
 /** Represents a user's permissions to an account and its container. */
 class UserAccess {
   /** GTM Account access permissions. */
   AccountAccess accountAccess;
-
   /** GTM Account ID. */
   core.String accountId;
-
   /** GTM Container access permissions. */
   core.List<ContainerAccess> containerAccess;
-
   /** User's email address. */
   core.String emailAddress;
-
   /** Account Permission ID. */
   core.String permissionId;
-
 
   UserAccess();
 
@@ -4068,56 +3883,43 @@ class UserAccess {
   }
 }
 
-
 /** Represents a Google Tag Manager Variable. */
 class Variable {
   /** GTM Account ID. */
   core.String accountId;
-
   /** GTM Container ID. */
   core.String containerId;
-
   /**
    * For mobile containers only: A list of trigger IDs for disabling conditional
    * variables; the variable is enabled if one of the enabling trigger is true
    * while all the disabling trigger are false. Treated as an unordered set.
    */
   core.List<core.String> disablingTriggerId;
-
   /**
    * For mobile containers only: A list of trigger IDs for enabling conditional
    * variables; the variable is enabled if one of the enabling triggers is true
    * while all the disabling triggers are false. Treated as an unordered set.
    */
   core.List<core.String> enablingTriggerId;
-
   /**
    * The fingerprint of the GTM Variable as computed at storage time. This value
    * is recomputed whenever the variable is modified.
    */
   core.String fingerprint;
-
   /** Variable display name. */
   core.String name;
-
   /** User notes on how to apply this variable in the container. */
   core.String notes;
-
   /** The variable's parameters. */
   core.List<Parameter> parameter;
-
   /** The end timestamp in milliseconds to schedule a variable. */
   core.String scheduleEndMs;
-
   /** The start timestamp in milliseconds to schedule a variable. */
   core.String scheduleStartMs;
-
   /** GTM Variable Type. */
   core.String type;
-
   /** The Variable ID uniquely identifies the GTM Variable. */
   core.String variableId;
-
 
   Variable();
 

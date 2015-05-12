@@ -60,7 +60,7 @@ class ColumnResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String tableId, core.String columnId) {
     var _url = null;
@@ -106,7 +106,7 @@ class ColumnResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Column> get(core.String tableId, core.String columnId) {
     var _url = null;
@@ -122,7 +122,6 @@ class ColumnResourceApi {
     if (columnId == null) {
       throw new core.ArgumentError("Parameter columnId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns/' + commons.Escaper.ecapeVariable('$columnId');
 
@@ -151,7 +150,7 @@ class ColumnResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Column> insert(Column request, core.String tableId) {
     var _url = null;
@@ -167,7 +166,6 @@ class ColumnResourceApi {
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns';
 
@@ -198,7 +196,7 @@ class ColumnResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ColumnList> list(core.String tableId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -217,7 +215,6 @@ class ColumnResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns';
 
@@ -249,7 +246,7 @@ class ColumnResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Column> patch(Column request, core.String tableId, core.String columnId) {
     var _url = null;
@@ -268,7 +265,6 @@ class ColumnResourceApi {
     if (columnId == null) {
       throw new core.ArgumentError("Parameter columnId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns/' + commons.Escaper.ecapeVariable('$columnId');
 
@@ -299,7 +295,7 @@ class ColumnResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Column> update(Column request, core.String tableId, core.String columnId) {
     var _url = null;
@@ -318,7 +314,6 @@ class ColumnResourceApi {
     if (columnId == null) {
       throw new core.ArgumentError("Parameter columnId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns/' + commons.Escaper.ecapeVariable('$columnId');
 
@@ -382,7 +377,7 @@ class QueryResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future sql(core.String sql_1, {core.bool hdrs, core.bool typed, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -455,7 +450,7 @@ class QueryResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future sqlGet(core.String sql_1, {core.bool hdrs, core.bool typed, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -517,7 +512,7 @@ class StyleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String tableId, core.int styleId) {
     var _url = null;
@@ -563,7 +558,7 @@ class StyleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<StyleSetting> get(core.String tableId, core.int styleId) {
     var _url = null;
@@ -579,7 +574,6 @@ class StyleResourceApi {
     if (styleId == null) {
       throw new core.ArgumentError("Parameter styleId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles/' + commons.Escaper.ecapeVariable('$styleId');
 
@@ -608,7 +602,7 @@ class StyleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<StyleSetting> insert(StyleSetting request, core.String tableId) {
     var _url = null;
@@ -624,7 +618,6 @@ class StyleResourceApi {
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles';
 
@@ -656,7 +649,7 @@ class StyleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<StyleSettingList> list(core.String tableId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -675,7 +668,6 @@ class StyleResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles';
 
@@ -706,7 +698,7 @@ class StyleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<StyleSetting> patch(StyleSetting request, core.String tableId, core.int styleId) {
     var _url = null;
@@ -725,7 +717,6 @@ class StyleResourceApi {
     if (styleId == null) {
       throw new core.ArgumentError("Parameter styleId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles/' + commons.Escaper.ecapeVariable('$styleId');
 
@@ -756,7 +747,7 @@ class StyleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<StyleSetting> update(StyleSetting request, core.String tableId, core.int styleId) {
     var _url = null;
@@ -775,7 +766,6 @@ class StyleResourceApi {
     if (styleId == null) {
       throw new core.ArgumentError("Parameter styleId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles/' + commons.Escaper.ecapeVariable('$styleId');
 
@@ -814,7 +804,7 @@ class TableResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Table> copy(core.String tableId, {core.bool copyPresentation}) {
     var _url = null;
@@ -830,7 +820,6 @@ class TableResourceApi {
     if (copyPresentation != null) {
       _queryParams["copyPresentation"] = ["${copyPresentation}"];
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/copy';
 
@@ -855,7 +844,7 @@ class TableResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String tableId) {
     var _url = null;
@@ -896,7 +885,7 @@ class TableResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Table> get(core.String tableId) {
     var _url = null;
@@ -909,7 +898,6 @@ class TableResourceApi {
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId');
 
@@ -959,7 +947,7 @@ class TableResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Import> importRows(core.String tableId, {core.String delimiter, core.String encoding, core.int endLine, core.bool isStrict, core.int startLine, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1034,7 +1022,7 @@ class TableResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Table> importTable(core.String name, {core.String delimiter, core.String encoding, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1090,7 +1078,7 @@ class TableResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Table> insert(Table request) {
     var _url = null;
@@ -1103,7 +1091,6 @@ class TableResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'tables';
 
@@ -1132,7 +1119,7 @@ class TableResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TableList> list({core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1148,7 +1135,6 @@ class TableResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'tables';
 
@@ -1183,7 +1169,7 @@ class TableResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Table> patch(Table request, core.String tableId, {core.bool replaceViewDefinition}) {
     var _url = null;
@@ -1202,7 +1188,6 @@ class TableResourceApi {
     if (replaceViewDefinition != null) {
       _queryParams["replaceViewDefinition"] = ["${replaceViewDefinition}"];
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId');
 
@@ -1254,7 +1239,7 @@ class TableResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Task> replaceRows(core.String tableId, {core.String delimiter, core.String encoding, core.int endLine, core.bool isStrict, core.int startLine, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1325,7 +1310,7 @@ class TableResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Table> update(Table request, core.String tableId, {core.bool replaceViewDefinition}) {
     var _url = null;
@@ -1344,7 +1329,6 @@ class TableResourceApi {
     if (replaceViewDefinition != null) {
       _queryParams["replaceViewDefinition"] = ["${replaceViewDefinition}"];
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId');
 
@@ -1381,7 +1365,7 @@ class TaskResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String tableId, core.String taskId) {
     var _url = null;
@@ -1427,7 +1411,7 @@ class TaskResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Task> get(core.String tableId, core.String taskId) {
     var _url = null;
@@ -1443,7 +1427,6 @@ class TaskResourceApi {
     if (taskId == null) {
       throw new core.ArgumentError("Parameter taskId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/tasks/' + commons.Escaper.ecapeVariable('$taskId');
 
@@ -1476,7 +1459,7 @@ class TaskResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TaskList> list(core.String tableId, {core.int maxResults, core.String pageToken, core.int startIndex}) {
     var _url = null;
@@ -1498,7 +1481,6 @@ class TaskResourceApi {
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/tasks';
 
@@ -1534,7 +1516,7 @@ class TemplateResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String tableId, core.int templateId) {
     var _url = null;
@@ -1580,7 +1562,7 @@ class TemplateResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Template> get(core.String tableId, core.int templateId) {
     var _url = null;
@@ -1596,7 +1578,6 @@ class TemplateResourceApi {
     if (templateId == null) {
       throw new core.ArgumentError("Parameter templateId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates/' + commons.Escaper.ecapeVariable('$templateId');
 
@@ -1625,7 +1606,7 @@ class TemplateResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Template> insert(Template request, core.String tableId) {
     var _url = null;
@@ -1641,7 +1622,6 @@ class TemplateResourceApi {
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates';
 
@@ -1674,7 +1654,7 @@ class TemplateResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TemplateList> list(core.String tableId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1693,7 +1673,6 @@ class TemplateResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates';
 
@@ -1724,7 +1703,7 @@ class TemplateResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Template> patch(Template request, core.String tableId, core.int templateId) {
     var _url = null;
@@ -1743,7 +1722,6 @@ class TemplateResourceApi {
     if (templateId == null) {
       throw new core.ArgumentError("Parameter templateId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates/' + commons.Escaper.ecapeVariable('$templateId');
 
@@ -1774,7 +1752,7 @@ class TemplateResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Template> update(Template request, core.String tableId, core.int templateId) {
     var _url = null;
@@ -1793,7 +1771,6 @@ class TemplateResourceApi {
     if (templateId == null) {
       throw new core.ArgumentError("Parameter templateId is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates/' + commons.Escaper.ecapeVariable('$templateId');
 
@@ -1818,28 +1795,22 @@ class TemplateResourceApi {
 class Bucket {
   /** Color of line or the interior of a polygon in #RRGGBB format. */
   core.String color;
-
   /** Icon name used for a point. */
   core.String icon;
-
   /**
    * Maximum value in the selected column for a row to be styled according to
    * the bucket color, opacity, icon, or weight.
    */
   core.double max;
-
   /**
    * Minimum value in the selected column for a row to be styled according to
    * the bucket color, opacity, icon, or weight.
    */
   core.double min;
-
   /** Opacity of the color: 0.0 (transparent) to 1.0 (opaque). */
   core.double opacity;
-
   /** Width of a line (in pixels). */
   core.int weight;
-
 
   Bucket();
 
@@ -1888,7 +1859,6 @@ class Bucket {
   }
 }
 
-
 /**
  * Identifier of the base column. If present, this column is derived from the
  * specified base column.
@@ -1898,12 +1868,10 @@ class ColumnBaseColumn {
    * The id of the column in the base table from which this column is derived.
    */
   core.int columnId;
-
   /**
    * Offset to the entry in the list of base tables in the table definition.
    */
   core.int tableIndex;
-
 
   ColumnBaseColumn();
 
@@ -1928,7 +1896,6 @@ class ColumnBaseColumn {
   }
 }
 
-
 /** Specifies the details of a column in a table. */
 class Column {
   /**
@@ -1936,19 +1903,14 @@ class Column {
    * specified base column.
    */
   ColumnBaseColumn baseColumn;
-
   /** Identifier for the column. */
   core.int columnId;
-
   /** JSON schema for interpreting JSON in this column. */
   core.String columnJsonSchema;
-
   /** JSON object containing custom column properties. */
   core.String columnPropertiesJson;
-
   /** Column description. */
   core.String description;
-
   /**
    * Format pattern.
    * Acceptable values are DT_DATE_MEDIUMe.g Dec 24, 2008 DT_DATE_SHORTfor
@@ -1975,34 +1937,27 @@ class Column {
    * as one line of text STRING_VIDEO_OR_MAPDisplay a video or map thumbnail
    */
   core.String formatPattern;
-
   /**
    * Column graph predicate.
    * Used to map table to graph data model (subject,predicate,object)
    * See W3C Graph-based Data Model.
    */
   core.String graphPredicate;
-
   /**
    * The kind of item this is. For a column, this is always fusiontables#column.
    */
   core.String kind;
-
   /** Name of the column. */
   core.String name;
-
   /** Type of the column. */
   core.String type;
-
   /**
    * List of valid values used to validate data and supply a drop-down list of
    * values in the web application.
    */
   core.List<core.String> validValues;
-
   /** If true, data entered via the web application is validated. */
   core.bool validateData;
-
 
   Column();
 
@@ -2087,27 +2042,22 @@ class Column {
   }
 }
 
-
 /** Represents a list of columns in a table. */
 class ColumnList {
   /** List of all requested columns. */
   core.List<Column> items;
-
   /**
    * The kind of item this is. For a column list, this is always
    * fusiontables#columnList.
    */
   core.String kind;
-
   /**
    * Token used to access the next page of this result. No token is displayed if
    * there are no more pages left.
    */
   core.String nextPageToken;
-
   /** Total number of columns for the table. */
   core.int totalItems;
-
 
   ColumnList();
 
@@ -2144,7 +2094,6 @@ class ColumnList {
   }
 }
 
-
 /** Represents a Geometry object. */
 class Geometry {
   /**
@@ -2154,7 +2103,6 @@ class Geometry {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Object> geometries;
-
   /**
    *
    *
@@ -2162,10 +2110,8 @@ class Geometry {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object geometry;
-
   /** Type: A collection of geometries. */
   core.String type;
-
 
   Geometry();
 
@@ -2196,7 +2142,6 @@ class Geometry {
   }
 }
 
-
 /** Represents an import request. */
 class Import {
   /**
@@ -2204,10 +2149,8 @@ class Import {
    * fusiontables#import.
    */
   core.String kind;
-
   /** The number of rows received from the import request. */
   core.String numRowsReceived;
-
 
   Import();
 
@@ -2232,15 +2175,12 @@ class Import {
   }
 }
 
-
 /** Represents a line geometry. */
 class Line {
   /** The coordinates that define the line. */
   core.List<core.List<core.double>> coordinates;
-
   /** Type: A line geometry. */
   core.String type;
-
 
   Line();
 
@@ -2265,30 +2205,24 @@ class Line {
   }
 }
 
-
 /** Represents a LineStyle within a StyleSetting */
 class LineStyle {
   /** Color of the line in #RRGGBB format. */
   core.String strokeColor;
-
   /**
    * Column-value, gradient or buckets styler that is used to determine the line
    * color and opacity.
    */
   StyleFunction strokeColorStyler;
-
   /** Opacity of the line : 0.0 (transparent) to 1.0 (opaque). */
   core.double strokeOpacity;
-
   /** Width of the line in pixels. */
   core.int strokeWeight;
-
   /**
    * Column-value or bucket styler that is used to determine the width of the
    * line.
    */
   StyleFunction strokeWeightStyler;
-
 
   LineStyle();
 
@@ -2331,15 +2265,12 @@ class LineStyle {
   }
 }
 
-
 /** Represents a point object. */
 class Point {
   /** The coordinates that define the point. */
   core.List<core.double> coordinates;
-
   /** Point: A point geometry. */
   core.String type;
-
 
   Point();
 
@@ -2364,7 +2295,6 @@ class Point {
   }
 }
 
-
 /** Represents a PointStyle within a StyleSetting */
 class PointStyle {
   /**
@@ -2372,10 +2302,8 @@ class PointStyle {
    * http://www.google.com/fusiontables/DataSource?dsrcid=308519
    */
   core.String iconName;
-
   /** Column or a bucket value from which the icon name is to be determined. */
   StyleFunction iconStyler;
-
 
   PointStyle();
 
@@ -2400,15 +2328,12 @@ class PointStyle {
   }
 }
 
-
 /** Represents a polygon object. */
 class Polygon {
   /** The coordinates that define the polygon. */
   core.List<core.List<core.List<core.double>>> coordinates;
-
   /** Type: A polygon geometry. */
   core.String type;
-
 
   Polygon();
 
@@ -2433,44 +2358,35 @@ class Polygon {
   }
 }
 
-
 /** Represents a PolygonStyle within a StyleSetting */
 class PolygonStyle {
   /** Color of the interior of the polygon in #RRGGBB format. */
   core.String fillColor;
-
   /**
    * Column-value, gradient, or bucket styler that is used to determine the
    * interior color and opacity of the polygon.
    */
   StyleFunction fillColorStyler;
-
   /**
    * Opacity of the interior of the polygon: 0.0 (transparent) to 1.0 (opaque).
    */
   core.double fillOpacity;
-
   /** Color of the polygon border in #RRGGBB format. */
   core.String strokeColor;
-
   /**
    * Column-value, gradient or buckets styler that is used to determine the
    * border color and opacity.
    */
   StyleFunction strokeColorStyler;
-
   /** Opacity of the polygon border: 0.0 (transparent) to 1.0 (opaque). */
   core.double strokeOpacity;
-
   /** Width of the polyon border in pixels. */
   core.int strokeWeight;
-
   /**
    * Column-value or bucket styler that is used to determine the width of the
    * polygon border.
    */
   StyleFunction strokeWeightStyler;
-
 
   PolygonStyle();
 
@@ -2531,18 +2447,15 @@ class PolygonStyle {
   }
 }
 
-
 /** Represents a response to a SQL statement. */
 class Sqlresponse {
   /** Columns in the table. */
   core.List<core.String> columns;
-
   /**
    * The kind of item this is. For responses to SQL queries, this is always
    * fusiontables#sqlresponse.
    */
   core.String kind;
-
   /**
    * The rows in the table. For each cell we print out whatever cell value
    * (e.g., numeric, string) exists. Thus it is important that each cell
@@ -2552,7 +2465,6 @@ class Sqlresponse {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.List<core.Object>> rows;
-
 
   Sqlresponse();
 
@@ -2583,14 +2495,11 @@ class Sqlresponse {
   }
 }
 
-
 class StyleFunctionGradientColors {
   /** Color in #RRGGBB format. */
   core.String color;
-
   /** Opacity of the color: 0.0 (transparent) to 1.0 (opaque). */
   core.double opacity;
-
 
   StyleFunctionGradientColors();
 
@@ -2615,26 +2524,22 @@ class StyleFunctionGradientColors {
   }
 }
 
-
 /**
  * Gradient function that interpolates a range of colors based on column value.
  */
 class StyleFunctionGradient {
   /** Array with two or more colors. */
   core.List<StyleFunctionGradientColors> colors;
-
   /**
    * Higher-end of the interpolation range: rows with this value will be
    * assigned to colors[n-1].
    */
   core.double max;
-
   /**
    * Lower-end of the interpolation range: rows with this value will be assigned
    * to colors[0].
    */
   core.double min;
-
 
   StyleFunctionGradient();
 
@@ -2665,7 +2570,6 @@ class StyleFunctionGradient {
   }
 }
 
-
 /** Represents a StyleFunction within a StyleSetting */
 class StyleFunction {
   /**
@@ -2673,16 +2577,13 @@ class StyleFunction {
    * falls into.
    */
   core.List<Bucket> buckets;
-
   /** Name of the column whose value is used in the style. */
   core.String columnName;
-
   /**
    * Gradient function that interpolates a range of colors based on column
    * value.
    */
   StyleFunctionGradient gradient;
-
   /**
    * Stylers can be one of three kinds: "fusiontables#fromColumn if the column
    * value is to be used as is, i.e., the column values can have colors in
@@ -2692,7 +2593,6 @@ class StyleFunction {
    * styling is to based on the bucket into which the the column value falls.
    */
   core.String kind;
-
 
   StyleFunction();
 
@@ -2729,7 +2629,6 @@ class StyleFunction {
   }
 }
 
-
 /**
  * Represents a complete StyleSettings object. The primary key is a combination
  * of the tableId and a styleId.
@@ -2742,25 +2641,18 @@ class StyleSetting {
    * definitions.
    */
   core.String kind;
-
   /** Style definition for points in the table. */
   PointStyle markerOptions;
-
   /** Optional name for the style setting. */
   core.String name;
-
   /** Style definition for polygons in the table. */
   PolygonStyle polygonOptions;
-
   /** Style definition for lines in the table. */
   LineStyle polylineOptions;
-
   /** Identifier for the style setting (unique only within tables). */
   core.int styleId;
-
   /** Identifier for the table. */
   core.String tableId;
-
 
   StyleSetting();
 
@@ -2815,27 +2707,22 @@ class StyleSetting {
   }
 }
 
-
 /** Represents a list of styles for a given table. */
 class StyleSettingList {
   /** All requested style settings. */
   core.List<StyleSetting> items;
-
   /**
    * The kind of item this is. For a style list, this is always
    * fusiontables#styleSettingList .
    */
   core.String kind;
-
   /**
    * Token used to access the next page of this result. No token is displayed if
    * there are no more styles left.
    */
   core.String nextPageToken;
-
   /** Total number of styles for the table. */
   core.int totalItems;
-
 
   StyleSettingList();
 
@@ -2872,50 +2759,36 @@ class StyleSettingList {
   }
 }
 
-
 /** Represents a table. */
 class Table {
   /** Attribution assigned to the table. */
   core.String attribution;
-
   /** Optional link for attribution. */
   core.String attributionLink;
-
   /** Base table identifier if this table is a view or merged table. */
   core.List<core.String> baseTableIds;
-
   /** Default JSON schema for validating all JSON column properties. */
   core.String columnPropertiesJsonSchema;
-
   /** Columns in the table. */
   core.List<Column> columns;
-
   /** Description assigned to the table. */
   core.String description;
-
   /** Variable for whether table is exportable. */
   core.bool isExportable;
-
   /**
    * The kind of item this is. For a table, this is always fusiontables#table.
    */
   core.String kind;
-
   /** Name assigned to a table. */
   core.String name;
-
   /** SQL that encodes the table definition for derived tables. */
   core.String sql;
-
   /** Encrypted unique alphanumeric identifier for the table. */
   core.String tableId;
-
   /** JSON object containing custom table properties. */
   core.String tablePropertiesJson;
-
   /** JSON schema for validating the JSON table properties. */
   core.String tablePropertiesJsonSchema;
-
 
   Table();
 
@@ -3006,24 +2879,20 @@ class Table {
   }
 }
 
-
 /** Represents a list of tables. */
 class TableList {
   /** List of all requested tables. */
   core.List<Table> items;
-
   /**
    * The kind of item this is. For table list, this is always
    * fusiontables#tableList.
    */
   core.String kind;
-
   /**
    * Token used to access the next page of this result. No token is displayed if
    * there are no more pages left.
    */
   core.String nextPageToken;
-
 
   TableList();
 
@@ -3054,7 +2923,6 @@ class TableList {
   }
 }
 
-
 /**
  * A background task on a table, initiated for time- or resource-consuming
  * operations such as changing column types or deleting all rows.
@@ -3062,22 +2930,17 @@ class TableList {
 class Task {
   /** Type of the resource. This is always "fusiontables#task". */
   core.String kind;
-
   /** Task percentage completion. */
   core.String progress;
-
   /**
    * false while the table is busy with some other task. true if this background
    * task is currently running.
    */
   core.bool started;
-
   /** Identifier for the task. */
   core.String taskId;
-
   /** Type of background task. */
   core.String type;
-
 
   Task();
 
@@ -3120,24 +2983,19 @@ class Task {
   }
 }
 
-
 /** Represents a list of tasks for a table. */
 class TaskList {
   /** List of all requested tasks. */
   core.List<Task> items;
-
   /** Type of the resource. This is always "fusiontables#taskList". */
   core.String kind;
-
   /**
    * Token used to access the next page of this result. No token is displayed if
    * there are no more pages left.
    */
   core.String nextPageToken;
-
   /** Total number of tasks for the table. */
   core.int totalItems;
-
 
   TaskList();
 
@@ -3174,7 +3032,6 @@ class TaskList {
   }
 }
 
-
 /** Represents the contents of InfoWindow templates. */
 class Template {
   /**
@@ -3182,32 +3039,26 @@ class Template {
    * Only one of body or automaticColumns can be specified.
    */
   core.List<core.String> automaticColumnNames;
-
   /**
    * Body of the template. It contains HTML with {column_name} to insert values
    * from a particular column. The body is sanitized to remove certain tags,
    * e.g., script. Only one of body or automaticColumns can be specified.
    */
   core.String body;
-
   /**
    * The kind of item this is. For a template, this is always
    * fusiontables#template.
    */
   core.String kind;
-
   /** Optional name assigned to a template. */
   core.String name;
-
   /** Identifier for the table for which the template is defined. */
   core.String tableId;
-
   /**
    * Identifier for the template, unique within the context of a particular
    * table.
    */
   core.int templateId;
-
 
   Template();
 
@@ -3256,27 +3107,22 @@ class Template {
   }
 }
 
-
 /** Represents a list of templates for a given table. */
 class TemplateList {
   /** List of all requested templates. */
   core.List<Template> items;
-
   /**
    * The kind of item this is. For a template list, this is always
    * fusiontables#templateList .
    */
   core.String kind;
-
   /**
    * Token used to access the next page of this result. No token is displayed if
    * there are no more pages left.
    */
   core.String nextPageToken;
-
   /** Total number of templates for the table. */
   core.int totalItems;
-
 
   TemplateList();
 

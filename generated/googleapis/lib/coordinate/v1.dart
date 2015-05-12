@@ -58,7 +58,7 @@ class CustomFieldDefResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomFieldDefListResponse> list(core.String teamId) {
     var _url = null;
@@ -71,7 +71,6 @@ class CustomFieldDefResourceApi {
     if (teamId == null) {
       throw new core.ArgumentError("Parameter teamId is required.");
     }
-
 
     _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/custom_fields';
 
@@ -109,7 +108,7 @@ class JobsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Job> get(core.String teamId, core.String jobId) {
     var _url = null;
@@ -125,7 +124,6 @@ class JobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-
 
     _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
@@ -177,7 +175,7 @@ class JobsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Job> insert(Job request, core.String teamId, core.String address, core.double lat, core.double lng, core.String title, {core.String assignee, core.List<core.String> customField, core.String customerName, core.String customerPhoneNumber, core.String note}) {
     var _url = null;
@@ -225,7 +223,6 @@ class JobsResourceApi {
       _queryParams["note"] = [note];
     }
 
-
     _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs';
 
     var _response = _requester.request(_url,
@@ -258,7 +255,7 @@ class JobsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<JobListResponse> list(core.String teamId, {core.int maxResults, core.String minModifiedTimestampMs, core.String pageToken}) {
     var _url = null;
@@ -280,7 +277,6 @@ class JobsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs';
 
@@ -343,7 +339,7 @@ class JobsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Job> patch(Job request, core.String teamId, core.String jobId, {core.String address, core.String assignee, core.List<core.String> customField, core.String customerName, core.String customerPhoneNumber, core.double lat, core.double lng, core.String note, core.String progress, core.String title}) {
     var _url = null;
@@ -392,7 +388,6 @@ class JobsResourceApi {
     if (title != null) {
       _queryParams["title"] = [title];
     }
-
 
     _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
@@ -454,7 +449,7 @@ class JobsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Job> update(Job request, core.String teamId, core.String jobId, {core.String address, core.String assignee, core.List<core.String> customField, core.String customerName, core.String customerPhoneNumber, core.double lat, core.double lng, core.String note, core.String progress, core.String title}) {
     var _url = null;
@@ -504,7 +499,6 @@ class JobsResourceApi {
       _queryParams["title"] = [title];
     }
 
-
     _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
@@ -547,7 +541,7 @@ class LocationResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LocationListResponse> list(core.String teamId, core.String workerEmail, core.String startTimestampMs, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -573,7 +567,6 @@ class LocationResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/workers/' + commons.Escaper.ecapeVariable('$workerEmail') + '/locations';
 
@@ -611,7 +604,7 @@ class ScheduleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Schedule> get(core.String teamId, core.String jobId) {
     var _url = null;
@@ -627,7 +620,6 @@ class ScheduleResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-
 
     _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/schedule';
 
@@ -668,7 +660,7 @@ class ScheduleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Schedule> patch(Schedule request, core.String teamId, core.String jobId, {core.bool allDay, core.String duration, core.String endTime, core.String startTime}) {
     var _url = null;
@@ -699,7 +691,6 @@ class ScheduleResourceApi {
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
     }
-
 
     _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/schedule';
 
@@ -739,7 +730,7 @@ class ScheduleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Schedule> update(Schedule request, core.String teamId, core.String jobId, {core.bool allDay, core.String duration, core.String endTime, core.String startTime}) {
     var _url = null;
@@ -770,7 +761,6 @@ class ScheduleResourceApi {
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
     }
-
 
     _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/schedule';
 
@@ -811,7 +801,7 @@ class TeamResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TeamListResponse> list({core.bool admin, core.bool dispatcher, core.bool worker}) {
     var _url = null;
@@ -830,7 +820,6 @@ class TeamResourceApi {
     if (worker != null) {
       _queryParams["worker"] = ["${worker}"];
     }
-
 
     _url = 'teams';
 
@@ -866,7 +855,7 @@ class WorkerResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<WorkerListResponse> list(core.String teamId) {
     var _url = null;
@@ -879,7 +868,6 @@ class WorkerResourceApi {
     if (teamId == null) {
       throw new core.ArgumentError("Parameter teamId is required.");
     }
-
 
     _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/workers';
 
@@ -901,13 +889,10 @@ class WorkerResourceApi {
 class CustomField {
   /** Custom field id. */
   core.String customFieldId;
-
   /** Identifies this object as a custom field. */
   core.String kind;
-
   /** Custom field value. */
   core.String value;
-
 
   CustomField();
 
@@ -938,33 +923,25 @@ class CustomField {
   }
 }
 
-
 /** Custom field definition. */
 class CustomFieldDef {
   /** Whether the field is enabled. */
   core.bool enabled;
-
   /**
    * List of enum items for this custom field. Populated only if the field type
    * is enum. Enum fields appear as 'lists' in the Coordinate web and mobile UI.
    */
   core.List<EnumItemDef> enumitems;
-
   /** Custom field id. */
   core.String id;
-
   /** Identifies this object as a custom field definition. */
   core.String kind;
-
   /** Custom field name. */
   core.String name;
-
   /** Whether the field is required for checkout. */
   core.bool requiredForCheckout;
-
   /** Custom field type. */
   core.String type;
-
 
   CustomFieldDef();
 
@@ -1019,18 +996,15 @@ class CustomFieldDef {
   }
 }
 
-
 /** Collection of custom field definitions for a team. */
 class CustomFieldDefListResponse {
   /** Collection of custom field definitions in a team. */
   core.List<CustomFieldDef> items;
-
   /**
    * Identifies this object as a collection of custom field definitions in a
    * team.
    */
   core.String kind;
-
 
   CustomFieldDefListResponse();
 
@@ -1055,15 +1029,12 @@ class CustomFieldDefListResponse {
   }
 }
 
-
 /** Collection of custom fields. */
 class CustomFields {
   /** Collection of custom fields. */
   core.List<CustomField> customField;
-
   /** Identifies this object as a collection of custom fields. */
   core.String kind;
-
 
   CustomFields();
 
@@ -1088,7 +1059,6 @@ class CustomFields {
   }
 }
 
-
 /** Enum Item definition. */
 class EnumItemDef {
   /**
@@ -1097,13 +1067,10 @@ class EnumItemDef {
    * job will result in a 500 error.
    */
   core.bool active;
-
   /** Identifies this object as an enum item definition. */
   core.String kind;
-
   /** Custom field value. */
   core.String value;
-
 
   EnumItemDef();
 
@@ -1134,24 +1101,19 @@ class EnumItemDef {
   }
 }
 
-
 /** A job. */
 class Job {
   /** Job id. */
   core.String id;
-
   /**
    * List of job changes since it was created. The first change corresponds to
    * the state of the job when it was created.
    */
   core.List<JobChange> jobChange;
-
   /** Identifies this object as a job. */
   core.String kind;
-
   /** Current job state. */
   JobState state;
-
 
   Job();
 
@@ -1188,18 +1150,14 @@ class Job {
   }
 }
 
-
 /** Change to a job. For example assigning the job to a different worker. */
 class JobChange {
   /** Identifies this object as a job change. */
   core.String kind;
-
   /** Change applied to the job. Only the fields that were changed are set. */
   JobState state;
-
   /** Time at which this change was applied. */
   core.String timestamp;
-
 
   JobChange();
 
@@ -1230,18 +1188,14 @@ class JobChange {
   }
 }
 
-
 /** Response from a List Jobs request. */
 class JobListResponse {
   /** Jobs in the collection. */
   core.List<Job> items;
-
   /** Identifies this object as a list of jobs. */
   core.String kind;
-
   /** A token to provide to get the next page of results. */
   core.String nextPageToken;
-
 
   JobListResponse();
 
@@ -1272,7 +1226,6 @@ class JobListResponse {
   }
 }
 
-
 /** Current state of a job. */
 class JobState {
   /**
@@ -1280,31 +1233,22 @@ class JobState {
    * is no longer available.
    */
   core.String assignee;
-
   /** Custom fields. */
   CustomFields customFields;
-
   /** Customer name. */
   core.String customerName;
-
   /** Customer phone number. */
   core.String customerPhoneNumber;
-
   /** Identifies this object as a job state. */
   core.String kind;
-
   /** Job location. */
   Location location;
-
   /** Note added to the job. */
   core.List<core.String> note;
-
   /** Job progress. */
   core.String progress;
-
   /** Job title. */
   core.String title;
-
 
   JobState();
 
@@ -1371,21 +1315,16 @@ class JobState {
   }
 }
 
-
 /** Location of a job. */
 class Location {
   /** Address. */
   core.List<core.String> addressLine;
-
   /** Identifies this object as a location. */
   core.String kind;
-
   /** Latitude. */
   core.double lat;
-
   /** Longitude. */
   core.double lng;
-
 
   Location();
 
@@ -1422,21 +1361,16 @@ class Location {
   }
 }
 
-
 /** Response from a List Locations request. */
 class LocationListResponse {
   /** Locations in the collection. */
   core.List<LocationRecord> items;
-
   /** Identifies this object as a list of locations. */
   core.String kind;
-
   /** A token to provide to get the next page of results. */
   core.String nextPageToken;
-
   /** Pagination information for token pagination. */
   TokenPagination tokenPagination;
-
 
   LocationListResponse();
 
@@ -1473,27 +1407,21 @@ class LocationListResponse {
   }
 }
 
-
 /** Recorded location of a worker. */
 class LocationRecord {
   /** The collection time in milliseconds since the epoch. */
   core.String collectionTime;
-
   /**
    * The location accuracy in meters. This is the radius of a 95% confidence
    * interval around the location measurement.
    */
   core.double confidenceRadius;
-
   /** Identifies this object as a location. */
   core.String kind;
-
   /** Latitude. */
   core.double latitude;
-
   /** Longitude. */
   core.double longitude;
-
 
   LocationRecord();
 
@@ -1536,7 +1464,6 @@ class LocationRecord {
   }
 }
 
-
 /** Job schedule. */
 class Schedule {
   /**
@@ -1544,19 +1471,14 @@ class Schedule {
    * times is ignored if this is true.
    */
   core.bool allDay;
-
   /** Job duration in milliseconds. */
   core.String duration;
-
   /** Scheduled end time in milliseconds since epoch. */
   core.String endTime;
-
   /** Identifies this object as a job schedule. */
   core.String kind;
-
   /** Scheduled start time in milliseconds since epoch. */
   core.String startTime;
-
 
   Schedule();
 
@@ -1599,7 +1521,6 @@ class Schedule {
   }
 }
 
-
 /** A Coordinate team. */
 class Team {
   /**
@@ -1607,13 +1528,10 @@ class Team {
    * https://coordinate.google.com/f/xyz where "xyz" is the team id.
    */
   core.String id;
-
   /** Identifies this object as a team. */
   core.String kind;
-
   /** Team name */
   core.String name;
-
 
   Team();
 
@@ -1644,15 +1562,12 @@ class Team {
   }
 }
 
-
 /** Response from a List Teams request. */
 class TeamListResponse {
   /** Teams in the collection. */
   core.List<Team> items;
-
   /** Identifies this object as a list of teams. */
   core.String kind;
-
 
   TeamListResponse();
 
@@ -1677,18 +1592,14 @@ class TeamListResponse {
   }
 }
 
-
 /** Pagination information. */
 class TokenPagination {
   /** Identifies this object as pagination information. */
   core.String kind;
-
   /** A token to provide to get the next page of results. */
   core.String nextPageToken;
-
   /** A token to provide to get the previous page of results. */
   core.String previousPageToken;
-
 
   TokenPagination();
 
@@ -1719,7 +1630,6 @@ class TokenPagination {
   }
 }
 
-
 /** A worker in a Coordinate team. */
 class Worker {
   /**
@@ -1727,10 +1637,8 @@ class Worker {
    * email address will appear as DELETED_USER.
    */
   core.String id;
-
   /** Identifies this object as a worker. */
   core.String kind;
-
 
   Worker();
 
@@ -1755,15 +1663,12 @@ class Worker {
   }
 }
 
-
 /** Response from a List Workers request. */
 class WorkerListResponse {
   /** Workers in the collection. */
   core.List<Worker> items;
-
   /** Identifies this object as a list of workers. */
   core.String kind;
-
 
   WorkerListResponse();
 

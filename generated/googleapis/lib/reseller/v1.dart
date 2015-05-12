@@ -54,7 +54,7 @@ class CustomersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Customer> get(core.String customerId) {
     var _url = null;
@@ -67,7 +67,6 @@ class CustomersResourceApi {
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
-
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
 
@@ -98,7 +97,7 @@ class CustomersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Customer> insert(Customer request, {core.String customerAuthToken}) {
     var _url = null;
@@ -114,7 +113,6 @@ class CustomersResourceApi {
     if (customerAuthToken != null) {
       _queryParams["customerAuthToken"] = [customerAuthToken];
     }
-
 
     _url = 'customers';
 
@@ -144,7 +142,7 @@ class CustomersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Customer> patch(Customer request, core.String customerId) {
     var _url = null;
@@ -160,7 +158,6 @@ class CustomersResourceApi {
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
-
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
 
@@ -189,7 +186,7 @@ class CustomersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Customer> update(Customer request, core.String customerId) {
     var _url = null;
@@ -205,7 +202,6 @@ class CustomersResourceApi {
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
-
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
 
@@ -243,7 +239,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> activate(core.String customerId, core.String subscriptionId) {
     var _url = null;
@@ -259,7 +255,6 @@ class SubscriptionsResourceApi {
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
     }
-
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/activate';
 
@@ -290,7 +285,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> changePlan(ChangePlanRequest request, core.String customerId, core.String subscriptionId) {
     var _url = null;
@@ -309,7 +304,6 @@ class SubscriptionsResourceApi {
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
     }
-
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/changePlan';
 
@@ -340,7 +334,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> changeRenewalSettings(RenewalSettings request, core.String customerId, core.String subscriptionId) {
     var _url = null;
@@ -359,7 +353,6 @@ class SubscriptionsResourceApi {
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
     }
-
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/changeRenewalSettings';
 
@@ -390,7 +383,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> changeSeats(Seats request, core.String customerId, core.String subscriptionId) {
     var _url = null;
@@ -409,7 +402,6 @@ class SubscriptionsResourceApi {
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
     }
-
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/changeSeats';
 
@@ -445,7 +437,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String customerId, core.String subscriptionId, core.String deletionType) {
     var _url = null;
@@ -495,7 +487,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> get(core.String customerId, core.String subscriptionId) {
     var _url = null;
@@ -511,7 +503,6 @@ class SubscriptionsResourceApi {
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
     }
-
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId');
 
@@ -544,7 +535,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> insert(Subscription request, core.String customerId, {core.String customerAuthToken}) {
     var _url = null;
@@ -563,7 +554,6 @@ class SubscriptionsResourceApi {
     if (customerAuthToken != null) {
       _queryParams["customerAuthToken"] = [customerAuthToken];
     }
-
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions';
 
@@ -603,7 +593,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscriptions> list({core.String customerAuthToken, core.String customerId, core.String customerNamePrefix, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -628,7 +618,6 @@ class SubscriptionsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'subscriptions';
 
@@ -657,7 +646,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> startPaidService(core.String customerId, core.String subscriptionId) {
     var _url = null;
@@ -673,7 +662,6 @@ class SubscriptionsResourceApi {
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
     }
-
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/startPaidService';
 
@@ -702,7 +690,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> suspend(core.String customerId, core.String subscriptionId) {
     var _url = null;
@@ -718,7 +706,6 @@ class SubscriptionsResourceApi {
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
     }
-
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/suspend';
 
@@ -740,43 +727,33 @@ class SubscriptionsResourceApi {
 class Address {
   /** Address line 1 of the address. */
   core.String addressLine1;
-
   /** Address line 2 of the address. */
   core.String addressLine2;
-
   /** Address line 3 of the address. */
   core.String addressLine3;
-
   /** Name of the contact person. */
   core.String contactName;
-
   /** ISO 3166 country code. */
   core.String countryCode;
-
   /** Identifies the resource as a customer address. */
   core.String kind;
-
   /**
    * Name of the locality. This is in accordance with -
    * http://portablecontacts.net/draft-spec.html#address_element.
    */
   core.String locality;
-
   /** Name of the organization. */
   core.String organizationName;
-
   /**
    * The postal code. This is in accordance with -
    * http://portablecontacts.net/draft-spec.html#address_element.
    */
   core.String postalCode;
-
   /**
    * Name of the region. This is in accordance with -
    * http://portablecontacts.net/draft-spec.html#address_element.
    */
   core.String region;
-
 
   Address();
 
@@ -849,21 +826,16 @@ class Address {
   }
 }
 
-
 /** JSON template for the ChangePlan rpc request. */
 class ChangePlanRequest {
   /** Identifies the resource as a subscription change plan request. */
   core.String kind;
-
   /** Name of the plan to change to. */
   core.String planName;
-
   /** Purchase order id for your order tracking purposes. */
   core.String purchaseOrderId;
-
   /** Number/Limit of seats in the new plan. */
   Seats seats;
-
 
   ChangePlanRequest();
 
@@ -900,30 +872,22 @@ class ChangePlanRequest {
   }
 }
 
-
 /** JSON template for a customer. */
 class Customer {
   /** The alternate email of the customer. */
   core.String alternateEmail;
-
   /** The domain name of the customer. */
   core.String customerDomain;
-
   /** The id of the customer. */
   core.String customerId;
-
   /** Identifies the resource as a customer. */
   core.String kind;
-
   /** The phone number of the customer. */
   core.String phoneNumber;
-
   /** The postal address of the customer. */
   Address postalAddress;
-
   /** Ui url for customer resource. */
   core.String resourceUiUrl;
-
 
   Customer();
 
@@ -978,15 +942,12 @@ class Customer {
   }
 }
 
-
 /** JSON template for a subscription renewal settings. */
 class RenewalSettings {
   /** Identifies the resource as a subscription renewal setting. */
   core.String kind;
-
   /** Subscription renewal type. */
   core.String renewalType;
-
 
   RenewalSettings();
 
@@ -1011,31 +972,26 @@ class RenewalSettings {
   }
 }
 
-
 /** JSON template for subscription seats. */
 class Seats {
   /** Identifies the resource as a subscription change plan request. */
   core.String kind;
-
   /**
    * Read-only field containing the current number of licensed seats for
    * FLEXIBLE Google-Apps subscriptions and secondary subscriptions such as
    * Google-Vault and Drive-storage.
    */
   core.int licensedNumberOfSeats;
-
   /**
    * Maximum number of seats that can be purchased. This needs to be provided
    * only for a non-commitment plan. For a commitment plan it is decided by the
    * contract.
    */
   core.int maximumNumberOfSeats;
-
   /**
    * Number of seats to purchase. This is applicable only for a commitment plan.
    */
   core.int numberOfSeats;
-
 
   Seats();
 
@@ -1072,17 +1028,14 @@ class Seats {
   }
 }
 
-
 /** Interval of the commitment if it is a commitment plan. */
 class SubscriptionPlanCommitmentInterval {
   /** End time of the commitment interval in milliseconds since Unix epoch. */
   core.String endTime;
-
   /**
    * Start time of the commitment interval in milliseconds since Unix epoch.
    */
   core.String startTime;
-
 
   SubscriptionPlanCommitmentInterval();
 
@@ -1107,18 +1060,14 @@ class SubscriptionPlanCommitmentInterval {
   }
 }
 
-
 /** Plan details of the subscription */
 class SubscriptionPlan {
   /** Interval of the commitment if it is a commitment plan. */
   SubscriptionPlanCommitmentInterval commitmentInterval;
-
   /** Whether the plan is a commitment plan or not. */
   core.bool isCommitmentPlan;
-
   /** The plan name of this subscription's plan. */
   core.String planName;
-
 
   SubscriptionPlan();
 
@@ -1149,14 +1098,11 @@ class SubscriptionPlan {
   }
 }
 
-
 /** Transfer related information for the subscription. */
 class SubscriptionTransferInfo {
   core.int minimumTransferableSeats;
-
   /** Time when transfer token or intent to transfer will expire. */
   core.String transferabilityExpirationTime;
-
 
   SubscriptionTransferInfo();
 
@@ -1181,15 +1127,12 @@ class SubscriptionTransferInfo {
   }
 }
 
-
 /** Trial Settings of the subscription. */
 class SubscriptionTrialSettings {
   /** Whether the subscription is in trial. */
   core.bool isInTrial;
-
   /** End time of the trial in milliseconds since Unix epoch. */
   core.String trialEndTime;
-
 
   SubscriptionTrialSettings();
 
@@ -1214,51 +1157,36 @@ class SubscriptionTrialSettings {
   }
 }
 
-
 /** JSON template for a subscription. */
 class Subscription {
   /** Billing method of this subscription. */
   core.String billingMethod;
-
   /** Creation time of this subscription in milliseconds since Unix epoch. */
   core.String creationTime;
-
   /** The id of the customer to whom the subscription belongs. */
   core.String customerId;
-
   /** Identifies the resource as a Subscription. */
   core.String kind;
-
   /** Plan details of the subscription */
   SubscriptionPlan plan;
-
   /** Purchase order id for your order tracking purposes. */
   core.String purchaseOrderId;
-
   /** Renewal settings of the subscription. */
   RenewalSettings renewalSettings;
-
   /** Ui url for subscription resource. */
   core.String resourceUiUrl;
-
   /** Number/Limit of seats in the new plan. */
   Seats seats;
-
   /** Name of the sku for which this subscription is purchased. */
   core.String skuId;
-
   /** Status of the subscription. */
   core.String status;
-
   /** The id of the subscription. */
   core.String subscriptionId;
-
   /** Transfer related information for the subscription. */
   SubscriptionTransferInfo transferInfo;
-
   /** Trial Settings of the subscription. */
   SubscriptionTrialSettings trialSettings;
-
 
   Subscription();
 
@@ -1355,21 +1283,17 @@ class Subscription {
   }
 }
 
-
 /** JSON template for a subscription list. */
 class Subscriptions {
   /** Identifies the resource as a collection of subscriptions. */
   core.String kind;
-
   /**
    * The continuation token, used to page through large result sets. Provide
    * this value in a subsequent request to return the next page of results.
    */
   core.String nextPageToken;
-
   /** The subscriptions in this page of results. */
   core.List<Subscription> subscriptions;
-
 
   Subscriptions();
 

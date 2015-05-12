@@ -204,7 +204,7 @@ class CseResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Search> list(core.String q, {core.String c2coff, core.String cr, core.String cref, core.String cx, core.String dateRestrict, core.String exactTerms, core.String excludeTerms, core.String fileType, core.String filter, core.String gl, core.String googlehost, core.String highRange, core.String hl, core.String hq, core.String imgColorType, core.String imgDominantColor, core.String imgSize, core.String imgType, core.String linkSite, core.String lowRange, core.String lr, core.int num, core.String orTerms, core.String relatedSite, core.String rights, core.String safe, core.String searchType, core.String siteSearch, core.String siteSearchFilter, core.String sort, core.int start}) {
     var _url = null;
@@ -312,7 +312,6 @@ class CseResourceApi {
       _queryParams["start"] = ["${start}"];
     }
 
-
     _url = 'v1';
 
     var _response = _requester.request(_url,
@@ -331,11 +330,8 @@ class CseResourceApi {
 
 class ContextFacets {
   core.String anchor;
-
   core.String label;
-
   core.String labelWithOp;
-
 
   ContextFacets();
 
@@ -366,12 +362,9 @@ class ContextFacets {
   }
 }
 
-
 class Context {
   core.List<core.List<ContextFacets>> facets;
-
   core.String title;
-
 
   Context();
 
@@ -396,16 +389,11 @@ class Context {
   }
 }
 
-
 class PromotionBodyLines {
   core.String htmlTitle;
-
   core.String link;
-
   core.String title;
-
   core.String url;
-
 
   PromotionBodyLines();
 
@@ -442,14 +430,10 @@ class PromotionBodyLines {
   }
 }
 
-
 class PromotionImage {
   core.int height;
-
   core.String source;
-
   core.int width;
-
 
   PromotionImage();
 
@@ -480,20 +464,13 @@ class PromotionImage {
   }
 }
 
-
 class Promotion {
   core.List<PromotionBodyLines> bodyLines;
-
   core.String displayLink;
-
   core.String htmlTitle;
-
   PromotionImage image;
-
   core.String link;
-
   core.String title;
-
 
   Promotion();
 
@@ -542,82 +519,44 @@ class Promotion {
   }
 }
 
-
 class Query {
   core.int count;
-
   core.String cr;
-
   core.String cref;
-
   core.String cx;
-
   core.String dateRestrict;
-
   core.String disableCnTwTranslation;
-
   core.String exactTerms;
-
   core.String excludeTerms;
-
   core.String fileType;
-
   core.String filter;
-
   core.String gl;
-
   core.String googleHost;
-
   core.String highRange;
-
   core.String hl;
-
   core.String hq;
-
   core.String imgColorType;
-
   core.String imgDominantColor;
-
   core.String imgSize;
-
   core.String imgType;
-
   core.String inputEncoding;
-
   core.String language;
-
   core.String linkSite;
-
   core.String lowRange;
-
   core.String orTerms;
-
   core.String outputEncoding;
-
   core.String relatedSite;
-
   core.String rights;
-
   core.String safe;
-
   core.String searchTerms;
-
   core.String searchType;
-
   core.String siteSearch;
-
   core.String siteSearchFilter;
-
   core.String sort;
-
   core.int startIndex;
-
   core.int startPage;
-
   core.String title;
-
   core.String totalResults;
-
 
   Query();
 
@@ -852,22 +791,14 @@ class Query {
   }
 }
 
-
 class ResultImage {
   core.int byteSize;
-
   core.String contextLink;
-
   core.int height;
-
   core.int thumbnailHeight;
-
   core.String thumbnailLink;
-
   core.int thumbnailWidth;
-
   core.int width;
-
 
   ResultImage();
 
@@ -922,14 +853,10 @@ class ResultImage {
   }
 }
 
-
 class ResultLabels {
   core.String displayName;
-
   core.String labelWithOp;
-
   core.String name;
-
 
   ResultLabels();
 
@@ -960,32 +887,19 @@ class ResultLabels {
   }
 }
 
-
 class Result {
   core.String cacheId;
-
   core.String displayLink;
-
   core.String fileFormat;
-
   core.String formattedUrl;
-
   core.String htmlFormattedUrl;
-
   core.String htmlSnippet;
-
   core.String htmlTitle;
-
   ResultImage image;
-
   core.String kind;
-
   core.List<ResultLabels> labels;
-
   core.String link;
-
   core.String mime;
-
   /**
    *
    *
@@ -993,11 +907,8 @@ class Result {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.List<core.Map<core.String, core.Object>>> pagemap;
-
   core.String snippet;
-
   core.String title;
-
 
   Result();
 
@@ -1100,16 +1011,11 @@ class Result {
   }
 }
 
-
 class SearchSearchInformation {
   core.String formattedSearchTime;
-
   core.String formattedTotalResults;
-
   core.double searchTime;
-
   core.String totalResults;
-
 
   SearchSearchInformation();
 
@@ -1146,12 +1052,9 @@ class SearchSearchInformation {
   }
 }
 
-
 class SearchSpelling {
   core.String correctedQuery;
-
   core.String htmlCorrectedQuery;
-
 
   SearchSpelling();
 
@@ -1176,12 +1079,9 @@ class SearchSpelling {
   }
 }
 
-
 class SearchUrl {
   core.String template;
-
   core.String type;
-
 
   SearchUrl();
 
@@ -1206,24 +1106,15 @@ class SearchUrl {
   }
 }
 
-
 class Search {
   Context context;
-
   core.List<Result> items;
-
   core.String kind;
-
   core.List<Promotion> promotions;
-
   core.Map<core.String, core.List<Query>> queries;
-
   SearchSearchInformation searchInformation;
-
   SearchSpelling spelling;
-
   SearchUrl url;
-
 
   Search();
 

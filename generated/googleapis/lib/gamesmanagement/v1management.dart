@@ -65,7 +65,7 @@ class AchievementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementResetResponse> reset(core.String achievementId) {
     var _url = null;
@@ -78,7 +78,6 @@ class AchievementsResourceApi {
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
     }
-
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId') + '/reset';
 
@@ -105,7 +104,7 @@ class AchievementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementResetAllResponse> resetAll() {
     var _url = null;
@@ -114,7 +113,6 @@ class AchievementsResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'achievements/reset';
@@ -139,7 +137,7 @@ class AchievementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetAllForAllPlayers() {
     var _url = null;
@@ -177,7 +175,7 @@ class AchievementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetForAllPlayers(core.String achievementId) {
     var _url = null;
@@ -218,7 +216,7 @@ class AchievementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetMultipleForAllPlayers(AchievementResetMultipleForAllRequest request) {
     var _url = null;
@@ -277,7 +275,7 @@ class ApplicationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<HiddenPlayerList> listHidden(core.String applicationId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -296,7 +294,6 @@ class ApplicationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId') + '/players/hidden';
 
@@ -333,7 +330,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future reset(core.String eventId) {
     var _url = null;
@@ -372,7 +369,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetAll() {
     var _url = null;
@@ -408,7 +405,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetAllForAllPlayers() {
     var _url = null;
@@ -446,7 +443,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetForAllPlayers(core.String eventId) {
     var _url = null;
@@ -487,7 +484,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetMultipleForAllPlayers(EventsResetMultipleForAllRequest request) {
     var _url = null;
@@ -540,7 +537,7 @@ class PlayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future hide(core.String applicationId, core.String playerId) {
     var _url = null;
@@ -587,7 +584,7 @@ class PlayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future unhide(core.String applicationId, core.String playerId) {
     var _url = null;
@@ -640,7 +637,7 @@ class QuestsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future reset(core.String questId) {
     var _url = null;
@@ -679,7 +676,7 @@ class QuestsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetAll() {
     var _url = null;
@@ -714,7 +711,7 @@ class QuestsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetAllForAllPlayers() {
     var _url = null;
@@ -752,7 +749,7 @@ class QuestsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetForAllPlayers(core.String questId) {
     var _url = null;
@@ -793,7 +790,7 @@ class QuestsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetMultipleForAllPlayers(QuestsResetMultipleForAllRequest request) {
     var _url = null;
@@ -841,7 +838,7 @@ class RoomsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future reset() {
     var _url = null;
@@ -877,7 +874,7 @@ class RoomsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetForAllPlayers() {
     var _url = null;
@@ -926,7 +923,7 @@ class ScoresResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlayerScoreResetResponse> reset(core.String leaderboardId) {
     var _url = null;
@@ -939,7 +936,6 @@ class ScoresResourceApi {
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
     }
-
 
     _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId') + '/scores/reset';
 
@@ -966,7 +962,7 @@ class ScoresResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlayerScoreResetAllResponse> resetAll() {
     var _url = null;
@@ -975,7 +971,6 @@ class ScoresResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'scores/reset';
@@ -1000,7 +995,7 @@ class ScoresResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetAllForAllPlayers() {
     var _url = null;
@@ -1038,7 +1033,7 @@ class ScoresResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetForAllPlayers(core.String leaderboardId) {
     var _url = null;
@@ -1079,7 +1074,7 @@ class ScoresResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetMultipleForAllPlayers(ScoresResetMultipleForAllRequest request) {
     var _url = null;
@@ -1126,7 +1121,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future reset() {
     var _url = null;
@@ -1162,7 +1157,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future resetForAllPlayers() {
     var _url = null;
@@ -1198,10 +1193,8 @@ class AchievementResetAllResponse {
    * string gamesManagement#achievementResetAllResponse.
    */
   core.String kind;
-
   /** The achievement reset results. */
   core.List<AchievementResetResponse> results;
-
 
   AchievementResetAllResponse();
 
@@ -1226,18 +1219,15 @@ class AchievementResetAllResponse {
   }
 }
 
-
 /** This is a JSON template for multiple achievements reset all request. */
 class AchievementResetMultipleForAllRequest {
   /** The IDs of achievements to reset. */
   core.List<core.String> achievementIds;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesManagement#achievementResetMultipleForAllRequest.
    */
   core.String kind;
-
 
   AchievementResetMultipleForAllRequest();
 
@@ -1262,7 +1252,6 @@ class AchievementResetMultipleForAllRequest {
   }
 }
 
-
 /** This is a JSON template for an achievement reset response. */
 class AchievementResetResponse {
   /**
@@ -1274,19 +1263,15 @@ class AchievementResetResponse {
    * - "UNLOCKED" - Achievement is unlocked.
    */
   core.String currentState;
-
   /** The ID of an achievement for which player state has been updated. */
   core.String definitionId;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesManagement#achievementResetResponse.
    */
   core.String kind;
-
   /** Flag to indicate if the requested update actually occurred. */
   core.bool updateOccurred;
-
 
   AchievementResetResponse();
 
@@ -1323,18 +1308,15 @@ class AchievementResetResponse {
   }
 }
 
-
 /** This is a JSON template for multiple events reset all request. */
 class EventsResetMultipleForAllRequest {
   /** The IDs of events to reset. */
   core.List<core.String> eventIds;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesManagement#eventsResetMultipleForAllRequest.
    */
   core.String kind;
-
 
   EventsResetMultipleForAllRequest();
 
@@ -1359,7 +1341,6 @@ class EventsResetMultipleForAllRequest {
   }
 }
 
-
 /**
  * This is a JSON template for metadata about a player playing a game with the
  * currently authenticated user.
@@ -1369,13 +1350,11 @@ class GamesPlayedResource {
    * True if the player was auto-matched with the currently authenticated user.
    */
   core.bool autoMatched;
-
   /**
    * The last time the player played the game in milliseconds since the epoch in
    * UTC.
    */
   core.String timeMillis;
-
 
   GamesPlayedResource();
 
@@ -1400,29 +1379,24 @@ class GamesPlayedResource {
   }
 }
 
-
 /**
  * This is a JSON template for 1P/3P metadata about the player's experience.
  */
 class GamesPlayerExperienceInfoResource {
   /** The current number of experience points for the player. */
   core.String currentExperiencePoints;
-
   /** The current level of the player. */
   GamesPlayerLevelResource currentLevel;
-
   /**
    * The timestamp when the player was leveled up, in millis since Unix epoch
    * UTC.
    */
   core.String lastLevelUpTimestampMillis;
-
   /**
    * The next level of the player. If the current level is the maximum level,
    * this should be same as the current level.
    */
   GamesPlayerLevelResource nextLevel;
-
 
   GamesPlayerExperienceInfoResource();
 
@@ -1459,18 +1433,14 @@ class GamesPlayerExperienceInfoResource {
   }
 }
 
-
 /** This is a JSON template for 1P/3P metadata about a user's level. */
 class GamesPlayerLevelResource {
   /** The level for the user. */
   core.int level;
-
   /** The maximum experience points for this level. */
   core.String maxExperiencePoints;
-
   /** The minimum experience points for this level. */
   core.String minExperiencePoints;
-
 
   GamesPlayerLevelResource();
 
@@ -1501,21 +1471,17 @@ class GamesPlayerLevelResource {
   }
 }
 
-
 /** This is a JSON template for the HiddenPlayer resource. */
 class HiddenPlayer {
   /** The time this player was hidden. */
   core.String hiddenTimeMillis;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesManagement#hiddenPlayer.
    */
   core.String kind;
-
   /** The player information. */
   Player player;
-
 
   HiddenPlayer();
 
@@ -1546,21 +1512,17 @@ class HiddenPlayer {
   }
 }
 
-
 /** This is a JSON template for a list of hidden players. */
 class HiddenPlayerList {
   /** The players. */
   core.List<HiddenPlayer> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesManagement#hiddenPlayerList.
    */
   core.String kind;
-
   /** The pagination token for the next page of results. */
   core.String nextPageToken;
-
 
   HiddenPlayerList();
 
@@ -1591,7 +1553,6 @@ class HiddenPlayerList {
   }
 }
 
-
 /**
  * An object representation of the individual components of the player's name.
  * For some players, these fields may not be present.
@@ -1602,13 +1563,11 @@ class PlayerName {
    * name.
    */
   core.String familyName;
-
   /**
    * The given name of this player. In some places, this is known as the first
    * name.
    */
   core.String givenName;
-
 
   PlayerName();
 
@@ -1633,45 +1592,36 @@ class PlayerName {
   }
 }
 
-
 /** This is a JSON template for a Player resource. */
 class Player {
   /** The base URL for the image that represents the player. */
   core.String avatarImageUrl;
-
   /** The name to display for the player. */
   core.String displayName;
-
   /**
    * An object to represent Play Game experience information for the player.
    */
   GamesPlayerExperienceInfoResource experienceInfo;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesManagement#player.
    */
   core.String kind;
-
   /**
    * Details about the last time this player played a multiplayer game with the
    * currently authenticated player. Populated for PLAYED_WITH player collection
    * members.
    */
   GamesPlayedResource lastPlayedWith;
-
   /**
    * An object representation of the individual components of the player's name.
    * For some players, these fields may not be present.
    */
   PlayerName name;
-
   /** The ID of the player. */
   core.String playerId;
-
   /** The player's title rewarded for their game activities. */
   core.String title;
-
 
   Player();
 
@@ -1732,7 +1682,6 @@ class Player {
   }
 }
 
-
 /** This is a JSON template for a list of leaderboard reset resources. */
 class PlayerScoreResetAllResponse {
   /**
@@ -1740,10 +1689,8 @@ class PlayerScoreResetAllResponse {
    * string gamesManagement#playerScoreResetResponse.
    */
   core.String kind;
-
   /** The leaderboard reset results. */
   core.List<PlayerScoreResetResponse> results;
-
 
   PlayerScoreResetAllResponse();
 
@@ -1768,18 +1715,15 @@ class PlayerScoreResetAllResponse {
   }
 }
 
-
 /** This is a JSON template for a list of reset leaderboard entry resources. */
 class PlayerScoreResetResponse {
   /** The ID of an leaderboard for which player state has been updated. */
   core.String definitionId;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesManagement#playerScoreResetResponse.
    */
   core.String kind;
-
   /**
    * The time spans of the updated score.
    * Possible values are:
@@ -1788,7 +1732,6 @@ class PlayerScoreResetResponse {
    * - "DAILY" - The score is a daily score.
    */
   core.List<core.String> resetScoreTimeSpans;
-
 
   PlayerScoreResetResponse();
 
@@ -1819,7 +1762,6 @@ class PlayerScoreResetResponse {
   }
 }
 
-
 /** This is a JSON template for multiple quests reset all request. */
 class QuestsResetMultipleForAllRequest {
   /**
@@ -1827,10 +1769,8 @@ class QuestsResetMultipleForAllRequest {
    * string gamesManagement#questsResetMultipleForAllRequest.
    */
   core.String kind;
-
   /** The IDs of quests to reset. */
   core.List<core.String> questIds;
-
 
   QuestsResetMultipleForAllRequest();
 
@@ -1855,7 +1795,6 @@ class QuestsResetMultipleForAllRequest {
   }
 }
 
-
 /** This is a JSON template for multiple scores reset all request. */
 class ScoresResetMultipleForAllRequest {
   /**
@@ -1863,10 +1802,8 @@ class ScoresResetMultipleForAllRequest {
    * string gamesManagement#scoresResetMultipleForAllRequest.
    */
   core.String kind;
-
   /** The IDs of leaderboards to reset. */
   core.List<core.String> leaderboardIds;
-
 
   ScoresResetMultipleForAllRequest();
 

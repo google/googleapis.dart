@@ -79,7 +79,7 @@ class ProjectsLogServicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListLogServicesResponse> list(core.String projectsId, {core.String log, core.int pageSize, core.String pageToken}) {
     var _url = null;
@@ -101,7 +101,6 @@ class ProjectsLogServicesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logServices';
 
@@ -168,7 +167,7 @@ class ProjectsLogServicesIndexesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListLogServiceIndexesResponse> list(core.String projectsId, core.String logServicesId, {core.String indexPrefix, core.int depth, core.String log, core.int pageSize, core.String pageToken}) {
     var _url = null;
@@ -199,7 +198,6 @@ class ProjectsLogServicesIndexesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logServices/' + commons.Escaper.ecapeVariable('$logServicesId') + '/indexes';
 
@@ -240,7 +238,7 @@ class ProjectsLogServicesSinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LogSink> create(LogSink request, core.String projectsId, core.String logServicesId) {
     var _url = null;
@@ -259,7 +257,6 @@ class ProjectsLogServicesSinksResourceApi {
     if (logServicesId == null) {
       throw new core.ArgumentError("Parameter logServicesId is required.");
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logServices/' + commons.Escaper.ecapeVariable('$logServicesId') + '/sinks';
 
@@ -290,7 +287,7 @@ class ProjectsLogServicesSinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Empty> delete(core.String projectsId, core.String logServicesId, core.String sinksId) {
     var _url = null;
@@ -309,7 +306,6 @@ class ProjectsLogServicesSinksResourceApi {
     if (sinksId == null) {
       throw new core.ArgumentError("Parameter sinksId is required.");
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logServices/' + commons.Escaper.ecapeVariable('$logServicesId') + '/sinks/' + commons.Escaper.ecapeVariable('$sinksId');
 
@@ -340,7 +336,7 @@ class ProjectsLogServicesSinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LogSink> get(core.String projectsId, core.String logServicesId, core.String sinksId) {
     var _url = null;
@@ -359,7 +355,6 @@ class ProjectsLogServicesSinksResourceApi {
     if (sinksId == null) {
       throw new core.ArgumentError("Parameter sinksId is required.");
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logServices/' + commons.Escaper.ecapeVariable('$logServicesId') + '/sinks/' + commons.Escaper.ecapeVariable('$sinksId');
 
@@ -389,7 +384,7 @@ class ProjectsLogServicesSinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListLogServiceSinksResponse> list(core.String projectsId, core.String logServicesId) {
     var _url = null;
@@ -405,7 +400,6 @@ class ProjectsLogServicesSinksResourceApi {
     if (logServicesId == null) {
       throw new core.ArgumentError("Parameter logServicesId is required.");
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logServices/' + commons.Escaper.ecapeVariable('$logServicesId') + '/sinks';
 
@@ -438,7 +432,7 @@ class ProjectsLogServicesSinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LogSink> update(LogSink request, core.String projectsId, core.String logServicesId, core.String sinksId) {
     var _url = null;
@@ -460,7 +454,6 @@ class ProjectsLogServicesSinksResourceApi {
     if (sinksId == null) {
       throw new core.ArgumentError("Parameter sinksId is required.");
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logServices/' + commons.Escaper.ecapeVariable('$logServicesId') + '/sinks/' + commons.Escaper.ecapeVariable('$sinksId');
 
@@ -501,7 +494,7 @@ class ProjectsLogsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Empty> delete(core.String projectsId, core.String logsId) {
     var _url = null;
@@ -517,7 +510,6 @@ class ProjectsLogsResourceApi {
     if (logsId == null) {
       throw new core.ArgumentError("Parameter logsId is required.");
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logs/' + commons.Escaper.ecapeVariable('$logsId');
 
@@ -566,7 +558,7 @@ class ProjectsLogsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListLogsResponse> list(core.String projectsId, {core.String serviceName, core.String serviceIndexPrefix, core.int pageSize, core.String pageToken}) {
     var _url = null;
@@ -591,7 +583,6 @@ class ProjectsLogsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logs';
 
@@ -638,7 +629,7 @@ class ProjectsLogsEntriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<WriteLogEntriesResponse> write(WriteLogEntriesRequest request, core.String projectsId, core.String logsId) {
     var _url = null;
@@ -657,7 +648,6 @@ class ProjectsLogsEntriesResourceApi {
     if (logsId == null) {
       throw new core.ArgumentError("Parameter logsId is required.");
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logs/' + commons.Escaper.ecapeVariable('$logsId') + '/entries:write';
 
@@ -698,7 +688,7 @@ class ProjectsLogsSinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LogSink> create(LogSink request, core.String projectsId, core.String logsId) {
     var _url = null;
@@ -717,7 +707,6 @@ class ProjectsLogsSinksResourceApi {
     if (logsId == null) {
       throw new core.ArgumentError("Parameter logsId is required.");
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logs/' + commons.Escaper.ecapeVariable('$logsId') + '/sinks';
 
@@ -748,7 +737,7 @@ class ProjectsLogsSinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Empty> delete(core.String projectsId, core.String logsId, core.String sinksId) {
     var _url = null;
@@ -767,7 +756,6 @@ class ProjectsLogsSinksResourceApi {
     if (sinksId == null) {
       throw new core.ArgumentError("Parameter sinksId is required.");
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logs/' + commons.Escaper.ecapeVariable('$logsId') + '/sinks/' + commons.Escaper.ecapeVariable('$sinksId');
 
@@ -798,7 +786,7 @@ class ProjectsLogsSinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LogSink> get(core.String projectsId, core.String logsId, core.String sinksId) {
     var _url = null;
@@ -817,7 +805,6 @@ class ProjectsLogsSinksResourceApi {
     if (sinksId == null) {
       throw new core.ArgumentError("Parameter sinksId is required.");
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logs/' + commons.Escaper.ecapeVariable('$logsId') + '/sinks/' + commons.Escaper.ecapeVariable('$sinksId');
 
@@ -846,7 +833,7 @@ class ProjectsLogsSinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListLogSinksResponse> list(core.String projectsId, core.String logsId) {
     var _url = null;
@@ -862,7 +849,6 @@ class ProjectsLogsSinksResourceApi {
     if (logsId == null) {
       throw new core.ArgumentError("Parameter logsId is required.");
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logs/' + commons.Escaper.ecapeVariable('$logsId') + '/sinks';
 
@@ -895,7 +881,7 @@ class ProjectsLogsSinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LogSink> update(LogSink request, core.String projectsId, core.String logsId, core.String sinksId) {
     var _url = null;
@@ -917,7 +903,6 @@ class ProjectsLogsSinksResourceApi {
     if (sinksId == null) {
       throw new core.ArgumentError("Parameter sinksId is required.");
     }
-
 
     _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/logs/' + commons.Escaper.ecapeVariable('$logsId') + '/sinks/' + commons.Escaper.ecapeVariable('$sinksId');
 
@@ -954,7 +939,6 @@ class Empty {
   }
 }
 
-
 /** Result returned from ListLogServiceIndexesRequest. */
 class ListLogServiceIndexesResponse {
   /**
@@ -965,10 +949,8 @@ class ListLogServiceIndexesResponse {
    * more results.
    */
   core.String nextPageToken;
-
   /** A list of log service index prefixes. */
   core.List<core.String> serviceIndexPrefixes;
-
 
   ListLogServiceIndexesResponse();
 
@@ -993,7 +975,6 @@ class ListLogServiceIndexesResponse {
   }
 }
 
-
 /** Result returned from `ListLogServiceSinks`. */
 class ListLogServiceSinksResponse {
   /**
@@ -1002,7 +983,6 @@ class ListLogServiceSinksResponse {
    * retrieve the complete `LogSink` object.
    */
   core.List<LogSink> sinks;
-
 
   ListLogServiceSinksResponse();
 
@@ -1021,12 +1001,10 @@ class ListLogServiceSinksResponse {
   }
 }
 
-
 /** Result returned from `ListLogServicesRequest`. */
 class ListLogServicesResponse {
   /** A list of log services. */
   core.List<LogService> logServices;
-
   /**
    * If there are more results, then `nextPageToken` is returned in the
    * response. To get the next batch of services, use the value of
@@ -1034,7 +1012,6 @@ class ListLogServicesResponse {
    * `nextPageToken` is empty, then there are no more results.
    */
   core.String nextPageToken;
-
 
   ListLogServicesResponse();
 
@@ -1059,7 +1036,6 @@ class ListLogServicesResponse {
   }
 }
 
-
 /** Result returned from `ListLogSinks`. */
 class ListLogSinksResponse {
   /**
@@ -1068,7 +1044,6 @@ class ListLogSinksResponse {
    * the complete `LogSink` object.
    */
   core.List<LogSink> sinks;
-
 
   ListLogSinksResponse();
 
@@ -1087,12 +1062,10 @@ class ListLogSinksResponse {
   }
 }
 
-
 /** Result returned from ListLogs. */
 class ListLogsResponse {
   /** A list of log resources. */
   core.List<Log> logs;
-
   /**
    * If there are more results, then `nextPageToken` is returned in the
    * response. To get the next batch of logs, use the value of `nextPageToken`
@@ -1100,7 +1073,6 @@ class ListLogsResponse {
    * then there are no more results.
    */
   core.String nextPageToken;
-
 
   ListLogsResponse();
 
@@ -1125,7 +1097,6 @@ class ListLogsResponse {
   }
 }
 
-
 /** A log object. */
 class Log {
   /**
@@ -1133,16 +1104,13 @@ class Log {
    * Example: `"activity_log"`
    */
   core.String displayName;
-
   /**
    * REQUIRED: The log's name name. Example:
    * `"compute.googleapis.com/activity_log"`.
    */
   core.String name;
-
   /** Type URL describing the expected payload type for the log. */
   core.String payloadType;
-
 
   Log();
 
@@ -1173,7 +1141,6 @@ class Log {
   }
 }
 
-
 /** An individual entry in a log. */
 class LogEntry {
   /**
@@ -1182,16 +1149,13 @@ class LogEntry {
    * duplicates which can be removed.
    */
   core.String insertId;
-
   /**
    * The log to which this entry belongs. When a log entry is ingested, the
    * value of this field is set by the logging system.
    */
   core.String log;
-
   /** Information about the log entry. */
   LogEntryMetadata metadata;
-
   /**
    * The log entry payload, represented as a protocol buffer that is expressed
    * as a JSON object. You can only pass `protoPayload` values that belong to a
@@ -1201,7 +1165,6 @@ class LogEntry {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> protoPayload;
-
   /**
    * The log entry payload, represented as a structure that is expressed as a
    * JSON object.
@@ -1210,10 +1173,8 @@ class LogEntry {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> structPayload;
-
   /** The log entry payload, represented as a text string. */
   core.String textPayload;
-
 
   LogEntry();
 
@@ -1262,7 +1223,6 @@ class LogEntry {
   }
 }
 
-
 /**
  * Additional data that is associated with a log entry, set by the service
  * creating the log entry.
@@ -1282,25 +1242,21 @@ class LogEntryMetadata {
    * "instance" "compute.googleapis.com/resource_id",
    */
   core.Map<core.String, core.String> labels;
-
   /**
    * The project ID of the Google Cloud Platform service that created the log
    * entry.
    */
   core.String projectId;
-
   /**
    * The region name of the Google Cloud Platform service that created the log
    * entry. For example, `"us-central1"`.
    */
   core.String region;
-
   /**
    * The API name of the Google Cloud Platform service that created the log
    * entry. For example, `"compute.googleapis.com"`.
    */
   core.String serviceName;
-
   /**
    * The severity of the log entry.
    * Possible string values are:
@@ -1315,13 +1271,11 @@ class LogEntryMetadata {
    * - "EMERGENCY" : A EMERGENCY.
    */
   core.String severity;
-
   /**
    * The time the event described by the log entry occurred. Timestamps must be
    * later than January 1, 1970.
    */
   core.String timestamp;
-
   /**
    * The fully-qualified email address of the authenticated user that performed
    * or requested the action represented by the log entry. If the log entry does
@@ -1329,13 +1283,11 @@ class LogEntryMetadata {
    * should be empty.
    */
   core.String userId;
-
   /**
    * The zone of the Google Cloud Platform service that created the log entry.
    * For example, `"us-central1-a"`.
    */
   core.String zone;
-
 
   LogEntryMetadata();
 
@@ -1396,7 +1348,6 @@ class LogEntryMetadata {
   }
 }
 
-
 /** A problem in a sink or the sink's configuration. */
 class LogError {
   /**
@@ -1405,15 +1356,12 @@ class LogError {
    * error may refer to a table resource inside the dataset.
    */
   core.String resource;
-
   /** The description of the last error observed. */
   Status status;
-
   /**
    * The last time the error was observed, in nanoseconds since the Unix epoch.
    */
   core.String timeNanos;
-
 
   LogError();
 
@@ -1444,7 +1392,6 @@ class LogError {
   }
 }
 
-
 /** A log service object. */
 class LogService {
   /**
@@ -1453,10 +1400,8 @@ class LogService {
    * list.
    */
   core.List<core.String> indexKeys;
-
   /** The service's name. */
   core.String name;
-
 
   LogService();
 
@@ -1481,7 +1426,6 @@ class LogService {
   }
 }
 
-
 /** An object that describes where a log may be written. */
 class LogSink {
   /**
@@ -1493,16 +1437,13 @@ class LogSink {
    * or log service resource.
    */
   core.String destination;
-
   /** _Output only._ All active errors found for this sink. */
   core.List<LogError> errors;
-
   /**
    * The name of this sink. This is a client-assigned identifier for the
    * resource. This is ignored by UpdateLogSink and UpdateLogServicesSink.
    */
   core.String name;
-
 
   LogSink();
 
@@ -1533,7 +1474,6 @@ class LogSink {
   }
 }
 
-
 /**
  * Represents the RPC error status for Google APIs. See http://go/errormodel for
  * details.
@@ -1541,7 +1481,6 @@ class LogSink {
 class Status {
   /** The status code, which should be an enum value of [google.rpc.Code][]. */
   core.int code;
-
   /**
    * A list of messages that carry the error details. There will be a common set
    * of message types for APIs to use.
@@ -1550,14 +1489,12 @@ class Status {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Map<core.String, core.Object>> details;
-
   /**
    * A developer-facing error message, which should be in English. The
    * user-facing error message should be localized and stored in the
    * [google.rpc.Status.details][google.rpc.Status.details] field.
    */
   core.String message;
-
 
   Status();
 
@@ -1588,7 +1525,6 @@ class Status {
   }
 }
 
-
 /** The parameters to WriteLogEntries. */
 class WriteLogEntriesRequest {
   /**
@@ -1598,10 +1534,8 @@ class WriteLogEntriesRequest {
    * `commonLabels`.
    */
   core.Map<core.String, core.String> commonLabels;
-
   /** Log entries to insert. */
   core.List<LogEntry> entries;
-
 
   WriteLogEntriesRequest();
 
@@ -1625,7 +1559,6 @@ class WriteLogEntriesRequest {
     return _json;
   }
 }
-
 
 /** Result returned from WriteLogEntries. empty */
 class WriteLogEntriesResponse {

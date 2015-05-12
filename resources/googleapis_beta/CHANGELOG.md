@@ -1,3 +1,13 @@
+## 0.13.0
+
+* [api] container:v1beta1: schema changes
+* [api] genomics:v1beta2: new resource
+* [api] sqladmin:v1beta3: schema changes
+* [api-breaking] replicapoolupdater:v1beta1: schema changes [wire compatible]
+* [apis-removed] dataflow:v1beta
+* [apis-removed] dataflow:v1b43
+
+
 ## 0.12.0
 
 * [api] container:v1beta1: new resources

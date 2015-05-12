@@ -56,7 +56,7 @@ class StatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<WriteResult> clear(core.int stateKey, {core.String currentDataVersion}) {
     var _url = null;
@@ -72,7 +72,6 @@ class StatesResourceApi {
     if (currentDataVersion != null) {
       _queryParams["currentDataVersion"] = [currentDataVersion];
     }
-
 
     _url = 'states/' + commons.Escaper.ecapeVariable('$stateKey') + '/clear';
 
@@ -102,7 +101,7 @@ class StatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.int stateKey) {
     var _url = null;
@@ -145,7 +144,7 @@ class StatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<GetResponse> get(core.int stateKey) {
     var _url = null;
@@ -158,7 +157,6 @@ class StatesResourceApi {
     if (stateKey == null) {
       throw new core.ArgumentError("Parameter stateKey is required.");
     }
-
 
     _url = 'states/' + commons.Escaper.ecapeVariable('$stateKey');
 
@@ -186,7 +184,7 @@ class StatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListResponse> list({core.bool includeData}) {
     var _url = null;
@@ -199,7 +197,6 @@ class StatesResourceApi {
     if (includeData != null) {
       _queryParams["includeData"] = ["${includeData}"];
     }
-
 
     _url = 'states';
 
@@ -237,7 +234,7 @@ class StatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<WriteResult> update(UpdateRequest request, core.int stateKey, {core.String currentStateVersion}) {
     var _url = null;
@@ -256,7 +253,6 @@ class StatesResourceApi {
     if (currentStateVersion != null) {
       _queryParams["currentStateVersion"] = [currentStateVersion];
     }
-
 
     _url = 'states/' + commons.Escaper.ecapeVariable('$stateKey');
 
@@ -278,19 +274,15 @@ class StatesResourceApi {
 class GetResponse {
   /** The current app state version. */
   core.String currentStateVersion;
-
   /** The requested data. */
   core.String data;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string appstate#getResponse.
    */
   core.String kind;
-
   /** The key for the data. */
   core.int stateKey;
-
 
   GetResponse();
 
@@ -327,21 +319,17 @@ class GetResponse {
   }
 }
 
-
 /** This is a JSON template to convert a list-response for app state. */
 class ListResponse {
   /** The app state data. */
   core.List<GetResponse> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string appstate#listResponse.
    */
   core.String kind;
-
   /** The maximum number of keys allowed for this user. */
   core.int maximumKeyCount;
-
 
   ListResponse();
 
@@ -372,18 +360,15 @@ class ListResponse {
   }
 }
 
-
 /** This is a JSON template for a requests which update app state */
 class UpdateRequest {
   /** The new app state data that your application is trying to update with. */
   core.String data;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string appstate#updateRequest.
    */
   core.String kind;
-
 
   UpdateRequest();
 
@@ -408,21 +393,17 @@ class UpdateRequest {
   }
 }
 
-
 /** This is a JSON template for an app state write result. */
 class WriteResult {
   /** The version of the data for this key on the server. */
   core.String currentStateVersion;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string appstate#writeResult.
    */
   core.String kind;
-
   /** The written key. */
   core.int stateKey;
-
 
   WriteResult();
 

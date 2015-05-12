@@ -57,7 +57,7 @@ class MailResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future insert(MailItem request, core.String userKey, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -73,6 +73,7 @@ class MailResourceApi {
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
     }
+
 
     _uploadMedia =  uploadMedia;
     _uploadOptions =  uploadOptions;
@@ -105,31 +106,22 @@ class MailResourceApi {
 class MailItem {
   /** Boolean indicating if the mail is deleted (used in Vault) */
   core.bool isDeleted;
-
   /** Boolean indicating if the mail is draft */
   core.bool isDraft;
-
   /** Boolean indicating if the mail is in inbox */
   core.bool isInbox;
-
   /** Boolean indicating if the mail is in 'sent mails' */
   core.bool isSent;
-
   /** Boolean indicating if the mail is starred */
   core.bool isStarred;
-
   /** Boolean indicating if the mail is in trash */
   core.bool isTrash;
-
   /** Boolean indicating if the mail is unread */
   core.bool isUnread;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** List of labels (strings) */
   core.List<core.String> labels;
-
 
   MailItem();
 

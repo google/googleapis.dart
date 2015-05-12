@@ -136,7 +136,7 @@ class DataGaResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<GaData> get(core.String ids, core.String start_date, core.String end_date, core.String metrics, {core.String dimensions, core.String filters, core.int max_results, core.String output, core.String samplingLevel, core.String segment, core.String sort, core.int start_index}) {
     var _url = null;
@@ -186,7 +186,6 @@ class DataGaResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'data/ga';
 
@@ -266,7 +265,7 @@ class DataMcfResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<McfData> get(core.String ids, core.String start_date, core.String end_date, core.String metrics, {core.String dimensions, core.String filters, core.int max_results, core.String samplingLevel, core.String sort, core.int start_index}) {
     var _url = null;
@@ -310,7 +309,6 @@ class DataMcfResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'data/mcf';
 
@@ -366,7 +364,7 @@ class DataRealtimeResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RealtimeData> get(core.String ids, core.String metrics, {core.String dimensions, core.String filters, core.int max_results, core.String sort}) {
     var _url = null;
@@ -396,7 +394,6 @@ class DataRealtimeResourceApi {
     if (sort != null) {
       _queryParams["sort"] = [sort];
     }
-
 
     _url = 'data/realtime';
 
@@ -464,7 +461,7 @@ class ManagementAccountSummariesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountSummaries> list({core.int max_results, core.int start_index}) {
     var _url = null;
@@ -480,7 +477,6 @@ class ManagementAccountSummariesResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accountSummaries';
 
@@ -516,7 +512,7 @@ class ManagementAccountUserLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String linkId) {
     var _url = null;
@@ -562,7 +558,7 @@ class ManagementAccountUserLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityUserLink> insert(EntityUserLink request, core.String accountId) {
     var _url = null;
@@ -578,7 +574,6 @@ class ManagementAccountUserLinksResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/entityUserLinks';
 
@@ -612,7 +607,7 @@ class ManagementAccountUserLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityUserLinks> list(core.String accountId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -631,7 +626,6 @@ class ManagementAccountUserLinksResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/entityUserLinks';
 
@@ -662,7 +656,7 @@ class ManagementAccountUserLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityUserLink> update(EntityUserLink request, core.String accountId, core.String linkId) {
     var _url = null;
@@ -681,7 +675,6 @@ class ManagementAccountUserLinksResourceApi {
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/entityUserLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
@@ -720,7 +713,7 @@ class ManagementAccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Accounts> list({core.int max_results, core.int start_index}) {
     var _url = null;
@@ -736,7 +729,6 @@ class ManagementAccountsResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts';
 
@@ -783,7 +775,7 @@ class ManagementCustomDataSourcesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomDataSources> list(core.String accountId, core.String webPropertyId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -805,7 +797,6 @@ class ManagementCustomDataSourcesResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources';
 
@@ -845,7 +836,7 @@ class ManagementCustomDimensionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomDimension> get(core.String accountId, core.String webPropertyId, core.String customDimensionId) {
     var _url = null;
@@ -864,7 +855,6 @@ class ManagementCustomDimensionsResourceApi {
     if (customDimensionId == null) {
       throw new core.ArgumentError("Parameter customDimensionId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions/' + commons.Escaper.ecapeVariable('$customDimensionId');
 
@@ -895,7 +885,7 @@ class ManagementCustomDimensionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomDimension> insert(CustomDimension request, core.String accountId, core.String webPropertyId) {
     var _url = null;
@@ -914,7 +904,6 @@ class ManagementCustomDimensionsResourceApi {
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions';
 
@@ -949,7 +938,7 @@ class ManagementCustomDimensionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomDimensions> list(core.String accountId, core.String webPropertyId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -971,7 +960,6 @@ class ManagementCustomDimensionsResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions';
 
@@ -1009,7 +997,7 @@ class ManagementCustomDimensionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomDimension> patch(CustomDimension request, core.String accountId, core.String webPropertyId, core.String customDimensionId, {core.bool ignoreCustomDataSourceLinks}) {
     var _url = null;
@@ -1034,7 +1022,6 @@ class ManagementCustomDimensionsResourceApi {
     if (ignoreCustomDataSourceLinks != null) {
       _queryParams["ignoreCustomDataSourceLinks"] = ["${ignoreCustomDataSourceLinks}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions/' + commons.Escaper.ecapeVariable('$customDimensionId');
 
@@ -1072,7 +1059,7 @@ class ManagementCustomDimensionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomDimension> update(CustomDimension request, core.String accountId, core.String webPropertyId, core.String customDimensionId, {core.bool ignoreCustomDataSourceLinks}) {
     var _url = null;
@@ -1097,7 +1084,6 @@ class ManagementCustomDimensionsResourceApi {
     if (ignoreCustomDataSourceLinks != null) {
       _queryParams["ignoreCustomDataSourceLinks"] = ["${ignoreCustomDataSourceLinks}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions/' + commons.Escaper.ecapeVariable('$customDimensionId');
 
@@ -1137,7 +1123,7 @@ class ManagementCustomMetricsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomMetric> get(core.String accountId, core.String webPropertyId, core.String customMetricId) {
     var _url = null;
@@ -1156,7 +1142,6 @@ class ManagementCustomMetricsResourceApi {
     if (customMetricId == null) {
       throw new core.ArgumentError("Parameter customMetricId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics/' + commons.Escaper.ecapeVariable('$customMetricId');
 
@@ -1187,7 +1172,7 @@ class ManagementCustomMetricsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomMetric> insert(CustomMetric request, core.String accountId, core.String webPropertyId) {
     var _url = null;
@@ -1206,7 +1191,6 @@ class ManagementCustomMetricsResourceApi {
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics';
 
@@ -1241,7 +1225,7 @@ class ManagementCustomMetricsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomMetrics> list(core.String accountId, core.String webPropertyId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -1263,7 +1247,6 @@ class ManagementCustomMetricsResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics';
 
@@ -1300,7 +1283,7 @@ class ManagementCustomMetricsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomMetric> patch(CustomMetric request, core.String accountId, core.String webPropertyId, core.String customMetricId, {core.bool ignoreCustomDataSourceLinks}) {
     var _url = null;
@@ -1325,7 +1308,6 @@ class ManagementCustomMetricsResourceApi {
     if (ignoreCustomDataSourceLinks != null) {
       _queryParams["ignoreCustomDataSourceLinks"] = ["${ignoreCustomDataSourceLinks}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics/' + commons.Escaper.ecapeVariable('$customMetricId');
 
@@ -1362,7 +1344,7 @@ class ManagementCustomMetricsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomMetric> update(CustomMetric request, core.String accountId, core.String webPropertyId, core.String customMetricId, {core.bool ignoreCustomDataSourceLinks}) {
     var _url = null;
@@ -1387,7 +1369,6 @@ class ManagementCustomMetricsResourceApi {
     if (ignoreCustomDataSourceLinks != null) {
       _queryParams["ignoreCustomDataSourceLinks"] = ["${ignoreCustomDataSourceLinks}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics/' + commons.Escaper.ecapeVariable('$customMetricId');
 
@@ -1427,7 +1408,7 @@ class ManagementExperimentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String webPropertyId, core.String profileId, core.String experimentId) {
     var _url = null;
@@ -1483,7 +1464,7 @@ class ManagementExperimentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Experiment> get(core.String accountId, core.String webPropertyId, core.String profileId, core.String experimentId) {
     var _url = null;
@@ -1505,7 +1486,6 @@ class ManagementExperimentsResourceApi {
     if (experimentId == null) {
       throw new core.ArgumentError("Parameter experimentId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/experiments/' + commons.Escaper.ecapeVariable('$experimentId');
 
@@ -1538,7 +1518,7 @@ class ManagementExperimentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Experiment> insert(Experiment request, core.String accountId, core.String webPropertyId, core.String profileId) {
     var _url = null;
@@ -1560,7 +1540,6 @@ class ManagementExperimentsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/experiments';
 
@@ -1600,7 +1579,7 @@ class ManagementExperimentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Experiments> list(core.String accountId, core.String webPropertyId, core.String profileId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -1625,7 +1604,6 @@ class ManagementExperimentsResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/experiments';
 
@@ -1660,7 +1638,7 @@ class ManagementExperimentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Experiment> patch(Experiment request, core.String accountId, core.String webPropertyId, core.String profileId, core.String experimentId) {
     var _url = null;
@@ -1685,7 +1663,6 @@ class ManagementExperimentsResourceApi {
     if (experimentId == null) {
       throw new core.ArgumentError("Parameter experimentId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/experiments/' + commons.Escaper.ecapeVariable('$experimentId');
 
@@ -1720,7 +1697,7 @@ class ManagementExperimentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Experiment> update(Experiment request, core.String accountId, core.String webPropertyId, core.String profileId, core.String experimentId) {
     var _url = null;
@@ -1745,7 +1722,6 @@ class ManagementExperimentsResourceApi {
     if (experimentId == null) {
       throw new core.ArgumentError("Parameter experimentId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/experiments/' + commons.Escaper.ecapeVariable('$experimentId');
 
@@ -1783,7 +1759,7 @@ class ManagementFiltersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Filter> delete(core.String accountId, core.String filterId) {
     var _url = null;
@@ -1799,7 +1775,6 @@ class ManagementFiltersResourceApi {
     if (filterId == null) {
       throw new core.ArgumentError("Parameter filterId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filters/' + commons.Escaper.ecapeVariable('$filterId');
 
@@ -1828,7 +1803,7 @@ class ManagementFiltersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Filter> get(core.String accountId, core.String filterId) {
     var _url = null;
@@ -1844,7 +1819,6 @@ class ManagementFiltersResourceApi {
     if (filterId == null) {
       throw new core.ArgumentError("Parameter filterId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filters/' + commons.Escaper.ecapeVariable('$filterId');
 
@@ -1873,7 +1847,7 @@ class ManagementFiltersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Filter> insert(Filter request, core.String accountId) {
     var _url = null;
@@ -1889,7 +1863,6 @@ class ManagementFiltersResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filters';
 
@@ -1922,7 +1895,7 @@ class ManagementFiltersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Filters> list(core.String accountId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -1941,7 +1914,6 @@ class ManagementFiltersResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filters';
 
@@ -1972,7 +1944,7 @@ class ManagementFiltersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Filter> patch(Filter request, core.String accountId, core.String filterId) {
     var _url = null;
@@ -1991,7 +1963,6 @@ class ManagementFiltersResourceApi {
     if (filterId == null) {
       throw new core.ArgumentError("Parameter filterId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filters/' + commons.Escaper.ecapeVariable('$filterId');
 
@@ -2022,7 +1993,7 @@ class ManagementFiltersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Filter> update(Filter request, core.String accountId, core.String filterId) {
     var _url = null;
@@ -2041,7 +2012,6 @@ class ManagementFiltersResourceApi {
     if (filterId == null) {
       throw new core.ArgumentError("Parameter filterId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filters/' + commons.Escaper.ecapeVariable('$filterId');
 
@@ -2083,7 +2053,7 @@ class ManagementGoalsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Goal> get(core.String accountId, core.String webPropertyId, core.String profileId, core.String goalId) {
     var _url = null;
@@ -2105,7 +2075,6 @@ class ManagementGoalsResourceApi {
     if (goalId == null) {
       throw new core.ArgumentError("Parameter goalId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/goals/' + commons.Escaper.ecapeVariable('$goalId');
 
@@ -2138,7 +2107,7 @@ class ManagementGoalsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Goal> insert(Goal request, core.String accountId, core.String webPropertyId, core.String profileId) {
     var _url = null;
@@ -2160,7 +2129,6 @@ class ManagementGoalsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/goals';
 
@@ -2202,7 +2170,7 @@ class ManagementGoalsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Goals> list(core.String accountId, core.String webPropertyId, core.String profileId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -2227,7 +2195,6 @@ class ManagementGoalsResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/goals';
 
@@ -2262,7 +2229,7 @@ class ManagementGoalsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Goal> patch(Goal request, core.String accountId, core.String webPropertyId, core.String profileId, core.String goalId) {
     var _url = null;
@@ -2287,7 +2254,6 @@ class ManagementGoalsResourceApi {
     if (goalId == null) {
       throw new core.ArgumentError("Parameter goalId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/goals/' + commons.Escaper.ecapeVariable('$goalId');
 
@@ -2322,7 +2288,7 @@ class ManagementGoalsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Goal> update(Goal request, core.String accountId, core.String webPropertyId, core.String profileId, core.String goalId) {
     var _url = null;
@@ -2347,7 +2313,6 @@ class ManagementGoalsResourceApi {
     if (goalId == null) {
       throw new core.ArgumentError("Parameter goalId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/goals/' + commons.Escaper.ecapeVariable('$goalId');
 
@@ -2391,7 +2356,7 @@ class ManagementProfileFilterLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String webPropertyId, core.String profileId, core.String linkId) {
     var _url = null;
@@ -2451,7 +2416,7 @@ class ManagementProfileFilterLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProfileFilterLink> get(core.String accountId, core.String webPropertyId, core.String profileId, core.String linkId) {
     var _url = null;
@@ -2473,7 +2438,6 @@ class ManagementProfileFilterLinksResourceApi {
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
@@ -2509,7 +2473,7 @@ class ManagementProfileFilterLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProfileFilterLink> insert(ProfileFilterLink request, core.String accountId, core.String webPropertyId, core.String profileId) {
     var _url = null;
@@ -2531,7 +2495,6 @@ class ManagementProfileFilterLinksResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks';
 
@@ -2573,7 +2536,7 @@ class ManagementProfileFilterLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProfileFilterLinks> list(core.String accountId, core.String webPropertyId, core.String profileId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -2598,7 +2561,6 @@ class ManagementProfileFilterLinksResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks';
 
@@ -2638,7 +2600,7 @@ class ManagementProfileFilterLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProfileFilterLink> patch(ProfileFilterLink request, core.String accountId, core.String webPropertyId, core.String profileId, core.String linkId) {
     var _url = null;
@@ -2663,7 +2625,6 @@ class ManagementProfileFilterLinksResourceApi {
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
@@ -2702,7 +2663,7 @@ class ManagementProfileFilterLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProfileFilterLink> update(ProfileFilterLink request, core.String accountId, core.String webPropertyId, core.String profileId, core.String linkId) {
     var _url = null;
@@ -2727,7 +2688,6 @@ class ManagementProfileFilterLinksResourceApi {
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
@@ -2767,7 +2727,7 @@ class ManagementProfileUserLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String webPropertyId, core.String profileId, core.String linkId) {
     var _url = null;
@@ -2823,7 +2783,7 @@ class ManagementProfileUserLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityUserLink> insert(EntityUserLink request, core.String accountId, core.String webPropertyId, core.String profileId) {
     var _url = null;
@@ -2845,7 +2805,6 @@ class ManagementProfileUserLinksResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/entityUserLinks';
 
@@ -2887,7 +2846,7 @@ class ManagementProfileUserLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityUserLinks> list(core.String accountId, core.String webPropertyId, core.String profileId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -2912,7 +2871,6 @@ class ManagementProfileUserLinksResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/entityUserLinks';
 
@@ -2947,7 +2905,7 @@ class ManagementProfileUserLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityUserLink> update(EntityUserLink request, core.String accountId, core.String webPropertyId, core.String profileId, core.String linkId) {
     var _url = null;
@@ -2972,7 +2930,6 @@ class ManagementProfileUserLinksResourceApi {
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/entityUserLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
@@ -3010,7 +2967,7 @@ class ManagementProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String webPropertyId, core.String profileId) {
     var _url = null;
@@ -3064,7 +3021,7 @@ class ManagementProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Profile> get(core.String accountId, core.String webPropertyId, core.String profileId) {
     var _url = null;
@@ -3083,7 +3040,6 @@ class ManagementProfilesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId');
 
@@ -3114,7 +3070,7 @@ class ManagementProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Profile> insert(Profile request, core.String accountId, core.String webPropertyId) {
     var _url = null;
@@ -3133,7 +3089,6 @@ class ManagementProfilesResourceApi {
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles';
 
@@ -3172,7 +3127,7 @@ class ManagementProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Profiles> list(core.String accountId, core.String webPropertyId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -3194,7 +3149,6 @@ class ManagementProfilesResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles';
 
@@ -3227,7 +3181,7 @@ class ManagementProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Profile> patch(Profile request, core.String accountId, core.String webPropertyId, core.String profileId) {
     var _url = null;
@@ -3249,7 +3203,6 @@ class ManagementProfilesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId');
 
@@ -3282,7 +3235,7 @@ class ManagementProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Profile> update(Profile request, core.String accountId, core.String webPropertyId, core.String profileId) {
     var _url = null;
@@ -3304,7 +3257,6 @@ class ManagementProfilesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId');
 
@@ -3343,7 +3295,7 @@ class ManagementSegmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Segments> list({core.int max_results, core.int start_index}) {
     var _url = null;
@@ -3359,7 +3311,6 @@ class ManagementSegmentsResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/segments';
 
@@ -3401,7 +3352,7 @@ class ManagementUnsampledReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UnsampledReport> get(core.String accountId, core.String webPropertyId, core.String profileId, core.String unsampledReportId) {
     var _url = null;
@@ -3423,7 +3374,6 @@ class ManagementUnsampledReportsResourceApi {
     if (unsampledReportId == null) {
       throw new core.ArgumentError("Parameter unsampledReportId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/unsampledReports/' + commons.Escaper.ecapeVariable('$unsampledReportId');
 
@@ -3456,7 +3406,7 @@ class ManagementUnsampledReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UnsampledReport> insert(UnsampledReport request, core.String accountId, core.String webPropertyId, core.String profileId) {
     var _url = null;
@@ -3478,7 +3428,6 @@ class ManagementUnsampledReportsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/unsampledReports';
 
@@ -3519,7 +3468,7 @@ class ManagementUnsampledReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UnsampledReports> list(core.String accountId, core.String webPropertyId, core.String profileId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -3544,7 +3493,6 @@ class ManagementUnsampledReportsResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/unsampledReports';
 
@@ -3587,7 +3535,7 @@ class ManagementUploadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future deleteUploadData(AnalyticsDataimportDeleteUploadDataRequest request, core.String accountId, core.String webPropertyId, core.String customDataSourceId) {
     var _url = null;
@@ -3647,7 +3595,7 @@ class ManagementUploadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Upload> get(core.String accountId, core.String webPropertyId, core.String customDataSourceId, core.String uploadId) {
     var _url = null;
@@ -3669,7 +3617,6 @@ class ManagementUploadsResourceApi {
     if (uploadId == null) {
       throw new core.ArgumentError("Parameter uploadId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + commons.Escaper.ecapeVariable('$customDataSourceId') + '/uploads/' + commons.Escaper.ecapeVariable('$uploadId');
 
@@ -3708,7 +3655,7 @@ class ManagementUploadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Uploads> list(core.String accountId, core.String webPropertyId, core.String customDataSourceId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -3733,7 +3680,6 @@ class ManagementUploadsResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + commons.Escaper.ecapeVariable('$customDataSourceId') + '/uploads';
 
@@ -3772,7 +3718,7 @@ class ManagementUploadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Upload> uploadData(core.String accountId, core.String webPropertyId, core.String customDataSourceId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -3838,7 +3784,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String webPropertyId, core.String webPropertyAdWordsLinkId) {
     var _url = null;
@@ -3889,7 +3835,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityAdWordsLink> get(core.String accountId, core.String webPropertyId, core.String webPropertyAdWordsLinkId) {
     var _url = null;
@@ -3908,7 +3854,6 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     if (webPropertyAdWordsLinkId == null) {
       throw new core.ArgumentError("Parameter webPropertyAdWordsLinkId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks/' + commons.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
 
@@ -3939,7 +3884,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityAdWordsLink> insert(EntityAdWordsLink request, core.String accountId, core.String webPropertyId) {
     var _url = null;
@@ -3958,7 +3903,6 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks';
 
@@ -3995,7 +3939,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityAdWordsLinks> list(core.String accountId, core.String webPropertyId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -4017,7 +3961,6 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks';
 
@@ -4051,7 +3994,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityAdWordsLink> patch(EntityAdWordsLink request, core.String accountId, core.String webPropertyId, core.String webPropertyAdWordsLinkId) {
     var _url = null;
@@ -4073,7 +4016,6 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     if (webPropertyAdWordsLinkId == null) {
       throw new core.ArgumentError("Parameter webPropertyAdWordsLinkId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks/' + commons.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
 
@@ -4106,7 +4048,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityAdWordsLink> update(EntityAdWordsLink request, core.String accountId, core.String webPropertyId, core.String webPropertyAdWordsLinkId) {
     var _url = null;
@@ -4128,7 +4070,6 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     if (webPropertyAdWordsLinkId == null) {
       throw new core.ArgumentError("Parameter webPropertyAdWordsLinkId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks/' + commons.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
 
@@ -4168,7 +4109,7 @@ class ManagementWebpropertiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Webproperty> get(core.String accountId, core.String webPropertyId) {
     var _url = null;
@@ -4184,7 +4125,6 @@ class ManagementWebpropertiesResourceApi {
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId');
 
@@ -4215,7 +4155,7 @@ class ManagementWebpropertiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Webproperty> insert(Webproperty request, core.String accountId) {
     var _url = null;
@@ -4231,7 +4171,6 @@ class ManagementWebpropertiesResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties';
 
@@ -4266,7 +4205,7 @@ class ManagementWebpropertiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Webproperties> list(core.String accountId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -4285,7 +4224,6 @@ class ManagementWebpropertiesResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties';
 
@@ -4316,7 +4254,7 @@ class ManagementWebpropertiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Webproperty> patch(Webproperty request, core.String accountId, core.String webPropertyId) {
     var _url = null;
@@ -4335,7 +4273,6 @@ class ManagementWebpropertiesResourceApi {
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId');
 
@@ -4366,7 +4303,7 @@ class ManagementWebpropertiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Webproperty> update(Webproperty request, core.String accountId, core.String webPropertyId) {
     var _url = null;
@@ -4385,7 +4322,6 @@ class ManagementWebpropertiesResourceApi {
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId');
 
@@ -4423,7 +4359,7 @@ class ManagementWebpropertyUserLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String webPropertyId, core.String linkId) {
     var _url = null;
@@ -4474,7 +4410,7 @@ class ManagementWebpropertyUserLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityUserLink> insert(EntityUserLink request, core.String accountId, core.String webPropertyId) {
     var _url = null;
@@ -4493,7 +4429,6 @@ class ManagementWebpropertyUserLinksResourceApi {
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityUserLinks';
 
@@ -4531,7 +4466,7 @@ class ManagementWebpropertyUserLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityUserLinks> list(core.String accountId, core.String webPropertyId, {core.int max_results, core.int start_index}) {
     var _url = null;
@@ -4553,7 +4488,6 @@ class ManagementWebpropertyUserLinksResourceApi {
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityUserLinks';
 
@@ -4586,7 +4520,7 @@ class ManagementWebpropertyUserLinksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntityUserLink> update(EntityUserLink request, core.String accountId, core.String webPropertyId, core.String linkId) {
     var _url = null;
@@ -4608,7 +4542,6 @@ class ManagementWebpropertyUserLinksResourceApi {
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
     }
-
 
     _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityUserLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
@@ -4656,7 +4589,7 @@ class MetadataColumnsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Columns> list(core.String reportType) {
     var _url = null;
@@ -4669,7 +4602,6 @@ class MetadataColumnsResourceApi {
     if (reportType == null) {
       throw new core.ArgumentError("Parameter reportType is required.");
     }
-
 
     _url = 'metadata/' + commons.Escaper.ecapeVariable('$reportType') + '/columns';
 
@@ -4705,7 +4637,7 @@ class ProvisioningResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountTicket> createAccountTicket(AccountTicket request) {
     var _url = null;
@@ -4718,7 +4650,6 @@ class ProvisioningResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'provisioning/createAccountTicket';
 
@@ -4743,10 +4674,8 @@ class ProvisioningResourceApi {
 class AccountChildLink {
   /** Link to the list of web properties for this account. */
   core.String href;
-
   /** Type of the child link. Its value is "analytics#webproperties". */
   core.String type;
-
 
   AccountChildLink();
 
@@ -4771,7 +4700,6 @@ class AccountChildLink {
   }
 }
 
-
 /** Permissions the user has for this account. */
 class AccountPermissions {
   /**
@@ -4779,7 +4707,6 @@ class AccountPermissions {
    * implied permissions (e.g., EDIT implies VIEW).
    */
   core.List<core.String> effective;
-
 
   AccountPermissions();
 
@@ -4798,7 +4725,6 @@ class AccountPermissions {
   }
 }
 
-
 /** JSON template for Analytics account entry. */
 class Account {
   /**
@@ -4806,28 +4732,20 @@ class Account {
    * this account.
    */
   AccountChildLink childLink;
-
   /** Time the account was created. */
   core.DateTime created;
-
   /** Account ID. */
   core.String id;
-
   /** Resource type for Analytics account. */
   core.String kind;
-
   /** Account name. */
   core.String name;
-
   /** Permissions the user has for this account. */
   AccountPermissions permissions;
-
   /** Link for this account. */
   core.String selfLink;
-
   /** Time the account was last modified. */
   core.DateTime updated;
-
 
   Account();
 
@@ -4888,21 +4806,16 @@ class Account {
   }
 }
 
-
 /** JSON template for a linked account. */
 class AccountRef {
   /** Link for this account. */
   core.String href;
-
   /** Account ID. */
   core.String id;
-
   /** Analytics account reference. */
   core.String kind;
-
   /** Account name. */
   core.String name;
-
 
   AccountRef();
 
@@ -4939,7 +4852,6 @@ class AccountRef {
   }
 }
 
-
 /**
  * An AccountSummary collection lists a summary of accounts, properties and
  * views (profiles) to which the user has access. Each resource in the
@@ -4948,7 +4860,6 @@ class AccountRef {
 class AccountSummaries {
   /** A list of AccountSummaries. */
   core.List<AccountSummary> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -4956,31 +4867,24 @@ class AccountSummaries {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Link to next page for this AccountSummary collection. */
   core.String nextLink;
-
   /** Link to previous page for this AccountSummary collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * results in the response.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   AccountSummaries();
 
@@ -5041,7 +4945,6 @@ class AccountSummaries {
   }
 }
 
-
 /**
  * JSON template for an Analytics AccountSummary. An AccountSummary is a
  * lightweight tree comprised of properties/profiles.
@@ -5049,16 +4952,12 @@ class AccountSummaries {
 class AccountSummary {
   /** Account ID. */
   core.String id;
-
   /** Resource type for Analytics AccountSummary. */
   core.String kind;
-
   /** Account name. */
   core.String name;
-
   /** List of web properties under this account. */
   core.List<WebPropertySummary> webProperties;
-
 
   AccountSummary();
 
@@ -5095,7 +4994,6 @@ class AccountSummary {
   }
 }
 
-
 /**
  * JSON template for an Analytics account ticket. The account ticket consists of
  * the ticket ID and the basic information for the account, property and
@@ -5104,25 +5002,19 @@ class AccountSummary {
 class AccountTicket {
   /** Account for this ticket. */
   Account account;
-
   /** Account ticket ID used to access the account ticket. */
   core.String id;
-
   /** Resource type for account ticket. */
   core.String kind;
-
   /** View (Profile) for the account. */
   Profile profile;
-
   /**
    * Redirect URI where the user will be sent after accepting Terms of Service.
    * Must be configured in APIs console as a callback URL.
    */
   core.String redirectUri;
-
   /** Web property for the account. */
   Webproperty webproperty;
-
 
   AccountTicket();
 
@@ -5171,7 +5063,6 @@ class AccountTicket {
   }
 }
 
-
 /**
  * An account collection provides a list of Analytics accounts to which a user
  * has access. The account collection is the entry point to all management
@@ -5181,7 +5072,6 @@ class AccountTicket {
 class Accounts {
   /** A list of accounts. */
   core.List<Account> items;
-
   /**
    * The maximum number of entries the response can contain, regardless of the
    * actual number of entries returned. Its value ranges from 1 to 1000 with a
@@ -5189,31 +5079,24 @@ class Accounts {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Next link for this account collection. */
   core.String nextLink;
-
   /** Previous link for this account collection. */
   core.String previousLink;
-
   /**
    * The starting index of the entries, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * results in the response.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   Accounts();
 
@@ -5274,7 +5157,6 @@ class Accounts {
   }
 }
 
-
 /** JSON template for an AdWords account. */
 class AdWordsAccount {
   /**
@@ -5282,13 +5164,10 @@ class AdWordsAccount {
    * insert operation.
    */
   core.bool autoTaggingEnabled;
-
   /** Customer ID. This field is required when creating an AdWords link. */
   core.String customerId;
-
   /** Resource type for AdWords account. */
   core.String kind;
-
 
   AdWordsAccount();
 
@@ -5319,12 +5198,10 @@ class AdWordsAccount {
   }
 }
 
-
 /** Request template for the delete upload data request. */
 class AnalyticsDataimportDeleteUploadDataRequest {
   /** A list of upload UIDs. */
   core.List<core.String> customDataImportUids;
-
 
   AnalyticsDataimportDeleteUploadDataRequest();
 
@@ -5343,18 +5220,14 @@ class AnalyticsDataimportDeleteUploadDataRequest {
   }
 }
 
-
 /** JSON template for a metadata column. */
 class Column {
   /** Map of attribute name and value for this column. */
   core.Map<core.String, core.String> attributes;
-
   /** Column id. */
   core.String id;
-
   /** Resource type for Analytics column. */
   core.String kind;
-
 
   Column();
 
@@ -5385,27 +5258,21 @@ class Column {
   }
 }
 
-
 /** Lists columns (dimensions and metrics) for a particular report type. */
 class Columns {
   /** List of attributes names returned by columns. */
   core.List<core.String> attributeNames;
-
   /**
    * Etag of collection. This etag can be compared with the last response etag
    * to check if response has changed.
    */
   core.String etag;
-
   /** List of columns for a report type. */
   core.List<Column> items;
-
   /** Collection type. */
   core.String kind;
-
   /** Total number of columns returned in the response. */
   core.int totalResults;
-
 
   Columns();
 
@@ -5448,17 +5315,14 @@ class Columns {
   }
 }
 
-
 class CustomDataSourceChildLink {
   /**
    * Link to the list of daily uploads for this custom data source. Link to the
    * list of uploads for this custom data source.
    */
   core.String href;
-
   /** Value is "analytics#dailyUploads". Value is "analytics#uploads". */
   core.String type;
-
 
   CustomDataSourceChildLink();
 
@@ -5483,7 +5347,6 @@ class CustomDataSourceChildLink {
   }
 }
 
-
 /**
  * Parent link for this custom data source. Points to the web property to which
  * this custom data source belongs.
@@ -5491,10 +5354,8 @@ class CustomDataSourceChildLink {
 class CustomDataSourceParentLink {
   /** Link to the web property to which this custom data source belongs. */
   core.String href;
-
   /** Value is "analytics#webproperty". */
   core.String type;
-
 
   CustomDataSourceParentLink();
 
@@ -5519,57 +5380,41 @@ class CustomDataSourceParentLink {
   }
 }
 
-
 /** JSON template for an Analytics custom data source. */
 class CustomDataSource {
   /** Account ID to which this custom data source belongs. */
   core.String accountId;
-
   CustomDataSourceChildLink childLink;
-
   /** Time this custom data source was created. */
   core.DateTime created;
-
   /** Description of custom data source. */
   core.String description;
-
   /** Custom data source ID. */
   core.String id;
-
   core.String importBehavior;
-
   /** Resource type for Analytics custom data source. */
   core.String kind;
-
   /** Name of this custom data source. */
   core.String name;
-
   /**
    * Parent link for this custom data source. Points to the web property to
    * which this custom data source belongs.
    */
   CustomDataSourceParentLink parentLink;
-
   /** IDs of views (profiles) linked to the custom data source. */
   core.List<core.String> profilesLinked;
-
   /** Link for this Analytics custom data source. */
   core.String selfLink;
-
   /** Type of the custom data source. */
   core.String type;
-
   /** Time this custom data source was last modified. */
   core.DateTime updated;
-
   core.String uploadType;
-
   /**
    * Web property ID of the form UA-XXXXX-YY to which this custom data source
    * belongs.
    */
   core.String webPropertyId;
-
 
   CustomDataSource();
 
@@ -5672,7 +5517,6 @@ class CustomDataSource {
   }
 }
 
-
 /**
  * Lists Analytics custom data sources to which the user has access. Each
  * resource in the collection corresponds to a single Analytics custom data
@@ -5681,7 +5525,6 @@ class CustomDataSource {
 class CustomDataSources {
   /** Collection of custom data sources. */
   core.List<CustomDataSource> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -5689,31 +5532,24 @@ class CustomDataSources {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Link to next page for this custom data source collection. */
   core.String nextLink;
-
   /** Link to previous page for this custom data source collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * results in the response.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   CustomDataSources();
 
@@ -5774,7 +5610,6 @@ class CustomDataSources {
   }
 }
 
-
 /**
  * Parent link for the custom dimension. Points to the property to which the
  * custom dimension belongs.
@@ -5782,10 +5617,8 @@ class CustomDataSources {
 class CustomDimensionParentLink {
   /** Link to the property to which the custom dimension belongs. */
   core.String href;
-
   /** Type of the parent link. Set to "analytics#webproperty". */
   core.String type;
-
 
   CustomDimensionParentLink();
 
@@ -5810,51 +5643,38 @@ class CustomDimensionParentLink {
   }
 }
 
-
 /** JSON template for Analytics Custom Dimension. */
 class CustomDimension {
   /** Account ID. */
   core.String accountId;
-
   /** Boolean indicating whether the custom dimension is active. */
   core.bool active;
-
   /** Time the custom dimension was created. */
   core.DateTime created;
-
   /** Custom dimension ID. */
   core.String id;
-
   /** Index of the custom dimension. */
   core.int index;
-
   /**
    * Kind value for a custom dimension. Set to "analytics#customDimension". It
    * is a read-only field.
    */
   core.String kind;
-
   /** Name of the custom dimension. */
   core.String name;
-
   /**
    * Parent link for the custom dimension. Points to the property to which the
    * custom dimension belongs.
    */
   CustomDimensionParentLink parentLink;
-
   /** Scope of the custom dimension: HIT, SESSION, USER or PRODUCT. */
   core.String scope;
-
   /** Link for the custom dimension */
   core.String selfLink;
-
   /** Time the custom dimension was last modified. */
   core.DateTime updated;
-
   /** Property ID. */
   core.String webPropertyId;
-
 
   CustomDimension();
 
@@ -5939,7 +5759,6 @@ class CustomDimension {
   }
 }
 
-
 /**
  * A custom dimension collection lists Analytics custom dimensions to which the
  * user has access. Each resource in the collection corresponds to a single
@@ -5948,7 +5767,6 @@ class CustomDimension {
 class CustomDimensions {
   /** Collection of custom dimensions. */
   core.List<CustomDimension> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -5956,31 +5774,24 @@ class CustomDimensions {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Link to next page for this custom dimension collection. */
   core.String nextLink;
-
   /** Link to previous page for this custom dimension collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * results in the response.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   CustomDimensions();
 
@@ -6041,7 +5852,6 @@ class CustomDimensions {
   }
 }
 
-
 /**
  * Parent link for the custom metric. Points to the property to which the custom
  * metric belongs.
@@ -6049,10 +5859,8 @@ class CustomDimensions {
 class CustomMetricParentLink {
   /** Link to the property to which the custom metric belongs. */
   core.String href;
-
   /** Type of the parent link. Set to "analytics#webproperty". */
   core.String type;
-
 
   CustomMetricParentLink();
 
@@ -6077,60 +5885,44 @@ class CustomMetricParentLink {
   }
 }
 
-
 /** JSON template for Analytics Custom Metric. */
 class CustomMetric {
   /** Account ID. */
   core.String accountId;
-
   /** Boolean indicating whether the custom metric is active. */
   core.bool active;
-
   /** Time the custom metric was created. */
   core.DateTime created;
-
   /** Custom metric ID. */
   core.String id;
-
   /** Index of the custom metric. */
   core.int index;
-
   /**
    * Kind value for a custom metric. Set to "analytics#customMetric". It is a
    * read-only field.
    */
   core.String kind;
-
   /** Max value of custom metric. */
   core.String maxValue;
-
   /** Min value of custom metric. */
   core.String minValue;
-
   /** Name of the custom metric. */
   core.String name;
-
   /**
    * Parent link for the custom metric. Points to the property to which the
    * custom metric belongs.
    */
   CustomMetricParentLink parentLink;
-
   /** Scope of the custom metric: HIT or PRODUCT. */
   core.String scope;
-
   /** Link for the custom metric */
   core.String selfLink;
-
   /** Data type of custom metric. */
   core.String type;
-
   /** Time the custom metric was last modified. */
   core.DateTime updated;
-
   /** Property ID. */
   core.String webPropertyId;
-
 
   CustomMetric();
 
@@ -6233,7 +6025,6 @@ class CustomMetric {
   }
 }
 
-
 /**
  * A custom metric collection lists Analytics custom metrics to which the user
  * has access. Each resource in the collection corresponds to a single Analytics
@@ -6242,7 +6033,6 @@ class CustomMetric {
 class CustomMetrics {
   /** Collection of custom metrics. */
   core.List<CustomMetric> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -6250,31 +6040,24 @@ class CustomMetrics {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Link to next page for this custom metric collection. */
   core.String nextLink;
-
   /** Link to previous page for this custom metric collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * results in the response.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   CustomMetrics();
 
@@ -6335,11 +6118,9 @@ class CustomMetrics {
   }
 }
 
-
 /** Web property being linked. */
 class EntityAdWordsLinkEntity {
   WebPropertyRef webPropertyRef;
-
 
   EntityAdWordsLinkEntity();
 
@@ -6358,7 +6139,6 @@ class EntityAdWordsLinkEntity {
   }
 }
 
-
 /** JSON template for Analytics Entity AdWords Link. */
 class EntityAdWordsLink {
   /**
@@ -6366,27 +6146,20 @@ class EntityAdWordsLink {
    * is required when creating an AdWords link. It cannot be empty.
    */
   core.List<AdWordsAccount> adWordsAccounts;
-
   /** Web property being linked. */
   EntityAdWordsLinkEntity entity;
-
   /** Entity AdWords link ID */
   core.String id;
-
   /** Resource type for entity AdWords link. */
   core.String kind;
-
   /**
    * Name of the link. This field is required when creating an AdWords link.
    */
   core.String name;
-
   /** IDs of linked Views (Profiles) represented as strings. */
   core.List<core.String> profileIds;
-
   /** URL link for this Google Analytics - Google AdWords link. */
   core.String selfLink;
-
 
   EntityAdWordsLink();
 
@@ -6441,7 +6214,6 @@ class EntityAdWordsLink {
   }
 }
 
-
 /**
  * An entity AdWords link collection provides a list of GA-AdWords links Each
  * resource in this collection corresponds to a single link.
@@ -6449,7 +6221,6 @@ class EntityAdWordsLink {
 class EntityAdWordsLinks {
   /** A list of entity AdWords links. */
   core.List<EntityAdWordsLink> items;
-
   /**
    * The maximum number of entries the response can contain, regardless of the
    * actual number of entries returned. Its value ranges from 1 to 1000 with a
@@ -6457,28 +6228,22 @@ class EntityAdWordsLinks {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Next link for this AdWords link collection. */
   core.String nextLink;
-
   /** Previous link for this AdWords link collection. */
   core.String previousLink;
-
   /**
    * The starting index of the entries, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * results in the response.
    */
   core.int totalResults;
-
 
   EntityAdWordsLinks();
 
@@ -6533,7 +6298,6 @@ class EntityAdWordsLinks {
   }
 }
 
-
 /**
  * Entity for this link. It can be an account, a web property, or a view
  * (profile).
@@ -6541,13 +6305,10 @@ class EntityAdWordsLinks {
 class EntityUserLinkEntity {
   /** Account for this link. */
   AccountRef accountRef;
-
   /** View (Profile) for this link. */
   ProfileRef profileRef;
-
   /** Web property for this link. */
   WebPropertyRef webPropertyRef;
-
 
   EntityUserLinkEntity();
 
@@ -6578,7 +6339,6 @@ class EntityUserLinkEntity {
   }
 }
 
-
 /** Permissions the user has for this entity. */
 class EntityUserLinkPermissions {
   /**
@@ -6588,14 +6348,12 @@ class EntityUserLinkPermissions {
    * permissions are read-only.
    */
   core.List<core.String> effective;
-
   /**
    * Permissions that a user has been assigned at this very level. Does not
    * include any implied or inherited permissions. Local permissions are
    * modifiable.
    */
   core.List<core.String> local;
-
 
   EntityUserLinkPermissions();
 
@@ -6620,7 +6378,6 @@ class EntityUserLinkPermissions {
   }
 }
 
-
 /**
  * JSON template for an Analytics Entity-User Link. Returns permissions that a
  * user has for an entity.
@@ -6631,22 +6388,16 @@ class EntityUserLink {
    * (profile).
    */
   EntityUserLinkEntity entity;
-
   /** Entity user link ID */
   core.String id;
-
   /** Resource type for entity user link. */
   core.String kind;
-
   /** Permissions the user has for this entity. */
   EntityUserLinkPermissions permissions;
-
   /** Self link for this resource. */
   core.String selfLink;
-
   /** User reference. */
   UserRef userRef;
-
 
   EntityUserLink();
 
@@ -6695,7 +6446,6 @@ class EntityUserLink {
   }
 }
 
-
 /**
  * An entity user link collection provides a list of Analytics ACL links Each
  * resource in this collection corresponds to a single link.
@@ -6703,7 +6453,6 @@ class EntityUserLink {
 class EntityUserLinks {
   /** A list of entity user links. */
   core.List<EntityUserLink> items;
-
   /**
    * The maximum number of entries the response can contain, regardless of the
    * actual number of entries returned. Its value ranges from 1 to 1000 with a
@@ -6711,28 +6460,22 @@ class EntityUserLinks {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Next link for this account collection. */
   core.String nextLink;
-
   /** Previous link for this account collection. */
   core.String previousLink;
-
   /**
    * The starting index of the entries, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * results in the response.
    */
   core.int totalResults;
-
 
   EntityUserLinks();
 
@@ -6787,7 +6530,6 @@ class EntityUserLinks {
   }
 }
 
-
 /**
  * Parent link for an experiment. Points to the view (profile) to which this
  * experiment belongs.
@@ -6798,10 +6540,8 @@ class ExperimentParentLink {
    * read-only.
    */
   core.String href;
-
   /** Value is "analytics#profile". This field is read-only. */
   core.String type;
-
 
   ExperimentParentLink();
 
@@ -6826,7 +6566,6 @@ class ExperimentParentLink {
   }
 }
 
-
 class ExperimentVariations {
   /**
    * The name of the variation. This field is required when creating an
@@ -6834,33 +6573,28 @@ class ExperimentVariations {
    * ENDED.
    */
   core.String name;
-
   /**
    * Status of the variation. Possible values: "ACTIVE", "INACTIVE". INACTIVE
    * variations are not served. This field may not be changed for an experiment
    * whose status is ENDED.
    */
   core.String status;
-
   /**
    * The URL of the variation. This field may not be changed for an experiment
    * whose status is RUNNING or ENDED.
    */
   core.String url;
-
   /**
    * Weight that this variation should receive. Only present if the experiment
    * is running. This field is read-only.
    */
   core.double weight;
-
   /**
    * True if the experiment has ended and this variation performed
    * (statistically) significantly better than the original. This field is
    * read-only.
    */
   core.bool won;
-
 
   ExperimentVariations();
 
@@ -6903,31 +6637,25 @@ class ExperimentVariations {
   }
 }
 
-
 /** JSON template for Analytics experiment resource. */
 class Experiment {
   /** Account ID to which this experiment belongs. This field is read-only. */
   core.String accountId;
-
   /** Time the experiment was created. This field is read-only. */
   core.DateTime created;
-
   /** Notes about this experiment. */
   core.String description;
-
   /**
    * If true, the end user will be able to edit the experiment via the Google
    * Analytics user interface.
    */
   core.bool editableInGaUi;
-
   /**
    * The ending time of the experiment (the time the status changed from RUNNING
    * to ENDED). This field is present only if the experiment has ended. This
    * field is read-only.
    */
   core.DateTime endTime;
-
   /**
    * Boolean specifying whether to distribute traffic evenly across all
    * variations. If the value is False, content experiments follows the default
@@ -6936,32 +6664,26 @@ class Experiment {
    * experiment whose status is ENDED.
    */
   core.bool equalWeighting;
-
   /** Experiment ID. Required for patch and update. Disallowed for create. */
   core.String id;
-
   /**
    * Internal ID for the web property to which this experiment belongs. This
    * field is read-only.
    */
   core.String internalWebPropertyId;
-
   /** Resource type for an Analytics experiment. This field is read-only. */
   core.String kind;
-
   /**
    * An integer number in [3, 90]. Specifies the minimum length of the
    * experiment. Can be changed for a running experiment. This field may not be
    * changed for an experiments whose status is ENDED.
    */
   core.int minimumExperimentLengthInDays;
-
   /**
    * Experiment name. This field may not be changed for an experiment whose
    * status is ENDED. This field is required when creating an experiment.
    */
   core.String name;
-
   /**
    * The metric that the experiment is optimizing. Valid values:
    * "ga:goal(n)Completions", "ga:adsenseAdsClicks", "ga:adsenseAdsViewed",
@@ -6970,7 +6692,6 @@ class Experiment {
    * status is "RUNNING" and servingFramework is one of "REDIRECT" or "API".
    */
   core.String objectiveMetric;
-
   /**
    * Whether the objectiveMetric should be minimized or maximized. Possible
    * values: "MAXIMUM", "MINIMUM". Optional--defaults to "MAXIMUM". Cannot be
@@ -6978,19 +6699,16 @@ class Experiment {
    * "RUNNING" or "ENDED".
    */
   core.String optimizationType;
-
   /**
    * Parent link for an experiment. Points to the view (profile) to which this
    * experiment belongs.
    */
   ExperimentParentLink parentLink;
-
   /**
    * View (Profile) ID to which this experiment belongs. This field is
    * read-only.
    */
   core.String profileId;
-
   /**
    * Why the experiment ended. Possible values: "STOPPED_BY_USER",
    * "WINNER_FOUND", "EXPERIMENT_EXPIRED", "ENDED_WITH_NO_WINNER",
@@ -7000,17 +6718,14 @@ class Experiment {
    * STOPPED_BY_USER. This field is read-only.
    */
   core.String reasonExperimentEnded;
-
   /**
    * Boolean specifying whether variations URLS are rewritten to match those of
    * the original. This field may not be changed for an experiments whose status
    * is ENDED.
    */
   core.bool rewriteVariationUrlsAsOriginal;
-
   /** Link for this experiment. This field is read-only. */
   core.String selfLink;
-
   /**
    * The framework used to serve the experiment variations and evaluate the
    * results. One of:
@@ -7024,27 +6739,23 @@ class Experiment {
    * serving the selected variation and evaluating the results.
    */
   core.String servingFramework;
-
   /**
    * The snippet of code to include on the control page(s). This field is
    * read-only.
    */
   core.String snippet;
-
   /**
    * The starting time of the experiment (the time the status changed from
    * READY_TO_RUN to RUNNING). This field is present only if the experiment has
    * started. This field is read-only.
    */
   core.DateTime startTime;
-
   /**
    * Experiment status. Possible values: "DRAFT", "READY_TO_RUN", "RUNNING",
    * "ENDED". Experiments can be created in the "DRAFT", "READY_TO_RUN" or
    * "RUNNING" state. This field is required when creating an experiment.
    */
   core.String status;
-
   /**
    * A floating-point number between 0 and 1. Specifies the fraction of the
    * traffic that participates in the experiment. Can be changed for a running
@@ -7052,10 +6763,8 @@ class Experiment {
    * is ENDED.
    */
   core.double trafficCoverage;
-
   /** Time the experiment was last modified. This field is read-only. */
   core.DateTime updated;
-
   /**
    * Array of variations. The first variation in the array is the original. The
    * number of variations may not change once an experiment is in the RUNNING
@@ -7063,26 +6772,22 @@ class Experiment {
    * RUNNING.
    */
   core.List<ExperimentVariations> variations;
-
   /**
    * Web property ID to which this experiment belongs. The web property ID is of
    * the form UA-XXXXX-YY. This field is read-only.
    */
   core.String webPropertyId;
-
   /**
    * A floating-point number between 0 and 1. Specifies the necessary confidence
    * level to choose a winner. This field may not be changed for an experiments
    * whose status is ENDED.
    */
   core.double winnerConfidenceLevel;
-
   /**
    * Boolean specifying whether a winner has been found for this experiment.
    * This field is read-only.
    */
   core.bool winnerFound;
-
 
   Experiment();
 
@@ -7263,7 +6968,6 @@ class Experiment {
   }
 }
 
-
 /**
  * An experiment collection lists Analytics experiments to which the user has
  * access. Each view (profile) can have a set of experiments. Each resource in
@@ -7272,7 +6976,6 @@ class Experiment {
 class Experiments {
   /** A list of experiments. */
   core.List<Experiment> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -7280,31 +6983,24 @@ class Experiments {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Link to next page for this experiment collection. */
   core.String nextLink;
-
   /** Link to previous page for this experiment collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * resources in the result.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   Experiments();
 
@@ -7365,42 +7061,43 @@ class Experiments {
   }
 }
 
-
 /** Details for the filter of the type ADVANCED. */
 class FilterAdvancedDetails {
   /** Indicates if the filter expressions are case sensitive. */
   core.bool caseSensitive;
-
   /** Expression to extract from field A. */
   core.String extractA;
-
   /** Expression to extract from field B. */
   core.String extractB;
-
   /** Field A. */
   core.String fieldA;
-
+  /**
+   * The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+   */
+  core.int fieldAIndex;
   /** Indicates if field A is required to match. */
   core.bool fieldARequired;
-
   /** Field B. */
   core.String fieldB;
-
+  /**
+   * The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+   */
+  core.int fieldBIndex;
   /** Indicates if field B is required to match. */
   core.bool fieldBRequired;
-
   /** Expression used to construct the output value. */
   core.String outputConstructor;
-
   /** Output field. */
   core.String outputToField;
-
+  /**
+   * The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+   */
+  core.int outputToFieldIndex;
   /**
    * Indicates if the existing value of the output field, if any, should be
    * overridden by the output expression.
    */
   core.bool overrideOutputField;
-
 
   FilterAdvancedDetails();
 
@@ -7417,11 +7114,17 @@ class FilterAdvancedDetails {
     if (_json.containsKey("fieldA")) {
       fieldA = _json["fieldA"];
     }
+    if (_json.containsKey("fieldAIndex")) {
+      fieldAIndex = _json["fieldAIndex"];
+    }
     if (_json.containsKey("fieldARequired")) {
       fieldARequired = _json["fieldARequired"];
     }
     if (_json.containsKey("fieldB")) {
       fieldB = _json["fieldB"];
+    }
+    if (_json.containsKey("fieldBIndex")) {
+      fieldBIndex = _json["fieldBIndex"];
     }
     if (_json.containsKey("fieldBRequired")) {
       fieldBRequired = _json["fieldBRequired"];
@@ -7431,6 +7134,9 @@ class FilterAdvancedDetails {
     }
     if (_json.containsKey("outputToField")) {
       outputToField = _json["outputToField"];
+    }
+    if (_json.containsKey("outputToFieldIndex")) {
+      outputToFieldIndex = _json["outputToFieldIndex"];
     }
     if (_json.containsKey("overrideOutputField")) {
       overrideOutputField = _json["overrideOutputField"];
@@ -7451,11 +7157,17 @@ class FilterAdvancedDetails {
     if (fieldA != null) {
       _json["fieldA"] = fieldA;
     }
+    if (fieldAIndex != null) {
+      _json["fieldAIndex"] = fieldAIndex;
+    }
     if (fieldARequired != null) {
       _json["fieldARequired"] = fieldARequired;
     }
     if (fieldB != null) {
       _json["fieldB"] = fieldB;
+    }
+    if (fieldBIndex != null) {
+      _json["fieldBIndex"] = fieldBIndex;
     }
     if (fieldBRequired != null) {
       _json["fieldBRequired"] = fieldBRequired;
@@ -7466,6 +7178,9 @@ class FilterAdvancedDetails {
     if (outputToField != null) {
       _json["outputToField"] = outputToField;
     }
+    if (outputToFieldIndex != null) {
+      _json["outputToFieldIndex"] = outputToFieldIndex;
+    }
     if (overrideOutputField != null) {
       _json["overrideOutputField"] = overrideOutputField;
     }
@@ -7473,18 +7188,23 @@ class FilterAdvancedDetails {
   }
 }
 
-
 /** Details for the filter of the type LOWER. */
 class FilterLowercaseDetails {
   /** Field to use in the filter. */
   core.String field;
-
+  /**
+   * The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+   */
+  core.int fieldIndex;
 
   FilterLowercaseDetails();
 
   FilterLowercaseDetails.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
       field = _json["field"];
+    }
+    if (_json.containsKey("fieldIndex")) {
+      fieldIndex = _json["fieldIndex"];
     }
   }
 
@@ -7493,10 +7213,12 @@ class FilterLowercaseDetails {
     if (field != null) {
       _json["field"] = field;
     }
+    if (fieldIndex != null) {
+      _json["fieldIndex"] = fieldIndex;
+    }
     return _json;
   }
 }
-
 
 /**
  * Parent link for this filter. Points to the account to which this filter
@@ -7505,10 +7227,8 @@ class FilterLowercaseDetails {
 class FilterParentLink {
   /** Link to the account to which this filter belongs. */
   core.String href;
-
   /** Value is "analytics#account". */
   core.String type;
-
 
   FilterParentLink();
 
@@ -7533,21 +7253,20 @@ class FilterParentLink {
   }
 }
 
-
 /** Details for the filter of the type SEARCH_AND_REPLACE. */
 class FilterSearchAndReplaceDetails {
   /** Determines if the filter is case sensitive. */
   core.bool caseSensitive;
-
   /** Field to use in the filter. */
   core.String field;
-
+  /**
+   * The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+   */
+  core.int fieldIndex;
   /** Term to replace the search term with. */
   core.String replaceString;
-
   /** Term to search. */
   core.String searchString;
-
 
   FilterSearchAndReplaceDetails();
 
@@ -7557,6 +7276,9 @@ class FilterSearchAndReplaceDetails {
     }
     if (_json.containsKey("field")) {
       field = _json["field"];
+    }
+    if (_json.containsKey("fieldIndex")) {
+      fieldIndex = _json["fieldIndex"];
     }
     if (_json.containsKey("replaceString")) {
       replaceString = _json["replaceString"];
@@ -7574,6 +7296,9 @@ class FilterSearchAndReplaceDetails {
     if (field != null) {
       _json["field"] = field;
     }
+    if (fieldIndex != null) {
+      _json["fieldIndex"] = fieldIndex;
+    }
     if (replaceString != null) {
       _json["replaceString"] = replaceString;
     }
@@ -7584,18 +7309,23 @@ class FilterSearchAndReplaceDetails {
   }
 }
 
-
 /** Details for the filter of the type UPPER. */
 class FilterUppercaseDetails {
   /** Field to use in the filter. */
   core.String field;
-
+  /**
+   * The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+   */
+  core.int fieldIndex;
 
   FilterUppercaseDetails();
 
   FilterUppercaseDetails.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
       field = _json["field"];
+    }
+    if (_json.containsKey("fieldIndex")) {
+      fieldIndex = _json["fieldIndex"];
     }
   }
 
@@ -7604,64 +7334,51 @@ class FilterUppercaseDetails {
     if (field != null) {
       _json["field"] = field;
     }
+    if (fieldIndex != null) {
+      _json["fieldIndex"] = fieldIndex;
+    }
     return _json;
   }
 }
-
 
 /** JSON template for an Analytics account filter. */
 class Filter {
   /** Account ID to which this filter belongs. */
   core.String accountId;
-
   /** Details for the filter of the type ADVANCED. */
   FilterAdvancedDetails advancedDetails;
-
   /** Time this filter was created. */
   core.DateTime created;
-
   /** Details for the filter of the type EXCLUDE. */
   FilterExpression excludeDetails;
-
   /** Filter ID. */
   core.String id;
-
   /** Details for the filter of the type INCLUDE. */
   FilterExpression includeDetails;
-
   /** Resource type for Analytics filter. */
   core.String kind;
-
   /** Details for the filter of the type LOWER. */
   FilterLowercaseDetails lowercaseDetails;
-
   /** Name of this filter. */
   core.String name;
-
   /**
    * Parent link for this filter. Points to the account to which this filter
    * belongs.
    */
   FilterParentLink parentLink;
-
   /** Details for the filter of the type SEARCH_AND_REPLACE. */
   FilterSearchAndReplaceDetails searchAndReplaceDetails;
-
   /** Link for this filter. */
   core.String selfLink;
-
   /**
    * Type of this filter. Possible values are INCLUDE, EXCLUDE, LOWERCASE,
    * UPPERCASE, SEARCH_AND_REPLACE and ADVANCED.
    */
   core.String type;
-
   /** Time this filter was last modified. */
   core.DateTime updated;
-
   /** Details for the filter of the type UPPER. */
   FilterUppercaseDetails uppercaseDetails;
-
 
   Filter();
 
@@ -7764,15 +7481,12 @@ class Filter {
   }
 }
 
-
 /** JSON template for an Analytics filter expression. */
 class FilterExpression {
   /** Determines if the filter is case sensitive. */
   core.bool caseSensitive;
-
   /** Filter expression value */
   core.String expressionValue;
-
   /**
    * Field to filter. Possible values:
    * - Content and Traffic
@@ -7859,12 +7573,17 @@ class FilterExpression {
    * - SOCIAL_NETWORK,
    * - SOCIAL_ACTION,
    * - SOCIAL_ACTION_TARGET,
+   * - Custom dimension
+   * - CUSTOM_DIMENSION (See accompanying field index),
    */
   core.String field;
-
+  /**
+   * The Index of the custom dimension. Set only if the field is a is
+   * CUSTOM_DIMENSION.
+   */
+  core.int fieldIndex;
   /** Kind value for filter expression */
   core.String kind;
-
   /**
    * Match type for this filter. Possible values are BEGINS_WITH, EQUAL,
    * ENDS_WITH, CONTAINS, MATCHES. Include and Exclude filters can use any match
@@ -7874,7 +7593,6 @@ class FilterExpression {
    * not set match type for those filters.
    */
   core.String matchType;
-
 
   FilterExpression();
 
@@ -7887,6 +7605,9 @@ class FilterExpression {
     }
     if (_json.containsKey("field")) {
       field = _json["field"];
+    }
+    if (_json.containsKey("fieldIndex")) {
+      fieldIndex = _json["fieldIndex"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -7907,6 +7628,9 @@ class FilterExpression {
     if (field != null) {
       _json["field"] = field;
     }
+    if (fieldIndex != null) {
+      _json["fieldIndex"] = fieldIndex;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -7917,24 +7641,18 @@ class FilterExpression {
   }
 }
 
-
 /** JSON template for a profile filter link. */
 class FilterRef {
   /** Account ID to which this filter belongs. */
   core.String accountId;
-
   /** Link for this filter. */
   core.String href;
-
   /** Filter ID. */
   core.String id;
-
   /** Kind value for filter reference. */
   core.String kind;
-
   /** Name of this filter. */
   core.String name;
-
 
   FilterRef();
 
@@ -7977,7 +7695,6 @@ class FilterRef {
   }
 }
 
-
 /**
  * A filter collection lists filters created by users in an Analytics account.
  * Each resource in the collection corresponds to a filter.
@@ -7985,7 +7702,6 @@ class FilterRef {
 class Filters {
   /** A list of filters. */
   core.List<Filter> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1,000 with
@@ -7993,31 +7709,24 @@ class Filters {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Link to next page for this filter collection. */
   core.String nextLink;
-
   /** Link to previous page for this filter collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * results in the response.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   Filters();
 
@@ -8078,21 +7787,17 @@ class Filters {
   }
 }
 
-
 class GaDataColumnHeaders {
   /** Column Type. Either DIMENSION or METRIC. */
   core.String columnType;
-
   /**
    * Data type. Dimension column headers have only STRING as the data type.
    * Metric column headers have data types for metric values such as INTEGER,
    * DOUBLE, CURRENCY etc.
    */
   core.String dataType;
-
   /** Column name. */
   core.String name;
-
 
   GaDataColumnHeaders();
 
@@ -8123,14 +7828,10 @@ class GaDataColumnHeaders {
   }
 }
 
-
 class GaDataDataTableCols {
   core.String id;
-
   core.String label;
-
   core.String type;
-
 
   GaDataDataTableCols();
 
@@ -8161,10 +7862,8 @@ class GaDataDataTableCols {
   }
 }
 
-
 class GaDataDataTableRowsC {
   core.String v;
-
 
   GaDataDataTableRowsC();
 
@@ -8183,10 +7882,8 @@ class GaDataDataTableRowsC {
   }
 }
 
-
 class GaDataDataTableRows {
   core.List<GaDataDataTableRowsC> c;
-
 
   GaDataDataTableRows();
 
@@ -8205,12 +7902,9 @@ class GaDataDataTableRows {
   }
 }
 
-
 class GaDataDataTable {
   core.List<GaDataDataTableCols> cols;
-
   core.List<GaDataDataTableRows> rows;
-
 
   GaDataDataTable();
 
@@ -8235,7 +7929,6 @@ class GaDataDataTable {
   }
 }
 
-
 /**
  * Information for the view (profile), for which the Analytics data was
  * requested.
@@ -8243,22 +7936,16 @@ class GaDataDataTable {
 class GaDataProfileInfo {
   /** Account ID to which this view (profile) belongs. */
   core.String accountId;
-
   /** Internal ID for the web property to which this view (profile) belongs. */
   core.String internalWebPropertyId;
-
   /** View (Profile) ID. */
   core.String profileId;
-
   /** View (Profile) name. */
   core.String profileName;
-
   /** Table ID for view (profile). */
   core.String tableId;
-
   /** Web Property ID to which this view (profile) belongs. */
   core.String webPropertyId;
-
 
   GaDataProfileInfo();
 
@@ -8307,42 +7994,30 @@ class GaDataProfileInfo {
   }
 }
 
-
 /** Analytics data request query parameters. */
 class GaDataQuery {
   /** List of analytics dimensions. */
   core.String dimensions;
-
   /** End date. */
   core.String end_date;
-
   /** Comma-separated list of dimension or metric filters. */
   core.String filters;
-
   /** Unique table ID. */
   core.String ids;
-
   /** Maximum results per page. */
   core.int max_results;
-
   /** List of analytics metrics. */
   core.List<core.String> metrics;
-
   /** Desired sampling level */
   core.String samplingLevel;
-
   /** Analytics advanced segment. */
   core.String segment;
-
   /** List of dimensions or metrics based on which Analytics data is sorted. */
   core.List<core.String> sort;
-
   /** Start date. */
   core.String start_date;
-
   /** Start index. */
   core.int start_index;
-
 
   GaDataQuery();
 
@@ -8421,7 +8096,6 @@ class GaDataQuery {
   }
 }
 
-
 /** Analytics data for a given view (profile). */
 class GaData {
   /**
@@ -8429,15 +8103,11 @@ class GaData {
    * order of dimensions and metrics is same as specified in the request.
    */
   core.List<GaDataColumnHeaders> columnHeaders;
-
   /** Determines if Analytics data contains samples. */
   core.bool containsSampledData;
-
   GaDataDataTable dataTable;
-
   /** Unique ID for this data response. */
   core.String id;
-
   /**
    * The maximum number of rows the response can contain, regardless of the
    * actual number of rows returned. Its value ranges from 1 to 10,000 with a
@@ -8445,54 +8115,42 @@ class GaData {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Resource type. */
   core.String kind;
-
   /** Link to next page for this Analytics data query. */
   core.String nextLink;
-
   /** Link to previous page for this Analytics data query. */
   core.String previousLink;
-
   /**
    * Information for the view (profile), for which the Analytics data was
    * requested.
    */
   GaDataProfileInfo profileInfo;
-
   /** Analytics data request query parameters. */
   GaDataQuery query;
-
   /**
    * Analytics data rows, where each row contains a list of dimension values
    * followed by the metric values. The order of dimensions and metrics is same
    * as specified in the request.
    */
   core.List<core.List<core.String>> rows;
-
   /** The number of samples used to calculate the result. */
   core.String sampleSize;
-
   /** Total size of the sample space from which the samples were selected. */
   core.String sampleSpace;
-
   /** Link to this page. */
   core.String selfLink;
-
   /**
    * The total number of rows for the query, regardless of the number of rows in
    * the response.
    */
   core.int totalResults;
-
   /**
    * Total values for the requested metrics over all the results, not just the
    * results returned in this response. The order of the metric totals is same
    * as the metric order specified in the request.
    */
   core.Map<core.String, core.String> totalsForAllResults;
-
 
   GaData();
 
@@ -8601,31 +8259,25 @@ class GaData {
   }
 }
 
-
 class GoalEventDetailsEventConditions {
   /**
    * Type of comparison. Possible values are LESS_THAN, GREATER_THAN or EQUAL.
    */
   core.String comparisonType;
-
   /** Value used for this comparison. */
   core.String comparisonValue;
-
   /** Expression used for this match. */
   core.String expression;
-
   /**
    * Type of the match to be performed. Possible values are REGEXP, BEGINS_WITH,
    * or EXACT.
    */
   core.String matchType;
-
   /**
    * Type of this event condition. Possible values are CATEGORY, ACTION, LABEL,
    * or VALUE.
    */
   core.String type;
-
 
   GoalEventDetailsEventConditions();
 
@@ -8668,17 +8320,14 @@ class GoalEventDetailsEventConditions {
   }
 }
 
-
 /** Details for the goal of the type EVENT. */
 class GoalEventDetails {
   /** List of event conditions. */
   core.List<GoalEventDetailsEventConditions> eventConditions;
-
   /**
    * Determines if the event value should be used as the value for this goal.
    */
   core.bool useEventValue;
-
 
   GoalEventDetails();
 
@@ -8703,7 +8352,6 @@ class GoalEventDetails {
   }
 }
 
-
 /**
  * Parent link for a goal. Points to the view (profile) to which this goal
  * belongs.
@@ -8711,10 +8359,8 @@ class GoalEventDetails {
 class GoalParentLink {
   /** Link to the view (profile) to which this goal belongs. */
   core.String href;
-
   /** Value is "analytics#profile". */
   core.String type;
-
 
   GoalParentLink();
 
@@ -8739,17 +8385,13 @@ class GoalParentLink {
   }
 }
 
-
 class GoalUrlDestinationDetailsSteps {
   /** Step name. */
   core.String name;
-
   /** Step number. */
   core.int number;
-
   /** URL for this step. */
   core.String url;
-
 
   GoalUrlDestinationDetailsSteps();
 
@@ -8780,7 +8422,6 @@ class GoalUrlDestinationDetailsSteps {
   }
 }
 
-
 /** Details for the goal of the type URL_DESTINATION. */
 class GoalUrlDestinationDetails {
   /**
@@ -8788,21 +8429,16 @@ class GoalUrlDestinationDetails {
    * URLs.
    */
   core.bool caseSensitive;
-
   /** Determines if the first step in this goal is required. */
   core.bool firstStepRequired;
-
   /**
    * Match type for the goal URL. Possible values are HEAD, EXACT, or REGEX.
    */
   core.String matchType;
-
   /** List of steps configured for this goal funnel. */
   core.List<GoalUrlDestinationDetailsSteps> steps;
-
   /** URL for this goal. */
   core.String url;
-
 
   GoalUrlDestinationDetails();
 
@@ -8845,17 +8481,14 @@ class GoalUrlDestinationDetails {
   }
 }
 
-
 /** Details for the goal of the type VISIT_NUM_PAGES. */
 class GoalVisitNumPagesDetails {
   /**
    * Type of comparison. Possible values are LESS_THAN, GREATER_THAN, or EQUAL.
    */
   core.String comparisonType;
-
   /** Value used for this comparison. */
   core.String comparisonValue;
-
 
   GoalVisitNumPagesDetails();
 
@@ -8880,15 +8513,12 @@ class GoalVisitNumPagesDetails {
   }
 }
 
-
 /** Details for the goal of the type VISIT_TIME_ON_SITE. */
 class GoalVisitTimeOnSiteDetails {
   /** Type of comparison. Possible values are LESS_THAN or GREATER_THAN. */
   core.String comparisonType;
-
   /** Value used for this comparison. */
   core.String comparisonValue;
-
 
   GoalVisitTimeOnSiteDetails();
 
@@ -8913,72 +8543,53 @@ class GoalVisitTimeOnSiteDetails {
   }
 }
 
-
 /** JSON template for Analytics goal resource. */
 class Goal {
   /** Account ID to which this goal belongs. */
   core.String accountId;
-
   /** Determines whether this goal is active. */
   core.bool active;
-
   /** Time this goal was created. */
   core.DateTime created;
-
   /** Details for the goal of the type EVENT. */
   GoalEventDetails eventDetails;
-
   /** Goal ID. */
   core.String id;
-
   /** Internal ID for the web property to which this goal belongs. */
   core.String internalWebPropertyId;
-
   /** Resource type for an Analytics goal. */
   core.String kind;
-
   /** Goal name. */
   core.String name;
-
   /**
    * Parent link for a goal. Points to the view (profile) to which this goal
    * belongs.
    */
   GoalParentLink parentLink;
-
   /** View (Profile) ID to which this goal belongs. */
   core.String profileId;
-
   /** Link for this goal. */
   core.String selfLink;
-
   /**
    * Goal type. Possible values are URL_DESTINATION, VISIT_TIME_ON_SITE,
    * VISIT_NUM_PAGES, AND EVENT.
    */
   core.String type;
-
   /** Time this goal was last modified. */
   core.DateTime updated;
-
   /** Details for the goal of the type URL_DESTINATION. */
   GoalUrlDestinationDetails urlDestinationDetails;
-
   /** Goal value. */
   core.double value;
-
   /** Details for the goal of the type VISIT_NUM_PAGES. */
   GoalVisitNumPagesDetails visitNumPagesDetails;
-
   /** Details for the goal of the type VISIT_TIME_ON_SITE. */
   GoalVisitTimeOnSiteDetails visitTimeOnSiteDetails;
-
   /**
    * Web property ID to which this goal belongs. The web property ID is of the
    * form UA-XXXXX-YY.
    */
   core.String webPropertyId;
-
 
   Goal();
 
@@ -9099,7 +8710,6 @@ class Goal {
   }
 }
 
-
 /**
  * A goal collection lists Analytics goals to which the user has access. Each
  * view (profile) can have a set of goals. Each resource in the Goal collection
@@ -9108,7 +8718,6 @@ class Goal {
 class Goals {
   /** A list of goals. */
   core.List<Goal> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -9116,31 +8725,24 @@ class Goals {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Link to next page for this goal collection. */
   core.String nextLink;
-
   /** Link to previous page for this goal collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * resources in the result.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   Goals();
 
@@ -9201,20 +8803,16 @@ class Goals {
   }
 }
 
-
 class McfDataColumnHeaders {
   /** Column Type. Either DIMENSION or METRIC. */
   core.String columnType;
-
   /**
    * Data type. Dimension and metric values data types such as INTEGER, DOUBLE,
    * CURRENCY, MCF_SEQUENCE etc.
    */
   core.String dataType;
-
   /** Column name. */
   core.String name;
-
 
   McfDataColumnHeaders();
 
@@ -9245,7 +8843,6 @@ class McfDataColumnHeaders {
   }
 }
 
-
 /**
  * Information for the view (profile), for which the Analytics data was
  * requested.
@@ -9253,22 +8850,16 @@ class McfDataColumnHeaders {
 class McfDataProfileInfo {
   /** Account ID to which this view (profile) belongs. */
   core.String accountId;
-
   /** Internal ID for the web property to which this view (profile) belongs. */
   core.String internalWebPropertyId;
-
   /** View (Profile) ID. */
   core.String profileId;
-
   /** View (Profile) name. */
   core.String profileName;
-
   /** Table ID for view (profile). */
   core.String tableId;
-
   /** Web Property ID to which this view (profile) belongs. */
   core.String webPropertyId;
-
 
   McfDataProfileInfo();
 
@@ -9317,42 +8908,30 @@ class McfDataProfileInfo {
   }
 }
 
-
 /** Analytics data request query parameters. */
 class McfDataQuery {
   /** List of analytics dimensions. */
   core.String dimensions;
-
   /** End date. */
   core.String end_date;
-
   /** Comma-separated list of dimension or metric filters. */
   core.String filters;
-
   /** Unique table ID. */
   core.String ids;
-
   /** Maximum results per page. */
   core.int max_results;
-
   /** List of analytics metrics. */
   core.List<core.String> metrics;
-
   /** Desired sampling level */
   core.String samplingLevel;
-
   /** Analytics advanced segment. */
   core.String segment;
-
   /** List of dimensions or metrics based on which Analytics data is sorted. */
   core.List<core.String> sort;
-
   /** Start date. */
   core.String start_date;
-
   /** Start index. */
   core.int start_index;
-
 
   McfDataQuery();
 
@@ -9431,19 +9010,16 @@ class McfDataQuery {
   }
 }
 
-
 class McfDataRowsConversionPathValue {
   /**
    * Type of an interaction on conversion path. Such as CLICK, IMPRESSION etc.
    */
   core.String interactionType;
-
   /**
    * Node value of an interaction on conversion path. Such as source, medium
    * etc.
    */
   core.String nodeValue;
-
 
   McfDataRowsConversionPathValue();
 
@@ -9468,7 +9044,6 @@ class McfDataRowsConversionPathValue {
   }
 }
 
-
 /**
  * A union object representing a dimension or metric value. Only one of
  * "primitiveValue" or "conversionPathValue" attribute will be populated.
@@ -9479,10 +9054,8 @@ class McfDataRows {
    * their attributes.
    */
   core.List<McfDataRowsConversionPathValue> conversionPathValue;
-
   /** A primitive dimension value. A primitive metric value. */
   core.String primitiveValue;
-
 
   McfDataRows();
 
@@ -9507,7 +9080,6 @@ class McfDataRows {
   }
 }
 
-
 /** Multi-Channel Funnels data for a given view (profile). */
 class McfData {
   /**
@@ -9515,13 +9087,10 @@ class McfData {
    * order of dimensions and metrics is same as specified in the request.
    */
   core.List<McfDataColumnHeaders> columnHeaders;
-
   /** Determines if the Analytics data contains sampled data. */
   core.bool containsSampledData;
-
   /** Unique ID for this data response. */
   core.String id;
-
   /**
    * The maximum number of rows the response can contain, regardless of the
    * actual number of rows returned. Its value ranges from 1 to 10,000 with a
@@ -9529,54 +9098,42 @@ class McfData {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Resource type. */
   core.String kind;
-
   /** Link to next page for this Analytics data query. */
   core.String nextLink;
-
   /** Link to previous page for this Analytics data query. */
   core.String previousLink;
-
   /**
    * Information for the view (profile), for which the Analytics data was
    * requested.
    */
   McfDataProfileInfo profileInfo;
-
   /** Analytics data request query parameters. */
   McfDataQuery query;
-
   /**
    * Analytics data rows, where each row contains a list of dimension values
    * followed by the metric values. The order of dimensions and metrics is same
    * as specified in the request.
    */
   core.List<core.List<McfDataRows>> rows;
-
   /** The number of samples used to calculate the result. */
   core.String sampleSize;
-
   /** Total size of the sample space from which the samples were selected. */
   core.String sampleSpace;
-
   /** Link to this page. */
   core.String selfLink;
-
   /**
    * The total number of rows for the query, regardless of the number of rows in
    * the response.
    */
   core.int totalResults;
-
   /**
    * Total values for the requested metrics over all the results, not just the
    * results returned in this response. The order of the metric totals is same
    * as the metric order specified in the request.
    */
   core.Map<core.String, core.String> totalsForAllResults;
-
 
   McfData();
 
@@ -9679,7 +9236,6 @@ class McfData {
   }
 }
 
-
 /**
  * Child link for this view (profile). Points to the list of goals for this view
  * (profile).
@@ -9687,10 +9243,8 @@ class McfData {
 class ProfileChildLink {
   /** Link to the list of goals for this view (profile). */
   core.String href;
-
   /** Value is "analytics#goals". */
   core.String type;
-
 
   ProfileChildLink();
 
@@ -9715,7 +9269,6 @@ class ProfileChildLink {
   }
 }
 
-
 /**
  * Parent link for this view (profile). Points to the web property to which this
  * view (profile) belongs.
@@ -9723,10 +9276,8 @@ class ProfileChildLink {
 class ProfileParentLink {
   /** Link to the web property to which this view (profile) belongs. */
   core.String href;
-
   /** Value is "analytics#webproperty". */
   core.String type;
-
 
   ProfileParentLink();
 
@@ -9751,7 +9302,6 @@ class ProfileParentLink {
   }
 }
 
-
 /** Permissions the user has for this view (profile). */
 class ProfilePermissions {
   /**
@@ -9760,7 +9310,6 @@ class ProfilePermissions {
    * permissions from the parent web property.
    */
   core.List<core.String> effective;
-
 
   ProfilePermissions();
 
@@ -9779,21 +9328,17 @@ class ProfilePermissions {
   }
 }
 
-
 /** JSON template for an Analytics view (profile). */
 class Profile {
   /** Account ID to which this view (profile) belongs. */
   core.String accountId;
-
   /**
    * Child link for this view (profile). Points to the list of goals for this
    * view (profile).
    */
   ProfileChildLink childLink;
-
   /** Time this view (profile) was created. */
   core.DateTime created;
-
   /**
    * The currency type associated with this view (profile). The supported values
    * are:
@@ -9802,88 +9347,67 @@ class Profile {
    * ZAR
    */
   core.String currency;
-
   /** Default page for this view (profile). */
   core.String defaultPage;
-
   /**
    * Indicates whether ecommerce tracking is enabled for this view (profile).
    */
   core.bool eCommerceTracking;
-
   /**
    * Indicates whether enhanced ecommerce tracking is enabled for this view
    * (profile). This property can only be enabled if ecommerce tracking is
    * enabled.
    */
   core.bool enhancedECommerceTracking;
-
   /** The query parameters that are excluded from this view (profile). */
   core.String excludeQueryParameters;
-
   /** View (Profile) ID. */
   core.String id;
-
   /** Internal ID for the web property to which this view (profile) belongs. */
   core.String internalWebPropertyId;
-
   /** Resource type for Analytics view (profile). */
   core.String kind;
-
   /** Name of this view (profile). */
   core.String name;
-
   /**
    * Parent link for this view (profile). Points to the web property to which
    * this view (profile) belongs.
    */
   ProfileParentLink parentLink;
-
   /** Permissions the user has for this view (profile). */
   ProfilePermissions permissions;
-
   /** Link for this view (profile). */
   core.String selfLink;
-
   /** Site search category parameters for this view (profile). */
   core.String siteSearchCategoryParameters;
-
   /** The site search query parameters for this view (profile). */
   core.String siteSearchQueryParameters;
-
   /**
    * Whether or not Analytics will strip search category parameters from the
    * URLs in your reports.
    */
   core.bool stripSiteSearchCategoryParameters;
-
   /**
    * Whether or not Analytics will strip search query parameters from the URLs
    * in your reports.
    */
   core.bool stripSiteSearchQueryParameters;
-
   /**
    * Time zone for which this view (profile) has been configured. Time zones are
    * identified by strings from the TZ database.
    */
   core.String timezone;
-
   /** View (Profile) type. Supported types: WEB or APP. */
   core.String type;
-
   /** Time this view (profile) was last modified. */
   core.DateTime updated;
-
   /**
    * Web property ID of the form UA-XXXXX-YY to which this view (profile)
    * belongs.
    */
   core.String webPropertyId;
-
   /** Website URL for this view (profile). */
   core.String websiteUrl;
-
 
   Profile();
 
@@ -10040,21 +9564,16 @@ class Profile {
   }
 }
 
-
 /** JSON template for an Analytics profile filter link. */
 class ProfileFilterLink {
   /** Filter for this link. */
   FilterRef filterRef;
-
   /** Profile filter link ID. */
   core.String id;
-
   /** Resource type for Analytics filter. */
   core.String kind;
-
   /** View (Profile) for this link. */
   ProfileRef profileRef;
-
   /**
    * The rank of this profile filter link relative to the other filters linked
    * to the same profile.
@@ -10069,10 +9588,8 @@ class ProfileFilterLink {
    * links will be renumbered starting at 1.
    */
   core.int rank;
-
   /** Link for this profile filter link. */
   core.String selfLink;
-
 
   ProfileFilterLink();
 
@@ -10121,7 +9638,6 @@ class ProfileFilterLink {
   }
 }
 
-
 /**
  * A profile filter link collection lists profile filter links between profiles
  * and filters. Each resource in the collection corresponds to a profile filter
@@ -10130,7 +9646,6 @@ class ProfileFilterLink {
 class ProfileFilterLinks {
   /** A list of profile filter links. */
   core.List<ProfileFilterLink> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1,000 with
@@ -10138,31 +9653,24 @@ class ProfileFilterLinks {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Link to next page for this profile filter link collection. */
   core.String nextLink;
-
   /** Link to previous page for this profile filter link collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * results in the response.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   ProfileFilterLinks();
 
@@ -10223,33 +9731,25 @@ class ProfileFilterLinks {
   }
 }
 
-
 /** JSON template for a linked view (profile). */
 class ProfileRef {
   /** Account ID to which this view (profile) belongs. */
   core.String accountId;
-
   /** Link for this view (profile). */
   core.String href;
-
   /** View (Profile) ID. */
   core.String id;
-
   /** Internal ID for the web property to which this view (profile) belongs. */
   core.String internalWebPropertyId;
-
   /** Analytics view (profile) reference. */
   core.String kind;
-
   /** Name of this view (profile). */
   core.String name;
-
   /**
    * Web property ID of the form UA-XXXXX-YY to which this view (profile)
    * belongs.
    */
   core.String webPropertyId;
-
 
   ProfileRef();
 
@@ -10304,7 +9804,6 @@ class ProfileRef {
   }
 }
 
-
 /**
  * JSON template for an Analytics ProfileSummary. ProfileSummary returns basic
  * information (i.e., summary) for a profile.
@@ -10312,16 +9811,12 @@ class ProfileRef {
 class ProfileSummary {
   /** View (profile) ID. */
   core.String id;
-
   /** Resource type for Analytics ProfileSummary. */
   core.String kind;
-
   /** View (profile) name. */
   core.String name;
-
   /** View (Profile) type. Supported types: WEB or APP. */
   core.String type;
-
 
   ProfileSummary();
 
@@ -10358,7 +9853,6 @@ class ProfileSummary {
   }
 }
 
-
 /**
  * A view (profile) collection lists Analytics views (profiles) to which the
  * user has access. Each resource in the collection corresponds to a single
@@ -10367,7 +9861,6 @@ class ProfileSummary {
 class Profiles {
   /** A list of views (profiles). */
   core.List<Profile> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -10375,31 +9868,24 @@ class Profiles {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Link to next page for this view (profile) collection. */
   core.String nextLink;
-
   /** Link to previous page for this view (profile) collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * results in the response.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   Profiles();
 
@@ -10460,21 +9946,17 @@ class Profiles {
   }
 }
 
-
 class RealtimeDataColumnHeaders {
   /** Column Type. Either DIMENSION or METRIC. */
   core.String columnType;
-
   /**
    * Data type. Dimension column headers have only STRING as the data type.
    * Metric column headers have data types for metric values such as INTEGER,
    * DOUBLE, CURRENCY etc.
    */
   core.String dataType;
-
   /** Column name. */
   core.String name;
-
 
   RealtimeDataColumnHeaders();
 
@@ -10505,7 +9987,6 @@ class RealtimeDataColumnHeaders {
   }
 }
 
-
 /**
  * Information for the view (profile), for which the real time data was
  * requested.
@@ -10513,22 +9994,16 @@ class RealtimeDataColumnHeaders {
 class RealtimeDataProfileInfo {
   /** Account ID to which this view (profile) belongs. */
   core.String accountId;
-
   /** Internal ID for the web property to which this view (profile) belongs. */
   core.String internalWebPropertyId;
-
   /** View (Profile) ID. */
   core.String profileId;
-
   /** View (Profile) name. */
   core.String profileName;
-
   /** Table ID for view (profile). */
   core.String tableId;
-
   /** Web Property ID to which this view (profile) belongs. */
   core.String webPropertyId;
-
 
   RealtimeDataProfileInfo();
 
@@ -10577,27 +10052,20 @@ class RealtimeDataProfileInfo {
   }
 }
 
-
 /** Real time data request query parameters. */
 class RealtimeDataQuery {
   /** List of real time dimensions. */
   core.String dimensions;
-
   /** Comma-separated list of dimension or metric filters. */
   core.String filters;
-
   /** Unique table ID. */
   core.String ids;
-
   /** Maximum results per page. */
   core.int max_results;
-
   /** List of real time metrics. */
   core.List<core.String> metrics;
-
   /** List of dimensions or metrics based on which real time data is sorted. */
   core.List<core.String> sort;
-
 
   RealtimeDataQuery();
 
@@ -10646,7 +10114,6 @@ class RealtimeDataQuery {
   }
 }
 
-
 /** Real time data for a given view (profile). */
 class RealtimeData {
   /**
@@ -10654,45 +10121,36 @@ class RealtimeData {
    * order of dimensions and metrics is same as specified in the request.
    */
   core.List<RealtimeDataColumnHeaders> columnHeaders;
-
   /** Unique ID for this data response. */
   core.String id;
-
   /** Resource type. */
   core.String kind;
-
   /**
    * Information for the view (profile), for which the real time data was
    * requested.
    */
   RealtimeDataProfileInfo profileInfo;
-
   /** Real time data request query parameters. */
   RealtimeDataQuery query;
-
   /**
    * Real time data rows, where each row contains a list of dimension values
    * followed by the metric values. The order of dimensions and metrics is same
    * as specified in the request.
    */
   core.List<core.List<core.String>> rows;
-
   /** Link to this page. */
   core.String selfLink;
-
   /**
    * The total number of rows for the query, regardless of the number of rows in
    * the response.
    */
   core.int totalResults;
-
   /**
    * Total values for the requested metrics over all the results, not just the
    * results returned in this response. The order of the metric totals is same
    * as the metric order specified in the request.
    */
   core.Map<core.String, core.String> totalsForAllResults;
-
 
   RealtimeData();
 
@@ -10759,38 +10217,28 @@ class RealtimeData {
   }
 }
 
-
 /** JSON template for an Analytics segment. */
 class Segment {
   /** Time the segment was created. */
   core.DateTime created;
-
   /** Segment definition. */
   core.String definition;
-
   /** Segment ID. */
   core.String id;
-
   /** Resource type for Analytics segment. */
   core.String kind;
-
   /** Segment name. */
   core.String name;
-
   /**
    * Segment ID. Can be used with the 'segment' parameter in Core Reporting API.
    */
   core.String segmentId;
-
   /** Link for this segment. */
   core.String selfLink;
-
   /** Type for a segment. Possible values are "BUILT_IN" or "CUSTOM". */
   core.String type;
-
   /** Time the segment was last modified. */
   core.DateTime updated;
-
 
   Segment();
 
@@ -10857,7 +10305,6 @@ class Segment {
   }
 }
 
-
 /**
  * An segment collection lists Analytics segments that the user has access to.
  * Each resource in the collection corresponds to a single Analytics segment.
@@ -10865,7 +10312,6 @@ class Segment {
 class Segments {
   /** A list of segments. */
   core.List<Segment> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -10873,31 +10319,24 @@ class Segments {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type for segments. */
   core.String kind;
-
   /** Link to next page for this segment collection. */
   core.String nextLink;
-
   /** Link to previous page for this segment collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * results in the response.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   Segments();
 
@@ -10958,15 +10397,12 @@ class Segments {
   }
 }
 
-
 /** Download details for a file stored in Google Cloud Storage. */
 class UnsampledReportCloudStorageDownloadDetails {
   /** Id of the bucket the file object is stored in. */
   core.String bucketId;
-
   /** Id of the file object containing the report data. */
   core.String objectId;
-
 
   UnsampledReportCloudStorageDownloadDetails();
 
@@ -10991,12 +10427,10 @@ class UnsampledReportCloudStorageDownloadDetails {
   }
 }
 
-
 /** Download details for a file stored in Google Drive. */
 class UnsampledReportDriveDownloadDetails {
   /** Id of the document/file containing the report data. */
   core.String documentId;
-
 
   UnsampledReportDriveDownloadDetails();
 
@@ -11015,72 +10449,52 @@ class UnsampledReportDriveDownloadDetails {
   }
 }
 
-
 /** JSON template for Analytics unsampled report resource. */
 class UnsampledReport {
   /** Account ID to which this unsampled report belongs. */
   core.String accountId;
-
   /** Download details for a file stored in Google Cloud Storage. */
   UnsampledReportCloudStorageDownloadDetails cloudStorageDownloadDetails;
-
   /** Time this unsampled report was created. */
   core.DateTime created;
-
   /** The dimensions for the unsampled report. */
   core.String dimensions;
-
   /** The type of download you need to use for the report data file. */
   core.String downloadType;
-
   /** Download details for a file stored in Google Drive. */
   UnsampledReportDriveDownloadDetails driveDownloadDetails;
-
   /** The end date for the unsampled report. */
   core.String end_date;
-
   /** The filters for the unsampled report. */
   core.String filters;
-
   /** Unsampled report ID. */
   core.String id;
-
   /** Resource type for an Analytics unsampled report. */
   core.String kind;
-
   /** The metrics for the unsampled report. */
   core.String metrics;
-
   /** View (Profile) ID to which this unsampled report belongs. */
   core.String profileId;
-
   /** The segment for the unsampled report. */
   core.String segment;
-
   /** Link for this unsampled report. */
   core.String selfLink;
-
   /** The start date for the unsampled report. */
   core.String start_date;
-
   /**
    * Status of this unsampled report. Possible values are PENDING, COMPLETED, or
    * FAILED.
    */
   core.String status;
-
   /** Title of the unsampled report. */
   core.String title;
-
   /** Time this unsampled report was last modified. */
   core.DateTime updated;
-
   /**
    * Web property ID to which this unsampled report belongs. The web property ID
    * is of the form UA-XXXXX-YY.
    */
   core.String webPropertyId;
-
 
   UnsampledReport();
 
@@ -11207,7 +10621,6 @@ class UnsampledReport {
   }
 }
 
-
 /**
  * An unsampled report collection lists Analytics unsampled reports to which the
  * user has access. Each view (profile) can have a set of unsampled reports.
@@ -11217,7 +10630,6 @@ class UnsampledReport {
 class UnsampledReports {
   /** A list of unsampled reports. */
   core.List<UnsampledReport> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -11225,31 +10637,24 @@ class UnsampledReports {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Link to next page for this unsampled report collection. */
   core.String nextLink;
-
   /** Link to previous page for this unsampled report collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * resources in the result.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   UnsampledReports();
 
@@ -11310,30 +10715,23 @@ class UnsampledReports {
   }
 }
 
-
 /** Metadata returned for an upload operation. */
 class Upload {
   /** Account Id to which this upload belongs. */
   core.String accountId;
-
   /** Custom data source Id to which this data import belongs. */
   core.String customDataSourceId;
-
   /** Data import errors collection. */
   core.List<core.String> errors;
-
   /** A unique ID for this upload. */
   core.String id;
-
   /** Resource type for Analytics upload. */
   core.String kind;
-
   /**
    * Upload status. Possible values: PENDING, COMPLETED, FAILED, DELETING,
    * DELETED.
    */
   core.String status;
-
 
   Upload();
 
@@ -11382,7 +10780,6 @@ class Upload {
   }
 }
 
-
 /**
  * Upload collection lists Analytics uploads to which the user has access. Each
  * custom data source can have a set of uploads. Each resource in the upload
@@ -11391,7 +10788,6 @@ class Upload {
 class Uploads {
   /** A list of uploads. */
   core.List<Upload> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -11399,28 +10795,22 @@ class Uploads {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Link to next page for this upload collection. */
   core.String nextLink;
-
   /** Link to previous page for this upload collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * resources in the result.
    */
   core.int totalResults;
-
 
   Uploads();
 
@@ -11475,17 +10865,13 @@ class Uploads {
   }
 }
 
-
 /** JSON template for a user reference. */
 class UserRef {
   /** Email ID of this user. */
   core.String email;
-
   /** User ID. */
   core.String id;
-
   core.String kind;
-
 
   UserRef();
 
@@ -11516,27 +10902,20 @@ class UserRef {
   }
 }
 
-
 /** JSON template for a web property reference. */
 class WebPropertyRef {
   /** Account ID to which this web property belongs. */
   core.String accountId;
-
   /** Link for this web property. */
   core.String href;
-
   /** Web property ID of the form UA-XXXXX-YY. */
   core.String id;
-
   /** Internal ID for this web property. */
   core.String internalWebPropertyId;
-
   /** Analytics web property reference. */
   core.String kind;
-
   /** Name of this web property. */
   core.String name;
-
 
   WebPropertyRef();
 
@@ -11585,7 +10964,6 @@ class WebPropertyRef {
   }
 }
 
-
 /**
  * JSON template for an Analytics WebPropertySummary. WebPropertySummary returns
  * basic information (i.e., summary) for a web property.
@@ -11593,25 +10971,18 @@ class WebPropertyRef {
 class WebPropertySummary {
   /** Web property ID of the form UA-XXXXX-YY. */
   core.String id;
-
   /** Internal ID for this web property. */
   core.String internalWebPropertyId;
-
   /** Resource type for Analytics WebPropertySummary. */
   core.String kind;
-
   /** Level for this web property. Possible values are STANDARD or PREMIUM. */
   core.String level;
-
   /** Web property name. */
   core.String name;
-
   /** List of profiles under this web property. */
   core.List<ProfileSummary> profiles;
-
   /** Website url for this web property. */
   core.String websiteUrl;
-
 
   WebPropertySummary();
 
@@ -11666,7 +11037,6 @@ class WebPropertySummary {
   }
 }
 
-
 /**
  * A web property collection lists Analytics web properties to which the user
  * has access. Each resource in the collection corresponds to a single Analytics
@@ -11675,7 +11045,6 @@ class WebPropertySummary {
 class Webproperties {
   /** A list of web properties. */
   core.List<Webproperty> items;
-
   /**
    * The maximum number of resources the response can contain, regardless of the
    * actual number of resources returned. Its value ranges from 1 to 1000 with a
@@ -11683,31 +11052,24 @@ class Webproperties {
    * parameter.
    */
   core.int itemsPerPage;
-
   /** Collection type. */
   core.String kind;
-
   /** Link to next page for this web property collection. */
   core.String nextLink;
-
   /** Link to previous page for this web property collection. */
   core.String previousLink;
-
   /**
    * The starting index of the resources, which is 1 by default or otherwise
    * specified by the start-index query parameter.
    */
   core.int startIndex;
-
   /**
    * The total number of results for the query, regardless of the number of
    * results in the response.
    */
   core.int totalResults;
-
   /** Email ID of the authenticated user */
   core.String username;
-
 
   Webproperties();
 
@@ -11768,7 +11130,6 @@ class Webproperties {
   }
 }
 
-
 /**
  * Child link for this web property. Points to the list of views (profiles) for
  * this web property.
@@ -11776,10 +11137,8 @@ class Webproperties {
 class WebpropertyChildLink {
   /** Link to the list of views (profiles) for this web property. */
   core.String href;
-
   /** Type of the parent link. Its value is "analytics#profiles". */
   core.String type;
-
 
   WebpropertyChildLink();
 
@@ -11804,7 +11163,6 @@ class WebpropertyChildLink {
   }
 }
 
-
 /**
  * Parent link for this web property. Points to the account to which this web
  * property belongs.
@@ -11812,10 +11170,8 @@ class WebpropertyChildLink {
 class WebpropertyParentLink {
   /** Link to the account for this web property. */
   core.String href;
-
   /** Type of the parent link. Its value is "analytics#account". */
   core.String type;
-
 
   WebpropertyParentLink();
 
@@ -11840,7 +11196,6 @@ class WebpropertyParentLink {
   }
 }
 
-
 /** Permissions the user has for this web property. */
 class WebpropertyPermissions {
   /**
@@ -11849,7 +11204,6 @@ class WebpropertyPermissions {
    * from the parent account.
    */
   core.List<core.String> effective;
-
 
   WebpropertyPermissions();
 
@@ -11868,63 +11222,46 @@ class WebpropertyPermissions {
   }
 }
 
-
 /** JSON template for an Analytics web property. */
 class Webproperty {
   /** Account ID to which this web property belongs. */
   core.String accountId;
-
   /**
    * Child link for this web property. Points to the list of views (profiles)
    * for this web property.
    */
   WebpropertyChildLink childLink;
-
   /** Time this web property was created. */
   core.DateTime created;
-
   /** Default view (profile) ID. */
   core.String defaultProfileId;
-
   /** Web property ID of the form UA-XXXXX-YY. */
   core.String id;
-
   /** The industry vertical/category selected for this web property. */
   core.String industryVertical;
-
   /** Internal ID for this web property. */
   core.String internalWebPropertyId;
-
   /** Resource type for Analytics WebProperty. */
   core.String kind;
-
   /** Level for this web property. Possible values are STANDARD or PREMIUM. */
   core.String level;
-
   /** Name of this web property. */
   core.String name;
-
   /**
    * Parent link for this web property. Points to the account to which this web
    * property belongs.
    */
   WebpropertyParentLink parentLink;
-
   /** Permissions the user has for this web property. */
   WebpropertyPermissions permissions;
-
   /** View (Profile) count for this web property. */
   core.int profileCount;
-
   /** Link for this web property. */
   core.String selfLink;
-
   /** Time this web property was last modified. */
   core.DateTime updated;
-
   /** Website url for this web property. */
   core.String websiteUrl;
-
 
   Webproperty();
 

@@ -43,6 +43,7 @@ class GenomicsApi {
   ReadsResourceApi get reads => new ReadsResourceApi(_requester);
   ReferencesResourceApi get references => new ReferencesResourceApi(_requester);
   ReferencesetsResourceApi get referencesets => new ReferencesetsResourceApi(_requester);
+  StreamingReadstoreResourceApi get streamingReadstore => new StreamingReadstoreResourceApi(_requester);
   VariantsResourceApi get variants => new VariantsResourceApi(_requester);
   VariantsetsResourceApi get variantsets => new VariantsetsResourceApi(_requester);
 
@@ -71,7 +72,7 @@ class AnnotationSetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AnnotationSet> create(AnnotationSet request) {
     var _url = null;
@@ -84,7 +85,6 @@ class AnnotationSetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'annotationSets';
 
@@ -110,7 +110,7 @@ class AnnotationSetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String annotationSetId) {
     var _url = null;
@@ -152,7 +152,7 @@ class AnnotationSetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AnnotationSet> get(core.String annotationSetId) {
     var _url = null;
@@ -165,7 +165,6 @@ class AnnotationSetsResourceApi {
     if (annotationSetId == null) {
       throw new core.ArgumentError("Parameter annotationSetId is required.");
     }
-
 
     _url = 'annotationSets/' + commons.Escaper.ecapeVariable('$annotationSetId');
 
@@ -197,7 +196,7 @@ class AnnotationSetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AnnotationSet> patch(AnnotationSet request, core.String annotationSetId) {
     var _url = null;
@@ -213,7 +212,6 @@ class AnnotationSetsResourceApi {
     if (annotationSetId == null) {
       throw new core.ArgumentError("Parameter annotationSetId is required.");
     }
-
 
     _url = 'annotationSets/' + commons.Escaper.ecapeVariable('$annotationSetId');
 
@@ -242,7 +240,7 @@ class AnnotationSetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SearchAnnotationSetsResponse> search(SearchAnnotationSetsRequest request) {
     var _url = null;
@@ -255,7 +253,6 @@ class AnnotationSetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'annotationSets/search';
 
@@ -286,7 +283,7 @@ class AnnotationSetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AnnotationSet> update(AnnotationSet request, core.String annotationSetId) {
     var _url = null;
@@ -302,7 +299,6 @@ class AnnotationSetsResourceApi {
     if (annotationSetId == null) {
       throw new core.ArgumentError("Parameter annotationSetId is required.");
     }
-
 
     _url = 'annotationSets/' + commons.Escaper.ecapeVariable('$annotationSetId');
 
@@ -348,7 +344,7 @@ class AnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BatchAnnotationsResponse> batchCreate(BatchCreateAnnotationsRequest request) {
     var _url = null;
@@ -361,7 +357,6 @@ class AnnotationsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'annotations:batchCreate';
 
@@ -389,7 +384,7 @@ class AnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Annotation> create(Annotation request) {
     var _url = null;
@@ -402,7 +397,6 @@ class AnnotationsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'annotations';
 
@@ -428,7 +422,7 @@ class AnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String annotationId) {
     var _url = null;
@@ -470,7 +464,7 @@ class AnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Annotation> get(core.String annotationId) {
     var _url = null;
@@ -483,7 +477,6 @@ class AnnotationsResourceApi {
     if (annotationId == null) {
       throw new core.ArgumentError("Parameter annotationId is required.");
     }
-
 
     _url = 'annotations/' + commons.Escaper.ecapeVariable('$annotationId');
 
@@ -515,7 +508,7 @@ class AnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Annotation> patch(Annotation request, core.String annotationId) {
     var _url = null;
@@ -531,7 +524,6 @@ class AnnotationsResourceApi {
     if (annotationId == null) {
       throw new core.ArgumentError("Parameter annotationId is required.");
     }
-
 
     _url = 'annotations/' + commons.Escaper.ecapeVariable('$annotationId');
 
@@ -561,7 +553,7 @@ class AnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SearchAnnotationsResponse> search(SearchAnnotationsRequest request) {
     var _url = null;
@@ -574,7 +566,6 @@ class AnnotationsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'annotations/search';
 
@@ -605,7 +596,7 @@ class AnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Annotation> update(Annotation request, core.String annotationId) {
     var _url = null;
@@ -621,7 +612,6 @@ class AnnotationsResourceApi {
     if (annotationId == null) {
       throw new core.ArgumentError("Parameter annotationId is required.");
     }
-
 
     _url = 'annotations/' + commons.Escaper.ecapeVariable('$annotationId');
 
@@ -657,7 +647,7 @@ class CallsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CallSet> create(CallSet request) {
     var _url = null;
@@ -670,7 +660,6 @@ class CallsetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'callsets';
 
@@ -695,7 +684,7 @@ class CallsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String callSetId) {
     var _url = null;
@@ -736,7 +725,7 @@ class CallsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CallSet> get(core.String callSetId) {
     var _url = null;
@@ -749,7 +738,6 @@ class CallsetsResourceApi {
     if (callSetId == null) {
       throw new core.ArgumentError("Parameter callSetId is required.");
     }
-
 
     _url = 'callsets/' + commons.Escaper.ecapeVariable('$callSetId');
 
@@ -778,7 +766,7 @@ class CallsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CallSet> patch(CallSet request, core.String callSetId) {
     var _url = null;
@@ -794,7 +782,6 @@ class CallsetsResourceApi {
     if (callSetId == null) {
       throw new core.ArgumentError("Parameter callSetId is required.");
     }
-
 
     _url = 'callsets/' + commons.Escaper.ecapeVariable('$callSetId');
 
@@ -823,7 +810,7 @@ class CallsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SearchCallSetsResponse> search(SearchCallSetsRequest request) {
     var _url = null;
@@ -836,7 +823,6 @@ class CallsetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'callsets/search';
 
@@ -865,7 +851,7 @@ class CallsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CallSet> update(CallSet request, core.String callSetId) {
     var _url = null;
@@ -881,7 +867,6 @@ class CallsetsResourceApi {
     if (callSetId == null) {
       throw new core.ArgumentError("Parameter callSetId is required.");
     }
-
 
     _url = 'callsets/' + commons.Escaper.ecapeVariable('$callSetId');
 
@@ -917,7 +902,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Dataset> create(Dataset request) {
     var _url = null;
@@ -930,7 +915,6 @@ class DatasetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'datasets';
 
@@ -955,7 +939,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String datasetId) {
     var _url = null;
@@ -996,7 +980,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Dataset> get(core.String datasetId) {
     var _url = null;
@@ -1009,7 +993,6 @@ class DatasetsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-
 
     _url = 'datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
@@ -1043,7 +1026,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListDatasetsResponse> list({core.int pageSize, core.String pageToken, core.String projectNumber}) {
     var _url = null;
@@ -1062,7 +1045,6 @@ class DatasetsResourceApi {
     if (projectNumber != null) {
       _queryParams["projectNumber"] = [projectNumber];
     }
-
 
     _url = 'datasets';
 
@@ -1091,7 +1073,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Dataset> patch(Dataset request, core.String datasetId) {
     var _url = null;
@@ -1107,7 +1089,6 @@ class DatasetsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-
 
     _url = 'datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
@@ -1135,7 +1116,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Dataset> undelete(core.String datasetId) {
     var _url = null;
@@ -1148,7 +1129,6 @@ class DatasetsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-
 
     _url = 'datasets/' + commons.Escaper.ecapeVariable('$datasetId') + '/undelete';
 
@@ -1177,7 +1157,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Dataset> update(Dataset request, core.String datasetId) {
     var _url = null;
@@ -1193,7 +1173,6 @@ class DatasetsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-
 
     _url = 'datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
@@ -1240,7 +1219,7 @@ class ExperimentalJobsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ExperimentalCreateJobResponse> create(ExperimentalCreateJobRequest request) {
     var _url = null;
@@ -1253,7 +1232,6 @@ class ExperimentalJobsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'experimental/jobs/create';
 
@@ -1288,7 +1266,7 @@ class JobsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future cancel(core.String jobId) {
     var _url = null;
@@ -1329,7 +1307,7 @@ class JobsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Job> get(core.String jobId) {
     var _url = null;
@@ -1342,7 +1320,6 @@ class JobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-
 
     _url = 'jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
@@ -1369,7 +1346,7 @@ class JobsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SearchJobsResponse> search(SearchJobsRequest request) {
     var _url = null;
@@ -1382,7 +1359,6 @@ class JobsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'jobs/search';
 
@@ -1422,7 +1398,7 @@ class ReadgroupsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AlignReadGroupSetsResponse> align(AlignReadGroupSetsRequest request) {
     var _url = null;
@@ -1435,7 +1411,6 @@ class ReadgroupsetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'readgroupsets/align';
 
@@ -1464,7 +1439,7 @@ class ReadgroupsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CallReadGroupSetsResponse> call(CallReadGroupSetsRequest request) {
     var _url = null;
@@ -1477,7 +1452,6 @@ class ReadgroupsetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'readgroupsets/call';
 
@@ -1504,7 +1478,7 @@ class ReadgroupsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String readGroupSetId) {
     var _url = null;
@@ -1551,7 +1525,7 @@ class ReadgroupsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ExportReadGroupSetsResponse> export(ExportReadGroupSetsRequest request) {
     var _url = null;
@@ -1564,7 +1538,6 @@ class ReadgroupsetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'readgroupsets/export';
 
@@ -1591,7 +1564,7 @@ class ReadgroupsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ReadGroupSet> get(core.String readGroupSetId) {
     var _url = null;
@@ -1604,7 +1577,6 @@ class ReadgroupsetsResourceApi {
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
     }
-
 
     _url = 'readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId');
 
@@ -1636,7 +1608,7 @@ class ReadgroupsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ImportReadGroupSetsResponse> import(ImportReadGroupSetsRequest request) {
     var _url = null;
@@ -1649,7 +1621,6 @@ class ReadgroupsetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'readgroupsets/import';
 
@@ -1680,7 +1651,7 @@ class ReadgroupsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ReadGroupSet> patch(ReadGroupSet request, core.String readGroupSetId) {
     var _url = null;
@@ -1696,7 +1667,6 @@ class ReadgroupsetsResourceApi {
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
     }
-
 
     _url = 'readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId');
 
@@ -1725,7 +1695,7 @@ class ReadgroupsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SearchReadGroupSetsResponse> search(SearchReadGroupSetsRequest request) {
     var _url = null;
@@ -1738,7 +1708,6 @@ class ReadgroupsetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'readgroupsets/search';
 
@@ -1769,7 +1738,7 @@ class ReadgroupsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ReadGroupSet> update(ReadGroupSet request, core.String readGroupSetId) {
     var _url = null;
@@ -1785,7 +1754,6 @@ class ReadgroupsetsResourceApi {
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
     }
-
 
     _url = 'readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId');
 
@@ -1853,7 +1821,7 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId, {core.int pageSize, core.String pageToken, core.String range_end, core.String range_referenceName, core.String range_start, core.String targetBucketWidth}) {
     var _url = null;
@@ -1884,7 +1852,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     if (targetBucketWidth != null) {
       _queryParams["targetBucketWidth"] = [targetBucketWidth];
     }
-
 
     _url = 'readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId') + '/coveragebuckets';
 
@@ -1934,7 +1901,7 @@ class ReadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SearchReadsResponse> search(SearchReadsRequest request) {
     var _url = null;
@@ -1947,7 +1914,6 @@ class ReadsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'reads/search';
 
@@ -1987,7 +1953,7 @@ class ReferencesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Reference> get(core.String referenceId) {
     var _url = null;
@@ -2000,7 +1966,6 @@ class ReferencesResourceApi {
     if (referenceId == null) {
       throw new core.ArgumentError("Parameter referenceId is required.");
     }
-
 
     _url = 'references/' + commons.Escaper.ecapeVariable('$referenceId');
 
@@ -2029,7 +1994,7 @@ class ReferencesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SearchReferencesResponse> search(SearchReferencesRequest request) {
     var _url = null;
@@ -2042,7 +2007,6 @@ class ReferencesResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'references/search';
 
@@ -2092,7 +2056,7 @@ class ReferencesBasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListBasesResponse> list(core.String referenceId, {core.String end, core.int pageSize, core.String pageToken, core.String start}) {
     var _url = null;
@@ -2117,7 +2081,6 @@ class ReferencesBasesResourceApi {
     if (start != null) {
       _queryParams["start"] = [start];
     }
-
 
     _url = 'references/' + commons.Escaper.ecapeVariable('$referenceId') + '/bases';
 
@@ -2155,7 +2118,7 @@ class ReferencesetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ReferenceSet> get(core.String referenceSetId) {
     var _url = null;
@@ -2168,7 +2131,6 @@ class ReferencesetsResourceApi {
     if (referenceSetId == null) {
       throw new core.ArgumentError("Parameter referenceSetId is required.");
     }
-
 
     _url = 'referencesets/' + commons.Escaper.ecapeVariable('$referenceSetId');
 
@@ -2197,7 +2159,7 @@ class ReferencesetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SearchReferenceSetsResponse> search(SearchReferenceSetsRequest request) {
     var _url = null;
@@ -2211,7 +2173,6 @@ class ReferencesetsResourceApi {
       _body = convert.JSON.encode((request).toJson());
     }
 
-
     _url = 'referencesets/search';
 
     var _response = _requester.request(_url,
@@ -2222,6 +2183,64 @@ class ReferencesetsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new SearchReferenceSetsResponse.fromJson(data));
+  }
+
+}
+
+
+class StreamingReadstoreResourceApi {
+  final commons.ApiRequester _requester;
+
+  StreamingReadstoreResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets a stream of reads for one or more read group sets. Reads search
+   * operates over a genomic coordinate space of reference sequence & position
+   * defined over the reference sequences to which the requested read group sets
+   * are aligned.
+   *
+   * If a target positional range is specified, all reads whose alignment to the
+   * reference genome overlap the range are returned.
+   *
+   * All reads returned are ordered by genomic coordinate (reference sequence &
+   * position). Reads with equivalent genomic coordinates are returned in a
+   * deterministic order.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [StreamReadsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StreamReadsResponse> streamreads(StreamReadsRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'streamingReadstore/streamreads';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StreamReadsResponse.fromJson(data));
   }
 
 }
@@ -2246,7 +2265,7 @@ class VariantsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Variant> create(Variant request) {
     var _url = null;
@@ -2259,7 +2278,6 @@ class VariantsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'variants';
 
@@ -2284,7 +2302,7 @@ class VariantsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String variantId) {
     var _url = null;
@@ -2325,7 +2343,7 @@ class VariantsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Variant> get(core.String variantId) {
     var _url = null;
@@ -2338,7 +2356,6 @@ class VariantsResourceApi {
     if (variantId == null) {
       throw new core.ArgumentError("Parameter variantId is required.");
     }
-
 
     _url = 'variants/' + commons.Escaper.ecapeVariable('$variantId');
 
@@ -2367,7 +2384,7 @@ class VariantsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SearchVariantsResponse> search(SearchVariantsRequest request) {
     var _url = null;
@@ -2380,7 +2397,6 @@ class VariantsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'variants/search';
 
@@ -2410,7 +2426,7 @@ class VariantsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Variant> update(Variant request, core.String variantId) {
     var _url = null;
@@ -2426,7 +2442,6 @@ class VariantsResourceApi {
     if (variantId == null) {
       throw new core.ArgumentError("Parameter variantId is required.");
     }
-
 
     _url = 'variants/' + commons.Escaper.ecapeVariable('$variantId');
 
@@ -2461,7 +2476,7 @@ class VariantsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String variantSetId) {
     var _url = null;
@@ -2506,7 +2521,7 @@ class VariantsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ExportVariantSetResponse> export(ExportVariantSetRequest request, core.String variantSetId) {
     var _url = null;
@@ -2522,7 +2537,6 @@ class VariantsetsResourceApi {
     if (variantSetId == null) {
       throw new core.ArgumentError("Parameter variantSetId is required.");
     }
-
 
     _url = 'variantsets/' + commons.Escaper.ecapeVariable('$variantSetId') + '/export';
 
@@ -2549,7 +2563,7 @@ class VariantsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VariantSet> get(core.String variantSetId) {
     var _url = null;
@@ -2562,7 +2576,6 @@ class VariantsetsResourceApi {
     if (variantSetId == null) {
       throw new core.ArgumentError("Parameter variantSetId is required.");
     }
-
 
     _url = 'variantsets/' + commons.Escaper.ecapeVariable('$variantSetId');
 
@@ -2600,7 +2613,7 @@ class VariantsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ImportVariantsResponse> importVariants(ImportVariantsRequest request, core.String variantSetId) {
     var _url = null;
@@ -2616,7 +2629,6 @@ class VariantsetsResourceApi {
     if (variantSetId == null) {
       throw new core.ArgumentError("Parameter variantSetId is required.");
     }
-
 
     _url = 'variantsets/' + commons.Escaper.ecapeVariable('$variantSetId') + '/importVariants';
 
@@ -2650,7 +2662,7 @@ class VariantsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future mergeVariants(MergeVariantsRequest request, core.String variantSetId) {
     var _url = null;
@@ -2697,7 +2709,7 @@ class VariantsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VariantSet> patch(VariantSet request, core.String variantSetId) {
     var _url = null;
@@ -2713,7 +2725,6 @@ class VariantsetsResourceApi {
     if (variantSetId == null) {
       throw new core.ArgumentError("Parameter variantSetId is required.");
     }
-
 
     _url = 'variantsets/' + commons.Escaper.ecapeVariable('$variantSetId');
 
@@ -2742,7 +2753,7 @@ class VariantsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SearchVariantSetsResponse> search(SearchVariantSetsRequest request) {
     var _url = null;
@@ -2755,7 +2766,6 @@ class VariantsetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'variantsets/search';
 
@@ -2785,7 +2795,7 @@ class VariantsetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VariantSet> update(VariantSet request, core.String variantSetId) {
     var _url = null;
@@ -2801,7 +2811,6 @@ class VariantsetsResourceApi {
     if (variantSetId == null) {
       throw new core.ArgumentError("Parameter variantSetId is required.");
     }
-
 
     _url = 'variantsets/' + commons.Escaper.ecapeVariable('$variantSetId');
 
@@ -2827,13 +2836,11 @@ class AlignReadGroupSetsRequest {
    * provided. The caller must have READ permissions for these files.
    */
   core.List<core.String> bamSourceUris;
-
   /**
    * Required. The ID of the dataset the newly aligned read group sets will
    * belong to. The caller must have WRITE permissions to this dataset.
    */
   core.String datasetId;
-
   /**
    * The interleaved FASTQ source files for alignment, where both members of
    * each pair of reads are found on consecutive records within the same FASTQ
@@ -2841,7 +2848,6 @@ class AlignReadGroupSetsRequest {
    * or pairedFastqSource must be provided.
    */
   InterleavedFastqSource interleavedFastqSource;
-
   /**
    * The paired end FASTQ source files for alignment, where each member of a
    * pair of reads are found in separate files. Exactly one of readGroupSetId,
@@ -2849,7 +2855,6 @@ class AlignReadGroupSetsRequest {
    * provided.
    */
   PairedFastqSource pairedFastqSource;
-
   /**
    * The ID of the read group set which will be aligned. A new read group set
    * will be generated to hold the aligned data, the originals will not be
@@ -2858,7 +2863,6 @@ class AlignReadGroupSetsRequest {
    * pairedFastqSource must be provided.
    */
   core.String readGroupSetId;
-
 
   AlignReadGroupSetsRequest();
 
@@ -2901,12 +2905,10 @@ class AlignReadGroupSetsRequest {
   }
 }
 
-
 /** The read group set align response. */
 class AlignReadGroupSetsResponse {
   /** A job ID that can be used to get status information. */
   core.String jobId;
-
 
   AlignReadGroupSetsResponse();
 
@@ -2925,7 +2927,6 @@ class AlignReadGroupSetsResponse {
   }
 }
 
-
 /**
  * An annotation describes a region of reference genome. The value of an
  * annotation may be one of several canonical types, supplemented by arbitrary
@@ -2937,19 +2938,14 @@ class AlignReadGroupSetsResponse {
 class Annotation {
   /** The ID of the containing annotation set. */
   core.String annotationSetId;
-
   /** The generated unique ID for this annotation. */
   core.String id;
-
   /** A map of additional data for this annotation. */
   core.Map<core.String, core.List<core.String>> info;
-
   /** The display name of this annotation. */
   core.String name;
-
   /** The position of this annotation on the reference sequence. */
   RangePosition position;
-
   /**
    * A transcript value represents the assertion that a particular region of the
    * reference genome may be transcribed as RNA. An alternative splicing pattern
@@ -2957,7 +2953,6 @@ class Annotation {
    * set for annotations of type TRANSCRIPT.
    */
   Transcript transcript;
-
   /**
    * The data type for this annotation. Must match the containing annotation
    * set's type.
@@ -2968,7 +2963,6 @@ class Annotation {
    * - "VARIANT"
    */
   core.String type;
-
   /**
    * A variant annotation, which describes the effect of a variant on the
    * genome, the coding sequence, and/or higher level consequences at the
@@ -2976,7 +2970,6 @@ class Annotation {
    * of type VARIANT.
    */
   VariantAnnotation variant;
-
 
   Annotation();
 
@@ -3037,7 +3030,6 @@ class Annotation {
   }
 }
 
-
 /**
  * An annotation set is a logical grouping of annotations that share consistent
  * type information and provenance. Examples of annotation sets include 'all
@@ -3046,28 +3038,22 @@ class Annotation {
 class AnnotationSet {
   /** The ID of the containing dataset. */
   core.String datasetId;
-
   /** The generated unique ID for this annotation set. */
   core.String id;
-
   /** A map of additional data for this annotation set. */
   core.Map<core.String, core.List<core.String>> info;
-
   /** The display name for this annotation set. */
   core.String name;
-
   /**
    * The ID of the reference set that defines the coordinate space for this
    * set's annotations.
    */
   core.String referenceSetId;
-
   /**
    * The source URI describing the file from which this annotation set was
    * generated, if any.
    */
   core.String sourceUri;
-
   /**
    * The type of annotations contained within this set.
    * Possible string values are:
@@ -3077,7 +3063,6 @@ class AnnotationSet {
    * - "VARIANT"
    */
   core.String type;
-
 
   AnnotationSet();
 
@@ -3132,14 +3117,12 @@ class AnnotationSet {
   }
 }
 
-
 class BatchAnnotationsResponse {
   /**
    * The resulting per-annotation entries, ordered consistently with the
    * original request.
    */
   core.List<BatchAnnotationsResponseEntry> entries;
-
 
   BatchAnnotationsResponse();
 
@@ -3158,14 +3141,11 @@ class BatchAnnotationsResponse {
   }
 }
 
-
 class BatchAnnotationsResponseEntry {
   /** The annotation, if any. */
   Annotation annotation;
-
   /** The resulting status for this annotation operation. */
   BatchAnnotationsResponseEntryStatus status;
-
 
   BatchAnnotationsResponseEntry();
 
@@ -3190,14 +3170,11 @@ class BatchAnnotationsResponseEntry {
   }
 }
 
-
 class BatchAnnotationsResponseEntryStatus {
   /** The HTTP status code for this operation. */
   core.int code;
-
   /** Error message for this status, if any. */
   core.String message;
-
 
   BatchAnnotationsResponseEntryStatus();
 
@@ -3222,14 +3199,12 @@ class BatchAnnotationsResponseEntryStatus {
   }
 }
 
-
 class BatchCreateAnnotationsRequest {
   /**
    * The annotations to be created. At most 4096 can be specified in a single
    * request.
    */
   core.List<Annotation> annotations;
-
 
   BatchCreateAnnotationsRequest();
 
@@ -3248,7 +3223,6 @@ class BatchCreateAnnotationsRequest {
   }
 }
 
-
 /**
  * A call represents the determination of genotype with respect to a particular
  * variant. It may include associated information such as quality and phasing.
@@ -3258,10 +3232,8 @@ class BatchCreateAnnotationsRequest {
 class Call {
   /** The ID of the call set this variant call belongs to. */
   core.String callSetId;
-
   /** The name of the call set this variant call belongs to. */
   core.String callSetName;
-
   /**
    * The genotype of this variant call. Each value represents either the value
    * of the referenceBases field or a 1-based index into alternateBases. If a
@@ -3273,7 +3245,6 @@ class Call {
    * (that is, a . is present in the GT string) -1 is returned.
    */
   core.List<core.int> genotype;
-
   /**
    * The genotype likelihoods for this variant call. Each array entry represents
    * how likely a specific genotype is for this call. The value ordering is
@@ -3283,10 +3254,8 @@ class Call {
    * are stored in info.
    */
   core.List<core.double> genotypeLikelihood;
-
   /** A map of additional variant call information. */
   core.Map<core.String, core.List<core.String>> info;
-
   /**
    * If this field is present, this variant call's genotype ordering implies the
    * phase of the bases and is consistent with any other variant calls in the
@@ -3295,7 +3264,6 @@ class Call {
    * specified this field will be set to *.
    */
   core.String phaseset;
-
 
   Call();
 
@@ -3344,7 +3312,6 @@ class Call {
   }
 }
 
-
 /** The read group set call request. */
 class CallReadGroupSetsRequest {
   /**
@@ -3352,21 +3319,18 @@ class CallReadGroupSetsRequest {
    * caller must have WRITE permissions to this dataset.
    */
   core.String datasetId;
-
   /**
    * The IDs of the read group sets which will be called. The caller must have
    * READ permissions for these read group sets. One of readGroupSetId or
    * sourceUris must be provided.
    */
   core.String readGroupSetId;
-
   /**
    * A list of URIs pointing at BAM files in Google Cloud Storage which will be
    * called. FASTQ files are not allowed. The caller must have READ permissions
    * for these files. One of readGroupSetId or sourceUris must be provided.
    */
   core.List<core.String> sourceUris;
-
 
   CallReadGroupSetsRequest();
 
@@ -3397,12 +3361,10 @@ class CallReadGroupSetsRequest {
   }
 }
 
-
 /** The read group set call response. */
 class CallReadGroupSetsResponse {
   /** A job ID that can be used to get status information. */
   core.String jobId;
-
 
   CallReadGroupSetsResponse();
 
@@ -3421,7 +3383,6 @@ class CallReadGroupSetsResponse {
   }
 }
 
-
 /**
  * A call set is a collection of variant calls, typically for one sample. It
  * belongs to a variant set.
@@ -3429,22 +3390,16 @@ class CallReadGroupSetsResponse {
 class CallSet {
   /** The date this call set was created in milliseconds from the epoch. */
   core.String created;
-
   /** The Google generated ID of the call set, immutable. */
   core.String id;
-
   /** A map of additional call set information. */
   core.Map<core.String, core.List<core.String>> info;
-
   /** The call set name. */
   core.String name;
-
   /** The sample ID this call set corresponds to. */
   core.String sampleId;
-
   /** The IDs of the variant sets this call set belongs to. */
   core.List<core.String> variantSetIds;
-
 
   CallSet();
 
@@ -3493,7 +3448,6 @@ class CallSet {
   }
 }
 
-
 /** A single CIGAR operation. */
 class CigarUnit {
   /**
@@ -3504,23 +3458,21 @@ class CigarUnit {
    * - "CLIP_SOFT"
    * - "DELETE"
    * - "INSERT"
+   * - "OPERATION_UNSPECIFIED"
    * - "PAD"
    * - "SEQUENCE_MATCH"
    * - "SEQUENCE_MISMATCH"
    * - "SKIP"
    */
   core.String operation;
-
   /** The number of bases that the operation runs for. Required. */
   core.String operationLength;
-
   /**
    * referenceSequence is only used at mismatches (SEQUENCE_MISMATCH) and
    * deletions (DELETE). Filling this field replaces SAM's MD tag. If the
    * relevant information is not available, this field is unset.
    */
   core.String referenceSequence;
-
 
   CigarUnit();
 
@@ -3551,7 +3503,6 @@ class CigarUnit {
   }
 }
 
-
 /**
  * A bucket over which read coverage has been precomputed. A bucket corresponds
  * to a specific range of the reference sequence.
@@ -3562,10 +3513,8 @@ class CoverageBucket {
    * base in this bucket.
    */
   core.double meanCoverage;
-
   /** The genomic coordinate range spanned by this bucket. */
   Range range;
-
 
   CoverageBucket();
 
@@ -3590,26 +3539,21 @@ class CoverageBucket {
   }
 }
 
-
 /** A Dataset is a collection of genomic data. */
 class Dataset {
   /** The Google generated ID of the dataset, immutable. */
   core.String id;
-
   /**
    * Flag indicating whether or not a dataset is publicly viewable. If a dataset
    * is not public, it inherits viewing permissions from its project.
    */
   core.bool isPublic;
-
   /** The dataset name. */
   core.String name;
-
   /**
    * The Google Developers Console project number that this dataset belongs to.
    */
   core.String projectNumber;
-
 
   Dataset();
 
@@ -3646,7 +3590,6 @@ class Dataset {
   }
 }
 
-
 /** The job creation request. */
 class ExperimentalCreateJobRequest {
   /**
@@ -3654,31 +3597,26 @@ class ExperimentalCreateJobRequest {
    * callVariants must be set.
    */
   core.bool align;
-
   /**
    * Specifies whether or not to run the variant calling pipeline. Either align
    * or callVariants must be set.
    */
   core.bool callVariants;
-
   /**
    * Specifies where to copy the results of certain pipelines. This should be in
    * the form of gs://bucket/path.
    */
   core.String gcsOutputPath;
-
   /**
    * A list of Google Cloud Storage URIs of paired end .fastq files to operate
    * upon. If specified, this represents the second file of each paired .fastq
    * file. The first file of each pair should be specified in sourceUris.
    */
   core.List<core.String> pairedSourceUris;
-
   /**
    * Required. The Google Cloud Project ID with which to associate the request.
    */
   core.String projectNumber;
-
   /**
    * A list of Google Cloud Storage URIs of data files to operate upon. These
    * can be .bam, interleaved .fastq, or paired .fastq. If specifying paired
@@ -3686,7 +3624,6 @@ class ExperimentalCreateJobRequest {
    * the second of each pair should be listed in pairedSourceUris.
    */
   core.List<core.String> sourceUris;
-
 
   ExperimentalCreateJobRequest();
 
@@ -3735,12 +3672,10 @@ class ExperimentalCreateJobRequest {
   }
 }
 
-
 /** The job creation response. */
 class ExperimentalCreateJobResponse {
   /** A job ID that can be used to get status information. */
   core.String jobId;
-
 
   ExperimentalCreateJobResponse();
 
@@ -3759,7 +3694,6 @@ class ExperimentalCreateJobResponse {
   }
 }
 
-
 /** The read group set export request. */
 class ExportReadGroupSetsRequest {
   /**
@@ -3768,20 +3702,16 @@ class ExportReadGroupSetsRequest {
    * returned if the URI already contains data.
    */
   core.String exportUri;
-
   /** The Google Developers Console project number that owns this export. */
   core.String projectNumber;
-
   /** The IDs of the read group sets to export. */
   core.List<core.String> readGroupSetIds;
-
   /**
    * The reference names to export. If this is not specified, all reference
    * sequences, including unmapped reads, are exported. Use * to export only
    * unmapped reads.
    */
   core.List<core.String> referenceNames;
-
 
   ExportReadGroupSetsRequest();
 
@@ -3818,12 +3748,10 @@ class ExportReadGroupSetsRequest {
   }
 }
 
-
 /** The read group set export response. */
 class ExportReadGroupSetsResponse {
   /** A job ID that can be used to get status information. */
   core.String jobId;
-
 
   ExportReadGroupSetsResponse();
 
@@ -3842,7 +3770,6 @@ class ExportReadGroupSetsResponse {
   }
 }
 
-
 /** The variant data export request. */
 class ExportVariantSetRequest {
   /**
@@ -3850,33 +3777,28 @@ class ExportVariantSetRequest {
    * Genomics concept of "dataset".
    */
   core.String bigqueryDataset;
-
   /**
    * The BigQuery table to export data to. If the table doesn't exist, it will
    * be created. If it already exists, it will be overwritten.
    */
   core.String bigqueryTable;
-
   /**
    * If provided, only variant call information from the specified call sets
    * will be exported. By default all variant calls are exported.
    */
   core.List<core.String> callSetIds;
-
   /**
    * The format for the exported data.
    * Possible string values are:
    * - "BIGQUERY"
    */
   core.String format;
-
   /**
    * The Google Cloud project number that owns the destination BigQuery dataset.
    * The caller must have WRITE access to this project. This project will also
    * own the resulting export job.
    */
   core.String projectNumber;
-
 
   ExportVariantSetRequest();
 
@@ -3919,12 +3841,10 @@ class ExportVariantSetRequest {
   }
 }
 
-
 /** The variant data export response. */
 class ExportVariantSetResponse {
   /** A job ID that can be used to get status information. */
   core.String jobId;
-
 
   ExportVariantSetResponse();
 
@@ -3943,14 +3863,11 @@ class ExportVariantSetResponse {
   }
 }
 
-
 class ExternalId {
   /** The id used by the source of this data. */
   core.String id;
-
   /** The name of the source of this data. */
   core.String sourceName;
-
 
   ExternalId();
 
@@ -3975,29 +3892,23 @@ class ExternalId {
   }
 }
 
-
 class FastqMetadata {
   /** Optionally specifies the library name for alignment from FASTQ. */
   core.String libraryName;
-
   /**
    * Optionally specifies the platform name for alignment from FASTQ. For
    * example: CAPILLARY, LS454, ILLUMINA, SOLID, HELICOS, IONTORRENT, PACBIO.
    */
   core.String platformName;
-
   /**
    * Optionally specifies the platform unit for alignment from FASTQ. For
    * example: flowcell-barcode.lane for Illumina or slide for SOLID.
    */
   core.String platformUnit;
-
   /** Optionally specifies the read group name for alignment from FASTQ. */
   core.String readGroupName;
-
   /** Optionally specifies the sample name for alignment from FASTQ. */
   core.String sampleName;
-
 
   FastqMetadata();
 
@@ -4040,7 +3951,6 @@ class FastqMetadata {
   }
 }
 
-
 /** The read group set import request. */
 class ImportReadGroupSetsRequest {
   /**
@@ -4048,7 +3958,6 @@ class ImportReadGroupSetsRequest {
    * caller must have WRITE permissions to this dataset.
    */
   core.String datasetId;
-
   /**
    * The partition strategy describes how read groups are partitioned into read
    * group sets.
@@ -4057,7 +3966,6 @@ class ImportReadGroupSetsRequest {
    * - "PER_FILE_PER_SAMPLE"
    */
   core.String partitionStrategy;
-
   /**
    * The reference set to which the imported read group sets are aligned to, if
    * any. The reference names of this reference set must be a superset of those
@@ -4065,10 +3973,8 @@ class ImportReadGroupSetsRequest {
    * best effort is made to associate with a matching reference set.
    */
   core.String referenceSetId;
-
   /** A list of URIs pointing at BAM files in Google Cloud Storage. */
   core.List<core.String> sourceUris;
-
 
   ImportReadGroupSetsRequest();
 
@@ -4105,12 +4011,10 @@ class ImportReadGroupSetsRequest {
   }
 }
 
-
 /** The read group set import response. */
 class ImportReadGroupSetsResponse {
   /** A job ID that can be used to get status information. */
   core.String jobId;
-
 
   ImportReadGroupSetsResponse();
 
@@ -4129,7 +4033,6 @@ class ImportReadGroupSetsResponse {
   }
 }
 
-
 /** The variant data import request. */
 class ImportVariantsRequest {
   /**
@@ -4139,13 +4042,11 @@ class ImportVariantsRequest {
    * - "VCF"
    */
   core.String format;
-
   /**
    * A list of URIs pointing at VCF files in Google Cloud Storage. See the VCF
    * Specification for more details on the input format.
    */
   core.List<core.String> sourceUris;
-
 
   ImportVariantsRequest();
 
@@ -4170,12 +4071,10 @@ class ImportVariantsRequest {
   }
 }
 
-
 /** The variant data import response. */
 class ImportVariantsResponse {
   /** A job ID that can be used to get status information. */
   core.String jobId;
-
 
   ImportVariantsResponse();
 
@@ -4194,12 +4093,10 @@ class ImportVariantsResponse {
   }
 }
 
-
 /** Wrapper message for int32. */
 class Int32Value {
   /** The int32 value. */
   core.int value;
-
 
   Int32Value();
 
@@ -4218,7 +4115,6 @@ class Int32Value {
   }
 }
 
-
 /** Describes an interleaved FASTQ file source for alignment. */
 class InterleavedFastqSource {
   /**
@@ -4226,14 +4122,12 @@ class InterleavedFastqSource {
    * read group set.
    */
   FastqMetadata metadata;
-
   /**
    * A list of URIs pointing at interleaved FASTQ files in Google Cloud Storage
    * which will be aligned. The caller must have READ permissions for these
    * files.
    */
   core.List<core.String> sourceUris;
-
 
   InterleavedFastqSource();
 
@@ -4258,7 +4152,6 @@ class InterleavedFastqSource {
   }
 }
 
-
 /**
  * A Job represents an ongoing process that can be monitored for status
  * information.
@@ -4266,30 +4159,23 @@ class InterleavedFastqSource {
 class Job {
   /** The date this job was created, in milliseconds from the epoch. */
   core.String created;
-
   /** A more detailed description of this job's current status. */
   core.String detailedStatus;
-
   /** Any errors that occurred during processing. */
   core.List<core.String> errors;
-
   /** The job ID. */
   core.String id;
-
   /**
    * If this Job represents an import, this field will contain the IDs of the
    * objects that were successfully imported.
    */
   core.List<core.String> importedIds;
-
   /**
    * The Google Developers Console project number to which this job belongs.
    */
   core.String projectNumber;
-
   /** A summarized representation of the original service request. */
   JobRequest request;
-
   /**
    * The status of this job.
    * Possible string values are:
@@ -4302,10 +4188,8 @@ class Job {
    * - "UNKNOWN_STATUS"
    */
   core.String status;
-
   /** Any warnings that occurred during processing. */
   core.List<core.String> warnings;
-
 
   Job();
 
@@ -4372,7 +4256,6 @@ class Job {
   }
 }
 
-
 /** A summary representation of the service request that spawned the job. */
 class JobRequest {
   /**
@@ -4380,13 +4263,11 @@ class JobRequest {
    * or Dataset ID.
    */
   core.List<core.String> destination;
-
   /**
    * The data source of the request, for example, a Google Cloud Storage object
    * path or Readset ID.
    */
   core.List<core.String> source;
-
   /**
    * The original request type.
    * Possible string values are:
@@ -4400,7 +4281,6 @@ class JobRequest {
    * - "UNKNOWN_TYPE"
    */
   core.String type;
-
 
   JobRequest();
 
@@ -4431,7 +4311,6 @@ class JobRequest {
   }
 }
 
-
 /**
  * A linear alignment can be represented by one CIGAR string. Describes the
  * mapped position and local alignment of the read to the reference.
@@ -4442,16 +4321,13 @@ class LinearAlignment {
    * etc) against the reference.
    */
   core.List<CigarUnit> cigar;
-
   /**
    * The mapping quality of this alignment. Represents how likely the read maps
    * to this position as opposed to other locations.
    */
   core.int mappingQuality;
-
   /** The position of this alignment. */
   Position position;
-
 
   LinearAlignment();
 
@@ -4482,7 +4358,6 @@ class LinearAlignment {
   }
 }
 
-
 class ListBasesResponse {
   /**
    * The continuation token, which is used to page through large result sets.
@@ -4490,16 +4365,13 @@ class ListBasesResponse {
    * results. This field will be empty if there aren't any additional results.
    */
   core.String nextPageToken;
-
   /**
    * The offset position (0-based) of the given sequence from the start of this
    * Reference. This value will differ for each page in a paginated request.
    */
   core.String offset;
-
   /** A substring of the bases that make up this reference. */
   core.String sequence;
-
 
   ListBasesResponse();
 
@@ -4530,7 +4402,6 @@ class ListBasesResponse {
   }
 }
 
-
 class ListCoverageBucketsResponse {
   /**
    * The length of each coverage bucket in base pairs. Note that buckets at the
@@ -4539,7 +4410,6 @@ class ListCoverageBucketsResponse {
    * targetBucketWidth).
    */
   core.String bucketWidth;
-
   /**
    * The coverage buckets. The list of buckets is sparse; a bucket with 0
    * overlapping reads is not returned. A bucket never crosses more than one
@@ -4547,14 +4417,12 @@ class ListCoverageBucketsResponse {
    * the end of the reference sequence.
    */
   core.List<CoverageBucket> coverageBuckets;
-
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
    * results. This field will be empty if there aren't any additional results.
    */
   core.String nextPageToken;
-
 
   ListCoverageBucketsResponse();
 
@@ -4585,19 +4453,16 @@ class ListCoverageBucketsResponse {
   }
 }
 
-
 /** The dataset list response. */
 class ListDatasetsResponse {
   /** The list of matching Datasets. */
   core.List<Dataset> datasets;
-
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
    * results. This field will be empty if there aren't any additional results.
    */
   core.String nextPageToken;
-
 
   ListDatasetsResponse();
 
@@ -4622,11 +4487,9 @@ class ListDatasetsResponse {
   }
 }
 
-
 class MergeVariantsRequest {
   /** The variants to be merged with existing variants. */
   core.List<Variant> variants;
-
 
   MergeVariantsRequest();
 
@@ -4645,7 +4508,6 @@ class MergeVariantsRequest {
   }
 }
 
-
 /**
  * Metadata describes a single piece of variant call metadata. These data
  * include a top level key and either a single value string (value) or a list of
@@ -4654,26 +4516,21 @@ class MergeVariantsRequest {
 class Metadata {
   /** A textual description of this metadata. */
   core.String description;
-
   /**
    * User-provided ID field, not enforced by this API. Two or more pieces of
    * structured metadata with identical id and key fields are considered
    * equivalent.
    */
   core.String id;
-
   /** Remaining structured metadata key-value pairs. */
   core.Map<core.String, core.List<core.String>> info;
-
   /** The top-level key. */
   core.String key;
-
   /**
    * The number of values that can be included in a field described by this
    * metadata.
    */
   core.String number;
-
   /**
    * The type of data. Possible types include: Integer, Float, Flag, Character,
    * and String.
@@ -4686,10 +4543,8 @@ class Metadata {
    * - "UNKNOWN_TYPE"
    */
   core.String type;
-
   /** The value field for simple metadata */
   core.String value;
-
 
   Metadata();
 
@@ -4744,7 +4599,6 @@ class Metadata {
   }
 }
 
-
 /** Describes a paired-end FASTQ file source for alignment. */
 class PairedFastqSource {
   /**
@@ -4756,13 +4610,11 @@ class PairedFastqSource {
    * permissions for these files.
    */
   core.List<core.String> firstSourceUris;
-
   /**
    * Optionally specifies the metadata to be associated with the final aligned
    * read group set.
    */
   FastqMetadata metadata;
-
   /**
    * A list of URIs pointing at paired end FASTQ files in Google Cloud Storage
    * which will be aligned. The second of each paired file should be specified
@@ -4772,7 +4624,6 @@ class PairedFastqSource {
    * permissions for these files.
    */
   core.List<core.String> secondSourceUris;
-
 
   PairedFastqSource();
 
@@ -4803,7 +4654,6 @@ class PairedFastqSource {
   }
 }
 
-
 /**
  * An abstraction for referring to a genomic position, in relation to some
  * already known reference. For now, represents a genomic position as a
@@ -4815,16 +4665,13 @@ class Position {
    * The 0-based offset from the start of the forward strand for that reference.
    */
   core.String position;
-
   /** The name of the reference in whatever reference set is being used. */
   core.String referenceName;
-
   /**
    * Whether this position is on the reverse strand, as opposed to the forward
    * strand.
    */
   core.bool reverseStrand;
-
 
   Position();
 
@@ -4855,7 +4702,6 @@ class Position {
   }
 }
 
-
 /** A 0-based half-open genomic coordinate range for search requests. */
 class QueryRange {
   /**
@@ -4864,27 +4710,23 @@ class QueryRange {
    * 0, defaults to the length of the reference.
    */
   core.String end;
-
   /**
    * The ID of the reference to query. At most one of referenceId and
    * referenceName should be specified.
    */
   core.String referenceId;
-
   /**
    * The name of the reference to query, within the reference set associated
    * with this query. At most one of referenceId and referenceName pshould be
    * specified.
    */
   core.String referenceName;
-
   /**
    * The start position of the range on the reference, 0-based inclusive. If
    * specified, referenceId or referenceName must also be specified. Defaults to
    * 0.
    */
   core.String start;
-
 
   QueryRange();
 
@@ -4921,7 +4763,6 @@ class QueryRange {
   }
 }
 
-
 /** A 0-based half-open genomic coordinate range over a reference sequence. */
 class Range {
   /**
@@ -4929,16 +4770,13 @@ class Range {
    * specified, referenceName must also be specified.
    */
   core.String end;
-
   /** The reference sequence name, for example chr1, 1, or chrX. */
   core.String referenceName;
-
   /**
    * The start position of the range on the reference, 0-based inclusive. If
    * specified, referenceName must also be specified.
    */
   core.String start;
-
 
   Range();
 
@@ -4969,7 +4807,6 @@ class Range {
   }
 }
 
-
 /**
  * A 0-based half-open genomic coordinate range over a reference sequence, for
  * representing the position of a genomic resource.
@@ -4977,26 +4814,21 @@ class Range {
 class RangePosition {
   /** The end position of the range on the reference, 0-based exclusive. */
   core.String end;
-
   /** The ID of the Google Genomics reference associated with this range. */
   core.String referenceId;
-
   /**
    * The display name corresponding to the reference specified by referenceId,
    * for example chr1, 1, or chrX.
    */
   core.String referenceName;
-
   /**
    * Whether this range refers to the reverse strand, as opposed to the forward
    * strand. Note that regardless of this field, the start/end position of the
    * range always refer to the forward strand.
    */
   core.bool reverseStrand;
-
   /** The start position of the range on the reference, 0-based inclusive. */
   core.String start;
-
 
   RangePosition();
 
@@ -5039,7 +4871,6 @@ class RangePosition {
   }
 }
 
-
 /**
  * A read alignment describes a linear alignment of a string of DNA to a
  * reference sequence, in addition to metadata about the fragment (the molecule
@@ -5075,7 +4906,6 @@ class Read {
    * the length of the excised sequence.
    */
   core.List<core.int> alignedQuality;
-
   /**
    * The bases of the read sequence contained in this alignment record, without
    * CIGAR operations applied. alignedSequence and alignedQuality may be shorter
@@ -5085,34 +4915,26 @@ class Read {
    * that will indicate the length of the excised sequence.
    */
   core.String alignedSequence;
-
   /**
    * The linear alignment for this alignment record. This field will be unset if
    * the read is unmapped.
    */
   LinearAlignment alignment;
-
   /** The fragment is a PCR or optical duplicate (SAM flag 0x400) */
   core.bool duplicateFragment;
-
   /** SAM flag 0x200 */
   core.bool failedVendorQualityChecks;
-
   /** The observed length of the fragment, equivalent to TLEN in SAM. */
   core.int fragmentLength;
-
   /** The fragment name. Equivalent to QNAME (query template name) in SAM. */
   core.String fragmentName;
-
   /**
    * The unique ID for this read. This is a generated unique ID, not to be
    * confused with fragmentName.
    */
   core.String id;
-
   /** A map of additional read alignment information. */
   core.Map<core.String, core.List<core.String>> info;
-
   /**
    * The position of the primary alignment of the (readNumber+1)%numberReads
    * read in the fragment. It replaces mate position and mate strand in SAM.
@@ -5120,34 +4942,28 @@ class Read {
    * has a single read.
    */
   Position nextMatePosition;
-
   /** The number of reads in the fragment (extension to SAM flag 0x1). */
   core.int numberReads;
-
   /**
    * The orientation and the distance between reads from the fragment are
    * consistent with the sequencing protocol (SAM flag 0x2)
    */
   core.bool properPlacement;
-
   /**
    * The ID of the read group this read belongs to. (Every read must belong to
    * exactly one read group.)
    */
   core.String readGroupId;
-
   /**
    * The ID of the read group set this read belongs to. (Every read must belong
    * to exactly one read group set.)
    */
   core.String readGroupSetId;
-
   /**
    * The read number in sequencing. 0-based and less than numberReads. This
    * field replaces SAM flag 0x40 and 0x80.
    */
   core.int readNumber;
-
   /**
    * Whether this alignment is secondary. Equivalent to SAM flag 0x100. A
    * secondary alignment represents an alternative to the primary alignment for
@@ -5157,7 +4973,6 @@ class Read {
    * supplementaryAlignment are false.
    */
   core.bool secondaryAlignment;
-
   /**
    * Whether this alignment is supplementary. Equivalent to SAM flag 0x800.
    * Supplementary alignments are used in the representation of a chimeric
@@ -5171,7 +4986,6 @@ class Read {
    * record will only represent the bases for its respective linear alignment.
    */
   core.bool supplementaryAlignment;
-
 
   Read();
 
@@ -5286,60 +5100,49 @@ class Read {
   }
 }
 
-
 /**
  * A read group is all the data that's processed the same way by the sequencer.
  */
 class ReadGroup {
   /** The ID of the dataset this read group belongs to. */
   core.String datasetId;
-
   /** A free-form text description of this read group. */
   core.String description;
-
   /** The experiment used to generate this read group. */
   ReadGroupExperiment experiment;
-
   /**
    * The generated unique read group ID. Note: This is different than the @RG ID
    * field in the SAM spec. For that value, see the name field.
    */
   core.String id;
-
   /** A map of additional read group information. */
   core.Map<core.String, core.List<core.String>> info;
-
   /**
    * The read group name. This corresponds to the @RG ID field in the SAM spec.
    */
   core.String name;
-
   /**
    * The predicted insert size of this read group. The insert size is the length
    * the sequenced DNA fragment from end-to-end, not including the adapters.
    */
   core.int predictedInsertSize;
-
   /**
    * The programs used to generate this read group. Programs are always
    * identical for all read groups within a read group set. For this reason,
    * only the first read group in a returned set will have this field populated.
    */
   core.List<ReadGroupProgram> programs;
-
   /**
    * The reference set the reads in this read group are aligned to. Required if
    * there are any read alignments.
    */
   core.String referenceSetId;
-
   /**
    * The sample this read group's data was generated from. Note: This is not an
    * actual ID within this repository, but rather an identifier for a sample
    * which may be meaningful to some external system.
    */
   core.String sampleId;
-
 
   ReadGroup();
 
@@ -5412,30 +5215,25 @@ class ReadGroup {
   }
 }
 
-
 class ReadGroupExperiment {
   /**
    * The instrument model used as part of this experiment. This maps to
    * sequencing technology in BAM.
    */
   core.String instrumentModel;
-
   /**
    * The library used as part of this experiment. Note: This is not an actual ID
    * within this repository, but rather an identifier for a library which may be
    * meaningful to some external system.
    */
   core.String libraryId;
-
   /**
    * The platform unit used as part of this experiment e.g.
    * flowcell-barcode.lane for Illumina or slide for SOLiD. Corresponds to the
    */
   core.String platformUnit;
-
   /** The sequencing center used as part of this experiment. */
   core.String sequencingCenter;
-
 
   ReadGroupExperiment();
 
@@ -5472,26 +5270,20 @@ class ReadGroupExperiment {
   }
 }
 
-
 class ReadGroupProgram {
   /** The command line used to run this program. */
   core.String commandLine;
-
   /**
    * The user specified locally unique ID of the program. Used along with
    * prevProgramId to define an ordering between programs.
    */
   core.String id;
-
   /** The name of the program. */
   core.String name;
-
   /** The ID of the program run before this one. */
   core.String prevProgramId;
-
   /** The version of the program run. */
   core.String version;
-
 
   ReadGroupProgram();
 
@@ -5534,7 +5326,6 @@ class ReadGroupProgram {
   }
 }
 
-
 /**
  * A read group set is a logical collection of read groups, which are
  * collections of reads produced by a sequencer. A read group set typically
@@ -5547,33 +5338,26 @@ class ReadGroupProgram {
 class ReadGroupSet {
   /** The dataset ID. */
   core.String datasetId;
-
   /**
    * The filename of the original source file for this read group set, if any.
    */
   core.String filename;
-
   /** The read group set ID. */
   core.String id;
-
   /** A map of additional read group set information. */
   core.Map<core.String, core.List<core.String>> info;
-
   /**
    * The read group set name. By default this will be initialized to the sample
    * name of the sequenced data contained in this set.
    */
   core.String name;
-
   /**
    * The read groups in this set. There are typically 1-10 read groups in a read
    * group set.
    */
   core.List<ReadGroup> readGroups;
-
   /** The reference set the reads in this read group set are aligned to. */
   core.String referenceSetId;
-
 
   ReadGroupSet();
 
@@ -5628,7 +5412,6 @@ class ReadGroupSet {
   }
 }
 
-
 /**
  * A reference is a canonical assembled DNA sequence, intended to act as a
  * reference coordinate space for other genomic annotations. A single reference
@@ -5638,38 +5421,31 @@ class ReadGroupSet {
 class Reference {
   /** The Google generated immutable ID of the reference. */
   core.String id;
-
   /** The length of this reference's sequence. */
   core.String length;
-
   /**
    * MD5 of the upper-case sequence excluding all whitespace characters (this is
    * equivalent to SQ:M5 in SAM). This value is represented in lower case
    * hexadecimal format.
    */
   core.String md5checksum;
-
   /** The name of this reference, for example 22. */
   core.String name;
-
   /**
    * ID from http://www.ncbi.nlm.nih.gov/taxonomy (e.g. 9606->human) if not
    * specified by the containing reference set.
    */
   core.int ncbiTaxonId;
-
   /**
    * All known corresponding accession IDs in INSDC (GenBank/ENA/DDBJ) ideally
    * with a version number, for example GCF_000001405.26.
    */
   core.List<core.String> sourceAccessions;
-
   /**
    * The URI from which the sequence was obtained. Specifies a FASTA format
    * file/string with one name, sequence pair.
    */
   core.String sourceURI;
-
 
   Reference();
 
@@ -5724,7 +5500,6 @@ class Reference {
   }
 }
 
-
 /**
  * ReferenceBound records an upper bound for the starting coordinate of variants
  * in a particular reference.
@@ -5732,13 +5507,11 @@ class Reference {
 class ReferenceBound {
   /** The reference the bound is associate with. */
   core.String referenceName;
-
   /**
    * An upper bound (inclusive) on the starting coordinate of any variant in the
    * reference sequence.
    */
   core.String upperBound;
-
 
   ReferenceBound();
 
@@ -5763,7 +5536,6 @@ class ReferenceBound {
   }
 }
 
-
 /**
  * A reference set is a set of references which typically comprise a reference
  * assembly for a species, such as GRCh38 which is representative of the human
@@ -5774,13 +5546,10 @@ class ReferenceBound {
 class ReferenceSet {
   /** Public id of this reference set, such as GRCh37. */
   core.String assemblyId;
-
   /** Free text description of this reference set. */
   core.String description;
-
   /** The Google generated immutable ID of the reference set. */
   core.String id;
-
   /**
    * Order-independent MD5 checksum which identifies this reference set. The
    * checksum is computed by sorting all lower case hexidecimal string
@@ -5789,7 +5558,6 @@ class ReferenceSet {
    * resulting value is represented in lower case hexadecimal format.
    */
   core.String md5checksum;
-
   /**
    * ID from http://www.ncbi.nlm.nih.gov/taxonomy (e.g. 9606->human) indicating
    * the species which this assembly is intended to model. Note that contained
@@ -5798,22 +5566,18 @@ class ReferenceSet {
    * a human reference genome.
    */
   core.int ncbiTaxonId;
-
   /**
    * The IDs of the reference objects that are part of this set.
    * Reference.md5checksum must be unique within this set.
    */
   core.List<core.String> referenceIds;
-
   /**
    * All known corresponding accession IDs in INSDC (GenBank/ENA/DDBJ) ideally
    * with a version number, for example NC_000001.11.
    */
   core.List<core.String> sourceAccessions;
-
   /** The URI from which the references were obtained. */
   core.String sourceURI;
-
 
   ReferenceSet();
 
@@ -5874,45 +5638,38 @@ class ReferenceSet {
   }
 }
 
-
 class SearchAnnotationSetsRequest {
   /**
    * The dataset IDs to search within. Caller must have READ access to these
    * datasets.
    */
   core.List<core.String> datasetIds;
-
   /**
    * Only return annotations sets for which a substring of the name matches this
    * string (case insensitive).
    */
   core.String name;
-
   /**
    * Specifies number of results to return in a single page. If unspecified, it
    * will default to 128. The maximum value is 1024.
    */
   core.int pageSize;
-
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
    * nextPageToken from the previous response.
    */
   core.String pageToken;
-
   /**
    * If specified, only annotation sets associated with the given reference set
    * are returned.
    */
   core.String referenceSetId;
-
   /**
    * If specified, only annotation sets that have any of these types are
    * returned.
    */
   core.List<core.String> types;
-
 
   SearchAnnotationSetsRequest();
 
@@ -5961,18 +5718,15 @@ class SearchAnnotationSetsRequest {
   }
 }
 
-
 class SearchAnnotationSetsResponse {
   /** The matching annotation sets. */
   core.List<AnnotationSet> annotationSets;
-
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
    * results. This field will be empty if there aren't any additional results.
    */
   core.String nextPageToken;
-
 
   SearchAnnotationSetsResponse();
 
@@ -5997,7 +5751,6 @@ class SearchAnnotationSetsResponse {
   }
 }
 
-
 class SearchAnnotationsRequest {
   /**
    * The annotation sets to search within. The caller must have READ access to
@@ -6005,25 +5758,21 @@ class SearchAnnotationsRequest {
    * same type.
    */
   core.List<core.String> annotationSetIds;
-
   /**
    * Specifies number of results to return in a single page. If unspecified, it
    * will default to 256. The maximum value is 2048.
    */
   core.int pageSize;
-
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
    * nextPageToken from the previous response.
    */
   core.String pageToken;
-
   /**
    * If specified, this query matches only annotations that overlap this range.
    */
   QueryRange range;
-
 
   SearchAnnotationsRequest();
 
@@ -6060,18 +5809,15 @@ class SearchAnnotationsRequest {
   }
 }
 
-
 class SearchAnnotationsResponse {
   /** The matching annotations. */
   core.List<Annotation> annotations;
-
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
    * results. This field will be empty if there aren't any additional results.
    */
   core.String nextPageToken;
-
 
   SearchAnnotationsResponse();
 
@@ -6096,7 +5842,6 @@ class SearchAnnotationsResponse {
   }
 }
 
-
 /** The call set search request. */
 class SearchCallSetsRequest {
   /**
@@ -6104,26 +5849,22 @@ class SearchCallSetsRequest {
    * string.
    */
   core.String name;
-
   /**
    * The maximum number of call sets to return. If unspecified, defaults to
    * 1000.
    */
   core.int pageSize;
-
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
    * nextPageToken from the previous response.
    */
   core.String pageToken;
-
   /**
    * Restrict the query to call sets within the given variant sets. At least one
    * ID must be provided.
    */
   core.List<core.String> variantSetIds;
-
 
   SearchCallSetsRequest();
 
@@ -6160,19 +5901,16 @@ class SearchCallSetsRequest {
   }
 }
 
-
 /** The call set search response. */
 class SearchCallSetsResponse {
   /** The list of matching call sets. */
   core.List<CallSet> callSets;
-
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
    * results. This field will be empty if there aren't any additional results.
    */
   core.String nextPageToken;
-
 
   SearchCallSetsResponse();
 
@@ -6197,7 +5935,6 @@ class SearchCallSetsResponse {
   }
 }
 
-
 /** The jobs search request. */
 class SearchJobsRequest {
   /**
@@ -6205,35 +5942,29 @@ class SearchJobsRequest {
    * milliseconds since Unix epoch, will be returned.
    */
   core.String createdAfter;
-
   /**
    * If specified, only jobs created prior to this date, given in milliseconds
    * since Unix epoch, will be returned.
    */
   core.String createdBefore;
-
   /**
    * Specifies the number of results to return in a single page. Defaults to
    * 128. The maximum value is 256.
    */
   core.int pageSize;
-
   /**
    * The continuation token which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of the
    * nextPageToken from the previous response.
    */
   core.String pageToken;
-
   /**
    * Required. Only return jobs which belong to this Google Developers Console
    * project.
    */
   core.String projectNumber;
-
   /** Only return jobs which have a matching status. */
   core.List<core.String> status;
-
 
   SearchJobsRequest();
 
@@ -6282,19 +6013,16 @@ class SearchJobsRequest {
   }
 }
 
-
 /** The job search response. */
 class SearchJobsResponse {
   /** The list of jobs results, ordered newest to oldest. */
   core.List<Job> jobs;
-
   /**
    * The continuation token which is used to page through large result sets.
    * Provide this value is a subsequent request to return the next page of
    * results. This field will be empty if there are no more results.
    */
   core.String nextPageToken;
-
 
   SearchJobsResponse();
 
@@ -6319,7 +6047,6 @@ class SearchJobsResponse {
   }
 }
 
-
 /** The read group set search request. */
 class SearchReadGroupSetsRequest {
   /**
@@ -6327,26 +6054,22 @@ class SearchReadGroupSetsRequest {
    * one ID must be provided.
    */
   core.List<core.String> datasetIds;
-
   /**
    * Only return read group sets for which a substring of the name matches this
    * string.
    */
   core.String name;
-
   /**
    * Specifies number of results to return in a single page. If unspecified, it
    * will default to 256. The maximum value is 1024.
    */
   core.int pageSize;
-
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
    * nextPageToken from the previous response.
    */
   core.String pageToken;
-
 
   SearchReadGroupSetsRequest();
 
@@ -6383,7 +6106,6 @@ class SearchReadGroupSetsRequest {
   }
 }
 
-
 /** The read group set search response. */
 class SearchReadGroupSetsResponse {
   /**
@@ -6392,10 +6114,8 @@ class SearchReadGroupSetsResponse {
    * results. This field will be empty if there aren't any additional results.
    */
   core.String nextPageToken;
-
   /** The list of matching read group sets. */
   core.List<ReadGroupSet> readGroupSets;
-
 
   SearchReadGroupSetsResponse();
 
@@ -6420,7 +6140,6 @@ class SearchReadGroupSetsResponse {
   }
 }
 
-
 /** The read search request. */
 class SearchReadsRequest {
   /**
@@ -6428,27 +6147,23 @@ class SearchReadsRequest {
    * specified, referenceName must also be specified.
    */
   core.String end;
-
   /**
    * Specifies number of results to return in a single page. If unspecified, it
    * will default to 256. The maximum value is 2048.
    */
   core.int pageSize;
-
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
    * nextPageToken from the previous response.
    */
   core.String pageToken;
-
   /**
    * The IDs of the read groups within which to search for reads. All specified
    * read groups must belong to the same read group sets. Must specify one of
    * readGroupSetIds or readGroupIds.
    */
   core.List<core.String> readGroupIds;
-
   /**
    * The IDs of the read groups sets within which to search for reads. All
    * specified read group sets must be aligned against a common set of reference
@@ -6456,19 +6171,16 @@ class SearchReadsRequest {
    * one of readGroupSetIds or readGroupIds.
    */
   core.List<core.String> readGroupSetIds;
-
   /**
    * The reference sequence name, for example chr1, 1, or chrX. If set to *,
    * only unmapped reads are returned.
    */
   core.String referenceName;
-
   /**
    * The start position of the range on the reference, 0-based inclusive. If
    * specified, referenceName must also be specified.
    */
   core.String start;
-
 
   SearchReadsRequest();
 
@@ -6523,7 +6235,6 @@ class SearchReadsRequest {
   }
 }
 
-
 /** The read search response. */
 class SearchReadsResponse {
   /**
@@ -6533,14 +6244,12 @@ class SearchReadsResponse {
    * lexicographic order by fragment name.
    */
   core.List<Read> alignments;
-
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
    * results. This field will be empty if there aren't any additional results.
    */
   core.String nextPageToken;
-
 
   SearchReadsResponse();
 
@@ -6565,7 +6274,6 @@ class SearchReadsResponse {
   }
 }
 
-
 class SearchReferenceSetsRequest {
   /**
    * If present, return references for which the accession matches any of these
@@ -6575,29 +6283,24 @@ class SearchReferenceSetsRequest {
    * will have different sequences.
    */
   core.List<core.String> accessions;
-
   /**
    * If present, return reference sets for which a substring of their assemblyId
    * matches this string (case insensitive).
    */
   core.String assemblyId;
-
   /**
    * If present, return references for which the md5checksum matches. See
    * ReferenceSet.md5checksum for details.
    */
   core.List<core.String> md5checksums;
-
   /** Specifies the maximum number of results to return in a single page. */
   core.int pageSize;
-
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
    * nextPageToken from the previous response.
    */
   core.String pageToken;
-
 
   SearchReferenceSetsRequest();
 
@@ -6640,7 +6343,6 @@ class SearchReferenceSetsRequest {
   }
 }
 
-
 class SearchReferenceSetsResponse {
   /**
    * The continuation token, which is used to page through large result sets.
@@ -6648,10 +6350,8 @@ class SearchReferenceSetsResponse {
    * results. This field will be empty if there aren't any additional results.
    */
   core.String nextPageToken;
-
   /** The matching references sets. */
   core.List<ReferenceSet> referenceSets;
-
 
   SearchReferenceSetsResponse();
 
@@ -6676,7 +6376,6 @@ class SearchReferenceSetsResponse {
   }
 }
 
-
 class SearchReferencesRequest {
   /**
    * If present, return references for which the accession matches this string.
@@ -6686,26 +6385,21 @@ class SearchReferencesRequest {
    * different sequences.
    */
   core.List<core.String> accessions;
-
   /**
    * If present, return references for which the md5checksum matches. See
    * Reference.md5checksum for construction details.
    */
   core.List<core.String> md5checksums;
-
   /** Specifies the maximum number of results to return in a single page. */
   core.int pageSize;
-
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
    * nextPageToken from the previous response.
    */
   core.String pageToken;
-
   /** If present, return only references which belong to this reference set. */
   core.String referenceSetId;
-
 
   SearchReferencesRequest();
 
@@ -6748,7 +6442,6 @@ class SearchReferencesRequest {
   }
 }
 
-
 class SearchReferencesResponse {
   /**
    * The continuation token, which is used to page through large result sets.
@@ -6756,10 +6449,8 @@ class SearchReferencesResponse {
    * results. This field will be empty if there aren't any additional results.
    */
   core.String nextPageToken;
-
   /** The matching references. */
   core.List<Reference> references;
-
 
   SearchReferencesResponse();
 
@@ -6784,7 +6475,6 @@ class SearchReferencesResponse {
   }
 }
 
-
 /** The search variant sets request. */
 class SearchVariantSetsRequest {
   /**
@@ -6792,17 +6482,14 @@ class SearchVariantSetsRequest {
    * belong to this dataset will be returned.
    */
   core.List<core.String> datasetIds;
-
   /** The maximum number of variant sets to return in a request. */
   core.int pageSize;
-
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
    * nextPageToken from the previous response.
    */
   core.String pageToken;
-
 
   SearchVariantSetsRequest();
 
@@ -6833,7 +6520,6 @@ class SearchVariantSetsRequest {
   }
 }
 
-
 /** The search variant sets response. */
 class SearchVariantSetsResponse {
   /**
@@ -6842,10 +6528,8 @@ class SearchVariantSetsResponse {
    * results. This field will be empty if there aren't any additional results.
    */
   core.String nextPageToken;
-
   /** The variant sets belonging to the requested dataset. */
   core.List<VariantSet> variantSets;
-
 
   SearchVariantSetsResponse();
 
@@ -6870,7 +6554,6 @@ class SearchVariantSetsResponse {
   }
 }
 
-
 /** The variant search request. */
 class SearchVariantsRequest {
   /**
@@ -6880,50 +6563,41 @@ class SearchVariantsRequest {
    * with no calls from any call set will never be returned.
    */
   core.List<core.String> callSetIds;
-
   /**
    * The end of the window, 0-based exclusive. If unspecified or 0, defaults to
    * the length of the reference.
    */
   core.String end;
-
   /**
    * The maximum number of calls to return. However, at least one variant will
    * always be returned, even if it has more calls than this limit. If
    * unspecified, defaults to 5000.
    */
   core.int maxCalls;
-
   /**
    * The maximum number of variants to return. If unspecified, defaults to 5000.
    */
   core.int pageSize;
-
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
    * nextPageToken from the previous response.
    */
   core.String pageToken;
-
   /** Required. Only return variants in this reference sequence. */
   core.String referenceName;
-
   /**
    * The beginning of the window (0-based, inclusive) for which overlapping
    * variants should be returned. If unspecified, defaults to 0.
    */
   core.String start;
-
   /** Only return variants which have exactly this name. */
   core.String variantName;
-
   /**
    * Exactly one variant set ID must be provided. Only variants from this
    * variant set will be returned.
    */
   core.List<core.String> variantSetIds;
-
 
   SearchVariantsRequest();
 
@@ -6990,7 +6664,6 @@ class SearchVariantsRequest {
   }
 }
 
-
 /** The variant search response. */
 class SearchVariantsResponse {
   /**
@@ -6999,10 +6672,8 @@ class SearchVariantsResponse {
    * results. This field will be empty if there aren't any additional results.
    */
   core.String nextPageToken;
-
   /** The list of matching Variants. */
   core.List<Variant> variants;
-
 
   SearchVariantsResponse();
 
@@ -7027,6 +6698,82 @@ class SearchVariantsResponse {
   }
 }
 
+class StreamReadsRequest {
+  /**
+   * The end position of the range on the reference, 0-based exclusive. If
+   * specified, referenceName must also be specified.
+   */
+  core.String end;
+  /**
+   * The ID of the read groups set within which to search for reads. Exactly one
+   * ID must be provided.
+   */
+  core.List<core.String> readGroupSetIds;
+  /**
+   * The reference sequence name, for example chr1, 1, or chrX. If set to *,
+   * only unmapped reads are returned.
+   */
+  core.String referenceName;
+  /**
+   * The start position of the range on the reference, 0-based inclusive. If
+   * specified, referenceName must also be specified.
+   */
+  core.String start;
+
+  StreamReadsRequest();
+
+  StreamReadsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("readGroupSetIds")) {
+      readGroupSetIds = _json["readGroupSetIds"];
+    }
+    if (_json.containsKey("referenceName")) {
+      referenceName = _json["referenceName"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (readGroupSetIds != null) {
+      _json["readGroupSetIds"] = readGroupSetIds;
+    }
+    if (referenceName != null) {
+      _json["referenceName"] = referenceName;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
+    return _json;
+  }
+}
+
+class StreamReadsResponse {
+  core.List<Read> alignments;
+
+  StreamReadsResponse();
+
+  StreamReadsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("alignments")) {
+      alignments = _json["alignments"].map((value) => new Read.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (alignments != null) {
+      _json["alignments"] = alignments.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
 
 /**
  * A transcript represents the assertion that a particular region of the
@@ -7046,7 +6793,6 @@ class Transcript {
    * necessarily be concatenated to produce the original transcript mRNA.
    */
   TranscriptCodingSequence codingSequence;
-
   /**
    * The exons that compose this transcript. This field should be unset for
    * genomes where transcript splicing does not occur, for example prokaryotes.
@@ -7065,12 +6811,10 @@ class Transcript {
    * Exons are ordered by start position and may not overlap.
    */
   core.List<TranscriptExon> exons;
-
   /**
    * The annotation ID of the gene from which this transcript is transcribed.
    */
   core.String geneId;
-
 
   Transcript();
 
@@ -7101,7 +6845,6 @@ class Transcript {
   }
 }
 
-
 class TranscriptCodingSequence {
   /**
    * The end of the coding sequence on this annotation's reference sequence,
@@ -7109,14 +6852,12 @@ class TranscriptCodingSequence {
    * start, and not the containing annotation start.
    */
   core.String end;
-
   /**
    * The start of the coding sequence on this annotation's reference sequence,
    * 0-based inclusive. Note that this position is relative to the reference
    * start, and not the containing annotation start.
    */
   core.String start;
-
 
   TranscriptCodingSequence();
 
@@ -7141,7 +6882,6 @@ class TranscriptCodingSequence {
   }
 }
 
-
 class TranscriptExon {
   /**
    * The end position of the exon on this annotation's reference sequence,
@@ -7149,7 +6889,6 @@ class TranscriptExon {
    * not the containing annotation start.
    */
   core.String end;
-
   /**
    * The frame of this exon. Contains a value of 0, 1, or 2, which indicates the
    * offset of the first coding base of the exon within the reading frame of the
@@ -7163,14 +6902,12 @@ class TranscriptExon {
    * exons.
    */
   Int32Value frame;
-
   /**
    * The start position of the exon on this annotation's reference sequence,
    * 0-based inclusive. Note that this is relative to the reference start, and
    * not the containing annotation start.
    */
   core.String start;
-
 
   TranscriptExon();
 
@@ -7201,7 +6938,6 @@ class TranscriptExon {
   }
 }
 
-
 /**
  * A variant represents a change in DNA sequence relative to a reference
  * sequence. For example, a variant could represent a SNP or an insertion.
@@ -7214,16 +6950,13 @@ class TranscriptExon {
 class Variant {
   /** The bases that appear instead of the reference bases. */
   core.List<core.String> alternateBases;
-
   /**
    * The variant calls for this particular variant. Each one represents the
    * determination of genotype with respect to this variant.
    */
   core.List<Call> calls;
-
   /** The date this variant was created, in milliseconds from the epoch. */
   core.String created;
-
   /**
    * The end position (0-based) of this variant. This corresponds to the first
    * base after the last base in the reference allele. So, the length of the
@@ -7231,45 +6964,35 @@ class Variant {
    * explicitly give alternate bases, for example large deletions.
    */
   core.String end;
-
   /**
    * A list of filters (normally quality filters) this variant has failed. PASS
    * indicates this variant has passed all filters.
    */
   core.List<core.String> filter;
-
   /** The Google generated ID of the variant, immutable. */
   core.String id;
-
   /** A map of additional variant information. */
   core.Map<core.String, core.List<core.String>> info;
-
   /** Names for the variant, for example a RefSNP ID. */
   core.List<core.String> names;
-
   /**
    * A measure of how likely this variant is to be real. A higher value is
    * better.
    */
   core.double quality;
-
   /**
    * The reference bases for this variant. They start at the given position.
    */
   core.String referenceBases;
-
   /** The reference on which this variant occurs. (such as chr20 or X) */
   core.String referenceName;
-
   /**
    * The position at which this variant occurs (0-based). This corresponds to
    * the first base of the string of reference bases.
    */
   core.String start;
-
   /** The ID of the variant set this variant belongs to. */
   core.String variantSetId;
-
 
   Variant();
 
@@ -7360,7 +7083,6 @@ class Variant {
   }
 }
 
-
 /** A Variant annotation. */
 class VariantAnnotation {
   /**
@@ -7369,7 +7091,6 @@ class VariantAnnotation {
    * represent distinct conditions.
    */
   core.String alternateBases;
-
   /**
    * Describes the clinical significance of a variant. It is adapted from the
    * ClinVar controlled vocabulary for clinical significance described at:
@@ -7391,13 +7112,11 @@ class VariantAnnotation {
    * - "UNCERTAIN"
    */
   core.String clinicalSignificance;
-
   /**
    * The set of conditions associated with this variant. A condition describes
    * the way a variant influences human health.
    */
   core.List<VariantAnnotationCondition> conditions;
-
   /**
    * Effect of the variant on the coding sequence.
    * Possible string values are:
@@ -7412,19 +7131,16 @@ class VariantAnnotation {
    * - "SYNONYMOUS_SNP"
    */
   core.String effect;
-
   /**
    * Google annotation ID of the gene affected by this variant. This should be
    * provided when the variant is created.
    */
   core.String geneId;
-
   /**
    * Google annotation IDs of the transcripts affected by this variant. These
    * should be provided when the variant is created.
    */
   core.List<core.String> transcriptIds;
-
   /**
    * Type has been adapted from ClinVar's list of variant types.
    * Possible string values are:
@@ -7438,7 +7154,6 @@ class VariantAnnotation {
    * - "TYPE_UNSPECIFIED"
    */
   core.String type;
-
 
   VariantAnnotation();
 
@@ -7493,25 +7208,20 @@ class VariantAnnotation {
   }
 }
 
-
 class VariantAnnotationCondition {
   /**
    * The MedGen concept id associated with this gene. Search for these IDs at
    * http://www.ncbi.nlm.nih.gov/medgen/
    */
   core.String conceptId;
-
   /** The set of external IDs for this condition. */
   core.List<ExternalId> externalIds;
-
   /** A set of names for the condition. */
   core.List<core.String> names;
-
   /**
    * The OMIM id for this condition. Search for these IDs at http://omim.org/
    */
   core.String omimId;
-
 
   VariantAnnotationCondition();
 
@@ -7548,7 +7258,6 @@ class VariantAnnotationCondition {
   }
 }
 
-
 /**
  * A variant set is a collection of call sets and variants. It contains summary
  * statistics of those contents. A variant set belongs to a dataset.
@@ -7556,19 +7265,15 @@ class VariantAnnotationCondition {
 class VariantSet {
   /** The dataset to which this variant set belongs. Immutable. */
   core.String datasetId;
-
   /** The Google-generated ID of the variant set. Immutable. */
   core.String id;
-
   /** The metadata associated with this variant set. */
   core.List<Metadata> metadata;
-
   /**
    * A list of all references used by the variants in a variant set with
    * associated coordinate upper bounds for each one.
    */
   core.List<ReferenceBound> referenceBounds;
-
 
   VariantSet();
 

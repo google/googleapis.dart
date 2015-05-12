@@ -90,7 +90,7 @@ class ActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Activity> get(core.String activityId) {
     var _url = null;
@@ -103,7 +103,6 @@ class ActivitiesResourceApi {
     if (activityId == null) {
       throw new core.ArgumentError("Parameter activityId is required.");
     }
-
 
     _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId');
 
@@ -137,7 +136,7 @@ class ActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Activity> insert(Activity request, core.String userId, {core.bool preview}) {
     var _url = null;
@@ -156,7 +155,6 @@ class ActivitiesResourceApi {
     if (preview != null) {
       _queryParams["preview"] = ["${preview}"];
     }
-
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/activities';
 
@@ -199,7 +197,7 @@ class ActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ActivityFeed> list(core.String userId, core.String collection, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -221,7 +219,6 @@ class ActivitiesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/activities/' + commons.Escaper.ecapeVariable('$collection');
 
@@ -267,7 +264,7 @@ class AudiencesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AudiencesFeed> list(core.String userId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -286,7 +283,6 @@ class AudiencesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/audiences';
 
@@ -329,7 +325,7 @@ class CirclesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Circle> addPeople(core.String circleId, {core.List<core.String> email, core.List<core.String> userId}) {
     var _url = null;
@@ -348,7 +344,6 @@ class CirclesResourceApi {
     if (userId != null) {
       _queryParams["userId"] = userId;
     }
-
 
     _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId') + '/people';
 
@@ -375,7 +370,7 @@ class CirclesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Circle> get(core.String circleId) {
     var _url = null;
@@ -388,7 +383,6 @@ class CirclesResourceApi {
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
     }
-
 
     _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
 
@@ -418,7 +412,7 @@ class CirclesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Circle> insert(Circle request, core.String userId) {
     var _url = null;
@@ -434,7 +428,6 @@ class CirclesResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/circles';
 
@@ -471,7 +464,7 @@ class CirclesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CircleFeed> list(core.String userId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -490,7 +483,6 @@ class CirclesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/circles';
 
@@ -519,7 +511,7 @@ class CirclesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Circle> patch(Circle request, core.String circleId) {
     var _url = null;
@@ -535,7 +527,6 @@ class CirclesResourceApi {
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
     }
-
 
     _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
 
@@ -560,7 +551,7 @@ class CirclesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future remove(core.String circleId) {
     var _url = null;
@@ -605,7 +596,7 @@ class CirclesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future removePeople(core.String circleId, {core.List<core.String> email, core.List<core.String> userId}) {
     var _url = null;
@@ -654,7 +645,7 @@ class CirclesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Circle> update(Circle request, core.String circleId) {
     var _url = null;
@@ -670,7 +661,6 @@ class CirclesResourceApi {
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
     }
-
 
     _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
 
@@ -706,7 +696,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Comment> get(core.String commentId) {
     var _url = null;
@@ -719,7 +709,6 @@ class CommentsResourceApi {
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
     }
-
 
     _url = 'comments/' + commons.Escaper.ecapeVariable('$commentId');
 
@@ -748,7 +737,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Comment> insert(Comment request, core.String activityId) {
     var _url = null;
@@ -764,7 +753,6 @@ class CommentsResourceApi {
     if (activityId == null) {
       throw new core.ArgumentError("Parameter activityId is required.");
     }
-
 
     _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId') + '/comments';
 
@@ -805,7 +793,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentFeed> list(core.String activityId, {core.int maxResults, core.String pageToken, core.String sortOrder}) {
     var _url = null;
@@ -827,7 +815,6 @@ class CommentsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-
 
     _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId') + '/comments';
 
@@ -877,7 +864,7 @@ class MediaResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Media> insert(Media request, core.String userId, core.String collection, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -942,7 +929,7 @@ class PeopleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Person> get(core.String userId) {
     var _url = null;
@@ -955,7 +942,6 @@ class PeopleResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId');
 
@@ -1002,7 +988,7 @@ class PeopleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PeopleFeed> list(core.String userId, core.String collection, {core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
@@ -1027,7 +1013,6 @@ class PeopleResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/people/' + commons.Escaper.ecapeVariable('$collection');
 
@@ -1070,7 +1055,7 @@ class PeopleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PeopleFeed> listByActivity(core.String activityId, core.String collection, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1092,7 +1077,6 @@ class PeopleResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId') + '/people/' + commons.Escaper.ecapeVariable('$collection');
 
@@ -1128,7 +1112,7 @@ class PeopleResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PeopleFeed> listByCircle(core.String circleId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1147,7 +1131,6 @@ class PeopleResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId') + '/people';
 
@@ -1168,19 +1151,15 @@ class PeopleResourceApi {
 class Acl {
   /** Description of the access granted, suitable for display. */
   core.String description;
-
   /** Whether access is restricted to the domain. */
   core.bool domainRestricted;
-
   /** The list of access entries. */
   core.List<PlusDomainsAclentryResource> items;
-
   /**
    * Identifies this resource as a collection of access controls. Value:
    * "plus#acl".
    */
   core.String kind;
-
 
   Acl();
 
@@ -1217,7 +1196,6 @@ class Acl {
   }
 }
 
-
 /** The image representation of the actor. */
 class ActivityActorImage {
   /**
@@ -1226,7 +1204,6 @@ class ActivityActorImage {
    * of each side.
    */
   core.String url;
-
 
   ActivityActorImage();
 
@@ -1245,15 +1222,12 @@ class ActivityActorImage {
   }
 }
 
-
 /** An object representation of the individual components of name. */
 class ActivityActorName {
   /** The family name ("last name") of the actor. */
   core.String familyName;
-
   /** The given name ("first name") of the actor. */
   core.String givenName;
-
 
   ActivityActorName();
 
@@ -1278,24 +1252,18 @@ class ActivityActorName {
   }
 }
 
-
 /** The person who performed this activity. */
 class ActivityActor {
   /** The name of the actor, suitable for display. */
   core.String displayName;
-
   /** The ID of the actor's Person resource. */
   core.String id;
-
   /** The image representation of the actor. */
   ActivityActorImage image;
-
   /** An object representation of the individual components of name. */
   ActivityActorName name;
-
   /** The link to the actor's Google profile. */
   core.String url;
-
 
   ActivityActor();
 
@@ -1338,12 +1306,10 @@ class ActivityActor {
   }
 }
 
-
 /** The image representation of the original actor. */
 class ActivityObjectActorImage {
   /** A URL that points to a thumbnail photo of the original actor. */
   core.String url;
-
 
   ActivityObjectActorImage();
 
@@ -1362,7 +1328,6 @@ class ActivityObjectActorImage {
   }
 }
 
-
 /**
  * If this activity's object is itself another activity, such as when a person
  * reshares an activity, this property specifies the original activity's actor.
@@ -1370,16 +1335,12 @@ class ActivityObjectActorImage {
 class ActivityObjectActor {
   /** The original actor's name, which is suitable for display. */
   core.String displayName;
-
   /** ID of the original actor. */
   core.String id;
-
   /** The image representation of the original actor. */
   ActivityObjectActorImage image;
-
   /** A link to the original actor's Google profile. */
   core.String url;
-
 
   ActivityObjectActor();
 
@@ -1416,15 +1377,12 @@ class ActivityObjectActor {
   }
 }
 
-
 /** If the attachment is a video, the embeddable link. */
 class ActivityObjectAttachmentsEmbed {
   /** Media type of the link. */
   core.String type;
-
   /** URL of the link. */
   core.String url;
-
 
   ActivityObjectAttachmentsEmbed();
 
@@ -1449,21 +1407,16 @@ class ActivityObjectAttachmentsEmbed {
   }
 }
 
-
 /** The full image URL for photo attachments. */
 class ActivityObjectAttachmentsFullImage {
   /** The height, in pixels, of the linked resource. */
   core.int height;
-
   /** Media type of the link. */
   core.String type;
-
   /** URL of the image. */
   core.String url;
-
   /** The width, in pixels, of the linked resource. */
   core.int width;
-
 
   ActivityObjectAttachmentsFullImage();
 
@@ -1500,21 +1453,16 @@ class ActivityObjectAttachmentsFullImage {
   }
 }
 
-
 /** The preview image for photos or videos. */
 class ActivityObjectAttachmentsImage {
   /** The height, in pixels, of the linked resource. */
   core.int height;
-
   /** Media type of the link. */
   core.String type;
-
   /** Image URL. */
   core.String url;
-
   /** The width, in pixels, of the linked resource. */
   core.int width;
-
 
   ActivityObjectAttachmentsImage();
 
@@ -1551,11 +1499,9 @@ class ActivityObjectAttachmentsImage {
   }
 }
 
-
 class ActivityObjectAttachmentsPreviewThumbnails {
   /** URL of the thumbnail image. */
   core.String url;
-
 
   ActivityObjectAttachmentsPreviewThumbnails();
 
@@ -1574,21 +1520,16 @@ class ActivityObjectAttachmentsPreviewThumbnails {
   }
 }
 
-
 /** Image resource. */
 class ActivityObjectAttachmentsThumbnailsImage {
   /** The height, in pixels, of the linked resource. */
   core.int height;
-
   /** Media type of the link. */
   core.String type;
-
   /** Image url. */
   core.String url;
-
   /** The width, in pixels, of the linked resource. */
   core.int width;
-
 
   ActivityObjectAttachmentsThumbnailsImage();
 
@@ -1625,17 +1566,13 @@ class ActivityObjectAttachmentsThumbnailsImage {
   }
 }
 
-
 class ActivityObjectAttachmentsThumbnails {
   /** Potential name of the thumbnail. */
   core.String description;
-
   /** Image resource. */
   ActivityObjectAttachmentsThumbnailsImage image;
-
   /** URL of the webpage containing the image. */
   core.String url;
-
 
   ActivityObjectAttachmentsThumbnails();
 
@@ -1666,31 +1603,24 @@ class ActivityObjectAttachmentsThumbnails {
   }
 }
 
-
 class ActivityObjectAttachments {
   /**
    * If the attachment is an article, this property contains a snippet of text
    * from the article. It can also include descriptions for other types.
    */
   core.String content;
-
   /**
    * The title of the attachment, such as a photo caption or an article title.
    */
   core.String displayName;
-
   /** If the attachment is a video, the embeddable link. */
   ActivityObjectAttachmentsEmbed embed;
-
   /** The full image URL for photo attachments. */
   ActivityObjectAttachmentsFullImage fullImage;
-
   /** The ID of the attachment. */
   core.String id;
-
   /** The preview image for photos or videos. */
   ActivityObjectAttachmentsImage image;
-
   /**
    * The type of media object. Possible values include, but are not limited to,
    * the following values:
@@ -1700,23 +1630,19 @@ class ActivityObjectAttachments {
    * - "article" - An article, specified by a link.
    */
   core.String objectType;
-
   /**
    * When previewing, these are the optional thumbnails for the post. When
    * posting an article, choose one by setting the attachment.image.url
    * property. If you don't choose one, one will be chosen for you.
    */
   core.List<ActivityObjectAttachmentsPreviewThumbnails> previewThumbnails;
-
   /**
    * If the attachment is an album, this property is a list of potential
    * additional thumbnails from the album.
    */
   core.List<ActivityObjectAttachmentsThumbnails> thumbnails;
-
   /** The link to the attachment, which should be of type text/html. */
   core.String url;
-
 
   ActivityObjectAttachments();
 
@@ -1789,15 +1715,12 @@ class ActivityObjectAttachments {
   }
 }
 
-
 /** People who +1'd this activity. */
 class ActivityObjectPlusoners {
   /** The URL for the collection of people who +1'd this activity. */
   core.String selfLink;
-
   /** Total number of people who +1'd this activity. */
   core.int totalItems;
-
 
   ActivityObjectPlusoners();
 
@@ -1822,15 +1745,12 @@ class ActivityObjectPlusoners {
   }
 }
 
-
 /** Comments in reply to this activity. */
 class ActivityObjectReplies {
   /** The URL for the collection of comments in reply to this activity. */
   core.String selfLink;
-
   /** Total number of comments on this activity. */
   core.int totalItems;
-
 
   ActivityObjectReplies();
 
@@ -1855,15 +1775,12 @@ class ActivityObjectReplies {
   }
 }
 
-
 /** People who reshared this activity. */
 class ActivityObjectResharers {
   /** The URL for the collection of resharers. */
   core.String selfLink;
-
   /** Total number of people who reshared this activity. */
   core.int totalItems;
-
 
   ActivityObjectResharers();
 
@@ -1888,24 +1805,18 @@ class ActivityObjectResharers {
   }
 }
 
-
 /** Status of the activity as seen by the viewer. */
 class ActivityObjectStatusForViewer {
   /** Whether the viewer can comment on the activity. */
   core.bool canComment;
-
   /** Whether the viewer can +1 the activity. */
   core.bool canPlusone;
-
   /** Whether the viewer can edit or delete the activity. */
   core.bool canUpdate;
-
   /** Whether the viewer has +1'd the activity. */
   core.bool isPlusOned;
-
   /** Whether reshares are disabled for the activity. */
   core.bool resharingDisabled;
-
 
   ActivityObjectStatusForViewer();
 
@@ -1948,7 +1859,6 @@ class ActivityObjectStatusForViewer {
   }
 }
 
-
 /** The object of this activity. */
 class ActivityObject {
   /**
@@ -1957,19 +1867,15 @@ class ActivityObject {
    * actor.
    */
   ActivityObjectActor actor;
-
   /** The media objects attached to this activity. */
   core.List<ActivityObjectAttachments> attachments;
-
   /** The HTML-formatted content, which is suitable for display. */
   core.String content;
-
   /**
    * The ID of the object. When resharing an activity, this is the ID of the
    * activity that is being reshared.
    */
   core.String id;
-
   /**
    * The type of the object. Possible values include, but are not limited to,
    * the following values:
@@ -1977,29 +1883,22 @@ class ActivityObject {
    * - "activity" - A Google+ activity.
    */
   core.String objectType;
-
   /**
    * The content (text) as provided by the author, which is stored without any
    * HTML formatting. When creating or updating an activity, this value must be
    * supplied as plain text in the request.
    */
   core.String originalContent;
-
   /** People who +1'd this activity. */
   ActivityObjectPlusoners plusoners;
-
   /** Comments in reply to this activity. */
   ActivityObjectReplies replies;
-
   /** People who reshared this activity. */
   ActivityObjectResharers resharers;
-
   /** Status of the activity as seen by the viewer. */
   ActivityObjectStatusForViewer statusForViewer;
-
   /** The URL that points to the linked resource. */
   core.String url;
-
 
   ActivityObject();
 
@@ -2078,12 +1977,10 @@ class ActivityObject {
   }
 }
 
-
 /** The service provider that initially published this activity. */
 class ActivityProvider {
   /** Name of the service provider. */
   core.String title;
-
 
   ActivityProvider();
 
@@ -2102,83 +1999,63 @@ class ActivityProvider {
   }
 }
 
-
 class Activity {
   /** Identifies who has access to see this activity. */
   Acl access;
-
   /** The person who performed this activity. */
   ActivityActor actor;
-
   /** Street address where this activity occurred. */
   core.String address;
-
   /**
    * Additional content added by the person who shared this activity, applicable
    * only when resharing an activity.
    */
   core.String annotation;
-
   /**
    * If this activity is a crosspost from another system, this property
    * specifies the ID of the original activity.
    */
   core.String crosspostSource;
-
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /**
    * Latitude and longitude where this activity occurred. Format is latitude
    * followed by longitude, space separated.
    */
   core.String geocode;
-
   /** The ID of this activity. */
   core.String id;
-
   /** Identifies this resource as an activity. Value: "plus#activity". */
   core.String kind;
-
   /** The location where this activity occurred. */
   Place location;
-
   /** The object of this activity. */
   ActivityObject object;
-
   /** ID of the place where this activity occurred. */
   core.String placeId;
-
   /** Name of the place where this activity occurred. */
   core.String placeName;
-
   /** The service provider that initially published this activity. */
   ActivityProvider provider;
-
   /**
    * The time at which this activity was initially published. Formatted as an
    * RFC 3339 timestamp.
    */
   core.DateTime published;
-
   /**
    * Radius, in meters, of the region where this activity occurred, centered at
    * the latitude and longitude identified in geocode.
    */
   core.String radius;
-
   /** Title of this activity. */
   core.String title;
-
   /**
    * The time at which this activity was last updated. Formatted as an RFC 3339
    * timestamp.
    */
   core.DateTime updated;
-
   /** The link to this activity. */
   core.String url;
-
   /**
    * This activity's verb, which indicates the action that was performed.
    * Possible values include, but are not limited to, the following values:
@@ -2186,7 +2063,6 @@ class Activity {
    * - "share" - Reshare an activity.
    */
   core.String verb;
-
 
   Activity();
 
@@ -2319,48 +2195,38 @@ class Activity {
   }
 }
 
-
 class ActivityFeed {
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** The ID of this collection of activities. Deprecated. */
   core.String id;
-
   /** The activities in this page of results. */
   core.List<Activity> items;
-
   /**
    * Identifies this resource as a collection of activities. Value:
    * "plus#activityFeed".
    */
   core.String kind;
-
   /** Link to the next page of activities. */
   core.String nextLink;
-
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
    * results.
    */
   core.String nextPageToken;
-
   /** Link to this activity resource. */
   core.String selfLink;
-
   /**
    * The title of this collection of activities, which is a truncated portion of
    * the content.
    */
   core.String title;
-
   /**
    * The time at which this collection of activities was last updated. Formatted
    * as an RFC 3339 timestamp.
    */
   core.DateTime updated;
-
 
   ActivityFeed();
 
@@ -2427,23 +2293,18 @@ class ActivityFeed {
   }
 }
 
-
 class Audience {
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** The access control list entry. */
   PlusDomainsAclentryResource item;
-
   /** Identifies this resource as an audience. Value: "plus#audience". */
   core.String kind;
-
   /**
    * The number of people in this circle. This only applies if entity_type is
    * CIRCLE.
    */
   core.int memberCount;
-
   /**
    * The circle members' visibility as chosen by the owner of the circle. This
    * only applies for items with "item.type" equals "circle". Possible values
@@ -2453,7 +2314,6 @@ class Audience {
    * - "private" - Members are visible to the owner only.
    */
   core.String visibility;
-
 
   Audience();
 
@@ -2496,33 +2356,27 @@ class Audience {
   }
 }
 
-
 class AudiencesFeed {
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** The audiences in this result. */
   core.List<Audience> items;
-
   /**
    * Identifies this resource as a collection of audiences. Value:
    * "plus#audienceFeed".
    */
   core.String kind;
-
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
    * results.
    */
   core.String nextPageToken;
-
   /**
    * The total number of ACL entries. The number of entries in this response may
    * be smaller due to paging.
    */
   core.int totalItems;
-
 
   AudiencesFeed();
 
@@ -2565,12 +2419,10 @@ class AudiencesFeed {
   }
 }
 
-
 /** The people in this circle. */
 class CirclePeople {
   /** The total number of people in this circle. */
   core.int totalItems;
-
 
   CirclePeople();
 
@@ -2589,29 +2441,21 @@ class CirclePeople {
   }
 }
 
-
 class Circle {
   /** The description of this circle. */
   core.String description;
-
   /** The circle name. */
   core.String displayName;
-
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** The ID of the circle. */
   core.String id;
-
   /** Identifies this resource as a circle. Value: "plus#circle". */
   core.String kind;
-
   /** The people in this circle. */
   CirclePeople people;
-
   /** Link to this circle resource */
   core.String selfLink;
-
 
   Circle();
 
@@ -2666,42 +2510,33 @@ class Circle {
   }
 }
 
-
 class CircleFeed {
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** The circles in this page of results. */
   core.List<Circle> items;
-
   /**
    * Identifies this resource as a collection of circles. Value:
    * "plus#circleFeed".
    */
   core.String kind;
-
   /** Link to the next page of circles. */
   core.String nextLink;
-
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
    * results.
    */
   core.String nextPageToken;
-
   /** Link to this page of circles. */
   core.String selfLink;
-
   /** The title of this list of resources. */
   core.String title;
-
   /**
    * The total number of circles. The number of circles in this response may be
    * smaller due to paging.
    */
   core.int totalItems;
-
 
   CircleFeed();
 
@@ -2762,7 +2597,6 @@ class CircleFeed {
   }
 }
 
-
 /** The image representation of this actor. */
 class CommentActorImage {
   /**
@@ -2771,7 +2605,6 @@ class CommentActorImage {
    * of each side.
    */
   core.String url;
-
 
   CommentActorImage();
 
@@ -2790,21 +2623,16 @@ class CommentActorImage {
   }
 }
 
-
 /** The person who posted this comment. */
 class CommentActor {
   /** The name of this actor, suitable for display. */
   core.String displayName;
-
   /** The ID of the actor. */
   core.String id;
-
   /** The image representation of this actor. */
   CommentActorImage image;
-
   /** A link to the Person resource for this actor. */
   core.String url;
-
 
   CommentActor();
 
@@ -2841,14 +2669,11 @@ class CommentActor {
   }
 }
 
-
 class CommentInReplyTo {
   /** The ID of the activity. */
   core.String id;
-
   /** The URL of the activity. */
   core.String url;
-
 
   CommentInReplyTo();
 
@@ -2873,25 +2698,21 @@ class CommentInReplyTo {
   }
 }
 
-
 /** The object of this comment. */
 class CommentObject {
   /** The HTML-formatted content, suitable for display. */
   core.String content;
-
   /**
    * The object type of this comment. Possible values are:
    * - "comment" - A comment in reply to an activity.
    */
   core.String objectType;
-
   /**
    * The content (text) as provided by the author, stored without any HTML
    * formatting. When creating or updating a comment, this value must be
    * supplied as plain text in the request.
    */
   core.String originalContent;
-
 
   CommentObject();
 
@@ -2922,12 +2743,10 @@ class CommentObject {
   }
 }
 
-
 /** People who +1'd this comment. */
 class CommentPlusoners {
   /** Total number of people who +1'd this comment. */
   core.int totalItems;
-
 
   CommentPlusoners();
 
@@ -2946,51 +2765,39 @@ class CommentPlusoners {
   }
 }
 
-
 class Comment {
   /** The person who posted this comment. */
   CommentActor actor;
-
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** The ID of this comment. */
   core.String id;
-
   /** The activity this comment replied to. */
   core.List<CommentInReplyTo> inReplyTo;
-
   /** Identifies this resource as a comment. Value: "plus#comment". */
   core.String kind;
-
   /** The object of this comment. */
   CommentObject object;
-
   /** People who +1'd this comment. */
   CommentPlusoners plusoners;
-
   /**
    * The time at which this comment was initially published. Formatted as an RFC
    * 3339 timestamp.
    */
   core.DateTime published;
-
   /** Link to this comment resource. */
   core.String selfLink;
-
   /**
    * The time at which this comment was last updated. Formatted as an RFC 3339
    * timestamp.
    */
   core.DateTime updated;
-
   /**
    * This comment's verb, indicating what action was performed. Possible values
    * are:
    * - "post" - Publish content to the stream.
    */
   core.String verb;
-
 
   Comment();
 
@@ -3069,42 +2876,33 @@ class Comment {
   }
 }
 
-
 class CommentFeed {
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** The ID of this collection of comments. */
   core.String id;
-
   /** The comments in this page of results. */
   core.List<Comment> items;
-
   /**
    * Identifies this resource as a collection of comments. Value:
    * "plus#commentFeed".
    */
   core.String kind;
-
   /** Link to the next page of activities. */
   core.String nextLink;
-
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
    * results.
    */
   core.String nextPageToken;
-
   /** The title of this collection of comments. */
   core.String title;
-
   /**
    * The time at which this collection of comments was last updated. Formatted
    * as an RFC 3339 timestamp.
    */
   core.DateTime updated;
-
 
   CommentFeed();
 
@@ -3165,7 +2963,6 @@ class CommentFeed {
   }
 }
 
-
 /** The author's Google profile image. */
 class MediaAuthorImage {
   /**
@@ -3174,7 +2971,6 @@ class MediaAuthorImage {
    * of each side.
    */
   core.String url;
-
 
   MediaAuthorImage();
 
@@ -3193,21 +2989,16 @@ class MediaAuthorImage {
   }
 }
 
-
 /** The person who uploaded this media. */
 class MediaAuthor {
   /** The author's name. */
   core.String displayName;
-
   /** ID of the author. */
   core.String id;
-
   /** The author's Google profile image. */
   MediaAuthorImage image;
-
   /** A link to the author's Google profile. */
   core.String url;
-
 
   MediaAuthor();
 
@@ -3244,12 +3035,10 @@ class MediaAuthor {
   }
 }
 
-
 /** Exif information of the media item. */
 class MediaExif {
   /** The time the media was captured. Formatted as an RFC 3339 timestamp. */
   core.DateTime time;
-
 
   MediaExif();
 
@@ -3268,69 +3057,52 @@ class MediaExif {
   }
 }
 
-
 class Media {
   /** The person who uploaded this media. */
   MediaAuthor author;
-
   /** The display name for this media. */
   core.String displayName;
-
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** Exif information of the media item. */
   MediaExif exif;
-
   /** The height in pixels of the original image. */
   core.int height;
-
   /** ID of this media, which is generated by the API. */
   core.String id;
-
   /** The type of resource. */
   core.String kind;
-
   /**
    * The time at which this media was originally created in UTC. Formatted as an
    * RFC 3339 timestamp that matches this example: 2010-11-25T14:30:27.655Z
    */
   core.DateTime mediaCreatedTime;
-
   /** The URL of this photo or video's still image. */
   core.String mediaUrl;
-
   /**
    * The time at which this media was uploaded. Formatted as an RFC 3339
    * timestamp.
    */
   core.DateTime published;
-
   /** The size in bytes of this video. */
   core.String sizeBytes;
-
   /**
    * The list of video streams for this video. There might be several different
    * streams available for a single video, either Flash or MPEG, of various
    * sizes
    */
   core.List<Videostream> streams;
-
   /** A description, or caption, for this media. */
   core.String summary;
-
   /**
    * The time at which this media was last updated. This includes changes to
    * media metadata. Formatted as an RFC 3339 timestamp.
    */
   core.DateTime updated;
-
   /** The URL for the page that hosts this media. */
   core.String url;
-
   /** The duration in milliseconds of this video. */
   core.String videoDuration;
-
   /**
    * The encoding status of this video. Possible values are:
    * - "UPLOADING" - Not all the video bytes have been received.
@@ -3340,10 +3112,8 @@ class Media {
    * - "FINAL" - All video streams are playable.
    */
   core.String videoStatus;
-
   /** The width in pixels of the original image. */
   core.int width;
-
 
   Media();
 
@@ -3464,44 +3234,36 @@ class Media {
   }
 }
 
-
 class PeopleFeed {
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /**
    * The people in this page of results. Each item includes the id, displayName,
    * image, and url for the person. To retrieve additional profile data, see the
    * people.get method.
    */
   core.List<Person> items;
-
   /**
    * Identifies this resource as a collection of people. Value:
    * "plus#peopleFeed".
    */
   core.String kind;
-
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
    * results.
    */
   core.String nextPageToken;
-
   /** Link to this resource. */
   core.String selfLink;
-
   /** The title of this collection of people. */
   core.String title;
-
   /**
    * The total number of people available in this list. The number of people in
    * a response might be smaller due to paging. This might not be set for all
    * collections.
    */
   core.int totalItems;
-
 
   PeopleFeed();
 
@@ -3556,7 +3318,6 @@ class PeopleFeed {
   }
 }
 
-
 /** Extra information about the cover photo. */
 class PersonCoverCoverInfo {
   /**
@@ -3564,13 +3325,11 @@ class PersonCoverCoverInfo {
    * displayed cover image. Only valid for banner layout.
    */
   core.int leftImageOffset;
-
   /**
    * The difference between the top position of the cover image and the actual
    * displayed cover image. Only valid for banner layout.
    */
   core.int topImageOffset;
-
 
   PersonCoverCoverInfo();
 
@@ -3595,18 +3354,14 @@ class PersonCoverCoverInfo {
   }
 }
 
-
 /** The person's primary cover image. */
 class PersonCoverCoverPhoto {
   /** The height of the image. */
   core.int height;
-
   /** The URL of the image. */
   core.String url;
-
   /** The width of the image. */
   core.int width;
-
 
   PersonCoverCoverPhoto();
 
@@ -3637,22 +3392,18 @@ class PersonCoverCoverPhoto {
   }
 }
 
-
 /** The cover photo content. */
 class PersonCover {
   /** Extra information about the cover photo. */
   PersonCoverCoverInfo coverInfo;
-
   /** The person's primary cover image. */
   PersonCoverCoverPhoto coverPhoto;
-
   /**
    * The layout of the cover art. Possible values include, but are not limited
    * to, the following values:
    * - "banner" - One large image banner.
    */
   core.String layout;
-
 
   PersonCover();
 
@@ -3683,7 +3434,6 @@ class PersonCover {
   }
 }
 
-
 class PersonEmails {
   /**
    * The type of address. Possible values include, but are not limited to, the
@@ -3694,10 +3444,8 @@ class PersonEmails {
    * - "other" - Other.
    */
   core.String type;
-
   /** The email address. */
   core.String value;
-
 
   PersonEmails();
 
@@ -3722,19 +3470,16 @@ class PersonEmails {
   }
 }
 
-
 /** The representation of the person's profile photo. */
 class PersonImage {
   /** Whether the person's profile photo is the default one */
   core.bool isDefault;
-
   /**
    * The URL of the person's profile photo. To resize the image and crop it to a
    * square, append the query string ?sz=x, where x is the dimension in pixels
    * of each side.
    */
   core.String url;
-
 
   PersonImage();
 
@@ -3759,29 +3504,22 @@ class PersonImage {
   }
 }
 
-
 /**
  * An object representation of the individual components of a person's name.
  */
 class PersonName {
   /** The family name (last name) of this person. */
   core.String familyName;
-
   /** The full name of this person, including middle names, suffixes, etc. */
   core.String formatted;
-
   /** The given name (first name) of this person. */
   core.String givenName;
-
   /** The honorific prefixes (such as "Dr." or "Mrs.") for this person. */
   core.String honorificPrefix;
-
   /** The honorific suffixes (such as "Jr.") for this person. */
   core.String honorificSuffix;
-
   /** The middle name of this person. */
   core.String middleName;
-
 
   PersonName();
 
@@ -3830,37 +3568,28 @@ class PersonName {
   }
 }
 
-
 class PersonOrganizations {
   /** The department within the organization. Deprecated. */
   core.String department;
-
   /**
    * A short description of the person's role in this organization. Deprecated.
    */
   core.String description;
-
   /** The date that the person left this organization. */
   core.String endDate;
-
   /** The location of this organization. Deprecated. */
   core.String location;
-
   /** The name of the organization. */
   core.String name;
-
   /**
    * If "true", indicates this organization is the person's primary one, which
    * is typically interpreted as the current one.
    */
   core.bool primary;
-
   /** The date that the person joined this organization. */
   core.String startDate;
-
   /** The person's job title or role within the organization. */
   core.String title;
-
   /**
    * The type of organization. Possible values include, but are not limited to,
    * the following values:
@@ -3868,7 +3597,6 @@ class PersonOrganizations {
    * - "school" - School.
    */
   core.String type;
-
 
   PersonOrganizations();
 
@@ -3935,17 +3663,14 @@ class PersonOrganizations {
   }
 }
 
-
 class PersonPlacesLived {
   /** If "true", this place of residence is this person's primary residence. */
   core.bool primary;
-
   /**
    * A place where this person has lived. For example: "Seattle, WA", "Near
    * Toronto".
    */
   core.String value;
-
 
   PersonPlacesLived();
 
@@ -3970,11 +3695,9 @@ class PersonPlacesLived {
   }
 }
 
-
 class PersonUrls {
   /** The label of the URL. */
   core.String label;
-
   /**
    * The type of URL. Possible values include, but are not limited to, the
    * following values:
@@ -3984,10 +3707,8 @@ class PersonUrls {
    * - "other" - Other URL.
    */
   core.String type;
-
   /** The URL value. */
   core.String value;
-
 
   PersonUrls();
 
@@ -4018,39 +3739,30 @@ class PersonUrls {
   }
 }
 
-
 class Person {
   /** A short biography for this person. */
   core.String aboutMe;
-
   /** The person's date of birth, represented as YYYY-MM-DD. */
   core.String birthday;
-
   /** The "bragging rights" line of this person. */
   core.String braggingRights;
-
   /**
    * For followers who are visible, the number of people who have added this
    * person or page to a circle.
    */
   core.int circledByCount;
-
   /** The cover photo content. */
   PersonCover cover;
-
   /** (this field is not currently used) */
   core.String currentLocation;
-
   /** The name of this person, which is suitable for display. */
   core.String displayName;
-
   /**
    * The hosted domain name for the user's Google Apps account. For instance,
    * example.com. The plus.profile.emails.read or email scope is needed to get
    * this domain name.
    */
   core.String domain;
-
   /**
    * A list of email addresses that this person has, including their Google
    * account email address, and the public verified email addresses on their
@@ -4059,10 +3771,8 @@ class Person {
    * Google account email address.
    */
   core.List<PersonEmails> emails;
-
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /**
    * The person's gender. Possible values include, but are not limited to, the
    * following values:
@@ -4071,27 +3781,20 @@ class Person {
    * - "other" - Other.
    */
   core.String gender;
-
   /** The ID of this person. */
   core.String id;
-
   /** The representation of the person's profile photo. */
   PersonImage image;
-
   /** Whether this user has signed up for Google+. */
   core.bool isPlusUser;
-
   /** Identifies this resource as a person. Value: "plus#person". */
   core.String kind;
-
   /**
    * An object representation of the individual components of a person's name.
    */
   PersonName name;
-
   /** The nickname of this person. */
   core.String nickname;
-
   /**
    * Type of person within Google+. Possible values include, but are not limited
    * to, the following values:
@@ -4099,22 +3802,17 @@ class Person {
    * - "page" - represents a page.
    */
   core.String objectType;
-
   /** The occupation of this person. */
   core.String occupation;
-
   /**
    * A list of current or past organizations with which this person is
    * associated.
    */
   core.List<PersonOrganizations> organizations;
-
   /** A list of places where this person has lived. */
   core.List<PersonPlacesLived> placesLived;
-
   /** If a Google+ Page, the number of people who have +1'd this page. */
   core.int plusOneCount;
-
   /**
    * The person's relationship status. Possible values include, but are not
    * limited to, the following values:
@@ -4129,22 +3827,16 @@ class Person {
    * - "in_civil_union" - Person is in a civil union.
    */
   core.String relationshipStatus;
-
   /** The person's skills. */
   core.String skills;
-
   /** The brief description (tagline) of this person. */
   core.String tagline;
-
   /** The URL of this person's profile. */
   core.String url;
-
   /** A list of URLs for this person. */
   core.List<PersonUrls> urls;
-
   /** Whether the person or Google+ Page has been verified. */
   core.bool verified;
-
 
   Person();
 
@@ -4325,12 +4017,10 @@ class Person {
   }
 }
 
-
 /** The physical address of the place. */
 class PlaceAddress {
   /** The formatted address for display. */
   core.String formatted;
-
 
   PlaceAddress();
 
@@ -4349,15 +4039,12 @@ class PlaceAddress {
   }
 }
 
-
 /** The position of the place. */
 class PlacePosition {
   /** The latitude of this position. */
   core.double latitude;
-
   /** The longitude of this position. */
   core.double longitude;
-
 
   PlacePosition();
 
@@ -4382,23 +4069,17 @@ class PlacePosition {
   }
 }
 
-
 class Place {
   /** The physical address of the place. */
   PlaceAddress address;
-
   /** The display name of the place. */
   core.String displayName;
-
   /** The id of the place. */
   core.String id;
-
   /** Identifies this resource as a place. Value: "plus#place". */
   core.String kind;
-
   /** The position of the place. */
   PlacePosition position;
-
 
   Place();
 
@@ -4441,17 +4122,14 @@ class Place {
   }
 }
 
-
 class PlusDomainsAclentryResource {
   /** A descriptive name for this entry. Suitable for display. */
   core.String displayName;
-
   /**
    * The ID of the entry. For entries of type "person" or "circle", this is the
    * ID of the resource. For other types, this property is not set.
    */
   core.String id;
-
   /**
    * The type of entry describing to whom access is granted. Possible values
    * are:
@@ -4464,7 +4142,6 @@ class PlusDomainsAclentryResource {
    * - "public" - Access to anyone on the web.
    */
   core.String type;
-
 
   PlusDomainsAclentryResource();
 
@@ -4495,20 +4172,15 @@ class PlusDomainsAclentryResource {
   }
 }
 
-
 class Videostream {
   /** The height, in pixels, of the video resource. */
   core.int height;
-
   /** MIME type of the video stream. */
   core.String type;
-
   /** URL of the video stream. */
   core.String url;
-
   /** The width, in pixels, of the video resource. */
   core.int width;
-
 
   Videostream();
 

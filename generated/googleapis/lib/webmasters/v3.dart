@@ -58,7 +58,7 @@ class SitemapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String siteUrl, core.String feedpath) {
     var _url = null;
@@ -106,7 +106,7 @@ class SitemapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<WmxSitemap> get(core.String siteUrl, core.String feedpath) {
     var _url = null;
@@ -122,7 +122,6 @@ class SitemapsResourceApi {
     if (feedpath == null) {
       throw new core.ArgumentError("Parameter feedpath is required.");
     }
-
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/sitemaps/' + commons.Escaper.ecapeVariable('$feedpath');
 
@@ -152,7 +151,7 @@ class SitemapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SitemapsListResponse> list(core.String siteUrl, {core.String sitemapIndex}) {
     var _url = null;
@@ -168,7 +167,6 @@ class SitemapsResourceApi {
     if (sitemapIndex != null) {
       _queryParams["sitemapIndex"] = [sitemapIndex];
     }
-
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/sitemaps';
 
@@ -196,7 +194,7 @@ class SitemapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future submit(core.String siteUrl, core.String feedpath) {
     var _url = null;
@@ -247,7 +245,7 @@ class SitesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future add(core.String siteUrl) {
     var _url = null;
@@ -287,7 +285,7 @@ class SitesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String siteUrl) {
     var _url = null;
@@ -329,7 +327,7 @@ class SitesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<WmxSite> get(core.String siteUrl) {
     var _url = null;
@@ -342,7 +340,6 @@ class SitesResourceApi {
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
     }
-
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
@@ -367,7 +364,7 @@ class SitesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SitesListResponse> list() {
     var _url = null;
@@ -376,7 +373,6 @@ class SitesResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'sites';
@@ -436,7 +432,7 @@ class UrlcrawlerrorscountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UrlCrawlErrorsCountsQueryResponse> query(core.String siteUrl, {core.String category, core.bool latestCountsOnly, core.String platform}) {
     var _url = null;
@@ -458,7 +454,6 @@ class UrlcrawlerrorscountsResourceApi {
     if (platform != null) {
       _queryParams["platform"] = [platform];
     }
-
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsCounts/query';
 
@@ -516,7 +511,7 @@ class UrlcrawlerrorssamplesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UrlCrawlErrorsSample> get(core.String siteUrl, core.String url, core.String category, core.String platform) {
     var _url = null;
@@ -540,7 +535,6 @@ class UrlcrawlerrorssamplesResourceApi {
       throw new core.ArgumentError("Parameter platform is required.");
     }
     _queryParams["platform"] = [platform];
-
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsSamples/' + commons.Escaper.ecapeVariable('$url');
 
@@ -587,7 +581,7 @@ class UrlcrawlerrorssamplesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UrlCrawlErrorsSamplesListResponse> list(core.String siteUrl, core.String category, core.String platform) {
     var _url = null;
@@ -608,7 +602,6 @@ class UrlcrawlerrorssamplesResourceApi {
       throw new core.ArgumentError("Parameter platform is required.");
     }
     _queryParams["platform"] = [platform];
-
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsSamples';
 
@@ -656,7 +649,7 @@ class UrlcrawlerrorssamplesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future markAsFixed(core.String siteUrl, core.String url, core.String category, core.String platform) {
     var _url = null;
@@ -704,7 +697,6 @@ class SitemapsListResponse {
   /** Information about a sitemap entry. */
   core.List<WmxSitemap> sitemap;
 
-
   SitemapsListResponse();
 
   SitemapsListResponse.fromJson(core.Map _json) {
@@ -722,12 +714,10 @@ class SitemapsListResponse {
   }
 }
 
-
 /** List of sites with access level information. */
 class SitesListResponse {
   /** Access level information for a Webmaster Tools site. */
   core.List<WmxSite> siteEntry;
-
 
   SitesListResponse();
 
@@ -746,15 +736,12 @@ class SitesListResponse {
   }
 }
 
-
 /** An entry in a URL crawl errors time series. */
 class UrlCrawlErrorCount {
   /** The error count at the given timestamp. */
   core.String count;
-
   /** The time (well, date) when errors were detected, in RFC 3339 format. */
   core.DateTime timestamp;
-
 
   UrlCrawlErrorCount();
 
@@ -779,7 +766,6 @@ class UrlCrawlErrorCount {
   }
 }
 
-
 /**
  * Number of errors per day for a specific error type (defined by platform and
  * category).
@@ -787,13 +773,10 @@ class UrlCrawlErrorCount {
 class UrlCrawlErrorCountsPerType {
   /** The crawl error type. */
   core.String category;
-
   /** The error count entries time series. */
   core.List<UrlCrawlErrorCount> entries;
-
   /** Corresponding to the user agent that made the request. */
   core.String platform;
-
 
   UrlCrawlErrorCountsPerType();
 
@@ -824,7 +807,6 @@ class UrlCrawlErrorCountsPerType {
   }
 }
 
-
 /**
  * A time series of the number of URL crawl errors per error category and
  * platform.
@@ -835,7 +817,6 @@ class UrlCrawlErrorsCountsQueryResponse {
    * and platform.
    */
   core.List<UrlCrawlErrorCountsPerType> countPerTypes;
-
 
   UrlCrawlErrorsCountsQueryResponse();
 
@@ -854,23 +835,17 @@ class UrlCrawlErrorsCountsQueryResponse {
   }
 }
 
-
 class UrlCrawlErrorsSample {
   /** The time the error was first detected, in RFC 3339 format. */
   core.DateTime firstDetected;
-
   /** The time when the URL was last crawled, in RFC 3339 format. */
   core.DateTime lastCrawled;
-
   /** The URL of an error, relative to the site. */
   core.String pageUrl;
-
   /** The HTTP response code, if any. */
   core.int responseCode;
-
   /** Additional details about the URL, set only when calling get(). */
   UrlSampleDetails urlDetails;
-
 
   UrlCrawlErrorsSample();
 
@@ -913,12 +888,10 @@ class UrlCrawlErrorsSample {
   }
 }
 
-
 /** List of crawl error samples. */
 class UrlCrawlErrorsSamplesListResponse {
   /** Information about the sample URL and its crawl error. */
   core.List<UrlCrawlErrorsSample> urlCrawlErrorSample;
-
 
   UrlCrawlErrorsSamplesListResponse();
 
@@ -937,15 +910,12 @@ class UrlCrawlErrorsSamplesListResponse {
   }
 }
 
-
 /** Additional details about the URL, set only when calling get(). */
 class UrlSampleDetails {
   /** List of sitemaps pointing at this URL. */
   core.List<core.String> containingSitemaps;
-
   /** A sample set of URLs linking to this URL. */
   core.List<core.String> linkedFromUrls;
-
 
   UrlSampleDetails();
 
@@ -970,15 +940,12 @@ class UrlSampleDetails {
   }
 }
 
-
 /** Access level information for a Webmaster Tools site. */
 class WmxSite {
   /** The user's permission level for the site. */
   core.String permissionLevel;
-
   /** The URL of the site. */
   core.String siteUrl;
-
 
   WmxSite();
 
@@ -1003,44 +970,34 @@ class WmxSite {
   }
 }
 
-
 class WmxSitemap {
   /** The various content types in the sitemap. */
   core.List<WmxSitemapContent> contents;
-
   /**
    * Number of errors in the sitemap - issues with the sitemap itself, that
    * needs to be fixed before it can be processed correctly.
    */
   core.String errors;
-
   /** If true, the sitemap has not been processed. */
   core.bool isPending;
-
   /** If true, the sitemap is a collection of sitemaps. */
   core.bool isSitemapsIndex;
-
   /**
    * Date & time in which this sitemap was last downloaded. Date format is in
    * RFC 3339 format (yyyy-mm-dd).
    */
   core.DateTime lastDownloaded;
-
   /**
    * Date & time in which this sitemap was submitted. Date format is in RFC 3339
    * format (yyyy-mm-dd).
    */
   core.DateTime lastSubmitted;
-
   /** The url of the sitemap. */
   core.String path;
-
   /** The type of the sitemap (for example "sitemap"). */
   core.String type;
-
   /** Number of warnings for the sitemap - issues with URLs in the sitemaps. */
   core.String warnings;
-
 
   WmxSitemap();
 
@@ -1107,7 +1064,6 @@ class WmxSitemap {
   }
 }
 
-
 /** Information about the various content types in the sitemap. */
 class WmxSitemapContent {
   /**
@@ -1115,15 +1071,12 @@ class WmxSitemapContent {
    * type).
    */
   core.String indexed;
-
   /** The number of URLs in the sitemap (of the content type). */
   core.String submitted;
-
   /**
    * The specific type of content in this sitemap (for example "web", "images").
    */
   core.String type;
-
 
   WmxSitemapContent();
 

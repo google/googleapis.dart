@@ -81,7 +81,7 @@ class AchievementDefinitionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementDefinitionsListResponse> list({core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -100,7 +100,6 @@ class AchievementDefinitionsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'achievements';
 
@@ -143,7 +142,7 @@ class AchievementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementIncrementResponse> increment(core.String achievementId, core.int stepsToIncrement, {core.String requestId}) {
     var _url = null;
@@ -163,7 +162,6 @@ class AchievementsResourceApi {
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
     }
-
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId') + '/increment';
 
@@ -210,7 +208,7 @@ class AchievementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlayerAchievementListResponse> list(core.String playerId, {core.String language, core.int maxResults, core.String pageToken, core.String state}) {
     var _url = null;
@@ -235,7 +233,6 @@ class AchievementsResourceApi {
     if (state != null) {
       _queryParams["state"] = [state];
     }
-
 
     _url = 'players/' + commons.Escaper.ecapeVariable('$playerId') + '/achievements';
 
@@ -263,7 +260,7 @@ class AchievementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementRevealResponse> reveal(core.String achievementId) {
     var _url = null;
@@ -276,7 +273,6 @@ class AchievementsResourceApi {
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
     }
-
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId') + '/reveal';
 
@@ -308,7 +304,7 @@ class AchievementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementSetStepsAtLeastResponse> setStepsAtLeast(core.String achievementId, core.int steps) {
     var _url = null;
@@ -325,7 +321,6 @@ class AchievementsResourceApi {
       throw new core.ArgumentError("Parameter steps is required.");
     }
     _queryParams["steps"] = ["${steps}"];
-
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId') + '/setStepsAtLeast';
 
@@ -352,7 +347,7 @@ class AchievementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementUnlockResponse> unlock(core.String achievementId) {
     var _url = null;
@@ -365,7 +360,6 @@ class AchievementsResourceApi {
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
     }
-
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId') + '/unlock';
 
@@ -392,7 +386,7 @@ class AchievementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementUpdateMultipleResponse> updateMultiple(AchievementUpdateMultipleRequest request) {
     var _url = null;
@@ -405,7 +399,6 @@ class AchievementsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'achievements/updateMultiple';
 
@@ -454,7 +447,7 @@ class ApplicationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Application> get(core.String applicationId, {core.String language, core.String platformType}) {
     var _url = null;
@@ -473,7 +466,6 @@ class ApplicationsResourceApi {
     if (platformType != null) {
       _queryParams["platformType"] = [platformType];
     }
-
 
     _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId');
 
@@ -497,7 +489,7 @@ class ApplicationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future played() {
     var _url = null;
@@ -553,7 +545,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlayerEventListResponse> listByPlayer({core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -572,7 +564,6 @@ class EventsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'events';
 
@@ -607,7 +598,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EventDefinitionListResponse> listDefinitions({core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -626,7 +617,6 @@ class EventsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'eventDefinitions';
 
@@ -657,7 +647,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EventUpdateResponse> record(EventRecordRequest request, {core.String language}) {
     var _url = null;
@@ -673,7 +663,6 @@ class EventsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'events';
 
@@ -712,7 +701,7 @@ class LeaderboardsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Leaderboard> get(core.String leaderboardId, {core.String language}) {
     var _url = null;
@@ -728,7 +717,6 @@ class LeaderboardsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
 
@@ -763,7 +751,7 @@ class LeaderboardsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LeaderboardListResponse> list({core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -782,7 +770,6 @@ class LeaderboardsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'leaderboards';
 
@@ -816,7 +803,7 @@ class MetagameResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<MetagameConfig> getMetagameConfig() {
     var _url = null;
@@ -825,7 +812,6 @@ class MetagameResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'metagameConfig';
@@ -870,7 +856,7 @@ class MetagameResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CategoryListResponse> listCategoriesByPlayer(core.String playerId, core.String collection, {core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -895,7 +881,6 @@ class MetagameResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'players/' + commons.Escaper.ecapeVariable('$playerId') + '/categories/' + commons.Escaper.ecapeVariable('$collection');
 
@@ -936,7 +921,7 @@ class PlayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Player> get(core.String playerId, {core.String language}) {
     var _url = null;
@@ -952,7 +937,6 @@ class PlayersResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'players/' + commons.Escaper.ecapeVariable('$playerId');
 
@@ -995,7 +979,7 @@ class PlayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlayerListResponse> list(core.String collection, {core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1017,7 +1001,6 @@ class PlayersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'players/me/players/' + commons.Escaper.ecapeVariable('$collection');
 
@@ -1052,7 +1035,7 @@ class PushtokensResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future remove(PushTokenId request) {
     var _url = null;
@@ -1091,7 +1074,7 @@ class PushtokensResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future update(PushToken request) {
     var _url = null;
@@ -1146,7 +1129,7 @@ class QuestMilestonesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future claim(core.String questId, core.String milestoneId, core.String requestId) {
     var _url = null;
@@ -1206,7 +1189,7 @@ class QuestsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Quest> accept(core.String questId, {core.String language}) {
     var _url = null;
@@ -1222,7 +1205,6 @@ class QuestsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'quests/' + commons.Escaper.ecapeVariable('$questId') + '/accept';
 
@@ -1262,7 +1244,7 @@ class QuestsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<QuestListResponse> list(core.String playerId, {core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1284,7 +1266,6 @@ class QuestsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'players/' + commons.Escaper.ecapeVariable('$playerId') + '/quests';
 
@@ -1326,7 +1307,7 @@ class RevisionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RevisionCheckResponse> check(core.String clientRevision) {
     var _url = null;
@@ -1340,7 +1321,6 @@ class RevisionsResourceApi {
       throw new core.ArgumentError("Parameter clientRevision is required.");
     }
     _queryParams["clientRevision"] = [clientRevision];
-
 
     _url = 'revisions/check';
 
@@ -1380,7 +1360,7 @@ class RoomsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Room> create(RoomCreateRequest request, {core.String language}) {
     var _url = null;
@@ -1396,7 +1376,6 @@ class RoomsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'rooms/create';
 
@@ -1427,7 +1406,7 @@ class RoomsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Room> decline(core.String roomId, {core.String language}) {
     var _url = null;
@@ -1443,7 +1422,6 @@ class RoomsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/decline';
 
@@ -1469,7 +1447,7 @@ class RoomsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future dismiss(core.String roomId) {
     var _url = null;
@@ -1513,7 +1491,7 @@ class RoomsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Room> get(core.String roomId, {core.String language}) {
     var _url = null;
@@ -1529,7 +1507,6 @@ class RoomsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId');
 
@@ -1562,7 +1539,7 @@ class RoomsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Room> join(RoomJoinRequest request, core.String roomId, {core.String language}) {
     var _url = null;
@@ -1581,7 +1558,6 @@ class RoomsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/join';
 
@@ -1614,7 +1590,7 @@ class RoomsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Room> leave(RoomLeaveRequest request, core.String roomId, {core.String language}) {
     var _url = null;
@@ -1633,7 +1609,6 @@ class RoomsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/leave';
 
@@ -1668,7 +1643,7 @@ class RoomsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RoomList> list({core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1687,7 +1662,6 @@ class RoomsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'rooms';
 
@@ -1721,7 +1695,7 @@ class RoomsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RoomStatus> reportStatus(RoomP2PStatuses request, core.String roomId, {core.String language}) {
     var _url = null;
@@ -1740,7 +1714,6 @@ class RoomsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/reportstatus';
 
@@ -1810,7 +1783,7 @@ class ScoresResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlayerLeaderboardScoreListResponse> get(core.String playerId, core.String leaderboardId, core.String timeSpan, {core.String includeRankType, core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1841,7 +1814,6 @@ class ScoresResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'players/' + commons.Escaper.ecapeVariable('$playerId') + '/leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId') + '/scores/' + commons.Escaper.ecapeVariable('$timeSpan');
 
@@ -1889,7 +1861,7 @@ class ScoresResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LeaderboardScores> list(core.String leaderboardId, core.String collection, core.String timeSpan, {core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1918,7 +1890,6 @@ class ScoresResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId') + '/scores/' + commons.Escaper.ecapeVariable('$collection');
 
@@ -1974,7 +1945,7 @@ class ScoresResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LeaderboardScores> listWindow(core.String leaderboardId, core.String collection, core.String timeSpan, {core.String language, core.int maxResults, core.String pageToken, core.int resultsAbove, core.bool returnTopIfAbsent}) {
     var _url = null;
@@ -2009,7 +1980,6 @@ class ScoresResourceApi {
     if (returnTopIfAbsent != null) {
       _queryParams["returnTopIfAbsent"] = ["${returnTopIfAbsent}"];
     }
-
 
     _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId') + '/window/' + commons.Escaper.ecapeVariable('$collection');
 
@@ -2051,7 +2021,7 @@ class ScoresResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlayerScoreResponse> submit(core.String leaderboardId, core.String score, {core.String language, core.String scoreTag}) {
     var _url = null;
@@ -2074,7 +2044,6 @@ class ScoresResourceApi {
     if (scoreTag != null) {
       _queryParams["scoreTag"] = [scoreTag];
     }
-
 
     _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId') + '/scores';
 
@@ -2104,7 +2073,7 @@ class ScoresResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlayerScoreListResponse> submitMultiple(PlayerScoreSubmissionList request, {core.String language}) {
     var _url = null;
@@ -2120,7 +2089,6 @@ class ScoresResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'leaderboards/scores';
 
@@ -2159,7 +2127,7 @@ class SnapshotsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Snapshot> get(core.String snapshotId, {core.String language}) {
     var _url = null;
@@ -2175,7 +2143,6 @@ class SnapshotsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'snapshots/' + commons.Escaper.ecapeVariable('$snapshotId');
 
@@ -2214,7 +2181,7 @@ class SnapshotsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SnapshotListResponse> list(core.String playerId, {core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -2236,7 +2203,6 @@ class SnapshotsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'players/' + commons.Escaper.ecapeVariable('$playerId') + '/snapshots';
 
@@ -2270,7 +2236,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future cancel(core.String matchId) {
     var _url = null;
@@ -2314,7 +2280,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TurnBasedMatch> create(TurnBasedMatchCreateRequest request, {core.String language}) {
     var _url = null;
@@ -2330,7 +2296,6 @@ class TurnBasedMatchesResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'turnbasedmatches/create';
 
@@ -2360,7 +2325,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TurnBasedMatch> decline(core.String matchId, {core.String language}) {
     var _url = null;
@@ -2376,7 +2341,6 @@ class TurnBasedMatchesResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/decline';
 
@@ -2402,7 +2366,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future dismiss(core.String matchId) {
     var _url = null;
@@ -2450,7 +2414,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TurnBasedMatch> finish(TurnBasedMatchResults request, core.String matchId, {core.String language}) {
     var _url = null;
@@ -2469,7 +2433,6 @@ class TurnBasedMatchesResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/finish';
 
@@ -2501,7 +2464,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TurnBasedMatch> get(core.String matchId, {core.bool includeMatchData, core.String language}) {
     var _url = null;
@@ -2520,7 +2483,6 @@ class TurnBasedMatchesResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId');
 
@@ -2550,7 +2512,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TurnBasedMatch> join(core.String matchId, {core.String language}) {
     var _url = null;
@@ -2566,7 +2528,6 @@ class TurnBasedMatchesResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/join';
 
@@ -2597,7 +2558,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TurnBasedMatch> leave(core.String matchId, {core.String language}) {
     var _url = null;
@@ -2613,7 +2574,6 @@ class TurnBasedMatchesResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/leave';
 
@@ -2651,7 +2611,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TurnBasedMatch> leaveTurn(core.String matchId, core.int matchVersion, {core.String language, core.String pendingParticipantId}) {
     var _url = null;
@@ -2674,7 +2634,6 @@ class TurnBasedMatchesResourceApi {
     if (pendingParticipantId != null) {
       _queryParams["pendingParticipantId"] = [pendingParticipantId];
     }
-
 
     _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/leaveTurn';
 
@@ -2720,7 +2679,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TurnBasedMatchList> list({core.bool includeMatchData, core.String language, core.int maxCompletedMatches, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -2745,7 +2704,6 @@ class TurnBasedMatchesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'turnbasedmatches';
 
@@ -2782,7 +2740,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TurnBasedMatchRematch> rematch(core.String matchId, {core.String language, core.String requestId}) {
     var _url = null;
@@ -2801,7 +2759,6 @@ class TurnBasedMatchesResourceApi {
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
     }
-
 
     _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/rematch';
 
@@ -2850,7 +2807,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TurnBasedMatchSync> sync({core.bool includeMatchData, core.String language, core.int maxCompletedMatches, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -2875,7 +2832,6 @@ class TurnBasedMatchesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'turnbasedmatches/sync';
 
@@ -2907,7 +2863,7 @@ class TurnBasedMatchesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TurnBasedMatch> takeTurn(TurnBasedMatchTurn request, core.String matchId, {core.String language}) {
     var _url = null;
@@ -2926,7 +2882,6 @@ class TurnBasedMatchesResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/turn';
 
@@ -2953,21 +2908,16 @@ class AchievementDefinition {
    * - "INCREMENTAL" - Achievement is incremental.
    */
   core.String achievementType;
-
   /** The description of the achievement. */
   core.String description;
-
   /**
    * Experience points which will be earned when unlocking this achievement.
    */
   core.String experiencePoints;
-
   /** The total steps for an incremental achievement as a string. */
   core.String formattedTotalSteps;
-
   /** The ID of the achievement. */
   core.String id;
-
   /**
    * The initial state of the achievement.
    * Possible values are:
@@ -2976,37 +2926,29 @@ class AchievementDefinition {
    * - "UNLOCKED" - Achievement is unlocked.
    */
   core.String initialState;
-
   /**
    * Indicates whether the revealed icon image being returned is a default
    * image, or is provided by the game.
    */
   core.bool isRevealedIconUrlDefault;
-
   /**
    * Indicates whether the unlocked icon image being returned is a default
    * image, or is game-provided.
    */
   core.bool isUnlockedIconUrlDefault;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#achievementDefinition.
    */
   core.String kind;
-
   /** The name of the achievement. */
   core.String name;
-
   /** The image URL for the revealed achievement icon. */
   core.String revealedIconUrl;
-
   /** The total steps for an incremental achievement. */
   core.int totalSteps;
-
   /** The image URL for the unlocked achievement icon. */
   core.String unlockedIconUrl;
-
 
   AchievementDefinition();
 
@@ -3097,21 +3039,17 @@ class AchievementDefinition {
   }
 }
 
-
 /** This is a JSON template for a list of achievement definition objects. */
 class AchievementDefinitionsListResponse {
   /** The achievement definitions. */
   core.List<AchievementDefinition> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#achievementDefinitionsListResponse.
    */
   core.String kind;
-
   /** Token corresponding to the next page of results. */
   core.String nextPageToken;
-
 
   AchievementDefinitionsListResponse();
 
@@ -3142,24 +3080,20 @@ class AchievementDefinitionsListResponse {
   }
 }
 
-
 /** This is a JSON template for an achievement increment response */
 class AchievementIncrementResponse {
   /** The current steps recorded for this incremental achievement. */
   core.int currentSteps;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#achievementIncrementResponse.
    */
   core.String kind;
-
   /**
    * Whether the the current steps for the achievement has reached the number of
    * steps required to unlock.
    */
   core.bool newlyUnlocked;
-
 
   AchievementIncrementResponse();
 
@@ -3190,7 +3124,6 @@ class AchievementIncrementResponse {
   }
 }
 
-
 /** This is a JSON template for an achievement reveal response */
 class AchievementRevealResponse {
   /**
@@ -3201,13 +3134,11 @@ class AchievementRevealResponse {
    * - "UNLOCKED" - Achievement is unlocked.
    */
   core.String currentState;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#achievementRevealResponse.
    */
   core.String kind;
-
 
   AchievementRevealResponse();
 
@@ -3232,24 +3163,20 @@ class AchievementRevealResponse {
   }
 }
 
-
 /** This is a JSON template for an achievement set steps at least response. */
 class AchievementSetStepsAtLeastResponse {
   /** The current steps recorded for this incremental achievement. */
   core.int currentSteps;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#achievementSetStepsAtLeastResponse.
    */
   core.String kind;
-
   /**
    * Whether the the current steps for the achievement has reached the number of
    * steps required to unlock.
    */
   core.bool newlyUnlocked;
-
 
   AchievementSetStepsAtLeastResponse();
 
@@ -3280,7 +3207,6 @@ class AchievementSetStepsAtLeastResponse {
   }
 }
 
-
 /** This is a JSON template for an achievement unlock response */
 class AchievementUnlockResponse {
   /**
@@ -3288,13 +3214,11 @@ class AchievementUnlockResponse {
    * string games#achievementUnlockResponse.
    */
   core.String kind;
-
   /**
    * Whether this achievement was newly unlocked (that is, whether the unlock
    * request for the achievement was the first for the player).
    */
   core.bool newlyUnlocked;
-
 
   AchievementUnlockResponse();
 
@@ -3319,7 +3243,6 @@ class AchievementUnlockResponse {
   }
 }
 
-
 /** This is a JSON template for a list of achievement update requests. */
 class AchievementUpdateMultipleRequest {
   /**
@@ -3327,10 +3250,8 @@ class AchievementUpdateMultipleRequest {
    * string games#achievementUpdateMultipleRequest.
    */
   core.String kind;
-
   /** The individual achievement update requests. */
   core.List<AchievementUpdateRequest> updates;
-
 
   AchievementUpdateMultipleRequest();
 
@@ -3355,7 +3276,6 @@ class AchievementUpdateMultipleRequest {
   }
 }
 
-
 /** This is a JSON template for an achievement unlock response. */
 class AchievementUpdateMultipleResponse {
   /**
@@ -3363,10 +3283,8 @@ class AchievementUpdateMultipleResponse {
    * string games#achievementUpdateListResponse.
    */
   core.String kind;
-
   /** The updated state of the achievements. */
   core.List<AchievementUpdateResponse> updatedAchievements;
-
 
   AchievementUpdateMultipleResponse();
 
@@ -3391,30 +3309,25 @@ class AchievementUpdateMultipleResponse {
   }
 }
 
-
 /** This is a JSON template for a request to update an achievement. */
 class AchievementUpdateRequest {
   /** The achievement this update is being applied to. */
   core.String achievementId;
-
   /**
    * The payload if an update of type INCREMENT was requested for the
    * achievement.
    */
   GamesAchievementIncrement incrementPayload;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#achievementUpdateRequest.
    */
   core.String kind;
-
   /**
    * The payload if an update of type SET_STEPS_AT_LEAST was requested for the
    * achievement.
    */
   GamesAchievementSetStepsAtLeast setStepsAtLeastPayload;
-
   /**
    * The type of update being applied.
    * Possible values are:
@@ -3425,7 +3338,6 @@ class AchievementUpdateRequest {
    * value.
    */
   core.String updateType;
-
 
   AchievementUpdateRequest();
 
@@ -3468,12 +3380,10 @@ class AchievementUpdateRequest {
   }
 }
 
-
 /** This is a JSON template for an achievement update response. */
 class AchievementUpdateResponse {
   /** The achievement this update is was applied to. */
   core.String achievementId;
-
   /**
    * The current state of the achievement.
    * Possible values are:
@@ -3482,25 +3392,20 @@ class AchievementUpdateResponse {
    * - "UNLOCKED" - Achievement is unlocked.
    */
   core.String currentState;
-
   /** The current steps recorded for this achievement if it is incremental. */
   core.int currentSteps;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#achievementUpdateResponse.
    */
   core.String kind;
-
   /**
    * Whether this achievement was newly unlocked (that is, whether the unlock
    * request for the achievement was the first for the player).
    */
   core.bool newlyUnlocked;
-
   /** Whether the requested updates actually affected the achievement. */
   core.bool updateOccurred;
-
 
   AchievementUpdateResponse();
 
@@ -3549,27 +3454,21 @@ class AchievementUpdateResponse {
   }
 }
 
-
 /** This is a JSON template for aggregate stats. */
 class AggregateStats {
   /** The number of messages sent between a pair of peers. */
   core.String count;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#aggregateStats.
    */
   core.String kind;
-
   /** The maximum amount. */
   core.String max;
-
   /** The minimum amount. */
   core.String min;
-
   /** The total number of bytes sent for messages between a pair of peers. */
   core.String sum;
-
 
   AggregateStats();
 
@@ -3612,21 +3511,17 @@ class AggregateStats {
   }
 }
 
-
 /** This is a JSON template for an anonymous player */
 class AnonymousPlayer {
   /** The base URL for the image to display for the anonymous player. */
   core.String avatarImageUrl;
-
   /** The name to display for the anonymous player. */
   core.String displayName;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#anonymousPlayer.
    */
   core.String kind;
-
 
   AnonymousPlayer();
 
@@ -3657,62 +3552,48 @@ class AnonymousPlayer {
   }
 }
 
-
 /** This is a JSON template for the Application resource. */
 class Application {
   /**
    * The number of achievements visible to the currently authenticated player.
    */
   core.int achievementCount;
-
   /** The assets of the application. */
   core.List<ImageAsset> assets;
-
   /** The author of the application. */
   core.String author;
-
   /** The category of the application. */
   ApplicationCategory category;
-
   /** The description of the application. */
   core.String description;
-
   /**
    * A list of features that have been enabled for the application.
    * Possible values are:
    * - "SNAPSHOTS" - Snapshots has been enabled
    */
   core.List<core.String> enabledFeatures;
-
   /** The ID of the application. */
   core.String id;
-
   /** The instances of the application. */
   core.List<Instance> instances;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#application.
    */
   core.String kind;
-
   /** The last updated timestamp of the application. */
   core.String lastUpdatedTimestamp;
-
   /**
    * The number of leaderboards visible to the currently authenticated player.
    */
   core.int leaderboardCount;
-
   /** The name of the application. */
   core.String name;
-
   /**
    * A hint to the client UI for what color to use as an app-themed color. The
    * color is given as an RGB triplet (e.g. "E0E0E0").
    */
   core.String themeColor;
-
 
   Application();
 
@@ -3803,7 +3684,6 @@ class Application {
   }
 }
 
-
 /** This is a JSON template for an application category object. */
 class ApplicationCategory {
   /**
@@ -3811,13 +3691,10 @@ class ApplicationCategory {
    * string games#applicationCategory.
    */
   core.String kind;
-
   /** The primary category. */
   core.String primary;
-
   /** The secondary category. */
   core.String secondary;
-
 
   ApplicationCategory();
 
@@ -3848,21 +3725,17 @@ class ApplicationCategory {
   }
 }
 
-
 /** This is a JSON template for data related to individual game categories. */
 class Category {
   /** The category name. */
   core.String category;
-
   /** Experience points earned in this category. */
   core.String experiencePoints;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#category.
    */
   core.String kind;
-
 
   Category();
 
@@ -3893,21 +3766,17 @@ class Category {
   }
 }
 
-
 /** This is a JSON template for a list of category data objects. */
 class CategoryListResponse {
   /** The list of categories with usage data. */
   core.List<Category> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#categoryListResponse.
    */
   core.String kind;
-
   /** Token corresponding to the next page of results. */
   core.String nextPageToken;
-
 
   CategoryListResponse();
 
@@ -3938,7 +3807,6 @@ class CategoryListResponse {
   }
 }
 
-
 /** This is a JSON template for a batch update failure resource. */
 class EventBatchRecordFailure {
   /**
@@ -3957,16 +3825,13 @@ class EventBatchRecordFailure {
    * server will apply updates.
    */
   core.String failureCause;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#eventBatchRecordFailure.
    */
   core.String kind;
-
   /** The time range which was rejected; empty for a request-wide failure. */
   EventPeriodRange range;
-
 
   EventBatchRecordFailure();
 
@@ -3997,18 +3862,15 @@ class EventBatchRecordFailure {
   }
 }
 
-
 /** This is a JSON template for an event child relationship resource. */
 class EventChild {
   /** The ID of the child event. */
   core.String childId;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#eventChild.
    */
   core.String kind;
-
 
   EventChild();
 
@@ -4033,36 +3895,28 @@ class EventChild {
   }
 }
 
-
 /** This is a JSON template for an event definition resource. */
 class EventDefinition {
   /** A list of events that are a child of this event. */
   core.List<EventChild> childEvents;
-
   /** Description of what this event represents. */
   core.String description;
-
   /** The name to display for the event. */
   core.String displayName;
-
   /** The ID of the event. */
   core.String id;
-
   /** The base URL for the image that represents the event. */
   core.String imageUrl;
-
   /**
    * Indicates whether the icon image being returned is a default image, or is
    * game-provided.
    */
   core.bool isDefaultImageUrl;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#eventDefinition.
    */
   core.String kind;
-
   /**
    * The visibility of event being tracked in this definition.
    * Possible values are:
@@ -4071,7 +3925,6 @@ class EventDefinition {
    * this event at least once.
    */
   core.String visibility;
-
 
   EventDefinition();
 
@@ -4132,21 +3985,17 @@ class EventDefinition {
   }
 }
 
-
 /** This is a JSON template for a ListDefinitions response. */
 class EventDefinitionListResponse {
   /** The event definitions. */
   core.List<EventDefinition> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#eventDefinitionListResponse.
    */
   core.String kind;
-
   /** The pagination token for the next page of results. */
   core.String nextPageToken;
-
 
   EventDefinitionListResponse();
 
@@ -4177,7 +4026,6 @@ class EventDefinitionListResponse {
   }
 }
 
-
 /** This is a JSON template for an event period time range. */
 class EventPeriodRange {
   /**
@@ -4185,19 +4033,16 @@ class EventPeriodRange {
    * string games#eventPeriodRange.
    */
   core.String kind;
-
   /**
    * The time when this update period ends, in millis, since 1970 UTC (Unix
    * Epoch).
    */
   core.String periodEndMillis;
-
   /**
    * The time when this update period begins, in millis, since 1970 UTC (Unix
    * Epoch).
    */
   core.String periodStartMillis;
-
 
   EventPeriodRange();
 
@@ -4228,7 +4073,6 @@ class EventPeriodRange {
   }
 }
 
-
 /** This is a JSON template for an event period update resource. */
 class EventPeriodUpdate {
   /**
@@ -4236,13 +4080,10 @@ class EventPeriodUpdate {
    * string games#eventPeriodUpdate.
    */
   core.String kind;
-
   /** The time period being covered by this update. */
   EventPeriodRange timePeriod;
-
   /** The updates being made for this time period. */
   core.List<EventUpdateRequest> updates;
-
 
   EventPeriodUpdate();
 
@@ -4273,12 +4114,10 @@ class EventPeriodUpdate {
   }
 }
 
-
 /** This is a JSON template for an event update failure resource. */
 class EventRecordFailure {
   /** The ID of the event that was not updated. */
   core.String eventId;
-
   /**
    * The cause for the update failure.
    * Possible values are:
@@ -4287,13 +4126,11 @@ class EventRecordFailure {
    * non-positive value.
    */
   core.String failureCause;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#eventRecordFailure.
    */
   core.String kind;
-
 
   EventRecordFailure();
 
@@ -4324,7 +4161,6 @@ class EventRecordFailure {
   }
 }
 
-
 /** This is a JSON template for an event period update resource. */
 class EventRecordRequest {
   /**
@@ -4332,19 +4168,15 @@ class EventRecordRequest {
    * (Unix Epoch).
    */
   core.String currentTimeMillis;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#eventRecordRequest.
    */
   core.String kind;
-
   /** The request ID used to identify this attempt to record events. */
   core.String requestId;
-
   /** A list of the time period updates being made in this request. */
   core.List<EventPeriodUpdate> timePeriods;
-
 
   EventRecordRequest();
 
@@ -4381,21 +4213,17 @@ class EventRecordRequest {
   }
 }
 
-
 /** This is a JSON template for an event period update resource. */
 class EventUpdateRequest {
   /** The ID of the event being modified in this update. */
   core.String definitionId;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#eventUpdateRequest.
    */
   core.String kind;
-
   /** The number of times this event occurred in this time period. */
   core.String updateCount;
-
 
   EventUpdateRequest();
 
@@ -4426,24 +4254,19 @@ class EventUpdateRequest {
   }
 }
 
-
 /** This is a JSON template for an event period update resource. */
 class EventUpdateResponse {
   /** Any batch-wide failures which occurred applying updates. */
   core.List<EventBatchRecordFailure> batchFailures;
-
   /** Any failures updating a particular event. */
   core.List<EventRecordFailure> eventFailures;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#eventUpdateResponse.
    */
   core.String kind;
-
   /** The current status of any updated events */
   core.List<PlayerEvent> playerEvents;
-
 
   EventUpdateResponse();
 
@@ -4480,7 +4303,6 @@ class EventUpdateResponse {
   }
 }
 
-
 /**
  * This is a JSON template for the payload to request to increment an
  * achievement.
@@ -4491,13 +4313,10 @@ class GamesAchievementIncrement {
    * string games#GamesAchievementIncrement.
    */
   core.String kind;
-
   /** The requestId associated with an increment to an achievement. */
   core.String requestId;
-
   /** The number of steps to be incremented. */
   core.int steps;
-
 
   GamesAchievementIncrement();
 
@@ -4528,7 +4347,6 @@ class GamesAchievementIncrement {
   }
 }
 
-
 /**
  * This is a JSON template for the payload to request to increment an
  * achievement.
@@ -4539,10 +4357,8 @@ class GamesAchievementSetStepsAtLeast {
    * string games#GamesAchievementSetStepsAtLeast.
    */
   core.String kind;
-
   /** The minimum number of steps for the achievement to be set to. */
   core.int steps;
-
 
   GamesAchievementSetStepsAtLeast();
 
@@ -4567,27 +4383,21 @@ class GamesAchievementSetStepsAtLeast {
   }
 }
 
-
 /** This is a JSON template for an image asset object. */
 class ImageAsset {
   /** The height of the asset. */
   core.int height;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#imageAsset.
    */
   core.String kind;
-
   /** The name of the asset. */
   core.String name;
-
   /** The URL of the asset. */
   core.String url;
-
   /** The width of the asset. */
   core.int width;
-
 
   ImageAsset();
 
@@ -4630,27 +4440,21 @@ class ImageAsset {
   }
 }
 
-
 /** This is a JSON template for the Instance resource. */
 class Instance {
   /** URI which shows where a user can acquire this instance. */
   core.String acquisitionUri;
-
   /** Platform dependent details for Android. */
   InstanceAndroidDetails androidInstance;
-
   /** Platform dependent details for iOS. */
   InstanceIosDetails iosInstance;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#instance.
    */
   core.String kind;
-
   /** Localized display name. */
   core.String name;
-
   /**
    * The platform type.
    * Possible values are:
@@ -4659,16 +4463,12 @@ class Instance {
    * - "WEB_APP" - Instance is for Web App.
    */
   core.String platformType;
-
   /** Flag to show if this game instance supports realtime play. */
   core.bool realtimePlay;
-
   /** Flag to show if this game instance supports turn based play. */
   core.bool turnBasedPlay;
-
   /** Platform dependent details for Web. */
   InstanceWebDetails webInstance;
-
 
   Instance();
 
@@ -4735,24 +4535,19 @@ class Instance {
   }
 }
 
-
 /** This is a JSON template for the Android instance details resource. */
 class InstanceAndroidDetails {
   /** Flag indicating whether the anti-piracy check is enabled. */
   core.bool enablePiracyCheck;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#instanceAndroidDetails.
    */
   core.String kind;
-
   /** Android package name which maps to Google Play URL. */
   core.String packageName;
-
   /** Indicates that this instance is the default for new installations. */
   core.bool preferred;
-
 
   InstanceAndroidDetails();
 
@@ -4789,39 +4584,31 @@ class InstanceAndroidDetails {
   }
 }
 
-
 /** This is a JSON template for the iOS details resource. */
 class InstanceIosDetails {
   /** Bundle identifier. */
   core.String bundleIdentifier;
-
   /** iTunes App ID. */
   core.String itunesAppId;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#instanceIosDetails.
    */
   core.String kind;
-
   /**
    * Indicates that this instance is the default for new installations on iPad
    * devices.
    */
   core.bool preferredForIpad;
-
   /**
    * Indicates that this instance is the default for new installations on iPhone
    * devices.
    */
   core.bool preferredForIphone;
-
   /** Flag to indicate if this instance supports iPad. */
   core.bool supportIpad;
-
   /** Flag to indicate if this instance supports iPhone. */
   core.bool supportIphone;
-
 
   InstanceIosDetails();
 
@@ -4876,7 +4663,6 @@ class InstanceIosDetails {
   }
 }
 
-
 /** This is a JSON template for the Web details resource. */
 class InstanceWebDetails {
   /**
@@ -4884,13 +4670,10 @@ class InstanceWebDetails {
    * string games#instanceWebDetails.
    */
   core.String kind;
-
   /** Launch URL for the game. */
   core.String launchUrl;
-
   /** Indicates that this instance is the default for new installations. */
   core.bool preferred;
-
 
   InstanceWebDetails();
 
@@ -4921,30 +4704,24 @@ class InstanceWebDetails {
   }
 }
 
-
 /** This is a JSON template for the Leaderboard resource. */
 class Leaderboard {
   /** The icon for the leaderboard. */
   core.String iconUrl;
-
   /** The leaderboard ID. */
   core.String id;
-
   /**
    * Indicates whether the icon image being returned is a default image, or is
    * game-provided.
    */
   core.bool isIconUrlDefault;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#leaderboard.
    */
   core.String kind;
-
   /** The name of the leaderboard. */
   core.String name;
-
   /**
    * How scores are ordered.
    * Possible values are:
@@ -4954,7 +4731,6 @@ class Leaderboard {
    * ascending order.
    */
   core.String order;
-
 
   Leaderboard();
 
@@ -5003,36 +4779,28 @@ class Leaderboard {
   }
 }
 
-
 /** This is a JSON template for the Leaderboard Entry resource. */
 class LeaderboardEntry {
   /** The localized string for the numerical value of this score. */
   core.String formattedScore;
-
   /** The localized string for the rank of this score for this leaderboard. */
   core.String formattedScoreRank;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#leaderboardEntry.
    */
   core.String kind;
-
   /** The player who holds this score. */
   Player player;
-
   /** The rank of this score for this leaderboard. */
   core.String scoreRank;
-
   /**
    * Additional information about the score. Values must contain no more than 64
    * URI-safe characters as defined by section 2.3 of RFC 3986.
    */
   core.String scoreTag;
-
   /** The numerical value of this score. */
   core.String scoreValue;
-
   /**
    * The time span of this high score.
    * Possible values are:
@@ -5041,13 +4809,11 @@ class LeaderboardEntry {
    * - "DAILY" - The score is a daily high score.
    */
   core.String timeSpan;
-
   /**
    * The timestamp at which this score was recorded, in milliseconds since the
    * epoch in UTC.
    */
   core.String writeTimestampMillis;
-
 
   LeaderboardEntry();
 
@@ -5114,21 +4880,17 @@ class LeaderboardEntry {
   }
 }
 
-
 /** This is a JSON template for a list of leaderboard objects. */
 class LeaderboardListResponse {
   /** The leaderboards. */
   core.List<Leaderboard> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#leaderboardListResponse.
    */
   core.String kind;
-
   /** Token corresponding to the next page of results. */
   core.String nextPageToken;
-
 
   LeaderboardListResponse();
 
@@ -5159,27 +4921,21 @@ class LeaderboardListResponse {
   }
 }
 
-
 /** This is a JSON template for a score rank in a leaderboard. */
 class LeaderboardScoreRank {
   /** The number of scores in the leaderboard as a string. */
   core.String formattedNumScores;
-
   /** The rank in the leaderboard as a string. */
   core.String formattedRank;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#leaderboardScoreRank.
    */
   core.String kind;
-
   /** The number of scores in the leaderboard. */
   core.String numScores;
-
   /** The rank in the leaderboard. */
   core.String rank;
-
 
   LeaderboardScoreRank();
 
@@ -5222,24 +4978,19 @@ class LeaderboardScoreRank {
   }
 }
 
-
 /** This is a JSON template for a ListScores response. */
 class LeaderboardScores {
   /** The scores in the leaderboard. */
   core.List<LeaderboardEntry> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#leaderboardScores.
    */
   core.String kind;
-
   /** The pagination token for the next page of results. */
   core.String nextPageToken;
-
   /** The total number of scores in the leaderboard. */
   core.String numScores;
-
   /**
    * The score of the requesting player on the leaderboard. The player's score
    * may appear both here and in the list of scores above. If you are viewing a
@@ -5247,10 +4998,8 @@ class LeaderboardScores {
    * publicly, the scoreRank and formattedScoreRank values will not be present.
    */
   LeaderboardEntry playerScore;
-
   /** The pagination token for the previous page of results. */
   core.String prevPageToken;
-
 
   LeaderboardScores();
 
@@ -5299,7 +5048,6 @@ class LeaderboardScores {
   }
 }
 
-
 /** This is a JSON template for the metagame config resource */
 class MetagameConfig {
   /**
@@ -5307,16 +5055,13 @@ class MetagameConfig {
    * updated, the version number will be increased by one.
    */
   core.int currentVersion;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#metagameConfig.
    */
   core.String kind;
-
   /** The list of player levels. */
   core.List<PlayerLevel> playerLevels;
-
 
   MetagameConfig();
 
@@ -5347,24 +5092,19 @@ class MetagameConfig {
   }
 }
 
-
 /** This is a JSON template for network diagnostics reported for a client. */
 class NetworkDiagnostics {
   /** The Android network subtype. */
   core.int androidNetworkSubtype;
-
   /** The Android network type. */
   core.int androidNetworkType;
-
   /** iOS network type as defined in Reachability.h. */
   core.int iosNetworkType;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#networkDiagnostics.
    */
   core.String kind;
-
   /**
    * The MCC+MNC code for the client's network connection. On Android:
    * http://developer.android.com/reference/android/telephony/TelephonyManager.html#getNetworkOperator()
@@ -5372,7 +5112,6 @@ class NetworkDiagnostics {
    * https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html
    */
   core.String networkOperatorCode;
-
   /**
    * The name of the carrier of the client's network connection. On Android:
    * http://developer.android.com/reference/android/telephony/TelephonyManager.html#getNetworkOperatorName()
@@ -5380,13 +5119,11 @@ class NetworkDiagnostics {
    * https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html#//apple_ref/occ/instp/CTCarrier/carrierName
    */
   core.String networkOperatorName;
-
   /**
    * The amount of time in milliseconds it took for the client to establish a
    * connection with the XMPP server.
    */
   core.int registrationLatencyMillis;
-
 
   NetworkDiagnostics();
 
@@ -5441,7 +5178,6 @@ class NetworkDiagnostics {
   }
 }
 
-
 /** This is a JSON template for a result for a match participant. */
 class ParticipantResult {
   /**
@@ -5449,17 +5185,14 @@ class ParticipantResult {
    * string games#participantResult.
    */
   core.String kind;
-
   /** The ID of the participant. */
   core.String participantId;
-
   /**
    * The placement or ranking of the participant in the match results; a number
    * from one to the number of participants in the match. Multiple participants
    * may have the same placing value in case of a type.
    */
   core.int placing;
-
   /**
    * The result of the participant for this match.
    * Possible values are:
@@ -5474,7 +5207,6 @@ class ParticipantResult {
    * for this participant.
    */
   core.String result;
-
 
   ParticipantResult();
 
@@ -5511,36 +5243,27 @@ class ParticipantResult {
   }
 }
 
-
 /** This is a JSON template for peer channel diagnostics. */
 class PeerChannelDiagnostics {
   /** Number of bytes received. */
   AggregateStats bytesReceived;
-
   /** Number of bytes sent. */
   AggregateStats bytesSent;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#peerChannelDiagnostics.
    */
   core.String kind;
-
   /** Number of messages lost. */
   core.int numMessagesLost;
-
   /** Number of messages received. */
   core.int numMessagesReceived;
-
   /** Number of messages sent. */
   core.int numMessagesSent;
-
   /** Number of send failures. */
   core.int numSendFailures;
-
   /** Roundtrip latency stats in milliseconds. */
   AggregateStats roundtripLatencyMillis;
-
 
   PeerChannelDiagnostics();
 
@@ -5601,27 +5324,21 @@ class PeerChannelDiagnostics {
   }
 }
 
-
 /** This is a JSON template for peer session diagnostics. */
 class PeerSessionDiagnostics {
   /** Connected time in milliseconds. */
   core.String connectedTimestampMillis;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#peerSessionDiagnostics.
    */
   core.String kind;
-
   /** The participant ID of the peer. */
   core.String participantId;
-
   /** Reliable channel diagnostics. */
   PeerChannelDiagnostics reliableChannel;
-
   /** Unreliable channel diagnostics. */
   PeerChannelDiagnostics unreliableChannel;
-
 
   PeerSessionDiagnostics();
 
@@ -5664,7 +5381,6 @@ class PeerSessionDiagnostics {
   }
 }
 
-
 /**
  * This is a JSON template for metadata about a player playing a game with the
  * currently authenticated user.
@@ -5674,19 +5390,16 @@ class Played {
    * True if the player was auto-matched with the currently authenticated user.
    */
   core.bool autoMatched;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#played.
    */
   core.String kind;
-
   /**
    * The last time the player played the game in milliseconds since the epoch in
    * UTC.
    */
   core.String timeMillis;
-
 
   Played();
 
@@ -5717,7 +5430,6 @@ class Played {
   }
 }
 
-
 /**
  * An object representation of the individual components of the player's name.
  * For some players, these fields may not be present.
@@ -5728,13 +5440,11 @@ class PlayerName {
    * name.
    */
   core.String familyName;
-
   /**
    * The given name of this player. In some places, this is known as the first
    * name.
    */
   core.String givenName;
-
 
   PlayerName();
 
@@ -5759,45 +5469,36 @@ class PlayerName {
   }
 }
 
-
 /** This is a JSON template for a Player resource. */
 class Player {
   /** The base URL for the image that represents the player. */
   core.String avatarImageUrl;
-
   /** The name to display for the player. */
   core.String displayName;
-
   /**
    * An object to represent Play Game experience information for the player.
    */
   PlayerExperienceInfo experienceInfo;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#player.
    */
   core.String kind;
-
   /**
    * Details about the last time this player played a multiplayer game with the
    * currently authenticated player. Populated for PLAYED_WITH player collection
    * members.
    */
   Played lastPlayedWith;
-
   /**
    * An object representation of the individual components of the player's name.
    * For some players, these fields may not be present.
    */
   PlayerName name;
-
   /** The ID of the player. */
   core.String playerId;
-
   /** The player's title rewarded for their game activities. */
   core.String title;
-
 
   Player();
 
@@ -5858,7 +5559,6 @@ class Player {
   }
 }
 
-
 /** This is a JSON template for an achievement object. */
 class PlayerAchievement {
   /**
@@ -5869,32 +5569,25 @@ class PlayerAchievement {
    * - "UNLOCKED" - Achievement is unlocked.
    */
   core.String achievementState;
-
   /** The current steps for an incremental achievement. */
   core.int currentSteps;
-
   /**
    * Experience points earned for the achievement. This field is absent for
    * achievements that have not yet been unlocked and 0 for achievements that
    * have been unlocked by testers but that are unpublished.
    */
   core.String experiencePoints;
-
   /** The current steps for an incremental achievement as a string. */
   core.String formattedCurrentStepsString;
-
   /** The ID of the achievement. */
   core.String id;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#playerAchievement.
    */
   core.String kind;
-
   /** The timestamp of the last modification to this achievement's state. */
   core.String lastUpdatedTimestamp;
-
 
   PlayerAchievement();
 
@@ -5949,21 +5642,17 @@ class PlayerAchievement {
   }
 }
 
-
 /** This is a JSON template for a list of achievement objects. */
 class PlayerAchievementListResponse {
   /** The achievements. */
   core.List<PlayerAchievement> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#playerAchievementListResponse.
    */
   core.String kind;
-
   /** Token corresponding to the next page of results. */
   core.String nextPageToken;
-
 
   PlayerAchievementListResponse();
 
@@ -5994,31 +5683,25 @@ class PlayerAchievementListResponse {
   }
 }
 
-
 /** This is a JSON template for an event status resource. */
 class PlayerEvent {
   /** The ID of the event definition. */
   core.String definitionId;
-
   /**
    * The current number of times this event has occurred, as a string. The
    * formatting of this string depends on the configuration of your event in the
    * Play Games Developer Console.
    */
   core.String formattedNumEvents;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#playerEvent.
    */
   core.String kind;
-
   /** The current number of times this event has occurred. */
   core.String numEvents;
-
   /** The ID of the player. */
   core.String playerId;
-
 
   PlayerEvent();
 
@@ -6061,21 +5744,17 @@ class PlayerEvent {
   }
 }
 
-
 /** This is a JSON template for a ListByPlayer response. */
 class PlayerEventListResponse {
   /** The player events. */
   core.List<PlayerEvent> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#playerEventListResponse.
    */
   core.String kind;
-
   /** The pagination token for the next page of results. */
   core.String nextPageToken;
-
 
   PlayerEventListResponse();
 
@@ -6106,35 +5785,29 @@ class PlayerEventListResponse {
   }
 }
 
-
 /**
  * This is a JSON template for 1P/3P metadata about the player's experience.
  */
 class PlayerExperienceInfo {
   /** The current number of experience points for the player. */
   core.String currentExperiencePoints;
-
   /** The current level of the player. */
   PlayerLevel currentLevel;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#playerExperienceInfo.
    */
   core.String kind;
-
   /**
    * The timestamp when the player was leveled up, in millis since Unix epoch
    * UTC.
    */
   core.String lastLevelUpTimestampMillis;
-
   /**
    * The next level of the player. If the current level is the maximum level,
    * this should be same as the current level.
    */
   PlayerLevel nextLevel;
-
 
   PlayerExperienceInfo();
 
@@ -6177,7 +5850,6 @@ class PlayerExperienceInfo {
   }
 }
 
-
 /** This is a JSON template for a player leaderboard score object. */
 class PlayerLeaderboardScore {
   /**
@@ -6185,31 +5857,24 @@ class PlayerLeaderboardScore {
    * string games#playerLeaderboardScore.
    */
   core.String kind;
-
   /** The ID of the leaderboard this score is in. */
   core.String leaderboardId;
-
   /**
    * The public rank of the score in this leaderboard. This object will not be
    * present if the user is not sharing their scores publicly.
    */
   LeaderboardScoreRank publicRank;
-
   /** The formatted value of this score. */
   core.String scoreString;
-
   /**
    * Additional information about the score. Values must contain no more than 64
    * URI-safe characters as defined by section 2.3 of RFC 3986.
    */
   core.String scoreTag;
-
   /** The numerical value of this score. */
   core.String scoreValue;
-
   /** The social rank of the score in this leaderboard. */
   LeaderboardScoreRank socialRank;
-
   /**
    * The time span of this score.
    * Possible values are:
@@ -6218,13 +5883,11 @@ class PlayerLeaderboardScore {
    * - "DAILY" - The score is a daily score.
    */
   core.String timeSpan;
-
   /**
    * The timestamp at which this score was recorded, in milliseconds since the
    * epoch in UTC.
    */
   core.String writeTimestamp;
-
 
   PlayerLeaderboardScore();
 
@@ -6291,24 +5954,19 @@ class PlayerLeaderboardScore {
   }
 }
 
-
 /** This is a JSON template for a list of player leaderboard scores. */
 class PlayerLeaderboardScoreListResponse {
   /** The leaderboard scores. */
   core.List<PlayerLeaderboardScore> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#playerLeaderboardScoreListResponse.
    */
   core.String kind;
-
   /** The pagination token for the next page of results. */
   core.String nextPageToken;
-
   /** The Player resources for the owner of this score. */
   Player player;
-
 
   PlayerLeaderboardScoreListResponse();
 
@@ -6345,7 +6003,6 @@ class PlayerLeaderboardScoreListResponse {
   }
 }
 
-
 /** This is a JSON template for 1P/3P metadata about a user's level. */
 class PlayerLevel {
   /**
@@ -6353,16 +6010,12 @@ class PlayerLevel {
    * string games#playerLevel.
    */
   core.String kind;
-
   /** The level for the user. */
   core.int level;
-
   /** The maximum experience points for this level. */
   core.String maxExperiencePoints;
-
   /** The minimum experience points for this level. */
   core.String minExperiencePoints;
-
 
   PlayerLevel();
 
@@ -6399,21 +6052,17 @@ class PlayerLevel {
   }
 }
 
-
 /** This is a JSON template for a third party player list response. */
 class PlayerListResponse {
   /** The players. */
   core.List<Player> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#playerListResponse.
    */
   core.String kind;
-
   /** Token corresponding to the next page of results. */
   core.String nextPageToken;
-
 
   PlayerListResponse();
 
@@ -6444,27 +6093,22 @@ class PlayerListResponse {
   }
 }
 
-
 /** This is a JSON template for a player score. */
 class PlayerScore {
   /** The formatted score for this player score. */
   core.String formattedScore;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#playerScore.
    */
   core.String kind;
-
   /** The numerical value for this player score. */
   core.String score;
-
   /**
    * Additional information about this score. Values will contain no more than
    * 64 URI-safe characters as defined by section 2.3 of RFC 3986.
    */
   core.String scoreTag;
-
   /**
    * The time span for this player score.
    * Possible values are:
@@ -6473,7 +6117,6 @@ class PlayerScore {
    * - "DAILY" - The score is a daily score.
    */
   core.String timeSpan;
-
 
   PlayerScore();
 
@@ -6516,7 +6159,6 @@ class PlayerScore {
   }
 }
 
-
 /** This is a JSON template for a list of score submission statuses. */
 class PlayerScoreListResponse {
   /**
@@ -6524,10 +6166,8 @@ class PlayerScoreListResponse {
    * string games#playerScoreListResponse.
    */
   core.String kind;
-
   /** The score submissions statuses. */
   core.List<PlayerScoreResponse> submittedScores;
-
 
   PlayerScoreListResponse();
 
@@ -6552,7 +6192,6 @@ class PlayerScoreListResponse {
   }
 }
 
-
 /** This is a JSON template for a list of leaderboard entry resources. */
 class PlayerScoreResponse {
   /**
@@ -6564,32 +6203,26 @@ class PlayerScoreResponse {
    * - "DAILY" - The score is a daily score.
    */
   core.List<core.String> beatenScoreTimeSpans;
-
   /** The formatted value of the submitted score. */
   core.String formattedScore;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#playerScoreResponse.
    */
   core.String kind;
-
   /** The leaderboard ID that this score was submitted to. */
   core.String leaderboardId;
-
   /**
    * Additional information about this score. Values will contain no more than
    * 64 URI-safe characters as defined by section 2.3 of RFC 3986.
    */
   core.String scoreTag;
-
   /**
    * The scores in time spans that have not been beaten. As an example, the
    * submitted score may be better than the player's DAILY score, but not better
    * than the player's scores for the WEEKLY or ALL_TIME time spans.
    */
   core.List<PlayerScore> unbeatenScores;
-
 
   PlayerScoreResponse();
 
@@ -6638,7 +6271,6 @@ class PlayerScoreResponse {
   }
 }
 
-
 /** This is a JSON template for a list of score submission requests */
 class PlayerScoreSubmissionList {
   /**
@@ -6646,10 +6278,8 @@ class PlayerScoreSubmissionList {
    * string games#playerScoreSubmissionList.
    */
   core.String kind;
-
   /** The score submissions. */
   core.List<ScoreSubmission> scores;
-
 
   PlayerScoreSubmissionList();
 
@@ -6674,7 +6304,6 @@ class PlayerScoreSubmissionList {
   }
 }
 
-
 /** This is a JSON template for a push token resource. */
 class PushToken {
   /**
@@ -6685,21 +6314,17 @@ class PushToken {
    * - IOS - Push token is for iOS
    */
   core.String clientRevision;
-
   /** Unique identifier for this push token. */
   PushTokenId id;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#pushToken.
    */
   core.String kind;
-
   /**
    * The preferred language for notifications that are sent using this token.
    */
   core.String language;
-
 
   PushToken();
 
@@ -6736,7 +6361,6 @@ class PushToken {
   }
 }
 
-
 /** A push token ID for iOS devices. */
 class PushTokenIdIos {
   /**
@@ -6744,7 +6368,6 @@ class PushTokenIdIos {
    * notifications. Encode this field as web-safe base64.
    */
   core.String apnsDeviceToken;
-
   core.List<core.int> get apnsDeviceTokenAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(apnsDeviceToken);
   }
@@ -6752,13 +6375,11 @@ class PushTokenIdIos {
   void set apnsDeviceTokenAsBytes(core.List<core.int> _bytes) {
     apnsDeviceToken = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /**
    * Indicates whether this token should be used for the production or sandbox
    * APNS server.
    */
   core.String apnsEnvironment;
-
 
   PushTokenIdIos();
 
@@ -6783,18 +6404,15 @@ class PushTokenIdIos {
   }
 }
 
-
 /** This is a JSON template for a push token ID resource. */
 class PushTokenId {
   /** A push token ID for iOS devices. */
   PushTokenIdIos ios;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#pushTokenId.
    */
   core.String kind;
-
 
   PushTokenId();
 
@@ -6819,7 +6437,6 @@ class PushTokenId {
   }
 }
 
-
 /** This is a JSON template for a Quest resource. */
 class Quest {
   /**
@@ -6827,71 +6444,56 @@ class Quest {
    * the epoch in UTC. Only present if the player has accepted the quest.
    */
   core.String acceptedTimestampMillis;
-
   /** The ID of the application this quest is part of. */
   core.String applicationId;
-
   /** The banner image URL for the quest. */
   core.String bannerUrl;
-
   /** The description of the quest. */
   core.String description;
-
   /**
    * The timestamp at which the quest ceases to be active in milliseconds since
    * the epoch in UTC.
    */
   core.String endTimestampMillis;
-
   /** The icon image URL for the quest. */
   core.String iconUrl;
-
   /** The ID of the quest. */
   core.String id;
-
   /**
    * Indicates whether the banner image being returned is a default image, or is
    * game-provided.
    */
   core.bool isDefaultBannerUrl;
-
   /**
    * Indicates whether the icon image being returned is a default image, or is
    * game-provided.
    */
   core.bool isDefaultIconUrl;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#quest.
    */
   core.String kind;
-
   /**
    * The timestamp at which the quest was last updated by the user in
    * milliseconds since the epoch in UTC. Only present if the player has
    * accepted the quest.
    */
   core.String lastUpdatedTimestampMillis;
-
   /** The quest milestones. */
   core.List<QuestMilestone> milestones;
-
   /** The name of the quest. */
   core.String name;
-
   /**
    * The timestamp at which the user should be notified that the quest will end
    * soon in milliseconds since the epoch in UTC.
    */
   core.String notifyTimestampMillis;
-
   /**
    * The timestamp at which the quest becomes active in milliseconds since the
    * epoch in UTC.
    */
   core.String startTimestampMillis;
-
   /**
    * The state of the quest.
    * Possible values are:
@@ -6906,7 +6508,6 @@ class Quest {
    * - "DELETED": The quest should be deleted from the local database.
    */
   core.String state;
-
 
   Quest();
 
@@ -7015,7 +6616,6 @@ class Quest {
   }
 }
 
-
 /** This is a JSON template for a Quest Criterion Contribution resource. */
 class QuestContribution {
   /**
@@ -7024,16 +6624,13 @@ class QuestContribution {
    * Developer Console.
    */
   core.String formattedValue;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#questContribution.
    */
   core.String kind;
-
   /** The value of the contribution. */
   core.String value;
-
 
   QuestContribution();
 
@@ -7064,7 +6661,6 @@ class QuestContribution {
   }
 }
 
-
 /** This is a JSON template for a Quest Criterion resource. */
 class QuestCriterion {
   /**
@@ -7072,7 +6668,6 @@ class QuestCriterion {
    * player to complete this quest.
    */
   QuestContribution completionContribution;
-
   /**
    * The number of increments the player has made toward the completion count
    * event increments required to complete the quest. This value will not exceed
@@ -7081,10 +6676,8 @@ class QuestCriterion {
    * quest.
    */
   QuestContribution currentContribution;
-
   /** The ID of the event the criterion corresponds to. */
   core.String eventId;
-
   /**
    * The value of the event associated with this quest at the time that the
    * quest was accepted. This value may change if event increments that took
@@ -7093,13 +6686,11 @@ class QuestCriterion {
    * quest.
    */
   QuestContribution initialPlayerProgress;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#questCriterion.
    */
   core.String kind;
-
 
   QuestCriterion();
 
@@ -7142,21 +6733,17 @@ class QuestCriterion {
   }
 }
 
-
 /** This is a JSON template for a list of quest objects. */
 class QuestListResponse {
   /** The quests. */
   core.List<Quest> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#questListResponse.
    */
   core.String kind;
-
   /** Token corresponding to the next page of results. */
   core.String nextPageToken;
-
 
   QuestListResponse();
 
@@ -7187,7 +6774,6 @@ class QuestListResponse {
   }
 }
 
-
 /** This is a JSON template for a Quest Milestone resource. */
 class QuestMilestone {
   /**
@@ -7196,7 +6782,6 @@ class QuestMilestone {
    * between 0 and 2 KB before encoding.
    */
   core.String completionRewardData;
-
   core.List<core.int> get completionRewardDataAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(completionRewardData);
   }
@@ -7204,19 +6789,15 @@ class QuestMilestone {
   void set completionRewardDataAsBytes(core.List<core.int> _bytes) {
     completionRewardData = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** The criteria of the milestone. */
   core.List<QuestCriterion> criteria;
-
   /** The milestone ID. */
   core.String id;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#questMilestone.
    */
   core.String kind;
-
   /**
    * The current state of the milestone.
    * Possible values are:
@@ -7228,7 +6809,6 @@ class QuestMilestone {
    * accepted.
    */
   core.String state;
-
 
   QuestMilestone();
 
@@ -7271,7 +6851,6 @@ class QuestMilestone {
   }
 }
 
-
 /** This is a JSON template for the result of checking a revision. */
 class RevisionCheckResponse {
   /**
@@ -7279,13 +6858,11 @@ class RevisionCheckResponse {
    * methods.
    */
   core.String apiVersion;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#revisionCheckResponse.
    */
   core.String kind;
-
   /**
    * The result of the revision check.
    * Possible values are:
@@ -7296,7 +6873,6 @@ class RevisionCheckResponse {
    * version.
    */
   core.String revisionStatus;
-
 
   RevisionCheckResponse();
 
@@ -7327,61 +6903,49 @@ class RevisionCheckResponse {
   }
 }
 
-
 /** This is a JSON template for a room resource object. */
 class Room {
   /** The ID of the application being played. */
   core.String applicationId;
-
   /** Criteria for auto-matching players into this room. */
   RoomAutoMatchingCriteria autoMatchingCriteria;
-
   /**
    * Auto-matching status for this room. Not set if the room is not currently in
    * the auto-matching queue.
    */
   RoomAutoMatchStatus autoMatchingStatus;
-
   /** Details about the room creation. */
   RoomModification creationDetails;
-
   /**
    * This short description is generated by our servers and worded relative to
    * the player requesting the room. It is intended to be displayed when the
    * room is shown in a list (that is, an invitation to a room.)
    */
   core.String description;
-
   /**
    * The ID of the participant that invited the user to the room. Not set if the
    * user was not invited to the room.
    */
   core.String inviterId;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#room.
    */
   core.String kind;
-
   /** Details about the last update to the room. */
   RoomModification lastUpdateDetails;
-
   /**
    * The participants involved in the room, along with their statuses. Includes
    * participants who have left or declined invitations.
    */
   core.List<RoomParticipant> participants;
-
   /** Globally unique ID for a room. */
   core.String roomId;
-
   /**
    * The version of the room status: an increasing counter, used by the client
    * to ignore out-of-order updates to room status.
    */
   core.int roomStatusVersion;
-
   /**
    * The status of the room.
    * Possible values are:
@@ -7397,13 +6961,11 @@ class Room {
    * rooms where all joined participants have left.
    */
   core.String status;
-
   /**
    * The variant / mode of the application being played; can be any integer
    * value, or left blank.
    */
   core.int variant;
-
 
   Room();
 
@@ -7494,7 +7056,6 @@ class Room {
   }
 }
 
-
 /**
  * This is a JSON template for status of room automatching that is in progress.
  */
@@ -7504,13 +7065,11 @@ class RoomAutoMatchStatus {
    * string games#roomAutoMatchStatus.
    */
   core.String kind;
-
   /**
    * An estimate for the amount of time (in seconds) that auto-matching is
    * expected to take to complete.
    */
   core.int waitEstimateSeconds;
-
 
   RoomAutoMatchStatus();
 
@@ -7535,7 +7094,6 @@ class RoomAutoMatchStatus {
   }
 }
 
-
 /** This is a JSON template for a room auto-match criteria object. */
 class RoomAutoMatchingCriteria {
   /**
@@ -7544,25 +7102,21 @@ class RoomAutoMatchingCriteria {
    * exclusive roles within a game.
    */
   core.String exclusiveBitmask;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#roomAutoMatchingCriteria.
    */
   core.String kind;
-
   /**
    * The maximum number of players that should be added to the room by
    * auto-matching.
    */
   core.int maxAutoMatchingPlayers;
-
   /**
    * The minimum number of players that should be added to the room by
    * auto-matching.
    */
   core.int minAutoMatchingPlayers;
-
 
   RoomAutoMatchingCriteria();
 
@@ -7599,7 +7153,6 @@ class RoomAutoMatchingCriteria {
   }
 }
 
-
 /** This is a JSON template for the client address when setting up a room. */
 class RoomClientAddress {
   /**
@@ -7607,10 +7160,8 @@ class RoomClientAddress {
    * string games#roomClientAddress.
    */
   core.String kind;
-
   /** The XMPP address of the client on the Google Games XMPP network. */
   core.String xmppAddress;
-
 
   RoomClientAddress();
 
@@ -7635,43 +7186,34 @@ class RoomClientAddress {
   }
 }
 
-
 /** This is a JSON template for a room creation request. */
 class RoomCreateRequest {
   /** Criteria for auto-matching players into this room. */
   RoomAutoMatchingCriteria autoMatchingCriteria;
-
   /** The capabilities that this client supports for realtime communication. */
   core.List<core.String> capabilities;
-
   /** Client address for the player creating the room. */
   RoomClientAddress clientAddress;
-
   /** The player IDs to invite to the room. */
   core.List<core.String> invitedPlayerIds;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#roomCreateRequest.
    */
   core.String kind;
-
   /** Network diagnostics for the client creating the room. */
   NetworkDiagnostics networkDiagnostics;
-
   /**
    * A randomly generated numeric ID. This number is used at the server to
    * ensure that the request is handled correctly across retries.
    */
   core.String requestId;
-
   /**
    * The variant / mode of the application to be played. This can be any integer
    * value, or left blank. You should use a small number of variants to keep the
    * auto-matching pool as large as possible.
    */
   core.int variant;
-
 
   RoomCreateRequest();
 
@@ -7732,24 +7274,19 @@ class RoomCreateRequest {
   }
 }
 
-
 /** This is a JSON template for a join room request. */
 class RoomJoinRequest {
   /** The capabilities that this client supports for realtime communication. */
   core.List<core.String> capabilities;
-
   /** Client address for the player joining the room. */
   RoomClientAddress clientAddress;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#roomJoinRequest.
    */
   core.String kind;
-
   /** Network diagnostics for the client joining the room. */
   NetworkDiagnostics networkDiagnostics;
-
 
   RoomJoinRequest();
 
@@ -7786,7 +7323,6 @@ class RoomJoinRequest {
   }
 }
 
-
 /** This is a JSON template for room leave diagnostics. */
 class RoomLeaveDiagnostics {
   /**
@@ -7794,22 +7330,18 @@ class RoomLeaveDiagnostics {
    * http://developer.android.com/reference/android/net/NetworkInfo.html#getSubtype()
    */
   core.int androidNetworkSubtype;
-
   /**
    * Android network type.
    * http://developer.android.com/reference/android/net/NetworkInfo.html#getType()
    */
   core.int androidNetworkType;
-
   /** iOS network type as defined in Reachability.h. */
   core.int iosNetworkType;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#roomLeaveDiagnostics.
    */
   core.String kind;
-
   /**
    * The MCC+MNC code for the client's network connection. On Android:
    * http://developer.android.com/reference/android/telephony/TelephonyManager.html#getNetworkOperator()
@@ -7817,7 +7349,6 @@ class RoomLeaveDiagnostics {
    * https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html
    */
   core.String networkOperatorCode;
-
   /**
    * The name of the carrier of the client's network connection. On Android:
    * http://developer.android.com/reference/android/telephony/TelephonyManager.html#getNetworkOperatorName()
@@ -7825,13 +7356,10 @@ class RoomLeaveDiagnostics {
    * https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html#//apple_ref/occ/instp/CTCarrier/carrierName
    */
   core.String networkOperatorName;
-
   /** Diagnostics about all peer sessions. */
   core.List<PeerSessionDiagnostics> peerSession;
-
   /** Whether or not sockets were used. */
   core.bool socketsUsed;
-
 
   RoomLeaveDiagnostics();
 
@@ -7892,7 +7420,6 @@ class RoomLeaveDiagnostics {
   }
 }
 
-
 /** This is a JSON template for a leave room request. */
 class RoomLeaveRequest {
   /**
@@ -7900,10 +7427,8 @@ class RoomLeaveRequest {
    * string games#roomLeaveRequest.
    */
   core.String kind;
-
   /** Diagnostics for a player leaving the room. */
   RoomLeaveDiagnostics leaveDiagnostics;
-
   /**
    * Reason for leaving the match.
    * Possible values are:
@@ -7929,7 +7454,6 @@ class RoomLeaveRequest {
    * enter a new room.
    */
   core.String reason;
-
 
   RoomLeaveRequest();
 
@@ -7960,21 +7484,17 @@ class RoomLeaveRequest {
   }
 }
 
-
 /** This is a JSON template for a list of rooms. */
 class RoomList {
   /** The rooms. */
   core.List<Room> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#roomList.
    */
   core.String kind;
-
   /** The pagination token for the next page of results. */
   core.String nextPageToken;
-
 
   RoomList();
 
@@ -8005,7 +7525,6 @@ class RoomList {
   }
 }
 
-
 /** This is a JSON template for room modification metadata. */
 class RoomModification {
   /**
@@ -8013,16 +7532,13 @@ class RoomModification {
    * string games#roomModification.
    */
   core.String kind;
-
   /**
    * The timestamp at which they modified the room, in milliseconds since the
    * epoch in UTC.
    */
   core.String modifiedTimestampMillis;
-
   /** The ID of the participant that modified the room. */
   core.String participantId;
-
 
   RoomModification();
 
@@ -8053,7 +7569,6 @@ class RoomModification {
   }
 }
 
-
 /** This is a JSON template for an update on the status of a peer in a room. */
 class RoomP2PStatus {
   /**
@@ -8061,7 +7576,6 @@ class RoomP2PStatus {
    * this peer.
    */
   core.int connectionSetupLatencyMillis;
-
   /**
    * The error code in event of a failure.
    * Possible values are:
@@ -8073,19 +7587,15 @@ class RoomP2PStatus {
    * the relay server to establish a P2P connection with the peer.
    */
   core.String error;
-
   /** More detailed diagnostic message returned in event of a failure. */
   core.String errorReason;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#roomP2PStatus.
    */
   core.String kind;
-
   /** The ID of the participant. */
   core.String participantId;
-
   /**
    * The status of the peer in the room.
    * Possible values are:
@@ -8095,13 +7605,11 @@ class RoomP2PStatus {
    * with the peer.
    */
   core.String status;
-
   /**
    * The amount of time in milliseconds it took to send packets back and forth
    * on the unreliable channel with this peer.
    */
   core.int unreliableRoundtripLatencyMillis;
-
 
   RoomP2PStatus();
 
@@ -8156,7 +7664,6 @@ class RoomP2PStatus {
   }
 }
 
-
 /** This is a JSON template for an update on the status of peers in a room. */
 class RoomP2PStatuses {
   /**
@@ -8164,10 +7671,8 @@ class RoomP2PStatuses {
    * string games#roomP2PStatuses.
    */
   core.String kind;
-
   /** The updates for the peers. */
   core.List<RoomP2PStatus> updates;
-
 
   RoomP2PStatuses();
 
@@ -8192,45 +7697,37 @@ class RoomP2PStatuses {
   }
 }
 
-
 /** This is a JSON template for a participant in a room. */
 class RoomParticipant {
   /** True if this participant was auto-matched with the requesting player. */
   core.bool autoMatched;
-
   /**
    * Information about a player that has been anonymously auto-matched against
    * the requesting player. (Either player or autoMatchedPlayer will be set.)
    */
   AnonymousPlayer autoMatchedPlayer;
-
   /**
    * The capabilities which can be used when communicating with this
    * participant.
    */
   core.List<core.String> capabilities;
-
   /** Client address for the participant. */
   RoomClientAddress clientAddress;
-
   /**
    * True if this participant is in the fully connected set of peers in the
    * room.
    */
   core.bool connected;
-
   /**
    * An identifier for the participant in the scope of the room. Cannot be used
    * to identify a player across rooms or in other contexts.
    */
   core.String id;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#roomParticipant.
    */
   core.String kind;
-
   /**
    * The reason the participant left the room; populated if the participant
    * status is PARTICIPANT_LEFT.
@@ -8248,14 +7745,12 @@ class RoomParticipant {
    * - "PRESENCE_FAILURE" - The client's XMPP connection ended abruptly.
    */
   core.String leaveReason;
-
   /**
    * Information about the player. Not populated if this player was anonymously
    * auto-matched against the requesting player. (Either player or
    * autoMatchedPlayer will be set.)
    */
   Player player;
-
   /**
    * The status of the participant with respect to the room.
    * Possible values are:
@@ -8268,7 +7763,6 @@ class RoomParticipant {
    * - "PARTICIPANT_LEFT" - The participant joined the room and then left it.
    */
   core.String status;
-
 
   RoomParticipant();
 
@@ -8341,7 +7835,6 @@ class RoomParticipant {
   }
 }
 
-
 /**
  * This is a JSON template for the status of a room that the player has joined.
  */
@@ -8351,22 +7844,18 @@ class RoomStatus {
    * the automatching queue.
    */
   RoomAutoMatchStatus autoMatchingStatus;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#roomStatus.
    */
   core.String kind;
-
   /**
    * The participants involved in the room, along with their statuses. Includes
    * participants who have left or declined invitations.
    */
   core.List<RoomParticipant> participants;
-
   /** Globally unique ID for a room. */
   core.String roomId;
-
   /**
    * The status of the room.
    * Possible values are:
@@ -8380,13 +7869,11 @@ class RoomStatus {
    * - "ROOM_DELETED" - All joined players have left.
    */
   core.String status;
-
   /**
    * The version of the status for the room: an increasing counter, used by the
    * client to ignore out-of-order updates to room status.
    */
   core.int statusVersion;
-
 
   RoomStatus();
 
@@ -8435,7 +7922,6 @@ class RoomStatus {
   }
 }
 
-
 /** This is a JSON template for a request to submit a score to leaderboards. */
 class ScoreSubmission {
   /**
@@ -8443,25 +7929,20 @@ class ScoreSubmission {
    * string games#scoreSubmission.
    */
   core.String kind;
-
   /** The leaderboard this score is being submitted to. */
   core.String leaderboardId;
-
   /** The new score being submitted. */
   core.String score;
-
   /**
    * Additional information about this score. Values will contain no more than
    * 64 URI-safe characters as defined by section 2.3 of RFC 3986.
    */
   core.String scoreTag;
-
   /**
    * Signature Values will contain URI-safe characters as defined by section 2.3
    * of RFC 3986.
    */
   core.String signature;
-
 
   ScoreSubmission();
 
@@ -8504,59 +7985,47 @@ class ScoreSubmission {
   }
 }
 
-
 /** This is a JSON template for an snapshot object. */
 class Snapshot {
   /** The cover image of this snapshot. May be absent if there is no image. */
   SnapshotImage coverImage;
-
   /** The description of this snapshot. */
   core.String description;
-
   /**
    * The ID of the file underlying this snapshot in the Drive API. Only present
    * if the snapshot is a view on a Drive file and the file is owned by the
    * caller.
    */
   core.String driveId;
-
   /** The duration associated with this snapshot, in millis. */
   core.String durationMillis;
-
   /** The ID of the snapshot. */
   core.String id;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#snapshot.
    */
   core.String kind;
-
   /**
    * The timestamp (in millis since Unix epoch) of the last modification to this
    * snapshot.
    */
   core.String lastModifiedMillis;
-
   /**
    * The progress value (64-bit integer set by developer) associated with this
    * snapshot.
    */
   core.String progressValue;
-
   /** The title of this snapshot. */
   core.String title;
-
   /**
    * The type of this snapshot.
    * Possible values are:
    * - "SAVE_GAME" - A snapshot representing a save game.
    */
   core.String type;
-
   /** The unique name provided when the snapshot was created. */
   core.String uniqueName;
-
 
   Snapshot();
 
@@ -8635,30 +8104,24 @@ class Snapshot {
   }
 }
 
-
 /** This is a JSON template for an image of a snapshot. */
 class SnapshotImage {
   /** The height of the image. */
   core.int height;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#snapshotImage.
    */
   core.String kind;
-
   /** The MIME type of the image. */
   core.String mimeType;
-
   /**
    * The URL of the image. This URL may be invalidated at any time and should
    * not be cached.
    */
   core.String url;
-
   /** The width of the image. */
   core.int width;
-
 
   SnapshotImage();
 
@@ -8701,24 +8164,20 @@ class SnapshotImage {
   }
 }
 
-
 /** This is a JSON template for a list of snapshot objects. */
 class SnapshotListResponse {
   /** The snapshots. */
   core.List<Snapshot> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#snapshotListResponse.
    */
   core.String kind;
-
   /**
    * Token corresponding to the next page of results. If there are no more
    * results, the token is omitted.
    */
   core.String nextPageToken;
-
 
   SnapshotListResponse();
 
@@ -8749,7 +8208,6 @@ class SnapshotListResponse {
   }
 }
 
-
 /** This is a JSON template for an turn-based auto-match criteria object. */
 class TurnBasedAutoMatchingCriteria {
   /**
@@ -8758,25 +8216,21 @@ class TurnBasedAutoMatchingCriteria {
    * exclusive roles within a game.
    */
   core.String exclusiveBitmask;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#turnBasedAutoMatchingCriteria.
    */
   core.String kind;
-
   /**
    * The maximum number of players that should be added to the match by
    * auto-matching.
    */
   core.int maxAutoMatchingPlayers;
-
   /**
    * The minimum number of players that should be added to the match by
    * auto-matching.
    */
   core.int minAutoMatchingPlayers;
-
 
   TurnBasedAutoMatchingCriteria();
 
@@ -8813,82 +8267,65 @@ class TurnBasedAutoMatchingCriteria {
   }
 }
 
-
 /** This is a JSON template for a turn-based match resource object. */
 class TurnBasedMatch {
   /** The ID of the application being played. */
   core.String applicationId;
-
   /** Criteria for auto-matching players into this match. */
   TurnBasedAutoMatchingCriteria autoMatchingCriteria;
-
   /** Details about the match creation. */
   TurnBasedMatchModification creationDetails;
-
   /** The data / game state for this match. */
   TurnBasedMatchData data;
-
   /**
    * This short description is generated by our servers based on turn state and
    * is localized and worded relative to the player requesting the match. It is
    * intended to be displayed when the match is shown in a list.
    */
   core.String description;
-
   /**
    * The ID of the participant that invited the user to the match. Not set if
    * the user was not invited to the match.
    */
   core.String inviterId;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#turnBasedMatch.
    */
   core.String kind;
-
   /** Details about the last update to the match. */
   TurnBasedMatchModification lastUpdateDetails;
-
   /** Globally unique ID for a turn-based match. */
   core.String matchId;
-
   /**
    * The number of the match in a chain of rematches. Will be set to 1 for the
    * first match and incremented by 1 for each rematch.
    */
   core.int matchNumber;
-
   /**
    * The version of this match: an increasing counter, used to avoid out-of-date
    * updates to the match.
    */
   core.int matchVersion;
-
   /**
    * The participants involved in the match, along with their statuses. Includes
    * participants who have left or declined invitations.
    */
   core.List<TurnBasedMatchParticipant> participants;
-
   /** The ID of the participant that is taking a turn. */
   core.String pendingParticipantId;
-
   /**
    * The data / game state for the previous match; set for the first turn of
    * rematches only.
    */
   TurnBasedMatchData previousMatchData;
-
   /**
    * The ID of a rematch of this match. Only set for completed matches that have
    * been rematched.
    */
   core.String rematchId;
-
   /** The results reported for this match. */
   core.List<ParticipantResult> results;
-
   /**
    * The status of the match.
    * Possible values are:
@@ -8902,7 +8339,6 @@ class TurnBasedMatch {
    * Returned only for tombstones for matches when sync is called.
    */
   core.String status;
-
   /**
    * The status of the current user in the match. Derived from the match type,
    * match status, the user's participant status, and the pending participant
@@ -8916,19 +8352,16 @@ class TurnBasedMatch {
    * or expired.)
    */
   core.String userMatchStatus;
-
   /**
    * The variant / mode of the application being played; can be any integer
    * value, or left blank.
    */
   core.int variant;
-
   /**
    * The ID of another participant in the match that can be used when describing
    * the participants the user is playing with.
    */
   core.String withParticipantId;
-
 
   TurnBasedMatch();
 
@@ -9061,34 +8494,28 @@ class TurnBasedMatch {
   }
 }
 
-
 /** This is a JSON template for a turn-based match creation request. */
 class TurnBasedMatchCreateRequest {
   /** Criteria for auto-matching players into this match. */
   TurnBasedAutoMatchingCriteria autoMatchingCriteria;
-
   /** The player ids to invite to the match. */
   core.List<core.String> invitedPlayerIds;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#turnBasedMatchCreateRequest.
    */
   core.String kind;
-
   /**
    * A randomly generated numeric ID. This number is used at the server to
    * ensure that the request is handled correctly across retries.
    */
   core.String requestId;
-
   /**
    * The variant / mode of the application to be played. This can be any integer
    * value, or left blank. You should use a small number of variants to keep the
    * auto-matching pool as large as possible.
    */
   core.int variant;
-
 
   TurnBasedMatchCreateRequest();
 
@@ -9131,7 +8558,6 @@ class TurnBasedMatchCreateRequest {
   }
 }
 
-
 /** This is a JSON template for a turn-based match data object. */
 class TurnBasedMatchData {
   /**
@@ -9139,7 +8565,6 @@ class TurnBasedMatchData {
    * Base64-encoded string with the URL_SAFE encoding option.
    */
   core.String data;
-
   core.List<core.int> get dataAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(data);
   }
@@ -9147,19 +8572,16 @@ class TurnBasedMatchData {
   void set dataAsBytes(core.List<core.int> _bytes) {
     data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /**
    * True if this match has data available but it wasn't returned in a list
    * response; fetching the match individually will retrieve this data.
    */
   core.bool dataAvailable;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#turnBasedMatchData.
    */
   core.String kind;
-
 
   TurnBasedMatchData();
 
@@ -9190,7 +8612,6 @@ class TurnBasedMatchData {
   }
 }
 
-
 /** This is a JSON template for sending a turn-based match data object. */
 class TurnBasedMatchDataRequest {
   /**
@@ -9198,7 +8619,6 @@ class TurnBasedMatchDataRequest {
    * Base64-encoded string with the URL_SAFE encoding option.
    */
   core.String data;
-
   core.List<core.int> get dataAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(data);
   }
@@ -9206,13 +8626,11 @@ class TurnBasedMatchDataRequest {
   void set dataAsBytes(core.List<core.int> _bytes) {
     data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#turnBasedMatchDataRequest.
    */
   core.String kind;
-
 
   TurnBasedMatchDataRequest();
 
@@ -9237,21 +8655,17 @@ class TurnBasedMatchDataRequest {
   }
 }
 
-
 /** This is a JSON template for a list of turn-based matches. */
 class TurnBasedMatchList {
   /** The matches. */
   core.List<TurnBasedMatch> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#turnBasedMatchList.
    */
   core.String kind;
-
   /** The pagination token for the next page of results. */
   core.String nextPageToken;
-
 
   TurnBasedMatchList();
 
@@ -9282,7 +8696,6 @@ class TurnBasedMatchList {
   }
 }
 
-
 /** This is a JSON template for turn-based match modification metadata. */
 class TurnBasedMatchModification {
   /**
@@ -9290,16 +8703,13 @@ class TurnBasedMatchModification {
    * string games#turnBasedMatchModification.
    */
   core.String kind;
-
   /**
    * The timestamp at which they modified the match, in milliseconds since the
    * epoch in UTC.
    */
   core.String modifiedTimestampMillis;
-
   /** The ID of the participant that modified the match. */
   core.String participantId;
-
 
   TurnBasedMatchModification();
 
@@ -9330,37 +8740,31 @@ class TurnBasedMatchModification {
   }
 }
 
-
 /** This is a JSON template for a participant in a turn-based match. */
 class TurnBasedMatchParticipant {
   /** True if this participant was auto-matched with the requesting player. */
   core.bool autoMatched;
-
   /**
    * Information about a player that has been anonymously auto-matched against
    * the requesting player. (Either player or autoMatchedPlayer will be set.)
    */
   AnonymousPlayer autoMatchedPlayer;
-
   /**
    * An identifier for the participant in the scope of the match. Cannot be used
    * to identify a player across matches or in other contexts.
    */
   core.String id;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#turnBasedMatchParticipant.
    */
   core.String kind;
-
   /**
    * Information about the player. Not populated if this player was anonymously
    * auto-matched against the requesting player. (Either player or
    * autoMatchedPlayer will be set.)
    */
   Player player;
-
   /**
    * The status of the participant with respect to the match.
    * Possible values are:
@@ -9379,7 +8783,6 @@ class TurnBasedMatchParticipant {
    * the allotted time.
    */
   core.String status;
-
 
   TurnBasedMatchParticipant();
 
@@ -9428,7 +8831,6 @@ class TurnBasedMatchParticipant {
   }
 }
 
-
 /** This is a JSON template for a rematch response. */
 class TurnBasedMatchRematch {
   /**
@@ -9436,19 +8838,16 @@ class TurnBasedMatchRematch {
    * string games#turnBasedMatchRematch.
    */
   core.String kind;
-
   /**
    * The old match that the rematch was created from; will be updated such that
    * the rematchId field will point at the new match.
    */
   TurnBasedMatch previousMatch;
-
   /**
    * The newly created match; a rematch of the old match with the same
    * participants.
    */
   TurnBasedMatch rematch;
-
 
   TurnBasedMatchRematch();
 
@@ -9479,24 +8878,19 @@ class TurnBasedMatchRematch {
   }
 }
 
-
 /** This is a JSON template for a turn-based match results object. */
 class TurnBasedMatchResults {
   /** The final match data. */
   TurnBasedMatchDataRequest data;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#turnBasedMatchResults.
    */
   core.String kind;
-
   /** The version of the match being updated. */
   core.int matchVersion;
-
   /** The match results for the participants in the match. */
   core.List<ParticipantResult> results;
-
 
   TurnBasedMatchResults();
 
@@ -9533,7 +8927,6 @@ class TurnBasedMatchResults {
   }
 }
 
-
 /**
  * This is a JSON template for a list of turn-based matches returned from a
  * sync.
@@ -9541,22 +8934,18 @@ class TurnBasedMatchResults {
 class TurnBasedMatchSync {
   /** The matches. */
   core.List<TurnBasedMatch> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#turnBasedMatchSync.
    */
   core.String kind;
-
   /**
    * True if there were more matches available to fetch at the time the response
    * was generated (which were not returned due to page size limits.)
    */
   core.bool moreAvailable;
-
   /** The pagination token for the next page of results. */
   core.String nextPageToken;
-
 
   TurnBasedMatchSync();
 
@@ -9593,24 +8982,20 @@ class TurnBasedMatchSync {
   }
 }
 
-
 /** This is a JSON template for the object representing a turn. */
 class TurnBasedMatchTurn {
   /** The shared game state data after the turn is over. */
   TurnBasedMatchDataRequest data;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#turnBasedMatchTurn.
    */
   core.String kind;
-
   /**
    * The version of this match: an increasing counter, used to avoid out-of-date
    * updates to the match.
    */
   core.int matchVersion;
-
   /**
    * The ID of the participant who should take their turn next. May be set to
    * the current player's participant ID to update match state without changing
@@ -9619,10 +9004,8 @@ class TurnBasedMatchTurn {
    * with remaining slots for automatched players.
    */
   core.String pendingParticipantId;
-
   /** The match results for the participants in the match. */
   core.List<ParticipantResult> results;
-
 
   TurnBasedMatchTurn();
 

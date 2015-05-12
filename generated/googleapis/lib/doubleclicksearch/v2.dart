@@ -82,7 +82,7 @@ class ConversionResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ConversionList> get(core.String agencyId, core.String advertiserId, core.String engineAccountId, core.int endDate, core.int rowCount, core.int startDate, core.int startRow, {core.String adGroupId, core.String adId, core.String campaignId, core.String criterionId}) {
     var _url = null;
@@ -130,7 +130,6 @@ class ConversionResourceApi {
       _queryParams["criterionId"] = [criterionId];
     }
 
-
     _url = 'agency/' + commons.Escaper.ecapeVariable('$agencyId') + '/advertiser/' + commons.Escaper.ecapeVariable('$advertiserId') + '/engine/' + commons.Escaper.ecapeVariable('$engineAccountId') + '/conversion';
 
     var _response = _requester.request(_url,
@@ -156,7 +155,7 @@ class ConversionResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ConversionList> insert(ConversionList request) {
     var _url = null;
@@ -169,7 +168,6 @@ class ConversionResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'conversion';
 
@@ -216,7 +214,7 @@ class ConversionResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ConversionList> patch(ConversionList request, core.String advertiserId, core.String agencyId, core.int endDate, core.String engineAccountId, core.int rowCount, core.int startDate, core.int startRow) {
     var _url = null;
@@ -258,7 +256,6 @@ class ConversionResourceApi {
     }
     _queryParams["startRow"] = ["${startRow}"];
 
-
     _url = 'conversion';
 
     var _response = _requester.request(_url,
@@ -284,7 +281,7 @@ class ConversionResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ConversionList> update(ConversionList request) {
     var _url = null;
@@ -297,7 +294,6 @@ class ConversionResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'conversion';
 
@@ -325,7 +321,7 @@ class ConversionResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UpdateAvailabilityResponse> updateAvailability(UpdateAvailabilityRequest request) {
     var _url = null;
@@ -338,7 +334,6 @@ class ConversionResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'conversion/updateAvailability';
 
@@ -374,7 +369,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Report> generate(ReportRequest request_1) {
     var _url = null;
@@ -387,7 +382,6 @@ class ReportsResourceApi {
     if (request_1 != null) {
       _body = convert.JSON.encode((request_1).toJson());
     }
-
 
     _url = 'reports/generate';
 
@@ -414,7 +408,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Report> get(core.String reportId) {
     var _url = null;
@@ -427,7 +421,6 @@ class ReportsResourceApi {
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
     }
-
 
     _url = 'reports/' + commons.Escaper.ecapeVariable('$reportId');
 
@@ -458,7 +451,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future getFile(core.String reportId, core.int reportFragment, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -507,7 +500,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Report> request(ReportRequest request_1) {
     var _url = null;
@@ -520,7 +513,6 @@ class ReportsResourceApi {
     if (request_1 != null) {
       _body = convert.JSON.encode((request_1).toJson());
     }
-
 
     _url = 'reports';
 
@@ -558,7 +550,7 @@ class SavedColumnsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SavedColumnList> list(core.String agencyId, core.String advertiserId) {
     var _url = null;
@@ -574,7 +566,6 @@ class SavedColumnsResourceApi {
     if (advertiserId == null) {
       throw new core.ArgumentError("Parameter advertiserId is required.");
     }
-
 
     _url = 'agency/' + commons.Escaper.ecapeVariable('$agencyId') + '/advertiser/' + commons.Escaper.ecapeVariable('$advertiserId') + '/savedcolumns';
 
@@ -596,33 +587,27 @@ class SavedColumnsResourceApi {
 class Availability {
   /** DS advertiser ID. */
   core.String advertiserId;
-
   /** DS agency ID. */
   core.String agencyId;
-
   /**
    * The time by which all conversions have been uploaded, in epoch millis UTC.
    */
   core.String availabilityTimestamp;
-
   /**
    * The numeric segmentation identifier (for example, DoubleClick Search
    * Floodlight activity ID).
    */
   core.String segmentationId;
-
   /**
    * The friendly segmentation identifier (for example, DoubleClick Search
    * Floodlight activity name).
    */
   core.String segmentationName;
-
   /**
    * The segmentation type that this availability is for (its default value is
    * FLOODLIGHT).
    */
   core.String segmentationType;
-
 
   Availability();
 
@@ -671,101 +656,98 @@ class Availability {
   }
 }
 
-
 /** A conversion containing data relevant to DoubleClick Search. */
 class Conversion {
   /** DS ad group ID. */
   core.String adGroupId;
-
   /** DS ad ID. */
   core.String adId;
-
   /** DS advertiser ID. */
   core.String advertiserId;
-
   /** DS agency ID. */
   core.String agencyId;
-
   /** Attribution model name. This field is ignored. */
   core.String attributionModel;
-
   /** DS campaign ID. */
   core.String campaignId;
-
+  /** Channel of the product: local or online. */
+  core.String channel;
   /** DS click ID for the conversion. */
   core.String clickId;
-
   /** Advertiser-provided ID for the conversion, also known as the order ID. */
   core.String conversionId;
-
   /**
    * The time at which the conversion was last modified, in epoch millis UTC.
    */
   core.String conversionModifiedTimestamp;
-
   /** The time at which the conversion took place, in epoch millis UTC. */
   core.String conversionTimestamp;
-
   /**
    * The number of conversions, formatted in millis (conversions multiplied by
    * 1000). This field is ignored.
    */
   core.String countMillis;
-
   /** DS criterion (keyword) ID. */
   core.String criterionId;
-
   /**
    * The currency code for the conversion's revenue. Should be in ISO 4217
    * alphabetic (3-char) format.
    */
   core.String currencyCode;
-
   /**
    * Custom dimensions for the conversion, which can be used to filter data in a
    * report.
    */
   core.List<CustomDimension> customDimension;
-
   /** Custom metrics for the conversion. */
   core.List<CustomMetric> customMetric;
-
+  /**
+   * The type of device on which the conversion occurred. Valid values are
+   * "DESKTOP", "TABLET", "HIGH_END_MOBILE", "OTHER_DEVICE".
+   */
+  core.String deviceType;
   /** DS conversion ID. */
   core.String dsConversionId;
-
   /** DS engine account ID. */
   core.String engineAccountId;
-
+  /** DS inventory feed ID. */
+  core.String feedId;
   /** The advertiser-provided order id for the conversion. */
   core.String floodlightOrderId;
-
+  /** ISO 3166 code of the product country. */
+  core.String productCountry;
+  /** DS product group ID. */
+  core.String productGroupId;
+  /** The product ID (SKU). */
+  core.String productId;
+  /** ISO 639 code of the product language. */
+  core.String productLanguage;
   /** The quantity of this conversion, in millis. */
   core.String quantityMillis;
-
   /** The revenue amount of this TRANSACTION conversion, in micros. */
   core.String revenueMicros;
-
   /**
    * The numeric segmentation identifier (for example, DoubleClick Search
    * Floodlight activity ID).
    */
   core.String segmentationId;
-
   /**
    * The friendly segmentation identifier (for example, DoubleClick Search
    * Floodlight activity name).
    */
   core.String segmentationName;
-
   /** The segmentation type of this conversion (for example, FLOODLIGHT). */
   core.String segmentationType;
-
   /**
    * The state of the conversion, that is, either ACTIVE or REMOVED. Note: state
    * DELETED is deprecated.
    */
   core.String state;
-
+  /**
+   * The store id for which the product was advertised, when the channel is
+   * "local".
+   */
+  core.String storeId;
   /**
    * The type of the conversion, that is, either ACTION or TRANSACTION. An
    * ACTION conversion is an action by the user that has no monetarily
@@ -774,7 +756,6 @@ class Conversion {
    * (ACTION) versus ecommerce purchases (TRANSACTION).
    */
   core.String type;
-
 
   Conversion();
 
@@ -796,6 +777,9 @@ class Conversion {
     }
     if (_json.containsKey("campaignId")) {
       campaignId = _json["campaignId"];
+    }
+    if (_json.containsKey("channel")) {
+      channel = _json["channel"];
     }
     if (_json.containsKey("clickId")) {
       clickId = _json["clickId"];
@@ -824,14 +808,32 @@ class Conversion {
     if (_json.containsKey("customMetric")) {
       customMetric = _json["customMetric"].map((value) => new CustomMetric.fromJson(value)).toList();
     }
+    if (_json.containsKey("deviceType")) {
+      deviceType = _json["deviceType"];
+    }
     if (_json.containsKey("dsConversionId")) {
       dsConversionId = _json["dsConversionId"];
     }
     if (_json.containsKey("engineAccountId")) {
       engineAccountId = _json["engineAccountId"];
     }
+    if (_json.containsKey("feedId")) {
+      feedId = _json["feedId"];
+    }
     if (_json.containsKey("floodlightOrderId")) {
       floodlightOrderId = _json["floodlightOrderId"];
+    }
+    if (_json.containsKey("productCountry")) {
+      productCountry = _json["productCountry"];
+    }
+    if (_json.containsKey("productGroupId")) {
+      productGroupId = _json["productGroupId"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("productLanguage")) {
+      productLanguage = _json["productLanguage"];
     }
     if (_json.containsKey("quantityMillis")) {
       quantityMillis = _json["quantityMillis"];
@@ -850,6 +852,9 @@ class Conversion {
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
+    }
+    if (_json.containsKey("storeId")) {
+      storeId = _json["storeId"];
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -875,6 +880,9 @@ class Conversion {
     }
     if (campaignId != null) {
       _json["campaignId"] = campaignId;
+    }
+    if (channel != null) {
+      _json["channel"] = channel;
     }
     if (clickId != null) {
       _json["clickId"] = clickId;
@@ -903,14 +911,32 @@ class Conversion {
     if (customMetric != null) {
       _json["customMetric"] = customMetric.map((value) => (value).toJson()).toList();
     }
+    if (deviceType != null) {
+      _json["deviceType"] = deviceType;
+    }
     if (dsConversionId != null) {
       _json["dsConversionId"] = dsConversionId;
     }
     if (engineAccountId != null) {
       _json["engineAccountId"] = engineAccountId;
     }
+    if (feedId != null) {
+      _json["feedId"] = feedId;
+    }
     if (floodlightOrderId != null) {
       _json["floodlightOrderId"] = floodlightOrderId;
+    }
+    if (productCountry != null) {
+      _json["productCountry"] = productCountry;
+    }
+    if (productGroupId != null) {
+      _json["productGroupId"] = productGroupId;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (productLanguage != null) {
+      _json["productLanguage"] = productLanguage;
     }
     if (quantityMillis != null) {
       _json["quantityMillis"] = quantityMillis;
@@ -930,6 +956,9 @@ class Conversion {
     if (state != null) {
       _json["state"] = state;
     }
+    if (storeId != null) {
+      _json["storeId"] = storeId;
+    }
     if (type != null) {
       _json["type"] = type;
     }
@@ -937,18 +966,15 @@ class Conversion {
   }
 }
 
-
 /** A list of conversions. */
 class ConversionList {
   /** The conversions being requested. */
   core.List<Conversion> conversion;
-
   /**
    * Identifies this as a ConversionList resource. Value: the fixed string
    * doubleclicksearch#conversionList.
    */
   core.String kind;
-
 
   ConversionList();
 
@@ -973,15 +999,12 @@ class ConversionList {
   }
 }
 
-
 /** A message containing the custome dimension. */
 class CustomDimension {
   /** Custom dimension name. */
   core.String name;
-
   /** Custom dimension value. */
   core.String value;
-
 
   CustomDimension();
 
@@ -1006,15 +1029,12 @@ class CustomDimension {
   }
 }
 
-
 /** A message containing the custome metric. */
 class CustomMetric {
   /** Custom metric name. */
   core.String name;
-
   /** Custom metric numeric value. */
   core.double value;
-
 
   CustomMetric();
 
@@ -1039,14 +1059,11 @@ class CustomMetric {
   }
 }
 
-
 class ReportFiles {
   /** The size of this report file in bytes. */
   core.String byteCount;
-
   /** Use this url to download the report file. */
   core.String url;
-
 
   ReportFiles();
 
@@ -1071,7 +1088,6 @@ class ReportFiles {
   }
 }
 
-
 /**
  * A DoubleClick Search report. This object contains the report request, some
  * report metadata such as currency code, and the generated report rows or
@@ -1083,36 +1099,29 @@ class Report {
    * the report has succesfully completed.
    */
   core.List<ReportFiles> files;
-
   /** Asynchronous report only. Id of the report. */
   core.String id;
-
   /**
    * Asynchronous report only. True if and only if the report has completed
    * successfully and the report files are ready to be downloaded.
    */
   core.bool isReportReady;
-
   /**
    * Identifies this as a Report resource. Value: the fixed string
    * doubleclicksearch#report.
    */
   core.String kind;
-
   /**
    * The request that created the report. Optional fields not specified in the
    * original request are filled with default values.
    */
   ReportRequest request;
-
   /**
    * The number of report rows generated by the report, not including headers.
    */
   core.int rowCount;
-
   /** Synchronous report only. Generated report rows. */
   core.List<ReportRow> rows;
-
   /**
    * The currency code of all monetary values produced in the report, including
    * values that are set by users (e.g., keyword bid settings) and metrics
@@ -1120,13 +1129,11 @@ class Report {
    * the statisticsCurrency field of the report request.
    */
   core.String statisticsCurrencyCode;
-
   /**
    * If all statistics of the report are sourced from the same time zone, this
    * would be it. Otherwise the field is unset.
    */
   core.String statisticsTimeZone;
-
 
   Report();
 
@@ -1193,12 +1200,10 @@ class Report {
   }
 }
 
-
 /** A request object used to create a DoubleClick Search report. */
 class ReportApiColumnSpec {
   /** Name of a DoubleClick Search column to include in the report. */
   core.String columnName;
-
   /**
    * Segments a report by a custom dimension. The report must be scoped to an
    * advertiser or lower, and the custom dimension must already be set up in
@@ -1209,7 +1214,6 @@ class ReportApiColumnSpec {
    * the conversion report.
    */
   core.String customDimensionName;
-
   /**
    * Name of a custom metric to include in the report. The report must be scoped
    * to an advertiser or lower, and the custom metric must already be set up in
@@ -1217,20 +1221,17 @@ class ReportApiColumnSpec {
    * Search, is case sensitive.
    */
   core.String customMetricName;
-
   /**
    * Inclusive day in YYYY-MM-DD format. When provided, this overrides the
    * overall time range of the report for this column only. Must be provided
    * together with startDate.
    */
   core.String endDate;
-
   /**
    * Synchronous report only. Set to true to group by this column. Defaults to
    * false.
    */
   core.bool groupByColumn;
-
   /**
    * Text used to identify this column in the report output; defaults to
    * columnName or savedColumnName when not specified. This can be used to
@@ -1238,27 +1239,23 @@ class ReportApiColumnSpec {
    * with the same name.
    */
   core.String headerText;
-
   /**
    * The platform that is used to provide data for the custom dimension.
    * Acceptable values are "Floodlight".
    */
   core.String platformSource;
-
   /**
    * Name of a saved column to include in the report. The report must be scoped
    * at advertiser or lower, and this saved column must already be created in
    * the DoubleClick Search UI.
    */
   core.String savedColumnName;
-
   /**
    * Inclusive date in YYYY-MM-DD format. When provided, this overrides the
    * overall time range of the report for this column only. Must be provided
    * together with endDate.
    */
   core.String startDate;
-
 
   ReportApiColumnSpec();
 
@@ -1325,20 +1322,17 @@ class ReportApiColumnSpec {
   }
 }
 
-
 class ReportRequestFilters {
   /**
    * Column to perform the filter on. This can be a DoubleClick Search column or
    * a saved column.
    */
   ReportApiColumnSpec column;
-
   /**
    * Operator to use in the filter. See the filter reference for a list of
    * available operators.
    */
   core.String operator;
-
   /**
    * A list of values to filter the column value against.
    *
@@ -1346,7 +1340,6 @@ class ReportRequestFilters {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Object> values;
-
 
   ReportRequestFilters();
 
@@ -1377,17 +1370,14 @@ class ReportRequestFilters {
   }
 }
 
-
 class ReportRequestOrderBy {
   /**
    * Column to perform the sort on. This can be a DoubleClick Search-defined
    * column or a saved column.
    */
   ReportApiColumnSpec column;
-
   /** The sort direction, which is either ascending or descending. */
   core.String sortOrder;
-
 
   ReportRequestOrderBy();
 
@@ -1412,7 +1402,6 @@ class ReportRequestOrderBy {
   }
 }
 
-
 /**
  * The reportScope is a set of IDs that are used to determine which subset of
  * entities will be returned in the report. The full lineage of IDs from the
@@ -1421,25 +1410,18 @@ class ReportRequestOrderBy {
 class ReportRequestReportScope {
   /** DS ad group ID. */
   core.String adGroupId;
-
   /** DS ad ID. */
   core.String adId;
-
   /** DS advertiser ID. */
   core.String advertiserId;
-
   /** DS agency ID. */
   core.String agencyId;
-
   /** DS campaign ID. */
   core.String campaignId;
-
   /** DS engine account ID. */
   core.String engineAccountId;
-
   /** DS keyword ID. */
   core.String keywordId;
-
 
   ReportRequestReportScope();
 
@@ -1494,7 +1476,6 @@ class ReportRequestReportScope {
   }
 }
 
-
 /**
  * If metrics are requested in a report, this argument will be used to restrict
  * the metrics to a specific time range.
@@ -1505,19 +1486,15 @@ class ReportRequestTimeRange {
    * additional references on how changed attribute reports work.
    */
   core.DateTime changedAttributesSinceTimestamp;
-
   /**
    * Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See
    * additional references on how changed metrics reports work.
    */
   core.DateTime changedMetricsSinceTimestamp;
-
   /** Inclusive date in YYYY-MM-DD format. */
   core.String endDate;
-
   /** Inclusive date in YYYY-MM-DD format. */
   core.String startDate;
-
 
   ReportRequestTimeRange();
 
@@ -1554,7 +1531,6 @@ class ReportRequestTimeRange {
   }
 }
 
-
 /** A request object used to create a DoubleClick Search report. */
 class ReportRequest {
   /**
@@ -1565,48 +1541,40 @@ class ReportRequest {
    * cannot be set in the same stanza.
    */
   core.List<ReportApiColumnSpec> columns;
-
   /**
    * Format that the report should be returned in. Currently csv or tsv is
    * supported.
    */
   core.String downloadFormat;
-
   /** A list of filters to be applied to the report. */
   core.List<ReportRequestFilters> filters;
-
   /**
    * Determines if removed entities should be included in the report. Defaults
    * to false. Deprecated, please use includeRemovedEntities instead.
    */
   core.bool includeDeletedEntities;
-
   /**
    * Determines if removed entities should be included in the report. Defaults
    * to false.
    */
   core.bool includeRemovedEntities;
-
   /**
    * Asynchronous report only. The maximum number of rows per report file. A
    * large report is split into many files based on this field. Acceptable
    * values are 1000000 to 100000000, inclusive.
    */
   core.int maxRowsPerFile;
-
   /**
    * Synchronous report only. A list of columns and directions defining sorting
    * to be performed on the report rows.
    */
   core.List<ReportRequestOrderBy> orderBy;
-
   /**
    * The reportScope is a set of IDs that are used to determine which subset of
    * entities will be returned in the report. The full lineage of IDs from the
    * lowest scoped level desired up through agency is required.
    */
   ReportRequestReportScope reportScope;
-
   /**
    * Determines the type of rows that are returned in the report. For example,
    * if you specify reportType: keyword, each row in the report will contain
@@ -1614,20 +1582,17 @@ class ReportRequest {
    * that are available for each type.
    */
   core.String reportType;
-
   /**
    * Synchronous report only. The maxinum number of rows to return; additional
    * rows are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to
    * 10000.
    */
   core.int rowCount;
-
   /**
    * Synchronous report only. Zero-based index of the first row to return.
    * Acceptable values are 0 to 50000, inclusive. Defaults to 0.
    */
   core.int startRow;
-
   /**
    * Specifies the currency in which monetary will be returned. Possible values
    * are: usd, agency (valid if the report is scoped to agency or lower),
@@ -1635,19 +1600,16 @@ class ReportRequest {
    * account (valid if the report is scoped to engine account or lower).
    */
   core.String statisticsCurrency;
-
   /**
    * If metrics are requested in a report, this argument will be used to
    * restrict the metrics to a specific time range.
    */
   ReportRequestTimeRange timeRange;
-
   /**
    * If true, the report would only be created if all the requested stat data
    * are sourced from a single timezone. Defaults to false.
    */
   core.bool verifySingleTimeZone;
-
 
   ReportRequest();
 
@@ -1744,7 +1706,6 @@ class ReportRequest {
   }
 }
 
-
 /**
  * A row in a DoubleClick Search report.
  *
@@ -1787,7 +1748,6 @@ class ReportRow
   core.Object remove(core.Object key) => _innerMap.remove(key);
 }
 
-
 /** A saved column */
 class SavedColumn {
   /**
@@ -1795,13 +1755,10 @@ class SavedColumn {
    * doubleclicksearch#savedColumn.
    */
   core.String kind;
-
   /** The name of the saved column. */
   core.String savedColumnName;
-
   /** The type of data this saved column will produce. */
   core.String type;
-
 
   SavedColumn();
 
@@ -1832,7 +1789,6 @@ class SavedColumn {
   }
 }
 
-
 /**
  * A list of saved columns. Advertisers create saved columns to report on
  * Floodlight activities, Google Analytics goals, or custom KPIs. To request
@@ -1842,13 +1798,11 @@ class SavedColumn {
 class SavedColumnList {
   /** The saved columns being requested. */
   core.List<SavedColumn> items;
-
   /**
    * Identifies this as a SavedColumnList resource. Value: the fixed string
    * doubleclicksearch#savedColumnList.
    */
   core.String kind;
-
 
   SavedColumnList();
 
@@ -1873,12 +1827,10 @@ class SavedColumnList {
   }
 }
 
-
 /** The request to update availability. */
 class UpdateAvailabilityRequest {
   /** The availabilities being requested. */
   core.List<Availability> availabilities;
-
 
   UpdateAvailabilityRequest();
 
@@ -1897,12 +1849,10 @@ class UpdateAvailabilityRequest {
   }
 }
 
-
 /** The response to a update availability request. */
 class UpdateAvailabilityResponse {
   /** The availabilities being returned. */
   core.List<Availability> availabilities;
-
 
   UpdateAvailabilityResponse();
 

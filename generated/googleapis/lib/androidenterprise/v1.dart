@@ -63,7 +63,7 @@ class CollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String enterpriseId, core.String collectionId) {
     var _url = null;
@@ -109,7 +109,7 @@ class CollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Collection> get(core.String enterpriseId, core.String collectionId) {
     var _url = null;
@@ -125,7 +125,6 @@ class CollectionsResourceApi {
     if (collectionId == null) {
       throw new core.ArgumentError("Parameter collectionId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId');
 
@@ -154,7 +153,7 @@ class CollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Collection> insert(Collection request, core.String enterpriseId) {
     var _url = null;
@@ -170,7 +169,6 @@ class CollectionsResourceApi {
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections';
 
@@ -197,7 +195,7 @@ class CollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CollectionsListResponse> list(core.String enterpriseId) {
     var _url = null;
@@ -210,7 +208,6 @@ class CollectionsResourceApi {
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections';
 
@@ -241,7 +238,7 @@ class CollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Collection> patch(Collection request, core.String enterpriseId, core.String collectionId) {
     var _url = null;
@@ -260,7 +257,6 @@ class CollectionsResourceApi {
     if (collectionId == null) {
       throw new core.ArgumentError("Parameter collectionId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId');
 
@@ -291,7 +287,7 @@ class CollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Collection> update(Collection request, core.String enterpriseId, core.String collectionId) {
     var _url = null;
@@ -310,7 +306,6 @@ class CollectionsResourceApi {
     if (collectionId == null) {
       throw new core.ArgumentError("Parameter collectionId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId');
 
@@ -350,7 +345,7 @@ class CollectionviewersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String enterpriseId, core.String collectionId, core.String userId) {
     var _url = null;
@@ -403,7 +398,7 @@ class CollectionviewersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<User> get(core.String enterpriseId, core.String collectionId, core.String userId) {
     var _url = null;
@@ -422,7 +417,6 @@ class CollectionviewersResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId') + '/users/' + commons.Escaper.ecapeVariable('$userId');
 
@@ -453,7 +447,7 @@ class CollectionviewersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CollectionViewersListResponse> list(core.String enterpriseId, core.String collectionId) {
     var _url = null;
@@ -469,7 +463,6 @@ class CollectionviewersResourceApi {
     if (collectionId == null) {
       throw new core.ArgumentError("Parameter collectionId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId') + '/users';
 
@@ -504,7 +497,7 @@ class CollectionviewersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<User> patch(User request, core.String enterpriseId, core.String collectionId, core.String userId) {
     var _url = null;
@@ -526,7 +519,6 @@ class CollectionviewersResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId') + '/users/' + commons.Escaper.ecapeVariable('$userId');
 
@@ -561,7 +553,7 @@ class CollectionviewersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<User> update(User request, core.String enterpriseId, core.String collectionId, core.String userId) {
     var _url = null;
@@ -583,7 +575,6 @@ class CollectionviewersResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId') + '/users/' + commons.Escaper.ecapeVariable('$userId');
 
@@ -623,7 +614,7 @@ class DevicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Device> get(core.String enterpriseId, core.String userId, core.String deviceId) {
     var _url = null;
@@ -642,7 +633,6 @@ class DevicesResourceApi {
     if (deviceId == null) {
       throw new core.ArgumentError("Parameter deviceId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices/' + commons.Escaper.ecapeVariable('$deviceId');
 
@@ -677,7 +667,7 @@ class DevicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DeviceState> getState(core.String enterpriseId, core.String userId, core.String deviceId) {
     var _url = null;
@@ -696,7 +686,6 @@ class DevicesResourceApi {
     if (deviceId == null) {
       throw new core.ArgumentError("Parameter deviceId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices/' + commons.Escaper.ecapeVariable('$deviceId') + '/state';
 
@@ -725,7 +714,7 @@ class DevicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DevicesListResponse> list(core.String enterpriseId, core.String userId) {
     var _url = null;
@@ -741,7 +730,6 @@ class DevicesResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices';
 
@@ -778,7 +766,7 @@ class DevicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DeviceState> setState(DeviceState request, core.String enterpriseId, core.String userId, core.String deviceId) {
     var _url = null;
@@ -800,7 +788,6 @@ class DevicesResourceApi {
     if (deviceId == null) {
       throw new core.ArgumentError("Parameter deviceId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices/' + commons.Escaper.ecapeVariable('$deviceId') + '/state';
 
@@ -836,7 +823,7 @@ class EnterprisesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String enterpriseId) {
     var _url = null;
@@ -879,7 +866,7 @@ class EnterprisesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Enterprise> enroll(Enterprise request, core.String token) {
     var _url = null;
@@ -896,7 +883,6 @@ class EnterprisesResourceApi {
       throw new core.ArgumentError("Parameter token is required.");
     }
     _queryParams["token"] = [token];
-
 
     _url = 'enterprises/enroll';
 
@@ -923,7 +909,7 @@ class EnterprisesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Enterprise> get(core.String enterpriseId) {
     var _url = null;
@@ -936,7 +922,6 @@ class EnterprisesResourceApi {
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId');
 
@@ -966,7 +951,7 @@ class EnterprisesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Enterprise> insert(Enterprise request, core.String token) {
     var _url = null;
@@ -983,7 +968,6 @@ class EnterprisesResourceApi {
       throw new core.ArgumentError("Parameter token is required.");
     }
     _queryParams["token"] = [token];
-
 
     _url = 'enterprises';
 
@@ -1010,7 +994,7 @@ class EnterprisesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EnterprisesListResponse> list(core.String domain) {
     var _url = null;
@@ -1024,7 +1008,6 @@ class EnterprisesResourceApi {
       throw new core.ArgumentError("Parameter domain is required.");
     }
     _queryParams["domain"] = [domain];
-
 
     _url = 'enterprises';
 
@@ -1054,7 +1037,7 @@ class EnterprisesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EnterpriseAccount> setAccount(EnterpriseAccount request, core.String enterpriseId) {
     var _url = null;
@@ -1070,7 +1053,6 @@ class EnterprisesResourceApi {
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/account';
 
@@ -1095,7 +1077,7 @@ class EnterprisesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future unenroll(core.String enterpriseId) {
     var _url = null;
@@ -1148,7 +1130,7 @@ class EntitlementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String enterpriseId, core.String userId, core.String entitlementId) {
     var _url = null;
@@ -1200,7 +1182,7 @@ class EntitlementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Entitlement> get(core.String enterpriseId, core.String userId, core.String entitlementId) {
     var _url = null;
@@ -1219,7 +1201,6 @@ class EntitlementsResourceApi {
     if (entitlementId == null) {
       throw new core.ArgumentError("Parameter entitlementId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/entitlements/' + commons.Escaper.ecapeVariable('$entitlementId');
 
@@ -1248,7 +1229,7 @@ class EntitlementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EntitlementsListResponse> list(core.String enterpriseId, core.String userId) {
     var _url = null;
@@ -1264,7 +1245,6 @@ class EntitlementsResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/entitlements';
 
@@ -1304,7 +1284,7 @@ class EntitlementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Entitlement> patch(Entitlement request, core.String enterpriseId, core.String userId, core.String entitlementId, {core.bool install}) {
     var _url = null;
@@ -1329,7 +1309,6 @@ class EntitlementsResourceApi {
     if (install != null) {
       _queryParams["install"] = ["${install}"];
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/entitlements/' + commons.Escaper.ecapeVariable('$entitlementId');
 
@@ -1368,7 +1347,7 @@ class EntitlementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Entitlement> update(Entitlement request, core.String enterpriseId, core.String userId, core.String entitlementId, {core.bool install}) {
     var _url = null;
@@ -1393,7 +1372,6 @@ class EntitlementsResourceApi {
     if (install != null) {
       _queryParams["install"] = ["${install}"];
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/entitlements/' + commons.Escaper.ecapeVariable('$entitlementId');
 
@@ -1432,7 +1410,7 @@ class GrouplicensesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<GroupLicense> get(core.String enterpriseId, core.String groupLicenseId) {
     var _url = null;
@@ -1448,7 +1426,6 @@ class GrouplicensesResourceApi {
     if (groupLicenseId == null) {
       throw new core.ArgumentError("Parameter groupLicenseId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/groupLicenses/' + commons.Escaper.ecapeVariable('$groupLicenseId');
 
@@ -1475,7 +1452,7 @@ class GrouplicensesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<GroupLicensesListResponse> list(core.String enterpriseId) {
     var _url = null;
@@ -1488,7 +1465,6 @@ class GrouplicensesResourceApi {
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/groupLicenses';
 
@@ -1528,7 +1504,7 @@ class GrouplicenseusersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<GroupLicenseUsersListResponse> list(core.String enterpriseId, core.String groupLicenseId) {
     var _url = null;
@@ -1544,7 +1520,6 @@ class GrouplicenseusersResourceApi {
     if (groupLicenseId == null) {
       throw new core.ArgumentError("Parameter groupLicenseId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/groupLicenses/' + commons.Escaper.ecapeVariable('$groupLicenseId') + '/users';
 
@@ -1586,7 +1561,7 @@ class InstallsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String enterpriseId, core.String userId, core.String deviceId, core.String installId) {
     var _url = null;
@@ -1643,7 +1618,7 @@ class InstallsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Install> get(core.String enterpriseId, core.String userId, core.String deviceId, core.String installId) {
     var _url = null;
@@ -1665,7 +1640,6 @@ class InstallsResourceApi {
     if (installId == null) {
       throw new core.ArgumentError("Parameter installId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices/' + commons.Escaper.ecapeVariable('$deviceId') + '/installs/' + commons.Escaper.ecapeVariable('$installId');
 
@@ -1696,7 +1670,7 @@ class InstallsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InstallsListResponse> list(core.String enterpriseId, core.String userId, core.String deviceId) {
     var _url = null;
@@ -1715,7 +1689,6 @@ class InstallsResourceApi {
     if (deviceId == null) {
       throw new core.ArgumentError("Parameter deviceId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices/' + commons.Escaper.ecapeVariable('$deviceId') + '/installs';
 
@@ -1753,7 +1726,7 @@ class InstallsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Install> patch(Install request, core.String enterpriseId, core.String userId, core.String deviceId, core.String installId) {
     var _url = null;
@@ -1778,7 +1751,6 @@ class InstallsResourceApi {
     if (installId == null) {
       throw new core.ArgumentError("Parameter installId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices/' + commons.Escaper.ecapeVariable('$deviceId') + '/installs/' + commons.Escaper.ecapeVariable('$installId');
 
@@ -1815,7 +1787,7 @@ class InstallsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Install> update(Install request, core.String enterpriseId, core.String userId, core.String deviceId, core.String installId) {
     var _url = null;
@@ -1840,7 +1812,6 @@ class InstallsResourceApi {
     if (installId == null) {
       throw new core.ArgumentError("Parameter installId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices/' + commons.Escaper.ecapeVariable('$deviceId') + '/installs/' + commons.Escaper.ecapeVariable('$installId');
 
@@ -1880,7 +1851,7 @@ class PermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Permission> get(core.String permissionId, {core.String language}) {
     var _url = null;
@@ -1896,7 +1867,6 @@ class PermissionsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
@@ -1937,7 +1907,7 @@ class ProductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Product> get(core.String enterpriseId, core.String productId, {core.String language}) {
     var _url = null;
@@ -1956,7 +1926,6 @@ class ProductsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/products/' + commons.Escaper.ecapeVariable('$productId');
 
@@ -1990,7 +1959,7 @@ class ProductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AppRestrictionsSchema> getAppRestrictionsSchema(core.String enterpriseId, core.String productId, {core.String language}) {
     var _url = null;
@@ -2009,7 +1978,6 @@ class ProductsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/products/' + commons.Escaper.ecapeVariable('$productId') + '/appRestrictionsSchema';
 
@@ -2038,7 +2006,7 @@ class ProductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProductPermissions> getPermissions(core.String enterpriseId, core.String productId) {
     var _url = null;
@@ -2054,7 +2022,6 @@ class ProductsResourceApi {
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/products/' + commons.Escaper.ecapeVariable('$productId') + '/permissions';
 
@@ -2086,7 +2053,7 @@ class ProductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProductPermissions> updatePermissions(ProductPermissions request, core.String enterpriseId, core.String productId) {
     var _url = null;
@@ -2105,7 +2072,6 @@ class ProductsResourceApi {
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/products/' + commons.Escaper.ecapeVariable('$productId') + '/permissions';
 
@@ -2145,7 +2111,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserToken> generateToken(core.String enterpriseId, core.String userId) {
     var _url = null;
@@ -2161,7 +2127,6 @@ class UsersResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/token';
 
@@ -2190,7 +2155,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<User> get(core.String enterpriseId, core.String userId) {
     var _url = null;
@@ -2206,7 +2171,6 @@ class UsersResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId');
 
@@ -2235,7 +2199,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UsersListResponse> list(core.String enterpriseId, core.String email) {
     var _url = null;
@@ -2252,7 +2216,6 @@ class UsersResourceApi {
       throw new core.ArgumentError("Parameter email is required.");
     }
     _queryParams["email"] = [email];
-
 
     _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users';
 
@@ -2279,7 +2242,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future revokeToken(core.String enterpriseId, core.String userId) {
     var _url = null;
@@ -2322,7 +2285,6 @@ class AppRestrictionsSchema {
   /** The set of restrictions that make up this schema. */
   core.List<AppRestrictionsSchemaRestriction> restrictions;
 
-
   AppRestrictionsSchema();
 
   AppRestrictionsSchema.fromJson(core.Map _json) {
@@ -2340,7 +2302,6 @@ class AppRestrictionsSchema {
   }
 }
 
-
 /**
  * A restriction in the App Restriction Schema represents a piece of
  * configuration that may be pre-applied.
@@ -2348,37 +2309,30 @@ class AppRestrictionsSchema {
 class AppRestrictionsSchemaRestriction {
   /** The default value of the restriction. */
   AppRestrictionsSchemaRestrictionRestrictionValue defaultValue;
-
   /**
    * A longer description of the restriction, giving more detail of what it
    * affects.
    */
   core.String description;
-
   /**
    * For choice or multiselect restrictions, the list of possible entries'
    * human-readable names.
    */
   core.List<core.String> entry;
-
   /**
    * For choice or multiselect restrictions, the list of possible entries'
    * machine-readable values.
    */
   core.List<core.String> entryValue;
-
   /**
    * The unique key that the product uses to identify the restriction, e.g.
    * "com.google.android.gm.fieldname".
    */
   core.String key;
-
   /** The type of the restriction. */
   core.String restrictionType;
-
   /** The name of the restriction. */
   core.String title;
-
 
   AppRestrictionsSchemaRestriction();
 
@@ -2433,30 +2387,24 @@ class AppRestrictionsSchemaRestriction {
   }
 }
 
-
 /** A typed value for the restriction. */
 class AppRestrictionsSchemaRestrictionRestrictionValue {
   /** The type of the value being provided. */
   core.String type;
-
   /** The boolean value - this will only be present if type is bool. */
   core.bool valueBool;
-
   /** The integer value - this will only be present if type is integer. */
   core.int valueInteger;
-
   /**
    * The list of string values - this will only be present if type is
    * multiselect.
    */
   core.List<core.String> valueMultiselect;
-
   /**
    * The string value - this will be present for types string, choice and
    * hidden.
    */
   core.String valueString;
-
 
   AppRestrictionsSchemaRestrictionRestrictionValue();
 
@@ -2499,7 +2447,6 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
   }
 }
 
-
 /**
  * A collection resource defines a named set of apps that is visible to a set of
  * users in the Google Play Store app running on those users' managed devices.
@@ -2517,25 +2464,21 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
 class Collection {
   /** Arbitrary unique ID, allocated by the API on creation. */
   core.String collectionId;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#collection".
    */
   core.String kind;
-
   /**
    * A user-friendly name for the collection (should be unique), e.g.
    * "Accounting apps".
    */
   core.String name;
-
   /**
    * The IDs of the products in the collection, in the order in which they
    * should be displayed.
    */
   core.List<core.String> productId;
-
   /**
    * Whether this collection is visible to all users, or only to the users that
    * have been granted access through the collection_viewers api. Even if a
@@ -2544,7 +2487,6 @@ class Collection {
    * changes to viewersOnly.
    */
   core.String visibility;
-
 
   Collection();
 
@@ -2587,7 +2529,6 @@ class Collection {
   }
 }
 
-
 /** The user resources for the collection. */
 class CollectionViewersListResponse {
   /**
@@ -2595,10 +2536,8 @@ class CollectionViewersListResponse {
    * "androidenterprise#collectionViewersListResponse".
    */
   core.String kind;
-
   /** A user of an enterprise. */
   core.List<User> user;
-
 
   CollectionViewersListResponse();
 
@@ -2623,7 +2562,6 @@ class CollectionViewersListResponse {
   }
 }
 
-
 /** The collection resources for the enterprise. */
 class CollectionsListResponse {
   /**
@@ -2631,13 +2569,11 @@ class CollectionsListResponse {
    * Play Store app to a selected group of users.
    */
   core.List<Collection> collection;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#collectionsListResponse".
    */
   core.String kind;
-
 
   CollectionsListResponse();
 
@@ -2662,7 +2598,6 @@ class CollectionsListResponse {
   }
 }
 
-
 /**
  * A device resource represents a mobile device managed by the MDM and belonging
  * to a specific enterprise user.
@@ -2676,13 +2611,19 @@ class Device {
    * hex string, e.g. "123456789abcdef0".
    */
   core.String androidId;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#device".
    */
   core.String kind;
-
+  /**
+   * The mechanism by which this device is managed by the MDM. "managedDevice"
+   * means that the MDM's app is a device owner. "managedProfile" means that the
+   * MDM's app is the profile owner (and there is a separate personal profile
+   * which is not managed). "containerApp" means that the MDM's app is managing
+   * the Android for Work container app on the device.
+   */
+  core.String managementType;
 
   Device();
 
@@ -2692,6 +2633,9 @@ class Device {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("managementType")) {
+      managementType = _json["managementType"];
     }
   }
 
@@ -2703,10 +2647,12 @@ class Device {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (managementType != null) {
+      _json["managementType"] = managementType;
+    }
     return _json;
   }
 }
-
 
 /**
  * The state of a user's device, as accessed by the getState and setState
@@ -2720,13 +2666,11 @@ class DeviceState {
    * device is initially in the "disabled" state.
    */
   core.String accountState;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#deviceState".
    */
   core.String kind;
-
 
   DeviceState();
 
@@ -2751,18 +2695,15 @@ class DeviceState {
   }
 }
 
-
 /** The device resources for the user. */
 class DevicesListResponse {
   /** A managed device. */
   core.List<Device> device;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#devicesListResponse".
    */
   core.String kind;
-
 
   DevicesListResponse();
 
@@ -2786,7 +2727,6 @@ class DevicesListResponse {
     return _json;
   }
 }
-
 
 /**
  * An enterprise resource represents a binding between an organisation and their
@@ -2821,19 +2761,15 @@ class DevicesListResponse {
 class Enterprise {
   /** The unique ID for the enterprise. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#enterprise".
    */
   core.String kind;
-
   /** The name of the enterprise, e.g. "Example Inc". */
   core.String name;
-
   /** The enterprise's primary domain, e.g. "example.com". */
   core.String primaryDomain;
-
 
   Enterprise();
 
@@ -2870,7 +2806,6 @@ class Enterprise {
   }
 }
 
-
 /**
  * A service account that can be used to authenticate as the enterprise to API
  * calls that require such authentication.
@@ -2878,13 +2813,11 @@ class Enterprise {
 class EnterpriseAccount {
   /** The email address of the service account. */
   core.String accountEmail;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#enterpriseAccount".
    */
   core.String kind;
-
 
   EnterpriseAccount();
 
@@ -2909,18 +2842,15 @@ class EnterpriseAccount {
   }
 }
 
-
 /** The matching enterprise resources. */
 class EnterprisesListResponse {
   /** An enterprise. */
   core.List<Enterprise> enterprise;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#enterprisesListResponse".
    */
   core.String kind;
-
 
   EnterprisesListResponse();
 
@@ -2944,7 +2874,6 @@ class EnterprisesListResponse {
     return _json;
   }
 }
-
 
 /**
  * The existence of an entitlement resource means that a user has the right to
@@ -2982,20 +2911,17 @@ class Entitlement {
    * "androidenterprise#entitlement".
    */
   core.String kind;
-
   /**
    * The ID of the product that the entitlement is for, e.g.
    * "app:com.google.android.gm".
    */
   core.String productId;
-
   /**
    * The reason for the entitlement, e.g. "free" for free apps. This is
    * temporary, it will be replaced by the acquisition kind field of group
    * licenses.
    */
   core.String reason;
-
 
   Entitlement();
 
@@ -3026,7 +2952,6 @@ class Entitlement {
   }
 }
 
-
 /** The entitlement resources for the user. */
 class EntitlementsListResponse {
   /**
@@ -3035,13 +2960,11 @@ class EntitlementsListResponse {
    * license to.
    */
   core.List<Entitlement> entitlement;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#entitlementsListResponse".
    */
   core.String kind;
-
 
   EntitlementsListResponse();
 
@@ -3065,7 +2988,6 @@ class EntitlementsListResponse {
     return _json;
   }
 }
-
 
 /**
  * A group license object indicates a product that an enterprise admin has
@@ -3095,7 +3017,6 @@ class GroupLicense {
    * this product; this is "free" otherwise (for free products).
    */
   core.String acquisitionKind;
-
   /**
    * Whether the product to which this group license relates is currently
    * approved by the enterprise, as either "approved" or "unapproved". Products
@@ -3105,32 +3026,27 @@ class GroupLicense {
    * should not normally be created.
    */
   core.String approval;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#groupLicense".
    */
   core.String kind;
-
   /**
    * The total number of provisioned licenses for this product. Returned by read
    * operations, but ignored in write operations.
    */
   core.int numProvisioned;
-
   /**
    * The number of purchased licenses (possibly in multiple purchases). If this
    * field is omitted then there is no limit on the number of licenses that can
    * be provisioned (e.g. if the acquisition kind is "free").
    */
   core.int numPurchased;
-
   /**
    * The ID of the product that the license is for, e.g.
    * "app:com.google.android.gm".
    */
   core.String productId;
-
 
   GroupLicense();
 
@@ -3179,7 +3095,6 @@ class GroupLicense {
   }
 }
 
-
 /** The user resources for the group license. */
 class GroupLicenseUsersListResponse {
   /**
@@ -3187,10 +3102,8 @@ class GroupLicenseUsersListResponse {
    * "androidenterprise#groupLicenseUsersListResponse".
    */
   core.String kind;
-
   /** A user of an enterprise. */
   core.List<User> user;
-
 
   GroupLicenseUsersListResponse();
 
@@ -3215,18 +3128,15 @@ class GroupLicenseUsersListResponse {
   }
 }
 
-
 /** The grouplicense resources for the enterprise. */
 class GroupLicensesListResponse {
   /** A group license for a product approved for use in the enterprise. */
   core.List<GroupLicense> groupLicense;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#groupLicensesListResponse".
    */
   core.String kind;
-
 
   GroupLicensesListResponse();
 
@@ -3250,7 +3160,6 @@ class GroupLicensesListResponse {
     return _json;
   }
 }
-
 
 /**
  * The existence of an install resource indicates that an app is installed on a
@@ -3286,25 +3195,21 @@ class Install {
    * "installed" means that the app has been installed. This field is read-only.
    */
   core.String installState;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#install".
    */
   core.String kind;
-
   /**
    * The ID of the product that the install is for, e.g.
    * "app:com.google.android.gm".
    */
   core.String productId;
-
   /**
    * The version of the installed product. Guaranteed to be set only if the
    * install state is "installed".
    */
   core.int versionCode;
-
 
   Install();
 
@@ -3341,7 +3246,6 @@ class Install {
   }
 }
 
-
 /** The install resources for the device. */
 class InstallsListResponse {
   /**
@@ -3349,13 +3253,11 @@ class InstallsListResponse {
    * an install implies that the user must have an entitlement to the app.
    */
   core.List<Install> install;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#installsListResponse".
    */
   core.String kind;
-
 
   InstallsListResponse();
 
@@ -3380,7 +3282,6 @@ class InstallsListResponse {
   }
 }
 
-
 /**
  * A permission represents some extra capability, to be granted to an Android
  * app, which requires explicit consent. An enterprise admin must consent to
@@ -3397,19 +3298,15 @@ class Permission {
    * affects.
    */
   core.String description;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#permission".
    */
   core.String kind;
-
   /** The name of the permission. */
   core.String name;
-
   /** An opaque string uniquely identifying the permission. */
   core.String permissionId;
-
 
   Permission();
 
@@ -3446,7 +3343,6 @@ class Permission {
   }
 }
 
-
 /**
  * A product represents an app in the Google Play Store that is available to at
  * least some users in the enterprise. (Some apps are restricted to a single
@@ -3460,34 +3356,32 @@ class Permission {
 class Product {
   /** The name of the author of the product (e.g. the app developer). */
   core.String authorName;
-
   /** A link to the (consumer) Google Play details page for the product. */
   core.String detailsUrl;
-
   /** A link to an image that can be used as an icon for the product. */
   core.String iconUrl;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#product".
    */
   core.String kind;
-
   /**
    * A string of the form "app:
    * " - e.g. "app:com.google.android.gm" represents the GMail app.
    */
   core.String productId;
-
+  /**
+   * Whether this app can only be installed on devices using the Android for
+   * Work container app.
+   */
+  core.bool requiresContainerApp;
   /** The name of the product. */
   core.String title;
-
   /**
    * A link to the Google Play for Work details page for the product, for use by
    * an Enterprise administrator.
    */
   core.String workDetailsUrl;
-
 
   Product();
 
@@ -3506,6 +3400,9 @@ class Product {
     }
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
+    }
+    if (_json.containsKey("requiresContainerApp")) {
+      requiresContainerApp = _json["requiresContainerApp"];
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -3532,6 +3429,9 @@ class Product {
     if (productId != null) {
       _json["productId"] = productId;
     }
+    if (requiresContainerApp != null) {
+      _json["requiresContainerApp"] = requiresContainerApp;
+    }
     if (title != null) {
       _json["title"] = title;
     }
@@ -3541,7 +3441,6 @@ class Product {
     return _json;
   }
 }
-
 
 /**
  * A product permissions resource represents the set of permissions required by
@@ -3554,10 +3453,8 @@ class Product {
 class ProductPermission {
   /** An opaque string uniquely identifying the permission. */
   core.String permissionId;
-
   /** Whether the permission has been accepted or not. */
   core.String state;
-
 
   ProductPermission();
 
@@ -3582,7 +3479,6 @@ class ProductPermission {
   }
 }
 
-
 /**
  * Information about the permissions required by a specific app and whether they
  * have been accepted by the enterprise.
@@ -3593,16 +3489,13 @@ class ProductPermissions {
    * "androidenterprise#productPermissions".
    */
   core.String kind;
-
   /** The permissions required by the app. */
   core.List<ProductPermission> permission;
-
   /**
    * The ID of the app that the permissions relate to, e.g.
    * "app:com.google.android.gm".
    */
   core.String productId;
-
 
   ProductPermissions();
 
@@ -3633,7 +3526,6 @@ class ProductPermissions {
   }
 }
 
-
 /**
  * A user resource represents an individual user within the enterprise's domain.
  *
@@ -3649,16 +3541,13 @@ class ProductPermissions {
 class User {
   /** The unique ID for the user. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidenterprise#user".
    */
   core.String kind;
-
   /** The user's primary email, e.g. "jsmith@example.com". */
   core.String primaryEmail;
-
 
   User();
 
@@ -3689,7 +3578,6 @@ class User {
   }
 }
 
-
 /**
  * A UserToken is used by a user when setting up a managed device or profile
  * with their work account on a device. When the user enters their email address
@@ -3702,16 +3590,13 @@ class UserToken {
    * "androidenterprise#userToken".
    */
   core.String kind;
-
   /**
    * The token (activation code) to be entered by the user. This consists of a
    * sequence of decimal digits. Note that the leading digit may be 0.
    */
   core.String token;
-
   /** The unique ID for the user. */
   core.String userId;
-
 
   UserToken();
 
@@ -3742,7 +3627,6 @@ class UserToken {
   }
 }
 
-
 /** The matching user resources. */
 class UsersListResponse {
   /**
@@ -3750,10 +3634,8 @@ class UsersListResponse {
    * "androidenterprise#usersListResponse".
    */
   core.String kind;
-
   /** A user of an enterprise. */
   core.List<User> user;
-
 
   UsersListResponse();
 

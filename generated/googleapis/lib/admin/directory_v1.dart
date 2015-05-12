@@ -120,7 +120,7 @@ class AspsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String userKey, core.int codeId) {
     var _url = null;
@@ -167,7 +167,7 @@ class AspsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Asp> get(core.String userKey, core.int codeId) {
     var _url = null;
@@ -183,7 +183,6 @@ class AspsResourceApi {
     if (codeId == null) {
       throw new core.ArgumentError("Parameter codeId is required.");
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/asps/' + commons.Escaper.ecapeVariable('$codeId');
 
@@ -211,7 +210,7 @@ class AspsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Asps> list(core.String userKey) {
     var _url = null;
@@ -224,7 +223,6 @@ class AspsResourceApi {
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/asps';
 
@@ -258,7 +256,7 @@ class ChannelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future stop(Channel request) {
     var _url = null;
@@ -316,7 +314,7 @@ class ChromeosdevicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChromeOsDevice> get(core.String customerId, core.String deviceId, {core.String projection}) {
     var _url = null;
@@ -335,7 +333,6 @@ class ChromeosdevicesResourceApi {
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/devices/chromeos/' + commons.Escaper.ecapeVariable('$deviceId');
 
@@ -392,7 +389,7 @@ class ChromeosdevicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChromeOsDevices> list(core.String customerId, {core.int maxResults, core.String orderBy, core.String pageToken, core.String projection, core.String query, core.String sortOrder}) {
     var _url = null;
@@ -423,7 +420,6 @@ class ChromeosdevicesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/devices/chromeos';
 
@@ -460,7 +456,7 @@ class ChromeosdevicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChromeOsDevice> patch(ChromeOsDevice request, core.String customerId, core.String deviceId, {core.String projection}) {
     var _url = null;
@@ -482,7 +478,6 @@ class ChromeosdevicesResourceApi {
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/devices/chromeos/' + commons.Escaper.ecapeVariable('$deviceId');
 
@@ -519,7 +514,7 @@ class ChromeosdevicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChromeOsDevice> update(ChromeOsDevice request, core.String customerId, core.String deviceId, {core.String projection}) {
     var _url = null;
@@ -541,7 +536,6 @@ class ChromeosdevicesResourceApi {
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/devices/chromeos/' + commons.Escaper.ecapeVariable('$deviceId');
 
@@ -577,7 +571,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String groupKey) {
     var _url = null;
@@ -618,7 +612,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Group> get(core.String groupKey) {
     var _url = null;
@@ -631,7 +625,6 @@ class GroupsResourceApi {
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
     }
-
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey');
 
@@ -658,7 +651,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Group> insert(Group request) {
     var _url = null;
@@ -671,7 +664,6 @@ class GroupsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'groups';
 
@@ -711,7 +703,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Groups> list({core.String customer, core.String domain, core.int maxResults, core.String pageToken, core.String userKey}) {
     var _url = null;
@@ -736,7 +728,6 @@ class GroupsResourceApi {
     if (userKey != null) {
       _queryParams["userKey"] = [userKey];
     }
-
 
     _url = 'groups';
 
@@ -766,7 +757,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Group> patch(Group request, core.String groupKey) {
     var _url = null;
@@ -782,7 +773,6 @@ class GroupsResourceApi {
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
     }
-
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey');
 
@@ -812,7 +802,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Group> update(Group request, core.String groupKey) {
     var _url = null;
@@ -828,7 +818,6 @@ class GroupsResourceApi {
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
     }
-
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey');
 
@@ -864,7 +853,7 @@ class GroupsAliasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String groupKey, core.String alias) {
     var _url = null;
@@ -910,7 +899,7 @@ class GroupsAliasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Alias> insert(Alias request, core.String groupKey) {
     var _url = null;
@@ -926,7 +915,6 @@ class GroupsAliasesResourceApi {
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
     }
-
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/aliases';
 
@@ -953,7 +941,7 @@ class GroupsAliasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Aliases> list(core.String groupKey) {
     var _url = null;
@@ -966,7 +954,6 @@ class GroupsAliasesResourceApi {
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
     }
-
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/aliases';
 
@@ -1002,7 +989,7 @@ class MembersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String groupKey, core.String memberKey) {
     var _url = null;
@@ -1048,7 +1035,7 @@ class MembersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Member> get(core.String groupKey, core.String memberKey) {
     var _url = null;
@@ -1064,7 +1051,6 @@ class MembersResourceApi {
     if (memberKey == null) {
       throw new core.ArgumentError("Parameter memberKey is required.");
     }
-
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/members/' + commons.Escaper.ecapeVariable('$memberKey');
 
@@ -1093,7 +1079,7 @@ class MembersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Member> insert(Member request, core.String groupKey) {
     var _url = null;
@@ -1109,7 +1095,6 @@ class MembersResourceApi {
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
     }
-
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/members';
 
@@ -1142,7 +1127,7 @@ class MembersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Members> list(core.String groupKey, {core.int maxResults, core.String pageToken, core.String roles}) {
     var _url = null;
@@ -1164,7 +1149,6 @@ class MembersResourceApi {
     if (roles != null) {
       _queryParams["roles"] = [roles];
     }
-
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/members';
 
@@ -1198,7 +1182,7 @@ class MembersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Member> patch(Member request, core.String groupKey, core.String memberKey) {
     var _url = null;
@@ -1217,7 +1201,6 @@ class MembersResourceApi {
     if (memberKey == null) {
       throw new core.ArgumentError("Parameter memberKey is required.");
     }
-
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/members/' + commons.Escaper.ecapeVariable('$memberKey');
 
@@ -1250,7 +1233,7 @@ class MembersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Member> update(Member request, core.String groupKey, core.String memberKey) {
     var _url = null;
@@ -1269,7 +1252,6 @@ class MembersResourceApi {
     if (memberKey == null) {
       throw new core.ArgumentError("Parameter memberKey is required.");
     }
-
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/members/' + commons.Escaper.ecapeVariable('$memberKey');
 
@@ -1307,7 +1289,7 @@ class MobiledevicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future action(MobileDeviceAction request, core.String customerId, core.String resourceId) {
     var _url = null;
@@ -1354,7 +1336,7 @@ class MobiledevicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String customerId, core.String resourceId) {
     var _url = null;
@@ -1406,7 +1388,7 @@ class MobiledevicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<MobileDevice> get(core.String customerId, core.String resourceId, {core.String projection}) {
     var _url = null;
@@ -1425,7 +1407,6 @@ class MobiledevicesResourceApi {
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/devices/mobile/' + commons.Escaper.ecapeVariable('$resourceId');
 
@@ -1482,7 +1463,7 @@ class MobiledevicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<MobileDevices> list(core.String customerId, {core.int maxResults, core.String orderBy, core.String pageToken, core.String projection, core.String query, core.String sortOrder}) {
     var _url = null;
@@ -1513,7 +1494,6 @@ class MobiledevicesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/devices/mobile';
 
@@ -1550,7 +1530,7 @@ class NotificationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String customer, core.String notificationId) {
     var _url = null;
@@ -1597,7 +1577,7 @@ class NotificationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Notification> get(core.String customer, core.String notificationId) {
     var _url = null;
@@ -1613,7 +1593,6 @@ class NotificationsResourceApi {
     if (notificationId == null) {
       throw new core.ArgumentError("Parameter notificationId is required.");
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/notifications/' + commons.Escaper.ecapeVariable('$notificationId');
 
@@ -1648,7 +1627,7 @@ class NotificationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Notifications> list(core.String customer, {core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1670,7 +1649,6 @@ class NotificationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/notifications';
 
@@ -1701,7 +1679,7 @@ class NotificationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Notification> patch(Notification request, core.String customer, core.String notificationId) {
     var _url = null;
@@ -1720,7 +1698,6 @@ class NotificationsResourceApi {
     if (notificationId == null) {
       throw new core.ArgumentError("Parameter notificationId is required.");
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/notifications/' + commons.Escaper.ecapeVariable('$notificationId');
 
@@ -1751,7 +1728,7 @@ class NotificationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Notification> update(Notification request, core.String customer, core.String notificationId) {
     var _url = null;
@@ -1770,7 +1747,6 @@ class NotificationsResourceApi {
     if (notificationId == null) {
       throw new core.ArgumentError("Parameter notificationId is required.");
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/notifications/' + commons.Escaper.ecapeVariable('$notificationId');
 
@@ -1806,7 +1782,7 @@ class OrgunitsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String customerId, core.List<core.String> orgUnitPath) {
     var _url = null;
@@ -1852,7 +1828,7 @@ class OrgunitsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OrgUnit> get(core.String customerId, core.List<core.String> orgUnitPath) {
     var _url = null;
@@ -1868,7 +1844,6 @@ class OrgunitsResourceApi {
     if (orgUnitPath == null || orgUnitPath.isEmpty) {
       throw new core.ArgumentError("Parameter orgUnitPath is required.");
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/orgunits' + '/' + (orgUnitPath).map((item) => commons.Escaper.ecapePathComponent(item)).join('/');
 
@@ -1897,7 +1872,7 @@ class OrgunitsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OrgUnit> insert(OrgUnit request, core.String customerId) {
     var _url = null;
@@ -1913,7 +1888,6 @@ class OrgunitsResourceApi {
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/orgunits';
 
@@ -1947,7 +1921,7 @@ class OrgunitsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OrgUnits> list(core.String customerId, {core.String orgUnitPath, core.String type}) {
     var _url = null;
@@ -1966,7 +1940,6 @@ class OrgunitsResourceApi {
     if (type != null) {
       _queryParams["type"] = [type];
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/orgunits';
 
@@ -1997,7 +1970,7 @@ class OrgunitsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OrgUnit> patch(OrgUnit request, core.String customerId, core.List<core.String> orgUnitPath) {
     var _url = null;
@@ -2016,7 +1989,6 @@ class OrgunitsResourceApi {
     if (orgUnitPath == null || orgUnitPath.isEmpty) {
       throw new core.ArgumentError("Parameter orgUnitPath is required.");
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/orgunits' + '/' + (orgUnitPath).map((item) => commons.Escaper.ecapePathComponent(item)).join('/');
 
@@ -2047,7 +2019,7 @@ class OrgunitsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OrgUnit> update(OrgUnit request, core.String customerId, core.List<core.String> orgUnitPath) {
     var _url = null;
@@ -2066,7 +2038,6 @@ class OrgunitsResourceApi {
     if (orgUnitPath == null || orgUnitPath.isEmpty) {
       throw new core.ArgumentError("Parameter orgUnitPath is required.");
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/orgunits' + '/' + (orgUnitPath).map((item) => commons.Escaper.ecapePathComponent(item)).join('/');
 
@@ -2102,7 +2073,7 @@ class SchemasResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String customerId, core.String schemaKey) {
     var _url = null;
@@ -2148,7 +2119,7 @@ class SchemasResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Schema> get(core.String customerId, core.String schemaKey) {
     var _url = null;
@@ -2164,7 +2135,6 @@ class SchemasResourceApi {
     if (schemaKey == null) {
       throw new core.ArgumentError("Parameter schemaKey is required.");
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/schemas/' + commons.Escaper.ecapeVariable('$schemaKey');
 
@@ -2193,7 +2163,7 @@ class SchemasResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Schema> insert(Schema request, core.String customerId) {
     var _url = null;
@@ -2209,7 +2179,6 @@ class SchemasResourceApi {
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/schemas';
 
@@ -2236,7 +2205,7 @@ class SchemasResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Schemas> list(core.String customerId) {
     var _url = null;
@@ -2249,7 +2218,6 @@ class SchemasResourceApi {
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/schemas';
 
@@ -2280,7 +2248,7 @@ class SchemasResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Schema> patch(Schema request, core.String customerId, core.String schemaKey) {
     var _url = null;
@@ -2299,7 +2267,6 @@ class SchemasResourceApi {
     if (schemaKey == null) {
       throw new core.ArgumentError("Parameter schemaKey is required.");
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/schemas/' + commons.Escaper.ecapeVariable('$schemaKey');
 
@@ -2330,7 +2297,7 @@ class SchemasResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Schema> update(Schema request, core.String customerId, core.String schemaKey) {
     var _url = null;
@@ -2349,7 +2316,6 @@ class SchemasResourceApi {
     if (schemaKey == null) {
       throw new core.ArgumentError("Parameter schemaKey is required.");
     }
-
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/schemas/' + commons.Escaper.ecapeVariable('$schemaKey');
 
@@ -2386,7 +2352,7 @@ class TokensResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String userKey, core.String clientId) {
     var _url = null;
@@ -2433,7 +2399,7 @@ class TokensResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Token> get(core.String userKey, core.String clientId) {
     var _url = null;
@@ -2449,7 +2415,6 @@ class TokensResourceApi {
     if (clientId == null) {
       throw new core.ArgumentError("Parameter clientId is required.");
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/tokens/' + commons.Escaper.ecapeVariable('$clientId');
 
@@ -2478,7 +2443,7 @@ class TokensResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Tokens> list(core.String userKey) {
     var _url = null;
@@ -2491,7 +2456,6 @@ class TokensResourceApi {
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/tokens';
 
@@ -2528,7 +2492,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String userKey) {
     var _url = null;
@@ -2585,7 +2549,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<User> get(core.String userKey, {core.String customFieldMask, core.String projection, core.String viewType}) {
     var _url = null;
@@ -2607,7 +2571,6 @@ class UsersResourceApi {
     if (viewType != null) {
       _queryParams["viewType"] = [viewType];
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey');
 
@@ -2634,7 +2597,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<User> insert(User request) {
     var _url = null;
@@ -2647,7 +2610,6 @@ class UsersResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'users';
 
@@ -2727,7 +2689,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Users> list({core.String customFieldMask, core.String customer, core.String domain, core.String event, core.int maxResults, core.String orderBy, core.String pageToken, core.String projection, core.String query, core.String showDeleted, core.String sortOrder, core.String viewType}) {
     var _url = null;
@@ -2774,7 +2736,6 @@ class UsersResourceApi {
       _queryParams["viewType"] = [viewType];
     }
 
-
     _url = 'users';
 
     var _response = _requester.request(_url,
@@ -2800,7 +2761,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future makeAdmin(UserMakeAdmin request, core.String userKey) {
     var _url = null;
@@ -2847,7 +2808,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<User> patch(User request, core.String userKey) {
     var _url = null;
@@ -2863,7 +2824,6 @@ class UsersResourceApi {
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey');
 
@@ -2890,7 +2850,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future undelete(UserUndelete request, core.String userKey) {
     var _url = null;
@@ -2937,7 +2897,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<User> update(User request, core.String userKey) {
     var _url = null;
@@ -2953,7 +2913,6 @@ class UsersResourceApi {
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey');
 
@@ -3035,7 +2994,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Channel> watch(Channel request, {core.String customFieldMask, core.String customer, core.String domain, core.String event, core.int maxResults, core.String orderBy, core.String pageToken, core.String projection, core.String query, core.String showDeleted, core.String sortOrder, core.String viewType}) {
     var _url = null;
@@ -3085,7 +3044,6 @@ class UsersResourceApi {
       _queryParams["viewType"] = [viewType];
     }
 
-
     _url = 'users/watch';
 
     var _response = _requester.request(_url,
@@ -3120,7 +3078,7 @@ class UsersAliasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String userKey, core.String alias) {
     var _url = null;
@@ -3166,7 +3124,7 @@ class UsersAliasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Alias> insert(Alias request, core.String userKey) {
     var _url = null;
@@ -3182,7 +3140,6 @@ class UsersAliasesResourceApi {
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/aliases';
 
@@ -3214,7 +3171,7 @@ class UsersAliasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Aliases> list(core.String userKey, {core.String event}) {
     var _url = null;
@@ -3230,7 +3187,6 @@ class UsersAliasesResourceApi {
     if (event != null) {
       _queryParams["event"] = [event];
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/aliases';
 
@@ -3264,7 +3220,7 @@ class UsersAliasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Channel> watch(Channel request, core.String userKey, {core.String event}) {
     var _url = null;
@@ -3283,7 +3239,6 @@ class UsersAliasesResourceApi {
     if (event != null) {
       _queryParams["event"] = [event];
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/aliases/watch';
 
@@ -3317,7 +3272,7 @@ class UsersPhotosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String userKey) {
     var _url = null;
@@ -3358,7 +3313,7 @@ class UsersPhotosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserPhoto> get(core.String userKey) {
     var _url = null;
@@ -3371,7 +3326,6 @@ class UsersPhotosResourceApi {
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/photos/thumbnail';
 
@@ -3400,7 +3354,7 @@ class UsersPhotosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserPhoto> patch(UserPhoto request, core.String userKey) {
     var _url = null;
@@ -3416,7 +3370,6 @@ class UsersPhotosResourceApi {
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/photos/thumbnail';
 
@@ -3445,7 +3398,7 @@ class UsersPhotosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserPhoto> update(UserPhoto request, core.String userKey) {
     var _url = null;
@@ -3461,7 +3414,6 @@ class UsersPhotosResourceApi {
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/photos/thumbnail';
 
@@ -3495,7 +3447,7 @@ class VerificationCodesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future generate(core.String userKey) {
     var _url = null;
@@ -3534,7 +3486,7 @@ class VerificationCodesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future invalidate(core.String userKey) {
     var _url = null;
@@ -3577,7 +3529,7 @@ class VerificationCodesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VerificationCodes> list(core.String userKey) {
     var _url = null;
@@ -3590,7 +3542,6 @@ class VerificationCodesResourceApi {
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/verificationCodes';
 
@@ -3612,19 +3563,14 @@ class VerificationCodesResourceApi {
 class Alias {
   /** A alias email */
   core.String alias;
-
   /** ETag of the resource. */
   core.String etag;
-
   /** Unique id of the group (Read-only) Unique id of the user (Read-only) */
   core.String id;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** Group's primary email (Read-only) User's primary email (Read-only) */
   core.String primaryEmail;
-
 
   Alias();
 
@@ -3667,18 +3613,14 @@ class Alias {
   }
 }
 
-
 /** JSON response template to list aliases in Directory API. */
 class Aliases {
   /** List of alias objects. */
   core.List<Alias> aliases;
-
   /** ETag of the resource. */
   core.String etag;
-
   /** Kind of resource this is. */
   core.String kind;
-
 
   Aliases();
 
@@ -3709,33 +3651,25 @@ class Aliases {
   }
 }
 
-
 /** The template that returns individual ASP (Access Code) data. */
 class Asp {
   /** The unique ID of the ASP. */
   core.int codeId;
-
   /** The time when the ASP was created. Expressed in Unix time format. */
   core.String creationTime;
-
   /** ETag of the ASP. */
   core.String etag;
-
   /** The type of the API resource. This is always admin#directory#asp. */
   core.String kind;
-
   /** The time when the ASP was last used. Expressed in Unix time format. */
   core.String lastTimeUsed;
-
   /**
    * The name of the application that the user, represented by their userId,
    * entered when the ASP was created.
    */
   core.String name;
-
   /** The unique ID of the user who issued the ASP. */
   core.String userKey;
-
 
   Asp();
 
@@ -3790,17 +3724,13 @@ class Asp {
   }
 }
 
-
 class Asps {
   /** ETag of the resource. */
   core.String etag;
-
   /** A list of ASP resources. */
   core.List<Asp> items;
-
   /** The type of the API resource. This is always admin#directory#aspList. */
   core.String kind;
-
 
   Asps();
 
@@ -3831,51 +3761,40 @@ class Asps {
   }
 }
 
-
 /** An notification channel used to watch for resource changes. */
 class Channel {
   /** The address where notifications are delivered for this channel. */
   core.String address;
-
   /**
    * Date and time of notification channel expiration, expressed as a Unix
    * timestamp, in milliseconds. Optional.
    */
   core.String expiration;
-
   /** A UUID or similar unique string that identifies this channel. */
   core.String id;
-
   /**
    * Identifies this as a notification channel used to watch for changes to a
    * resource. Value: the fixed string "api#channel".
    */
   core.String kind;
-
   /** Additional parameters controlling delivery channel behavior. Optional. */
   core.Map<core.String, core.String> params;
-
   /** A Boolean value to indicate whether payload is wanted. Optional. */
   core.bool payload;
-
   /**
    * An opaque ID that identifies the resource being watched on this channel.
    * Stable across different API versions.
    */
   core.String resourceId;
-
   /** A version-specific identifier for the watched resource. */
   core.String resourceUri;
-
   /**
    * An arbitrary string delivered to the target address with each notification
    * delivered over this channel. Optional.
    */
   core.String token;
-
   /** The type of delivery mechanism used for this channel. */
   core.String type;
-
 
   Channel();
 
@@ -3948,14 +3867,11 @@ class Channel {
   }
 }
 
-
 class ChromeOsDeviceActiveTimeRanges {
   /** Duration in milliseconds */
   core.int activeTime;
-
   /** Date of usage */
   core.DateTime date;
-
 
   ChromeOsDeviceActiveTimeRanges();
 
@@ -3980,14 +3896,11 @@ class ChromeOsDeviceActiveTimeRanges {
   }
 }
 
-
 class ChromeOsDeviceRecentUsers {
   /** Email address of the user. Present only if the user type is managed */
   core.String email;
-
   /** The type of the user */
   core.String type;
-
 
   ChromeOsDeviceRecentUsers();
 
@@ -4012,93 +3925,67 @@ class ChromeOsDeviceRecentUsers {
   }
 }
 
-
 /** JSON template for Chrome Os Device resource in Directory API. */
 class ChromeOsDevice {
   /** List of active time ranges (Read-only) */
   core.List<ChromeOsDeviceActiveTimeRanges> activeTimeRanges;
-
   /** AssetId specified during enrollment or through later annotation */
   core.String annotatedAssetId;
-
   /** Address or location of the device as noted by the administrator */
   core.String annotatedLocation;
-
   /** User of the device */
   core.String annotatedUser;
-
   /** Chromebook boot mode (Read-only) */
   core.String bootMode;
-
   /** Unique identifier of Chrome OS Device (Read-only) */
   core.String deviceId;
-
   /** ETag of the resource. */
   core.String etag;
-
   /** Chromebook Mac Address on ethernet network interface (Read-only) */
   core.String ethernetMacAddress;
-
   /** Chromebook firmware version (Read-only) */
   core.String firmwareVersion;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** Date and time the device was last enrolled (Read-only) */
   core.DateTime lastEnrollmentTime;
-
   /**
    * Date and time the device was last synchronized with the policy settings in
    * the Google Apps administrator control panel (Read-only)
    */
   core.DateTime lastSync;
-
   /** Chromebook Mac Address on wifi network interface (Read-only) */
   core.String macAddress;
-
   /**
    * Mobile Equipment identifier for the 3G mobile card in the Chromebook
    * (Read-only)
    */
   core.String meid;
-
   /** Chromebook Model (Read-only) */
   core.String model;
-
   /** Notes added by the administrator */
   core.String notes;
-
   /** Chromebook order number (Read-only) */
   core.String orderNumber;
-
   /** OrgUnit of the device */
   core.String orgUnitPath;
-
   /** Chromebook Os Version (Read-only) */
   core.String osVersion;
-
   /** Chromebook platform version (Read-only) */
   core.String platformVersion;
-
   /**
    * List of recent device users, in descending order by last login time
    * (Read-only)
    */
   core.List<ChromeOsDeviceRecentUsers> recentUsers;
-
   /** Chromebook serial number (Read-only) */
   core.String serialNumber;
-
   /** status of the device (Read-only) */
   core.String status;
-
   /** Final date the device will be supported (Read-only) */
   core.DateTime supportEndDate;
-
   /** Will Chromebook auto renew after support end date (Read-only) */
   core.bool willAutoRenew;
-
 
   ChromeOsDevice();
 
@@ -4261,23 +4148,18 @@ class ChromeOsDevice {
   }
 }
 
-
 /**
  * JSON response template for List Chrome OS Devices operation in Directory API.
  */
 class ChromeOsDevices {
   /** List of Chrome OS Device objects. */
   core.List<ChromeOsDevice> chromeosdevices;
-
   /** ETag of the resource. */
   core.String etag;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** Token used to access next page of this result. */
   core.String nextPageToken;
-
 
   ChromeOsDevices();
 
@@ -4314,39 +4196,28 @@ class ChromeOsDevices {
   }
 }
 
-
 /** JSON template for Group resource in Directory API. */
 class Group {
   /** Is the group created by admin (Read-only) * */
   core.bool adminCreated;
-
   /** List of aliases (Read-only) */
   core.List<core.String> aliases;
-
   /** Description of the group */
   core.String description;
-
   /** Group direct members count */
   core.String directMembersCount;
-
   /** Email of Group */
   core.String email;
-
   /** ETag of the resource. */
   core.String etag;
-
   /** Unique identifier of Group (Read-only) */
   core.String id;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** Group name */
   core.String name;
-
   /** List of non editable aliases (Read-only) */
   core.List<core.String> nonEditableAliases;
-
 
   Group();
 
@@ -4419,21 +4290,16 @@ class Group {
   }
 }
 
-
 /** JSON response template for List Groups operation in Directory API. */
 class Groups {
   /** ETag of the resource. */
   core.String etag;
-
   /** List of group objects. */
   core.List<Group> groups;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** Token used to access next page of this result. */
   core.String nextPageToken;
-
 
   Groups();
 
@@ -4470,30 +4336,23 @@ class Groups {
   }
 }
 
-
 /** JSON template for Member resource in Directory API. */
 class Member {
   /** Email of member (Read-only) */
   core.String email;
-
   /** ETag of the resource. */
   core.String etag;
-
   /**
    * Unique identifier of customer member (Read-only) Unique identifier of group
    * (Read-only) Unique identifier of member (Read-only)
    */
   core.String id;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** Role of member */
   core.String role;
-
   /** Type of member (Immutable) */
   core.String type;
-
 
   Member();
 
@@ -4542,21 +4401,16 @@ class Member {
   }
 }
 
-
 /** JSON response template for List Members operation in Directory API. */
 class Members {
   /** ETag of the resource. */
   core.String etag;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** List of member objects. */
   core.List<Member> members;
-
   /** Token used to access next page of this result. */
   core.String nextPageToken;
-
 
   Members();
 
@@ -4593,23 +4447,17 @@ class Members {
   }
 }
 
-
 class MobileDeviceApplications {
   /** Display name of application */
   core.String displayName;
-
   /** Package name of application */
   core.String packageName;
-
   /** List of Permissions for application */
   core.List<core.String> permission;
-
   /** Version code of application */
   core.int versionCode;
-
   /** Version name of application */
   core.String versionName;
-
 
   MobileDeviceApplications();
 
@@ -4652,96 +4500,69 @@ class MobileDeviceApplications {
   }
 }
 
-
 /** JSON template for Mobile Device resource in Directory API. */
 class MobileDevice {
   /** List of applications installed on Mobile Device */
   core.List<MobileDeviceApplications> applications;
-
   /** Mobile Device Baseband version (Read-only) */
   core.String basebandVersion;
-
   /** Mobile Device Build number (Read-only) */
   core.String buildNumber;
-
   /** The default locale used on the Mobile Device (Read-only) */
   core.String defaultLanguage;
-
   /** Mobile Device compromised status (Read-only) */
   core.String deviceCompromisedStatus;
-
   /** Mobile Device serial number (Read-only) */
   core.String deviceId;
-
   /** List of owner user's email addresses (Read-only) */
   core.List<core.String> email;
-
   /** ETag of the resource. */
   core.String etag;
-
   /**
    * Date and time the device was first synchronized with the policy settings in
    * the Google Apps administrator control panel (Read-only)
    */
   core.DateTime firstSync;
-
   /** Mobile Device Hardware Id (Read-only) */
   core.String hardwareId;
-
   /** Mobile Device IMEI number (Read-only) */
   core.String imei;
-
   /** Mobile Device Kernel version (Read-only) */
   core.String kernelVersion;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /**
    * Date and time the device was last synchronized with the policy settings in
    * the Google Apps administrator control panel (Read-only)
    */
   core.DateTime lastSync;
-
   /**
    * Boolean indicating if this account is on owner/primary profile or not
    * (Read-only)
    */
   core.bool managedAccountIsOnOwnerProfile;
-
   /** Mobile Device MEID number (Read-only) */
   core.String meid;
-
   /** Name of the model of the device */
   core.String model;
-
   /** List of owner user's names (Read-only) */
   core.List<core.String> name;
-
   /** Mobile Device mobile or network operator (if available) (Read-only) */
   core.String networkOperator;
-
   /** Name of the mobile operating system */
   core.String os;
-
   /** Unique identifier of Mobile Device (Read-only) */
   core.String resourceId;
-
   /** Mobile Device SSN or Serial Number (Read-only) */
   core.String serialNumber;
-
   /** Status of the device (Read-only) */
   core.String status;
-
   /** The type of device (Read-only) */
   core.String type;
-
   /** Mobile Device user agent */
   core.String userAgent;
-
   /** Mobile Device WiFi MAC address (Read-only) */
   core.String wifiMacAddress;
-
 
   MobileDevice();
 
@@ -4910,7 +4731,6 @@ class MobileDevice {
   }
 }
 
-
 /**
  * JSON request template for firing commands on Mobile Device in Directory
  * Devices API.
@@ -4918,7 +4738,6 @@ class MobileDevice {
 class MobileDeviceAction {
   /** Action to be taken on the Mobile Device */
   core.String action;
-
 
   MobileDeviceAction();
 
@@ -4937,23 +4756,18 @@ class MobileDeviceAction {
   }
 }
 
-
 /**
  * JSON response template for List Mobile Devices operation in Directory API.
  */
 class MobileDevices {
   /** ETag of the resource. */
   core.String etag;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** List of Mobile Device objects. */
   core.List<MobileDevice> mobiledevices;
-
   /** Token used to access next page of this result. */
   core.String nextPageToken;
-
 
   MobileDevices();
 
@@ -4990,32 +4804,23 @@ class MobileDevices {
   }
 }
 
-
 /** Template for a notification resource. */
 class Notification {
   /** Body of the notification (Read-only) */
   core.String body;
-
   /** ETag of the resource. */
   core.String etag;
-
   /** Address from which the notification is received (Read-only) */
   core.String fromAddress;
-
   /** Boolean indicating whether the notification is unread or not. */
   core.bool isUnread;
-
   /** The type of the resource. */
   core.String kind;
-
   core.String notificationId;
-
   /** Time at which notification was sent (Read-only) */
   core.DateTime sendTime;
-
   /** Subject of the notification (Read-only) */
   core.String subject;
-
 
   Notification();
 
@@ -5076,24 +4881,18 @@ class Notification {
   }
 }
 
-
 /** Template for notifications list response. */
 class Notifications {
   /** ETag of the resource. */
   core.String etag;
-
   /** List of notifications in this page. */
   core.List<Notification> items;
-
   /** The type of the resource. */
   core.String kind;
-
   /** Token for fetching the next page of notifications. */
   core.String nextPageToken;
-
   /** Number of unread notification for the domain. */
   core.int unreadNotificationsCount;
-
 
   Notifications();
 
@@ -5136,36 +4935,26 @@ class Notifications {
   }
 }
 
-
 /** JSON template for Org Unit resource in Directory API. */
 class OrgUnit {
   /** Should block inheritance */
   core.bool blockInheritance;
-
   /** Description of OrgUnit */
   core.String description;
-
   /** ETag of the resource. */
   core.String etag;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** Name of OrgUnit */
   core.String name;
-
   /** Id of OrgUnit */
   core.String orgUnitId;
-
   /** Path of OrgUnit */
   core.String orgUnitPath;
-
   /** Id of parent OrgUnit */
   core.String parentOrgUnitId;
-
   /** Path of parent OrgUnit */
   core.String parentOrgUnitPath;
-
 
   OrgUnit();
 
@@ -5232,7 +5021,6 @@ class OrgUnit {
   }
 }
 
-
 /**
  * JSON response template for List Organization Units operation in Directory
  * API.
@@ -5240,13 +5028,10 @@ class OrgUnit {
 class OrgUnits {
   /** ETag of the resource. */
   core.String etag;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** List of user objects. */
   core.List<OrgUnit> organizationUnits;
-
 
   OrgUnits();
 
@@ -5277,24 +5062,18 @@ class OrgUnits {
   }
 }
 
-
 /** JSON template for Schema resource in Directory API. */
 class Schema {
   /** ETag of the resource. */
   core.String etag;
-
   /** Fields of Schema */
   core.List<SchemaFieldSpec> fields;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** Unique identifier of Schema (Read-only) */
   core.String schemaId;
-
   /** Schema name */
   core.String schemaName;
-
 
   Schema();
 
@@ -5337,7 +5116,6 @@ class Schema {
   }
 }
 
-
 /**
  * Indexing spec for a numeric field. By default, only exact match queries will
  * be supported for numeric fields. Setting the numericIndexingSpec allows range
@@ -5350,14 +5128,12 @@ class SchemaFieldSpecNumericIndexingSpec {
    * not be as performant.
    */
   core.double maxValue;
-
   /**
    * Minimum value of this field. This is meant to be indicative rather than
    * enforced. Values outside this range will still be indexed, but search may
    * not be as performant.
    */
   core.double minValue;
-
 
   SchemaFieldSpecNumericIndexingSpec();
 
@@ -5382,43 +5158,33 @@ class SchemaFieldSpecNumericIndexingSpec {
   }
 }
 
-
 /** JSON template for FieldSpec resource for Schemas in Directory API. */
 class SchemaFieldSpec {
   /** ETag of the resource. */
   core.String etag;
-
   /** Unique identifier of Field (Read-only) */
   core.String fieldId;
-
   /** Name of the field. */
   core.String fieldName;
-
   /** Type of the field. */
   core.String fieldType;
-
   /** Boolean specifying whether the field is indexed or not. */
   core.bool indexed;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** Boolean specifying whether this is a multi-valued field or not. */
   core.bool multiValued;
-
   /**
    * Indexing spec for a numeric field. By default, only exact match queries
    * will be supported for numeric fields. Setting the numericIndexingSpec
    * allows range queries to be supported.
    */
   SchemaFieldSpecNumericIndexingSpec numericIndexingSpec;
-
   /**
    * Read ACLs on the field specifying who can view values of this field. Valid
    * values are "ALL_DOMAIN_USERS" and "ADMINS_AND_SELF".
    */
   core.String readAccessType;
-
 
   SchemaFieldSpec();
 
@@ -5485,18 +5251,14 @@ class SchemaFieldSpec {
   }
 }
 
-
 /** JSON response template for List Schema operation in Directory API. */
 class Schemas {
   /** ETag of the resource. */
   core.String etag;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** List of UserSchema objects. */
   core.List<Schema> schemas;
-
 
   Schemas();
 
@@ -5527,7 +5289,6 @@ class Schemas {
   }
 }
 
-
 /** JSON template for token resource in Directory API. */
 class Token {
   /**
@@ -5535,31 +5296,23 @@ class Token {
    * application has an anonymous Client ID.
    */
   core.bool anonymous;
-
   /** The Client ID of the application the token is issued to. */
   core.String clientId;
-
   /** The displayable name of the application the token is issued to. */
   core.String displayText;
-
   /** ETag of the resource. */
   core.String etag;
-
   /** The type of the API resource. This is always admin#directory#token. */
   core.String kind;
-
   /**
    * Whether the token is issued to an installed application. The value is true
    * if the application is installed to a desktop or mobile device.
    */
   core.bool nativeApp;
-
   /** A list of authorization scopes the application is granted. */
   core.List<core.String> scopes;
-
   /** The unique ID of the user that issued the token. */
   core.String userKey;
-
 
   Token();
 
@@ -5620,20 +5373,16 @@ class Token {
   }
 }
 
-
 /** JSON response template for List tokens operation in Directory API. */
 class Tokens {
   /** ETag of the resource. */
   core.String etag;
-
   /** A list of Token resources. */
   core.List<Token> items;
-
   /**
    * The type of the API resource. This is always admin#directory#tokenList.
    */
   core.String kind;
-
 
   Tokens();
 
@@ -5664,7 +5413,6 @@ class Tokens {
   }
 }
 
-
 /** JSON template for User object in Directory API. */
 class User {
   /**
@@ -5674,27 +5422,19 @@ class User {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object addresses;
-
   /** Indicates if user has agreed to terms (Read-only) */
   core.bool agreedToTerms;
-
   /** List of aliases (Read-only) */
   core.List<core.String> aliases;
-
   /** Boolean indicating if the user should change password in next login */
   core.bool changePasswordAtNextLogin;
-
   /** User's Google account creation time. (Read-only) */
   core.DateTime creationTime;
-
   /** Custom fields of the user. */
   core.Map<core.String, UserCustomProperties> customSchemas;
-
   /** CustomerId of User (Read-only) */
   core.String customerId;
-
   core.DateTime deletionTime;
-
   /**
    *
    *
@@ -5702,10 +5442,8 @@ class User {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object emails;
-
   /** ETag of the resource. */
   core.String etag;
-
   /**
    *
    *
@@ -5713,13 +5451,10 @@ class User {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object externalIds;
-
   /** Hash function name for password. Supported are MD5, SHA-1 and crypt */
   core.String hashFunction;
-
   /** Unique identifier of User (Read-only) */
   core.String id;
-
   /**
    *
    *
@@ -5727,34 +5462,24 @@ class User {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object ims;
-
   /** Boolean indicating if user is included in Global Address List */
   core.bool includeInGlobalAddressList;
-
   /** Boolean indicating if ip is whitelisted */
   core.bool ipWhitelisted;
-
   /** Boolean indicating if the user is admin (Read-only) */
   core.bool isAdmin;
-
   /** Boolean indicating if the user is delegated admin (Read-only) */
   core.bool isDelegatedAdmin;
-
   /** Is mailbox setup (Read-only) */
   core.bool isMailboxSetup;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** User's last login time. (Read-only) */
   core.DateTime lastLoginTime;
-
   /** User's name */
   UserName name;
-
   /** List of non editable aliases (Read-only) */
   core.List<core.String> nonEditableAliases;
-
   /**
    *
    *
@@ -5762,10 +5487,8 @@ class User {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object notes;
-
   /** OrgUnit of User */
   core.String orgUnitPath;
-
   /**
    *
    *
@@ -5773,10 +5496,8 @@ class User {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object organizations;
-
   /** User's password */
   core.String password;
-
   /**
    *
    *
@@ -5784,10 +5505,8 @@ class User {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object phones;
-
   /** username of User */
   core.String primaryEmail;
-
   /**
    *
    *
@@ -5795,16 +5514,12 @@ class User {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object relations;
-
   /** Indicates if user is suspended */
   core.bool suspended;
-
   /** Suspension reason if user is suspended (Read-only) */
   core.String suspensionReason;
-
   /** Photo Url of the user (Read-only) */
   core.String thumbnailPhotoUrl;
-
   /**
    *
    *
@@ -5812,7 +5527,6 @@ class User {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object websites;
-
 
   User();
 
@@ -6029,7 +5743,6 @@ class User {
   }
 }
 
-
 /** JSON template for About (notes) of a user in Directory API. */
 class UserAbout {
   /**
@@ -6038,10 +5751,8 @@ class UserAbout {
    * text.
    */
   core.String contentType;
-
   /** Actual value of notes. */
   core.String value;
-
 
   UserAbout();
 
@@ -6066,52 +5777,39 @@ class UserAbout {
   }
 }
 
-
 /** JSON template for address. */
 class UserAddress {
   /** Country. */
   core.String country;
-
   /** Country code. */
   core.String countryCode;
-
   /** Custom type. */
   core.String customType;
-
   /** Extended Address. */
   core.String extendedAddress;
-
   /** Formatted address. */
   core.String formatted;
-
   /** Locality. */
   core.String locality;
-
   /** Other parts of address. */
   core.String poBox;
-
   /** Postal code. */
   core.String postalCode;
-
   /**
    * If this is user's primary address. Only one entry could be marked as
    * primary.
    */
   core.bool primary;
-
   /** Region. */
   core.String region;
-
   /**
    * User supplied address was structured. Structured addresses are NOT
    * supported at this time. You might be able to write structured addresses,
    * but any values will eventually be clobbered.
    */
   core.bool sourceIsStructured;
-
   /** Street. */
   core.String streetAddress;
-
   /**
    * Each entry can have a type which indicates standard values of that entry.
    * For example address could be of home, work etc. In addition to the standard
@@ -6119,7 +5817,6 @@ class UserAddress {
    * should have the CUSTOM value as type and also have a customType value.
    */
   core.String type;
-
 
   UserAddress();
 
@@ -6210,7 +5907,6 @@ class UserAddress {
   }
 }
 
-
 /**
  * JSON template for a set of custom properties (i.e. all fields in a particular
  * schema)
@@ -6251,20 +5947,16 @@ class UserCustomProperties
   core.Object remove(core.Object key) => _innerMap.remove(key);
 }
 
-
 /** JSON template for an email. */
 class UserEmail {
   /** Email id of the user. */
   core.String address;
-
   /** Custom Type. */
   core.String customType;
-
   /**
    * If this is user's primary email. Only one entry could be marked as primary.
    */
   core.bool primary;
-
   /**
    * Each entry can have a type which indicates standard types of that entry.
    * For example email could be of home, work etc. In addition to the standard
@@ -6272,7 +5964,6 @@ class UserEmail {
    * should have the CUSTOM value as type and also have a customType value.
    */
   core.String type;
-
 
   UserEmail();
 
@@ -6309,18 +6000,14 @@ class UserEmail {
   }
 }
 
-
 /** JSON template for an externalId entry. */
 class UserExternalId {
   /** Custom type. */
   core.String customType;
-
   /** The type of the Id. */
   core.String type;
-
   /** The value of the id. */
   core.String value;
-
 
   UserExternalId();
 
@@ -6351,30 +6038,24 @@ class UserExternalId {
   }
 }
 
-
 /** JSON template for instant messenger of an user. */
 class UserIm {
   /** Custom protocol. */
   core.String customProtocol;
-
   /** Custom type. */
   core.String customType;
-
   /** Instant messenger id. */
   core.String im;
-
   /**
    * If this is user's primary im. Only one entry could be marked as primary.
    */
   core.bool primary;
-
   /**
    * Protocol used in the instant messenger. It should be one of the values from
    * ImProtocolTypes map. Similar to type, it can take a CUSTOM value and
    * specify the custom name in customProtocol field.
    */
   core.String protocol;
-
   /**
    * Each entry can have a type which indicates standard types of that entry.
    * For example instant messengers could be of home, work etc. In addition to
@@ -6383,7 +6064,6 @@ class UserIm {
    * value.
    */
   core.String type;
-
 
   UserIm();
 
@@ -6432,7 +6112,6 @@ class UserIm {
   }
 }
 
-
 /**
  * JSON request template for setting/revoking admin status of a user in
  * Directory API.
@@ -6440,7 +6119,6 @@ class UserIm {
 class UserMakeAdmin {
   /** Boolean indicating new admin status of the user */
   core.bool status;
-
 
   UserMakeAdmin();
 
@@ -6459,18 +6137,14 @@ class UserMakeAdmin {
   }
 }
 
-
 /** JSON template for name of a user in Directory API. */
 class UserName {
   /** Last Name */
   core.String familyName;
-
   /** Full Name */
   core.String fullName;
-
   /** First Name */
   core.String givenName;
-
 
   UserName();
 
@@ -6501,41 +6175,30 @@ class UserName {
   }
 }
 
-
 /** JSON template for an organization entry. */
 class UserOrganization {
   /** The cost center of the users department. */
   core.String costCenter;
-
   /** Custom type. */
   core.String customType;
-
   /** Department within the organization. */
   core.String department;
-
   /** Description of the organization. */
   core.String description;
-
   /** The domain to which the organization belongs to. */
   core.String domain;
-
   /**
    * Location of the organization. This need not be fully qualified address.
    */
   core.String location;
-
   /** Name of the organization */
   core.String name;
-
   /** If it user's primary organization. */
   core.bool primary;
-
   /** Symbol of the organization. */
   core.String symbol;
-
   /** Title (designation) of the user in the organization. */
   core.String title;
-
   /**
    * Each entry can have a type which indicates standard types of that entry.
    * For example organization could be of school, work etc. In addition to the
@@ -6544,7 +6207,6 @@ class UserOrganization {
    * value.
    */
   core.String type;
-
 
   UserOrganization();
 
@@ -6623,15 +6285,12 @@ class UserOrganization {
   }
 }
 
-
 /** JSON template for a phone entry. */
 class UserPhone {
   /** Custom Type. */
   core.String customType;
-
   /** If this is user's primary phone or not. */
   core.bool primary;
-
   /**
    * Each entry can have a type which indicates standard types of that entry.
    * For example phone could be of home_fax, work, mobile etc. In addition to
@@ -6640,10 +6299,8 @@ class UserPhone {
    * customType value.
    */
   core.String type;
-
   /** Phone number. */
   core.String value;
-
 
   UserPhone();
 
@@ -6680,27 +6337,20 @@ class UserPhone {
   }
 }
 
-
 /** JSON template for Photo object in Directory API. */
 class UserPhoto {
   /** ETag of the resource. */
   core.String etag;
-
   /** Height in pixels of the photo */
   core.int height;
-
   /** Unique identifier of User (Read-only) */
   core.String id;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** Mime Type of the photo */
   core.String mimeType;
-
   /** Base64 encoded photo data */
   core.String photoData;
-
   core.List<core.int> get photoDataAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(photoData);
   }
@@ -6708,13 +6358,10 @@ class UserPhoto {
   void set photoDataAsBytes(core.List<core.int> _bytes) {
     photoData = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** Primary email of User (Read-only) */
   core.String primaryEmail;
-
   /** Width in pixels of the photo */
   core.int width;
-
 
   UserPhoto();
 
@@ -6775,21 +6422,17 @@ class UserPhoto {
   }
 }
 
-
 /** JSON template for a relation entry. */
 class UserRelation {
   /** Custom Type. */
   core.String customType;
-
   /**
    * The relation of the user. Some of the possible values are mother, father,
    * sister, brother, manager, assistant, partner.
    */
   core.String type;
-
   /** The name of the relation. */
   core.String value;
-
 
   UserRelation();
 
@@ -6820,12 +6463,10 @@ class UserRelation {
   }
 }
 
-
 /** JSON request template to undelete a user in Directory API. */
 class UserUndelete {
   /** OrgUnit of User */
   core.String orgUnitPath;
-
 
   UserUndelete();
 
@@ -6844,15 +6485,12 @@ class UserUndelete {
   }
 }
 
-
 /** JSON template for a website entry. */
 class UserWebsite {
   /** Custom Type. */
   core.String customType;
-
   /** If this is user's primary website or not. */
   core.bool primary;
-
   /**
    * Each entry can have a type which indicates standard types of that entry.
    * For example website could be of home, work, blog etc. In addition to the
@@ -6861,10 +6499,8 @@ class UserWebsite {
    * value.
    */
   core.String type;
-
   /** Website. */
   core.String value;
-
 
   UserWebsite();
 
@@ -6901,26 +6537,20 @@ class UserWebsite {
   }
 }
 
-
 /** JSON response template for List Users operation in Apps Directory API. */
 class Users {
   /** ETag of the resource. */
   core.String etag;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** Token used to access next page of this result. */
   core.String nextPageToken;
-
   /**
    * Event that triggered this response (only used in case of Push Response)
    */
   core.String triggerEvent;
-
   /** List of user objects. */
   core.List<User> users;
-
 
   Users();
 
@@ -6963,26 +6593,21 @@ class Users {
   }
 }
 
-
 /** JSON template for verification codes in Directory API. */
 class VerificationCode {
   /** ETag of the resource. */
   core.String etag;
-
   /**
    * The type of the resource. This is always admin#directory#verificationCode.
    */
   core.String kind;
-
   /** The obfuscated unique ID of the user. */
   core.String userId;
-
   /**
    * A current verification code for the user. Invalidated or used verification
    * codes are not returned as part of the result.
    */
   core.String verificationCode;
-
 
   VerificationCode();
 
@@ -7019,7 +6644,6 @@ class VerificationCode {
   }
 }
 
-
 /**
  * JSON response template for List verification codes operation in Directory
  * API.
@@ -7027,16 +6651,13 @@ class VerificationCode {
 class VerificationCodes {
   /** ETag of the resource. */
   core.String etag;
-
   /** A list of verification code resources. */
   core.List<VerificationCode> items;
-
   /**
    * The type of the resource. This is always
    * admin#directory#verificationCodesList.
    */
   core.String kind;
-
 
   VerificationCodes();
 

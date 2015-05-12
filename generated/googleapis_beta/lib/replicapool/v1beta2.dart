@@ -72,7 +72,7 @@ class InstanceGroupManagersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> abandonInstances(InstanceGroupManagersAbandonInstancesRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
     var _url = null;
@@ -94,7 +94,6 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/abandonInstances';
 
@@ -132,7 +131,7 @@ class InstanceGroupManagersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String zone, core.String instanceGroupManager) {
     var _url = null;
@@ -151,7 +150,6 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager');
 
@@ -191,7 +189,7 @@ class InstanceGroupManagersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> deleteInstances(InstanceGroupManagersDeleteInstancesRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
     var _url = null;
@@ -213,7 +211,6 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/deleteInstances';
 
@@ -248,7 +245,7 @@ class InstanceGroupManagersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InstanceGroupManager> get(core.String project, core.String zone, core.String instanceGroupManager) {
     var _url = null;
@@ -267,7 +264,6 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager');
 
@@ -304,7 +300,7 @@ class InstanceGroupManagersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(InstanceGroupManager request, core.String project, core.String zone, core.int size) {
     var _url = null;
@@ -327,7 +323,6 @@ class InstanceGroupManagersResourceApi {
       throw new core.ArgumentError("Parameter size is required.");
     }
     _queryParams["size"] = ["${size}"];
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers';
 
@@ -369,7 +364,7 @@ class InstanceGroupManagersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InstanceGroupManagerList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -394,7 +389,6 @@ class InstanceGroupManagersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers';
 
@@ -432,7 +426,7 @@ class InstanceGroupManagersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> recreateInstances(InstanceGroupManagersRecreateInstancesRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
     var _url = null;
@@ -454,7 +448,6 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/recreateInstances';
 
@@ -494,7 +487,7 @@ class InstanceGroupManagersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> resize(core.String project, core.String zone, core.String instanceGroupManager, core.int size) {
     var _url = null;
@@ -517,7 +510,6 @@ class InstanceGroupManagersResourceApi {
       throw new core.ArgumentError("Parameter size is required.");
     }
     _queryParams["size"] = ["${size}"];
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/resize';
 
@@ -555,7 +547,7 @@ class InstanceGroupManagersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setInstanceTemplate(InstanceGroupManagersSetInstanceTemplateRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
     var _url = null;
@@ -577,7 +569,6 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/setInstanceTemplate';
 
@@ -615,7 +606,7 @@ class InstanceGroupManagersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setTargetPools(InstanceGroupManagersSetTargetPoolsRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
     var _url = null;
@@ -637,7 +628,6 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/setTargetPools';
 
@@ -681,7 +671,7 @@ class ZoneOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> get(core.String project, core.String zone, core.String operation) {
     var _url = null;
@@ -700,7 +690,6 @@ class ZoneOperationsResourceApi {
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
@@ -742,7 +731,7 @@ class ZoneOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OperationList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -767,7 +756,6 @@ class ZoneOperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations';
 
@@ -794,13 +782,11 @@ class InstanceGroupManager {
    * random four-character string to the base instance name.
    */
   core.String baseInstanceName;
-
   /**
    * [Output only] The time the instance group manager was created, in RFC3339
    * text format.
    */
   core.String creationTimestamp;
-
   /**
    * [Output only] The number of instances that currently exist and are a part
    * of this group. This includes instances that are starting but are not yet
@@ -808,17 +794,14 @@ class InstanceGroupManager {
    * abandoned.
    */
   core.int currentSize;
-
   /** An optional textual description of the instance group manager. */
   core.String description;
-
   /**
    * [Output only] Fingerprint of the instance group manager. This field is used
    * for optimistic locking. An up-to-date fingerprint must be provided in order
    * to modify the Instance Group Manager resource.
    */
   core.String fingerprint;
-
   core.List<core.int> get fingerprintAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(fingerprint);
   }
@@ -826,51 +809,42 @@ class InstanceGroupManager {
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /**
    * [Output only] The full URL of the instance group created by the manager.
    * This group contains all of the instances being managed, and cannot contain
    * non-managed instances.
    */
   core.String group;
-
   /** [Output only] A server-assigned unique identifier for the resource. */
   core.String id;
-
   /**
    * The full URL to an instance template from which all new instances will be
    * created.
    */
   core.String instanceTemplate;
-
   /**
    * [Output only] The resource type. Always replicapool#instanceGroupManager.
    */
   core.String kind;
-
   /**
    * The name of the instance group manager. Must be 1-63 characters long and
    * comply with RFC1035. Supported characters include lowercase letters,
    * numbers, and hyphens.
    */
   core.String name;
-
   /** [Output only] The fully qualified URL for this resource. */
   core.String selfLink;
-
   /**
    * The full URL of all target pools to which new instances in the group are
    * added. Updating the target pool values does not affect existing instances.
    */
   core.List<core.String> targetPools;
-
   /**
    * [Output only] The number of instances that the manager is attempting to
    * maintain. Deleting or abandoning instances affects this number, as does
    * resizing the group.
    */
   core.int targetSize;
-
 
   InstanceGroupManager();
 
@@ -961,25 +935,19 @@ class InstanceGroupManager {
   }
 }
 
-
 class InstanceGroupManagerList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A list of instance resources. */
   core.List<InstanceGroupManager> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   InstanceGroupManagerList();
 
@@ -1022,14 +990,12 @@ class InstanceGroupManagerList {
   }
 }
 
-
 class InstanceGroupManagersAbandonInstancesRequest {
   /**
    * The names of one or more instances to abandon. For example:
    * { 'instances': [ 'instance-c3po', 'instance-r2d2' ] }
    */
   core.List<core.String> instances;
-
 
   InstanceGroupManagersAbandonInstancesRequest();
 
@@ -1048,7 +1014,6 @@ class InstanceGroupManagersAbandonInstancesRequest {
   }
 }
 
-
 class InstanceGroupManagersDeleteInstancesRequest {
   /**
    * Names of instances to delete.
@@ -1056,7 +1021,6 @@ class InstanceGroupManagersDeleteInstancesRequest {
    * Example: 'instance-foo', 'instance-bar'
    */
   core.List<core.String> instances;
-
 
   InstanceGroupManagersDeleteInstancesRequest();
 
@@ -1075,14 +1039,12 @@ class InstanceGroupManagersDeleteInstancesRequest {
   }
 }
 
-
 class InstanceGroupManagersRecreateInstancesRequest {
   /**
    * The names of one or more instances to recreate. For example:
    * { 'instances': [ 'instance-c3po', 'instance-r2d2' ] }
    */
   core.List<core.String> instances;
-
 
   InstanceGroupManagersRecreateInstancesRequest();
 
@@ -1101,14 +1063,12 @@ class InstanceGroupManagersRecreateInstancesRequest {
   }
 }
 
-
 class InstanceGroupManagersSetInstanceTemplateRequest {
   /**
    * The full URL to an Instance Template from which all new instances will be
    * created.
    */
   core.String instanceTemplate;
-
 
   InstanceGroupManagersSetInstanceTemplateRequest();
 
@@ -1127,7 +1087,6 @@ class InstanceGroupManagersSetInstanceTemplateRequest {
   }
 }
 
-
 class InstanceGroupManagersSetTargetPoolsRequest {
   /**
    * The current fingerprint of the Instance Group Manager resource. If this
@@ -1135,7 +1094,6 @@ class InstanceGroupManagersSetTargetPoolsRequest {
    * request will be rejected.
    */
   core.String fingerprint;
-
   core.List<core.int> get fingerprintAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(fingerprint);
   }
@@ -1143,14 +1101,12 @@ class InstanceGroupManagersSetTargetPoolsRequest {
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /**
    * A list of fully-qualified URLs to existing Target Pool resources. New
    * instances in the Instance Group Manager will be added to the specified
    * target pools; existing instances are not affected.
    */
   core.List<core.String> targetPools;
-
 
   InstanceGroupManagersSetTargetPoolsRequest();
 
@@ -1175,20 +1131,16 @@ class InstanceGroupManagersSetTargetPoolsRequest {
   }
 }
 
-
 class OperationErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
-
   /**
    * [Output Only] Indicates the field in the request which caused the error.
    * This property is optional.
    */
   core.String location;
-
   /** [Output Only] An optional, human-readable error message. */
   core.String message;
-
 
   OperationErrorErrors();
 
@@ -1219,7 +1171,6 @@ class OperationErrorErrors {
   }
 }
 
-
 /**
  * [Output Only] If errors occurred during processing of this operation, this
  * field will be populated.
@@ -1230,7 +1181,6 @@ class OperationError {
    * operation.
    */
   core.List<OperationErrorErrors> errors;
-
 
   OperationError();
 
@@ -1249,14 +1199,11 @@ class OperationError {
   }
 }
 
-
 class OperationWarningsData {
   /** [Output Only] Metadata key for this warning. */
   core.String key;
-
   /** [Output Only] Metadata value for this warning. */
   core.String value;
-
 
   OperationWarningsData();
 
@@ -1281,7 +1228,6 @@ class OperationWarningsData {
   }
 }
 
-
 class OperationWarnings {
   /**
    * [Output only] The warning type identifier for this warning.
@@ -1301,13 +1247,10 @@ class OperationWarnings {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output only] Metadata for this warning in key:value format. */
   core.List<OperationWarningsData> data;
-
   /** [Output only] Optional human-readable details for this warning. */
   core.String message;
-
 
   OperationWarnings();
 
@@ -1338,7 +1281,6 @@ class OperationWarnings {
   }
 }
 
-
 /** An operation resource, used to manage asynchronous API requests. */
 class Operation {
   /**
@@ -1347,54 +1289,43 @@ class Operation {
    * project.
    */
   core.String clientOperationId;
-
   /**
    * [Output Only] The time that this operation was requested, in RFC3339 text
    * format.
    */
   core.String creationTimestamp;
-
   /**
    * [Output Only] The time that this operation was completed, in RFC3339 text
    * format.
    */
   core.String endTime;
-
   /**
    * [Output Only] If errors occurred during processing of this operation, this
    * field will be populated.
    */
   OperationError error;
-
   /** [Output only] If operation fails, the HTTP error message returned. */
   core.String httpErrorMessage;
-
   /** [Output only] If operation fails, the HTTP error status code returned. */
   core.int httpErrorStatusCode;
-
   /**
    * [Output Only] Unique identifier for the resource, generated by the server.
    */
   core.String id;
-
   /**
    * [Output Only] The time that this operation was requested, in RFC3339 text
    * format.
    */
   core.String insertTime;
-
   /** [Output only] Type of the resource. */
   core.String kind;
-
   /** [Output Only] Name of the resource. */
   core.String name;
-
   /**
    * [Output only] Type of the operation. Operations include insert, update, and
    * delete.
    */
   core.String operationType;
-
   /**
    * [Output only] An optional progress indicator that ranges from 0 to 100.
    * There is no requirement that this be linear or support any granularity of
@@ -1403,22 +1334,18 @@ class Operation {
    * progresses.
    */
   core.int progress;
-
   /**
    * [Output Only] URL of the region where the operation resides. Only available
    * when performing regional operations.
    */
   core.String region;
-
   /** [Output Only] Server-defined fully-qualified URL for this resource. */
   core.String selfLink;
-
   /**
    * [Output Only] The time that this operation was started by the server, in
    * RFC3339 text format.
    */
   core.String startTime;
-
   /**
    * [Output Only] Status of the operation.
    * Possible string values are:
@@ -1427,40 +1354,33 @@ class Operation {
    * - "RUNNING"
    */
   core.String status;
-
   /**
    * [Output Only] An optional textual description of the current status of the
    * operation.
    */
   core.String statusMessage;
-
   /**
    * [Output Only] Unique target ID which identifies a particular incarnation of
    * the target.
    */
   core.String targetId;
-
   /** [Output only] URL of the resource the operation is mutating. */
   core.String targetLink;
-
   /**
    * [Output Only] User who requested the operation, for example:
    * user@example.com.
    */
   core.String user;
-
   /**
    * [Output Only] If there are issues with this operation, a warning is
    * returned.
    */
   core.List<OperationWarnings> warnings;
-
   /**
    * [Output Only] URL of the zone where the operation resides. Only available
    * when performing per-zone operations.
    */
   core.String zone;
-
 
   Operation();
 
@@ -1605,25 +1525,19 @@ class Operation {
   }
 }
 
-
 class OperationList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** The operation resources. */
   core.List<Operation> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   OperationList();
 

@@ -67,7 +67,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> insert(Account request, core.String userToken, core.String accountType, core.String accountName) {
     var _url = null;
@@ -89,7 +89,6 @@ class AccountsResourceApi {
     if (accountName == null) {
       throw new core.ArgumentError("Parameter accountName is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$userToken') + '/' + commons.Escaper.ecapeVariable('$accountType') + '/' + commons.Escaper.ecapeVariable('$accountName');
 
@@ -123,7 +122,7 @@ class ContactsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id) {
     var _url = null;
@@ -164,7 +163,7 @@ class ContactsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Contact> get(core.String id) {
     var _url = null;
@@ -177,7 +176,6 @@ class ContactsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'contacts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -204,7 +202,7 @@ class ContactsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Contact> insert(Contact request) {
     var _url = null;
@@ -217,7 +215,6 @@ class ContactsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'contacts';
 
@@ -242,7 +239,7 @@ class ContactsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ContactsListResponse> list() {
     var _url = null;
@@ -251,7 +248,6 @@ class ContactsResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'contacts';
@@ -281,7 +277,7 @@ class ContactsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Contact> patch(Contact request, core.String id) {
     var _url = null;
@@ -297,7 +293,6 @@ class ContactsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'contacts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -326,7 +321,7 @@ class ContactsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Contact> update(Contact request, core.String id) {
     var _url = null;
@@ -342,7 +337,6 @@ class ContactsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'contacts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -378,7 +372,7 @@ class LocationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Location> get(core.String id) {
     var _url = null;
@@ -391,7 +385,6 @@ class LocationsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'locations/' + commons.Escaper.ecapeVariable('$id');
 
@@ -416,7 +409,7 @@ class LocationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LocationsListResponse> list() {
     var _url = null;
@@ -425,7 +418,6 @@ class LocationsResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'locations';
@@ -466,7 +458,7 @@ class SettingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Setting> get(core.String id) {
     var _url = null;
@@ -479,7 +471,6 @@ class SettingsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'settings/' + commons.Escaper.ecapeVariable('$id');
 
@@ -513,7 +504,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id) {
     var _url = null;
@@ -554,7 +545,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> insert(Subscription request) {
     var _url = null;
@@ -567,7 +558,6 @@ class SubscriptionsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'subscriptions';
 
@@ -592,7 +582,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SubscriptionsListResponse> list() {
     var _url = null;
@@ -601,7 +591,6 @@ class SubscriptionsResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'subscriptions';
@@ -631,7 +620,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> update(Subscription request, core.String id) {
     var _url = null;
@@ -647,7 +636,6 @@ class SubscriptionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'subscriptions/' + commons.Escaper.ecapeVariable('$id');
 
@@ -683,7 +671,7 @@ class TimelineResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id) {
     var _url = null;
@@ -724,7 +712,7 @@ class TimelineResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TimelineItem> get(core.String id) {
     var _url = null;
@@ -737,7 +725,6 @@ class TimelineResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'timeline/' + commons.Escaper.ecapeVariable('$id');
 
@@ -769,7 +756,7 @@ class TimelineResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TimelineItem> insert(TimelineItem request, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -839,7 +826,7 @@ class TimelineResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TimelineListResponse> list({core.String bundleId, core.bool includeDeleted, core.int maxResults, core.String orderBy, core.String pageToken, core.bool pinnedOnly, core.String sourceItemId}) {
     var _url = null;
@@ -871,7 +858,6 @@ class TimelineResourceApi {
       _queryParams["sourceItemId"] = [sourceItemId];
     }
 
-
     _url = 'timeline';
 
     var _response = _requester.request(_url,
@@ -899,7 +885,7 @@ class TimelineResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TimelineItem> patch(TimelineItem request, core.String id) {
     var _url = null;
@@ -915,7 +901,6 @@ class TimelineResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'timeline/' + commons.Escaper.ecapeVariable('$id');
 
@@ -949,7 +934,7 @@ class TimelineResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TimelineItem> update(TimelineItem request, core.String id, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1010,7 +995,7 @@ class TimelineAttachmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String itemId, core.String attachmentId) {
     var _url = null;
@@ -1064,7 +1049,7 @@ class TimelineAttachmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future get(core.String itemId, core.String attachmentId, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -1118,7 +1103,7 @@ class TimelineAttachmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Attachment> insert(core.String itemId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1167,7 +1152,7 @@ class TimelineAttachmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AttachmentsListResponse> list(core.String itemId) {
     var _url = null;
@@ -1180,7 +1165,6 @@ class TimelineAttachmentsResourceApi {
     if (itemId == null) {
       throw new core.ArgumentError("Parameter itemId is required.");
     }
-
 
     _url = 'timeline/' + commons.Escaper.ecapeVariable('$itemId') + '/attachments';
 
@@ -1201,13 +1185,9 @@ class TimelineAttachmentsResourceApi {
 /** Represents an account passed into the Account Manager on Glass. */
 class Account {
   core.List<AuthToken> authTokens;
-
   core.List<core.String> features;
-
   core.String password;
-
   core.List<UserData> userData;
-
 
   Account();
 
@@ -1244,7 +1224,6 @@ class Account {
   }
 }
 
-
 /**
  * Represents media content, such as a photo, that can be attached to a timeline
  * item.
@@ -1252,20 +1231,16 @@ class Account {
 class Attachment {
   /** The MIME type of the attachment. */
   core.String contentType;
-
   /** The URL for the content. */
   core.String contentUrl;
-
   /** The ID of the attachment. */
   core.String id;
-
   /**
    * Indicates that the contentUrl is not available because the attachment
    * content is still being processed. If the caller wishes to retrieve the
    * content, it should try again later.
    */
   core.bool isProcessingContent;
-
 
   Attachment();
 
@@ -1302,7 +1277,6 @@ class Attachment {
   }
 }
 
-
 /**
  * A list of Attachments. This is the response from the server to GET requests
  * on the attachments collection.
@@ -1310,10 +1284,8 @@ class Attachment {
 class AttachmentsListResponse {
   /** The list of attachments. */
   core.List<Attachment> items;
-
   /** The type of resource. This is always mirror#attachmentsList. */
   core.String kind;
-
 
   AttachmentsListResponse();
 
@@ -1338,12 +1310,9 @@ class AttachmentsListResponse {
   }
 }
 
-
 class AuthToken {
   core.String authToken;
-
   core.String type;
-
 
   AuthToken();
 
@@ -1368,7 +1337,6 @@ class AuthToken {
   }
 }
 
-
 /** A single menu command that is part of a Contact. */
 class Command {
   /**
@@ -1379,7 +1347,6 @@ class Command {
    * speech from the "Post an update" voice menu command.
    */
   core.String type;
-
 
   Command();
 
@@ -1398,7 +1365,6 @@ class Command {
   }
 }
 
-
 /** A person or group that can be used as a creator or a contact. */
 class Contact {
   /**
@@ -1408,7 +1374,6 @@ class Contact {
    * command.
    */
   core.List<Command> acceptCommands;
-
   /**
    * A list of MIME types that a contact supports. The contact will be shown to
    * the user if any of its acceptTypes matches any of the types of the
@@ -1416,51 +1381,42 @@ class Contact {
    * shown for all items.
    */
   core.List<core.String> acceptTypes;
-
   /** The name to display for this contact. */
   core.String displayName;
-
   /**
    * An ID for this contact. This is generated by the application and is treated
    * as an opaque token.
    */
   core.String id;
-
   /**
    * Set of image URLs to display for a contact. Most contacts will have a
    * single image, but a "group" contact may include up to 8 image URLs and they
    * will be resized and cropped into a mosaic on the client.
    */
   core.List<core.String> imageUrls;
-
   /** The type of resource. This is always mirror#contact. */
   core.String kind;
-
   /**
    * Primary phone number for the contact. This can be a fully-qualified number,
    * with country calling code and area code, or a local number.
    */
   core.String phoneNumber;
-
   /**
    * Priority for the contact to determine ordering in a list of contacts.
    * Contacts with higher priorities will be shown before ones with lower
    * priorities.
    */
   core.int priority;
-
   /**
    * A list of sharing features that a contact can handle. Allowed values are:
    * - ADD_CAPTION
    */
   core.List<core.String> sharingFeatures;
-
   /**
    * The ID of the application that created this contact. This is populated by
    * the API
    */
   core.String source;
-
   /**
    * Name of this contact as it should be pronounced. If this contact's name
    * must be spoken as part of a voice disambiguation menu, this name is used as
@@ -1469,7 +1425,6 @@ class Contact {
    * phonetic.
    */
   core.String speakableName;
-
   /**
    * The type for this contact. This is used for sorting in UIs. Allowed values
    * are:
@@ -1477,7 +1432,6 @@ class Contact {
    * - GROUP - Represents more than a single person.
    */
   core.String type;
-
 
   Contact();
 
@@ -1562,7 +1516,6 @@ class Contact {
   }
 }
 
-
 /**
  * A list of Contacts representing contacts. This is the response from the
  * server to GET requests on the contacts collection.
@@ -1570,10 +1523,8 @@ class Contact {
 class ContactsListResponse {
   /** Contact list. */
   core.List<Contact> items;
-
   /** The type of resource. This is always mirror#contacts. */
   core.String kind;
-
 
   ContactsListResponse();
 
@@ -1598,39 +1549,30 @@ class ContactsListResponse {
   }
 }
 
-
 /** A geographic location that can be associated with a timeline item. */
 class Location {
   /** The accuracy of the location fix in meters. */
   core.double accuracy;
-
   /** The full address of the location. */
   core.String address;
-
   /**
    * The name to be displayed. This may be a business name or a user-defined
    * place, such as "Home".
    */
   core.String displayName;
-
   /** The ID of the location. */
   core.String id;
-
   /** The type of resource. This is always mirror#location. */
   core.String kind;
-
   /** The latitude, in degrees. */
   core.double latitude;
-
   /** The longitude, in degrees. */
   core.double longitude;
-
   /**
    * The time at which this location was captured, formatted according to RFC
    * 3339.
    */
   core.DateTime timestamp;
-
 
   Location();
 
@@ -1691,7 +1633,6 @@ class Location {
   }
 }
 
-
 /**
  * A list of Locations. This is the response from the server to GET requests on
  * the locations collection.
@@ -1699,10 +1640,8 @@ class Location {
 class LocationsListResponse {
   /** The list of locations. */
   core.List<Location> items;
-
   /** The type of resource. This is always mirror#locationsList. */
   core.String kind;
-
 
   LocationsListResponse();
 
@@ -1726,7 +1665,6 @@ class LocationsListResponse {
     return _json;
   }
 }
-
 
 /** A custom menu item that can be presented to the user by a timeline item. */
 class MenuItem {
@@ -1765,7 +1703,6 @@ class MenuItem {
    * - Otherwise, if the creator.email is set, the message is an email.
    */
   core.String action;
-
   /**
    * The ContextualMenus.Command associated with this MenuItem (e.g.
    * READ_ALOUD). The voice label for this command will be displayed in the
@@ -1775,13 +1712,11 @@ class MenuItem {
    * name will be ignored.
    */
   core.String contextualCommand;
-
   /**
    * The ID for this menu item. This is generated by the application and is
    * treated as an opaque token.
    */
   core.String id;
-
   /**
    * A generic payload whose meaning changes depending on this MenuItem's
    * action.
@@ -1793,20 +1728,17 @@ class MenuItem {
    * of a user's speech input
    */
   core.String payload;
-
   /**
    * If set to true on a CUSTOM menu item, that item will be removed from the
    * menu after it is selected.
    */
   core.bool removeWhenSelected;
-
   /**
    * For CUSTOM items, a list of values controlling the appearance of the menu
    * item in each of its states. A value for the DEFAULT state must be provided.
    * If the PENDING or CONFIRMED states are missing, they will not be shown.
    */
   core.List<MenuValue> values;
-
 
   MenuItem();
 
@@ -1855,7 +1787,6 @@ class MenuItem {
   }
 }
 
-
 /** A single value that is part of a MenuItem. */
 class MenuValue {
   /**
@@ -1864,10 +1795,8 @@ class MenuValue {
    * is not shown.
    */
   core.String displayName;
-
   /** URL of an icon to display with the menu item. */
   core.String iconUrl;
-
   /**
    * The state that this value applies to. Allowed values are:
    * - DEFAULT - Default value shown when displayed in the menuItems list.
@@ -1877,7 +1806,6 @@ class MenuValue {
    * and can no longer be cancelled.
    */
   core.String state;
-
 
   MenuValue();
 
@@ -1908,33 +1836,26 @@ class MenuValue {
   }
 }
 
-
 /** A notification delivered by the API. */
 class Notification {
   /** The collection that generated the notification. */
   core.String collection;
-
   /** The ID of the item that generated the notification. */
   core.String itemId;
-
   /** The type of operation that generated the notification. */
   core.String operation;
-
   /** A list of actions taken by the user that triggered the notification. */
   core.List<UserAction> userActions;
-
   /**
    * The user token provided by the service when it subscribed for
    * notifications.
    */
   core.String userToken;
-
   /**
    * The secret verify token provided by the service when it subscribed for
    * notifications.
    */
   core.String verifyToken;
-
 
   Notification();
 
@@ -1983,21 +1904,18 @@ class Notification {
   }
 }
 
-
 /**
  * Controls how notifications for a timeline item are presented to the user.
  */
 class NotificationConfig {
   /** The time at which the notification should be delivered. */
   core.DateTime deliveryTime;
-
   /**
    * Describes how important the notification is. Allowed values are:
    * - DEFAULT - Notifications of default importance. A chime will be played to
    * alert users.
    */
   core.String level;
-
 
   NotificationConfig();
 
@@ -2022,7 +1940,6 @@ class NotificationConfig {
   }
 }
 
-
 /** A setting for Glass. */
 class Setting {
   /**
@@ -2033,13 +1950,10 @@ class Setting {
    * the tz database. Example: America/Los_Angeles.
    */
   core.String id;
-
   /** The type of resource. This is always mirror#setting. */
   core.String kind;
-
   /** The setting value, as a string. */
   core.String value;
-
 
   Setting();
 
@@ -2070,14 +1984,12 @@ class Setting {
   }
 }
 
-
 /** A subscription to events on a collection. */
 class Subscription {
   /**
    * The URL where notifications should be delivered (must start with https://).
    */
   core.String callbackUrl;
-
   /**
    * The collection to subscribe to. Allowed values are:
    * - timeline - Changes in the timeline including insertion, deletion, and
@@ -2086,19 +1998,15 @@ class Subscription {
    * - settings - Settings updates.
    */
   core.String collection;
-
   /** The ID of the subscription. */
   core.String id;
-
   /** The type of resource. This is always mirror#subscription. */
   core.String kind;
-
   /**
    * Container object for notifications. This is not populated in the
    * Subscription resource.
    */
   Notification notification;
-
   /**
    * A list of operations that should be subscribed to. An empty list indicates
    * that all operations on the collection should be subscribed to. Allowed
@@ -2109,25 +2017,21 @@ class Subscription {
    * - MENU_ACTION - A custom menu item has been triggered by the user.
    */
   core.List<core.String> operation;
-
   /**
    * The time at which this subscription was last modified, formatted according
    * to RFC 3339.
    */
   core.DateTime updated;
-
   /**
    * An opaque token sent to the subscriber in notifications so that it can
    * determine the ID of the user.
    */
   core.String userToken;
-
   /**
    * A secret token sent to the subscriber in notifications so that it can
    * verify that the notification was generated by Google.
    */
   core.String verifyToken;
-
 
   Subscription();
 
@@ -2194,7 +2098,6 @@ class Subscription {
   }
 }
 
-
 /**
  * A list of Subscriptions. This is the response from the server to GET requests
  * on the subscription collection.
@@ -2202,10 +2105,8 @@ class Subscription {
 class SubscriptionsListResponse {
   /** The list of subscriptions. */
   core.List<Subscription> items;
-
   /** The type of resource. This is always mirror#subscriptionsList. */
   core.String kind;
-
 
   SubscriptionsListResponse();
 
@@ -2230,7 +2131,6 @@ class SubscriptionsListResponse {
   }
 }
 
-
 /**
  * Each item in the user's timeline is represented as a TimelineItem JSON
  * structure, described below.
@@ -2246,27 +2146,22 @@ class TimelineItem {
    * attachment.
    */
   core.List<Attachment> attachments;
-
   /**
    * The bundle ID for this item. Services can specify a bundleId to group many
    * items together. They appear under a single top-level item on the device.
    */
   core.String bundleId;
-
   /**
    * A canonical URL pointing to the canonical/high quality version of the data
    * represented by the timeline item.
    */
   core.String canonicalUrl;
-
   /**
    * The time at which this item was created, formatted according to RFC 3339.
    */
   core.DateTime created;
-
   /** The user or group that created this item. */
   Contact creator;
-
   /**
    * The time that should be displayed when this item is viewed in the timeline,
    * formatted according to RFC 3339. This user's timeline is sorted
@@ -2275,10 +2170,8 @@ class TimelineItem {
    * defaults to the updated time.
    */
   core.DateTime displayTime;
-
   /** ETag for this item. */
   core.String etag;
-
   /**
    * HTML content for this item. If both text and html are provided for an item,
    * the html will be rendered in the timeline.
@@ -2304,17 +2197,14 @@ class TimelineItem {
    * contents are preserved.
    */
   core.String html;
-
   /** The ID of the timeline item. This is unique within a user's timeline. */
   core.String id;
-
   /**
    * If this item was generated as a reply to another item, this field will be
    * set to the ID of the item being replied to. This can be used to attach a
    * reply to the appropriate conversation or post.
    */
   core.String inReplyTo;
-
   /**
    * Whether this item is a bundle cover.
    *
@@ -2329,12 +2219,10 @@ class TimelineItem {
    * - Items that have the bundleId in question AND isBundleCover set to false
    */
   core.bool isBundleCover;
-
   /**
    * When true, indicates this item is deleted, and only the ID property is set.
    */
   core.bool isDeleted;
-
   /**
    * When true, indicates this item is pinned, which means it's grouped
    * alongside "active" items like navigation and hangouts, on the opposite side
@@ -2343,44 +2231,35 @@ class TimelineItem {
    * built-in menu item.
    */
   core.bool isPinned;
-
   /** The type of resource. This is always mirror#timelineItem. */
   core.String kind;
-
   /** The geographic location associated with this item. */
   Location location;
-
   /**
    * A list of menu items that will be presented to the user when this item is
    * selected in the timeline.
    */
   core.List<MenuItem> menuItems;
-
   /**
    * Controls how notifications for this item are presented on the device. If
    * this is missing, no notification will be generated.
    */
   NotificationConfig notification;
-
   /**
    * For pinned items, this determines the order in which the item is displayed
    * in the timeline, with a higher score appearing closer to the clock. Note:
    * setting this field is currently not supported.
    */
   core.int pinScore;
-
   /** A list of users or groups that this item has been shared with. */
   core.List<Contact> recipients;
-
   /** A URL that can be used to retrieve this item. */
   core.String selfLink;
-
   /**
    * Opaque string you can use to map a timeline item to data in your own
    * service.
    */
   core.String sourceItemId;
-
   /**
    * The speakable version of the content of this item. Along with the
    * READ_ALOUD menu item, use this field to provide text that would be clearer
@@ -2393,7 +2272,6 @@ class TimelineItem {
    * notification.
    */
   core.String speakableText;
-
   /**
    * A speakable description of the type of this item. This will be announced to
    * the user prior to reading the content of the item in cases where the
@@ -2408,19 +2286,15 @@ class TimelineItem {
    * can learn the type of the item without looking at the screen.
    */
   core.String speakableType;
-
   /** Text content of this item. */
   core.String text;
-
   /** The title of this item. */
   core.String title;
-
   /**
    * The time at which this item was last modified, formatted according to RFC
    * 3339.
    */
   core.DateTime updated;
-
 
   TimelineItem();
 
@@ -2589,7 +2463,6 @@ class TimelineItem {
   }
 }
 
-
 /**
  * A list of timeline items. This is the response from the server to GET
  * requests on the timeline collection.
@@ -2597,16 +2470,13 @@ class TimelineItem {
 class TimelineListResponse {
   /** Items in the timeline. */
   core.List<TimelineItem> items;
-
   /** The type of resource. This is always mirror#timeline. */
   core.String kind;
-
   /**
    * The next page token. Provide this as the pageToken parameter in the request
    * to retrieve the next page of results.
    */
   core.String nextPageToken;
-
 
   TimelineListResponse();
 
@@ -2637,7 +2507,6 @@ class TimelineListResponse {
   }
 }
 
-
 /** Represents an action taken by the user that triggered a notification. */
 class UserAction {
   /**
@@ -2647,7 +2516,6 @@ class UserAction {
    * selected.
    */
   core.String payload;
-
   /**
    * The type of action. The value of this can be:
    * - SHARE - the user shared an item.
@@ -2661,7 +2529,6 @@ class UserAction {
    * types may be added. UserActions with unrecognized types should be ignored.
    */
   core.String type;
-
 
   UserAction();
 
@@ -2686,12 +2553,9 @@ class UserAction {
   }
 }
 
-
 class UserData {
   core.String key;
-
   core.String value;
-
 
   UserData();
 

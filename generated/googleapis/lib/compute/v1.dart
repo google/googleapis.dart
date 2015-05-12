@@ -89,14 +89,13 @@ class AddressesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [AddressAggregatedList].
    *
@@ -104,7 +103,7 @@ class AddressesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AddressAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -126,7 +125,6 @@ class AddressesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/addresses';
 
@@ -161,7 +159,7 @@ class AddressesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String region, core.String address) {
     var _url = null;
@@ -180,7 +178,6 @@ class AddressesResourceApi {
     if (address == null) {
       throw new core.ArgumentError("Parameter address is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/addresses/' + commons.Escaper.ecapeVariable('$address');
 
@@ -215,7 +212,7 @@ class AddressesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Address> get(core.String project, core.String region, core.String address) {
     var _url = null;
@@ -234,7 +231,6 @@ class AddressesResourceApi {
     if (address == null) {
       throw new core.ArgumentError("Parameter address is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/addresses/' + commons.Escaper.ecapeVariable('$address');
 
@@ -269,7 +265,7 @@ class AddressesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(Address request, core.String project, core.String region) {
     var _url = null;
@@ -288,7 +284,6 @@ class AddressesResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/addresses';
 
@@ -315,14 +310,13 @@ class AddressesResourceApi {
    * [region] - The name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [AddressList].
    *
@@ -330,7 +324,7 @@ class AddressesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AddressList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -355,7 +349,6 @@ class AddressesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/addresses';
 
@@ -396,7 +389,7 @@ class BackendServicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String backendService) {
     var _url = null;
@@ -412,7 +405,6 @@ class BackendServicesResourceApi {
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
 
@@ -444,7 +436,7 @@ class BackendServicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BackendService> get(core.String project, core.String backendService) {
     var _url = null;
@@ -460,7 +452,6 @@ class BackendServicesResourceApi {
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
 
@@ -495,7 +486,7 @@ class BackendServicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BackendServiceGroupHealth> getHealth(ResourceGroupReference request, core.String project, core.String backendService) {
     var _url = null;
@@ -514,7 +505,6 @@ class BackendServicesResourceApi {
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService') + '/getHealth';
 
@@ -546,7 +536,7 @@ class BackendServicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(BackendService request, core.String project) {
     var _url = null;
@@ -562,7 +552,6 @@ class BackendServicesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices';
 
@@ -586,14 +575,13 @@ class BackendServicesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [BackendServiceList].
    *
@@ -601,7 +589,7 @@ class BackendServicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BackendServiceList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -623,7 +611,6 @@ class BackendServicesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices';
 
@@ -658,7 +645,7 @@ class BackendServicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> patch(BackendService request, core.String project, core.String backendService) {
     var _url = null;
@@ -677,7 +664,6 @@ class BackendServicesResourceApi {
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
 
@@ -711,7 +697,7 @@ class BackendServicesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> update(BackendService request, core.String project, core.String backendService) {
     var _url = null;
@@ -730,7 +716,6 @@ class BackendServicesResourceApi {
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
 
@@ -762,14 +747,13 @@ class DiskTypesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [DiskTypeAggregatedList].
    *
@@ -777,7 +761,7 @@ class DiskTypesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DiskTypeAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -799,7 +783,6 @@ class DiskTypesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/diskTypes';
 
@@ -834,7 +817,7 @@ class DiskTypesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DiskType> get(core.String project, core.String zone, core.String diskType) {
     var _url = null;
@@ -853,7 +836,6 @@ class DiskTypesResourceApi {
     if (diskType == null) {
       throw new core.ArgumentError("Parameter diskType is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/diskTypes/' + commons.Escaper.ecapeVariable('$diskType');
 
@@ -880,14 +862,13 @@ class DiskTypesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [DiskTypeList].
    *
@@ -895,7 +876,7 @@ class DiskTypesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DiskTypeList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -920,7 +901,6 @@ class DiskTypesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/diskTypes';
 
@@ -952,14 +932,13 @@ class DisksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [DiskAggregatedList].
    *
@@ -967,7 +946,7 @@ class DisksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DiskAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -989,7 +968,6 @@ class DisksResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/disks';
 
@@ -1026,7 +1004,7 @@ class DisksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> createSnapshot(Snapshot request, core.String project, core.String zone, core.String disk) {
     var _url = null;
@@ -1048,7 +1026,6 @@ class DisksResourceApi {
     if (disk == null) {
       throw new core.ArgumentError("Parameter disk is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$disk') + '/createSnapshot';
 
@@ -1083,7 +1060,7 @@ class DisksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String zone, core.String disk) {
     var _url = null;
@@ -1102,7 +1079,6 @@ class DisksResourceApi {
     if (disk == null) {
       throw new core.ArgumentError("Parameter disk is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$disk');
 
@@ -1137,7 +1113,7 @@ class DisksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Disk> get(core.String project, core.String zone, core.String disk) {
     var _url = null;
@@ -1156,7 +1132,6 @@ class DisksResourceApi {
     if (disk == null) {
       throw new core.ArgumentError("Parameter disk is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$disk');
 
@@ -1193,7 +1168,7 @@ class DisksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(Disk request, core.String project, core.String zone, {core.String sourceImage}) {
     var _url = null;
@@ -1215,7 +1190,6 @@ class DisksResourceApi {
     if (sourceImage != null) {
       _queryParams["sourceImage"] = [sourceImage];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks';
 
@@ -1241,14 +1215,13 @@ class DisksResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [DiskList].
    *
@@ -1256,7 +1229,7 @@ class DisksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DiskList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1281,7 +1254,6 @@ class DisksResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks';
 
@@ -1322,7 +1294,7 @@ class FirewallsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String firewall) {
     var _url = null;
@@ -1338,7 +1310,6 @@ class FirewallsResourceApi {
     if (firewall == null) {
       throw new core.ArgumentError("Parameter firewall is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls/' + commons.Escaper.ecapeVariable('$firewall');
 
@@ -1370,7 +1341,7 @@ class FirewallsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Firewall> get(core.String project, core.String firewall) {
     var _url = null;
@@ -1386,7 +1357,6 @@ class FirewallsResourceApi {
     if (firewall == null) {
       throw new core.ArgumentError("Parameter firewall is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls/' + commons.Escaper.ecapeVariable('$firewall');
 
@@ -1418,7 +1388,7 @@ class FirewallsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(Firewall request, core.String project) {
     var _url = null;
@@ -1434,7 +1404,6 @@ class FirewallsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls';
 
@@ -1458,14 +1427,13 @@ class FirewallsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [FirewallList].
    *
@@ -1473,7 +1441,7 @@ class FirewallsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FirewallList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1495,7 +1463,6 @@ class FirewallsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls';
 
@@ -1530,7 +1497,7 @@ class FirewallsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> patch(Firewall request, core.String project, core.String firewall) {
     var _url = null;
@@ -1549,7 +1516,6 @@ class FirewallsResourceApi {
     if (firewall == null) {
       throw new core.ArgumentError("Parameter firewall is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls/' + commons.Escaper.ecapeVariable('$firewall');
 
@@ -1584,7 +1550,7 @@ class FirewallsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> update(Firewall request, core.String project, core.String firewall) {
     var _url = null;
@@ -1603,7 +1569,6 @@ class FirewallsResourceApi {
     if (firewall == null) {
       throw new core.ArgumentError("Parameter firewall is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls/' + commons.Escaper.ecapeVariable('$firewall');
 
@@ -1635,14 +1600,13 @@ class ForwardingRulesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [ForwardingRuleAggregatedList].
    *
@@ -1650,7 +1614,7 @@ class ForwardingRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ForwardingRuleAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1672,7 +1636,6 @@ class ForwardingRulesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/forwardingRules';
 
@@ -1707,7 +1670,7 @@ class ForwardingRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String region, core.String forwardingRule) {
     var _url = null;
@@ -1726,7 +1689,6 @@ class ForwardingRulesResourceApi {
     if (forwardingRule == null) {
       throw new core.ArgumentError("Parameter forwardingRule is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule');
 
@@ -1761,7 +1723,7 @@ class ForwardingRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ForwardingRule> get(core.String project, core.String region, core.String forwardingRule) {
     var _url = null;
@@ -1780,7 +1742,6 @@ class ForwardingRulesResourceApi {
     if (forwardingRule == null) {
       throw new core.ArgumentError("Parameter forwardingRule is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule');
 
@@ -1815,7 +1776,7 @@ class ForwardingRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(ForwardingRule request, core.String project, core.String region) {
     var _url = null;
@@ -1834,7 +1795,6 @@ class ForwardingRulesResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules';
 
@@ -1861,14 +1821,13 @@ class ForwardingRulesResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [ForwardingRuleList].
    *
@@ -1876,7 +1835,7 @@ class ForwardingRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ForwardingRuleList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1901,7 +1860,6 @@ class ForwardingRulesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules';
 
@@ -1939,7 +1897,7 @@ class ForwardingRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setTarget(TargetReference request, core.String project, core.String region, core.String forwardingRule) {
     var _url = null;
@@ -1961,7 +1919,6 @@ class ForwardingRulesResourceApi {
     if (forwardingRule == null) {
       throw new core.ArgumentError("Parameter forwardingRule is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule') + '/setTarget';
 
@@ -2002,7 +1959,7 @@ class GlobalAddressesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String address) {
     var _url = null;
@@ -2018,7 +1975,6 @@ class GlobalAddressesResourceApi {
     if (address == null) {
       throw new core.ArgumentError("Parameter address is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses/' + commons.Escaper.ecapeVariable('$address');
 
@@ -2050,7 +2006,7 @@ class GlobalAddressesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Address> get(core.String project, core.String address) {
     var _url = null;
@@ -2066,7 +2022,6 @@ class GlobalAddressesResourceApi {
     if (address == null) {
       throw new core.ArgumentError("Parameter address is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses/' + commons.Escaper.ecapeVariable('$address');
 
@@ -2098,7 +2053,7 @@ class GlobalAddressesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(Address request, core.String project) {
     var _url = null;
@@ -2114,7 +2069,6 @@ class GlobalAddressesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses';
 
@@ -2137,14 +2091,13 @@ class GlobalAddressesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [AddressList].
    *
@@ -2152,7 +2105,7 @@ class GlobalAddressesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AddressList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -2174,7 +2127,6 @@ class GlobalAddressesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses';
 
@@ -2215,7 +2167,7 @@ class GlobalForwardingRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String forwardingRule) {
     var _url = null;
@@ -2231,7 +2183,6 @@ class GlobalForwardingRulesResourceApi {
     if (forwardingRule == null) {
       throw new core.ArgumentError("Parameter forwardingRule is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule');
 
@@ -2263,7 +2214,7 @@ class GlobalForwardingRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ForwardingRule> get(core.String project, core.String forwardingRule) {
     var _url = null;
@@ -2279,7 +2230,6 @@ class GlobalForwardingRulesResourceApi {
     if (forwardingRule == null) {
       throw new core.ArgumentError("Parameter forwardingRule is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule');
 
@@ -2311,7 +2261,7 @@ class GlobalForwardingRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(ForwardingRule request, core.String project) {
     var _url = null;
@@ -2327,7 +2277,6 @@ class GlobalForwardingRulesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules';
 
@@ -2351,14 +2300,13 @@ class GlobalForwardingRulesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [ForwardingRuleList].
    *
@@ -2366,7 +2314,7 @@ class GlobalForwardingRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ForwardingRuleList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -2388,7 +2336,6 @@ class GlobalForwardingRulesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules';
 
@@ -2423,7 +2370,7 @@ class GlobalForwardingRulesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setTarget(TargetReference request, core.String project, core.String forwardingRule) {
     var _url = null;
@@ -2442,7 +2389,6 @@ class GlobalForwardingRulesResourceApi {
     if (forwardingRule == null) {
       throw new core.ArgumentError("Parameter forwardingRule is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule') + '/setTarget';
 
@@ -2474,14 +2420,13 @@ class GlobalOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [OperationAggregatedList].
    *
@@ -2489,7 +2434,7 @@ class GlobalOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OperationAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -2511,7 +2456,6 @@ class GlobalOperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/operations';
 
@@ -2541,7 +2485,7 @@ class GlobalOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String project, core.String operation) {
     var _url = null;
@@ -2590,7 +2534,7 @@ class GlobalOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> get(core.String project, core.String operation) {
     var _url = null;
@@ -2606,7 +2550,6 @@ class GlobalOperationsResourceApi {
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/operations/' + commons.Escaper.ecapeVariable('$operation');
 
@@ -2630,14 +2573,13 @@ class GlobalOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [OperationList].
    *
@@ -2645,7 +2587,7 @@ class GlobalOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OperationList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -2667,7 +2609,6 @@ class GlobalOperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/operations';
 
@@ -2708,7 +2649,7 @@ class HttpHealthChecksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String httpHealthCheck) {
     var _url = null;
@@ -2724,7 +2665,6 @@ class HttpHealthChecksResourceApi {
     if (httpHealthCheck == null) {
       throw new core.ArgumentError("Parameter httpHealthCheck is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + commons.Escaper.ecapeVariable('$httpHealthCheck');
 
@@ -2756,7 +2696,7 @@ class HttpHealthChecksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<HttpHealthCheck> get(core.String project, core.String httpHealthCheck) {
     var _url = null;
@@ -2772,7 +2712,6 @@ class HttpHealthChecksResourceApi {
     if (httpHealthCheck == null) {
       throw new core.ArgumentError("Parameter httpHealthCheck is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + commons.Escaper.ecapeVariable('$httpHealthCheck');
 
@@ -2804,7 +2743,7 @@ class HttpHealthChecksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(HttpHealthCheck request, core.String project) {
     var _url = null;
@@ -2820,7 +2759,6 @@ class HttpHealthChecksResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks';
 
@@ -2844,14 +2782,13 @@ class HttpHealthChecksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [HttpHealthCheckList].
    *
@@ -2859,7 +2796,7 @@ class HttpHealthChecksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<HttpHealthCheckList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -2881,7 +2818,6 @@ class HttpHealthChecksResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks';
 
@@ -2916,7 +2852,7 @@ class HttpHealthChecksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> patch(HttpHealthCheck request, core.String project, core.String httpHealthCheck) {
     var _url = null;
@@ -2935,7 +2871,6 @@ class HttpHealthChecksResourceApi {
     if (httpHealthCheck == null) {
       throw new core.ArgumentError("Parameter httpHealthCheck is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + commons.Escaper.ecapeVariable('$httpHealthCheck');
 
@@ -2970,7 +2905,7 @@ class HttpHealthChecksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> update(HttpHealthCheck request, core.String project, core.String httpHealthCheck) {
     var _url = null;
@@ -2989,7 +2924,6 @@ class HttpHealthChecksResourceApi {
     if (httpHealthCheck == null) {
       throw new core.ArgumentError("Parameter httpHealthCheck is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + commons.Escaper.ecapeVariable('$httpHealthCheck');
 
@@ -3030,7 +2964,7 @@ class ImagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String image) {
     var _url = null;
@@ -3046,7 +2980,6 @@ class ImagesResourceApi {
     if (image == null) {
       throw new core.ArgumentError("Parameter image is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/images/' + commons.Escaper.ecapeVariable('$image');
 
@@ -3082,7 +3015,7 @@ class ImagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> deprecate(DeprecationStatus request, core.String project, core.String image) {
     var _url = null;
@@ -3101,7 +3034,6 @@ class ImagesResourceApi {
     if (image == null) {
       throw new core.ArgumentError("Parameter image is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/images/' + commons.Escaper.ecapeVariable('$image') + '/deprecate';
 
@@ -3133,7 +3065,7 @@ class ImagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Image> get(core.String project, core.String image) {
     var _url = null;
@@ -3149,7 +3081,6 @@ class ImagesResourceApi {
     if (image == null) {
       throw new core.ArgumentError("Parameter image is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/images/' + commons.Escaper.ecapeVariable('$image');
 
@@ -3181,7 +3112,7 @@ class ImagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(Image request, core.String project) {
     var _url = null;
@@ -3197,7 +3128,6 @@ class ImagesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/images';
 
@@ -3220,14 +3150,13 @@ class ImagesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [ImageList].
    *
@@ -3235,7 +3164,7 @@ class ImagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ImageList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -3257,7 +3186,6 @@ class ImagesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/images';
 
@@ -3281,15 +3209,15 @@ class InstanceTemplatesResourceApi {
       _requester = client;
 
   /**
-   * Deletes the specified instance template resource.
+   * Deletes the specified instance template.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [instanceTemplate] - Name of the instance template resource to delete.
+   * [instanceTemplate] - The name of the instance template to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -3298,7 +3226,7 @@ class InstanceTemplatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String instanceTemplate) {
     var _url = null;
@@ -3314,7 +3242,6 @@ class InstanceTemplatesResourceApi {
     if (instanceTemplate == null) {
       throw new core.ArgumentError("Parameter instanceTemplate is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates/' + commons.Escaper.ecapeVariable('$instanceTemplate');
 
@@ -3333,11 +3260,11 @@ class InstanceTemplatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [instanceTemplate] - Name of the instance template resource to return.
+   * [instanceTemplate] - The name of the instance template.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [InstanceTemplate].
@@ -3346,7 +3273,7 @@ class InstanceTemplatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InstanceTemplate> get(core.String project, core.String instanceTemplate) {
     var _url = null;
@@ -3363,7 +3290,6 @@ class InstanceTemplatesResourceApi {
       throw new core.ArgumentError("Parameter instanceTemplate is required.");
     }
 
-
     _url = commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates/' + commons.Escaper.ecapeVariable('$instanceTemplate');
 
     var _response = _requester.request(_url,
@@ -3377,14 +3303,14 @@ class InstanceTemplatesResourceApi {
   }
 
   /**
-   * Creates an instance template resource in the specified project using the
-   * data included in the request.
+   * Creates an instance template in the specified project using the data that
+   * is included in the request.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3394,7 +3320,7 @@ class InstanceTemplatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(InstanceTemplate request, core.String project) {
     var _url = null;
@@ -3411,7 +3337,6 @@ class InstanceTemplatesResourceApi {
       throw new core.ArgumentError("Parameter project is required.");
     }
 
-
     _url = commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
 
     var _response = _requester.request(_url,
@@ -3425,23 +3350,22 @@ class InstanceTemplatesResourceApi {
   }
 
   /**
-   * Retrieves the list of instance template resources contained within the
-   * specified project.
+   * Retrieves a list of instance templates that are contained within the
+   * specified project and zone.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [InstanceTemplateList].
    *
@@ -3449,7 +3373,7 @@ class InstanceTemplatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InstanceTemplateList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -3471,7 +3395,6 @@ class InstanceTemplatesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
 
@@ -3520,7 +3443,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> addAccessConfig(AccessConfig request, core.String project, core.String zone, core.String instance, core.String networkInterface) {
     var _url = null;
@@ -3547,7 +3470,6 @@ class InstancesResourceApi {
     }
     _queryParams["networkInterface"] = [networkInterface];
 
-
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/addAccessConfig';
 
     var _response = _requester.request(_url,
@@ -3567,14 +3489,13 @@ class InstancesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [InstanceAggregatedList].
    *
@@ -3582,7 +3503,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InstanceAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -3604,7 +3525,6 @@ class InstancesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/instances';
 
@@ -3641,7 +3561,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> attachDisk(AttachedDisk request, core.String project, core.String zone, core.String instance) {
     var _url = null;
@@ -3663,7 +3583,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/attachDisk';
 
@@ -3699,7 +3618,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String zone, core.String instance) {
     var _url = null;
@@ -3718,7 +3637,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
 
@@ -3757,7 +3675,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> deleteAccessConfig(core.String project, core.String zone, core.String instance, core.String accessConfig, core.String networkInterface) {
     var _url = null;
@@ -3784,7 +3702,6 @@ class InstancesResourceApi {
       throw new core.ArgumentError("Parameter networkInterface is required.");
     }
     _queryParams["networkInterface"] = [networkInterface];
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/deleteAccessConfig';
 
@@ -3822,7 +3739,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> detachDisk(core.String project, core.String zone, core.String instance, core.String deviceName) {
     var _url = null;
@@ -3845,7 +3762,6 @@ class InstancesResourceApi {
       throw new core.ArgumentError("Parameter deviceName is required.");
     }
     _queryParams["deviceName"] = [deviceName];
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/detachDisk';
 
@@ -3880,7 +3796,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Instance> get(core.String project, core.String zone, core.String instance) {
     var _url = null;
@@ -3899,7 +3815,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
 
@@ -3937,7 +3852,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SerialPortOutput> getSerialPortOutput(core.String project, core.String zone, core.String instance, {core.int port}) {
     var _url = null;
@@ -3959,7 +3874,6 @@ class InstancesResourceApi {
     if (port != null) {
       _queryParams["port"] = ["${port}"];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/serialPort';
 
@@ -3994,7 +3908,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(Instance request, core.String project, core.String zone) {
     var _url = null;
@@ -4013,7 +3927,6 @@ class InstancesResourceApi {
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances';
 
@@ -4040,14 +3953,13 @@ class InstancesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [InstanceList].
    *
@@ -4055,7 +3967,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InstanceList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -4080,7 +3992,6 @@ class InstancesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances';
 
@@ -4115,7 +4026,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> reset(core.String project, core.String zone, core.String instance) {
     var _url = null;
@@ -4134,7 +4045,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/reset';
 
@@ -4175,7 +4085,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setDiskAutoDelete(core.String project, core.String zone, core.String instance, core.bool autoDelete, core.String deviceName) {
     var _url = null;
@@ -4202,7 +4112,6 @@ class InstancesResourceApi {
       throw new core.ArgumentError("Parameter deviceName is required.");
     }
     _queryParams["deviceName"] = [deviceName];
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setDiskAutoDelete';
 
@@ -4240,7 +4149,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setMetadata(Metadata request, core.String project, core.String zone, core.String instance) {
     var _url = null;
@@ -4262,7 +4171,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setMetadata';
 
@@ -4299,7 +4207,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setScheduling(Scheduling request, core.String project, core.String zone, core.String instance) {
     var _url = null;
@@ -4321,7 +4229,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setScheduling';
 
@@ -4358,7 +4265,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setTags(Tags request, core.String project, core.String zone, core.String instance) {
     var _url = null;
@@ -4380,7 +4287,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setTags';
 
@@ -4416,7 +4322,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> start(core.String project, core.String zone, core.String instance) {
     var _url = null;
@@ -4435,7 +4341,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/start';
 
@@ -4475,7 +4380,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> stop(core.String project, core.String zone, core.String instance) {
     var _url = null;
@@ -4494,7 +4399,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/stop';
 
@@ -4535,7 +4439,7 @@ class LicensesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<License> get(core.String project, core.String license) {
     var _url = null;
@@ -4551,7 +4455,6 @@ class LicensesResourceApi {
     if (license == null) {
       throw new core.ArgumentError("Parameter license is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/licenses/' + commons.Escaper.ecapeVariable('$license');
 
@@ -4583,14 +4486,13 @@ class MachineTypesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [MachineTypeAggregatedList].
    *
@@ -4598,7 +4500,7 @@ class MachineTypesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<MachineTypeAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -4620,7 +4522,6 @@ class MachineTypesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/machineTypes';
 
@@ -4655,7 +4556,7 @@ class MachineTypesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<MachineType> get(core.String project, core.String zone, core.String machineType) {
     var _url = null;
@@ -4674,7 +4575,6 @@ class MachineTypesResourceApi {
     if (machineType == null) {
       throw new core.ArgumentError("Parameter machineType is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/machineTypes/' + commons.Escaper.ecapeVariable('$machineType');
 
@@ -4701,14 +4601,13 @@ class MachineTypesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [MachineTypeList].
    *
@@ -4716,7 +4615,7 @@ class MachineTypesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<MachineTypeList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -4741,7 +4640,6 @@ class MachineTypesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/machineTypes';
 
@@ -4782,7 +4680,7 @@ class NetworksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String network) {
     var _url = null;
@@ -4798,7 +4696,6 @@ class NetworksResourceApi {
     if (network == null) {
       throw new core.ArgumentError("Parameter network is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/networks/' + commons.Escaper.ecapeVariable('$network');
 
@@ -4830,7 +4727,7 @@ class NetworksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Network> get(core.String project, core.String network) {
     var _url = null;
@@ -4846,7 +4743,6 @@ class NetworksResourceApi {
     if (network == null) {
       throw new core.ArgumentError("Parameter network is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/networks/' + commons.Escaper.ecapeVariable('$network');
 
@@ -4878,7 +4774,7 @@ class NetworksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(Network request, core.String project) {
     var _url = null;
@@ -4894,7 +4790,6 @@ class NetworksResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/networks';
 
@@ -4917,14 +4812,13 @@ class NetworksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [NetworkList].
    *
@@ -4932,7 +4826,7 @@ class NetworksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<NetworkList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -4954,7 +4848,6 @@ class NetworksResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/networks';
 
@@ -4992,7 +4885,7 @@ class ProjectsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Project> get(core.String project) {
     var _url = null;
@@ -5005,7 +4898,6 @@ class ProjectsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project');
 
@@ -5036,7 +4928,7 @@ class ProjectsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> moveDisk(DiskMoveRequest request, core.String project) {
     var _url = null;
@@ -5052,7 +4944,6 @@ class ProjectsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/moveDisk';
 
@@ -5084,7 +4975,7 @@ class ProjectsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> moveInstance(InstanceMoveRequest request, core.String project) {
     var _url = null;
@@ -5100,7 +4991,6 @@ class ProjectsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/moveInstance';
 
@@ -5132,7 +5022,7 @@ class ProjectsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setCommonInstanceMetadata(Metadata request, core.String project) {
     var _url = null;
@@ -5148,7 +5038,6 @@ class ProjectsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/setCommonInstanceMetadata';
 
@@ -5181,7 +5070,7 @@ class ProjectsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setUsageExportBucket(UsageExportLocation request, core.String project) {
     var _url = null;
@@ -5197,7 +5086,6 @@ class ProjectsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/setUsageExportBucket';
 
@@ -5239,7 +5127,7 @@ class RegionOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String project, core.String region, core.String operation) {
     var _url = null;
@@ -5294,7 +5182,7 @@ class RegionOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> get(core.String project, core.String region, core.String operation) {
     var _url = null;
@@ -5313,7 +5201,6 @@ class RegionOperationsResourceApi {
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
@@ -5340,14 +5227,13 @@ class RegionOperationsResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [OperationList].
    *
@@ -5355,7 +5241,7 @@ class RegionOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OperationList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -5380,7 +5266,6 @@ class RegionOperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/operations';
 
@@ -5421,7 +5306,7 @@ class RegionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Region> get(core.String project, core.String region) {
     var _url = null;
@@ -5437,7 +5322,6 @@ class RegionsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region');
 
@@ -5460,14 +5344,13 @@ class RegionsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [RegionList].
    *
@@ -5475,7 +5358,7 @@ class RegionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RegionList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -5497,7 +5380,6 @@ class RegionsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions';
 
@@ -5538,7 +5420,7 @@ class RoutesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String route) {
     var _url = null;
@@ -5554,7 +5436,6 @@ class RoutesResourceApi {
     if (route == null) {
       throw new core.ArgumentError("Parameter route is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/routes/' + commons.Escaper.ecapeVariable('$route');
 
@@ -5586,7 +5467,7 @@ class RoutesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Route> get(core.String project, core.String route) {
     var _url = null;
@@ -5602,7 +5483,6 @@ class RoutesResourceApi {
     if (route == null) {
       throw new core.ArgumentError("Parameter route is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/routes/' + commons.Escaper.ecapeVariable('$route');
 
@@ -5634,7 +5514,7 @@ class RoutesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(Route request, core.String project) {
     var _url = null;
@@ -5650,7 +5530,6 @@ class RoutesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/routes';
 
@@ -5673,14 +5552,13 @@ class RoutesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [RouteList].
    *
@@ -5688,7 +5566,7 @@ class RoutesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RouteList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -5710,7 +5588,6 @@ class RoutesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/routes';
 
@@ -5751,7 +5628,7 @@ class SnapshotsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String snapshot) {
     var _url = null;
@@ -5767,7 +5644,6 @@ class SnapshotsResourceApi {
     if (snapshot == null) {
       throw new core.ArgumentError("Parameter snapshot is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/snapshots/' + commons.Escaper.ecapeVariable('$snapshot');
 
@@ -5799,7 +5675,7 @@ class SnapshotsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Snapshot> get(core.String project, core.String snapshot) {
     var _url = null;
@@ -5815,7 +5691,6 @@ class SnapshotsResourceApi {
     if (snapshot == null) {
       throw new core.ArgumentError("Parameter snapshot is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/snapshots/' + commons.Escaper.ecapeVariable('$snapshot');
 
@@ -5839,14 +5714,13 @@ class SnapshotsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [SnapshotList].
    *
@@ -5854,7 +5728,7 @@ class SnapshotsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SnapshotList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -5876,7 +5750,6 @@ class SnapshotsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/snapshots';
 
@@ -5917,7 +5790,7 @@ class TargetHttpProxiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String targetHttpProxy) {
     var _url = null;
@@ -5933,7 +5806,6 @@ class TargetHttpProxiesResourceApi {
     if (targetHttpProxy == null) {
       throw new core.ArgumentError("Parameter targetHttpProxy is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies/' + commons.Escaper.ecapeVariable('$targetHttpProxy');
 
@@ -5965,7 +5837,7 @@ class TargetHttpProxiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TargetHttpProxy> get(core.String project, core.String targetHttpProxy) {
     var _url = null;
@@ -5981,7 +5853,6 @@ class TargetHttpProxiesResourceApi {
     if (targetHttpProxy == null) {
       throw new core.ArgumentError("Parameter targetHttpProxy is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies/' + commons.Escaper.ecapeVariable('$targetHttpProxy');
 
@@ -6013,7 +5884,7 @@ class TargetHttpProxiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(TargetHttpProxy request, core.String project) {
     var _url = null;
@@ -6029,7 +5900,6 @@ class TargetHttpProxiesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies';
 
@@ -6053,14 +5923,13 @@ class TargetHttpProxiesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [TargetHttpProxyList].
    *
@@ -6068,7 +5937,7 @@ class TargetHttpProxiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TargetHttpProxyList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -6090,7 +5959,6 @@ class TargetHttpProxiesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies';
 
@@ -6125,7 +5993,7 @@ class TargetHttpProxiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setUrlMap(UrlMapReference request, core.String project, core.String targetHttpProxy) {
     var _url = null;
@@ -6144,7 +6012,6 @@ class TargetHttpProxiesResourceApi {
     if (targetHttpProxy == null) {
       throw new core.ArgumentError("Parameter targetHttpProxy is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/targetHttpProxies/' + commons.Escaper.ecapeVariable('$targetHttpProxy') + '/setUrlMap';
 
@@ -6176,14 +6043,13 @@ class TargetInstancesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [TargetInstanceAggregatedList].
    *
@@ -6191,7 +6057,7 @@ class TargetInstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TargetInstanceAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -6213,7 +6079,6 @@ class TargetInstancesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/targetInstances';
 
@@ -6248,7 +6113,7 @@ class TargetInstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String zone, core.String targetInstance) {
     var _url = null;
@@ -6267,7 +6132,6 @@ class TargetInstancesResourceApi {
     if (targetInstance == null) {
       throw new core.ArgumentError("Parameter targetInstance is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/targetInstances/' + commons.Escaper.ecapeVariable('$targetInstance');
 
@@ -6302,7 +6166,7 @@ class TargetInstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TargetInstance> get(core.String project, core.String zone, core.String targetInstance) {
     var _url = null;
@@ -6321,7 +6185,6 @@ class TargetInstancesResourceApi {
     if (targetInstance == null) {
       throw new core.ArgumentError("Parameter targetInstance is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/targetInstances/' + commons.Escaper.ecapeVariable('$targetInstance');
 
@@ -6356,7 +6219,7 @@ class TargetInstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(TargetInstance request, core.String project, core.String zone) {
     var _url = null;
@@ -6375,7 +6238,6 @@ class TargetInstancesResourceApi {
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/targetInstances';
 
@@ -6402,14 +6264,13 @@ class TargetInstancesResourceApi {
    * [zone] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [TargetInstanceList].
    *
@@ -6417,7 +6278,7 @@ class TargetInstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TargetInstanceList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -6442,7 +6303,6 @@ class TargetInstancesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/targetInstances';
 
@@ -6489,7 +6349,7 @@ class TargetPoolsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> addHealthCheck(TargetPoolsAddHealthCheckRequest request, core.String project, core.String region, core.String targetPool) {
     var _url = null;
@@ -6511,7 +6371,6 @@ class TargetPoolsResourceApi {
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/addHealthCheck';
 
@@ -6549,7 +6408,7 @@ class TargetPoolsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> addInstance(TargetPoolsAddInstanceRequest request, core.String project, core.String region, core.String targetPool) {
     var _url = null;
@@ -6572,7 +6431,6 @@ class TargetPoolsResourceApi {
       throw new core.ArgumentError("Parameter targetPool is required.");
     }
 
-
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/addInstance';
 
     var _response = _requester.request(_url,
@@ -6594,14 +6452,13 @@ class TargetPoolsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [TargetPoolAggregatedList].
    *
@@ -6609,7 +6466,7 @@ class TargetPoolsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TargetPoolAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -6631,7 +6488,6 @@ class TargetPoolsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/targetPools';
 
@@ -6666,7 +6522,7 @@ class TargetPoolsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String region, core.String targetPool) {
     var _url = null;
@@ -6685,7 +6541,6 @@ class TargetPoolsResourceApi {
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool');
 
@@ -6720,7 +6575,7 @@ class TargetPoolsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TargetPool> get(core.String project, core.String region, core.String targetPool) {
     var _url = null;
@@ -6739,7 +6594,6 @@ class TargetPoolsResourceApi {
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool');
 
@@ -6778,7 +6632,7 @@ class TargetPoolsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TargetPoolInstanceHealth> getHealth(InstanceReference request, core.String project, core.String region, core.String targetPool) {
     var _url = null;
@@ -6800,7 +6654,6 @@ class TargetPoolsResourceApi {
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/getHealth';
 
@@ -6835,7 +6688,7 @@ class TargetPoolsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(TargetPool request, core.String project, core.String region) {
     var _url = null;
@@ -6854,7 +6707,6 @@ class TargetPoolsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools';
 
@@ -6881,14 +6733,13 @@ class TargetPoolsResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [TargetPoolList].
    *
@@ -6896,7 +6747,7 @@ class TargetPoolsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TargetPoolList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -6921,7 +6772,6 @@ class TargetPoolsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools';
 
@@ -6959,7 +6809,7 @@ class TargetPoolsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> removeHealthCheck(TargetPoolsRemoveHealthCheckRequest request, core.String project, core.String region, core.String targetPool) {
     var _url = null;
@@ -6981,7 +6831,6 @@ class TargetPoolsResourceApi {
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/removeHealthCheck';
 
@@ -7019,7 +6868,7 @@ class TargetPoolsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> removeInstance(TargetPoolsRemoveInstanceRequest request, core.String project, core.String region, core.String targetPool) {
     var _url = null;
@@ -7041,7 +6890,6 @@ class TargetPoolsResourceApi {
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/removeInstance';
 
@@ -7081,7 +6929,7 @@ class TargetPoolsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setBackup(TargetReference request, core.String project, core.String region, core.String targetPool, {core.double failoverRatio}) {
     var _url = null;
@@ -7106,7 +6954,6 @@ class TargetPoolsResourceApi {
     if (failoverRatio != null) {
       _queryParams["failoverRatio"] = ["${failoverRatio}"];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/setBackup';
 
@@ -7138,14 +6985,13 @@ class TargetVpnGatewaysResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [TargetVpnGatewayAggregatedList].
    *
@@ -7153,7 +6999,7 @@ class TargetVpnGatewaysResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TargetVpnGatewayAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -7175,7 +7021,6 @@ class TargetVpnGatewaysResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/targetVpnGateways';
 
@@ -7210,7 +7055,7 @@ class TargetVpnGatewaysResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String region, core.String targetVpnGateway) {
     var _url = null;
@@ -7229,7 +7074,6 @@ class TargetVpnGatewaysResourceApi {
     if (targetVpnGateway == null) {
       throw new core.ArgumentError("Parameter targetVpnGateway is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetVpnGateways/' + commons.Escaper.ecapeVariable('$targetVpnGateway');
 
@@ -7264,7 +7108,7 @@ class TargetVpnGatewaysResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TargetVpnGateway> get(core.String project, core.String region, core.String targetVpnGateway) {
     var _url = null;
@@ -7283,7 +7127,6 @@ class TargetVpnGatewaysResourceApi {
     if (targetVpnGateway == null) {
       throw new core.ArgumentError("Parameter targetVpnGateway is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetVpnGateways/' + commons.Escaper.ecapeVariable('$targetVpnGateway');
 
@@ -7318,7 +7161,7 @@ class TargetVpnGatewaysResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(TargetVpnGateway request, core.String project, core.String region) {
     var _url = null;
@@ -7337,7 +7180,6 @@ class TargetVpnGatewaysResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetVpnGateways';
 
@@ -7364,14 +7206,13 @@ class TargetVpnGatewaysResourceApi {
    * [region] - The name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [TargetVpnGatewayList].
    *
@@ -7379,7 +7220,7 @@ class TargetVpnGatewaysResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TargetVpnGatewayList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -7404,7 +7245,6 @@ class TargetVpnGatewaysResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetVpnGateways';
 
@@ -7445,7 +7285,7 @@ class UrlMapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String urlMap) {
     var _url = null;
@@ -7461,7 +7301,6 @@ class UrlMapsResourceApi {
     if (urlMap == null) {
       throw new core.ArgumentError("Parameter urlMap is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap');
 
@@ -7493,7 +7332,7 @@ class UrlMapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UrlMap> get(core.String project, core.String urlMap) {
     var _url = null;
@@ -7509,7 +7348,6 @@ class UrlMapsResourceApi {
     if (urlMap == null) {
       throw new core.ArgumentError("Parameter urlMap is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap');
 
@@ -7541,7 +7379,7 @@ class UrlMapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(UrlMap request, core.String project) {
     var _url = null;
@@ -7557,7 +7395,6 @@ class UrlMapsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps';
 
@@ -7580,14 +7417,13 @@ class UrlMapsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [UrlMapList].
    *
@@ -7595,7 +7431,7 @@ class UrlMapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UrlMapList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -7617,7 +7453,6 @@ class UrlMapsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps';
 
@@ -7652,7 +7487,7 @@ class UrlMapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> patch(UrlMap request, core.String project, core.String urlMap) {
     var _url = null;
@@ -7671,7 +7506,6 @@ class UrlMapsResourceApi {
     if (urlMap == null) {
       throw new core.ArgumentError("Parameter urlMap is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap');
 
@@ -7705,7 +7539,7 @@ class UrlMapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> update(UrlMap request, core.String project, core.String urlMap) {
     var _url = null;
@@ -7724,7 +7558,6 @@ class UrlMapsResourceApi {
     if (urlMap == null) {
       throw new core.ArgumentError("Parameter urlMap is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap');
 
@@ -7760,7 +7593,7 @@ class UrlMapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UrlMapsValidateResponse> validate(UrlMapsValidateRequest request, core.String project, core.String urlMap) {
     var _url = null;
@@ -7779,7 +7612,6 @@ class UrlMapsResourceApi {
     if (urlMap == null) {
       throw new core.ArgumentError("Parameter urlMap is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap') + '/validate';
 
@@ -7811,14 +7643,13 @@ class VpnTunnelsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [VpnTunnelAggregatedList].
    *
@@ -7826,7 +7657,7 @@ class VpnTunnelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VpnTunnelAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -7848,7 +7679,6 @@ class VpnTunnelsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/vpnTunnels';
 
@@ -7883,7 +7713,7 @@ class VpnTunnelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String region, core.String vpnTunnel) {
     var _url = null;
@@ -7902,7 +7732,6 @@ class VpnTunnelsResourceApi {
     if (vpnTunnel == null) {
       throw new core.ArgumentError("Parameter vpnTunnel is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/vpnTunnels/' + commons.Escaper.ecapeVariable('$vpnTunnel');
 
@@ -7937,7 +7766,7 @@ class VpnTunnelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VpnTunnel> get(core.String project, core.String region, core.String vpnTunnel) {
     var _url = null;
@@ -7956,7 +7785,6 @@ class VpnTunnelsResourceApi {
     if (vpnTunnel == null) {
       throw new core.ArgumentError("Parameter vpnTunnel is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/vpnTunnels/' + commons.Escaper.ecapeVariable('$vpnTunnel');
 
@@ -7991,7 +7819,7 @@ class VpnTunnelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(VpnTunnel request, core.String project, core.String region) {
     var _url = null;
@@ -8010,7 +7838,6 @@ class VpnTunnelsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/vpnTunnels';
 
@@ -8037,14 +7864,13 @@ class VpnTunnelsResourceApi {
    * [region] - The name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [VpnTunnelList].
    *
@@ -8052,7 +7878,7 @@ class VpnTunnelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VpnTunnelList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -8077,7 +7903,6 @@ class VpnTunnelsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/vpnTunnels';
 
@@ -8119,7 +7944,7 @@ class ZoneOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String project, core.String zone, core.String operation) {
     var _url = null;
@@ -8174,7 +7999,7 @@ class ZoneOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> get(core.String project, core.String zone, core.String operation) {
     var _url = null;
@@ -8193,7 +8018,6 @@ class ZoneOperationsResourceApi {
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
@@ -8220,14 +8044,13 @@ class ZoneOperationsResourceApi {
    * [zone] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [OperationList].
    *
@@ -8235,7 +8058,7 @@ class ZoneOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OperationList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -8260,7 +8083,6 @@ class ZoneOperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations';
 
@@ -8301,7 +8123,7 @@ class ZonesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Zone> get(core.String project, core.String zone) {
     var _url = null;
@@ -8317,7 +8139,6 @@ class ZonesResourceApi {
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone');
 
@@ -8340,14 +8161,13 @@ class ZonesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Optional. Filter expression for filtering listed resources.
+   * [filter] - Filter expression for filtering listed resources.
    *
-   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
-   * value is 500 and default value is 500.
+   * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Optional. Tag returned by a previous list request truncated
-   * by maxResults. Used to continue a previous list request.
+   * [pageToken] - Tag returned by a previous list request when that list was
+   * truncated to maxResults. Used to continue a previous list request.
    *
    * Completes with a [ZoneList].
    *
@@ -8355,7 +8175,7 @@ class ZonesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ZoneList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -8377,7 +8197,6 @@ class ZonesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones';
 
@@ -8402,10 +8221,8 @@ class AccessConfig {
    * configs.
    */
   core.String kind;
-
   /** Name of this access configuration. */
   core.String name;
-
   /**
    * An external IP address associated with this instance. Specify an unused
    * static external IP address available to the project or leave this field
@@ -8414,14 +8231,12 @@ class AccessConfig {
    * the zone of the instance.
    */
   core.String natIP;
-
   /**
    * The type of configuration. The default and only option is ONE_TO_ONE_NAT.
    * Possible string values are:
    * - "ONE_TO_ONE_NAT"
    */
   core.String type;
-
 
   AccessConfig();
 
@@ -8458,31 +8273,25 @@ class AccessConfig {
   }
 }
 
-
 /** A reserved address resource. */
 class Address {
   /** The static external IP address represented by this resource. */
   core.String address;
-
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /**
    * [Output Only] Type of the resource. Always compute#address for addresses.
    */
   core.String kind;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
@@ -8493,16 +8302,13 @@ class Address {
    * dash.
    */
   core.String name;
-
   /**
    * [Output Only] URL of the region where the regional address resides. This
    * field is not applicable to global addresses.
    */
   core.String region;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
   /**
    * [Output Only] The status of the address, which can be either IN_USE or
    * RESERVED. An address that is RESERVED is currently reserved and available
@@ -8513,10 +8319,8 @@ class Address {
    * - "RESERVED"
    */
   core.String status;
-
   /** [Output Only] The URLs of the resources that are using this address. */
   core.List<core.String> users;
-
 
   Address();
 
@@ -8589,28 +8393,22 @@ class Address {
   }
 }
 
-
 class AddressAggregatedList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A map of scoped address lists. */
   core.Map<core.String, AddressesScopedList> items;
-
   /**
    * [Output Only] Type of resource. Always compute#addressAggregatedList for
    * aggregated lists of addresses.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   AddressAggregatedList();
 
@@ -8653,29 +8451,23 @@ class AddressAggregatedList {
   }
 }
 
-
 /** Contains a list of address resources. */
 class AddressList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A list of Address resources. */
   core.List<Address> items;
-
   /**
    * [Output Only] Type of resource. Always compute#addressList for lists of
    * addresses.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
 
   AddressList();
 
@@ -8718,14 +8510,11 @@ class AddressList {
   }
 }
 
-
 class AddressesScopedListWarningData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   AddressesScopedListWarningData();
 
@@ -8750,7 +8539,6 @@ class AddressesScopedListWarningData {
   }
 }
 
-
 /**
  * [Output Only] Informational warning which replaces the list of addresses when
  * the list is empty.
@@ -8767,6 +8555,7 @@ class AddressesScopedListWarning {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -8774,13 +8563,10 @@ class AddressesScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<AddressesScopedListWarningData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   AddressesScopedListWarning();
 
@@ -8811,17 +8597,14 @@ class AddressesScopedListWarning {
   }
 }
 
-
 class AddressesScopedList {
   /** [Output Only] List of addresses contained in this scope. */
   core.List<Address> addresses;
-
   /**
    * [Output Only] Informational warning which replaces the list of addresses
    * when the list is empty.
    */
   AddressesScopedListWarning warning;
-
 
   AddressesScopedList();
 
@@ -8846,7 +8629,6 @@ class AddressesScopedList {
   }
 }
 
-
 /** An instance-attached disk resource. */
 class AttachedDisk {
   /**
@@ -8854,13 +8636,11 @@ class AttachedDisk {
    * deleted (but not when the disk is detached from the instance).
    */
   core.bool autoDelete;
-
   /**
    * Indicates that this is a boot disk. The virtual machine will use the first
    * partition of the disk for its root filesystem.
    */
   core.bool boot;
-
   /**
    * Specifies a unique device name of your choice that is reflected into the
    * /dev/ tree of a Linux operating system running within the instance. This
@@ -8872,7 +8652,6 @@ class AttachedDisk {
    * Google Compute Engine. This field is only applicable for persistent disks.
    */
   core.String deviceName;
-
   /**
    * Assigns a zero-based index to this disk, where 0 is reserved for the boot
    * disk. For example, if you have many disks attached to an instance, each
@@ -8880,7 +8659,6 @@ class AttachedDisk {
    * choose an appropriate value.
    */
   core.int index;
-
   /**
    * [Input Only] Specifies the parameters for a new disk that will be created
    * alongside the new instance. Use initialization parameters to create boot
@@ -8890,7 +8668,6 @@ class AttachedDisk {
    * define one or the other, but not both.
    */
   AttachedDiskInitializeParams initializeParams;
-
   /**
    *
    * Possible string values are:
@@ -8898,16 +8675,13 @@ class AttachedDisk {
    * - "SCSI"
    */
   core.String interface;
-
   /**
    * [Output Only] Type of the resource. Always compute#attachedDisk for
    * attached disks.
    */
   core.String kind;
-
   /** [Output Only] Any valid publicly visible licenses. */
   core.List<core.String> licenses;
-
   /**
    * The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If
    * not specified, the default is to attach the disk in READ_WRITE mode.
@@ -8916,13 +8690,11 @@ class AttachedDisk {
    * - "READ_WRITE"
    */
   core.String mode;
-
   /**
    * Specifies a valid partial or full URL to an existing Persistent Disk
    * resource. This field is only applicable for persistent disks.
    */
   core.String source;
-
   /**
    * Specifies the type of the disk, either SCRATCH or PERSISTENT. If not
    * specified, the default is PERSISTENT.
@@ -8931,7 +8703,6 @@ class AttachedDisk {
    * - "SCRATCH"
    */
   core.String type;
-
 
   AttachedDisk();
 
@@ -9010,7 +8781,6 @@ class AttachedDisk {
   }
 }
 
-
 /**
  * [Input Only] Specifies the parameters for a new disk that will be created
  * alongside the new instance. Use initialization parameters to create boot
@@ -9025,10 +8795,8 @@ class AttachedDiskInitializeParams {
    * of the instance.
    */
   core.String diskName;
-
   /** Specifies the size of the disk in base-2 GB. */
   core.String diskSizeGb;
-
   /**
    * Specifies the disk type to use to create the instance. If not specified,
    * the default is pd-standard, specified using the full URL. For example:
@@ -9044,7 +8812,6 @@ class AttachedDiskInitializeParams {
    * - zones/zone/diskTypes/diskType
    */
   core.String diskType;
-
   /**
    * A source image used to create the disk. You can provide a private (custom)
    * image, and Compute Engine will use the corresponding image from your
@@ -9062,7 +8829,6 @@ class AttachedDiskInitializeParams {
    * work in both cases.
    */
   core.String sourceImage;
-
 
   AttachedDiskInitializeParams();
 
@@ -9099,7 +8865,6 @@ class AttachedDiskInitializeParams {
   }
 }
 
-
 /** Message containing information of one individual backend. */
 class Backend {
   /**
@@ -9109,20 +8874,17 @@ class Backend {
    * - "UTILIZATION"
    */
   core.String balancingMode;
-
   /**
    * The multiplier (a value between 0 and 1e6) of the max capacity (CPU or RPS,
    * depending on 'balancingMode') the group should serve up to. 0 means the
    * group is totally drained. Default value is 1. Valid range is [0, 1e6].
    */
   core.double capacityScaler;
-
   /**
    * An optional textual description of the resource, which is provided by the
    * client when the resource is created.
    */
   core.String description;
-
   /**
    * URL of a zonal Cloud Resource View resource. This resource view defines the
    * list of instances that serve traffic. Member virtual machine instances from
@@ -9131,28 +8893,24 @@ class Backend {
    * resource.
    */
   core.String group;
-
   /**
    * The max RPS of the group. Can be used with either balancing mode, but
    * required if RATE mode. For RATE mode, either maxRate or maxRatePerInstance
    * must be set.
    */
   core.int maxRate;
-
   /**
    * The max RPS that a single backed instance can handle. This is used to
    * calculate the capacity of the group. Can be used in either balancing mode.
    * For RATE mode, either maxRate or maxRatePerInstance must be set.
    */
   core.double maxRatePerInstance;
-
   /**
    * Used when 'balancingMode' is UTILIZATION. This ratio defines the CPU
    * utilization target for the group. The default is 0.8. Valid range is [0,
    * 1].
    */
   core.double maxUtilization;
-
 
   Backend();
 
@@ -9207,7 +8965,6 @@ class Backend {
   }
 }
 
-
 /**
  * A BackendService resource. This resource defines a group of backend VMs
  * together with their serving capacity.
@@ -9215,16 +8972,13 @@ class Backend {
 class BackendService {
   /** The list of backends that serve this BackendService. */
   core.List<Backend> backends;
-
   /** Creation timestamp in RFC3339 text format (output only). */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * Fingerprint of this resource. A hash of the contents stored in this object.
    * This field is used in optimistic locking. This field will be ignored when
@@ -9232,7 +8986,6 @@ class BackendService {
    * order to update the BackendService.
    */
   core.String fingerprint;
-
   core.List<core.int> get fingerprintAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(fingerprint);
   }
@@ -9240,56 +8993,46 @@ class BackendService {
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /**
    * The list of URLs to the HttpHealthCheck resource for health checking this
    * BackendService. Currently at most one health check can be specified, and a
    * health check is required.
    */
   core.List<core.String> healthChecks;
-
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** Type of the resource. */
   core.String kind;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    */
   core.String name;
-
   /**
    * Deprecated in favor of port_name. The TCP port to connect on the backend.
    * The default value is 80.
    */
   core.int port;
-
   /**
    * Name of backend port. The same name should appear in the resource views
    * referenced by this service. Required.
    */
   core.String portName;
-
   /**
    *
    * Possible string values are:
    * - "HTTP"
    */
   core.String protocol;
-
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
-
   /**
    * How many seconds to wait for the backend before considering it a failed
    * request. Default is 30 seconds.
    */
   core.int timeoutSec;
-
 
   BackendService();
 
@@ -9380,13 +9123,10 @@ class BackendService {
   }
 }
 
-
 class BackendServiceGroupHealth {
   core.List<HealthStatus> healthStatus;
-
   /** Type of resource. */
   core.String kind;
-
 
   BackendServiceGroupHealth();
 
@@ -9411,26 +9151,20 @@ class BackendServiceGroupHealth {
   }
 }
 
-
 /** Contains a list of BackendService resources. */
 class BackendServiceList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A list of BackendService resources. */
   core.List<BackendService> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   BackendServiceList();
 
@@ -9473,7 +9207,6 @@ class BackendServiceList {
   }
 }
 
-
 /** Deprecation status for a public resource. */
 class DeprecationStatus {
   /**
@@ -9481,26 +9214,22 @@ class DeprecationStatus {
    * this resource will be changed to DELETED.
    */
   core.String deleted;
-
   /**
    * An optional RFC3339 timestamp on or after which the deprecation state of
    * this resource will be changed to DEPRECATED.
    */
   core.String deprecated;
-
   /**
    * An optional RFC3339 timestamp on or after which the deprecation state of
    * this resource will be changed to OBSOLETE.
    */
   core.String obsolete;
-
   /**
    * The URL of the suggested replacement for a deprecated resource. The
    * suggested replacement resource must be the same kind of resource as the
    * deprecated resource.
    */
   core.String replacement;
-
   /**
    * The deprecation state of this resource. This can be DEPRECATED, OBSOLETE,
    * or DELETED. Operations which create a new resource using a DEPRECATED
@@ -9513,7 +9242,6 @@ class DeprecationStatus {
    * - "OBSOLETE"
    */
   core.String state;
-
 
   DeprecationStatus();
 
@@ -9556,29 +9284,23 @@ class DeprecationStatus {
   }
 }
 
-
 /** A Disk resource. */
 class Disk {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] Type of the resource. Always compute#disk for disks. */
   core.String kind;
-
   /** Any applicable publicly visible licenses. */
   core.List<core.String> licenses;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
@@ -9589,13 +9311,10 @@ class Disk {
    * dash.
    */
   core.String name;
-
   /** Internal use only. */
   core.String options;
-
   /** [Output Only] Server-defined fully-qualified URL for this resource. */
   core.String selfLink;
-
   /**
    * Size of the persistent disk, specified in GB. You can specify this field
    * when creating a persistent disk using the sourceImage or sourceSnapshot
@@ -9606,7 +9325,6 @@ class Disk {
    * size of the snapshot.
    */
   core.String sizeGb;
-
   /**
    * The source image used to create this disk. If the source image is deleted
    * from the system, this field will not be set, even if an image with the same
@@ -9628,7 +9346,6 @@ class Disk {
    * work in both cases.
    */
   core.String sourceImage;
-
   /**
    * The ID value of the image used to create this disk. This value identifies
    * the exact image that was used to create this persistent disk. For example,
@@ -9637,7 +9354,6 @@ class Disk {
    * version of the image that was used.
    */
   core.String sourceImageId;
-
   /**
    * The source snapshot used to create this disk. You can provide this as a
    * partial or full URL to the resource. For example, the following are valid
@@ -9648,7 +9364,6 @@ class Disk {
    * - global/snapshots/snapshot
    */
   core.String sourceSnapshot;
-
   /**
    * [Output Only] The unique ID of the snapshot used to create this disk. This
    * value identifies the exact snapshot that was used to create this persistent
@@ -9657,7 +9372,6 @@ class Disk {
    * would identify the exact version of the snapshot that was used.
    */
   core.String sourceSnapshotId;
-
   /**
    * [Output Only] The status of disk creation. Applicable statuses includes:
    * CREATING, FAILED, READY, RESTORING.
@@ -9668,16 +9382,13 @@ class Disk {
    * - "RESTORING"
    */
   core.String status;
-
   /**
    * URL of the disk type resource describing which disk type to use to create
    * the disk; provided by the client when the disk is created.
    */
   core.String type;
-
   /** [Output Only] URL of the zone where the disk resides. */
   core.String zone;
-
 
   Disk();
 
@@ -9786,28 +9497,22 @@ class Disk {
   }
 }
 
-
 class DiskAggregatedList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A map of scoped disk lists. */
   core.Map<core.String, DisksScopedList> items;
-
   /**
    * [Output Only] Type of resource. Always compute#diskAggregatedList for
    * aggregated lists of persistent disks.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   DiskAggregatedList();
 
@@ -9850,28 +9555,22 @@ class DiskAggregatedList {
   }
 }
 
-
 /** A list of Disk resources. */
 class DiskList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A list of persistent disks. */
   core.List<Disk> items;
-
   /**
    * [Output Only] Type of resource. Always compute#diskList for lists of disks.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   DiskList();
 
@@ -9914,7 +9613,6 @@ class DiskList {
   }
 }
 
-
 class DiskMoveRequest {
   /**
    * The URL of the destination zone to move the disk to. This can be a full or
@@ -9924,7 +9622,6 @@ class DiskMoveRequest {
    * - zones/zone
    */
   core.String destinationZone;
-
   /**
    * The URL of the target disk to move. This can be a full or partial URL. For
    * example, the following are all valid URLs to a disk:
@@ -9934,7 +9631,6 @@ class DiskMoveRequest {
    * - zones/zone/disks/disk
    */
   core.String targetDisk;
-
 
   DiskMoveRequest();
 
@@ -9959,46 +9655,35 @@ class DiskMoveRequest {
   }
 }
 
-
 /** A disk type resource. */
 class DiskType {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /** [Output Only] Server defined default disk size in GB. */
   core.String defaultDiskSizeGb;
-
   /** [Output Only] The deprecation status associated with this disk type. */
   DeprecationStatus deprecated;
-
   /** [Output Only] An optional textual description of the resource. */
   core.String description;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /**
    * [Output Only] Type of the resource. Always compute#diskType for disk types.
    */
   core.String kind;
-
   /** [Output Only] Name of the resource. */
   core.String name;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
   /**
    * [Output Only] An optional textual description of the valid disk size, such
    * as "10GB-10TB".
    */
   core.String validDiskSize;
-
   /** [Output Only] URL of the zone where the disk type resides. */
   core.String zone;
-
 
   DiskType();
 
@@ -10071,25 +9756,19 @@ class DiskType {
   }
 }
 
-
 class DiskTypeAggregatedList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A map of scoped disk type lists. */
   core.Map<core.String, DiskTypesScopedList> items;
-
   /** [Output Only] Type of resource. Always compute#diskTypeAggregatedList. */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   DiskTypeAggregatedList();
 
@@ -10132,28 +9811,22 @@ class DiskTypeAggregatedList {
   }
 }
 
-
 /** Contains a list of disk type resources. */
 class DiskTypeList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A list of Disk Type resources. */
   core.List<DiskType> items;
-
   /**
    * [Output Only] Type of resource. Always compute#diskTypeList for disk types.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   DiskTypeList();
 
@@ -10196,14 +9869,11 @@ class DiskTypeList {
   }
 }
 
-
 class DiskTypesScopedListWarningData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   DiskTypesScopedListWarningData();
 
@@ -10228,7 +9898,6 @@ class DiskTypesScopedListWarningData {
   }
 }
 
-
 /**
  * [Output Only] Informational warning which replaces the list of disk types
  * when the list is empty.
@@ -10245,6 +9914,7 @@ class DiskTypesScopedListWarning {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -10252,13 +9922,10 @@ class DiskTypesScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<DiskTypesScopedListWarningData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   DiskTypesScopedListWarning();
 
@@ -10289,17 +9956,14 @@ class DiskTypesScopedListWarning {
   }
 }
 
-
 class DiskTypesScopedList {
   /** [Output Only] List of disk types contained in this scope. */
   core.List<DiskType> diskTypes;
-
   /**
    * [Output Only] Informational warning which replaces the list of disk types
    * when the list is empty.
    */
   DiskTypesScopedListWarning warning;
-
 
   DiskTypesScopedList();
 
@@ -10324,14 +9988,11 @@ class DiskTypesScopedList {
   }
 }
 
-
 class DisksScopedListWarningData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   DisksScopedListWarningData();
 
@@ -10356,7 +10017,6 @@ class DisksScopedListWarningData {
   }
 }
 
-
 /**
  * [Output Only] Informational warning which replaces the list of disks when the
  * list is empty.
@@ -10373,6 +10033,7 @@ class DisksScopedListWarning {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -10380,13 +10041,10 @@ class DisksScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<DisksScopedListWarningData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   DisksScopedListWarning();
 
@@ -10417,17 +10075,14 @@ class DisksScopedListWarning {
   }
 }
 
-
 class DisksScopedList {
   /** [Output Only] List of disks contained in this scope. */
   core.List<Disk> disks;
-
   /**
    * [Output Only] Informational warning which replaces the list of disks when
    * the list is empty.
    */
   DisksScopedListWarning warning;
-
 
   DisksScopedList();
 
@@ -10452,7 +10107,6 @@ class DisksScopedList {
   }
 }
 
-
 class FirewallAllowed {
   /**
    * The IP protocol that is allowed for this rule. The protocol type is
@@ -10461,7 +10115,6 @@ class FirewallAllowed {
    * the IP protocol number.
    */
   core.String IPProtocol;
-
   /**
    * An optional list of ports which are allowed. This field is only applicable
    * for UDP or TCP protocol. Each entry must be either an integer or a range.
@@ -10470,7 +10123,6 @@ class FirewallAllowed {
    * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
    */
   core.List<core.String> ports;
-
 
   FirewallAllowed();
 
@@ -10495,7 +10147,6 @@ class FirewallAllowed {
   }
 }
 
-
 /** A Firewall resource. */
 class Firewall {
   /**
@@ -10503,27 +10154,22 @@ class Firewall {
    * protocol and port-range tuple that describes a permitted connection.
    */
   core.List<FirewallAllowed> allowed;
-
   /** [Output Only] Creation timestamp in RFC3339text format. */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /**
    * [Output Ony] Type of the resource. Always compute#firewall for firewall
    * rules.
    */
   core.String kind;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
@@ -10534,7 +10180,6 @@ class Firewall {
    * dash.
    */
   core.String name;
-
   /**
    * URL of the network resource for this firewall rule. This field is required
    * for creating an instance but optional when creating a firewall rule. If not
@@ -10548,10 +10193,8 @@ class Firewall {
    * - global/networks/default
    */
   core.String network;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
   /**
    * The IP address blocks that this rule applies to, expressed in CIDR format.
    * One or both of sourceRanges and sourceTags may be set.
@@ -10561,7 +10204,6 @@ class Firewall {
    * property; the connection does not need to match both properties.
    */
   core.List<core.String> sourceRanges;
-
   /**
    * A list of instance tags which this rule applies to. One or both of
    * sourceRanges and sourceTags may be set.
@@ -10571,7 +10213,6 @@ class Firewall {
    * property; the connection does not need to match both properties.
    */
   core.List<core.String> sourceTags;
-
   /**
    * A list of instance tags indicating sets of instances located on network
    * which may make network connections as specified in allowed[]. If no
@@ -10579,7 +10220,6 @@ class Firewall {
    * specified network.
    */
   core.List<core.String> targetTags;
-
 
   Firewall();
 
@@ -10658,29 +10298,23 @@ class Firewall {
   }
 }
 
-
 /** Contains a list of Firewall resources. */
 class FirewallList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A list of Firewall resources. */
   core.List<Firewall> items;
-
   /**
    * [Output Only] Type of resource. Always compute#firewallList for lists of
    * firewalls.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   FirewallList();
 
@@ -10723,7 +10357,6 @@ class FirewallList {
   }
 }
 
-
 /**
  * A ForwardingRule resource. A ForwardingRule resource specifies which pool of
  * target VMs to forward a packet to if it matches the given [IPAddress,
@@ -10738,7 +10371,6 @@ class ForwardingRule {
    * the same scope (global or regional) will be assigned.
    */
   core.String IPAddress;
-
   /**
    * The IP protocol to which this rule applies, valid options are 'TCP', 'UDP',
    * 'ESP', 'AH' or 'SCTP'.
@@ -10750,30 +10382,24 @@ class ForwardingRule {
    * - "UDP"
    */
   core.String IPProtocol;
-
   /** Creation timestamp in RFC3339 text format (output only). */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** Type of the resource. */
   core.String kind;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    */
   core.String name;
-
   /**
    * Applicable only when 'IPProtocol' is 'TCP', 'UDP' or 'SCTP', only packets
    * addressed to ports in the specified range will be forwarded to 'target'. If
@@ -10782,16 +10408,13 @@ class ForwardingRule {
    * disjoint port ranges.
    */
   core.String portRange;
-
   /**
    * URL of the region where the regional forwarding rule resides (output only).
    * This field is not applicable to global forwarding rules.
    */
   core.String region;
-
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
-
   /**
    * The URL of the target resource to receive the matched traffic. For regional
    * forwarding rules, this target must live in the same region as the
@@ -10799,7 +10422,6 @@ class ForwardingRule {
    * TargetHttpProxy resource.
    */
   core.String target;
-
 
   ForwardingRule();
 
@@ -10878,25 +10500,19 @@ class ForwardingRule {
   }
 }
 
-
 class ForwardingRuleAggregatedList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A map of scoped forwarding rule lists. */
   core.Map<core.String, ForwardingRulesScopedList> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   ForwardingRuleAggregatedList();
 
@@ -10939,26 +10555,20 @@ class ForwardingRuleAggregatedList {
   }
 }
 
-
 /** Contains a list of ForwardingRule resources. */
 class ForwardingRuleList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A list of ForwardingRule resources. */
   core.List<ForwardingRule> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   ForwardingRuleList();
 
@@ -11001,14 +10611,11 @@ class ForwardingRuleList {
   }
 }
 
-
 class ForwardingRulesScopedListWarningData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   ForwardingRulesScopedListWarningData();
 
@@ -11033,7 +10640,6 @@ class ForwardingRulesScopedListWarningData {
   }
 }
 
-
 /**
  * Informational warning which replaces the list of forwarding rules when the
  * list is empty.
@@ -11050,6 +10656,7 @@ class ForwardingRulesScopedListWarning {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -11057,13 +10664,10 @@ class ForwardingRulesScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<ForwardingRulesScopedListWarningData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   ForwardingRulesScopedListWarning();
 
@@ -11094,17 +10698,14 @@ class ForwardingRulesScopedListWarning {
   }
 }
 
-
 class ForwardingRulesScopedList {
   /** List of forwarding rules contained in this scope. */
   core.List<ForwardingRule> forwardingRules;
-
   /**
    * Informational warning which replaces the list of forwarding rules when the
    * list is empty.
    */
   ForwardingRulesScopedListWarning warning;
-
 
   ForwardingRulesScopedList();
 
@@ -11129,10 +10730,8 @@ class ForwardingRulesScopedList {
   }
 }
 
-
 class HealthCheckReference {
   core.String healthCheck;
-
 
   HealthCheckReference();
 
@@ -11151,7 +10750,6 @@ class HealthCheckReference {
   }
 }
 
-
 class HealthStatus {
   /**
    * Health state of the instance.
@@ -11160,16 +10758,12 @@ class HealthStatus {
    * - "UNHEALTHY"
    */
   core.String healthState;
-
   /** URL of the instance resource. */
   core.String instance;
-
   /** The IP address represented by this resource. */
   core.String ipAddress;
-
   /** The port on the instance. */
   core.int port;
-
 
   HealthStatus();
 
@@ -11206,27 +10800,23 @@ class HealthStatus {
   }
 }
 
-
 /**
  * A host-matching rule for a URL. If matched, will use the named PathMatcher to
  * select the BackendService.
  */
 class HostRule {
   core.String description;
-
   /**
    * The list of host patterns to match. They must be valid hostnames except
    * that they may start with *. or *-. The * acts like a glob and will match
    * any string of atoms (separated by .s and -s) to the left.
    */
   core.List<core.String> hosts;
-
   /**
    * The name of the PathMatcher to match the path portion of the URL, if the
    * this HostRule matches the URL's host portion.
    */
   core.String pathMatcher;
-
 
   HostRule();
 
@@ -11257,7 +10847,6 @@ class HostRule {
   }
 }
 
-
 /**
  * An HttpHealthCheck resource. This resource defines a template for how
  * individual VMs should be checked for health, via HTTP.
@@ -11268,71 +10857,58 @@ class HttpHealthCheck {
    * seconds.
    */
   core.int checkIntervalSec;
-
   /** Creation timestamp in RFC3339 text format (output only). */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * A so-far unhealthy VM will be marked healthy after this many consecutive
    * successes. The default value is 2.
    */
   core.int healthyThreshold;
-
   /**
    * The value of the host header in the HTTP health check request. If left
    * empty (default value), the public IP on behalf of which this health check
    * is performed will be used.
    */
   core.String host;
-
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** Type of the resource. */
   core.String kind;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    */
   core.String name;
-
   /**
    * The TCP port number for the HTTP health check request. The default value is
    * 80.
    */
   core.int port;
-
   /**
    * The request path of the HTTP health check request. The default value is
    * "/".
    */
   core.String requestPath;
-
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
-
   /**
    * How long (in seconds) to wait before claiming failure. The default value is
    * 5 seconds. It is invalid for timeoutSec to have greater value than
    * checkIntervalSec.
    */
   core.int timeoutSec;
-
   /**
    * A so-far healthy VM will be marked unhealthy after this many consecutive
    * failures. The default value is 2.
    */
   core.int unhealthyThreshold;
-
 
   HttpHealthCheck();
 
@@ -11423,26 +10999,20 @@ class HttpHealthCheck {
   }
 }
 
-
 /** Contains a list of HttpHealthCheck resources. */
 class HttpHealthCheckList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A list of HttpHealthCheck resources. */
   core.List<HttpHealthCheck> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   HttpHealthCheckList();
 
@@ -11485,7 +11055,6 @@ class HttpHealthCheckList {
   }
 }
 
-
 /** The parameters of the raw disk image. */
 class ImageRawDisk {
   /**
@@ -11496,19 +11065,16 @@ class ImageRawDisk {
    * - "TAR"
    */
   core.String containerType;
-
   /**
    * An optional SHA1 checksum of the disk image before unpackaging; provided by
    * the client when the disk image is created.
    */
   core.String sha1Checksum;
-
   /**
    * The full Google Cloud Storage URL where the disk image is stored. You must
    * provide either this property or the sourceDisk property but not both.
    */
   core.String source;
-
 
   ImageRawDisk();
 
@@ -11539,40 +11105,31 @@ class ImageRawDisk {
   }
 }
 
-
 /** An Image resource. */
 class Image {
   /**
    * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
    */
   core.String archiveSizeBytes;
-
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /** The deprecation status associated with this image. */
   DeprecationStatus deprecated;
-
   /**
    * Textual description of the resource; provided by the client when the
    * resource is created.
    */
   core.String description;
-
   /** Size of the image when restored onto a persistent disk (in GB). */
   core.String diskSizeGb;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] Type of the resource. Always compute#image for images. */
   core.String kind;
-
   /** Any applicable publicly visible licenses. */
   core.List<core.String> licenses;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
@@ -11583,13 +11140,10 @@ class Image {
    * dash.
    */
   core.String name;
-
   /** The parameters of the raw disk image. */
   ImageRawDisk rawDisk;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
   /**
    * URL of the The source disk used to create this image. This can be a full or
    * valid partial URL. You must provide either this property or the
@@ -11601,14 +11155,12 @@ class Image {
    * - zones/zone/disks/disk
    */
   core.String sourceDisk;
-
   /**
    * The ID value of the disk used to create this image. This value may be used
    * to determine whether the image was taken from the current or a previous
    * instance of a given disk name.
    */
   core.String sourceDiskId;
-
   /**
    * The type of the image used to create this disk. The default and only value
    * is RAW
@@ -11616,7 +11168,6 @@ class Image {
    * - "RAW"
    */
   core.String sourceType;
-
   /**
    * [Output Only] The status of the image. An image can be used to create other
    * resources, such as instances, only after the image has been successfully
@@ -11628,7 +11179,6 @@ class Image {
    * - "READY"
    */
   core.String status;
-
 
   Image();
 
@@ -11731,26 +11281,20 @@ class Image {
   }
 }
 
-
 /** Contains a list of Image resources. */
 class ImageList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A list of Image resources. */
   core.List<Image> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   ImageList();
 
@@ -11793,7 +11337,6 @@ class ImageList {
   }
 }
 
-
 /** An Instance resource. */
 class Instance {
   /**
@@ -11803,35 +11346,28 @@ class Instance {
    * Forwarding.
    */
   core.bool canIpForward;
-
   /** [Output Only] The CPU platform used by this instance. */
   core.String cpuPlatform;
-
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * Array of disks associated with this instance. Persistent disks must be
    * created before you can assign them.
    */
   core.List<AttachedDisk> disks;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /**
    * [Output Only] Type of the resource. Always compute#instance for instances.
    */
   core.String kind;
-
   /**
    * Full or partial URL of the machine type resource to use for this instance.
    * This is provided by the client when the instance is created. For example,
@@ -11840,13 +11376,11 @@ class Instance {
    * zones/zone/machineTypes/machine-type
    */
   core.String machineType;
-
   /**
    * The metadata key/value pairs assigned to this instance. This includes
    * custom metadata and predefined keys.
    */
   Metadata metadata;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
@@ -11857,20 +11391,16 @@ class Instance {
    * dash.
    */
   core.String name;
-
   /**
    * An array of configurations for this interface. This specifies how this
    * interface is configured to interact with other network services, such as
    * connecting to the internet.
    */
   core.List<NetworkInterface> networkInterfaces;
-
   /** Scheduling options for this instance. */
   Scheduling scheduling;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
   /**
    * A list of service accounts, with their specified scopes, authorized for
    * this instance. Service accounts generate access tokens that can be accessed
@@ -11879,7 +11409,6 @@ class Instance {
    * information.
    */
   core.List<ServiceAccount> serviceAccounts;
-
   /**
    * [Output Only] The status of the instance. One of the following values:
    * PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, TERMINATED.
@@ -11892,10 +11421,8 @@ class Instance {
    * - "TERMINATED"
    */
   core.String status;
-
   /** [Output Only] An optional, human-readable explanation of the status. */
   core.String statusMessage;
-
   /**
    * A list of tags to appy to this instance. Tags are used to identify valid
    * sources or targets for network firewalls and are specified by the client
@@ -11903,10 +11430,8 @@ class Instance {
    * method. Each tag within the list must comply with RFC1035.
    */
   Tags tags;
-
   /** [Output Only] URL of the zone where the instance resides. */
   core.String zone;
-
 
   Instance();
 
@@ -12027,28 +11552,22 @@ class Instance {
   }
 }
 
-
 class InstanceAggregatedList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A map of scoped instance lists. */
   core.Map<core.String, InstancesScopedList> items;
-
   /**
    * [Output Only] Type of resource. Always compute#instanceAggregatedList for
    * aggregated lists of Instance resources.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   InstanceAggregatedList();
 
@@ -12091,29 +11610,23 @@ class InstanceAggregatedList {
   }
 }
 
-
 /** Contains a list of instance resources. */
 class InstanceList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A list of Instance resources. */
   core.List<Instance> items;
-
   /**
    * [Output Only] Type of resource. Always compute#instanceList for lists of
    * Instance resources.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   InstanceList();
 
@@ -12156,7 +11669,6 @@ class InstanceList {
   }
 }
 
-
 class InstanceMoveRequest {
   /**
    * The URL of the destination zone to move the instance to. This can be a full
@@ -12166,7 +11678,6 @@ class InstanceMoveRequest {
    * - zones/zone
    */
   core.String destinationZone;
-
   /**
    * The URL of the target instance to move. This can be a full or partial URL.
    * For example, the following are all valid URLs to an instance:
@@ -12176,7 +11687,6 @@ class InstanceMoveRequest {
    * - zones/zone/instances/instance
    */
   core.String targetInstance;
-
 
   InstanceMoveRequest();
 
@@ -12201,71 +11711,63 @@ class InstanceMoveRequest {
   }
 }
 
-
 class InstanceProperties {
   /**
-   * Allows instances created based on this template to send packets with source
-   * IP addresses other than their own and receive packets with destination IP
-   * addresses other than their own. If these instances will be used as an IP
-   * gateway or it will be set as the next-hop in a Route resource, say true. If
-   * unsure, leave this set to false.
+   * A boolean that specifies if instances created from this template can send
+   * packets with source IP addresses other than their own or receive packets
+   * with destination IP addresses other than their own. If you use these
+   * instances as an IP gateway or as the next-hop in a Route resource, specify
+   * true. Otherwise, specify false.
    */
   core.bool canIpForward;
-
   /**
-   * An optional textual description for the instances created based on the
-   * instance template resource; provided by the client when the template is
-   * created.
+   * An optional text description for the instances that are created from this
+   * instance template.
    */
   core.String description;
-
   /**
-   * Array of disks associated with instance created based on this template.
+   * An array of disks that are associated with the instances that are created
+   * from this template.
    */
   core.List<AttachedDisk> disks;
-
   /**
-   * Name of the machine type resource describing which machine type to use to
-   * host the instances created based on this template; provided by the client
-   * when the instance template is created.
+   * The machine type to use for instances that are created from this template.
    */
   core.String machineType;
-
   /**
-   * Metadata key/value pairs assigned to instances created based on this
-   * template. Consists of custom metadata or predefined keys; see Instance
-   * documentation for more information.
+   * The metadata key/value pairs to assign to instances that are created from
+   * this template. These pairs can consist of custom metadata or predefined
+   * keys. See Project and instance metadata for more information.
    */
   Metadata metadata;
-
   /**
-   * Array of configurations for this interface. This specifies how this
-   * interface is configured to interact with other network services, such as
-   * connecting to the internet. Currently, ONE_TO_ONE_NAT is the only access
-   * config supported. If there are no accessConfigs specified, then this
-   * instances created based based on this template will have no external
-   * internet access.
+   * An array of network access configurations for this interface. This
+   * specifies how this interface is configured to interact with other network
+   * services, such as connecting to the internet. Currently, ONE_TO_ONE_NAT is
+   * the only supported access configuration. If you do not specify any access
+   * configurations, the instances that are created from this template will have
+   * no external internet access.
    */
   core.List<NetworkInterface> networkInterfaces;
-
-  /** Scheduling options for the instances created based on this template. */
-  Scheduling scheduling;
-
   /**
-   * A list of service accounts each with specified scopes, for which access
-   * tokens are to be made available to the instances created based on this
-   * template, through metadata queries.
+   * A list of scheduling options for the instances that are created from this
+   * template.
+   */
+  Scheduling scheduling;
+  /**
+   * A list of service accounts with specified scopes. Access tokens for these
+   * service accounts are available to the instances that are created from this
+   * template. Use metadata queries to obtain the access tokens for these
+   * instances.
    */
   core.List<ServiceAccount> serviceAccounts;
-
   /**
-   * A list of tags to be applied to the instances created based on this
-   * template used to identify valid sources or targets for network firewalls.
-   * Provided by the client on instance creation. The tags can be later modified
-   * by the setTags method. Each tag within the list must comply with RFC1035.
+   * A list of tags to apply to the instances that are created from this
+   * template. The tags identify valid sources or targets for network firewalls.
+   * The setTags method can modify this list of tags. Each tag within the list
+   * must comply with RFC1035.
    */
   Tags tags;
-
 
   InstanceProperties();
 
@@ -12332,10 +11834,8 @@ class InstanceProperties {
   }
 }
 
-
 class InstanceReference {
   core.String instance;
-
 
   InstanceReference();
 
@@ -12354,39 +11854,37 @@ class InstanceReference {
   }
 }
 
-
 /** An Instance Template resource. */
 class InstanceTemplate {
-  /** Creation timestamp in RFC3339 text format (output only). */
-  core.String creationTimestamp;
-
   /**
-   * An optional textual description of the instance template resource; provided
-   * by the client when the resource is created.
+   * [Output Only] The creation timestamp for this instance template in RFC3339
+   * text format.
    */
+  core.String creationTimestamp;
+  /** An optional text description for the instance template. */
   core.String description;
-
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] A unique identifier for this instance template. The server
+   * defines this identifier.
    */
   core.String id;
-
-  /** Type of the resource. */
-  core.String kind;
-
   /**
-   * Name of the instance template resource; provided by the client when the
-   * resource is created. The name must be 1-63 characters long, and comply with
-   * RFC1035
+   * [Output Only] The resource type, which is always compute#instanceTemplate
+   * for instance templates.
+   */
+  core.String kind;
+  /**
+   * The name of the instance template. The name must be 1-63 characters long,
+   * and comply with RFC1035.
    */
   core.String name;
-
-  /** The instance properties portion of this instance template resource. */
+  /** The instance properties for the instance template resource. */
   InstanceProperties properties;
-
-  /** Server defined URL for the resource (output only). */
+  /**
+   * [Output Only] The URL for this instance template. The server defines this
+   * URL.
+   */
   core.String selfLink;
-
 
   InstanceTemplate();
 
@@ -12441,26 +11939,29 @@ class InstanceTemplate {
   }
 }
 
-
-/** Contains a list of instance template resources. */
+/** A list of instance templates. */
 class InstanceTemplateList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] A unique identifier for this instance template. The server
+   * defines this identifier.
    */
   core.String id;
-
   /** A list of InstanceTemplate resources. */
   core.List<InstanceTemplate> items;
-
-  /** Type of resource. */
+  /**
+   * [Output Only] The resource type, which is always
+   * compute#instanceTemplatesListResponse for instance template lists.
+   */
   core.String kind;
-
-  /** A token used to continue a truncated list request (output only). */
+  /**
+   * [Output Only] A token that is used to continue a truncated list request.
+   */
   core.String nextPageToken;
-
-  /** Server defined URL for this resource (output only). */
+  /**
+   * [Output Only] The URL for this instance template list. The server defines
+   * this URL.
+   */
   core.String selfLink;
-
 
   InstanceTemplateList();
 
@@ -12503,14 +12004,11 @@ class InstanceTemplateList {
   }
 }
 
-
 class InstancesScopedListWarningData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   InstancesScopedListWarningData();
 
@@ -12535,7 +12033,6 @@ class InstancesScopedListWarningData {
   }
 }
 
-
 /**
  * [Output Only] Informational warning which replaces the list of instances when
  * the list is empty.
@@ -12552,6 +12049,7 @@ class InstancesScopedListWarning {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -12559,13 +12057,10 @@ class InstancesScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<InstancesScopedListWarningData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   InstancesScopedListWarning();
 
@@ -12596,17 +12091,14 @@ class InstancesScopedListWarning {
   }
 }
 
-
 class InstancesScopedList {
   /** [Output Only] List of instances contained in this scope. */
   core.List<Instance> instances;
-
   /**
    * [Output Only] Informational warning which replaces the list of instances
    * when the list is empty.
    */
   InstancesScopedListWarning warning;
-
 
   InstancesScopedList();
 
@@ -12631,7 +12123,6 @@ class InstancesScopedList {
   }
 }
 
-
 /** A license resource. */
 class License {
   /**
@@ -12639,19 +12130,15 @@ class License {
    * contains this license on an instance.
    */
   core.bool chargesUseFee;
-
   /** [Output Only] Type of resource. Always compute#license for licenses. */
   core.String kind;
-
   /**
    * Name of the resource. The name must be 1-63 characters long, and comply
    * with RCF1035.
    */
   core.String name;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
 
   License();
 
@@ -12688,11 +12175,9 @@ class License {
   }
 }
 
-
 class MachineTypeScratchDisks {
   /** Size of the scratch disk, defined in GB. */
   core.int diskGb;
-
 
   MachineTypeScratchDisks();
 
@@ -12711,64 +12196,49 @@ class MachineTypeScratchDisks {
   }
 }
 
-
 /** A Machine Type resource. */
 class MachineType {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /**
    * [Output Only] The deprecation status associated with this machine type.
    */
   DeprecationStatus deprecated;
-
   /** [Output Only] An optional textual description of the resource. */
   core.String description;
-
   /** [Output Only] The tumber of CPUs exposed to the instance. */
   core.int guestCpus;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /**
    * [Deprecated] This property is deprecated and will never be populated with
    * any relevant values.
    */
   core.int imageSpaceGb;
-
   /** Type of the resource. */
   core.String kind;
-
   /** [Output Only] Maximum persistent disks allowed. */
   core.int maximumPersistentDisks;
-
   /** [Output Only] Maximum total persistent disks size (GB) allowed. */
   core.String maximumPersistentDisksSizeGb;
-
   /**
    * [Output Only] The amount of physical memory available to the instance,
    * defined in MB.
    */
   core.int memoryMb;
-
   /** [Output Only] Name of the resource. */
   core.String name;
-
   /** [Output Only] List of extended scratch disks assigned to the instance. */
   core.List<MachineTypeScratchDisks> scratchDisks;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
   /**
    * [Output Only] The name of the zone where the machine type resides, such as
    * us-central1-a.
    */
   core.String zone;
-
 
   MachineType();
 
@@ -12865,28 +12335,22 @@ class MachineType {
   }
 }
 
-
 class MachineTypeAggregatedList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A map of scoped machine type lists. */
   core.Map<core.String, MachineTypesScopedList> items;
-
   /**
    * [Output Only] Type of resource. Always compute#machineTypeAggregatedList
    * for aggregated lists of machine types.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   MachineTypeAggregatedList();
 
@@ -12929,29 +12393,23 @@ class MachineTypeAggregatedList {
   }
 }
 
-
 /** Contains a list of Machine Type resources. */
 class MachineTypeList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A list of Machine Type resources. */
   core.List<MachineType> items;
-
   /**
    * [Output Only] Type of resource. Always compute#machineTypeList for lists of
    * machine types.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   MachineTypeList();
 
@@ -12994,14 +12452,11 @@ class MachineTypeList {
   }
 }
 
-
 class MachineTypesScopedListWarningData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   MachineTypesScopedListWarningData();
 
@@ -13026,7 +12481,6 @@ class MachineTypesScopedListWarningData {
   }
 }
 
-
 /**
  * [Output Only] An informational warning that appears when the machine types
  * list is empty.
@@ -13043,6 +12497,7 @@ class MachineTypesScopedListWarning {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -13050,13 +12505,10 @@ class MachineTypesScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<MachineTypesScopedListWarningData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   MachineTypesScopedListWarning();
 
@@ -13087,17 +12539,14 @@ class MachineTypesScopedListWarning {
   }
 }
 
-
 class MachineTypesScopedList {
   /** [Output Only] List of machine types contained in this scope. */
   core.List<MachineType> machineTypes;
-
   /**
    * [Output Only] An informational warning that appears when the machine types
    * list is empty.
    */
   MachineTypesScopedListWarning warning;
-
 
   MachineTypesScopedList();
 
@@ -13122,7 +12571,6 @@ class MachineTypesScopedList {
   }
 }
 
-
 class MetadataItems {
   /**
    * Key for the metadata entry. Keys must conform to the following regexp:
@@ -13131,7 +12579,6 @@ class MetadataItems {
    * keys must not conflict with any other metadata keys for the project.
    */
   core.String key;
-
   /**
    * Value for the metadata entry. These are free-form strings, and only have
    * meaning as interpreted by the image running in the instance. The only
@@ -13139,7 +12586,6 @@ class MetadataItems {
    * to 32768 bytes.
    */
   core.String value;
-
 
   MetadataItems();
 
@@ -13164,7 +12610,6 @@ class MetadataItems {
   }
 }
 
-
 /** A metadata key/value entry. */
 class Metadata {
   /**
@@ -13175,7 +12620,6 @@ class Metadata {
    * fingerprint hash in order to update or change metadata.
    */
   core.String fingerprint;
-
   core.List<core.int> get fingerprintAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(fingerprint);
   }
@@ -13183,18 +12627,15 @@ class Metadata {
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /**
    * Array of key/value pairs. The total size of all keys and values must be
    * less than 512 KB.
    */
   core.List<MetadataItems> items;
-
   /**
    * [Output Only] Type of the resource. Always compute#metadata for metadata.
    */
   core.String kind;
-
 
   Metadata();
 
@@ -13225,7 +12666,6 @@ class Metadata {
   }
 }
 
-
 /** A network resource. */
 class Network {
   /**
@@ -13234,33 +12674,27 @@ class Network {
    * client when the network is created.
    */
   core.String IPv4Range;
-
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * A gateway address for default routing to other networks. This value is read
    * only and is selected by the Google Compute Engine, typically as the first
    * usable address in the IPv4Range.
    */
   core.String gatewayIPv4;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /**
    * [Output Only] Type of the resource. Always compute#network for networks.
    */
   core.String kind;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
@@ -13271,10 +12705,8 @@ class Network {
    * dash.
    */
   core.String name;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
 
   Network();
 
@@ -13335,7 +12767,6 @@ class Network {
   }
 }
 
-
 /** A network interface resource attached to an instance. */
 class NetworkInterface {
   /**
@@ -13345,13 +12776,11 @@ class NetworkInterface {
    * access.
    */
   core.List<AccessConfig> accessConfigs;
-
   /**
    * [Output Only] The name of the network interface, generated by the server.
    * For network devices, these are eth0, eth1, etc.
    */
   core.String name;
-
   /**
    * URL of the network resource for this instance. This is required for
    * creating an instance but optional when creating a firewall rule. If not
@@ -13367,13 +12796,11 @@ class NetworkInterface {
    * - global/networks/default
    */
   core.String network;
-
   /**
    * [Output Only] An optional IPV4 internal network address assigned to the
    * instance for this network interface.
    */
   core.String networkIP;
-
 
   NetworkInterface();
 
@@ -13410,29 +12837,23 @@ class NetworkInterface {
   }
 }
 
-
 /** Contains a list of Network resources. */
 class NetworkList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A list of Network resources. */
   core.List<Network> items;
-
   /**
    * [Output Only] Type of resource. Always compute#networkList for lists of
    * networks.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource . */
   core.String selfLink;
-
 
   NetworkList();
 
@@ -13475,20 +12896,16 @@ class NetworkList {
   }
 }
 
-
 class OperationErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
-
   /**
    * [Output Only] Indicates the field in the request which caused the error.
    * This property is optional.
    */
   core.String location;
-
   /** [Output Only] An optional, human-readable error message. */
   core.String message;
-
 
   OperationErrorErrors();
 
@@ -13519,7 +12936,6 @@ class OperationErrorErrors {
   }
 }
 
-
 /**
  * [Output Only] If errors are generated during processing of the operation,
  * this field will be populated.
@@ -13530,7 +12946,6 @@ class OperationError {
    * operation.
    */
   core.List<OperationErrorErrors> errors;
-
 
   OperationError();
 
@@ -13549,14 +12964,11 @@ class OperationError {
   }
 }
 
-
 class OperationWarningsData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   OperationWarningsData();
 
@@ -13581,7 +12993,6 @@ class OperationWarningsData {
   }
 }
 
-
 class OperationWarnings {
   /**
    * [Output Only] The warning type identifier for this warning.
@@ -13594,6 +13005,7 @@ class OperationWarnings {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -13601,13 +13013,10 @@ class OperationWarnings {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<OperationWarningsData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   OperationWarnings();
 
@@ -13638,92 +13047,76 @@ class OperationWarnings {
   }
 }
 
-
 /** An operation resource, used to manage asynchronous API requests. */
 class Operation {
   /**
    * [Output Only] An optional identifier specified by the client when the
    * mutation was initiated. Must be unique for all operation resources in the
-   * project
+   * project.
    */
   core.String clientOperationId;
-
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /**
    * [Output Only] The time that this operation was completed. This is in
    * RFC3339 text format.
    */
   core.String endTime;
-
   /**
    * [Output Only] If errors are generated during processing of the operation,
    * this field will be populated.
    */
   OperationError error;
-
   /**
    * [Output Only] If the operation fails, this field contains the HTTP error
    * message that was returned, such as NOT FOUND.
    */
   core.String httpErrorMessage;
-
   /**
    * [Output Only] If the operation fails, this field contains the HTTP error
    * message that was returned, such as 404.
    */
   core.int httpErrorStatusCode;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /**
    * [Output Only] The time that this operation was requested. This is in
    * RFC3339 text format.
    */
   core.String insertTime;
-
   /**
    * [Output Only] Type of the resource. Always compute#Operation for Operation
    * resources.
    */
   core.String kind;
-
   /** [Output Only] Name of the resource. */
   core.String name;
-
   /**
    * [Output Only] Type of the operation, such as insert, update, and delete.
    */
   core.String operationType;
-
   /**
    * [Output Only] An optional progress indicator that ranges from 0 to 100.
    * There is no requirement that this be linear or support any granularity of
    * operations. This should not be used to guess at when the operation will be
-   * complete. This number should be monotonically increasing as the operation
+   * complete. This number should monotonically increase as the operation
    * progresses.
    */
   core.int progress;
-
   /**
    * [Output Only] URL of the region where the operation resides. Only
    * applicable for regional resources.
    */
   core.String region;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
   /**
    * [Output Only] The time that this operation was started by the server. This
    * is in RFC3339 text format.
    */
   core.String startTime;
-
   /**
    * [Output Only] Status of the operation. Can be one of the following:
    * PENDING, RUNNING, or DONE.
@@ -13733,37 +13126,30 @@ class Operation {
    * - "RUNNING"
    */
   core.String status;
-
   /**
    * [Output Only] An optional textual description of the current status of the
    * operation.
    */
   core.String statusMessage;
-
   /**
    * [Output Only] Unique target ID which identifies a particular incarnation of
    * the target.
    */
   core.String targetId;
-
   /** [Output Only] URL of the resource the operation is mutating. */
   core.String targetLink;
-
   /**
    * [Output Only] User who requested the operation, for example:
    * user@example.com.
    */
   core.String user;
-
   /**
    * [Output Only] If warning messages are generated during processing of the
    * operation, this field will be populated.
    */
   core.List<OperationWarnings> warnings;
-
   /** [Output Only] URL of the zone where the operation resides. */
   core.String zone;
-
 
   Operation();
 
@@ -13908,28 +13294,22 @@ class Operation {
   }
 }
 
-
 class OperationAggregatedList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A map of scoped operation lists. */
   core.Map<core.String, OperationsScopedList> items;
-
   /**
    * [Output Only] Type of resource. Always compute#operationAggregatedList for
    * aggregated lists of operations.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   OperationAggregatedList();
 
@@ -13972,29 +13352,23 @@ class OperationAggregatedList {
   }
 }
 
-
 /** Contains a list of operation resources. */
 class OperationList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] The operation resources. */
   core.List<Operation> items;
-
   /**
    * [Output Only] Type of resource. Always compute#operations for Operations
    * resource.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncate. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   OperationList();
 
@@ -14037,14 +13411,11 @@ class OperationList {
   }
 }
 
-
 class OperationsScopedListWarningData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   OperationsScopedListWarningData();
 
@@ -14069,7 +13440,6 @@ class OperationsScopedListWarningData {
   }
 }
 
-
 /**
  * [Output Only] Informational warning which replaces the list of operations
  * when the list is empty.
@@ -14086,6 +13456,7 @@ class OperationsScopedListWarning {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -14093,13 +13464,10 @@ class OperationsScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<OperationsScopedListWarningData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   OperationsScopedListWarning();
 
@@ -14130,17 +13498,14 @@ class OperationsScopedListWarning {
   }
 }
 
-
 class OperationsScopedList {
   /** [Output Only] List of operations contained in this scope. */
   core.List<Operation> operations;
-
   /**
    * [Output Only] Informational warning which replaces the list of operations
    * when the list is empty.
    */
   OperationsScopedListWarning warning;
-
 
   OperationsScopedList();
 
@@ -14165,7 +13530,6 @@ class OperationsScopedList {
   }
 }
 
-
 /**
  * A matcher for the path portion of the URL. The BackendService from the
  * longest-matched rule will serve the URL. If no rule was matched, the
@@ -14177,15 +13541,11 @@ class PathMatcher {
    * 'pathRules' defined by this PathMatcher is met by the URL's path portion.
    */
   core.String defaultService;
-
   core.String description;
-
   /** The name to which this PathMatcher is referred by the HostRule. */
   core.String name;
-
   /** The list of path rules. */
   core.List<PathRule> pathRules;
-
 
   PathMatcher();
 
@@ -14222,7 +13582,6 @@ class PathMatcher {
   }
 }
 
-
 /**
  * A path-matching rule for a URL. If matched, will use the specified
  * BackendService to handle the traffic arriving at this URL.
@@ -14235,10 +13594,8 @@ class PathRule {
    * chars are not allowed here.
    */
   core.List<core.String> paths;
-
   /** The URL of the BackendService resource if this rule is matched. */
   core.String service;
-
 
   PathRule();
 
@@ -14263,7 +13620,6 @@ class PathRule {
   }
 }
 
-
 /**
  * A Project resource. Projects can only be created in the Google Developers
  * Console. Unless marked otherwise, values can only be modified in the console.
@@ -14274,37 +13630,28 @@ class Project {
    * project. See Custom metadata for more information.
    */
   Metadata commonInstanceMetadata;
-
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /** An optional textual description of the resource. */
   core.String description;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /**
    * [Output Only] Type of the resource. Always compute#project for projects.
    */
   core.String kind;
-
   /** Name of the resource. */
   core.String name;
-
   /** [Output Only] Quotas assigned to this project. */
   core.List<Quota> quotas;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
   /**
    * The location in Cloud Storage and naming method of the daily usage report.
    */
   UsageExportLocation usageExportLocation;
-
 
   Project();
 
@@ -14371,12 +13718,10 @@ class Project {
   }
 }
 
-
 /** A quotas entry. */
 class Quota {
   /** [Output Only] Quota limit for this metric. */
   core.double limit;
-
   /**
    * [Output Only] Name of the quota metric.
    * Possible string values are:
@@ -14398,13 +13743,13 @@ class Quota {
    * - "TARGET_HTTP_PROXIES"
    * - "TARGET_INSTANCES"
    * - "TARGET_POOLS"
+   * - "TARGET_VPN_GATEWAYS"
    * - "URL_MAPS"
+   * - "VPN_TUNNELS"
    */
   core.String metric;
-
   /** [Output Only] Current usage of this metric. */
   core.double usage;
-
 
   Quota();
 
@@ -14435,35 +13780,26 @@ class Quota {
   }
 }
 
-
 /** Region resource. */
 class Region {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /** [Output Only] The deprecation status associated with this region. */
   DeprecationStatus deprecated;
-
   /** [Output Only] Textual description of the resource. */
   core.String description;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server .
    */
   core.String id;
-
   /** [Output Only] Type of the resource. Always compute#region for regions. */
   core.String kind;
-
   /** [Output Only] Name of the resource. */
   core.String name;
-
   /** [Output Only] Quotas assigned to this region. */
   core.List<Quota> quotas;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
   /**
    * [Output Only] Status of the region, either UP or DOWN.
    * Possible string values are:
@@ -14471,13 +13807,11 @@ class Region {
    * - "UP"
    */
   core.String status;
-
   /**
    * [Output Only] A list of zones available in this region, in the form of
    * resource URLs.
    */
   core.List<core.String> zones;
-
 
   Region();
 
@@ -14550,29 +13884,23 @@ class Region {
   }
 }
 
-
 /** Contains a list of region resources. */
 class RegionList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A list of Region resources. */
   core.List<Region> items;
-
   /**
    * [Output Only] Type of resource. Always compute#regionList for lists of
    * regions.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   RegionList();
 
@@ -14615,13 +13943,11 @@ class RegionList {
   }
 }
 
-
 class ResourceGroupReference {
   /**
    * A URI referencing one of the resource views listed in the backend service.
    */
   core.String group;
-
 
   ResourceGroupReference();
 
@@ -14640,14 +13966,11 @@ class ResourceGroupReference {
   }
 }
 
-
 class RouteWarningsData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   RouteWarningsData();
 
@@ -14672,7 +13995,6 @@ class RouteWarningsData {
   }
 }
 
-
 class RouteWarnings {
   /**
    * [Output Only] The warning type identifier for this warning.
@@ -14685,6 +14007,7 @@ class RouteWarnings {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -14692,13 +14015,10 @@ class RouteWarnings {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<RouteWarningsData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   RouteWarnings();
 
@@ -14729,7 +14049,6 @@ class RouteWarnings {
   }
 }
 
-
 /**
  * The route resource. A Route is a rule that specifies how certain packets
  * should be handled by the virtual network. Routes are associated with VMs by
@@ -14747,71 +14066,56 @@ class RouteWarnings {
 class Route {
   /** Creation timestamp in RFC3339 text format (output only). */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /** Which packets does this route apply to? */
   core.String destRange;
-
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** Type of the resource. */
   core.String kind;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    */
   core.String name;
-
   /**
    * URL of the network to which this route is applied; provided by the client
    * when the route is created.
    */
   core.String network;
-
   /** The URL to a gateway that should handle matching packets. */
   core.String nextHopGateway;
-
   /** The URL to an instance that should handle matching packets. */
   core.String nextHopInstance;
-
   /**
    * The network IP address of an instance that should handle matching packets.
    */
   core.String nextHopIp;
-
   /** The URL of the local network if it should handle matching packets. */
   core.String nextHopNetwork;
-
   /** The URL to a VpnTunnel that should handle matching packets. */
   core.String nextHopVpnTunnel;
-
   /**
    * Breaks ties between Routes of equal specificity. Routes with smaller values
-   * win when tied with routes with larger values.
+   * win when tied with routes with larger values. Default value is 1000. A
+   * valid range is between 0 and 65535.
    */
   core.int priority;
-
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
-
   /** A list of instance tags to which this route applies. */
   core.List<core.String> tags;
-
   /**
    * If potential misconfigurations are detected for this route, this field will
    * be populated with warning messages.
    */
   core.List<RouteWarnings> warnings;
-
 
   Route();
 
@@ -14920,26 +14224,20 @@ class Route {
   }
 }
 
-
 /** Contains a list of route resources. */
 class RouteList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A list of Route resources. */
   core.List<Route> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   RouteList();
 
@@ -14982,7 +14280,6 @@ class RouteList {
   }
 }
 
-
 /** Sets the scheduling options for an Instance. */
 class Scheduling {
   /**
@@ -14990,7 +14287,6 @@ class Scheduling {
    * terminated by Compute Engine (not terminated by a user).
    */
   core.bool automaticRestart;
-
   /**
    * Defines the maintenance behavior for this instance. The default behavior is
    * MIGRATE. For more information, see Setting maintenance behavior.
@@ -14999,7 +14295,8 @@ class Scheduling {
    * - "TERMINATE"
    */
   core.String onHostMaintenance;
-
+  /** Whether the Instance is preemptible. */
+  core.bool preemptible;
 
   Scheduling();
 
@@ -15009,6 +14306,9 @@ class Scheduling {
     }
     if (_json.containsKey("onHostMaintenance")) {
       onHostMaintenance = _json["onHostMaintenance"];
+    }
+    if (_json.containsKey("preemptible")) {
+      preemptible = _json["preemptible"];
     }
   }
 
@@ -15020,25 +14320,24 @@ class Scheduling {
     if (onHostMaintenance != null) {
       _json["onHostMaintenance"] = onHostMaintenance;
     }
+    if (preemptible != null) {
+      _json["preemptible"] = preemptible;
+    }
     return _json;
   }
 }
-
 
 /** An instance's serial console output. */
 class SerialPortOutput {
   /** [Output Only] The contents of the console output. */
   core.String contents;
-
   /**
    * [Output Only] Type of the resource. Always compute#serialPortOutput for
    * serial port output.
    */
   core.String kind;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
 
   SerialPortOutput();
 
@@ -15069,15 +14368,12 @@ class SerialPortOutput {
   }
 }
 
-
 /** A service account. */
 class ServiceAccount {
   /** Email address of the service account. */
   core.String email;
-
   /** The list of scopes to be made available for this service account. */
   core.List<core.String> scopes;
-
 
   ServiceAccount();
 
@@ -15102,51 +14398,40 @@ class ServiceAccount {
   }
 }
 
-
 /** A persistent disk snapshot resource. */
 class Snapshot {
   /** Creation timestamp in RFC3339 text format (output only). */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /** Size of the persistent disk snapshot, specified in GB (output only). */
   core.String diskSizeGb;
-
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** Type of the resource. */
   core.String kind;
-
   /** Public visible licenses. */
   core.List<core.String> licenses;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    */
   core.String name;
-
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
-
   /** The source disk used to create this snapshot. */
   core.String sourceDisk;
-
   /**
    * The 'id' value of the disk used to create this snapshot. This value may be
    * used to determine whether the snapshot was taken from the current or a
    * previous instance of a given disk name.
    */
   core.String sourceDiskId;
-
   /**
    * The status of the persistent disk snapshot (output only).
    * Possible string values are:
@@ -15157,13 +14442,11 @@ class Snapshot {
    * - "UPLOADING"
    */
   core.String status;
-
   /**
    * A size of the the storage used by the snapshot. As snapshots share storage
    * this number is expected to change with snapshot creation/deletion.
    */
   core.String storageBytes;
-
   /**
    * An indicator whether storageBytes is in a stable state, or it is being
    * adjusted as a result of shared storage reallocation.
@@ -15172,7 +14455,6 @@ class Snapshot {
    * - "UP_TO_DATE"
    */
   core.String storageBytesStatus;
-
 
   Snapshot();
 
@@ -15263,26 +14545,20 @@ class Snapshot {
   }
 }
 
-
 /** Contains a list of persistent disk snapshot resources. */
 class SnapshotList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A list of Snapshot resources. */
   core.List<Snapshot> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   SnapshotList();
 
@@ -15325,7 +14601,6 @@ class SnapshotList {
   }
 }
 
-
 /** A set of instance tags. */
 class Tags {
   /**
@@ -15338,7 +14613,6 @@ class Tags {
    * To see the latest fingerprint, make get() request to the instance.
    */
   core.String fingerprint;
-
   core.List<core.int> get fingerprintAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(fingerprint);
   }
@@ -15346,13 +14620,11 @@ class Tags {
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /**
    * An array of tags. Each tag must be 1-63 characters long, and comply with
    * RFC1035.
    */
   core.List<core.String> items;
-
 
   Tags();
 
@@ -15377,41 +14649,33 @@ class Tags {
   }
 }
 
-
 /** A TargetHttpProxy resource. This resource defines an HTTP proxy. */
 class TargetHttpProxy {
   /** Creation timestamp in RFC3339 text format (output only). */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** Type of the resource. */
   core.String kind;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    */
   core.String name;
-
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
-
   /**
    * URL to the UrlMap resource that defines the mapping from URL to the
    * BackendService.
    */
   core.String urlMap;
-
 
   TargetHttpProxy();
 
@@ -15466,26 +14730,20 @@ class TargetHttpProxy {
   }
 }
 
-
 /** Contains a list of TargetHttpProxy resources. */
 class TargetHttpProxyList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A list of TargetHttpProxy resources. */
   core.List<TargetHttpProxy> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   TargetHttpProxyList();
 
@@ -15528,7 +14786,6 @@ class TargetHttpProxyList {
   }
 }
 
-
 /**
  * A TargetInstance resource. This resource defines an endpoint VM that
  * terminates traffic of certain protocols.
@@ -15536,30 +14793,24 @@ class TargetHttpProxyList {
 class TargetInstance {
   /** Creation timestamp in RFC3339 text format (output only). */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** The URL to the instance that terminates the relevant traffic. */
   core.String instance;
-
   /** Type of the resource. */
   core.String kind;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    */
   core.String name;
-
   /**
    * NAT option controlling how IPs are NAT'ed to the VM. Currently only NO_NAT
    * (default value) is supported.
@@ -15567,13 +14818,10 @@ class TargetInstance {
    * - "NO_NAT"
    */
   core.String natPolicy;
-
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
-
   /** URL of the zone where the target instance resides (output only). */
   core.String zone;
-
 
   TargetInstance();
 
@@ -15640,25 +14888,19 @@ class TargetInstance {
   }
 }
 
-
 class TargetInstanceAggregatedList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A map of scoped target instance lists. */
   core.Map<core.String, TargetInstancesScopedList> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   TargetInstanceAggregatedList();
 
@@ -15701,26 +14943,20 @@ class TargetInstanceAggregatedList {
   }
 }
 
-
 /** Contains a list of TargetInstance resources. */
 class TargetInstanceList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A list of TargetInstance resources. */
   core.List<TargetInstance> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   TargetInstanceList();
 
@@ -15763,14 +14999,11 @@ class TargetInstanceList {
   }
 }
 
-
 class TargetInstancesScopedListWarningData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   TargetInstancesScopedListWarningData();
 
@@ -15795,7 +15028,6 @@ class TargetInstancesScopedListWarningData {
   }
 }
 
-
 /**
  * Informational warning which replaces the list of addresses when the list is
  * empty.
@@ -15812,6 +15044,7 @@ class TargetInstancesScopedListWarning {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -15819,13 +15052,10 @@ class TargetInstancesScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<TargetInstancesScopedListWarningData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   TargetInstancesScopedListWarning();
 
@@ -15856,17 +15086,14 @@ class TargetInstancesScopedListWarning {
   }
 }
 
-
 class TargetInstancesScopedList {
   /** List of target instances contained in this scope. */
   core.List<TargetInstance> targetInstances;
-
   /**
    * Informational warning which replaces the list of addresses when the list is
    * empty.
    */
   TargetInstancesScopedListWarning warning;
-
 
   TargetInstancesScopedList();
 
@@ -15891,7 +15118,6 @@ class TargetInstancesScopedList {
   }
 }
 
-
 /**
  * A TargetPool resource. This resource defines a pool of VMs, associated
  * HttpHealthCheck resources, and the fallback TargetPool.
@@ -15913,16 +15139,13 @@ class TargetPool {
    * healthy VMs with the best effort, or to all VMs when no VM is healthy.
    */
   core.String backupPool;
-
   /** Creation timestamp in RFC3339 text format (output only). */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * This field is applicable only when the containing target pool is serving a
    * forwarding rule as the primary pool (i.e., not as a backup pool to some
@@ -15939,40 +15162,32 @@ class TargetPool {
    * effort, or to all VMs when no VM is healthy.
    */
   core.double failoverRatio;
-
   /**
    * A list of URLs to the HttpHealthCheck resource. A member VM in this pool is
    * considered healthy if and only if all specified health checks pass. An
    * empty list means all member VMs will be considered healthy at all times.
    */
   core.List<core.String> healthChecks;
-
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /**
    * A list of resource URLs to the member VMs serving this pool. They must live
    * in zones contained in the same region as this pool.
    */
   core.List<core.String> instances;
-
   /** Type of the resource. */
   core.String kind;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    */
   core.String name;
-
   /** URL of the region where the target pool resides (output only). */
   core.String region;
-
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
-
   /**
    * Sesssion affinity option, must be one of the following values: 'NONE':
    * Connections from the same client IP may go to any VM in the pool;
@@ -15986,7 +15201,6 @@ class TargetPool {
    * - "NONE"
    */
   core.String sessionAffinity;
-
 
   TargetPool();
 
@@ -16071,25 +15285,19 @@ class TargetPool {
   }
 }
 
-
 class TargetPoolAggregatedList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A map of scoped target pool lists. */
   core.Map<core.String, TargetPoolsScopedList> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   TargetPoolAggregatedList();
 
@@ -16132,13 +15340,10 @@ class TargetPoolAggregatedList {
   }
 }
 
-
 class TargetPoolInstanceHealth {
   core.List<HealthStatus> healthStatus;
-
   /** Type of resource. */
   core.String kind;
-
 
   TargetPoolInstanceHealth();
 
@@ -16163,26 +15368,20 @@ class TargetPoolInstanceHealth {
   }
 }
 
-
 /** Contains a list of TargetPool resources. */
 class TargetPoolList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A list of TargetPool resources. */
   core.List<TargetPool> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   TargetPoolList();
 
@@ -16225,11 +15424,9 @@ class TargetPoolList {
   }
 }
 
-
 class TargetPoolsAddHealthCheckRequest {
   /** Health check URLs to be added to targetPool. */
   core.List<HealthCheckReference> healthChecks;
-
 
   TargetPoolsAddHealthCheckRequest();
 
@@ -16248,11 +15445,9 @@ class TargetPoolsAddHealthCheckRequest {
   }
 }
 
-
 class TargetPoolsAddInstanceRequest {
   /** URLs of the instances to be added to targetPool. */
   core.List<InstanceReference> instances;
-
 
   TargetPoolsAddInstanceRequest();
 
@@ -16271,11 +15466,9 @@ class TargetPoolsAddInstanceRequest {
   }
 }
 
-
 class TargetPoolsRemoveHealthCheckRequest {
   /** Health check URLs to be removed from targetPool. */
   core.List<HealthCheckReference> healthChecks;
-
 
   TargetPoolsRemoveHealthCheckRequest();
 
@@ -16294,11 +15487,9 @@ class TargetPoolsRemoveHealthCheckRequest {
   }
 }
 
-
 class TargetPoolsRemoveInstanceRequest {
   /** URLs of the instances to be removed from targetPool. */
   core.List<InstanceReference> instances;
-
 
   TargetPoolsRemoveInstanceRequest();
 
@@ -16317,14 +15508,11 @@ class TargetPoolsRemoveInstanceRequest {
   }
 }
 
-
 class TargetPoolsScopedListWarningData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   TargetPoolsScopedListWarningData();
 
@@ -16349,7 +15537,6 @@ class TargetPoolsScopedListWarningData {
   }
 }
 
-
 /**
  * Informational warning which replaces the list of addresses when the list is
  * empty.
@@ -16366,6 +15553,7 @@ class TargetPoolsScopedListWarning {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -16373,13 +15561,10 @@ class TargetPoolsScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<TargetPoolsScopedListWarningData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   TargetPoolsScopedListWarning();
 
@@ -16410,17 +15595,14 @@ class TargetPoolsScopedListWarning {
   }
 }
 
-
 class TargetPoolsScopedList {
   /** List of target pools contained in this scope. */
   core.List<TargetPool> targetPools;
-
   /**
    * Informational warning which replaces the list of addresses when the list is
    * empty.
    */
   TargetPoolsScopedListWarning warning;
-
 
   TargetPoolsScopedList();
 
@@ -16445,10 +15627,8 @@ class TargetPoolsScopedList {
   }
 }
 
-
 class TargetReference {
   core.String target;
-
 
   TargetReference();
 
@@ -16467,53 +15647,43 @@ class TargetReference {
   }
 }
 
-
 class TargetVpnGateway {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource. Provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * [Output Only] A list of URLs to the ForwardingRule resources.
    * ForwardingRules are created using compute.forwardingRules.insert and
    * associated to a VPN gateway.
    */
   core.List<core.String> forwardingRules;
-
   /**
    * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
-
   /**
    * [Output Only] Type of resource. Always compute#targetVpnGateway for target
    * VPN gateways.
    */
   core.String kind;
-
   /**
    * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long and comply with RFC1035.
    */
   core.String name;
-
   /**
    * URL of the network to which this VPN gateway is attached. Provided by the
    * client when the VPN gateway is created.
    */
   core.String network;
-
   /** [Output Only] URL of the region where the target VPN gateway resides. */
   core.String region;
-
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
-
   /**
    * [Output Only] The status of the VPN gateway.
    * Possible string values are:
@@ -16523,13 +15693,11 @@ class TargetVpnGateway {
    * - "READY"
    */
   core.String status;
-
   /**
    * [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created
    * using compute.vpntunnels.insert and associated to a VPN gateway.
    */
   core.List<core.String> tunnels;
-
 
   TargetVpnGateway();
 
@@ -16608,28 +15776,22 @@ class TargetVpnGateway {
   }
 }
 
-
 class TargetVpnGatewayAggregatedList {
   /**
    * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
-
   /** A map of scoped target vpn gateway lists. */
   core.Map<core.String, TargetVpnGatewaysScopedList> items;
-
   /**
    * [Output Only] Type of resource. Always compute#targetVpnGateway for target
    * VPN gateways.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
-
 
   TargetVpnGatewayAggregatedList();
 
@@ -16672,29 +15834,23 @@ class TargetVpnGatewayAggregatedList {
   }
 }
 
-
 /** Contains a list of TargetVpnGateway resources. */
 class TargetVpnGatewayList {
   /**
    * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
-
   /** [Output Only] A list of TargetVpnGateway resources. */
   core.List<TargetVpnGateway> items;
-
   /**
    * [Output Only] Type of resource. Always compute#targetVpnGateway for target
    * VPN gateways.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
-
 
   TargetVpnGatewayList();
 
@@ -16737,14 +15893,11 @@ class TargetVpnGatewayList {
   }
 }
 
-
 class TargetVpnGatewaysScopedListWarningData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   TargetVpnGatewaysScopedListWarningData();
 
@@ -16769,7 +15922,6 @@ class TargetVpnGatewaysScopedListWarningData {
   }
 }
 
-
 /**
  * [Output Only] Informational warning which replaces the list of addresses when
  * the list is empty.
@@ -16786,6 +15938,7 @@ class TargetVpnGatewaysScopedListWarning {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -16793,13 +15946,10 @@ class TargetVpnGatewaysScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<TargetVpnGatewaysScopedListWarningData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   TargetVpnGatewaysScopedListWarning();
 
@@ -16830,17 +15980,14 @@ class TargetVpnGatewaysScopedListWarning {
   }
 }
 
-
 class TargetVpnGatewaysScopedList {
   /** [Output Only] List of target vpn gateways contained in this scope. */
   core.List<TargetVpnGateway> targetVpnGateways;
-
   /**
    * [Output Only] Informational warning which replaces the list of addresses
    * when the list is empty.
    */
   TargetVpnGatewaysScopedListWarning warning;
-
 
   TargetVpnGatewaysScopedList();
 
@@ -16865,16 +16012,11 @@ class TargetVpnGatewaysScopedList {
   }
 }
 
-
 class TestFailure {
   core.String actualService;
-
   core.String expectedService;
-
   core.String host;
-
   core.String path;
-
 
   TestFailure();
 
@@ -16911,7 +16053,6 @@ class TestFailure {
   }
 }
 
-
 /**
  * A UrlMap resource. This resource defines the mapping from URL to the
  * BackendService resource, based on the "longest-match" of the URL's host and
@@ -16920,16 +16061,13 @@ class TestFailure {
 class UrlMap {
   /** Creation timestamp in RFC3339 text format (output only). */
   core.String creationTimestamp;
-
   /** The URL of the BackendService resource if none of the hostRules match. */
   core.String defaultService;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /**
    * Fingerprint of this resource. A hash of the contents stored in this object.
    * This field is used in optimistic locking. This field will be ignored when
@@ -16937,7 +16075,6 @@ class UrlMap {
    * update the UrlMap.
    */
   core.String fingerprint;
-
   core.List<core.int> get fingerprintAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(fingerprint);
   }
@@ -16945,36 +16082,28 @@ class UrlMap {
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** The list of HostRules to use against the URL. */
   core.List<HostRule> hostRules;
-
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** Type of the resource. */
   core.String kind;
-
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    */
   core.String name;
-
   /** The list of named PathMatchers to use against the URL. */
   core.List<PathMatcher> pathMatchers;
-
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
-
   /**
    * The list of expected URL mappings. Request to update this UrlMap will
    * succeed only all of the test cases pass.
    */
   core.List<UrlMapTest> tests;
-
 
   UrlMap();
 
@@ -17053,26 +16182,20 @@ class UrlMap {
   }
 }
 
-
 /** Contains a list of UrlMap resources. */
 class UrlMapList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** A list of UrlMap resources. */
   core.List<UrlMap> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   UrlMapList();
 
@@ -17115,10 +16238,8 @@ class UrlMapList {
   }
 }
 
-
 class UrlMapReference {
   core.String urlMap;
-
 
   UrlMapReference();
 
@@ -17137,21 +16258,16 @@ class UrlMapReference {
   }
 }
 
-
 /** Message for the expected URL mappings. */
 class UrlMapTest {
   /** Description of this test case. */
   core.String description;
-
   /** Host portion of the URL. */
   core.String host;
-
   /** Path portion of the URL. */
   core.String path;
-
   /** Expected BackendService resource the given URL should be mapped to. */
   core.String service;
-
 
   UrlMapTest();
 
@@ -17188,25 +16304,20 @@ class UrlMapTest {
   }
 }
 
-
 /** Message representing the validation result for a UrlMap. */
 class UrlMapValidationResult {
   core.List<core.String> loadErrors;
-
   /**
    * Whether the given UrlMap can be successfully loaded. If false, 'loadErrors'
    * indicates the reasons.
    */
   core.bool loadSucceeded;
-
   core.List<TestFailure> testFailures;
-
   /**
    * If successfully loaded, this field indicates whether the test passed. If
    * false, 'testFailures's indicate the reason of failure.
    */
   core.bool testPassed;
-
 
   UrlMapValidationResult();
 
@@ -17243,11 +16354,9 @@ class UrlMapValidationResult {
   }
 }
 
-
 class UrlMapsValidateRequest {
   /** Content of the UrlMap to be validated. */
   UrlMap resource;
-
 
   UrlMapsValidateRequest();
 
@@ -17266,10 +16375,8 @@ class UrlMapsValidateRequest {
   }
 }
 
-
 class UrlMapsValidateResponse {
   UrlMapValidationResult result;
-
 
   UrlMapsValidateResponse();
 
@@ -17288,7 +16395,6 @@ class UrlMapsValidateResponse {
   }
 }
 
-
 /**
  * The location in Cloud Storage and naming method of the daily usage report.
  * Contains bucket_name and report_name prefix.
@@ -17301,7 +16407,6 @@ class UsageExportLocation {
    * https://storage.googleapis.com/ in front of it.
    */
   core.String bucketName;
-
   /**
    * An optional prefix for the name of the usage report object stored in
    * bucketName. If not supplied, defaults to usage. The report is stored as a
@@ -17310,7 +16415,6 @@ class UsageExportLocation {
    * should conform to Cloud Storage object naming conventions.
    */
   core.String reportNamePrefix;
-
 
   UsageExportLocation();
 
@@ -17335,67 +16439,53 @@ class UsageExportLocation {
   }
 }
 
-
 class VpnTunnel {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource. Provided by the client
    * when the resource is created.
    */
   core.String description;
-
   /** [Output Only] Detailed status message for the VPN tunnel. */
   core.String detailedStatus;
-
   /**
    * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
-
   /**
    * IKE networks to use when establishing the VPN tunnel with peer VPN gateway.
    * The value should be a CIDR formatted string, for example: 192.168.0.0/16.
    * The ranges should be disjoint.
    */
   core.List<core.String> ikeNetworks;
-
   /**
    * IKE protocol version to use when establishing the VPN tunnel with peer VPN
    * gateway. Acceptable IKE versions are 1 or 2. Default version is 2.
    */
   core.int ikeVersion;
-
   /**
    * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
    */
   core.String kind;
-
   /**
    * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long and comply with RFC1035.
    */
   core.String name;
-
   /** IP address of the peer VPN gateway. */
   core.String peerIp;
-
   /** [Output Only] URL of the region where the VPN tunnel resides. */
   core.String region;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
   /**
    * Shared secret used to set the secure session between the GCE VPN gateway
    * and the peer VPN gateway.
    */
   core.String sharedSecret;
-
   /** Hash of the shared secret. */
   core.String sharedSecretHash;
-
   /**
    * [Output Only] The status of the VPN tunnel.
    * Possible string values are:
@@ -17410,13 +16500,11 @@ class VpnTunnel {
    * - "WAITING_FOR_FULL_CONFIG"
    */
   core.String status;
-
   /**
    * URL of the VPN gateway to which this VPN tunnel is associated. Provided by
    * the client when the VPN tunnel is created.
    */
   core.String targetVpnGateway;
-
 
   VpnTunnel();
 
@@ -17519,27 +16607,21 @@ class VpnTunnel {
   }
 }
 
-
 class VpnTunnelAggregatedList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A map of scoped vpn tunnel lists. */
   core.Map<core.String, VpnTunnelsScopedList> items;
-
   /**
    * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
-
 
   VpnTunnelAggregatedList();
 
@@ -17582,28 +16664,22 @@ class VpnTunnelAggregatedList {
   }
 }
 
-
 /** Contains a list of VpnTunnel resources. */
 class VpnTunnelList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A list of VpnTunnel resources. */
   core.List<VpnTunnel> items;
-
   /**
    * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
    */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
-
 
   VpnTunnelList();
 
@@ -17646,14 +16722,11 @@ class VpnTunnelList {
   }
 }
 
-
 class VpnTunnelsScopedListWarningData {
   /** [Output Only] A key for the warning data. */
   core.String key;
-
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
-
 
   VpnTunnelsScopedListWarningData();
 
@@ -17678,7 +16751,6 @@ class VpnTunnelsScopedListWarningData {
   }
 }
 
-
 /**
  * Informational warning which replaces the list of addresses when the list is
  * empty.
@@ -17695,6 +16767,7 @@ class VpnTunnelsScopedListWarning {
    * - "NEXT_HOP_INSTANCE_NOT_FOUND"
    * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
    * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
@@ -17702,13 +16775,10 @@ class VpnTunnelsScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-
   /** [Output Only] Metadata for this warning in key: value format. */
   core.List<VpnTunnelsScopedListWarningData> data;
-
   /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
-
 
   VpnTunnelsScopedListWarning();
 
@@ -17739,17 +16809,14 @@ class VpnTunnelsScopedListWarning {
   }
 }
 
-
 class VpnTunnelsScopedList {
   /** List of vpn tunnels contained in this scope. */
   core.List<VpnTunnel> vpnTunnels;
-
   /**
    * Informational warning which replaces the list of addresses when the list is
    * empty.
    */
   VpnTunnelsScopedListWarning warning;
-
 
   VpnTunnelsScopedList();
 
@@ -17774,24 +16841,19 @@ class VpnTunnelsScopedList {
   }
 }
 
-
 class ZoneMaintenanceWindows {
   /**
    * [Output Only] Starting time of the maintenance window, in RFC3339 format.
    */
   core.String beginTime;
-
   /** [Output Only] Textual description of the maintenance window. */
   core.String description;
-
   /**
    * [Output Only] Ending time of the maintenance window, in RFC3339 format.
    */
   core.String endTime;
-
   /** [Output Only] Name of the maintenance window. */
   core.String name;
-
 
   ZoneMaintenanceWindows();
 
@@ -17828,42 +16890,32 @@ class ZoneMaintenanceWindows {
   }
 }
 
-
 /** A Zone resource. */
 class Zone {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /** [Output Only] The deprecation status associated with this zone. */
   DeprecationStatus deprecated;
-
   /** [Output Only] Textual description of the resource. */
   core.String description;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] Type of the resource. Always kind#zone for zones. */
   core.String kind;
-
   /**
    * [Output Only] Any scheduled maintenance windows for this zone. When the
    * zone is in a maintenance window, all resources which reside in the zone
    * will be unavailable. For more information, see Maintenance Windows
    */
   core.List<ZoneMaintenanceWindows> maintenanceWindows;
-
   /** [Output Only] Name of the resource. */
   core.String name;
-
   /** [Output Only] Full URL reference to the region which hosts the zone. */
   core.String region;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
   /**
    * [Output Only] Status of the zone, either UP or DOWN.
    * Possible string values are:
@@ -17871,7 +16923,6 @@ class Zone {
    * - "UP"
    */
   core.String status;
-
 
   Zone();
 
@@ -17944,26 +16995,20 @@ class Zone {
   }
 }
 
-
 /** Contains a list of zone resources. */
 class ZoneList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** [Output Only] A list of Zone resources. */
   core.List<Zone> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   ZoneList();
 

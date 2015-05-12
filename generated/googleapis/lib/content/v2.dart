@@ -59,7 +59,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountsAuthInfoResponse> authinfo() {
     var _url = null;
@@ -68,7 +68,6 @@ class AccountsResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'accounts/authinfo';
@@ -97,7 +96,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountsCustomBatchResponse> custombatch(AccountsCustomBatchRequest request) {
     var _url = null;
@@ -110,7 +109,6 @@ class AccountsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'accounts/batch';
 
@@ -137,7 +135,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String merchantId, core.String accountId) {
     var _url = null;
@@ -183,7 +181,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> get(core.String merchantId, core.String accountId) {
     var _url = null;
@@ -199,7 +197,6 @@ class AccountsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -228,7 +225,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> insert(Account request, core.String merchantId) {
     var _url = null;
@@ -244,7 +241,6 @@ class AccountsResourceApi {
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts';
 
@@ -276,7 +272,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountsListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -295,7 +291,6 @@ class AccountsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts';
 
@@ -326,7 +321,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> patch(Account request, core.String merchantId, core.String accountId) {
     var _url = null;
@@ -345,7 +340,6 @@ class AccountsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -376,7 +370,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> update(Account request, core.String merchantId, core.String accountId) {
     var _url = null;
@@ -395,7 +389,6 @@ class AccountsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -426,15 +419,17 @@ class AccountshippingResourceApi {
    *
    * Request parameters:
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [AccountshippingCustomBatchResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
-  async.Future<AccountshippingCustomBatchResponse> custombatch(AccountshippingCustomBatchRequest request) {
+  async.Future<AccountshippingCustomBatchResponse> custombatch(AccountshippingCustomBatchRequest request, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -445,7 +440,9 @@ class AccountshippingResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
 
     _url = 'accountshipping/batch';
 
@@ -475,7 +472,7 @@ class AccountshippingResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountShipping> get(core.String merchantId, core.String accountId) {
     var _url = null;
@@ -491,7 +488,6 @@ class AccountshippingResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountshipping/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -524,7 +520,7 @@ class AccountshippingResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountshippingListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -543,7 +539,6 @@ class AccountshippingResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountshipping';
 
@@ -570,15 +565,17 @@ class AccountshippingResourceApi {
    * [accountId] - The ID of the account for which to get/update account
    * shipping settings.
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [AccountShipping].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
-  async.Future<AccountShipping> patch(AccountShipping request, core.String merchantId, core.String accountId) {
+  async.Future<AccountShipping> patch(AccountShipping request, core.String merchantId, core.String accountId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -595,7 +592,9 @@ class AccountshippingResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountshipping/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -621,15 +620,17 @@ class AccountshippingResourceApi {
    * [accountId] - The ID of the account for which to get/update account
    * shipping settings.
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [AccountShipping].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
-  async.Future<AccountShipping> update(AccountShipping request, core.String merchantId, core.String accountId) {
+  async.Future<AccountShipping> update(AccountShipping request, core.String merchantId, core.String accountId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -646,7 +647,9 @@ class AccountshippingResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountshipping/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -680,7 +683,7 @@ class AccountstatusesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountstatusesCustomBatchResponse> custombatch(AccountstatusesCustomBatchRequest request) {
     var _url = null;
@@ -693,7 +696,6 @@ class AccountstatusesResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'accountstatuses/batch';
 
@@ -722,7 +724,7 @@ class AccountstatusesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountStatus> get(core.String merchantId, core.String accountId) {
     var _url = null;
@@ -738,7 +740,6 @@ class AccountstatusesResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountstatuses/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -770,7 +771,7 @@ class AccountstatusesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountstatusesListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -789,7 +790,6 @@ class AccountstatusesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountstatuses';
 
@@ -820,15 +820,17 @@ class AccounttaxResourceApi {
    *
    * Request parameters:
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [AccounttaxCustomBatchResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
-  async.Future<AccounttaxCustomBatchResponse> custombatch(AccounttaxCustomBatchRequest request) {
+  async.Future<AccounttaxCustomBatchResponse> custombatch(AccounttaxCustomBatchRequest request, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -839,7 +841,9 @@ class AccounttaxResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
 
     _url = 'accounttax/batch';
 
@@ -869,7 +873,7 @@ class AccounttaxResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountTax> get(core.String merchantId, core.String accountId) {
     var _url = null;
@@ -885,7 +889,6 @@ class AccounttaxResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounttax/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -917,7 +920,7 @@ class AccounttaxResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccounttaxListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -936,7 +939,6 @@ class AccounttaxResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounttax';
 
@@ -963,15 +965,17 @@ class AccounttaxResourceApi {
    * [accountId] - The ID of the account for which to get/update account tax
    * settings.
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [AccountTax].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
-  async.Future<AccountTax> patch(AccountTax request, core.String merchantId, core.String accountId) {
+  async.Future<AccountTax> patch(AccountTax request, core.String merchantId, core.String accountId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -988,7 +992,9 @@ class AccounttaxResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounttax/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -1014,15 +1020,17 @@ class AccounttaxResourceApi {
    * [accountId] - The ID of the account for which to get/update account tax
    * settings.
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [AccountTax].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
-  async.Future<AccountTax> update(AccountTax request, core.String merchantId, core.String accountId) {
+  async.Future<AccountTax> update(AccountTax request, core.String merchantId, core.String accountId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1039,7 +1047,9 @@ class AccounttaxResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounttax/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -1073,7 +1083,7 @@ class DatafeedsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DatafeedsCustomBatchResponse> custombatch(DatafeedsCustomBatchRequest request) {
     var _url = null;
@@ -1086,7 +1096,6 @@ class DatafeedsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'datafeeds/batch';
 
@@ -1113,7 +1122,7 @@ class DatafeedsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String merchantId, core.String datafeedId) {
     var _url = null;
@@ -1159,7 +1168,7 @@ class DatafeedsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Datafeed> get(core.String merchantId, core.String datafeedId) {
     var _url = null;
@@ -1175,7 +1184,6 @@ class DatafeedsResourceApi {
     if (datafeedId == null) {
       throw new core.ArgumentError("Parameter datafeedId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + commons.Escaper.ecapeVariable('$datafeedId');
 
@@ -1204,7 +1212,7 @@ class DatafeedsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Datafeed> insert(Datafeed request, core.String merchantId) {
     var _url = null;
@@ -1220,7 +1228,6 @@ class DatafeedsResourceApi {
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds';
 
@@ -1252,7 +1259,7 @@ class DatafeedsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DatafeedsListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1271,7 +1278,6 @@ class DatafeedsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds';
 
@@ -1303,7 +1309,7 @@ class DatafeedsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Datafeed> patch(Datafeed request, core.String merchantId, core.String datafeedId) {
     var _url = null;
@@ -1322,7 +1328,6 @@ class DatafeedsResourceApi {
     if (datafeedId == null) {
       throw new core.ArgumentError("Parameter datafeedId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + commons.Escaper.ecapeVariable('$datafeedId');
 
@@ -1353,7 +1358,7 @@ class DatafeedsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Datafeed> update(Datafeed request, core.String merchantId, core.String datafeedId) {
     var _url = null;
@@ -1372,7 +1377,6 @@ class DatafeedsResourceApi {
     if (datafeedId == null) {
       throw new core.ArgumentError("Parameter datafeedId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + commons.Escaper.ecapeVariable('$datafeedId');
 
@@ -1406,7 +1410,7 @@ class DatafeedstatusesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DatafeedstatusesCustomBatchResponse> custombatch(DatafeedstatusesCustomBatchRequest request) {
     var _url = null;
@@ -1419,7 +1423,6 @@ class DatafeedstatusesResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'datafeedstatuses/batch';
 
@@ -1448,7 +1451,7 @@ class DatafeedstatusesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DatafeedStatus> get(core.String merchantId, core.String datafeedId) {
     var _url = null;
@@ -1464,7 +1467,6 @@ class DatafeedstatusesResourceApi {
     if (datafeedId == null) {
       throw new core.ArgumentError("Parameter datafeedId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeedstatuses/' + commons.Escaper.ecapeVariable('$datafeedId');
 
@@ -1496,7 +1498,7 @@ class DatafeedstatusesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DatafeedstatusesListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1515,7 +1517,6 @@ class DatafeedstatusesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeedstatuses';
 
@@ -1552,7 +1553,7 @@ class InventoryResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InventoryCustomBatchResponse> custombatch(InventoryCustomBatchRequest request) {
     var _url = null;
@@ -1565,7 +1566,6 @@ class InventoryResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'inventory/batch';
 
@@ -1602,7 +1602,7 @@ class InventoryResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InventorySetResponse> set(InventorySetRequest request, core.String merchantId, core.String storeCode, core.String productId) {
     var _url = null;
@@ -1624,7 +1624,6 @@ class InventoryResourceApi {
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/inventory/' + commons.Escaper.ecapeVariable('$storeCode') + '/products/' + commons.Escaper.ecapeVariable('$productId');
 
@@ -1662,7 +1661,7 @@ class ProductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProductsCustomBatchResponse> custombatch(ProductsCustomBatchRequest request, {core.bool dryRun}) {
     var _url = null;
@@ -1678,7 +1677,6 @@ class ProductsResourceApi {
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
     }
-
 
     _url = 'products/batch';
 
@@ -1707,7 +1705,7 @@ class ProductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String merchantId, core.String productId, {core.bool dryRun}) {
     var _url = null;
@@ -1756,7 +1754,7 @@ class ProductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Product> get(core.String merchantId, core.String productId) {
     var _url = null;
@@ -1772,7 +1770,6 @@ class ProductsResourceApi {
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/products/' + commons.Escaper.ecapeVariable('$productId');
 
@@ -1803,7 +1800,7 @@ class ProductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Product> insert(Product request, core.String merchantId, {core.bool dryRun}) {
     var _url = null;
@@ -1822,7 +1819,6 @@ class ProductsResourceApi {
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/products';
 
@@ -1854,7 +1850,7 @@ class ProductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProductsListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1873,7 +1869,6 @@ class ProductsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/products';
 
@@ -1909,7 +1904,7 @@ class ProductstatusesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProductstatusesCustomBatchResponse> custombatch(ProductstatusesCustomBatchRequest request) {
     var _url = null;
@@ -1922,7 +1917,6 @@ class ProductstatusesResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'productstatuses/batch';
 
@@ -1951,7 +1945,7 @@ class ProductstatusesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProductStatus> get(core.String merchantId, core.String productId) {
     var _url = null;
@@ -1967,7 +1961,6 @@ class ProductstatusesResourceApi {
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/productstatuses/' + commons.Escaper.ecapeVariable('$productId');
 
@@ -1999,7 +1992,7 @@ class ProductstatusesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProductstatusesListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -2018,7 +2011,6 @@ class ProductstatusesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/productstatuses';
 
@@ -2040,39 +2032,36 @@ class ProductstatusesResourceApi {
 class Account {
   /** Indicates whether the merchant sells adult content. */
   core.bool adultContent;
-
-  /** List of linked AdWords accounts. */
+  /**
+   * List of linked AdWords accounts, active or pending approval. To create a
+   * new link request, add a new link with status active to the list. It will
+   * remain is state pending until approved or rejected in the AdWords
+   * interface. To delete an active link or to cancel a link request, remove it
+   * from the list.
+   */
   core.List<AccountAdwordsLink> adwordsLinks;
-
   /** Merchant Center account ID. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#account".
    */
   core.String kind;
-
   /** Display name for the account. */
   core.String name;
-
   /**
    * URL for individual seller reviews, i.e., reviews for each child account.
    */
   core.String reviewsUrl;
-
   /** Client-specific, locally-unique, internal ID for the child account. */
   core.String sellerId;
-
   /**
    * Users with access to the account. Every account (except for subaccounts)
    * must have at least one admin user.
    */
   core.List<AccountUser> users;
-
   /** The merchant's website. */
   core.String websiteUrl;
-
 
   Account();
 
@@ -2139,17 +2128,21 @@ class Account {
   }
 }
 
-
 class AccountAdwordsLink {
   /** Customer ID of the AdWords account. */
   core.String adwordsId;
-
   /**
    * Status of the link between this Merchant Center account and the AdWords
-   * account.
+   * account. Upon retrieval, it represents the actual status of the link and
+   * can be either active if it was approved in Google AdWords or pending if
+   * it's pending approval. Upon insertion, it represents the intended status of
+   * the link. Re-uploading a link with status active when it's still pending or
+   * with status pending when it's already active will have no effect: the
+   * status will remain unchanged. Re-uploading a link with deprecated status
+   * inactive is equivalent to not submitting the link at all and will delete
+   * the link if it was active or cancel the link request if it was pending.
    */
   core.String status;
-
 
   AccountAdwordsLink();
 
@@ -2174,17 +2167,14 @@ class AccountAdwordsLink {
   }
 }
 
-
 class AccountIdentifier {
   /**
    * The aggregator ID, set for aggregators and subaccounts (in that case, it
    * represents the aggregator of the subaccount).
    */
   core.String aggregatorId;
-
   /** The merchant account ID, set for individual accounts and subaccounts. */
   core.String merchantId;
-
 
   AccountIdentifier();
 
@@ -2209,30 +2199,23 @@ class AccountIdentifier {
   }
 }
 
-
 /** The shipping settings of a merchant account. */
 class AccountShipping {
   /** The ID of the account to which these account shipping settings belong. */
   core.String accountId;
-
   /** Carrier-based shipping calculations. */
   core.List<AccountShippingCarrierRate> carrierRates;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accountShipping".
    */
   core.String kind;
-
   /** Location groups for shipping. */
   core.List<AccountShippingLocationGroup> locationGroups;
-
   /** Rate tables definitions. */
   core.List<AccountShippingRateTable> rateTables;
-
   /** Shipping services describing shipping fees calculation. */
   core.List<AccountShippingShippingService> services;
-
 
   AccountShipping();
 
@@ -2281,7 +2264,6 @@ class AccountShipping {
   }
 }
 
-
 /** A carrier-calculated shipping rate. */
 class AccountShippingCarrierRate {
   /**
@@ -2289,31 +2271,24 @@ class AccountShippingCarrierRate {
    * or "USPS".
    */
   core.String carrier;
-
   /** The carrier service, such as "Ground" or "2Day". */
   core.String carrierService;
-
   /** Additive shipping rate modifier. */
   Price modifierFlatRate;
-
   /**
    * Multiplicative shipping rate modifier in percent. Represented as a floating
    * point number without the percentage character.
    */
   core.String modifierPercent;
-
   /** The name of the carrier rate. */
   core.String name;
-
   /**
    * Sale country for which this carrier rate is valid, represented as an ISO
    * 3166-1 Alpha-2 code.
    */
   core.String saleCountry;
-
   /** Shipping origin represented as a postal code. */
   core.String shippingOrigin;
-
 
   AccountShippingCarrierRate();
 
@@ -2368,43 +2343,35 @@ class AccountShippingCarrierRate {
   }
 }
 
-
 class AccountShippingCondition {
   /**
    * Delivery location in terms of a location group name. A location group with
    * this name must be specified among location groups.
    */
   core.String deliveryLocationGroup;
-
   /**
    * Delivery location in terms of a location ID. Can be used to represent
    * administrative areas, smaller country subdivisions, or cities.
    */
   core.String deliveryLocationId;
-
   /** Delivery location in terms of a postal code. */
   core.String deliveryPostalCode;
-
   /** Delivery location in terms of a postal code range. */
   AccountShippingPostalCodeRange deliveryPostalCodeRange;
-
   /**
    * Maximum shipping price. Forms an interval between the maximum of smaller
    * prices (exclusive) and this price (inclusive).
    */
   Price priceMax;
-
   /**
    * Shipping label of the product. The products with the label are matched.
    */
   core.String shippingLabel;
-
   /**
    * Maximum shipping weight. Forms an interval between the maximum of smaller
    * weight (exclusive) and this weight (inclusive).
    */
   Weight weightMax;
-
 
   AccountShippingCondition();
 
@@ -2459,7 +2426,6 @@ class AccountShippingCondition {
   }
 }
 
-
 /**
  * A user-defined locations group in a given country. All the locations of the
  * group must be of the same type.
@@ -2470,26 +2436,21 @@ class AccountShippingLocationGroup {
    * Alpha-2 code.
    */
   core.String country;
-
   /**
    * A location ID (also called criteria ID) representing administrative areas,
    * smaller country subdivisions (counties), or cities.
    */
   core.List<core.String> locationIds;
-
   /** The name of the location group. */
   core.String name;
-
   /** A postal code range representing a city or a set of cities. */
   core.List<AccountShippingPostalCodeRange> postalCodeRanges;
-
   /**
    * A postal code representing a city or a set of cities.
    * - A single postal code (e.g., 12345)
    * - A postal code prefix followed by a star (e.g., 1234*)
    */
   core.List<core.String> postalCodes;
-
 
   AccountShippingLocationGroup();
 
@@ -2532,7 +2493,6 @@ class AccountShippingLocationGroup {
   }
 }
 
-
 /**
  * A postal code range, that can be either:
  * - A range of postal codes (e.g., start=12340, end=12359)
@@ -2542,10 +2502,8 @@ class AccountShippingLocationGroup {
 class AccountShippingPostalCodeRange {
   /** The last (inclusive) postal code or prefix of the range. */
   core.String end;
-
   /** The first (inclusive) postal code or prefix of the range. */
   core.String start;
-
 
   AccountShippingPostalCodeRange();
 
@@ -2570,7 +2528,6 @@ class AccountShippingPostalCodeRange {
   }
 }
 
-
 /**
  * A single or bi-dimensional table of shipping rates. Each dimension is defined
  * in terms of consecutive price/weight ranges, delivery locations, or shipping
@@ -2584,16 +2541,13 @@ class AccountShippingRateTable {
    * conditions (for each possible value pairs).
    */
   core.List<AccountShippingRateTableCell> content;
-
   /** The name of the rate table. */
   core.String name;
-
   /**
    * Sale country for which this table is valid, represented as an ISO 3166-1
    * Alpha-2 code.
    */
   core.String saleCountry;
-
 
   AccountShippingRateTable();
 
@@ -2624,7 +2578,6 @@ class AccountShippingRateTable {
   }
 }
 
-
 class AccountShippingRateTableCell {
   /**
    * Conditions for which the cell is valid. All cells in a table must use the
@@ -2634,10 +2587,8 @@ class AccountShippingRateTableCell {
    * in this dimension.
    */
   AccountShippingCondition condition;
-
   /** The rate applicable if the cell conditions are matched. */
   Price rate;
-
 
   AccountShippingRateTableCell();
 
@@ -2662,27 +2613,21 @@ class AccountShippingRateTableCell {
   }
 }
 
-
 /** Shipping services provided in a country. */
 class AccountShippingShippingService {
   /** Whether the shipping service is available. */
   core.bool active;
-
   /** Calculation method for the "simple" case that needs no rules. */
   AccountShippingShippingServiceCalculationMethod calculationMethod;
-
   /** Decision tree for "complicated" shipping cost calculation. */
   AccountShippingShippingServiceCostRule costRuleTree;
-
   /** The name of this shipping service. */
   core.String name;
-
   /**
    * Sale country for which this service can be used, represented as an ISO
    * 3166-1 Alpha-2 code.
    */
   core.String saleCountry;
-
 
   AccountShippingShippingService();
 
@@ -2725,30 +2670,24 @@ class AccountShippingShippingService {
   }
 }
 
-
 /** Shipping cost calculation method. Exactly one of the field is set. */
 class AccountShippingShippingServiceCalculationMethod {
   /** Name of the carrier rate to use for the calculation. */
   core.String carrierRate;
-
   /** Delivery is excluded. Valid only within cost rules tree. */
   core.bool excluded;
-
   /**
    * Fixed price shipping, represented as a floating point number associated
    * with a currency.
    */
   Price flatRate;
-
   /**
    * Percentage of the price, represented as a floating point number without the
    * percentage character.
    */
   core.String percentageRate;
-
   /** Name of the rate table to use for the calculation. */
   core.String rateTable;
-
 
   AccountShippingShippingServiceCalculationMethod();
 
@@ -2791,7 +2730,6 @@ class AccountShippingShippingServiceCalculationMethod {
   }
 }
 
-
 /**
  * Building block of the cost calculation decision tree.
  * - The tree root should have no condition and no calculation method.
@@ -2806,19 +2744,16 @@ class AccountShippingShippingServiceCalculationMethod {
 class AccountShippingShippingServiceCostRule {
   /** Final calculation method to be used only in leaf nodes. */
   AccountShippingShippingServiceCalculationMethod calculationMethod;
-
   /**
    * Subsequent rules to be applied, only for inner nodes. The last child must
    * not specify a condition and acts as a catch-all.
    */
   core.List<AccountShippingShippingServiceCostRule> children;
-
   /**
    * Condition for this rule to be applicable. If no condition is specified, the
    * rule acts as a catch-all.
    */
   AccountShippingCondition condition;
-
 
   AccountShippingShippingServiceCostRule();
 
@@ -2849,7 +2784,6 @@ class AccountShippingShippingServiceCostRule {
   }
 }
 
-
 /**
  * The status of an account, i.e., information about its products, which is
  * computed offline and not returned immediately at insertion time.
@@ -2857,16 +2791,13 @@ class AccountShippingShippingServiceCostRule {
 class AccountStatus {
   /** The ID of the account for which the status is reported. */
   core.String accountId;
-
   /** A list of data quality issues. */
   core.List<AccountStatusDataQualityIssue> dataQualityIssues;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accountStatus".
    */
   core.String kind;
-
 
   AccountStatus();
 
@@ -2897,32 +2828,23 @@ class AccountStatus {
   }
 }
 
-
 class AccountStatusDataQualityIssue {
   /** Country for which this issue is reported. */
   core.String country;
-
   /** Actual value displayed on the landing page. */
   core.String displayedValue;
-
   /** Example items featuring the issue. */
   core.List<AccountStatusExampleItem> exampleItems;
-
   /** Issue identifier. */
   core.String id;
-
   /** Last time the account was checked for this issue. */
   core.String lastChecked;
-
   /** Number of items in the account found to have the said issue. */
   core.int numItems;
-
   /** Severity of the problem. */
   core.String severity;
-
   /** Submitted value that causes the issue. */
   core.String submittedValue;
-
 
   AccountStatusDataQualityIssue();
 
@@ -2983,7 +2905,6 @@ class AccountStatusDataQualityIssue {
   }
 }
 
-
 /**
  * An example of an item that has poor data quality. An item value on the
  * landing page differs from what is submitted, or conflicts with a policy.
@@ -2991,19 +2912,14 @@ class AccountStatusDataQualityIssue {
 class AccountStatusExampleItem {
   /** Unique item ID as specified in the uploaded product data. */
   core.String itemId;
-
   /** Landing page of the item. */
   core.String link;
-
   /** The item value that was submitted. */
   core.String submittedValue;
-
   /** Title of the item. */
   core.String title;
-
   /** The actual value on the landing page. */
   core.String valueOnLandingPage;
-
 
   AccountStatusExampleItem();
 
@@ -3046,24 +2962,20 @@ class AccountStatusExampleItem {
   }
 }
 
-
 /** The tax settings of a merchant account. */
 class AccountTax {
   /** The ID of the account to which these account tax settings belong. */
   core.String accountId;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accountTax".
    */
   core.String kind;
-
   /**
    * Tax rules. Updating the tax rules will enable US taxes (not reversible).
    * Defining no rules is equivalent to not charging tax at all.
    */
   core.List<AccountTaxTaxRule> rules;
-
 
   AccountTax();
 
@@ -3094,33 +3006,27 @@ class AccountTax {
   }
 }
 
-
 /** Tax calculation rule to apply in a state or province (USA only). */
 class AccountTaxTaxRule {
   /** Country code in which tax is applicable. */
   core.String country;
-
   /**
    * State (or province) is which the tax is applicable, described by its
    * location id (also called criteria id).
    */
   core.String locationId;
-
   /**
    * Explicit tax rate in percent, represented as a floating point number
    * without the percentage character. Must not be negative.
    */
   core.String ratePercent;
-
   /** If true, shipping charges are also taxed. */
   core.bool shippingTaxed;
-
   /**
    * Whether the tax rate is taken from a global tax table or specified
    * explicitly.
    */
   core.bool useGlobalRate;
-
 
   AccountTaxTaxRule();
 
@@ -3163,14 +3069,11 @@ class AccountTaxTaxRule {
   }
 }
 
-
 class AccountUser {
   /** Whether user is an admin. */
   core.bool admin;
-
   /** User's email address. */
   core.String emailAddress;
-
 
   AccountUser();
 
@@ -3195,7 +3098,6 @@ class AccountUser {
   }
 }
 
-
 class AccountsAuthInfoResponse {
   /**
    * The account identifiers corresponding to the authenticated user.
@@ -3205,13 +3107,11 @@ class AccountsAuthInfoResponse {
    * are defined.
    */
   core.List<AccountIdentifier> accountIdentifiers;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accountsAuthInfoResponse".
    */
   core.String kind;
-
 
   AccountsAuthInfoResponse();
 
@@ -3236,11 +3136,9 @@ class AccountsAuthInfoResponse {
   }
 }
 
-
 class AccountsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<AccountsCustomBatchRequestEntry> entries;
-
 
   AccountsCustomBatchRequest();
 
@@ -3259,7 +3157,6 @@ class AccountsCustomBatchRequest {
   }
 }
 
-
 /** A batch entry encoding a single non-batch accounts request. */
 class AccountsCustomBatchRequestEntry {
   /**
@@ -3267,21 +3164,16 @@ class AccountsCustomBatchRequestEntry {
    * update.
    */
   Account account;
-
   /**
    * The ID of the account to get or delete. Only defined if the method is get
    * or delete.
    */
   core.String accountId;
-
   /** An entry ID, unique within the batch request. */
   core.int batchId;
-
   /** The ID of the managing account. */
   core.String merchantId;
-
   core.String method;
-
 
   AccountsCustomBatchRequestEntry();
 
@@ -3324,17 +3216,14 @@ class AccountsCustomBatchRequestEntry {
   }
 }
 
-
 class AccountsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<AccountsCustomBatchResponseEntry> entries;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accountsCustomBatchResponse".
    */
   core.String kind;
-
 
   AccountsCustomBatchResponse();
 
@@ -3359,7 +3248,6 @@ class AccountsCustomBatchResponse {
   }
 }
 
-
 /** A batch entry encoding a single non-batch accounts response. */
 class AccountsCustomBatchResponseEntry {
   /**
@@ -3367,19 +3255,15 @@ class AccountsCustomBatchResponseEntry {
    * delete.
    */
   Account account;
-
   /** The ID of the request entry this entry responds to. */
   core.int batchId;
-
   /** A list of errors defined if and only if the request failed. */
   Errors errors;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accountsCustomBatchResponseEntry".
    */
   core.String kind;
-
 
   AccountsCustomBatchResponseEntry();
 
@@ -3416,19 +3300,15 @@ class AccountsCustomBatchResponseEntry {
   }
 }
 
-
 class AccountsListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accountsListResponse".
    */
   core.String kind;
-
   /** The token for the retrieval of the next page of accounts. */
   core.String nextPageToken;
-
   core.List<Account> resources;
-
 
   AccountsListResponse();
 
@@ -3459,11 +3339,9 @@ class AccountsListResponse {
   }
 }
 
-
 class AccountshippingCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<AccountshippingCustomBatchRequestEntry> entries;
-
 
   AccountshippingCustomBatchRequest();
 
@@ -3482,28 +3360,22 @@ class AccountshippingCustomBatchRequest {
   }
 }
 
-
 /** A batch entry encoding a single non-batch accountshipping request. */
 class AccountshippingCustomBatchRequestEntry {
   /**
    * The ID of the account for which to get/update account shipping settings.
    */
   core.String accountId;
-
   /**
    * The account shipping settings to update. Only defined if the method is
    * update.
    */
   AccountShipping accountShipping;
-
   /** An entry ID, unique within the batch request. */
   core.int batchId;
-
   /** The ID of the managing account. */
   core.String merchantId;
-
   core.String method;
-
 
   AccountshippingCustomBatchRequestEntry();
 
@@ -3546,17 +3418,14 @@ class AccountshippingCustomBatchRequestEntry {
   }
 }
 
-
 class AccountshippingCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<AccountshippingCustomBatchResponseEntry> entries;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accountshippingCustomBatchResponse".
    */
   core.String kind;
-
 
   AccountshippingCustomBatchResponse();
 
@@ -3581,24 +3450,19 @@ class AccountshippingCustomBatchResponse {
   }
 }
 
-
 /** A batch entry encoding a single non-batch accountshipping response. */
 class AccountshippingCustomBatchResponseEntry {
   /** The retrieved or updated account shipping settings. */
   AccountShipping accountShipping;
-
   /** The ID of the request entry this entry responds to. */
   core.int batchId;
-
   /** A list of errors defined if and only if the request failed. */
   Errors errors;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accountshippingCustomBatchResponseEntry".
    */
   core.String kind;
-
 
   AccountshippingCustomBatchResponseEntry();
 
@@ -3635,21 +3499,17 @@ class AccountshippingCustomBatchResponseEntry {
   }
 }
 
-
 class AccountshippingListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accountshippingListResponse".
    */
   core.String kind;
-
   /**
    * The token for the retrieval of the next page of account shipping settings.
    */
   core.String nextPageToken;
-
   core.List<AccountShipping> resources;
-
 
   AccountshippingListResponse();
 
@@ -3680,11 +3540,9 @@ class AccountshippingListResponse {
   }
 }
 
-
 class AccountstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<AccountstatusesCustomBatchRequestEntry> entries;
-
 
   AccountstatusesCustomBatchRequest();
 
@@ -3703,21 +3561,16 @@ class AccountstatusesCustomBatchRequest {
   }
 }
 
-
 /** A batch entry encoding a single non-batch accountstatuses request. */
 class AccountstatusesCustomBatchRequestEntry {
   /** The ID of the (sub-)account whose status to get. */
   core.String accountId;
-
   /** An entry ID, unique within the batch request. */
   core.int batchId;
-
   /** The ID of the managing account. */
   core.String merchantId;
-
   /** The method (get). */
   core.String method;
-
 
   AccountstatusesCustomBatchRequestEntry();
 
@@ -3754,17 +3607,14 @@ class AccountstatusesCustomBatchRequestEntry {
   }
 }
 
-
 class AccountstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<AccountstatusesCustomBatchResponseEntry> entries;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accountstatusesCustomBatchResponse".
    */
   core.String kind;
-
 
   AccountstatusesCustomBatchResponse();
 
@@ -3789,7 +3639,6 @@ class AccountstatusesCustomBatchResponse {
   }
 }
 
-
 /** A batch entry encoding a single non-batch accountstatuses response. */
 class AccountstatusesCustomBatchResponseEntry {
   /**
@@ -3797,13 +3646,10 @@ class AccountstatusesCustomBatchResponseEntry {
    * successful.
    */
   AccountStatus accountStatus;
-
   /** The ID of the request entry this entry responds to. */
   core.int batchId;
-
   /** A list of errors defined if and only if the request failed. */
   Errors errors;
-
 
   AccountstatusesCustomBatchResponseEntry();
 
@@ -3834,19 +3680,15 @@ class AccountstatusesCustomBatchResponseEntry {
   }
 }
 
-
 class AccountstatusesListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accountstatusesListResponse".
    */
   core.String kind;
-
   /** The token for the retrieval of the next page of account statuses. */
   core.String nextPageToken;
-
   core.List<AccountStatus> resources;
-
 
   AccountstatusesListResponse();
 
@@ -3877,11 +3719,9 @@ class AccountstatusesListResponse {
   }
 }
 
-
 class AccounttaxCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<AccounttaxCustomBatchRequestEntry> entries;
-
 
   AccounttaxCustomBatchRequest();
 
@@ -3900,25 +3740,19 @@ class AccounttaxCustomBatchRequest {
   }
 }
 
-
 /** A batch entry encoding a single non-batch accounttax request. */
 class AccounttaxCustomBatchRequestEntry {
   /** The ID of the account for which to get/update account tax settings. */
   core.String accountId;
-
   /**
    * The account tax settings to update. Only defined if the method is update.
    */
   AccountTax accountTax;
-
   /** An entry ID, unique within the batch request. */
   core.int batchId;
-
   /** The ID of the managing account. */
   core.String merchantId;
-
   core.String method;
-
 
   AccounttaxCustomBatchRequestEntry();
 
@@ -3961,17 +3795,14 @@ class AccounttaxCustomBatchRequestEntry {
   }
 }
 
-
 class AccounttaxCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<AccounttaxCustomBatchResponseEntry> entries;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accounttaxCustomBatchResponse".
    */
   core.String kind;
-
 
   AccounttaxCustomBatchResponse();
 
@@ -3996,24 +3827,19 @@ class AccounttaxCustomBatchResponse {
   }
 }
 
-
 /** A batch entry encoding a single non-batch accounttax response. */
 class AccounttaxCustomBatchResponseEntry {
   /** The retrieved or updated account tax settings. */
   AccountTax accountTax;
-
   /** The ID of the request entry this entry responds to. */
   core.int batchId;
-
   /** A list of errors defined if and only if the request failed. */
   Errors errors;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accounttaxCustomBatchResponseEntry".
    */
   core.String kind;
-
 
   AccounttaxCustomBatchResponseEntry();
 
@@ -4050,19 +3876,15 @@ class AccounttaxCustomBatchResponseEntry {
   }
 }
 
-
 class AccounttaxListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#accounttaxListResponse".
    */
   core.String kind;
-
   /** The token for the retrieval of the next page of account tax settings. */
   core.String nextPageToken;
-
   core.List<AccountTax> resources;
-
 
   AccounttaxListResponse();
 
@@ -4093,7 +3915,6 @@ class AccounttaxListResponse {
   }
 }
 
-
 /** Datafeed data. */
 class Datafeed {
   /**
@@ -4101,46 +3922,35 @@ class Datafeed {
    * the data feed.
    */
   core.String attributeLanguage;
-
   /** The two-letter ISO 639-1 language of the items in the feed. */
   core.String contentLanguage;
-
   /** The type of data feed. */
   core.String contentType;
-
   /** Fetch schedule for the feed file. */
   DatafeedFetchSchedule fetchSchedule;
-
   /** The filename of the feed. All feeds must have a unique file name. */
   core.String fileName;
-
   /** Format of the feed file. */
   DatafeedFormat format;
-
   /** The ID of the data feed. */
   core.String id;
-
   /**
    * The list of intended destinations (corresponds to checked check boxes in
    * Merchant Center).
    */
   core.List<core.String> intendedDestinations;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#datafeed".
    */
   core.String kind;
-
   /** A descriptive name of the data feed. */
   core.String name;
-
   /**
    * The two-letter ISO 3166 country where the items in the feed will be
    * included in the search index.
    */
   core.String targetCountry;
-
 
   Datafeed();
 
@@ -4219,7 +4029,6 @@ class Datafeed {
   }
 }
 
-
 /**
  * The required fields vary based on the frequency of fetching. For a monthly
  * fetch schedule, day_of_month and hour are required. For a weekly fetch
@@ -4229,7 +4038,6 @@ class Datafeed {
 class DatafeedFetchSchedule {
   /** The day of the month the feed file should be fetched (1-31). */
   core.int dayOfMonth;
-
   /**
    * The URL where the feed file can be fetched. Google Merchant Center will
    * support automatic scheduled uploads using the HTTP, HTTPS, FTP, or SFTP
@@ -4237,24 +4045,18 @@ class DatafeedFetchSchedule {
    * four protocols.
    */
   core.String fetchUrl;
-
   /** The hour of the day the feed file should be fetched (0-24). */
   core.int hour;
-
   /** An optional password for fetch_url. */
   core.String password;
-
   /**
    * Time zone used for schedule. UTC by default. E.g., "America/Los_Angeles".
    */
   core.String timeZone;
-
   /** An optional user name for fetch_url. */
   core.String username;
-
   /** The day of the week the feed file should be fetched. */
   core.String weekday;
-
 
   DatafeedFetchSchedule();
 
@@ -4309,7 +4111,6 @@ class DatafeedFetchSchedule {
   }
 }
 
-
 class DatafeedFormat {
   /**
    * Delimiter for the separation of values in a delimiter-separated values
@@ -4317,19 +4118,16 @@ class DatafeedFormat {
    * non-DSV data feeds.
    */
   core.String columnDelimiter;
-
   /**
    * Character encoding scheme of the data feed. If not specified, the encoding
    * will be auto-detected.
    */
   core.String fileEncoding;
-
   /**
    * Specifies how double quotes are interpreted. If not specified, the mode
    * will be auto-detected. Ignored for non-DSV data feeds.
    */
   core.String quotingMode;
-
 
   DatafeedFormat();
 
@@ -4360,7 +4158,6 @@ class DatafeedFormat {
   }
 }
 
-
 /**
  * The status of a datafeed, i.e., the result of the last retrieval of the
  * datafeed computed asynchronously when the feed processing is finished.
@@ -4368,31 +4165,23 @@ class DatafeedFormat {
 class DatafeedStatus {
   /** The ID of the feed for which the status is reported. */
   core.String datafeedId;
-
   /** The list of errors occurring in the feed. */
   core.List<DatafeedStatusError> errors;
-
   /** The number of items in the feed that were processed. */
   core.String itemsTotal;
-
   /** The number of items in the feed that were valid. */
   core.String itemsValid;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#datafeedStatus".
    */
   core.String kind;
-
   /** The last date at which the feed was uploaded. */
   core.String lastUploadDate;
-
   /** The processing status of the feed. */
   core.String processingStatus;
-
   /** The list of errors occurring in the feed. */
   core.List<DatafeedStatusError> warnings;
-
 
   DatafeedStatus();
 
@@ -4453,21 +4242,16 @@ class DatafeedStatus {
   }
 }
 
-
 /** An error occurring in the feed, like "invalid price". */
 class DatafeedStatusError {
   /** The code of the error, e.g., "validation/invalid_value". */
   core.String code;
-
   /** The number of occurrences of the error in the feed. */
   core.String count;
-
   /** A list of example occurrences of the error, grouped by product. */
   core.List<DatafeedStatusExample> examples;
-
   /** The error message, e.g., "Invalid price". */
   core.String message;
-
 
   DatafeedStatusError();
 
@@ -4504,18 +4288,14 @@ class DatafeedStatusError {
   }
 }
 
-
 /** An example occurrence for a particular error. */
 class DatafeedStatusExample {
   /** The ID of the example item. */
   core.String itemId;
-
   /** Line number in the data feed where the example is found. */
   core.String lineNumber;
-
   /** The problematic value. */
   core.String value;
-
 
   DatafeedStatusExample();
 
@@ -4546,11 +4326,9 @@ class DatafeedStatusExample {
   }
 }
 
-
 class DatafeedsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<DatafeedsCustomBatchRequestEntry> entries;
-
 
   DatafeedsCustomBatchRequest();
 
@@ -4569,23 +4347,17 @@ class DatafeedsCustomBatchRequest {
   }
 }
 
-
 /** A batch entry encoding a single non-batch datafeeds request. */
 class DatafeedsCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
   core.int batchId;
-
   /** The data feed to insert. */
   Datafeed datafeed;
-
   /** The ID of the data feed to get or delete. */
   core.String datafeedId;
-
   /** The ID of the managing account. */
   core.String merchantId;
-
   core.String method;
-
 
   DatafeedsCustomBatchRequestEntry();
 
@@ -4628,17 +4400,14 @@ class DatafeedsCustomBatchRequestEntry {
   }
 }
 
-
 class DatafeedsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<DatafeedsCustomBatchResponseEntry> entries;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#datafeedsCustomBatchResponse".
    */
   core.String kind;
-
 
   DatafeedsCustomBatchResponse();
 
@@ -4663,20 +4432,16 @@ class DatafeedsCustomBatchResponse {
   }
 }
 
-
 /** A batch entry encoding a single non-batch datafeeds response. */
 class DatafeedsCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
   core.int batchId;
-
   /**
    * The requested data feed. Defined if and only if the request was successful.
    */
   Datafeed datafeed;
-
   /** A list of errors defined if and only if the request failed. */
   Errors errors;
-
 
   DatafeedsCustomBatchResponseEntry();
 
@@ -4707,19 +4472,15 @@ class DatafeedsCustomBatchResponseEntry {
   }
 }
 
-
 class DatafeedsListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#datafeedsListResponse".
    */
   core.String kind;
-
   /** The token for the retrieval of the next page of datafeeds. */
   core.String nextPageToken;
-
   core.List<Datafeed> resources;
-
 
   DatafeedsListResponse();
 
@@ -4750,11 +4511,9 @@ class DatafeedsListResponse {
   }
 }
 
-
 class DatafeedstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<DatafeedstatusesCustomBatchRequestEntry> entries;
-
 
   DatafeedstatusesCustomBatchRequest();
 
@@ -4773,20 +4532,15 @@ class DatafeedstatusesCustomBatchRequest {
   }
 }
 
-
 /** A batch entry encoding a single non-batch datafeedstatuses request. */
 class DatafeedstatusesCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
   core.int batchId;
-
   /** The ID of the data feed to get or delete. */
   core.String datafeedId;
-
   /** The ID of the managing account. */
   core.String merchantId;
-
   core.String method;
-
 
   DatafeedstatusesCustomBatchRequestEntry();
 
@@ -4823,17 +4577,14 @@ class DatafeedstatusesCustomBatchRequestEntry {
   }
 }
 
-
 class DatafeedstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<DatafeedstatusesCustomBatchResponseEntry> entries;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#datafeedstatusesCustomBatchResponse".
    */
   core.String kind;
-
 
   DatafeedstatusesCustomBatchResponse();
 
@@ -4858,21 +4609,17 @@ class DatafeedstatusesCustomBatchResponse {
   }
 }
 
-
 /** A batch entry encoding a single non-batch datafeedstatuses response. */
 class DatafeedstatusesCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
   core.int batchId;
-
   /**
    * The requested data feed status. Defined if and only if the request was
    * successful.
    */
   DatafeedStatus datafeedStatus;
-
   /** A list of errors defined if and only if the request failed. */
   Errors errors;
-
 
   DatafeedstatusesCustomBatchResponseEntry();
 
@@ -4903,19 +4650,15 @@ class DatafeedstatusesCustomBatchResponseEntry {
   }
 }
 
-
 class DatafeedstatusesListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#datafeedstatusesListResponse".
    */
   core.String kind;
-
   /** The token for the retrieval of the next page of datafeed statuses. */
   core.String nextPageToken;
-
   core.List<DatafeedStatus> resources;
-
 
   DatafeedstatusesListResponse();
 
@@ -4946,18 +4689,14 @@ class DatafeedstatusesListResponse {
   }
 }
 
-
 /** An error returned by the API. */
 class Error {
   /** The domain of the error. */
   core.String domain;
-
   /** A description of the error. */
   core.String message;
-
   /** The error code. */
   core.String reason;
-
 
   Error();
 
@@ -4988,18 +4727,14 @@ class Error {
   }
 }
 
-
 /** A list of errors returned by a failed batch entry. */
 class Errors {
   /** The HTTP status of the first error in errors. */
   core.int code;
-
   /** A list of errors. */
   core.List<Error> errors;
-
   /** The message of the first error in errors. */
   core.String message;
-
 
   Errors();
 
@@ -5030,38 +4765,31 @@ class Errors {
   }
 }
 
-
 class Inventory {
   /** The availability of the product. */
   core.String availability;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#inventory".
    */
   core.String kind;
-
   /** The price of the product. */
   Price price;
-
   /**
    * The quantity of the product. Must be equal to or greater than zero.
    * Supported only for local products.
    */
   core.int quantity;
-
   /**
    * The sale price of the product. Mandatory if sale_price_effective_date is
    * defined.
    */
   Price salePrice;
-
   /**
    * A date range represented by a pair of ISO 8601 dates separated by a space,
    * comma, or slash. Both dates might be specified as 'null' if undecided.
    */
   core.String salePriceEffectiveDate;
-
 
   Inventory();
 
@@ -5110,11 +4838,9 @@ class Inventory {
   }
 }
 
-
 class InventoryCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<InventoryCustomBatchRequestEntry> entries;
-
 
   InventoryCustomBatchRequest();
 
@@ -5133,27 +4859,21 @@ class InventoryCustomBatchRequest {
   }
 }
 
-
 /** A batch entry encoding a single non-batch inventory request. */
 class InventoryCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
   core.int batchId;
-
   /** Price and availability of the product. */
   Inventory inventory;
-
   /** The ID of the managing account. */
   core.String merchantId;
-
   /** The ID of the product for which to update price and availability. */
   core.String productId;
-
   /**
    * The code of the store for which to update price and availability. Use
    * online to update price and availability of an online product.
    */
   core.String storeCode;
-
 
   InventoryCustomBatchRequestEntry();
 
@@ -5196,17 +4916,14 @@ class InventoryCustomBatchRequestEntry {
   }
 }
 
-
 class InventoryCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<InventoryCustomBatchResponseEntry> entries;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#inventoryCustomBatchResponse".
    */
   core.String kind;
-
 
   InventoryCustomBatchResponse();
 
@@ -5231,21 +4948,17 @@ class InventoryCustomBatchResponse {
   }
 }
 
-
 /** A batch entry encoding a single non-batch inventory response. */
 class InventoryCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
   core.int batchId;
-
   /** A list of errors defined if and only if the request failed. */
   Errors errors;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#inventoryCustomBatchResponseEntry".
    */
   core.String kind;
-
 
   InventoryCustomBatchResponseEntry();
 
@@ -5276,32 +4989,26 @@ class InventoryCustomBatchResponseEntry {
   }
 }
 
-
 class InventorySetRequest {
   /** The availability of the product. */
   core.String availability;
-
   /** The price of the product. */
   Price price;
-
   /**
    * The quantity of the product. Must be equal to or greater than zero.
    * Supported only for local products.
    */
   core.int quantity;
-
   /**
    * The sale price of the product. Mandatory if sale_price_effective_date is
    * defined.
    */
   Price salePrice;
-
   /**
    * A date range represented by a pair of ISO 8601 dates separated by a space,
    * comma, or slash. Both dates might be specified as 'null' if undecided.
    */
   core.String salePriceEffectiveDate;
-
 
   InventorySetRequest();
 
@@ -5344,14 +5051,12 @@ class InventorySetRequest {
   }
 }
 
-
 class InventorySetResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#inventorySetResponse".
    */
   core.String kind;
-
 
   InventorySetResponse();
 
@@ -5370,24 +5075,20 @@ class InventorySetResponse {
   }
 }
 
-
 class LoyaltyPoints {
   /**
    * Name of loyalty points program. It is recommended to limit the name to 12
    * full-width characters or 24 Roman characters.
    */
   core.String name;
-
   /** The retailer's loyalty points in absolute value. */
   core.String pointsValue;
-
   /**
    * The ratio of a point when converted to currency. Google assumes currency
    * based on Merchant Center settings. If ratio is left out, it defaults to
    * 1.0.
    */
   core.double ratio;
-
 
   LoyaltyPoints();
 
@@ -5418,14 +5119,11 @@ class LoyaltyPoints {
   }
 }
 
-
 class Price {
   /** The currency of the price. */
   core.String currency;
-
   /** The price represented as a number. */
   core.String value;
-
 
   Price();
 
@@ -5450,60 +5148,45 @@ class Price {
   }
 }
 
-
 /** Product data. */
 class Product {
   /** Additional URLs of images of the item. */
   core.List<core.String> additionalImageLinks;
-
   /** Set to true if the item is targeted towards adults. */
   core.bool adult;
-
   /**
    * Used to group items in an arbitrary way. Only for CPA%, discouraged
    * otherwise.
    */
   core.String adwordsGrouping;
-
   /** Similar to adwords_grouping, but only works on CPC. */
   core.List<core.String> adwordsLabels;
-
   /**
    * Allows advertisers to override the item URL when the product is shown
    * within the context of Product Ads.
    */
   core.String adwordsRedirect;
-
   /** Target age group of the item. */
   core.String ageGroup;
-
   /** Specifies the intended aspects for the product. */
   core.List<ProductAspect> aspects;
-
   /** Availability status of the item. */
   core.String availability;
-
   /**
    * The day a pre-ordered product becomes available for delivery, in ISO 8601
    * format.
    */
   core.String availabilityDate;
-
   /** Brand of the item. */
   core.String brand;
-
   /** The item's channel (online or local). */
   core.String channel;
-
   /** Color of the item. */
   core.String color;
-
   /** Condition or state of the item. */
   core.String condition;
-
   /** The two-letter ISO 639-1 language code for the item. */
   core.String contentLanguage;
-
   /**
    * A list of custom (merchant-provided) attributes. It can also be used for
    * submitting any attribute of the feed specification in its generic form
@@ -5511,51 +5194,36 @@ class Product {
    * is useful for submitting attributes not explicitly exposed by the API.
    */
   core.List<ProductCustomAttribute> customAttributes;
-
   /** A list of custom (merchant-provided) custom attribute groups. */
   core.List<ProductCustomGroup> customGroups;
-
   /** Custom label 0 for custom grouping of items in a Shopping campaign. */
   core.String customLabel0;
-
   /** Custom label 1 for custom grouping of items in a Shopping campaign. */
   core.String customLabel1;
-
   /** Custom label 2 for custom grouping of items in a Shopping campaign. */
   core.String customLabel2;
-
   /** Custom label 3 for custom grouping of items in a Shopping campaign. */
   core.String customLabel3;
-
   /** Custom label 4 for custom grouping of items in a Shopping campaign. */
   core.String customLabel4;
-
   /** Description of the item. */
   core.String description;
-
   /** Specifies the intended destinations for the product. */
   core.List<ProductDestination> destinations;
-
   /** An identifier for an item for dynamic remarketing campaigns. */
   core.String displayAdsId;
-
   /**
    * URL directly to your item's landing page for dynamic remarketing campaigns.
    */
   core.String displayAdsLink;
-
   /** Advertiser-specified recommendations. */
   core.List<core.String> displayAdsSimilarIds;
-
   /** Title of an item for dynamic remarketing campaigns. */
   core.String displayAdsTitle;
-
   /** Offer margin for dynamic remarketing campaigns. */
   core.double displayAdsValue;
-
   /** The energy efficiency class as defined in EU directive 2010/30/EU. */
   core.String energyEfficiencyClass;
-
   /**
    * Date on which the item should expire, as specified upon insertion, in ISO
    * 8601 format. The actual expiration date in Google Shopping is exposed in
@@ -5563,144 +5231,104 @@ class Product {
    * expirationDate is too far in the future.
    */
   core.String expirationDate;
-
   /** Target gender of the item. */
   core.String gender;
-
   /** Google's category of the item (see Google product taxonomy). */
   core.String googleProductCategory;
-
   /** Global Trade Item Number (GTIN) of the item. */
   core.String gtin;
-
   /** The REST id of the product. */
   core.String id;
-
   /**
    * False when the item does not have unique product identifiers appropriate to
    * its category, such as GTIN, MPN, and brand. Required according to the
    * Unique Product Identifier Rules for all target countries except for Canada.
    */
   core.bool identifierExists;
-
   /** URL of an image of the item. */
   core.String imageLink;
-
   /** Number and amount of installments to pay for an item. Brazil only. */
   ProductInstallment installment;
-
   /**
    * Whether the item is a merchant-defined bundle. A bundle is a custom
    * grouping of different products sold by a merchant for a single price.
    */
   core.bool isBundle;
-
   /** Shared identifier for all variants of the same product. */
   core.String itemGroupId;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#product".
    */
   core.String kind;
-
   /** URL directly linking to your item's page on your website. */
   core.String link;
-
   /**
    * Loyalty points that users receive after purchasing the item. Japan only.
    */
   LoyaltyPoints loyaltyPoints;
-
   /** The material of which the item is made. */
   core.String material;
-
   /** Link to a mobile-optimized version of the landing page. */
   core.String mobileLink;
-
   /** Manufacturer Part Number (MPN) of the item. */
   core.String mpn;
-
   /** The number of identical products in a merchant-defined multipack. */
   core.String multipack;
-
   /** An identifier of the item. */
   core.String offerId;
-
   /** Whether an item is available for purchase only online. */
   core.bool onlineOnly;
-
   /** The item's pattern (e.g. polka dots). */
   core.String pattern;
-
   /** Price of the item. */
   Price price;
-
   /**
    * Your category of the item (formatted as in product feeds specification).
    */
   core.String productType;
-
   /** Advertised sale price of the item. */
   Price salePrice;
-
   /**
    * Date range during which the item is on sale (see product feed
    * specifications).
    */
   core.String salePriceEffectiveDate;
-
   /** Shipping rules. */
   core.List<ProductShipping> shipping;
-
   /** Height of the item for shipping. */
   ProductShippingDimension shippingHeight;
-
   /**
    * The shipping label of the product, used to group product in account-level
    * shipping rules.
    */
   core.String shippingLabel;
-
   /** Length of the item for shipping. */
   ProductShippingDimension shippingLength;
-
   /** Weight of the item for shipping. */
   ProductShippingWeight shippingWeight;
-
   /** Width of the item for shipping. */
   ProductShippingDimension shippingWidth;
-
   /** System in which the size is specified. Recommended for apparel items. */
   core.String sizeSystem;
-
   /** The cut of the item. Recommended for apparel items. */
   core.String sizeType;
-
   /** Size of the item. */
   core.List<core.String> sizes;
-
   /** The two-letter ISO 3166 country code for the item. */
   core.String targetCountry;
-
   /** Tax information. */
   core.List<ProductTax> taxes;
-
   /** Title of the item. */
   core.String title;
-
   /** The preference of the denominator of the unit price. */
   ProductUnitPricingBaseMeasure unitPricingBaseMeasure;
-
   /** The measure and dimension of an item. */
   ProductUnitPricingMeasure unitPricingMeasure;
-
   /** The read-only list of intended destinations which passed validation. */
   core.List<core.String> validatedDestinations;
-
   /** Read-only warnings. */
   core.List<Error> warnings;
-
 
   Product();
 
@@ -6127,17 +5755,13 @@ class Product {
   }
 }
 
-
 class ProductAspect {
   /** The name of the aspect. */
   core.String aspectName;
-
   /** The name of the destination. Leave out to apply to all destinations. */
   core.String destinationName;
-
   /** Whether the aspect is required, excluded or should be validated. */
   core.String intention;
-
 
   ProductAspect();
 
@@ -6168,26 +5792,21 @@ class ProductAspect {
   }
 }
 
-
 class ProductCustomAttribute {
   /**
    * The name of the attribute. Underscores will be replaced by spaces upon
    * insertion.
    */
   core.String name;
-
   /** The type of the attribute. */
   core.String type;
-
   /**
    * Free-form unit of the attribute. Unit can only be used for values of type
    * INT or FLOAT.
    */
   core.String unit;
-
   /** The value of the attribute. */
   core.String value;
-
 
   ProductCustomAttribute();
 
@@ -6224,17 +5843,14 @@ class ProductCustomAttribute {
   }
 }
 
-
 class ProductCustomGroup {
   /** The sub-attributes. */
   core.List<ProductCustomAttribute> attributes;
-
   /**
    * The name of the group. Underscores will be replaced by spaces upon
    * insertion.
    */
   core.String name;
-
 
   ProductCustomGroup();
 
@@ -6259,14 +5875,11 @@ class ProductCustomGroup {
   }
 }
 
-
 class ProductDestination {
   /** The name of the destination. */
   core.String destinationName;
-
   /** Whether the destination is required, excluded or should be validated. */
   core.String intention;
-
 
   ProductDestination();
 
@@ -6291,14 +5904,11 @@ class ProductDestination {
   }
 }
 
-
 class ProductInstallment {
   /** The amount the buyer has to pay per month. */
   Price amount;
-
   /** The number of installments the buyer has to pay. */
   core.String months;
-
 
   ProductInstallment();
 
@@ -6323,44 +5933,36 @@ class ProductInstallment {
   }
 }
 
-
 class ProductShipping {
   /**
    * The two-letter ISO 3166 country code for the country to which an item will
    * ship.
    */
   core.String country;
-
   /**
    * The location where the shipping is applicable, represented by a location
    * group name.
    */
   core.String locationGroupName;
-
   /**
    * The numeric id of a location that the shipping rate applies to as defined
    * in the AdWords API.
    */
   core.String locationId;
-
   /**
    * The postal code range that the shipping rate applies to, represented by a
    * postal code, a postal code prefix followed by a * wildcard, a range between
    * two postal codes or two postal code prefixes of equal length.
    */
   core.String postalCode;
-
   /** Fixed shipping price, represented as a number. */
   Price price;
-
   /**
    * The geographic region to which a shipping rate applies (e.g. zip code).
    */
   core.String region;
-
   /** A free-form description of the service class or delivery speed. */
   core.String service;
-
 
   ProductShipping();
 
@@ -6415,7 +6017,6 @@ class ProductShipping {
   }
 }
 
-
 class ProductShippingDimension {
   /**
    * The unit of value.
@@ -6425,13 +6026,11 @@ class ProductShippingDimension {
    * - "in"
    */
   core.String unit;
-
   /**
    * The dimension of the product used to calculate the shipping cost of the
    * item.
    */
   core.double value;
-
 
   ProductShippingDimension();
 
@@ -6456,16 +6055,13 @@ class ProductShippingDimension {
   }
 }
 
-
 class ProductShippingWeight {
   /** The unit of value. */
   core.String unit;
-
   /**
    * The weight of the product used to calculate the shipping cost of the item.
    */
   core.double value;
-
 
   ProductShippingWeight();
 
@@ -6490,7 +6086,6 @@ class ProductShippingWeight {
   }
 }
 
-
 /**
  * The status of a product, i.e., information about a product computed
  * asynchronously by the data quality analysis.
@@ -6498,34 +6093,25 @@ class ProductShippingWeight {
 class ProductStatus {
   /** Date on which the item has been created, in ISO 8601 format. */
   core.String creationDate;
-
   /** A list of data quality issues associated with the product. */
   core.List<ProductStatusDataQualityIssue> dataQualityIssues;
-
   /** The intended destinations for the product. */
   core.List<ProductStatusDestinationStatus> destinationStatuses;
-
   /** Date on which the item expires in Google Shopping, in ISO 8601 format. */
   core.String googleExpirationDate;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#productStatus".
    */
   core.String kind;
-
   /** Date on which the item has been last updated, in ISO 8601 format. */
   core.String lastUpdateDate;
-
   /** The link to the product. */
   core.String link;
-
   /** The id of the product for which status is reported. */
   core.String productId;
-
   /** The title of the product. */
   core.String title;
-
 
   ProductStatus();
 
@@ -6592,32 +6178,23 @@ class ProductStatus {
   }
 }
 
-
 class ProductStatusDataQualityIssue {
   /** A more detailed error string. */
   core.String detail;
-
   /** The fetch status for landing_page_errors. */
   core.String fetchStatus;
-
   /** The id of the data quality issue. */
   core.String id;
-
   /** The attribute name that is relevant for the issue. */
   core.String location;
-
   /** The severity of the data quality issue. */
   core.String severity;
-
   /** The time stamp of the data quality issue. */
   core.String timestamp;
-
   /** The value of that attribute that was found on the landing page */
   core.String valueOnLandingPage;
-
   /** The value the attribute had at time of evaluation. */
   core.String valueProvided;
-
 
   ProductStatusDataQualityIssue();
 
@@ -6678,20 +6255,16 @@ class ProductStatusDataQualityIssue {
   }
 }
 
-
 class ProductStatusDestinationStatus {
   /** The destination's approval status. */
   core.String approvalStatus;
-
   /** The name of the destination */
   core.String destination;
-
   /**
    * Whether the destination is required, excluded, selected by default or
    * should be validated.
    */
   core.String intention;
-
 
   ProductStatusDestinationStatus();
 
@@ -6722,20 +6295,17 @@ class ProductStatusDestinationStatus {
   }
 }
 
-
 class ProductTax {
   /**
    * The country within which the item is taxed, specified with a two-letter ISO
    * 3166 country code.
    */
   core.String country;
-
   /**
    * The numeric id of a location that the tax rate applies to as defined in the
    * AdWords API.
    */
   core.String locationId;
-
   /**
    * The postal code range that the tax rate applies to, represented by a ZIP
    * code, a ZIP code prefix using * wildcard, a range between two ZIP codes or
@@ -6743,16 +6313,12 @@ class ProductTax {
    * 94*-95*.
    */
   core.String postalCode;
-
   /** The percentage of tax rate that applies to the item price. */
   core.double rate;
-
   /** The geographic region to which the tax rate applies. */
   core.String region;
-
   /** Set to true if tax is charged on shipping. */
   core.bool taxShip;
-
 
   ProductTax();
 
@@ -6801,14 +6367,11 @@ class ProductTax {
   }
 }
 
-
 class ProductUnitPricingBaseMeasure {
   /** The unit of the denominator. */
   core.String unit;
-
   /** The denominator of the unit price. */
   core.String value;
-
 
   ProductUnitPricingBaseMeasure();
 
@@ -6833,14 +6396,11 @@ class ProductUnitPricingBaseMeasure {
   }
 }
 
-
 class ProductUnitPricingMeasure {
   /** The unit of the measure. */
   core.String unit;
-
   /** The measure of an item. */
   core.double value;
-
 
   ProductUnitPricingMeasure();
 
@@ -6865,11 +6425,9 @@ class ProductUnitPricingMeasure {
   }
 }
 
-
 class ProductsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<ProductsCustomBatchRequestEntry> entries;
-
 
   ProductsCustomBatchRequest();
 
@@ -6888,26 +6446,20 @@ class ProductsCustomBatchRequest {
   }
 }
 
-
 /** A batch entry encoding a single non-batch products request. */
 class ProductsCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
   core.int batchId;
-
   /** The ID of the managing account. */
   core.String merchantId;
-
   core.String method;
-
   /** The product to insert. Only required if the method is insert. */
   Product product;
-
   /**
    * The ID of the product to get or delete. Only defined if the method is get
    * or delete.
    */
   core.String productId;
-
 
   ProductsCustomBatchRequestEntry();
 
@@ -6950,17 +6502,14 @@ class ProductsCustomBatchRequestEntry {
   }
 }
 
-
 class ProductsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<ProductsCustomBatchResponseEntry> entries;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#productsCustomBatchResponse".
    */
   core.String kind;
-
 
   ProductsCustomBatchResponse();
 
@@ -6985,27 +6534,22 @@ class ProductsCustomBatchResponse {
   }
 }
 
-
 /** A batch entry encoding a single non-batch products response. */
 class ProductsCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
   core.int batchId;
-
   /** A list of errors defined if and only if the request failed. */
   Errors errors;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#productsCustomBatchResponseEntry".
    */
   core.String kind;
-
   /**
    * The inserted product. Only defined if the method is insert and if the
    * request was successful.
    */
   Product product;
-
 
   ProductsCustomBatchResponseEntry();
 
@@ -7042,19 +6586,15 @@ class ProductsCustomBatchResponseEntry {
   }
 }
 
-
 class ProductsListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#productsListResponse".
    */
   core.String kind;
-
   /** The token for the retrieval of the next page of products. */
   core.String nextPageToken;
-
   core.List<Product> resources;
-
 
   ProductsListResponse();
 
@@ -7085,11 +6625,9 @@ class ProductsListResponse {
   }
 }
 
-
 class ProductstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<ProductstatusesCustomBatchRequestEntry> entries;
-
 
   ProductstatusesCustomBatchRequest();
 
@@ -7108,20 +6646,15 @@ class ProductstatusesCustomBatchRequest {
   }
 }
 
-
 /** A batch entry encoding a single non-batch productstatuses request. */
 class ProductstatusesCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
   core.int batchId;
-
   /** The ID of the managing account. */
   core.String merchantId;
-
   core.String method;
-
   /** The ID of the product whose status to get. */
   core.String productId;
-
 
   ProductstatusesCustomBatchRequestEntry();
 
@@ -7158,17 +6691,14 @@ class ProductstatusesCustomBatchRequestEntry {
   }
 }
 
-
 class ProductstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<ProductstatusesCustomBatchResponseEntry> entries;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#productstatusesCustomBatchResponse".
    */
   core.String kind;
-
 
   ProductstatusesCustomBatchResponse();
 
@@ -7193,26 +6723,21 @@ class ProductstatusesCustomBatchResponse {
   }
 }
 
-
 /** A batch entry encoding a single non-batch productstatuses response. */
 class ProductstatusesCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
   core.int batchId;
-
   /** A list of errors, if the request failed. */
   Errors errors;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#productstatusesCustomBatchResponseEntry".
    */
   core.String kind;
-
   /**
    * The requested product status. Only defined if the request was successful.
    */
   ProductStatus productStatus;
-
 
   ProductstatusesCustomBatchResponseEntry();
 
@@ -7249,19 +6774,15 @@ class ProductstatusesCustomBatchResponseEntry {
   }
 }
 
-
 class ProductstatusesListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#productstatusesListResponse".
    */
   core.String kind;
-
   /** The token for the retrieval of the next page of products statuses. */
   core.String nextPageToken;
-
   core.List<ProductStatus> resources;
-
 
   ProductstatusesListResponse();
 
@@ -7292,14 +6813,11 @@ class ProductstatusesListResponse {
   }
 }
 
-
 class Weight {
   /** The weight unit. */
   core.String unit;
-
   /** The weight represented as a number. */
   core.String value;
-
 
   Weight();
 

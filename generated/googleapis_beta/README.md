@@ -86,12 +86,6 @@ The Google Container Engine API is used for building and managing container base
 
 Official API documentation: https://cloud.google.com/container-engine/docs/v1beta1/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Dataflow API - dataflow v1beta3
-
-Google Dataflow API.
-
-Official API documentation: 
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Datastore API - datastore v1beta2
 
 API for accessing Google Cloud Datastore.
@@ -116,6 +110,12 @@ Provides access to Genomics data.
 
 Official API documentation: https://developers.google.com/genomics/v1beta2/reference
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v1beta3
+
+Google Cloud Logging API lets you create logs, ingest log entries, and manage log sinks.
+
+Official API documentation: 
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Deployment Manager API - manager v1beta2
 
 The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
@@ -127,6 +127,12 @@ Official API documentation: https://developers.google.com/deployment-manager/
 Provides reliable, many-to-many, asynchronous messaging between applications.
 
 Official API documentation: https://developers.google.com/pubsub/v1beta1
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1beta2
+
+Provides reliable, many-to-many, asynchronous messaging between applications.
+
+Official API documentation: 
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Instance Group Manager API - replicapool v1beta2
 
@@ -169,22 +175,4 @@ Official API documentation: https://developers.google.com/cloud-sql/docs/admin-a
 Lets you access a Google App Engine Pull Task Queue over REST.
 
 Official API documentation: https://developers.google.com/appengine/docs/python/taskqueue/rest
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Dataflow API - dataflow v1b4
-
-Google Dataflow API.
-
-Official API documentation: 
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v1beta3
-
-Google Cloud Logging API lets you create logs, ingest log entries, and manage log sinks.
-
-Official API documentation: 
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1beta2
-
-Provides reliable, many-to-many, asynchronous messaging between applications.
-
-Official API documentation: 
 

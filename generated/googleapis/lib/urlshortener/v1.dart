@@ -56,7 +56,7 @@ class UrlResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Url> get(core.String shortUrl, {core.String projection}) {
     var _url = null;
@@ -73,7 +73,6 @@ class UrlResourceApi {
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
-
 
     _url = 'url';
 
@@ -100,7 +99,7 @@ class UrlResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Url> insert(Url request) {
     var _url = null;
@@ -113,7 +112,6 @@ class UrlResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'url';
 
@@ -145,7 +143,7 @@ class UrlResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UrlHistory> list({core.String projection, core.String start_token}) {
     var _url = null;
@@ -161,7 +159,6 @@ class UrlResourceApi {
     if (start_token != null) {
       _queryParams["start-token"] = [start_token];
     }
-
 
     _url = 'url/history';
 
@@ -185,31 +182,25 @@ class AnalyticsSnapshot {
    * present if this data is available.
    */
   core.List<StringCount> browsers;
-
   /**
    * Top countries (expressed as country codes), e.g. "US" or "DE"; sorted by
    * (descending) click counts. Only present if this data is available.
    */
   core.List<StringCount> countries;
-
   /** Number of clicks on all goo.gl short URLs pointing to this long URL. */
   core.String longUrlClicks;
-
   /**
    * Top platforms or OSes, e.g. "Windows"; sorted by (descending) click counts.
    * Only present if this data is available.
    */
   core.List<StringCount> platforms;
-
   /**
    * Top referring hosts, e.g. "www.google.com"; sorted by (descending) click
    * counts. Only present if this data is available.
    */
   core.List<StringCount> referrers;
-
   /** Number of clicks on this short URL. */
   core.String shortUrlClicks;
-
 
   AnalyticsSnapshot();
 
@@ -258,23 +249,17 @@ class AnalyticsSnapshot {
   }
 }
 
-
 class AnalyticsSummary {
   /** Click analytics over all time. */
   AnalyticsSnapshot allTime;
-
   /** Click analytics over the last day. */
   AnalyticsSnapshot day;
-
   /** Click analytics over the last month. */
   AnalyticsSnapshot month;
-
   /** Click analytics over the last two hours. */
   AnalyticsSnapshot twoHours;
-
   /** Click analytics over the last week. */
   AnalyticsSnapshot week;
-
 
   AnalyticsSummary();
 
@@ -317,17 +302,14 @@ class AnalyticsSummary {
   }
 }
 
-
 class StringCount {
   /**
    * Number of clicks for this top entry, e.g. for this particular country or
    * browser.
    */
   core.String count;
-
   /** Label assigned to this top entry, e.g. "US" or "Chrome". */
   core.String id;
-
 
   StringCount();
 
@@ -352,39 +334,32 @@ class StringCount {
   }
 }
 
-
 class Url {
   /**
    * A summary of the click analytics for the short and long URL. Might not be
    * present if not requested or currently unavailable.
    */
   AnalyticsSummary analytics;
-
   /**
    * Time the short URL was created; ISO 8601 representation using the
    * yyyy-MM-dd'T'HH:mm:ss.SSSZZ format, e.g. "2010-10-14T19:01:24.944+00:00".
    */
   core.String created;
-
   /** Short URL, e.g. "http://goo.gl/l6MS". */
   core.String id;
-
   /** The fixed string "urlshortener#url". */
   core.String kind;
-
   /**
    * Long URL, e.g. "http://www.google.com/". Might not be present if the status
    * is "REMOVED".
    */
   core.String longUrl;
-
   /**
    * Status of the target URL. Possible values: "OK", "MALWARE", "PHISHING", or
    * "REMOVED". A URL might be marked "REMOVED" if it was flagged as spam, for
    * example.
    */
   core.String status;
-
 
   Url();
 
@@ -433,28 +408,22 @@ class Url {
   }
 }
 
-
 class UrlHistory {
   /** A list of URL resources. */
   core.List<Url> items;
-
   /**
    * Number of items returned with each full "page" of results. Note that the
    * last page could have fewer items than the "itemsPerPage" value.
    */
   core.int itemsPerPage;
-
   /** The fixed string "urlshortener#urlHistory". */
   core.String kind;
-
   /** A token to provide to get the next page of results. */
   core.String nextPageToken;
-
   /**
    * Total number of short URLs associated with this user (may be approximate).
    */
   core.int totalItems;
-
 
   UrlHistory();
 

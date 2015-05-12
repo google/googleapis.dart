@@ -67,7 +67,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> get(core.String accountId) {
     var _url = null;
@@ -80,7 +80,6 @@ class AccountsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -113,7 +112,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Accounts> list({core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -129,7 +128,6 @@ class AccountsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'accounts';
 
@@ -173,7 +171,7 @@ class AccountsAdclientsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AdClients> list(core.String accountId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -192,7 +190,6 @@ class AccountsAdclientsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients';
 
@@ -232,7 +229,7 @@ class AccountsAlertsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Alerts> list(core.String accountId, {core.String locale}) {
     var _url = null;
@@ -248,7 +245,6 @@ class AccountsAlertsResourceApi {
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/alerts';
 
@@ -288,7 +284,7 @@ class AccountsCustomchannelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomChannel> get(core.String accountId, core.String adClientId, core.String customChannelId) {
     var _url = null;
@@ -307,7 +303,6 @@ class AccountsCustomchannelsResourceApi {
     if (customChannelId == null) {
       throw new core.ArgumentError("Parameter customChannelId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/customchannels/' + commons.Escaper.ecapeVariable('$customChannelId');
 
@@ -345,7 +340,7 @@ class AccountsCustomchannelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CustomChannels> list(core.String accountId, core.String adClientId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -367,7 +362,6 @@ class AccountsCustomchannelsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/customchannels';
 
@@ -414,7 +408,7 @@ class AccountsMetadataDimensionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Metadata> list(core.String accountId) {
     var _url = null;
@@ -427,7 +421,6 @@ class AccountsMetadataDimensionsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/metadata/dimensions';
 
@@ -463,7 +456,7 @@ class AccountsMetadataMetricsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Metadata> list(core.String accountId) {
     var _url = null;
@@ -476,7 +469,6 @@ class AccountsMetadataMetricsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/metadata/metrics';
 
@@ -514,7 +506,7 @@ class AccountsPreferreddealsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PreferredDeal> get(core.String accountId, core.String dealId) {
     var _url = null;
@@ -530,7 +522,6 @@ class AccountsPreferreddealsResourceApi {
     if (dealId == null) {
       throw new core.ArgumentError("Parameter dealId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/preferreddeals/' + commons.Escaper.ecapeVariable('$dealId');
 
@@ -557,7 +548,7 @@ class AccountsPreferreddealsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PreferredDeals> list(core.String accountId) {
     var _url = null;
@@ -570,7 +561,6 @@ class AccountsPreferreddealsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/preferreddeals';
 
@@ -652,7 +642,7 @@ class AccountsReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future generate(core.String accountId, core.String startDate, core.String endDate, {core.List<core.String> dimension, core.List<core.String> filter, core.String locale, core.int maxResults, core.List<core.String> metric, core.List<core.String> sort, core.int startIndex, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -749,7 +739,7 @@ class AccountsReportsSavedResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Report> generate(core.String accountId, core.String savedReportId, {core.String locale, core.int maxResults, core.int startIndex}) {
     var _url = null;
@@ -774,7 +764,6 @@ class AccountsReportsSavedResourceApi {
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/reports/' + commons.Escaper.ecapeVariable('$savedReportId');
 
@@ -809,7 +798,7 @@ class AccountsReportsSavedResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SavedReports> list(core.String accountId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -828,7 +817,6 @@ class AccountsReportsSavedResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/reports/saved';
 
@@ -875,7 +863,7 @@ class AccountsUrlchannelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UrlChannels> list(core.String accountId, core.String adClientId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -898,7 +886,6 @@ class AccountsUrlchannelsResourceApi {
       _queryParams["pageToken"] = [pageToken];
     }
 
-
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/urlchannels';
 
     var _response = _requester.request(_url,
@@ -918,13 +905,10 @@ class AccountsUrlchannelsResourceApi {
 class Account {
   /** Unique identifier of this account. */
   core.String id;
-
   /** Kind of resource this is, in this case adexchangeseller#account. */
   core.String kind;
-
   /** Name of this account. */
   core.String name;
-
 
   Account();
 
@@ -955,23 +939,18 @@ class Account {
   }
 }
 
-
 class Accounts {
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** The accounts returned in this list response. */
   core.List<Account> items;
-
   /** Kind of list this is, in this case adexchangeseller#accounts. */
   core.String kind;
-
   /**
    * Continuation token used to page through accounts. To retrieve the next page
    * of results, set the next request's "pageToken" value to this.
    */
   core.String nextPageToken;
-
 
   Accounts();
 
@@ -1008,26 +987,20 @@ class Accounts {
   }
 }
 
-
 class AdClient {
   /** Whether this ad client is opted in to ARC. */
   core.bool arcOptIn;
-
   /** Unique identifier of this ad client. */
   core.String id;
-
   /** Kind of resource this is, in this case adexchangeseller#adClient. */
   core.String kind;
-
   /**
    * This ad client's product code, which corresponds to the PRODUCT_CODE report
    * dimension.
    */
   core.String productCode;
-
   /** Whether this ad client supports being reported on. */
   core.bool supportsReporting;
-
 
   AdClient();
 
@@ -1070,23 +1043,18 @@ class AdClient {
   }
 }
 
-
 class AdClients {
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** The ad clients returned in this list response. */
   core.List<AdClient> items;
-
   /** Kind of list this is, in this case adexchangeseller#adClients. */
   core.String kind;
-
   /**
    * Continuation token used to page through ad clients. To retrieve the next
    * page of results, set the next request's "pageToken" value to this.
    */
   core.String nextPageToken;
-
 
   AdClients();
 
@@ -1123,30 +1091,24 @@ class AdClients {
   }
 }
 
-
 class Alert {
   /**
    * Unique identifier of this alert. This should be considered an opaque
    * identifier; it is not safe to rely on it being in any particular format.
    */
   core.String id;
-
   /** Kind of resource this is, in this case adexchangeseller#alert. */
   core.String kind;
-
   /** The localized alert message. */
   core.String message;
-
   /** Severity of this alert. Possible values: INFO, WARNING, SEVERE. */
   core.String severity;
-
   /**
    * Type of this alert. Possible values: SELF_HOLD, MIGRATED_TO_BILLING3,
    * ADDRESS_PIN_VERIFICATION, PHONE_PIN_VERIFICATION, CORPORATE_ENTITY,
    * GRAYLISTED_PUBLISHER, API_HOLD.
    */
   core.String type;
-
 
   Alert();
 
@@ -1189,14 +1151,11 @@ class Alert {
   }
 }
 
-
 class Alerts {
   /** The alerts returned in this list response. */
   core.List<Alert> items;
-
   /** Kind of list this is, in this case adexchangeseller#alerts. */
   core.String kind;
-
 
   Alerts();
 
@@ -1221,15 +1180,12 @@ class Alerts {
   }
 }
 
-
 /** The targeting information of this custom channel, if activated. */
 class CustomChannelTargetingInfo {
   /** The name used to describe this channel externally. */
   core.String adsAppearOn;
-
   /** The external description of the channel. */
   core.String description;
-
   /**
    * The locations in which ads appear. (Only valid for content and mobile
    * content ads). Acceptable values for content ads are: TOP_LEFT, TOP_CENTER,
@@ -1238,10 +1194,8 @@ class CustomChannelTargetingInfo {
    * mobile content ads are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS.
    */
   core.String location;
-
   /** The language of the sites ads will be displayed on. */
   core.String siteLanguage;
-
 
   CustomChannelTargetingInfo();
 
@@ -1278,27 +1232,21 @@ class CustomChannelTargetingInfo {
   }
 }
 
-
 class CustomChannel {
   /** Code of this custom channel, not necessarily unique across ad clients. */
   core.String code;
-
   /**
    * Unique identifier of this custom channel. This should be considered an
    * opaque identifier; it is not safe to rely on it being in any particular
    * format.
    */
   core.String id;
-
   /** Kind of resource this is, in this case adexchangeseller#customChannel. */
   core.String kind;
-
   /** Name of this custom channel. */
   core.String name;
-
   /** The targeting information of this custom channel, if activated. */
   CustomChannelTargetingInfo targetingInfo;
-
 
   CustomChannel();
 
@@ -1341,23 +1289,18 @@ class CustomChannel {
   }
 }
 
-
 class CustomChannels {
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** The custom channels returned in this list response. */
   core.List<CustomChannel> items;
-
   /** Kind of list this is, in this case adexchangeseller#customChannels. */
   core.String kind;
-
   /**
    * Continuation token used to page through custom channels. To retrieve the
    * next page of results, set the next request's "pageToken" value to this.
    */
   core.String nextPageToken;
-
 
   CustomChannels();
 
@@ -1394,13 +1337,10 @@ class CustomChannels {
   }
 }
 
-
 class Metadata {
   core.List<ReportingMetadataEntry> items;
-
   /** Kind of list this is, in this case adexchangeseller#metadata. */
   core.String kind;
-
 
   Metadata();
 
@@ -1425,26 +1365,21 @@ class Metadata {
   }
 }
 
-
 class PreferredDeal {
   /** The name of the advertiser this deal is for. */
   core.String advertiserName;
-
   /** The name of the buyer network this deal is for. */
   core.String buyerNetworkName;
-
   /**
    * The currency code that applies to the fixed_cpm value. If not set then
    * assumed to be USD.
    */
   core.String currencyCode;
-
   /**
    * Time when this deal stops being active in seconds since the epoch (GMT). If
    * not set then this deal is valid until manually disabled by the publisher.
    */
   core.String endTime;
-
   /**
    * The fixed price for this preferred deal. In cpm micros of currency
    * according to currencyCode. If set, then this preferred deal is eligible for
@@ -1452,19 +1387,15 @@ class PreferredDeal {
    * configured fixed price).
    */
   core.String fixedCpm;
-
   /** Unique identifier of this preferred deal. */
   core.String id;
-
   /** Kind of resource this is, in this case adexchangeseller#preferredDeal. */
   core.String kind;
-
   /**
    * Time when this deal becomes active in seconds since the epoch (GMT). If not
    * set then this deal is active immediately upon creation.
    */
   core.String startTime;
-
 
   PreferredDeal();
 
@@ -1525,14 +1456,11 @@ class PreferredDeal {
   }
 }
 
-
 class PreferredDeals {
   /** The preferred deals returned in this list response. */
   core.List<PreferredDeal> items;
-
   /** Kind of list this is, in this case adexchangeseller#preferredDeals. */
   core.String kind;
-
 
   PreferredDeals();
 
@@ -1557,23 +1485,19 @@ class PreferredDeals {
   }
 }
 
-
 class ReportHeaders {
   /**
    * The currency of this column. Only present if the header type is
    * METRIC_CURRENCY.
    */
   core.String currency;
-
   /** The name of the header. */
   core.String name;
-
   /**
    * The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or
    * METRIC_CURRENCY.
    */
   core.String type;
-
 
   ReportHeaders();
 
@@ -1604,47 +1528,39 @@ class ReportHeaders {
   }
 }
 
-
 class Report {
   /**
    * The averages of the report. This is the same length as any other row in the
    * report; cells corresponding to dimension columns are empty.
    */
   core.List<core.String> averages;
-
   /**
    * The header information of the columns requested in the report. This is a
    * list of headers; one for each dimension in the request, followed by one for
    * each metric in the request.
    */
   core.List<ReportHeaders> headers;
-
   /** Kind this is, in this case adexchangeseller#report. */
   core.String kind;
-
   /**
    * The output rows of the report. Each row is a list of cells; one for each
    * dimension in the request, followed by one for each metric in the request.
    * The dimension cells contain strings, and the metric cells contain numbers.
    */
   core.List<core.List<core.String>> rows;
-
   /**
    * The total number of rows matched by the report request. Fewer rows may be
    * returned in the response due to being limited by the row count requested or
    * the report row limit.
    */
   core.String totalMatchedRows;
-
   /**
    * The totals of the report. This is the same length as any other row in the
    * report; cells corresponding to dimension columns are empty.
    */
   core.List<core.String> totals;
-
   /** Any warnings associated with generation of the report. */
   core.List<core.String> warnings;
-
 
   Report();
 
@@ -1699,7 +1615,6 @@ class Report {
   }
 }
 
-
 class ReportingMetadataEntry {
   /**
    * For metrics this is a list of dimension IDs which the metric is compatible
@@ -1707,25 +1622,21 @@ class ReportingMetadataEntry {
    * belongs to.
    */
   core.List<core.String> compatibleDimensions;
-
   /**
    * The names of the metrics the dimension or metric this reporting metadata
    * entry describes is compatible with.
    */
   core.List<core.String> compatibleMetrics;
-
   /**
    * Unique identifier of this reporting metadata entry, corresponding to the
    * name of the appropriate dimension or metric.
    */
   core.String id;
-
   /**
    * Kind of resource this is, in this case
    * adexchangeseller#reportingMetadataEntry.
    */
   core.String kind;
-
   /**
    * The names of the dimensions which the dimension or metric this reporting
    * metadata entry describes requires to also be present in order for the
@@ -1733,7 +1644,6 @@ class ReportingMetadataEntry {
    * may result in data which cannot be correctly interpreted.
    */
   core.List<core.String> requiredDimensions;
-
   /**
    * The names of the metrics which the dimension or metric this reporting
    * metadata entry describes requires to also be present in order for the
@@ -1741,13 +1651,11 @@ class ReportingMetadataEntry {
    * may result in data which cannot be correctly interpreted.
    */
   core.List<core.String> requiredMetrics;
-
   /**
    * The codes of the projects supported by the dimension or metric this
    * reporting metadata entry describes.
    */
   core.List<core.String> supportedProducts;
-
 
   ReportingMetadataEntry();
 
@@ -1802,17 +1710,13 @@ class ReportingMetadataEntry {
   }
 }
 
-
 class SavedReport {
   /** Unique identifier of this saved report. */
   core.String id;
-
   /** Kind of resource this is, in this case adexchangeseller#savedReport. */
   core.String kind;
-
   /** This saved report's name. */
   core.String name;
-
 
   SavedReport();
 
@@ -1843,23 +1747,18 @@ class SavedReport {
   }
 }
 
-
 class SavedReports {
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** The saved reports returned in this list response. */
   core.List<SavedReport> items;
-
   /** Kind of list this is, in this case adexchangeseller#savedReports. */
   core.String kind;
-
   /**
    * Continuation token used to page through saved reports. To retrieve the next
    * page of results, set the next request's "pageToken" value to this.
    */
   core.String nextPageToken;
-
 
   SavedReports();
 
@@ -1896,23 +1795,19 @@ class SavedReports {
   }
 }
 
-
 class UrlChannel {
   /**
    * Unique identifier of this URL channel. This should be considered an opaque
    * identifier; it is not safe to rely on it being in any particular format.
    */
   core.String id;
-
   /** Kind of resource this is, in this case adexchangeseller#urlChannel. */
   core.String kind;
-
   /**
    * URL Pattern of this URL channel. Does not include "http://" or "https://".
    * Example: www.example.com/home
    */
   core.String urlPattern;
-
 
   UrlChannel();
 
@@ -1943,23 +1838,18 @@ class UrlChannel {
   }
 }
 
-
 class UrlChannels {
   /** ETag of this response for caching purposes. */
   core.String etag;
-
   /** The URL channels returned in this list response. */
   core.List<UrlChannel> items;
-
   /** Kind of list this is, in this case adexchangeseller#urlChannels. */
   core.String kind;
-
   /**
    * Continuation token used to page through URL channels. To retrieve the next
    * page of results, set the next request's "pageToken" value to this.
    */
   core.String nextPageToken;
-
 
   UrlChannels();
 

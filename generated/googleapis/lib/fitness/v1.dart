@@ -88,7 +88,7 @@ class UsersDataSourcesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DataSource> create(DataSource request, core.String userId) {
     var _url = null;
@@ -104,7 +104,6 @@ class UsersDataSourcesResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
@@ -134,7 +133,7 @@ class UsersDataSourcesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DataSource> delete(core.String userId, core.String dataSourceId) {
     var _url = null;
@@ -150,7 +149,6 @@ class UsersDataSourcesResourceApi {
     if (dataSourceId == null) {
       throw new core.ArgumentError("Parameter dataSourceId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId');
 
@@ -180,7 +178,7 @@ class UsersDataSourcesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DataSource> get(core.String userId, core.String dataSourceId) {
     var _url = null;
@@ -196,7 +194,6 @@ class UsersDataSourcesResourceApi {
     if (dataSourceId == null) {
       throw new core.ArgumentError("Parameter dataSourceId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId');
 
@@ -230,7 +227,7 @@ class UsersDataSourcesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListDataSourcesResponse> list(core.String userId, {core.List<core.String> dataTypeName}) {
     var _url = null;
@@ -246,7 +243,6 @@ class UsersDataSourcesResourceApi {
     if (dataTypeName != null) {
       _queryParams["dataTypeName"] = dataTypeName;
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
@@ -284,7 +280,7 @@ class UsersDataSourcesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DataSource> patch(DataSource request, core.String userId, core.String dataSourceId) {
     var _url = null;
@@ -303,7 +299,6 @@ class UsersDataSourcesResourceApi {
     if (dataSourceId == null) {
       throw new core.ArgumentError("Parameter dataSourceId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId');
 
@@ -340,7 +335,7 @@ class UsersDataSourcesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DataSource> update(DataSource request, core.String userId, core.String dataSourceId) {
     var _url = null;
@@ -359,7 +354,6 @@ class UsersDataSourcesResourceApi {
     if (dataSourceId == null) {
       throw new core.ArgumentError("Parameter dataSourceId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId');
 
@@ -413,7 +407,7 @@ class UsersDataSourcesDatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String userId, core.String dataSourceId, core.String datasetId, {core.String currentTimeMillis, core.String modifiedTimeMillis}) {
     var _url = null;
@@ -489,7 +483,7 @@ class UsersDataSourcesDatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Dataset> get(core.String userId, core.String dataSourceId, core.String datasetId, {core.int limit, core.String pageToken}) {
     var _url = null;
@@ -514,7 +508,6 @@ class UsersDataSourcesDatasetsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
@@ -559,7 +552,7 @@ class UsersDataSourcesDatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Dataset> patch(Dataset request, core.String userId, core.String dataSourceId, core.String datasetId, {core.String currentTimeMillis}) {
     var _url = null;
@@ -584,7 +577,6 @@ class UsersDataSourcesDatasetsResourceApi {
     if (currentTimeMillis != null) {
       _queryParams["currentTimeMillis"] = [currentTimeMillis];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
@@ -624,7 +616,7 @@ class UsersSessionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String userId, core.String sessionId, {core.String currentTimeMillis}) {
     var _url = null;
@@ -686,7 +678,7 @@ class UsersSessionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListSessionsResponse> list(core.String userId, {core.String endTime, core.bool includeDeleted, core.String pageToken, core.String startTime}) {
     var _url = null;
@@ -711,7 +703,6 @@ class UsersSessionsResourceApi {
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/sessions';
 
@@ -746,7 +737,7 @@ class UsersSessionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Session> update(Session request, core.String userId, core.String sessionId, {core.String currentTimeMillis}) {
     var _url = null;
@@ -768,7 +759,6 @@ class UsersSessionsResourceApi {
     if (currentTimeMillis != null) {
       _queryParams["currentTimeMillis"] = [currentTimeMillis];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/sessions/' + commons.Escaper.ecapeVariable('$sessionId');
 
@@ -792,7 +782,6 @@ class UsersSessionsResourceApi {
 class Application {
   /** An optional URI that can be used to link back to the application. */
   core.String detailsUrl;
-
   /**
    * The name of this application. This is required for REST clients, but we do
    * not enforce uniqueness of this name. It is provided as a matter of
@@ -800,7 +789,6 @@ class Application {
    * created an Application or Data Source.
    */
   core.String name;
-
   /**
    * Package name for this application. This is used as a unique identifier when
    * created by Android applications, but cannot be specified by REST clients.
@@ -808,13 +796,11 @@ class Application {
    * Data Source data stream IDs, instead of the packageName.
    */
   core.String packageName;
-
   /**
    * Version of the application. You should update this field whenever the
    * application changes in a way that affects the computation of the data.
    */
   core.String version;
-
 
   Application();
 
@@ -851,7 +837,6 @@ class Application {
   }
 }
 
-
 /**
  * Represents a single data point, generated by a particular data source. A data
  * point holds a value for each field, an end timestamp and an optional start
@@ -871,39 +856,32 @@ class DataPoint {
    * only replace another datapoint that has an older computation time stamp.
    */
   core.String computationTimeMillis;
-
   /** The data type defining the format of the values in this data point. */
   core.String dataTypeName;
-
   /**
    * The end time of the interval represented by this data point, in nanoseconds
    * since epoch.
    */
   core.String endTimeNanos;
-
   /**
    * Indicates the last time this data point was modified. Useful only in
    * contexts where we are listing the data changes, rather than representing
    * the current state of the data.
    */
   core.String modifiedTimeMillis;
-
   /**
    * If the data point is contained in a dataset for a derived data source, this
    * field will be populated with the data source stream ID that created the
    * data point originally.
    */
   core.String originDataSourceId;
-
   /** The raw timestamp from the original SensorEvent. */
   core.String rawTimestampNanos;
-
   /**
    * The start time of the interval represented by this data point, in
    * nanoseconds since epoch.
    */
   core.String startTimeNanos;
-
   /**
    * Values of each data type field for the data point. It is expected that each
    * value corresponding to a data type field will occur in the same order that
@@ -913,7 +891,6 @@ class DataPoint {
    * on the format enum value within data source's type field.
    */
   core.List<Value> value;
-
 
   DataPoint();
 
@@ -974,7 +951,6 @@ class DataPoint {
   }
 }
 
-
 /**
  * Definition of a unique source of sensor data. Data sources can expose raw
  * data coming from hardware sensors on local or companion devices. They can
@@ -997,7 +973,6 @@ class DataSource {
    * Information about an application which feeds sensor data into the platform.
    */
   Application application;
-
   /**
    * A unique identifier for the data stream produced by this data source. The
    * identifier includes:
@@ -1032,7 +1007,6 @@ class DataSource {
    * creator will see the developer project number in clear and normal form.
    */
   core.String dataStreamId;
-
   /**
    * The stream name uniquely identifies this particular data source among other
    * data sources of the same type from the same underlying producer. Setting
@@ -1041,22 +1015,18 @@ class DataSource {
    * equivalent sensors.
    */
   core.String dataStreamName;
-
   /**
    * The data type defines the schema for a stream of data being collected by,
    * inserted into, or queried from the Fitness API.
    */
   DataType dataType;
-
   /**
    * Representation of an integrated device (such as a phone or a wearable) that
    * can hold sensors.
    */
   Device device;
-
   /** An end-user visible name for this data source. */
   core.String name;
-
   /**
    * A constant describing the type of this data source. Indicates whether this
    * data source produces raw or derived data.
@@ -1065,7 +1035,6 @@ class DataSource {
    * - "raw"
    */
   core.String type;
-
 
   DataSource();
 
@@ -1120,20 +1089,17 @@ class DataSource {
   }
 }
 
-
 /**
  * See: google3/java/com/google/android/apps/heart/platform/api/DataType.java
  */
 class DataType {
   /** A field represents one dimension of a data type. */
   core.List<DataTypeField> field;
-
   /**
    * Each data type has a unique, namespaced, name. All data types in the
    * com.google namespace are shared as part of the platform.
    */
   core.String name;
-
 
   DataType();
 
@@ -1158,7 +1124,6 @@ class DataType {
   }
 }
 
-
 /**
  * In case of multi-dimensional data (such as an accelerometer with x, y, and z
  * axes) each field represents one dimension. Each data type field has a unique
@@ -1172,21 +1137,20 @@ class DataTypeField {
   /**
    * The different supported formats for each field in a data type.
    * Possible string values are:
+   * - "floatList"
    * - "floatPoint"
    * - "integer"
+   * - "integerList"
    * - "map"
    * - "string"
    */
   core.String format;
-
   /**
    * Defines the name and format of data. Unlike data type names, field names
    * are not namespaced, and only need to be unique within the data type.
    */
   core.String name;
-
   core.bool optional;
-
 
   DataTypeField();
 
@@ -1217,7 +1181,6 @@ class DataTypeField {
   }
 }
 
-
 /**
  * A dataset represents a projection container for data points. They do not
  * carry any info of their own. Datasets represent a set of data points from a
@@ -1229,21 +1192,18 @@ class Dataset {
    * dataset.
    */
   core.String dataSourceId;
-
   /**
    * The largest end time of all data points in this possibly partial
    * representation of the dataset. Time is in nanoseconds from epoch. This
    * should also match the first part of the dataset identifier.
    */
   core.String maxEndTimeNs;
-
   /**
    * The smallest start time of all data points in this possibly partial
    * representation of the dataset. Time is in nanoseconds from epoch. This
    * should also match the first part of the dataset identifier.
    */
   core.String minStartTimeNs;
-
   /**
    * This token will be set when a dataset is received in response to a GET
    * request and the dataset is too large to be included in a single response.
@@ -1251,7 +1211,6 @@ class Dataset {
    * data points within this dataset.
    */
   core.String nextPageToken;
-
   /**
    * A partial list of data points contained in the dataset, ordered by largest
    * endTimeNanos first. This list is considered complete when retrieving a
@@ -1259,7 +1218,6 @@ class Dataset {
    * that is too large to include in a single response.
    */
   core.List<DataPoint> point;
-
 
   Dataset();
 
@@ -1302,7 +1260,6 @@ class Dataset {
   }
 }
 
-
 /**
  * Representation of an integrated device (such as a phone or a wearable) that
  * can hold sensors. Each sensor is exposed as a data source.
@@ -1320,10 +1277,8 @@ class Dataset {
 class Device {
   /** Manufacturer of the product/hardware. */
   core.String manufacturer;
-
   /** End-user visible model name for the device. */
   core.String model;
-
   /**
    * A constant representing the type of the device.
    * Possible string values are:
@@ -1335,7 +1290,6 @@ class Device {
    * - "watch"
    */
   core.String type;
-
   /**
    * The serial number or other unique ID for the hardware. This field is
    * obfuscated when read by any REST or Android client that did not create the
@@ -1343,10 +1297,8 @@ class Device {
    * and normal form.
    */
   core.String uid;
-
   /** Version string for the device hardware/software. */
   core.String version;
-
 
   Device();
 
@@ -1389,11 +1341,9 @@ class Device {
   }
 }
 
-
 class ListDataSourcesResponse {
   /** A previously created data source. */
   core.List<DataSource> dataSource;
-
 
   ListDataSourcesResponse();
 
@@ -1412,7 +1362,6 @@ class ListDataSourcesResponse {
   }
 }
 
-
 class ListSessionsResponse {
   /**
    * If includeDeleted is set to true in the request, this list will contain
@@ -1420,20 +1369,17 @@ class ListSessionsResponse {
    * endTime frame.
    */
   core.List<Session> deletedSession;
-
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
    * results.
    */
   core.String nextPageToken;
-
   /**
    * Sessions with an end time that is between startTime and endTime of the
    * request.
    */
   core.List<Session> session;
-
 
   ListSessionsResponse();
 
@@ -1464,35 +1410,6 @@ class ListSessionsResponse {
   }
 }
 
-
-/**
- * Holder object for the value of an entry in a map field of a data point.
- *
- * A map value supports a subset of the formats that the regular Value supports.
- */
-class MapValue {
-  /** Floating point value. */
-  core.double fpVal;
-
-
-  MapValue();
-
-  MapValue.fromJson(core.Map _json) {
-    if (_json.containsKey("fpVal")) {
-      fpVal = _json["fpVal"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (fpVal != null) {
-      _json["fpVal"] = fpVal;
-    }
-    return _json;
-  }
-}
-
-
 /**
  * Sessions contain metadata, such as a user-friendly name and time interval
  * information.
@@ -1506,34 +1423,25 @@ class Session {
    * STILL activity value
    */
   core.String activeTimeMillis;
-
   /** The type of activity this session represents. */
   core.int activityType;
-
   /** The application that created the session. */
   Application application;
-
   /** A description for this session. */
   core.String description;
-
   /** An end time, in milliseconds since epoch, inclusive. */
   core.String endTimeMillis;
-
   /**
    * A client-generated identifier that is unique across all sessions owned by
    * this particular user.
    */
   core.String id;
-
   /** A timestamp that indicates when the session was last modified. */
   core.String modifiedTimeMillis;
-
   /** A human readable name of the session. */
   core.String name;
-
   /** A start time, in milliseconds since epoch, inclusive. */
   core.String startTimeMillis;
-
 
   Session();
 
@@ -1600,7 +1508,6 @@ class Session {
   }
 }
 
-
 /**
  * Holder object for the value of a single field in a data point.
  *
@@ -1608,95 +1515,29 @@ class Session {
  * integer or a floating point value.
  */
 class Value {
-  /** Float list value. When this is set, other values must not be set. */
-  core.List<core.double> floatListVal;
-
   /** Floating point value. When this is set, intVal must not be set. */
   core.double fpVal;
-
-  /** Long list value. When this is set, other values must not be set. */
-  core.List<core.String> int64ListVal;
-
   /** Integer value. When this is set, fpVal must not be set. */
   core.int intVal;
-
-  core.List<ValueMapValEntry> mapVal;
-
-  core.String stringVal;
-
 
   Value();
 
   Value.fromJson(core.Map _json) {
-    if (_json.containsKey("floatListVal")) {
-      floatListVal = _json["floatListVal"];
-    }
     if (_json.containsKey("fpVal")) {
       fpVal = _json["fpVal"];
-    }
-    if (_json.containsKey("int64ListVal")) {
-      int64ListVal = _json["int64ListVal"];
     }
     if (_json.containsKey("intVal")) {
       intVal = _json["intVal"];
     }
-    if (_json.containsKey("mapVal")) {
-      mapVal = _json["mapVal"].map((value) => new ValueMapValEntry.fromJson(value)).toList();
-    }
-    if (_json.containsKey("stringVal")) {
-      stringVal = _json["stringVal"];
-    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (floatListVal != null) {
-      _json["floatListVal"] = floatListVal;
-    }
     if (fpVal != null) {
       _json["fpVal"] = fpVal;
     }
-    if (int64ListVal != null) {
-      _json["int64ListVal"] = int64ListVal;
-    }
     if (intVal != null) {
       _json["intVal"] = intVal;
-    }
-    if (mapVal != null) {
-      _json["mapVal"] = mapVal.map((value) => (value).toJson()).toList();
-    }
-    if (stringVal != null) {
-      _json["stringVal"] = stringVal;
-    }
-    return _json;
-  }
-}
-
-
-class ValueMapValEntry {
-  core.String key;
-
-  MapValue value;
-
-
-  ValueMapValEntry();
-
-  ValueMapValEntry.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
-    }
-    if (_json.containsKey("value")) {
-      value = new MapValue.fromJson(_json["value"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (key != null) {
-      _json["key"] = key;
-    }
-    if (value != null) {
-      _json["value"] = (value).toJson();
     }
     return _json;
   }

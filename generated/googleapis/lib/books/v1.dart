@@ -64,7 +64,7 @@ class BookshelvesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Bookshelf> get(core.String userId, core.String shelf, {core.String source}) {
     var _url = null;
@@ -83,7 +83,6 @@ class BookshelvesResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/bookshelves/' + commons.Escaper.ecapeVariable('$shelf');
 
@@ -112,7 +111,7 @@ class BookshelvesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Bookshelves> list(core.String userId, {core.String source}) {
     var _url = null;
@@ -128,7 +127,6 @@ class BookshelvesResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/bookshelves';
 
@@ -174,7 +172,7 @@ class BookshelvesVolumesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Volumes> list(core.String userId, core.String shelf, {core.int maxResults, core.bool showPreorders, core.String source, core.int startIndex}) {
     var _url = null;
@@ -202,7 +200,6 @@ class BookshelvesVolumesResourceApi {
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/volumes';
 
@@ -245,7 +242,7 @@ class CloudloadingResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BooksCloudloadingResource> addBook({core.String driveDocumentId, core.String mimeType, core.String name, core.String uploadClientToken}) {
     var _url = null;
@@ -267,7 +264,6 @@ class CloudloadingResourceApi {
     if (uploadClientToken != null) {
       _queryParams["upload_client_token"] = [uploadClientToken];
     }
-
 
     _url = 'cloudloading/addBook';
 
@@ -292,7 +288,7 @@ class CloudloadingResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future deleteBook(core.String volumeId) {
     var _url = null;
@@ -332,7 +328,7 @@ class CloudloadingResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BooksCloudloadingResource> updateBook(BooksCloudloadingResource request) {
     var _url = null;
@@ -345,7 +341,6 @@ class CloudloadingResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'cloudloading/updateBook';
 
@@ -381,7 +376,7 @@ class DictionaryResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Metadata> listOfflineMetadata(core.String cpksver) {
     var _url = null;
@@ -395,7 +390,6 @@ class DictionaryResourceApi {
       throw new core.ArgumentError("Parameter cpksver is required.");
     }
     _queryParams["cpksver"] = [cpksver];
-
 
     _url = 'dictionary/listOfflineMetadata';
 
@@ -440,7 +434,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Layersummary> get(core.String volumeId, core.String summaryId, {core.String contentVersion, core.String source}) {
     var _url = null;
@@ -462,7 +456,6 @@ class LayersResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layersummary/' + commons.Escaper.ecapeVariable('$summaryId');
 
@@ -498,7 +491,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Layersummaries> list(core.String volumeId, {core.String contentVersion, core.int maxResults, core.String pageToken, core.String source}) {
     var _url = null;
@@ -523,7 +516,6 @@ class LayersResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layersummary';
 
@@ -582,7 +574,7 @@ class LayersAnnotationDataResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Annotationdata> get(core.String volumeId, core.String layerId, core.String annotationDataId, core.String contentVersion, {core.bool allowWebDefinitions, core.int h, core.String locale, core.int scale, core.String source, core.int w}) {
     var _url = null;
@@ -623,7 +615,6 @@ class LayersAnnotationDataResourceApi {
     if (w != null) {
       _queryParams["w"] = ["${w}"];
     }
-
 
     _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layers/' + commons.Escaper.ecapeVariable('$layerId') + '/data/' + commons.Escaper.ecapeVariable('$annotationDataId');
 
@@ -681,7 +672,7 @@ class LayersAnnotationDataResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Annotationsdata> list(core.String volumeId, core.String layerId, core.String contentVersion, {core.List<core.String> annotationDataId, core.int h, core.String locale, core.int maxResults, core.String pageToken, core.int scale, core.String source, core.String updatedMax, core.String updatedMin, core.int w}) {
     var _url = null;
@@ -732,7 +723,6 @@ class LayersAnnotationDataResourceApi {
       _queryParams["w"] = ["${w}"];
     }
 
-
     _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layers/' + commons.Escaper.ecapeVariable('$layerId') + '/data';
 
     var _response = _requester.request(_url,
@@ -776,7 +766,7 @@ class LayersVolumeAnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Volumeannotation> get(core.String volumeId, core.String layerId, core.String annotationId, {core.String locale, core.String source}) {
     var _url = null;
@@ -801,7 +791,6 @@ class LayersVolumeAnnotationsResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layers/' + commons.Escaper.ecapeVariable('$layerId') + '/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
 
@@ -862,7 +851,7 @@ class LayersVolumeAnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Volumeannotations> list(core.String volumeId, core.String layerId, core.String contentVersion, {core.String endOffset, core.String endPosition, core.String locale, core.int maxResults, core.String pageToken, core.bool showDeleted, core.String source, core.String startOffset, core.String startPosition, core.String updatedMax, core.String updatedMin, core.String volumeAnnotationsVersion}) {
     var _url = null;
@@ -919,7 +908,6 @@ class LayersVolumeAnnotationsResourceApi {
       _queryParams["volumeAnnotationsVersion"] = [volumeAnnotationsVersion];
     }
 
-
     _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layers/' + commons.Escaper.ecapeVariable('$layerId');
 
     var _response = _requester.request(_url,
@@ -952,7 +940,7 @@ class MyconfigResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Usersettings> getUserSettings() {
     var _url = null;
@@ -961,7 +949,6 @@ class MyconfigResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'myconfig/getUserSettings';
@@ -996,7 +983,7 @@ class MyconfigResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DownloadAccesses> releaseDownloadAccess(core.List<core.String> volumeIds, core.String cpksver, {core.String locale, core.String source}) {
     var _url = null;
@@ -1020,7 +1007,6 @@ class MyconfigResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'myconfig/releaseDownloadAccess';
 
@@ -1063,7 +1049,7 @@ class MyconfigResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RequestAccess> requestAccess(core.String source, core.String volumeId, core.String nonce, core.String cpksver, {core.String licenseTypes, core.String locale}) {
     var _url = null;
@@ -1095,7 +1081,6 @@ class MyconfigResourceApi {
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
-
 
     _url = 'myconfig/requestAccess';
 
@@ -1136,7 +1121,7 @@ class MyconfigResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Volumes> syncVolumeLicenses(core.String source, core.String nonce, core.String cpksver, {core.List<core.String> features, core.String locale, core.bool showPreorders, core.List<core.String> volumeIds}) {
     var _url = null;
@@ -1171,7 +1156,6 @@ class MyconfigResourceApi {
       _queryParams["volumeIds"] = volumeIds;
     }
 
-
     _url = 'myconfig/syncVolumeLicenses';
 
     var _response = _requester.request(_url,
@@ -1185,8 +1169,9 @@ class MyconfigResourceApi {
   }
 
   /**
-   * Sets the settings for the user. Unspecified sub-objects will retain the
-   * existing value.
+   * Sets the settings for the user. If a sub-object is specified, it will
+   * overwrite the existing sub-object stored in the server. Unspecified
+   * sub-objects will retain the existing value.
    *
    * [request] - The metadata request object.
    *
@@ -1198,7 +1183,7 @@ class MyconfigResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Usersettings> updateUserSettings(Usersettings request) {
     var _url = null;
@@ -1211,7 +1196,6 @@ class MyconfigResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'myconfig/updateUserSettings';
 
@@ -1259,7 +1243,7 @@ class MylibraryAnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String annotationId, {core.String source}) {
     var _url = null;
@@ -1310,7 +1294,7 @@ class MylibraryAnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Annotation> insert(Annotation request, {core.String country, core.bool showOnlySummaryInResponse, core.String source}) {
     var _url = null;
@@ -1332,7 +1316,6 @@ class MylibraryAnnotationsResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'mylibrary/annotations';
 
@@ -1381,7 +1364,7 @@ class MylibraryAnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Annotations> list({core.String contentVersion, core.String layerId, core.List<core.String> layerIds, core.int maxResults, core.String pageToken, core.bool showDeleted, core.String source, core.String updatedMax, core.String updatedMin, core.String volumeId}) {
     var _url = null;
@@ -1422,7 +1405,6 @@ class MylibraryAnnotationsResourceApi {
       _queryParams["volumeId"] = [volumeId];
     }
 
-
     _url = 'mylibrary/annotations';
 
     var _response = _requester.request(_url,
@@ -1450,7 +1432,7 @@ class MylibraryAnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AnnotationsSummary> summary(core.List<core.String> layerIds, core.String volumeId) {
     var _url = null;
@@ -1468,7 +1450,6 @@ class MylibraryAnnotationsResourceApi {
       throw new core.ArgumentError("Parameter volumeId is required.");
     }
     _queryParams["volumeId"] = [volumeId];
-
 
     _url = 'mylibrary/annotations/summary';
 
@@ -1499,7 +1480,7 @@ class MylibraryAnnotationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Annotation> update(Annotation request, core.String annotationId, {core.String source}) {
     var _url = null;
@@ -1518,7 +1499,6 @@ class MylibraryAnnotationsResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'mylibrary/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
 
@@ -1564,7 +1544,7 @@ class MylibraryBookshelvesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future addVolume(core.String shelf, core.String volumeId, {core.String reason, core.String source}) {
     var _url = null;
@@ -1615,7 +1595,7 @@ class MylibraryBookshelvesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future clearVolumes(core.String shelf, {core.String source}) {
     var _url = null;
@@ -1662,7 +1642,7 @@ class MylibraryBookshelvesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Bookshelf> get(core.String shelf, {core.String source}) {
     var _url = null;
@@ -1678,7 +1658,6 @@ class MylibraryBookshelvesResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf');
 
@@ -1705,7 +1684,7 @@ class MylibraryBookshelvesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Bookshelves> list({core.String source}) {
     var _url = null;
@@ -1718,7 +1697,6 @@ class MylibraryBookshelvesResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'mylibrary/bookshelves';
 
@@ -1751,7 +1729,7 @@ class MylibraryBookshelvesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future moveVolume(core.String shelf, core.String volumeId, core.int volumePosition, {core.String source}) {
     var _url = null;
@@ -1809,7 +1787,7 @@ class MylibraryBookshelvesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future removeVolume(core.String shelf, core.String volumeId, {core.String reason, core.String source}) {
     var _url = null;
@@ -1886,7 +1864,7 @@ class MylibraryBookshelvesVolumesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Volumes> list(core.String shelf, {core.String country, core.int maxResults, core.String projection, core.String q, core.bool showPreorders, core.String source, core.int startIndex}) {
     var _url = null;
@@ -1920,7 +1898,6 @@ class MylibraryBookshelvesVolumesResourceApi {
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
     }
-
 
     _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/volumes';
 
@@ -1961,7 +1938,7 @@ class MylibraryReadingpositionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ReadingPosition> get(core.String volumeId, {core.String contentVersion, core.String source}) {
     var _url = null;
@@ -1980,7 +1957,6 @@ class MylibraryReadingpositionsResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'mylibrary/readingpositions/' + commons.Escaper.ecapeVariable('$volumeId');
 
@@ -2026,7 +2002,7 @@ class MylibraryReadingpositionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future setPosition(core.String volumeId, core.String timestamp, core.String position, {core.String action, core.String contentVersion, core.String deviceCookie, core.String source}) {
     var _url = null;
@@ -2097,7 +2073,7 @@ class OnboardingResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Category> listCategories({core.String locale}) {
     var _url = null;
@@ -2110,7 +2086,6 @@ class OnboardingResourceApi {
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
-
 
     _url = 'onboarding/listCategories';
 
@@ -2134,6 +2109,12 @@ class OnboardingResourceApi {
    * [locale] - ISO-639-1 language and ISO-3166-1 country code. Default is en-US
    * if unset.
    *
+   * [maxAllowedMaturityRating] - The maximum allowed maturity rating of
+   * returned volumes. Books with a higher maturity rating are filtered out.
+   * Possible string values are:
+   * - "mature" : Show books which are rated mature or lower.
+   * - "not-mature" : Show books which are rated not mature.
+   *
    * [pageSize] - Number of maximum results per page to be included in the
    * response.
    *
@@ -2145,9 +2126,9 @@ class OnboardingResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
-  async.Future<Volume2> listCategoryVolumes({core.List<core.String> categoryId, core.String locale, core.int pageSize, core.String pageToken}) {
+  async.Future<Volume2> listCategoryVolumes({core.List<core.String> categoryId, core.String locale, core.String maxAllowedMaturityRating, core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2161,13 +2142,15 @@ class OnboardingResourceApi {
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
+    if (maxAllowedMaturityRating != null) {
+      _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'onboarding/listCategoryVolumes';
 
@@ -2213,7 +2196,7 @@ class PromoofferResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future accept({core.String androidId, core.String device, core.String manufacturer, core.String model, core.String offerId, core.String product, core.String serial, core.String volumeId}) {
     var _url = null;
@@ -2283,7 +2266,7 @@ class PromoofferResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future dismiss({core.String androidId, core.String device, core.String manufacturer, core.String model, core.String offerId, core.String product, core.String serial}) {
     var _url = null;
@@ -2352,7 +2335,7 @@ class PromoofferResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Offers> get({core.String androidId, core.String device, core.String manufacturer, core.String model, core.String product, core.String serial}) {
     var _url = null;
@@ -2380,7 +2363,6 @@ class PromoofferResourceApi {
     if (serial != null) {
       _queryParams["serial"] = [serial];
     }
-
 
     _url = 'promooffer/get';
 
@@ -2434,7 +2416,7 @@ class VolumesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Volume> get(core.String volumeId, {core.String country, core.String partner, core.String projection, core.String source, core.bool userLibraryConsistentRead}) {
     var _url = null;
@@ -2462,7 +2444,6 @@ class VolumesResourceApi {
     if (userLibraryConsistentRead != null) {
       _queryParams["user_library_consistent_read"] = ["${userLibraryConsistentRead}"];
     }
-
 
     _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId');
 
@@ -2536,7 +2517,7 @@ class VolumesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Volumes> list(core.String q, {core.String download, core.String filter, core.String langRestrict, core.String libraryRestrict, core.int maxResults, core.String orderBy, core.String partner, core.String printType, core.String projection, core.bool showPreorders, core.String source, core.int startIndex}) {
     var _url = null;
@@ -2587,7 +2568,6 @@ class VolumesResourceApi {
       _queryParams["startIndex"] = ["${startIndex}"];
     }
 
-
     _url = 'volumes';
 
     var _response = _requester.request(_url,
@@ -2625,6 +2605,13 @@ class VolumesAssociatedResourceApi {
    * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
    * Used for generating recommendations.
    *
+   * [maxAllowedMaturityRating] - The maximum allowed maturity rating of
+   * returned recommendations. Books with a higher maturity rating are filtered
+   * out.
+   * Possible string values are:
+   * - "mature" : Show books which are rated mature or lower.
+   * - "not-mature" : Show books which are rated not mature.
+   *
    * [source] - String to identify the originator of this request.
    *
    * Completes with a [Volumes].
@@ -2633,9 +2620,9 @@ class VolumesAssociatedResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
-  async.Future<Volumes> list(core.String volumeId, {core.String association, core.String locale, core.String source}) {
+  async.Future<Volumes> list(core.String volumeId, {core.String association, core.String locale, core.String maxAllowedMaturityRating, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2652,10 +2639,12 @@ class VolumesAssociatedResourceApi {
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
+    if (maxAllowedMaturityRating != null) {
+      _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
+    }
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/associated';
 
@@ -2705,7 +2694,7 @@ class VolumesMybooksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Volumes> list({core.List<core.String> acquireMethod, core.String locale, core.int maxResults, core.List<core.String> processingState, core.String source, core.int startIndex}) {
     var _url = null;
@@ -2733,7 +2722,6 @@ class VolumesMybooksResourceApi {
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
     }
-
 
     _url = 'volumes/mybooks';
 
@@ -2764,6 +2752,13 @@ class VolumesRecommendedResourceApi {
    * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
    * Used for generating recommendations.
    *
+   * [maxAllowedMaturityRating] - The maximum allowed maturity rating of
+   * returned recommendations. Books with a higher maturity rating are filtered
+   * out.
+   * Possible string values are:
+   * - "mature" : Show books which are rated mature or lower.
+   * - "not-mature" : Show books which are rated not mature.
+   *
    * [source] - String to identify the originator of this request.
    *
    * Completes with a [Volumes].
@@ -2772,9 +2767,9 @@ class VolumesRecommendedResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
-  async.Future<Volumes> list({core.String locale, core.String source}) {
+  async.Future<Volumes> list({core.String locale, core.String maxAllowedMaturityRating, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2785,10 +2780,12 @@ class VolumesRecommendedResourceApi {
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
+    if (maxAllowedMaturityRating != null) {
+      _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
+    }
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'volumes/recommended';
 
@@ -2825,7 +2822,7 @@ class VolumesRecommendedResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BooksVolumesRecommendedRateResponse> rate(core.String rating, core.String volumeId, {core.String locale, core.String source}) {
     var _url = null;
@@ -2849,7 +2846,6 @@ class VolumesRecommendedResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-
 
     _url = 'volumes/recommended/rate';
 
@@ -2899,7 +2895,7 @@ class VolumesUseruploadedResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Volumes> list({core.String locale, core.int maxResults, core.List<core.String> processingState, core.String source, core.int startIndex, core.List<core.String> volumeId}) {
     var _url = null;
@@ -2928,7 +2924,6 @@ class VolumesUseruploadedResourceApi {
       _queryParams["volumeId"] = volumeId;
     }
 
-
     _url = 'volumes/useruploaded';
 
     var _response = _requester.request(_url,
@@ -2949,19 +2944,14 @@ class VolumesUseruploadedResourceApi {
 class AnnotationClientVersionRanges {
   /** Range in CFI format for this annotation sent by client. */
   BooksAnnotationsRange cfiRange;
-
   /** Content version the client sent in. */
   core.String contentVersion;
-
   /** Range in GB image format for this annotation sent by client. */
   BooksAnnotationsRange gbImageRange;
-
   /** Range in GB text format for this annotation sent by client. */
   BooksAnnotationsRange gbTextRange;
-
   /** Range in image CFI format for this annotation sent by client. */
   BooksAnnotationsRange imageCfiRange;
-
 
   AnnotationClientVersionRanges();
 
@@ -3004,24 +2994,18 @@ class AnnotationClientVersionRanges {
   }
 }
 
-
 /** Selection ranges for the most recent content version. */
 class AnnotationCurrentVersionRanges {
   /** Range in CFI format for this annotation for version above. */
   BooksAnnotationsRange cfiRange;
-
   /** Content version applicable to ranges below. */
   core.String contentVersion;
-
   /** Range in GB image format for this annotation for version above. */
   BooksAnnotationsRange gbImageRange;
-
   /** Range in GB text format for this annotation for version above. */
   BooksAnnotationsRange gbTextRange;
-
   /** Range in image CFI format for this annotation for version above. */
   BooksAnnotationsRange imageCfiRange;
-
 
   AnnotationCurrentVersionRanges();
 
@@ -3064,25 +3048,21 @@ class AnnotationCurrentVersionRanges {
   }
 }
 
-
 class AnnotationLayerSummary {
   /**
    * Maximum allowed characters on this layer, especially for the "copy" layer.
    */
   core.int allowedCharacterCount;
-
   /**
    * Type of limitation on this layer. "limited" or "unlimited" for the "copy"
    * layer.
    */
   core.String limitType;
-
   /**
    * Remaining allowed characters on this layer, especially for the "copy"
    * layer.
    */
   core.int remainingCharacterCount;
-
 
   AnnotationLayerSummary();
 
@@ -3113,64 +3093,46 @@ class AnnotationLayerSummary {
   }
 }
 
-
 class Annotation {
   /**
    * Anchor text after excerpt. For requests, if the user bookmarked a screen
    * that has no flowing text on it, then this field should be empty.
    */
   core.String afterSelectedText;
-
   /**
    * Anchor text before excerpt. For requests, if the user bookmarked a screen
    * that has no flowing text on it, then this field should be empty.
    */
   core.String beforeSelectedText;
-
   /** Selection ranges sent from the client. */
   AnnotationClientVersionRanges clientVersionRanges;
-
   /** Timestamp for the created time of this annotation. */
   core.DateTime created;
-
   /** Selection ranges for the most recent content version. */
   AnnotationCurrentVersionRanges currentVersionRanges;
-
   /** User-created data for this annotation. */
   core.String data;
-
   /** Indicates that this annotation is deleted. */
   core.bool deleted;
-
   /** The highlight style for this annotation. */
   core.String highlightStyle;
-
   /** Id of this annotation, in the form of a GUID. */
   core.String id;
-
   /** Resource type. */
   core.String kind;
-
   /** The layer this annotation is for. */
   core.String layerId;
-
   AnnotationLayerSummary layerSummary;
-
   /** Pages that this annotation spans. */
   core.List<core.String> pageIds;
-
   /** Excerpt from the volume. */
   core.String selectedText;
-
   /** URL to this resource. */
   core.String selfLink;
-
   /** Timestamp for the last time this annotation was modified. */
   core.DateTime updated;
-
   /** The volume that this annotation belongs to. */
   core.String volumeId;
-
 
   Annotation();
 
@@ -3285,11 +3247,9 @@ class Annotation {
   }
 }
 
-
 class Annotationdata {
   /** The type of annotation this data is for. */
   core.String annotationType;
-
   /**
    *
    *
@@ -3297,10 +3257,8 @@ class Annotationdata {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object data;
-
   /** Base64 encoded data for this annotation data. */
   core.String encodedData;
-
   core.List<core.int> get encodedDataAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(encodedData);
   }
@@ -3308,28 +3266,21 @@ class Annotationdata {
   void set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** Unique id for this annotation data. */
   core.String id;
-
   /** Resource Type */
   core.String kind;
-
   /** The Layer id for this data. * */
   core.String layerId;
-
   /** URL for this resource. * */
   core.String selfLink;
-
   /**
    * Timestamp for the last time this data was updated. (RFC 3339 UTC date-time
    * format).
    */
   core.DateTime updated;
-
   /** The volume id for this data. * */
   core.String volumeId;
-
 
   Annotationdata();
 
@@ -3396,26 +3347,21 @@ class Annotationdata {
   }
 }
 
-
 class Annotations {
   /** A list of annotations. */
   core.List<Annotation> items;
-
   /** Resource type. */
   core.String kind;
-
   /**
    * Token to pass in for pagination for the next page. This will not be present
    * if this request does not have more results.
    */
   core.String nextPageToken;
-
   /**
    * Total number of annotations found. This may be greater than the number of
    * notes returned in this response if results have been paginated.
    */
   core.int totalItems;
-
 
   Annotations();
 
@@ -3452,18 +3398,12 @@ class Annotations {
   }
 }
 
-
 class AnnotationsSummaryLayers {
   core.int allowedCharacterCount;
-
   core.String layerId;
-
   core.String limitType;
-
   core.int remainingCharacterCount;
-
   core.DateTime updated;
-
 
   AnnotationsSummaryLayers();
 
@@ -3506,12 +3446,9 @@ class AnnotationsSummaryLayers {
   }
 }
 
-
 class AnnotationsSummary {
   core.String kind;
-
   core.List<AnnotationsSummaryLayers> layers;
-
 
   AnnotationsSummary();
 
@@ -3536,23 +3473,18 @@ class AnnotationsSummary {
   }
 }
 
-
 class Annotationsdata {
   /** A list of Annotation Data. */
   core.List<Annotationdata> items;
-
   /** Resource type */
   core.String kind;
-
   /**
    * Token to pass in for pagination for the next page. This will not be present
    * if this request does not have more results.
    */
   core.String nextPageToken;
-
   /** The total number of volume annotations found. */
   core.int totalItems;
-
 
   Annotationsdata();
 
@@ -3589,20 +3521,15 @@ class Annotationsdata {
   }
 }
 
-
 class BooksAnnotationsRange {
   /** The offset from the ending position. */
   core.String endOffset;
-
   /** The ending position for the range. */
   core.String endPosition;
-
   /** The offset from the starting position. */
   core.String startOffset;
-
   /** The starting position for the range. */
   core.String startPosition;
-
 
   BooksAnnotationsRange();
 
@@ -3639,16 +3566,11 @@ class BooksAnnotationsRange {
   }
 }
 
-
 class BooksCloudloadingResource {
   core.String author;
-
   core.String processingState;
-
   core.String title;
-
   core.String volumeId;
-
 
   BooksCloudloadingResource();
 
@@ -3685,10 +3607,8 @@ class BooksCloudloadingResource {
   }
 }
 
-
 class BooksVolumesRecommendedRateResponse {
   core.String consistencyToken;
-
 
   BooksVolumesRecommendedRateResponse();
 
@@ -3707,47 +3627,36 @@ class BooksVolumesRecommendedRateResponse {
   }
 }
 
-
 class Bookshelf {
   /** Whether this bookshelf is PUBLIC or PRIVATE. */
   core.String access;
-
   /**
    * Created time for this bookshelf (formatted UTC timestamp with millisecond
    * resolution).
    */
   core.DateTime created;
-
   /** Description of this bookshelf. */
   core.String description;
-
   /** Id of this bookshelf, only unique by user. */
   core.int id;
-
   /** Resource type for bookshelf metadata. */
   core.String kind;
-
   /** URL to this resource. */
   core.String selfLink;
-
   /** Title of this bookshelf. */
   core.String title;
-
   /**
    * Last modified time of this bookshelf (formatted UTC timestamp with
    * millisecond resolution).
    */
   core.DateTime updated;
-
   /** Number of volumes in this bookshelf. */
   core.int volumeCount;
-
   /**
    * Last time a volume was added or removed from this bookshelf (formatted UTC
    * timestamp with millisecond resolution).
    */
   core.DateTime volumesLastUpdated;
-
 
   Bookshelf();
 
@@ -3820,14 +3729,11 @@ class Bookshelf {
   }
 }
 
-
 class Bookshelves {
   /** A list of bookshelves. */
   core.List<Bookshelf> items;
-
   /** Resource type. */
   core.String kind;
-
 
   Bookshelves();
 
@@ -3852,14 +3758,10 @@ class Bookshelves {
   }
 }
 
-
 class CategoryItems {
   core.String badgeUrl;
-
   core.String categoryId;
-
   core.String name;
-
 
   CategoryItems();
 
@@ -3890,14 +3792,11 @@ class CategoryItems {
   }
 }
 
-
 class Category {
   /** A list of onboarding categories. */
   core.List<CategoryItems> items;
-
   /** Resource type. */
   core.String kind;
-
 
   Category();
 
@@ -3922,46 +3821,34 @@ class Category {
   }
 }
 
-
 class ConcurrentAccessRestriction {
   /** Whether access is granted for this (user, device, volume). */
   core.bool deviceAllowed;
-
   /** Resource type. */
   core.String kind;
-
   /** The maximum number of concurrent access licenses for this volume. */
   core.int maxConcurrentDevices;
-
   /** Error/warning message. */
   core.String message;
-
   /**
    * Client nonce for verification. Download access and client-validation only.
    */
   core.String nonce;
-
   /** Error/warning reason code. */
   core.String reasonCode;
-
   /** Whether this volume has any concurrent access restrictions. */
   core.bool restricted;
-
   /** Response signature. */
   core.String signature;
-
   /**
    * Client app identifier for verification. Download access and
    * client-validation only.
    */
   core.String source;
-
   /** Time in seconds for license auto-expiration. */
   core.int timeWindowSeconds;
-
   /** Identifies the volume for which this entry applies. */
   core.String volumeId;
-
 
   ConcurrentAccessRestriction();
 
@@ -4040,14 +3927,12 @@ class ConcurrentAccessRestriction {
   }
 }
 
-
 class DictlayerdataCommon {
   /**
    * The display title and localized canonical name to use when searching for
    * this entity on Google search.
    */
   core.String title;
-
 
   DictlayerdataCommon();
 
@@ -4066,13 +3951,10 @@ class DictlayerdataCommon {
   }
 }
 
-
 /** The source, url and attribution for this dictionary data. */
 class DictlayerdataDictSource {
   core.String attribution;
-
   core.String url;
-
 
   DictlayerdataDictSource();
 
@@ -4097,12 +3979,9 @@ class DictlayerdataDictSource {
   }
 }
 
-
 class DictlayerdataDictWordsDerivativesSource {
   core.String attribution;
-
   core.String url;
-
 
   DictlayerdataDictWordsDerivativesSource();
 
@@ -4127,12 +4006,9 @@ class DictlayerdataDictWordsDerivativesSource {
   }
 }
 
-
 class DictlayerdataDictWordsDerivatives {
   DictlayerdataDictWordsDerivativesSource source;
-
   core.String text;
-
 
   DictlayerdataDictWordsDerivatives();
 
@@ -4157,12 +4033,9 @@ class DictlayerdataDictWordsDerivatives {
   }
 }
 
-
 class DictlayerdataDictWordsExamplesSource {
   core.String attribution;
-
   core.String url;
-
 
   DictlayerdataDictWordsExamplesSource();
 
@@ -4187,12 +4060,9 @@ class DictlayerdataDictWordsExamplesSource {
   }
 }
 
-
 class DictlayerdataDictWordsExamples {
   DictlayerdataDictWordsExamplesSource source;
-
   core.String text;
-
 
   DictlayerdataDictWordsExamples();
 
@@ -4217,12 +4087,9 @@ class DictlayerdataDictWordsExamples {
   }
 }
 
-
 class DictlayerdataDictWordsSensesConjugations {
   core.String type;
-
   core.String value;
-
 
   DictlayerdataDictWordsSensesConjugations();
 
@@ -4247,12 +4114,9 @@ class DictlayerdataDictWordsSensesConjugations {
   }
 }
 
-
 class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
   core.String attribution;
-
   core.String url;
-
 
   DictlayerdataDictWordsSensesDefinitionsExamplesSource();
 
@@ -4277,12 +4141,9 @@ class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
   }
 }
 
-
 class DictlayerdataDictWordsSensesDefinitionsExamples {
   DictlayerdataDictWordsSensesDefinitionsExamplesSource source;
-
   core.String text;
-
 
   DictlayerdataDictWordsSensesDefinitionsExamples();
 
@@ -4307,12 +4168,9 @@ class DictlayerdataDictWordsSensesDefinitionsExamples {
   }
 }
 
-
 class DictlayerdataDictWordsSensesDefinitions {
   core.String definition;
-
   core.List<DictlayerdataDictWordsSensesDefinitionsExamples> examples;
-
 
   DictlayerdataDictWordsSensesDefinitions();
 
@@ -4337,12 +4195,9 @@ class DictlayerdataDictWordsSensesDefinitions {
   }
 }
 
-
 class DictlayerdataDictWordsSensesSource {
   core.String attribution;
-
   core.String url;
-
 
   DictlayerdataDictWordsSensesSource();
 
@@ -4367,12 +4222,9 @@ class DictlayerdataDictWordsSensesSource {
   }
 }
 
-
 class DictlayerdataDictWordsSensesSynonymsSource {
   core.String attribution;
-
   core.String url;
-
 
   DictlayerdataDictWordsSensesSynonymsSource();
 
@@ -4397,12 +4249,9 @@ class DictlayerdataDictWordsSensesSynonymsSource {
   }
 }
 
-
 class DictlayerdataDictWordsSensesSynonyms {
   DictlayerdataDictWordsSensesSynonymsSource source;
-
   core.String text;
-
 
   DictlayerdataDictWordsSensesSynonyms();
 
@@ -4427,24 +4276,15 @@ class DictlayerdataDictWordsSensesSynonyms {
   }
 }
 
-
 class DictlayerdataDictWordsSenses {
   core.List<DictlayerdataDictWordsSensesConjugations> conjugations;
-
   core.List<DictlayerdataDictWordsSensesDefinitions> definitions;
-
   core.String partOfSpeech;
-
   core.String pronunciation;
-
   core.String pronunciationUrl;
-
   DictlayerdataDictWordsSensesSource source;
-
   core.String syllabification;
-
   core.List<DictlayerdataDictWordsSensesSynonyms> synonyms;
-
 
   DictlayerdataDictWordsSenses();
 
@@ -4505,16 +4345,13 @@ class DictlayerdataDictWordsSenses {
   }
 }
 
-
 /**
  * The words with different meanings but not related words, e.g. "go" (game) and
  * "go" (verb).
  */
 class DictlayerdataDictWordsSource {
   core.String attribution;
-
   core.String url;
-
 
   DictlayerdataDictWordsSource();
 
@@ -4539,20 +4376,15 @@ class DictlayerdataDictWordsSource {
   }
 }
 
-
 class DictlayerdataDictWords {
   core.List<DictlayerdataDictWordsDerivatives> derivatives;
-
   core.List<DictlayerdataDictWordsExamples> examples;
-
   core.List<DictlayerdataDictWordsSenses> senses;
-
   /**
    * The words with different meanings but not related words, e.g. "go" (game)
    * and "go" (verb).
    */
   DictlayerdataDictWordsSource source;
-
 
   DictlayerdataDictWords();
 
@@ -4589,13 +4421,10 @@ class DictlayerdataDictWords {
   }
 }
 
-
 class DictlayerdataDict {
   /** The source, url and attribution for this dictionary data. */
   DictlayerdataDictSource source;
-
   core.List<DictlayerdataDictWords> words;
-
 
   DictlayerdataDict();
 
@@ -4620,14 +4449,10 @@ class DictlayerdataDict {
   }
 }
 
-
 class Dictlayerdata {
   DictlayerdataCommon common;
-
   DictlayerdataDict dict;
-
   core.String kind;
-
 
   Dictlayerdata();
 
@@ -4658,61 +4483,48 @@ class Dictlayerdata {
   }
 }
 
-
 class DownloadAccessRestriction {
   /**
    * If restricted, whether access is granted for this (user, device, volume).
    */
   core.bool deviceAllowed;
-
   /**
    * If restricted, the number of content download licenses already acquired
    * (including the requesting client, if licensed).
    */
   core.int downloadsAcquired;
-
   /** If deviceAllowed, whether access was just acquired with this request. */
   core.bool justAcquired;
-
   /** Resource type. */
   core.String kind;
-
   /**
    * If restricted, the maximum number of content download licenses for this
    * volume.
    */
   core.int maxDownloadDevices;
-
   /** Error/warning message. */
   core.String message;
-
   /**
    * Client nonce for verification. Download access and client-validation only.
    */
   core.String nonce;
-
   /**
    * Error/warning reason code. Additional codes may be added in the future. 0
    * OK 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200
    * WARNING_USED_LAST_ACCESS
    */
   core.String reasonCode;
-
   /** Whether this volume has any download access restrictions. */
   core.bool restricted;
-
   /** Response signature. */
   core.String signature;
-
   /**
    * Client app identifier for verification. Download access and
    * client-validation only.
    */
   core.String source;
-
   /** Identifies the volume for which this entry applies. */
   core.String volumeId;
-
 
   DownloadAccessRestriction();
 
@@ -4797,14 +4609,11 @@ class DownloadAccessRestriction {
   }
 }
 
-
 class DownloadAccesses {
   /** A list of download access responses. */
   core.List<DownloadAccessRestriction> downloadAccessList;
-
   /** Resource type. */
   core.String kind;
-
 
   DownloadAccesses();
 
@@ -4829,26 +4638,20 @@ class DownloadAccesses {
   }
 }
 
-
 class GeolayerdataCommon {
   /** The language of the information url and description. */
   core.String lang;
-
   /** The URL for the preview image information. */
   core.String previewImageUrl;
-
   /** The description for this location. */
   core.String snippet;
-
   /** The URL for information for this location. Ex: wikipedia link. */
   core.String snippetUrl;
-
   /**
    * The display title and localized canonical name to use when searching for
    * this entity on Google search.
    */
   core.String title;
-
 
   GeolayerdataCommon();
 
@@ -4891,12 +4694,9 @@ class GeolayerdataCommon {
   }
 }
 
-
 class GeolayerdataGeoBoundary {
   core.int latitude;
-
   core.int longitude;
-
 
   GeolayerdataGeoBoundary();
 
@@ -4921,12 +4721,9 @@ class GeolayerdataGeoBoundary {
   }
 }
 
-
 class GeolayerdataGeoViewportHi {
   core.double latitude;
-
   core.double longitude;
-
 
   GeolayerdataGeoViewportHi();
 
@@ -4951,12 +4748,9 @@ class GeolayerdataGeoViewportHi {
   }
 }
 
-
 class GeolayerdataGeoViewportLo {
   core.double latitude;
-
   core.double longitude;
-
 
   GeolayerdataGeoViewportLo();
 
@@ -4981,16 +4775,13 @@ class GeolayerdataGeoViewportLo {
   }
 }
 
-
 /**
  * The viewport for showing this location. This is a latitude, longitude
  * rectangle.
  */
 class GeolayerdataGeoViewport {
   GeolayerdataGeoViewportHi hi;
-
   GeolayerdataGeoViewportLo lo;
-
 
   GeolayerdataGeoViewport();
 
@@ -5015,40 +4806,32 @@ class GeolayerdataGeoViewport {
   }
 }
 
-
 class GeolayerdataGeo {
   /**
    * The boundary of the location as a set of loops containing pairs of
    * latitude, longitude coordinates.
    */
   core.List<core.List<GeolayerdataGeoBoundary>> boundary;
-
   /**
    * The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER
    */
   core.String cachePolicy;
-
   /** The country code of the location. */
   core.String countryCode;
-
   /** The latitude of the location. */
   core.double latitude;
-
   /** The longitude of the location. */
   core.double longitude;
-
   /**
    * The type of map that should be used for this location. EX: HYBRID, ROADMAP,
    * SATELLITE, TERRAIN
    */
   core.String mapType;
-
   /**
    * The viewport for showing this location. This is a latitude, longitude
    * rectangle.
    */
   GeolayerdataGeoViewport viewport;
-
   /**
    * The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom
    * level, in which the entire world can be seen on one map) to 21+ (down to
@@ -5056,7 +4839,6 @@ class GeolayerdataGeo {
    * https://developers.google.com/maps/documentation/staticmaps/#Zoomlevels
    */
   core.int zoom;
-
 
   GeolayerdataGeo();
 
@@ -5117,14 +4899,10 @@ class GeolayerdataGeo {
   }
 }
 
-
 class Geolayerdata {
   GeolayerdataCommon common;
-
   GeolayerdataGeo geo;
-
   core.String kind;
-
 
   Geolayerdata();
 
@@ -5155,17 +4933,13 @@ class Geolayerdata {
   }
 }
 
-
 class Layersummaries {
   /** A list of layer summary items. */
   core.List<Layersummary> items;
-
   /** Resource type. */
   core.String kind;
-
   /** The total number of layer summaries found. */
   core.int totalItems;
-
 
   Layersummaries();
 
@@ -5196,54 +4970,40 @@ class Layersummaries {
   }
 }
 
-
 class Layersummary {
   /** The number of annotations for this layer. */
   core.int annotationCount;
-
   /** The list of annotation types contained for this layer. */
   core.List<core.String> annotationTypes;
-
   /** Link to get data for this annotation. */
   core.String annotationsDataLink;
-
   /** The link to get the annotations for this layer. */
   core.String annotationsLink;
-
   /** The content version this resource is for. */
   core.String contentVersion;
-
   /** The number of data items for this layer. */
   core.int dataCount;
-
   /** Unique id of this layer summary. */
   core.String id;
-
   /** Resource Type */
   core.String kind;
-
   /** The layer id for this summary. */
   core.String layerId;
-
   /** URL to this resource. */
   core.String selfLink;
-
   /**
    * Timestamp for the last time an item in this layer was updated. (RFC 3339
    * UTC date-time format).
    */
   core.DateTime updated;
-
   /**
    * The current version of this layer's volume annotations. Note that this
    * version applies only to the data in the books.layers.volumeAnnotations.*
    * responses. The actual annotation data is versioned separately.
    */
   core.String volumeAnnotationsVersion;
-
   /** The volume id this resource is for. */
   core.String volumeId;
-
 
   Layersummary();
 
@@ -5334,18 +5094,12 @@ class Layersummary {
   }
 }
 
-
 class MetadataItems {
   core.String downloadUrl;
-
   core.String encryptedKey;
-
   core.String language;
-
   core.String size;
-
   core.String version;
-
 
   MetadataItems();
 
@@ -5388,14 +5142,11 @@ class MetadataItems {
   }
 }
 
-
 class Metadata {
   /** A list of offline dictionary metadata. */
   core.List<MetadataItems> items;
-
   /** Resource type. */
   core.String kind;
-
 
   Metadata();
 
@@ -5420,20 +5171,13 @@ class Metadata {
   }
 }
 
-
 class OffersItemsItems {
   core.String author;
-
   core.String canonicalVolumeLink;
-
   core.String coverUrl;
-
   core.String description;
-
   core.String title;
-
   core.String volumeId;
-
 
   OffersItemsItems();
 
@@ -5482,16 +5226,11 @@ class OffersItemsItems {
   }
 }
 
-
 class OffersItems {
   core.String artUrl;
-
   core.String gservicesKey;
-
   core.String id;
-
   core.List<OffersItemsItems> items;
-
 
   OffersItems();
 
@@ -5528,14 +5267,11 @@ class OffersItems {
   }
 }
 
-
 class Offers {
   /** A list of offers. */
   core.List<OffersItems> items;
-
   /** Resource type. */
   core.String kind;
-
 
   Offers();
 
@@ -5560,32 +5296,24 @@ class Offers {
   }
 }
 
-
 class ReadingPosition {
   /** Position in an EPUB as a CFI. */
   core.String epubCfiPosition;
-
   /** Position in a volume for image-based content. */
   core.String gbImagePosition;
-
   /** Position in a volume for text-based content. */
   core.String gbTextPosition;
-
   /** Resource type for a reading position. */
   core.String kind;
-
   /** Position in a PDF file. */
   core.String pdfPosition;
-
   /**
    * Timestamp when this reading position was last updated (formatted UTC
    * timestamp with millisecond resolution).
    */
   core.DateTime updated;
-
   /** Volume id associated with this reading position. */
   core.String volumeId;
-
 
   ReadingPosition();
 
@@ -5640,17 +5368,13 @@ class ReadingPosition {
   }
 }
 
-
 class RequestAccess {
   /** A concurrent access response. */
   ConcurrentAccessRestriction concurrentAccess;
-
   /** A download access response. */
   DownloadAccessRestriction downloadAccess;
-
   /** Resource type. */
   core.String kind;
-
 
   RequestAccess();
 
@@ -5681,12 +5405,10 @@ class RequestAccess {
   }
 }
 
-
 /** Author of this review. */
 class ReviewAuthor {
   /** Name of this person. */
   core.String displayName;
-
 
   ReviewAuthor();
 
@@ -5705,7 +5427,6 @@ class ReviewAuthor {
   }
 }
 
-
 /**
  * Information regarding the source of this review, when the review is not from
  * a Google Books user.
@@ -5713,13 +5434,10 @@ class ReviewAuthor {
 class ReviewSource {
   /** Name of the source. */
   core.String description;
-
   /** Extra text about the source of the review. */
   core.String extraDescription;
-
   /** URL of the source of the review. */
   core.String url;
-
 
   ReviewSource();
 
@@ -5750,47 +5468,36 @@ class ReviewSource {
   }
 }
 
-
 class Review {
   /** Author of this review. */
   ReviewAuthor author;
-
   /** Review text. */
   core.String content;
-
   /** Date of this review. */
   core.String date;
-
   /** URL for the full review text, for reviews gathered from the web. */
   core.String fullTextUrl;
-
   /** Resource type for a review. */
   core.String kind;
-
   /**
    * Star rating for this review. Possible values are ONE, TWO, THREE, FOUR,
    * FIVE or NOT_RATED.
    */
   core.String rating;
-
   /**
    * Information regarding the source of this review, when the review is not
    * from a Google Books user.
    */
   ReviewSource source;
-
   /** Title for this review. */
   core.String title;
-
   /**
    * Source type for this review. Possible values are EDITORIAL, WEB_USER or
    * GOOGLE_USER.
    */
   core.String type;
-
   /** Volume that this review is for. */
   core.String volumeId;
-
 
   Review();
 
@@ -5863,13 +5570,10 @@ class Review {
   }
 }
 
-
 /** User settings in sub-objects, each for different purposes. */
 class UsersettingsNotesExport {
   core.String folderName;
-
   core.bool isEnabled;
-
 
   UsersettingsNotesExport();
 
@@ -5894,14 +5598,11 @@ class UsersettingsNotesExport {
   }
 }
 
-
 class Usersettings {
   /** Resource type. */
   core.String kind;
-
   /** User settings in sub-objects, each for different purposes. */
   UsersettingsNotesExport notesExport;
-
 
   Usersettings();
 
@@ -5926,21 +5627,17 @@ class Usersettings {
   }
 }
 
-
 /** Information about epub content. (In LITE projection.) */
 class VolumeAccessInfoEpub {
   /** URL to retrieve ACS token for epub download. (In LITE projection.) */
   core.String acsTokenLink;
-
   /** URL to download epub. (In LITE projection.) */
   core.String downloadLink;
-
   /**
    * Is a flowing text epub available either as public domain or for purchase.
    * (In LITE projection.)
    */
   core.bool isAvailable;
-
 
   VolumeAccessInfoEpub();
 
@@ -5971,21 +5668,17 @@ class VolumeAccessInfoEpub {
   }
 }
 
-
 /** Information about pdf content. (In LITE projection.) */
 class VolumeAccessInfoPdf {
   /** URL to retrieve ACS token for pdf download. (In LITE projection.) */
   core.String acsTokenLink;
-
   /** URL to download pdf. (In LITE projection.) */
   core.String downloadLink;
-
   /**
    * Is a scanned image pdf available either as public domain or for purchase.
    * (In LITE projection.)
    */
   core.bool isAvailable;
-
 
   VolumeAccessInfoPdf();
 
@@ -6016,7 +5709,6 @@ class VolumeAccessInfoPdf {
   }
 }
 
-
 /**
  * Any information about a volume related to reading or obtaining that volume
  * text. This information can depend on country (books may be public domain in
@@ -6029,59 +5721,47 @@ class VolumeAccessInfo {
    * SAMPLE or NONE. (In LITE projection.)
    */
   core.String accessViewStatus;
-
   /**
    * The two-letter ISO_3166-1 country code for which this access information is
    * valid. (In LITE projection.)
    */
   core.String country;
-
   /** Information about a volume's download license access restrictions. */
   DownloadAccessRestriction downloadAccess;
-
   /**
    * URL to the Google Drive viewer if this volume is uploaded by the user by
    * selecting the file from Google Drive.
    */
   core.String driveImportedContentLink;
-
   /**
    * Whether this volume can be embedded in a viewport using the Embedded Viewer
    * API.
    */
   core.bool embeddable;
-
   /** Information about epub content. (In LITE projection.) */
   VolumeAccessInfoEpub epub;
-
   /**
    * Whether this volume requires that the client explicitly request offline
    * download license rather than have it done automatically when loading the
    * content, if the client supports it.
    */
   core.bool explicitOfflineLicenseManagement;
-
   /** Information about pdf content. (In LITE projection.) */
   VolumeAccessInfoPdf pdf;
-
   /** Whether or not this book is public domain in the country listed above. */
   core.bool publicDomain;
-
   /** Whether quote sharing is allowed for this volume. */
   core.bool quoteSharingAllowed;
-
   /**
    * Whether text-to-speech is permitted for this volume. Values can be ALLOWED,
    * ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED.
    */
   core.String textToSpeechPermission;
-
   /**
    * For ordered but not yet processed orders, we give a URL that can be used to
    * go to the appropriate Google Wallet page.
    */
   core.String viewOrderUrl;
-
   /**
    * The read access of a volume. Possible values are PARTIAL, ALL_PAGES,
    * NO_PAGES or UNKNOWN. This value depends on the country listed above. A
@@ -6091,13 +5771,11 @@ class VolumeAccessInfo {
    * ALL_PAGES.
    */
   core.String viewability;
-
   /**
    * URL to read this volume on the Google Books site. Link will not allow users
    * to read non-viewable volumes.
    */
   core.String webReaderLink;
-
 
   VolumeAccessInfo();
 
@@ -6194,18 +5872,15 @@ class VolumeAccessInfo {
   }
 }
 
-
 class VolumeLayerInfoLayers {
   /** The layer id of this layer (e.g. "geo"). */
   core.String layerId;
-
   /**
    * The current version of this layer's volume annotations. Note that this
    * version applies only to the data in the books.layers.volumeAnnotations.*
    * responses. The actual annotation data is versioned separately.
    */
   core.String volumeAnnotationsVersion;
-
 
   VolumeLayerInfoLayers();
 
@@ -6230,14 +5905,12 @@ class VolumeLayerInfoLayers {
   }
 }
 
-
 /** What layers exist in this volume and high level information about them. */
 class VolumeLayerInfo {
   /**
    * A layer should appear here if and only if the layer exists for this book.
    */
   core.List<VolumeLayerInfoLayers> layers;
-
 
   VolumeLayerInfo();
 
@@ -6256,12 +5929,10 @@ class VolumeLayerInfo {
   }
 }
 
-
 /** Recommendation related information for this volume. */
 class VolumeRecommendedInfo {
   /** A text explaining why this volume is recommended. */
   core.String explanation;
-
 
   VolumeRecommendedInfo();
 
@@ -6280,15 +5951,12 @@ class VolumeRecommendedInfo {
   }
 }
 
-
 /** Suggested retail price. (In LITE projection.) */
 class VolumeSaleInfoListPrice {
   /** Amount in the currency listed below. (In LITE projection.) */
   core.double amount;
-
   /** An ISO 4217, three-letter currency code. (In LITE projection.) */
   core.String currencyCode;
-
 
   VolumeSaleInfoListPrice();
 
@@ -6313,13 +5981,10 @@ class VolumeSaleInfoListPrice {
   }
 }
 
-
 /** Offer list (=undiscounted) price in Micros. */
 class VolumeSaleInfoOffersListPrice {
   core.double amountInMicros;
-
   core.String currencyCode;
-
 
   VolumeSaleInfoOffersListPrice();
 
@@ -6344,13 +6009,10 @@ class VolumeSaleInfoOffersListPrice {
   }
 }
 
-
 /** The rental duration (for rental offers only). */
 class VolumeSaleInfoOffersRentalDuration {
   core.double count;
-
   core.String unit;
-
 
   VolumeSaleInfoOffersRentalDuration();
 
@@ -6375,13 +6037,10 @@ class VolumeSaleInfoOffersRentalDuration {
   }
 }
 
-
 /** Offer retail (=discounted) price in Micros */
 class VolumeSaleInfoOffersRetailPrice {
   core.double amountInMicros;
-
   core.String currencyCode;
-
 
   VolumeSaleInfoOffersRetailPrice();
 
@@ -6406,20 +6065,15 @@ class VolumeSaleInfoOffersRetailPrice {
   }
 }
 
-
 class VolumeSaleInfoOffers {
   /** The finsky offer type (e.g., PURCHASE=0 RENTAL=3) */
   core.int finskyOfferType;
-
   /** Offer list (=undiscounted) price in Micros. */
   VolumeSaleInfoOffersListPrice listPrice;
-
   /** The rental duration (for rental offers only). */
   VolumeSaleInfoOffersRentalDuration rentalDuration;
-
   /** Offer retail (=discounted) price in Micros */
   VolumeSaleInfoOffersRetailPrice retailPrice;
-
 
   VolumeSaleInfoOffers();
 
@@ -6456,7 +6110,6 @@ class VolumeSaleInfoOffers {
   }
 }
 
-
 /**
  * The actual selling price of the book. This is the same as the suggested
  * retail or list price unless there are offers or discounts on this volume. (In
@@ -6465,10 +6118,8 @@ class VolumeSaleInfoOffers {
 class VolumeSaleInfoRetailPrice {
   /** Amount in the currency listed below. (In LITE projection.) */
   core.double amount;
-
   /** An ISO 4217, three-letter currency code. (In LITE projection.) */
   core.String currencyCode;
-
 
   VolumeSaleInfoRetailPrice();
 
@@ -6493,7 +6144,6 @@ class VolumeSaleInfoRetailPrice {
   }
 }
 
-
 /**
  * Any information about a volume related to the eBookstore and/or
  * purchaseability. This information can depend on the country where the request
@@ -6504,35 +6154,28 @@ class VolumeSaleInfo {
    * URL to purchase this volume on the Google Books site. (In LITE projection)
    */
   core.String buyLink;
-
   /**
    * The two-letter ISO_3166-1 country code for which this sale information is
    * valid. (In LITE projection.)
    */
   core.String country;
-
   /**
    * Whether or not this volume is an eBook (can be added to the My eBooks
    * shelf).
    */
   core.bool isEbook;
-
   /** Suggested retail price. (In LITE projection.) */
   VolumeSaleInfoListPrice listPrice;
-
   /** Offers available for this volume (sales and rentals). */
   core.List<VolumeSaleInfoOffers> offers;
-
   /** The date on which this book is available for sale. */
   core.DateTime onSaleDate;
-
   /**
    * The actual selling price of the book. This is the same as the suggested
    * retail or list price unless there are offers or discounts on this volume.
    * (In LITE projection.)
    */
   VolumeSaleInfoRetailPrice retailPrice;
-
   /**
    * Whether or not this book is available for sale or offered for free in the
    * Google eBookstore for the country listed above. Possible values are
@@ -6540,7 +6183,6 @@ class VolumeSaleInfo {
    * FOR_PREORDER.
    */
   core.String saleability;
-
 
   VolumeSaleInfo();
 
@@ -6601,12 +6243,10 @@ class VolumeSaleInfo {
   }
 }
 
-
 /** Search result information related to this volume. */
 class VolumeSearchInfo {
   /** A text snippet containing the search query. */
   core.String textSnippet;
-
 
   VolumeSearchInfo();
 
@@ -6625,17 +6265,12 @@ class VolumeSearchInfo {
   }
 }
 
-
 /** Copy/Paste accounting information. */
 class VolumeUserInfoCopy {
   core.int allowedCharacterCount;
-
   core.String limitType;
-
   core.int remainingCharacterCount;
-
   core.DateTime updated;
-
 
   VolumeUserInfoCopy();
 
@@ -6672,13 +6307,10 @@ class VolumeUserInfoCopy {
   }
 }
 
-
 /** Period during this book is/was a valid rental. */
 class VolumeUserInfoRentalPeriod {
   core.String endUtcSec;
-
   core.String startUtcSec;
-
 
   VolumeUserInfoRentalPeriod();
 
@@ -6703,10 +6335,8 @@ class VolumeUserInfoRentalPeriod {
   }
 }
 
-
 class VolumeUserInfoUserUploadedVolumeInfo {
   core.String processingState;
-
 
   VolumeUserInfoUserUploadedVolumeInfo();
 
@@ -6725,7 +6355,6 @@ class VolumeUserInfoUserUploadedVolumeInfo {
   }
 }
 
-
 /**
  * User specific information related to this volume. (e.g. page this user last
  * read or whether they purchased this book)
@@ -6733,49 +6362,38 @@ class VolumeUserInfoUserUploadedVolumeInfo {
 class VolumeUserInfo {
   /** Copy/Paste accounting information. */
   VolumeUserInfoCopy copy;
-
   /** Whether or not this volume is currently in "my books." */
   core.bool isInMyBooks;
-
   /**
    * Whether or not this volume was pre-ordered by the authenticated user making
    * the request. (In LITE projection.)
    */
   core.bool isPreordered;
-
   /**
    * Whether or not this volume was purchased by the authenticated user making
    * the request. (In LITE projection.)
    */
   core.bool isPurchased;
-
   /** Whether or not this volume was user uploaded. */
   core.bool isUploaded;
-
   /**
    * The user's current reading position in the volume, if one is available. (In
    * LITE projection.)
    */
   ReadingPosition readingPosition;
-
   /** Period during this book is/was a valid rental. */
   VolumeUserInfoRentalPeriod rentalPeriod;
-
   /** Whether this book is an active or an expired rental. */
   core.String rentalState;
-
   /** This user's review of this volume, if one exists. */
   Review review;
-
   /**
    * Timestamp when this volume was last modified by a user action, such as a
    * reading position update, volume purchase or writing a review. (RFC 3339 UTC
    * date-time format).
    */
   core.DateTime updated;
-
   VolumeUserInfoUserUploadedVolumeInfo userUploadedVolumeInfo;
-
 
   VolumeUserInfo();
 
@@ -6854,18 +6472,14 @@ class VolumeUserInfo {
   }
 }
 
-
 /** Physical dimensions of this volume. */
 class VolumeVolumeInfoDimensions {
   /** Height or length of this volume (in cm). */
   core.String height;
-
   /** Thickness of this volume (in cm). */
   core.String thickness;
-
   /** Width of this volume (in cm). */
   core.String width;
-
 
   VolumeVolumeInfoDimensions();
 
@@ -6896,7 +6510,6 @@ class VolumeVolumeInfoDimensions {
   }
 }
 
-
 /**
  * A list of image links for all the sizes that are available. (In LITE
  * projection.)
@@ -6907,29 +6520,23 @@ class VolumeVolumeInfoImageLinks {
    * projection)
    */
   core.String extraLarge;
-
   /** Image link for large size (width of ~800 pixels). (In LITE projection) */
   core.String large;
-
   /**
    * Image link for medium size (width of ~575 pixels). (In LITE projection)
    */
   core.String medium;
-
   /** Image link for small size (width of ~300 pixels). (In LITE projection) */
   core.String small;
-
   /**
    * Image link for small thumbnail size (width of ~80 pixels). (In LITE
    * projection)
    */
   core.String smallThumbnail;
-
   /**
    * Image link for thumbnail size (width of ~128 pixels). (In LITE projection)
    */
   core.String thumbnail;
-
 
   VolumeVolumeInfoImageLinks();
 
@@ -6978,14 +6585,11 @@ class VolumeVolumeInfoImageLinks {
   }
 }
 
-
 class VolumeVolumeInfoIndustryIdentifiers {
   /** Industry specific volume identifier. */
   core.String identifier;
-
   /** Identifier type. Possible values are ISBN_10, ISBN_13, ISSN and OTHER. */
   core.String type;
-
 
   VolumeVolumeInfoIndustryIdentifiers();
 
@@ -7010,90 +6614,73 @@ class VolumeVolumeInfoIndustryIdentifiers {
   }
 }
 
-
 /** General volume information. */
 class VolumeVolumeInfo {
+  /** Whether anonymous logging should be allowed. */
+  core.bool allowAnonLogging;
   /**
    * The names of the authors and/or editors for this volume. (In LITE
    * projection)
    */
   core.List<core.String> authors;
-
   /** The mean review rating for this volume. (min = 1.0, max = 5.0) */
   core.double averageRating;
-
   /** Canonical URL for a volume. (In LITE projection.) */
   core.String canonicalVolumeLink;
-
   /** A list of subject categories, such as "Fiction", "Suspense", etc. */
   core.List<core.String> categories;
-
   /**
    * An identifier for the version of the volume content (text & images). (In
    * LITE projection)
    */
   core.String contentVersion;
-
   /**
    * A synopsis of the volume. The text of the description is formatted in HTML
    * and includes simple formatting elements, such as b, i, and br tags. (In
    * LITE projection.)
    */
   core.String description;
-
   /** Physical dimensions of this volume. */
   VolumeVolumeInfoDimensions dimensions;
-
   /**
    * A list of image links for all the sizes that are available. (In LITE
    * projection.)
    */
   VolumeVolumeInfoImageLinks imageLinks;
-
   /** Industry standard identifiers for this volume. */
   core.List<VolumeVolumeInfoIndustryIdentifiers> industryIdentifiers;
-
   /**
    * URL to view information about this volume on the Google Books site. (In
    * LITE projection)
    */
   core.String infoLink;
-
   /**
    * Best language for this volume (based on content). It is the two-letter ISO
    * 639-1 code such as 'fr', 'en', etc.
    */
   core.String language;
-
   /**
    * The main category to which this volume belongs. It will be the category
    * from the categories list returned below that has the highest weight.
    */
   core.String mainCategory;
-
+  core.String maturityRating;
   /** Total number of pages as per publisher metadata. */
   core.int pageCount;
-
   /** URL to preview this volume on the Google Books site. */
   core.String previewLink;
-
   /**
    * Type of publication of this volume. Possible values are BOOK or MAGAZINE.
    */
   core.String printType;
-
   /** Total number of printed pages in generated pdf representation. */
   core.int printedPageCount;
-
   /** Date of publication. (In LITE projection.) */
   core.String publishedDate;
-
   /** Publisher of this volume. (In LITE projection.) */
   core.String publisher;
-
   /** The number of review ratings for this volume. */
   core.int ratingsCount;
-
   /**
    * The reading modes available for this volume.
    *
@@ -7101,20 +6688,19 @@ class VolumeVolumeInfo {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object readingModes;
-
   /** Total number of sample pages as per publisher metadata. */
   core.int samplePageCount;
-
   /** Volume subtitle. (In LITE projection.) */
   core.String subtitle;
-
   /** Volume title. (In LITE projection.) */
   core.String title;
-
 
   VolumeVolumeInfo();
 
   VolumeVolumeInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("allowAnonLogging")) {
+      allowAnonLogging = _json["allowAnonLogging"];
+    }
     if (_json.containsKey("authors")) {
       authors = _json["authors"];
     }
@@ -7150,6 +6736,9 @@ class VolumeVolumeInfo {
     }
     if (_json.containsKey("mainCategory")) {
       mainCategory = _json["mainCategory"];
+    }
+    if (_json.containsKey("maturityRating")) {
+      maturityRating = _json["maturityRating"];
     }
     if (_json.containsKey("pageCount")) {
       pageCount = _json["pageCount"];
@@ -7188,6 +6777,9 @@ class VolumeVolumeInfo {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (allowAnonLogging != null) {
+      _json["allowAnonLogging"] = allowAnonLogging;
+    }
     if (authors != null) {
       _json["authors"] = authors;
     }
@@ -7223,6 +6815,9 @@ class VolumeVolumeInfo {
     }
     if (mainCategory != null) {
       _json["mainCategory"] = mainCategory;
+    }
+    if (maturityRating != null) {
+      _json["maturityRating"] = maturityRating;
     }
     if (pageCount != null) {
       _json["pageCount"] = pageCount;
@@ -7261,7 +6856,6 @@ class VolumeVolumeInfo {
   }
 }
 
-
 class Volume {
   /**
    * Any information about a volume related to reading or obtaining that volume
@@ -7269,27 +6863,21 @@ class Volume {
    * one country but not in another, e.g.).
    */
   VolumeAccessInfo accessInfo;
-
   /**
    * Opaque identifier for a specific version of a volume resource. (In LITE
    * projection)
    */
   core.String etag;
-
   /** Unique identifier for a volume. (In LITE projection.) */
   core.String id;
-
   /** Resource type for a volume. (In LITE projection.) */
   core.String kind;
-
   /**
    * What layers exist in this volume and high level information about them.
    */
   VolumeLayerInfo layerInfo;
-
   /** Recommendation related information for this volume. */
   VolumeRecommendedInfo recommendedInfo;
-
   /**
    * Any information about a volume related to the eBookstore and/or
    * purchaseability. This information can depend on the country where the
@@ -7297,22 +6885,17 @@ class Volume {
    * countries).
    */
   VolumeSaleInfo saleInfo;
-
   /** Search result information related to this volume. */
   VolumeSearchInfo searchInfo;
-
   /** URL to this resource. (In LITE projection.) */
   core.String selfLink;
-
   /**
    * User specific information related to this volume. (e.g. page this user last
    * read or whether they purchased this book)
    */
   VolumeUserInfo userInfo;
-
   /** General volume information. */
   VolumeVolumeInfo volumeInfo;
-
 
   Volume();
 
@@ -7391,16 +6974,12 @@ class Volume {
   }
 }
 
-
 class Volume2 {
   /** A list of volumes. */
   core.List<Volume> items;
-
   /** Resource type. */
   core.String kind;
-
   core.String nextPageToken;
-
 
   Volume2();
 
@@ -7431,21 +7010,16 @@ class Volume2 {
   }
 }
 
-
 /** The content ranges to identify the selected text. */
 class VolumeannotationContentRanges {
   /** Range in CFI format for this annotation for version above. */
   BooksAnnotationsRange cfiRange;
-
   /** Content version applicable to ranges below. */
   core.String contentVersion;
-
   /** Range in GB image format for this annotation for version above. */
   BooksAnnotationsRange gbImageRange;
-
   /** Range in GB text format for this annotation for version above. */
   BooksAnnotationsRange gbTextRange;
-
 
   VolumeannotationContentRanges();
 
@@ -7482,53 +7056,38 @@ class VolumeannotationContentRanges {
   }
 }
 
-
 class Volumeannotation {
   /** The annotation data id for this volume annotation. */
   core.String annotationDataId;
-
   /** Link to get data for this annotation. */
   core.String annotationDataLink;
-
   /** The type of annotation this is. */
   core.String annotationType;
-
   /** The content ranges to identify the selected text. */
   VolumeannotationContentRanges contentRanges;
-
   /** Data for this annotation. */
   core.String data;
-
   /** Indicates that this annotation is deleted. */
   core.bool deleted;
-
   /** Unique id of this volume annotation. */
   core.String id;
-
   /** Resource Type */
   core.String kind;
-
   /** The Layer this annotation is for. */
   core.String layerId;
-
   /** Pages the annotation spans. */
   core.List<core.String> pageIds;
-
   /** Excerpt from the volume. */
   core.String selectedText;
-
   /** URL to this resource. */
   core.String selfLink;
-
   /**
    * Timestamp for the last time this anntoation was updated. (RFC 3339 UTC
    * date-time format).
    */
   core.DateTime updated;
-
   /** The Volume this annotation is for. */
   core.String volumeId;
-
 
   Volumeannotation();
 
@@ -7625,23 +7184,18 @@ class Volumeannotation {
   }
 }
 
-
 class Volumeannotations {
   /** A list of volume annotations. */
   core.List<Volumeannotation> items;
-
   /** Resource type */
   core.String kind;
-
   /**
    * Token to pass in for pagination for the next page. This will not be present
    * if this request does not have more results.
    */
   core.String nextPageToken;
-
   /** The total number of volume annotations found. */
   core.int totalItems;
-
   /**
    * The version string for all of the volume annotations in this layer (not
    * just the ones in this response). Note: the version string doesn't apply to
@@ -7649,7 +7203,6 @@ class Volumeannotations {
    * location of annotations in the book).
    */
   core.String version;
-
 
   Volumeannotations();
 
@@ -7692,20 +7245,16 @@ class Volumeannotations {
   }
 }
 
-
 class Volumes {
   /** A list of volumes. */
   core.List<Volume> items;
-
   /** Resource type. */
   core.String kind;
-
   /**
    * Total number of volumes found. This might be greater than the number of
    * volumes returned in this response if results have been paginated.
    */
   core.int totalItems;
-
 
   Volumes();
 

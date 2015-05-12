@@ -67,7 +67,7 @@ class AssetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Asset> get(core.String id) {
     var _url = null;
@@ -80,7 +80,6 @@ class AssetsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'assets/' + commons.Escaper.ecapeVariable('$id');
 
@@ -156,7 +155,7 @@ class AssetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AssetsListResponse> list({core.String bbox, core.DateTime createdAfter, core.DateTime createdBefore, core.String creatorEmail, core.int maxResults, core.DateTime modifiedAfter, core.DateTime modifiedBefore, core.String pageToken, core.String projectId, core.String role, core.String search, core.String tags, core.String type}) {
     var _url = null;
@@ -206,7 +205,6 @@ class AssetsResourceApi {
       _queryParams["type"] = [type];
     }
 
-
     _url = 'assets';
 
     var _response = _requester.request(_url,
@@ -248,7 +246,7 @@ class AssetsParentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ParentsListResponse> list(core.String id, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -267,7 +265,6 @@ class AssetsParentsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'assets/' + commons.Escaper.ecapeVariable('$id') + '/parents';
 
@@ -303,7 +300,7 @@ class AssetsPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsListResponse> list(core.String id) {
     var _url = null;
@@ -316,7 +313,6 @@ class AssetsPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'assets/' + commons.Escaper.ecapeVariable('$id') + '/permissions';
 
@@ -355,7 +351,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProcessResponse> cancelProcessing(core.String id) {
     var _url = null;
@@ -368,7 +364,6 @@ class LayersResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'layers/' + commons.Escaper.ecapeVariable('$id') + '/cancelProcessing';
 
@@ -397,7 +392,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Layer> create(Layer request, {core.bool process_1}) {
     var _url = null;
@@ -413,7 +408,6 @@ class LayersResourceApi {
     if (process_1 != null) {
       _queryParams["process"] = ["${process_1}"];
     }
-
 
     _url = 'layers';
 
@@ -441,7 +435,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id) {
     var _url = null;
@@ -490,7 +484,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Layer> get(core.String id, {core.String version}) {
     var _url = null;
@@ -506,7 +500,6 @@ class LayersResourceApi {
     if (version != null) {
       _queryParams["version"] = [version];
     }
-
 
     _url = 'layers/' + commons.Escaper.ecapeVariable('$id');
 
@@ -533,7 +526,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PublishedLayer> getPublished(core.String id) {
     var _url = null;
@@ -546,7 +539,6 @@ class LayersResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'layers/' + commons.Escaper.ecapeVariable('$id') + '/published';
 
@@ -626,7 +618,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LayersListResponse> list({core.String bbox, core.DateTime createdAfter, core.DateTime createdBefore, core.String creatorEmail, core.int maxResults, core.DateTime modifiedAfter, core.DateTime modifiedBefore, core.String pageToken, core.String processingStatus, core.String projectId, core.String role, core.String search, core.String tags}) {
     var _url = null;
@@ -676,7 +668,6 @@ class LayersResourceApi {
       _queryParams["tags"] = [tags];
     }
 
-
     _url = 'layers';
 
     var _response = _requester.request(_url,
@@ -712,7 +703,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PublishedLayersListResponse> listPublished({core.int maxResults, core.String pageToken, core.String projectId}) {
     var _url = null;
@@ -731,7 +722,6 @@ class LayersResourceApi {
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
     }
-
 
     _url = 'layers/published';
 
@@ -758,7 +748,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future patch(Layer request, core.String id) {
     var _url = null;
@@ -802,7 +792,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProcessResponse> process(core.String id) {
     var _url = null;
@@ -815,7 +805,6 @@ class LayersResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'layers/' + commons.Escaper.ecapeVariable('$id') + '/process';
 
@@ -846,7 +835,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PublishResponse> publish(core.String id, {core.bool force}) {
     var _url = null;
@@ -862,7 +851,6 @@ class LayersResourceApi {
     if (force != null) {
       _queryParams["force"] = ["${force}"];
     }
-
 
     _url = 'layers/' + commons.Escaper.ecapeVariable('$id') + '/publish';
 
@@ -889,7 +877,7 @@ class LayersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PublishResponse> unpublish(core.String id) {
     var _url = null;
@@ -902,7 +890,6 @@ class LayersResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'layers/' + commons.Escaper.ecapeVariable('$id') + '/unpublish';
 
@@ -945,7 +932,7 @@ class LayersParentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ParentsListResponse> list(core.String id, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -964,7 +951,6 @@ class LayersParentsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'layers/' + commons.Escaper.ecapeVariable('$id') + '/parents';
 
@@ -1002,7 +988,7 @@ class LayersPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsBatchDeleteResponse> batchDelete(PermissionsBatchDeleteRequest request, core.String id) {
     var _url = null;
@@ -1018,7 +1004,6 @@ class LayersPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'layers/' + commons.Escaper.ecapeVariable('$id') + '/permissions/batchDelete';
 
@@ -1050,7 +1035,7 @@ class LayersPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsBatchUpdateResponse> batchUpdate(PermissionsBatchUpdateRequest request, core.String id) {
     var _url = null;
@@ -1066,7 +1051,6 @@ class LayersPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'layers/' + commons.Escaper.ecapeVariable('$id') + '/permissions/batchUpdate';
 
@@ -1093,7 +1077,7 @@ class LayersPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsListResponse> list(core.String id) {
     var _url = null;
@@ -1106,7 +1090,6 @@ class LayersPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'layers/' + commons.Escaper.ecapeVariable('$id') + '/permissions';
 
@@ -1144,7 +1127,7 @@ class MapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Map> create(Map request) {
     var _url = null;
@@ -1157,7 +1140,6 @@ class MapsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'maps';
 
@@ -1184,7 +1166,7 @@ class MapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id) {
     var _url = null;
@@ -1233,7 +1215,7 @@ class MapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Map> get(core.String id, {core.String version}) {
     var _url = null;
@@ -1249,7 +1231,6 @@ class MapsResourceApi {
     if (version != null) {
       _queryParams["version"] = [version];
     }
-
 
     _url = 'maps/' + commons.Escaper.ecapeVariable('$id');
 
@@ -1276,7 +1257,7 @@ class MapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PublishedMap> getPublished(core.String id) {
     var _url = null;
@@ -1289,7 +1270,6 @@ class MapsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'maps/' + commons.Escaper.ecapeVariable('$id') + '/published';
 
@@ -1368,7 +1348,7 @@ class MapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<MapsListResponse> list({core.String bbox, core.DateTime createdAfter, core.DateTime createdBefore, core.String creatorEmail, core.int maxResults, core.DateTime modifiedAfter, core.DateTime modifiedBefore, core.String pageToken, core.String processingStatus, core.String projectId, core.String role, core.String search, core.String tags}) {
     var _url = null;
@@ -1418,7 +1398,6 @@ class MapsResourceApi {
       _queryParams["tags"] = [tags];
     }
 
-
     _url = 'maps';
 
     var _response = _requester.request(_url,
@@ -1454,7 +1433,7 @@ class MapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PublishedMapsListResponse> listPublished({core.int maxResults, core.String pageToken, core.String projectId}) {
     var _url = null;
@@ -1473,7 +1452,6 @@ class MapsResourceApi {
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
     }
-
 
     _url = 'maps/published';
 
@@ -1500,7 +1478,7 @@ class MapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future patch(Map request, core.String id) {
     var _url = null;
@@ -1548,7 +1526,7 @@ class MapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PublishResponse> publish(core.String id, {core.bool force}) {
     var _url = null;
@@ -1564,7 +1542,6 @@ class MapsResourceApi {
     if (force != null) {
       _queryParams["force"] = ["${force}"];
     }
-
 
     _url = 'maps/' + commons.Escaper.ecapeVariable('$id') + '/publish';
 
@@ -1591,7 +1568,7 @@ class MapsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PublishResponse> unpublish(core.String id) {
     var _url = null;
@@ -1604,7 +1581,6 @@ class MapsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'maps/' + commons.Escaper.ecapeVariable('$id') + '/unpublish';
 
@@ -1642,7 +1618,7 @@ class MapsPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsBatchDeleteResponse> batchDelete(PermissionsBatchDeleteRequest request, core.String id) {
     var _url = null;
@@ -1658,7 +1634,6 @@ class MapsPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'maps/' + commons.Escaper.ecapeVariable('$id') + '/permissions/batchDelete';
 
@@ -1690,7 +1665,7 @@ class MapsPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsBatchUpdateResponse> batchUpdate(PermissionsBatchUpdateRequest request, core.String id) {
     var _url = null;
@@ -1706,7 +1681,6 @@ class MapsPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'maps/' + commons.Escaper.ecapeVariable('$id') + '/permissions/batchUpdate';
 
@@ -1733,7 +1707,7 @@ class MapsPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsListResponse> list(core.String id) {
     var _url = null;
@@ -1746,7 +1720,6 @@ class MapsPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'maps/' + commons.Escaper.ecapeVariable('$id') + '/permissions';
 
@@ -1782,7 +1755,7 @@ class ProjectsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProjectsListResponse> list() {
     var _url = null;
@@ -1791,7 +1764,6 @@ class ProjectsResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'projects';
@@ -1835,7 +1807,7 @@ class ProjectsIconsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Icon> create(Icon request, core.String projectId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1897,7 +1869,7 @@ class ProjectsIconsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future get(core.String projectId, core.String id, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -1953,7 +1925,7 @@ class ProjectsIconsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<IconsListResponse> list(core.String projectId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1972,7 +1944,6 @@ class ProjectsIconsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/icons';
 
@@ -2012,7 +1983,7 @@ class RasterCollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProcessResponse> cancelProcessing(core.String id) {
     var _url = null;
@@ -2025,7 +1996,6 @@ class RasterCollectionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasterCollections/' + commons.Escaper.ecapeVariable('$id') + '/cancelProcessing';
 
@@ -2052,7 +2022,7 @@ class RasterCollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RasterCollection> create(RasterCollection request) {
     var _url = null;
@@ -2065,7 +2035,6 @@ class RasterCollectionsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'rasterCollections';
 
@@ -2093,7 +2062,7 @@ class RasterCollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id) {
     var _url = null;
@@ -2134,7 +2103,7 @@ class RasterCollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RasterCollection> get(core.String id) {
     var _url = null;
@@ -2147,7 +2116,6 @@ class RasterCollectionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasterCollections/' + commons.Escaper.ecapeVariable('$id');
 
@@ -2227,7 +2195,7 @@ class RasterCollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RasterCollectionsListResponse> list({core.String bbox, core.DateTime createdAfter, core.DateTime createdBefore, core.String creatorEmail, core.int maxResults, core.DateTime modifiedAfter, core.DateTime modifiedBefore, core.String pageToken, core.String processingStatus, core.String projectId, core.String role, core.String search, core.String tags}) {
     var _url = null;
@@ -2277,7 +2245,6 @@ class RasterCollectionsResourceApi {
       _queryParams["tags"] = [tags];
     }
 
-
     _url = 'rasterCollections';
 
     var _response = _requester.request(_url,
@@ -2303,7 +2270,7 @@ class RasterCollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future patch(RasterCollection request, core.String id) {
     var _url = null;
@@ -2347,7 +2314,7 @@ class RasterCollectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProcessResponse> process(core.String id) {
     var _url = null;
@@ -2360,7 +2327,6 @@ class RasterCollectionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasterCollections/' + commons.Escaper.ecapeVariable('$id') + '/process';
 
@@ -2403,7 +2369,7 @@ class RasterCollectionsParentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ParentsListResponse> list(core.String id, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -2422,7 +2388,6 @@ class RasterCollectionsParentsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'rasterCollections/' + commons.Escaper.ecapeVariable('$id') + '/parents';
 
@@ -2460,7 +2425,7 @@ class RasterCollectionsPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsBatchDeleteResponse> batchDelete(PermissionsBatchDeleteRequest request, core.String id) {
     var _url = null;
@@ -2476,7 +2441,6 @@ class RasterCollectionsPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasterCollections/' + commons.Escaper.ecapeVariable('$id') + '/permissions/batchDelete';
 
@@ -2508,7 +2472,7 @@ class RasterCollectionsPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsBatchUpdateResponse> batchUpdate(PermissionsBatchUpdateRequest request, core.String id) {
     var _url = null;
@@ -2524,7 +2488,6 @@ class RasterCollectionsPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasterCollections/' + commons.Escaper.ecapeVariable('$id') + '/permissions/batchUpdate';
 
@@ -2551,7 +2514,7 @@ class RasterCollectionsPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsListResponse> list(core.String id) {
     var _url = null;
@@ -2564,7 +2527,6 @@ class RasterCollectionsPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasterCollections/' + commons.Escaper.ecapeVariable('$id') + '/permissions';
 
@@ -2605,7 +2567,7 @@ class RasterCollectionsRastersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RasterCollectionsRastersBatchDeleteResponse> batchDelete(RasterCollectionsRasterBatchDeleteRequest request, core.String id) {
     var _url = null;
@@ -2621,7 +2583,6 @@ class RasterCollectionsRastersResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasterCollections/' + commons.Escaper.ecapeVariable('$id') + '/rasters/batchDelete';
 
@@ -2654,7 +2615,7 @@ class RasterCollectionsRastersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RasterCollectionsRastersBatchInsertResponse> batchInsert(RasterCollectionsRastersBatchInsertRequest request, core.String id) {
     var _url = null;
@@ -2670,7 +2631,6 @@ class RasterCollectionsRastersResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasterCollections/' + commons.Escaper.ecapeVariable('$id') + '/rasters/batchInsert';
 
@@ -2739,7 +2699,7 @@ class RasterCollectionsRastersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RasterCollectionsRastersListResponse> list(core.String id, {core.String bbox, core.DateTime createdAfter, core.DateTime createdBefore, core.String creatorEmail, core.int maxResults, core.DateTime modifiedAfter, core.DateTime modifiedBefore, core.String pageToken, core.String role, core.String search, core.String tags}) {
     var _url = null;
@@ -2786,7 +2746,6 @@ class RasterCollectionsRastersResourceApi {
       _queryParams["tags"] = [tags];
     }
 
-
     _url = 'rasterCollections/' + commons.Escaper.ecapeVariable('$id') + '/rasters';
 
     var _response = _requester.request(_url,
@@ -2825,7 +2784,7 @@ class RastersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id) {
     var _url = null;
@@ -2866,7 +2825,7 @@ class RastersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Raster> get(core.String id) {
     var _url = null;
@@ -2879,7 +2838,6 @@ class RastersResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasters/' + commons.Escaper.ecapeVariable('$id');
 
@@ -2959,7 +2917,7 @@ class RastersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RastersListResponse> list(core.String projectId, {core.String bbox, core.DateTime createdAfter, core.DateTime createdBefore, core.String creatorEmail, core.int maxResults, core.DateTime modifiedAfter, core.DateTime modifiedBefore, core.String pageToken, core.String processingStatus, core.String role, core.String search, core.String tags}) {
     var _url = null;
@@ -3010,7 +2968,6 @@ class RastersResourceApi {
       _queryParams["tags"] = [tags];
     }
 
-
     _url = 'rasters';
 
     var _response = _requester.request(_url,
@@ -3036,7 +2993,7 @@ class RastersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future patch(Raster request, core.String id) {
     var _url = null;
@@ -3080,7 +3037,7 @@ class RastersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProcessResponse> process(core.String id) {
     var _url = null;
@@ -3093,7 +3050,6 @@ class RastersResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasters/' + commons.Escaper.ecapeVariable('$id') + '/process';
 
@@ -3120,7 +3076,7 @@ class RastersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Raster> upload(Raster request) {
     var _url = null;
@@ -3133,7 +3089,6 @@ class RastersResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'rasters/upload';
 
@@ -3174,7 +3129,7 @@ class RastersFilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future insert(core.String id, core.String filename, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -3191,6 +3146,7 @@ class RastersFilesResourceApi {
       throw new core.ArgumentError("Parameter filename is required.");
     }
     _queryParams["filename"] = [filename];
+
 
     _uploadMedia =  uploadMedia;
     _uploadOptions =  uploadOptions;
@@ -3244,7 +3200,7 @@ class RastersParentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ParentsListResponse> list(core.String id, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -3263,7 +3219,6 @@ class RastersParentsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'rasters/' + commons.Escaper.ecapeVariable('$id') + '/parents';
 
@@ -3301,7 +3256,7 @@ class RastersPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsBatchDeleteResponse> batchDelete(PermissionsBatchDeleteRequest request, core.String id) {
     var _url = null;
@@ -3317,7 +3272,6 @@ class RastersPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasters/' + commons.Escaper.ecapeVariable('$id') + '/permissions/batchDelete';
 
@@ -3349,7 +3303,7 @@ class RastersPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsBatchUpdateResponse> batchUpdate(PermissionsBatchUpdateRequest request, core.String id) {
     var _url = null;
@@ -3365,7 +3319,6 @@ class RastersPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasters/' + commons.Escaper.ecapeVariable('$id') + '/permissions/batchUpdate';
 
@@ -3392,7 +3345,7 @@ class RastersPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsListResponse> list(core.String id) {
     var _url = null;
@@ -3405,7 +3358,6 @@ class RastersPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'rasters/' + commons.Escaper.ecapeVariable('$id') + '/permissions';
 
@@ -3446,7 +3398,7 @@ class TablesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Table> create(Table request) {
     var _url = null;
@@ -3459,7 +3411,6 @@ class TablesResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'tables';
 
@@ -3486,7 +3437,7 @@ class TablesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id) {
     var _url = null;
@@ -3532,7 +3483,7 @@ class TablesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Table> get(core.String id, {core.String version}) {
     var _url = null;
@@ -3548,7 +3499,6 @@ class TablesResourceApi {
     if (version != null) {
       _queryParams["version"] = [version];
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$id');
 
@@ -3628,7 +3578,7 @@ class TablesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TablesListResponse> list({core.String bbox, core.DateTime createdAfter, core.DateTime createdBefore, core.String creatorEmail, core.int maxResults, core.DateTime modifiedAfter, core.DateTime modifiedBefore, core.String pageToken, core.String processingStatus, core.String projectId, core.String role, core.String search, core.String tags}) {
     var _url = null;
@@ -3678,7 +3628,6 @@ class TablesResourceApi {
       _queryParams["tags"] = [tags];
     }
 
-
     _url = 'tables';
 
     var _response = _requester.request(_url,
@@ -3704,7 +3653,7 @@ class TablesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future patch(Table request, core.String id) {
     var _url = null;
@@ -3748,7 +3697,7 @@ class TablesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProcessResponse> process(core.String id) {
     var _url = null;
@@ -3761,7 +3710,6 @@ class TablesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$id') + '/process';
 
@@ -3793,7 +3741,7 @@ class TablesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Table> upload(Table request) {
     var _url = null;
@@ -3806,7 +3754,6 @@ class TablesResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'tables/upload';
 
@@ -3842,7 +3789,7 @@ class TablesFeaturesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future batchDelete(FeaturesBatchDeleteRequest request, core.String id) {
     var _url = null;
@@ -3897,7 +3844,7 @@ class TablesFeaturesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future batchInsert(FeaturesBatchInsertRequest request, core.String id) {
     var _url = null;
@@ -3960,7 +3907,7 @@ class TablesFeaturesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future batchPatch(FeaturesBatchPatchRequest request, core.String id) {
     var _url = null;
@@ -4015,7 +3962,7 @@ class TablesFeaturesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Feature> get(core.String tableId, core.String id, {core.String select, core.String version}) {
     var _url = null;
@@ -4037,7 +3984,6 @@ class TablesFeaturesResourceApi {
     if (version != null) {
       _queryParams["version"] = [version];
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/features/' + commons.Escaper.ecapeVariable('$id');
 
@@ -4094,7 +4040,7 @@ class TablesFeaturesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FeaturesListResponse> list(core.String id, {core.String include, core.String intersects, core.int limit, core.int maxResults, core.String orderBy, core.String pageToken, core.String select, core.String version, core.String where}) {
     var _url = null;
@@ -4134,7 +4080,6 @@ class TablesFeaturesResourceApi {
     if (where != null) {
       _queryParams["where"] = [where];
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$id') + '/features';
 
@@ -4178,7 +4123,7 @@ class TablesFilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future insert(core.String id, core.String filename, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -4195,6 +4140,7 @@ class TablesFilesResourceApi {
       throw new core.ArgumentError("Parameter filename is required.");
     }
     _queryParams["filename"] = [filename];
+
 
     _uploadMedia =  uploadMedia;
     _uploadOptions =  uploadOptions;
@@ -4248,7 +4194,7 @@ class TablesParentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ParentsListResponse> list(core.String id, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -4267,7 +4213,6 @@ class TablesParentsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$id') + '/parents';
 
@@ -4305,7 +4250,7 @@ class TablesPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsBatchDeleteResponse> batchDelete(PermissionsBatchDeleteRequest request, core.String id) {
     var _url = null;
@@ -4321,7 +4266,6 @@ class TablesPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$id') + '/permissions/batchDelete';
 
@@ -4353,7 +4297,7 @@ class TablesPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsBatchUpdateResponse> batchUpdate(PermissionsBatchUpdateRequest request, core.String id) {
     var _url = null;
@@ -4369,7 +4313,6 @@ class TablesPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$id') + '/permissions/batchUpdate';
 
@@ -4396,7 +4339,7 @@ class TablesPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionsListResponse> list(core.String id) {
     var _url = null;
@@ -4409,7 +4352,6 @@ class TablesPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$id') + '/permissions';
 
@@ -4434,7 +4376,6 @@ class AcquisitionTime {
    * formatted date-time value (1970-01-01T00:00:00Z).
    */
   core.DateTime end;
-
   /**
    * The precision of acquisition time.
    * Possible string values are:
@@ -4446,13 +4387,11 @@ class AcquisitionTime {
    * - "year"
    */
   core.String precision;
-
   /**
    * The acquisition time, or start time if acquisition time is a range. The
    * value is an RFC 3339 formatted date-time value (1970-01-01T00:00:00Z).
    */
   core.DateTime start;
-
 
   AcquisitionTime();
 
@@ -4483,7 +4422,6 @@ class AcquisitionTime {
   }
 }
 
-
 /**
  * An asset is any Google Maps Engine resource that has a globally unique ID.
  * Assets include maps, layers, vector tables, raster collections, and rasters.
@@ -4499,59 +4437,47 @@ class Asset {
    * latitude and longitude in decimal degrees.
    */
   core.List<core.double> bbox;
-
   /**
    * The creation time of this asset. The value is an RFC 3339-formatted
    * date-time value (for example, 1970-01-01T00:00:00Z).
    */
   core.DateTime creationTime;
-
   /**
    * The email address of the creator of this asset. This is only returned on
    * GET requests and not LIST requests.
    */
   core.String creatorEmail;
-
   /** The asset's description. */
   core.String description;
-
   /** The ETag, used to refer to the current version of the asset. */
   core.String etag;
-
   /** The asset's globally unique ID. */
   core.String id;
-
   /**
    * The last modified time of this asset. The value is an RFC 3339-formatted
    * date-time value (for example, 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
-
   /**
    * The email address of the last modifier of this asset. This is only returned
    * on GET requests and not LIST requests.
    */
   core.String lastModifierEmail;
-
   /** The asset's name. */
   core.String name;
-
   /** The ID of the project to which the asset belongs. */
   core.String projectId;
-
   /**
    * The URL to query to retrieve the asset's complete object. The assets
    * endpoint only returns high-level information about a resource.
    */
   core.String resource;
-
   /**
    * An array of text strings, with each string representing a tag. More
    * information about tags can be found in the Tagging data article of the Maps
    * Engine help center.
    */
   core.List<core.String> tags;
-
   /**
    * The type of asset. One of raster, rasterCollection, table, map, or layer.
    * Possible string values are:
@@ -4562,10 +4488,8 @@ class Asset {
    * - "table"
    */
   core.String type;
-
   /** If true, WRITERs of the asset are able to edit the asset permissions. */
   core.bool writersCanEditPermissions;
-
 
   Asset();
 
@@ -4662,15 +4586,12 @@ class Asset {
   }
 }
 
-
 /** The response returned by a call to resources.List. */
 class AssetsListResponse {
   /** Assets returned. */
   core.List<Asset> assets;
-
   /** Next page token. */
   core.String nextPageToken;
-
   core.List<core.int> get nextPageTokenAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(nextPageToken);
   }
@@ -4678,7 +4599,6 @@ class AssetsListResponse {
   void set nextPageTokenAsBytes(core.List<core.int> _bytes) {
     nextPageToken = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
 
   AssetsListResponse();
 
@@ -4703,18 +4623,14 @@ class AssetsListResponse {
   }
 }
 
-
 /** Border in line style. Both color and width are required. */
 class Border {
   /** Color of the border. */
   core.String color;
-
   /** Opacity of the border. */
   core.double opacity;
-
   /** Width of the border, in pixels. */
   core.double width;
-
 
   Border();
 
@@ -4745,15 +4661,12 @@ class Border {
   }
 }
 
-
 /** Basic color used in styling. */
 class Color {
   /** The CSS style color, can be in format of "red" or "#7733EE". */
   core.String color;
-
   /** Opacity ranges from 0 to 1, inclusive. If not provided, default to 1. */
   core.double opacity;
-
 
   Color();
 
@@ -4778,11 +4691,9 @@ class Color {
   }
 }
 
-
 class Datasource {
   /** The ID of a datasource. */
   core.String id;
-
 
   Datasource();
 
@@ -4800,7 +4711,6 @@ class Datasource {
     return _json;
   }
 }
-
 
 class Datasources
     extends collection.ListBase<Datasource> {
@@ -4828,7 +4738,6 @@ class Datasources
   }
 }
 
-
 /** A display rule of the vector style. */
 class DisplayRule {
   /**
@@ -4836,25 +4745,19 @@ class DisplayRule {
    * filters here. If filters is empty, then the rule applies to all features.
    */
   core.List<Filter> filters;
-
   /** Style applied to lines. Required for LineString Geometry. */
   LineStyle lineOptions;
-
   /**
    * Display rule name. Name is not unique and cannot be used for identification
    * purpose.
    */
   core.String name;
-
   /** Style applied to points. Required for Point Geometry. */
   PointStyle pointOptions;
-
   /** Style applied to polygons. Required for Polygon Geometry. */
   PolygonStyle polygonOptions;
-
   /** The zoom levels that this display rule apply. */
   ZoomLevels zoomLevels;
-
 
   DisplayRule();
 
@@ -4903,18 +4806,14 @@ class DisplayRule {
   }
 }
 
-
 /** A feature within a table. */
 class Feature {
   /** The geometry member of this Feature. */
   GeoJsonGeometry geometry;
-
   /** Key/value pairs of this Feature. */
   GeoJsonProperties properties;
-
   /** Identifies this object as a feature. */
   core.String type;
-
 
   Feature();
 
@@ -4945,7 +4844,6 @@ class Feature {
   }
 }
 
-
 /** A feature info contains information about individual feature. */
 class FeatureInfo {
   /**
@@ -4953,7 +4851,6 @@ class FeatureInfo {
    * all attributes will be generated.
    */
   core.String content;
-
 
   FeatureInfo();
 
@@ -4972,13 +4869,10 @@ class FeatureInfo {
   }
 }
 
-
 /** The request sent to features.BatchDelete. */
 class FeaturesBatchDeleteRequest {
   core.List<core.String> gxIds;
-
   core.List<core.String> primaryKeys;
-
 
   FeaturesBatchDeleteRequest();
 
@@ -5003,11 +4897,9 @@ class FeaturesBatchDeleteRequest {
   }
 }
 
-
 /** The request sent to features.Insert. */
 class FeaturesBatchInsertRequest {
   core.List<Feature> features;
-
   /**
    * If true, the server will normalize feature geometries. It is assumed that
    * the South Pole is exterior to any polygons given. See here for a list of
@@ -5016,7 +4908,6 @@ class FeaturesBatchInsertRequest {
    * counter-clockwise order, and LinearRings may not intersect.
    */
   core.bool normalizeGeometries;
-
 
   FeaturesBatchInsertRequest();
 
@@ -5041,11 +4932,9 @@ class FeaturesBatchInsertRequest {
   }
 }
 
-
 /** The request sent to features.BatchPatch. */
 class FeaturesBatchPatchRequest {
   core.List<Feature> features;
-
   /**
    * If true, the server will normalize feature geometries. It is assumed that
    * the South Pole is exterior to any polygons given. See here for a list of
@@ -5054,7 +4943,6 @@ class FeaturesBatchPatchRequest {
    * counter-clockwise order, and LinearRings may not intersect.
    */
   core.bool normalizeGeometries;
-
 
   FeaturesBatchPatchRequest();
 
@@ -5079,7 +4967,6 @@ class FeaturesBatchPatchRequest {
   }
 }
 
-
 /** The response returned by a call to features.List. */
 class FeaturesListResponse {
   /**
@@ -5087,18 +4974,13 @@ class FeaturesListResponse {
    * queries were as expensive as this query.
    */
   core.double allowedQueriesPerSecond;
-
   /** Resources returned. */
   core.List<Feature> features;
-
   /** Next page token. */
   core.String nextPageToken;
-
   /** The feature schema. */
   Schema schema;
-
   core.String type;
-
 
   FeaturesListResponse();
 
@@ -5141,15 +5023,12 @@ class FeaturesListResponse {
   }
 }
 
-
 /** A single File, which is a component of an Asset. */
 class File {
   /** The name of the file. */
   core.String filename;
-
   /** The size of the file in bytes. */
   core.String size;
-
   /**
    * The upload status of the file.
    * Possible string values are:
@@ -5159,7 +5038,6 @@ class File {
    * - "inProgress"
    */
   core.String uploadStatus;
-
 
   File();
 
@@ -5190,12 +5068,10 @@ class File {
   }
 }
 
-
 /** Conditions for filtering features. */
 class Filter {
   /** The column name to filter on. */
   core.String column;
-
   /**
    * Operation used to evaluate the filter.
    * Possible string values are:
@@ -5210,7 +5086,6 @@ class Filter {
    * - "startsWith"
    */
   core.String operator;
-
   /**
    * Value to be evaluated against attribute.
    *
@@ -5218,7 +5093,6 @@ class Filter {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object value;
-
 
   Filter();
 
@@ -5248,7 +5122,6 @@ class Filter {
     return _json;
   }
 }
-
 
 abstract class GeoJsonGeometry {
   GeoJsonGeometry();
@@ -5282,7 +5155,6 @@ abstract class GeoJsonGeometry {
 
 }
 
-
 /** A heterogenous collection of GeoJsonGeometry objects. */
 class GeoJsonGeometryCollection  extends GeoJsonGeometry {
   /**
@@ -5290,14 +5162,12 @@ class GeoJsonGeometryCollection  extends GeoJsonGeometry {
    * geometries in the array.
    */
   core.List<GeoJsonGeometry> geometries;
-
   /**
    * Identifies this object as a GeoJsonGeometryCollection.
    * Possible string values are:
    * - "GeometryCollection"
    */
   final core.String type = "GeometryCollection";
-
 
   GeoJsonGeometryCollection();
 
@@ -5319,18 +5189,15 @@ class GeoJsonGeometryCollection  extends GeoJsonGeometry {
   }
 }
 
-
 class GeoJsonLineString  extends GeoJsonGeometry {
   /** An array of two or more positions, representing a line. */
   core.List<GeoJsonPosition> coordinates;
-
   /**
    * Identifies this object as a GeoJsonLineString.
    * Possible string values are:
    * - "LineString"
    */
   final core.String type = "LineString";
-
 
   GeoJsonLineString();
 
@@ -5352,19 +5219,16 @@ class GeoJsonLineString  extends GeoJsonGeometry {
   }
 }
 
-
 /** Multi Line String */
 class GeoJsonMultiLineString  extends GeoJsonGeometry {
   /** An array of at least two GeoJsonLineString coordinate arrays. */
   core.List<core.List<GeoJsonPosition>> coordinates;
-
   /**
    * Identifies this object as a GeoJsonMultiLineString.
    * Possible string values are:
    * - "MultiLineString"
    */
   final core.String type = "MultiLineString";
-
 
   GeoJsonMultiLineString();
 
@@ -5386,18 +5250,15 @@ class GeoJsonMultiLineString  extends GeoJsonGeometry {
   }
 }
 
-
 class GeoJsonMultiPoint  extends GeoJsonGeometry {
   /** An array of at least two GeoJsonPoint coordinate arrays. */
   core.List<GeoJsonPosition> coordinates;
-
   /**
    * Identifies this object as a GeoJsonMultiPoint.
    * Possible string values are:
    * - "MultiPoint"
    */
   final core.String type = "MultiPoint";
-
 
   GeoJsonMultiPoint();
 
@@ -5419,18 +5280,15 @@ class GeoJsonMultiPoint  extends GeoJsonGeometry {
   }
 }
 
-
 class GeoJsonMultiPolygon  extends GeoJsonGeometry {
   /** An array of at least two GeoJsonPolygon coordinate arrays. */
   core.List<core.List<core.List<GeoJsonPosition>>> coordinates;
-
   /**
    * Identifies this object as a GeoJsonMultiPolygon.
    * Possible string values are:
    * - "MultiPolygon"
    */
   final core.String type = "MultiPolygon";
-
 
   GeoJsonMultiPolygon();
 
@@ -5452,18 +5310,15 @@ class GeoJsonMultiPolygon  extends GeoJsonGeometry {
   }
 }
 
-
 class GeoJsonPoint  extends GeoJsonGeometry {
   /** A single GeoJsonPosition, specifying the location of the point. */
   GeoJsonPosition coordinates;
-
   /**
    * Identifies this object as a GeoJsonPoint.
    * Possible string values are:
    * - "Point"
    */
   final core.String type = "Point";
-
 
   GeoJsonPoint();
 
@@ -5485,7 +5340,6 @@ class GeoJsonPoint  extends GeoJsonGeometry {
   }
 }
 
-
 class GeoJsonPolygon  extends GeoJsonGeometry {
   /**
    * An array of LinearRings. A LinearRing is a GeoJsonLineString which is
@@ -5495,14 +5349,12 @@ class GeoJsonPolygon  extends GeoJsonGeometry {
    * interior rings (that is, holes).
    */
   core.List<core.List<GeoJsonPosition>> coordinates;
-
   /**
    * Identifies this object as a GeoJsonPolygon.
    * Possible string values are:
    * - "Polygon"
    */
   final core.String type = "Polygon";
-
 
   GeoJsonPolygon();
 
@@ -5523,7 +5375,6 @@ class GeoJsonPolygon  extends GeoJsonGeometry {
     return _json;
   }
 }
-
 
 /**
  * A position represents a geographical position as an array containing a
@@ -5556,7 +5407,6 @@ class GeoJsonPosition
     _inner.length = newLength;
   }
 }
-
 
 /**
  * The properties associated with a feature.
@@ -5601,20 +5451,16 @@ class GeoJsonProperties
   core.Object remove(core.Object key) => _innerMap.remove(key);
 }
 
-
 /**
  * An icon is a user-uploaded image that can be used to style point geometries.
  */
 class Icon {
   /** The description of this Icon, supplied by the author. */
   core.String description;
-
   /** An ID used to refer to this Icon. */
   core.String id;
-
   /** The name of this Icon, supplied by the author. */
   core.String name;
-
 
   Icon();
 
@@ -5645,28 +5491,23 @@ class Icon {
   }
 }
 
-
 /** Style for icon, this is part of point style. */
 class IconStyle {
   /** Custom icon id. */
   core.String id;
-
   /**
    * Stock icon name. To use a stock icon, prefix it with 'gx_'. See Stock icon
    * names for valid icon names. For example, to specify small_red, set name to
    * 'gx_small_red'.
    */
   core.String name;
-
   /** A scalable shape. */
   ScaledShape scaledShape;
-
   /**
    * The function used to scale shapes. Required when a scaledShape is
    * specified.
    */
   ScalingFunction scalingFunction;
-
 
   IconStyle();
 
@@ -5703,15 +5544,12 @@ class IconStyle {
   }
 }
 
-
 /** The response returned by a call to icons.List. */
 class IconsListResponse {
   /** Resources returned. */
   core.List<Icon> icons;
-
   /** Next page token. */
   core.String nextPageToken;
-
 
   IconsListResponse();
 
@@ -5736,15 +5574,12 @@ class IconsListResponse {
   }
 }
 
-
 /** Text label style. */
 class LabelStyle {
   /** Color of the text. If not provided, default to black. */
   core.String color;
-
   /** The column value of the feature to be displayed. */
   core.String column;
-
   /**
    * Font style of the label, defaults to 'normal'.
    * Possible string values are:
@@ -5752,7 +5587,6 @@ class LabelStyle {
    * - "normal"
    */
   core.String fontStyle;
-
   /**
    * Font weight of the label, defaults to 'normal'.
    * Possible string values are:
@@ -5760,19 +5594,15 @@ class LabelStyle {
    * - "normal"
    */
   core.String fontWeight;
-
   /** Opacity of the text. */
   core.double opacity;
-
   /** Outline color of the text. */
   Color outline;
-
   /**
    * Font size of the label, in pixels. 8 <= size <= 15. If not provided, a
    * default size will be provided.
    */
   core.double size;
-
 
   LabelStyle();
 
@@ -5827,7 +5657,6 @@ class LabelStyle {
   }
 }
 
-
 /** A rectangular geographic bounds. */
 class LatLngBox
     extends collection.ListBase<core.double> {
@@ -5855,7 +5684,6 @@ class LatLngBox
   }
 }
 
-
 /**
  * A Layer combines multiple datasources, with styling information, for
  * presentation on a map.
@@ -5867,19 +5695,16 @@ class Layer {
    * latitude and longitude in decimal degrees.
    */
   core.List<core.double> bbox;
-
   /**
    * The creation time of this layer. The value is an RFC 3339 formatted
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime creationTime;
-
   /**
    * The email address of the creator of this layer. This is only returned on
    * GET requests and not LIST requests.
    */
   core.String creatorEmail;
-
   /**
    * Deprecated: The type of the datasources used to build this Layer. Note:
    * This has been replaced by layerType, but is still available for now to
@@ -5889,7 +5714,6 @@ class Layer {
    * - "table"
    */
   core.String datasourceType;
-
   /**
    * An array of datasources used to build this layer. If layerType is "image",
    * or layerType is not specified and datasourceType is "image", then each
@@ -5898,10 +5722,8 @@ class Layer {
    * "table" then each element in this array is a reference to a Vector Table.
    */
   Datasources datasources;
-
   /** The description of this Layer, supplied by the author. */
   core.String description;
-
   /**
    * Deprecated: The name of an access list of the Map Editor type. The user on
    * whose behalf the request is being sent must be an editor on that access
@@ -5914,25 +5736,20 @@ class Layer {
    * request.
    */
   core.String draftAccessList;
-
   /** The ETag, used to refer to the current version of the asset. */
   core.String etag;
-
   /** A globally unique ID, used to refer to this Layer. */
   core.String id;
-
   /**
    * The last modified time of this layer. The value is an RFC 3339 formatted
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
-
   /**
    * The email address of the last modifier of this layer. This is only returned
    * on GET requests and not LIST requests.
    */
   core.String lastModifierEmail;
-
   /**
    * The type of the datasources used to build this Layer. This should be used
    * instead of datasourceType. At least one of layerType and datasourceType and
@@ -5942,10 +5759,8 @@ class Layer {
    * - "vector"
    */
   core.String layerType;
-
   /** The name of this Layer, supplied by the author. */
   core.String name;
-
   /**
    * The processing status of this layer.
    * Possible string values are:
@@ -5956,10 +5771,8 @@ class Layer {
    * - "ready"
    */
   core.String processingStatus;
-
   /** The ID of the project that this Layer is in. */
   core.String projectId;
-
   /**
    * Deprecated: The access list to whom view permissions are granted. The value
    * must be the name of a Maps Engine access list of the Map Viewer type, and
@@ -5972,7 +5785,6 @@ class Layer {
    * in response to a list or get request.
    */
   core.String publishedAccessList;
-
   /**
    * The publishing status of this layer.
    * Possible string values are:
@@ -5980,7 +5792,6 @@ class Layer {
    * - "published"
    */
   core.String publishingStatus;
-
   /**
    * The styling information for a vector layer. Note: Style information is
    * returned in response to a get request but not a list request. After
@@ -5988,13 +5799,10 @@ class Layer {
    * the VectorStyles for each layer.
    */
   VectorStyle style;
-
   /** Tags of this Layer. */
   Tags tags;
-
   /** If true, WRITERs of the asset are able to edit the asset permissions. */
   core.bool writersCanEditPermissions;
-
 
   Layer();
 
@@ -6127,7 +5935,6 @@ class Layer {
   }
 }
 
-
 /**
  * The response returned by a call to layers.List. Note: The list response does
  * not include all the fields available in a layer. Refer to the layer resource
@@ -6137,10 +5944,8 @@ class Layer {
 class LayersListResponse {
   /** Resources returned. */
   core.List<Layer> layers;
-
   /** Next page token. */
   core.String nextPageToken;
-
   core.List<core.int> get nextPageTokenAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(nextPageToken);
   }
@@ -6148,7 +5953,6 @@ class LayersListResponse {
   void set nextPageTokenAsBytes(core.List<core.int> _bytes) {
     nextPageToken = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
 
   LayersListResponse();
 
@@ -6173,21 +5977,17 @@ class LayersListResponse {
   }
 }
 
-
 /** Stroke of the line. */
 class LineStyleStroke {
   /** Color of the line. */
   core.String color;
-
   /** Opacity of the line. */
   core.double opacity;
-
   /**
    * Width of the line, in pixels. 0 <= width <= 10. If width is set to 0, the
    * line will be invisible.
    */
   core.double width;
-
 
   LineStyleStroke();
 
@@ -6218,12 +6018,10 @@ class LineStyleStroke {
   }
 }
 
-
 /** Style for lines. */
 class LineStyle {
   /** Border of the line. 0 < border.width <= 5. */
   Border border;
-
   /**
    * Dash defines the pattern of the line, the values are pixel lengths of
    * alternating dash and gap. If dash is not provided, then it means a solid
@@ -6231,13 +6029,10 @@ class LineStyle {
    * values.
    */
   core.List<core.double> dash;
-
   /** Label style for the line. */
   LabelStyle label;
-
   /** Stroke of the line. */
   LineStyleStroke stroke;
-
 
   LineStyle();
 
@@ -6274,7 +6069,6 @@ class LineStyle {
   }
 }
 
-
 /** A Map is a collection of Layers, optionally contained within folders. */
 class Map {
   /**
@@ -6283,32 +6077,26 @@ class Map {
    * latitude and longitude in decimal degrees.
    */
   core.List<core.double> bbox;
-
   /** The contents of this Map. */
   MapContents contents;
-
   /**
    * The creation time of this map. The value is an RFC 3339 formatted date-time
    * value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime creationTime;
-
   /**
    * The email address of the creator of this map. This is only returned on GET
    * requests and not LIST requests.
    */
   core.String creatorEmail;
-
   /**
    * An array of four numbers (west, south, east, north) which defines the
    * rectangular bounding box of the default viewport. The numbers represent
    * latitude and longitude in decimal degrees.
    */
   LatLngBox defaultViewport;
-
   /** The description of this Map, supplied by the author. */
   core.String description;
-
   /**
    * Deprecated: The name of an access list of the Map Editor type. The user on
    * whose behalf the request is being sent must be an editor on that access
@@ -6321,28 +6109,22 @@ class Map {
    * request.
    */
   core.String draftAccessList;
-
   /** The ETag, used to refer to the current version of the asset. */
   core.String etag;
-
   /** A globally unique ID, used to refer to this Map. */
   core.String id;
-
   /**
    * The last modified time of this map. The value is an RFC 3339 formatted
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
-
   /**
    * The email address of the last modifier of this map. This is only returned
    * on GET requests and not LIST requests.
    */
   core.String lastModifierEmail;
-
   /** The name of this Map, supplied by the author. */
   core.String name;
-
   /**
    * The processing status of this map. Map processing is automatically started
    * once a map becomes ready for processing.
@@ -6354,10 +6136,8 @@ class Map {
    * - "ready"
    */
   core.String processingStatus;
-
   /** The ID of the project that this Map is in. */
   core.String projectId;
-
   /**
    * Deprecated: The access list to whom view permissions are granted. The value
    * must be the name of a Maps Engine access list of the Map Viewer type, and
@@ -6370,7 +6150,6 @@ class Map {
    * response to a list or get request.
    */
   core.String publishedAccessList;
-
   /**
    * The publishing status of this map.
    * Possible string values are:
@@ -6378,20 +6157,16 @@ class Map {
    * - "published"
    */
   core.String publishingStatus;
-
   /** Tags of this Map. */
   Tags tags;
-
   /**
    * Deprecated: An array containing the available versions of this Map.
    * Currently may only contain "published". The publishingStatus field should
    * be used instead.
    */
   core.List<core.String> versions;
-
   /** If true, WRITERs of the asset are able to edit the asset permissions. */
   core.bool writersCanEditPermissions;
-
 
   Map();
 
@@ -6518,7 +6293,6 @@ class Map {
   }
 }
 
-
 class MapContents
     extends collection.ListBase<MapItem> {
   final core.List<MapItem> _inner;
@@ -6545,42 +6319,34 @@ class MapContents
   }
 }
 
-
 class MapFolder  extends MapItem {
   core.List<MapItem> contents;
-
   /**
    * An array of four numbers (west, south, east, north) which defines the
    * rectangular bounding box of the default viewport. The numbers represent
    * latitude and longitude in decimal degrees.
    */
   core.List<core.double> defaultViewport;
-
   /**
    * The expandability setting of this MapFolder. If true, the folder can be
    * expanded.
    */
   core.bool expandable;
-
   /** A user defined alias for this MapFolder, specific to this Map. */
   core.String key;
-
   /** The name of this MapFolder. */
   core.String name;
-
   /**
    * Identifies this object as a MapFolder.
    * Possible string values are:
    * - "folder"
    */
   final core.String type = "folder";
-
   /**
    * The visibility setting of this MapFolder. One of "defaultOn" or
    * "defaultOff".
    */
   core.String visibility;
-
 
   MapFolder();
 
@@ -6632,7 +6398,6 @@ class MapFolder  extends MapItem {
   }
 }
 
-
 abstract class MapItem {
   MapItem();
   factory MapItem.fromJson(core.Map json) {
@@ -6653,7 +6418,6 @@ abstract class MapItem {
 
 }
 
-
 class MapKmlLink  extends MapItem {
   /**
    * An array of four numbers (west, south, east, north) which defines the
@@ -6661,26 +6425,21 @@ class MapKmlLink  extends MapItem {
    * latitude and longitude in decimal degrees.
    */
   core.List<core.double> defaultViewport;
-
   /** The URL to the KML file represented by this MapKmlLink. */
   core.String kmlUrl;
-
   /** The name of this MapKmlLink. */
   core.String name;
-
   /**
    * Identifies this object as a MapKmlLink.
    * Possible string values are:
    * - "kmlLink"
    */
   final core.String type = "kmlLink";
-
   /**
    * The visibility setting of this MapKmlLink. One of "defaultOn" or
    * "defaultOff".
    */
   core.String visibility;
-
 
   MapKmlLink();
 
@@ -6720,7 +6479,6 @@ class MapKmlLink  extends MapItem {
   }
 }
 
-
 class MapLayer  extends MapItem {
   /**
    * An array of four numbers (west, south, east, north) which defines the
@@ -6728,32 +6486,26 @@ class MapLayer  extends MapItem {
    * latitude and longitude in decimal degrees.
    */
   core.List<core.double> defaultViewport;
-
   /**
    * The ID of this MapLayer. This ID can be used to request more details about
    * the layer.
    */
   core.String id;
-
   /** A user defined alias for this MapLayer, specific to this Map. */
   core.String key;
-
   /** The name of this MapLayer. */
   core.String name;
-
   /**
    * Identifies this object as a MapLayer.
    * Possible string values are:
    * - "layer"
    */
   final core.String type = "layer";
-
   /**
    * The visibility setting of this MapLayer. One of "defaultOn" or
    * "defaultOff".
    */
   core.String visibility;
-
 
   MapLayer();
 
@@ -6799,15 +6551,12 @@ class MapLayer  extends MapItem {
   }
 }
 
-
 /** The response returned by a call to maps.List. */
 class MapsListResponse {
   /** Resources returned. */
   core.List<Map> maps;
-
   /** Next page token. */
   core.String nextPageToken;
-
   core.List<core.int> get nextPageTokenAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(nextPageToken);
   }
@@ -6815,7 +6564,6 @@ class MapsListResponse {
   void set nextPageTokenAsBytes(core.List<core.int> _bytes) {
     nextPageToken = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
 
   MapsListResponse();
 
@@ -6840,12 +6588,10 @@ class MapsListResponse {
   }
 }
 
-
 /** A list of the parents of an asset. */
 class Parent {
   /** The ID of this parent. */
   core.String id;
-
 
   Parent();
 
@@ -6864,15 +6610,12 @@ class Parent {
   }
 }
 
-
 /** The response returned by a call to parents.List. */
 class ParentsListResponse {
   /** Next page token. */
   core.String nextPageToken;
-
   /** The parent assets. */
   core.List<Parent> parents;
-
 
   ParentsListResponse();
 
@@ -6897,7 +6640,6 @@ class ParentsListResponse {
   }
 }
 
-
 /**
  * A permission defines the user or group that has access to an asset, and the
  * type of access they have.
@@ -6909,14 +6651,12 @@ class Permission {
    * asset (value false).
    */
   core.bool discoverable;
-
   /**
    * The unique identifier of the permission. This could be the email address of
    * the user or group this permission refers to, or the string "anyone" for
    * public permissions.
    */
   core.String id;
-
   /**
    * The type of access granted to this user or group.
    * Possible string values are:
@@ -6926,7 +6666,6 @@ class Permission {
    * - "writer"
    */
   core.String role;
-
   /**
    * The account type.
    * Possible string values are:
@@ -6935,7 +6674,6 @@ class Permission {
    * - "user"
    */
   core.String type;
-
 
   Permission();
 
@@ -6972,7 +6710,6 @@ class Permission {
   }
 }
 
-
 /** The request sent to mapsengine.permissions.batchDelete. */
 class PermissionsBatchDeleteRequest {
   /**
@@ -6981,7 +6718,6 @@ class PermissionsBatchDeleteRequest {
    * public permissions.
    */
   core.List<core.String> ids;
-
 
   PermissionsBatchDeleteRequest();
 
@@ -7000,7 +6736,6 @@ class PermissionsBatchDeleteRequest {
   }
 }
 
-
 /** The response returned by a call to mapsengine.permissions.batchDelete. */
 class PermissionsBatchDeleteResponse {
 
@@ -7015,12 +6750,10 @@ class PermissionsBatchDeleteResponse {
   }
 }
 
-
 /** The request sent to mapsengine.permissions.batchUpdate. */
 class PermissionsBatchUpdateRequest {
   /** The permissions to be inserted or updated. */
   core.List<Permission> permissions;
-
 
   PermissionsBatchUpdateRequest();
 
@@ -7039,7 +6772,6 @@ class PermissionsBatchUpdateRequest {
   }
 }
 
-
 /** The response returned by a call to mapsengine.permissions.batchUpdate. */
 class PermissionsBatchUpdateResponse {
 
@@ -7054,11 +6786,9 @@ class PermissionsBatchUpdateResponse {
   }
 }
 
-
 class PermissionsListResponse {
   /** The set of permissions associated with this asset. */
   core.List<Permission> permissions;
-
 
   PermissionsListResponse();
 
@@ -7077,7 +6807,6 @@ class PermissionsListResponse {
   }
 }
 
-
 /** Style for points. */
 class PointStyle {
   /**
@@ -7085,10 +6814,8 @@ class PointStyle {
    * 'scaledShape' must be set.
    */
   IconStyle icon;
-
   /** Label style for the point. */
   LabelStyle label;
-
 
   PointStyle();
 
@@ -7113,7 +6840,6 @@ class PointStyle {
   }
 }
 
-
 /** Style for polygons. */
 class PolygonStyle {
   /**
@@ -7121,13 +6847,10 @@ class PolygonStyle {
    * and not visible if there is no border.
    */
   Color fill;
-
   /** Label style for the polygon. */
   LabelStyle label;
-
   /** Border of the polygon. 0 < border.width <= 10. */
   Border stroke;
-
 
   PolygonStyle();
 
@@ -7158,7 +6881,6 @@ class PolygonStyle {
   }
 }
 
-
 /** The response returned by a call to any asset's Process method. */
 class ProcessResponse {
 
@@ -7173,15 +6895,12 @@ class ProcessResponse {
   }
 }
 
-
 /** A Maps Engine project groups a collection of resources. */
 class Project {
   /** An ID used to refer to this Maps Engine project. */
   core.String id;
-
   /** A user provided name for this Maps Engine project. */
   core.String name;
-
 
   Project();
 
@@ -7206,12 +6925,10 @@ class Project {
   }
 }
 
-
 /** The response returned by a call to projects.List. */
 class ProjectsListResponse {
   /** Projects returned. */
   core.List<Project> projects;
-
 
   ProjectsListResponse();
 
@@ -7230,7 +6947,6 @@ class ProjectsListResponse {
   }
 }
 
-
 /** The response returned by a call to any asset's Publish method. */
 class PublishResponse {
 
@@ -7245,15 +6961,12 @@ class PublishResponse {
   }
 }
 
-
 /** The published version of a layer. */
 class PublishedLayer {
   /** The description of this Layer, supplied by the author. */
   core.String description;
-
   /** A globally unique ID, used to refer to this Layer. */
   core.String id;
-
   /**
    * The type of the datasources used to build this Layer. This should be used
    * instead of datasourceType. At least one of layerType and datasourceType and
@@ -7263,13 +6976,10 @@ class PublishedLayer {
    * - "vector"
    */
   core.String layerType;
-
   /** The name of this Layer, supplied by the author. */
   core.String name;
-
   /** The ID of the project that this Layer is in. */
   core.String projectId;
-
 
   PublishedLayer();
 
@@ -7312,15 +7022,12 @@ class PublishedLayer {
   }
 }
 
-
 /** The response returned by a call to layers.List.published. */
 class PublishedLayersListResponse {
   /** Resources returned. */
   core.List<PublishedLayer> layers;
-
   /** Next page token. */
   core.String nextPageToken;
-
   core.List<core.int> get nextPageTokenAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(nextPageToken);
   }
@@ -7328,7 +7035,6 @@ class PublishedLayersListResponse {
   void set nextPageTokenAsBytes(core.List<core.int> _bytes) {
     nextPageToken = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
 
   PublishedLayersListResponse();
 
@@ -7353,31 +7059,24 @@ class PublishedLayersListResponse {
   }
 }
 
-
 /** The published version of a map asset. */
 class PublishedMap {
   /** The contents of this Map. */
   MapContents contents;
-
   /**
    * An array of four numbers (west, south, east, north) which defines the
    * rectangular bounding box of the default viewport. The numbers represent
    * latitude and longitude in decimal degrees.
    */
   LatLngBox defaultViewport;
-
   /** The description of this Map, supplied by the author. */
   core.String description;
-
   /** A globally unique ID, used to refer to this Map. */
   core.String id;
-
   /** The name of this Map, supplied by the author. */
   core.String name;
-
   /** The ID of the project that this Map is in. */
   core.String projectId;
-
 
   PublishedMap();
 
@@ -7426,15 +7125,12 @@ class PublishedMap {
   }
 }
 
-
 /** The response returned by a call to maps.List.published. */
 class PublishedMapsListResponse {
   /** Resources returned. */
   core.List<PublishedMap> maps;
-
   /** Next page token. */
   core.String nextPageToken;
-
   core.List<core.int> get nextPageTokenAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(nextPageToken);
   }
@@ -7442,7 +7138,6 @@ class PublishedMapsListResponse {
   void set nextPageTokenAsBytes(core.List<core.int> _bytes) {
     nextPageToken = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
 
   PublishedMapsListResponse();
 
@@ -7467,37 +7162,30 @@ class PublishedMapsListResponse {
   }
 }
 
-
 /** A geo-referenced raster. */
 class Raster {
   /** The acquisition time of this Raster. */
   AcquisitionTime acquisitionTime;
-
   /** The name of the attribution to be used for this Raster. */
   core.String attribution;
-
   /**
    * A rectangular bounding box which contains all of the data in this Raster.
    * The box is expressed as \"west, south, east, north\". The numbers represent
    * latitudes and longitudes in decimal degrees.
    */
   core.List<core.double> bbox;
-
   /**
    * The creation time of this raster. The value is an RFC 3339 formatted
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime creationTime;
-
   /**
    * The email address of the creator of this raster. This is only returned on
    * GET requests and not LIST requests.
    */
   core.String creatorEmail;
-
   /** The description of this Raster, supplied by the author. */
   core.String description;
-
   /**
    * Deprecated: The name of an access list of the Map Editor type. The user on
    * whose behalf the request is being sent must be an editor on that access
@@ -7510,34 +7198,26 @@ class Raster {
    * request.
    */
   core.String draftAccessList;
-
   /** The ETag, used to refer to the current version of the asset. */
   core.String etag;
-
   /** The files associated with this Raster. */
   core.List<File> files;
-
   /** A globally unique ID, used to refer to this Raster. */
   core.String id;
-
   /**
    * The last modified time of this raster. The value is an RFC 3339 formatted
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
-
   /**
    * The email address of the last modifier of this raster. This is only
    * returned on GET requests and not LIST requests.
    */
   core.String lastModifierEmail;
-
   /** The mask processing type of this Raster. */
   core.String maskType;
-
   /** The name of this Raster, supplied by the author. */
   core.String name;
-
   /**
    * The processing status of this Raster.
    * Possible string values are:
@@ -7548,23 +7228,18 @@ class Raster {
    * - "ready"
    */
   core.String processingStatus;
-
   /** The ID of the project that this Raster is in. */
   core.String projectId;
-
   /**
    * The type of this Raster. Always "image" today.
    * Possible string values are:
    * - "image"
    */
   core.String rasterType;
-
   /** Tags of this Raster. */
   Tags tags;
-
   /** If true, WRITERs of the asset are able to edit the asset permissions. */
   core.bool writersCanEditPermissions;
-
 
   Raster();
 
@@ -7691,7 +7366,6 @@ class Raster {
   }
 }
 
-
 /**
  * A raster collection groups multiple Raster resources for inclusion in a
  * Layer.
@@ -7704,29 +7378,24 @@ class RasterCollection {
    * a get request to retrieve the attribution for each raster collection.
    */
   core.String attribution;
-
   /**
    * A rectangular bounding box which contains all of the data in this
    * RasterCollection. The box is expressed as \"west, south, east, north\". The
    * numbers represent latitude and longitude in decimal degrees.
    */
   core.List<core.double> bbox;
-
   /**
    * The creation time of this RasterCollection. The value is an RFC 3339
    * formatted date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime creationTime;
-
   /**
    * The email address of the creator of this raster collection. This is only
    * returned on GET requests and not LIST requests.
    */
   core.String creatorEmail;
-
   /** The description of this RasterCollection, supplied by the author. */
   core.String description;
-
   /**
    * Deprecated: The name of an access list of the Map Editor type. The user on
    * whose behalf the request is being sent must be an editor on that access
@@ -7739,31 +7408,24 @@ class RasterCollection {
    * request.
    */
   core.String draftAccessList;
-
   /** The ETag, used to refer to the current version of the asset. */
   core.String etag;
-
   /** A globally unique ID, used to refer to this RasterCollection. */
   core.String id;
-
   /**
    * The last modified time of this RasterCollection. The value is an RFC 3339
    * formatted date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
-
   /**
    * The email address of the last modifier of this raster collection. This is
    * only returned on GET requests and not LIST requests.
    */
   core.String lastModifierEmail;
-
   /** True if this RasterCollection is a mosaic. */
   core.bool mosaic;
-
   /** The name of this RasterCollection, supplied by the author. */
   core.String name;
-
   /**
    * The processing status of this RasterCollection.
    * Possible string values are:
@@ -7774,23 +7436,18 @@ class RasterCollection {
    * - "ready"
    */
   core.String processingStatus;
-
   /** The ID of the project that this RasterCollection is in. */
   core.String projectId;
-
   /**
    * The type of rasters contained within this RasterCollection.
    * Possible string values are:
    * - "image"
    */
   core.String rasterType;
-
   /** Tags of this RasterCollection. */
   Tags tags;
-
   /** If true, WRITERs of the asset are able to edit the asset permissions. */
   core.bool writersCanEditPermissions;
-
 
   RasterCollection();
 
@@ -7905,7 +7562,6 @@ class RasterCollection {
   }
 }
 
-
 /**
  * The response returned by a call to raster_collections.List. Note: The list
  * response does not include all the fields available in a raster collection.
@@ -7916,7 +7572,6 @@ class RasterCollection {
 class RasterCollectionsListResponse {
   /** Next page token. */
   core.String nextPageToken;
-
   core.List<core.int> get nextPageTokenAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(nextPageToken);
   }
@@ -7924,10 +7579,8 @@ class RasterCollectionsListResponse {
   void set nextPageTokenAsBytes(core.List<core.int> _bytes) {
     nextPageToken = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** Resources returned. */
   core.List<RasterCollection> rasterCollections;
-
 
   RasterCollectionsListResponse();
 
@@ -7952,7 +7605,6 @@ class RasterCollectionsListResponse {
   }
 }
 
-
 /** A raster resource. */
 class RasterCollectionsRaster {
   /**
@@ -7961,37 +7613,28 @@ class RasterCollectionsRaster {
    * latitudes and longitudes in decimal degrees.
    */
   core.List<core.double> bbox;
-
   /**
    * The creation time of this raster. The value is an RFC 3339 formatted
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime creationTime;
-
   /** The description of this Raster, supplied by the author. */
   core.String description;
-
   /** A globally unique ID, used to refer to this Raster. */
   core.String id;
-
   /**
    * The last modified time of this raster. The value is an RFC 3339 formatted
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
-
   /** The name of this Raster, supplied by the author. */
   core.String name;
-
   /** The ID of the project that this Raster is in. */
   core.String projectId;
-
   /** The type of this Raster. Always "image" today. */
   core.String rasterType;
-
   /** Tags of this Raster. */
   core.List<core.String> tags;
-
 
   RasterCollectionsRaster();
 
@@ -8058,12 +7701,10 @@ class RasterCollectionsRaster {
   }
 }
 
-
 /** The request sent to rasterCollections.Rasters.BatchDelete. */
 class RasterCollectionsRasterBatchDeleteRequest {
   /** An array of Raster asset IDs to be removed from this RasterCollection. */
   core.List<core.String> ids;
-
 
   RasterCollectionsRasterBatchDeleteRequest();
 
@@ -8082,7 +7723,6 @@ class RasterCollectionsRasterBatchDeleteRequest {
   }
 }
 
-
 /**
  * The response returned by a call to rasterCollections.rasters.batchDelete.
  */
@@ -8099,12 +7739,10 @@ class RasterCollectionsRastersBatchDeleteResponse {
   }
 }
 
-
 /** The request sent to rasterCollections.Rasters.BatchInsert. */
 class RasterCollectionsRastersBatchInsertRequest {
   /** An array of Raster asset IDs to be added to this RasterCollection. */
   core.List<core.String> ids;
-
 
   RasterCollectionsRastersBatchInsertRequest();
 
@@ -8123,7 +7761,6 @@ class RasterCollectionsRastersBatchInsertRequest {
   }
 }
 
-
 /**
  * The response returned by a call to rasterCollections.rasters.batchInsert.
  */
@@ -8140,15 +7777,12 @@ class RasterCollectionsRastersBatchInsertResponse {
   }
 }
 
-
 /** The response returned by a call to rasterCollections.rasters.List. */
 class RasterCollectionsRastersListResponse {
   /** Next page token. */
   core.String nextPageToken;
-
   /** Resources returned. */
   core.List<RasterCollectionsRaster> rasters;
-
 
   RasterCollectionsRastersListResponse();
 
@@ -8173,15 +7807,12 @@ class RasterCollectionsRastersListResponse {
   }
 }
 
-
 /** The response returned by a call to rasters.List. */
 class RastersListResponse {
   /** Next page token. */
   core.String nextPageToken;
-
   /** Resources returned. */
   core.List<Raster> rasters;
-
 
   RastersListResponse();
 
@@ -8206,7 +7837,6 @@ class RastersListResponse {
   }
 }
 
-
 /** Parameters for styling points as scaled shapes. */
 class ScaledShape {
   /**
@@ -8214,20 +7844,17 @@ class ScaledShape {
    * border.
    */
   Border border;
-
   /**
    * The fill color of the shape. If not specified the shape will be transparent
    * (although the borders may not be).
    */
   Color fill;
-
   /**
    * Name of the shape.
    * Possible string values are:
    * - "circle"
    */
   core.String shape;
-
 
   ScaledShape();
 
@@ -8258,12 +7885,10 @@ class ScaledShape {
   }
 }
 
-
 /** Parameters for scaling scaled shapes. */
 class ScalingFunction {
   /** Name of the numeric column used to scale a shape. */
   core.String column;
-
   /**
    * The type of scaling function to use. Defaults to SQRT. Currently only
    * linear and square root scaling are supported.
@@ -8272,16 +7897,13 @@ class ScalingFunction {
    * - "sqrt"
    */
   core.String scalingType;
-
   /**
    * The range of shape sizes, in pixels. For circles, the size corresponds to
    * the diameter.
    */
   SizeRange sizeRange;
-
   /** The range of values to display across the size range. */
   ValueRange valueRange;
-
 
   ScalingFunction();
 
@@ -8318,7 +7940,6 @@ class ScalingFunction {
   }
 }
 
-
 /**
  * A schema indicating the properties which may be associated with features
  * within a Table, and the types of those properties.
@@ -8330,7 +7951,6 @@ class Schema {
    * mixedGeometry.
    */
   core.List<TableColumn> columns;
-
   /**
    * The name of the column that contains a feature's geometry. This field can
    * be omitted during table create; Google Maps Engine supports only a single
@@ -8338,12 +7958,10 @@ class Schema {
    * the columns array.
    */
   core.String primaryGeometry;
-
   /**
    * The name of the column that contains the unique identifier of a Feature.
    */
   core.String primaryKey;
-
 
   Schema();
 
@@ -8374,17 +7992,14 @@ class Schema {
   }
 }
 
-
 /**
  * Scaled shape size range in pixels. For circles, size corresponds to diameter.
  */
 class SizeRange {
   /** Maximum size, in pixels. */
   core.double max;
-
   /** Minimum size, in pixels. */
   core.double min;
-
 
   SizeRange();
 
@@ -8409,7 +8024,6 @@ class SizeRange {
   }
 }
 
-
 /** A collection of geographic features, and associated metadata. */
 class Table {
   /**
@@ -8418,22 +8032,18 @@ class Table {
    * latitude and longitude in decimal degrees.
    */
   core.List<core.double> bbox;
-
   /**
    * The creation time of this table. The value is an RFC 3339 formatted
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime creationTime;
-
   /**
    * The email address of the creator of this table. This is only returned on
    * GET requests and not LIST requests.
    */
   core.String creatorEmail;
-
   /** The description of this table, supplied by the author. */
   core.String description;
-
   /**
    * Deprecated: The name of an access list of the Map Editor type. The user on
    * whose behalf the request is being sent must be an editor on that access
@@ -8446,31 +8056,24 @@ class Table {
    * request.
    */
   core.String draftAccessList;
-
   /** The ETag, used to refer to the current version of the asset. */
   core.String etag;
-
   /** The files associated with this table. */
   core.List<File> files;
-
   /** A globally unique ID, used to refer to this table. */
   core.String id;
-
   /**
    * The last modified time of this table. The value is an RFC 3339 formatted
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
-
   /**
    * The email address of the last modifier of this table. This is only returned
    * on GET requests and not LIST requests.
    */
   core.String lastModifierEmail;
-
   /** The name of this table, supplied by the author. */
   core.String name;
-
   /**
    * The processing status of this table.
    * Possible string values are:
@@ -8481,10 +8084,8 @@ class Table {
    * - "ready"
    */
   core.String processingStatus;
-
   /** The ID of the project to which the table belongs. */
   core.String projectId;
-
   /**
    * Deprecated: The access list to whom view permissions are granted. The value
    * must be the name of a Maps Engine access list of the Map Viewer type, and
@@ -8497,30 +8098,25 @@ class Table {
    * in response to a list or get request.
    */
   core.String publishedAccessList;
-
   /**
    * The schema for this table. Note: The schema is returned in response to a
    * get request but not a list request. After requesting a list of tables,
    * you'll need to send a get request to retrieve the schema for each table.
    */
   Schema schema;
-
   /**
    * Encoding of the uploaded files. Valid values include UTF-8, CP1251, ISO
    * 8859-1, and Shift_JIS.
    */
   core.String sourceEncoding;
-
   /**
    * An array of text strings, with each string representing a tag. More
    * information about tags can be found in the Tagging data article of the Maps
    * Engine help center.
    */
   Tags tags;
-
   /** If true, WRITERs of the asset are able to edit the asset permissions. */
   core.bool writersCanEditPermissions;
-
 
   Table();
 
@@ -8641,11 +8237,9 @@ class Table {
   }
 }
 
-
 class TableColumn {
   /** The column name. */
   core.String name;
-
   /**
    * The type of data stored in this column.
    * Possible string values are:
@@ -8659,7 +8253,6 @@ class TableColumn {
    * - "string"
    */
   core.String type;
-
 
   TableColumn();
 
@@ -8684,7 +8277,6 @@ class TableColumn {
   }
 }
 
-
 /**
  * The response returned by a call to tables.List. Note: The list response does
  * not include all the fields available in a table. Refer to the table resource
@@ -8694,7 +8286,6 @@ class TableColumn {
 class TablesListResponse {
   /** Next page token. */
   core.String nextPageToken;
-
   core.List<core.int> get nextPageTokenAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(nextPageToken);
   }
@@ -8702,10 +8293,8 @@ class TablesListResponse {
   void set nextPageTokenAsBytes(core.List<core.int> _bytes) {
     nextPageToken = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** Resources returned. */
   core.List<Table> tables;
-
 
   TablesListResponse();
 
@@ -8729,7 +8318,6 @@ class TablesListResponse {
     return _json;
   }
 }
-
 
 class Tags
     extends collection.ListBase<core.String> {
@@ -8757,7 +8345,6 @@ class Tags
   }
 }
 
-
 /**
  * Range of values used for scaling shapes. The min/max values will be drawn as
  * shapes with the min/max size.
@@ -8765,10 +8352,8 @@ class Tags
 class ValueRange {
   /** Maximum value. */
   core.double max;
-
   /** Minimum value. */
   core.double min;
-
 
   ValueRange();
 
@@ -8793,24 +8378,20 @@ class ValueRange {
   }
 }
 
-
 /** A vector style contains styling information for vector layer. */
 class VectorStyle {
   core.List<DisplayRule> displayRules;
-
   /**
    * Individual feature info, this is called Info Window in Maps Engine UI. If
    * not provided, a default template with all attributes will be generated.
    */
   FeatureInfo featureInfo;
-
   /**
    * The type of the vector style. Currently, only displayRule is supported.
    * Possible string values are:
    * - "displayRule"
    */
   core.String type;
-
 
   VectorStyle();
 
@@ -8841,17 +8422,14 @@ class VectorStyle {
   }
 }
 
-
 /**
  * Zoom level range. Zoom levels are restricted between 0 and 24, inclusive.
  */
 class ZoomLevels {
   /** Maximum zoom level. */
   core.int max;
-
   /** Minimum zoom level. */
   core.int min;
-
 
   ZoomLevels();
 

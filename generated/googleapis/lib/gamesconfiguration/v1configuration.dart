@@ -20,7 +20,7 @@ const core.String USER_AGENT = 'dart-api-client gamesConfiguration/v1configurati
 
 /** The Publishing API for Google Play Game Services. */
 class GamesConfigurationApi {
-  /** View and manage your Google Play Android Developer account */
+  /** View and manage your Google Play Developer account */
   static const AndroidpublisherScope = "https://www.googleapis.com/auth/androidpublisher";
 
 
@@ -52,7 +52,7 @@ class AchievementConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String achievementId) {
     var _url = null;
@@ -93,7 +93,7 @@ class AchievementConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementConfiguration> get(core.String achievementId) {
     var _url = null;
@@ -106,7 +106,6 @@ class AchievementConfigurationsResourceApi {
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
     }
-
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
 
@@ -136,7 +135,7 @@ class AchievementConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementConfiguration> insert(AchievementConfiguration request, core.String applicationId) {
     var _url = null;
@@ -152,7 +151,6 @@ class AchievementConfigurationsResourceApi {
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
     }
-
 
     _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId') + '/achievements';
 
@@ -187,7 +185,7 @@ class AchievementConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementConfigurationListResponse> list(core.String applicationId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -206,7 +204,6 @@ class AchievementConfigurationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId') + '/achievements';
 
@@ -236,7 +233,7 @@ class AchievementConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementConfiguration> patch(AchievementConfiguration request, core.String achievementId) {
     var _url = null;
@@ -252,7 +249,6 @@ class AchievementConfigurationsResourceApi {
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
     }
-
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
 
@@ -281,7 +277,7 @@ class AchievementConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AchievementConfiguration> update(AchievementConfiguration request, core.String achievementId) {
     var _url = null;
@@ -297,7 +293,6 @@ class AchievementConfigurationsResourceApi {
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
     }
-
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
 
@@ -343,7 +338,7 @@ class ImageConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ImageConfiguration> upload(core.String resourceId, core.String imageType, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -402,7 +397,7 @@ class LeaderboardConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String leaderboardId) {
     var _url = null;
@@ -443,7 +438,7 @@ class LeaderboardConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LeaderboardConfiguration> get(core.String leaderboardId) {
     var _url = null;
@@ -456,7 +451,6 @@ class LeaderboardConfigurationsResourceApi {
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
     }
-
 
     _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
 
@@ -486,7 +480,7 @@ class LeaderboardConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LeaderboardConfiguration> insert(LeaderboardConfiguration request, core.String applicationId) {
     var _url = null;
@@ -502,7 +496,6 @@ class LeaderboardConfigurationsResourceApi {
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
     }
-
 
     _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId') + '/leaderboards';
 
@@ -537,7 +530,7 @@ class LeaderboardConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LeaderboardConfigurationListResponse> list(core.String applicationId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -556,7 +549,6 @@ class LeaderboardConfigurationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId') + '/leaderboards';
 
@@ -586,7 +578,7 @@ class LeaderboardConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LeaderboardConfiguration> patch(LeaderboardConfiguration request, core.String leaderboardId) {
     var _url = null;
@@ -602,7 +594,6 @@ class LeaderboardConfigurationsResourceApi {
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
     }
-
 
     _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
 
@@ -631,7 +622,7 @@ class LeaderboardConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LeaderboardConfiguration> update(LeaderboardConfiguration request, core.String leaderboardId) {
     var _url = null;
@@ -647,7 +638,6 @@ class LeaderboardConfigurationsResourceApi {
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
     }
-
 
     _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
 
@@ -674,13 +664,10 @@ class AchievementConfiguration {
    * - "INCREMENTAL" - Achievement is incremental.
    */
   core.String achievementType;
-
   /** The draft data of the achievement. */
   AchievementConfigurationDetail draft;
-
   /** The ID of the achievement. */
   core.String id;
-
   /**
    * The initial state of the achievement.
    * Possible values are:
@@ -689,22 +676,17 @@ class AchievementConfiguration {
    * - "UNLOCKED" - Achievement is unlocked.
    */
   core.String initialState;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesConfiguration#achievementConfiguration.
    */
   core.String kind;
-
   /** The read-only published data of the achievement. */
   AchievementConfigurationDetail published;
-
   /** Steps to unlock. Only applicable to incremental achievements. */
   core.int stepsToUnlock;
-
   /** The token for this resource. */
   core.String token;
-
 
   AchievementConfiguration();
 
@@ -765,30 +747,23 @@ class AchievementConfiguration {
   }
 }
 
-
 /** This is a JSON template for an achievement configuration detail. */
 class AchievementConfigurationDetail {
   /** Localized strings for the achievement description. */
   LocalizedStringBundle description;
-
   /** The icon url of this achievement. Writes to this field are ignored. */
   core.String iconUrl;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesConfiguration#achievementConfigurationDetail.
    */
   core.String kind;
-
   /** Localized strings for the achievement name. */
   LocalizedStringBundle name;
-
   /** Point value for the achievement. */
   core.int pointValue;
-
   /** The sort rank of this achievement. Writes to this field are ignored. */
   core.int sortRank;
-
 
   AchievementConfigurationDetail();
 
@@ -837,21 +812,17 @@ class AchievementConfigurationDetail {
   }
 }
 
-
 /** This is a JSON template for a ListConfigurations response. */
 class AchievementConfigurationListResponse {
   /** The achievement configurations. */
   core.List<AchievementConfiguration> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#achievementConfigurationListResponse.
    */
   core.String kind;
-
   /** The pagination token for the next page of results. */
   core.String nextPageToken;
-
 
   AchievementConfigurationListResponse();
 
@@ -882,7 +853,6 @@ class AchievementConfigurationListResponse {
   }
 }
 
-
 /** This is a JSON template for a number affix resource. */
 class GamesNumberAffixConfiguration {
   /**
@@ -891,38 +861,32 @@ class GamesNumberAffixConfiguration {
    * Polish).
    */
   LocalizedStringBundle few;
-
   /**
    * When the language requires special treatment of "large" numbers (as with
    * numbers ending 11-99 in Maltese).
    */
   LocalizedStringBundle many;
-
   /**
    * When the language requires special treatment of numbers like one (as with
    * the number 1 in English and most other languages; in Russian, any number
    * ending in 1 but not ending in 11 is in this class).
    */
   LocalizedStringBundle one;
-
   /**
    * When the language does not require special treatment of the given quantity
    * (as with all numbers in Chinese, or 42 in English).
    */
   LocalizedStringBundle other;
-
   /**
    * When the language requires special treatment of numbers like two (as with 2
    * in Welsh, or 102 in Slovenian).
    */
   LocalizedStringBundle two;
-
   /**
    * When the language requires special treatment of the number 0 (as in
    * Arabic).
    */
   LocalizedStringBundle zero;
-
 
   GamesNumberAffixConfiguration();
 
@@ -971,17 +935,14 @@ class GamesNumberAffixConfiguration {
   }
 }
 
-
 /** This is a JSON template for a number format resource. */
 class GamesNumberFormatConfiguration {
   /** The curreny code string. Only used for CURRENCY format type. */
   core.String currencyCode;
-
   /**
    * The number of decimal places for number. Only used for NUMERIC format type.
    */
   core.int numDecimalPlaces;
-
   /**
    * The formatting for the number.
    * Possible values are:
@@ -992,13 +953,11 @@ class GamesNumberFormatConfiguration {
    * - "CURRENCY" - Numbers are formatted to currency according to locale.
    */
   core.String numberFormatType;
-
   /**
    * An optional suffix for the NUMERIC format type. These strings follow the
    * same  plural rules as all Android string resources.
    */
   GamesNumberAffixConfiguration suffix;
-
 
   GamesNumberFormatConfiguration();
 
@@ -1035,24 +994,19 @@ class GamesNumberFormatConfiguration {
   }
 }
 
-
 /** This is a JSON template for an image configuration resource. */
 class ImageConfiguration {
   /** The image type for the image. */
   core.String imageType;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesConfiguration#imageConfiguration.
    */
   core.String kind;
-
   /** The resource ID of resource which the image belongs to. */
   core.String resourceId;
-
   /** The url for this image. */
   core.String url;
-
 
   ImageConfiguration();
 
@@ -1089,30 +1043,23 @@ class ImageConfiguration {
   }
 }
 
-
 /** This is a JSON template for an leaderboard configuration resource. */
 class LeaderboardConfiguration {
   /** The draft data of the leaderboard. */
   LeaderboardConfigurationDetail draft;
-
   /** The ID of the leaderboard. */
   core.String id;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesConfiguration#leaderboardConfiguration.
    */
   core.String kind;
-
   /** The read-only published data of the leaderboard. */
   LeaderboardConfigurationDetail published;
-
   /** Maximum score that can be posted to this leaderboard. */
   core.String scoreMax;
-
   /** Minimum score that can be posted to this leaderboard. */
   core.String scoreMin;
-
   /**
    * The type of the leaderboard.
    * Possible values are:
@@ -1120,10 +1067,8 @@ class LeaderboardConfiguration {
    * - "SMALLER_IS_BETTER" - Smaller scores posted are ranked higher.
    */
   core.String scoreOrder;
-
   /** The token for this resource. */
   core.String token;
-
 
   LeaderboardConfiguration();
 
@@ -1184,27 +1129,21 @@ class LeaderboardConfiguration {
   }
 }
 
-
 /** This is a JSON template for a leaderboard configuration detail. */
 class LeaderboardConfigurationDetail {
   /** The icon url of this leaderboard. Writes to this field are ignored. */
   core.String iconUrl;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesConfiguration#leaderboardConfigurationDetail.
    */
   core.String kind;
-
   /** Localized strings for the leaderboard name. */
   LocalizedStringBundle name;
-
   /** The score formatting for the leaderboard. */
   GamesNumberFormatConfiguration scoreFormat;
-
   /** The sort rank of this leaderboard. Writes to this field are ignored. */
   core.int sortRank;
-
 
   LeaderboardConfigurationDetail();
 
@@ -1247,21 +1186,17 @@ class LeaderboardConfigurationDetail {
   }
 }
 
-
 /** This is a JSON template for a ListConfigurations response. */
 class LeaderboardConfigurationListResponse {
   /** The leaderboard configurations. */
   core.List<LeaderboardConfiguration> items;
-
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#leaderboardConfigurationListResponse.
    */
   core.String kind;
-
   /** The pagination token for the next page of results. */
   core.String nextPageToken;
-
 
   LeaderboardConfigurationListResponse();
 
@@ -1292,7 +1227,6 @@ class LeaderboardConfigurationListResponse {
   }
 }
 
-
 /** This is a JSON template for a localized string resource. */
 class LocalizedString {
   /**
@@ -1300,13 +1234,10 @@ class LocalizedString {
    * string gamesConfiguration#localizedString.
    */
   core.String kind;
-
   /** The locale string. */
   core.String locale;
-
   /** The string value. */
   core.String value;
-
 
   LocalizedString();
 
@@ -1337,7 +1268,6 @@ class LocalizedString {
   }
 }
 
-
 /** This is a JSON template for a localized string bundle resource. */
 class LocalizedStringBundle {
   /**
@@ -1345,10 +1275,8 @@ class LocalizedStringBundle {
    * string gamesConfiguration#localizedStringBundle.
    */
   core.String kind;
-
   /** The locale strings. */
   core.List<LocalizedString> translations;
-
 
   LocalizedStringBundle();
 

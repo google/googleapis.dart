@@ -62,7 +62,7 @@ class AutoscalersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String zone, core.String autoscaler) {
     var _url = null;
@@ -81,7 +81,6 @@ class AutoscalersResourceApi {
     if (autoscaler == null) {
       throw new core.ArgumentError("Parameter autoscaler is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
 
@@ -112,7 +111,7 @@ class AutoscalersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Autoscaler> get(core.String project, core.String zone, core.String autoscaler) {
     var _url = null;
@@ -131,7 +130,6 @@ class AutoscalersResourceApi {
     if (autoscaler == null) {
       throw new core.ArgumentError("Parameter autoscaler is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
 
@@ -162,7 +160,7 @@ class AutoscalersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(Autoscaler request, core.String project, core.String zone) {
     var _url = null;
@@ -181,7 +179,6 @@ class AutoscalersResourceApi {
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
 
@@ -217,7 +214,7 @@ class AutoscalersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AutoscalerListResponse> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -242,7 +239,6 @@ class AutoscalersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
 
@@ -276,7 +272,7 @@ class AutoscalersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> patch(Autoscaler request, core.String project, core.String zone, core.String autoscaler) {
     var _url = null;
@@ -298,7 +294,6 @@ class AutoscalersResourceApi {
     if (autoscaler == null) {
       throw new core.ArgumentError("Parameter autoscaler is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
 
@@ -331,7 +326,7 @@ class AutoscalersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> update(Autoscaler request, core.String project, core.String zone, core.String autoscaler) {
     var _url = null;
@@ -353,7 +348,6 @@ class AutoscalersResourceApi {
     if (autoscaler == null) {
       throw new core.ArgumentError("Parameter autoscaler is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
 
@@ -395,7 +389,7 @@ class ZoneOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String project, core.String zone, core.String operation) {
     var _url = null;
@@ -450,7 +444,7 @@ class ZoneOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> get(core.String project, core.String zone, core.String operation) {
     var _url = null;
@@ -469,7 +463,6 @@ class ZoneOperationsResourceApi {
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
@@ -509,7 +502,7 @@ class ZoneOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OperationList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -534,7 +527,6 @@ class ZoneOperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations';
 
@@ -577,7 +569,7 @@ class ZonesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ZoneList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -600,7 +592,6 @@ class ZonesResourceApi {
       _queryParams["pageToken"] = [pageToken];
     }
 
-
     _url = commons.Escaper.ecapeVariable('$project') + '/zones';
 
     var _response = _requester.request(_url,
@@ -621,36 +612,28 @@ class ZonesResourceApi {
 class Autoscaler {
   /** Configuration parameters for autoscaling algorithm. */
   AutoscalingPolicy autoscalingPolicy;
-
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource provided by the client.
    */
   core.String description;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** Type of resource. */
   core.String kind;
-
   /** Name of the Autoscaler resource. Must be unique per project and zone. */
   core.String name;
-
   /** [Output Only] A self-link to the Autoscaler configuration resource. */
   core.String selfLink;
-
   /**
    * URL to the entity which will be autoscaled. Currently the only supported
    * value is ReplicaPool?s URL. Note: it is illegal to specify multiple
    * Autoscalers for the same target.
    */
   core.String target;
-
 
   Autoscaler();
 
@@ -711,17 +694,13 @@ class Autoscaler {
   }
 }
 
-
 class AutoscalerListResponse {
   /** Autoscaler resources. */
   core.List<Autoscaler> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** [Output only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-
 
   AutoscalerListResponse();
 
@@ -752,7 +731,6 @@ class AutoscalerListResponse {
   }
 }
 
-
 /** Cloud Autoscaler policy. */
 class AutoscalingPolicy {
   /**
@@ -763,25 +741,19 @@ class AutoscalingPolicy {
    * machine. The default is 60 seconds.
    */
   core.int coolDownPeriodSec;
-
   /**
    * Exactly one utilization policy should be provided. Configuration parameters
    * of CPU based autoscaling policy.
    */
   AutoscalingPolicyCpuUtilization cpuUtilization;
-
   /** Configuration parameters of autoscaling based on custom metric. */
   core.List<AutoscalingPolicyCustomMetricUtilization> customMetricUtilizations;
-
   /** Configuration parameters of autoscaling based on load balancer. */
   AutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization;
-
   /** The maximum number of replicas that the Autoscaler can scale up to. */
   core.int maxNumReplicas;
-
   /** The minimum number of replicas that the Autoscaler can scale down to. */
   core.int minNumReplicas;
-
 
   AutoscalingPolicy();
 
@@ -830,7 +802,6 @@ class AutoscalingPolicy {
   }
 }
 
-
 /** CPU utilization policy. */
 class AutoscalingPolicyCpuUtilization {
   /**
@@ -840,7 +811,6 @@ class AutoscalingPolicyCpuUtilization {
    * 1]. If not defined, the default is 0.8.
    */
   core.double utilizationTarget;
-
 
   AutoscalingPolicyCpuUtilization();
 
@@ -859,7 +829,6 @@ class AutoscalingPolicyCpuUtilization {
   }
 }
 
-
 /** Custom utilization metric policy. */
 class AutoscalingPolicyCustomMetricUtilization {
   /**
@@ -870,16 +839,13 @@ class AutoscalingPolicyCustomMetricUtilization {
    * compute.googleapis.com/instance/network/received_bytes_count.
    */
   core.String metric;
-
   /**
    * Target value of the metric which Autoscaler should maintain. Must be a
    * positive value.
    */
   core.double utilizationTarget;
-
   /** Defines type in which utilization_target is expressed. */
   core.String utilizationTargetType;
-
 
   AutoscalingPolicyCustomMetricUtilization();
 
@@ -910,7 +876,6 @@ class AutoscalingPolicyCustomMetricUtilization {
   }
 }
 
-
 /** Load balancing utilization policy. */
 class AutoscalingPolicyLoadBalancingUtilization {
   /**
@@ -922,7 +887,6 @@ class AutoscalingPolicyLoadBalancingUtilization {
    * instance receives 7 QPS on average, set this to 0.7.
    */
   core.double utilizationTarget;
-
 
   AutoscalingPolicyLoadBalancingUtilization();
 
@@ -941,18 +905,12 @@ class AutoscalingPolicyLoadBalancingUtilization {
   }
 }
 
-
 class DeprecationStatus {
   core.String deleted;
-
   core.String deprecated;
-
   core.String obsolete;
-
   core.String replacement;
-
   core.String state;
-
 
   DeprecationStatus();
 
@@ -995,14 +953,10 @@ class DeprecationStatus {
   }
 }
 
-
 class OperationErrorErrors {
   core.String code;
-
   core.String location;
-
   core.String message;
-
 
   OperationErrorErrors();
 
@@ -1033,10 +987,8 @@ class OperationErrorErrors {
   }
 }
 
-
 class OperationError {
   core.List<OperationErrorErrors> errors;
-
 
   OperationError();
 
@@ -1055,12 +1007,9 @@ class OperationError {
   }
 }
 
-
 class OperationWarningsData {
   core.String key;
-
   core.String value;
-
 
   OperationWarningsData();
 
@@ -1085,14 +1034,10 @@ class OperationWarningsData {
   }
 }
 
-
 class OperationWarnings {
   core.String code;
-
   core.List<OperationWarningsData> data;
-
   core.String message;
-
 
   OperationWarnings();
 
@@ -1123,56 +1068,33 @@ class OperationWarnings {
   }
 }
 
-
 class Operation {
   core.String clientOperationId;
-
   core.String creationTimestamp;
-
   core.String endTime;
-
   OperationError error;
-
   core.String httpErrorMessage;
-
   core.int httpErrorStatusCode;
-
   core.String id;
-
   core.String insertTime;
-
   /**
    * [Output Only] Type of the resource. Always kind#operation for Operation
    * resources.
    */
   core.String kind;
-
   core.String name;
-
   core.String operationType;
-
   core.int progress;
-
   core.String region;
-
   core.String selfLink;
-
   core.String startTime;
-
   core.String status;
-
   core.String statusMessage;
-
   core.String targetId;
-
   core.String targetLink;
-
   core.String user;
-
   core.List<OperationWarnings> warnings;
-
   core.String zone;
-
 
   Operation();
 
@@ -1317,19 +1239,13 @@ class Operation {
   }
 }
 
-
 class OperationList {
   core.String id;
-
   core.List<Operation> items;
-
   /** Type of resource. Always compute#operations for Operations resource. */
   core.String kind;
-
   core.String nextPageToken;
-
   core.String selfLink;
-
 
   OperationList();
 
@@ -1372,16 +1288,11 @@ class OperationList {
   }
 }
 
-
 class ZoneMaintenanceWindows {
   core.String beginTime;
-
   core.String description;
-
   core.String endTime;
-
   core.String name;
-
 
   ZoneMaintenanceWindows();
 
@@ -1418,30 +1329,19 @@ class ZoneMaintenanceWindows {
   }
 }
 
-
 class Zone {
   core.String creationTimestamp;
-
   DeprecationStatus deprecated;
-
   core.String description;
-
   core.String id;
-
   /** Type of the resource. */
   core.String kind;
-
   core.List<ZoneMaintenanceWindows> maintenanceWindows;
-
   core.String name;
-
   core.String region;
-
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
-
   core.String status;
-
 
   Zone();
 
@@ -1514,20 +1414,14 @@ class Zone {
   }
 }
 
-
 class ZoneList {
   core.String id;
-
   core.List<Zone> items;
-
   /** Type of resource. */
   core.String kind;
-
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   ZoneList();
 

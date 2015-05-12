@@ -67,7 +67,7 @@ class RollingUpdatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> cancel(core.String project, core.String zone, core.String rollingUpdate) {
     var _url = null;
@@ -86,7 +86,6 @@ class RollingUpdatesResourceApi {
     if (rollingUpdate == null) {
       throw new core.ArgumentError("Parameter rollingUpdate is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + commons.Escaper.ecapeVariable('$rollingUpdate') + '/cancel';
 
@@ -119,7 +118,7 @@ class RollingUpdatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RollingUpdate> get(core.String project, core.String zone, core.String rollingUpdate) {
     var _url = null;
@@ -138,7 +137,6 @@ class RollingUpdatesResourceApi {
     if (rollingUpdate == null) {
       throw new core.ArgumentError("Parameter rollingUpdate is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + commons.Escaper.ecapeVariable('$rollingUpdate');
 
@@ -171,7 +169,7 @@ class RollingUpdatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(RollingUpdate request, core.String project, core.String zone) {
     var _url = null;
@@ -190,7 +188,6 @@ class RollingUpdatesResourceApi {
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates';
 
@@ -218,8 +215,9 @@ class RollingUpdatesResourceApi {
    *
    * [filter] - Optional. Filter expression for filtering listed resources.
    *
-   * [instanceGroupManager] - The name of the instance group manager used for
-   * filtering.
+   * [instanceGroupManager] - The name of the instance group manager. Use this
+   * parameter to return only updates to instances that are part of a specific
+   * instance group.
    *
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum
    * value is 500 and default value is 500.
@@ -234,7 +232,7 @@ class RollingUpdatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RollingUpdateList> list(core.String project, core.String zone, {core.String filter, core.String instanceGroupManager, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -262,7 +260,6 @@ class RollingUpdatesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates';
 
@@ -304,7 +301,7 @@ class RollingUpdatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InstanceUpdateList> listInstanceUpdates(core.String project, core.String zone, core.String rollingUpdate, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -332,7 +329,6 @@ class RollingUpdatesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + commons.Escaper.ecapeVariable('$rollingUpdate') + '/instanceUpdates';
 
@@ -366,7 +362,7 @@ class RollingUpdatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> pause(core.String project, core.String zone, core.String rollingUpdate) {
     var _url = null;
@@ -385,7 +381,6 @@ class RollingUpdatesResourceApi {
     if (rollingUpdate == null) {
       throw new core.ArgumentError("Parameter rollingUpdate is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + commons.Escaper.ecapeVariable('$rollingUpdate') + '/pause';
 
@@ -419,7 +414,7 @@ class RollingUpdatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> resume(core.String project, core.String zone, core.String rollingUpdate) {
     var _url = null;
@@ -438,7 +433,6 @@ class RollingUpdatesResourceApi {
     if (rollingUpdate == null) {
       throw new core.ArgumentError("Parameter rollingUpdate is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + commons.Escaper.ecapeVariable('$rollingUpdate') + '/resume';
 
@@ -472,7 +466,7 @@ class RollingUpdatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> rollback(core.String project, core.String zone, core.String rollingUpdate) {
     var _url = null;
@@ -491,7 +485,6 @@ class RollingUpdatesResourceApi {
     if (rollingUpdate == null) {
       throw new core.ArgumentError("Parameter rollingUpdate is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + commons.Escaper.ecapeVariable('$rollingUpdate') + '/rollback';
 
@@ -533,7 +526,7 @@ class ZoneOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> get(core.String project, core.String zone, core.String operation) {
     var _url = null;
@@ -552,7 +545,6 @@ class ZoneOperationsResourceApi {
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
@@ -573,16 +565,13 @@ class ZoneOperationsResourceApi {
 class InstanceUpdateErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
-
   /**
-   * [Output Only] Indicates the field in the request which caused the error.
+   * [Output Only] Indicates the field in the request that caused the error.
    * This property is optional.
    */
   core.String location;
-
   /** [Output Only] An optional, human-readable error message. */
   core.String message;
-
 
   InstanceUpdateErrorErrors();
 
@@ -613,7 +602,6 @@ class InstanceUpdateErrorErrors {
   }
 }
 
-
 /** Errors that occurred during the instance update. */
 class InstanceUpdateError {
   /**
@@ -621,7 +609,6 @@ class InstanceUpdateError {
    * operation.
    */
   core.List<InstanceUpdateErrorErrors> errors;
-
 
   InstanceUpdateError();
 
@@ -640,15 +627,12 @@ class InstanceUpdateError {
   }
 }
 
-
 /** Update of a single instance. */
 class InstanceUpdate {
   /** Errors that occurred during the instance update. */
   InstanceUpdateError error;
-
   /** URL of the instance being updated. */
   core.String instance;
-
   /**
    * Status of the instance update. Possible values are:
    * - "PENDING": The instance update is pending execution.
@@ -663,7 +647,6 @@ class InstanceUpdate {
    * undefined in which template the instance is running.
    */
   core.String status;
-
 
   InstanceUpdate();
 
@@ -694,21 +677,16 @@ class InstanceUpdate {
   }
 }
 
-
 /** Response returned by ListInstanceUpdates method. */
 class InstanceUpdateList {
   /** Collection of requested instance updates. */
   core.List<InstanceUpdate> items;
-
   /** [Output Only] Type of the resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] The fully qualified URL for the resource. */
   core.String selfLink;
-
 
   InstanceUpdateList();
 
@@ -745,20 +723,16 @@ class InstanceUpdateList {
   }
 }
 
-
 class OperationErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
-
   /**
-   * [Output Only] Indicates the field in the request which caused the error.
+   * [Output Only] Indicates the field in the request that caused the error.
    * This property is optional.
    */
   core.String location;
-
   /** [Output Only] An optional, human-readable error message. */
   core.String message;
-
 
   OperationErrorErrors();
 
@@ -789,7 +763,6 @@ class OperationErrorErrors {
   }
 }
 
-
 /**
  * [Output Only] If errors occurred during processing of this operation, this
  * field will be populated.
@@ -800,7 +773,6 @@ class OperationError {
    * operation.
    */
   core.List<OperationErrorErrors> errors;
-
 
   OperationError();
 
@@ -819,14 +791,11 @@ class OperationError {
   }
 }
 
-
 class OperationWarningsData {
   /** [Output Only] Metadata key for this warning. */
   core.String key;
-
   /** [Output Only] Metadata value for this warning. */
   core.String value;
-
 
   OperationWarningsData();
 
@@ -851,17 +820,13 @@ class OperationWarningsData {
   }
 }
 
-
 class OperationWarnings {
   /** [Output only] The warning type identifier for this warning. */
   core.String code;
-
   /** [Output only] Metadata for this warning in key:value format. */
   core.List<OperationWarningsData> data;
-
   /** [Output only] Optional human-readable details for this warning. */
   core.String message;
-
 
   OperationWarnings();
 
@@ -892,96 +857,67 @@ class OperationWarnings {
   }
 }
 
-
 /** An operation resource, used to manage asynchronous API requests. */
 class Operation {
   core.String clientOperationId;
-
-  /** [Output Only] Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   core.String endTime;
-
   /**
    * [Output Only] If errors occurred during processing of this operation, this
    * field will be populated.
    */
   OperationError error;
-
   core.String httpErrorMessage;
-
   core.int httpErrorStatusCode;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /**
    * [Output Only] The time that this operation was requested. This is in RFC
    * 3339 format.
    */
   core.String insertTime;
-
   /**
    * [Output Only] Type of the resource. Always kind#operation for Operation
    * resources.
    */
   core.String kind;
-
-  /** [Output Only] Name of the resource (output only). */
+  /** [Output Only] Name of the resource. */
   core.String name;
-
   core.String operationType;
-
   core.int progress;
-
-  /**
-   * [Output Only] URL of the region where the operation resides (output only).
-   */
+  /** [Output Only] URL of the region where the operation resides. */
   core.String region;
-
   /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
-
   /**
    * [Output Only] The time that this operation was started by the server. This
    * is in RFC 3339 format.
    */
   core.String startTime;
-
   /**
    * [Output Only] Status of the operation. Can be one of the following:
    * "PENDING", "RUNNING", or "DONE".
    */
   core.String status;
-
   /**
    * [Output Only] An optional textual description of the current status of the
    * operation.
    */
   core.String statusMessage;
-
   /**
    * [Output Only] Unique target id which identifies a particular incarnation of
    * the target.
    */
   core.String targetId;
-
-  /**
-   * [Output Only] URL of the resource the operation is mutating (output only).
-   */
+  /** [Output Only] URL of the resource the operation is mutating. */
   core.String targetLink;
-
   core.String user;
-
   core.List<OperationWarnings> warnings;
-
-  /**
-   * [Output Only] URL of the zone where the operation resides (output only).
-   */
+  /** [Output Only] URL of the zone where the operation resides. */
   core.String zone;
-
 
   Operation();
 
@@ -1126,20 +1062,16 @@ class Operation {
   }
 }
 
-
 class RollingUpdateErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
-
   /**
-   * [Output Only] Indicates the field in the request which caused the error.
+   * [Output Only] Indicates the field in the request that caused the error.
    * This property is optional.
    */
   core.String location;
-
   /** [Output Only] An optional, human-readable error message. */
   core.String message;
-
 
   RollingUpdateErrorErrors();
 
@@ -1170,15 +1102,13 @@ class RollingUpdateErrorErrors {
   }
 }
 
-
-/** [Output Only] Errors that occurred during rolling update. */
+/** [Output Only] Errors that occurred during the rolling update. */
 class RollingUpdateError {
   /**
    * [Output Only] The array of errors encountered while processing this
    * operation.
    */
   core.List<RollingUpdateErrorErrors> errors;
-
 
   RollingUpdateError();
 
@@ -1197,54 +1127,40 @@ class RollingUpdateError {
   }
 }
 
-
 /** Parameters of the update process. */
 class RollingUpdatePolicy {
   /**
-   * Number of instances updated before the update gets automatically paused.
+   * Number of instances to update before the updater pauses the rolling update.
    */
   core.int autoPauseAfterInstances;
-
   /**
-   * Maximum amount of time we will wait after finishing all steps until we
-   * receive HEALTHY state for instance. If this deadline is exceeded instance
-   * update is considered as failed.
+   * The maximum amount of time that the updater waits for a HEALTHY state after
+   * all of the update steps are complete. If the HEALTHY state is not received
+   * before the deadline, the instance update is considered a failure.
    */
   core.int instanceStartupTimeoutSec;
-
   /**
-   * Maximum number of instances that can be updated simultaneously
-   * (concurrently). An update of an instance starts when the instance is about
-   * to be restarted and finishes after the instance has been restarted and the
-   * sleep period (defined by sleepAfterInstanceRestartSec) has passed.
+   * The maximum number of instances that can be updated simultaneously. An
+   * instance update is considered complete only after the instance is restarted
+   * and initialized.
    */
   core.int maxNumConcurrentInstances;
-
   /**
-   * Maximum number of instance updates that can fail without failing the group
-   * update. Instance update is considered failed if any of it's update actions
-   * (e.g. Stop call on Instance resource in Rolling Reboot) failed with
-   * permanent failure, or if after finishing all update actions this instance
-   * is in UNHEALTHY state.
+   * The maximum number of instance updates that can fail before the group
+   * update is considered a failure. An instance update is considered failed if
+   * any of its update actions (e.g. Stop call on Instance resource in Rolling
+   * Reboot) failed with permanent failure, or if the instance is in an
+   * UNHEALTHY state after it finishes all of the update actions.
    */
   core.int maxNumFailedInstances;
-
   /**
-   * Specifies minimum amount of time we will spend on updating single instance,
-   * measuring at the start of the first update action (e.g. Recreate call on
-   * Instance Group Manager or Stop call on Instance resource). If actual
-   * instance update takes less time we will simply sleep before proceeding with
-   * next instance.
+   * The minimum amount of time that the updater spends to update each instance.
+   * Update time is the time it takes to complete all update actions (e.g. Stop
+   * call on Instance resource in Rolling Reboot), reboot, and initialize. If
+   * the instance update finishes early, the updater pauses for the remainder of
+   * the time before it starts the next instance update.
    */
   core.int minInstanceUpdateTimeSec;
-
-  /**
-   * Time period after the instance has been restarted but before marking the
-   * update of this instance as done. This field is deprecated and ignored by
-   * Rolling Updater.
-   */
-  core.int sleepAfterInstanceRestartSec;
-
 
   RollingUpdatePolicy();
 
@@ -1263,9 +1179,6 @@ class RollingUpdatePolicy {
     }
     if (_json.containsKey("minInstanceUpdateTimeSec")) {
       minInstanceUpdateTimeSec = _json["minInstanceUpdateTimeSec"];
-    }
-    if (_json.containsKey("sleepAfterInstanceRestartSec")) {
-      sleepAfterInstanceRestartSec = _json["sleepAfterInstanceRestartSec"];
     }
   }
 
@@ -1286,13 +1199,9 @@ class RollingUpdatePolicy {
     if (minInstanceUpdateTimeSec != null) {
       _json["minInstanceUpdateTimeSec"] = minInstanceUpdateTimeSec;
     }
-    if (sleepAfterInstanceRestartSec != null) {
-      _json["sleepAfterInstanceRestartSec"] = sleepAfterInstanceRestartSec;
-    }
     return _json;
   }
 }
-
 
 /**
  * The following represents a resource describing a single update (rollout) of a
@@ -1304,54 +1213,38 @@ class RollingUpdate {
    * This can be RECREATE which will recreate each instance and is only
    * available for managed instance groups. It can also be REBOOT which performs
    * a soft reboot for each instance and is only available for regular
-   * (non-managed) instance groups and explicit lists of instances.
+   * (non-managed) instance groups.
    */
   core.String actionType;
-
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-
-  /** [Output Only] Errors that occurred during rolling update. */
+  /** [Output Only] Errors that occurred during the rolling update. */
   RollingUpdateError error;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /**
    * Fully-qualified URL of an instance group being updated. Exactly one of
-   * instanceGroupManager, instanceGroup and instance list must be set.
+   * instanceGroupManager and instanceGroup must be set.
    */
   core.String instanceGroup;
-
   /**
    * Fully-qualified URL of an instance group manager being updated. Exactly one
-   * of instanceGroupManager, instanceGroup and instance list must be set.
+   * of instanceGroupManager and instanceGroup must be set.
    */
   core.String instanceGroupManager;
-
   /** Fully-qualified URL of an instance template to apply. */
   core.String instanceTemplate;
-
-  /**
-   * List of fully-qualified URLs of instances to be updated. Exactly one of
-   * instanceGroupManager, instanceGroup and instance list must be set.
-   */
-  core.List<core.String> instances;
-
   /** [Output Only] Type of the resource. */
   core.String kind;
-
   /** Parameters of the update process. */
   RollingUpdatePolicy policy;
-
   /**
    * [Output Only] An optional progress indicator that ranges from 0 to 100.
    * There is no requirement that this be linear or support any granularity of
@@ -1360,10 +1253,8 @@ class RollingUpdate {
    * progresses.
    */
   core.int progress;
-
   /** [Output Only] The fully qualified URL for the resource. */
   core.String selfLink;
-
   /**
    * [Output Only] Status of the update. Possible values are:
    * - "ROLLING_FORWARD": The update is going forward.
@@ -1377,18 +1268,15 @@ class RollingUpdate {
    * how many instances are running in which template.
    */
   core.String status;
-
   /**
    * [Output Only] An optional textual description of the current status of the
    * update.
    */
   core.String statusMessage;
-
   /**
    * [Output Only] User who requested the update, for example: user@example.com.
    */
   core.String user;
-
 
   RollingUpdate();
 
@@ -1416,9 +1304,6 @@ class RollingUpdate {
     }
     if (_json.containsKey("instanceTemplate")) {
       instanceTemplate = _json["instanceTemplate"];
-    }
-    if (_json.containsKey("instances")) {
-      instances = _json["instances"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1469,9 +1354,6 @@ class RollingUpdate {
     if (instanceTemplate != null) {
       _json["instanceTemplate"] = instanceTemplate;
     }
-    if (instances != null) {
-      _json["instances"] = instances;
-    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1497,21 +1379,16 @@ class RollingUpdate {
   }
 }
 
-
 /** Response returned by List method. */
 class RollingUpdateList {
   /** Collection of requested updates. */
   core.List<RollingUpdate> items;
-
   /** [Output Only] Type of the resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** [Output Only] The fully qualified URL for the resource. */
   core.String selfLink;
-
 
   RollingUpdateList();
 

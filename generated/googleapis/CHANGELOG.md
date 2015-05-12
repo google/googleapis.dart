@@ -1,3 +1,21 @@
+## 0.9.0
+
+* [apis] analytics:v3: schema changes
+* [apis] androidenterprise:v1: schema changes
+* [apis] androidpublisher:v2: new resource
+* [apis] bigquery:v2: schema changes
+* [apis] blogger:v3: schema changes
+* [apis] books:v1: method/schema changes
+* [apis] compute:v1: schema changes
+* [apis] content:v2: method/schema changes
+* [apis] doubleclicksearch:v2: schema changes
+* [apis] identitytoolkit:v3: schema/method changes
+* [apis] storage:v1: schema/method changes
+* [apis] youtube:v3: new resource, schema changes
+* [api-breaking] fitness:v1: schema changes
+* [apis-removed] cloudsearch:v1
+
+
 ## 0.8.0
 * [api] admin_directory:v1: schema changes
 * [api] compute:v1: method changes

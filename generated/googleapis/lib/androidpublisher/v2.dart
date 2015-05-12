@@ -20,13 +20,14 @@ const core.String USER_AGENT = 'dart-api-client androidpublisher/v2';
 
 /** Lets Android application developers access their Google Play accounts. */
 class AndroidpublisherApi {
-  /** View and manage your Google Play Android Developer account */
+  /** View and manage your Google Play Developer account */
   static const AndroidpublisherScope = "https://www.googleapis.com/auth/androidpublisher";
 
 
   final commons.ApiRequester _requester;
 
   EditsResourceApi get edits => new EditsResourceApi(_requester);
+  EntitlementsResourceApi get entitlements => new EntitlementsResourceApi(_requester);
   InappproductsResourceApi get inappproducts => new InappproductsResourceApi(_requester);
   PurchasesResourceApi get purchases => new PurchasesResourceApi(_requester);
 
@@ -66,7 +67,7 @@ class EditsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AppEdit> commit(core.String packageName, core.String editId) {
     var _url = null;
@@ -82,7 +83,6 @@ class EditsResourceApi {
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + ':commit';
 
@@ -112,7 +112,7 @@ class EditsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String packageName, core.String editId) {
     var _url = null;
@@ -160,7 +160,7 @@ class EditsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AppEdit> get(core.String packageName, core.String editId) {
     var _url = null;
@@ -176,7 +176,6 @@ class EditsResourceApi {
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId');
 
@@ -206,7 +205,7 @@ class EditsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AppEdit> insert(AppEdit request, core.String packageName) {
     var _url = null;
@@ -222,7 +221,6 @@ class EditsResourceApi {
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits';
 
@@ -253,7 +251,7 @@ class EditsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AppEdit> validate(core.String packageName, core.String editId) {
     var _url = null;
@@ -269,7 +267,6 @@ class EditsResourceApi {
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + ':validate';
 
@@ -314,7 +311,7 @@ class EditsApklistingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String packageName, core.String editId, core.int apkVersionCode, core.String language) {
     var _url = null;
@@ -368,7 +365,7 @@ class EditsApklistingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future deleteall(core.String packageName, core.String editId, core.int apkVersionCode) {
     var _url = null;
@@ -426,7 +423,7 @@ class EditsApklistingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ApkListing> get(core.String packageName, core.String editId, core.int apkVersionCode, core.String language) {
     var _url = null;
@@ -448,7 +445,6 @@ class EditsApklistingsResourceApi {
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
@@ -481,7 +477,7 @@ class EditsApklistingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ApkListingsListResponse> list(core.String packageName, core.String editId, core.int apkVersionCode) {
     var _url = null;
@@ -500,7 +496,6 @@ class EditsApklistingsResourceApi {
     if (apkVersionCode == null) {
       throw new core.ArgumentError("Parameter apkVersionCode is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings';
 
@@ -540,7 +535,7 @@ class EditsApklistingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ApkListing> patch(ApkListing request, core.String packageName, core.String editId, core.int apkVersionCode, core.String language) {
     var _url = null;
@@ -565,7 +560,6 @@ class EditsApklistingsResourceApi {
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
@@ -605,7 +599,7 @@ class EditsApklistingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ApkListing> update(ApkListing request, core.String packageName, core.String editId, core.int apkVersionCode, core.String language) {
     var _url = null;
@@ -630,7 +624,6 @@ class EditsApklistingsResourceApi {
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
@@ -674,7 +667,7 @@ class EditsApksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ApksAddExternallyHostedResponse> addexternallyhosted(ApksAddExternallyHostedRequest request, core.String packageName, core.String editId) {
     var _url = null;
@@ -693,7 +686,6 @@ class EditsApksResourceApi {
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/externallyHosted';
 
@@ -721,7 +713,7 @@ class EditsApksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ApksListResponse> list(core.String packageName, core.String editId) {
     var _url = null;
@@ -737,7 +729,6 @@ class EditsApksResourceApi {
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks';
 
@@ -770,7 +761,7 @@ class EditsApksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Apk> upload(core.String packageName, core.String editId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -835,7 +826,7 @@ class EditsDetailsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AppDetails> get(core.String packageName, core.String editId) {
     var _url = null;
@@ -851,7 +842,6 @@ class EditsDetailsResourceApi {
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/details';
 
@@ -883,7 +873,7 @@ class EditsDetailsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AppDetails> patch(AppDetails request, core.String packageName, core.String editId) {
     var _url = null;
@@ -902,7 +892,6 @@ class EditsDetailsResourceApi {
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/details';
 
@@ -934,7 +923,7 @@ class EditsDetailsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AppDetails> update(AppDetails request, core.String packageName, core.String editId) {
     var _url = null;
@@ -953,7 +942,6 @@ class EditsDetailsResourceApi {
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/details';
 
@@ -1000,7 +988,7 @@ class EditsExpansionfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ExpansionFile> get(core.String packageName, core.String editId, core.int apkVersionCode, core.String expansionFileType) {
     var _url = null;
@@ -1022,7 +1010,6 @@ class EditsExpansionfilesResourceApi {
     if (expansionFileType == null) {
       throw new core.ArgumentError("Parameter expansionFileType is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
 
@@ -1064,7 +1051,7 @@ class EditsExpansionfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ExpansionFile> patch(ExpansionFile request, core.String packageName, core.String editId, core.int apkVersionCode, core.String expansionFileType) {
     var _url = null;
@@ -1089,7 +1076,6 @@ class EditsExpansionfilesResourceApi {
     if (expansionFileType == null) {
       throw new core.ArgumentError("Parameter expansionFileType is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
 
@@ -1130,7 +1116,7 @@ class EditsExpansionfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ExpansionFile> update(ExpansionFile request, core.String packageName, core.String editId, core.int apkVersionCode, core.String expansionFileType) {
     var _url = null;
@@ -1155,7 +1141,6 @@ class EditsExpansionfilesResourceApi {
     if (expansionFileType == null) {
       throw new core.ArgumentError("Parameter expansionFileType is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
 
@@ -1198,7 +1183,7 @@ class EditsExpansionfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ExpansionFilesUploadResponse> upload(core.String packageName, core.String editId, core.int apkVersionCode, core.String expansionFileType, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1284,7 +1269,7 @@ class EditsImagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String packageName, core.String editId, core.String language, core.String imageType, core.String imageId) {
     var _url = null;
@@ -1355,7 +1340,7 @@ class EditsImagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ImagesDeleteAllResponse> deleteall(core.String packageName, core.String editId, core.String language, core.String imageType) {
     var _url = null;
@@ -1377,7 +1362,6 @@ class EditsImagesResourceApi {
     if (imageType == null) {
       throw new core.ArgumentError("Parameter imageType is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType');
 
@@ -1422,7 +1406,7 @@ class EditsImagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ImagesListResponse> list(core.String packageName, core.String editId, core.String language, core.String imageType) {
     var _url = null;
@@ -1444,7 +1428,6 @@ class EditsImagesResourceApi {
     if (imageType == null) {
       throw new core.ArgumentError("Parameter imageType is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType');
 
@@ -1495,7 +1478,7 @@ class EditsImagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ImagesUploadResponse> upload(core.String packageName, core.String editId, core.String language, core.String imageType, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1567,7 +1550,7 @@ class EditsListingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String packageName, core.String editId, core.String language) {
     var _url = null;
@@ -1615,7 +1598,7 @@ class EditsListingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future deleteall(core.String packageName, core.String editId) {
     var _url = null;
@@ -1666,7 +1649,7 @@ class EditsListingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Listing> get(core.String packageName, core.String editId, core.String language) {
     var _url = null;
@@ -1685,7 +1668,6 @@ class EditsListingsResourceApi {
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
@@ -1715,7 +1697,7 @@ class EditsListingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListingsListResponse> list(core.String packageName, core.String editId) {
     var _url = null;
@@ -1731,7 +1713,6 @@ class EditsListingsResourceApi {
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings';
 
@@ -1768,7 +1749,7 @@ class EditsListingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Listing> patch(Listing request, core.String packageName, core.String editId, core.String language) {
     var _url = null;
@@ -1790,7 +1771,6 @@ class EditsListingsResourceApi {
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
@@ -1826,7 +1806,7 @@ class EditsListingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Listing> update(Listing request, core.String packageName, core.String editId, core.String language) {
     var _url = null;
@@ -1848,7 +1828,6 @@ class EditsListingsResourceApi {
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
@@ -1892,7 +1871,7 @@ class EditsTestersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Testers> get(core.String packageName, core.String editId, core.String track) {
     var _url = null;
@@ -1911,7 +1890,6 @@ class EditsTestersResourceApi {
     if (track == null) {
       throw new core.ArgumentError("Parameter track is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/testers/' + commons.Escaper.ecapeVariable('$track');
 
@@ -1948,7 +1926,7 @@ class EditsTestersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Testers> patch(Testers request, core.String packageName, core.String editId, core.String track) {
     var _url = null;
@@ -1970,7 +1948,6 @@ class EditsTestersResourceApi {
     if (track == null) {
       throw new core.ArgumentError("Parameter track is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/testers/' + commons.Escaper.ecapeVariable('$track');
 
@@ -2007,7 +1984,7 @@ class EditsTestersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Testers> update(Testers request, core.String packageName, core.String editId, core.String track) {
     var _url = null;
@@ -2029,7 +2006,6 @@ class EditsTestersResourceApi {
     if (track == null) {
       throw new core.ArgumentError("Parameter track is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/testers/' + commons.Escaper.ecapeVariable('$track');
 
@@ -2076,7 +2052,7 @@ class EditsTracksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Track> get(core.String packageName, core.String editId, core.String track) {
     var _url = null;
@@ -2095,7 +2071,6 @@ class EditsTracksResourceApi {
     if (track == null) {
       throw new core.ArgumentError("Parameter track is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/tracks/' + commons.Escaper.ecapeVariable('$track');
 
@@ -2125,7 +2100,7 @@ class EditsTracksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TracksListResponse> list(core.String packageName, core.String editId) {
     var _url = null;
@@ -2141,7 +2116,6 @@ class EditsTracksResourceApi {
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/tracks';
 
@@ -2182,7 +2156,7 @@ class EditsTracksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Track> patch(Track request, core.String packageName, core.String editId, core.String track) {
     var _url = null;
@@ -2204,7 +2178,6 @@ class EditsTracksResourceApi {
     if (track == null) {
       throw new core.ArgumentError("Parameter track is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/tracks/' + commons.Escaper.ecapeVariable('$track');
 
@@ -2245,7 +2218,7 @@ class EditsTracksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Track> update(Track request, core.String packageName, core.String editId, core.String track) {
     var _url = null;
@@ -2268,7 +2241,6 @@ class EditsTracksResourceApi {
       throw new core.ArgumentError("Parameter track is required.");
     }
 
-
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/tracks/' + commons.Escaper.ecapeVariable('$track');
 
     var _response = _requester.request(_url,
@@ -2279,6 +2251,76 @@ class EditsTracksResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Track.fromJson(data));
+  }
+
+}
+
+
+class EntitlementsResourceApi {
+  final commons.ApiRequester _requester;
+
+  EntitlementsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Lists the user's current inapp item or subscription entitlements
+   *
+   * Request parameters:
+   *
+   * [packageName] - The package name of the application the inapp product was
+   * sold in (for example, 'com.some.thing').
+   *
+   * [maxResults] - null
+   *
+   * [productId] - The product id of the inapp product (for example, 'sku1').
+   * This can be used to restrict the result set.
+   *
+   * [startIndex] - null
+   *
+   * [token] - null
+   *
+   * Completes with a [EntitlementsListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<EntitlementsListResponse> list(core.String packageName, {core.int maxResults, core.String productId, core.int startIndex, core.String token}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (productId != null) {
+      _queryParams["productId"] = [productId];
+    }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if (token != null) {
+      _queryParams["token"] = [token];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/entitlements';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new EntitlementsListResponse.fromJson(data));
   }
 
 }
@@ -2301,7 +2343,7 @@ class InappproductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InappproductsBatchResponse> batch(InappproductsBatchRequest request) {
     var _url = null;
@@ -2314,7 +2356,6 @@ class InappproductsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'inappproducts/batch';
 
@@ -2342,7 +2383,7 @@ class InappproductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String packageName, core.String sku) {
     var _url = null;
@@ -2388,7 +2429,7 @@ class InappproductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InAppProduct> get(core.String packageName, core.String sku) {
     var _url = null;
@@ -2404,7 +2445,6 @@ class InappproductsResourceApi {
     if (sku == null) {
       throw new core.ArgumentError("Parameter sku is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + commons.Escaper.ecapeVariable('$sku');
 
@@ -2439,7 +2479,7 @@ class InappproductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InAppProduct> insert(InAppProduct request, core.String packageName, {core.bool autoConvertMissingPrices}) {
     var _url = null;
@@ -2458,7 +2498,6 @@ class InappproductsResourceApi {
     if (autoConvertMissingPrices != null) {
       _queryParams["autoConvertMissingPrices"] = ["${autoConvertMissingPrices}"];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts';
 
@@ -2493,7 +2532,7 @@ class InappproductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InappproductsListResponse> list(core.String packageName, {core.int maxResults, core.int startIndex, core.String token}) {
     var _url = null;
@@ -2515,7 +2554,6 @@ class InappproductsResourceApi {
     if (token != null) {
       _queryParams["token"] = [token];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts';
 
@@ -2553,7 +2591,7 @@ class InappproductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InAppProduct> patch(InAppProduct request, core.String packageName, core.String sku, {core.bool autoConvertMissingPrices}) {
     var _url = null;
@@ -2575,7 +2613,6 @@ class InappproductsResourceApi {
     if (autoConvertMissingPrices != null) {
       _queryParams["autoConvertMissingPrices"] = ["${autoConvertMissingPrices}"];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + commons.Escaper.ecapeVariable('$sku');
 
@@ -2612,7 +2649,7 @@ class InappproductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InAppProduct> update(InAppProduct request, core.String packageName, core.String sku, {core.bool autoConvertMissingPrices}) {
     var _url = null;
@@ -2634,7 +2671,6 @@ class InappproductsResourceApi {
     if (autoConvertMissingPrices != null) {
       _queryParams["autoConvertMissingPrices"] = ["${autoConvertMissingPrices}"];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + commons.Escaper.ecapeVariable('$sku');
 
@@ -2687,7 +2723,7 @@ class PurchasesProductsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ProductPurchase> get(core.String packageName, core.String productId, core.String token) {
     var _url = null;
@@ -2706,7 +2742,6 @@ class PurchasesProductsResourceApi {
     if (token == null) {
       throw new core.ArgumentError("Parameter token is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/products/' + commons.Escaper.ecapeVariable('$productId') + '/tokens/' + commons.Escaper.ecapeVariable('$token');
 
@@ -2748,7 +2783,7 @@ class PurchasesSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future cancel(core.String packageName, core.String subscriptionId, core.String token) {
     var _url = null;
@@ -2805,7 +2840,7 @@ class PurchasesSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SubscriptionPurchasesDeferResponse> defer(SubscriptionPurchasesDeferRequest request, core.String packageName, core.String subscriptionId, core.String token) {
     var _url = null;
@@ -2827,7 +2862,6 @@ class PurchasesSubscriptionsResourceApi {
     if (token == null) {
       throw new core.ArgumentError("Parameter token is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + commons.Escaper.ecapeVariable('$token') + ':defer';
 
@@ -2862,7 +2896,7 @@ class PurchasesSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SubscriptionPurchase> get(core.String packageName, core.String subscriptionId, core.String token) {
     var _url = null;
@@ -2881,7 +2915,6 @@ class PurchasesSubscriptionsResourceApi {
     if (token == null) {
       throw new core.ArgumentError("Parameter token is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + commons.Escaper.ecapeVariable('$token');
 
@@ -2914,7 +2947,7 @@ class PurchasesSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future refund(core.String packageName, core.String subscriptionId, core.String token) {
     var _url = null;
@@ -2967,7 +3000,7 @@ class PurchasesSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future revoke(core.String packageName, core.String subscriptionId, core.String token) {
     var _url = null;
@@ -3008,10 +3041,8 @@ class PurchasesSubscriptionsResourceApi {
 class Apk {
   /** Information about the binary payload of this APK. */
   ApkBinary binary;
-
   /** The version code of the APK, as specified in the APK's manifest file. */
   core.int versionCode;
-
 
   Apk();
 
@@ -3036,7 +3067,6 @@ class Apk {
   }
 }
 
-
 /** Represents the binary payload of an APK. */
 class ApkBinary {
   /**
@@ -3044,7 +3074,6 @@ class ApkBinary {
    * output of the sha1sum command.
    */
   core.String sha1;
-
 
   ApkBinary();
 
@@ -3063,14 +3092,11 @@ class ApkBinary {
   }
 }
 
-
 class ApkListing {
   /** The language code, in BCP 47 format (eg "en-US"). */
   core.String language;
-
   /** Describe what's new in your APK. */
   core.String recentChanges;
-
 
   ApkListing();
 
@@ -3095,16 +3121,13 @@ class ApkListing {
   }
 }
 
-
 class ApkListingsListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidpublisher#apkListingsListResponse".
    */
   core.String kind;
-
   core.List<ApkListing> listings;
-
 
   ApkListingsListResponse();
 
@@ -3129,11 +3152,9 @@ class ApkListingsListResponse {
   }
 }
 
-
 class ApksAddExternallyHostedRequest {
   /** The definition of the externally-hosted APK and where it is located. */
   ExternallyHostedApk externallyHostedApk;
-
 
   ApksAddExternallyHostedRequest();
 
@@ -3152,11 +3173,9 @@ class ApksAddExternallyHostedRequest {
   }
 }
 
-
 class ApksAddExternallyHostedResponse {
   /** The definition of the externally-hosted APK and where it is located. */
   ExternallyHostedApk externallyHostedApk;
-
 
   ApksAddExternallyHostedResponse();
 
@@ -3175,16 +3194,13 @@ class ApksAddExternallyHostedResponse {
   }
 }
 
-
 class ApksListResponse {
   core.List<Apk> apks;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidpublisher#apksListResponse".
    */
   core.String kind;
-
 
   ApksListResponse();
 
@@ -3209,20 +3225,15 @@ class ApksListResponse {
   }
 }
 
-
 class AppDetails {
   /** The user-visible support email for this app. */
   core.String contactEmail;
-
   /** The user-visible support telephone number for this app. */
   core.String contactPhone;
-
   /** The user-visible website for this app. */
   core.String contactWebsite;
-
   /** Default language code, in BCP 47 format (eg "en-US"). */
   core.String defaultLanguage;
-
 
   AppDetails();
 
@@ -3259,7 +3270,6 @@ class AppDetails {
   }
 }
 
-
 /**
  * Represents an edit of an app. An edit allows clients to make multiple changes
  * before committing them in one operation.
@@ -3270,10 +3280,8 @@ class AppEdit {
    * in any subsequent API calls (encoded as seconds since the Epoch).
    */
   core.String expiryTimeSeconds;
-
   /** The ID of the edit that can be used in subsequent API calls. */
   core.String id;
-
 
   AppEdit();
 
@@ -3298,6 +3306,96 @@ class AppEdit {
   }
 }
 
+/**
+ * An Entitlement resource indicates a user's current entitlement to an inapp
+ * item or subscription.
+ */
+class Entitlement {
+  /**
+   * This kind represents an entitlement object in the androidpublisher service.
+   */
+  core.String kind;
+  /** The SKU of the product. */
+  core.String productId;
+  /**
+   * The type of the inapp product. Possible values are:
+   * - In-app item: "inapp"
+   * - Subscription: "subs"
+   */
+  core.String productType;
+  /**
+   * The token which can be verified using the subscriptions or products API.
+   */
+  core.String token;
+
+  Entitlement();
+
+  Entitlement.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("productType")) {
+      productType = _json["productType"];
+    }
+    if (_json.containsKey("token")) {
+      token = _json["token"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (productType != null) {
+      _json["productType"] = productType;
+    }
+    if (token != null) {
+      _json["token"] = token;
+    }
+    return _json;
+  }
+}
+
+class EntitlementsListResponse {
+  PageInfo pageInfo;
+  core.List<Entitlement> resources;
+  TokenPagination tokenPagination;
+
+  EntitlementsListResponse();
+
+  EntitlementsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("resources")) {
+      resources = _json["resources"].map((value) => new Entitlement.fromJson(value)).toList();
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (resources != null) {
+      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    return _json;
+  }
+}
 
 class ExpansionFile {
   /**
@@ -3306,13 +3404,11 @@ class ExpansionFile {
    * value is the size of the uploaded Expansion File in bytes.
    */
   core.String fileSize;
-
   /**
    * If set this APK's Expansion File references another APK's Expansion File.
    * The file_size field will not be set.
    */
   core.int referencesVersion;
-
 
   ExpansionFile();
 
@@ -3337,10 +3433,8 @@ class ExpansionFile {
   }
 }
 
-
 class ExpansionFilesUploadResponse {
   ExpansionFile expansionFile;
-
 
   ExpansionFilesUploadResponse();
 
@@ -3359,7 +3453,6 @@ class ExpansionFilesUploadResponse {
   }
 }
 
-
 /**
  * Defines an APK available for this application that is hosted externally and
  * not uploaded to Google Play. This function is only available to enterprises
@@ -3369,57 +3462,42 @@ class ExpansionFilesUploadResponse {
 class ExternallyHostedApk {
   /** The application label. */
   core.String applicationLabel;
-
   /**
    * A certificate (or array of certificates if a certificate-chain is used)
    * used to signed this APK, represented as a base64 encoded byte array.
    */
   core.List<core.String> certificateBase64s;
-
   /** The URL at which the APK is hosted. This must be an https URL. */
   core.String externallyHostedUrl;
-
   /**
    * The SHA1 checksum of this APK, represented as a base64 encoded byte array.
    */
   core.String fileSha1Base64;
-
   /**
    * The SHA256 checksum of this APK, represented as a base64 encoded byte
    * array.
    */
   core.String fileSha256Base64;
-
   /** The file size in bytes of this APK. */
   core.String fileSize;
-
   /** The icon image from the APK, as a base64 encoded byte array. */
   core.String iconBase64;
-
   /** The maximum SDK supported by this APK (optional). */
   core.int maximumSdk;
-
   /** The minimum SDK targeted by this APK. */
   core.int minimumSdk;
-
   /** The native code environments supported by this APK (optional). */
   core.List<core.String> nativeCodes;
-
   /** The package name. */
   core.String packageName;
-
   /** The features required by this APK (optional). */
   core.List<core.String> usesFeatures;
-
   /** The permissions requested by this APK. */
   core.List<ExternallyHostedApkUsesPermission> usesPermissions;
-
   /** The version code of this APK. */
   core.int versionCode;
-
   /** The version name of this APK. */
   core.String versionName;
-
 
   ExternallyHostedApk();
 
@@ -3522,17 +3600,14 @@ class ExternallyHostedApk {
   }
 }
 
-
 /** A permission used by this APK. */
 class ExternallyHostedApkUsesPermission {
   /**
    * Optionally, the maximum SDK version for which the permission is required.
    */
   core.int maxSdkVersion;
-
   /** The name of the permission requested. */
   core.String name;
-
 
   ExternallyHostedApkUsesPermission();
 
@@ -3557,17 +3632,13 @@ class ExternallyHostedApkUsesPermission {
   }
 }
 
-
 class Image {
   /** A unique id representing this image. */
   core.String id;
-
   /** A sha1 hash of the image that was uploaded. */
   core.String sha1;
-
   /** A URL that will serve a preview of the image. */
   core.String url;
-
 
   Image();
 
@@ -3598,10 +3669,8 @@ class Image {
   }
 }
 
-
 class ImagesDeleteAllResponse {
   core.List<Image> deleted;
-
 
   ImagesDeleteAllResponse();
 
@@ -3620,10 +3689,8 @@ class ImagesDeleteAllResponse {
   }
 }
 
-
 class ImagesListResponse {
   core.List<Image> images;
-
 
   ImagesListResponse();
 
@@ -3642,10 +3709,8 @@ class ImagesListResponse {
   }
 }
 
-
 class ImagesUploadResponse {
   Image image;
-
 
   ImagesUploadResponse();
 
@@ -3664,59 +3729,47 @@ class ImagesUploadResponse {
   }
 }
 
-
 class InAppProduct {
   /**
    * The default language of the localized data, as defined by BCP 47. e.g.
    * "en-US", "en-GB".
    */
   core.String defaultLanguage;
-
   /**
    * Default price cannot be zero. In-app products can never be free. Default
    * price is always in the developer's Checkout merchant currency.
    */
   Price defaultPrice;
-
   /** List of localized title and description data. */
   core.Map<core.String, InAppProductListing> listings;
-
   /** The package name of the parent app. */
   core.String packageName;
-
   /**
    * Prices per buyer region. None of these prices should be zero. In-app
    * products can never be free.
    */
   core.Map<core.String, Price> prices;
-
   /** Purchase type enum value. Unmodifiable after creation. */
   core.String purchaseType;
-
   /**
    * Definition of a season for a seasonal subscription. Can be defined only for
    * yearly subscriptions.
    */
   Season season;
-
   /** The stock-keeping-unit (SKU) of the product, unique within an app. */
   core.String sku;
-
   core.String status;
-
   /**
    * The period of the subscription (if any), i.e. period at which payments must
    * happen. Defined as ISO 8601 duration, i.e. "P1M" for 1 month period.
    */
   core.String subscriptionPeriod;
-
   /**
    * Trial period, specified in ISO 8601 format. Acceptable values are anything
    * between "P7D" (seven days) and "P999D" (999 days). Seasonal subscriptions
    * cannot have a trial period.
    */
   core.String trialPeriod;
-
 
   InAppProduct();
 
@@ -3795,12 +3848,9 @@ class InAppProduct {
   }
 }
 
-
 class InAppProductListing {
   core.String description;
-
   core.String title;
-
 
   InAppProductListing();
 
@@ -3825,10 +3875,8 @@ class InAppProductListing {
   }
 }
 
-
 class InappproductsBatchRequest {
   core.List<InappproductsBatchRequestEntry> entrys;
-
 
   InappproductsBatchRequest();
 
@@ -3847,16 +3895,11 @@ class InappproductsBatchRequest {
   }
 }
 
-
 class InappproductsBatchRequestEntry {
   core.int batchId;
-
   InappproductsInsertRequest inappproductsinsertrequest;
-
   InappproductsUpdateRequest inappproductsupdaterequest;
-
   core.String methodName;
-
 
   InappproductsBatchRequestEntry();
 
@@ -3893,16 +3936,13 @@ class InappproductsBatchRequestEntry {
   }
 }
 
-
 class InappproductsBatchResponse {
   core.List<InappproductsBatchResponseEntry> entrys;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidpublisher#inappproductsBatchResponse".
    */
   core.String kind;
-
 
   InappproductsBatchResponse();
 
@@ -3927,14 +3967,10 @@ class InappproductsBatchResponse {
   }
 }
 
-
 class InappproductsBatchResponseEntry {
   core.int batchId;
-
   InappproductsInsertResponse inappproductsinsertresponse;
-
   InappproductsUpdateResponse inappproductsupdateresponse;
-
 
   InappproductsBatchResponseEntry();
 
@@ -3965,10 +4001,8 @@ class InappproductsBatchResponseEntry {
   }
 }
 
-
 class InappproductsInsertRequest {
   InAppProduct inappproduct;
-
 
   InappproductsInsertRequest();
 
@@ -3987,10 +4021,8 @@ class InappproductsInsertRequest {
   }
 }
 
-
 class InappproductsInsertResponse {
   InAppProduct inappproduct;
-
 
   InappproductsInsertResponse();
 
@@ -4009,20 +4041,15 @@ class InappproductsInsertResponse {
   }
 }
 
-
 class InappproductsListResponse {
   core.List<InAppProduct> inappproduct;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidpublisher#inappproductsListResponse".
    */
   core.String kind;
-
   PageInfo pageInfo;
-
   TokenPagination tokenPagination;
-
 
   InappproductsListResponse();
 
@@ -4059,10 +4086,8 @@ class InappproductsListResponse {
   }
 }
 
-
 class InappproductsUpdateRequest {
   InAppProduct inappproduct;
-
 
   InappproductsUpdateRequest();
 
@@ -4081,10 +4106,8 @@ class InappproductsUpdateRequest {
   }
 }
 
-
 class InappproductsUpdateResponse {
   InAppProduct inappproduct;
-
 
   InappproductsUpdateResponse();
 
@@ -4103,28 +4126,22 @@ class InappproductsUpdateResponse {
   }
 }
 
-
 class Listing {
   /**
    * Full description of the app; this may be up to 4000 characters in length.
    */
   core.String fullDescription;
-
   /** Language localization code (for example, "de-AT" for Austrian German). */
   core.String language;
-
   /**
    * Short description of the app (previously known as promo text); this may be
    * up to 80 characters in length.
    */
   core.String shortDescription;
-
   /** App's localized title. */
   core.String title;
-
   /** URL of a promotional YouTube video for the app. */
   core.String video;
-
 
   Listing();
 
@@ -4167,16 +4184,13 @@ class Listing {
   }
 }
 
-
 class ListingsListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidpublisher#listingsListResponse".
    */
   core.String kind;
-
   core.List<Listing> listings;
-
 
   ListingsListResponse();
 
@@ -4201,17 +4215,14 @@ class ListingsListResponse {
   }
 }
 
-
 class MonthDay {
   /**
    * Day of a month, value in [1, 31] range. Valid range depends on the
    * specified month.
    */
   core.int day;
-
   /** Month of a year. e.g. 1 = JAN, 2 = FEB etc. */
   core.int month;
-
 
   MonthDay();
 
@@ -4236,14 +4247,10 @@ class MonthDay {
   }
 }
 
-
 class PageInfo {
   core.int resultPerPage;
-
   core.int startIndex;
-
   core.int totalResults;
-
 
   PageInfo();
 
@@ -4274,16 +4281,13 @@ class PageInfo {
   }
 }
 
-
 class Price {
   /** 3 letter Currency code, as defined by ISO 4217. */
   core.String currency;
-
   /**
    * The price in millionths of the currency base unit represented as a string.
    */
   core.String priceMicros;
-
 
   Price();
 
@@ -4308,7 +4312,6 @@ class Price {
   }
 }
 
-
 /**
  * A ProductPurchase resource indicates the status of a user's inapp product
  * purchase.
@@ -4320,32 +4323,27 @@ class ProductPurchase {
    * - Consumed
    */
   core.int consumptionState;
-
   /**
    * A developer-specified string that contains supplemental information about
    * an order.
    */
   core.String developerPayload;
-
   /**
    * This kind represents an inappPurchase object in the androidpublisher
    * service.
    */
   core.String kind;
-
   /**
    * The purchase state of the order. Possible values are:
    * - Purchased
    * - Cancelled
    */
   core.int purchaseState;
-
   /**
    * The time the product was purchased, in milliseconds since the epoch (Jan 1,
    * 1970).
    */
   core.String purchaseTimeMillis;
-
 
   ProductPurchase();
 
@@ -4388,14 +4386,11 @@ class ProductPurchase {
   }
 }
 
-
 class Season {
   /** Inclusive end date of the recurrence period. */
   MonthDay end;
-
   /** Inclusive start date of the recurrence period. */
   MonthDay start;
-
 
   Season();
 
@@ -4420,7 +4415,6 @@ class Season {
   }
 }
 
-
 /**
  * A SubscriptionDeferralInfo contains the data needed to defer a subscription
  * purchase to a future expiry time.
@@ -4432,14 +4426,12 @@ class SubscriptionDeferralInfo {
    * subscription.
    */
   core.String desiredExpiryTimeMillis;
-
   /**
    * The expected expiry time for the subscription. If the current expiry time
    * for the subscription is not the value specified here, the deferral will not
    * occur.
    */
   core.String expectedExpiryTimeMillis;
-
 
   SubscriptionDeferralInfo();
 
@@ -4464,7 +4456,6 @@ class SubscriptionDeferralInfo {
   }
 }
 
-
 /**
  * A SubscriptionPurchase resource indicates the status of a user's subscription
  * purchase.
@@ -4475,23 +4466,19 @@ class SubscriptionPurchase {
    * current expiry time.
    */
   core.bool autoRenewing;
-
   /**
    * Time at which the subscription will expire, in milliseconds since Epoch.
    */
   core.String expiryTimeMillis;
-
   /**
    * This kind represents a subscriptionPurchase object in the androidpublisher
    * service.
    */
   core.String kind;
-
   /**
    * Time at which the subscription was granted, in milliseconds since Epoch.
    */
   core.String startTimeMillis;
-
 
   SubscriptionPurchase();
 
@@ -4528,13 +4515,11 @@ class SubscriptionPurchase {
   }
 }
 
-
 class SubscriptionPurchasesDeferRequest {
   /**
    * The information about the new desired expiry time for the subscription.
    */
   SubscriptionDeferralInfo deferralInfo;
-
 
   SubscriptionPurchasesDeferRequest();
 
@@ -4553,13 +4538,11 @@ class SubscriptionPurchasesDeferRequest {
   }
 }
 
-
 class SubscriptionPurchasesDeferResponse {
   /**
    * The new expiry time for the subscription in milliseconds since the Epoch.
    */
   core.String newExpiryTimeMillis;
-
 
   SubscriptionPurchasesDeferResponse();
 
@@ -4578,12 +4561,9 @@ class SubscriptionPurchasesDeferResponse {
   }
 }
 
-
 class Testers {
   core.List<core.String> googleGroups;
-
   core.List<core.String> googlePlusCommunities;
-
 
   Testers();
 
@@ -4608,12 +4588,9 @@ class Testers {
   }
 }
 
-
 class TokenPagination {
   core.String nextPageToken;
-
   core.String previousPageToken;
-
 
   TokenPagination();
 
@@ -4638,14 +4615,10 @@ class TokenPagination {
   }
 }
 
-
 class Track {
   core.String track;
-
   core.double userFraction;
-
   core.List<core.int> versionCodes;
-
 
   Track();
 
@@ -4676,16 +4649,13 @@ class Track {
   }
 }
 
-
 class TracksListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "androidpublisher#tracksListResponse".
    */
   core.String kind;
-
   core.List<Track> tracks;
-
 
   TracksListResponse();
 

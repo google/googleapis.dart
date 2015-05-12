@@ -57,7 +57,7 @@ class ArchiveResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Groups> insert(core.String groupId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -101,10 +101,8 @@ class ArchiveResourceApi {
 class Groups {
   /** The kind of insert resource this is. */
   core.String kind;
-
   /** The status of the insert request. */
   core.String responseCode;
-
 
   Groups();
 

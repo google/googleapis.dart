@@ -60,7 +60,7 @@ class AclResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String calendarId, core.String ruleId) {
     var _url = null;
@@ -106,7 +106,7 @@ class AclResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AclRule> get(core.String calendarId, core.String ruleId) {
     var _url = null;
@@ -122,7 +122,6 @@ class AclResourceApi {
     if (ruleId == null) {
       throw new core.ArgumentError("Parameter ruleId is required.");
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/' + commons.Escaper.ecapeVariable('$ruleId');
 
@@ -151,7 +150,7 @@ class AclResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AclRule> insert(AclRule request, core.String calendarId) {
     var _url = null;
@@ -167,7 +166,6 @@ class AclResourceApi {
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
@@ -215,7 +213,7 @@ class AclResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Acl> list(core.String calendarId, {core.int maxResults, core.String pageToken, core.bool showDeleted, core.String syncToken}) {
     var _url = null;
@@ -240,7 +238,6 @@ class AclResourceApi {
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
@@ -271,7 +268,7 @@ class AclResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AclRule> patch(AclRule request, core.String calendarId, core.String ruleId) {
     var _url = null;
@@ -290,7 +287,6 @@ class AclResourceApi {
     if (ruleId == null) {
       throw new core.ArgumentError("Parameter ruleId is required.");
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/' + commons.Escaper.ecapeVariable('$ruleId');
 
@@ -321,7 +317,7 @@ class AclResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AclRule> update(AclRule request, core.String calendarId, core.String ruleId) {
     var _url = null;
@@ -340,7 +336,6 @@ class AclResourceApi {
     if (ruleId == null) {
       throw new core.ArgumentError("Parameter ruleId is required.");
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/' + commons.Escaper.ecapeVariable('$ruleId');
 
@@ -390,7 +385,7 @@ class AclResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Channel> watch(Channel request, core.String calendarId, {core.int maxResults, core.String pageToken, core.bool showDeleted, core.String syncToken}) {
     var _url = null;
@@ -418,7 +413,6 @@ class AclResourceApi {
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/watch';
 
@@ -452,7 +446,7 @@ class CalendarListResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String calendarId) {
     var _url = null;
@@ -493,7 +487,7 @@ class CalendarListResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CalendarListEntry> get(core.String calendarId) {
     var _url = null;
@@ -506,7 +500,6 @@ class CalendarListResourceApi {
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
     }
-
 
     _url = 'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
@@ -538,7 +531,7 @@ class CalendarListResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CalendarListEntry> insert(CalendarListEntry request, {core.bool colorRgbFormat}) {
     var _url = null;
@@ -554,7 +547,6 @@ class CalendarListResourceApi {
     if (colorRgbFormat != null) {
       _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
     }
-
 
     _url = 'users/me/calendarList';
 
@@ -578,7 +570,7 @@ class CalendarListResourceApi {
    * 250 entries. Optional.
    *
    * [minAccessRole] - The minimum access role for the user in the returned
-   * entires. Optional. The default is no restriction.
+   * entries. Optional. The default is no restriction.
    * Possible string values are:
    * - "freeBusyReader" : The user can read free/busy information.
    * - "owner" : The user can read and modify events and access control lists.
@@ -614,7 +606,7 @@ class CalendarListResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CalendarList> list({core.int maxResults, core.String minAccessRole, core.String pageToken, core.bool showDeleted, core.bool showHidden, core.String syncToken}) {
     var _url = null;
@@ -642,7 +634,6 @@ class CalendarListResourceApi {
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
     }
-
 
     _url = 'users/me/calendarList';
 
@@ -677,7 +668,7 @@ class CalendarListResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CalendarListEntry> patch(CalendarListEntry request, core.String calendarId, {core.bool colorRgbFormat}) {
     var _url = null;
@@ -696,7 +687,6 @@ class CalendarListResourceApi {
     if (colorRgbFormat != null) {
       _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
     }
-
 
     _url = 'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
@@ -730,7 +720,7 @@ class CalendarListResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CalendarListEntry> update(CalendarListEntry request, core.String calendarId, {core.bool colorRgbFormat}) {
     var _url = null;
@@ -749,7 +739,6 @@ class CalendarListResourceApi {
     if (colorRgbFormat != null) {
       _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
     }
-
 
     _url = 'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
@@ -775,7 +764,7 @@ class CalendarListResourceApi {
    * 250 entries. Optional.
    *
    * [minAccessRole] - The minimum access role for the user in the returned
-   * entires. Optional. The default is no restriction.
+   * entries. Optional. The default is no restriction.
    * Possible string values are:
    * - "freeBusyReader" : The user can read free/busy information.
    * - "owner" : The user can read and modify events and access control lists.
@@ -811,7 +800,7 @@ class CalendarListResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Channel> watch(Channel request, {core.int maxResults, core.String minAccessRole, core.String pageToken, core.bool showDeleted, core.bool showHidden, core.String syncToken}) {
     var _url = null;
@@ -842,7 +831,6 @@ class CalendarListResourceApi {
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
     }
-
 
     _url = 'users/me/calendarList/watch';
 
@@ -877,7 +865,7 @@ class CalendarsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future clear(core.String calendarId) {
     var _url = null;
@@ -917,7 +905,7 @@ class CalendarsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String calendarId) {
     var _url = null;
@@ -958,7 +946,7 @@ class CalendarsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Calendar> get(core.String calendarId) {
     var _url = null;
@@ -971,7 +959,6 @@ class CalendarsResourceApi {
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
@@ -998,7 +985,7 @@ class CalendarsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Calendar> insert(Calendar request) {
     var _url = null;
@@ -1011,7 +998,6 @@ class CalendarsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'calendars';
 
@@ -1040,7 +1026,7 @@ class CalendarsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Calendar> patch(Calendar request, core.String calendarId) {
     var _url = null;
@@ -1056,7 +1042,6 @@ class CalendarsResourceApi {
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
@@ -1085,7 +1070,7 @@ class CalendarsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Calendar> update(Calendar request, core.String calendarId) {
     var _url = null;
@@ -1101,7 +1086,6 @@ class CalendarsResourceApi {
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
@@ -1135,7 +1119,7 @@ class ChannelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future stop(Channel request) {
     var _url = null;
@@ -1183,7 +1167,7 @@ class ColorsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Colors> get() {
     var _url = null;
@@ -1192,7 +1176,6 @@ class ColorsResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'colors';
@@ -1232,7 +1215,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String calendarId, core.String eventId, {core.bool sendNotifications}) {
     var _url = null;
@@ -1295,7 +1278,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Event> get(core.String calendarId, core.String eventId, {core.bool alwaysIncludeEmail, core.int maxAttendees, core.String timeZone}) {
     var _url = null;
@@ -1320,7 +1303,6 @@ class EventsResourceApi {
     if (timeZone != null) {
       _queryParams["timeZone"] = [timeZone];
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
 
@@ -1350,7 +1332,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Event> import(Event request, core.String calendarId) {
     var _url = null;
@@ -1366,7 +1348,6 @@ class EventsResourceApi {
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/import';
 
@@ -1402,7 +1383,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Event> insert(Event request, core.String calendarId, {core.int maxAttendees, core.bool sendNotifications}) {
     var _url = null;
@@ -1424,7 +1405,6 @@ class EventsResourceApi {
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
 
@@ -1486,7 +1466,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Events> instances(core.String calendarId, core.String eventId, {core.bool alwaysIncludeEmail, core.int maxAttendees, core.int maxResults, core.String originalStart, core.String pageToken, core.bool showDeleted, core.DateTime timeMax, core.DateTime timeMin, core.String timeZone}) {
     var _url = null;
@@ -1529,7 +1509,6 @@ class EventsResourceApi {
     if (timeZone != null) {
       _queryParams["timeZone"] = [timeZone];
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId') + '/instances';
 
@@ -1646,7 +1625,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Events> list(core.String calendarId, {core.bool alwaysIncludeEmail, core.String iCalUID, core.int maxAttendees, core.int maxResults, core.String orderBy, core.String pageToken, core.List<core.String> privateExtendedProperty, core.String q, core.List<core.String> sharedExtendedProperty, core.bool showDeleted, core.bool showHiddenInvitations, core.bool singleEvents, core.String syncToken, core.DateTime timeMax, core.DateTime timeMin, core.String timeZone, core.DateTime updatedMin}) {
     var _url = null;
@@ -1711,7 +1690,6 @@ class EventsResourceApi {
       _queryParams["updatedMin"] = [(updatedMin).toIso8601String()];
     }
 
-
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
 
     var _response = _requester.request(_url,
@@ -1746,7 +1724,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Event> move(core.String calendarId, core.String eventId, core.String destination, {core.bool sendNotifications}) {
     var _url = null;
@@ -1769,7 +1747,6 @@ class EventsResourceApi {
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId') + '/move';
 
@@ -1815,7 +1792,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Event> patch(Event request, core.String calendarId, core.String eventId, {core.bool alwaysIncludeEmail, core.int maxAttendees, core.bool sendNotifications}) {
     var _url = null;
@@ -1843,7 +1820,6 @@ class EventsResourceApi {
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
 
@@ -1875,7 +1851,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Event> quickAdd(core.String calendarId, core.String text, {core.bool sendNotifications}) {
     var _url = null;
@@ -1895,7 +1871,6 @@ class EventsResourceApi {
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/quickAdd';
 
@@ -1941,7 +1916,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Event> update(Event request, core.String calendarId, core.String eventId, {core.bool alwaysIncludeEmail, core.int maxAttendees, core.bool sendNotifications}) {
     var _url = null;
@@ -1969,7 +1944,6 @@ class EventsResourceApi {
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
     }
-
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
 
@@ -2088,7 +2062,7 @@ class EventsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Channel> watch(Channel request, core.String calendarId, {core.bool alwaysIncludeEmail, core.String iCalUID, core.int maxAttendees, core.int maxResults, core.String orderBy, core.String pageToken, core.List<core.String> privateExtendedProperty, core.String q, core.List<core.String> sharedExtendedProperty, core.bool showDeleted, core.bool showHiddenInvitations, core.bool singleEvents, core.String syncToken, core.DateTime timeMax, core.DateTime timeMin, core.String timeZone, core.DateTime updatedMin}) {
     var _url = null;
@@ -2156,7 +2130,6 @@ class EventsResourceApi {
       _queryParams["updatedMin"] = [(updatedMin).toIso8601String()];
     }
 
-
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/watch';
 
     var _response = _requester.request(_url,
@@ -2191,7 +2164,7 @@ class FreebusyResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FreeBusyResponse> query(FreeBusyRequest request) {
     var _url = null;
@@ -2204,7 +2177,6 @@ class FreebusyResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'freeBusy';
 
@@ -2240,7 +2212,7 @@ class SettingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Setting> get(core.String setting) {
     var _url = null;
@@ -2253,7 +2225,6 @@ class SettingsResourceApi {
     if (setting == null) {
       throw new core.ArgumentError("Parameter setting is required.");
     }
-
 
     _url = 'users/me/settings/' + commons.Escaper.ecapeVariable('$setting');
 
@@ -2293,7 +2264,7 @@ class SettingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Settings> list({core.int maxResults, core.String pageToken, core.String syncToken}) {
     var _url = null;
@@ -2312,7 +2283,6 @@ class SettingsResourceApi {
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
     }
-
 
     _url = 'users/me/settings';
 
@@ -2354,7 +2324,7 @@ class SettingsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Channel> watch(Channel request, {core.int maxResults, core.String pageToken, core.String syncToken}) {
     var _url = null;
@@ -2377,7 +2347,6 @@ class SettingsResourceApi {
       _queryParams["syncToken"] = [syncToken];
     }
 
-
     _url = 'users/me/settings/watch';
 
     var _response = _requester.request(_url,
@@ -2397,26 +2366,21 @@ class SettingsResourceApi {
 class Acl {
   /** ETag of the collection. */
   core.String etag;
-
   /** List of rules on the access control list. */
   core.List<AclRule> items;
-
   /** Type of the collection ("calendar#acl"). */
   core.String kind;
-
   /**
    * Token used to access the next page of this result. Omitted if no further
    * results are available, in which case nextSyncToken is provided.
    */
   core.String nextPageToken;
-
   /**
    * Token used at a later point in time to retrieve only the entries that have
    * changed since this result was returned. Omitted if further results are
    * available, in which case nextPageToken is provided.
    */
   core.String nextSyncToken;
-
 
   Acl();
 
@@ -2459,7 +2423,6 @@ class Acl {
   }
 }
 
-
 /** The scope of the rule. */
 class AclRuleScope {
   /**
@@ -2471,13 +2434,11 @@ class AclRuleScope {
    * to the "default", or public, scope apply to any user, authenticated or not.
    */
   core.String type;
-
   /**
    * The email address of a user or group, or the name of a domain, depending on
    * the scope type. Omitted for type "default".
    */
   core.String value;
-
 
   AclRuleScope();
 
@@ -2502,17 +2463,13 @@ class AclRuleScope {
   }
 }
 
-
 class AclRule {
   /** ETag of the resource. */
   core.String etag;
-
   /** Identifier of the ACL rule. */
   core.String id;
-
   /** Type of the resource ("calendar#aclRule"). */
   core.String kind;
-
   /**
    * The role assigned to the scope. Possible values are:
    * - "none" - Provides no access.
@@ -2526,10 +2483,8 @@ class AclRule {
    * manipulate ACLs.
    */
   core.String role;
-
   /** The scope of the rule. */
   AclRuleScope scope;
-
 
   AclRule();
 
@@ -2572,32 +2527,24 @@ class AclRule {
   }
 }
 
-
 class Calendar {
   /** Description of the calendar. Optional. */
   core.String description;
-
   /** ETag of the resource. */
   core.String etag;
-
   /** Identifier of the calendar. */
   core.String id;
-
   /** Type of the resource ("calendar#calendar"). */
   core.String kind;
-
   /** Geographic location of the calendar as free-form text. Optional. */
   core.String location;
-
   /** Title of the calendar. */
   core.String summary;
-
   /**
    * The time zone of the calendar. (Formatted as an IANA Time Zone Database
    * name, e.g. "Europe/Zurich".) Optional.
    */
   core.String timeZone;
-
 
   Calendar();
 
@@ -2652,30 +2599,24 @@ class Calendar {
   }
 }
 
-
 class CalendarList {
   /** ETag of the collection. */
   core.String etag;
-
   /** Calendars that are present on the user's calendar list. */
   core.List<CalendarListEntry> items;
-
   /** Type of the collection ("calendar#calendarList"). */
   core.String kind;
-
   /**
    * Token used to access the next page of this result. Omitted if no further
    * results are available, in which case nextSyncToken is provided.
    */
   core.String nextPageToken;
-
   /**
    * Token used at a later point in time to retrieve only the entries that have
    * changed since this result was returned. Omitted if further results are
    * available, in which case nextPageToken is provided.
    */
   core.String nextSyncToken;
-
 
   CalendarList();
 
@@ -2718,14 +2659,12 @@ class CalendarList {
   }
 }
 
-
 /**
  * The notifications that the authenticated user is receiving for this calendar.
  */
 class CalendarListEntryNotificationSettings {
   /** The list of notifications set for this calendar. */
   core.List<CalendarNotification> notifications;
-
 
   CalendarListEntryNotificationSettings();
 
@@ -2744,7 +2683,6 @@ class CalendarListEntryNotificationSettings {
   }
 }
 
-
 class CalendarListEntry {
   /**
    * The effective access role that the authenticated user has on the calendar.
@@ -2759,90 +2697,72 @@ class CalendarListEntry {
    * manipulate ACLs.
    */
   core.String accessRole;
-
   /**
    * The main color of the calendar in the hexadecimal format "#0088aa". This
    * property supersedes the index-based colorId property. Optional.
    */
   core.String backgroundColor;
-
   /**
    * The color of the calendar. This is an ID referring to an entry in the
    * calendar section of the colors definition (see the colors endpoint).
    * Optional.
    */
   core.String colorId;
-
   /**
    * The default reminders that the authenticated user has for this calendar.
    */
   core.List<EventReminder> defaultReminders;
-
   /**
    * Whether this calendar list entry has been deleted from the calendar list.
    * Read-only. Optional. The default is False.
    */
   core.bool deleted;
-
   /** Description of the calendar. Optional. Read-only. */
   core.String description;
-
   /** ETag of the resource. */
   core.String etag;
-
   /**
    * The foreground color of the calendar in the hexadecimal format "#ffffff".
    * This property supersedes the index-based colorId property. Optional.
    */
   core.String foregroundColor;
-
   /**
    * Whether the calendar has been hidden from the list. Optional. The default
    * is False.
    */
   core.bool hidden;
-
   /** Identifier of the calendar. */
   core.String id;
-
   /** Type of the resource ("calendar#calendarListEntry"). */
   core.String kind;
-
   /**
    * Geographic location of the calendar as free-form text. Optional. Read-only.
    */
   core.String location;
-
   /**
    * The notifications that the authenticated user is receiving for this
    * calendar.
    */
   CalendarListEntryNotificationSettings notificationSettings;
-
   /**
    * Whether the calendar is the primary calendar of the authenticated user.
    * Read-only. Optional. The default is False.
    */
   core.bool primary;
-
   /**
    * Whether the calendar content shows up in the calendar UI. Optional. The
    * default is False.
    */
   core.bool selected;
-
   /** Title of the calendar. Read-only. */
   core.String summary;
-
   /**
    * The summary that the authenticated user has set for this calendar.
    * Optional.
    */
   core.String summaryOverride;
-
   /** The time zone of the calendar. Optional. Read-only. */
   core.String timeZone;
-
 
   CalendarListEntry();
 
@@ -2963,7 +2883,6 @@ class CalendarListEntry {
   }
 }
 
-
 class CalendarNotification {
   /**
    * The method used to deliver the notification. Possible values are:
@@ -2972,7 +2891,6 @@ class CalendarNotification {
    * ignored on inserts and updates.
    */
   core.String method;
-
   /**
    * The type of notification. Possible values are:
    * - "eventCreation" - Notification sent when a new event is put on the
@@ -2984,7 +2902,6 @@ class CalendarNotification {
    * morning).
    */
   core.String type;
-
 
   CalendarNotification();
 
@@ -3009,50 +2926,39 @@ class CalendarNotification {
   }
 }
 
-
 class Channel {
   /** The address where notifications are delivered for this channel. */
   core.String address;
-
   /**
    * Date and time of notification channel expiration, expressed as a Unix
    * timestamp, in milliseconds. Optional.
    */
   core.String expiration;
-
   /** A UUID or similar unique string that identifies this channel. */
   core.String id;
-
   /**
    * Identifies this as a notification channel used to watch for changes to a
    * resource. Value: the fixed string "api#channel".
    */
   core.String kind;
-
   /** Additional parameters controlling delivery channel behavior. Optional. */
   core.Map<core.String, core.String> params;
-
   /** A Boolean value to indicate whether payload is wanted. Optional. */
   core.bool payload;
-
   /**
    * An opaque ID that identifies the resource being watched on this channel.
    * Stable across different API versions.
    */
   core.String resourceId;
-
   /** A version-specific identifier for the watched resource. */
   core.String resourceUri;
-
   /**
    * An arbitrary string delivered to the target address with each notification
    * delivered over this channel. Optional.
    */
   core.String token;
-
   /** The type of delivery mechanism used for this channel. */
   core.String type;
-
 
   Channel();
 
@@ -3125,17 +3031,14 @@ class Channel {
   }
 }
 
-
 class ColorDefinition {
   /** The background color associated with this color definition. */
   core.String background;
-
   /**
    * The foreground color that can be used to write on top of a background with
    * 'background' color.
    */
   core.String foreground;
-
 
   ColorDefinition();
 
@@ -3160,7 +3063,6 @@ class ColorDefinition {
   }
 }
 
-
 class Colors {
   /**
    * Palette of calendar colors, mapping from the color ID to its definition. A
@@ -3168,23 +3070,19 @@ class Colors {
    * field. Read-only.
    */
   core.Map<core.String, ColorDefinition> calendar;
-
   /**
    * Palette of event colors, mapping from the color ID to its definition. An
    * event resource may refer to one of these color IDs in its color field.
    * Read-only.
    */
   core.Map<core.String, ColorDefinition> event;
-
   /** Type of the resource ("calendar#colors"). */
   core.String kind;
-
   /**
    * Last modification time of the color palette (as a RFC 3339 timestamp).
    * Read-only.
    */
   core.DateTime updated;
-
 
   Colors();
 
@@ -3221,11 +3119,9 @@ class Colors {
   }
 }
 
-
 class Error {
   /** Domain, or broad category, of the error. */
   core.String domain;
-
   /**
    * Specific reason for the error. Some of the possible values are:
    * - "groupTooBig" - The group of users requested is too large for a single
@@ -3238,7 +3134,6 @@ class Error {
    * gracefully handle additional error statuses not included in this list.
    */
   core.String reason;
-
 
   Error();
 
@@ -3263,24 +3158,19 @@ class Error {
   }
 }
 
-
 /** The creator of the event. Read-only. */
 class EventCreator {
   /** The creator's name, if available. */
   core.String displayName;
-
   /** The creator's email address, if available. */
   core.String email;
-
   /** The creator's Profile ID, if available. */
   core.String id;
-
   /**
    * Whether the creator corresponds to the calendar on which this copy of the
    * event appears. Read-only. The default is False.
    */
   core.bool self;
-
 
   EventCreator();
 
@@ -3317,7 +3207,6 @@ class EventCreator {
   }
 }
 
-
 /** Extended properties of the event. */
 class EventExtendedProperties {
   /**
@@ -3325,13 +3214,11 @@ class EventExtendedProperties {
    * calendar.
    */
   core.Map<core.String, core.String> private;
-
   /**
    * Properties that are shared between copies of the event on other attendees'
    * calendars.
    */
   core.Map<core.String, core.String> shared;
-
 
   EventExtendedProperties();
 
@@ -3356,7 +3243,6 @@ class EventExtendedProperties {
   }
 }
 
-
 /** A gadget that extends this event. */
 class EventGadget {
   /**
@@ -3366,28 +3252,20 @@ class EventGadget {
    * - "chip" - The gadget displays when the event is clicked.
    */
   core.String display;
-
   /** The gadget's height in pixels. Optional. */
   core.int height;
-
   /** The gadget's icon URL. */
   core.String iconLink;
-
   /** The gadget's URL. */
   core.String link;
-
   /** Preferences. */
   core.Map<core.String, core.String> preferences;
-
   /** The gadget's title. */
   core.String title;
-
   /** The gadget's type. */
   core.String type;
-
   /** The gadget's width in pixels. Optional. */
   core.int width;
-
 
   EventGadget();
 
@@ -3448,7 +3326,6 @@ class EventGadget {
   }
 }
 
-
 /**
  * The organizer of the event. If the organizer is also an attendee, this is
  * indicated with a separate entry in attendees with the organizer field set to
@@ -3458,19 +3335,15 @@ class EventGadget {
 class EventOrganizer {
   /** The organizer's name, if available. */
   core.String displayName;
-
   /** The organizer's email address, if available. */
   core.String email;
-
   /** The organizer's Profile ID, if available. */
   core.String id;
-
   /**
    * Whether the organizer corresponds to the calendar on which this copy of the
    * event appears. Read-only. The default is False.
    */
   core.bool self;
-
 
   EventOrganizer();
 
@@ -3507,7 +3380,6 @@ class EventOrganizer {
   }
 }
 
-
 /** Information about the event's reminders for the authenticated user. */
 class EventReminders {
   /**
@@ -3516,10 +3388,8 @@ class EventReminders {
    * for this event.
    */
   core.List<EventReminder> overrides;
-
   /** Whether the default reminders of the calendar apply to the event. */
   core.bool useDefault;
-
 
   EventReminders();
 
@@ -3544,7 +3414,6 @@ class EventReminders {
   }
 }
 
-
 /**
  * Source of an event from which it was created; for example a web page, an
  * email message or any document identifiable by an URL using HTTP/HTTPS
@@ -3555,13 +3424,11 @@ class EventSource {
    * Title of the source; for example a title of a web page or an email subject.
    */
   core.String title;
-
   /**
    * URL of the source pointing to a resource. URL's protocol must be HTTP or
    * HTTPS.
    */
   core.String url;
-
 
   EventSource();
 
@@ -3586,17 +3453,14 @@ class EventSource {
   }
 }
 
-
 class Event {
   /**
    * Whether anyone can invite themselves to the event. Optional. The default is
    * False.
    */
   core.bool anyoneCanAddSelf;
-
   /** The attendees of the event. */
   core.List<EventAttendee> attendees;
-
   /**
    * Whether attendees may have been omitted from the event's representation.
    * When retrieving an event, this may be due to a restriction specified by the
@@ -3604,76 +3468,60 @@ class Event {
    * only update the participant's response. Optional. The default is False.
    */
   core.bool attendeesOmitted;
-
   /**
    * The color of the event. This is an ID referring to an entry in the event
    * section of the colors definition (see the  colors endpoint). Optional.
    */
   core.String colorId;
-
   /** Creation time of the event (as a RFC 3339 timestamp). Read-only. */
   core.DateTime created;
-
   /** The creator of the event. Read-only. */
   EventCreator creator;
-
   /** Description of the event. Optional. */
   core.String description;
-
   /**
    * The (exclusive) end time of the event. For a recurring event, this is the
    * end time of the first instance.
    */
   EventDateTime end;
-
   /**
    * Whether the end time is actually unspecified. An end time is still provided
    * for compatibility reasons, even if this attribute is set to True. The
    * default is False.
    */
   core.bool endTimeUnspecified;
-
   /** ETag of the resource. */
   core.String etag;
-
   /** Extended properties of the event. */
   EventExtendedProperties extendedProperties;
-
   /** A gadget that extends this event. */
   EventGadget gadget;
-
   /**
    * Whether attendees other than the organizer can invite others to the event.
    * Optional. The default is True.
    */
   core.bool guestsCanInviteOthers;
-
   /**
    * Whether attendees other than the organizer can modify the event. Optional.
    * The default is False.
    */
   core.bool guestsCanModify;
-
   /**
    * Whether attendees other than the organizer can see who the event's
    * attendees are. Optional. The default is True.
    */
   core.bool guestsCanSeeOtherGuests;
-
   /**
    * An absolute link to the Google+ hangout associated with this event.
    * Read-only.
    */
   core.String hangoutLink;
-
   /**
    * An absolute link to this event in the Google Calendar Web UI. Read-only.
    */
   core.String htmlLink;
-
   /** Event ID in the iCalendar format. */
   core.String iCalUID;
-
   /**
    * Identifier of the event. When creating new single or recurring events, you
    * can specify their IDs. Provided IDs must follow these rules:
@@ -3687,20 +3535,16 @@ class Event {
    * RFC4122.
    */
   core.String id;
-
   /** Type of the resource ("calendar#event"). */
   core.String kind;
-
   /** Geographic location of the event as free-form text. Optional. */
   core.String location;
-
   /**
    * Whether this is a locked event copy where no changes can be made to the
    * main event fields "summary", "description", "location", "start", "end" or
    * "recurrence". The default is False. Read-Only.
    */
   core.bool locked;
-
   /**
    * The organizer of the event. If the organizer is also an attendee, this is
    * indicated with a separate entry in attendees with the organizer field set
@@ -3708,51 +3552,42 @@ class Event {
    * when importing an event.
    */
   EventOrganizer organizer;
-
   /**
    * For an instance of a recurring event, this is the time at which this event
    * would start according to the recurrence data in the recurring event
    * identified by recurringEventId. Immutable.
    */
   EventDateTime originalStartTime;
-
   /**
    * Whether this is a private event copy where changes are not shared with
    * other copies on other calendars. Optional. Immutable. The default is False.
    */
   core.bool privateCopy;
-
   /**
    * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event. This
    * field is omitted for single events or instances of recurring events.
    */
   core.List<core.String> recurrence;
-
   /**
    * For an instance of a recurring event, this is the event ID of the recurring
    * event itself. Immutable.
    */
   core.String recurringEventId;
-
   /** Information about the event's reminders for the authenticated user. */
   EventReminders reminders;
-
   /** Sequence number as per iCalendar. */
   core.int sequence;
-
   /**
    * Source of an event from which it was created; for example a web page, an
    * email message or any document identifiable by an URL using HTTP/HTTPS
    * protocol. Accessible only by the creator of the event.
    */
   EventSource source;
-
   /**
    * The (inclusive) start time of the event. For a recurring event, this is the
    * start time of the first instance.
    */
   EventDateTime start;
-
   /**
    * Status of the event. Optional. Possible values are:
    * - "confirmed" - The event is confirmed. This is the default status.
@@ -3760,10 +3595,8 @@ class Event {
    * - "cancelled" - The event is cancelled.
    */
   core.String status;
-
   /** Title of the event. */
   core.String summary;
-
   /**
    * Whether the event blocks time on the calendar. Optional. Possible values
    * are:
@@ -3772,12 +3605,10 @@ class Event {
    * - "transparent" - The event does not block time on the calendar.
    */
   core.String transparency;
-
   /**
    * Last modification time of the event (as a RFC 3339 timestamp). Read-only.
    */
   core.DateTime updated;
-
   /**
    * Visibility of the event. Optional. Possible values are:
    * - "default" - Uses the default visibility for events on the calendar. This
@@ -3790,7 +3621,6 @@ class Event {
    * compatibility reasons.
    */
   core.String visibility;
-
 
   Event();
 
@@ -4019,7 +3849,6 @@ class Event {
   }
 }
 
-
 class EventAttachment {
 
   EventAttachment();
@@ -4033,38 +3862,29 @@ class EventAttachment {
   }
 }
 
-
 class EventAttendee {
   /** Number of additional guests. Optional. The default is 0. */
   core.int additionalGuests;
-
   /** The attendee's response comment. Optional. */
   core.String comment;
-
   /** The attendee's name, if available. Optional. */
   core.String displayName;
-
   /**
    * The attendee's email address, if available. This field must be present when
    * adding an attendee.
    */
   core.String email;
-
   /** The attendee's Profile ID, if available. */
   core.String id;
-
   /** Whether this is an optional attendee. Optional. The default is False. */
   core.bool optional;
-
   /**
    * Whether the attendee is the organizer of the event. Read-only. The default
    * is False.
    */
   core.bool organizer;
-
   /** Whether the attendee is a resource. Read-only. The default is False. */
   core.bool resource;
-
   /**
    * The attendee's response status. Possible values are:
    * - "needsAction" - The attendee has not responded to the invitation.
@@ -4073,13 +3893,11 @@ class EventAttendee {
    * - "accepted" - The attendee has accepted the invitation.
    */
   core.String responseStatus;
-
   /**
    * Whether this entry represents the calendar on which this copy of the event
    * appears. Read-only. The default is False.
    */
   core.bool self;
-
 
   EventAttendee();
 
@@ -4152,18 +3970,15 @@ class EventAttendee {
   }
 }
 
-
 class EventDateTime {
   /** The date, in the format "yyyy-mm-dd", if this is an all-day event. */
   core.DateTime date;
-
   /**
    * The time, as a combined date-time value (formatted according to RFC 3339).
    * A time zone offset is required unless a time zone is explicitly specified
    * in timeZone.
    */
   core.DateTime dateTime;
-
   /**
    * The time zone in which the time is specified. (Formatted as an IANA Time
    * Zone Database name, e.g. "Europe/Zurich".) For recurring events this field
@@ -4172,7 +3987,6 @@ class EventDateTime {
    * time zone for the event start/end.
    */
   core.String timeZone;
-
 
   EventDateTime();
 
@@ -4203,7 +4017,6 @@ class EventDateTime {
   }
 }
 
-
 class EventReminder {
   /**
    * The method used by this reminder. Possible values are:
@@ -4212,13 +4025,11 @@ class EventReminder {
    * - "popup" - Reminders are sent via a UI popup.
    */
   core.String method;
-
   /**
    * Number of minutes before the start of the event when the reminder should
    * trigger.
    */
   core.int minutes;
-
 
   EventReminder();
 
@@ -4243,7 +4054,6 @@ class EventReminder {
   }
 }
 
-
 class Events {
   /**
    * The user's access role for this calendar. Read-only. Possible values are:
@@ -4259,51 +4069,40 @@ class Events {
    * manipulate ACLs.
    */
   core.String accessRole;
-
   /**
    * The default reminders on the calendar for the authenticated user. These
    * reminders apply to all events on this calendar that do not explicitly
    * override them (i.e. do not have reminders.useDefault set to True).
    */
   core.List<EventReminder> defaultReminders;
-
   /** Description of the calendar. Read-only. */
   core.String description;
-
   /** ETag of the collection. */
   core.String etag;
-
   /** List of events on the calendar. */
   core.List<Event> items;
-
   /** Type of the collection ("calendar#events"). */
   core.String kind;
-
   /**
    * Token used to access the next page of this result. Omitted if no further
    * results are available, in which case nextSyncToken is provided.
    */
   core.String nextPageToken;
-
   /**
    * Token used at a later point in time to retrieve only the entries that have
    * changed since this result was returned. Omitted if further results are
    * available, in which case nextPageToken is provided.
    */
   core.String nextSyncToken;
-
   /** Title of the calendar. Read-only. */
   core.String summary;
-
   /** The time zone of the calendar. Read-only. */
   core.String timeZone;
-
   /**
    * Last modification time of the calendar (as a RFC 3339 timestamp).
    * Read-only.
    */
   core.DateTime updated;
-
 
   Events();
 
@@ -4382,16 +4181,13 @@ class Events {
   }
 }
 
-
 class FreeBusyCalendar {
   /**
    * List of time ranges during which this calendar should be regarded as busy.
    */
   core.List<TimePeriod> busy;
-
   /** Optional error(s) (if computation for the calendar failed). */
   core.List<Error> errors;
-
 
   FreeBusyCalendar();
 
@@ -4416,14 +4212,11 @@ class FreeBusyCalendar {
   }
 }
 
-
 class FreeBusyGroup {
   /** List of calendars' identifiers within a group. */
   core.List<core.String> calendars;
-
   /** Optional error(s) (if computation for the group failed). */
   core.List<Error> errors;
-
 
   FreeBusyGroup();
 
@@ -4448,33 +4241,26 @@ class FreeBusyGroup {
   }
 }
 
-
 class FreeBusyRequest {
   /**
    * Maximal number of calendars for which FreeBusy information is to be
    * provided. Optional.
    */
   core.int calendarExpansionMax;
-
   /**
    * Maximal number of calendar identifiers to be provided for a single group.
    * Optional. An error will be returned for a group with more members than this
    * value.
    */
   core.int groupExpansionMax;
-
   /** List of calendars and/or groups to query. */
   core.List<FreeBusyRequestItem> items;
-
   /** The end of the interval for the query. */
   core.DateTime timeMax;
-
   /** The start of the interval for the query. */
   core.DateTime timeMin;
-
   /** Time zone used in the response. Optional. The default is UTC. */
   core.String timeZone;
-
 
   FreeBusyRequest();
 
@@ -4523,11 +4309,9 @@ class FreeBusyRequest {
   }
 }
 
-
 class FreeBusyRequestItem {
   /** The identifier of a calendar or a group. */
   core.String id;
-
 
   FreeBusyRequestItem();
 
@@ -4546,23 +4330,17 @@ class FreeBusyRequestItem {
   }
 }
 
-
 class FreeBusyResponse {
   /** List of free/busy information for calendars. */
   core.Map<core.String, FreeBusyCalendar> calendars;
-
   /** Expansion of groups. */
   core.Map<core.String, FreeBusyGroup> groups;
-
   /** Type of the resource ("calendar#freeBusy"). */
   core.String kind;
-
   /** The end of the interval. */
   core.DateTime timeMax;
-
   /** The start of the interval. */
   core.DateTime timeMin;
-
 
   FreeBusyResponse();
 
@@ -4605,23 +4383,18 @@ class FreeBusyResponse {
   }
 }
 
-
 class Setting {
   /** ETag of the resource. */
   core.String etag;
-
   /** The id of the user setting. */
   core.String id;
-
   /** Type of the resource ("calendar#setting"). */
   core.String kind;
-
   /**
    * Value of the user setting. The format of the value depends on the ID of the
    * setting. It must always be a UTF-8 string of length up to 1024 characters.
    */
   core.String value;
-
 
   Setting();
 
@@ -4658,30 +4431,24 @@ class Setting {
   }
 }
 
-
 class Settings {
   /** Etag of the collection. */
   core.String etag;
-
   /** List of user settings. */
   core.List<Setting> items;
-
   /** Type of the collection ("calendar#settings"). */
   core.String kind;
-
   /**
    * Token used to access the next page of this result. Omitted if no further
    * results are available, in which case nextSyncToken is provided.
    */
   core.String nextPageToken;
-
   /**
    * Token used at a later point in time to retrieve only the entries that have
    * changed since this result was returned. Omitted if further results are
    * available, in which case nextPageToken is provided.
    */
   core.String nextSyncToken;
-
 
   Settings();
 
@@ -4724,14 +4491,11 @@ class Settings {
   }
 }
 
-
 class TimePeriod {
   /** The (exclusive) end of the time period. */
   core.DateTime end;
-
   /** The (inclusive) start of the time period. */
   core.DateTime start;
-
 
   TimePeriod();
 

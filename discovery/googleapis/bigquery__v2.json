@@ -28,8 +28,8 @@
     "batchPath": "batch",
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/bigquery/docs/overview",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/9BzDGn_NK0mPZbwY2iFQmby2csA\"",
+    "documentationLink": "https://cloud.google.com/bigquery/",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/n2LVhGPabQO3DmbKxkomJprJEEo\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -182,7 +182,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists all the datasets in the specified project to which the caller has read access; however, a project owner can list (but not necessarily get) all datasets in his project.",
+                    "description": "Lists all datasets in the specified project to which you have been granted the READER dataset role.",
                     "httpMethod": "GET",
                     "id": "bigquery.datasets.list",
                     "parameterOrder": [
@@ -294,7 +294,7 @@
         "jobs": {
             "methods": {
                 "get": {
-                    "description": "Retrieves the specified job by ID.",
+                    "description": "Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role.",
                     "httpMethod": "GET",
                     "id": "bigquery.jobs.get",
                     "parameterOrder": [
@@ -379,7 +379,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Starts a new asynchronous job.",
+                    "description": "Starts a new asynchronous job. Requires the Can View project role.",
                     "httpMethod": "POST",
                     "id": "bigquery.jobs.insert",
                     "mediaUpload": {
@@ -425,7 +425,7 @@
                     "supportsMediaUpload": true
                 },
                 "list": {
-                    "description": "Lists all the Jobs in the specified project that were started by the user. The job list returns in reverse chronological order of when the jobs were created, starting with the most recent job created.",
+                    "description": "Lists all jobs that you started in the specified project. The job list returns in reverse chronological order of when the jobs were created, starting with the most recent job created. Requires the Can View project role, or the Is Owner project role if you set the allUsers property.",
                     "httpMethod": "GET",
                     "id": "bigquery.jobs.list",
                     "parameterOrder": [
@@ -525,7 +525,7 @@
         "projects": {
             "methods": {
                 "list": {
-                    "description": "Lists the projects to which you have at least read access.",
+                    "description": "Lists all projects to which you have been granted any project role.",
                     "httpMethod": "GET",
                     "id": "bigquery.projects.list",
                     "parameters": {
@@ -555,7 +555,7 @@
         "tabledata": {
             "methods": {
                 "insertAll": {
-                    "description": "Streams data into BigQuery one record at a time without needing to run a load job.",
+                    "description": "Streams data into BigQuery one record at a time without needing to run a load job. Requires the WRITER dataset role.",
                     "httpMethod": "POST",
                     "id": "bigquery.tabledata.insertAll",
                     "parameterOrder": [
@@ -597,7 +597,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves table data from a specified set of rows.",
+                    "description": "Retrieves table data from a specified set of rows. Requires the READER dataset role.",
                     "httpMethod": "GET",
                     "id": "bigquery.tabledata.list",
                     "parameterOrder": [
@@ -763,7 +763,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists all tables in the specified dataset.",
+                    "description": "Lists all tables in the specified dataset. Requires the READER dataset role.",
                     "httpMethod": "GET",
                     "id": "bigquery.tables.list",
                     "parameterOrder": [
@@ -889,7 +889,7 @@
             }
         }
     },
-    "revision": "20150303",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CsvOptions": {
@@ -997,6 +997,10 @@
                 "lastModifiedTime": {
                     "description": "[Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.",
                     "format": "int64",
+                    "type": "string"
+                },
+                "location": {
+                    "description": "[Experimental] The location where the data resides. If not present, the data will be stored in the US.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -1359,7 +1363,7 @@
                     "type": "integer"
                 },
                 "projectionFields": {
-                    "description": "[Experimental] Names(case-sensitive) of properties to keep when importing data. If this is populated, only the specified properties will be imported for each entity. Currently, this is only supported for DATASTORE_BACKUP imports and only top level properties are supported. If any specified property is not found in the Datastore 'Kind' being imported, that is an error. Note: This feature is experimental and can change in the future.",
+                    "description": "[Experimental] If sourceFormat is set to \"DATASTORE_BACKUP\", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.",
                     "items": {
                         "type": "string"
                     },
@@ -1424,7 +1428,7 @@
                     "description": "[Optional] Describes the table where the query results should be stored. If not present, a new table will be created to store the results."
                 },
                 "flattenResults": {
-                    "description": "[Experimental] Flattens all nested and repeated fields in the query results. The default value is true. allowLargeResults must be true if this is set to false.",
+                    "description": "[Optional] Flattens all nested and repeated fields in the query results. The default value is true. allowLargeResults must be true if this is set to false.",
                     "type": "boolean"
                 },
                 "preserveNulls": {

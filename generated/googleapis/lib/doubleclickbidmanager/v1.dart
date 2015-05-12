@@ -49,7 +49,7 @@ class LineitemsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DownloadLineItemsResponse> downloadlineitems(DownloadLineItemsRequest request) {
     var _url = null;
@@ -62,7 +62,6 @@ class LineitemsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'lineitems/downloadlineitems';
 
@@ -89,7 +88,7 @@ class LineitemsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UploadLineItemsResponse> uploadlineitems(UploadLineItemsRequest request) {
     var _url = null;
@@ -102,7 +101,6 @@ class LineitemsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'lineitems/uploadlineitems';
 
@@ -138,7 +136,7 @@ class QueriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Query> createquery(Query request) {
     var _url = null;
@@ -151,7 +149,6 @@ class QueriesResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'query';
 
@@ -176,7 +173,7 @@ class QueriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future deletequery(core.String queryId) {
     var _url = null;
@@ -217,7 +214,7 @@ class QueriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Query> getquery(core.String queryId) {
     var _url = null;
@@ -230,7 +227,6 @@ class QueriesResourceApi {
     if (queryId == null) {
       throw new core.ArgumentError("Parameter queryId is required.");
     }
-
 
     _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
@@ -255,7 +251,7 @@ class QueriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListQueriesResponse> listqueries() {
     var _url = null;
@@ -264,7 +260,6 @@ class QueriesResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'queries';
@@ -292,7 +287,7 @@ class QueriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future runquery(RunQueryRequest request, core.String queryId) {
     var _url = null;
@@ -345,7 +340,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListReportsResponse> listreports(core.String queryId) {
     var _url = null;
@@ -358,7 +353,6 @@ class ReportsResourceApi {
     if (queryId == null) {
       throw new core.ArgumentError("Parameter queryId is required.");
     }
-
 
     _url = 'queries/' + commons.Escaper.ecapeVariable('$queryId') + '/reports';
 
@@ -383,7 +377,6 @@ class DownloadLineItemsRequest {
    * omitted, all the line items will be returned.
    */
   core.List<core.String> filterIds;
-
   /**
    * Filter type used to filter line items to fetch.
    * Possible string values are:
@@ -392,14 +385,12 @@ class DownloadLineItemsRequest {
    * - "LINE_ITEM_ID"
    */
   core.String filterType;
-
   /**
    * Format in which the line items will be returned. Default to CSV.
    * Possible string values are:
    * - "CSV"
    */
   core.String format;
-
 
   DownloadLineItemsRequest();
 
@@ -430,7 +421,6 @@ class DownloadLineItemsRequest {
   }
 }
 
-
 /** Download line items response. */
 class DownloadLineItemsResponse {
   /**
@@ -438,7 +428,6 @@ class DownloadLineItemsResponse {
    * more information on file format.
    */
   core.String lineItems;
-
 
   DownloadLineItemsResponse();
 
@@ -456,7 +445,6 @@ class DownloadLineItemsResponse {
     return _json;
   }
 }
-
 
 /** Filter used to match traffic data in your report. */
 class FilterPair {
@@ -544,10 +532,8 @@ class FilterPair {
    * - "FILTER_ZIP_CODE"
    */
   core.String type;
-
   /** Filter value. */
   core.String value;
-
 
   FilterPair();
 
@@ -572,7 +558,6 @@ class FilterPair {
   }
 }
 
-
 /** List queries response. */
 class ListQueriesResponse {
   /**
@@ -580,10 +565,8 @@ class ListQueriesResponse {
    * "doubleclickbidmanager#listQueriesResponse".
    */
   core.String kind;
-
   /** Retrieved queries. */
   core.List<Query> queries;
-
 
   ListQueriesResponse();
 
@@ -608,7 +591,6 @@ class ListQueriesResponse {
   }
 }
 
-
 /** List reports response. */
 class ListReportsResponse {
   /**
@@ -616,10 +598,8 @@ class ListReportsResponse {
    * "doubleclickbidmanager#listReportsResponse".
    */
   core.String kind;
-
   /** Retrieved reports. */
   core.List<Report> reports;
-
 
   ListReportsResponse();
 
@@ -644,21 +624,16 @@ class ListReportsResponse {
   }
 }
 
-
 /** Parameters of a query or report. */
 class Parameters {
   /** Filters used to match traffic data in your report. */
   core.List<FilterPair> filters;
-
   /** Data is grouped by the filters listed in this field. */
   core.List<core.String> groupBys;
-
   /** Whether to include data from Invite Media. */
   core.bool includeInviteData;
-
   /** Metrics to include as columns in your report. */
   core.List<core.String> metrics;
-
   /**
    * Report type.
    * Possible string values are:
@@ -689,7 +664,6 @@ class Parameters {
    * - "TYPE_YOUTUBE_VERTICAL"
    */
   core.String type;
-
 
   Parameters();
 
@@ -732,7 +706,6 @@ class Parameters {
   }
 }
 
-
 /** Represents a query. */
 class Query {
   /**
@@ -740,38 +713,30 @@ class Query {
    * "doubleclickbidmanager#query".
    */
   core.String kind;
-
   /** Query metadata. */
   QueryMetadata metadata;
-
   /** Query parameters. */
   Parameters params;
-
   /** Query ID. */
   core.String queryId;
-
   /**
    * The ending time for the data that is shown in the report. Note,
    * reportDataEndTimeMs is required if metadata.dataRange is CUSTOM_DATES and
    * ignored otherwise.
    */
   core.String reportDataEndTimeMs;
-
   /**
    * The starting time for the data that is shown in the report. Note,
    * reportDataStartTimeMs is required if metadata.dataRange is CUSTOM_DATES and
    * ignored otherwise.
    */
   core.String reportDataStartTimeMs;
-
   /** Information on how often and when to run a query. */
   QuerySchedule schedule;
-
   /**
    * Canonical timezone code for report data time. Defaults to America/New_York.
    */
   core.String timezoneCode;
-
 
   Query();
 
@@ -832,7 +797,6 @@ class Query {
   }
 }
 
-
 /** Query metadata. */
 class QueryMetadata {
   /**
@@ -858,7 +822,6 @@ class QueryMetadata {
    * - "YEAR_TO_DATE"
    */
   core.String dataRange;
-
   /**
    * Format of the generated report.
    * Possible string values are:
@@ -867,19 +830,15 @@ class QueryMetadata {
    * - "XLSX"
    */
   core.String format;
-
   /**
    * The path to the location in Google Cloud Storage where the latest report is
    * stored.
    */
   core.String googleCloudStoragePathForLatestReport;
-
   /** The path in Google Drive for the latest report. */
   core.String googleDrivePathForLatestReport;
-
   /** The time when the latest report started to run. */
   core.String latestReportRunTimeMs;
-
   /**
    * Locale of the generated reports. Valid values are cs CZECH de GERMAN en
    * ENGLISH es SPANISH fr FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH
@@ -889,28 +848,22 @@ class QueryMetadata {
    * An locale string not in the list above will generate reports in English.
    */
   core.String locale;
-
   /** Number of reports that have been generated for the query. */
   core.int reportCount;
-
   /** Whether the latest report is currently running. */
   core.bool running;
-
   /**
    * Whether to send an email notification when a report is ready. Default to
    * false.
    */
   core.bool sendNotification;
-
   /**
    * List of email addresses which are sent email notifications when the report
    * is finished. Separate from sendNotification.
    */
   core.List<core.String> shareEmailAddress;
-
   /** Query title. It is used to name the reports generated from this query. */
   core.String title;
-
 
   QueryMetadata();
 
@@ -989,12 +942,10 @@ class QueryMetadata {
   }
 }
 
-
 /** Information on how frequently and when to run a query. */
 class QuerySchedule {
   /** Datetime to periodically run the query until. */
   core.String endTimeMs;
-
   /**
    * How often the query is run.
    * Possible string values are:
@@ -1006,19 +957,16 @@ class QuerySchedule {
    * - "WEEKLY"
    */
   core.String frequency;
-
   /**
    * Time of day at which a new report will be generated, represented as minutes
    * past midnight. Range is 0 to 1439. Only applies to scheduled reports.
    */
   core.int nextRunMinuteOfDay;
-
   /**
    * Canonical timezone code for report generation time. Defaults to
    * America/New_York.
    */
   core.String nextRunTimezoneCode;
-
 
   QuerySchedule();
 
@@ -1055,18 +1003,14 @@ class QuerySchedule {
   }
 }
 
-
 /** Represents a report. */
 class Report {
   /** Key used to identify a report. */
   ReportKey key;
-
   /** Report metadata. */
   ReportMetadata metadata;
-
   /** Report parameters. */
   Parameters params;
-
 
   Report();
 
@@ -1097,7 +1041,6 @@ class Report {
   }
 }
 
-
 /** An explanation of a report failure. */
 class ReportFailure {
   /**
@@ -1124,7 +1067,6 @@ class ReportFailure {
    */
   core.String errorCode;
 
-
   ReportFailure();
 
   ReportFailure.fromJson(core.Map _json) {
@@ -1142,15 +1084,12 @@ class ReportFailure {
   }
 }
 
-
 /** Key used to identify a report. */
 class ReportKey {
   /** Query ID. */
   core.String queryId;
-
   /** Report ID. */
   core.String reportId;
-
 
   ReportKey();
 
@@ -1175,7 +1114,6 @@ class ReportKey {
   }
 }
 
-
 /** Report metadata. */
 class ReportMetadata {
   /**
@@ -1183,16 +1121,12 @@ class ReportMetadata {
    * stored.
    */
   core.String googleCloudStoragePath;
-
   /** The ending time for the data that is shown in the report. */
   core.String reportDataEndTimeMs;
-
   /** The starting time for the data that is shown in the report. */
   core.String reportDataStartTimeMs;
-
   /** Report status. */
   ReportStatus status;
-
 
   ReportMetadata();
 
@@ -1229,15 +1163,12 @@ class ReportMetadata {
   }
 }
 
-
 /** Report status. */
 class ReportStatus {
   /** If the report failed, this records the cause. */
   ReportFailure failure;
-
   /** The time when this report either completed successfully or failed. */
   core.String finishTimeMs;
-
   /**
    * The file type of the report.
    * Possible string values are:
@@ -1246,7 +1177,6 @@ class ReportStatus {
    * - "XLSX"
    */
   core.String format;
-
   /**
    * The state of the report.
    * Possible string values are:
@@ -1255,7 +1185,6 @@ class ReportStatus {
    * - "RUNNING"
    */
   core.String state;
-
 
   ReportStatus();
 
@@ -1292,27 +1221,20 @@ class ReportStatus {
   }
 }
 
-
 /** Represents the upload status of a row in the request. */
 class RowStatus {
   /** Whether the stored entity is changed as a result of upload. */
   core.bool changed;
-
   /** Entity Id. */
   core.String entityId;
-
   /** Entity name. */
   core.String entityName;
-
   /** Reasons why the entity can't be uploaded. */
   core.List<core.String> errors;
-
   /** Whether the entity is persisted. */
   core.bool persisted;
-
   /** Row number. */
   core.int rowNumber;
-
 
   RowStatus();
 
@@ -1361,7 +1283,6 @@ class RowStatus {
   }
 }
 
-
 /** Request to run a stored query to generate a report. */
 class RunQueryRequest {
   /**
@@ -1387,26 +1308,22 @@ class RunQueryRequest {
    * - "YEAR_TO_DATE"
    */
   core.String dataRange;
-
   /**
    * The ending time for the data that is shown in the report. Note,
    * reportDataEndTimeMs is required if dataRange is CUSTOM_DATES and ignored
    * otherwise.
    */
   core.String reportDataEndTimeMs;
-
   /**
    * The starting time for the data that is shown in the report. Note,
    * reportDataStartTimeMs is required if dataRange is CUSTOM_DATES and ignored
    * otherwise.
    */
   core.String reportDataStartTimeMs;
-
   /**
    * Canonical timezone code for report data time. Defaults to America/New_York.
    */
   core.String timezoneCode;
-
 
   RunQueryRequest();
 
@@ -1443,7 +1360,6 @@ class RunQueryRequest {
   }
 }
 
-
 /** Request to upload line items. */
 class UploadLineItemsRequest {
   /**
@@ -1451,20 +1367,17 @@ class UploadLineItemsRequest {
    * items.
    */
   core.bool dryRun;
-
   /**
    * Format the line items are in. Default to CSV.
    * Possible string values are:
    * - "CSV"
    */
   core.String format;
-
   /**
    * Line items in CSV to upload. Refer to  Entity Write File Format for more
    * information on file format.
    */
   core.String lineItems;
-
 
   UploadLineItemsRequest();
 
@@ -1495,12 +1408,10 @@ class UploadLineItemsRequest {
   }
 }
 
-
 /** Upload line items response. */
 class UploadLineItemsResponse {
   /** Status of upload. */
   UploadStatus uploadStatus;
-
 
   UploadLineItemsResponse();
 
@@ -1519,15 +1430,12 @@ class UploadLineItemsResponse {
   }
 }
 
-
 /** Represents the status of upload. */
 class UploadStatus {
   /** Reasons why upload can't be completed. */
   core.List<core.String> errors;
-
   /** Per-row upload status. */
   core.List<RowStatus> rowStatus;
-
 
   UploadStatus();
 

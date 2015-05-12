@@ -74,7 +74,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Profile> getProfile(core.String userId) {
     var _url = null;
@@ -87,7 +87,6 @@ class UsersResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/profile';
 
@@ -131,7 +130,7 @@ class UsersDraftsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Draft> create(Draft request, core.String userId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -185,7 +184,7 @@ class UsersDraftsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String userId, core.String id) {
     var _url = null;
@@ -239,7 +238,7 @@ class UsersDraftsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Draft> get(core.String userId, core.String id, {core.String format}) {
     var _url = null;
@@ -258,7 +257,6 @@ class UsersDraftsResourceApi {
     if (format != null) {
       _queryParams["format"] = [format];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/drafts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -291,7 +289,7 @@ class UsersDraftsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListDraftsResponse> list(core.String userId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -310,7 +308,6 @@ class UsersDraftsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/drafts';
 
@@ -346,7 +343,7 @@ class UsersDraftsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Message> send(Draft request, core.String userId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -408,7 +405,7 @@ class UsersDraftsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Draft> update(Draft request, core.String userId, core.String id, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -492,7 +489,7 @@ class UsersHistoryResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListHistoryResponse> list(core.String userId, {core.String labelId, core.int maxResults, core.String pageToken, core.String startHistoryId}) {
     var _url = null;
@@ -517,7 +514,6 @@ class UsersHistoryResourceApi {
     if (startHistoryId != null) {
       _queryParams["startHistoryId"] = [startHistoryId];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/history';
 
@@ -556,7 +552,7 @@ class UsersLabelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Label> create(Label request, core.String userId) {
     var _url = null;
@@ -572,7 +568,6 @@ class UsersLabelsResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/labels';
 
@@ -601,7 +596,7 @@ class UsersLabelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String userId, core.String id) {
     var _url = null;
@@ -648,7 +643,7 @@ class UsersLabelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Label> get(core.String userId, core.String id) {
     var _url = null;
@@ -664,7 +659,6 @@ class UsersLabelsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/labels/' + commons.Escaper.ecapeVariable('$id');
 
@@ -692,7 +686,7 @@ class UsersLabelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListLabelsResponse> list(core.String userId) {
     var _url = null;
@@ -705,7 +699,6 @@ class UsersLabelsResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/labels';
 
@@ -737,7 +730,7 @@ class UsersLabelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Label> patch(Label request, core.String userId, core.String id) {
     var _url = null;
@@ -756,7 +749,6 @@ class UsersLabelsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/labels/' + commons.Escaper.ecapeVariable('$id');
 
@@ -788,7 +780,7 @@ class UsersLabelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Label> update(Label request, core.String userId, core.String id) {
     var _url = null;
@@ -807,7 +799,6 @@ class UsersLabelsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/labels/' + commons.Escaper.ecapeVariable('$id');
 
@@ -847,7 +838,7 @@ class UsersMessagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String userId, core.String id) {
     var _url = null;
@@ -904,7 +895,7 @@ class UsersMessagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Message> get(core.String userId, core.String id, {core.String format, core.List<core.String> metadataHeaders}) {
     var _url = null;
@@ -926,7 +917,6 @@ class UsersMessagesResourceApi {
     if (metadataHeaders != null) {
       _queryParams["metadataHeaders"] = metadataHeaders;
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/messages/' + commons.Escaper.ecapeVariable('$id');
 
@@ -978,7 +968,7 @@ class UsersMessagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Message> import(Message request, core.String userId, {core.bool deleted, core.String internalDateSource, core.bool neverMarkSpam, core.bool processForCalendar, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1061,7 +1051,7 @@ class UsersMessagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Message> insert(Message request, core.String userId, {core.bool deleted, core.String internalDateSource, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1134,7 +1124,7 @@ class UsersMessagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListMessagesResponse> list(core.String userId, {core.bool includeSpamTrash, core.List<core.String> labelIds, core.int maxResults, core.String pageToken, core.String q}) {
     var _url = null;
@@ -1162,7 +1152,6 @@ class UsersMessagesResourceApi {
     if (q != null) {
       _queryParams["q"] = [q];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/messages';
 
@@ -1194,7 +1183,7 @@ class UsersMessagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Message> modify(ModifyMessageRequest request, core.String userId, core.String id) {
     var _url = null;
@@ -1213,7 +1202,6 @@ class UsersMessagesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/messages/' + commons.Escaper.ecapeVariable('$id') + '/modify';
 
@@ -1249,7 +1237,7 @@ class UsersMessagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Message> send(Message request, core.String userId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1304,7 +1292,7 @@ class UsersMessagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Message> trash(core.String userId, core.String id) {
     var _url = null;
@@ -1320,7 +1308,6 @@ class UsersMessagesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/messages/' + commons.Escaper.ecapeVariable('$id') + '/trash';
 
@@ -1350,7 +1337,7 @@ class UsersMessagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Message> untrash(core.String userId, core.String id) {
     var _url = null;
@@ -1366,7 +1353,6 @@ class UsersMessagesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/messages/' + commons.Escaper.ecapeVariable('$id') + '/untrash';
 
@@ -1407,7 +1393,7 @@ class UsersMessagesAttachmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<MessagePartBody> get(core.String userId, core.String messageId, core.String id) {
     var _url = null;
@@ -1426,7 +1412,6 @@ class UsersMessagesAttachmentsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/messages/' + commons.Escaper.ecapeVariable('$messageId') + '/attachments/' + commons.Escaper.ecapeVariable('$id');
 
@@ -1464,7 +1449,7 @@ class UsersThreadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String userId, core.String id) {
     var _url = null;
@@ -1520,7 +1505,7 @@ class UsersThreadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Thread> get(core.String userId, core.String id, {core.String format, core.List<core.String> metadataHeaders}) {
     var _url = null;
@@ -1542,7 +1527,6 @@ class UsersThreadsResourceApi {
     if (metadataHeaders != null) {
       _queryParams["metadataHeaders"] = metadataHeaders;
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/threads/' + commons.Escaper.ecapeVariable('$id');
 
@@ -1584,7 +1568,7 @@ class UsersThreadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListThreadsResponse> list(core.String userId, {core.bool includeSpamTrash, core.List<core.String> labelIds, core.int maxResults, core.String pageToken, core.String q}) {
     var _url = null;
@@ -1612,7 +1596,6 @@ class UsersThreadsResourceApi {
     if (q != null) {
       _queryParams["q"] = [q];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/threads';
 
@@ -1645,7 +1628,7 @@ class UsersThreadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Thread> modify(ModifyThreadRequest request, core.String userId, core.String id) {
     var _url = null;
@@ -1664,7 +1647,6 @@ class UsersThreadsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/threads/' + commons.Escaper.ecapeVariable('$id') + '/modify';
 
@@ -1694,7 +1676,7 @@ class UsersThreadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Thread> trash(core.String userId, core.String id) {
     var _url = null;
@@ -1710,7 +1692,6 @@ class UsersThreadsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/threads/' + commons.Escaper.ecapeVariable('$id') + '/trash';
 
@@ -1740,7 +1721,7 @@ class UsersThreadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Thread> untrash(core.String userId, core.String id) {
     var _url = null;
@@ -1756,7 +1737,6 @@ class UsersThreadsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/threads/' + commons.Escaper.ecapeVariable('$id') + '/untrash';
 
@@ -1778,10 +1758,8 @@ class UsersThreadsResourceApi {
 class Draft {
   /** The immutable ID of the draft. */
   core.String id;
-
   /** The message content of the draft. */
   Message message;
-
 
   Draft();
 
@@ -1806,7 +1784,6 @@ class Draft {
   }
 }
 
-
 /**
  * A record of a change to the user's mailbox. Each history change may affect
  * multiple messages in multiple ways.
@@ -1814,28 +1791,22 @@ class Draft {
 class History {
   /** The mailbox sequence ID. */
   core.String id;
-
   /** Labels added to messages in this history record. */
   core.List<HistoryLabelAdded> labelsAdded;
-
   /** Labels removed from messages in this history record. */
   core.List<HistoryLabelRemoved> labelsRemoved;
-
   /**
    * List of messages changed in this history record. The fields for specific
    * change types, such as messagesAdded may duplicate messages in this field.
    * We recommend using the specific change-type fields instead of this.
    */
   core.List<Message> messages;
-
   /** Messages added to the mailbox in this history record. */
   core.List<HistoryMessageAdded> messagesAdded;
-
   /**
    * Messages deleted (not Trashed) from the mailbox in this history record.
    */
   core.List<HistoryMessageDeleted> messagesDeleted;
-
 
   History();
 
@@ -1884,13 +1855,10 @@ class History {
   }
 }
 
-
 class HistoryLabelAdded {
   /** Label IDs added to the message. */
   core.List<core.String> labelIds;
-
   Message message;
-
 
   HistoryLabelAdded();
 
@@ -1915,13 +1883,10 @@ class HistoryLabelAdded {
   }
 }
 
-
 class HistoryLabelRemoved {
   /** Label IDs removed from the message. */
   core.List<core.String> labelIds;
-
   Message message;
-
 
   HistoryLabelRemoved();
 
@@ -1946,10 +1911,8 @@ class HistoryLabelRemoved {
   }
 }
 
-
 class HistoryMessageAdded {
   Message message;
-
 
   HistoryMessageAdded();
 
@@ -1968,10 +1931,8 @@ class HistoryMessageAdded {
   }
 }
 
-
 class HistoryMessageDeleted {
   Message message;
-
 
   HistoryMessageDeleted();
 
@@ -1990,14 +1951,12 @@ class HistoryMessageDeleted {
   }
 }
 
-
 /**
  * Labels are used to categorize messages and threads within the user's mailbox.
  */
 class Label {
   /** The immutable ID of the label. */
   core.String id;
-
   /**
    * The visibility of the label in the label list in the Gmail web interface.
    * Possible string values are:
@@ -2006,7 +1965,6 @@ class Label {
    * - "labelShowIfUnread"
    */
   core.String labelListVisibility;
-
   /**
    * The visibility of the label in the message list in the Gmail web interface.
    * Possible string values are:
@@ -2014,22 +1972,16 @@ class Label {
    * - "show"
    */
   core.String messageListVisibility;
-
   /** The total number of messages with the label. */
   core.int messagesTotal;
-
   /** The number of unread messages with the label. */
   core.int messagesUnread;
-
   /** The display name of the label. */
   core.String name;
-
   /** The total number of threads with the label. */
   core.int threadsTotal;
-
   /** The number of unread threads with the label. */
   core.int threadsUnread;
-
   /**
    * The owner type for the label. User labels are created by the user and can
    * be modified and deleted by the user and can be applied to any message or
@@ -2044,7 +1996,6 @@ class Label {
    * - "user"
    */
   core.String type;
-
 
   Label();
 
@@ -2111,17 +2062,13 @@ class Label {
   }
 }
 
-
 class ListDraftsResponse {
   /** List of drafts. */
   core.List<Draft> drafts;
-
   /** Token to retrieve the next page of results in the list. */
   core.String nextPageToken;
-
   /** Estimated total number of results. */
   core.int resultSizeEstimate;
-
 
   ListDraftsResponse();
 
@@ -2152,20 +2099,16 @@ class ListDraftsResponse {
   }
 }
 
-
 class ListHistoryResponse {
   /**
    * List of history records. Any messages contained in the response will
    * typically only have id and threadId fields populated.
    */
   core.List<History> history;
-
   /** The ID of the mailbox's current history record. */
   core.String historyId;
-
   /** Page token to retrieve the next page of results in the list. */
   core.String nextPageToken;
-
 
   ListHistoryResponse();
 
@@ -2196,11 +2139,9 @@ class ListHistoryResponse {
   }
 }
 
-
 class ListLabelsResponse {
   /** List of labels. */
   core.List<Label> labels;
-
 
   ListLabelsResponse();
 
@@ -2219,17 +2160,13 @@ class ListLabelsResponse {
   }
 }
 
-
 class ListMessagesResponse {
   /** List of messages. */
   core.List<Message> messages;
-
   /** Token to retrieve the next page of results in the list. */
   core.String nextPageToken;
-
   /** Estimated total number of results. */
   core.int resultSizeEstimate;
-
 
   ListMessagesResponse();
 
@@ -2260,17 +2197,13 @@ class ListMessagesResponse {
   }
 }
 
-
 class ListThreadsResponse {
   /** Page token to retrieve the next page of results in the list. */
   core.String nextPageToken;
-
   /** Estimated total number of results. */
   core.int resultSizeEstimate;
-
   /** List of threads. */
   core.List<Thread> threads;
-
 
   ListThreadsResponse();
 
@@ -2301,28 +2234,22 @@ class ListThreadsResponse {
   }
 }
 
-
 /** An email message. */
 class Message {
   /** The ID of the last history record that modified this message. */
   core.String historyId;
-
   /** The immutable ID of the message. */
   core.String id;
-
   /** List of IDs of labels applied to this message. */
   core.List<core.String> labelIds;
-
   /** The parsed email structure in the message parts. */
   MessagePart payload;
-
   /**
    * The entire email message in an RFC 2822 formatted and base64url encoded
    * string. Returned in messages.get and drafts.get responses when the
    * format=RAW parameter is supplied.
    */
   core.String raw;
-
   core.List<core.int> get rawAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(raw);
   }
@@ -2330,13 +2257,10 @@ class Message {
   void set rawAsBytes(core.List<core.int> _bytes) {
     raw = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** Estimated size in bytes of the message. */
   core.int sizeEstimate;
-
   /** A short part of the message text. */
   core.String snippet;
-
   /**
    * The ID of the thread the message belongs to. To add a message or draft to a
    * thread, the following criteria must be met:
@@ -2347,7 +2271,6 @@ class Message {
    * - The Subject headers must match.
    */
   core.String threadId;
-
 
   Message();
 
@@ -2408,7 +2331,6 @@ class Message {
   }
 }
 
-
 /** A single MIME message part. */
 class MessagePart {
   /**
@@ -2416,26 +2338,21 @@ class MessagePart {
    * message parts.
    */
   MessagePartBody body;
-
   /**
    * The filename of the attachment. Only present if this message part
    * represents an attachment.
    */
   core.String filename;
-
   /**
    * List of headers on this message part. For the top-level message part,
    * representing the entire message payload, it will contain the standard RFC
    * 2822 email headers such as To, From, and Subject.
    */
   core.List<MessagePartHeader> headers;
-
   /** The MIME type of the message part. */
   core.String mimeType;
-
   /** The immutable ID of the message part. */
   core.String partId;
-
   /**
    * The child MIME message parts of this part. This only applies to container
    * MIME message parts, for example multipart / * . For non- container MIME
@@ -2443,7 +2360,6 @@ class MessagePart {
    * information, see RFC 1521.
    */
   core.List<MessagePart> parts;
-
 
   MessagePart();
 
@@ -2492,7 +2408,6 @@ class MessagePart {
   }
 }
 
-
 /** The body of a single MIME message part. */
 class MessagePartBody {
   /**
@@ -2501,7 +2416,6 @@ class MessagePartBody {
    * the entire content of the message part body is contained in the data field.
    */
   core.String attachmentId;
-
   /**
    * The body data of a MIME message part. May be empty for MIME container types
    * that have no message body or when the body data is sent as a separate
@@ -2509,7 +2423,6 @@ class MessagePartBody {
    * separate attachment.
    */
   core.String data;
-
   core.List<core.int> get dataAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(data);
   }
@@ -2517,10 +2430,8 @@ class MessagePartBody {
   void set dataAsBytes(core.List<core.int> _bytes) {
     data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** Total number of bytes in the body of the message part. */
   core.int size;
-
 
   MessagePartBody();
 
@@ -2551,17 +2462,14 @@ class MessagePartBody {
   }
 }
 
-
 class MessagePartHeader {
   /** The name of the header before the : separator. For example, To. */
   core.String name;
-
   /**
    * The value of the header after the : separator. For example,
    * someuser@example.com.
    */
   core.String value;
-
 
   MessagePartHeader();
 
@@ -2586,14 +2494,11 @@ class MessagePartHeader {
   }
 }
 
-
 class ModifyMessageRequest {
   /** A list of IDs of labels to add to this message. */
   core.List<core.String> addLabelIds;
-
   /** A list IDs of labels to remove from this message. */
   core.List<core.String> removeLabelIds;
-
 
   ModifyMessageRequest();
 
@@ -2618,14 +2523,11 @@ class ModifyMessageRequest {
   }
 }
 
-
 class ModifyThreadRequest {
   /** A list of IDs of labels to add to this thread. */
   core.List<core.String> addLabelIds;
-
   /** A list of IDs of labels to remove from this thread. */
   core.List<core.String> removeLabelIds;
-
 
   ModifyThreadRequest();
 
@@ -2650,21 +2552,16 @@ class ModifyThreadRequest {
   }
 }
 
-
 /** Profile for a Gmail user. */
 class Profile {
   /** The user's email address. */
   core.String emailAddress;
-
   /** The ID of the mailbox's current history record. */
   core.String historyId;
-
   /** The total number of messages in the mailbox. */
   core.int messagesTotal;
-
   /** The total number of threads in the mailbox. */
   core.int threadsTotal;
-
 
   Profile();
 
@@ -2701,21 +2598,16 @@ class Profile {
   }
 }
 
-
 /** A collection of messages representing a conversation. */
 class Thread {
   /** The ID of the last history record that modified this thread. */
   core.String historyId;
-
   /** The unique ID of the thread. */
   core.String id;
-
   /** The list of messages in the thread. */
   core.List<Message> messages;
-
   /** A short part of the message text. */
   core.String snippet;
-
 
   Thread();
 

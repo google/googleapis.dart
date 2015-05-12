@@ -58,7 +58,7 @@ class TaskqueuesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TaskQueue> get(core.String project, core.String taskqueue, {core.bool getStats}) {
     var _url = null;
@@ -77,7 +77,6 @@ class TaskqueuesResourceApi {
     if (getStats != null) {
       _queryParams["getStats"] = ["${getStats}"];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue');
 
@@ -115,7 +114,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String project, core.String taskqueue, core.String task) {
     var _url = null;
@@ -166,7 +165,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Task> get(core.String project, core.String taskqueue, core.String task) {
     var _url = null;
@@ -185,7 +184,6 @@ class TasksResourceApi {
     if (task == null) {
       throw new core.ArgumentError("Parameter task is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
@@ -216,7 +214,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Task> insert(Task request, core.String project, core.String taskqueue) {
     var _url = null;
@@ -235,7 +233,6 @@ class TasksResourceApi {
     if (taskqueue == null) {
       throw new core.ArgumentError("Parameter taskqueue is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks';
 
@@ -275,7 +272,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Tasks> lease(core.String project, core.String taskqueue, core.int numTasks, core.int leaseSecs, {core.bool groupByTag, core.String tag}) {
     var _url = null;
@@ -306,7 +303,6 @@ class TasksResourceApi {
       _queryParams["tag"] = [tag];
     }
 
-
     _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks/lease';
 
     var _response = _requester.request(_url,
@@ -334,7 +330,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Tasks2> list(core.String project, core.String taskqueue) {
     var _url = null;
@@ -350,7 +346,6 @@ class TasksResourceApi {
     if (taskqueue == null) {
       throw new core.ArgumentError("Parameter taskqueue is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks';
 
@@ -386,7 +381,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Task> patch(Task request, core.String project, core.String taskqueue, core.String task, core.int newLeaseSeconds) {
     var _url = null;
@@ -412,7 +407,6 @@ class TasksResourceApi {
       throw new core.ArgumentError("Parameter newLeaseSeconds is required.");
     }
     _queryParams["newLeaseSeconds"] = ["${newLeaseSeconds}"];
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
@@ -447,7 +441,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Task> update(Task request, core.String project, core.String taskqueue, core.String task, core.int newLeaseSeconds) {
     var _url = null;
@@ -474,7 +468,6 @@ class TasksResourceApi {
     }
     _queryParams["newLeaseSeconds"] = ["${newLeaseSeconds}"];
 
-
     _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
     var _response = _requester.request(_url,
@@ -494,37 +487,29 @@ class TasksResourceApi {
 class Task {
   /** Time (in seconds since the epoch) at which the task was enqueued. */
   core.String enqueueTimestamp;
-
   /** Name of the task. */
   core.String id;
-
   /** The kind of object returned, in this case set to task. */
   core.String kind;
-
   /**
    * Time (in seconds since the epoch) at which the task lease will expire. This
    * value is 0 if the task isnt currently leased out to a worker.
    */
   core.String leaseTimestamp;
-
   /**
    * A bag of bytes which is the task payload. The payload on the JSON side is
    * always Base64 encoded.
    */
   core.String payloadBase64;
-
   /** Name of the queue that the task is in. */
   core.String queueName;
-
   /** The number of leases applied to this task. */
   core.int retryCount;
-
   /**
    * Tag for the task, could be used later to lease tasks grouped by a specific
    * tag.
    */
   core.String tag;
-
 
   Task();
 
@@ -585,7 +570,6 @@ class Task {
   }
 }
 
-
 /** ACLs that are applicable to this TaskQueue object. */
 class TaskQueueAcl {
   /**
@@ -593,19 +577,16 @@ class TaskQueueAcl {
    * can control the queue, eg set ACLs for the queue.
    */
   core.List<core.String> adminEmails;
-
   /**
    * Email addresses of users who can "consume" tasks from the TaskQueue. This
    * means they can Dequeue and Delete tasks from the queue.
    */
   core.List<core.String> consumerEmails;
-
   /**
    * Email addresses of users who can "produce" tasks into the TaskQueue. This
    * means they can Insert tasks into the queue.
    */
   core.List<core.String> producerEmails;
-
 
   TaskQueueAcl();
 
@@ -636,23 +617,18 @@ class TaskQueueAcl {
   }
 }
 
-
 /** Statistics for the TaskQueue object in question. */
 class TaskQueueStats {
   /** Number of tasks leased in the last hour. */
   core.String leasedLastHour;
-
   /** Number of tasks leased in the last minute. */
   core.String leasedLastMinute;
-
   /**
    * The timestamp (in seconds since the epoch) of the oldest unfinished task.
    */
   core.String oldestTask;
-
   /** Number of tasks in the queue. */
   core.int totalTasks;
-
 
   TaskQueueStats();
 
@@ -689,26 +665,20 @@ class TaskQueueStats {
   }
 }
 
-
 class TaskQueue {
   /** ACLs that are applicable to this TaskQueue object. */
   TaskQueueAcl acl;
-
   /** Name of the taskqueue. */
   core.String id;
-
   /** The kind of REST object returned, in this case taskqueue. */
   core.String kind;
-
   /**
    * The number of times we should lease out tasks before giving up on them. If
    * unset we lease them out forever until a worker deletes the task.
    */
   core.int maxLeases;
-
   /** Statistics for the TaskQueue object in question. */
   TaskQueueStats stats;
-
 
   TaskQueue();
 
@@ -751,14 +721,11 @@ class TaskQueue {
   }
 }
 
-
 class Tasks {
   /** The actual list of tasks returned as a result of the lease operation. */
   core.List<Task> items;
-
   /** The kind of object returned, a list of tasks. */
   core.String kind;
-
 
   Tasks();
 
@@ -783,14 +750,11 @@ class Tasks {
   }
 }
 
-
 class Tasks2 {
   /** The actual list of tasks currently active in the TaskQueue. */
   core.List<Task> items;
-
   /** The kind of object returned, a list of tasks. */
   core.String kind;
-
 
   Tasks2();
 

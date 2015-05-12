@@ -17,7 +17,7 @@
     "description": "Lets you manipulate events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/0tpC9BbaQPK_TZmlZK5cHsIr_JY\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/KhmoDMozz7u7kG8-or70MbVxdSo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -405,7 +405,7 @@
                             "type": "integer"
                         },
                         "minAccessRole": {
-                            "description": "The minimum access role for the user in the returned entires. Optional. The default is no restriction.",
+                            "description": "The minimum access role for the user in the returned entries. Optional. The default is no restriction.",
                             "enum": [
                                 "freeBusyReader",
                                 "owner",
@@ -527,7 +527,7 @@
                             "type": "integer"
                         },
                         "minAccessRole": {
-                            "description": "The minimum access role for the user in the returned entires. Optional. The default is no restriction.",
+                            "description": "The minimum access role for the user in the returned entries. Optional. The default is no restriction.",
                             "enum": [
                                 "freeBusyReader",
                                 "owner",
@@ -1535,7 +1535,7 @@
             }
         }
     },
-    "revision": "20150303",
+    "revision": "20150401",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {

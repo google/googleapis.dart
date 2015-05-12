@@ -20,7 +20,7 @@
     "description": "The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/IuZy-huEI4odldDxlxCkfd4i7iE\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/VmJ_vmyXHKjcZlOaFyHKHkKE8I0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -211,7 +211,7 @@
                             "type": "string"
                         },
                         "instanceGroupManager": {
-                            "description": "The name of the instance group manager used for filtering.",
+                            "description": "The name of the instance group manager. Use this parameter to return only updates to instances that are part of a specific instance group.",
                             "location": "query",
                             "type": "string"
                         },
@@ -475,7 +475,7 @@
             }
         }
     },
-    "revision": "20150129",
+    "revision": "20150326",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InstanceUpdate": {
@@ -494,7 +494,7 @@
                                         "type": "string"
                                     },
                                     "location": {
-                                        "description": "[Output Only] Indicates the field in the request which caused the error. This property is optional.",
+                                        "description": "[Output Only] Indicates the field in the request that caused the error. This property is optional.",
                                         "type": "string"
                                     },
                                     "message": {
@@ -555,7 +555,7 @@
                     "type": "string"
                 },
                 "creationTimestamp": {
-                    "description": "[Output Only] Creation timestamp in RFC3339 text format (output only).",
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
                     "type": "string"
                 },
                 "endTime": {
@@ -573,7 +573,7 @@
                                         "type": "string"
                                     },
                                     "location": {
-                                        "description": "[Output Only] Indicates the field in the request which caused the error. This property is optional.",
+                                        "description": "[Output Only] Indicates the field in the request that caused the error. This property is optional.",
                                         "type": "string"
                                     },
                                     "message": {
@@ -610,7 +610,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "[Output Only] Name of the resource (output only).",
+                    "description": "[Output Only] Name of the resource.",
                     "type": "string"
                 },
                 "operationType": {
@@ -621,7 +621,7 @@
                     "type": "integer"
                 },
                 "region": {
-                    "description": "[Output Only] URL of the region where the operation resides (output only).",
+                    "description": "[Output Only] URL of the region where the operation resides.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -646,7 +646,7 @@
                     "type": "string"
                 },
                 "targetLink": {
-                    "description": "[Output Only] URL of the resource the operation is mutating (output only).",
+                    "description": "[Output Only] URL of the resource the operation is mutating.",
                     "type": "string"
                 },
                 "user": {
@@ -686,7 +686,7 @@
                     "type": "array"
                 },
                 "zone": {
-                    "description": "[Output Only] URL of the zone where the operation resides (output only).",
+                    "description": "[Output Only] URL of the zone where the operation resides.",
                     "type": "string"
                 }
             },
@@ -697,7 +697,7 @@
             "id": "RollingUpdate",
             "properties": {
                 "actionType": {
-                    "description": "Specifies the action to take for each instance within the instance group. This can be RECREATE which will recreate each instance and is only available for managed instance groups. It can also be REBOOT which performs a soft reboot for each instance and is only available for regular (non-managed) instance groups and explicit lists of instances.",
+                    "description": "Specifies the action to take for each instance within the instance group. This can be RECREATE which will recreate each instance and is only available for managed instance groups. It can also be REBOOT which performs a soft reboot for each instance and is only available for regular (non-managed) instance groups.",
                     "type": "string"
                 },
                 "creationTimestamp": {
@@ -709,7 +709,7 @@
                     "type": "string"
                 },
                 "error": {
-                    "description": "[Output Only] Errors that occurred during rolling update.",
+                    "description": "[Output Only] Errors that occurred during the rolling update.",
                     "properties": {
                         "errors": {
                             "description": "[Output Only] The array of errors encountered while processing this operation.",
@@ -720,7 +720,7 @@
                                         "type": "string"
                                     },
                                     "location": {
-                                        "description": "[Output Only] Indicates the field in the request which caused the error. This property is optional.",
+                                        "description": "[Output Only] Indicates the field in the request that caused the error. This property is optional.",
                                         "type": "string"
                                     },
                                     "message": {
@@ -740,23 +740,16 @@
                     "type": "string"
                 },
                 "instanceGroup": {
-                    "description": "Fully-qualified URL of an instance group being updated. Exactly one of instanceGroupManager, instanceGroup and instance list must be set.",
+                    "description": "Fully-qualified URL of an instance group being updated. Exactly one of instanceGroupManager and instanceGroup must be set.",
                     "type": "string"
                 },
                 "instanceGroupManager": {
-                    "description": "Fully-qualified URL of an instance group manager being updated. Exactly one of instanceGroupManager, instanceGroup and instance list must be set.",
+                    "description": "Fully-qualified URL of an instance group manager being updated. Exactly one of instanceGroupManager and instanceGroup must be set.",
                     "type": "string"
                 },
                 "instanceTemplate": {
                     "description": "Fully-qualified URL of an instance template to apply.",
                     "type": "string"
-                },
-                "instances": {
-                    "description": "List of fully-qualified URLs of instances to be updated. Exactly one of instanceGroupManager, instanceGroup and instance list must be set.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "kind": {
                     "default": "replicapoolupdater#rollingUpdate",
@@ -767,32 +760,27 @@
                     "description": "Parameters of the update process.",
                     "properties": {
                         "autoPauseAfterInstances": {
-                            "description": "Number of instances updated before the update gets automatically paused.",
+                            "description": "Number of instances to update before the updater pauses the rolling update.",
                             "format": "int32",
                             "type": "integer"
                         },
                         "instanceStartupTimeoutSec": {
-                            "description": "Maximum amount of time we will wait after finishing all steps until we receive HEALTHY state for instance. If this deadline is exceeded instance update is considered as failed.",
+                            "description": "The maximum amount of time that the updater waits for a HEALTHY state after all of the update steps are complete. If the HEALTHY state is not received before the deadline, the instance update is considered a failure.",
                             "format": "int32",
                             "type": "integer"
                         },
                         "maxNumConcurrentInstances": {
-                            "description": "Maximum number of instances that can be updated simultaneously (concurrently). An update of an instance starts when the instance is about to be restarted and finishes after the instance has been restarted and the sleep period (defined by sleepAfterInstanceRestartSec) has passed.",
+                            "description": "The maximum number of instances that can be updated simultaneously. An instance update is considered complete only after the instance is restarted and initialized.",
                             "format": "int32",
                             "type": "integer"
                         },
                         "maxNumFailedInstances": {
-                            "description": "Maximum number of instance updates that can fail without failing the group update. Instance update is considered failed if any of it's update actions (e.g. Stop call on Instance resource in Rolling Reboot) failed with permanent failure, or if after finishing all update actions this instance is in UNHEALTHY state.",
+                            "description": "The maximum number of instance updates that can fail before the group update is considered a failure. An instance update is considered failed if any of its update actions (e.g. Stop call on Instance resource in Rolling Reboot) failed with permanent failure, or if the instance is in an UNHEALTHY state after it finishes all of the update actions.",
                             "format": "int32",
                             "type": "integer"
                         },
                         "minInstanceUpdateTimeSec": {
-                            "description": "Specifies minimum amount of time we will spend on updating single instance, measuring at the start of the first update action (e.g. Recreate call on Instance Group Manager or Stop call on Instance resource). If actual instance update takes less time we will simply sleep before proceeding with next instance.",
-                            "format": "int32",
-                            "type": "integer"
-                        },
-                        "sleepAfterInstanceRestartSec": {
-                            "description": "Time period after the instance has been restarted but before marking the update of this instance as done. This field is deprecated and ignored by Rolling Updater.",
+                            "description": "The minimum amount of time that the updater spends to update each instance. Update time is the time it takes to complete all update actions (e.g. Stop call on Instance resource in Rolling Reboot), reboot, and initialize. If the instance update finishes early, the updater pauses for the remainder of the time before it starts the next instance update.",
                             "format": "int32",
                             "type": "integer"
                         }

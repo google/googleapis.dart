@@ -74,7 +74,7 @@ class DeploymentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String deployment) {
     var _url = null;
@@ -90,7 +90,6 @@ class DeploymentsResourceApi {
     if (deployment == null) {
       throw new core.ArgumentError("Parameter deployment is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment');
 
@@ -122,7 +121,7 @@ class DeploymentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Deployment> get(core.String project, core.String deployment) {
     var _url = null;
@@ -138,7 +137,6 @@ class DeploymentsResourceApi {
     if (deployment == null) {
       throw new core.ArgumentError("Parameter deployment is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment');
 
@@ -170,7 +168,7 @@ class DeploymentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(Deployment request, core.String project) {
     var _url = null;
@@ -186,7 +184,6 @@ class DeploymentsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments';
 
@@ -223,7 +220,7 @@ class DeploymentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DeploymentsListResponse> list(core.String project, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -242,7 +239,6 @@ class DeploymentsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments';
 
@@ -286,7 +282,7 @@ class ManifestsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Manifest> get(core.String project, core.String deployment, core.String manifest) {
     var _url = null;
@@ -305,7 +301,6 @@ class ManifestsResourceApi {
     if (manifest == null) {
       throw new core.ArgumentError("Parameter manifest is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment') + '/manifests/' + commons.Escaper.ecapeVariable('$manifest');
 
@@ -345,7 +340,7 @@ class ManifestsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ManifestsListResponse> list(core.String project, core.String deployment, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -367,7 +362,6 @@ class ManifestsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment') + '/manifests';
 
@@ -407,7 +401,7 @@ class OperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> get(core.String project, core.String operation) {
     var _url = null;
@@ -423,7 +417,6 @@ class OperationsResourceApi {
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/operations/' + commons.Escaper.ecapeVariable('$operation');
 
@@ -460,7 +453,7 @@ class OperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OperationsListResponse> list(core.String project, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -479,7 +472,6 @@ class OperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/operations';
 
@@ -523,7 +515,7 @@ class ResourcesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Resource> get(core.String project, core.String deployment, core.String resource) {
     var _url = null;
@@ -542,7 +534,6 @@ class ResourcesResourceApi {
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment') + '/resources/' + commons.Escaper.ecapeVariable('$resource');
 
@@ -582,7 +573,7 @@ class ResourcesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ResourcesListResponse> list(core.String project, core.String deployment, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -604,7 +595,6 @@ class ResourcesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment') + '/resources';
 
@@ -650,7 +640,7 @@ class TypesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TypesListResponse> list(core.String project, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -669,7 +659,6 @@ class TypesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/types';
 
@@ -691,21 +680,17 @@ class TypesResourceApi {
 class Deployment {
   /** ! An optional user-provided description of the deployment. */
   core.String description;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /**
    * ! [Output Only] URL of the manifest representing the full configuration !
    * of this deployment.
    */
   core.String manifest;
-
   /** ! The name of the deployment, which must be unique within the project. */
   core.String name;
-
   /**
    * ! [Input Only] The YAML configuration to use in processing this deployment.
    * ! ! When you create a deployment, the server creates a new manifest with
@@ -713,7 +698,6 @@ class Deployment {
    * of ! the manifest resource.
    */
   core.String targetConfig;
-
 
   Deployment();
 
@@ -756,7 +740,6 @@ class Deployment {
   }
 }
 
-
 /**
  * ! A response containing a partial list of deployments and a page token used !
  * to build the next request if the request has been truncated. Next available
@@ -765,10 +748,8 @@ class Deployment {
 class DeploymentsListResponse {
   /** ! The deployments contained in this response. */
   core.List<Deployment> deployments;
-
   /** ! A token used to continue a truncated list request. */
   core.String nextPageToken;
-
 
   DeploymentsListResponse();
 
@@ -793,7 +774,6 @@ class DeploymentsListResponse {
   }
 }
 
-
 /** Next available tag: 10 */
 class Manifest {
   /**
@@ -801,24 +781,19 @@ class Manifest {
    * The YAML configuration for this manifest.
    */
   core.String config;
-
   /**
    * ! [Output Only] The fully-expanded configuration file, including any !
    * templates and references.
    */
   core.String evaluatedConfig;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** ! [Output Only] The name of the manifest. */
   core.String name;
-
   /** [Output Only] Self link for the manifest. */
   core.String selfLink;
-
 
   Manifest();
 
@@ -861,7 +836,6 @@ class Manifest {
   }
 }
 
-
 /**
  * ! A response containing a partial list of manifests and a page token used !
  * to build the next request if the request has been truncated. Next available
@@ -870,10 +844,8 @@ class Manifest {
 class ManifestsListResponse {
   /** ! Manifests contained in this list response. */
   core.List<Manifest> manifests;
-
   /** ! A token used to continue a truncated list request. */
   core.String nextPageToken;
-
 
   ManifestsListResponse();
 
@@ -898,20 +870,16 @@ class ManifestsListResponse {
   }
 }
 
-
 class OperationErrorErrors {
   /** ! The error type identifier for this error. */
   core.String code;
-
   /**
    * ! Indicates the field in the request which caused the error. ! This
    * property is optional.
    */
   core.String location;
-
   /** ! An optional, human-readable error message. */
   core.String message;
-
 
   OperationErrorErrors();
 
@@ -942,7 +910,6 @@ class OperationErrorErrors {
   }
 }
 
-
 /**
  * ! [Output Only] If errors occurred during processing of this operation, !
  * this field will be populated.
@@ -950,7 +917,6 @@ class OperationErrorErrors {
 class OperationError {
   /** ! The array of errors encountered while processing this operation. */
   core.List<OperationErrorErrors> errors;
-
 
   OperationError();
 
@@ -969,14 +935,11 @@ class OperationError {
   }
 }
 
-
 class OperationWarningsData {
   /** ! A key for the warning data. */
   core.String key;
-
   /** ! A warning data value corresponding to the key. */
   core.String value;
-
 
   OperationWarningsData();
 
@@ -1001,7 +964,6 @@ class OperationWarningsData {
   }
 }
 
-
 class OperationWarnings {
   /**
    * ! The warning type identifier for this warning.
@@ -1010,13 +972,10 @@ class OperationWarnings {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object code;
-
   /** ! Metadata for this warning in 'key: value' format. */
   core.List<OperationWarningsData> data;
-
   /** ! Optional human-readable details for this warning. */
   core.String message;
-
 
   OperationWarnings();
 
@@ -1047,7 +1006,6 @@ class OperationWarnings {
   }
 }
 
-
 /**
  * ! An operation resource, used to manage asynchronous API requests. Next
  * available tag: 24
@@ -1055,51 +1013,42 @@ class OperationWarnings {
 class Operation {
   /** ! [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-
   /**
    * ! [Output Only] The time that this operation was completed. This is in !
    * RFC3339 format.
    */
   core.String endTime;
-
   /**
    * ! [Output Only] If errors occurred during processing of this operation, !
    * this field will be populated.
    */
   OperationError error;
-
   /**
    * ! [Output Only] If operation fails, the HTTP error message returned, ! e.g.
    * NOT FOUND.
    */
   core.String httpErrorMessage;
-
   /**
    * ! [Output Only] If operation fails, the HTTP error status code returned, !
    * e.g. 404.
    */
   core.int httpErrorStatusCode;
-
   /**
    * ! [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /**
    * ! [Output Only] The time that this operation was requested. ! This is in
    * RFC 3339 format.
    */
   core.String insertTime;
-
   /** ! [Output Only] Name of the operation. */
   core.String name;
-
   /**
    * ! [Output Only] Type of the operation. Examples include "insert", or !
    * "delete"
    */
   core.String operationType;
-
   /**
    * ! [Output Only] An optional progress indicator that ranges from 0 to 100. !
    * There is no requirement that this be linear or support any granularity ! of
@@ -1108,49 +1057,40 @@ class Operation {
    * operation progresses.
    */
   core.int progress;
-
   /** [Output Only] Self link for the manifest. */
   core.String selfLink;
-
   /**
    * ! [Output Only] The time that this operation was started by the server. !
    * This is in RFC 3339 format.
    */
   core.String startTime;
-
   /**
    * ! [Output Only] Status of the operation. Can be one of the following: !
    * "PENDING", "RUNNING", or "DONE".
    */
   core.String status;
-
   /**
    * ! [Output Only] An optional textual description of the current status of !
    * the operation.
    */
   core.String statusMessage;
-
   /**
    * ! [Output Only] Unique target id which identifies a particular !
    * incarnation of the target.
    */
   core.String targetId;
-
   /** ! [Output Only] URL of the resource the operation is mutating. */
   core.String targetLink;
-
   /**
    * ! [Output Only] User who requested the operation, for example !
    * "user@example.com"
    */
   core.String user;
-
   /**
    * ! [Output Only] If warning messages generated during processing of this !
    * operation, this field will be populated.
    */
   core.List<OperationWarnings> warnings;
-
 
   Operation();
 
@@ -1271,7 +1211,6 @@ class Operation {
   }
 }
 
-
 /**
  * ! A response containing a partial list of operations and a page token used !
  * to build the next request if the request has been truncated. Next available
@@ -1280,10 +1219,8 @@ class Operation {
 class OperationsListResponse {
   /** ! A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** ! Operations contained in this list response. */
   core.List<Operation> operations;
-
 
   OperationsListResponse();
 
@@ -1308,43 +1245,34 @@ class OperationsListResponse {
   }
 }
 
-
 /** Next available tag: 12 */
 class Resource {
   /** ! [Output Only] A list of any errors that occurred during deployment. */
   core.List<core.String> errors;
-
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-
   /** ! [Output Only] The intended state of the resource. */
   core.String intent;
-
   /**
    * ! [Output Only] URL of the manifest representing the current configuration
    * ! of this resource.
    */
   core.String manifest;
-
   /**
    * ! [Output Only] The name of the resource as it appears in the YAML config.
    */
   core.String name;
-
   /** ! [Output Only] The state of the resource. */
   core.String state;
-
   /**
    * ! [Output Only] The type of the resource, for example !
    * ?compute.v1.instance?, or ?replicaPools.v1beta2.instanceGroupManager?
    */
   core.String type;
-
   /** ! [Output Only] The URL of the actual resource. */
   core.String url;
-
 
   Resource();
 
@@ -1405,7 +1333,6 @@ class Resource {
   }
 }
 
-
 /**
  * ! A response containing a partial list of resources and a page token used !
  * to build the next request if the request has been truncated. Next available
@@ -1414,10 +1341,8 @@ class Resource {
 class ResourcesListResponse {
   /** ! A token used to continue a truncated list request. */
   core.String nextPageToken;
-
   /** ! Resources contained in this list response. */
   core.List<Resource> resources;
-
 
   ResourcesListResponse();
 
@@ -1442,12 +1367,10 @@ class ResourcesListResponse {
   }
 }
 
-
 /** ! A type supported by Deployment Manager. Next available tag: 4 */
 class Type {
   /** ! Name of the type. */
   core.String name;
-
 
   Type();
 
@@ -1466,7 +1389,6 @@ class Type {
   }
 }
 
-
 /**
  * ! A response that returns all Types supported by Deployment Manager Next
  * available tag: 3
@@ -1474,7 +1396,6 @@ class Type {
 class TypesListResponse {
   /** ! Types supported by Deployment Manager */
   core.List<Type> types;
-
 
   TypesListResponse();
 

@@ -14,7 +14,7 @@
     "description": "Lets you search for books and manage your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/7vCHfrhi9Lj_cY5xxg_5Db6xPtw\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/5UMRPQM2lE_tfb1BMv9TTmTYYF8\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
         "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
@@ -902,7 +902,7 @@
                     ]
                 },
                 "updateUserSettings": {
-                    "description": "Sets the settings for the user. Unspecified sub-objects will retain the existing value.",
+                    "description": "Sets the settings for the user. If a sub-object is specified, it will overwrite the existing sub-object stored in the server. Unspecified sub-objects will retain the existing value.",
                     "httpMethod": "POST",
                     "id": "books.myconfig.updateUserSettings",
                     "path": "myconfig/updateUserSettings",
@@ -1539,6 +1539,19 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "maxAllowedMaturityRating": {
+                            "description": "The maximum allowed maturity rating of returned volumes. Books with a higher maturity rating are filtered out.",
+                            "enum": [
+                                "mature",
+                                "not-mature"
+                            ],
+                            "enumDescriptions": [
+                                "Show books which are rated mature or lower.",
+                                "Show books which are rated not mature."
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageSize": {
                             "description": "Number of maximum results per page to be included in the response.",
                             "format": "uint32",
@@ -1936,6 +1949,19 @@
                                     "location": "query",
                                     "type": "string"
                                 },
+                                "maxAllowedMaturityRating": {
+                                    "description": "The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out.",
+                                    "enum": [
+                                        "mature",
+                                        "not-mature"
+                                    ],
+                                    "enumDescriptions": [
+                                        "Show books which are rated mature or lower.",
+                                        "Show books which are rated not mature."
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "source": {
                                     "description": "String to identify the originator of this request.",
                                     "location": "query",
@@ -2050,6 +2076,19 @@
                             "parameters": {
                                 "locale": {
                                     "description": "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "maxAllowedMaturityRating": {
+                                    "description": "The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out.",
+                                    "enum": [
+                                        "mature",
+                                        "not-mature"
+                                    ],
+                                    "enumDescriptions": [
+                                        "Show books which are rated mature or lower.",
+                                        "Show books which are rated not mature."
+                                    ],
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -2185,7 +2224,7 @@
             }
         }
     },
-    "revision": "20150309",
+    "revision": "20150318",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -3729,6 +3768,10 @@
                 "volumeInfo": {
                     "description": "General volume information.",
                     "properties": {
+                        "allowAnonLogging": {
+                            "description": "Whether anonymous logging should be allowed.",
+                            "type": "boolean"
+                        },
                         "authors": {
                             "description": "The names of the authors and/or editors for this volume. (In LITE projection)",
                             "items": {
@@ -3835,6 +3878,9 @@
                         },
                         "mainCategory": {
                             "description": "The main category to which this volume belongs. It will be the category from the categories list returned below that has the highest weight.",
+                            "type": "string"
+                        },
+                        "maturityRating": {
                             "type": "string"
                         },
                         "pageCount": {

@@ -59,7 +59,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> get(core.int id) {
     var _url = null;
@@ -72,7 +72,6 @@ class AccountsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -97,7 +96,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountsList> list() {
     var _url = null;
@@ -106,7 +105,6 @@ class AccountsResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'accounts';
@@ -136,7 +134,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> patch(Account request, core.int id) {
     var _url = null;
@@ -152,7 +150,6 @@ class AccountsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -181,7 +178,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> update(Account request, core.int id) {
     var _url = null;
@@ -197,7 +194,6 @@ class AccountsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -233,7 +229,7 @@ class BillingInfoResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BillingInfo> get(core.int accountId) {
     var _url = null;
@@ -246,7 +242,6 @@ class BillingInfoResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -272,7 +267,7 @@ class BillingInfoResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BillingInfoList> list() {
     var _url = null;
@@ -281,7 +276,6 @@ class BillingInfoResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'billinginfo';
@@ -321,7 +315,7 @@ class BudgetResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Budget> get(core.String accountId, core.String billingId) {
     var _url = null;
@@ -337,7 +331,6 @@ class BudgetResourceApi {
     if (billingId == null) {
       throw new core.ArgumentError("Parameter billingId is required.");
     }
-
 
     _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$billingId');
 
@@ -370,7 +363,7 @@ class BudgetResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Budget> patch(Budget request, core.String accountId, core.String billingId) {
     var _url = null;
@@ -389,7 +382,6 @@ class BudgetResourceApi {
     if (billingId == null) {
       throw new core.ArgumentError("Parameter billingId is required.");
     }
-
 
     _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$billingId');
 
@@ -421,7 +413,7 @@ class BudgetResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Budget> update(Budget request, core.String accountId, core.String billingId) {
     var _url = null;
@@ -440,7 +432,6 @@ class BudgetResourceApi {
     if (billingId == null) {
       throw new core.ArgumentError("Parameter billingId is required.");
     }
-
 
     _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$billingId');
 
@@ -479,7 +470,7 @@ class CreativesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Creative> get(core.int accountId, core.String buyerCreativeId) {
     var _url = null;
@@ -495,7 +486,6 @@ class CreativesResourceApi {
     if (buyerCreativeId == null) {
       throw new core.ArgumentError("Parameter buyerCreativeId is required.");
     }
-
 
     _url = 'creatives/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$buyerCreativeId');
 
@@ -522,7 +512,7 @@ class CreativesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Creative> insert(Creative request) {
     var _url = null;
@@ -535,7 +525,6 @@ class CreativesResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'creatives';
 
@@ -582,7 +571,7 @@ class CreativesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativesList> list({core.List<core.int> accountId, core.List<core.String> buyerCreativeId, core.int maxResults, core.String pageToken, core.String statusFilter}) {
     var _url = null;
@@ -607,7 +596,6 @@ class CreativesResourceApi {
     if (statusFilter != null) {
       _queryParams["statusFilter"] = [statusFilter];
     }
-
 
     _url = 'creatives';
 
@@ -643,7 +631,7 @@ class DirectDealsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DirectDeal> get(core.String id) {
     var _url = null;
@@ -656,7 +644,6 @@ class DirectDealsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'directdeals/' + commons.Escaper.ecapeVariable('$id');
 
@@ -681,7 +668,7 @@ class DirectDealsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DirectDealsList> list() {
     var _url = null;
@@ -690,7 +677,6 @@ class DirectDealsResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'directdeals';
@@ -741,7 +727,7 @@ class PerformanceReportResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PerformanceReportList> list(core.String accountId, core.String endDateTime, core.String startDateTime, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -769,7 +755,6 @@ class PerformanceReportResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'performancereport';
 
@@ -805,7 +790,7 @@ class PretargetingConfigResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String accountId, core.String configId) {
     var _url = null;
@@ -851,7 +836,7 @@ class PretargetingConfigResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PretargetingConfig> get(core.String accountId, core.String configId) {
     var _url = null;
@@ -867,7 +852,6 @@ class PretargetingConfigResourceApi {
     if (configId == null) {
       throw new core.ArgumentError("Parameter configId is required.");
     }
-
 
     _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$configId');
 
@@ -896,7 +880,7 @@ class PretargetingConfigResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PretargetingConfig> insert(PretargetingConfig request, core.String accountId) {
     var _url = null;
@@ -912,7 +896,6 @@ class PretargetingConfigResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -939,7 +922,7 @@ class PretargetingConfigResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PretargetingConfigList> list(core.String accountId) {
     var _url = null;
@@ -952,7 +935,6 @@ class PretargetingConfigResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-
 
     _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -984,7 +966,7 @@ class PretargetingConfigResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PretargetingConfig> patch(PretargetingConfig request, core.String accountId, core.String configId) {
     var _url = null;
@@ -1003,7 +985,6 @@ class PretargetingConfigResourceApi {
     if (configId == null) {
       throw new core.ArgumentError("Parameter configId is required.");
     }
-
 
     _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$configId');
 
@@ -1034,7 +1015,7 @@ class PretargetingConfigResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PretargetingConfig> update(PretargetingConfig request, core.String accountId, core.String configId) {
     var _url = null;
@@ -1053,7 +1034,6 @@ class PretargetingConfigResourceApi {
     if (configId == null) {
       throw new core.ArgumentError("Parameter configId is required.");
     }
-
 
     _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$configId');
 
@@ -1074,7 +1054,6 @@ class PretargetingConfigResourceApi {
 class AccountBidderLocation {
   /** The maximum queries per second the Ad Exchange will send. */
   core.int maximumQps;
-
   /**
    * The geographical region the Ad Exchange should send requests from. Only
    * used by some quota systems, but always setting the value is recommended.
@@ -1085,10 +1064,8 @@ class AccountBidderLocation {
    * - US_WEST
    */
   core.String region;
-
   /** The URL to which the Ad Exchange will send bid requests. */
   core.String url;
-
 
   AccountBidderLocation();
 
@@ -1119,46 +1096,37 @@ class AccountBidderLocation {
   }
 }
 
-
 /** Configuration data for an Ad Exchange buyer account. */
 class Account {
   /** Your bidder locations that have distinct URLs. */
   core.List<AccountBidderLocation> bidderLocation;
-
   /**
    * The nid parameter value used in cookie match requests. Please contact your
    * technical account manager if you need to change this.
    */
   core.String cookieMatchingNid;
-
   /** The base URL used in cookie match requests. */
   core.String cookieMatchingUrl;
-
   /** Account id. */
   core.int id;
-
   /** Resource type. */
   core.String kind;
-
   /**
    * The maximum number of active creatives that an account can have, where a
    * creative is active if it was inserted or bid with in the last 30 days.
    * Please contact your technical account manager if you need to change this.
    */
   core.int maximumActiveCreatives;
-
   /**
    * The sum of all bidderLocation.maximumQps values cannot exceed this. Please
    * contact your technical account manager if you need to change this.
    */
   core.int maximumTotalQps;
-
   /**
    * The number of creatives that this account inserted or bid with in the last
    * 30 days.
    */
   core.int numberActiveCreatives;
-
 
   Account();
 
@@ -1219,7 +1187,6 @@ class Account {
   }
 }
 
-
 /**
  * An account feed lists Ad Exchange buyer accounts that the user has access to.
  * Each entry in the feed corresponds to a single buyer account.
@@ -1227,10 +1194,8 @@ class Account {
 class AccountsList {
   /** A list of accounts. */
   core.List<Account> items;
-
   /** Resource type. */
   core.String kind;
-
 
   AccountsList();
 
@@ -1255,25 +1220,20 @@ class AccountsList {
   }
 }
 
-
 /** The configuration data for an Ad Exchange billing info. */
 class BillingInfo {
   /** Account id. */
   core.int accountId;
-
   /** Account name. */
   core.String accountName;
-
   /**
    * A list of adgroup IDs associated with this particular account. These IDs
    * may show up as part of a realtime bidding BidRequest, which indicates a bid
    * request for this account.
    */
   core.List<core.String> billingId;
-
   /** Resource type. */
   core.String kind;
-
 
   BillingInfo();
 
@@ -1310,7 +1270,6 @@ class BillingInfo {
   }
 }
 
-
 /**
  * A billing info feed lists Billing Info the Ad Exchange buyer account has
  * access to. Each entry in the feed corresponds to a single billing info.
@@ -1318,10 +1277,8 @@ class BillingInfo {
 class BillingInfoList {
   /** A list of billing info relevant for your account. */
   core.List<BillingInfo> items;
-
   /** Resource type. */
   core.String kind;
-
 
   BillingInfoList();
 
@@ -1346,33 +1303,26 @@ class BillingInfoList {
   }
 }
 
-
 /** The configuration data for Ad Exchange RTB - Budget API. */
 class Budget {
   /** The id of the account. This is required for get and update requests. */
   core.String accountId;
-
   /**
    * The billing id to determine which adgroup to provide budget information
    * for. This is required for get and update requests.
    */
   core.String billingId;
-
   /**
    * The budget amount to apply for the billingId provided. This is required for
    * update requests.
    */
   core.String budgetAmount;
-
   /** The currency code for the buyer. This cannot be altered here. */
   core.String currencyCode;
-
   /** The unique id that describes this item. */
   core.String id;
-
   /** The kind of the resource, i.e. "adexchangebuyer#budget". */
   core.String kind;
-
 
   Budget();
 
@@ -1421,14 +1371,11 @@ class Budget {
   }
 }
 
-
 class CreativeCorrections {
   /** Additional details about the correction. */
   core.List<core.String> details;
-
   /** The type of correction that was applied to the creative. */
   core.String reason;
-
 
   CreativeCorrections();
 
@@ -1453,14 +1400,11 @@ class CreativeCorrections {
   }
 }
 
-
 class CreativeDisapprovalReasons {
   /** Additional details about the reason for disapproval. */
   core.List<core.String> details;
-
   /** The categorized reason for disapproval. */
   core.String reason;
-
 
   CreativeDisapprovalReasons();
 
@@ -1485,20 +1429,17 @@ class CreativeDisapprovalReasons {
   }
 }
 
-
 class CreativeFilteringReasonsReasons {
   /**
    * The number of times the creative was filtered for the status. The count is
    * aggregated across all publishers on the exchange.
    */
   core.String filteringCount;
-
   /**
    * The filtering status code. Please refer to the creative-status-codes.txt
    * file for different statuses.
    */
   core.int filteringStatus;
-
 
   CreativeFilteringReasonsReasons();
 
@@ -1523,7 +1464,6 @@ class CreativeFilteringReasonsReasons {
   }
 }
 
-
 /**
  * The filtering reasons for the creative. Read-only. This field should not be
  * set in requests.
@@ -1534,10 +1474,8 @@ class CreativeFilteringReasons {
    * 00:00:00 to 23:59:59 in PST.
    */
   core.String date;
-
   /** The filtering reasons. */
   core.List<CreativeFilteringReasonsReasons> reasons;
-
 
   CreativeFilteringReasons();
 
@@ -1562,7 +1500,6 @@ class CreativeFilteringReasons {
   }
 }
 
-
 /** A creative and its classification data. */
 class Creative {
   /**
@@ -1570,37 +1507,28 @@ class Creative {
    * set, videoURL should not be set.
    */
   core.String HTMLSnippet;
-
   /** Account id. */
   core.int accountId;
-
   /**
    * Detected advertiser id, if any. Read-only. This field should not be set in
    * requests.
    */
   core.List<core.String> advertiserId;
-
   /** The name of the company being advertised in the creative. */
   core.String advertiserName;
-
   /** The agency id for this creative. */
   core.String agencyId;
-
   /** All attributes for the ads that may be shown from this snippet. */
   core.List<core.int> attribute;
-
   /** A buyer-specific id identifying the creative in this ad. */
   core.String buyerCreativeId;
-
   /** The set of destination urls for the snippet. */
   core.List<core.String> clickThroughUrl;
-
   /**
    * Shows any corrections that were applied to this creative. Read-only. This
    * field should not be set in requests.
    */
   core.List<CreativeCorrections> corrections;
-
   /**
    * The reasons for disapproval, if any. Note that not all disapproval reasons
    * may be categorized, so it is possible for the creative to have a status of
@@ -1609,51 +1537,40 @@ class Creative {
    * should not be set in requests.
    */
   core.List<CreativeDisapprovalReasons> disapprovalReasons;
-
   /**
    * The filtering reasons for the creative. Read-only. This field should not be
    * set in requests.
    */
   CreativeFilteringReasons filteringReasons;
-
   /** Ad height. */
   core.int height;
-
   /** Resource type. */
   core.String kind;
-
   /**
    * Detected product categories, if any. Read-only. This field should not be
    * set in requests.
    */
   core.List<core.int> productCategories;
-
   /**
    * All restricted categories for the ads that may be shown from this snippet.
    */
   core.List<core.int> restrictedCategories;
-
   /**
    * Detected sensitive categories, if any. Read-only. This field should not be
    * set in requests.
    */
   core.List<core.int> sensitiveCategories;
-
   /**
    * Creative serving status. Read-only. This field should not be set in
    * requests.
    */
   core.String status;
-
   /** All vendor types for the ads that may be shown from this snippet. */
   core.List<core.int> vendorType;
-
   /** The url to fetch a video ad. If set, HTMLSnippet should not be set. */
   core.String videoURL;
-
   /** Ad width. */
   core.int width;
-
 
   Creative();
 
@@ -1786,7 +1703,6 @@ class Creative {
   }
 }
 
-
 /**
  * The creatives feed lists the active creatives for the Ad Exchange buyer
  * accounts that the user has access to. Each entry in the feed corresponds to a
@@ -1795,16 +1711,13 @@ class Creative {
 class CreativesList {
   /** A list of creatives. */
   core.List<Creative> items;
-
   /** Resource type. */
   core.String kind;
-
   /**
    * Continuation token used to page through creatives. To retrieve the next
    * page of results, set the next request's "pageToken" value to this.
    */
   core.String nextPageToken;
-
 
   CreativesList();
 
@@ -1835,44 +1748,35 @@ class CreativesList {
   }
 }
 
-
 /** The configuration data for an Ad Exchange direct deal. */
 class DirectDeal {
   /** The account id of the buyer this deal is for. */
   core.int accountId;
-
   /** The name of the advertiser this deal is for. */
   core.String advertiser;
-
   /**
    * The currency code that applies to the fixed_cpm value. If not set then
    * assumed to be USD.
    */
   core.String currencyCode;
-
   /**
    * End time for when this deal stops being active. If not set then this deal
    * is valid until manually disabled by the publisher. In seconds since the
    * epoch.
    */
   core.String endTime;
-
   /**
    * The fixed price for this direct deal. In cpm micros of currency according
    * to currency_code. If set, then this deal is eligible for the fixed price
    * tier of buying (highest priority, pay exactly the configured fixed price).
    */
   core.String fixedCpm;
-
   /** Deal id. */
   core.String id;
-
   /** Resource type. */
   core.String kind;
-
   /** Deal name. */
   core.String name;
-
   /**
    * The minimum price for this direct deal. In cpm micros of currency according
    * to currency_code. If set, then this deal is eligible for the private
@@ -1880,22 +1784,18 @@ class DirectDeal {
    * auction).
    */
   core.String privateExchangeMinCpm;
-
   /**
    * If true, the publisher has opted to have their blocks ignored when a
    * creative is bid with for this deal.
    */
   core.bool publisherBlocksOverriden;
-
   /** The name of the publisher offering this direct deal. */
   core.String sellerNetwork;
-
   /**
    * Start time for when this deal becomes active. If not set then this deal is
    * active immediately upon creation. In seconds since the epoch.
    */
   core.String startTime;
-
 
   DirectDeal();
 
@@ -1980,7 +1880,6 @@ class DirectDeal {
   }
 }
 
-
 /**
  * A direct deals feed lists Direct Deals the Ad Exchange buyer account has
  * access to. This includes direct deals set up for the buyer account as well as
@@ -1989,10 +1888,8 @@ class DirectDeal {
 class DirectDealsList {
   /** A list of direct deals relevant for your account. */
   core.List<DirectDeal> directDeals;
-
   /** Resource type. */
   core.String kind;
-
 
   DirectDealsList();
 
@@ -2017,7 +1914,6 @@ class DirectDealsList {
   }
 }
 
-
 /** The configuration data for an Ad Exchange performance report list. */
 class PerformanceReport {
   /**
@@ -2028,7 +1924,6 @@ class PerformanceReport {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Object> calloutStatusRate;
-
   /**
    * Average QPS for cookie matcher operations.
    *
@@ -2036,7 +1931,6 @@ class PerformanceReport {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Object> cookieMatcherStatusRate;
-
   /**
    * Rate of ads with a given status. Please refer to the
    * creative-status-codes.txt file for different statuses.
@@ -2045,7 +1939,6 @@ class PerformanceReport {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Object> creativeStatusRate;
-
   /**
    * Average QPS for hosted match operations.
    *
@@ -2053,52 +1946,39 @@ class PerformanceReport {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Object> hostedMatchStatusRate;
-
   /** Resource type. */
   core.String kind;
-
   /**
    * The 50th percentile round trip latency(ms) as perceived from Google servers
    * for the duration period covered by the report.
    */
   core.double latency50thPercentile;
-
   /**
    * The 85th percentile round trip latency(ms) as perceived from Google servers
    * for the duration period covered by the report.
    */
   core.double latency85thPercentile;
-
   /**
    * The 95th percentile round trip latency(ms) as perceived from Google servers
    * for the duration period covered by the report.
    */
   core.double latency95thPercentile;
-
   /** Rate of various quota account statuses per quota check. */
   core.double noQuotaInRegion;
-
   /** Rate of various quota account statuses per quota check. */
   core.double outOfQuota;
-
   /** Average QPS for pixel match requests from clients. */
   core.double pixelMatchRequests;
-
   /** Average QPS for pixel match responses from clients. */
   core.double pixelMatchResponses;
-
   /** The configured quota limits for this account. */
   core.double quotaConfiguredLimit;
-
   /** The throttled quota limits for this account. */
   core.double quotaThrottledLimit;
-
   /** The trading location of this data. */
   core.String region;
-
   /** The unix timestamp of the starting time of this performance data. */
   core.String timestamp;
-
 
   PerformanceReport();
 
@@ -2207,7 +2087,6 @@ class PerformanceReport {
   }
 }
 
-
 /**
  * The configuration data for an Ad Exchange performance report list.
  * https://sites.google.com/a/google.com/adx-integration/Home/engineering/binary-releases/rtb-api-release
@@ -2216,10 +2095,8 @@ class PerformanceReport {
 class PerformanceReportList {
   /** Resource type. */
   core.String kind;
-
   /** A list of performance reports relevant for the account. */
   core.List<PerformanceReport> performanceReport;
-
 
   PerformanceReportList();
 
@@ -2244,14 +2121,11 @@ class PerformanceReportList {
   }
 }
 
-
 class PretargetingConfigDimensions {
   /** Height in pixels. */
   core.String height;
-
   /** Width in pixels. */
   core.String width;
-
 
   PretargetingConfigDimensions();
 
@@ -2276,7 +2150,6 @@ class PretargetingConfigDimensions {
   }
 }
 
-
 class PretargetingConfigExcludedPlacements {
   /**
    * The value of the placement. Interpretation depends on the placement type,
@@ -2284,10 +2157,8 @@ class PretargetingConfigExcludedPlacements {
    * for a mobile app placement.
    */
   core.String token;
-
   /** The type of the placement. */
   core.String type;
-
 
   PretargetingConfigExcludedPlacements();
 
@@ -2312,7 +2183,6 @@ class PretargetingConfigExcludedPlacements {
   }
 }
 
-
 class PretargetingConfigPlacements {
   /**
    * The value of the placement. Interpretation depends on the placement type,
@@ -2320,10 +2190,8 @@ class PretargetingConfigPlacements {
    * for a mobile app placement.
    */
   core.String token;
-
   /** The type of the placement. */
   core.String type;
-
 
   PretargetingConfigPlacements();
 
@@ -2348,96 +2216,76 @@ class PretargetingConfigPlacements {
   }
 }
 
-
 class PretargetingConfig {
   /**
    * The id for billing purposes, provided for reference. Leave this field blank
    * for insert requests; the id will be generated automatically.
    */
   core.String billingId;
-
   /**
    * The config id; generated automatically. Leave this field blank for insert
    * requests.
    */
   core.String configId;
-
   /** The name of the config. Must be unique. Required for all requests. */
   core.String configName;
-
   /**
    * List must contain exactly one of PRETARGETING_CREATIVE_TYPE_HTML or
    * PRETARGETING_CREATIVE_TYPE_VIDEO.
    */
   core.List<core.String> creativeType;
-
   /**
    * Requests which allow one of these (width, height) pairs will match. All
    * pairs must be supported ad dimensions.
    */
   core.List<PretargetingConfigDimensions> dimensions;
-
   /**
    * Requests with any of these content labels will not match. Values are from
    * content-labels.txt in the downloadable files section.
    */
   core.List<core.String> excludedContentLabels;
-
   /** Requests containing any of these geo criteria ids will not match. */
   core.List<core.String> excludedGeoCriteriaIds;
-
   /** Requests containing any of these placements will not match. */
   core.List<PretargetingConfigExcludedPlacements> excludedPlacements;
-
   /** Requests containing any of these users list ids will not match. */
   core.List<core.String> excludedUserLists;
-
   /**
    * Requests containing any of these vertical ids will not match. Values are
    * from the publisher-verticals.txt file in the downloadable files section.
    */
   core.List<core.String> excludedVerticals;
-
   /** Requests containing any of these geo criteria ids will match. */
   core.List<core.String> geoCriteriaIds;
-
   /** Whether this config is active. Required for all requests. */
   core.bool isActive;
-
   /** The kind of the resource, i.e. "adexchangebuyer#pretargetingConfig". */
   core.String kind;
-
   /** Request containing any of these language codes will match. */
   core.List<core.String> languages;
-
   /**
    * Requests containing any of these mobile carrier ids will match. Values are
    * from mobile-carriers.csv in the downloadable files section.
    */
   core.List<core.String> mobileCarriers;
-
   /**
    * Requests containing any of these mobile device ids will match. Values are
    * from mobile-devices.csv in the downloadable files section.
    */
   core.List<core.String> mobileDevices;
-
   /**
    * Requests containing any of these mobile operating system version ids will
    * match. Values are from mobile-os.csv in the downloadable files section.
    */
   core.List<core.String> mobileOperatingSystemVersions;
-
   /** Requests containing any of these placements will match. */
   core.List<PretargetingConfigPlacements> placements;
-
   /**
    * Requests matching any of these platforms will match. Possible values are
    * PRETARGETING_PLATFORM_MOBILE, PRETARGETING_PLATFORM_DESKTOP, and
    * PRETARGETING_PLATFORM_TABLET.
    */
   core.List<core.String> platforms;
-
   /**
    * Creative attributes should be declared here if all creatives corresponding
    * to this pretargeting configuration have that creative attribute. Values are
@@ -2445,19 +2293,15 @@ class PretargetingConfig {
    * section.
    */
   core.List<core.String> supportedCreativeAttributes;
-
   /** Requests containing any of these user list ids will match. */
   core.List<core.String> userLists;
-
   /**
    * Requests that allow any of these vendor ids will match. Values are from
    * vendors.txt in the downloadable files section.
    */
   core.List<core.String> vendorTypes;
-
   /** Requests containing any of these vertical ids will match. */
   core.List<core.String> verticals;
-
 
   PretargetingConfig();
 
@@ -2608,14 +2452,11 @@ class PretargetingConfig {
   }
 }
 
-
 class PretargetingConfigList {
   /** A list of pretargeting configs */
   core.List<PretargetingConfig> items;
-
   /** Resource type. */
   core.String kind;
-
 
   PretargetingConfigList();
 

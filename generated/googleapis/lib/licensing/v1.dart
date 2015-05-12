@@ -52,7 +52,7 @@ class LicenseAssignmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String productId, core.String skuId, core.String userId) {
     var _url = null;
@@ -103,7 +103,7 @@ class LicenseAssignmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LicenseAssignment> get(core.String productId, core.String skuId, core.String userId) {
     var _url = null;
@@ -122,7 +122,6 @@ class LicenseAssignmentsResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user/' + commons.Escaper.ecapeVariable('$userId');
 
@@ -153,7 +152,7 @@ class LicenseAssignmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LicenseAssignment> insert(LicenseAssignmentInsert request, core.String productId, core.String skuId) {
     var _url = null;
@@ -172,7 +171,6 @@ class LicenseAssignmentsResourceApi {
     if (skuId == null) {
       throw new core.ArgumentError("Parameter skuId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user';
 
@@ -209,7 +207,7 @@ class LicenseAssignmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LicenseAssignmentList> listForProduct(core.String productId, core.String customerId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -232,7 +230,6 @@ class LicenseAssignmentsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$productId') + '/users';
 
@@ -271,7 +268,7 @@ class LicenseAssignmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LicenseAssignmentList> listForProductAndSku(core.String productId, core.String skuId, core.String customerId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -297,7 +294,6 @@ class LicenseAssignmentsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/users';
 
@@ -330,7 +326,7 @@ class LicenseAssignmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LicenseAssignment> patch(LicenseAssignment request, core.String productId, core.String skuId, core.String userId) {
     var _url = null;
@@ -352,7 +348,6 @@ class LicenseAssignmentsResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user/' + commons.Escaper.ecapeVariable('$userId');
 
@@ -385,7 +380,7 @@ class LicenseAssignmentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LicenseAssignment> update(LicenseAssignment request, core.String productId, core.String skuId, core.String userId) {
     var _url = null;
@@ -408,7 +403,6 @@ class LicenseAssignmentsResourceApi {
       throw new core.ArgumentError("Parameter userId is required.");
     }
 
-
     _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user/' + commons.Escaper.ecapeVariable('$userId');
 
     var _response = _requester.request(_url,
@@ -429,22 +423,16 @@ class LicenseAssignmentsResourceApi {
 class LicenseAssignment {
   /** ETag of the resource. */
   core.String etags;
-
   /** Identifies the resource as a LicenseAssignment. */
   core.String kind;
-
   /** Name of the product. */
   core.String productId;
-
   /** Link to this page. */
   core.String selfLink;
-
   /** Name of the sku of the product. */
   core.String skuId;
-
   /** Email id of the user. */
   core.String userId;
-
 
   LicenseAssignment();
 
@@ -493,12 +481,10 @@ class LicenseAssignment {
   }
 }
 
-
 /** Template for LicenseAssignment Insert request */
 class LicenseAssignmentInsert {
   /** Email id of the user */
   core.String userId;
-
 
   LicenseAssignmentInsert();
 
@@ -517,24 +503,19 @@ class LicenseAssignmentInsert {
   }
 }
 
-
 /** LicesnseAssignment List for a given product/sku for a customer. */
 class LicenseAssignmentList {
   /** ETag of the resource. */
   core.String etag;
-
   /** The LicenseAssignments in this page of results. */
   core.List<LicenseAssignment> items;
-
   /** Identifies the resource as a collection of LicenseAssignments. */
   core.String kind;
-
   /**
    * The continuation token, used to page through large result sets. Provide
    * this value in a subsequent request to return the next page of results.
    */
   core.String nextPageToken;
-
 
   LicenseAssignmentList();
 

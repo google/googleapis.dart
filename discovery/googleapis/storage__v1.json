@@ -23,7 +23,7 @@
     "description": "Lets you store and retrieve potentially-large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/EjoCoLxombToqWgHECIy9prZTzQ\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ixGoqM2ARhSQPx8Vwx8Pigw83_s\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -1205,7 +1205,7 @@
                     "supportsMediaDownload": true
                 },
                 "copy": {
-                    "description": "Copies an object to a specified location. Optionally overrides metadata.",
+                    "description": "Copies a source object to a destination object. Optionally overrides metadata.",
                     "httpMethod": "POST",
                     "id": "storage.objects.copy",
                     "parameterOrder": [
@@ -1611,7 +1611,7 @@
                             "type": "string"
                         },
                         "maxResults": {
-                            "description": "Maximum number of items plus prefixes to return. As duplicate prefixes are omitted, fewer total results may be returned than requested.",
+                            "description": "Maximum number of items plus prefixes to return. As duplicate prefixes are omitted, fewer total results may be returned than requested. The default value of this parameter is 1,000 items.",
                             "format": "uint32",
                             "location": "query",
                             "minimum": "0",
@@ -1641,7 +1641,7 @@
                             "type": "string"
                         },
                         "versions": {
-                            "description": "If true, lists all versions of a file as distinct results.",
+                            "description": "If true, lists all versions of an object as distinct results. The default is false. For more information, see Object Versioning.",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -1750,6 +1750,154 @@
                     },
                     "response": {
                         "$ref": "Object"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/devstorage.full_control",
+                        "https://www.googleapis.com/auth/devstorage.read_write"
+                    ]
+                },
+                "rewrite": {
+                    "description": "Rewrites a source object to a destination object. Optionally overrides metadata.",
+                    "httpMethod": "POST",
+                    "id": "storage.objects.rewrite",
+                    "parameterOrder": [
+                        "sourceBucket",
+                        "sourceObject",
+                        "destinationBucket",
+                        "destinationObject"
+                    ],
+                    "parameters": {
+                        "destinationBucket": {
+                            "description": "Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "destinationObject": {
+                            "description": "Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "destinationPredefinedAcl": {
+                            "description": "Apply a predefined set of access controls to the destination object.",
+                            "enum": [
+                                "authenticatedRead",
+                                "bucketOwnerFullControl",
+                                "bucketOwnerRead",
+                                "private",
+                                "projectPrivate",
+                                "publicRead"
+                            ],
+                            "enumDescriptions": [
+                                "Object owner gets OWNER access, and allAuthenticatedUsers get READER access.",
+                                "Object owner gets OWNER access, and project team owners get OWNER access.",
+                                "Object owner gets OWNER access, and project team owners get READER access.",
+                                "Object owner gets OWNER access.",
+                                "Object owner gets OWNER access, and project team members get access according to their roles.",
+                                "Object owner gets OWNER access, and allUsers get READER access."
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "ifGenerationMatch": {
+                            "description": "Makes the operation conditional on whether the destination object's current generation matches the given value.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "ifGenerationNotMatch": {
+                            "description": "Makes the operation conditional on whether the destination object's current generation does not match the given value.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "ifMetagenerationMatch": {
+                            "description": "Makes the operation conditional on whether the destination object's current metageneration matches the given value.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "ifMetagenerationNotMatch": {
+                            "description": "Makes the operation conditional on whether the destination object's current metageneration does not match the given value.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "ifSourceGenerationMatch": {
+                            "description": "Makes the operation conditional on whether the source object's generation matches the given value.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "ifSourceGenerationNotMatch": {
+                            "description": "Makes the operation conditional on whether the source object's generation does not match the given value.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "ifSourceMetagenerationMatch": {
+                            "description": "Makes the operation conditional on whether the source object's current metageneration matches the given value.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "ifSourceMetagenerationNotMatch": {
+                            "description": "Makes the operation conditional on whether the source object's current metageneration does not match the given value.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxBytesRewrittenPerCall": {
+                            "description": "The maximum number of bytes that will be rewritten per rewrite request. Most callers shouldn't need to specify this parameter - it is primarily in place to support testing. If specified the value must be an integral multiple of 1 MiB (1048576). Also, this only applies to requests where the source and destination span locations and/or storage classes. Finally, this value must not change across rewrite calls else you'll get an error that the rewriteToken is invalid.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "projection": {
+                            "description": "Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.",
+                            "enum": [
+                                "full",
+                                "noAcl"
+                            ],
+                            "enumDescriptions": [
+                                "Include all properties.",
+                                "Omit the acl property."
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "rewriteToken": {
+                            "description": "Include this field (from the previous rewrite response) on each rewrite request after the first one, until the rewrite response 'done' flag is true. Calls that provide a rewriteToken can omit all other request fields, but if included those fields must match the values provided in the first rewrite request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "sourceBucket": {
+                            "description": "Name of the bucket in which to find the source object.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "sourceGeneration": {
+                            "description": "If present, selects a specific revision of the source object (as opposed to the latest version, the default).",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "sourceObject": {
+                            "description": "Name of the source object.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "b/{sourceBucket}/o/{sourceObject}/rewriteTo/b/{destinationBucket}/o/{destinationObject}",
+                    "request": {
+                        "$ref": "Object"
+                    },
+                    "response": {
+                        "$ref": "RewriteResponse"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
@@ -1877,7 +2025,7 @@
                             "type": "string"
                         },
                         "maxResults": {
-                            "description": "Maximum number of items plus prefixes to return. As duplicate prefixes are omitted, fewer total results may be returned than requested.",
+                            "description": "Maximum number of items plus prefixes to return. As duplicate prefixes are omitted, fewer total results may be returned than requested. The default value of this parameter is 1,000 items.",
                             "format": "uint32",
                             "location": "query",
                             "minimum": "0",
@@ -1907,7 +2055,7 @@
                             "type": "string"
                         },
                         "versions": {
-                            "description": "If true, lists all versions of a file as distinct results.",
+                            "description": "If true, lists all versions of an object as distinct results. The default is false. For more information, see Object Versioning.",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -1931,7 +2079,7 @@
             }
         }
     },
-    "revision": "20150326",
+    "revision": "20150305",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -2621,6 +2769,40 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "RewriteResponse": {
+            "description": "A rewrite response.",
+            "id": "RewriteResponse",
+            "properties": {
+                "done": {
+                    "description": "true if the copy is finished; otherwise, false if the copy is in progress. This property is always present in the response.",
+                    "type": "boolean"
+                },
+                "kind": {
+                    "default": "storage#rewriteResponse",
+                    "description": "The kind of item this is.",
+                    "type": "string"
+                },
+                "objectSize": {
+                    "description": "The total size of the object being copied in bytes. This property is always present in the response.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "resource": {
+                    "$ref": "Object",
+                    "description": "A resource containing the metadata for the copied-to object. This property is present in the response only when copying completes."
+                },
+                "rewriteToken": {
+                    "description": "A token to use in subsequent requests to continue copying data. This token is present in the response only when there is more data to copy.",
+                    "type": "string"
+                },
+                "totalBytesRewritten": {
+                    "description": "The total bytes written so far, which can be used to provide a waiting user with a progress indicator. This property is always present in the response.",
+                    "format": "uint64",
+                    "type": "string"
                 }
             },
             "type": "object"

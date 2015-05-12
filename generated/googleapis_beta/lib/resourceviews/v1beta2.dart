@@ -80,7 +80,7 @@ class ZoneOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> get(core.String project, core.String zone, core.String operation) {
     var _url = null;
@@ -99,7 +99,6 @@ class ZoneOperationsResourceApi {
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
@@ -141,7 +140,7 @@ class ZoneOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OperationList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -166,7 +165,6 @@ class ZoneOperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations';
 
@@ -208,7 +206,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> addResources(ZoneViewsAddResourcesRequest request, core.String project, core.String zone, core.String resourceView) {
     var _url = null;
@@ -230,7 +228,6 @@ class ZoneViewsResourceApi {
     if (resourceView == null) {
       throw new core.ArgumentError("Parameter resourceView is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceView') + '/addResources';
 
@@ -261,7 +258,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String zone, core.String resourceView) {
     var _url = null;
@@ -280,7 +277,6 @@ class ZoneViewsResourceApi {
     if (resourceView == null) {
       throw new core.ArgumentError("Parameter resourceView is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceView');
 
@@ -311,7 +307,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ResourceView> get(core.String project, core.String zone, core.String resourceView) {
     var _url = null;
@@ -330,7 +326,6 @@ class ZoneViewsResourceApi {
     if (resourceView == null) {
       throw new core.ArgumentError("Parameter resourceView is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceView');
 
@@ -364,7 +359,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ZoneViewsGetServiceResponse> getService(core.String project, core.String zone, core.String resourceView, {core.String resourceName}) {
     var _url = null;
@@ -386,7 +381,6 @@ class ZoneViewsResourceApi {
     if (resourceName != null) {
       _queryParams["resourceName"] = [resourceName];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceView') + '/getService';
 
@@ -417,7 +411,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(ResourceView request, core.String project, core.String zone) {
     var _url = null;
@@ -436,7 +430,6 @@ class ZoneViewsResourceApi {
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews';
 
@@ -473,7 +466,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ZoneViewsList> list(core.String project, core.String zone, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -495,7 +488,6 @@ class ZoneViewsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews';
 
@@ -552,7 +544,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ZoneViewsListResourcesResponse> listResources(core.String project, core.String zone, core.String resourceView, {core.String format, core.String listState, core.int maxResults, core.String pageToken, core.String serviceName}) {
     var _url = null;
@@ -587,7 +579,6 @@ class ZoneViewsResourceApi {
       _queryParams["serviceName"] = [serviceName];
     }
 
-
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceView') + '/resources';
 
     var _response = _requester.request(_url,
@@ -619,7 +610,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> removeResources(ZoneViewsRemoveResourcesRequest request, core.String project, core.String zone, core.String resourceView) {
     var _url = null;
@@ -641,7 +632,6 @@ class ZoneViewsResourceApi {
     if (resourceView == null) {
       throw new core.ArgumentError("Parameter resourceView is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceView') + '/removeResources';
 
@@ -674,7 +664,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> setService(ZoneViewsSetServiceRequest request, core.String project, core.String zone, core.String resourceView) {
     var _url = null;
@@ -697,7 +687,6 @@ class ZoneViewsResourceApi {
       throw new core.ArgumentError("Parameter resourceView is required.");
     }
 
-
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceView') + '/setService';
 
     var _response = _requester.request(_url,
@@ -718,10 +707,8 @@ class ZoneViewsResourceApi {
 class Label {
   /** Key of the label. */
   core.String key;
-
   /** Value of the label. */
   core.String value;
-
 
   Label();
 
@@ -746,17 +733,14 @@ class Label {
   }
 }
 
-
 /**
  * The list response item that contains the resource and end points information.
  */
 class ListResourceResponseItem {
   /** The list of service end points on the resource. */
   core.Map<core.String, core.List<core.int>> endpoints;
-
   /** The full URL of the resource. */
   core.String resource;
-
 
   ListResourceResponseItem();
 
@@ -781,20 +765,16 @@ class ListResourceResponseItem {
   }
 }
 
-
 class OperationErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
-
   /**
    * [Output Only] Indicates the field in the request which caused the error.
    * This property is optional.
    */
   core.String location;
-
   /** [Output Only] An optional, human-readable error message. */
   core.String message;
-
 
   OperationErrorErrors();
 
@@ -825,7 +805,6 @@ class OperationErrorErrors {
   }
 }
 
-
 /**
  * [Output Only] If errors occurred during processing of this operation, this
  * field will be populated.
@@ -836,7 +815,6 @@ class OperationError {
    * operation.
    */
   core.List<OperationErrorErrors> errors;
-
 
   OperationError();
 
@@ -855,14 +833,11 @@ class OperationError {
   }
 }
 
-
 class OperationWarningsData {
   /** [Output Only] Metadata key for this warning. */
   core.String key;
-
   /** [Output Only] Metadata value for this warning. */
   core.String value;
-
 
   OperationWarningsData();
 
@@ -887,17 +862,13 @@ class OperationWarningsData {
   }
 }
 
-
 class OperationWarnings {
   /** [Output only] The warning type identifier for this warning. */
   core.String code;
-
   /** [Output only] Metadata for this warning in key:value format. */
   core.List<OperationWarningsData> data;
-
   /** [Output only] Optional human-readable details for this warning. */
   core.String message;
-
 
   OperationWarnings();
 
@@ -928,7 +899,6 @@ class OperationWarnings {
   }
 }
 
-
 /** An operation resource, used to manage asynchronous API requests. */
 class Operation {
   /**
@@ -937,54 +907,43 @@ class Operation {
    * project.
    */
   core.String clientOperationId;
-
   /**
    * [Output Only] The time that this operation was requested, in RFC3339 text
    * format.
    */
   core.String creationTimestamp;
-
   /**
    * [Output Only] The time that this operation was completed, in RFC3339 text
    * format.
    */
   core.String endTime;
-
   /**
    * [Output Only] If errors occurred during processing of this operation, this
    * field will be populated.
    */
   OperationError error;
-
   /** [Output only] If operation fails, the HTTP error message returned. */
   core.String httpErrorMessage;
-
   /** [Output only] If operation fails, the HTTP error status code returned. */
   core.int httpErrorStatusCode;
-
   /**
    * [Output Only] Unique identifier for the resource, generated by the server.
    */
   core.String id;
-
   /**
    * [Output Only] The time that this operation was requested, in RFC3339 text
    * format.
    */
   core.String insertTime;
-
   /** [Output only] Type of the resource. */
   core.String kind;
-
   /** [Output Only] Name of the resource. */
   core.String name;
-
   /**
    * [Output only] Type of the operation. Operations include insert, update, and
    * delete.
    */
   core.String operationType;
-
   /**
    * [Output only] An optional progress indicator that ranges from 0 to 100.
    * There is no requirement that this be linear or support any granularity of
@@ -993,58 +952,47 @@ class Operation {
    * progresses.
    */
   core.int progress;
-
   /**
    * [Output Only] URL of the region where the operation resides. Only available
    * when performing regional operations.
    */
   core.String region;
-
   /** [Output Only] Server-defined fully-qualified URL for this resource. */
   core.String selfLink;
-
   /**
    * [Output Only] The time that this operation was started by the server, in
    * RFC3339 text format.
    */
   core.String startTime;
-
   /** [Output Only] Status of the operation. */
   core.String status;
-
   /**
    * [Output Only] An optional textual description of the current status of the
    * operation.
    */
   core.String statusMessage;
-
   /**
    * [Output Only] Unique target ID which identifies a particular incarnation of
    * the target.
    */
   core.String targetId;
-
   /** [Output only] URL of the resource the operation is mutating. */
   core.String targetLink;
-
   /**
    * [Output Only] User who requested the operation, for example:
    * user@example.com.
    */
   core.String user;
-
   /**
    * [Output Only] If there are issues with this operation, a warning is
    * returned.
    */
   core.List<OperationWarnings> warnings;
-
   /**
    * [Output Only] URL of the zone where the operation resides. Only available
    * when performing per-zone operations.
    */
   core.String zone;
-
 
   Operation();
 
@@ -1189,25 +1137,19 @@ class Operation {
   }
 }
 
-
 class OperationList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /** The operation resources. */
   core.List<Operation> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   OperationList();
 
@@ -1250,48 +1192,35 @@ class OperationList {
   }
 }
 
-
 /** The resource view object. */
 class ResourceView {
   /** The creation time of the resource view. */
   core.String creationTimestamp;
-
   /** The detailed description of the resource view. */
   core.String description;
-
   /** Services endpoint information. */
   core.List<ServiceEndpoint> endpoints;
-
   /** The fingerprint of the service endpoint information. */
   core.String fingerprint;
-
   /** [Output Only] The ID of the resource view. */
   core.String id;
-
   /** Type of the resource. */
   core.String kind;
-
   /** The labels for events. */
   core.List<Label> labels;
-
   /** The name of the resource view. */
   core.String name;
-
   /**
    * The URL of a Compute Engine network to which the resources in the view
    * belong.
    */
   core.String network;
-
   /** A list of all resources in the resource view. */
   core.List<core.String> resources;
-
   /** [Output Only] A self-link to the resource view. */
   core.String selfLink;
-
   /** The total number of resources in the resource view. */
   core.int size;
-
 
   ResourceView();
 
@@ -1376,15 +1305,12 @@ class ResourceView {
   }
 }
 
-
 /** The service endpoint that may be started in a VM. */
 class ServiceEndpoint {
   /** The name of the service endpoint. */
   core.String name;
-
   /** The port of the service endpoint. */
   core.int port;
-
 
   ServiceEndpoint();
 
@@ -1409,12 +1335,10 @@ class ServiceEndpoint {
   }
 }
 
-
 /** The request to add resources to the resource view. */
 class ZoneViewsAddResourcesRequest {
   /** The list of resources to be added. */
   core.List<core.String> resources;
-
 
   ZoneViewsAddResourcesRequest();
 
@@ -1433,14 +1357,11 @@ class ZoneViewsAddResourcesRequest {
   }
 }
 
-
 class ZoneViewsGetServiceResponse {
   /** The service information. */
   core.List<ServiceEndpoint> endpoints;
-
   /** The fingerprint of the service information. */
   core.String fingerprint;
-
 
   ZoneViewsGetServiceResponse();
 
@@ -1465,21 +1386,16 @@ class ZoneViewsGetServiceResponse {
   }
 }
 
-
 /** The response to a list request. */
 class ZoneViewsList {
   /** The result that contains all resource views that meet the criteria. */
   core.List<ResourceView> items;
-
   /** Type of resource. */
   core.String kind;
-
   /** A token used for pagination. */
   core.String nextPageToken;
-
   /** Server defined URL for this resource (output only). */
   core.String selfLink;
-
 
   ZoneViewsList();
 
@@ -1516,21 +1432,17 @@ class ZoneViewsList {
   }
 }
 
-
 /** The response to a list resource request. */
 class ZoneViewsListResourcesResponse {
   /** The formatted JSON that is requested by the user. */
   core.List<ListResourceResponseItem> items;
-
   /**
    * The URL of a Compute Engine network to which the resources in the view
    * belong.
    */
   core.String network;
-
   /** A token used for pagination. */
   core.String nextPageToken;
-
 
   ZoneViewsListResourcesResponse();
 
@@ -1561,12 +1473,10 @@ class ZoneViewsListResourcesResponse {
   }
 }
 
-
 /** The request to remove resources from the resource view. */
 class ZoneViewsRemoveResourcesRequest {
   /** The list of resources to be removed. */
   core.List<core.String> resources;
-
 
   ZoneViewsRemoveResourcesRequest();
 
@@ -1585,23 +1495,19 @@ class ZoneViewsRemoveResourcesRequest {
   }
 }
 
-
 class ZoneViewsSetServiceRequest {
   /** The service information to be updated. */
   core.List<ServiceEndpoint> endpoints;
-
   /**
    * Fingerprint of the service information; a hash of the contents. This field
    * is used for optimistic locking when updating the service entries.
    */
   core.String fingerprint;
-
   /**
    * The name of the resource if user wants to update the service information of
    * the resource.
    */
   core.String resourceName;
-
 
   ZoneViewsSetServiceRequest();
 

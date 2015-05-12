@@ -53,7 +53,7 @@ class WebResourceResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id) {
     var _url = null;
@@ -94,7 +94,7 @@ class WebResourceResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SiteVerificationWebResourceResource> get(core.String id) {
     var _url = null;
@@ -107,7 +107,6 @@ class WebResourceResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
@@ -134,7 +133,7 @@ class WebResourceResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SiteVerificationWebResourceGettokenResponse> getToken(SiteVerificationWebResourceGettokenRequest request) {
     var _url = null;
@@ -147,7 +146,6 @@ class WebResourceResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'token';
 
@@ -176,7 +174,7 @@ class WebResourceResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SiteVerificationWebResourceResource> insert(SiteVerificationWebResourceResource request, core.String verificationMethod) {
     var _url = null;
@@ -193,7 +191,6 @@ class WebResourceResourceApi {
       throw new core.ArgumentError("Parameter verificationMethod is required.");
     }
     _queryParams["verificationMethod"] = [verificationMethod];
-
 
     _url = 'webResource';
 
@@ -218,7 +215,7 @@ class WebResourceResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SiteVerificationWebResourceListResponse> list() {
     var _url = null;
@@ -227,7 +224,6 @@ class WebResourceResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'webResource';
@@ -258,7 +254,7 @@ class WebResourceResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SiteVerificationWebResourceResource> patch(SiteVerificationWebResourceResource request, core.String id) {
     var _url = null;
@@ -274,7 +270,6 @@ class WebResourceResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
@@ -303,7 +298,7 @@ class WebResourceResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SiteVerificationWebResourceResource> update(SiteVerificationWebResourceResource request, core.String id) {
     var _url = null;
@@ -319,7 +314,6 @@ class WebResourceResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
@@ -344,13 +338,11 @@ class SiteVerificationWebResourceGettokenRequestSite {
    * If the type is set to INET_DOMAIN, the site identifier is a domain name.
    */
   core.String identifier;
-
   /**
    * The type of resource to be verified. Can be SITE or INET_DOMAIN (domain
    * name).
    */
   core.String type;
-
 
   SiteVerificationWebResourceGettokenRequestSite();
 
@@ -375,17 +367,14 @@ class SiteVerificationWebResourceGettokenRequestSite {
   }
 }
 
-
 class SiteVerificationWebResourceGettokenRequest {
   /** The site for which a verification token will be generated. */
   SiteVerificationWebResourceGettokenRequestSite site;
-
   /**
    * The verification method that will be used to verify this site. For sites,
    * 'FILE' or 'META' methods may be used. For domains, only 'DNS' may be used.
    */
   core.String verificationMethod;
-
 
   SiteVerificationWebResourceGettokenRequest();
 
@@ -410,7 +399,6 @@ class SiteVerificationWebResourceGettokenRequest {
   }
 }
 
-
 class SiteVerificationWebResourceGettokenResponse {
   /**
    * The verification method to use in conjunction with this token. For FILE,
@@ -420,13 +408,11 @@ class SiteVerificationWebResourceGettokenResponse {
    * token should be placed in a TXT record of the domain.
    */
   core.String method;
-
   /**
    * The verification token. The token must be placed appropriately in order for
    * verification to succeed.
    */
   core.String token;
-
 
   SiteVerificationWebResourceGettokenResponse();
 
@@ -451,11 +437,9 @@ class SiteVerificationWebResourceGettokenResponse {
   }
 }
 
-
 class SiteVerificationWebResourceListResponse {
   /** The list of sites that are owned by the authenticated user. */
   core.List<SiteVerificationWebResourceResource> items;
-
 
   SiteVerificationWebResourceListResponse();
 
@@ -474,7 +458,6 @@ class SiteVerificationWebResourceListResponse {
   }
 }
 
-
 /** The address and type of a site that is verified or will be verified. */
 class SiteVerificationWebResourceResourceSite {
   /**
@@ -482,10 +465,8 @@ class SiteVerificationWebResourceResourceSite {
    * If the type is set to INET_DOMAIN, the site identifier is a domain name.
    */
   core.String identifier;
-
   /** The site type. Can be SITE or INET_DOMAIN (domain name). */
   core.String type;
-
 
   SiteVerificationWebResourceResourceSite();
 
@@ -510,20 +491,16 @@ class SiteVerificationWebResourceResourceSite {
   }
 }
 
-
 class SiteVerificationWebResourceResource {
   /**
    * The string used to identify this site. This value should be used in the
    * "id" portion of the REST URL for the Get, Update, and Delete operations.
    */
   core.String id;
-
   /** The email addresses of all verified owners. */
   core.List<core.String> owners;
-
   /** The address and type of a site that is verified or will be verified. */
   SiteVerificationWebResourceResourceSite site;
-
 
   SiteVerificationWebResourceResource();
 

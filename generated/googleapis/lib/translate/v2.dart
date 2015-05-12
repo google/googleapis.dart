@@ -49,7 +49,7 @@ class DetectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DetectionsListResponse> list(core.List<core.String> q) {
     var _url = null;
@@ -63,7 +63,6 @@ class DetectionsResourceApi {
       throw new core.ArgumentError("Parameter q is required.");
     }
     _queryParams["q"] = q;
-
 
     _url = 'v2/detect';
 
@@ -100,7 +99,7 @@ class LanguagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LanguagesListResponse> list({core.String target}) {
     var _url = null;
@@ -113,7 +112,6 @@ class LanguagesResourceApi {
     if (target != null) {
       _queryParams["target"] = [target];
     }
-
 
     _url = 'v2/languages';
 
@@ -160,7 +158,7 @@ class TranslationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TranslationsListResponse> list(core.List<core.String> q, core.String target, {core.List<core.String> cid, core.String format, core.String source}) {
     var _url = null;
@@ -188,7 +186,6 @@ class TranslationsResourceApi {
       _queryParams["source"] = [source];
     }
 
-
     _url = 'v2';
 
     var _response = _requester.request(_url,
@@ -209,7 +206,6 @@ class DetectionsListResponse {
   /** A detections contains detection results of several text */
   core.List<DetectionsResource> detections;
 
-
   DetectionsListResponse();
 
   DetectionsListResponse.fromJson(core.Map _json) {
@@ -227,17 +223,13 @@ class DetectionsListResponse {
   }
 }
 
-
 class DetectionsResourceElement {
   /** The confidence of the detection resul of this language. */
   core.double confidence;
-
   /** A boolean to indicate is the language detection result reliable. */
   core.bool isReliable;
-
   /** The language we detect */
   core.String language;
-
 
   DetectionsResourceElement();
 
@@ -267,7 +259,6 @@ class DetectionsResourceElement {
     return _json;
   }
 }
-
 
 /**
  * An array of languages which we detect for the given text The most likely
@@ -299,7 +290,6 @@ class DetectionsResource
   }
 }
 
-
 class LanguagesListResponse {
   /**
    * List of source/target languages supported by the translation API. If target
@@ -308,7 +298,6 @@ class LanguagesListResponse {
    * by the collation order of the language name in the target language.
    */
   core.List<LanguagesResource> languages;
-
 
   LanguagesListResponse();
 
@@ -327,14 +316,11 @@ class LanguagesListResponse {
   }
 }
 
-
 class LanguagesResource {
   /** The language code. */
   core.String language;
-
   /** The localized name of the language if target parameter is given. */
   core.String name;
-
 
   LanguagesResource();
 
@@ -359,11 +345,9 @@ class LanguagesResource {
   }
 }
 
-
 class TranslationsListResponse {
   /** Translations contains list of translation results of given text */
   core.List<TranslationsResource> translations;
-
 
   TranslationsListResponse();
 
@@ -382,14 +366,11 @@ class TranslationsListResponse {
   }
 }
 
-
 class TranslationsResource {
   /** Detected source language if source parameter is unspecified. */
   core.String detectedSourceLanguage;
-
   /** The translation. */
   core.String translatedText;
-
 
   TranslationsResource();
 

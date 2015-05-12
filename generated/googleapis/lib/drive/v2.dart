@@ -35,6 +35,9 @@ class DriveApi {
    */
   static const DriveFileScope = "https://www.googleapis.com/auth/drive.file";
 
+  /** View and manage metadata of files in your Google Drive */
+  static const DriveMetadataScope = "https://www.googleapis.com/auth/drive.metadata";
+
   /** View metadata for files in your Google Drive */
   static const DriveMetadataReadonlyScope = "https://www.googleapis.com/auth/drive.metadata.readonly";
 
@@ -93,7 +96,7 @@ class AboutResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<About> get({core.bool includeSubscribed, core.String maxChangeIdCount, core.String startChangeId}) {
     var _url = null;
@@ -112,7 +115,6 @@ class AboutResourceApi {
     if (startChangeId != null) {
       _queryParams["startChangeId"] = [startChangeId];
     }
-
 
     _url = 'about';
 
@@ -148,7 +150,7 @@ class AppsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<App> get(core.String appId) {
     var _url = null;
@@ -161,7 +163,6 @@ class AppsResourceApi {
     if (appId == null) {
       throw new core.ArgumentError("Parameter appId is required.");
     }
-
 
     _url = 'apps/' + commons.Escaper.ecapeVariable('$appId');
 
@@ -202,7 +203,7 @@ class AppsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AppList> list({core.String appFilterExtensions, core.String appFilterMimeTypes, core.String languageCode}) {
     var _url = null;
@@ -221,7 +222,6 @@ class AppsResourceApi {
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
     }
-
 
     _url = 'apps';
 
@@ -257,7 +257,7 @@ class ChangesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Change> get(core.String changeId) {
     var _url = null;
@@ -270,7 +270,6 @@ class ChangesResourceApi {
     if (changeId == null) {
       throw new core.ArgumentError("Parameter changeId is required.");
     }
-
 
     _url = 'changes/' + commons.Escaper.ecapeVariable('$changeId');
 
@@ -308,7 +307,7 @@ class ChangesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChangeList> list({core.bool includeDeleted, core.bool includeSubscribed, core.int maxResults, core.String pageToken, core.String startChangeId}) {
     var _url = null;
@@ -333,7 +332,6 @@ class ChangesResourceApi {
     if (startChangeId != null) {
       _queryParams["startChangeId"] = [startChangeId];
     }
-
 
     _url = 'changes';
 
@@ -373,7 +371,7 @@ class ChangesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Channel> watch(Channel request, {core.bool includeDeleted, core.bool includeSubscribed, core.int maxResults, core.String pageToken, core.String startChangeId}) {
     var _url = null;
@@ -401,7 +399,6 @@ class ChangesResourceApi {
     if (startChangeId != null) {
       _queryParams["startChangeId"] = [startChangeId];
     }
-
 
     _url = 'changes/watch';
 
@@ -435,7 +432,7 @@ class ChannelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future stop(Channel request) {
     var _url = null;
@@ -485,7 +482,7 @@ class ChildrenResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String folderId, core.String childId) {
     var _url = null;
@@ -531,7 +528,7 @@ class ChildrenResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChildReference> get(core.String folderId, core.String childId) {
     var _url = null;
@@ -547,7 +544,6 @@ class ChildrenResourceApi {
     if (childId == null) {
       throw new core.ArgumentError("Parameter childId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children/' + commons.Escaper.ecapeVariable('$childId');
 
@@ -576,7 +572,7 @@ class ChildrenResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChildReference> insert(ChildReference request, core.String folderId) {
     var _url = null;
@@ -592,7 +588,6 @@ class ChildrenResourceApi {
     if (folderId == null) {
       throw new core.ArgumentError("Parameter folderId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children';
 
@@ -625,7 +620,7 @@ class ChildrenResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChildList> list(core.String folderId, {core.int maxResults, core.String pageToken, core.String q}) {
     var _url = null;
@@ -647,7 +642,6 @@ class ChildrenResourceApi {
     if (q != null) {
       _queryParams["q"] = [q];
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children';
 
@@ -683,7 +677,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String fileId, core.String commentId) {
     var _url = null;
@@ -732,7 +726,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Comment> get(core.String fileId, core.String commentId, {core.bool includeDeleted}) {
     var _url = null;
@@ -751,7 +745,6 @@ class CommentsResourceApi {
     if (includeDeleted != null) {
       _queryParams["includeDeleted"] = ["${includeDeleted}"];
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
 
@@ -780,7 +773,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Comment> insert(Comment request, core.String fileId) {
     var _url = null;
@@ -796,7 +789,6 @@ class CommentsResourceApi {
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
 
@@ -837,7 +829,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentList> list(core.String fileId, {core.bool includeDeleted, core.int maxResults, core.String pageToken, core.String updatedMin}) {
     var _url = null;
@@ -862,7 +854,6 @@ class CommentsResourceApi {
     if (updatedMin != null) {
       _queryParams["updatedMin"] = [updatedMin];
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
 
@@ -893,7 +884,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Comment> patch(Comment request, core.String fileId, core.String commentId) {
     var _url = null;
@@ -912,7 +903,6 @@ class CommentsResourceApi {
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
 
@@ -943,7 +933,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Comment> update(Comment request, core.String fileId, core.String commentId) {
     var _url = null;
@@ -962,7 +952,6 @@ class CommentsResourceApi {
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
 
@@ -1022,7 +1011,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<File> copy(File request, core.String fileId, {core.bool convert, core.bool ocr, core.String ocrLanguage, core.bool pinned, core.String timedTextLanguage, core.String timedTextTrackName, core.String visibility}) {
     var _url = null;
@@ -1060,7 +1049,6 @@ class FilesResourceApi {
       _queryParams["visibility"] = [visibility];
     }
 
-
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/copy';
 
     var _response = _requester.request(_url,
@@ -1085,7 +1073,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String fileId) {
     var _url = null;
@@ -1122,7 +1110,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future emptyTrash() {
     var _url = null;
@@ -1155,8 +1143,7 @@ class FilesResourceApi {
    * [fileId] - The ID for the file in question.
    *
    * [acknowledgeAbuse] - Whether the user is acknowledging the risk of
-   * downloading known malware or other abusive files. Ignored unless alt=media
-   * is specified.
+   * downloading known malware or other abusive files.
    *
    * [projection] - This parameter is deprecated and has no function.
    * Possible string values are:
@@ -1183,7 +1170,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future get(core.String fileId, {core.bool acknowledgeAbuse, core.String projection, core.String revisionId, core.bool updateViewedDate, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -1270,7 +1257,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<File> insert(File request, {core.bool convert, core.bool ocr, core.String ocrLanguage, core.bool pinned, core.String timedTextLanguage, core.String timedTextTrackName, core.bool useContentAsIndexableText, core.String visibility, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1357,7 +1344,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FileList> list({core.String corpus, core.int maxResults, core.String pageToken, core.String projection, core.String q}) {
     var _url = null;
@@ -1382,7 +1369,6 @@ class FilesResourceApi {
     if (q != null) {
       _queryParams["q"] = [q];
     }
-
 
     _url = 'files';
 
@@ -1443,7 +1429,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<File> patch(File request, core.String fileId, {core.String addParents, core.bool convert, core.bool newRevision, core.bool ocr, core.String ocrLanguage, core.bool pinned, core.String removeParents, core.bool setModifiedDate, core.String timedTextLanguage, core.String timedTextTrackName, core.bool updateViewedDate, core.bool useContentAsIndexableText}) {
     var _url = null;
@@ -1496,7 +1482,6 @@ class FilesResourceApi {
       _queryParams["useContentAsIndexableText"] = ["${useContentAsIndexableText}"];
     }
 
-
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
     var _response = _requester.request(_url,
@@ -1522,7 +1507,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<File> touch(core.String fileId) {
     var _url = null;
@@ -1535,7 +1520,6 @@ class FilesResourceApi {
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/touch';
 
@@ -1562,7 +1546,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<File> trash(core.String fileId) {
     var _url = null;
@@ -1575,7 +1559,6 @@ class FilesResourceApi {
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/trash';
 
@@ -1602,7 +1585,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<File> untrash(core.String fileId) {
     var _url = null;
@@ -1615,7 +1598,6 @@ class FilesResourceApi {
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/untrash';
 
@@ -1681,7 +1663,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<File> update(File request, core.String fileId, {core.String addParents, core.bool convert, core.bool newRevision, core.bool ocr, core.String ocrLanguage, core.bool pinned, core.String removeParents, core.bool setModifiedDate, core.String timedTextLanguage, core.String timedTextTrackName, core.bool updateViewedDate, core.bool useContentAsIndexableText, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -1766,8 +1748,7 @@ class FilesResourceApi {
    * [fileId] - The ID for the file in question.
    *
    * [acknowledgeAbuse] - Whether the user is acknowledging the risk of
-   * downloading known malware or other abusive files. Ignored unless alt=media
-   * is specified.
+   * downloading known malware or other abusive files.
    *
    * [projection] - This parameter is deprecated and has no function.
    * Possible string values are:
@@ -1794,7 +1775,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future watch(Channel request, core.String fileId, {core.bool acknowledgeAbuse, core.String projection, core.String revisionId, core.bool updateViewedDate, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -1864,7 +1845,7 @@ class ParentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String fileId, core.String parentId) {
     var _url = null;
@@ -1910,7 +1891,7 @@ class ParentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ParentReference> get(core.String fileId, core.String parentId) {
     var _url = null;
@@ -1926,7 +1907,6 @@ class ParentsResourceApi {
     if (parentId == null) {
       throw new core.ArgumentError("Parameter parentId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents/' + commons.Escaper.ecapeVariable('$parentId');
 
@@ -1955,7 +1935,7 @@ class ParentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ParentReference> insert(ParentReference request, core.String fileId) {
     var _url = null;
@@ -1971,7 +1951,6 @@ class ParentsResourceApi {
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents';
 
@@ -1998,7 +1977,7 @@ class ParentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ParentList> list(core.String fileId) {
     var _url = null;
@@ -2011,7 +1990,6 @@ class ParentsResourceApi {
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents';
 
@@ -2047,7 +2025,7 @@ class PermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String fileId, core.String permissionId) {
     var _url = null;
@@ -2093,7 +2071,7 @@ class PermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Permission> get(core.String fileId, core.String permissionId) {
     var _url = null;
@@ -2109,7 +2087,6 @@ class PermissionsResourceApi {
     if (permissionId == null) {
       throw new core.ArgumentError("Parameter permissionId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
@@ -2136,7 +2113,7 @@ class PermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionId> getIdForEmail(core.String email) {
     var _url = null;
@@ -2149,7 +2126,6 @@ class PermissionsResourceApi {
     if (email == null) {
       throw new core.ArgumentError("Parameter email is required.");
     }
-
 
     _url = 'permissionIds/' + commons.Escaper.ecapeVariable('$email');
 
@@ -2184,7 +2160,7 @@ class PermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Permission> insert(Permission request, core.String fileId, {core.String emailMessage, core.bool sendNotificationEmails}) {
     var _url = null;
@@ -2206,7 +2182,6 @@ class PermissionsResourceApi {
     if (sendNotificationEmails != null) {
       _queryParams["sendNotificationEmails"] = ["${sendNotificationEmails}"];
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
 
@@ -2233,7 +2208,7 @@ class PermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PermissionList> list(core.String fileId) {
     var _url = null;
@@ -2246,7 +2221,6 @@ class PermissionsResourceApi {
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
 
@@ -2281,7 +2255,7 @@ class PermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Permission> patch(Permission request, core.String fileId, core.String permissionId, {core.bool transferOwnership}) {
     var _url = null;
@@ -2303,7 +2277,6 @@ class PermissionsResourceApi {
     if (transferOwnership != null) {
       _queryParams["transferOwnership"] = ["${transferOwnership}"];
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
@@ -2338,7 +2311,7 @@ class PermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Permission> update(Permission request, core.String fileId, core.String permissionId, {core.bool transferOwnership}) {
     var _url = null;
@@ -2360,7 +2333,6 @@ class PermissionsResourceApi {
     if (transferOwnership != null) {
       _queryParams["transferOwnership"] = ["${transferOwnership}"];
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
@@ -2398,7 +2370,7 @@ class PropertiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String fileId, core.String propertyKey, {core.String visibility}) {
     var _url = null;
@@ -2449,7 +2421,7 @@ class PropertiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Property> get(core.String fileId, core.String propertyKey, {core.String visibility}) {
     var _url = null;
@@ -2468,7 +2440,6 @@ class PropertiesResourceApi {
     if (visibility != null) {
       _queryParams["visibility"] = [visibility];
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties/' + commons.Escaper.ecapeVariable('$propertyKey');
 
@@ -2497,7 +2468,7 @@ class PropertiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Property> insert(Property request, core.String fileId) {
     var _url = null;
@@ -2513,7 +2484,6 @@ class PropertiesResourceApi {
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties';
 
@@ -2540,7 +2510,7 @@ class PropertiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PropertyList> list(core.String fileId) {
     var _url = null;
@@ -2553,7 +2523,6 @@ class PropertiesResourceApi {
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties';
 
@@ -2586,7 +2555,7 @@ class PropertiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Property> patch(Property request, core.String fileId, core.String propertyKey, {core.String visibility}) {
     var _url = null;
@@ -2608,7 +2577,6 @@ class PropertiesResourceApi {
     if (visibility != null) {
       _queryParams["visibility"] = [visibility];
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties/' + commons.Escaper.ecapeVariable('$propertyKey');
 
@@ -2641,7 +2609,7 @@ class PropertiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Property> update(Property request, core.String fileId, core.String propertyKey, {core.String visibility}) {
     var _url = null;
@@ -2663,7 +2631,6 @@ class PropertiesResourceApi {
     if (visibility != null) {
       _queryParams["visibility"] = [visibility];
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties/' + commons.Escaper.ecapeVariable('$propertyKey');
 
@@ -2708,7 +2675,7 @@ class RealtimeResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future get(core.String fileId, {core.int revision, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -2768,7 +2735,7 @@ class RealtimeResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future update(core.String fileId, {core.String baseRevision, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -2784,6 +2751,7 @@ class RealtimeResourceApi {
     if (baseRevision != null) {
       _queryParams["baseRevision"] = [baseRevision];
     }
+
 
     _uploadMedia =  uploadMedia;
     _uploadOptions =  uploadOptions;
@@ -2832,7 +2800,7 @@ class RepliesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String fileId, core.String commentId, core.String replyId) {
     var _url = null;
@@ -2886,7 +2854,7 @@ class RepliesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentReply> get(core.String fileId, core.String commentId, core.String replyId, {core.bool includeDeleted}) {
     var _url = null;
@@ -2908,7 +2876,6 @@ class RepliesResourceApi {
     if (includeDeleted != null) {
       _queryParams["includeDeleted"] = ["${includeDeleted}"];
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies/' + commons.Escaper.ecapeVariable('$replyId');
 
@@ -2939,7 +2906,7 @@ class RepliesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentReply> insert(CommentReply request, core.String fileId, core.String commentId) {
     var _url = null;
@@ -2958,7 +2925,6 @@ class RepliesResourceApi {
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies';
 
@@ -2998,7 +2964,7 @@ class RepliesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentReplyList> list(core.String fileId, core.String commentId, {core.bool includeDeleted, core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -3023,7 +2989,6 @@ class RepliesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies';
 
@@ -3056,7 +3021,7 @@ class RepliesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentReply> patch(CommentReply request, core.String fileId, core.String commentId, core.String replyId) {
     var _url = null;
@@ -3078,7 +3043,6 @@ class RepliesResourceApi {
     if (replyId == null) {
       throw new core.ArgumentError("Parameter replyId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies/' + commons.Escaper.ecapeVariable('$replyId');
 
@@ -3111,7 +3075,7 @@ class RepliesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentReply> update(CommentReply request, core.String fileId, core.String commentId, core.String replyId) {
     var _url = null;
@@ -3133,7 +3097,6 @@ class RepliesResourceApi {
     if (replyId == null) {
       throw new core.ArgumentError("Parameter replyId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies/' + commons.Escaper.ecapeVariable('$replyId');
 
@@ -3169,7 +3132,7 @@ class RevisionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String fileId, core.String revisionId) {
     var _url = null;
@@ -3215,7 +3178,7 @@ class RevisionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Revision> get(core.String fileId, core.String revisionId) {
     var _url = null;
@@ -3231,7 +3194,6 @@ class RevisionsResourceApi {
     if (revisionId == null) {
       throw new core.ArgumentError("Parameter revisionId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions/' + commons.Escaper.ecapeVariable('$revisionId');
 
@@ -3258,7 +3220,7 @@ class RevisionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RevisionList> list(core.String fileId) {
     var _url = null;
@@ -3271,7 +3233,6 @@ class RevisionsResourceApi {
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions';
 
@@ -3302,7 +3263,7 @@ class RevisionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Revision> patch(Revision request, core.String fileId, core.String revisionId) {
     var _url = null;
@@ -3321,7 +3282,6 @@ class RevisionsResourceApi {
     if (revisionId == null) {
       throw new core.ArgumentError("Parameter revisionId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions/' + commons.Escaper.ecapeVariable('$revisionId');
 
@@ -3352,7 +3312,7 @@ class RevisionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Revision> update(Revision request, core.String fileId, core.String revisionId) {
     var _url = null;
@@ -3371,7 +3331,6 @@ class RevisionsResourceApi {
     if (revisionId == null) {
       throw new core.ArgumentError("Parameter revisionId is required.");
     }
-
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions/' + commons.Escaper.ecapeVariable('$revisionId');
 
@@ -3392,10 +3351,8 @@ class RevisionsResourceApi {
 class AboutAdditionalRoleInfoRoleSets {
   /** The supported additional roles with the primary role. */
   core.List<core.String> additionalRoles;
-
   /** A primary permission role. */
   core.String primaryRole;
-
 
   AboutAdditionalRoleInfoRoleSets();
 
@@ -3420,14 +3377,11 @@ class AboutAdditionalRoleInfoRoleSets {
   }
 }
 
-
 class AboutAdditionalRoleInfo {
   /** The supported additional roles per primary role. */
   core.List<AboutAdditionalRoleInfoRoleSets> roleSets;
-
   /** The content type that this additional role info applies to. */
   core.String type;
-
 
   AboutAdditionalRoleInfo();
 
@@ -3452,14 +3406,11 @@ class AboutAdditionalRoleInfo {
   }
 }
 
-
 class AboutExportFormats {
   /** The content type to convert from. */
   core.String source;
-
   /** The possible content types to convert to. */
   core.List<core.String> targets;
-
 
   AboutExportFormats();
 
@@ -3484,14 +3435,11 @@ class AboutExportFormats {
   }
 }
 
-
 class AboutFeatures {
   /** The name of the feature. */
   core.String featureName;
-
   /** The request limit rate for this feature, in queries per second. */
   core.double featureRate;
-
 
   AboutFeatures();
 
@@ -3516,14 +3464,11 @@ class AboutFeatures {
   }
 }
 
-
 class AboutImportFormats {
   /** The imported file's content type to convert from. */
   core.String source;
-
   /** The possible content types to convert to. */
   core.List<core.String> targets;
-
 
   AboutImportFormats();
 
@@ -3548,14 +3493,11 @@ class AboutImportFormats {
   }
 }
 
-
 class AboutMaxUploadSizes {
   /** The max upload size for this type. */
   core.String size;
-
   /** The file type. */
   core.String type;
-
 
   AboutMaxUploadSizes();
 
@@ -3580,14 +3522,11 @@ class AboutMaxUploadSizes {
   }
 }
 
-
 class AboutQuotaBytesByService {
   /** The storage quota bytes used by the service. */
   core.String bytesUsed;
-
   /** The service's name, e.g. DRIVE, GMAIL, or PHOTOS. */
   core.String serviceName;
-
 
   AboutQuotaBytesByService();
 
@@ -3612,7 +3551,6 @@ class AboutQuotaBytesByService {
   }
 }
 
-
 /** An item with user information and settings. */
 class About {
   /**
@@ -3620,92 +3558,68 @@ class About {
    * specific type takes precedence.
    */
   core.List<AboutAdditionalRoleInfo> additionalRoleInfo;
-
   /** The domain sharing policy for the current user. */
   core.String domainSharingPolicy;
-
   /** The ETag of the item. */
   core.String etag;
-
   /** The allowable export formats. */
   core.List<AboutExportFormats> exportFormats;
-
   /** List of additional features enabled on this account. */
   core.List<AboutFeatures> features;
-
   /** The palette of allowable folder colors as RGB hex strings. */
   core.List<core.String> folderColorPalette;
-
   /** The allowable import formats. */
   core.List<AboutImportFormats> importFormats;
-
   /**
    * A boolean indicating whether the authenticated app is installed by the
    * authenticated user.
    */
   core.bool isCurrentAppInstalled;
-
   /** This is always drive#about. */
   core.String kind;
-
   /**
    * The user's language or locale code, as defined by BCP 47, with some
    * extensions from Unicode's LDML format
    * (http://www.unicode.org/reports/tr35/).
    */
   core.String languageCode;
-
   /** The largest change id. */
   core.String largestChangeId;
-
   /**
    * List of max upload sizes for each file type. The most specific type takes
    * precedence.
    */
   core.List<AboutMaxUploadSizes> maxUploadSizes;
-
   /** The name of the current user. */
   core.String name;
-
   /** The current user's ID as visible in the permissions collection. */
   core.String permissionId;
-
   /** The amount of storage quota used by different Google services. */
   core.List<AboutQuotaBytesByService> quotaBytesByService;
-
   /** The total number of quota bytes. */
   core.String quotaBytesTotal;
-
   /** The number of quota bytes used by Google Drive. */
   core.String quotaBytesUsed;
-
   /**
    * The number of quota bytes used by all Google apps (Drive, Picasa, etc.).
    */
   core.String quotaBytesUsedAggregate;
-
   /** The number of quota bytes used by trashed items. */
   core.String quotaBytesUsedInTrash;
-
   /**
    * The type of the user's storage quota. Possible values are:
    * - LIMITED
    * - UNLIMITED
    */
   core.String quotaType;
-
   /** The number of remaining change ids. */
   core.String remainingChangeIds;
-
   /** The id of the root folder. */
   core.String rootFolderId;
-
   /** A link back to this item. */
   core.String selfLink;
-
   /** The authenticated user. */
   User user;
-
 
   About();
 
@@ -3862,7 +3776,6 @@ class About {
   }
 }
 
-
 class AppIcons {
   /**
    * Category of the icon. Allowed values are:
@@ -3871,13 +3784,10 @@ class AppIcons {
    * - documentShared - icon for a shared file associated with the app
    */
   core.String category;
-
   /** URL for the icon. */
   core.String iconUrl;
-
   /** Size of the icon. Represented as the maximum of the width and height. */
   core.int size;
-
 
   AppIcons();
 
@@ -3908,7 +3818,6 @@ class AppIcons {
   }
 }
 
-
 /**
  * The apps resource provides a list of the apps that a user has installed, with
  * information about each app's supported MIME types, file extensions, and other
@@ -3917,93 +3826,69 @@ class AppIcons {
 class App {
   /** Whether the app is authorized to access data on the user's Drive. */
   core.bool authorized;
-
   /**
    * The template url to create a new file with this app in a given folder. The
    * template will contain {folderId} to be replaced by the folder to create the
    * new file in.
    */
   core.String createInFolderTemplate;
-
   /** The url to create a new file with this app. */
   core.String createUrl;
-
   /**
    * Whether the app has drive-wide scope. An app with drive-wide scope can
    * access all files in the user's drive.
    */
   core.bool hasDriveWideScope;
-
   /** The various icons for the app. */
   core.List<AppIcons> icons;
-
   /** The ID of the app. */
   core.String id;
-
   /** Whether the app is installed. */
   core.bool installed;
-
   /** This is always drive#app. */
   core.String kind;
-
   /** A long description of the app. */
   core.String longDescription;
-
   /** The name of the app. */
   core.String name;
-
   /**
    * The type of object this app creates (e.g. Chart). If empty, the app name
    * should be used instead.
    */
   core.String objectType;
-
   /**
    * The template url for opening files with this app. The template will contain
    * {ids} and/or {exportIds} to be replaced by the actual file ids. See  Open
    * Files  for the full documentation.
    */
   core.String openUrlTemplate;
-
   /** The list of primary file extensions. */
   core.List<core.String> primaryFileExtensions;
-
   /** The list of primary mime types. */
   core.List<core.String> primaryMimeTypes;
-
   /** The ID of the product listing for this app. */
   core.String productId;
-
   /** A link to the product listing for this app. */
   core.String productUrl;
-
   /** The list of secondary file extensions. */
   core.List<core.String> secondaryFileExtensions;
-
   /** The list of secondary mime types. */
   core.List<core.String> secondaryMimeTypes;
-
   /** A short description of the app. */
   core.String shortDescription;
-
   /** Whether this app supports creating new objects. */
   core.bool supportsCreate;
-
   /** Whether this app supports importing Google Docs. */
   core.bool supportsImport;
-
   /** Whether this app supports opening more than one file. */
   core.bool supportsMultiOpen;
-
   /** Whether this app supports creating new files when offline. */
   core.bool supportsOfflineCreate;
-
   /**
    * Whether the app is selected as the default handler for the types it
    * supports.
    */
   core.bool useByDefault;
-
 
   App();
 
@@ -4160,7 +4045,6 @@ class App {
   }
 }
 
-
 /**
  * A list of third-party applications which the user has installed or given
  * access to Google Drive.
@@ -4171,19 +4055,14 @@ class AppList {
    * in reverse-priority order (lowest to highest).
    */
   core.List<core.String> defaultAppIds;
-
   /** The ETag of the list. */
   core.String etag;
-
   /** The actual list of apps. */
   core.List<App> items;
-
   /** This is always drive#appList. */
   core.String kind;
-
   /** A link back to this list. */
   core.String selfLink;
-
 
   AppList();
 
@@ -4226,32 +4105,24 @@ class AppList {
   }
 }
 
-
 /** Representation of a change to a file. */
 class Change {
   /** Whether the file has been deleted. */
   core.bool deleted;
-
   /**
    * The updated state of the file. Present if the file has not been deleted.
    */
   File file;
-
   /** The ID of the file associated with this change. */
   core.String fileId;
-
   /** The ID of the change. */
   core.String id;
-
   /** This is always drive#change. */
   core.String kind;
-
   /** The time of this modification. */
   core.DateTime modificationDate;
-
   /** A link back to this change. */
   core.String selfLink;
-
 
   Change();
 
@@ -4306,30 +4177,22 @@ class Change {
   }
 }
 
-
 /** A list of changes for a user. */
 class ChangeList {
   /** The ETag of the list. */
   core.String etag;
-
   /** The actual list of changes. */
   core.List<Change> items;
-
   /** This is always drive#changeList. */
   core.String kind;
-
   /** The current largest change ID. */
   core.String largestChangeId;
-
   /** A link to the next page of changes. */
   core.String nextLink;
-
   /** The page token for the next page of changes. */
   core.String nextPageToken;
-
   /** A link back to this list. */
   core.String selfLink;
-
 
   ChangeList();
 
@@ -4384,51 +4247,40 @@ class ChangeList {
   }
 }
 
-
 /** An notification channel used to watch for resource changes. */
 class Channel {
   /** The address where notifications are delivered for this channel. */
   core.String address;
-
   /**
    * Date and time of notification channel expiration, expressed as a Unix
    * timestamp, in milliseconds. Optional.
    */
   core.String expiration;
-
   /** A UUID or similar unique string that identifies this channel. */
   core.String id;
-
   /**
    * Identifies this as a notification channel used to watch for changes to a
    * resource. Value: the fixed string "api#channel".
    */
   core.String kind;
-
   /** Additional parameters controlling delivery channel behavior. Optional. */
   core.Map<core.String, core.String> params;
-
   /** A Boolean value to indicate whether payload is wanted. Optional. */
   core.bool payload;
-
   /**
    * An opaque ID that identifies the resource being watched on this channel.
    * Stable across different API versions.
    */
   core.String resourceId;
-
   /** A version-specific identifier for the watched resource. */
   core.String resourceUri;
-
   /**
    * An arbitrary string delivered to the target address with each notification
    * delivered over this channel. Optional.
    */
   core.String token;
-
   /** The type of delivery mechanism used for this channel. */
   core.String type;
-
 
   Channel();
 
@@ -4501,27 +4353,20 @@ class Channel {
   }
 }
 
-
 /** A list of children of a file. */
 class ChildList {
   /** The ETag of the list. */
   core.String etag;
-
   /** The actual list of children. */
   core.List<ChildReference> items;
-
   /** This is always drive#childList. */
   core.String kind;
-
   /** A link to the next page of children. */
   core.String nextLink;
-
   /** The page token for the next page of children. */
   core.String nextPageToken;
-
   /** A link back to this list. */
   core.String selfLink;
-
 
   ChildList();
 
@@ -4570,21 +4415,16 @@ class ChildList {
   }
 }
 
-
 /** A reference to a folder's child. */
 class ChildReference {
   /** A link to the child. */
   core.String childLink;
-
   /** The ID of the child. */
   core.String id;
-
   /** This is always drive#childReference. */
   core.String kind;
-
   /** A link back to this reference. */
   core.String selfLink;
-
 
   ChildReference();
 
@@ -4621,19 +4461,16 @@ class ChildReference {
   }
 }
 
-
 /** The context of the file which is being commented on. */
 class CommentContext {
   /** The MIME type of the context snippet. */
   core.String type;
-
   /**
    * Data representation of the segment of the file being commented on. In the
    * case of a text file for example, this would be the actual text that the
    * comment is about.
    */
   core.String value;
-
 
   CommentContext();
 
@@ -4658,7 +4495,6 @@ class CommentContext {
   }
 }
 
-
 /** A JSON representation of a comment on a file in Google Drive. */
 class Comment {
   /**
@@ -4666,54 +4502,40 @@ class Comment {
    * documentation for details on how to define and interpret anchor properties.
    */
   core.String anchor;
-
   /** The user who wrote this comment. */
   User author;
-
   /** The ID of the comment. */
   core.String commentId;
-
   /**
    * The plain text content used to create this comment. This is not HTML safe
    * and should only be used as a starting point to make edits to a comment's
    * content.
    */
   core.String content;
-
   /** The context of the file which is being commented on. */
   CommentContext context;
-
   /** The date when this comment was first created. */
   core.DateTime createdDate;
-
   /**
    * Whether this comment has been deleted. If a comment has been deleted the
    * content will be cleared and this will only represent a comment that once
    * existed.
    */
   core.bool deleted;
-
   /** The file which this comment is addressing. */
   core.String fileId;
-
   /** The title of the file which this comment is addressing. */
   core.String fileTitle;
-
   /** HTML formatted content for this comment. */
   core.String htmlContent;
-
   /** This is always drive#comment. */
   core.String kind;
-
   /** The date when this comment or any of its replies were last modified. */
   core.DateTime modifiedDate;
-
   /** Replies to this post. */
   core.List<CommentReply> replies;
-
   /** A link back to this comment. */
   core.String selfLink;
-
   /**
    * The status of this comment. Status can be changed by posting a reply to a
    * comment with the desired status.
@@ -4721,7 +4543,6 @@ class Comment {
    * - "resolved" - The comment has been resolved by one of its replies.
    */
   core.String status;
-
 
   Comment();
 
@@ -4824,24 +4645,18 @@ class Comment {
   }
 }
 
-
 /** A JSON representation of a list of comments on a file in Google Drive. */
 class CommentList {
   /** List of comments. */
   core.List<Comment> items;
-
   /** This is always drive#commentList. */
   core.String kind;
-
   /** A link to the next page of comments. */
   core.String nextLink;
-
   /** The token to use to request the next page of results. */
   core.String nextPageToken;
-
   /** A link back to this list. */
   core.String selfLink;
-
 
   CommentList();
 
@@ -4884,41 +4699,32 @@ class CommentList {
   }
 }
 
-
 /** A JSON representation of a reply to a comment on a file in Google Drive. */
 class CommentReply {
   /** The user who wrote this reply. */
   User author;
-
   /**
    * The plain text content used to create this reply. This is not HTML safe and
    * should only be used as a starting point to make edits to a reply's content.
    * This field is required on inserts if no verb is specified (resolve/reopen).
    */
   core.String content;
-
   /** The date when this reply was first created. */
   core.DateTime createdDate;
-
   /**
    * Whether this reply has been deleted. If a reply has been deleted the
    * content will be cleared and this will only represent a reply that once
    * existed.
    */
   core.bool deleted;
-
   /** HTML formatted content for this reply. */
   core.String htmlContent;
-
   /** This is always drive#commentReply. */
   core.String kind;
-
   /** The date when this reply was last modified. */
   core.DateTime modifiedDate;
-
   /** The ID of the reply. */
   core.String replyId;
-
   /**
    * The action this reply performed to the parent comment. When creating a new
    * reply this is the action to be perform to the parent comment. Possible
@@ -4927,7 +4733,6 @@ class CommentReply {
    * - "reopen" - To reopen (un-resolve) a comment.
    */
   core.String verb;
-
 
   CommentReply();
 
@@ -4994,7 +4799,6 @@ class CommentReply {
   }
 }
 
-
 /**
  * A JSON representation of a list of replies to a comment on a file in Google
  * Drive.
@@ -5002,19 +4806,14 @@ class CommentReply {
 class CommentReplyList {
   /** List of reply. */
   core.List<CommentReply> items;
-
   /** This is always drive#commentReplyList. */
   core.String kind;
-
   /** A link to the next page of replies. */
   core.String nextLink;
-
   /** The token to use to request the next page of results. */
   core.String nextPageToken;
-
   /** A link back to this list. */
   core.String selfLink;
-
 
   CommentReplyList();
 
@@ -5057,18 +4856,14 @@ class CommentReplyList {
   }
 }
 
-
 /** Geographic location information stored in the image. */
 class FileImageMediaMetadataLocation {
   /** The altitude stored in the image. */
   core.double altitude;
-
   /** The latitude stored in the image. */
   core.double latitude;
-
   /** The longitude stored in the image. */
   core.double longitude;
-
 
   FileImageMediaMetadataLocation();
 
@@ -5099,7 +4894,6 @@ class FileImageMediaMetadataLocation {
   }
 }
 
-
 /**
  * Metadata about image media. This will only be present for image types, and
  * its contents will depend on what can be parsed from the image content.
@@ -5107,72 +4901,51 @@ class FileImageMediaMetadataLocation {
 class FileImageMediaMetadata {
   /** The aperture used to create the photo (f-number). */
   core.double aperture;
-
   /** The make of the camera used to create the photo. */
   core.String cameraMake;
-
   /** The model of the camera used to create the photo. */
   core.String cameraModel;
-
   /** The color space of the photo. */
   core.String colorSpace;
-
   /** The date and time the photo was taken (EXIF format timestamp). */
   core.String date;
-
   /** The exposure bias of the photo (APEX value). */
   core.double exposureBias;
-
   /** The exposure mode used to create the photo. */
   core.String exposureMode;
-
   /** The length of the exposure, in seconds. */
   core.double exposureTime;
-
   /** Whether a flash was used to create the photo. */
   core.bool flashUsed;
-
   /** The focal length used to create the photo, in millimeters. */
   core.double focalLength;
-
   /** The height of the image in pixels. */
   core.int height;
-
   /** The ISO speed used to create the photo. */
   core.int isoSpeed;
-
   /** The lens used to create the photo. */
   core.String lens;
-
   /** Geographic location information stored in the image. */
   FileImageMediaMetadataLocation location;
-
   /**
    * The smallest f-number of the lens at the focal length used to create the
    * photo (APEX value).
    */
   core.double maxApertureValue;
-
   /** The metering mode used to create the photo. */
   core.String meteringMode;
-
   /**
    * The rotation in clockwise degrees from the image's original orientation.
    */
   core.int rotation;
-
   /** The type of sensor used to create the photo. */
   core.String sensor;
-
   /** The distance to the subject of the photo, in meters. */
   core.int subjectDistance;
-
   /** The white balance mode used to create the photo. */
   core.String whiteBalance;
-
   /** The width of the image in pixels. */
   core.int width;
-
 
   FileImageMediaMetadata();
 
@@ -5311,12 +5084,10 @@ class FileImageMediaMetadata {
   }
 }
 
-
 /** Indexable text attributes for the file (can only be written) */
 class FileIndexableText {
   /** The text to be indexed for this file. */
   core.String text;
-
 
   FileIndexableText();
 
@@ -5335,28 +5106,22 @@ class FileIndexableText {
   }
 }
 
-
 /** A group of labels for the file. */
 class FileLabels {
   /** Deprecated. */
   core.bool hidden;
-
   /** Whether viewers are prevented from downloading this file. */
   core.bool restricted;
-
   /** Whether this file is starred by the user. */
   core.bool starred;
-
   /**
    * Whether this file has been trashed. This label applies to all users
    * accessing the file; however, only owners are allowed to see and untrash
    * files.
    */
   core.bool trashed;
-
   /** Whether this file has been viewed by this user. */
   core.bool viewed;
-
 
   FileLabels();
 
@@ -5399,7 +5164,6 @@ class FileLabels {
   }
 }
 
-
 /**
  * Thumbnail for the file. Only accepted on upload and for files that are not
  * already thumbnailed by Google.
@@ -5410,7 +5174,6 @@ class FileThumbnail {
    * to RFC 4648 section 5.
    */
   core.String image;
-
   core.List<core.int> get imageAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(image);
   }
@@ -5418,10 +5181,8 @@ class FileThumbnail {
   void set imageAsBytes(core.List<core.int> _bytes) {
     image = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** The MIME type of the thumbnail. */
   core.String mimeType;
-
 
   FileThumbnail();
 
@@ -5446,18 +5207,14 @@ class FileThumbnail {
   }
 }
 
-
 /** Metadata about video media. This will only be present for video types. */
 class FileVideoMediaMetadata {
   /** The duration of the video in milliseconds. */
   core.String durationMillis;
-
   /** The height of the video in pixels. */
   core.int height;
-
   /** The width of the video in pixels. */
   core.int width;
-
 
   FileVideoMediaMetadata();
 
@@ -5488,67 +5245,52 @@ class FileVideoMediaMetadata {
   }
 }
 
-
 /** The metadata for a file. */
 class File {
   /** A link for opening the file in a relevant Google editor or viewer. */
   core.String alternateLink;
-
   /** Whether this file is in the Application Data folder. */
   core.bool appDataContents;
-
   /** Whether the file can be copied by the current user. */
   core.bool copyable;
-
   /** Create time for this file (formatted RFC 3339 timestamp). */
   core.DateTime createdDate;
-
   /**
    * A link to open this file with the user's default app for this file. Only
    * populated when the drive.apps.readonly scope is used.
    */
   core.String defaultOpenWithLink;
-
   /** A short description of the file. */
   core.String description;
-
   /**
    * Short lived download URL for the file. This is only populated for files
    * with content stored in Drive.
    */
   core.String downloadUrl;
-
   /** Whether the file can be edited by the current user. */
   core.bool editable;
-
   /** A link for embedding the file. */
   core.String embedLink;
-
   /** ETag of the file. */
   core.String etag;
-
   /**
    * Whether this file has been explicitly trashed, as opposed to recursively
    * trashed. This will only be populated if the file is trashed.
    */
   core.bool explicitlyTrashed;
-
   /** Links for exporting Google Docs to specific formats. */
   core.Map<core.String, core.String> exportLinks;
-
   /**
    * The file extension used when downloading this file. This field is read
    * only. To set the extension, include it in the title when creating the file.
    * This is only populated for files with content stored in Drive.
    */
   core.String fileExtension;
-
   /**
    * The size of the file in bytes. This is only populated for files with
    * content stored in Drive.
    */
   core.String fileSize;
-
   /**
    * Folder color as an RGB hex string if the file is a folder. The list of
    * supported colors is available in the folderColorPalette field of the About
@@ -5556,83 +5298,66 @@ class File {
    * closest color in the palette.
    */
   core.String folderColorRgb;
-
   /**
    * The ID of the file's head revision. This will only be populated for files
    * with content stored in Drive.
    */
   core.String headRevisionId;
-
   /** A link to the file's icon. */
   core.String iconLink;
-
   /** The ID of the file. */
   core.String id;
-
   /**
    * Metadata about image media. This will only be present for image types, and
    * its contents will depend on what can be parsed from the image content.
    */
   FileImageMediaMetadata imageMediaMetadata;
-
   /** Indexable text attributes for the file (can only be written) */
   FileIndexableText indexableText;
-
   /** The type of file. This is always drive#file. */
   core.String kind;
-
   /** A group of labels for the file. */
   FileLabels labels;
-
   /** The last user to modify this file. */
   User lastModifyingUser;
-
   /** Name of the last user to modify this file. */
   core.String lastModifyingUserName;
-
   /**
    * Last time this file was viewed by the user (formatted RFC 3339 timestamp).
    */
   core.DateTime lastViewedByMeDate;
-
   /**
    * Time this file was explicitly marked viewed by the user (formatted RFC 3339
    * timestamp).
    */
   core.DateTime markedViewedByMeDate;
-
   /**
    * An MD5 checksum for the content of this file. This is populated only for
    * files with content stored in Drive.
    */
   core.String md5Checksum;
-
   /**
    * The MIME type of the file. This is only mutable on update when uploading
    * new content. This field can be left blank, and the mimetype will be
    * determined from the uploaded content's MIME type.
    */
   core.String mimeType;
-
   /**
    * Last time this file was modified by the user (formatted RFC 3339
    * timestamp). Note that setting modifiedDate will also update the
    * modifiedByMe date for the user which set the date.
    */
   core.DateTime modifiedByMeDate;
-
   /**
    * Last time this file was modified by anyone (formatted RFC 3339 timestamp).
    * This is only mutable on update when the setModifiedDate parameter is set.
    */
   core.DateTime modifiedDate;
-
   /**
    * A map of the id of each of the user's apps to a link to open this file with
    * that app. Only populated when the drive.apps.readonly scope is used.
    */
   core.Map<core.String, core.String> openWithLinks;
-
   /**
    * The original filename if the file was uploaded manually, or the original
    * title if the file was inserted through the API. Note that renames of the
@@ -5640,13 +5365,10 @@ class File {
    * files with content stored in Drive.
    */
   core.String originalFilename;
-
   /** Name(s) of the owner(s) of this file. */
   core.List<core.String> ownerNames;
-
   /** The owner(s) of this file. */
   core.List<User> owners;
-
   /**
    * Collection of parent folders which contain this file.
    * Setting this field will put the file in all of the provided folders. On
@@ -5654,75 +5376,58 @@ class File {
    * root folder.
    */
   core.List<ParentReference> parents;
-
   /** The list of permissions for users with access to this file. */
   core.List<Permission> permissions;
-
   /** The list of properties. */
   core.List<Property> properties;
-
   /** The number of quota bytes used by this file. */
   core.String quotaBytesUsed;
-
   /** A link back to this file. */
   core.String selfLink;
-
   /** Whether the file has been shared. */
   core.bool shared;
-
   /**
    * Time at which this file was shared with the user (formatted RFC 3339
    * timestamp).
    */
   core.DateTime sharedWithMeDate;
-
   /** User that shared the item with the current user, if available. */
   User sharingUser;
-
   /**
    * Thumbnail for the file. Only accepted on upload and for files that are not
    * already thumbnailed by Google.
    */
   FileThumbnail thumbnail;
-
   /**
    * A short-lived link to the file's thumbnail. Typically lasts on the order of
    * hours.
    */
   core.String thumbnailLink;
-
   /** The title of this file. */
   core.String title;
-
   /** The permissions for the authenticated user on this file. */
   Permission userPermission;
-
   /**
    * A monotonically increasing version number for the file. This reflects every
    * change made to the file on the server, even those not visible to the
    * requesting user.
    */
   core.String version;
-
   /** Metadata about video media. This will only be present for video types. */
   FileVideoMediaMetadata videoMediaMetadata;
-
   /**
    * A link for downloading the content of the file in a browser using cookie
    * based authentication. In cases where the content is shared publicly, the
    * content can be downloaded without any credentials.
    */
   core.String webContentLink;
-
   /**
    * A link only available on public folders for viewing their static web assets
    * (HTML, CSS, JS, etc) via Google Drive's Website Hosting.
    */
   core.String webViewLink;
-
   /** Whether writers can share the document with other users. */
   core.bool writersCanShare;
-
 
   File();
 
@@ -6041,27 +5746,20 @@ class File {
   }
 }
 
-
 /** A list of files. */
 class FileList {
   /** The ETag of the list. */
   core.String etag;
-
   /** The actual list of files. */
   core.List<File> items;
-
   /** This is always drive#fileList. */
   core.String kind;
-
   /** A link to the next page of files. */
   core.String nextLink;
-
   /** The page token for the next page of files. */
   core.String nextPageToken;
-
   /** A link back to this list. */
   core.String selfLink;
-
 
   FileList();
 
@@ -6110,21 +5808,16 @@ class FileList {
   }
 }
 
-
 /** A list of a file's parents. */
 class ParentList {
   /** The ETag of the list. */
   core.String etag;
-
   /** The actual list of parents. */
   core.List<ParentReference> items;
-
   /** This is always drive#parentList. */
   core.String kind;
-
   /** A link back to this list. */
   core.String selfLink;
-
 
   ParentList();
 
@@ -6161,24 +5854,18 @@ class ParentList {
   }
 }
 
-
 /** A reference to a file's parent. */
 class ParentReference {
   /** The ID of the parent. */
   core.String id;
-
   /** Whether or not the parent is the root folder. */
   core.bool isRoot;
-
   /** This is always drive#parentReference. */
   core.String kind;
-
   /** A link to the parent. */
   core.String parentLink;
-
   /** A link back to this reference. */
   core.String selfLink;
-
 
   ParentReference();
 
@@ -6221,32 +5908,26 @@ class ParentReference {
   }
 }
 
-
 /** A permission for a file. */
 class Permission {
   /** Additional roles for this user. Only commenter is currently allowed. */
   core.List<core.String> additionalRoles;
-
   /** The authkey parameter required for this permission. */
   core.String authKey;
-
   /**
    * The domain name of the entity this permission refers to. This is an
    * output-only field which is present when the permission type is user, group
    * or domain.
    */
   core.String domain;
-
   /**
    * The email address of the user or group this permission refers to. This is
    * an output-only field which is present when the permission type is user or
    * group.
    */
   core.String emailAddress;
-
   /** The ETag of the permission. */
   core.String etag;
-
   /**
    * The ID of the user this permission refers to, and identical to the
    * permissionId in the About and Files resources. When making a
@@ -6254,16 +5935,12 @@ class Permission {
    * must be specified.
    */
   core.String id;
-
   /** This is always drive#permission. */
   core.String kind;
-
   /** The name for this permission. */
   core.String name;
-
   /** A link to the profile photo, if available. */
   core.String photoLink;
-
   /**
    * The primary role for this user. Allowed values are:
    * - owner
@@ -6271,10 +5948,8 @@ class Permission {
    * - writer
    */
   core.String role;
-
   /** A link back to this permission. */
   core.String selfLink;
-
   /**
    * The account type. Allowed values are:
    * - user
@@ -6283,7 +5958,6 @@ class Permission {
    * - anyone
    */
   core.String type;
-
   /**
    * The email address or domain name for the entity. This is used during
    * inserts and is not populated in responses. When making a
@@ -6291,10 +5965,8 @@ class Permission {
    * must be specified.
    */
   core.String value;
-
   /** Whether the link is required for this permission. */
   core.bool withLink;
-
 
   Permission();
 
@@ -6391,15 +6063,12 @@ class Permission {
   }
 }
 
-
 /** An ID for a user or group as seen in Permission items. */
 class PermissionId {
   /** The permission ID. */
   core.String id;
-
   /** This is always drive#permissionId. */
   core.String kind;
-
 
   PermissionId();
 
@@ -6424,21 +6093,16 @@ class PermissionId {
   }
 }
 
-
 /** A list of permissions associated with a file. */
 class PermissionList {
   /** The ETag of the list. */
   core.String etag;
-
   /** The actual list of permissions. */
   core.List<Permission> items;
-
   /** This is always drive#permissionList. */
   core.String kind;
-
   /** A link back to this list. */
   core.String selfLink;
-
 
   PermissionList();
 
@@ -6475,7 +6139,6 @@ class PermissionList {
   }
 }
 
-
 /**
  * A key-value pair attached to a file that is either public or private to an
  * application.
@@ -6489,22 +6152,16 @@ class PermissionList {
 class Property {
   /** ETag of the property. */
   core.String etag;
-
   /** The key of this property. */
   core.String key;
-
   /** This is always drive#property. */
   core.String kind;
-
   /** The link back to this property. */
   core.String selfLink;
-
   /** The value of this property. */
   core.String value;
-
   /** The visibility of this property. */
   core.String visibility;
-
 
   Property();
 
@@ -6553,7 +6210,6 @@ class Property {
   }
 }
 
-
 /**
  * A collection of properties, key-value pairs that are either public or private
  * to an application.
@@ -6561,16 +6217,12 @@ class Property {
 class PropertyList {
   /** The ETag of the list. */
   core.String etag;
-
   /** The list of properties. */
   core.List<Property> items;
-
   /** This is always drive#propertyList. */
   core.String kind;
-
   /** The link back to this list. */
   core.String selfLink;
-
 
   PropertyList();
 
@@ -6607,7 +6259,6 @@ class PropertyList {
   }
 }
 
-
 /** A revision of a file. */
 class Revision {
   /**
@@ -6615,49 +6266,37 @@ class Revision {
    * with content stored in Drive.
    */
   core.String downloadUrl;
-
   /** The ETag of the revision. */
   core.String etag;
-
   /** Links for exporting Google Docs to specific formats. */
   core.Map<core.String, core.String> exportLinks;
-
   /**
    * The size of the revision in bytes. This will only be populated on files
    * with content stored in Drive.
    */
   core.String fileSize;
-
   /** The ID of the revision. */
   core.String id;
-
   /** This is always drive#revision. */
   core.String kind;
-
   /** The last user to modify this revision. */
   User lastModifyingUser;
-
   /** Name of the last user to modify this revision. */
   core.String lastModifyingUserName;
-
   /**
    * An MD5 checksum for the content of this revision. This will only be
    * populated on files with content stored in Drive.
    */
   core.String md5Checksum;
-
   /** The MIME type of the revision. */
   core.String mimeType;
-
   /** Last time this revision was modified (formatted RFC 3339 timestamp). */
   core.DateTime modifiedDate;
-
   /**
    * The original filename when this revision was created. This will only be
    * populated on files with content stored in Drive.
    */
   core.String originalFilename;
-
   /**
    * Whether this revision is pinned to prevent automatic purging. This will
    * only be populated and can only be modified on files with content stored in
@@ -6666,31 +6305,25 @@ class Revision {
    * query parameter.
    */
   core.bool pinned;
-
   /**
    * Whether subsequent revisions will be automatically republished. This is
    * only populated and can only be modified for Google Docs.
    */
   core.bool publishAuto;
-
   /**
    * Whether this revision is published. This is only populated and can only be
    * modified for Google Docs.
    */
   core.bool published;
-
   /** A link to the published revision. */
   core.String publishedLink;
-
   /**
    * Whether this revision is published outside the domain. This is only
    * populated and can only be modified for Google Docs.
    */
   core.bool publishedOutsideDomain;
-
   /** A link back to this revision. */
   core.String selfLink;
-
 
   Revision();
 
@@ -6811,21 +6444,16 @@ class Revision {
   }
 }
 
-
 /** A list of revisions of a file. */
 class RevisionList {
   /** The ETag of the list. */
   core.String etag;
-
   /** The actual list of revisions. */
   core.List<Revision> items;
-
   /** This is always drive#revisionList. */
   core.String kind;
-
   /** A link back to this list. */
   core.String selfLink;
-
 
   RevisionList();
 
@@ -6862,12 +6490,10 @@ class RevisionList {
   }
 }
 
-
 /** The user's profile picture. */
 class UserPicture {
   /** A URL that points to a profile picture of this user. */
   core.String url;
-
 
   UserPicture();
 
@@ -6886,30 +6512,23 @@ class UserPicture {
   }
 }
 
-
 /** The JSON template for a user. */
 class User {
   /** A plain text displayable name for this user. */
   core.String displayName;
-
   /** The email address of the user. */
   core.String emailAddress;
-
   /**
    * Whether this user is the same as the authenticated user for whom the
    * request was made.
    */
   core.bool isAuthenticatedUser;
-
   /** This is always drive#user. */
   core.String kind;
-
   /** The user's ID as visible in the permissions collection. */
   core.String permissionId;
-
   /** The user's profile picture. */
   UserPicture picture;
-
 
   User();
 

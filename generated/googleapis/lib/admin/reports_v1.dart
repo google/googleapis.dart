@@ -57,8 +57,7 @@ class ActivitiesResourceApi {
    *
    * [applicationName] - Application name for which the events are to be
    * retrieved.
-   * Value must have pattern
-   * "(admin)|(calendar)|(docs)|(drive)|(login)|(token)".
+   * Value must have pattern "(admin)|(calendar)|(drive)|(login)|(token)".
    *
    * [actorIpAddress] - IP Address of host where the event was performed.
    * Supports both IPv4 and IPv6 addresses.
@@ -92,7 +91,7 @@ class ActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Activities> list(core.String userKey, core.String applicationName, {core.String actorIpAddress, core.String customerId, core.String endTime, core.String eventName, core.String filters, core.int maxResults, core.String pageToken, core.String startTime}) {
     var _url = null;
@@ -133,7 +132,6 @@ class ActivitiesResourceApi {
       _queryParams["startTime"] = [startTime];
     }
 
-
     _url = 'activity/users/' + commons.Escaper.ecapeVariable('$userKey') + '/applications/' + commons.Escaper.ecapeVariable('$applicationName');
 
     var _response = _requester.request(_url,
@@ -159,8 +157,7 @@ class ActivitiesResourceApi {
    *
    * [applicationName] - Application name for which the events are to be
    * retrieved.
-   * Value must have pattern
-   * "(admin)|(calendar)|(docs)|(drive)|(login)|(token)".
+   * Value must have pattern "(admin)|(calendar)|(drive)|(login)|(token)".
    *
    * [actorIpAddress] - IP Address of host where the event was performed.
    * Supports both IPv4 and IPv6 addresses.
@@ -194,7 +191,7 @@ class ActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Channel> watch(Channel request, core.String userKey, core.String applicationName, {core.String actorIpAddress, core.String customerId, core.String endTime, core.String eventName, core.String filters, core.int maxResults, core.String pageToken, core.String startTime}) {
     var _url = null;
@@ -238,7 +235,6 @@ class ActivitiesResourceApi {
       _queryParams["startTime"] = [startTime];
     }
 
-
     _url = 'activity/users/' + commons.Escaper.ecapeVariable('$userKey') + '/applications/' + commons.Escaper.ecapeVariable('$applicationName') + '/watch';
 
     var _response = _requester.request(_url,
@@ -271,7 +267,7 @@ class ChannelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future stop(Channel request) {
     var _url = null;
@@ -334,7 +330,7 @@ class CustomerUsageReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UsageReports> get(core.String date, {core.String customerId, core.String pageToken, core.String parameters}) {
     var _url = null;
@@ -356,7 +352,6 @@ class CustomerUsageReportsResourceApi {
     if (parameters != null) {
       _queryParams["parameters"] = [parameters];
     }
-
 
     _url = 'usage/dates/' + commons.Escaper.ecapeVariable('$date');
 
@@ -415,7 +410,7 @@ class UserUsageReportResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UsageReports> get(core.String userKey, core.String date, {core.String customerId, core.String filters, core.int maxResults, core.String pageToken, core.String parameters}) {
     var _url = null;
@@ -447,7 +442,6 @@ class UserUsageReportResourceApi {
       _queryParams["parameters"] = [parameters];
     }
 
-
     _url = 'usage/users/' + commons.Escaper.ecapeVariable('$userKey') + '/dates/' + commons.Escaper.ecapeVariable('$date');
 
     var _response = _requester.request(_url,
@@ -468,16 +462,12 @@ class UserUsageReportResourceApi {
 class Activities {
   /** ETag of the resource. */
   core.String etag;
-
   /** Each record in read response. */
   core.List<Activity> items;
-
   /** Kind of list response this is. */
   core.String kind;
-
   /** Token for retrieving the next page */
   core.String nextPageToken;
-
 
   Activities();
 
@@ -514,21 +504,16 @@ class Activities {
   }
 }
 
-
 /** User doing the action. */
 class ActivityActor {
   /** User or OAuth 2LO request. */
   core.String callerType;
-
   /** Email address of the user. */
   core.String email;
-
   /** For OAuth 2LO API requests, consumer_key of the requestor. */
   core.String key;
-
   /** Obfuscated user id of the user. */
   core.String profileId;
-
 
   ActivityActor();
 
@@ -565,26 +550,19 @@ class ActivityActor {
   }
 }
 
-
 class ActivityEventsParameters {
   /** Boolean value of the parameter. */
   core.bool boolValue;
-
   /** Integral value of the parameter. */
   core.String intValue;
-
   /** Multi-int value of the parameter. */
   core.List<core.String> multiIntValue;
-
   /** Multi-string value of the parameter. */
   core.List<core.String> multiValue;
-
   /** The name of the parameter. */
   core.String name;
-
   /** String value of the parameter. */
   core.String value;
-
 
   ActivityEventsParameters();
 
@@ -633,17 +611,13 @@ class ActivityEventsParameters {
   }
 }
 
-
 class ActivityEvents {
   /** Name of event. */
   core.String name;
-
   /** Parameter value pairs for various applications. */
   core.List<ActivityEventsParameters> parameters;
-
   /** Type of event. */
   core.String type;
-
 
   ActivityEvents();
 
@@ -674,21 +648,16 @@ class ActivityEvents {
   }
 }
 
-
 /** Unique identifier for each activity record. */
 class ActivityId {
   /** Application name to which the event belongs. */
   core.String applicationName;
-
   /** Obfuscated customer ID of the source customer. */
   core.String customerId;
-
   /** Time of occurrence of the activity. */
   core.DateTime time;
-
   /** Unique qualifier if multiple events have the same time. */
   core.String uniqueQualifier;
-
 
   ActivityId();
 
@@ -725,30 +694,22 @@ class ActivityId {
   }
 }
 
-
 /** JSON template for the activity resource. */
 class Activity {
   /** User doing the action. */
   ActivityActor actor;
-
   /** ETag of the entry. */
   core.String etag;
-
   /** Activity events. */
   core.List<ActivityEvents> events;
-
   /** Unique identifier for each activity record. */
   ActivityId id;
-
   /** IP Address of the user doing the action. */
   core.String ipAddress;
-
   /** Kind of resource this is. */
   core.String kind;
-
   /** Domain of source customer. */
   core.String ownerDomain;
-
 
   Activity();
 
@@ -803,51 +764,40 @@ class Activity {
   }
 }
 
-
 /** An notification channel used to watch for resource changes. */
 class Channel {
   /** The address where notifications are delivered for this channel. */
   core.String address;
-
   /**
    * Date and time of notification channel expiration, expressed as a Unix
    * timestamp, in milliseconds. Optional.
    */
   core.String expiration;
-
   /** A UUID or similar unique string that identifies this channel. */
   core.String id;
-
   /**
    * Identifies this as a notification channel used to watch for changes to a
    * resource. Value: the fixed string "api#channel".
    */
   core.String kind;
-
   /** Additional parameters controlling delivery channel behavior. Optional. */
   core.Map<core.String, core.String> params;
-
   /** A Boolean value to indicate whether payload is wanted. Optional. */
   core.bool payload;
-
   /**
    * An opaque ID that identifies the resource being watched on this channel.
    * Stable across different API versions.
    */
   core.String resourceId;
-
   /** A version-specific identifier for the watched resource. */
   core.String resourceUri;
-
   /**
    * An arbitrary string delivered to the target address with each notification
    * delivered over this channel. Optional.
    */
   core.String token;
-
   /** The type of delivery mechanism used for this channel. */
   core.String type;
-
 
   Channel();
 
@@ -920,21 +870,16 @@ class Channel {
   }
 }
 
-
 /** Information about the type of the item. */
 class UsageReportEntity {
   /** Obfuscated customer id for the record. */
   core.String customerId;
-
   /** Obfuscated user id for the record. */
   core.String profileId;
-
   /** The type of item, can be a customer or user. */
   core.String type;
-
   /** user's email. */
   core.String userEmail;
-
 
   UsageReportEntity();
 
@@ -971,17 +916,13 @@ class UsageReportEntity {
   }
 }
 
-
 class UsageReportParameters {
   /** Boolean value of the parameter. */
   core.bool boolValue;
-
   /** RFC 3339 formatted value of the parameter. */
   core.DateTime datetimeValue;
-
   /** Integral value of the parameter. */
   core.String intValue;
-
   /**
    * Nested message value of the parameter.
    *
@@ -989,13 +930,10 @@ class UsageReportParameters {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Map<core.String, core.Object>> msgValue;
-
   /** The name of the parameter. */
   core.String name;
-
   /** String value of the parameter. */
   core.String stringValue;
-
 
   UsageReportParameters();
 
@@ -1044,24 +982,18 @@ class UsageReportParameters {
   }
 }
 
-
 /** JSON template for a usage report. */
 class UsageReport {
   /** The date to which the record belongs. */
   core.String date;
-
   /** Information about the type of the item. */
   UsageReportEntity entity;
-
   /** ETag of the resource. */
   core.String etag;
-
   /** The kind of object. */
   core.String kind;
-
   /** Parameter value pairs for various applications. */
   core.List<UsageReportParameters> parameters;
-
 
   UsageReport();
 
@@ -1104,20 +1036,17 @@ class UsageReport {
   }
 }
 
-
 class UsageReportsWarningsData {
   /**
    * Key associated with a key-value pair to give detailed information on the
    * warning.
    */
   core.String key;
-
   /**
    * Value associated with a key-value pair to give detailed information on the
    * warning.
    */
   core.String value;
-
 
   UsageReportsWarningsData();
 
@@ -1142,17 +1071,13 @@ class UsageReportsWarningsData {
   }
 }
 
-
 class UsageReportsWarnings {
   /** Machine readable code / warning type. */
   core.String code;
-
   /** Key-Value pairs to give detailed information on the warning. */
   core.List<UsageReportsWarningsData> data;
-
   /** Human readable message for the warning. */
   core.String message;
-
 
   UsageReportsWarnings();
 
@@ -1183,24 +1108,18 @@ class UsageReportsWarnings {
   }
 }
 
-
 /** JSON template for a collection of usage reports. */
 class UsageReports {
   /** ETag of the resource. */
   core.String etag;
-
   /** The kind of object. */
   core.String kind;
-
   /** Token for retrieving the next page */
   core.String nextPageToken;
-
   /** Various application parameter records. */
   core.List<UsageReport> usageReports;
-
   /** Warnings if any. */
   core.List<UsageReportsWarnings> warnings;
-
 
   UsageReports();
 

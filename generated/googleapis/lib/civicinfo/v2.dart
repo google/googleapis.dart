@@ -53,7 +53,7 @@ class DivisionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DivisionSearchResponse> search({core.String query}) {
     var _url = null;
@@ -66,7 +66,6 @@ class DivisionsResourceApi {
     if (query != null) {
       _queryParams["query"] = [query];
     }
-
 
     _url = 'divisions';
 
@@ -100,7 +99,7 @@ class ElectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ElectionsQueryResponse> electionQuery() {
     var _url = null;
@@ -109,7 +108,6 @@ class ElectionsResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'elections';
@@ -145,7 +143,7 @@ class ElectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VoterInfoResponse> voterInfoQuery(core.String address, {core.String electionId, core.bool officialOnly}) {
     var _url = null;
@@ -165,7 +163,6 @@ class ElectionsResourceApi {
     if (officialOnly != null) {
       _queryParams["officialOnly"] = ["${officialOnly}"];
     }
-
 
     _url = 'voterinfo';
 
@@ -215,7 +212,7 @@ class RepresentativesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RepresentativeInfoResponse> representativeInfoByAddress({core.String address, core.bool includeOffices, core.List<core.String> levels, core.List<core.String> roles}) {
     var _url = null;
@@ -237,7 +234,6 @@ class RepresentativesResourceApi {
     if (roles != null) {
       _queryParams["roles"] = roles;
     }
-
 
     _url = 'representatives';
 
@@ -278,7 +274,7 @@ class RepresentativesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RepresentativeInfoData> representativeInfoByDivision(core.String ocdId, {core.List<core.String> levels, core.bool recursive, core.List<core.String> roles}) {
     var _url = null;
@@ -301,7 +297,6 @@ class RepresentativesResourceApi {
       _queryParams["roles"] = roles;
     }
 
-
     _url = 'representatives/' + commons.Escaper.ecapeVariable('$ocdId');
 
     var _response = _requester.request(_url,
@@ -322,29 +317,24 @@ class RepresentativesResourceApi {
 class AdministrationRegion {
   /** The election administration body for this area. */
   AdministrativeBody electionAdministrationBody;
-
   /**
    * An ID for this object. IDs may change in future requests and should not be
    * cached. Access to this field requires special access that can be requested
    * from the Request more link on the Quotas page.
    */
   core.String id;
-
   /**
    * The city or county that provides election information for this voter. This
    * object can have the same elements as state.
    */
   AdministrationRegion localJurisdiction;
-
   /** The name of the jurisdiction. */
   core.String name;
-
   /**
    * A list of sources for this area. If multiple sources are listed the data
    * has been aggregated from those sources.
    */
   core.List<Source> sources;
-
 
   AdministrationRegion();
 
@@ -387,7 +377,6 @@ class AdministrationRegion {
   }
 }
 
-
 /**
  * Information about an election administrative body (e.g. County Board of
  * Elections).
@@ -398,60 +387,47 @@ class AdministrativeBody {
    * voting.
    */
   core.String absenteeVotingInfoUrl;
-
   /**
    * A URL provided by this administrative body to give contest information to
    * the voter.
    */
   core.String ballotInfoUrl;
-
   /** The mailing address of this administrative body. */
   SimpleAddressType correspondenceAddress;
-
   /**
    * A URL provided by this administrative body for looking up general election
    * information.
    */
   core.String electionInfoUrl;
-
   /** The election officials for this election administrative body. */
   core.List<ElectionOfficial> electionOfficials;
-
   /**
    * A URL provided by this administrative body for confirming that the voter is
    * registered to vote.
    */
   core.String electionRegistrationConfirmationUrl;
-
   /**
    * A URL provided by this administrative body for looking up how to register
    * to vote.
    */
   core.String electionRegistrationUrl;
-
   /**
    * A URL provided by this administrative body describing election rules to the
    * voter.
    */
   core.String electionRulesUrl;
-
   /** A description of the hours of operation for this administrative body. */
   core.String hoursOfOperation;
-
   /** The name of this election administrative body. */
   core.String name;
-
   /** The physical address of this administrative body. */
   SimpleAddressType physicalAddress;
-
   /** A description of the services this administrative body may provide. */
   core.List<core.String> voterServices;
-
   /**
    * A URL provided by this administrative body for looking up where to vote.
    */
   core.String votingLocationFinderUrl;
-
 
   AdministrativeBody();
 
@@ -542,33 +518,24 @@ class AdministrativeBody {
   }
 }
 
-
 /** Information about a candidate running for elected office. */
 class Candidate {
   /** The URL for the candidate's campaign web site. */
   core.String candidateUrl;
-
   /** A list of known (social) media channels for this candidate. */
   core.List<Channel> channels;
-
   /** The email address for the candidate's campaign. */
   core.String email;
-
   /** The candidate's name. */
   core.String name;
-
   /** The order the candidate appears on the ballot for this contest. */
   core.String orderOnBallot;
-
   /** The full name of the party the candidate is a member of. */
   core.String party;
-
   /** The voice phone number for the candidate's campaign office. */
   core.String phone;
-
   /** A URL for a photo of the candidate. */
   core.String photoUrl;
-
 
   Candidate();
 
@@ -629,19 +596,16 @@ class Candidate {
   }
 }
 
-
 /** A social media or web channel for a candidate. */
 class Channel {
   /** The unique public identifier for the candidate's channel. */
   core.String id;
-
   /**
    * The type of channel. The following is a list of types of channels, but is
    * not exhaustive. More channel types may be added at a later time. One of:
    * GooglePlus, YouTube, Facebook, Twitter
    */
   core.String type;
-
 
   Channel();
 
@@ -666,33 +630,27 @@ class Channel {
   }
 }
 
-
 /** Information about a contest that appears on a voter's ballot. */
 class Contest {
   /**
    * A number specifying the position of this contest on the voter's ballot.
    */
   core.String ballotPlacement;
-
   /** The candidate choices for this contest. */
   core.List<Candidate> candidates;
-
   /** Information about the electoral district that this contest is in. */
   ElectoralDistrict district;
-
   /**
    * A description of any additional eligibility requirements for voting in this
    * contest.
    */
   core.String electorateSpecifications;
-
   /**
    * An ID for this object. IDs may change in future requests and should not be
    * cached. Access to this field requires special access that can be requested
    * from the Request more link on the Quotas page.
    */
   core.String id;
-
   /**
    * The levels of government of the office for this contest. There may be more
    * than one in cases where a jurisdiction effectively acts at two different
@@ -701,61 +659,49 @@ class Contest {
    * "administrative-area-2" and "administrative-area-1".
    */
   core.List<core.String> level;
-
   /**
    * The number of candidates that will be elected to office in this contest.
    */
   core.String numberElected;
-
   /** The number of candidates that a voter may vote for in this contest. */
   core.String numberVotingFor;
-
   /** The name of the office for this contest. */
   core.String office;
-
   /** If this is a partisan election, the name of the party it is for. */
   core.String primaryParty;
-
   /**
    * A brief description of the referendum. This field is only populated for
    * contests of type 'Referendum'.
    */
   core.String referendumSubtitle;
-
   /**
    * The title of the referendum (e.g. 'Proposition 42'). This field is only
    * populated for contests of type 'Referendum'.
    */
   core.String referendumTitle;
-
   /**
    * A link to the referendum. This field is only populated for contests of type
    * 'Referendum'.
    */
   core.String referendumUrl;
-
   /** The roles which this office fulfills. */
   core.List<core.String> roles;
-
   /**
    * A list of sources for this contest. If multiple sources are listed, the
    * data has been aggregated from those sources.
    */
   core.List<Source> sources;
-
   /**
    * "Yes" or "No" depending on whether this a contest being held outside the
    * normal election cycle.
    */
   core.String special;
-
   /**
    * The type of contest. Usually this will be 'General', 'Primary', or
    * 'Run-off' for contests with candidates. For referenda this will be
    * 'Referendum'.
    */
   core.String type;
-
 
   Contest();
 
@@ -870,7 +816,6 @@ class Contest {
   }
 }
 
-
 /** The result of a division search query. */
 class DivisionSearchResponse {
   /**
@@ -878,9 +823,7 @@ class DivisionSearchResponse {
    * "civicinfo#divisionSearchResponse".
    */
   core.String kind;
-
   core.List<DivisionSearchResult> results;
-
 
   DivisionSearchResponse();
 
@@ -905,7 +848,6 @@ class DivisionSearchResponse {
   }
 }
 
-
 /**
  * Represents a political geographic division that matches the requested query.
  */
@@ -919,13 +861,10 @@ class DivisionSearchResult {
    * Congressional district.
    */
   core.List<core.String> aliases;
-
   /** The name of the division. */
   core.String name;
-
   /** The unique Open Civic Data identifier for this division. */
   core.String ocdId;
-
 
   DivisionSearchResult();
 
@@ -956,18 +895,14 @@ class DivisionSearchResult {
   }
 }
 
-
 /** Information about the election that was queried. */
 class Election {
   /** Day of the election in YYYY-MM-DD format. */
   core.String electionDay;
-
   /** The unique ID of this election. */
   core.String id;
-
   /** A displayable name for the election. */
   core.String name;
-
 
   Election();
 
@@ -998,24 +933,18 @@ class Election {
   }
 }
 
-
 /** Information about individual election officials. */
 class ElectionOfficial {
   /** The email address of the election official. */
   core.String emailAddress;
-
   /** The fax number of the election official. */
   core.String faxNumber;
-
   /** The full name of the election official. */
   core.String name;
-
   /** The office phone number of the election official. */
   core.String officePhoneNumber;
-
   /** The title of the election official. */
   core.String title;
-
 
   ElectionOfficial();
 
@@ -1058,18 +987,15 @@ class ElectionOfficial {
   }
 }
 
-
 /** The list of elections available for this version of the API. */
 class ElectionsQueryResponse {
   /** A list of available elections */
   core.List<Election> elections;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "civicinfo#electionsQueryResponse".
    */
   core.String kind;
-
 
   ElectionsQueryResponse();
 
@@ -1094,7 +1020,6 @@ class ElectionsQueryResponse {
   }
 }
 
-
 /** Describes the geographic scope of a contest. */
 class ElectoralDistrict {
   /**
@@ -1102,10 +1027,8 @@ class ElectoralDistrict {
    * 34th State Senate district would have id "34" and a scope of stateUpper.
    */
   core.String id;
-
   /** The name of the district. */
   core.String name;
-
   /**
    * The geographic scope of this district. If unspecified the district's
    * geography is not known. One of: national, statewide, congressional,
@@ -1113,7 +1036,6 @@ class ElectoralDistrict {
    * township, countyCouncil, cityCouncil, ward, special
    */
   core.String scope;
-
 
   ElectoralDistrict();
 
@@ -1144,7 +1066,6 @@ class ElectoralDistrict {
   }
 }
 
-
 /** Describes a political geography. */
 class GeographicDivision {
   /**
@@ -1162,17 +1083,14 @@ class GeographicDivision {
    * ocd-division/country:us/state:dc.
    */
   core.List<core.String> alsoKnownAs;
-
   /** The name of the division. */
   core.String name;
-
   /**
    * List of indices in the offices array, one for each office elected from this
    * division. Will only be present if includeOffices was true (or absent) in
    * the request.
    */
   core.List<core.int> officeIndices;
-
 
   GeographicDivision();
 
@@ -1203,12 +1121,10 @@ class GeographicDivision {
   }
 }
 
-
 /** Information about an Office held by one or more Officials. */
 class Office {
   /** The OCD ID of the division with which this office is associated. */
   core.String divisionId;
-
   /**
    * The levels of government of which this office is part. There may be more
    * than one in cases where a jurisdiction effectively acts at two different
@@ -1217,16 +1133,13 @@ class Office {
    * "administrative-area-2" and "administrative-area-1".
    */
   core.List<core.String> levels;
-
   /** The human-readable name of the office. */
   core.String name;
-
   /**
    * List of indices in the officials array of people who presently hold this
    * office.
    */
   core.List<core.int> officialIndices;
-
   /**
    * The roles which this office fulfills. Roles are not meant to be exhaustive,
    * or to exactly specify the entire set of responsibilities of a given office,
@@ -1234,13 +1147,11 @@ class Office {
    * from or sorting of a list of offices.
    */
   core.List<core.String> roles;
-
   /**
    * A list of sources for this office. If multiple sources are listed, the data
    * has been aggregated from those sources.
    */
   core.List<Source> sources;
-
 
   Office();
 
@@ -1289,33 +1200,24 @@ class Office {
   }
 }
 
-
 /** Information about a person holding an elected office. */
 class Official {
   /** Addresses at which to contact the official. */
   core.List<SimpleAddressType> address;
-
   /** A list of known (social) media channels for this official. */
   core.List<Channel> channels;
-
   /** The direct email addresses for the official. */
   core.List<core.String> emails;
-
   /** The official's name. */
   core.String name;
-
   /** The full name of the party the official belongs to. */
   core.String party;
-
   /** The official's public contact phone numbers. */
   core.List<core.String> phones;
-
   /** A URL for a photo of the official. */
   core.String photoUrl;
-
   /** The official's public website URLs. */
   core.List<core.String> urls;
-
 
   Official();
 
@@ -1376,7 +1278,6 @@ class Official {
   }
 }
 
-
 /**
  * A location where a voter can vote. This may be an early vote site, an
  * election day voting location, or a drop off location for a completed ballot.
@@ -1384,52 +1285,43 @@ class Official {
 class PollingLocation {
   /** The address of the location. */
   SimpleAddressType address;
-
   /**
    * The last date that this early vote site or drop off location may be used.
    * This field is not populated for polling locations.
    */
   core.String endDate;
-
   /**
    * An ID for this object. IDs may change in future requests and should not be
    * cached. Access to this field requires special access that can be requested
    * from the Request more link on the Quotas page.
    */
   core.String id;
-
   /**
    * The name of the early vote site or drop off location. This field is not
    * populated for polling locations.
    */
   core.String name;
-
   /**
    * Notes about this location (e.g. accessibility ramp or entrance to use).
    */
   core.String notes;
-
   /** A description of when this location is open. */
   core.String pollingHours;
-
   /**
    * A list of sources for this location. If multiple sources are listed the
    * data has been aggregated from those sources.
    */
   core.List<Source> sources;
-
   /**
    * The first date that this early vote site or drop off location may be used.
    * This field is not populated for polling locations.
    */
   core.String startDate;
-
   /**
    * The services provided by this early vote site or drop off location. This
    * field is not populated for polling locations.
    */
   core.String voterServices;
-
 
   PollingLocation();
 
@@ -1496,23 +1388,19 @@ class PollingLocation {
   }
 }
 
-
 class RepresentativeInfoData {
   /** Political geographic divisions that contain the requested address. */
   core.Map<core.String, GeographicDivision> divisions;
-
   /**
    * Elected offices referenced by the divisions listed above. Will only be
    * present if includeOffices was true in the request.
    */
   core.List<Office> offices;
-
   /**
    * Officials holding the offices listed above. Will only be present if
    * includeOffices was true in the request.
    */
   core.List<Official> officials;
-
 
   RepresentativeInfoData();
 
@@ -1543,33 +1431,27 @@ class RepresentativeInfoData {
   }
 }
 
-
 /** The result of a representative info lookup query. */
 class RepresentativeInfoResponse {
   /** Political geographic divisions that contain the requested address. */
   core.Map<core.String, GeographicDivision> divisions;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "civicinfo#representativeInfoResponse".
    */
   core.String kind;
-
   /** The normalized version of the requested address */
   SimpleAddressType normalizedInput;
-
   /**
    * Elected offices referenced by the divisions listed above. Will only be
    * present if includeOffices was true in the request.
    */
   core.List<Office> offices;
-
   /**
    * Officials holding the offices listed above. Will only be present if
    * includeOffices was true in the request.
    */
   core.List<Official> officials;
-
 
   RepresentativeInfoResponse();
 
@@ -1612,30 +1494,22 @@ class RepresentativeInfoResponse {
   }
 }
 
-
 /** A simple representation of an address. */
 class SimpleAddressType {
   /** The city or town for the address. */
   core.String city;
-
   /** The street name and number of this address. */
   core.String line1;
-
   /** The second line the address, if needed. */
   core.String line2;
-
   /** The third line of the address, if needed. */
   core.String line3;
-
   /** The name of the location. */
   core.String locationName;
-
   /** The US two letter state abbreviation of the address. */
   core.String state;
-
   /** The US Postal Zip Code of the address. */
   core.String zip;
-
 
   SimpleAddressType();
 
@@ -1690,17 +1564,14 @@ class SimpleAddressType {
   }
 }
 
-
 /**
  * Contains information about the data source for the element containing it.
  */
 class Source {
   /** The name of the data source. */
   core.String name;
-
   /** Whether this data comes from an official government source. */
   core.bool official;
-
 
   Source();
 
@@ -1725,12 +1596,10 @@ class Source {
   }
 }
 
-
 /** The result of a voter info lookup query. */
 class VoterInfoResponse {
   /** Contests that will appear on the voter's ballot. */
   core.List<Contest> contests;
-
   /**
    * Locations where a voter is eligible to drop off a completed ballot. The
    * voter must have received and completed a ballot prior to arriving at the
@@ -1739,42 +1608,33 @@ class VoterInfoResponse {
    * pollingHours field.
    */
   core.List<PollingLocation> dropOffLocations;
-
   /**
    * Locations where the voter is eligible to vote early, prior to election day.
    */
   core.List<PollingLocation> earlyVoteSites;
-
   /** The election that was queried. */
   Election election;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "civicinfo#voterInfoResponse".
    */
   core.String kind;
-
   /** The normalized version of the requested address */
   SimpleAddressType normalizedInput;
-
   /**
    * If no election ID was specified in the query, and there was more than one
    * election with data for the given voter, this will contain information about
    * the other elections that could apply.
    */
   core.List<Election> otherElections;
-
   /** Locations where the voter is eligible to vote on election day. */
   core.List<PollingLocation> pollingLocations;
-
   core.String precinctId;
-
   /**
    * Local Election Information for the state that the voter votes in. For the
    * US, there will only be one element in this array.
    */
   core.List<AdministrationRegion> state;
-
 
   VoterInfoResponse();
 

@@ -70,7 +70,7 @@ class PagespeedapiResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Result> runpagespeed(core.String url, {core.bool filterThirdPartyResources, core.String locale, core.List<core.String> rule, core.bool screenshot, core.String strategy}) {
     var _url = null;
@@ -100,7 +100,6 @@ class PagespeedapiResourceApi {
       _queryParams["strategy"] = [strategy];
     }
 
-
     _url = 'runPagespeed';
 
     var _response = _requester.request(_url,
@@ -120,16 +119,12 @@ class PagespeedapiResourceApi {
 class PagespeedApiFormatStringV2ArgsRects {
   /** The height of the rect. */
   core.int height;
-
   /** The left coordinate of the rect, in page coordinates. */
   core.int left;
-
   /** The top coordinate of the rect, in page coordinates. */
   core.int top;
-
   /** The width of the rect. */
   core.int width;
-
 
   PagespeedApiFormatStringV2ArgsRects();
 
@@ -166,20 +161,15 @@ class PagespeedApiFormatStringV2ArgsRects {
   }
 }
 
-
 class PagespeedApiFormatStringV2ArgsSecondaryRects {
   /** The height of the rect. */
   core.int height;
-
   /** The left coordinate of the rect, in page coordinates. */
   core.int left;
-
   /** The top coordinate of the rect, in page coordinates. */
   core.int top;
-
   /** The width of the rect. */
   core.int width;
-
 
   PagespeedApiFormatStringV2ArgsSecondaryRects();
 
@@ -216,11 +206,9 @@ class PagespeedApiFormatStringV2ArgsSecondaryRects {
   }
 }
 
-
 class PagespeedApiFormatStringV2Args {
   /** The placeholder key for this arg, as a string. */
   core.String key;
-
   /**
    * The screen rectangles being referred to, with dimensions measured in CSS
    * pixels. This is only ever used for SNAPSHOT_RECT arguments. If this is
@@ -228,22 +216,18 @@ class PagespeedApiFormatStringV2Args {
    * the entire snapshot.
    */
   core.List<PagespeedApiFormatStringV2ArgsRects> rects;
-
   /**
    * Secondary screen rectangles being referred to, with dimensions measured in
    * CSS pixels. This is only ever used for SNAPSHOT_RECT arguments.
    */
   core.List<PagespeedApiFormatStringV2ArgsSecondaryRects> secondaryRects;
-
   /**
    * Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, DURATION,
    * VERBATIM_STRING, PERCENTAGE, HYPERLINK, or SNAPSHOT_RECT.
    */
   core.String type;
-
   /** Argument value, as a localized string. */
   core.String value;
-
 
   PagespeedApiFormatStringV2Args();
 
@@ -286,11 +270,9 @@ class PagespeedApiFormatStringV2Args {
   }
 }
 
-
 class PagespeedApiFormatStringV2 {
   /** List of arguments for the format string. */
   core.List<PagespeedApiFormatStringV2Args> args;
-
   /**
    * A localized format string with {{FOO}} placeholders, where 'FOO' is the key
    * of the argument whose value should be substituted. For HYPERLINK arguments,
@@ -298,7 +280,6 @@ class PagespeedApiFormatStringV2 {
    * the argument with key 'FOO'.
    */
   core.String format;
-
 
   PagespeedApiFormatStringV2();
 
@@ -323,7 +304,6 @@ class PagespeedApiFormatStringV2 {
   }
 }
 
-
 /**
  * The region of the page that is captured by this image, with dimensions
  * measured in CSS pixels.
@@ -331,16 +311,12 @@ class PagespeedApiFormatStringV2 {
 class PagespeedApiImageV2PageRect {
   /** The height of the rect. */
   core.int height;
-
   /** The left coordinate of the rect, in page coordinates. */
   core.int left;
-
   /** The top coordinate of the rect, in page coordinates. */
   core.int top;
-
   /** The width of the rect. */
   core.int width;
-
 
   PagespeedApiImageV2PageRect();
 
@@ -377,11 +353,9 @@ class PagespeedApiImageV2PageRect {
   }
 }
 
-
 class PagespeedApiImageV2 {
   /** Image data base64 encoded. */
   core.String data;
-
   core.List<core.int> get dataAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(data);
   }
@@ -389,25 +363,19 @@ class PagespeedApiImageV2 {
   void set dataAsBytes(core.List<core.int> _bytes) {
     data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** Height of screenshot in pixels. */
   core.int height;
-
   /** Unique string key, if any, identifying this image. */
   core.String key;
-
   /** Mime type of image data (e.g. "image/jpeg"). */
   core.String mimeType;
-
   /**
    * The region of the page that is captured by this image, with dimensions
    * measured in CSS pixels.
    */
   PagespeedApiImageV2PageRect pageRect;
-
   /** Width of screenshot in pixels. */
   core.int width;
-
 
   PagespeedApiImageV2();
 
@@ -456,20 +424,17 @@ class PagespeedApiImageV2 {
   }
 }
 
-
 class ResultFormattedResultsRuleResultsValueUrlBlocksUrls {
   /**
    * List of entries that provide additional details about a single URL.
    * Optional.
    */
   core.List<PagespeedApiFormatStringV2> details;
-
   /**
    * A format string that gives information about the URL, and a list of
    * arguments for that format string.
    */
   PagespeedApiFormatStringV2 result;
-
 
   ResultFormattedResultsRuleResultsValueUrlBlocksUrls();
 
@@ -494,17 +459,14 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrls {
   }
 }
 
-
 class ResultFormattedResultsRuleResultsValueUrlBlocks {
   /** Heading to be displayed with the list of URLs. */
   PagespeedApiFormatStringV2 header;
-
   /**
    * List of entries that provide information about URLs in the url block.
    * Optional.
    */
   core.List<ResultFormattedResultsRuleResultsValueUrlBlocksUrls> urls;
-
 
   ResultFormattedResultsRuleResultsValueUrlBlocks();
 
@@ -529,7 +491,6 @@ class ResultFormattedResultsRuleResultsValueUrlBlocks {
   }
 }
 
-
 /**
  * The enum-like identifier for this rule. For instance "EnableKeepAlive" or
  * "AvoidCssImport". Not localized.
@@ -540,10 +501,8 @@ class ResultFormattedResultsRuleResultsValue {
    * one of "SPEED" or "USABILITY".
    */
   core.List<core.String> groups;
-
   /** Localized name of the rule, intended for presentation to a user. */
   core.String localizedRuleName;
-
   /**
    * The impact (unbounded floating point value) that implementing the
    * suggestions for this rule would have on making the page faster. Impact is
@@ -554,20 +513,17 @@ class ResultFormattedResultsRuleResultsValue {
    * rule, all other things being equal.
    */
   core.double ruleImpact;
-
   /**
    * A brief summary description for the rule, indicating at a high level what
    * should be done to follow the rule and what benefit can be gained by doing
    * so.
    */
   PagespeedApiFormatStringV2 summary;
-
   /**
    * List of blocks of URLs. Each block may contain a heading and a list of
    * URLs. Each URL may optionally include additional details.
    */
   core.List<ResultFormattedResultsRuleResultsValueUrlBlocks> urlBlocks;
-
 
   ResultFormattedResultsRuleResultsValue();
 
@@ -610,7 +566,6 @@ class ResultFormattedResultsRuleResultsValue {
   }
 }
 
-
 /**
  * Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed
  * rule instantiated and run by the server.
@@ -618,13 +573,11 @@ class ResultFormattedResultsRuleResultsValue {
 class ResultFormattedResults {
   /** The locale of the formattedResults, e.g. "en_US". */
   core.String locale;
-
   /**
    * Dictionary of formatted rule results, with one entry for each PageSpeed
    * rule instantiated and run by the server.
    */
   core.Map<core.String, ResultFormattedResultsRuleResultsValue> ruleResults;
-
 
   ResultFormattedResults();
 
@@ -649,7 +602,6 @@ class ResultFormattedResults {
   }
 }
 
-
 /**
  * Summary statistics for the page, such as number of JavaScript bytes, number
  * of HTML bytes, etc.
@@ -657,49 +609,36 @@ class ResultFormattedResults {
 class ResultPageStats {
   /** Number of uncompressed response bytes for CSS resources on the page. */
   core.String cssResponseBytes;
-
   /** Number of response bytes for flash resources on the page. */
   core.String flashResponseBytes;
-
   /**
    * Number of uncompressed response bytes for the main HTML document and all
    * iframes on the page.
    */
   core.String htmlResponseBytes;
-
   /** Number of response bytes for image resources on the page. */
   core.String imageResponseBytes;
-
   /** Number of uncompressed response bytes for JS resources on the page. */
   core.String javascriptResponseBytes;
-
   /** Number of CSS resources referenced by the page. */
   core.int numberCssResources;
-
   /** Number of unique hosts referenced by the page. */
   core.int numberHosts;
-
   /** Number of JavaScript resources referenced by the page. */
   core.int numberJsResources;
-
   /** Number of HTTP resources loaded by the page. */
   core.int numberResources;
-
   /** Number of static (i.e. cacheable) resources on the page. */
   core.int numberStaticResources;
-
   /** Number of response bytes for other resources on the page. */
   core.String otherResponseBytes;
-
   /**
    * Number of uncompressed response bytes for text resources not covered by
    * other statistics (i.e non-HTML, non-script, non-CSS resources) on the page.
    */
   core.String textResponseBytes;
-
   /** Total size of all request bytes sent by the page. */
   core.String totalRequestBytes;
-
 
   ResultPageStats();
 
@@ -790,7 +729,6 @@ class ResultPageStats {
   }
 }
 
-
 /** The name of this rule group: one of "SPEED" or "USABILITY". */
 class ResultRuleGroupsValue {
   /**
@@ -800,7 +738,6 @@ class ResultRuleGroupsValue {
    * score indicates more room for improvement.
    */
   core.int score;
-
 
   ResultRuleGroupsValue();
 
@@ -819,15 +756,12 @@ class ResultRuleGroupsValue {
   }
 }
 
-
 /** The version of PageSpeed used to generate these results. */
 class ResultVersion {
   /** The major version number of PageSpeed used to generate these results. */
   core.int major;
-
   /** The minor version number of PageSpeed used to generate these results. */
   core.int minor;
-
 
   ResultVersion();
 
@@ -852,53 +786,42 @@ class ResultVersion {
   }
 }
 
-
 class Result {
   /**
    * Localized PageSpeed results. Contains a ruleResults entry for each
    * PageSpeed rule instantiated and run by the server.
    */
   ResultFormattedResults formattedResults;
-
   /**
    * Canonicalized and final URL for the document, after following page
    * redirects (if any).
    */
   core.String id;
-
   /**
    * List of rules that were specified in the request, but which the server did
    * not know how to instantiate.
    */
   core.List<core.String> invalidRules;
-
   /** Kind of result. */
   core.String kind;
-
   /**
    * Summary statistics for the page, such as number of JavaScript bytes, number
    * of HTML bytes, etc.
    */
   ResultPageStats pageStats;
-
   /**
    * Response code for the document. 200 indicates a normal page load. 4xx/5xx
    * indicates an error.
    */
   core.int responseCode;
-
   /** A map with one entry for each rule group in these results. */
   core.Map<core.String, ResultRuleGroupsValue> ruleGroups;
-
   /** Base64-encoded screenshot of the page that was analyzed. */
   PagespeedApiImageV2 screenshot;
-
   /** Title of the page, as displayed in the browser's title bar. */
   core.String title;
-
   /** The version of PageSpeed used to generate these results. */
   ResultVersion version;
-
 
   Result();
 

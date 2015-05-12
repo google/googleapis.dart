@@ -65,7 +65,7 @@ class BlogUserInfosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BlogUserInfo> get(core.String userId, core.String blogId, {core.int maxPosts}) {
     var _url = null;
@@ -84,7 +84,6 @@ class BlogUserInfosResourceApi {
     if (maxPosts != null) {
       _queryParams["maxPosts"] = ["${maxPosts}"];
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs/' + commons.Escaper.ecapeVariable('$blogId');
 
@@ -129,7 +128,7 @@ class BlogsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Blog> get(core.String blogId, {core.int maxPosts, core.String view}) {
     var _url = null;
@@ -148,7 +147,6 @@ class BlogsResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId');
 
@@ -182,7 +180,7 @@ class BlogsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Blog> getByUrl(core.String url, {core.String view}) {
     var _url = null;
@@ -199,7 +197,6 @@ class BlogsResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-
 
     _url = 'blogs/byurl';
 
@@ -244,7 +241,7 @@ class BlogsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BlogList> listByUser(core.String userId, {core.bool fetchUserInfo, core.List<core.String> role, core.List<core.String> status, core.String view}) {
     var _url = null;
@@ -269,7 +266,6 @@ class BlogsResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs';
 
@@ -309,7 +305,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Comment> approve(core.String blogId, core.String postId, core.String commentId) {
     var _url = null;
@@ -328,7 +324,6 @@ class CommentsResourceApi {
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/approve';
 
@@ -357,7 +352,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String blogId, core.String postId, core.String commentId) {
     var _url = null;
@@ -417,7 +412,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Comment> get(core.String blogId, core.String postId, core.String commentId, {core.String view}) {
     var _url = null;
@@ -439,7 +434,6 @@ class CommentsResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
 
@@ -489,7 +483,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentList> list(core.String blogId, core.String postId, {core.DateTime endDate, core.bool fetchBodies, core.int maxResults, core.String pageToken, core.DateTime startDate, core.List<core.String> status, core.String view}) {
     var _url = null;
@@ -526,7 +520,6 @@ class CommentsResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/comments';
 
@@ -567,7 +560,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentList> listByBlog(core.String blogId, {core.DateTime endDate, core.bool fetchBodies, core.int maxResults, core.String pageToken, core.DateTime startDate, core.List<core.String> status}) {
     var _url = null;
@@ -599,7 +592,6 @@ class CommentsResourceApi {
       _queryParams["status"] = status;
     }
 
-
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/comments';
 
     var _response = _requester.request(_url,
@@ -629,7 +621,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Comment> markAsSpam(core.String blogId, core.String postId, core.String commentId) {
     var _url = null;
@@ -648,7 +640,6 @@ class CommentsResourceApi {
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/spam';
 
@@ -679,7 +670,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Comment> removeContent(core.String blogId, core.String postId, core.String commentId) {
     var _url = null;
@@ -698,7 +689,6 @@ class CommentsResourceApi {
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/removecontent';
 
@@ -736,7 +726,7 @@ class PageViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Pageviews> get(core.String blogId, {core.List<core.String> range}) {
     var _url = null;
@@ -752,7 +742,6 @@ class PageViewsResourceApi {
     if (range != null) {
       _queryParams["range"] = range;
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pageviews';
 
@@ -788,7 +777,7 @@ class PagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String blogId, core.String pageId) {
     var _url = null;
@@ -840,7 +829,7 @@ class PagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Page> get(core.String blogId, core.String pageId, {core.String view}) {
     var _url = null;
@@ -859,7 +848,6 @@ class PagesResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages/' + commons.Escaper.ecapeVariable('$pageId');
 
@@ -890,7 +878,7 @@ class PagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Page> insert(Page request, core.String blogId, {core.bool isDraft}) {
     var _url = null;
@@ -909,7 +897,6 @@ class PagesResourceApi {
     if (isDraft != null) {
       _queryParams["isDraft"] = ["${isDraft}"];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
@@ -951,7 +938,7 @@ class PagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PageList> list(core.String blogId, {core.bool fetchBodies, core.int maxResults, core.String pageToken, core.List<core.String> status, core.String view}) {
     var _url = null;
@@ -979,7 +966,6 @@ class PagesResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
@@ -1016,7 +1002,7 @@ class PagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Page> patch(Page request, core.String blogId, core.String pageId, {core.bool publish_1, core.bool revert_1}) {
     var _url = null;
@@ -1041,7 +1027,6 @@ class PagesResourceApi {
     if (revert_1 != null) {
       _queryParams["revert"] = ["${revert_1}"];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages/' + commons.Escaper.ecapeVariable('$pageId');
 
@@ -1070,7 +1055,7 @@ class PagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Page> publish(core.String blogId, core.String pageId) {
     var _url = null;
@@ -1086,7 +1071,6 @@ class PagesResourceApi {
     if (pageId == null) {
       throw new core.ArgumentError("Parameter pageId is required.");
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages/' + commons.Escaper.ecapeVariable('$pageId') + '/publish';
 
@@ -1115,7 +1099,7 @@ class PagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Page> revert(core.String blogId, core.String pageId) {
     var _url = null;
@@ -1131,7 +1115,6 @@ class PagesResourceApi {
     if (pageId == null) {
       throw new core.ArgumentError("Parameter pageId is required.");
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages/' + commons.Escaper.ecapeVariable('$pageId') + '/revert';
 
@@ -1168,7 +1151,7 @@ class PagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Page> update(Page request, core.String blogId, core.String pageId, {core.bool publish_1, core.bool revert_1}) {
     var _url = null;
@@ -1193,7 +1176,6 @@ class PagesResourceApi {
     if (revert_1 != null) {
       _queryParams["revert"] = ["${revert_1}"];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages/' + commons.Escaper.ecapeVariable('$pageId');
 
@@ -1238,7 +1220,7 @@ class PostUserInfosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PostUserInfo> get(core.String userId, core.String blogId, core.String postId, {core.int maxComments}) {
     var _url = null;
@@ -1260,7 +1242,6 @@ class PostUserInfosResourceApi {
     if (maxComments != null) {
       _queryParams["maxComments"] = ["${maxComments}"];
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId');
 
@@ -1321,7 +1302,7 @@ class PostUserInfosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PostUserInfosList> list(core.String userId, core.String blogId, {core.DateTime endDate, core.bool fetchBodies, core.String labels, core.int maxResults, core.String orderBy, core.String pageToken, core.DateTime startDate, core.List<core.String> status, core.String view}) {
     var _url = null;
@@ -1365,7 +1346,6 @@ class PostUserInfosResourceApi {
       _queryParams["view"] = [view];
     }
 
-
     _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
     var _response = _requester.request(_url,
@@ -1400,7 +1380,7 @@ class PostsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String blogId, core.String postId) {
     var _url = null;
@@ -1462,7 +1442,7 @@ class PostsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Post> get(core.String blogId, core.String postId, {core.bool fetchBody, core.bool fetchImages, core.int maxComments, core.String view}) {
     var _url = null;
@@ -1490,7 +1470,6 @@ class PostsResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId');
 
@@ -1528,7 +1507,7 @@ class PostsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Post> getByPath(core.String blogId, core.String path, {core.int maxComments, core.String view}) {
     var _url = null;
@@ -1551,7 +1530,6 @@ class PostsResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/bypath';
 
@@ -1588,7 +1566,7 @@ class PostsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Post> insert(Post request, core.String blogId, {core.bool fetchBody, core.bool fetchImages, core.bool isDraft}) {
     var _url = null;
@@ -1613,7 +1591,6 @@ class PostsResourceApi {
     if (isDraft != null) {
       _queryParams["isDraft"] = ["${isDraft}"];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
@@ -1672,7 +1649,7 @@ class PostsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PostList> list(core.String blogId, {core.DateTime endDate, core.bool fetchBodies, core.bool fetchImages, core.String labels, core.int maxResults, core.String orderBy, core.String pageToken, core.DateTime startDate, core.List<core.String> status, core.String view}) {
     var _url = null;
@@ -1715,7 +1692,6 @@ class PostsResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
@@ -1761,7 +1737,7 @@ class PostsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Post> patch(Post request, core.String blogId, core.String postId, {core.bool fetchBody, core.bool fetchImages, core.int maxComments, core.bool publish_1, core.bool revert_1}) {
     var _url = null;
@@ -1796,7 +1772,6 @@ class PostsResourceApi {
       _queryParams["revert"] = ["${revert_1}"];
     }
 
-
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId');
 
     var _response = _requester.request(_url,
@@ -1830,7 +1805,7 @@ class PostsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Post> publish(core.String blogId, core.String postId, {core.DateTime publishDate}) {
     var _url = null;
@@ -1849,7 +1824,6 @@ class PostsResourceApi {
     if (publishDate != null) {
       _queryParams["publishDate"] = [(publishDate).toIso8601String()];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/publish';
 
@@ -1878,7 +1852,7 @@ class PostsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Post> revert(core.String blogId, core.String postId) {
     var _url = null;
@@ -1894,7 +1868,6 @@ class PostsResourceApi {
     if (postId == null) {
       throw new core.ArgumentError("Parameter postId is required.");
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/revert';
 
@@ -1932,7 +1905,7 @@ class PostsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PostList> search(core.String blogId, core.String q, {core.bool fetchBodies, core.String orderBy}) {
     var _url = null;
@@ -1955,7 +1928,6 @@ class PostsResourceApi {
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/search';
 
@@ -2001,7 +1973,7 @@ class PostsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Post> update(Post request, core.String blogId, core.String postId, {core.bool fetchBody, core.bool fetchImages, core.int maxComments, core.bool publish_1, core.bool revert_1}) {
     var _url = null;
@@ -2035,7 +2007,6 @@ class PostsResourceApi {
     if (revert_1 != null) {
       _queryParams["revert"] = ["${revert_1}"];
     }
-
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId');
 
@@ -2071,7 +2042,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<User> get(core.String userId) {
     var _url = null;
@@ -2084,7 +2055,6 @@ class UsersResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userId');
 
@@ -2106,13 +2076,10 @@ class UsersResourceApi {
 class BlogLocale {
   /** The country this blog's locale is set to. */
   core.String country;
-
   /** The language this blog is authored in. */
   core.String language;
-
   /** The language variant this blog is authored in. */
   core.String variant;
-
 
   BlogLocale();
 
@@ -2143,15 +2110,12 @@ class BlogLocale {
   }
 }
 
-
 /** The container of pages in this blog. */
 class BlogPages {
   /** The URL of the container for pages in this blog. */
   core.String selfLink;
-
   /** The count of pages in this blog. */
   core.int totalItems;
-
 
   BlogPages();
 
@@ -2176,18 +2140,14 @@ class BlogPages {
   }
 }
 
-
 /** The container of posts in this blog. */
 class BlogPosts {
   /** The List of Posts for this Blog. */
   core.List<Post> items;
-
   /** The URL of the container for posts in this blog. */
   core.String selfLink;
-
   /** The count of posts in this blog. */
   core.int totalItems;
-
 
   BlogPosts();
 
@@ -2218,47 +2178,33 @@ class BlogPosts {
   }
 }
 
-
 class Blog {
   /** The JSON custom meta-data for the Blog */
   core.String customMetaData;
-
   /** The description of this blog. This is displayed underneath the title. */
   core.String description;
-
   /** The identifier for this resource. */
   core.String id;
-
   /** The kind of this entry. Always blogger#blog */
   core.String kind;
-
   /** The locale this Blog is set to. */
   BlogLocale locale;
-
   /** The name of this blog. This is displayed as the title. */
   core.String name;
-
   /** The container of pages in this blog. */
   BlogPages pages;
-
   /** The container of posts in this blog. */
   BlogPosts posts;
-
   /** RFC 3339 date-time when this blog was published. */
   core.DateTime published;
-
   /** The API REST URL to fetch this resource from. */
   core.String selfLink;
-
   /** The status of the blog. */
   core.String status;
-
   /** RFC 3339 date-time when this blog was last updated. */
   core.DateTime updated;
-
   /** The URL where this blog is published. */
   core.String url;
-
 
   Blog();
 
@@ -2349,17 +2295,13 @@ class Blog {
   }
 }
 
-
 class BlogList {
   /** Admin level list of blog per-user information */
   core.List<BlogUserInfo> blogUserInfos;
-
   /** The list of Blogs this user has Authorship or Admin rights over. */
   core.List<Blog> items;
-
   /** The kind of this entity. Always blogger#blogList */
   core.String kind;
-
 
   BlogList();
 
@@ -2390,29 +2332,22 @@ class BlogList {
   }
 }
 
-
 class BlogPerUserInfo {
   /** ID of the Blog resource */
   core.String blogId;
-
   /** True if the user has Admin level access to the blog. */
   core.bool hasAdminAccess;
-
   /** The kind of this entity. Always blogger#blogPerUserInfo */
   core.String kind;
-
   /** The Photo Album Key for the user when adding photos to the blog */
   core.String photosAlbumKey;
-
   /**
    * Access permissions that the user has for the blog (ADMIN, AUTHOR, or
    * READER).
    */
   core.String role;
-
   /** ID of the User */
   core.String userId;
-
 
   BlogPerUserInfo();
 
@@ -2461,17 +2396,13 @@ class BlogPerUserInfo {
   }
 }
 
-
 class BlogUserInfo {
   /** The Blog resource. */
   Blog blog;
-
   /** Information about a User for the Blog. */
   BlogPerUserInfo blogUserInfo;
-
   /** The kind of this entity. Always blogger#blogUserInfo */
   core.String kind;
-
 
   BlogUserInfo();
 
@@ -2502,12 +2433,10 @@ class BlogUserInfo {
   }
 }
 
-
 /** The comment creator's avatar. */
 class CommentAuthorImage {
   /** The comment creator's avatar URL. */
   core.String url;
-
 
   CommentAuthorImage();
 
@@ -2526,21 +2455,16 @@ class CommentAuthorImage {
   }
 }
 
-
 /** The author of this Comment. */
 class CommentAuthor {
   /** The display name. */
   core.String displayName;
-
   /** The identifier of the Comment creator. */
   core.String id;
-
   /** The comment creator's avatar. */
   CommentAuthorImage image;
-
   /** The URL of the Comment creator's Profile page. */
   core.String url;
-
 
   CommentAuthor();
 
@@ -2577,12 +2501,10 @@ class CommentAuthor {
   }
 }
 
-
 /** Data about the blog containing this comment. */
 class CommentBlog {
   /** The identifier of the blog containing this comment. */
   core.String id;
-
 
   CommentBlog();
 
@@ -2601,12 +2523,10 @@ class CommentBlog {
   }
 }
 
-
 /** Data about the comment this is in reply to. */
 class CommentInReplyTo {
   /** The identified of the parent of this comment. */
   core.String id;
-
 
   CommentInReplyTo();
 
@@ -2625,12 +2545,10 @@ class CommentInReplyTo {
   }
 }
 
-
 /** Data about the post containing this comment. */
 class CommentPost {
   /** The identifier of the post containing this comment. */
   core.String id;
-
 
   CommentPost();
 
@@ -2649,41 +2567,29 @@ class CommentPost {
   }
 }
 
-
 class Comment {
   /** The author of this Comment. */
   CommentAuthor author;
-
   /** Data about the blog containing this comment. */
   CommentBlog blog;
-
   /** The actual content of the comment. May include HTML markup. */
   core.String content;
-
   /** The identifier for this resource. */
   core.String id;
-
   /** Data about the comment this is in reply to. */
   CommentInReplyTo inReplyTo;
-
   /** The kind of this entry. Always blogger#comment */
   core.String kind;
-
   /** Data about the post containing this comment. */
   CommentPost post;
-
   /** RFC 3339 date-time when this comment was published. */
   core.DateTime published;
-
   /** The API REST URL to fetch this resource from. */
   core.String selfLink;
-
   /** The status of the comment (only populated for admin users) */
   core.String status;
-
   /** RFC 3339 date-time when this comment was last updated. */
   core.DateTime updated;
-
 
   Comment();
 
@@ -2762,24 +2668,24 @@ class Comment {
   }
 }
 
-
 class CommentList {
+  /** Etag of the response. */
+  core.String etag;
   /** The List of Comments for a Post. */
   core.List<Comment> items;
-
   /** The kind of this entry. Always blogger#commentList */
   core.String kind;
-
   /** Pagination token to fetch the next page, if one exists. */
   core.String nextPageToken;
-
   /** Pagination token to fetch the previous page, if one exists. */
   core.String prevPageToken;
-
 
   CommentList();
 
   CommentList.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
     if (_json.containsKey("items")) {
       items = _json["items"].map((value) => new Comment.fromJson(value)).toList();
     }
@@ -2796,6 +2702,9 @@ class CommentList {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -2812,12 +2721,10 @@ class CommentList {
   }
 }
 
-
 /** The page author's avatar. */
 class PageAuthorImage {
   /** The page author's avatar URL. */
   core.String url;
-
 
   PageAuthorImage();
 
@@ -2836,21 +2743,16 @@ class PageAuthorImage {
   }
 }
 
-
 /** The author of this Page. */
 class PageAuthor {
   /** The display name. */
   core.String displayName;
-
   /** The identifier of the Page creator. */
   core.String id;
-
   /** The page author's avatar. */
   PageAuthorImage image;
-
   /** The URL of the Page creator's Profile page. */
   core.String url;
-
 
   PageAuthor();
 
@@ -2887,12 +2789,10 @@ class PageAuthor {
   }
 }
 
-
 /** Data about the blog containing this Page. */
 class PageBlog {
   /** The identifier of the blog containing this page. */
   core.String id;
-
 
   PageBlog();
 
@@ -2911,47 +2811,34 @@ class PageBlog {
   }
 }
 
-
 class Page {
   /** The author of this Page. */
   PageAuthor author;
-
   /** Data about the blog containing this Page. */
   PageBlog blog;
-
   /** The body content of this Page, in HTML. */
   core.String content;
-
   /** Etag of the resource. */
   core.String etag;
-
   /** The identifier for this resource. */
   core.String id;
-
   /** The kind of this entity. Always blogger#page */
   core.String kind;
-
   /** RFC 3339 date-time when this Page was published. */
   core.DateTime published;
-
   /** The API REST URL to fetch this resource from. */
   core.String selfLink;
-
   /** The status of the page for admin resources (either LIVE or DRAFT). */
   core.String status;
-
   /**
    * The title of this entity. This is the name displayed in the Admin user
    * interface.
    */
   core.String title;
-
   /** RFC 3339 date-time when this Page was last updated. */
   core.DateTime updated;
-
   /** The URL that this Page is displayed at. */
   core.String url;
-
 
   Page();
 
@@ -3036,21 +2923,22 @@ class Page {
   }
 }
 
-
 class PageList {
+  /** Etag of the response. */
+  core.String etag;
   /** The list of Pages for a Blog. */
   core.List<Page> items;
-
   /** The kind of this entity. Always blogger#pageList */
   core.String kind;
-
   /** Pagination token to fetch the next page, if one exists. */
   core.String nextPageToken;
-
 
   PageList();
 
   PageList.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
     if (_json.containsKey("items")) {
       items = _json["items"].map((value) => new Page.fromJson(value)).toList();
     }
@@ -3064,6 +2952,9 @@ class PageList {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -3077,14 +2968,11 @@ class PageList {
   }
 }
 
-
 class PageviewsCounts {
   /** Count of page views for the given time range */
   core.String count;
-
   /** Time range the given count applies to */
   core.String timeRange;
-
 
   PageviewsCounts();
 
@@ -3109,17 +2997,13 @@ class PageviewsCounts {
   }
 }
 
-
 class Pageviews {
   /** Blog Id */
   core.String blogId;
-
   /** The container of posts in this blog. */
   core.List<PageviewsCounts> counts;
-
   /** The kind of this entry. Always blogger#page_views */
   core.String kind;
-
 
   Pageviews();
 
@@ -3150,12 +3034,10 @@ class Pageviews {
   }
 }
 
-
 /** The Post author's avatar. */
 class PostAuthorImage {
   /** The Post author's avatar URL. */
   core.String url;
-
 
   PostAuthorImage();
 
@@ -3174,21 +3056,16 @@ class PostAuthorImage {
   }
 }
 
-
 /** The author of this Post. */
 class PostAuthor {
   /** The display name. */
   core.String displayName;
-
   /** The identifier of the Post creator. */
   core.String id;
-
   /** The Post author's avatar. */
   PostAuthorImage image;
-
   /** The URL of the Post creator's Profile page. */
   core.String url;
-
 
   PostAuthor();
 
@@ -3225,12 +3102,10 @@ class PostAuthor {
   }
 }
 
-
 /** Data about the blog containing this Post. */
 class PostBlog {
   /** The identifier of the Blog that contains this Post. */
   core.String id;
-
 
   PostBlog();
 
@@ -3249,10 +3124,8 @@ class PostBlog {
   }
 }
 
-
 class PostImages {
   core.String url;
-
 
   PostImages();
 
@@ -3271,21 +3144,16 @@ class PostImages {
   }
 }
 
-
 /** The location for geotagged posts. */
 class PostLocation {
   /** Location's latitude. */
   core.double lat;
-
   /** Location's longitude. */
   core.double lng;
-
   /** Location name. */
   core.String name;
-
   /** Location's viewport span. Can be used when rendering a map preview. */
   core.String span;
-
 
   PostLocation();
 
@@ -3322,18 +3190,14 @@ class PostLocation {
   }
 }
 
-
 /** The container of comments on this Post. */
 class PostReplies {
   /** The List of Comments for this Post. */
   core.List<Comment> items;
-
   /** The URL of the comments on this post. */
   core.String selfLink;
-
   /** The count of comments on this post. */
   core.String totalItems;
-
 
   PostReplies();
 
@@ -3364,65 +3228,45 @@ class PostReplies {
   }
 }
 
-
 class Post {
   /** The author of this Post. */
   PostAuthor author;
-
   /** Data about the blog containing this Post. */
   PostBlog blog;
-
   /** The content of the Post. May contain HTML markup. */
   core.String content;
-
   /** The JSON meta-data for the Post. */
   core.String customMetaData;
-
   /** Etag of the resource. */
   core.String etag;
-
   /** The identifier of this Post. */
   core.String id;
-
   /** Display image for the Post. */
   core.List<PostImages> images;
-
   /** The kind of this entity. Always blogger#post */
   core.String kind;
-
   /** The list of labels this Post was tagged with. */
   core.List<core.String> labels;
-
   /** The location for geotagged posts. */
   PostLocation location;
-
   /** RFC 3339 date-time when this Post was published. */
   core.DateTime published;
-
   /** Comment control and display setting for readers of this post. */
   core.String readerComments;
-
   /** The container of comments on this Post. */
   PostReplies replies;
-
   /** The API REST URL to fetch this resource from. */
   core.String selfLink;
-
   /** Status of the post. Only set for admin-level requests */
   core.String status;
-
   /** The title of the Post. */
   core.String title;
-
   /** The title link URL, similar to atom's related link. */
   core.String titleLink;
-
   /** RFC 3339 date-time when this Post was last updated. */
   core.DateTime updated;
-
   /** The URL where this Post is displayed. */
   core.String url;
-
 
   Post();
 
@@ -3549,21 +3393,22 @@ class Post {
   }
 }
 
-
 class PostList {
+  /** Etag of the response. */
+  core.String etag;
   /** The list of Posts for this Blog. */
   core.List<Post> items;
-
   /** The kind of this entity. Always blogger#postList */
   core.String kind;
-
   /** Pagination token to fetch the next page, if one exists. */
   core.String nextPageToken;
-
 
   PostList();
 
   PostList.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
     if (_json.containsKey("items")) {
       items = _json["items"].map((value) => new Post.fromJson(value)).toList();
     }
@@ -3577,6 +3422,9 @@ class PostList {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -3590,23 +3438,17 @@ class PostList {
   }
 }
 
-
 class PostPerUserInfo {
   /** ID of the Blog that the post resource belongs to. */
   core.String blogId;
-
   /** True if the user has Author level access to the post. */
   core.bool hasEditAccess;
-
   /** The kind of this entity. Always blogger#postPerUserInfo */
   core.String kind;
-
   /** ID of the Post resource. */
   core.String postId;
-
   /** ID of the User. */
   core.String userId;
-
 
   PostPerUserInfo();
 
@@ -3649,17 +3491,13 @@ class PostPerUserInfo {
   }
 }
 
-
 class PostUserInfo {
   /** The kind of this entity. Always blogger#postUserInfo */
   core.String kind;
-
   /** The Post resource. */
   Post post;
-
   /** Information about a User for the Post. */
   PostPerUserInfo postUserInfo;
-
 
   PostUserInfo();
 
@@ -3690,17 +3528,13 @@ class PostUserInfo {
   }
 }
 
-
 class PostUserInfosList {
   /** The list of Posts with User information for the post, for this Blog. */
   core.List<PostUserInfo> items;
-
   /** The kind of this entity. Always blogger#postList */
   core.String kind;
-
   /** Pagination token to fetch the next page, if one exists. */
   core.String nextPageToken;
-
 
   PostUserInfosList();
 
@@ -3731,12 +3565,10 @@ class PostUserInfosList {
   }
 }
 
-
 /** The container of blogs for this user. */
 class UserBlogs {
   /** The URL of the Blogs for this user. */
   core.String selfLink;
-
 
   UserBlogs();
 
@@ -3755,18 +3587,14 @@ class UserBlogs {
   }
 }
 
-
 /** This user's locale */
 class UserLocale {
   /** The user's country setting. */
   core.String country;
-
   /** The user's language setting. */
   core.String language;
-
   /** The user's language variant setting. */
   core.String variant;
-
 
   UserLocale();
 
@@ -3797,37 +3625,27 @@ class UserLocale {
   }
 }
 
-
 class User {
   /** Profile summary information. */
   core.String about;
-
   /** The container of blogs for this user. */
   UserBlogs blogs;
-
   /**
    * The timestamp of when this profile was created, in seconds since epoch.
    */
   core.DateTime created;
-
   /** The display name. */
   core.String displayName;
-
   /** The identifier for this User. */
   core.String id;
-
   /** The kind of this entity. Always blogger#user */
   core.String kind;
-
   /** This user's locale */
   UserLocale locale;
-
   /** The API REST URL to fetch this resource from. */
   core.String selfLink;
-
   /** The user's profile page. */
   core.String url;
-
 
   User();
 

@@ -65,7 +65,7 @@ class ProjectsClustersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListAggregatedClustersResponse> list(core.String projectId) {
     var _url = null;
@@ -78,7 +78,6 @@ class ProjectsClustersResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/clusters';
 
@@ -114,7 +113,7 @@ class ProjectsOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListAggregatedOperationsResponse> list(core.String projectId) {
     var _url = null;
@@ -127,7 +126,6 @@ class ProjectsOperationsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/operations';
 
@@ -191,7 +189,7 @@ class ProjectsZonesClustersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> create(CreateClusterRequest request, core.String projectId, core.String zoneId) {
     var _url = null;
@@ -210,7 +208,6 @@ class ProjectsZonesClustersResourceApi {
     if (zoneId == null) {
       throw new core.ArgumentError("Parameter zoneId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/clusters';
 
@@ -245,7 +242,7 @@ class ProjectsZonesClustersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String projectId, core.String zoneId, core.String clusterId) {
     var _url = null;
@@ -264,7 +261,6 @@ class ProjectsZonesClustersResourceApi {
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId');
 
@@ -296,7 +292,7 @@ class ProjectsZonesClustersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Cluster> get(core.String projectId, core.String zoneId, core.String clusterId) {
     var _url = null;
@@ -315,7 +311,6 @@ class ProjectsZonesClustersResourceApi {
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId');
 
@@ -345,7 +340,7 @@ class ProjectsZonesClustersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListClustersResponse> list(core.String projectId, core.String zoneId) {
     var _url = null;
@@ -361,7 +356,6 @@ class ProjectsZonesClustersResourceApi {
     if (zoneId == null) {
       throw new core.ArgumentError("Parameter zoneId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/clusters';
 
@@ -403,7 +397,7 @@ class ProjectsZonesOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> get(core.String projectId, core.String zoneId, core.String operationId) {
     var _url = null;
@@ -422,7 +416,6 @@ class ProjectsZonesOperationsResourceApi {
     if (operationId == null) {
       throw new core.ArgumentError("Parameter operationId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/operations/' + commons.Escaper.ecapeVariable('$operationId');
 
@@ -452,7 +445,7 @@ class ProjectsZonesOperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListOperationsResponse> list(core.String projectId, core.String zoneId) {
     var _url = null;
@@ -468,7 +461,6 @@ class ProjectsZonesOperationsResourceApi {
     if (zoneId == null) {
       throw new core.ArgumentError("Parameter zoneId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/operations';
 
@@ -515,7 +507,7 @@ class ProjectsZonesTokensResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Token> get(core.String masterProjectId, core.String zoneId, core.String projectNumber, core.String clusterName) {
     var _url = null;
@@ -537,7 +529,6 @@ class ProjectsZonesTokensResourceApi {
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$masterProjectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/tokens/' + commons.Escaper.ecapeVariable('$projectNumber') + '/' + commons.Escaper.ecapeVariable('$clusterName');
 
@@ -565,28 +556,24 @@ class Cluster {
    * versions.
    */
   core.String clusterApiVersion;
-
   /**
-   * [Output only] The IP addresses of the container pods in this cluster, in
-   * CIDR notation (e.g. 1.2.3.4/29).
+   * The IP addresses of the container pods in this cluster, in  CIDR notation
+   * (e.g. 10.96.0.0/14). Leave blank to have one automatically chosen or
+   * specify a /14 block in 10.0.0.0/8 or 172.16.0.0/12.
    */
   core.String containerIpv4Cidr;
-
   /**
    * [Output only] The time the cluster was created, in RFC3339 text format.
    */
   core.String creationTimestamp;
-
   /** An optional description of this cluster. */
   core.String description;
-
   /**
    * Whether logs from the cluster should be made available via the Google Cloud
    * Logging service. This includes both logs from your applications running in
    * the cluster as well as logs from the Kubernetes components themselves.
    */
   core.bool enableCloudLogging;
-
   /**
    * [Output only] The IP address of this cluster's Kubernetes master. The
    * endpoint can be accessed from the internet at
@@ -596,14 +583,8 @@ class Cluster {
    * information.
    */
   core.String endpoint;
-
-  /**
-   * The HTTP basic authentication information for accessing the master. Because
-   * the master endpoint is open to the internet, you should create a strong
-   * password.
-   */
+  /** The authentication information for accessing the master. */
   MasterAuth masterAuth;
-
   /**
    * The name of this cluster. The name must be unique within this project and
    * zone, and can be up to 40 characters with the following restrictions:
@@ -612,25 +593,21 @@ class Cluster {
    * - Must end with a number or a letter.
    */
   core.String name;
-
   /**
    * The name of the Google Compute Engine network to which the cluster is
    * connected.
    */
   core.String network;
-
   /**
    * The machine type and image to use for all nodes in this cluster. See the
    * descriptions of the child properties of nodeConfig.
    */
   NodeConfig nodeConfig;
-
   /**
    * [Output only] The size of the address space on each node for hosting
    * containers.
    */
   core.int nodeRoutingPrefixSize;
-
   /**
    * The number of nodes to create in this cluster. You must ensure that your
    * Compute Engine resource quota is sufficient for this number of instances
@@ -638,17 +615,14 @@ class Cluster {
    * routes quota.
    */
   core.int numNodes;
-
   /** [Output only] Server-defined URL for the resource. */
   core.String selfLink;
-
   /**
    * [Output only] The IP addresses of the Kubernetes services in this cluster,
    * in  CIDR notation (e.g. 1.2.3.4/29). Service addresses are always in the
    * 10.0.0.0/16 range.
    */
   core.String servicesIpv4Cidr;
-
   /**
    * [Output only] The current status of this cluster.
    * Possible string values are:
@@ -658,19 +632,16 @@ class Cluster {
    * - "stopping"
    */
   core.String status;
-
   /**
    * [Output only] Additional information about the current status of this
    * cluster, if available.
    */
   core.String statusMessage;
-
   /**
    * [Output only] The name of the Google Compute Engine zone in which the
    * cluster resides.
    */
   core.String zone;
-
 
   Cluster();
 
@@ -785,11 +756,9 @@ class Cluster {
   }
 }
 
-
 class CreateClusterRequest {
   /** A cluster resource. */
   Cluster cluster;
-
 
   CreateClusterRequest();
 
@@ -808,11 +777,9 @@ class CreateClusterRequest {
   }
 }
 
-
 class ListAggregatedClustersResponse {
   /** A list of clusters in the project, across all zones. */
   core.List<Cluster> clusters;
-
 
   ListAggregatedClustersResponse();
 
@@ -831,11 +798,9 @@ class ListAggregatedClustersResponse {
   }
 }
 
-
 class ListAggregatedOperationsResponse {
   /** A list of operations in the project, across all zones. */
   core.List<Operation> operations;
-
 
   ListAggregatedOperationsResponse();
 
@@ -854,11 +819,9 @@ class ListAggregatedOperationsResponse {
   }
 }
 
-
 class ListClustersResponse {
   /** A list of clusters in the project in the specified zone. */
   core.List<Cluster> clusters;
-
 
   ListClustersResponse();
 
@@ -877,11 +840,9 @@ class ListClustersResponse {
   }
 }
 
-
 class ListOperationsResponse {
   /** A list of operations in the project in the specified zone. */
   core.List<Operation> operations;
-
 
   ListOperationsResponse();
 
@@ -900,18 +861,35 @@ class ListOperationsResponse {
   }
 }
 
-
+/**
+ * The authentication information for accessing the master. Authentication is
+ * either done using HTTP basic authentication or using a bearer token.
+ */
 class MasterAuth {
-  /** The password to use when accessing the Kubernetes master endpoint. */
+  /**
+   * The token used to authenticate API requests to the master. The token is be
+   * included in an HTTP Authorization Header included in all requests to the
+   * master endpoint. The format of the header is: "Authorization: Bearer ".
+   */
+  core.String bearerToken;
+  /**
+   * The password to use for HTTP basic authentication when accessing the
+   * Kubernetes master endpoint. Because the master endpoint is open to the
+   * internet, you should create a strong password.
+   */
   core.String password;
-
-  /** The username to use when accessing the Kubernetes master endpoint. */
+  /**
+   * The username to use for HTTP basic authentication when accessing the
+   * Kubernetes master endpoint.
+   */
   core.String user;
-
 
   MasterAuth();
 
   MasterAuth.fromJson(core.Map _json) {
+    if (_json.containsKey("bearerToken")) {
+      bearerToken = _json["bearerToken"];
+    }
     if (_json.containsKey("password")) {
       password = _json["password"];
     }
@@ -922,6 +900,9 @@ class MasterAuth {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (bearerToken != null) {
+      _json["bearerToken"] = bearerToken;
+    }
     if (password != null) {
       _json["password"] = password;
     }
@@ -932,7 +913,6 @@ class MasterAuth {
   }
 }
 
-
 class NodeConfig {
   /**
    * The name of a Google Compute Engine machine type (e.g. n1-standard-1).
@@ -940,7 +920,6 @@ class NodeConfig {
    * If unspecified, the default machine type is n1-standard-1.
    */
   core.String machineType;
-
   /**
    * The optional list of ServiceAccounts, each with their specified scopes, to
    * be made available on all of the node VMs. In addition to the service
@@ -950,7 +929,6 @@ class NodeConfig {
    * - https://www.googleapis.com/auth/devstorage.read_only
    */
   core.List<ServiceAccount> serviceAccounts;
-
   /**
    * The fully-specified name of a Google Compute Engine image. For example:
    * https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/backports-debian-7-wheezy-vYYYYMMDD
@@ -961,7 +939,6 @@ class NodeConfig {
    * accept the default backports-debian-7-wheezy value.
    */
   core.String sourceImage;
-
 
   NodeConfig();
 
@@ -992,18 +969,15 @@ class NodeConfig {
   }
 }
 
-
 /** Defines the operation resource. All fields are output only. */
 class Operation {
   /** If an error has occurred, a textual description of the error. */
   core.String errorMessage;
-
   /**
    * The server-assigned ID for this operation. If the operation is fulfilled
    * upfront, it may not have a resource name.
    */
   core.String name;
-
   /**
    * The operation type.
    * Possible string values are:
@@ -1011,10 +985,8 @@ class Operation {
    * - "deleteCluster"
    */
   core.String operationType;
-
   /** Server-defined URL for the resource. */
   core.String selfLink;
-
   /**
    * The current status of the operation.
    * Possible string values are:
@@ -1023,22 +995,18 @@ class Operation {
    * - "running"
    */
   core.String status;
-
   /**
    * [Optional] The URL of the cluster resource that this operation is
    * associated with.
    */
   core.String target;
-
   /** Server-defined URL for the target of the operation. */
   core.String targetLink;
-
   /**
    * The name of the Google Compute Engine zone in which the operation is taking
    * place.
    */
   core.String zone;
-
 
   Operation();
 
@@ -1099,15 +1067,12 @@ class Operation {
   }
 }
 
-
 /** A Compute Engine service account. */
 class ServiceAccount {
   /** Email address of the service account. */
   core.String email;
-
   /** The list of scopes to be made available for this service account. */
   core.List<core.String> scopes;
-
 
   ServiceAccount();
 
@@ -1132,14 +1097,11 @@ class ServiceAccount {
   }
 }
 
-
 class Token {
   /** The OAuth2 access token */
   core.String accessToken;
-
   /** The expiration time of the token in seconds since the unix epoch. */
   core.String expiryTimeSeconds;
-
 
   Token();
 

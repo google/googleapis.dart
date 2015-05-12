@@ -58,7 +58,7 @@ class MetricDescriptorsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<MetricDescriptor> create(MetricDescriptor request, core.String project) {
     var _url = null;
@@ -74,7 +74,6 @@ class MetricDescriptorsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/metricDescriptors';
 
@@ -103,7 +102,7 @@ class MetricDescriptorsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DeleteMetricDescriptorResponse> delete(core.String project, core.String metric) {
     var _url = null;
@@ -119,7 +118,6 @@ class MetricDescriptorsResourceApi {
     if (metric == null) {
       throw new core.ArgumentError("Parameter metric is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/metricDescriptors/' + commons.Escaper.ecapeVariable('$metric');
 
@@ -167,7 +165,7 @@ class MetricDescriptorsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListMetricDescriptorsResponse> list(ListMetricDescriptorsRequest request, core.String project, {core.int count, core.String pageToken, core.String query}) {
     var _url = null;
@@ -192,7 +190,6 @@ class MetricDescriptorsResourceApi {
     if (query != null) {
       _queryParams["query"] = [query];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/metricDescriptors';
 
@@ -298,7 +295,7 @@ class TimeseriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListTimeseriesResponse> list(ListTimeseriesRequest request, core.String project, core.String metric, core.String youngest, {core.String aggregator, core.int count, core.List<core.String> labels, core.String oldest, core.String pageToken, core.String timespan, core.String window}) {
     var _url = null;
@@ -343,7 +340,6 @@ class TimeseriesResourceApi {
       _queryParams["window"] = [window];
     }
 
-
     _url = commons.Escaper.ecapeVariable('$project') + '/timeseries/' + commons.Escaper.ecapeVariable('$metric');
 
     var _response = _requester.request(_url,
@@ -378,7 +374,7 @@ class TimeseriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<WriteTimeseriesResponse> write(WriteTimeseriesRequest request, core.String project) {
     var _url = null;
@@ -394,7 +390,6 @@ class TimeseriesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/timeseries:write';
 
@@ -500,7 +495,7 @@ class TimeseriesDescriptorsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListTimeseriesDescriptorsResponse> list(ListTimeseriesDescriptorsRequest request, core.String project, core.String metric, core.String youngest, {core.String aggregator, core.int count, core.List<core.String> labels, core.String oldest, core.String pageToken, core.String timespan, core.String window}) {
     var _url = null;
@@ -545,7 +540,6 @@ class TimeseriesDescriptorsResourceApi {
       _queryParams["window"] = [window];
     }
 
-
     _url = commons.Escaper.ecapeVariable('$project') + '/timeseriesDescriptors/' + commons.Escaper.ecapeVariable('$metric');
 
     var _response = _requester.request(_url,
@@ -570,7 +564,6 @@ class DeleteMetricDescriptorResponse {
    */
   core.String kind;
 
-
   DeleteMetricDescriptorResponse();
 
   DeleteMetricDescriptorResponse.fromJson(core.Map _json) {
@@ -588,7 +581,6 @@ class DeleteMetricDescriptorResponse {
   }
 }
 
-
 /** The request of cloudmonitoring.metricDescriptors.list. */
 class ListMetricDescriptorsRequest {
   /**
@@ -596,7 +588,6 @@ class ListMetricDescriptorsRequest {
    * "cloudmonitoring#listMetricDescriptorsRequest".
    */
   core.String kind;
-
 
   ListMetricDescriptorsRequest();
 
@@ -615,7 +606,6 @@ class ListMetricDescriptorsRequest {
   }
 }
 
-
 /** The response of cloudmonitoring.metricDescriptors.list. */
 class ListMetricDescriptorsResponse {
   /**
@@ -623,17 +613,14 @@ class ListMetricDescriptorsResponse {
    * "cloudmonitoring#listMetricDescriptorsResponse".
    */
   core.String kind;
-
   /** The returned metric descriptors. */
   core.List<MetricDescriptor> metrics;
-
   /**
    * Pagination token. If present, indicates that additional results are
    * available for retrieval. To access the results past the pagination limit,
    * pass this value to the pageToken query parameter.
    */
   core.String nextPageToken;
-
 
   ListMetricDescriptorsResponse();
 
@@ -664,7 +651,6 @@ class ListMetricDescriptorsResponse {
   }
 }
 
-
 /** The request of cloudmonitoring.timeseriesDescriptors.list */
 class ListTimeseriesDescriptorsRequest {
   /**
@@ -672,7 +658,6 @@ class ListTimeseriesDescriptorsRequest {
    * "cloudmonitoring#listTimeseriesDescriptorsRequest".
    */
   core.String kind;
-
 
   ListTimeseriesDescriptorsRequest();
 
@@ -691,7 +676,6 @@ class ListTimeseriesDescriptorsRequest {
   }
 }
 
-
 /** The response of cloudmonitoring.timeseriesDescriptors.list */
 class ListTimeseriesDescriptorsResponse {
   /**
@@ -699,28 +683,23 @@ class ListTimeseriesDescriptorsResponse {
    * "cloudmonitoring#listTimeseriesDescriptorsResponse".
    */
   core.String kind;
-
   /**
    * Pagination token. If present, indicates that additional results are
    * available for retrieval. To access the results past the pagination limit,
    * set this value to the pageToken query parameter.
    */
   core.String nextPageToken;
-
   /**
    * The oldest timestamp of the interval of this query, as an RFC 3339 string.
    */
   core.DateTime oldest;
-
   /** The returned time series descriptors. */
   core.List<TimeseriesDescriptor> timeseries;
-
   /**
    * The youngest timestamp of the interval of this query, as an RFC 3339
    * string.
    */
   core.DateTime youngest;
-
 
   ListTimeseriesDescriptorsResponse();
 
@@ -763,7 +742,6 @@ class ListTimeseriesDescriptorsResponse {
   }
 }
 
-
 /** The request of cloudmonitoring.timeseries.list */
 class ListTimeseriesRequest {
   /**
@@ -771,7 +749,6 @@ class ListTimeseriesRequest {
    * "cloudmonitoring#listTimeseriesRequest".
    */
   core.String kind;
-
 
   ListTimeseriesRequest();
 
@@ -790,7 +767,6 @@ class ListTimeseriesRequest {
   }
 }
 
-
 /** The response of cloudmonitoring.timeseries.list */
 class ListTimeseriesResponse {
   /**
@@ -798,7 +774,6 @@ class ListTimeseriesResponse {
    * "cloudmonitoring#listTimeseriesResponse".
    */
   core.String kind;
-
   /**
    * Pagination token. If present, indicates that additional results are
    * available for retrieval. To access the results past the pagination limit,
@@ -807,20 +782,16 @@ class ListTimeseriesResponse {
    * time series.
    */
   core.String nextPageToken;
-
   /**
    * The oldest timestamp of the interval of this query as an RFC 3339 string.
    */
   core.DateTime oldest;
-
   /** The returned time series. */
   core.List<Timeseries> timeseries;
-
   /**
    * The youngest timestamp of the interval of this query as an RFC 3339 string.
    */
   core.DateTime youngest;
-
 
   ListTimeseriesResponse();
 
@@ -863,7 +834,6 @@ class ListTimeseriesResponse {
   }
 }
 
-
 /**
  * A metricDescriptor defines the name, label keys, and data type of a
  * particular metric.
@@ -871,19 +841,14 @@ class ListTimeseriesResponse {
 class MetricDescriptor {
   /** Description of this metric. */
   core.String description;
-
   /** Labels defined for this metric. */
   core.List<MetricDescriptorLabelDescriptor> labels;
-
   /** The name of this metric. */
   core.String name;
-
   /** The project ID to which the metric belongs. */
   core.String project;
-
   /** Type description for this metric. */
   MetricDescriptorTypeDescriptor typeDescriptor;
-
 
   MetricDescriptor();
 
@@ -926,7 +891,6 @@ class MetricDescriptor {
   }
 }
 
-
 /**
  * A label in a metric is a description of this metric, including the key of
  * this description (what the description is), and the value for this
@@ -935,10 +899,8 @@ class MetricDescriptor {
 class MetricDescriptorLabelDescriptor {
   /** Label description. */
   core.String description;
-
   /** Label key. */
   core.String key;
-
 
   MetricDescriptorLabelDescriptor();
 
@@ -963,20 +925,18 @@ class MetricDescriptorLabelDescriptor {
   }
 }
 
-
 /**
  * A type in a metric contains information about how the metric is collected and
  * what its data points look like.
  */
 class MetricDescriptorTypeDescriptor {
-  /** The method of collecting data for the metric. */
+  /** The method of collecting data for the metric. See Metric types. */
   core.String metricType;
-
   /**
-   * The type of data that is written to a timeseries point for this metric.
+   * The data type of of individual points in the metric's time series. See
+   * Metric value types.
    */
   core.String valueType;
-
 
   MetricDescriptorTypeDescriptor();
 
@@ -1001,7 +961,6 @@ class MetricDescriptorTypeDescriptor {
   }
 }
 
-
 /**
  * Point is a single point in a time series. It consists of a start time, an end
  * time, and a value.
@@ -1009,19 +968,16 @@ class MetricDescriptorTypeDescriptor {
 class Point {
   /** The value of this data point. Either "true" or "false". */
   core.bool boolValue;
-
   /**
    * The value of this data point as a distribution. A distribution value can
    * contain a list of buckets and/or an underflowBucket and an overflowBucket.
    * The values of these points can be used to create a histogram.
    */
   PointDistribution distributionValue;
-
   /**
    * The value of this data point as a double-precision floating-point number.
    */
   core.double doubleValue;
-
   /**
    * The interval [start, end] is the time period to which the point's value
    * applies. For gauge metrics, whose values are instantaneous measurements,
@@ -1030,10 +986,8 @@ class Point {
    * be non-empty. Both start and end are RFC 3339 strings.
    */
   core.DateTime end;
-
   /** The value of this data point as a 64-bit integer. */
   core.String int64Value;
-
   /**
    * The interval [start, end] is the time period to which the point's value
    * applies. For gauge metrics, whose values are instantaneous measurements,
@@ -1042,10 +996,8 @@ class Point {
    * be non-empty. Both start and end are RFC 3339 strings.
    */
   core.DateTime start;
-
   /** The value of this data point in string format. */
   core.String stringValue;
-
 
   Point();
 
@@ -1100,7 +1052,6 @@ class Point {
   }
 }
 
-
 /**
  * Distribution data point value type. When writing distribution points, try to
  * be consistent with the boundaries of your buckets. If you must modify the
@@ -1110,13 +1061,10 @@ class Point {
 class PointDistribution {
   /** The finite buckets. */
   core.List<PointDistributionBucket> buckets;
-
   /** The overflow bucket. */
   PointDistributionOverflowBucket overflowBucket;
-
   /** The underflow bucket. */
   PointDistributionUnderflowBucket underflowBucket;
-
 
   PointDistribution();
 
@@ -1147,7 +1095,6 @@ class PointDistribution {
   }
 }
 
-
 /**
  * The histogram's bucket. Buckets that form the histogram of a distribution
  * value. If the upper bound of a bucket, say U1, does not equal the lower bound
@@ -1159,13 +1106,10 @@ class PointDistributionBucket {
    * bucket.
    */
   core.String count;
-
   /** The lower bound of the value interval of this bucket (inclusive). */
   core.double lowerBound;
-
   /** The upper bound of the value interval of this bucket (exclusive). */
   core.double upperBound;
-
 
   PointDistributionBucket();
 
@@ -1196,7 +1140,6 @@ class PointDistributionBucket {
   }
 }
 
-
 /**
  * The overflow bucket is a special bucket that does not have the upperBound
  * field; it includes all of the events that are no less than its lower bound.
@@ -1207,10 +1150,8 @@ class PointDistributionOverflowBucket {
    * bucket.
    */
   core.String count;
-
   /** The lower bound of the value interval of this bucket (inclusive). */
   core.double lowerBound;
-
 
   PointDistributionOverflowBucket();
 
@@ -1235,7 +1176,6 @@ class PointDistributionOverflowBucket {
   }
 }
 
-
 /**
  * The underflow bucket is a special bucket that does not have the lowerBound
  * field; it includes all of the events that are less than its upper bound.
@@ -1246,10 +1186,8 @@ class PointDistributionUnderflowBucket {
    * bucket.
    */
   core.String count;
-
   /** The upper bound of the value interval of this bucket (exclusive). */
   core.double upperBound;
-
 
   PointDistributionUnderflowBucket();
 
@@ -1274,7 +1212,6 @@ class PointDistributionUnderflowBucket {
   }
 }
 
-
 /**
  * The monitoring data is organized as metrics and stored as data points that
  * are recorded over time. Each data point represents information like the CPU
@@ -1287,10 +1224,8 @@ class Timeseries {
    * their end timestamp, from younger to older.
    */
   core.List<Point> points;
-
   /** The descriptor of this time series. */
   TimeseriesDescriptor timeseriesDesc;
-
 
   Timeseries();
 
@@ -1315,20 +1250,16 @@ class Timeseries {
   }
 }
 
-
 /** TimeseriesDescriptor identifies a single time series. */
 class TimeseriesDescriptor {
   /** The label's name. */
   core.Map<core.String, core.String> labels;
-
   /** The name of the metric. */
   core.String metric;
-
   /**
    * The Developers Console project number to which this time series belongs.
    */
   core.String project;
-
 
   TimeseriesDescriptor();
 
@@ -1359,14 +1290,11 @@ class TimeseriesDescriptor {
   }
 }
 
-
 class TimeseriesDescriptorLabel {
   /** The label's name. */
   core.String key;
-
   /** The label's value. */
   core.String value;
-
 
   TimeseriesDescriptorLabel();
 
@@ -1391,7 +1319,6 @@ class TimeseriesDescriptorLabel {
   }
 }
 
-
 /**
  * When writing time series, TimeseriesPoint should be used instead of
  * Timeseries, to enforce single point for each time series in the
@@ -1400,10 +1327,8 @@ class TimeseriesDescriptorLabel {
 class TimeseriesPoint {
   /** The data point in this time series snapshot. */
   Point point;
-
   /** The descriptor of this time series. */
   TimeseriesDescriptor timeseriesDesc;
-
 
   TimeseriesPoint();
 
@@ -1428,19 +1353,16 @@ class TimeseriesPoint {
   }
 }
 
-
 /** The request of cloudmonitoring.timeseries.write */
 class WriteTimeseriesRequest {
   /** The label's name. */
   core.Map<core.String, core.String> commonLabels;
-
   /**
    * Provide time series specific labels and the data points for each time
    * series. The labels in timeseries and the common_labels should form a
    * complete list of labels that required by the metric.
    */
   core.List<TimeseriesPoint> timeseries;
-
 
   WriteTimeseriesRequest();
 
@@ -1465,7 +1387,6 @@ class WriteTimeseriesRequest {
   }
 }
 
-
 /** The response of cloudmonitoring.timeseries.write */
 class WriteTimeseriesResponse {
   /**
@@ -1473,7 +1394,6 @@ class WriteTimeseriesResponse {
    * "cloudmonitoring#writeTimeseriesResponse".
    */
   core.String kind;
-
 
   WriteTimeseriesResponse();
 

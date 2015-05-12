@@ -50,7 +50,7 @@ class TripsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TripsSearchResponse> search(TripsSearchRequest request) {
     var _url = null;
@@ -63,7 +63,6 @@ class TripsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'search';
 
@@ -87,16 +86,13 @@ class AircraftData {
    * The aircraft code. For example, for a Boeing 777 the code would be 777.
    */
   core.String code;
-
   /**
    * Identifies this as an aircraftData object. Value: the fixed string
    * qpxexpress#aircraftData
    */
   core.String kind;
-
   /** The name of an aircraft, for example Boeing 777. */
   core.String name;
-
 
   AircraftData();
 
@@ -127,7 +123,6 @@ class AircraftData {
   }
 }
 
-
 /** An airport. */
 class AirportData {
   /**
@@ -135,22 +130,18 @@ class AirportData {
    * is NYC.
    */
   core.String city;
-
   /** An airport's code. For example, for Boston Logan airport, this is BOS. */
   core.String code;
-
   /**
    * Identifies this as an airport object. Value: the fixed string
    * qpxexpress#airportData.
    */
   core.String kind;
-
   /**
    * The name of an airport. For example, for airport BOS the name is "Boston
    * Logan International".
    */
   core.String name;
-
 
   AirportData();
 
@@ -187,27 +178,21 @@ class AirportData {
   }
 }
 
-
 /** Information about an item of baggage. */
 class BagDescriptor {
   /** Provides the commercial name for an optional service. */
   core.String commercialName;
-
   /** How many of this type of bag will be checked on this flight. */
   core.int count;
-
   /** A description of the baggage. */
   core.List<core.String> description;
-
   /**
    * Identifies this as a baggage object. Value: the fixed string
    * qpxexpress#bagDescriptor.
    */
   core.String kind;
-
   /** The standard IATA subcode used to identify this optional service. */
   core.String subcode;
-
 
   BagDescriptor();
 
@@ -250,7 +235,6 @@ class BagDescriptor {
   }
 }
 
-
 /**
  * Information about a carrier (ie. an airline, bus line, railroad, etc) that
  * might be useful to display to an end-user.
@@ -261,16 +245,13 @@ class CarrierData {
    * Airlines, the code is AA.
    */
   core.String code;
-
   /**
    * Identifies this as a kind of carrier (ie. an airline, bus line, railroad,
    * etc). Value: the fixed string qpxexpress#carrierData.
    */
   core.String kind;
-
   /** The long, full name of a carrier. For example: American Airlines. */
   core.String name;
-
 
   CarrierData();
 
@@ -301,7 +282,6 @@ class CarrierData {
   }
 }
 
-
 /**
  * Information about a city that might be useful to an end-user; typically the
  * city of an airport.
@@ -309,22 +289,18 @@ class CarrierData {
 class CityData {
   /** The IATA character ID of a city. For example, for Boston this is BOS. */
   core.String code;
-
   /**
    * The two-character country code of the country the city is located in. For
    * example, US for the United States of America.
    */
   core.String country;
-
   /**
    * Identifies this as a city, typically with one or more airports. Value: the
    * fixed string qpxexpress#cityData.
    */
   core.String kind;
-
   /** The full name of a city. An example would be: New York. */
   core.String name;
-
 
   CityData();
 
@@ -361,7 +337,6 @@ class CityData {
   }
 }
 
-
 /**
  * Detailed information about components found in the solutions of this
  * response, including a trip's airport, city, taxes, airline, and aircraft.
@@ -369,29 +344,23 @@ class CityData {
 class Data {
   /** The aircraft that is flying between an origin and destination. */
   core.List<AircraftData> aircraft;
-
   /** The airport of an origin or destination. */
   core.List<AirportData> airport;
-
   /**
    * The airline carrier of the aircraft flying between an origin and
    * destination. Allowed values are IATA carrier codes.
    */
   core.List<CarrierData> carrier;
-
   /** The city that is either the origin or destination of part of a trip. */
   core.List<CityData> city;
-
   /**
    * Identifies this as QPX Express response resource, including a trip's
    * airport, city, taxes, airline, and aircraft. Value: the fixed string
    * qpxexpress#data.
    */
   core.String kind;
-
   /** The taxes due for flying between an origin and a destination. */
   core.List<TaxData> tax;
-
 
   Data();
 
@@ -440,7 +409,6 @@ class Data {
   }
 }
 
-
 /**
  * Complete information about a fare used in the solution to a low-fare search
  * query. In the airline industry a fare is a price an airline charges for
@@ -450,33 +418,26 @@ class Data {
  */
 class FareInfo {
   core.String basisCode;
-
   /**
    * The carrier of the aircraft or other vehicle commuting between two points.
    */
   core.String carrier;
-
   /** The city code of the city the trip ends at. */
   core.String destination;
-
   /** A unique identifier of the fare. */
   core.String id;
-
   /**
    * Identifies this as a fare object. Value: the fixed string
    * qpxexpress#fareInfo.
    */
   core.String kind;
-
   /** The city code of the city the trip begins at. */
   core.String origin;
-
   /**
    * Whether this is a private fare, for example one offered only to select
    * customers rather than the general public.
    */
   core.bool private;
-
 
   FareInfo();
 
@@ -531,7 +492,6 @@ class FareInfo {
   }
 }
 
-
 /**
  * A flight is a sequence of legs with the same airline carrier and flight
  * number. (A leg is the smallest unit of travel, in the case of a flight a
@@ -543,10 +503,8 @@ class FareInfo {
  */
 class FlightInfo {
   core.String carrier;
-
   /** The flight number. */
   core.String number;
-
 
   FlightInfo();
 
@@ -571,7 +529,6 @@ class FlightInfo {
   }
 }
 
-
 /** Information about free baggage allowed on one segment of a trip. */
 class FreeBaggageAllowance {
   /**
@@ -579,25 +536,19 @@ class FreeBaggageAllowance {
    * Name, or other description.
    */
   core.List<BagDescriptor> bagDescriptor;
-
   /** The maximum number of kilos all the free baggage together may weigh. */
   core.int kilos;
-
   /** The maximum number of kilos any one piece of baggage may weigh. */
   core.int kilosPerPiece;
-
   /**
    * Identifies this as free baggage object, allowed on one segment of a trip.
    * Value: the fixed string qpxexpress#freeBaggageAllowance.
    */
   core.String kind;
-
   /** The number of free pieces of baggage allowed. */
   core.int pieces;
-
   /** The number of pounds of free baggage allowed. */
   core.int pounds;
-
 
   FreeBaggageAllowance();
 
@@ -646,7 +597,6 @@ class FreeBaggageAllowance {
   }
 }
 
-
 /**
  * Information about a leg. (A leg is the smallest unit of travel, in the case
  * of a flight a takeoff immediately followed by a landing at two set points on
@@ -658,39 +608,30 @@ class LegInfo {
    * points of this leg.
    */
   core.String aircraft;
-
   /**
    * The scheduled time of arrival at the destination of the leg, local to the
    * point of arrival.
    */
   core.String arrivalTime;
-
   /**
    * Whether you have to change planes following this leg. Only applies to the
    * next leg.
    */
   core.bool changePlane;
-
   /** Duration of a connection following this leg, in minutes. */
   core.int connectionDuration;
-
   /**
    * The scheduled departure time of the leg, local to the point of departure.
    */
   core.String departureTime;
-
   /** The leg destination as a city and airport. */
   core.String destination;
-
   /** The terminal the flight is scheduled to arrive at. */
   core.String destinationTerminal;
-
   /** The scheduled travelling time from the origin to the destination. */
   core.int duration;
-
   /** An identifier that uniquely identifies this leg in the solution. */
   core.String id;
-
   /**
    * Identifies this as a leg object. A leg is the smallest unit of travel, in
    * the case of a flight a takeoff immediately followed by a landing at two set
@@ -698,19 +639,15 @@ class LegInfo {
    * fixed string qpxexpress#legInfo.
    */
   core.String kind;
-
   /**
    * A simple, general description of the meal(s) served on the flight, for
    * example: "Hot meal".
    */
   core.String meal;
-
   /** The number of miles in this leg. */
   core.int mileage;
-
   /** In percent, the published on time performance on this leg. */
   core.int onTimePerformance;
-
   /**
    * Department of Transportation disclosure information on the actual operator
    * of a flight in a code share. (A code share refers to a marketing agreement
@@ -718,19 +655,15 @@ class LegInfo {
    * take bookings for) flights that are actually operated by another carrier.)
    */
   core.String operatingDisclosure;
-
   /** The leg origin as a city and airport. */
   core.String origin;
-
   /** The terminal the flight is scheduled to depart from. */
   core.String originTerminal;
-
   /**
    * Whether passenger information must be furnished to the United States
    * Transportation Security Administration (TSA) prior to departure.
    */
   core.bool secure;
-
 
   LegInfo();
 
@@ -845,7 +778,6 @@ class LegInfo {
   }
 }
 
-
 /**
  * The number and type of passengers. Unfortunately the definition of an infant,
  * child, adult, and senior citizen varies across carriers and reservation
@@ -854,28 +786,22 @@ class LegInfo {
 class PassengerCounts {
   /** The number of passengers that are adults. */
   core.int adultCount;
-
   /** The number of passengers that are children. */
   core.int childCount;
-
   /**
    * The number of passengers that are infants travelling in the lap of an
    * adult.
    */
   core.int infantInLapCount;
-
   /** The number of passengers that are infants each assigned a seat. */
   core.int infantInSeatCount;
-
   /**
    * Identifies this as a passenger count object, representing the number of
    * passengers. Value: the fixed string qpxexpress#passengerCounts.
    */
   core.String kind;
-
   /** The number of passengers that are senior citizens. */
   core.int seniorCount;
-
 
   PassengerCounts();
 
@@ -924,7 +850,6 @@ class PassengerCounts {
   }
 }
 
-
 /**
  * The price of one or more travel segments. The currency used to purchase
  * tickets is usually determined by the sale/ticketing city or the
@@ -938,60 +863,47 @@ class PricingInfo {
    * currency of the country of commencement are different.
    */
   core.String baseFareTotal;
-
   /** The fare used to price one or more segments. */
   core.List<FareInfo> fare;
-
   /**
    * The horizontal fare calculation. This is a field on a ticket that displays
    * all of the relevant items that go into the calculation of the fare.
    */
   core.String fareCalculation;
-
   /**
    * Identifies this as a pricing object, representing the price of one or more
    * travel segments. Value: the fixed string qpxexpress#pricingInfo.
    */
   core.String kind;
-
   /**
    * The latest ticketing time for this pricing assuming the reservation occurs
    * at ticketing time and there is no change in fares/rules. The time is local
    * to the point of sale (POS).
    */
   core.String latestTicketingTime;
-
   /** The number of passengers to which this price applies. */
   PassengerCounts passengers;
-
   /**
    * The passenger type code for this pricing. An alphanumeric code used by a
    * carrier to restrict fares to certain categories of passenger. For instance,
    * a fare might be valid only for senior citizens.
    */
   core.String ptc;
-
   /** Whether the fares on this pricing are refundable. */
   core.bool refundable;
-
   /** The total fare in the sale or equivalent currency. */
   core.String saleFareTotal;
-
   /** The taxes in the sale or equivalent currency. */
   core.String saleTaxTotal;
-
   /**
    * Total per-passenger price (fare and tax) in the sale or equivalent
    * currency.
    */
   core.String saleTotal;
-
   /** The per-segment price and baggage information. */
   core.List<SegmentPricing> segmentPricing;
-
   /** The taxes used to calculate the tax total per ticket. */
   core.List<TaxInfo> tax;
-
 
   PricingInfo();
 
@@ -1082,7 +994,6 @@ class PricingInfo {
   }
 }
 
-
 /**
  * Details of a segment of a flight; a segment is one or more consecutive legs
  * on the same flight. For example a hypothetical flight ZZ001, from DFW to OGG,
@@ -1092,25 +1003,18 @@ class PricingInfo {
 class SegmentInfo {
   /** The booking code or class for this segment. */
   core.String bookingCode;
-
   /** The number of seats available in this booking code on this segment. */
   core.int bookingCodeCount;
-
   /** The cabin booked for this segment. */
   core.String cabin;
-
   /** In minutes, the duration of the connection following this segment. */
   core.int connectionDuration;
-
   /** The duration of the flight segment in minutes. */
   core.int duration;
-
   /** The flight this is a segment of. */
   FlightInfo flight;
-
   /** An id uniquely identifying the segment in the solution. */
   core.String id;
-
   /**
    * Identifies this as a segment object. A segment is one or more consecutive
    * legs on the same flight. For example a hypothetical flight ZZ001, from DFW
@@ -1118,10 +1022,8 @@ class SegmentInfo {
    * OGG (leg 2). Value: the fixed string qpxexpress#segmentInfo.
    */
   core.String kind;
-
   /** The legs composing this segment. */
   core.List<LegInfo> leg;
-
   /**
    * The solution-based index of a segment in a married segment group. Married
    * segments can only be booked together. For example, an airline might report
@@ -1134,13 +1036,11 @@ class SegmentInfo {
    * segment belongs to married segment group 1.
    */
   core.String marriedSegmentGroup;
-
   /**
    * Whether the operation of this segment remains subject to government
    * approval.
    */
   core.bool subjectToGovernmentApproval;
-
 
   SegmentInfo();
 
@@ -1219,7 +1119,6 @@ class SegmentInfo {
   }
 }
 
-
 /** The price of this segment. */
 class SegmentPricing {
   /**
@@ -1227,19 +1126,15 @@ class SegmentPricing {
    * to different parts of the same solution.
    */
   core.String fareId;
-
   /** Details of the free baggage allowance on this segment. */
   core.List<FreeBaggageAllowance> freeBaggageOption;
-
   /**
    * Identifies this as a segment pricing object, representing the price of this
    * segment. Value: the fixed string qpxexpress#segmentPricing.
    */
   core.String kind;
-
   /** Unique identifier in the response of this segment. */
   core.String segmentId;
-
 
   SegmentPricing();
 
@@ -1276,7 +1171,6 @@ class SegmentPricing {
   }
 }
 
-
 /**
  * Information about a slice. A slice represents a traveller's intent, the
  * portion of a low-fare search corresponding to a traveler's request to get
@@ -1290,7 +1184,6 @@ class SegmentPricing {
 class SliceInfo {
   /** The duration of the slice in minutes. */
   core.int duration;
-
   /**
    * Identifies this as a slice object. A slice represents a traveller's intent,
    * the portion of a low-fare search corresponding to a traveler's request to
@@ -1298,10 +1191,8 @@ class SliceInfo {
    * slice, round-trips using 2. Value: the fixed string qpxexpress#sliceInfo.
    */
   core.String kind;
-
   /** The segment(s) constituting the slice. */
   core.List<SegmentInfo> segment;
-
 
   SliceInfo();
 
@@ -1332,7 +1223,6 @@ class SliceInfo {
   }
 }
 
-
 /** Criteria a desired slice must satisfy. */
 class SliceInput {
   /**
@@ -1341,55 +1231,44 @@ class SliceInput {
    * and STAR.
    */
   core.String alliance;
-
   /** Departure date in YYYY-MM-DD format. */
   core.String date;
-
   /** Airport or city IATA designator of the destination. */
   core.String destination;
-
   /**
    * Identifies this as a slice input object, representing the criteria a
    * desired slice must satisfy. Value: the fixed string qpxexpress#sliceInput.
    */
   core.String kind;
-
   /**
    * The longest connection between two legs, in minutes, you are willing to
    * accept.
    */
   core.int maxConnectionDuration;
-
   /** The maximum number of stops you are willing to accept in this slice. */
   core.int maxStops;
-
   /** Airport or city IATA designator of the origin. */
   core.String origin;
-
   /**
    * A list of 2-letter IATA airline designators. Slices with only these
    * carriers should be returned.
    */
   core.List<core.String> permittedCarrier;
-
   /**
    * Slices must depart in this time of day range, local to the point of
    * departure.
    */
   TimeOfDayRange permittedDepartureTime;
-
   /**
    * Prefer solutions that book in this cabin for this slice. Allowed values are
    * COACH, PREMIUM_COACH, BUSINESS, and FIRST.
    */
   core.String preferredCabin;
-
   /**
    * A list of 2-letter IATA airline designators. Exclude slices that use these
    * carriers.
    */
   core.List<core.String> prohibitedCarrier;
-
 
   SliceInput();
 
@@ -1468,21 +1347,17 @@ class SliceInput {
   }
 }
 
-
 /** Tax data. */
 class TaxData {
   /** An identifier uniquely identifying a tax in a response. */
   core.String id;
-
   /**
    * Identifies this as a tax data object, representing some tax. Value: the
    * fixed string qpxexpress#taxData.
    */
   core.String kind;
-
   /** The name of a tax. */
   core.String name;
-
 
   TaxData();
 
@@ -1513,33 +1388,26 @@ class TaxData {
   }
 }
 
-
 /** Tax information. */
 class TaxInfo {
   /** Whether this is a government charge or a carrier surcharge. */
   core.String chargeType;
-
   /** The code to enter in the ticket's tax box. */
   core.String code;
-
   /** For government charges, the country levying the charge. */
   core.String country;
-
   /**
    * Identifier uniquely identifying this tax in a response. Not present for
    * unnamed carrier surcharges.
    */
   core.String id;
-
   /**
    * Identifies this as a tax information object. Value: the fixed string
    * qpxexpress#taxInfo.
    */
   core.String kind;
-
   /** The price of the tax in the sales or equivalent currency. */
   core.String salePrice;
-
 
   TaxInfo();
 
@@ -1588,22 +1456,18 @@ class TaxInfo {
   }
 }
 
-
 /** Two times in a single day defining a time range. */
 class TimeOfDayRange {
   /** The earliest time of day in HH:MM format. */
   core.String earliestTime;
-
   /**
    * Identifies this as a time of day range object, representing two times in a
    * single day defining a time range. Value: the fixed string
    * qpxexpress#timeOfDayRange.
    */
   core.String kind;
-
   /** The latest time of day in HH:MM format. */
   core.String latestTime;
-
 
   TimeOfDayRange();
 
@@ -1634,30 +1498,24 @@ class TimeOfDayRange {
   }
 }
 
-
 /** Trip information. */
 class TripOption {
   /** Identifier uniquely identifying this trip in a response. */
   core.String id;
-
   /**
    * Identifies this as a trip information object. Value: the fixed string
    * qpxexpress#tripOption.
    */
   core.String kind;
-
   /** Per passenger pricing information. */
   core.List<PricingInfo> pricing;
-
   /**
    * The total price for all passengers on the trip, in the form of a currency
    * followed by an amount, e.g. USD253.35.
    */
   core.String saleTotal;
-
   /** The slices that make up this trip's itinerary. */
   core.List<SliceInfo> slice;
-
 
   TripOption();
 
@@ -1700,7 +1558,6 @@ class TripOption {
   }
 }
 
-
 /** A QPX Express search request, which will yield one or more solutions. */
 class TripOptionsRequest {
   /**
@@ -1709,19 +1566,15 @@ class TripOptionsRequest {
    * [A-Z]{3}\d+(\.\d+)? Example: $102.07
    */
   core.String maxPrice;
-
   /** Counts for each passenger type in the request. */
   PassengerCounts passengers;
-
   /** Return only solutions with refundable fares. */
   core.bool refundable;
-
   /**
    * IATA country code representing the point of sale. This determines the
    * "equivalent amount paid" currency for the ticket.
    */
   core.String saleCountry;
-
   /**
    * The slices that make up the itinerary of this trip. A slice represents a
    * traveler's intent, the portion of a low-fare search corresponding to a
@@ -1731,10 +1584,8 @@ class TripOptionsRequest {
    * the traveler only stopped in SYD and LAX just long enough to change planes.
    */
   core.List<SliceInput> slice;
-
   /** The number of solutions to return, maximum 500. */
   core.int solutions;
-
 
   TripOptionsRequest();
 
@@ -1783,24 +1634,19 @@ class TripOptionsRequest {
   }
 }
 
-
 /** A QPX Express search response. */
 class TripOptionsResponse {
   /** Informational data global to list of solutions. */
   Data data;
-
   /**
    * Identifies this as a QPX Express trip response object, which consists of
    * zero or more solutions. Value: the fixed string qpxexpress#tripOptions.
    */
   core.String kind;
-
   /** An identifier uniquely identifying this response. */
   core.String requestId;
-
   /** A list of priced itinerary solutions to the QPX Express query. */
   core.List<TripOption> tripOption;
-
 
   TripOptionsResponse();
 
@@ -1837,7 +1683,6 @@ class TripOptionsResponse {
   }
 }
 
-
 /** A QPX Express search request. */
 class TripsSearchRequest {
   /**
@@ -1845,7 +1690,6 @@ class TripsSearchRequest {
    * senior passenger, an origin, a destination, and a date.
    */
   TripOptionsRequest request;
-
 
   TripsSearchRequest();
 
@@ -1864,7 +1708,6 @@ class TripsSearchRequest {
   }
 }
 
-
 /** A QPX Express search response. */
 class TripsSearchResponse {
   /**
@@ -1872,10 +1715,8 @@ class TripsSearchResponse {
    * fixed string qpxExpress#tripsSearch.
    */
   core.String kind;
-
   /** All possible solutions to the QPX Express search request. */
   TripOptionsResponse trips;
-
 
   TripsSearchResponse();
 

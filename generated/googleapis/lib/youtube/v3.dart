@@ -61,6 +61,7 @@ class YoutubeApi {
   SearchResourceApi get search => new SearchResourceApi(_requester);
   SubscriptionsResourceApi get subscriptions => new SubscriptionsResourceApi(_requester);
   ThumbnailsResourceApi get thumbnails => new ThumbnailsResourceApi(_requester);
+  VideoAbuseReportReasonsResourceApi get videoAbuseReportReasons => new VideoAbuseReportReasonsResourceApi(_requester);
   VideoCategoriesResourceApi get videoCategories => new VideoCategoriesResourceApi(_requester);
   VideosResourceApi get videos => new VideosResourceApi(_requester);
   WatermarksResourceApi get watermarks => new WatermarksResourceApi(_requester);
@@ -103,7 +104,7 @@ class ActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Activity> insert(Activity request, core.String part) {
     var _url = null;
@@ -120,7 +121,6 @@ class ActivitiesResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = [part];
-
 
     _url = 'activities';
 
@@ -198,7 +198,7 @@ class ActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ActivityListResponse> list(core.String part, {core.String channelId, core.bool home, core.int maxResults, core.bool mine, core.String pageToken, core.DateTime publishedAfter, core.DateTime publishedBefore, core.String regionCode}) {
     var _url = null;
@@ -236,7 +236,6 @@ class ActivitiesResourceApi {
     if (regionCode != null) {
       _queryParams["regionCode"] = [regionCode];
     }
-
 
     _url = 'activities';
 
@@ -278,7 +277,7 @@ class CaptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id, {core.String debugProjectIdOverride, core.String onBehalfOf}) {
     var _url = null;
@@ -355,7 +354,7 @@ class CaptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future download(core.String id, {core.String debugProjectIdOverride, core.String onBehalfOf, core.String tfmt, core.String tlang, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -436,7 +435,7 @@ class CaptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Caption> insert(Caption request, core.String part, {core.String debugProjectIdOverride, core.String onBehalfOf, core.bool sync, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -516,7 +515,7 @@ class CaptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CaptionListResponse> list(core.String part, core.String videoId, {core.String debugProjectIdOverride, core.String id, core.String onBehalfOf}) {
     var _url = null;
@@ -543,7 +542,6 @@ class CaptionsResourceApi {
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
     }
-
 
     _url = 'captions';
 
@@ -596,7 +594,7 @@ class CaptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Caption> update(Caption request, core.String part, {core.String debugProjectIdOverride, core.String onBehalfOf, core.bool sync, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -695,7 +693,7 @@ class ChannelBannersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChannelBannerResource> insert(ChannelBannerResource request, {core.String onBehalfOfContentOwner, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -769,7 +767,7 @@ class ChannelSectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -854,7 +852,7 @@ class ChannelSectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChannelSection> insert(ChannelSection request, core.String part, {core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel}) {
     var _url = null;
@@ -877,7 +875,6 @@ class ChannelSectionsResourceApi {
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [onBehalfOfContentOwnerChannel];
     }
-
 
     _url = 'channelSections';
 
@@ -945,7 +942,7 @@ class ChannelSectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChannelSectionListResponse> list(core.String part, {core.String channelId, core.String hl, core.String id, core.bool mine, core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -974,7 +971,6 @@ class ChannelSectionsResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-
 
     _url = 'channelSections';
 
@@ -1021,7 +1017,7 @@ class ChannelSectionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChannelSection> update(ChannelSection request, core.String part, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -1041,7 +1037,6 @@ class ChannelSectionsResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-
 
     _url = 'channelSections';
 
@@ -1130,7 +1125,7 @@ class ChannelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChannelListResponse> list(core.String part, {core.String categoryId, core.String forUsername, core.String hl, core.String id, core.bool managedByMe, core.int maxResults, core.bool mine, core.bool mySubscribers, core.String onBehalfOfContentOwner, core.String pageToken}) {
     var _url = null;
@@ -1174,7 +1169,6 @@ class ChannelsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'channels';
 
@@ -1222,7 +1216,7 @@ class ChannelsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Channel> update(Channel request, core.String part, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -1242,7 +1236,6 @@ class ChannelsResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-
 
     _url = 'channels';
 
@@ -1288,7 +1281,7 @@ class CommentThreadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentThread> insert(CommentThread request, core.String part, {core.bool shareOnGooglePlus}) {
     var _url = null;
@@ -1308,7 +1301,6 @@ class CommentThreadsResourceApi {
     if (shareOnGooglePlus != null) {
       _queryParams["shareOnGooglePlus"] = ["${shareOnGooglePlus}"];
     }
-
 
     _url = 'commentThreads';
 
@@ -1390,7 +1382,7 @@ class CommentThreadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentThreadListResponse> list(core.String part, {core.String allThreadsRelatedToChannelId, core.String channelId, core.String id, core.int maxResults, core.String moderationStatus, core.String pageToken, core.String searchTerms, core.String textFormat, core.String videoId}) {
     var _url = null;
@@ -1432,7 +1424,6 @@ class CommentThreadsResourceApi {
       _queryParams["videoId"] = [videoId];
     }
 
-
     _url = 'commentThreads';
 
     var _response = _requester.request(_url,
@@ -1465,7 +1456,7 @@ class CommentThreadsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentThread> update(CommentThread request, core.String part) {
     var _url = null;
@@ -1482,7 +1473,6 @@ class CommentThreadsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = [part];
-
 
     _url = 'commentThreads';
 
@@ -1517,7 +1507,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id) {
     var _url = null;
@@ -1569,7 +1559,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Comment> insert(Comment request, core.String part) {
     var _url = null;
@@ -1586,7 +1576,6 @@ class CommentsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = [part];
-
 
     _url = 'comments';
 
@@ -1645,7 +1634,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommentListResponse> list(core.String part, {core.String id, core.int maxResults, core.String pageToken, core.String parentId, core.String textFormat}) {
     var _url = null;
@@ -1675,7 +1664,6 @@ class CommentsResourceApi {
       _queryParams["textFormat"] = [textFormat];
     }
 
-
     _url = 'comments';
 
     var _response = _requester.request(_url,
@@ -1700,7 +1688,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future markAsSpam(core.String id) {
     var _url = null;
@@ -1763,7 +1751,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future setModerationStatus(core.String id, core.String moderationStatus, {core.bool banAuthor}) {
     var _url = null;
@@ -1819,7 +1807,7 @@ class CommentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Comment> update(Comment request, core.String part) {
     var _url = null;
@@ -1836,7 +1824,6 @@ class CommentsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = [part];
-
 
     _url = 'comments';
 
@@ -1892,7 +1879,7 @@ class GuideCategoriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<GuideCategoryListResponse> list(core.String part, {core.String hl, core.String id, core.String regionCode}) {
     var _url = null;
@@ -1915,7 +1902,6 @@ class GuideCategoriesResourceApi {
     if (regionCode != null) {
       _queryParams["regionCode"] = [regionCode];
     }
-
 
     _url = 'guideCategories';
 
@@ -1956,7 +1942,7 @@ class I18nLanguagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<I18nLanguageListResponse> list(core.String part, {core.String hl}) {
     var _url = null;
@@ -1973,7 +1959,6 @@ class I18nLanguagesResourceApi {
     if (hl != null) {
       _queryParams["hl"] = [hl];
     }
-
 
     _url = 'i18nLanguages';
 
@@ -2014,7 +1999,7 @@ class I18nRegionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<I18nRegionListResponse> list(core.String part, {core.String hl}) {
     var _url = null;
@@ -2031,7 +2016,6 @@ class I18nRegionsResourceApi {
     if (hl != null) {
       _queryParams["hl"] = [hl];
     }
-
 
     _url = 'i18nRegions';
 
@@ -2113,7 +2097,7 @@ class LiveBroadcastsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LiveBroadcast> bind(core.String id, core.String part, {core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.String streamId}) {
     var _url = null;
@@ -2140,7 +2124,6 @@ class LiveBroadcastsResourceApi {
     if (streamId != null) {
       _queryParams["streamId"] = [streamId];
     }
-
 
     _url = 'liveBroadcasts/bind';
 
@@ -2227,7 +2210,7 @@ class LiveBroadcastsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LiveBroadcast> control(core.String id, core.String part, {core.bool displaySlate, core.String offsetTimeMs, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.DateTime walltime}) {
     var _url = null;
@@ -2260,7 +2243,6 @@ class LiveBroadcastsResourceApi {
     if (walltime != null) {
       _queryParams["walltime"] = [(walltime).toIso8601String()];
     }
-
 
     _url = 'liveBroadcasts/control';
 
@@ -2319,7 +2301,7 @@ class LiveBroadcastsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id, {core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel}) {
     var _url = null;
@@ -2407,7 +2389,7 @@ class LiveBroadcastsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LiveBroadcast> insert(LiveBroadcast request, core.String part, {core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel}) {
     var _url = null;
@@ -2430,7 +2412,6 @@ class LiveBroadcastsResourceApi {
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [onBehalfOfContentOwnerChannel];
     }
-
 
     _url = 'liveBroadcasts';
 
@@ -2517,7 +2498,7 @@ class LiveBroadcastsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LiveBroadcastListResponse> list(core.String part, {core.String broadcastStatus, core.String id, core.int maxResults, core.bool mine, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.String pageToken}) {
     var _url = null;
@@ -2552,7 +2533,6 @@ class LiveBroadcastsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'liveBroadcasts';
 
@@ -2636,7 +2616,7 @@ class LiveBroadcastsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LiveBroadcast> transition(core.String broadcastStatus, core.String id, core.String part, {core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel}) {
     var _url = null;
@@ -2664,7 +2644,6 @@ class LiveBroadcastsResourceApi {
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [onBehalfOfContentOwnerChannel];
     }
-
 
     _url = 'liveBroadcasts/transition';
 
@@ -2742,7 +2721,7 @@ class LiveBroadcastsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LiveBroadcast> update(LiveBroadcast request, core.String part, {core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel}) {
     var _url = null;
@@ -2765,7 +2744,6 @@ class LiveBroadcastsResourceApi {
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [onBehalfOfContentOwnerChannel];
     }
-
 
     _url = 'liveBroadcasts';
 
@@ -2833,7 +2811,7 @@ class LiveStreamsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id, {core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel}) {
     var _url = null;
@@ -2922,7 +2900,7 @@ class LiveStreamsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LiveStream> insert(LiveStream request, core.String part, {core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel}) {
     var _url = null;
@@ -2945,7 +2923,6 @@ class LiveStreamsResourceApi {
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [onBehalfOfContentOwnerChannel];
     }
-
 
     _url = 'liveStreams';
 
@@ -3025,7 +3002,7 @@ class LiveStreamsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LiveStreamListResponse> list(core.String part, {core.String id, core.int maxResults, core.bool mine, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.String pageToken}) {
     var _url = null;
@@ -3057,7 +3034,6 @@ class LiveStreamsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'liveStreams';
 
@@ -3130,7 +3106,7 @@ class LiveStreamsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LiveStream> update(LiveStream request, core.String part, {core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel}) {
     var _url = null;
@@ -3153,7 +3129,6 @@ class LiveStreamsResourceApi {
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [onBehalfOfContentOwnerChannel];
     }
-
 
     _url = 'liveStreams';
 
@@ -3189,7 +3164,7 @@ class PlaylistItemsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id) {
     var _url = null;
@@ -3251,7 +3226,7 @@ class PlaylistItemsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlaylistItem> insert(PlaylistItem request, core.String part, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -3271,7 +3246,6 @@ class PlaylistItemsResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-
 
     _url = 'playlistItems';
 
@@ -3343,7 +3317,7 @@ class PlaylistItemsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlaylistItemListResponse> list(core.String part, {core.String id, core.int maxResults, core.String onBehalfOfContentOwner, core.String pageToken, core.String playlistId, core.String videoId}) {
     var _url = null;
@@ -3375,7 +3349,6 @@ class PlaylistItemsResourceApi {
     if (videoId != null) {
       _queryParams["videoId"] = [videoId];
     }
-
 
     _url = 'playlistItems';
 
@@ -3421,7 +3394,7 @@ class PlaylistItemsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlaylistItem> update(PlaylistItem request, core.String part) {
     var _url = null;
@@ -3438,7 +3411,6 @@ class PlaylistItemsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = [part];
-
 
     _url = 'playlistItems';
 
@@ -3487,7 +3459,7 @@ class PlaylistsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -3572,7 +3544,7 @@ class PlaylistsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Playlist> insert(Playlist request, core.String part, {core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel}) {
     var _url = null;
@@ -3595,7 +3567,6 @@ class PlaylistsResourceApi {
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [onBehalfOfContentOwnerChannel];
     }
-
 
     _url = 'playlists';
 
@@ -3687,7 +3658,7 @@ class PlaylistsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlaylistListResponse> list(core.String part, {core.String channelId, core.String hl, core.String id, core.int maxResults, core.bool mine, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.String pageToken}) {
     var _url = null;
@@ -3725,7 +3696,6 @@ class PlaylistsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'playlists';
 
@@ -3783,7 +3753,7 @@ class PlaylistsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Playlist> update(Playlist request, core.String part, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -3803,7 +3773,6 @@ class PlaylistsResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-
 
     _url = 'playlists';
 
@@ -4050,7 +4019,7 @@ class SearchResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SearchListResponse> list(core.String part, {core.String channelId, core.String channelType, core.String eventType, core.bool forContentOwner, core.bool forDeveloper, core.bool forMine, core.String location, core.String locationRadius, core.int maxResults, core.String onBehalfOfContentOwner, core.String order, core.String pageToken, core.DateTime publishedAfter, core.DateTime publishedBefore, core.String q, core.String regionCode, core.String relatedToVideoId, core.String relevanceLanguage, core.String safeSearch, core.String topicId, core.String type, core.String videoCaption, core.String videoCategoryId, core.String videoDefinition, core.String videoDimension, core.String videoDuration, core.String videoEmbeddable, core.String videoLicense, core.String videoSyndicated, core.String videoType}) {
     var _url = null;
@@ -4155,7 +4124,6 @@ class SearchResourceApi {
       _queryParams["videoType"] = [videoType];
     }
 
-
     _url = 'search';
 
     var _response = _requester.request(_url,
@@ -4190,7 +4158,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id) {
     var _url = null;
@@ -4239,7 +4207,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> insert(Subscription request, core.String part) {
     var _url = null;
@@ -4256,7 +4224,6 @@ class SubscriptionsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = [part];
-
 
     _url = 'subscriptions';
 
@@ -4358,7 +4325,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SubscriptionListResponse> list(core.String part, {core.String channelId, core.String forChannelId, core.String id, core.int maxResults, core.bool mine, core.bool mySubscribers, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.String order, core.String pageToken}) {
     var _url = null;
@@ -4402,7 +4369,6 @@ class SubscriptionsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'subscriptions';
 
@@ -4454,7 +4420,7 @@ class ThumbnailsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ThumbnailSetResponse> set(core.String videoId, {core.String onBehalfOfContentOwner, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -4497,6 +4463,63 @@ class ThumbnailsResourceApi {
 }
 
 
+class VideoAbuseReportReasonsResourceApi {
+  final commons.ApiRequester _requester;
+
+  VideoAbuseReportReasonsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns a list of abuse reasons that can be used for reporting abusive
+   * videos.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter specifies the videoCategory resource parts that
+   * the API response will include. Supported values are id and snippet.
+   *
+   * [hl] - The hl parameter specifies the language that should be used for text
+   * values in the API response.
+   *
+   * Completes with a [VideoAbuseReportReasonListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<VideoAbuseReportReasonListResponse> list(core.String part, {core.String hl}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
+    }
+
+    _url = 'videoAbuseReportReasons';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new VideoAbuseReportReasonListResponse.fromJson(data));
+  }
+
+}
+
+
 class VideoCategoriesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -4527,7 +4550,7 @@ class VideoCategoriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VideoCategoryListResponse> list(core.String part, {core.String hl, core.String id, core.String regionCode}) {
     var _url = null;
@@ -4550,7 +4573,6 @@ class VideoCategoriesResourceApi {
     if (regionCode != null) {
       _queryParams["regionCode"] = [regionCode];
     }
-
 
     _url = 'videoCategories';
 
@@ -4599,7 +4621,7 @@ class VideosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String id, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -4660,7 +4682,7 @@ class VideosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VideoGetRatingResponse> getRating(core.String id, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -4677,7 +4699,6 @@ class VideosResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-
 
     _url = 'videos/getRating';
 
@@ -4765,7 +4786,7 @@ class VideosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Video> insert(Video request, core.String part, {core.bool autoLevels, core.bool notifySubscribers, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.bool stabilize, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -4909,7 +4930,7 @@ class VideosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VideoListResponse> list(core.String part, {core.String chart, core.String hl, core.String id, core.String locale, core.int maxResults, core.String myRating, core.String onBehalfOfContentOwner, core.String pageToken, core.String regionCode, core.String videoCategoryId}) {
     var _url = null;
@@ -4953,7 +4974,6 @@ class VideosResourceApi {
     if (videoCategoryId != null) {
       _queryParams["videoCategoryId"] = [videoCategoryId];
     }
-
 
     _url = 'videos';
 
@@ -4999,7 +5019,7 @@ class VideosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future rate(core.String id, core.String rating, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -5024,6 +5044,61 @@ class VideosResourceApi {
     _downloadOptions = null;
 
     _url = 'videos/rate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Report abuse for a video.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future reportAbuse(VideoAbuseReport request, {core.String onBehalfOfContentOwner}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'videos/reportAbuse';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -5087,7 +5162,7 @@ class VideosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Video> update(Video request, core.String part, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -5107,7 +5182,6 @@ class VideosResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-
 
     _url = 'videos';
 
@@ -5159,7 +5233,7 @@ class WatermarksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future set(InvideoBranding request, core.String channelId, {core.String onBehalfOfContentOwner, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -5179,6 +5253,7 @@ class WatermarksResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
+
 
     _uploadMedia =  uploadMedia;
     _uploadOptions =  uploadOptions;
@@ -5225,7 +5300,7 @@ class WatermarksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future unset(core.String channelId, {core.String onBehalfOfContentOwner}) {
     var _url = null;
@@ -5268,13 +5343,11 @@ class AccessPolicy {
    * or denied by default.
    */
   core.bool allowed;
-
   /**
    * A list of region codes that identify countries where the default policy do
    * not apply.
    */
   core.List<core.String> exception;
-
 
   AccessPolicy();
 
@@ -5299,7 +5372,6 @@ class AccessPolicy {
   }
 }
 
-
 /**
  * An activity resource contains information about an action that a particular
  * channel, or user, has taken on YouTube.The actions reported in activity feeds
@@ -5316,25 +5388,20 @@ class Activity {
    * then the contentDetails object's content identifies the rated video.
    */
   ActivityContentDetails contentDetails;
-
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the activity. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#activity".
    */
   core.String kind;
-
   /**
    * The snippet object contains basic details about the activity, including the
    * activity's type and group ID.
    */
   ActivitySnippet snippet;
-
 
   Activity();
 
@@ -5377,7 +5444,6 @@ class Activity {
   }
 }
 
-
 /**
  * Details about the content of an activity: the video that was shared, the
  * channel that was subscribed to, etc.
@@ -5388,73 +5454,62 @@ class ActivityContentDetails {
    * object is only present if the snippet.type is bulletin.
    */
   ActivityContentDetailsBulletin bulletin;
-
   /**
    * The channelItem object contains details about a resource which was added to
    * a channel. This property is only present if the snippet.type is
    * channelItem.
    */
   ActivityContentDetailsChannelItem channelItem;
-
   /**
    * The comment object contains information about a resource that received a
    * comment. This property is only present if the snippet.type is comment.
    */
   ActivityContentDetailsComment comment;
-
   /**
    * The favorite object contains information about a video that was marked as a
    * favorite video. This property is only present if the snippet.type is
    * favorite.
    */
   ActivityContentDetailsFavorite favorite;
-
   /**
    * The like object contains information about a resource that received a
    * positive (like) rating. This property is only present if the snippet.type
    * is like.
    */
   ActivityContentDetailsLike like;
-
   /**
    * The playlistItem object contains information about a new playlist item.
    * This property is only present if the snippet.type is playlistItem.
    */
   ActivityContentDetailsPlaylistItem playlistItem;
-
   /**
    * The promotedItem object contains details about a resource which is being
    * promoted. This property is only present if the snippet.type is
    * promotedItem.
    */
   ActivityContentDetailsPromotedItem promotedItem;
-
   /**
    * The recommendation object contains information about a recommended
    * resource. This property is only present if the snippet.type is
    * recommendation.
    */
   ActivityContentDetailsRecommendation recommendation;
-
   /**
    * The social object contains details about a social network post. This
    * property is only present if the snippet.type is social.
    */
   ActivityContentDetailsSocial social;
-
   /**
    * The subscription object contains information about a channel that a user
    * subscribed to. This property is only present if the snippet.type is
    * subscription.
    */
   ActivityContentDetailsSubscription subscription;
-
   /**
    * The upload object contains information about the uploaded video. This
    * property is only present if the snippet.type is upload.
    */
   ActivityContentDetailsUpload upload;
-
 
   ActivityContentDetails();
 
@@ -5533,7 +5588,6 @@ class ActivityContentDetails {
   }
 }
 
-
 /** Details about a channel bulletin post. */
 class ActivityContentDetailsBulletin {
   /**
@@ -5541,7 +5595,6 @@ class ActivityContentDetailsBulletin {
    * associated with a bulletin post.
    */
   ResourceId resourceId;
-
 
   ActivityContentDetailsBulletin();
 
@@ -5560,7 +5613,6 @@ class ActivityContentDetailsBulletin {
   }
 }
 
-
 /** Details about a resource which was added to a channel. */
 class ActivityContentDetailsChannelItem {
   /**
@@ -5568,7 +5620,6 @@ class ActivityContentDetailsChannelItem {
    * that was added to the channel.
    */
   ResourceId resourceId;
-
 
   ActivityContentDetailsChannelItem();
 
@@ -5587,7 +5638,6 @@ class ActivityContentDetailsChannelItem {
   }
 }
 
-
 /** Information about a resource that received a comment. */
 class ActivityContentDetailsComment {
   /**
@@ -5595,7 +5645,6 @@ class ActivityContentDetailsComment {
    * associated with the comment.
    */
   ResourceId resourceId;
-
 
   ActivityContentDetailsComment();
 
@@ -5614,7 +5663,6 @@ class ActivityContentDetailsComment {
   }
 }
 
-
 /** Information about a video that was marked as a favorite video. */
 class ActivityContentDetailsFavorite {
   /**
@@ -5622,7 +5670,6 @@ class ActivityContentDetailsFavorite {
    * that was marked as a favorite.
    */
   ResourceId resourceId;
-
 
   ActivityContentDetailsFavorite();
 
@@ -5641,7 +5688,6 @@ class ActivityContentDetailsFavorite {
   }
 }
 
-
 /** Information about a resource that received a positive (like) rating. */
 class ActivityContentDetailsLike {
   /**
@@ -5649,7 +5695,6 @@ class ActivityContentDetailsLike {
    * resource.
    */
   ResourceId resourceId;
-
 
   ActivityContentDetailsLike();
 
@@ -5668,21 +5713,17 @@ class ActivityContentDetailsLike {
   }
 }
 
-
 /** Information about a new playlist item. */
 class ActivityContentDetailsPlaylistItem {
   /** The value that YouTube uses to uniquely identify the playlist. */
   core.String playlistId;
-
   /** ID of the item within the playlist. */
   core.String playlistItemId;
-
   /**
    * The resourceId object contains information about the resource that was
    * added to the playlist.
    */
   ResourceId resourceId;
-
 
   ActivityContentDetailsPlaylistItem();
 
@@ -5713,24 +5754,20 @@ class ActivityContentDetailsPlaylistItem {
   }
 }
 
-
 /** Details about a resource which is being promoted. */
 class ActivityContentDetailsPromotedItem {
   /** The URL the client should fetch to request a promoted item. */
   core.String adTag;
-
   /**
    * The URL the client should ping to indicate that the user clicked through on
    * this promoted item.
    */
   core.String clickTrackingUrl;
-
   /**
    * The URL the client should ping to indicate that the user was shown this
    * promoted item.
    */
   core.String creativeViewUrl;
-
   /**
    * The type of call-to-action, a message to the user indicating action that
    * can be taken.
@@ -5739,38 +5776,31 @@ class ActivityContentDetailsPromotedItem {
    * - "visitAdvertiserSite"
    */
   core.String ctaType;
-
   /**
    * The custom call-to-action button text. If specified, it will override the
    * default button text for the cta_type.
    */
   core.String customCtaButtonText;
-
   /** The text description to accompany the promoted item. */
   core.String descriptionText;
-
   /**
    * The URL the client should direct the user to, if the user chooses to visit
    * the advertiser's website.
    */
   core.String destinationUrl;
-
   /**
    * The list of forecasting URLs. The client should ping all of these URLs when
    * a promoted item is not available, to indicate that a promoted item could
    * have been shown.
    */
   core.List<core.String> forecastingUrl;
-
   /**
    * The list of impression URLs. The client should ping all of these URLs to
    * indicate that the user was shown this promoted item.
    */
   core.List<core.String> impressionUrl;
-
   /** The ID that YouTube uses to uniquely identify the promoted video. */
   core.String videoId;
-
 
   ActivityContentDetailsPromotedItem();
 
@@ -5843,7 +5873,6 @@ class ActivityContentDetailsPromotedItem {
   }
 }
 
-
 /** Information that identifies the recommended resource. */
 class ActivityContentDetailsRecommendation {
   /**
@@ -5855,19 +5884,16 @@ class ActivityContentDetailsRecommendation {
    * - "videoWatched"
    */
   core.String reason;
-
   /**
    * The resourceId object contains information that identifies the recommended
    * resource.
    */
   ResourceId resourceId;
-
   /**
    * The seedResourceId object contains information about the resource that
    * caused the recommendation.
    */
   ResourceId seedResourceId;
-
 
   ActivityContentDetailsRecommendation();
 
@@ -5898,24 +5924,19 @@ class ActivityContentDetailsRecommendation {
   }
 }
 
-
 /** Details about a social network post. */
 class ActivityContentDetailsSocial {
   /** The author of the social network post. */
   core.String author;
-
   /** An image of the post's author. */
   core.String imageUrl;
-
   /** The URL of the social network post. */
   core.String referenceUrl;
-
   /**
    * The resourceId object encapsulates information that identifies the resource
    * associated with a social network post.
    */
   ResourceId resourceId;
-
   /**
    * The name of the social network.
    * Possible string values are:
@@ -5925,7 +5946,6 @@ class ActivityContentDetailsSocial {
    * - "unspecified"
    */
   core.String type;
-
 
   ActivityContentDetailsSocial();
 
@@ -5968,7 +5988,6 @@ class ActivityContentDetailsSocial {
   }
 }
 
-
 /** Information about a channel that a user subscribed to. */
 class ActivityContentDetailsSubscription {
   /**
@@ -5976,7 +5995,6 @@ class ActivityContentDetailsSubscription {
    * that the user subscribed to.
    */
   ResourceId resourceId;
-
 
   ActivityContentDetailsSubscription();
 
@@ -5995,12 +6013,10 @@ class ActivityContentDetailsSubscription {
   }
 }
 
-
 /** Information about the uploaded video. */
 class ActivityContentDetailsUpload {
   /** The ID that YouTube uses to uniquely identify the uploaded video. */
   core.String videoId;
-
 
   ActivityContentDetailsUpload();
 
@@ -6019,42 +6035,32 @@ class ActivityContentDetailsUpload {
   }
 }
 
-
 class ActivityListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of activities, or events, that match the request criteria. */
   core.List<Activity> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#activityListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the previous page in the result set.
    */
   core.String prevPageToken;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   ActivityListResponse();
 
@@ -6121,7 +6127,6 @@ class ActivityListResponse {
   }
 }
 
-
 /**
  * Basic details about an activity, including title, description, thumbnails,
  * activity type and group.
@@ -6132,15 +6137,12 @@ class ActivitySnippet {
    * the activity.
    */
   core.String channelId;
-
   /** Channel title for the channel responsible for this activity */
   core.String channelTitle;
-
   /**
    * The description of the resource primarily associated with the activity.
    */
   core.String description;
-
   /**
    * The group ID associated with the activity. A group ID identifies user
    * events that are associated with the same user and resource. For example, if
@@ -6150,13 +6152,11 @@ class ActivitySnippet {
    * the same groupId value.
    */
   core.String groupId;
-
   /**
    * The date and time that the video was uploaded. The value is specified in
    * ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime publishedAt;
-
   /**
    * A map of thumbnail images associated with the resource that is primarily
    * associated with the activity. For each object in the map, the key is the
@@ -6164,10 +6164,8 @@ class ActivitySnippet {
    * information about the thumbnail.
    */
   ThumbnailDetails thumbnails;
-
   /** The title of the resource primarily associated with the activity. */
   core.String title;
-
   /**
    * The type of activity that the resource describes.
    * Possible string values are:
@@ -6184,7 +6182,6 @@ class ActivitySnippet {
    * - "upload"
    */
   core.String type;
-
 
   ActivitySnippet();
 
@@ -6245,7 +6242,6 @@ class ActivitySnippet {
   }
 }
 
-
 /**
  * A caption resource represents a YouTube caption track. A caption track is
  * associated with exactly one YouTube video.
@@ -6253,19 +6249,15 @@ class ActivitySnippet {
 class Caption {
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the caption track. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#caption".
    */
   core.String kind;
-
   /** The snippet object contains basic details about the caption. */
   CaptionSnippet snippet;
-
 
   Caption();
 
@@ -6302,26 +6294,20 @@ class Caption {
   }
 }
 
-
 class CaptionListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of captions that match the request criteria. */
   core.List<Caption> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#captionListResponse".
    */
   core.String kind;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   CaptionListResponse();
 
@@ -6364,7 +6350,6 @@ class CaptionListResponse {
   }
 }
 
-
 /** Basic details about a caption track, such as its language and name. */
 class CaptionSnippet {
   /**
@@ -6376,7 +6361,6 @@ class CaptionSnippet {
    * - "unknown"
    */
   core.String audioTrackType;
-
   /**
    * The reason that YouTube failed to process the caption track. This property
    * is only present if the state property's value is failed.
@@ -6386,7 +6370,6 @@ class CaptionSnippet {
    * - "unsupportedFormat"
    */
   core.String failureReason;
-
   /**
    * Indicates whether YouTube synchronized the caption track to the audio track
    * in the video. The value will be true if a sync was explicitly requested
@@ -6397,50 +6380,42 @@ class CaptionSnippet {
    * to determine when to display captions.
    */
   core.bool isAutoSynced;
-
   /**
    * Indicates whether the track contains closed captions for the deaf and hard
    * of hearing. The default value is false.
    */
   core.bool isCC;
-
   /**
    * Indicates whether the caption track is a draft. If the value is true, then
    * the track is not publicly visible. The default value is false.
    */
   core.bool isDraft;
-
   /**
    * Indicates whether caption track is formatted for "easy reader," meaning it
    * is at a third-grade level for language learners. The default value is
    * false.
    */
   core.bool isEasyReader;
-
   /**
    * Indicates whether the caption track uses large text for the
    * vision-impaired. The default value is false.
    */
   core.bool isLarge;
-
   /**
    * The language of the caption track. The property value is a BCP-47 language
    * tag.
    */
   core.String language;
-
   /**
    * The date and time when the caption track was last updated. The value is
    * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime lastUpdated;
-
   /**
    * The name of the caption track. The name is intended to be visible to the
    * user as an option during playback.
    */
   core.String name;
-
   /**
    * The caption track's status.
    * Possible string values are:
@@ -6449,7 +6424,6 @@ class CaptionSnippet {
    * - "syncing"
    */
   core.String status;
-
   /**
    * The caption track's type.
    * Possible string values are:
@@ -6458,13 +6432,11 @@ class CaptionSnippet {
    * - "standard"
    */
   core.String trackKind;
-
   /**
    * The ID that YouTube uses to uniquely identify the video associated with the
    * caption track.
    */
   core.String videoId;
-
 
   CaptionSnippet();
 
@@ -6555,18 +6527,15 @@ class CaptionSnippet {
   }
 }
 
-
 /** Brief description of the live stream cdn settings. */
 class CdnSettings {
   /** The format of the video stream that you are sending to Youtube. */
   core.String format;
-
   /**
    * The ingestionInfo object contains information that YouTube provides that
    * you need to transmit your RTMP or HTTP stream to YouTube.
    */
   IngestionInfo ingestionInfo;
-
   /**
    * The method or protocol used to transmit the video stream.
    * Possible string values are:
@@ -6574,7 +6543,6 @@ class CdnSettings {
    * - "rtmp"
    */
   core.String ingestionType;
-
 
   CdnSettings();
 
@@ -6605,7 +6573,6 @@ class CdnSettings {
   }
 }
 
-
 /** A channel resource contains information about a YouTube channel. */
 class Channel {
   /**
@@ -6613,73 +6580,59 @@ class Channel {
    * YouTube Partners during the audition process.
    */
   ChannelAuditDetails auditDetails;
-
   /**
    * The brandingSettings object encapsulates information about the branding of
    * the channel.
    */
   ChannelBrandingSettings brandingSettings;
-
   /**
    * The contentDetails object encapsulates information about the channel's
    * content.
    */
   ChannelContentDetails contentDetails;
-
   /**
    * The contentOwnerDetails object encapsulates channel data that is relevant
    * for YouTube Partners linked with the channel.
    */
   ChannelContentOwnerDetails contentOwnerDetails;
-
   /**
    * The conversionPings object encapsulates information about conversion pings
    * that need to be respected by the channel.
    */
   ChannelConversionPings conversionPings;
-
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the channel. */
   core.String id;
-
   /**
    * The invideoPromotion object encapsulates information about promotion
    * campaign associated with the channel.
    */
   InvideoPromotion invideoPromotion;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#channel".
    */
   core.String kind;
-
   /** Localizations for different languages */
   core.Map<core.String, ChannelLocalization> localizations;
-
   /**
    * The snippet object contains basic details about the channel, such as its
    * title, description, and thumbnail images.
    */
   ChannelSnippet snippet;
-
   /** The statistics object encapsulates statistics for the channel. */
   ChannelStatistics statistics;
-
   /**
    * The status object encapsulates information about the privacy status of the
    * channel.
    */
   ChannelStatus status;
-
   /**
    * The topicDetails object encapsulates information about Freebase topics
    * associated with the channel.
    */
   ChannelTopicDetails topicDetails;
-
 
   Channel();
 
@@ -6776,7 +6729,6 @@ class Channel {
   }
 }
 
-
 /**
  * The auditDetails object encapsulates channel data that is relevant for
  * YouTube Partners during the audit process.
@@ -6784,13 +6736,10 @@ class Channel {
 class ChannelAuditDetails {
   /** Whether or not the channel respects the community guidelines. */
   core.bool communityGuidelinesGoodStanding;
-
   /** Whether or not the channel has any unresolved claims. */
   core.bool contentIdClaimsGoodStanding;
-
   /** Whether or not the channel has any copyright strikes. */
   core.bool copyrightStrikesGoodStanding;
-
   /**
    * Describes the general state of the channel. This field will always show if
    * there are any issues whatsoever with the channel. Currently this field
@@ -6799,7 +6748,6 @@ class ChannelAuditDetails {
    * content ID claims good standing, but this may change in the future.
    */
   core.bool overallGoodStanding;
-
 
   ChannelAuditDetails();
 
@@ -6836,23 +6784,19 @@ class ChannelAuditDetails {
   }
 }
 
-
 /**
  * A channel banner returned as the response to a channel_banner.insert call.
  */
 class ChannelBannerResource {
   /** Etag of this resource. */
   core.String etag;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#channelBannerResource".
    */
   core.String kind;
-
   /** The URL of this banner image. */
   core.String url;
-
 
   ChannelBannerResource();
 
@@ -6883,21 +6827,16 @@ class ChannelBannerResource {
   }
 }
 
-
 /** Branding properties of a YouTube channel. */
 class ChannelBrandingSettings {
   /** Branding properties for the channel view. */
   ChannelSettings channel;
-
   /** Additional experimental branding properties. */
   core.List<PropertyValue> hints;
-
   /** Branding properties for branding images. */
   ImageSettings image;
-
   /** Branding properties for the watch page. */
   WatchSettings watch;
-
 
   ChannelBrandingSettings();
 
@@ -6934,7 +6873,6 @@ class ChannelBrandingSettings {
   }
 }
 
-
 class ChannelContentDetailsRelatedPlaylists {
   /**
    * The ID of the playlist that contains the channel"s favorite videos. Use the
@@ -6942,35 +6880,30 @@ class ChannelContentDetailsRelatedPlaylists {
    * that list.
    */
   core.String favorites;
-
   /**
    * The ID of the playlist that contains the channel"s liked videos. Use the
    * playlistItems.insert and  playlistItems.delete to add or remove items from
    * that list.
    */
   core.String likes;
-
   /**
    * The ID of the playlist that contains the channel"s uploaded videos. Use the
    * videos.insert method to upload new videos and the videos.delete method to
    * delete previously uploaded videos.
    */
   core.String uploads;
-
   /**
    * The ID of the playlist that contains the channel"s watch history. Use the
    * playlistItems.insert and  playlistItems.delete to add or remove items from
    * that list.
    */
   core.String watchHistory;
-
   /**
    * The ID of the playlist that contains the channel"s watch later playlist.
    * Use the playlistItems.insert and  playlistItems.delete to add or remove
    * items from that list.
    */
   core.String watchLater;
-
 
   ChannelContentDetailsRelatedPlaylists();
 
@@ -7013,7 +6946,6 @@ class ChannelContentDetailsRelatedPlaylists {
   }
 }
 
-
 /** Details about the content of a channel. */
 class ChannelContentDetails {
   /**
@@ -7021,9 +6953,7 @@ class ChannelContentDetails {
    * with this channel.
    */
   core.String googlePlusUserId;
-
   ChannelContentDetailsRelatedPlaylists relatedPlaylists;
-
 
   ChannelContentDetails();
 
@@ -7048,7 +6978,6 @@ class ChannelContentDetails {
   }
 }
 
-
 /**
  * The contentOwnerDetails object encapsulates channel data that is relevant for
  * YouTube Partners linked with the channel.
@@ -7056,13 +6985,11 @@ class ChannelContentDetails {
 class ChannelContentOwnerDetails {
   /** The ID of the content owner linked to the channel. */
   core.String contentOwner;
-
   /**
    * The date and time of when the channel was linked to the content owner. The
    * value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime timeLinked;
-
 
   ChannelContentOwnerDetails();
 
@@ -7087,7 +7014,6 @@ class ChannelContentOwnerDetails {
   }
 }
 
-
 /**
  * Pings that the app shall fire (authenticated by biscotti cookie). Each ping
  * has a context, in which the app must fire the ping, and a url identifying the
@@ -7102,7 +7028,6 @@ class ChannelConversionPing {
    * - "unsubscribe"
    */
   core.String context;
-
   /**
    * The url (without the schema) that the player shall send the ping to. It's
    * at caller's descretion to decide which schema to use (http vs https)
@@ -7113,7 +7038,6 @@ class ChannelConversionPing {
    * ping.
    */
   core.String conversionUrl;
-
 
   ChannelConversionPing();
 
@@ -7138,7 +7062,6 @@ class ChannelConversionPing {
   }
 }
 
-
 /**
  * The conversionPings object encapsulates information about conversion pings
  * that need to be respected by the channel.
@@ -7150,7 +7073,6 @@ class ChannelConversionPings {
    * the ping.
    */
   core.List<ChannelConversionPing> pings;
-
 
   ChannelConversionPings();
 
@@ -7169,10 +7091,8 @@ class ChannelConversionPings {
   }
 }
 
-
 class ChannelId {
   core.String value;
-
 
   ChannelId();
 
@@ -7191,42 +7111,32 @@ class ChannelId {
   }
 }
 
-
 class ChannelListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of channels that match the request criteria. */
   core.List<Channel> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#channelListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the previous page in the result set.
    */
   core.String prevPageToken;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   ChannelListResponse();
 
@@ -7293,15 +7203,12 @@ class ChannelListResponse {
   }
 }
 
-
 /** Channel localization setting */
 class ChannelLocalization {
   /** The localized strings for channel's description. */
   core.String description;
-
-  /** The localized strings for channel's title, read-only. */
+  /** The localized strings for channel's title. */
   core.String title;
-
 
   ChannelLocalization();
 
@@ -7326,35 +7233,33 @@ class ChannelLocalization {
   }
 }
 
-
 class ChannelSection {
   /**
    * The contentDetails object contains details about the channel section
    * content, such as a list of playlists or channels featured in the section.
    */
   ChannelSectionContentDetails contentDetails;
-
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the channel section. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#channelSection".
    */
   core.String kind;
-
   /** Localizations for different languages */
   core.Map<core.String, ChannelSectionLocalization> localizations;
-
   /**
    * The snippet object contains basic details about the channel section, such
    * as its type, style and title.
    */
   ChannelSectionSnippet snippet;
-
+  /**
+   * The targeting object contains basic targeting settings about the channel
+   * section.
+   */
+  ChannelSectionTargeting targeting;
 
   ChannelSection();
 
@@ -7376,6 +7281,9 @@ class ChannelSection {
     }
     if (_json.containsKey("snippet")) {
       snippet = new ChannelSectionSnippet.fromJson(_json["snippet"]);
+    }
+    if (_json.containsKey("targeting")) {
+      targeting = new ChannelSectionTargeting.fromJson(_json["targeting"]);
     }
   }
 
@@ -7399,22 +7307,22 @@ class ChannelSection {
     if (snippet != null) {
       _json["snippet"] = (snippet).toJson();
     }
+    if (targeting != null) {
+      _json["targeting"] = (targeting).toJson();
+    }
     return _json;
   }
 }
-
 
 /** Details about a channelsection, including playlists and channels. */
 class ChannelSectionContentDetails {
   /** The channel ids for type multiple_channels. */
   core.List<core.String> channels;
-
   /**
    * The playlist ids for type single_playlist and multiple_playlists. For
    * singlePlaylist, only one playlistId is allowed.
    */
   core.List<core.String> playlists;
-
 
   ChannelSectionContentDetails();
 
@@ -7439,26 +7347,20 @@ class ChannelSectionContentDetails {
   }
 }
 
-
 class ChannelSectionListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of ChannelSections that match the request criteria. */
   core.List<ChannelSection> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#channelSectionListResponse".
    */
   core.String kind;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   ChannelSectionListResponse();
 
@@ -7501,12 +7403,10 @@ class ChannelSectionListResponse {
   }
 }
 
-
 /** ChannelSection localization setting */
 class ChannelSectionLocalization {
   /** The localized strings for channel section's title. */
   core.String title;
-
 
   ChannelSectionLocalization();
 
@@ -7525,7 +7425,6 @@ class ChannelSectionLocalization {
   }
 }
 
-
 /**
  * Basic details about a channel section, including title, style and position.
  */
@@ -7535,16 +7434,12 @@ class ChannelSectionSnippet {
    * the channel section.
    */
   core.String channelId;
-
   /** The language of the channel section's default title and description. */
   core.String defaultLanguage;
-
   /** Localized title, read-only. */
   ChannelSectionLocalization localized;
-
   /** The position of the channel section in the channel. */
   core.int position;
-
   /**
    * The style of the channel section.
    * Possible string values are:
@@ -7553,12 +7448,10 @@ class ChannelSectionSnippet {
    * - "verticalList"
    */
   core.String style;
-
   /**
    * The channel section's title for multiple_playlists and multiple_channels.
    */
   core.String title;
-
   /**
    * The type of the channel section.
    * Possible string values are:
@@ -7581,7 +7474,6 @@ class ChannelSectionSnippet {
    * - "upcomingEvents"
    */
   core.String type;
-
 
   ChannelSectionSnippet();
 
@@ -7636,57 +7528,86 @@ class ChannelSectionSnippet {
   }
 }
 
+/** ChannelSection targeting setting. */
+class ChannelSectionTargeting {
+  /** The country the channel section is targeting. */
+  core.List<core.String> countries;
+  /** The language the channel section is targeting. */
+  core.List<core.String> languages;
+  /** The region the channel section is targeting. */
+  core.List<core.String> regions;
+
+  ChannelSectionTargeting();
+
+  ChannelSectionTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("countries")) {
+      countries = _json["countries"];
+    }
+    if (_json.containsKey("languages")) {
+      languages = _json["languages"];
+    }
+    if (_json.containsKey("regions")) {
+      regions = _json["regions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (countries != null) {
+      _json["countries"] = countries;
+    }
+    if (languages != null) {
+      _json["languages"] = languages;
+    }
+    if (regions != null) {
+      _json["regions"] = regions;
+    }
+    return _json;
+  }
+}
 
 /** Branding properties for the channel view. */
 class ChannelSettings {
+  /** The country of the channel. */
+  core.String country;
   core.String defaultLanguage;
-
   /** Which content tab users should see when viewing the channel. */
   core.String defaultTab;
-
   /** Specifies the channel description. */
   core.String description;
-
   /** Title for the featured channels tab. */
   core.String featuredChannelsTitle;
-
   /** The list of featured channels. */
   core.List<core.String> featuredChannelsUrls;
-
   /** Lists keywords associated with the channel, comma-separated. */
   core.String keywords;
-
   /**
    * Whether user-submitted comments left on the channel page need to be
    * approved by the channel owner to be publicly visible.
    */
   core.bool moderateComments;
-
   /** A prominent color that can be rendered on this channel page. */
   core.String profileColor;
-
   /** Whether the tab to browse the videos should be displayed. */
   core.bool showBrowseView;
-
   /** Whether related channels should be proposed. */
   core.bool showRelatedChannels;
-
   /** Specifies the channel title. */
   core.String title;
-
   /**
    * The ID for a Google Analytics account to track and measure traffic to the
    * channels.
    */
   core.String trackingAnalyticsAccountId;
-
   /** The trailer of the channel, for users that are not subscribers. */
   core.String unsubscribedTrailer;
-
 
   ChannelSettings();
 
   ChannelSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
     if (_json.containsKey("defaultLanguage")) {
       defaultLanguage = _json["defaultLanguage"];
     }
@@ -7730,6 +7651,9 @@ class ChannelSettings {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (country != null) {
+      _json["country"] = country;
+    }
     if (defaultLanguage != null) {
       _json["defaultLanguage"] = defaultLanguage;
     }
@@ -7773,40 +7697,38 @@ class ChannelSettings {
   }
 }
 
-
 /**
  * Basic details about a channel, including title, description and thumbnails.
  */
 class ChannelSnippet {
+  /** The country of the channel. */
+  core.String country;
   /** The language of the channel's default title and description. */
   core.String defaultLanguage;
-
   /** The description of the channel. */
   core.String description;
-
   /** Localized title and description, read-only. */
   ChannelLocalization localized;
-
   /**
    * The date and time that the channel was created. The value is specified in
    * ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime publishedAt;
-
   /**
    * A map of thumbnail images associated with the channel. For each object in
    * the map, the key is the name of the thumbnail image, and the value is an
    * object that contains other information about the thumbnail.
    */
   ThumbnailDetails thumbnails;
-
   /** The channel's title. */
   core.String title;
-
 
   ChannelSnippet();
 
   ChannelSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
     if (_json.containsKey("defaultLanguage")) {
       defaultLanguage = _json["defaultLanguage"];
     }
@@ -7829,6 +7751,9 @@ class ChannelSnippet {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (country != null) {
+      _json["country"] = country;
+    }
     if (defaultLanguage != null) {
       _json["defaultLanguage"] = defaultLanguage;
     }
@@ -7851,7 +7776,6 @@ class ChannelSnippet {
   }
 }
 
-
 /**
  * Statistics about a channel: number of subscribers, number of videos in the
  * channel, etc.
@@ -7859,19 +7783,14 @@ class ChannelSnippet {
 class ChannelStatistics {
   /** The number of comments for the channel. */
   core.String commentCount;
-
   /** Whether or not the number of subscribers is shown for this user. */
   core.bool hiddenSubscriberCount;
-
   /** The number of subscribers that the channel has. */
   core.String subscriberCount;
-
   /** The number of videos uploaded to the channel. */
   core.String videoCount;
-
   /** The number of times the channel has been viewed. */
   core.String viewCount;
-
 
   ChannelStatistics();
 
@@ -7914,7 +7833,6 @@ class ChannelStatistics {
   }
 }
 
-
 /** JSON template for the status part of a channel. */
 class ChannelStatus {
   /**
@@ -7922,7 +7840,6 @@ class ChannelStatus {
    * account. Otherwise, the user doesn't have a public YouTube identity.
    */
   core.bool isLinked;
-
   /**
    * The long uploads status of this channel. See
    * Possible string values are:
@@ -7932,7 +7849,6 @@ class ChannelStatus {
    * - "longUploadsUnspecified"
    */
   core.String longUploadsStatus;
-
   /**
    * Privacy status of the channel.
    * Possible string values are:
@@ -7941,7 +7857,6 @@ class ChannelStatus {
    * - "unlisted"
    */
   core.String privacyStatus;
-
 
   ChannelStatus();
 
@@ -7972,7 +7887,6 @@ class ChannelStatus {
   }
 }
 
-
 /** Freebase topic information related to the channel. */
 class ChannelTopicDetails {
   /**
@@ -7980,7 +7894,6 @@ class ChannelTopicDetails {
    * information about each topic using the Freebase Topic API.
    */
   core.List<core.String> topicIds;
-
 
   ChannelTopicDetails();
 
@@ -7999,24 +7912,19 @@ class ChannelTopicDetails {
   }
 }
 
-
 /** A comment represents a single YouTube comment. */
 class Comment {
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the comment. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#comment".
    */
   core.String kind;
-
   /** The snippet object contains basic details about the comment. */
   CommentSnippet snippet;
-
 
   Comment();
 
@@ -8053,36 +7961,27 @@ class Comment {
   }
 }
 
-
 class CommentListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of comments that match the request criteria. */
   core.List<Comment> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#commentListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   CommentListResponse();
 
@@ -8143,37 +8042,28 @@ class CommentListResponse {
   }
 }
 
-
 /** Basic details about a comment, such as its author and text. */
 class CommentSnippet {
   /** The id of the author's YouTube channel, if any. */
   ChannelId authorChannelId;
-
   /** Link to the author's YouTube channel, if any. */
   core.String authorChannelUrl;
-
   /** The name of the user who posted the comment. */
   core.String authorDisplayName;
-
   /** Link to the author's Google+ profile, if any. */
   core.String authorGoogleplusProfileUrl;
-
   /** The URL for the avatar of the user who posted the comment. */
   core.String authorProfileImageUrl;
-
   /** Whether the current viewer can rate this comment. */
   core.bool canRate;
-
   /**
    * The id of the corresponding YouTube channel. In case of a channel comment
    * this is the channel the comment refers to. In case of a video comment it's
    * the video's channel.
    */
   core.String channelId;
-
   /** The total number of likes this comment has received. */
   core.int likeCount;
-
   /**
    * The comment's moderation status. Will not be set if the comments were
    * requested through the id filter.
@@ -8184,16 +8074,13 @@ class CommentSnippet {
    * - "rejected"
    */
   core.String moderationStatus;
-
   /** The unique id of the parent comment, only set for replies. */
   core.String parentId;
-
   /**
    * The date and time when the comment was orignally published. The value is
    * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime publishedAt;
-
   /**
    * The comment's text. The format is either plain text or HTML dependent on
    * what has been requested. Even the plain text representation may differ from
@@ -8201,23 +8088,19 @@ class CommentSnippet {
    * titles etc.
    */
   core.String textDisplay;
-
   /**
    * The comment's original raw text as initially posted or last updated. The
    * original text will only be returned if it is accessible to the viewer,
    * which is only guaranteed if the viewer is the comment's author.
    */
   core.String textOriginal;
-
   /**
    * The date and time when was last updated . The value is specified in ISO
    * 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime updatedAt;
-
   /** The ID of the video the comment refers to, if any. */
   core.String videoId;
-
   /**
    * The rating the viewer has given to this comment. For the time being this
    * will never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE. This
@@ -8229,7 +8112,6 @@ class CommentSnippet {
    * - "unspecified"
    */
   core.String viewerRating;
-
 
   CommentSnippet();
 
@@ -8338,7 +8220,6 @@ class CommentSnippet {
   }
 }
 
-
 /**
  * A comment thread represents information that applies to a top level comment
  * and all its replies. It can also include the top level comment itself and
@@ -8347,28 +8228,23 @@ class CommentSnippet {
 class CommentThread {
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the comment thread. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#commentThread".
    */
   core.String kind;
-
   /**
    * The replies object contains a limited number of replies (if any) to the top
    * level comment found in the snippet.
    */
   CommentThreadReplies replies;
-
   /**
    * The snippet object contains basic details about the comment thread and also
    * the top level comment.
    */
   CommentThreadSnippet snippet;
-
 
   CommentThread();
 
@@ -8411,36 +8287,27 @@ class CommentThread {
   }
 }
 
-
 class CommentThreadListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of comment threads that match the request criteria. */
   core.List<CommentThread> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#commentThreadListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   CommentThreadListResponse();
 
@@ -8501,7 +8368,6 @@ class CommentThreadListResponse {
   }
 }
 
-
 /** Comments written in (direct or indirect) reply to the top level comment. */
 class CommentThreadReplies {
   /**
@@ -8510,7 +8376,6 @@ class CommentThreadReplies {
    * the total number of replies.
    */
   core.List<Comment> comments;
-
 
   CommentThreadReplies();
 
@@ -8529,7 +8394,6 @@ class CommentThreadReplies {
   }
 }
 
-
 /** Basic details about a comment thread. */
 class CommentThreadSnippet {
   /**
@@ -8537,32 +8401,26 @@ class CommentThreadSnippet {
    * specific - other viewers may see a different value for this field.
    */
   core.bool canReply;
-
   /**
    * The YouTube channel the comments in the thread refer to or the channel with
    * the video the comments refer to. If video_id isn't set the comments refer
    * to the channel itself.
    */
   core.String channelId;
-
   /**
    * Whether the thread (and therefore all its comments) is visible to all
    * YouTube users.
    */
   core.bool isPublic;
-
   /** The top level comment of this thread. */
   Comment topLevelComment;
-
   /** The total number of replies (not including the top level comment). */
   core.int totalReplyCount;
-
   /**
    * The ID of the video the comments refer to, if any. No video_id implies a
    * channel discussion comment.
    */
   core.String videoId;
-
 
   CommentThreadSnippet();
 
@@ -8611,7 +8469,6 @@ class CommentThreadSnippet {
   }
 }
 
-
 /**
  * Ratings schemes. The country-specific ratings are mostly for movies and
  * shows. NEXT_ID: 65
@@ -8631,7 +8488,6 @@ class ContentRating {
    * - "acbUnrated"
    */
   core.String acbRating;
-
   /**
    * Rating system for Italy - Autorit� per le Garanzie nelle Comunicazioni
    * Possible string values are:
@@ -8641,7 +8497,6 @@ class ContentRating {
    * - "agcomVm18"
    */
   core.String agcomRating;
-
   /**
    * Rating system for Chile - Asociaci�n Nacional de Televisi�n
    * Possible string values are:
@@ -8655,7 +8510,6 @@ class ContentRating {
    * - "anatelUnrated"
    */
   core.String anatelRating;
-
   /**
    * British Board of Film Classification
    * Possible string values are:
@@ -8669,7 +8523,6 @@ class ContentRating {
    * - "bbfcUnrated"
    */
   core.String bbfcRating;
-
   /**
    * Rating system for Thailand - Board of Filmand Video Censors
    * Possible string values are:
@@ -8683,7 +8536,6 @@ class ContentRating {
    * - "bfvcUnrated"
    */
   core.String bfvcRating;
-
   /**
    * Rating system for Austria - Bundesministeriums f�r Unterricht, Kunst und
    * Kultur!
@@ -8698,7 +8550,6 @@ class ContentRating {
    * - "bmukkUnrated"
    */
   core.String bmukkRating;
-
   /**
    * Rating system for Canadian TV - Canadian TV Classification System
    * Possible string values are:
@@ -8711,7 +8562,6 @@ class ContentRating {
    * - "catvUnrated"
    */
   core.String catvRating;
-
   /**
    * Rating system for French Canadian TV - Regie du cinema
    * Possible string values are:
@@ -8723,7 +8573,6 @@ class ContentRating {
    * - "catvfrUnrated"
    */
   core.String catvfrRating;
-
   /**
    * Rating system in India - Central Board of Film Certification
    * Possible string values are:
@@ -8734,7 +8583,6 @@ class ContentRating {
    * - "cbfcUnrated"
    */
   core.String cbfcRating;
-
   /**
    * Rating system for Chile - Consejo de Calificaci�n Cinematogr�fica
    * Possible string values are:
@@ -8747,7 +8595,6 @@ class ContentRating {
    * - "cccUnrated"
    */
   core.String cccRating;
-
   /**
    * Rating system for Portugal - Comiss�o de Classifica��o de Espect�culos
    * Possible string values are:
@@ -8759,7 +8606,6 @@ class ContentRating {
    * - "cceUnrated"
    */
   core.String cceRating;
-
   /**
    * Rating system for Switzerland - Switzerland Rating System
    * Possible string values are:
@@ -8771,7 +8617,6 @@ class ContentRating {
    * - "chfilmUnrated"
    */
   core.String chfilmRating;
-
   /**
    * Canadian Home Video Rating System
    * Possible string values are:
@@ -8784,7 +8629,6 @@ class ContentRating {
    * - "chvrsUnrated"
    */
   core.String chvrsRating;
-
   /**
    * Rating system for Belgium - Belgium Rating System
    * Possible string values are:
@@ -8794,7 +8638,6 @@ class ContentRating {
    * - "cicfUnrated"
    */
   core.String cicfRating;
-
   /**
    * Rating system for Romania - CONSILIUL NATIONAL AL AUDIOVIZUALULUI - CNA
    * Possible string values are:
@@ -8806,7 +8649,6 @@ class ContentRating {
    * - "cnaUnrated"
    */
   core.String cnaRating;
-
   /**
    * Rating system for France - Conseil sup�rieur de l?audiovisuel
    * Possible string values are:
@@ -8818,7 +8660,6 @@ class ContentRating {
    * - "csaUnrated"
    */
   core.String csaRating;
-
   /**
    * Rating system for Luxembourg - Commission de surveillance de la
    * classification des films
@@ -8831,7 +8672,6 @@ class ContentRating {
    * - "cscfUnrated"
    */
   core.String cscfRating;
-
   /**
    * Rating system for Czech republic - Czech republic Rating System
    * Possible string values are:
@@ -8842,7 +8682,6 @@ class ContentRating {
    * - "czfilmUnrated"
    */
   core.String czfilmRating;
-
   /**
    * Rating system in Brazil - Department of Justice, Rating, Titles and
    * Qualification
@@ -8856,9 +8695,7 @@ class ContentRating {
    * - "djctqUnrated"
    */
   core.String djctqRating;
-
   core.List<core.String> djctqRatingReasons;
-
   /**
    * Rating system for Estonia - Estonia Rating System
    * Possible string values are:
@@ -8873,7 +8710,6 @@ class ContentRating {
    * - "eefilmUnrated"
    */
   core.String eefilmRating;
-
   /**
    * Rating system for Egypt - Egypt Rating System
    * Possible string values are:
@@ -8883,7 +8719,6 @@ class ContentRating {
    * - "egfilmUnrated"
    */
   core.String egfilmRating;
-
   /**
    * Rating system in Japan - Eiga Rinri Kanri Iinkai
    * Possible string values are:
@@ -8894,7 +8729,6 @@ class ContentRating {
    * - "eirinUnrated"
    */
   core.String eirinRating;
-
   /**
    * Rating system for Malaysia - Film Censorship Board of Malaysia
    * Possible string values are:
@@ -8908,7 +8742,6 @@ class ContentRating {
    * - "fcbmUnrated"
    */
   core.String fcbmRating;
-
   /**
    * Rating system for Hong kong - Office for Film, Newspaper and Article
    * Administration
@@ -8920,7 +8753,6 @@ class ContentRating {
    * - "fcoUnrated"
    */
   core.String fcoRating;
-
   /**
    * Rating system in France - French Minister of Culture
    * Possible string values are:
@@ -8933,7 +8765,6 @@ class ContentRating {
    * - "fmocUnrated"
    */
   core.String fmocRating;
-
   /**
    * Rating system for South africa - Film & Publication Board
    * Possible string values are:
@@ -8949,7 +8780,6 @@ class ContentRating {
    * - "fpbXx"
    */
   core.String fpbRating;
-
   /**
    * Rating system in Germany - Voluntary Self Regulation of the Movie Industry
    * Possible string values are:
@@ -8961,7 +8791,6 @@ class ContentRating {
    * - "fskUnrated"
    */
   core.String fskRating;
-
   /**
    * Rating system for Greece - Greece Rating System
    * Possible string values are:
@@ -8972,7 +8801,6 @@ class ContentRating {
    * - "grfilmUnrated"
    */
   core.String grfilmRating;
-
   /**
    * Rating system in Spain - Instituto de Cinematografia y de las Artes
    * Audiovisuales
@@ -8987,7 +8815,6 @@ class ContentRating {
    * - "icaaX"
    */
   core.String icaaRating;
-
   /**
    * Rating system in Ireland - Irish Film Classification Office
    * Possible string values are:
@@ -8999,7 +8826,6 @@ class ContentRating {
    * - "ifcoUnrated"
    */
   core.String ifcoRating;
-
   /**
    * Rating system for Israel - Israel Rating System
    * Possible string values are:
@@ -9010,7 +8836,6 @@ class ContentRating {
    * - "ilfilmUnrated"
    */
   core.String ilfilmRating;
-
   /**
    * Rating system for Argentina - Instituto Nacional de Cine y Artes
    * Audiovisuales
@@ -9023,7 +8848,6 @@ class ContentRating {
    * - "incaaUnrated"
    */
   core.String incaaRating;
-
   /**
    * Rating system for Kenya - Kenya Film Classification Board
    * Possible string values are:
@@ -9034,7 +8858,6 @@ class ContentRating {
    * - "kfcbUnrated"
    */
   core.String kfcbRating;
-
   /**
    * Rating system for Netherlands - Nederlands Instituut voor de Classificatie
    * van Audiovisuele Media
@@ -9047,7 +8870,6 @@ class ContentRating {
    * - "kijkwijzerUnrated"
    */
   core.String kijkwijzerRating;
-
   /**
    * Rating system in South Korea - Korea Media Rating Board
    * Possible string values are:
@@ -9059,7 +8881,6 @@ class ContentRating {
    * - "kmrbUnrated"
    */
   core.String kmrbRating;
-
   /**
    * Rating system for Indonesia - Lembaga Sensor Film
    * Possible string values are:
@@ -9071,7 +8892,6 @@ class ContentRating {
    * - "lsfUnrated"
    */
   core.String lsfRating;
-
   /**
    * Rating system for Malta - Film Age-Classification Board
    * Possible string values are:
@@ -9086,7 +8906,6 @@ class ContentRating {
    * - "mccaaUnrated"
    */
   core.String mccaaRating;
-
   /**
    * Rating system for Denmark - The Media Council for Children and Young People
    * Possible string values are:
@@ -9097,7 +8916,6 @@ class ContentRating {
    * - "mccypUnrated"
    */
   core.String mccypRating;
-
   /**
    * Rating system for Singapore - Media Development Authority
    * Possible string values are:
@@ -9110,7 +8928,6 @@ class ContentRating {
    * - "mdaUnrated"
    */
   core.String mdaRating;
-
   /**
    * Rating system for Norway - Medietilsynet
    * Possible string values are:
@@ -9122,7 +8939,6 @@ class ContentRating {
    * - "medietilsynetUnrated"
    */
   core.String medietilsynetRating;
-
   /**
    * Rating system for Finland - Finnish Centre for Media Education and
    * Audiovisual Media
@@ -9135,7 +8951,6 @@ class ContentRating {
    * - "mekuUnrated"
    */
   core.String mekuRating;
-
   /**
    * Rating system in Italy - Ministero dei Beni e delle Attivita Culturali e
    * del Turismo
@@ -9148,7 +8963,6 @@ class ContentRating {
    * - "mibacVm18"
    */
   core.String mibacRating;
-
   /**
    * Rating system for Colombia - MoC
    * Possible string values are:
@@ -9163,7 +8977,6 @@ class ContentRating {
    * - "mocX"
    */
   core.String mocRating;
-
   /**
    * Rating system for Taiwan - Ministry of Culture - Tawan
    * Possible string values are:
@@ -9174,7 +8987,6 @@ class ContentRating {
    * - "moctwUnrated"
    */
   core.String moctwRating;
-
   /**
    * Motion Picture Association of America rating for the content.
    * Possible string values are:
@@ -9186,7 +8998,6 @@ class ContentRating {
    * - "mpaaUnrated"
    */
   core.String mpaaRating;
-
   /**
    * Rating system for Philippines - MOVIE AND TELEVISION REVIEW AND
    * CLASSIFICATION BOARD
@@ -9200,7 +9011,6 @@ class ContentRating {
    * - "mtrcbX"
    */
   core.String mtrcbRating;
-
   /**
    * Rating system for Maldives - National Bureau of Classification
    * Possible string values are:
@@ -9214,7 +9024,6 @@ class ContentRating {
    * - "nbcUnrated"
    */
   core.String nbcRating;
-
   /**
    * Rating system for Poland - National Broadcasting Council
    * Possible string values are:
@@ -9226,7 +9035,6 @@ class ContentRating {
    * - "nbcplUnrated"
    */
   core.String nbcplRating;
-
   /**
    * Rating system for Bulgaria - National Film Centre
    * Possible string values are:
@@ -9238,7 +9046,6 @@ class ContentRating {
    * - "nfrcX"
    */
   core.String nfrcRating;
-
   /**
    * Rating system for Nigeria - National Film and Video Censors Board
    * Possible string values are:
@@ -9252,7 +9059,6 @@ class ContentRating {
    * - "nfvcbUnrated"
    */
   core.String nfvcbRating;
-
   /**
    * Rating system for Latvia - National Film Center of Latvia
    * Possible string values are:
@@ -9263,7 +9069,6 @@ class ContentRating {
    * - "nkclvUnrated"
    */
   core.String nkclvRating;
-
   /**
    * Rating system in New Zealand - Office of Film and Literature Classification
    * Possible string values are:
@@ -9279,7 +9084,6 @@ class ContentRating {
    * - "oflcUnrated"
    */
   core.String oflcRating;
-
   /**
    * Rating system for Peru - Peru Rating System
    * Possible string values are:
@@ -9290,7 +9094,6 @@ class ContentRating {
    * - "pefilmUnrated"
    */
   core.String pefilmRating;
-
   /**
    * Rating system for Hungary - Rating Committee of the National Office of Film
    * Possible string values are:
@@ -9303,7 +9106,6 @@ class ContentRating {
    * - "rcnofVi"
    */
   core.String rcnofRating;
-
   /**
    * Rating system for Venezuela - SiBCI
    * Possible string values are:
@@ -9315,7 +9117,6 @@ class ContentRating {
    * - "resorteviolenciaUnrated"
    */
   core.String resorteviolenciaRating;
-
   /**
    * Rating system in Mexico - General Directorate of Radio, Television and
    * Cinematography
@@ -9329,7 +9130,6 @@ class ContentRating {
    * - "rtcUnrated"
    */
   core.String rtcRating;
-
   /**
    * Rating system for Ireland - Raidi� Teilif�s �ireann
    * Possible string values are:
@@ -9340,7 +9140,6 @@ class ContentRating {
    * - "rteUnrated"
    */
   core.String rteRating;
-
   /**
    * Rating system in Russia
    * Possible string values are:
@@ -9352,7 +9151,6 @@ class ContentRating {
    * - "russiaUnrated"
    */
   core.String russiaRating;
-
   /**
    * Rating system for Slovakia - Slovakia Rating System
    * Possible string values are:
@@ -9363,7 +9161,6 @@ class ContentRating {
    * - "skfilmUnrated"
    */
   core.String skfilmRating;
-
   /**
    * Rating system for Iceland - SMAIS
    * Possible string values are:
@@ -9376,7 +9173,6 @@ class ContentRating {
    * - "smaisUnrated"
    */
   core.String smaisRating;
-
   /**
    * Rating system for Sweden - Statens medier�d (National Media Council)
    * Possible string values are:
@@ -9387,7 +9183,6 @@ class ContentRating {
    * - "smsaUnrated"
    */
   core.String smsaRating;
-
   /**
    * TV Parental Guidelines rating of the content.
    * Possible string values are:
@@ -9401,14 +9196,12 @@ class ContentRating {
    * - "tvpgY7Fv"
    */
   core.String tvpgRating;
-
   /**
    * Internal YouTube rating.
    * Possible string values are:
    * - "ytAgeRestricted"
    */
   core.String ytRating;
-
 
   ContentRating();
 
@@ -9805,18 +9598,14 @@ class ContentRating {
   }
 }
 
-
 /** Geographical coordinates of a point, in WGS84. */
 class GeoPoint {
   /** Altitude above the reference ellipsoid, in meters. */
   core.double altitude;
-
   /** Latitude in degrees. */
   core.double latitude;
-
   /** Longitude in degrees. */
   core.double longitude;
-
 
   GeoPoint();
 
@@ -9847,7 +9636,6 @@ class GeoPoint {
   }
 }
 
-
 /**
  * A guideCategory resource identifies a category that YouTube algorithmically
  * assigns based on a channel's content or other indicators, such as the
@@ -9858,22 +9646,18 @@ class GeoPoint {
 class GuideCategory {
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the guide category. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#guideCategory".
    */
   core.String kind;
-
   /**
    * The snippet object contains basic details about the category, such as its
    * title.
    */
   GuideCategorySnippet snippet;
-
 
   GuideCategory();
 
@@ -9910,46 +9694,36 @@ class GuideCategory {
   }
 }
 
-
 class GuideCategoryListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /**
    * A list of categories that can be associated with YouTube channels. In this
    * map, the category ID is the map key, and its value is the corresponding
    * guideCategory resource.
    */
   core.List<GuideCategory> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#guideCategoryListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the previous page in the result set.
    */
   core.String prevPageToken;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   GuideCategoryListResponse();
 
@@ -10016,14 +9790,11 @@ class GuideCategoryListResponse {
   }
 }
 
-
 /** Basic details about a guide category. */
 class GuideCategorySnippet {
   core.String channelId;
-
   /** Description of the guide category. */
   core.String title;
-
 
   GuideCategorySnippet();
 
@@ -10048,7 +9819,6 @@ class GuideCategorySnippet {
   }
 }
 
-
 /**
  * An i18nLanguage resource identifies a UI language currently supported by
  * YouTube.
@@ -10056,22 +9826,18 @@ class GuideCategorySnippet {
 class I18nLanguage {
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the i18n language. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#i18nLanguage".
    */
   core.String kind;
-
   /**
    * The snippet object contains basic details about the i18n language, such as
    * language code and human-readable name.
    */
   I18nLanguageSnippet snippet;
-
 
   I18nLanguage();
 
@@ -10108,29 +9874,23 @@ class I18nLanguage {
   }
 }
 
-
 class I18nLanguageListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /**
    * A list of supported i18n languages. In this map, the i18n language ID is
    * the map key, and its value is the corresponding i18nLanguage resource.
    */
   core.List<I18nLanguage> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#i18nLanguageListResponse".
    */
   core.String kind;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   I18nLanguageListResponse();
 
@@ -10173,7 +9933,6 @@ class I18nLanguageListResponse {
   }
 }
 
-
 /**
  * Basic details about an i18n language, such as language code and
  * human-readable name.
@@ -10181,10 +9940,8 @@ class I18nLanguageListResponse {
 class I18nLanguageSnippet {
   /** A short BCP-47 code that uniquely identifies a language. */
   core.String hl;
-
   /** The human-readable name of the language in the language itself. */
   core.String name;
-
 
   I18nLanguageSnippet();
 
@@ -10209,27 +9966,22 @@ class I18nLanguageSnippet {
   }
 }
 
-
 /** A i18nRegion resource identifies a region where YouTube is available. */
 class I18nRegion {
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the i18n region. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#i18nRegion".
    */
   core.String kind;
-
   /**
    * The snippet object contains basic details about the i18n region, such as
    * region code and human-readable name.
    */
   I18nRegionSnippet snippet;
-
 
   I18nRegion();
 
@@ -10266,29 +10018,23 @@ class I18nRegion {
   }
 }
 
-
 class I18nRegionListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /**
    * A list of regions where YouTube is available. In this map, the i18n region
    * ID is the map key, and its value is the corresponding i18nRegion resource.
    */
   core.List<I18nRegion> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#i18nRegionListResponse".
    */
   core.String kind;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   I18nRegionListResponse();
 
@@ -10331,7 +10077,6 @@ class I18nRegionListResponse {
   }
 }
 
-
 /**
  * Basic details about an i18n region, such as region code and human-readable
  * name.
@@ -10339,10 +10084,8 @@ class I18nRegionListResponse {
 class I18nRegionSnippet {
   /** The region code as a 2-letter ISO country code. */
   core.String gl;
-
   /** The human-readable name of the region. */
   core.String name;
-
 
   I18nRegionSnippet();
 
@@ -10367,7 +10110,6 @@ class I18nRegionSnippet {
   }
 }
 
-
 /** Branding properties for images associated with the channel. */
 class ImageSettings {
   /**
@@ -10375,86 +10117,64 @@ class ImageSettings {
    * should be 1200px by 615px, with a maximum file size of 128k.
    */
   LocalizedProperty backgroundImageUrl;
-
   /**
    * This is used only in update requests; if it's set, we use this URL to
    * generate all of the above banner URLs.
    */
   core.String bannerExternalUrl;
-
   /** Banner image. Desktop size (1060x175). */
   core.String bannerImageUrl;
-
   /** Banner image. Mobile size high resolution (1440x395). */
   core.String bannerMobileExtraHdImageUrl;
-
   /** Banner image. Mobile size high resolution (1280x360). */
   core.String bannerMobileHdImageUrl;
-
   /** Banner image. Mobile size (640x175). */
   core.String bannerMobileImageUrl;
-
   /** Banner image. Mobile size low resolution (320x88). */
   core.String bannerMobileLowImageUrl;
-
   /** Banner image. Mobile size medium/high resolution (960x263). */
   core.String bannerMobileMediumHdImageUrl;
-
   /** Banner image. Tablet size extra high resolution (2560x424). */
   core.String bannerTabletExtraHdImageUrl;
-
   /** Banner image. Tablet size high resolution (2276x377). */
   core.String bannerTabletHdImageUrl;
-
   /** Banner image. Tablet size (1707x283). */
   core.String bannerTabletImageUrl;
-
   /** Banner image. Tablet size low resolution (1138x188). */
   core.String bannerTabletLowImageUrl;
-
   /** Banner image. TV size high resolution (1920x1080). */
   core.String bannerTvHighImageUrl;
-
   /** Banner image. TV size extra high resolution (2120x1192). */
   core.String bannerTvImageUrl;
-
   /** Banner image. TV size low resolution (854x480). */
   core.String bannerTvLowImageUrl;
-
   /** Banner image. TV size medium resolution (1280x720). */
   core.String bannerTvMediumImageUrl;
-
   /** The image map script for the large banner image. */
   LocalizedProperty largeBrandedBannerImageImapScript;
-
   /**
    * The URL for the 854px by 70px image that appears below the video player in
    * the expanded video view of the video watch page.
    */
   LocalizedProperty largeBrandedBannerImageUrl;
-
   /** The image map script for the small banner image. */
   LocalizedProperty smallBrandedBannerImageImapScript;
-
   /**
    * The URL for the 640px by 70px banner image that appears below the video
    * player in the default view of the video watch page.
    */
   LocalizedProperty smallBrandedBannerImageUrl;
-
   /**
    * The URL for a 1px by 1px tracking pixel that can be used to collect
    * statistics for views of the channel or video pages.
    */
   core.String trackingImageUrl;
-
   /**
    * The URL for the image that appears above the top-left corner of the video
    * player. This is a 25-pixel-high image with a flexible width that cannot
    * exceed 170 pixels.
    */
   core.String watchIconImageUrl;
-
 
   ImageSettings();
 
@@ -10599,7 +10319,6 @@ class ImageSettings {
   }
 }
 
-
 /** Describes information necessary for ingesting an RTMP or an HTTP stream. */
 class IngestionInfo {
   /**
@@ -10608,7 +10327,6 @@ class IngestionInfo {
    * sending to the ingestionAddress to this URL.
    */
   core.String backupIngestionAddress;
-
   /**
    * The primary ingestion URL that you should use to stream video to YouTube.
    * You must stream video to this URL.
@@ -10620,10 +10338,8 @@ class IngestionInfo {
    * STREAM_URL/STREAM_NAME
    */
   core.String ingestionAddress;
-
   /** The HTTP or RTMP stream name that YouTube assigns to the video stream. */
   core.String streamName;
-
 
   IngestionInfo();
 
@@ -10654,10 +10370,8 @@ class IngestionInfo {
   }
 }
 
-
 class InvideoBranding {
   core.String imageBytes;
-
   core.List<core.int> get imageBytesAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(imageBytes);
   }
@@ -10665,15 +10379,10 @@ class InvideoBranding {
   void set imageBytesAsBytes(core.List<core.int> _bytes) {
     imageBytes = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   core.String imageUrl;
-
   InvideoPosition position;
-
   core.String targetChannelId;
-
   InvideoTiming timing;
-
 
   InvideoBranding();
 
@@ -10716,7 +10425,6 @@ class InvideoBranding {
   }
 }
 
-
 /**
  * Describes the spatial position of a visual widget inside a video. It is a
  * union of various position types, out of which only will be set one.
@@ -10731,14 +10439,12 @@ class InvideoPosition {
    * - "topRight"
    */
   core.String cornerPosition;
-
   /**
    * Defines the position type.
    * Possible string values are:
    * - "corner"
    */
   core.String type;
-
 
   InvideoPosition();
 
@@ -10763,7 +10469,6 @@ class InvideoPosition {
   }
 }
 
-
 /**
  * Describes an invideo promotion campaign consisting of multiple promoted
  * items. A campaign belongs to a single channel_id.
@@ -10774,16 +10479,13 @@ class InvideoPromotion {
    * be displayed. Can be overriden by more specific timing in the item.
    */
   InvideoTiming defaultTiming;
-
   /** List of promoted items in decreasing priority. */
   core.List<PromotedItem> items;
-
   /**
    * The spatial position within the video where the promoted item will be
    * displayed.
    */
   InvideoPosition position;
-
   /**
    * Indicates whether the channel's promotional campaign uses "smart timing."
    * This feature attempts to show promotions at a point in the video when they
@@ -10792,7 +10494,6 @@ class InvideoPromotion {
    * video.
    */
   core.bool useSmartTiming;
-
 
   InvideoPromotion();
 
@@ -10829,7 +10530,6 @@ class InvideoPromotion {
   }
 }
 
-
 /** Describes a temporal position of a visual widget inside a video. */
 class InvideoTiming {
   /**
@@ -10837,14 +10537,12 @@ class InvideoTiming {
    * displayed. If missing, the client should use the default.
    */
   core.String durationMs;
-
   /**
    * Defines the time at which the promotion will appear. Depending on the value
    * of type the value of the offsetMs field will represent a time offset from
    * the start or from the end of the video, expressed in milliseconds.
    */
   core.String offsetMs;
-
   /**
    * Describes a timing type. If the value is offsetFromStart, then the offsetMs
    * field represents an offset from the start of the video. If the value is
@@ -10855,7 +10553,6 @@ class InvideoTiming {
    * - "offsetFromStart"
    */
   core.String type;
-
 
   InvideoTiming();
 
@@ -10886,10 +10583,8 @@ class InvideoTiming {
   }
 }
 
-
 class LanguageTag {
   core.String value;
-
 
   LanguageTag();
 
@@ -10908,7 +10603,6 @@ class LanguageTag {
   }
 }
 
-
 /**
  * A liveBroadcast resource represents an event that will be streamed, via live
  * video, on YouTube.
@@ -10921,28 +10615,22 @@ class LiveBroadcast {
    * the event has concluded.
    */
   LiveBroadcastContentDetails contentDetails;
-
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube assigns to uniquely identify the broadcast. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#liveBroadcast".
    */
   core.String kind;
-
   /**
    * The snippet object contains basic details about the event, including its
    * title, description, start time, and end time.
    */
   LiveBroadcastSnippet snippet;
-
   /** The status object contains information about the event's status. */
   LiveBroadcastStatus status;
-
 
   LiveBroadcast();
 
@@ -10991,25 +10679,21 @@ class LiveBroadcast {
   }
 }
 
-
 /** Detailed settings of a broadcast. */
 class LiveBroadcastContentDetails {
   /** This value uniquely identifies the live stream bound to the broadcast. */
   core.String boundStreamId;
-
   /**
    * This setting indicates whether closed captioning is enabled for this
    * broadcast. The ingestion URL of the closed captions is returned through the
    * liveStreams API.
    */
   core.bool enableClosedCaptions;
-
   /**
    * This setting indicates whether YouTube should enable content encryption for
    * the broadcast.
    */
   core.bool enableContentEncryption;
-
   /**
    * This setting determines whether viewers can access DVR controls while
    * watching the video. DVR controls enable the viewer to control the video
@@ -11023,7 +10707,6 @@ class LiveBroadcastContentDetails {
    * after the broadcast ends.
    */
   core.bool enableDvr;
-
   /**
    * This setting indicates whether the broadcast video can be played in an
    * embedded player. If you choose to archive the video (using the
@@ -11031,14 +10714,12 @@ class LiveBroadcastContentDetails {
    * video.
    */
   core.bool enableEmbed;
-
   /**
    * The monitorStream object contains information about the monitor stream,
    * which the broadcaster can use to review the event content before the
    * broadcast stream is shown publicly.
    */
   MonitorStreamInfo monitorStream;
-
   /**
    * Automatically start recording after the event goes live. The default value
    * for this property is true.
@@ -11052,7 +10733,6 @@ class LiveBroadcastContentDetails {
    * archived video will be available for playback.
    */
   core.bool recordFromStart;
-
   /**
    * This setting indicates whether the broadcast should automatically begin
    * with an in-stream slate when you update the broadcast's status to live.
@@ -11061,7 +10741,6 @@ class LiveBroadcastContentDetails {
    * slate and make your broadcast stream visible to viewers.
    */
   core.bool startWithSlate;
-
 
   LiveBroadcastContentDetails();
 
@@ -11122,42 +10801,32 @@ class LiveBroadcastContentDetails {
   }
 }
 
-
 class LiveBroadcastListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of broadcasts that match the request criteria. */
   core.List<LiveBroadcast> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#liveBroadcastListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the previous page in the result set.
    */
   core.String prevPageToken;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   LiveBroadcastListResponse();
 
@@ -11224,7 +10893,6 @@ class LiveBroadcastListResponse {
   }
 }
 
-
 class LiveBroadcastSnippet {
   /**
    * The date and time that the broadcast actually ended. This information is
@@ -11232,60 +10900,51 @@ class LiveBroadcastSnippet {
    * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime actualEndTime;
-
   /**
    * The date and time that the broadcast actually started. This information is
    * only available once the broadcast's state is live. The value is specified
    * in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime actualStartTime;
-
   /**
    * The ID that YouTube uses to uniquely identify the channel that is
    * publishing the broadcast.
    */
   core.String channelId;
-
   /**
    * The broadcast's description. As with the title, you can set this field by
    * modifying the broadcast resource or by setting the description field of the
    * corresponding video resource.
    */
   core.String description;
-
   /**
    * The date and time that the broadcast was added to YouTube's live broadcast
    * schedule. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ)
    * format.
    */
   core.DateTime publishedAt;
-
   /**
    * The date and time that the broadcast is scheduled to end. The value is
    * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime scheduledEndTime;
-
   /**
    * The date and time that the broadcast is scheduled to start. The value is
    * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime scheduledStartTime;
-
   /**
    * A map of thumbnail images associated with the broadcast. For each nested
    * object in this object, the key is the name of the thumbnail image, and the
    * value is an object that contains other information about the thumbnail.
    */
   ThumbnailDetails thumbnails;
-
   /**
    * The broadcast's title. Note that the broadcast represents exactly one
    * YouTube video. You can set this field by modifying the broadcast resource
    * or by setting the title field of the corresponding video resource.
    */
   core.String title;
-
 
   LiveBroadcastSnippet();
 
@@ -11352,8 +11011,9 @@ class LiveBroadcastSnippet {
   }
 }
 
-
 class LiveBroadcastStatus {
+  /** Whether or not this broadcast is the default broadcast */
+  core.bool isDefaultBroadcast;
   /**
    * The broadcast's status. The status can be updated using the API's
    * liveBroadcasts.transition method.
@@ -11371,7 +11031,6 @@ class LiveBroadcastStatus {
    * - "testing"
    */
   core.String lifeCycleStatus;
-
   /**
    * Priority of the live broadcast event (internal state).
    * Possible string values are:
@@ -11380,7 +11039,6 @@ class LiveBroadcastStatus {
    * - "normal"
    */
   core.String liveBroadcastPriority;
-
   /**
    * The broadcast's privacy status. Note that the broadcast represents exactly
    * one YouTube video, so the privacy settings are identical to those supported
@@ -11393,7 +11051,6 @@ class LiveBroadcastStatus {
    * - "unlisted"
    */
   core.String privacyStatus;
-
   /**
    * The broadcast's recording status.
    * Possible string values are:
@@ -11403,10 +11060,12 @@ class LiveBroadcastStatus {
    */
   core.String recordingStatus;
 
-
   LiveBroadcastStatus();
 
   LiveBroadcastStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("isDefaultBroadcast")) {
+      isDefaultBroadcast = _json["isDefaultBroadcast"];
+    }
     if (_json.containsKey("lifeCycleStatus")) {
       lifeCycleStatus = _json["lifeCycleStatus"];
     }
@@ -11423,6 +11082,9 @@ class LiveBroadcastStatus {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (isDefaultBroadcast != null) {
+      _json["isDefaultBroadcast"] = isDefaultBroadcast;
+    }
     if (lifeCycleStatus != null) {
       _json["lifeCycleStatus"] = lifeCycleStatus;
     }
@@ -11439,7 +11101,6 @@ class LiveBroadcastStatus {
   }
 }
 
-
 /** A live stream describes a live ingestion point. */
 class LiveStream {
   /**
@@ -11448,34 +11109,27 @@ class LiveStream {
    * stream your content to YouTube.
    */
   CdnSettings cdn;
-
   /**
    * The content_details object contains information about the stream, including
    * the closed captions ingestion URL.
    */
   LiveStreamContentDetails contentDetails;
-
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube assigns to uniquely identify the stream. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#liveStream".
    */
   core.String kind;
-
   /**
    * The snippet object contains basic details about the stream, including its
    * channel, title, and description.
    */
   LiveStreamSnippet snippet;
-
   /** The status object contains information about live stream's status. */
   LiveStreamStatus status;
-
 
   LiveStream();
 
@@ -11530,12 +11184,10 @@ class LiveStream {
   }
 }
 
-
 /** Detailed settings of a stream. */
 class LiveStreamContentDetails {
   /** The ingestion URL where the closed captions of this stream are sent. */
   core.String closedCaptionsIngestionUrl;
-
   /**
    * Indicates whether the stream is reusable, which means that it can be bound
    * to multiple broadcasts. It is common for broadcasters to reuse the same
@@ -11554,7 +11206,6 @@ class LiveStreamContentDetails {
    * the id parameter to identify the stream.
    */
   core.bool isReusable;
-
 
   LiveStreamContentDetails();
 
@@ -11579,42 +11230,32 @@ class LiveStreamContentDetails {
   }
 }
 
-
 class LiveStreamListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of live streams that match the request criteria. */
   core.List<LiveStream> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#liveStreamListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the previous page in the result set.
    */
   core.String prevPageToken;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   LiveStreamListResponse();
 
@@ -11681,30 +11322,25 @@ class LiveStreamListResponse {
   }
 }
 
-
 class LiveStreamSnippet {
   /**
    * The ID that YouTube uses to uniquely identify the channel that is
    * transmitting the stream.
    */
   core.String channelId;
-
   /**
    * The stream's description. The value cannot be longer than 10000 characters.
    */
   core.String description;
-
   /**
    * The date and time that the stream was created. The value is specified in
    * ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime publishedAt;
-
   /**
    * The stream's title. The value must be between 1 and 128 characters long.
    */
   core.String title;
-
 
   LiveStreamSnippet();
 
@@ -11741,9 +11377,9 @@ class LiveStreamSnippet {
   }
 }
 
-
 /** Brief description of the live stream status. */
 class LiveStreamStatus {
+  core.bool isDefaultStream;
   /**
    *
    * Possible string values are:
@@ -11755,10 +11391,12 @@ class LiveStreamStatus {
    */
   core.String streamStatus;
 
-
   LiveStreamStatus();
 
   LiveStreamStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("isDefaultStream")) {
+      isDefaultStream = _json["isDefaultStream"];
+    }
     if (_json.containsKey("streamStatus")) {
       streamStatus = _json["streamStatus"];
     }
@@ -11766,6 +11404,9 @@ class LiveStreamStatus {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (isDefaultStream != null) {
+      _json["isDefaultStream"] = isDefaultStream;
+    }
     if (streamStatus != null) {
       _json["streamStatus"] = streamStatus;
     }
@@ -11773,15 +11414,11 @@ class LiveStreamStatus {
   }
 }
 
-
 class LocalizedProperty {
   core.String default_;
-
   /** The language of the default property. */
   LanguageTag defaultLanguage;
-
   core.List<LocalizedString> localized;
-
 
   LocalizedProperty();
 
@@ -11812,12 +11449,9 @@ class LocalizedProperty {
   }
 }
 
-
 class LocalizedString {
   core.String language;
-
   core.String value;
-
 
   LocalizedString();
 
@@ -11842,7 +11476,6 @@ class LocalizedString {
   }
 }
 
-
 /** Settings and Info of the monitor stream */
 class MonitorStreamInfo {
   /**
@@ -11850,10 +11483,8 @@ class MonitorStreamInfo {
    * property determines the length of the live broadcast delay.
    */
   core.int broadcastStreamDelayMs;
-
   /** HTML code that embeds a player that plays the monitor stream. */
   core.String embedHtml;
-
   /**
    * This value determines whether the monitor stream is enabled for the
    * broadcast. If the monitor stream is enabled, then YouTube will broadcast
@@ -11868,7 +11499,6 @@ class MonitorStreamInfo {
    * or live state.
    */
   core.bool enableMonitorStream;
-
 
   MonitorStreamInfo();
 
@@ -11899,7 +11529,6 @@ class MonitorStreamInfo {
   }
 }
 
-
 /**
  * Paging details for lists of resources, including total number of items
  * available and number of resources returned in a single page.
@@ -11907,10 +11536,8 @@ class MonitorStreamInfo {
 class PageInfo {
   /** The number of results included in the API response. */
   core.int resultsPerPage;
-
   /** The total number of results in the result set. */
   core.int totalResults;
-
 
   PageInfo();
 
@@ -11934,7 +11561,6 @@ class PageInfo {
     return _json;
   }
 }
-
 
 /**
  * A playlist resource represents a YouTube playlist. A playlist is a collection
@@ -11961,37 +11587,29 @@ class PageInfo {
 class Playlist {
   /** The contentDetails object contains information like video count. */
   PlaylistContentDetails contentDetails;
-
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the playlist. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#playlist".
    */
   core.String kind;
-
   /** Localizations for different languages */
   core.Map<core.String, PlaylistLocalization> localizations;
-
   /**
    * The player object contains information that you would use to play the
    * playlist in an embedded player.
    */
   PlaylistPlayer player;
-
   /**
    * The snippet object contains basic details about the playlist, such as its
    * title and description.
    */
   PlaylistSnippet snippet;
-
   /** The status object contains status information for the playlist. */
   PlaylistStatus status;
-
 
   Playlist();
 
@@ -12052,11 +11670,9 @@ class Playlist {
   }
 }
 
-
 class PlaylistContentDetails {
   /** The number of videos in the playlist. */
   core.int itemCount;
-
 
   PlaylistContentDetails();
 
@@ -12074,7 +11690,6 @@ class PlaylistContentDetails {
     return _json;
   }
 }
-
 
 /**
  * A playlistItem resource identifies another resource, such as a video, that is
@@ -12106,31 +11721,25 @@ class PlaylistItem {
    * video.
    */
   PlaylistItemContentDetails contentDetails;
-
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the playlist item. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#playlistItem".
    */
   core.String kind;
-
   /**
    * The snippet object contains basic details about the playlist item, such as
    * its title and position in the playlist.
    */
   PlaylistItemSnippet snippet;
-
   /**
    * The status object contains information about the playlist item's privacy
    * status.
    */
   PlaylistItemStatus status;
-
 
   PlaylistItem();
 
@@ -12179,7 +11788,6 @@ class PlaylistItem {
   }
 }
 
-
 class PlaylistItemContentDetails {
   /**
    * The time, measured in seconds from the start of the video, when the video
@@ -12189,10 +11797,8 @@ class PlaylistItemContentDetails {
    * the video.
    */
   core.String endAt;
-
   /** A user-generated note for this item. */
   core.String note;
-
   /**
    * The time, measured in seconds from the start of the video, when the video
    * should start playing. (The playlist owner can specify the times when the
@@ -12200,14 +11806,12 @@ class PlaylistItemContentDetails {
    * of the playlist.) The default value is 0.
    */
   core.String startAt;
-
   /**
    * The ID that YouTube uses to uniquely identify a video. To retrieve the
    * video resource, set the id query parameter to this value in your API
    * request.
    */
   core.String videoId;
-
 
   PlaylistItemContentDetails();
 
@@ -12244,42 +11848,32 @@ class PlaylistItemContentDetails {
   }
 }
 
-
 class PlaylistItemListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of playlist items that match the request criteria. */
   core.List<PlaylistItem> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#playlistItemListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the previous page in the result set.
    */
   core.String prevPageToken;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   PlaylistItemListResponse();
 
@@ -12346,7 +11940,6 @@ class PlaylistItemListResponse {
   }
 }
 
-
 /**
  * Basic details about a playlist, including title, description and thumbnails.
  */
@@ -12356,48 +11949,39 @@ class PlaylistItemSnippet {
    * to the playlist.
    */
   core.String channelId;
-
   /** Channel title for the channel that the playlist item belongs to. */
   core.String channelTitle;
-
   /** The item's description. */
   core.String description;
-
   /**
    * The ID that YouTube uses to uniquely identify the playlist that the
    * playlist item is in.
    */
   core.String playlistId;
-
   /**
    * The order in which the item appears in the playlist. The value uses a
    * zero-based index, so the first item has a position of 0, the second item
    * has a position of 1, and so forth.
    */
   core.int position;
-
   /**
    * The date and time that the item was added to the playlist. The value is
    * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime publishedAt;
-
   /**
    * The id object contains information that can be used to uniquely identify
    * the resource that is included in the playlist as the playlist item.
    */
   ResourceId resourceId;
-
   /**
    * A map of thumbnail images associated with the playlist item. For each
    * object in the map, the key is the name of the thumbnail image, and the
    * value is an object that contains other information about the thumbnail.
    */
   ThumbnailDetails thumbnails;
-
   /** The item's title. */
   core.String title;
-
 
   PlaylistItemSnippet();
 
@@ -12464,7 +12048,6 @@ class PlaylistItemSnippet {
   }
 }
 
-
 /** Information about the playlist item's privacy status. */
 class PlaylistItemStatus {
   /**
@@ -12475,7 +12058,6 @@ class PlaylistItemStatus {
    * - "unlisted"
    */
   core.String privacyStatus;
-
 
   PlaylistItemStatus();
 
@@ -12494,42 +12076,32 @@ class PlaylistItemStatus {
   }
 }
 
-
 class PlaylistListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of playlists that match the request criteria. */
   core.List<Playlist> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#playlistListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the previous page in the result set.
    */
   core.String prevPageToken;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   PlaylistListResponse();
 
@@ -12596,15 +12168,12 @@ class PlaylistListResponse {
   }
 }
 
-
 /** Playlist localization setting */
 class PlaylistLocalization {
   /** The localized strings for playlist's description. */
   core.String description;
-
   /** The localized strings for playlist's title. */
   core.String title;
-
 
   PlaylistLocalization();
 
@@ -12629,11 +12198,9 @@ class PlaylistLocalization {
   }
 }
 
-
 class PlaylistPlayer {
   /** An <iframe> tag that embeds a player that will play the playlist. */
   core.String embedHtml;
-
 
   PlaylistPlayer();
 
@@ -12652,7 +12219,6 @@ class PlaylistPlayer {
   }
 }
 
-
 /**
  * Basic details about a playlist, including title, description and thumbnails.
  */
@@ -12662,38 +12228,29 @@ class PlaylistSnippet {
    * the playlist.
    */
   core.String channelId;
-
   /** The channel title of the channel that the video belongs to. */
   core.String channelTitle;
-
   /** The language of the playlist's default title and description. */
   core.String defaultLanguage;
-
   /** The playlist's description. */
   core.String description;
-
   /** Localized title and description, read-only. */
   PlaylistLocalization localized;
-
   /**
    * The date and time that the playlist was created. The value is specified in
    * ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime publishedAt;
-
   /** Keyword tags associated with the playlist. */
   core.List<core.String> tags;
-
   /**
    * A map of thumbnail images associated with the playlist. For each object in
    * the map, the key is the name of the thumbnail image, and the value is an
    * object that contains other information about the thumbnail.
    */
   ThumbnailDetails thumbnails;
-
   /** The playlist's title. */
   core.String title;
-
 
   PlaylistSnippet();
 
@@ -12760,7 +12317,6 @@ class PlaylistSnippet {
   }
 }
 
-
 class PlaylistStatus {
   /**
    * The playlist's privacy status.
@@ -12770,7 +12326,6 @@ class PlaylistStatus {
    * - "unlisted"
    */
   core.String privacyStatus;
-
 
   PlaylistStatus();
 
@@ -12789,7 +12344,6 @@ class PlaylistStatus {
   }
 }
 
-
 /** Describes a single promoted item. */
 class PromotedItem {
   /**
@@ -12797,23 +12351,19 @@ class PromotedItem {
    * ignored unless the promoted item is a website.
    */
   core.String customMessage;
-
   /** Identifies the promoted item. */
   PromotedItemId id;
-
   /**
    * If true, the content owner's name will be used when displaying the
    * promotion. This field can only be set when the update is made on behalf of
    * the content owner.
    */
   core.bool promotedByContentOwner;
-
   /**
    * The temporal position within the video where the promoted item will be
    * displayed. If present, it overrides the default timing.
    */
   InvideoTiming timing;
-
 
   PromotedItem();
 
@@ -12850,7 +12400,6 @@ class PromotedItem {
   }
 }
 
-
 /**
  * Describes a single promoted item id. It is a union of various possible types.
  */
@@ -12861,7 +12410,6 @@ class PromotedItemId {
    * channel for which the invideoPromotion is set.
    */
   core.String recentlyUploadedBy;
-
   /**
    * Describes the type of the promoted item.
    * Possible string values are:
@@ -12870,21 +12418,18 @@ class PromotedItemId {
    * - "website"
    */
   core.String type;
-
   /**
    * If the promoted item represents a video, this field represents the unique
    * YouTube ID identifying it. This field will be present only if type has the
    * value video.
    */
   core.String videoId;
-
   /**
    * If the promoted item represents a website, this field represents the url
    * pointing to the website. This field will be present only if type has the
    * value website.
    */
   core.String websiteUrl;
-
 
   PromotedItemId();
 
@@ -12921,15 +12466,12 @@ class PromotedItemId {
   }
 }
 
-
 /** A pair Property / Value. */
 class PropertyValue {
   /** A property. */
   core.String property;
-
   /** The property's value. */
   core.String value;
-
 
   PropertyValue();
 
@@ -12954,7 +12496,6 @@ class PropertyValue {
   }
 }
 
-
 /**
  * A resource id is a generic reference that points to another YouTube resource.
  */
@@ -12965,24 +12506,20 @@ class ResourceId {
    * resourceId.kind value is youtube#channel.
    */
   core.String channelId;
-
   /** The type of the API resource. */
   core.String kind;
-
   /**
    * The ID that YouTube uses to uniquely identify the referred resource, if
    * that resource is a playlist. This property is only present if the
    * resourceId.kind value is youtube#playlist.
    */
   core.String playlistId;
-
   /**
    * The ID that YouTube uses to uniquely identify the referred resource, if
    * that resource is a video. This property is only present if the
    * resourceId.kind value is youtube#video.
    */
   core.String videoId;
-
 
   ResourceId();
 
@@ -13019,42 +12556,32 @@ class ResourceId {
   }
 }
 
-
 class SearchListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of results that match the search criteria. */
   core.List<SearchResult> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#searchListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the previous page in the result set.
    */
   core.String prevPageToken;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   SearchListResponse();
 
@@ -13121,7 +12648,6 @@ class SearchListResponse {
   }
 }
 
-
 /**
  * A search result contains information about a YouTube video, channel, or
  * playlist that matches the search parameters specified in an API request.
@@ -13131,19 +12657,16 @@ class SearchListResponse {
 class SearchResult {
   /** Etag of this resource. */
   core.String etag;
-
   /**
    * The id object contains information that can be used to uniquely identify
    * the resource that matches the search request.
    */
   ResourceId id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#searchResult".
    */
   core.String kind;
-
   /**
    * The snippet object contains basic details about a search result, such as
    * its title or description. For example, if the search result is a video,
@@ -13151,7 +12674,6 @@ class SearchResult {
    * video's description.
    */
   SearchResultSnippet snippet;
-
 
   SearchResult();
 
@@ -13188,7 +12710,6 @@ class SearchResult {
   }
 }
 
-
 /**
  * Basic details about a search result, including title, description and
  * thumbnails of the item referenced by the search result.
@@ -13199,16 +12720,13 @@ class SearchResultSnippet {
    * the resource that the search result identifies.
    */
   core.String channelId;
-
   /**
    * The title of the channel that published the resource that the search result
    * identifies.
    */
   core.String channelTitle;
-
   /** A description of the search result. */
   core.String description;
-
   /**
    * It indicates if the resource (video or channel) has upcoming/active live
    * broadcast content. Or it's "none" if there is not any upcoming/active live
@@ -13219,24 +12737,20 @@ class SearchResultSnippet {
    * - "upcoming"
    */
   core.String liveBroadcastContent;
-
   /**
    * The creation date and time of the resource that the search result
    * identifies. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ)
    * format.
    */
   core.DateTime publishedAt;
-
   /**
    * A map of thumbnail images associated with the search result. For each
    * object in the map, the key is the name of the thumbnail image, and the
    * value is an object that contains other information about the thumbnail.
    */
   ThumbnailDetails thumbnails;
-
   /** The title of the search result. */
   core.String title;
-
 
   SearchResultSnippet();
 
@@ -13291,7 +12805,6 @@ class SearchResultSnippet {
   }
 }
 
-
 /**
  * A subscription resource contains information about a YouTube user
  * subscription. A subscription notifies a user when new videos are added to a
@@ -13303,30 +12816,24 @@ class Subscription {
    * The contentDetails object contains basic statistics about the subscription.
    */
   SubscriptionContentDetails contentDetails;
-
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the subscription. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#subscription".
    */
   core.String kind;
-
   /**
    * The snippet object contains basic details about the subscription, including
    * its title and the channel that the user subscribed to.
    */
   SubscriptionSnippet snippet;
-
   /**
    * The subscriberSnippet object contains basic details about the sbuscriber.
    */
   SubscriptionSubscriberSnippet subscriberSnippet;
-
 
   Subscription();
 
@@ -13375,7 +12882,6 @@ class Subscription {
   }
 }
 
-
 /** Details about the content to witch a subscription refers. */
 class SubscriptionContentDetails {
   /**
@@ -13385,16 +12891,13 @@ class SubscriptionContentDetails {
    * - "uploads"
    */
   core.String activityType;
-
   /**
    * The number of new items in the subscription since its content was last
    * read.
    */
   core.int newItemCount;
-
   /** The approximate number of items that the subscription points to. */
   core.int totalItemCount;
-
 
   SubscriptionContentDetails();
 
@@ -13425,42 +12928,32 @@ class SubscriptionContentDetails {
   }
 }
 
-
 class SubscriptionListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of subscriptions that match the request criteria. */
   core.List<Subscription> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#subscriptionListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the previous page in the result set.
    */
   core.String prevPageToken;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   SubscriptionListResponse();
 
@@ -13527,7 +13020,6 @@ class SubscriptionListResponse {
   }
 }
 
-
 /**
  * Basic details about a subscription, including title, description and
  * thumbnails of the subscribed item.
@@ -13537,35 +13029,28 @@ class SubscriptionSnippet {
    * The ID that YouTube uses to uniquely identify the subscriber's channel.
    */
   core.String channelId;
-
   /** Channel title for the channel that the subscription belongs to. */
   core.String channelTitle;
-
   /** The subscription's details. */
   core.String description;
-
   /**
    * The date and time that the subscription was created. The value is specified
    * in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime publishedAt;
-
   /**
    * The id object contains information about the channel that the user
    * subscribed to.
    */
   ResourceId resourceId;
-
   /**
    * A map of thumbnail images associated with the video. For each object in the
    * map, the key is the name of the thumbnail image, and the value is an object
    * that contains other information about the thumbnail.
    */
   ThumbnailDetails thumbnails;
-
   /** The subscription's title. */
   core.String title;
-
 
   SubscriptionSnippet();
 
@@ -13620,7 +13105,6 @@ class SubscriptionSnippet {
   }
 }
 
-
 /**
  * Basic details about a subscription's subscriber including title, description,
  * channel ID and thumbnails.
@@ -13628,16 +13112,12 @@ class SubscriptionSnippet {
 class SubscriptionSubscriberSnippet {
   /** The channel ID of the subscriber. */
   core.String channelId;
-
   /** The description of the subscriber. */
   core.String description;
-
   /** Thumbnails for this subscriber. */
   ThumbnailDetails thumbnails;
-
   /** The title of the subscriber. */
   core.String title;
-
 
   SubscriptionSubscriberSnippet();
 
@@ -13674,18 +13154,14 @@ class SubscriptionSubscriberSnippet {
   }
 }
 
-
 /** A thumbnail is an image representing a YouTube resource. */
 class Thumbnail {
   /** (Optional) Height of the thumbnail image. */
   core.int height;
-
   /** The thumbnail image's URL. */
   core.String url;
-
   /** (Optional) Width of the thumbnail image. */
   core.int width;
-
 
   Thumbnail();
 
@@ -13716,24 +13192,18 @@ class Thumbnail {
   }
 }
 
-
 /** Internal representation of thumbnails for a YouTube resource. */
 class ThumbnailDetails {
   /** The default image for this resource. */
   Thumbnail default_;
-
   /** The high quality image for this resource. */
   Thumbnail high;
-
   /** The maximum resolution quality image for this resource. */
   Thumbnail maxres;
-
   /** The medium quality image for this resource. */
   Thumbnail medium;
-
   /** The standard quality image for this resource. */
   Thumbnail standard;
-
 
   ThumbnailDetails();
 
@@ -13776,26 +13246,20 @@ class ThumbnailDetails {
   }
 }
 
-
 class ThumbnailSetResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of thumbnails. */
   core.List<ThumbnailDetails> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#thumbnailSetResponse".
    */
   core.String kind;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   ThumbnailSetResponse();
 
@@ -13838,7 +13302,6 @@ class ThumbnailSetResponse {
   }
 }
 
-
 /** Stub token pagination template to suppress results. */
 class TokenPagination {
 
@@ -13853,27 +13316,22 @@ class TokenPagination {
   }
 }
 
-
 /** A video resource represents a YouTube video. */
 class Video {
   /** Age restriction details related to a video. */
   VideoAgeGating ageGating;
-
   /**
    * The contentDetails object contains information about the video content,
    * including the length of the video and its aspect ratio.
    */
   VideoContentDetails contentDetails;
-
   /**
    * The conversionPings object encapsulates information about url pings that
    * need to be respected by the App in different video contexts.
    */
   VideoConversionPings conversionPings;
-
   /** Etag of this resource. */
   core.String etag;
-
   /**
    * The fileDetails object encapsulates information about the video file that
    * was uploaded to YouTube, including the file's resolution, duration, audio
@@ -13881,38 +13339,31 @@ class Video {
    * retrieved by the video owner.
    */
   VideoFileDetails fileDetails;
-
   /** The ID that YouTube uses to uniquely identify the video. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#video".
    */
   core.String kind;
-
   /**
    * The liveStreamingDetails object contains metadata about a live video
    * broadcast. The object will only be present in a video resource if the video
    * is an upcoming, live, or completed live broadcast.
    */
   VideoLiveStreamingDetails liveStreamingDetails;
-
   /** List with all localizations. */
   core.Map<core.String, VideoLocalization> localizations;
-
   /**
    * The monetizationDetails object encapsulates information about the
    * monetization status of the video.
    */
   VideoMonetizationDetails monetizationDetails;
-
   /**
    * The player object contains information that you would use to play the video
    * in an embedded player.
    */
   VideoPlayer player;
-
   /**
    * The processingProgress object encapsulates information about YouTube's
    * progress in processing the uploaded video file. The properties in the
@@ -13926,47 +13377,39 @@ class Video {
    * uploaded video file. This data can only be retrieved by the video owner.
    */
   VideoProcessingDetails processingDetails;
-
   /**
    * The projectDetails object contains information about the project specific
    * video metadata.
    */
   VideoProjectDetails projectDetails;
-
   /**
    * The recordingDetails object encapsulates information about the location,
    * date and address where the video was recorded.
    */
   VideoRecordingDetails recordingDetails;
-
   /**
    * The snippet object contains basic details about the video, such as its
    * title, description, and category.
    */
   VideoSnippet snippet;
-
   /** The statistics object contains statistics about the video. */
   VideoStatistics statistics;
-
   /**
    * The status object contains information about the video's uploading,
    * processing, and privacy statuses.
    */
   VideoStatus status;
-
   /**
    * The suggestions object encapsulates suggestions that identify opportunities
    * to improve the video quality or the metadata for the uploaded video. This
    * data can only be retrieved by the video owner.
    */
   VideoSuggestions suggestions;
-
   /**
    * The topicDetails object encapsulates information about Freebase topics
    * associated with the video.
    */
   VideoTopicDetails topicDetails;
-
 
   Video();
 
@@ -14093,6 +13536,238 @@ class Video {
   }
 }
 
+class VideoAbuseReport {
+  /** Additional comments regarding the abuse report. */
+  core.String comments;
+  /** The language that the content was viewed in. */
+  core.String language;
+  /**
+   * The high-level, or primary, reason that the content is abusive. The value
+   * is an abuse report reason ID.
+   */
+  core.String reasonId;
+  /**
+   * The specific, or secondary, reason that this content is abusive (if
+   * available). The value is an abuse report reason ID that is a valid
+   * secondary reason for the primary reason.
+   */
+  core.String secondaryReasonId;
+  /** The ID that YouTube uses to uniquely identify the video. */
+  core.String videoId;
+
+  VideoAbuseReport();
+
+  VideoAbuseReport.fromJson(core.Map _json) {
+    if (_json.containsKey("comments")) {
+      comments = _json["comments"];
+    }
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+    if (_json.containsKey("reasonId")) {
+      reasonId = _json["reasonId"];
+    }
+    if (_json.containsKey("secondaryReasonId")) {
+      secondaryReasonId = _json["secondaryReasonId"];
+    }
+    if (_json.containsKey("videoId")) {
+      videoId = _json["videoId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (comments != null) {
+      _json["comments"] = comments;
+    }
+    if (language != null) {
+      _json["language"] = language;
+    }
+    if (reasonId != null) {
+      _json["reasonId"] = reasonId;
+    }
+    if (secondaryReasonId != null) {
+      _json["secondaryReasonId"] = secondaryReasonId;
+    }
+    if (videoId != null) {
+      _json["videoId"] = videoId;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A videoAbuseReportReason resource identifies a reason that a video could be
+ * reported as abusive. Video abuse report reasons are used with
+ * video.ReportAbuse.
+ */
+class VideoAbuseReportReason {
+  /** Etag of this resource. */
+  core.String etag;
+  /** The ID of this abuse report reason. */
+  core.String id;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#videoAbuseReportReason".
+   */
+  core.String kind;
+  /**
+   * The snippet object contains basic details about the abuse report reason.
+   */
+  VideoAbuseReportReasonSnippet snippet;
+
+  VideoAbuseReportReason();
+
+  VideoAbuseReportReason.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new VideoAbuseReportReasonSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+class VideoAbuseReportReasonListResponse {
+  /** Etag of this resource. */
+  core.String etag;
+  /** Serialized EventId of the request which produced this response. */
+  core.String eventId;
+  /** A list of valid abuse reasons that are used with video.ReportAbuse. */
+  core.List<VideoAbuseReportReason> items;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#videoAbuseReportReasonListResponse".
+   */
+  core.String kind;
+  /** The visitorId identifies the visitor. */
+  core.String visitorId;
+
+  VideoAbuseReportReasonListResponse();
+
+  VideoAbuseReportReasonListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new VideoAbuseReportReason.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
+    }
+    return _json;
+  }
+}
+
+/** Basic details about a video category, such as its localized title. */
+class VideoAbuseReportReasonSnippet {
+  /** The localized label belonging to this abuse report reason. */
+  core.String label;
+  /**
+   * The secondary reasons associated with this reason, if any are available.
+   * (There might be 0 or more.)
+   */
+  core.List<VideoAbuseReportSecondaryReason> secondaryReasons;
+
+  VideoAbuseReportReasonSnippet();
+
+  VideoAbuseReportReasonSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("label")) {
+      label = _json["label"];
+    }
+    if (_json.containsKey("secondaryReasons")) {
+      secondaryReasons = _json["secondaryReasons"].map((value) => new VideoAbuseReportSecondaryReason.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (label != null) {
+      _json["label"] = label;
+    }
+    if (secondaryReasons != null) {
+      _json["secondaryReasons"] = secondaryReasons.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class VideoAbuseReportSecondaryReason {
+  /** The ID of this abuse report secondary reason. */
+  core.String id;
+  /** The localized label for this abuse report secondary reason. */
+  core.String label;
+
+  VideoAbuseReportSecondaryReason();
+
+  VideoAbuseReportSecondaryReason.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("label")) {
+      label = _json["label"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (label != null) {
+      _json["label"] = label;
+    }
+    return _json;
+  }
+}
 
 class VideoAgeGating {
   /**
@@ -14101,14 +13776,12 @@ class VideoAgeGating {
    * ICAP, can view the content.
    */
   core.bool alcoholContent;
-
   /**
    * Age-restricted trailers. For redband trailers and adult-rated video-games.
    * Only users aged 18+ can view the content. The the field is true the content
    * is restricted to viewers aged 18+. Otherwise The field won't be present.
    */
   core.bool restricted;
-
   /**
    * Video game rating, if any.
    * Possible string values are:
@@ -14118,7 +13791,6 @@ class VideoAgeGating {
    * - "m17Plus"
    */
   core.String videoGameRating;
-
 
   VideoAgeGating();
 
@@ -14149,7 +13821,6 @@ class VideoAgeGating {
   }
 }
 
-
 /**
  * A videoCategory resource identifies a category that has been or could be
  * associated with uploaded videos.
@@ -14157,22 +13828,18 @@ class VideoAgeGating {
 class VideoCategory {
   /** Etag of this resource. */
   core.String etag;
-
   /** The ID that YouTube uses to uniquely identify the video category. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#videoCategory".
    */
   core.String kind;
-
   /**
    * The snippet object contains basic details about the video category,
    * including its title.
    */
   VideoCategorySnippet snippet;
-
 
   VideoCategory();
 
@@ -14209,46 +13876,36 @@ class VideoCategory {
   }
 }
 
-
 class VideoCategoryListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /**
    * A list of video categories that can be associated with YouTube videos. In
    * this map, the video category ID is the map key, and its value is the
    * corresponding videoCategory resource.
    */
   core.List<VideoCategory> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#videoCategoryListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the previous page in the result set.
    */
   core.String prevPageToken;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   VideoCategoryListResponse();
 
@@ -14315,17 +13972,13 @@ class VideoCategoryListResponse {
   }
 }
 
-
 /** Basic details about a video category, such as its localized title. */
 class VideoCategorySnippet {
   core.bool assignable;
-
   /** The YouTube channel that created the video category. */
   core.String channelId;
-
   /** The video category's title. */
   core.String title;
-
 
   VideoCategorySnippet();
 
@@ -14356,7 +14009,6 @@ class VideoCategorySnippet {
   }
 }
 
-
 /** Details about the content of a YouTube Video. */
 class VideoContentDetails {
   /**
@@ -14366,18 +14018,15 @@ class VideoContentDetails {
    * - "true"
    */
   core.String caption;
-
   /**
    * Specifies the ratings that the video received under various rating schemes.
    */
   ContentRating contentRating;
-
   /**
    * The countryRestriction object contains information about the countries
    * where a video is (or is not) viewable.
    */
   AccessPolicy countryRestriction;
-
   /**
    * The value of definition indicates whether the video is available in high
    * definition or only in standard definition.
@@ -14386,13 +14035,11 @@ class VideoContentDetails {
    * - "sd"
    */
   core.String definition;
-
   /**
    * The value of dimension indicates whether the video is available in 3D or in
    * 2D.
    */
   core.String dimension;
-
   /**
    * The length of the video. The tag value is an ISO 8601 duration in the
    * format PT#M#S, in which the letters PT indicate that the value specifies a
@@ -14403,13 +14050,11 @@ class VideoContentDetails {
    * 51 seconds long.
    */
   core.String duration;
-
   /**
    * The value of is_license_content indicates whether the video is licensed
    * content.
    */
   core.bool licensedContent;
-
   /**
    * The regionRestriction object contains information about the countries where
    * a video is (or is not) viewable. The object will contain either the
@@ -14417,7 +14062,6 @@ class VideoContentDetails {
    * contentDetails.regionRestriction.blocked property.
    */
   VideoContentDetailsRegionRestriction regionRestriction;
-
 
   VideoContentDetails();
 
@@ -14478,7 +14122,6 @@ class VideoContentDetails {
   }
 }
 
-
 /** DEPRECATED Region restriction of the video. */
 class VideoContentDetailsRegionRestriction {
   /**
@@ -14488,7 +14131,6 @@ class VideoContentDetailsRegionRestriction {
    * present and contains an empty list, the video is blocked in all countries.
    */
   core.List<core.String> allowed;
-
   /**
    * A list of region codes that identify countries where the video is blocked.
    * If this property is present and a country is not listed in its value, then
@@ -14496,7 +14138,6 @@ class VideoContentDetailsRegionRestriction {
    * contains an empty list, the video is viewable in all countries.
    */
   core.List<core.String> blocked;
-
 
   VideoContentDetailsRegionRestriction();
 
@@ -14521,7 +14162,6 @@ class VideoContentDetailsRegionRestriction {
   }
 }
 
-
 class VideoConversionPing {
   /**
    * Defines the context of the ping.
@@ -14532,7 +14172,6 @@ class VideoConversionPing {
    * - "share"
    */
   core.String context;
-
   /**
    * The url (without the schema) that the app shall send the ping to. It's at
    * caller's descretion to decide which schema to use (http vs https) Example
@@ -14543,7 +14182,6 @@ class VideoConversionPing {
    * for example) to this ping.
    */
   core.String conversionUrl;
-
 
   VideoConversionPing();
 
@@ -14568,7 +14206,6 @@ class VideoConversionPing {
   }
 }
 
-
 class VideoConversionPings {
   /**
    * Pings that the app shall fire for a video (authenticated by biscotti
@@ -14576,7 +14213,6 @@ class VideoConversionPings {
    * a url identifying the ping.
    */
   core.List<VideoConversionPing> pings;
-
 
   VideoConversionPings();
 
@@ -14595,7 +14231,6 @@ class VideoConversionPings {
   }
 }
 
-
 /**
  * Describes original video file properties, including technical details about
  * audio and video streams, but also metadata information like content length,
@@ -14607,16 +14242,13 @@ class VideoFileDetails {
    * the list contains detailed metadata about an audio stream.
    */
   core.List<VideoFileDetailsAudioStream> audioStreams;
-
   /**
    * The uploaded video file's combined (video and audio) bitrate in bits per
    * second.
    */
   core.String bitrateBps;
-
   /** The uploaded video file's container format. */
   core.String container;
-
   /**
    * The date and time when the uploaded video file was created. The value is
    * specified in ISO 8601 format. Currently, the following ISO 8601 formats are
@@ -14626,22 +14258,18 @@ class VideoFileDetails {
    * - Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM
    */
   core.String creationTime;
-
   /** The length of the uploaded video in milliseconds. */
   core.String durationMs;
-
   /**
    * The uploaded file's name. This field is present whether a video file or
    * another type of file was uploaded.
    */
   core.String fileName;
-
   /**
    * The uploaded file's size in bytes. This field is present whether a video
    * file or another type of file was uploaded.
    */
   core.String fileSize;
-
   /**
    * The uploaded file's type as detected by YouTube's video processing engine.
    * Currently, YouTube only processes video files, but this field is present
@@ -14656,19 +14284,16 @@ class VideoFileDetails {
    * - "video"
    */
   core.String fileType;
-
   /**
    * Geographic coordinates that identify the place where the uploaded video was
    * recorded. Coordinates are defined using WGS 84.
    */
   GeoPoint recordingLocation;
-
   /**
    * A list of video streams contained in the uploaded video file. Each item in
    * the list contains detailed metadata about a video stream.
    */
   core.List<VideoFileDetailsVideoStream> videoStreams;
-
 
   VideoFileDetails();
 
@@ -14741,24 +14366,19 @@ class VideoFileDetails {
   }
 }
 
-
 /** Information about an audio stream. */
 class VideoFileDetailsAudioStream {
   /** The audio stream's bitrate, in bits per second. */
   core.String bitrateBps;
-
   /** The number of audio channels that the stream contains. */
   core.int channelCount;
-
   /** The audio codec that the stream uses. */
   core.String codec;
-
   /**
    * A value that uniquely identifies a video vendor. Typically, the value is a
    * four-letter vendor code.
    */
   core.String vendor;
-
 
   VideoFileDetailsAudioStream();
 
@@ -14795,7 +14415,6 @@ class VideoFileDetailsAudioStream {
   }
 }
 
-
 /** Information about a video stream. */
 class VideoFileDetailsVideoStream {
   /**
@@ -14803,19 +14422,14 @@ class VideoFileDetailsVideoStream {
    * in which the video should be displayed.
    */
   core.double aspectRatio;
-
   /** The video stream's bitrate, in bits per second. */
   core.String bitrateBps;
-
   /** The video codec that the stream uses. */
   core.String codec;
-
   /** The video stream's frame rate, in frames per second. */
   core.double frameRateFps;
-
   /** The encoded video content's height in pixels. */
   core.int heightPixels;
-
   /**
    * The amount that YouTube needs to rotate the original source content to
    * properly display the video.
@@ -14827,19 +14441,16 @@ class VideoFileDetailsVideoStream {
    * - "upsideDown"
    */
   core.String rotation;
-
   /**
    * A value that uniquely identifies a video vendor. Typically, the value is a
    * four-letter vendor code.
    */
   core.String vendor;
-
   /**
    * The encoded video content's width in pixels. You can calculate the video's
    * encoding aspect ratio as width_pixels / height_pixels.
    */
   core.int widthPixels;
-
 
   VideoFileDetailsVideoStream();
 
@@ -14900,26 +14511,20 @@ class VideoFileDetailsVideoStream {
   }
 }
 
-
 class VideoGetRatingResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of ratings that match the request criteria. */
   core.List<VideoRating> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#videoGetRatingResponse".
    */
   core.String kind;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   VideoGetRatingResponse();
 
@@ -14962,42 +14567,32 @@ class VideoGetRatingResponse {
   }
 }
 
-
 class VideoListResponse {
   /** Etag of this resource. */
   core.String etag;
-
   /** Serialized EventId of the request which produced this response. */
   core.String eventId;
-
   /** A list of videos that match the request criteria. */
   core.List<Video> items;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "youtube#videoListResponse".
    */
   core.String kind;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the next page in the result set.
    */
   core.String nextPageToken;
-
   PageInfo pageInfo;
-
   /**
    * The token that can be used as the value of the pageToken parameter to
    * retrieve the previous page in the result set.
    */
   core.String prevPageToken;
-
   TokenPagination tokenPagination;
-
   /** The visitorId identifies the visitor. */
   core.String visitorId;
-
 
   VideoListResponse();
 
@@ -15064,7 +14659,6 @@ class VideoListResponse {
   }
 }
 
-
 /** Details about the live streaming metadata. */
 class VideoLiveStreamingDetails {
   /**
@@ -15073,14 +14667,12 @@ class VideoLiveStreamingDetails {
    * until the broadcast is over.
    */
   core.DateTime actualEndTime;
-
   /**
    * The time that the broadcast actually started. The value is specified in ISO
    * 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. This value will not be available
    * until the broadcast begins.
    */
   core.DateTime actualStartTime;
-
   /**
    * The number of viewers currently watching the broadcast. The property and
    * its value will be present if the broadcast has current viewers and the
@@ -15090,7 +14682,6 @@ class VideoLiveStreamingDetails {
    * viewers watching an archived video of a live broadcast that already ended.
    */
   core.String concurrentViewers;
-
   /**
    * The time that the broadcast is scheduled to end. The value is specified in
    * ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. If the value is empty or the
@@ -15098,13 +14689,11 @@ class VideoLiveStreamingDetails {
    * indefinitely.
    */
   core.DateTime scheduledEndTime;
-
   /**
    * The time that the broadcast is scheduled to begin. The value is specified
    * in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime scheduledStartTime;
-
 
   VideoLiveStreamingDetails();
 
@@ -15147,15 +14736,12 @@ class VideoLiveStreamingDetails {
   }
 }
 
-
 /** Localized versions of certain video properties (e.g. title). */
 class VideoLocalization {
   /** Localized version of the video's description. */
   core.String description;
-
   /** Localized version of the video's title. */
   core.String title;
-
 
   VideoLocalization();
 
@@ -15180,14 +14766,12 @@ class VideoLocalization {
   }
 }
 
-
 /** Details about monetization of a YouTube Video. */
 class VideoMonetizationDetails {
   /**
    * The value of access indicates whether the video can be monetized or not.
    */
   AccessPolicy access;
-
 
   VideoMonetizationDetails();
 
@@ -15206,12 +14790,10 @@ class VideoMonetizationDetails {
   }
 }
 
-
 /** Player to be used for a video playback. */
 class VideoPlayer {
   /** An <iframe> tag that embeds a player that will play the video. */
   core.String embedHtml;
-
 
   VideoPlayer();
 
@@ -15230,7 +14812,6 @@ class VideoPlayer {
   }
 }
 
-
 /**
  * Describes processing status and progress and availability of some other Video
  * resource parts.
@@ -15243,14 +14824,12 @@ class VideoProcessingDetails {
    * videos.list() request.
    */
   core.String editorSuggestionsAvailability;
-
   /**
    * This value indicates whether file details are available for the uploaded
    * video. You can retrieve a video's file details by requesting the
    * fileDetails part in your videos.list() request.
    */
   core.String fileDetailsAvailability;
-
   /**
    * The reason that YouTube failed to process the video. This property will
    * only have a value if the processingStatus property's value is failed.
@@ -15261,7 +14840,6 @@ class VideoProcessingDetails {
    * - "uploadFailed"
    */
   core.String processingFailureReason;
-
   /**
    * This value indicates whether the video processing engine has generated
    * suggestions that might improve YouTube's ability to process the the video,
@@ -15270,14 +14848,12 @@ class VideoProcessingDetails {
    * suggestions part in your videos.list() request.
    */
   core.String processingIssuesAvailability;
-
   /**
    * The processingProgress object contains information about the progress
    * YouTube has made in processing the video. The values are really only
    * relevant if the video's processing status is processing.
    */
   VideoProcessingDetailsProcessingProgress processingProgress;
-
   /**
    * The video's processing status. This value indicates whether YouTube was
    * able to process the video or if the video is still being processed.
@@ -15288,7 +14864,6 @@ class VideoProcessingDetails {
    * - "terminated"
    */
   core.String processingStatus;
-
   /**
    * This value indicates whether keyword (tag) suggestions are available for
    * the video. Tags can be added to a video's metadata to make it easier for
@@ -15296,13 +14871,11 @@ class VideoProcessingDetails {
    * requesting the suggestions part in your videos.list() request.
    */
   core.String tagSuggestionsAvailability;
-
   /**
    * This value indicates whether thumbnail images have been generated for the
    * video.
    */
   core.String thumbnailsAvailability;
-
 
   VideoProcessingDetails();
 
@@ -15363,7 +14936,6 @@ class VideoProcessingDetails {
   }
 }
 
-
 /** Video processing progress and completion time estimate. */
 class VideoProcessingDetailsProcessingProgress {
   /**
@@ -15378,20 +14950,17 @@ class VideoProcessingDetailsProcessingProgress {
    * decrease while YouTube processes a video.
    */
   core.String partsProcessed;
-
   /**
    * An estimate of the total number of parts that need to be processed for the
    * video. The number may be updated with more precise estimates while YouTube
    * processes the video.
    */
   core.String partsTotal;
-
   /**
    * An estimate of the amount of time, in millseconds, that YouTube needs to
    * finish processing the video.
    */
   core.String timeLeftMs;
-
 
   VideoProcessingDetailsProcessingProgress();
 
@@ -15422,12 +14991,10 @@ class VideoProcessingDetailsProcessingProgress {
   }
 }
 
-
 /** Project specific details about the content of a YouTube Video. */
 class VideoProjectDetails {
   /** A list of project tags associated with the video during the upload. */
   core.List<core.String> tags;
-
 
   VideoProjectDetails();
 
@@ -15446,7 +15013,6 @@ class VideoProjectDetails {
   }
 }
 
-
 class VideoRating {
   /**
    *
@@ -15457,9 +15023,7 @@ class VideoRating {
    * - "unspecified"
    */
   core.String rating;
-
   core.String videoId;
-
 
   VideoRating();
 
@@ -15484,21 +15048,17 @@ class VideoRating {
   }
 }
 
-
 /** Recording information associated with the video. */
 class VideoRecordingDetails {
   /** The geolocation information associated with the video. */
   GeoPoint location;
-
   /** The text description of the location where the video was recorded. */
   core.String locationDescription;
-
   /**
    * The date and time when the video was recorded. The value is specified in
    * ISO 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.
    */
   core.DateTime recordingDate;
-
 
   VideoRecordingDetails();
 
@@ -15529,7 +15089,6 @@ class VideoRecordingDetails {
   }
 }
 
-
 /**
  * Basic details about a video, including title, description, uploader,
  * thumbnails and category.
@@ -15537,22 +15096,17 @@ class VideoRecordingDetails {
 class VideoSnippet {
   /** The YouTube video category associated with the video. */
   core.String categoryId;
-
   /**
    * The ID that YouTube uses to uniquely identify the channel that the video
    * was uploaded to.
    */
   core.String channelId;
-
   /** Channel title for the channel that the video belongs to. */
   core.String channelTitle;
-
   /** The language of the videos's default snippet. */
   core.String defaultLanguage;
-
   /** The video's description. */
   core.String description;
-
   /**
    * Indicates if the video is an upcoming/active live broadcast. Or it's "none"
    * if the video is not an upcoming/active live broadcast.
@@ -15562,35 +15116,29 @@ class VideoSnippet {
    * - "upcoming"
    */
   core.String liveBroadcastContent;
-
   /**
    * Localized snippet selected with the hl parameter. If no such localization
    * exists, this field is populated with the default snippet. (Read-only)
    */
   VideoLocalization localized;
-
   /**
    * The date and time that the video was uploaded. The value is specified in
    * ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime publishedAt;
-
   /**
    * A list of keyword tags associated with the video. Tags may contain spaces.
    * This field is only visible to the video's uploader.
    */
   core.List<core.String> tags;
-
   /**
    * A map of thumbnail images associated with the video. For each object in the
    * map, the key is the name of the thumbnail image, and the value is an object
    * that contains other information about the thumbnail.
    */
   ThumbnailDetails thumbnails;
-
   /** The video's title. */
   core.String title;
-
 
   VideoSnippet();
 
@@ -15669,7 +15217,6 @@ class VideoSnippet {
   }
 }
 
-
 /**
  * Statistics about the video, such as the number of times the video was viewed
  * or liked.
@@ -15677,28 +15224,23 @@ class VideoSnippet {
 class VideoStatistics {
   /** The number of comments for the video. */
   core.String commentCount;
-
   /**
    * The number of users who have indicated that they disliked the video by
    * giving it a negative rating.
    */
   core.String dislikeCount;
-
   /**
    * The number of users who currently have the video marked as a favorite
    * video.
    */
   core.String favoriteCount;
-
   /**
    * The number of users who have indicated that they liked the video by giving
    * it a positive rating.
    */
   core.String likeCount;
-
   /** The number of times the video has been viewed. */
   core.String viewCount;
-
 
   VideoStatistics();
 
@@ -15741,12 +15283,10 @@ class VideoStatistics {
   }
 }
 
-
 /** Basic details about a video category, such as its localized title. */
 class VideoStatus {
   /** This value indicates if the video can be embedded on another website. */
   core.bool embeddable;
-
   /**
    * This value explains why a video failed to upload. This property is only
    * present if the uploadStatus property indicates that the upload failed.
@@ -15759,7 +15299,6 @@ class VideoStatus {
    * - "uploadAborted"
    */
   core.String failureReason;
-
   /**
    * The video's license.
    * Possible string values are:
@@ -15767,7 +15306,6 @@ class VideoStatus {
    * - "youtube"
    */
   core.String license;
-
   /**
    * The video's privacy status.
    * Possible string values are:
@@ -15776,21 +15314,18 @@ class VideoStatus {
    * - "unlisted"
    */
   core.String privacyStatus;
-
   /**
    * This value indicates if the extended video statistics on the watch page can
    * be viewed by everyone. Note that the view count, likes, etc will still be
    * visible if this is disabled.
    */
   core.bool publicStatsViewable;
-
   /**
    * The date and time when the video is scheduled to publish. It can be set
    * only if the privacy status of the video is private. The value is specified
    * in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
    */
   core.DateTime publishAt;
-
   /**
    * This value explains why YouTube rejected an uploaded video. This property
    * is only present if the uploadStatus property indicates that the upload was
@@ -15807,7 +15342,6 @@ class VideoStatus {
    * - "uploaderAccountSuspended"
    */
   core.String rejectionReason;
-
   /**
    * The status of the uploaded video.
    * Possible string values are:
@@ -15818,7 +15352,6 @@ class VideoStatus {
    * - "uploaded"
    */
   core.String uploadStatus;
-
 
   VideoStatus();
 
@@ -15879,7 +15412,6 @@ class VideoStatus {
   }
 }
 
-
 /**
  * Specifies suggestions on how to improve video content, including encoding
  * hints, tag suggestions, and editor suggestions.
@@ -15890,7 +15422,6 @@ class VideoSuggestions {
    * playback experience of the uploaded video.
    */
   core.List<core.String> editorSuggestions;
-
   /**
    * A list of errors that will prevent YouTube from successfully processing the
    * uploaded video video. These errors indicate that, regardless of the video's
@@ -15898,13 +15429,11 @@ class VideoSuggestions {
    * failed.
    */
   core.List<core.String> processingErrors;
-
   /**
    * A list of suggestions that may improve YouTube's ability to process the
    * video.
    */
   core.List<core.String> processingHints;
-
   /**
    * A list of reasons why YouTube may have difficulty transcoding the uploaded
    * video or that might result in an erroneous transcoding. These warnings are
@@ -15914,14 +15443,12 @@ class VideoSuggestions {
    * artifacts, or a missing audio track.
    */
   core.List<core.String> processingWarnings;
-
   /**
    * A list of keyword tags that could be added to the video's metadata to
    * increase the likelihood that users will locate your video when searching or
    * browsing on YouTube.
    */
   core.List<VideoSuggestionsTagSuggestion> tagSuggestions;
-
 
   VideoSuggestions();
 
@@ -15964,7 +15491,6 @@ class VideoSuggestions {
   }
 }
 
-
 /** A single tag suggestion with it's relevance information. */
 class VideoSuggestionsTagSuggestion {
   /**
@@ -15975,10 +15501,8 @@ class VideoSuggestionsTagSuggestion {
    * defined for the keyword.
    */
   core.List<core.String> categoryRestricts;
-
   /** The keyword tag suggested for the video. */
   core.String tag;
-
 
   VideoSuggestionsTagSuggestion();
 
@@ -16003,7 +15527,6 @@ class VideoSuggestionsTagSuggestion {
   }
 }
 
-
 /** Freebase topic information related to the video. */
 class VideoTopicDetails {
   /**
@@ -16012,7 +15535,6 @@ class VideoTopicDetails {
    * You can retrieve information about each topic using Freebase Topic API.
    */
   core.List<core.String> relevantTopicIds;
-
   /**
    * A list of Freebase topic IDs that are centrally associated with the video.
    * These are topics that are centrally featured in the video, and it can be
@@ -16020,7 +15542,6 @@ class VideoTopicDetails {
    * information about each topic using the Freebase Topic API.
    */
   core.List<core.String> topicIds;
-
 
   VideoTopicDetails();
 
@@ -16045,21 +15566,17 @@ class VideoTopicDetails {
   }
 }
 
-
 /** Branding properties for the watch. */
 class WatchSettings {
   /** The text color for the video watch page's branded area. */
   core.String backgroundColor;
-
   /**
    * An ID that uniquely identifies a playlist that displays next to the video
    * player.
    */
   core.String featuredPlaylistId;
-
   /** The background color for the video watch page's branded area. */
   core.String textColor;
-
 
   WatchSettings();
 

@@ -122,7 +122,7 @@ View and manage your Google Analytics data
 
 Official API documentation: https://developers.google.com/analytics/
 
-#### ![Logo](https://www.google.com/images/icons/product/android-16.png) Google Play MDM API - androidenterprise v1
+#### ![Logo](https://www.google.com/images/icons/product/android-16.png) Google Play EMM API - androidenterprise v1
 
 Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android for Work users.
 
@@ -148,7 +148,7 @@ Official API documentation: https://developers.google.com/games/services/web/api
 
 A data platform for customers to create, manage, share and query data.
 
-Official API documentation: https://developers.google.com/bigquery/docs/overview
+Official API documentation: https://cloud.google.com/bigquery/
 
 #### ![Logo](https://www.google.com/images/icons/product/blogger-16.png) Blogger API - blogger v3
 
@@ -425,10 +425,4 @@ Official API documentation: https://developers.google.com/youtube/v3
 Retrieve your YouTube Analytics reports.
 
 Official API documentation: http://developers.google.com/youtube/analytics/
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Search API - cloudsearch v1
-
-The Google Cloud Search API defines an application interface to index documents that contain structured data and to search those indexes. It supports full text search.
-
-Official API documentation: 
 

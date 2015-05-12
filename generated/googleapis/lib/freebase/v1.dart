@@ -54,7 +54,7 @@ class FreebaseApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ReconcileGet> reconcile({core.double confidence, core.List<core.String> kind, core.List<core.String> lang, core.int limit, core.String name, core.List<core.String> prop}) {
     var _url = null;
@@ -82,7 +82,6 @@ class FreebaseApi {
     if (prop != null) {
       _queryParams["prop"] = prop;
     }
-
 
     _url = 'reconcile';
 
@@ -189,7 +188,7 @@ class FreebaseApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future search({core.String asOfTime, core.String callback, core.int cursor, core.List<core.String> domain, core.String encode, core.bool exact, core.List<core.String> filter, core.String format, core.String help, core.bool indent, core.List<core.String> lang, core.int limit, core.List<core.String> mid, core.String mqlOutput, core.String output, core.bool prefixed, core.String query, core.String scoring, core.String spell, core.bool stemmed, core.List<core.String> type, core.List<core.String> with_, core.List<core.String> without, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -296,10 +295,8 @@ class FreebaseApi {
 class ReconcileCandidateNotable {
   /** MID of notable category. */
   core.String id;
-
   /** Name of notable category in specified language. */
   core.String name;
-
 
   ReconcileCandidateNotable();
 
@@ -324,26 +321,20 @@ class ReconcileCandidateNotable {
   }
 }
 
-
 class ReconcileCandidate {
   /**
    * Percentage likelihood that this candidate is the unique matching entity.
    * Value will be between 0.0 and 1.0
    */
   core.double confidence;
-
   /** Language code that candidate and notable names are displayed in. */
   core.String lang;
-
   /** Freebase MID of candidate entity. */
   core.String mid;
-
   /** Freebase name of matching entity in specified language. */
   core.String name;
-
   /** Type or profession the candidate is notable for. */
   ReconcileCandidateNotable notable;
-
 
   ReconcileCandidate();
 
@@ -386,15 +377,12 @@ class ReconcileCandidate {
   }
 }
 
-
 /** Server costs for reconciling. */
 class ReconcileGetCosts {
   /** Total number of hits found. */
   core.int hits;
-
   /** Total milliseconds spent. */
   core.int ms;
-
 
   ReconcileGetCosts();
 
@@ -419,17 +407,13 @@ class ReconcileGetCosts {
   }
 }
 
-
 class ReconcileGetWarning {
   /** Location of warning in the request e.g. invalid predicate. */
   core.String location;
-
   /** Warning message to display to the user. */
   core.String message;
-
   /** Code for identifying classes of warnings. */
   core.String reason;
-
 
   ReconcileGetWarning();
 
@@ -460,7 +444,6 @@ class ReconcileGetWarning {
   }
 }
 
-
 class ReconcileGet {
   /**
    * If filled, then the listed candidates are potential matches, and such
@@ -468,16 +451,13 @@ class ReconcileGet {
    * are ordered by confidence.
    */
   core.List<ReconcileCandidate> candidate;
-
   /** Server costs for reconciling. */
   ReconcileGetCosts costs;
-
   /**
    * If filled, this entity is guaranteed to match at requested confidence
    * probability (default 99%).
    */
   ReconcileCandidate match;
-
   /**
    * If filled, then there were recoverable problems that affected the request.
    * For example, some of the properties were ignored because they either are
@@ -486,7 +466,6 @@ class ReconcileGet {
    * that sections of the request were ignored as specified by the warning text.
    */
   core.List<ReconcileGetWarning> warning;
-
 
   ReconcileGet();
 

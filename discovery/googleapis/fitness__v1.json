@@ -29,7 +29,7 @@
     "description": "Google Fit API",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fit/rest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/7nujJ_Nfuc3PKxtqyPSRIg5chP0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/NViEYVhdyE08LWyL01EX31ABjdw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -143,7 +143,12 @@
                             "path": "{userId}/dataSources/{dataSourceId}",
                             "response": {
                                 "$ref": "DataSource"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/fitness.activity.write",
+                                "https://www.googleapis.com/auth/fitness.body.write",
+                                "https://www.googleapis.com/auth/fitness.location.write"
+                            ]
                         },
                         "get": {
                             "description": "Returns a data source identified by a data stream ID.",
@@ -568,7 +573,7 @@
             }
         }
     },
-    "revision": "20150329",
+    "revision": "20150326",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Application": {
@@ -783,12 +788,16 @@
                     },
                     "description": "The different supported formats for each field in a data type.",
                     "enum": [
+                        "floatList",
                         "floatPoint",
                         "integer",
+                        "integerList",
                         "map",
                         "string"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -974,18 +983,6 @@
             },
             "type": "object"
         },
-        "MapValue": {
-            "description": "Holder object for the value of an entry in a map field of a data point.\n\nA map value supports a subset of the formats that the regular Value supports.",
-            "id": "MapValue",
-            "properties": {
-                "fpVal": {
-                    "description": "Floating point value.",
-                    "format": "double",
-                    "type": "number"
-                }
-            },
-            "type": "object"
-        },
         "Session": {
             "description": "Sessions contain metadata, such as a user-friendly name and time interval information.",
             "id": "Session",
@@ -1068,54 +1065,15 @@
             "description": "Holder object for the value of a single field in a data point.\n\nA field value has a particular format and is only ever set to one of an integer or a floating point value.",
             "id": "Value",
             "properties": {
-                "floatListVal": {
-                    "description": "Float list value. When this is set, other values must not be set.",
-                    "items": {
-                        "format": "float",
-                        "type": "number"
-                    },
-                    "type": "array"
-                },
                 "fpVal": {
                     "description": "Floating point value. When this is set, intVal must not be set.",
                     "format": "double",
                     "type": "number"
                 },
-                "int64ListVal": {
-                    "description": "Long list value. When this is set, other values must not be set.",
-                    "items": {
-                        "format": "int64",
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "intVal": {
                     "description": "Integer value. When this is set, fpVal must not be set.",
                     "format": "int32",
                     "type": "integer"
-                },
-                "mapVal": {
-                    "description": "",
-                    "items": {
-                        "$ref": "ValueMapValEntry"
-                    },
-                    "type": "array"
-                },
-                "stringVal": {
-                    "description": "",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ValueMapValEntry": {
-            "id": "ValueMapValEntry",
-            "properties": {
-                "key": {
-                    "type": "string"
-                },
-                "value": {
-                    "$ref": "MapValue"
                 }
             },
             "type": "object"

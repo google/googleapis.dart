@@ -52,7 +52,7 @@ class TasklistsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String tasklist) {
     var _url = null;
@@ -93,7 +93,7 @@ class TasklistsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TaskList> get(core.String tasklist) {
     var _url = null;
@@ -106,7 +106,6 @@ class TasklistsResourceApi {
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
     }
-
 
     _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
 
@@ -133,7 +132,7 @@ class TasklistsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TaskList> insert(TaskList request) {
     var _url = null;
@@ -146,7 +145,6 @@ class TasklistsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'users/@me/lists';
 
@@ -176,7 +174,7 @@ class TasklistsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TaskLists> list({core.String maxResults, core.String pageToken}) {
     var _url = null;
@@ -192,7 +190,6 @@ class TasklistsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'users/@me/lists';
 
@@ -222,7 +219,7 @@ class TasklistsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TaskList> patch(TaskList request, core.String tasklist) {
     var _url = null;
@@ -238,7 +235,6 @@ class TasklistsResourceApi {
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
     }
-
 
     _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
 
@@ -267,7 +263,7 @@ class TasklistsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TaskList> update(TaskList request, core.String tasklist) {
     var _url = null;
@@ -283,7 +279,6 @@ class TasklistsResourceApi {
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
     }
-
 
     _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
 
@@ -319,7 +314,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future clear(core.String tasklist) {
     var _url = null;
@@ -360,7 +355,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String tasklist, core.String task) {
     var _url = null;
@@ -406,7 +401,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Task> get(core.String tasklist, core.String task) {
     var _url = null;
@@ -422,7 +417,6 @@ class TasksResourceApi {
     if (task == null) {
       throw new core.ArgumentError("Parameter task is required.");
     }
-
 
     _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
@@ -457,7 +451,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Task> insert(Task request, core.String tasklist, {core.String parent, core.String previous}) {
     var _url = null;
@@ -479,7 +473,6 @@ class TasksResourceApi {
     if (previous != null) {
       _queryParams["previous"] = [previous];
     }
-
 
     _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks';
 
@@ -538,7 +531,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Tasks> list(core.String tasklist, {core.String completedMax, core.String completedMin, core.String dueMax, core.String dueMin, core.String maxResults, core.String pageToken, core.bool showCompleted, core.bool showDeleted, core.bool showHidden, core.String updatedMin}) {
     var _url = null;
@@ -582,7 +575,6 @@ class TasksResourceApi {
       _queryParams["updatedMin"] = [updatedMin];
     }
 
-
     _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks';
 
     var _response = _requester.request(_url,
@@ -618,7 +610,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Task> move(core.String tasklist, core.String task, {core.String parent, core.String previous}) {
     var _url = null;
@@ -640,7 +632,6 @@ class TasksResourceApi {
     if (previous != null) {
       _queryParams["previous"] = [previous];
     }
-
 
     _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task') + '/move';
 
@@ -671,7 +662,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Task> patch(Task request, core.String tasklist, core.String task) {
     var _url = null;
@@ -690,7 +681,6 @@ class TasksResourceApi {
     if (task == null) {
       throw new core.ArgumentError("Parameter task is required.");
     }
-
 
     _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
@@ -721,7 +711,7 @@ class TasksResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Task> update(Task request, core.String tasklist, core.String task) {
     var _url = null;
@@ -740,7 +730,6 @@ class TasksResourceApi {
     if (task == null) {
       throw new core.ArgumentError("Parameter task is required.");
     }
-
 
     _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
@@ -761,13 +750,10 @@ class TasksResourceApi {
 class TaskLinks {
   /** The description. In HTML speak: Everything between <a> and </a>. */
   core.String description;
-
   /** The URL. */
   core.String link;
-
   /** Type of the link, e.g. "email". */
   core.String type;
-
 
   TaskLinks();
 
@@ -798,51 +784,40 @@ class TaskLinks {
   }
 }
 
-
 class Task {
   /**
    * Completion date of the task (as a RFC 3339 timestamp). This field is
    * omitted if the task has not been completed.
    */
   core.DateTime completed;
-
   /**
    * Flag indicating whether the task has been deleted. The default if False.
    */
   core.bool deleted;
-
   /** Due date of the task (as a RFC 3339 timestamp). Optional. */
   core.DateTime due;
-
   /** ETag of the resource. */
   core.String etag;
-
   /**
    * Flag indicating whether the task is hidden. This is the case if the task
    * had been marked completed when the task list was last cleared. The default
    * is False. This field is read-only.
    */
   core.bool hidden;
-
   /** Task identifier. */
   core.String id;
-
   /** Type of the resource. This is always "tasks#task". */
   core.String kind;
-
   /** Collection of links. This collection is read-only. */
   core.List<TaskLinks> links;
-
   /** Notes describing the task. Optional. */
   core.String notes;
-
   /**
    * Parent task identifier. This field is omitted if it is a top-level task.
    * This field is read-only. Use the "move" method to move the task under a
    * different parent or to the top level.
    */
   core.String parent;
-
   /**
    * String indicating the position of the task among its sibling tasks under
    * the same parent task or at the top level. If this string is greater than
@@ -852,21 +827,16 @@ class Task {
    * to move the task to another position.
    */
   core.String position;
-
   /**
    * URL pointing to this task. Used to retrieve, update, or delete this task.
    */
   core.String selfLink;
-
   /** Status of the task. This is either "needsAction" or "completed". */
   core.String status;
-
   /** Title of the task. */
   core.String title;
-
   /** Last modification time of the task (as a RFC 3339 timestamp). */
   core.DateTime updated;
-
 
   Task();
 
@@ -969,29 +939,22 @@ class Task {
   }
 }
 
-
 class TaskList {
   /** ETag of the resource. */
   core.String etag;
-
   /** Task list identifier. */
   core.String id;
-
   /** Type of the resource. This is always "tasks#taskList". */
   core.String kind;
-
   /**
    * URL pointing to this task list. Used to retrieve, update, or delete this
    * task list.
    */
   core.String selfLink;
-
   /** Title of the task list. */
   core.String title;
-
   /** Last modification time of the task list (as a RFC 3339 timestamp). */
   core.DateTime updated;
-
 
   TaskList();
 
@@ -1040,20 +1003,15 @@ class TaskList {
   }
 }
 
-
 class TaskLists {
   /** ETag of the resource. */
   core.String etag;
-
   /** Collection of task lists. */
   core.List<TaskList> items;
-
   /** Type of the resource. This is always "tasks#taskLists". */
   core.String kind;
-
   /** Token that can be used to request the next page of this result. */
   core.String nextPageToken;
-
 
   TaskLists();
 
@@ -1090,20 +1048,15 @@ class TaskLists {
   }
 }
 
-
 class Tasks {
   /** ETag of the resource. */
   core.String etag;
-
   /** Collection of tasks. */
   core.List<Task> items;
-
   /** Type of the resource. This is always "tasks#tasks". */
   core.String kind;
-
   /** Token used to access the next page of this result. */
   core.String nextPageToken;
-
 
   Tasks();
 

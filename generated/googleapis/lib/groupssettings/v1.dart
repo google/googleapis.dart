@@ -50,7 +50,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Groups> get(core.String groupUniqueId) {
     var _url = null;
@@ -63,7 +63,6 @@ class GroupsResourceApi {
     if (groupUniqueId == null) {
       throw new core.ArgumentError("Parameter groupUniqueId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
@@ -92,7 +91,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Groups> patch(Groups request, core.String groupUniqueId) {
     var _url = null;
@@ -108,7 +107,6 @@ class GroupsResourceApi {
     if (groupUniqueId == null) {
       throw new core.ArgumentError("Parameter groupUniqueId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
@@ -137,7 +135,7 @@ class GroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Groups> update(Groups request, core.String groupUniqueId) {
     var _url = null;
@@ -153,7 +151,6 @@ class GroupsResourceApi {
     if (groupUniqueId == null) {
       throw new core.ArgumentError("Parameter groupUniqueId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
@@ -175,124 +172,96 @@ class GroupsResourceApi {
 class Groups {
   /** Are external members allowed to join the group. */
   core.String allowExternalMembers;
-
   /** Is google allowed to contact admins. */
   core.String allowGoogleCommunication;
-
   /** If posting from web is allowed. */
   core.String allowWebPosting;
-
   /** If the group is archive only */
   core.String archiveOnly;
-
   /** Default email to which reply to any message should go. */
   core.String customReplyTo;
-
   /** Default message deny notification message */
   core.String defaultMessageDenyNotificationText;
-
   /** Description of the group */
   core.String description;
-
   /** Email id of the group */
   core.String email;
-
   /** If this groups should be included in global address list or not. */
   core.String includeInGlobalAddressList;
-
   /** If the contents of the group are archived. */
   core.String isArchived;
-
   /** The type of the resource. */
   core.String kind;
-
   /** Maximum message size allowed. */
   core.int maxMessageBytes;
-
   /** Can members post using the group email address. */
   core.String membersCanPostAsTheGroup;
-
   /**
    * Default message display font. Possible values are: DEFAULT_FONT
    * FIXED_WIDTH_FONT
    */
   core.String messageDisplayFont;
-
   /**
    * Moderation level for messages. Possible values are: MODERATE_ALL_MESSAGES
    * MODERATE_NON_MEMBERS MODERATE_NEW_MEMBERS MODERATE_NONE
    */
   core.String messageModerationLevel;
-
   /** Name of the Group */
   core.String name;
-
   /** Primary language for the group. */
   core.String primaryLanguage;
-
   /**
    * Whome should the default reply to a message go to. Possible values are:
    * REPLY_TO_CUSTOM REPLY_TO_SENDER REPLY_TO_LIST REPLY_TO_OWNER
    * REPLY_TO_IGNORE REPLY_TO_MANAGERS
    */
   core.String replyTo;
-
   /** Should the member be notified if his message is denied by owner. */
   core.String sendMessageDenyNotification;
-
   /** Is the group listed in groups directory */
   core.String showInGroupDirectory;
-
   /**
    * Moderation level for messages detected as spam. Possible values are: ALLOW
    * MODERATE SILENTLY_MODERATE REJECT
    */
   core.String spamModerationLevel;
-
   /**
    * Permission to contact owner of the group via web UI. Possbile values are:
    * ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT
    * ALL_MANAGERS_CAN_CONTACT
    */
   core.String whoCanContactOwner;
-
   /**
    * Permissions to invite members. Possbile values are: ALL_MEMBERS_CAN_INVITE
    * ALL_MANAGERS_CAN_INVITE
    */
   core.String whoCanInvite;
-
   /**
    * Permissions to join the group. Possible values are: ANYONE_CAN_JOIN
    * ALL_IN_DOMAIN_CAN_JOIN INVITED_CAN_JOIN CAN_REQUEST_TO_JOIN
    */
   core.String whoCanJoin;
-
   /**
    * Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE
    * ALL_MEMBERS_CAN_LEAVE
    */
   core.String whoCanLeaveGroup;
-
   /**
    * Permissions to post messages to the group. Possible values are:
    * NONE_CAN_POST ALL_MANAGERS_CAN_POST ALL_MEMBERS_CAN_POST
    * ALL_IN_DOMAIN_CAN_POST ANYONE_CAN_POST
    */
   core.String whoCanPostMessage;
-
   /**
    * Permissions to view group. Possbile values are: ANYONE_CAN_VIEW
    * ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
    */
   core.String whoCanViewGroup;
-
   /**
    * Permissions to view membership. Possbile values are: ALL_IN_DOMAIN_CAN_VIEW
    * ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
    */
   core.String whoCanViewMembership;
-
 
   Groups();
 

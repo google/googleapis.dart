@@ -59,7 +59,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AllocateIdsResponse> allocateIds(AllocateIdsRequest request, core.String datasetId) {
     var _url = null;
@@ -75,7 +75,6 @@ class DatasetsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$datasetId') + '/allocateIds';
 
@@ -104,7 +103,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BeginTransactionResponse> beginTransaction(BeginTransactionRequest request, core.String datasetId) {
     var _url = null;
@@ -120,7 +119,6 @@ class DatasetsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$datasetId') + '/beginTransaction';
 
@@ -150,7 +148,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CommitResponse> commit(CommitRequest request, core.String datasetId) {
     var _url = null;
@@ -166,7 +164,6 @@ class DatasetsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$datasetId') + '/commit';
 
@@ -195,7 +192,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LookupResponse> lookup(LookupRequest request, core.String datasetId) {
     var _url = null;
@@ -211,7 +208,6 @@ class DatasetsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$datasetId') + '/lookup';
 
@@ -240,7 +236,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RollbackResponse> rollback(RollbackRequest request, core.String datasetId) {
     var _url = null;
@@ -256,7 +252,6 @@ class DatasetsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$datasetId') + '/rollback';
 
@@ -285,7 +280,7 @@ class DatasetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RunQueryResponse> runQuery(RunQueryRequest request, core.String datasetId) {
     var _url = null;
@@ -301,7 +296,6 @@ class DatasetsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$datasetId') + '/runQuery';
 
@@ -326,7 +320,6 @@ class AllocateIdsRequest {
    */
   core.List<Key> keys;
 
-
   AllocateIdsRequest();
 
   AllocateIdsRequest.fromJson(core.Map _json) {
@@ -344,16 +337,13 @@ class AllocateIdsRequest {
   }
 }
 
-
 class AllocateIdsResponse {
   ResponseHeader header;
-
   /**
    * The keys specified in the request (in the same order), each with its key
    * path completed with a newly allocated ID.
    */
   core.List<Key> keys;
-
 
   AllocateIdsResponse();
 
@@ -378,7 +368,6 @@ class AllocateIdsResponse {
   }
 }
 
-
 class BeginTransactionRequest {
   /**
    * The transaction isolation level. Either snapshot or serializable. The
@@ -392,7 +381,6 @@ class BeginTransactionRequest {
    * - "SNAPSHOT"
    */
   core.String isolationLevel;
-
 
   BeginTransactionRequest();
 
@@ -411,13 +399,10 @@ class BeginTransactionRequest {
   }
 }
 
-
 class BeginTransactionResponse {
   ResponseHeader header;
-
   /** The transaction identifier (always present). */
   core.String transaction;
-
   core.List<core.int> get transactionAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(transaction);
   }
@@ -425,7 +410,6 @@ class BeginTransactionResponse {
   void set transactionAsBytes(core.List<core.int> _bytes) {
     transaction = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
 
   BeginTransactionResponse();
 
@@ -450,10 +434,8 @@ class BeginTransactionResponse {
   }
 }
 
-
 class CommitRequest {
   core.bool ignoreReadOnly;
-
   /**
    * The type of commit to perform. Either TRANSACTIONAL or NON_TRANSACTIONAL.
    * Possible string values are:
@@ -461,16 +443,13 @@ class CommitRequest {
    * - "TRANSACTIONAL"
    */
   core.String mode;
-
   /** The mutation to perform. Optional. */
   Mutation mutation;
-
   /**
    * The transaction identifier, returned by a call to beginTransaction. Must be
    * set when mode is TRANSACTIONAL.
    */
   core.String transaction;
-
   core.List<core.int> get transactionAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(transaction);
   }
@@ -478,7 +457,6 @@ class CommitRequest {
   void set transactionAsBytes(core.List<core.int> _bytes) {
     transaction = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
 
   CommitRequest();
 
@@ -515,13 +493,10 @@ class CommitRequest {
   }
 }
 
-
 class CommitResponse {
   ResponseHeader header;
-
   /** The result of performing the mutation (if any). */
   MutationResult mutationResult;
-
 
   CommitResponse();
 
@@ -546,14 +521,12 @@ class CommitResponse {
   }
 }
 
-
 /**
  * A filter that merges the multiple other filters using the given operation.
  */
 class CompositeFilter {
   /** The list of filters to combine. Must contain at least one filter. */
   core.List<Filter> filters;
-
   /**
    * The operator for combining multiple filters. Only "and" is currently
    * supported.
@@ -561,7 +534,6 @@ class CompositeFilter {
    * - "AND"
    */
   core.String operator;
-
 
   CompositeFilter();
 
@@ -586,7 +558,6 @@ class CompositeFilter {
   }
 }
 
-
 /** An entity. */
 class Entity {
   /**
@@ -597,10 +568,8 @@ class Entity {
    * path's last element's kind, or null if it has no key.
    */
   Key key;
-
   /** The entity's properties. */
   core.Map<core.String, Property> properties;
-
 
   Entity();
 
@@ -625,12 +594,10 @@ class Entity {
   }
 }
 
-
 /** The result of fetching an entity from the datastore. */
 class EntityResult {
   /** The resulting entity. */
   Entity entity;
-
 
   EntityResult();
 
@@ -649,15 +616,12 @@ class EntityResult {
   }
 }
 
-
 /** A holder for any type of filter. Exactly one field should be specified. */
 class Filter {
   /** A composite filter. */
   CompositeFilter compositeFilter;
-
   /** A filter on a property. */
   PropertyFilter propertyFilter;
-
 
   Filter();
 
@@ -682,12 +646,10 @@ class Filter {
   }
 }
 
-
 /** A GQL query. */
 class GqlQuery {
   /** When false, the query string must not contain a literal. */
   core.bool allowLiteral;
-
   /**
    * A named argument must set field GqlQueryArg.name. No two named arguments
    * may have the same name. For each non-reserved named binding site in the
@@ -695,7 +657,6 @@ class GqlQuery {
    * necessarily the inverse.
    */
   core.List<GqlQueryArg> nameArgs;
-
   /**
    * Numbered binding site @1 references the first numbered argument,
    * effectively using 1-based indexing, rather than the usual 0. A numbered
@@ -704,10 +665,8 @@ class GqlQuery {
    * inverse must also be true.
    */
   core.List<GqlQueryArg> numberArgs;
-
   /** The query string. */
   core.String queryString;
-
 
   GqlQuery();
 
@@ -744,11 +703,9 @@ class GqlQuery {
   }
 }
 
-
 /** A binding argument for a GQL query. */
 class GqlQueryArg {
   core.String cursor;
-
   core.List<core.int> get cursorAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(cursor);
   }
@@ -756,15 +713,12 @@ class GqlQueryArg {
   void set cursorAsBytes(core.List<core.int> _bytes) {
     cursor = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /**
    * Must match regex "[A-Za-z_$][A-Za-z_$0-9]*". Must not match regex "__.*__".
    * Must not be "".
    */
   core.String name;
-
   Value value;
-
 
   GqlQueryArg();
 
@@ -795,7 +749,6 @@ class GqlQueryArg {
   }
 }
 
-
 /** A unique identifier for an entity. */
 class Key {
   /**
@@ -804,7 +757,6 @@ class Key {
    * scoped to a single partition.
    */
   PartitionId partitionId;
-
   /**
    * The entity path. An entity path consists of one or more elements composed
    * of a kind and a string or numerical identifier, which identify entities.
@@ -819,7 +771,6 @@ class Key {
    * elements.
    */
   core.List<KeyPathElement> path;
-
 
   Key();
 
@@ -844,7 +795,6 @@ class Key {
   }
 }
 
-
 /**
  * A (kind, ID/name) pair used to construct a key path.
  *
@@ -857,21 +807,18 @@ class KeyPathElement {
    * discouraged and will not be supported in the future.
    */
   core.String id;
-
   /**
    * The kind of the entity. A kind matching regex "__.*__" is
    * reserved/read-only. A kind must not contain more than 500 characters.
    * Cannot be "".
    */
   core.String kind;
-
   /**
    * The name of the entity. A name matching regex "__.*__" is
    * reserved/read-only. A name must not be more than 500 characters. Cannot be
    * "".
    */
   core.String name;
-
 
   KeyPathElement();
 
@@ -902,12 +849,10 @@ class KeyPathElement {
   }
 }
 
-
 /** A representation of a kind. */
 class KindExpression {
   /** The name of the kind. */
   core.String name;
-
 
   KindExpression();
 
@@ -926,14 +871,11 @@ class KindExpression {
   }
 }
 
-
 class LookupRequest {
   /** Keys of entities to look up from the datastore. */
   core.List<Key> keys;
-
   /** Options for this lookup request. Optional. */
   ReadOptions readOptions;
-
 
   LookupRequest();
 
@@ -958,19 +900,14 @@ class LookupRequest {
   }
 }
 
-
 class LookupResponse {
   /** A list of keys that were not looked up due to resource constraints. */
   core.List<Key> deferred;
-
   /** Entities found. */
   core.List<EntityResult> found;
-
   ResponseHeader header;
-
   /** Entities not found, with only the key populated. */
   core.List<EntityResult> missing;
-
 
   LookupResponse();
 
@@ -1007,7 +944,6 @@ class LookupResponse {
   }
 }
 
-
 /** A set of changes to apply. */
 class Mutation {
   /**
@@ -1015,34 +951,28 @@ class Mutation {
    * not be reserved/read-only.
    */
   core.List<Key> delete;
-
   /** Ignore a user specified read-only period. Optional. */
   core.bool force;
-
   /**
    * Entities to insert. Each inserted entity's key must have a complete path
    * and must not be reserved/read-only.
    */
   core.List<Entity> insert;
-
   /**
    * Insert entities with a newly allocated ID. Each inserted entity's key must
    * omit the final identifier in its path and must not be reserved/read-only.
    */
   core.List<Entity> insertAutoId;
-
   /**
    * Entities to update. Each updated entity's key must have a complete path and
    * must not be reserved/read-only.
    */
   core.List<Entity> update;
-
   /**
    * Entities to upsert. Each upserted entity's key must have a complete path
    * and must not be reserved/read-only.
    */
   core.List<Entity> upsert;
-
 
   Mutation();
 
@@ -1091,17 +1021,14 @@ class Mutation {
   }
 }
 
-
 class MutationResult {
   /** Number of index writes. */
   core.int indexUpdates;
-
   /**
    * Keys for insertAutoId entities. One per entity from the request, in the
    * same order.
    */
   core.List<Key> insertAutoIdKeys;
-
 
   MutationResult();
 
@@ -1126,7 +1053,6 @@ class MutationResult {
   }
 }
 
-
 /**
  * An identifier for a particular subset of entities.
  *
@@ -1136,10 +1062,8 @@ class MutationResult {
 class PartitionId {
   /** The dataset ID. */
   core.String datasetId;
-
   /** The namespace. */
   core.String namespace;
-
 
   PartitionId();
 
@@ -1164,18 +1088,15 @@ class PartitionId {
   }
 }
 
-
 /** An entity property. */
 class Property {
   /** A blob key value. */
   core.String blobKeyValue;
-
   /**
    * A blob value. May be a maximum of 1,000,000 bytes. When indexed is true,
    * may have at most 500 bytes.
    */
   core.String blobValue;
-
   core.List<core.int> get blobValueAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(blobValue);
   }
@@ -1183,22 +1104,17 @@ class Property {
   void set blobValueAsBytes(core.List<core.int> _bytes) {
     blobValue = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** A boolean value. */
   core.bool booleanValue;
-
   /** A timestamp value. */
   core.DateTime dateTimeValue;
-
   /** A double value. */
   core.double doubleValue;
-
   /**
    * An entity value. May have no key. May have a key with an incomplete key
    * path. May have a reserved/read-only key.
    */
   Entity entityValue;
-
   /**
    * If the value should be indexed.
    *
@@ -1210,28 +1126,22 @@ class Property {
    * have indexed set to true.
    */
   core.bool indexed;
-
   /** An integer value. */
   core.String integerValue;
-
   /** A key value. */
   Key keyValue;
-
   /**
    * A list value. Cannot contain another list value. A Value instance that sets
    * field list_value must not set field meaning or field indexed.
    */
   core.List<Value> listValue;
-
   /** The meaning field is reserved and should not be used. */
   core.int meaning;
-
   /**
    * A UTF-8 encoded string value. When indexed is true, may have at most 500
    * characters.
    */
   core.String stringValue;
-
 
   Property();
 
@@ -1316,7 +1226,6 @@ class Property {
   }
 }
 
-
 /** A representation of a property in a projection. */
 class PropertyExpression {
   /**
@@ -1329,10 +1238,8 @@ class PropertyExpression {
    * - "FIRST"
    */
   core.String aggregationFunction;
-
   /** The property to project. */
   PropertyReference property;
-
 
   PropertyExpression();
 
@@ -1357,7 +1264,6 @@ class PropertyExpression {
   }
 }
 
-
 /** A filter on a specific property. */
 class PropertyFilter {
   /**
@@ -1372,13 +1278,10 @@ class PropertyFilter {
    * - "LESS_THAN_OR_EQUAL"
    */
   core.String operator;
-
   /** The property to filter by. */
   PropertyReference property;
-
   /** The value to compare the property to. */
   Value value;
-
 
   PropertyFilter();
 
@@ -1409,7 +1312,6 @@ class PropertyFilter {
   }
 }
 
-
 /** The desired order for a specific property. */
 class PropertyOrder {
   /**
@@ -1420,10 +1322,8 @@ class PropertyOrder {
    * - "DESCENDING"
    */
   core.String direction;
-
   /** The property to order by. */
   PropertyReference property;
-
 
   PropertyOrder();
 
@@ -1448,12 +1348,10 @@ class PropertyOrder {
   }
 }
 
-
 /** A reference to a property relative to the kind expressions. */
 class PropertyReference {
   /** The name of the property. */
   core.String name;
-
 
   PropertyReference();
 
@@ -1472,7 +1370,6 @@ class PropertyReference {
   }
 }
 
-
 /** A query. */
 class Query {
   /**
@@ -1480,7 +1377,6 @@ class Query {
    * in query result batches.
    */
   core.String endCursor;
-
   core.List<core.int> get endCursorAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(endCursor);
   }
@@ -1488,45 +1384,36 @@ class Query {
   void set endCursorAsBytes(core.List<core.int> _bytes) {
     endCursor = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** The filter to apply (optional). */
   Filter filter;
-
   /**
    * The properties to group by (if empty, no grouping is applied to the result
    * set).
    */
   core.List<PropertyReference> groupBy;
-
   /** The kinds to query (if empty, returns entities from all kinds). */
   core.List<KindExpression> kinds;
-
   /**
    * The maximum number of results to return. Applies after all other
    * constraints. Optional.
    */
   core.int limit;
-
   /**
    * The number of results to skip. Applies before limit, but after all other
    * constraints (optional, defaults to 0).
    */
   core.int offset;
-
   /**
    * The order to apply to the query results (if empty, order is unspecified).
    */
   core.List<PropertyOrder> order;
-
   /** The projection to return. If not set the entire entity is returned. */
   core.List<PropertyExpression> projection;
-
   /**
    * A starting point for the query results. Optional. Query cursors are
    * returned in query result batches.
    */
   core.String startCursor;
-
   core.List<core.int> get startCursorAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(startCursor);
   }
@@ -1534,7 +1421,6 @@ class Query {
   void set startCursorAsBytes(core.List<core.int> _bytes) {
     startCursor = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
 
   Query();
 
@@ -1601,7 +1487,6 @@ class Query {
   }
 }
 
-
 /** A batch of results produced by a query. */
 class QueryResultBatch {
   /**
@@ -1610,7 +1495,6 @@ class QueryResultBatch {
    * documentation here.
    */
   core.String endCursor;
-
   core.List<core.int> get endCursorAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(endCursor);
   }
@@ -1618,7 +1502,6 @@ class QueryResultBatch {
   void set endCursorAsBytes(core.List<core.int> _bytes) {
     endCursor = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /**
    * The result type for every entity in entityResults. full for full entities,
    * projection for entities with only projected properties, keyOnly for
@@ -1629,10 +1512,8 @@ class QueryResultBatch {
    * - "PROJECTION"
    */
   core.String entityResultType;
-
   /** The results for this batch. */
   core.List<EntityResult> entityResults;
-
   /**
    * The state of the query after the current batch. One of notFinished,
    * moreResultsAfterLimit, noMoreResults.
@@ -1642,10 +1523,8 @@ class QueryResultBatch {
    * - "NO_MORE_RESULTS"
    */
   core.String moreResults;
-
   /** The number of results skipped because of Query.offset. */
   core.int skippedResults;
-
 
   QueryResultBatch();
 
@@ -1688,7 +1567,6 @@ class QueryResultBatch {
   }
 }
 
-
 class ReadOptions {
   /**
    * The read consistency to use. One of default, strong, or eventual. Cannot be
@@ -1701,10 +1579,8 @@ class ReadOptions {
    * - "STRONG"
    */
   core.String readConsistency;
-
   /** The transaction to use. Optional. */
   core.String transaction;
-
   core.List<core.int> get transactionAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(transaction);
   }
@@ -1712,7 +1588,6 @@ class ReadOptions {
   void set transactionAsBytes(core.List<core.int> _bytes) {
     transaction = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
 
   ReadOptions();
 
@@ -1737,14 +1612,12 @@ class ReadOptions {
   }
 }
 
-
 class ResponseHeader {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "datastore#responseHeader".
    */
   core.String kind;
-
 
   ResponseHeader();
 
@@ -1763,11 +1636,9 @@ class ResponseHeader {
   }
 }
 
-
 class RollbackRequest {
   /** The transaction identifier, returned by a call to beginTransaction. */
   core.String transaction;
-
   core.List<core.int> get transactionAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(transaction);
   }
@@ -1775,7 +1646,6 @@ class RollbackRequest {
   void set transactionAsBytes(core.List<core.int> _bytes) {
     transaction = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
 
   RollbackRequest();
 
@@ -1794,10 +1664,8 @@ class RollbackRequest {
   }
 }
 
-
 class RollbackResponse {
   ResponseHeader header;
-
 
   RollbackResponse();
 
@@ -1816,14 +1684,12 @@ class RollbackResponse {
   }
 }
 
-
 class RunQueryRequest {
   /**
    * The GQL query to run. Either this field or field query must be set, but not
    * both.
    */
   GqlQuery gqlQuery;
-
   /**
    * Entities are partitioned into subsets, identified by a dataset (usually
    * implicitly specified by the project) and namespace ID. Queries are scoped
@@ -1833,16 +1699,13 @@ class RunQueryRequest {
    * partition ID.
    */
   PartitionId partitionId;
-
   /**
    * The query to run. Either this field or field gql_query must be set, but not
    * both.
    */
   Query query;
-
   /** The options for this query. */
   ReadOptions readOptions;
-
 
   RunQueryRequest();
 
@@ -1879,13 +1742,10 @@ class RunQueryRequest {
   }
 }
 
-
 class RunQueryResponse {
   /** A batch of query results (always present). */
   QueryResultBatch batch;
-
   ResponseHeader header;
-
 
   RunQueryResponse();
 
@@ -1910,7 +1770,6 @@ class RunQueryResponse {
   }
 }
 
-
 /**
  * A message that can hold any of the supported value types and associated
  * metadata.
@@ -1918,13 +1777,11 @@ class RunQueryResponse {
 class Value {
   /** A blob key value. */
   core.String blobKeyValue;
-
   /**
    * A blob value. May be a maximum of 1,000,000 bytes. When indexed is true,
    * may have at most 500 bytes.
    */
   core.String blobValue;
-
   core.List<core.int> get blobValueAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(blobValue);
   }
@@ -1932,22 +1789,17 @@ class Value {
   void set blobValueAsBytes(core.List<core.int> _bytes) {
     blobValue = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** A boolean value. */
   core.bool booleanValue;
-
   /** A timestamp value. */
   core.DateTime dateTimeValue;
-
   /** A double value. */
   core.double doubleValue;
-
   /**
    * An entity value. May have no key. May have a key with an incomplete key
    * path. May have a reserved/read-only key.
    */
   Entity entityValue;
-
   /**
    * If the value should be indexed.
    *
@@ -1959,28 +1811,22 @@ class Value {
    * have indexed set to true.
    */
   core.bool indexed;
-
   /** An integer value. */
   core.String integerValue;
-
   /** A key value. */
   Key keyValue;
-
   /**
    * A list value. Cannot contain another list value. A Value instance that sets
    * field list_value must not set field meaning or field indexed.
    */
   core.List<Value> listValue;
-
   /** The meaning field is reserved and should not be used. */
   core.int meaning;
-
   /**
    * A UTF-8 encoded string value. When indexed is true, may have at most 500
    * characters.
    */
   core.String stringValue;
-
 
   Value();
 

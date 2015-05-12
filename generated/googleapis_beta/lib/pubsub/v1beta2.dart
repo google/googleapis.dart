@@ -72,7 +72,7 @@ class ProjectsSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Empty> acknowledge(AcknowledgeRequest request, core.String subscription) {
     var _url = null;
@@ -88,7 +88,6 @@ class ProjectsSubscriptionsResourceApi {
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$subscription') + ':acknowledge';
 
@@ -121,7 +120,7 @@ class ProjectsSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> create(Subscription request, core.String name) {
     var _url = null;
@@ -137,7 +136,6 @@ class ProjectsSubscriptionsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$name');
 
@@ -168,7 +166,7 @@ class ProjectsSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Empty> delete(core.String subscription) {
     var _url = null;
@@ -181,7 +179,6 @@ class ProjectsSubscriptionsResourceApi {
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$subscription');
 
@@ -208,7 +205,7 @@ class ProjectsSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> get(core.String subscription) {
     var _url = null;
@@ -221,7 +218,6 @@ class ProjectsSubscriptionsResourceApi {
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$subscription');
 
@@ -252,7 +248,7 @@ class ProjectsSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListSubscriptionsResponse> list(core.String project, {core.int pageSize, core.String pageToken}) {
     var _url = null;
@@ -271,7 +267,6 @@ class ProjectsSubscriptionsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$project') + '/subscriptions';
 
@@ -303,7 +298,7 @@ class ProjectsSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Empty> modifyAckDeadline(ModifyAckDeadlineRequest request, core.String subscription) {
     var _url = null;
@@ -319,7 +314,6 @@ class ProjectsSubscriptionsResourceApi {
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$subscription') + ':modifyAckDeadline';
 
@@ -352,7 +346,7 @@ class ProjectsSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Empty> modifyPushConfig(ModifyPushConfigRequest request, core.String subscription) {
     var _url = null;
@@ -368,7 +362,6 @@ class ProjectsSubscriptionsResourceApi {
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$subscription') + ':modifyPushConfig';
 
@@ -400,7 +393,7 @@ class ProjectsSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PullResponse> pull(PullRequest request, core.String subscription) {
     var _url = null;
@@ -416,7 +409,6 @@ class ProjectsSubscriptionsResourceApi {
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$subscription') + ':pull';
 
@@ -456,7 +448,7 @@ class ProjectsTopicsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Topic> create(Topic request, core.String name) {
     var _url = null;
@@ -472,7 +464,6 @@ class ProjectsTopicsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$name');
 
@@ -502,7 +493,7 @@ class ProjectsTopicsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Empty> delete(core.String topic) {
     var _url = null;
@@ -515,7 +506,6 @@ class ProjectsTopicsResourceApi {
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$topic');
 
@@ -542,7 +532,7 @@ class ProjectsTopicsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Topic> get(core.String topic) {
     var _url = null;
@@ -555,7 +545,6 @@ class ProjectsTopicsResourceApi {
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$topic');
 
@@ -586,7 +575,7 @@ class ProjectsTopicsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListTopicsResponse> list(core.String project, {core.int pageSize, core.String pageToken}) {
     var _url = null;
@@ -605,7 +594,6 @@ class ProjectsTopicsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$project') + '/topics';
 
@@ -635,7 +623,7 @@ class ProjectsTopicsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PublishResponse> publish(PublishRequest request, core.String topic) {
     var _url = null;
@@ -651,7 +639,6 @@ class ProjectsTopicsResourceApi {
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$topic') + ':publish';
 
@@ -691,7 +678,7 @@ class ProjectsTopicsSubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListTopicSubscriptionsResponse> list(core.String topic, {core.int pageSize, core.String pageToken}) {
     var _url = null;
@@ -710,7 +697,6 @@ class ProjectsTopicsSubscriptionsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariableReserved('$topic') + '/subscriptions';
 
@@ -731,7 +717,6 @@ class ProjectsTopicsSubscriptionsResourceApi {
 class AcknowledgeRequest {
   core.List<core.String> ackIds;
 
-
   AcknowledgeRequest();
 
   AcknowledgeRequest.fromJson(core.Map _json) {
@@ -749,7 +734,6 @@ class AcknowledgeRequest {
   }
 }
 
-
 class Empty {
 
   Empty();
@@ -763,12 +747,9 @@ class Empty {
   }
 }
 
-
 class ListSubscriptionsResponse {
   core.String nextPageToken;
-
   core.List<Subscription> subscriptions;
-
 
   ListSubscriptionsResponse();
 
@@ -793,12 +774,9 @@ class ListSubscriptionsResponse {
   }
 }
 
-
 class ListTopicSubscriptionsResponse {
   core.String nextPageToken;
-
   core.List<core.String> subscriptions;
-
 
   ListTopicSubscriptionsResponse();
 
@@ -823,12 +801,9 @@ class ListTopicSubscriptionsResponse {
   }
 }
 
-
 class ListTopicsResponse {
   core.String nextPageToken;
-
   core.List<Topic> topics;
-
 
   ListTopicsResponse();
 
@@ -853,12 +828,9 @@ class ListTopicsResponse {
   }
 }
 
-
 class ModifyAckDeadlineRequest {
   core.int ackDeadlineSeconds;
-
   core.String ackId;
-
 
   ModifyAckDeadlineRequest();
 
@@ -883,10 +855,8 @@ class ModifyAckDeadlineRequest {
   }
 }
 
-
 class ModifyPushConfigRequest {
   PushConfig pushConfig;
-
 
   ModifyPushConfigRequest();
 
@@ -905,10 +875,8 @@ class ModifyPushConfigRequest {
   }
 }
 
-
 class PublishRequest {
   core.List<PubsubMessage> messages;
-
 
   PublishRequest();
 
@@ -927,10 +895,8 @@ class PublishRequest {
   }
 }
 
-
 class PublishResponse {
   core.List<core.String> messageIds;
-
 
   PublishResponse();
 
@@ -949,12 +915,9 @@ class PublishResponse {
   }
 }
 
-
 class PubsubMessage {
   core.Map<core.String, core.String> attributes;
-
   core.String data;
-
   core.List<core.int> get dataAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(data);
   }
@@ -962,9 +925,7 @@ class PubsubMessage {
   void set dataAsBytes(core.List<core.int> _bytes) {
     data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   core.String messageId;
-
 
   PubsubMessage();
 
@@ -995,12 +956,9 @@ class PubsubMessage {
   }
 }
 
-
 class PullRequest {
   core.int maxMessages;
-
   core.bool returnImmediately;
-
 
   PullRequest();
 
@@ -1025,10 +983,8 @@ class PullRequest {
   }
 }
 
-
 class PullResponse {
   core.List<ReceivedMessage> receivedMessages;
-
 
   PullResponse();
 
@@ -1047,12 +1003,9 @@ class PullResponse {
   }
 }
 
-
 class PushConfig {
   core.Map<core.String, core.String> attributes;
-
   core.String pushEndpoint;
-
 
   PushConfig();
 
@@ -1077,12 +1030,9 @@ class PushConfig {
   }
 }
 
-
 class ReceivedMessage {
   core.String ackId;
-
   PubsubMessage message;
-
 
   ReceivedMessage();
 
@@ -1107,16 +1057,11 @@ class ReceivedMessage {
   }
 }
 
-
 class Subscription {
   core.int ackDeadlineSeconds;
-
   core.String name;
-
   PushConfig pushConfig;
-
   core.String topic;
-
 
   Subscription();
 
@@ -1153,10 +1098,8 @@ class Subscription {
   }
 }
 
-
 class Topic {
   core.String name;
-
 
   Topic();
 

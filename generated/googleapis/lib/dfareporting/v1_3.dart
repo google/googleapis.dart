@@ -62,7 +62,7 @@ class DimensionValuesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DimensionValueList> query(DimensionValueRequest request, core.String profileId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -84,7 +84,6 @@ class DimensionValuesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/dimensionvalues/query';
 
@@ -130,7 +129,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future get(core.String reportId, core.String fileId, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -201,7 +200,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FileList> list(core.String profileId, {core.int maxResults, core.String pageToken, core.String scope, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -229,7 +228,6 @@ class FilesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/files';
 
@@ -268,7 +266,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String profileId, core.String reportId) {
     var _url = null;
@@ -314,7 +312,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Report> get(core.String profileId, core.String reportId) {
     var _url = null;
@@ -330,7 +328,6 @@ class ReportsResourceApi {
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId');
 
@@ -359,7 +356,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Report> insert(Report request, core.String profileId) {
     var _url = null;
@@ -375,7 +372,6 @@ class ReportsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports';
 
@@ -424,7 +420,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ReportList> list(core.String profileId, {core.int maxResults, core.String pageToken, core.String scope, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -452,7 +448,6 @@ class ReportsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports';
 
@@ -483,7 +478,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Report> patch(Report request, core.String profileId, core.String reportId) {
     var _url = null;
@@ -502,7 +497,6 @@ class ReportsResourceApi {
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId');
 
@@ -533,7 +527,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<File> run(core.String profileId, core.String reportId, {core.bool synchronous}) {
     var _url = null;
@@ -552,7 +546,6 @@ class ReportsResourceApi {
     if (synchronous != null) {
       _queryParams["synchronous"] = ["${synchronous}"];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId') + '/run';
 
@@ -583,7 +576,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Report> update(Report request, core.String profileId, core.String reportId) {
     var _url = null;
@@ -602,7 +595,6 @@ class ReportsResourceApi {
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId');
 
@@ -642,7 +634,7 @@ class ReportsCompatibleFieldsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CompatibleFields> query(Report request, core.String profileId) {
     var _url = null;
@@ -658,7 +650,6 @@ class ReportsCompatibleFieldsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/compatiblefields/query';
 
@@ -706,7 +697,7 @@ class ReportsFilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future get(core.String profileId, core.String reportId, core.String fileId, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -775,7 +766,7 @@ class ReportsFilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FileList> list(core.String profileId, core.String reportId, {core.int maxResults, core.String pageToken, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -803,7 +794,6 @@ class ReportsFilesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId') + '/files';
 
@@ -839,7 +829,7 @@ class UserProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserProfile> get(core.String profileId) {
     var _url = null;
@@ -852,7 +842,6 @@ class UserProfilesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId');
 
@@ -877,7 +866,7 @@ class UserProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserProfileList> list() {
     var _url = null;
@@ -886,7 +875,6 @@ class UserProfilesResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'userprofiles';
@@ -912,13 +900,10 @@ class Activities {
    * type "dfa:activity" or "dfa:activityGroup".
    */
   core.List<DimensionValue> filters;
-
   /** The kind of resource this is, in this case dfareporting#activities. */
   core.String kind;
-
   /** List of names of floodlight activity metrics. */
   core.List<core.String> metricNames;
-
 
   Activities();
 
@@ -949,7 +934,6 @@ class Activities {
   }
 }
 
-
 /** Represents a response to the queryCompatibleFields method. */
 class CompatibleFields {
   /**
@@ -957,36 +941,30 @@ class CompatibleFields {
    * "CROSS_DIMENSION_REACH".
    */
   CrossDimensionReachReportCompatibleFields crossDimensionReachReportCompatibleFields;
-
   /**
    * Contains items that are compatible to be selected for a report of type
    * "FLOODLIGHT".
    */
   FloodlightReportCompatibleFields floodlightReportCompatibleFields;
-
   /**
    * The kind of resource this is, in this case dfareporting#compatibleFields.
    */
   core.String kind;
-
   /**
    * Contains items that are compatible to be selected for a report of type
    * "PATH_TO_CONVERSION".
    */
   PathToConversionReportCompatibleFields pathToConversionReportCompatibleFields;
-
   /**
    * Contains items that are compatible to be selected for a report of type
    * "REACH".
    */
   ReachReportCompatibleFields reachReportCompatibleFields;
-
   /**
    * Contains items that are compatible to be selected for a report of type
    * "STANDARD".
    */
   ReportCompatibleFields reportCompatibleFields;
-
 
   CompatibleFields();
 
@@ -1035,7 +1013,6 @@ class CompatibleFields {
   }
 }
 
-
 /**
  * Represents fields that are compatible to be selected for a report of type
  * "CROSS_DIMENSION_REACH".
@@ -1046,31 +1023,26 @@ class CrossDimensionReachReportCompatibleFields {
    * of the report.
    */
   core.List<Dimension> breakdown;
-
   /**
    * Dimensions which are compatible to be selected in the "dimensionFilters"
    * section of the report.
    */
   core.List<Dimension> dimensionFilters;
-
   /**
    * The kind of resource this is, in this case
    * dfareporting#crossDimensionReachReportCompatibleFields.
    */
   core.String kind;
-
   /**
    * Metrics which are compatible to be selected in the "metricNames" section of
    * the report.
    */
   core.List<Metric> metrics;
-
   /**
    * Metrics which are compatible to be selected in the "overlapMetricNames"
    * section of the report.
    */
   core.List<Metric> overlapMetrics;
-
 
   CrossDimensionReachReportCompatibleFields();
 
@@ -1113,7 +1085,6 @@ class CrossDimensionReachReportCompatibleFields {
   }
 }
 
-
 /** Represents a Custom Rich Media Events group. */
 class CustomRichMediaEvents {
   /**
@@ -1121,13 +1092,11 @@ class CustomRichMediaEvents {
    * dfa:richMediaEventTypeIdAndName.
    */
   core.List<DimensionValue> filteredEventIds;
-
   /**
    * The kind of resource this is, in this case
    * dfareporting#customRichMediaEvents.
    */
   core.String kind;
-
 
   CustomRichMediaEvents();
 
@@ -1152,7 +1121,6 @@ class CustomRichMediaEvents {
   }
 }
 
-
 /** Represents a date range. */
 class DateRange {
   /**
@@ -1160,10 +1128,8 @@ class DateRange {
    * "yyyy-MM-dd".
    */
   core.DateTime endDate;
-
   /** The kind of resource this is, in this case dfareporting#dateRange. */
   core.String kind;
-
   /**
    * The date range relative to the date of when the report is run, one of:
    * - "TODAY"
@@ -1183,13 +1149,11 @@ class DateRange {
    * - "LAST_24_MONTHS"
    */
   core.String relativeDateRange;
-
   /**
    * The start date of the date range, inclusive. A string of the format:
    * "yyyy-MM-dd".
    */
   core.DateTime startDate;
-
 
   DateRange();
 
@@ -1226,15 +1190,12 @@ class DateRange {
   }
 }
 
-
 /** Represents a dimension. */
 class Dimension {
   /** The kind of resource this is, in this case dfareporting#dimension. */
   core.String kind;
-
   /** The dimension name, e.g. dfa:advertiser */
   core.String name;
-
 
   Dimension();
 
@@ -1259,20 +1220,16 @@ class Dimension {
   }
 }
 
-
 /** Represents a dimension filter. */
 class DimensionFilter {
   /** The name of the dimension to filter. */
   core.String dimensionName;
-
   /**
    * The kind of resource this is, in this case dfareporting#dimensionFilter.
    */
   core.String kind;
-
   /** The value of the dimension to filter. */
   core.String value;
-
 
   DimensionFilter();
 
@@ -1303,23 +1260,18 @@ class DimensionFilter {
   }
 }
 
-
 /** Represents a DimensionValue resource. */
 class DimensionValue {
   /** The name of the dimension. */
   core.String dimensionName;
-
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The ID associated with the value if available. */
   core.String id;
-
   /**
    * The kind of resource this is, in this case dfareporting#dimensionValue.
    */
   core.String kind;
-
   /**
    * Determines how the 'value' field is matched when filtering. One of:
    * - EXACT (default if not specified)
@@ -1330,10 +1282,8 @@ class DimensionValue {
    * search dimensions ('dfa:paidSearch*') allow a matchType other than EXACT.
    */
   core.String matchType;
-
   /** The value of the dimension. */
   core.String value;
-
 
   DimensionValue();
 
@@ -1382,20 +1332,16 @@ class DimensionValue {
   }
 }
 
-
 /** Represents the list of DimensionValue resources. */
 class DimensionValueList {
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The dimension values returned in this response. */
   core.List<DimensionValue> items;
-
   /**
    * The kind of list this is, in this case dfareporting#dimensionValueList.
    */
   core.String kind;
-
   /**
    * Continuation token used to page through dimension values. To retrieve the
    * next page of results, set the next request's "pageToken" to the value of
@@ -1403,7 +1349,6 @@ class DimensionValueList {
    * should not be persisted.
    */
   core.String nextPageToken;
-
 
   DimensionValueList();
 
@@ -1440,33 +1385,27 @@ class DimensionValueList {
   }
 }
 
-
 /** Represents a DimensionValuesRequest. */
 class DimensionValueRequest {
   /** The name of the dimension for which values should be requested. */
   core.String dimensionName;
-
   /**
    * The end date of the date range for which to retrieve dimension values. A
    * string of the format: "yyyy-MM-dd".
    */
   core.DateTime endDate;
-
   /** The list of filters by which to filter values. The filters are ANDed. */
   core.List<DimensionFilter> filters;
-
   /**
    * The kind of request this is, in this case
    * dfareporting#dimensionValueRequest.
    */
   core.String kind;
-
   /**
    * The start date of the date range for which to retrieve dimension values. A
    * string of the format: "yyyy-MM-dd".
    */
   core.DateTime startDate;
-
 
   DimensionValueRequest();
 
@@ -1509,15 +1448,12 @@ class DimensionValueRequest {
   }
 }
 
-
 /** The urls where the completed report file can be downloaded. */
 class FileUrls {
   /** The url for downloading the report data through the API. */
   core.String apiUrl;
-
   /** The url for downloading the report data through a browser. */
   core.String browserUrl;
-
 
   FileUrls();
 
@@ -1542,7 +1478,6 @@ class FileUrls {
   }
 }
 
-
 /**
  * Represents a File resource. A File contains the meta-data for a report run.
  * It shows the status of the run and holds the urls to the generated report
@@ -1554,32 +1489,24 @@ class File {
    * always be the absolute date range for which the report is run.
    */
   DateRange dateRange;
-
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The file name of the file. */
   core.String fileName;
-
   /**
    * The output format of the report. Only available once the file is available.
    */
   core.String format;
-
   /** The unique ID of this report file. */
   core.String id;
-
   /** The kind of resource this is, in this case dfareporting#file. */
   core.String kind;
-
   /**
    * The timestamp in milliseconds since epoch when this file was last modified.
    */
   core.String lastModifiedTime;
-
   /** The ID of the report this file was generated from. */
   core.String reportId;
-
   /**
    * The status of the report file, one of:
    * - "PROCESSING"
@@ -1588,10 +1515,8 @@ class File {
    * - "CANCELLED"
    */
   core.String status;
-
   /** The urls where the completed report file can be downloaded. */
   FileUrls urls;
-
 
   File();
 
@@ -1664,18 +1589,14 @@ class File {
   }
 }
 
-
 /** Represents the list of File resources. */
 class FileList {
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The files returned in this response. */
   core.List<File> items;
-
   /** The kind of list this is, in this case dfareporting#fileList. */
   core.String kind;
-
   /**
    * Continuation token used to page through files. To retrieve the next page of
    * results, set the next request's "pageToken" to the value of this field. The
@@ -1683,7 +1604,6 @@ class FileList {
    * persisted.
    */
   core.String nextPageToken;
-
 
   FileList();
 
@@ -1720,7 +1640,6 @@ class FileList {
   }
 }
 
-
 /**
  * Represents fields that are compatible to be selected for a report of type
  * "FlOODLIGHT".
@@ -1731,25 +1650,21 @@ class FloodlightReportCompatibleFields {
    * section of the report.
    */
   core.List<Dimension> dimensionFilters;
-
   /**
    * Dimensions which are compatible to be selected in the "dimensions" section
    * of the report.
    */
   core.List<Dimension> dimensions;
-
   /**
    * The kind of resource this is, in this case
    * dfareporting#floodlightReportCompatibleFields.
    */
   core.String kind;
-
   /**
    * Metrics which are compatible to be selected in the "metricNames" section of
    * the report.
    */
   core.List<Metric> metrics;
-
 
   FloodlightReportCompatibleFields();
 
@@ -1786,15 +1701,12 @@ class FloodlightReportCompatibleFields {
   }
 }
 
-
 /** Represents a metric. */
 class Metric {
   /** The kind of resource this is, in this case dfareporting#metric. */
   core.String kind;
-
   /** The metric name, e.g. dfa:impressions */
   core.String name;
-
 
   Metric();
 
@@ -1819,7 +1731,6 @@ class Metric {
   }
 }
 
-
 /**
  * Represents fields that are compatible to be selected for a report of type
  * "PATH_TO_CONVERSION".
@@ -1830,31 +1741,26 @@ class PathToConversionReportCompatibleFields {
    * "conversionDimensions" section of the report.
    */
   core.List<Dimension> conversionDimensions;
-
   /**
    * Custom floodlight variables which are compatible to be selected in the
    * "customFloodlightVariables" section of the report.
    */
   core.List<Dimension> customFloodlightVariables;
-
   /**
    * The kind of resource this is, in this case
    * dfareporting#pathToConversionReportCompatibleFields.
    */
   core.String kind;
-
   /**
    * Metrics which are compatible to be selected in the "metricNames" section of
    * the report.
    */
   core.List<Metric> metrics;
-
   /**
    * Per-interaction dimensions which are compatible to be selected in the
    * "perInteractionDimensions" section of the report.
    */
   core.List<Dimension> perInteractionDimensions;
-
 
   PathToConversionReportCompatibleFields();
 
@@ -1897,7 +1803,6 @@ class PathToConversionReportCompatibleFields {
   }
 }
 
-
 /**
  * Represents fields that are compatible to be selected for a report of type
  * "REACH".
@@ -1908,37 +1813,31 @@ class ReachReportCompatibleFields {
    * section of the report.
    */
   core.List<Dimension> dimensionFilters;
-
   /**
    * Dimensions which are compatible to be selected in the "dimensions" section
    * of the report.
    */
   core.List<Dimension> dimensions;
-
   /**
    * The kind of resource this is, in this case
    * dfareporting#reachReportCompatibleFields.
    */
   core.String kind;
-
   /**
    * Metrics which are compatible to be selected in the "metricNames" section of
    * the report.
    */
   core.List<Metric> metrics;
-
   /**
    * Metrics which are compatible to be selected as activity metrics to pivot on
    * in the "activities" section of the report.
    */
   core.List<Metric> pivotedActivityMetrics;
-
   /**
    * Metrics which are compatible to be selected in the
    * "reachByFrequencyMetricNames" section of the report.
    */
   core.List<Metric> reachByFrequencyMetrics;
-
 
   ReachReportCompatibleFields();
 
@@ -1987,7 +1886,6 @@ class ReachReportCompatibleFields {
   }
 }
 
-
 /** Represents a recipient. */
 class Recipient {
   /**
@@ -1996,13 +1894,10 @@ class Recipient {
    * - "LINK"
    */
   core.String deliveryType;
-
   /** The email address of the recipient. */
   core.String email;
-
   /** The kind of resource this is, in this case dfareporting#recipient. */
   core.String kind;
-
 
   Recipient();
 
@@ -2033,12 +1928,10 @@ class Recipient {
   }
 }
 
-
 /** The report criteria for a report of type "ACTIVE_GRP". */
 class ReportActiveGrpCriteria {
   /** The date range this report should be run for. */
   DateRange dateRange;
-
   /**
    * The list of filters on which dimensions are filtered.
    * Filters for different dimensions are ANDed, filters for the same dimension
@@ -2047,13 +1940,10 @@ class ReportActiveGrpCriteria {
    * United States in addition to any advertiser or campaign dimension values.
    */
   core.List<DimensionValue> dimensionFilters;
-
   /** The list of dimensions the report should include. */
   core.List<SortedDimension> dimensions;
-
   /** The list of names of metrics the report should include. */
   core.List<core.String> metricNames;
-
 
   ReportActiveGrpCriteria();
 
@@ -2090,31 +1980,24 @@ class ReportActiveGrpCriteria {
   }
 }
 
-
 /** The report criteria for a report of type "STANDARD". */
 class ReportCriteria {
   /** Activity group. */
   Activities activities;
-
   /** Custom Rich Media Events group. */
   CustomRichMediaEvents customRichMediaEvents;
-
   /** The date range for which this report should be run. */
   DateRange dateRange;
-
   /**
    * The list of filters on which dimensions are filtered.
    * Filters for different dimensions are ANDed, filters for the same dimension
    * are grouped together and ORed.
    */
   core.List<DimensionValue> dimensionFilters;
-
   /** The list of standard dimensions the report should include. */
   core.List<SortedDimension> dimensions;
-
   /** The list of names of metrics the report should include. */
   core.List<core.String> metricNames;
-
 
   ReportCriteria();
 
@@ -2163,15 +2046,12 @@ class ReportCriteria {
   }
 }
 
-
 /** The report criteria for a report of type "CROSS_DIMENSION_REACH". */
 class ReportCrossDimensionReachCriteria {
   /** The list of dimensions the report should include. */
   core.List<SortedDimension> breakdown;
-
   /** The date range this report should be run for. */
   DateRange dateRange;
-
   /**
    * The dimension option, one of:
    * - "ADVERTISER"
@@ -2180,19 +2060,14 @@ class ReportCrossDimensionReachCriteria {
    * - "SITE_BY_CAMPAIGN"
    */
   core.String dimension;
-
   /** The list of filters on which dimensions are filtered. */
   core.List<DimensionValue> dimensionFilters;
-
   /** The list of names of metrics the report should include. */
   core.List<core.String> metricNames;
-
   /** The list of names of overlap metrics the report should include. */
   core.List<core.String> overlapMetricNames;
-
   /** Whether the report is pivoted or not. Defaults to true. */
   core.bool pivoted;
-
 
   ReportCrossDimensionReachCriteria();
 
@@ -2247,25 +2122,20 @@ class ReportCrossDimensionReachCriteria {
   }
 }
 
-
 /** The report's email delivery settings. */
 class ReportDelivery {
   /** Whether the report should be emailed to the report owner. */
   core.bool emailOwner;
-
   /**
    * The type of delivery for the owner to receive, if enabled. One of:
    * - "ATTACHMENT"
    * - "LINK"
    */
   core.String emailOwnerDeliveryType;
-
   /** The message to be sent with each email. */
   core.String message;
-
   /** The list of recipients to which to email the report. */
   core.List<Recipient> recipients;
-
 
   ReportDelivery();
 
@@ -2302,12 +2172,10 @@ class ReportDelivery {
   }
 }
 
-
 /** The properties of the report. */
 class ReportFloodlightCriteriaReportProperties {
   /** Include conversions that have no cookie, but do have an exposure path. */
   core.bool includeAttributedIPConversions;
-
   /**
    * Include conversions of users with a DoubleClick cookie but without an
    * exposure. That means the user did not click or see an ad from the
@@ -2315,14 +2183,12 @@ class ReportFloodlightCriteriaReportProperties {
    * outside the lookback window.
    */
   core.bool includeUnattributedCookieConversions;
-
   /**
    * Include conversions that have no associated cookies and no exposures. It’s
    * therefore impossible to know how the user was exposed to your ads during
    * the lookback window prior to a conversion.
    */
   core.bool includeUnattributedIPConversions;
-
 
   ReportFloodlightCriteriaReportProperties();
 
@@ -2353,38 +2219,30 @@ class ReportFloodlightCriteriaReportProperties {
   }
 }
 
-
 /** The report criteria for a report of type "FLOODLIGHT". */
 class ReportFloodlightCriteria {
   /** The list of custom rich media events to include. */
   core.List<DimensionValue> customRichMediaEvents;
-
   /** The date range this report should be run for. */
   DateRange dateRange;
-
   /**
    * The list of filters on which dimensions are filtered.
    * Filters for different dimensions are ANDed, filters for the same dimension
    * are grouped together and ORed.
    */
   core.List<DimensionValue> dimensionFilters;
-
   /** The list of dimensions the report should include. */
   core.List<SortedDimension> dimensions;
-
   /**
    * The floodlight ID for which to show data in this report. All advertisers
    * associated with that ID will automatically be added. The dimension of the
    * value needs to be 'dfa:floodlightConfigId'.
    */
   DimensionValue floodlightConfigId;
-
   /** The list of names of metrics the report should include. */
   core.List<core.String> metricNames;
-
   /** The properties of the report. */
   ReportFloodlightCriteriaReportProperties reportProperties;
-
 
   ReportFloodlightCriteria();
 
@@ -2439,7 +2297,6 @@ class ReportFloodlightCriteria {
   }
 }
 
-
 /** The properties of the report. */
 class ReportPathToConversionCriteriaReportProperties {
   /**
@@ -2448,7 +2305,6 @@ class ReportPathToConversionCriteriaReportProperties {
    * Floodlight or you can manually enter a custom value. Valid values: 1-90.
    */
   core.int clicksLookbackWindow;
-
   /**
    * DFA checks to see if an impression interaction occurred within the
    * specified period of time before a conversion. By default the value is
@@ -2456,10 +2312,8 @@ class ReportPathToConversionCriteriaReportProperties {
    * values: 1-90.
    */
   core.int impressionsLookbackWindow;
-
   /** Deprecated: has no effect. */
   core.bool includeAttributedIPConversions;
-
   /**
    * Include conversions of users with a DoubleClick cookie but without an
    * exposure. That means the user did not click or see an ad from the
@@ -2467,14 +2321,12 @@ class ReportPathToConversionCriteriaReportProperties {
    * outside the lookback window.
    */
   core.bool includeUnattributedCookieConversions;
-
   /**
    * Include conversions that have no associated cookies and no exposures. It’s
    * therefore impossible to know how the user was exposed to your ads during
    * the lookback window prior to a conversion.
    */
   core.bool includeUnattributedIPConversions;
-
   /**
    * The maximum number of click interactions to include in the report.
    * Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100
@@ -2482,7 +2334,6 @@ class ReportPathToConversionCriteriaReportProperties {
    * can have up to 5 total exposures per report.
    */
   core.int maximumClickInteractions;
-
   /**
    * The maximum number of click interactions to include in the report.
    * Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100
@@ -2490,16 +2341,13 @@ class ReportPathToConversionCriteriaReportProperties {
    * can have up to 5 total exposures per report.
    */
   core.int maximumImpressionInteractions;
-
   /**
    * The maximum amount of time that can take place between interactions (clicks
    * or impressions) by the same user. Valid values: 1-90.
    */
   core.int maximumInteractionGap;
-
   /** Enable pivoting on interaction path. */
   core.bool pivotOnInteractionPath;
-
 
   ReportPathToConversionCriteriaReportProperties();
 
@@ -2566,40 +2414,30 @@ class ReportPathToConversionCriteriaReportProperties {
   }
 }
 
-
 /** The report criteria for a report of type "PATH_TO_CONVERSION". */
 class ReportPathToConversionCriteria {
   /** The list of 'dfa:activity' values to filter on. */
   core.List<DimensionValue> activityFilters;
-
   /** The list of conversion dimensions the report should include. */
   core.List<SortedDimension> conversionDimensions;
-
   /** The list of custom floodlight variables the report should include. */
   core.List<SortedDimension> customFloodlightVariables;
-
   /** The list of custom rich media events to include. */
   core.List<DimensionValue> customRichMediaEvents;
-
   /** The date range this report should be run for. */
   DateRange dateRange;
-
   /**
    * The floodlight ID for which to show data in this report. All advertisers
    * associated with that ID will automatically be added. The dimension of the
    * value needs to be 'dfa:floodlightConfigId'.
    */
   DimensionValue floodlightConfigId;
-
   /** The list of names of metrics the report should include. */
   core.List<core.String> metricNames;
-
   /** The list of per interaction dimensions the report should include. */
   core.List<SortedDimension> perInteractionDimensions;
-
   /** The properties of the report. */
   ReportPathToConversionCriteriaReportProperties reportProperties;
-
 
   ReportPathToConversionCriteria();
 
@@ -2666,36 +2504,28 @@ class ReportPathToConversionCriteria {
   }
 }
 
-
 /** The report criteria for a report of type "REACH". */
 class ReportReachCriteria {
   /** Activity group. */
   Activities activities;
-
   /** Custom Rich Media Events group. */
   CustomRichMediaEvents customRichMediaEvents;
-
   /** The date range this report should be run for. */
   DateRange dateRange;
-
   /**
    * The list of filters on which dimensions are filtered.
    * Filters for different dimensions are ANDed, filters for the same dimension
    * are grouped together and ORed.
    */
   core.List<DimensionValue> dimensionFilters;
-
   /** The list of dimensions the report should include. */
   core.List<SortedDimension> dimensions;
-
   /** The list of names of metrics the report should include. */
   core.List<core.String> metricNames;
-
   /**
    * The list of names of  Reach By Frequency metrics the report should include.
    */
   core.List<core.String> reachByFrequencyMetricNames;
-
 
   ReportReachCriteria();
 
@@ -2750,7 +2580,6 @@ class ReportReachCriteria {
   }
 }
 
-
 /**
  * The report's schedule. Can only be set if the report's 'dateRange' is a
  * relative date range and the relative date range is not "TODAY".
@@ -2760,16 +2589,13 @@ class ReportSchedule {
    * Whether the schedule is active or not. Must be set to either true or false.
    */
   core.bool active;
-
   /**
    * Defines every how many days, weeks or months the report should be run.
    * Needs to be set when "repeats" is either "DAILY", "WEEKLY" or "MONTHLY".
    */
   core.int every;
-
   /** The expiration date when the scheduled report stops running. */
   core.DateTime expirationDate;
-
   /**
    * The interval for which the report is repeated, one of:
    * - "DAILY", also requires field "every" to be set.
@@ -2780,10 +2606,8 @@ class ReportSchedule {
    * - "YEARLY"
    */
   core.String repeats;
-
   /** List of week days "WEEKLY" on which scheduled reports should run. */
   core.List<core.String> repeatsOnWeekDays;
-
   /**
    * Enum to define for "MONTHLY" scheduled reports whether reports should be
    * repeated on the same day of the month as "startDate" or the same day of the
@@ -2796,10 +2620,8 @@ class ReportSchedule {
    * month.
    */
   core.String runsOnDayOfMonth;
-
   /** Start date of date range for which scheduled reports should be run. */
   core.DateTime startDate;
-
 
   ReportSchedule();
 
@@ -2854,33 +2676,24 @@ class ReportSchedule {
   }
 }
 
-
 /** Represents a Report resource. */
 class Report {
   /** The account ID to which this report belongs. */
   core.String accountId;
-
   /** The report criteria for a report of type "ACTIVE_GRP". */
   ReportActiveGrpCriteria activeGrpCriteria;
-
   /** The report criteria for a report of type "STANDARD". */
   ReportCriteria criteria;
-
   /** The report criteria for a report of type "CROSS_DIMENSION_REACH". */
   ReportCrossDimensionReachCriteria crossDimensionReachCriteria;
-
   /** The report's email delivery settings. */
   ReportDelivery delivery;
-
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The file name used when generating report files for this report. */
   core.String fileName;
-
   /** The report criteria for a report of type "FLOODLIGHT". */
   ReportFloodlightCriteria floodlightCriteria;
-
   /**
    * The output format of the report, one of:
    * - "CSV"
@@ -2890,40 +2703,30 @@ class Report {
    * fallback format.
    */
   core.String format;
-
   /** The unique ID identifying this report resource. */
   core.String id;
-
   /** The kind of resource this is, in this case dfareporting#report. */
   core.String kind;
-
   /**
    * The timestamp (in milliseconds since epoch) of when this report was last
    * modified.
    */
   core.String lastModifiedTime;
-
   /** The name of the report. */
   core.String name;
-
   /** The user profile id of the owner of this report. */
   core.String ownerProfileId;
-
   /** The report criteria for a report of type "PATH_TO_CONVERSION". */
   ReportPathToConversionCriteria pathToConversionCriteria;
-
   /** The report criteria for a report of type "REACH". */
   ReportReachCriteria reachCriteria;
-
   /**
    * The report's schedule. Can only be set if the report's 'dateRange' is a
    * relative date range and the relative date range is not "TODAY".
    */
   ReportSchedule schedule;
-
   /** The subbaccount ID to which this report belongs if applicable. */
   core.String subAccountId;
-
   /**
    * The type of the report, one of:
    * - STANDARD
@@ -2934,7 +2737,6 @@ class Report {
    * - CROSS_DIMENSION_REACH
    */
   core.String type;
-
 
   Report();
 
@@ -3061,7 +2863,6 @@ class Report {
   }
 }
 
-
 /**
  * Represents fields that are compatible to be selected for a report of type
  * "STANDARD".
@@ -3072,31 +2873,26 @@ class ReportCompatibleFields {
    * section of the report.
    */
   core.List<Dimension> dimensionFilters;
-
   /**
    * Dimensions which are compatible to be selected in the "dimensions" section
    * of the report.
    */
   core.List<Dimension> dimensions;
-
   /**
    * The kind of resource this is, in this case
    * dfareporting#reportCompatibleFields.
    */
   core.String kind;
-
   /**
    * Metrics which are compatible to be selected in the "metricNames" section of
    * the report.
    */
   core.List<Metric> metrics;
-
   /**
    * Metrics which are compatible to be selected as activity metrics to pivot on
    * in the "activities" section of the report.
    */
   core.List<Metric> pivotedActivityMetrics;
-
 
   ReportCompatibleFields();
 
@@ -3139,18 +2935,14 @@ class ReportCompatibleFields {
   }
 }
 
-
 /** Represents the list of reports. */
 class ReportList {
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The reports returned in this response. */
   core.List<Report> items;
-
   /** The kind of list this is, in this case dfareporting#reportList. */
   core.String kind;
-
   /**
    * Continuation token used to page through reports. To retrieve the next page
    * of results, set the next request's "pageToken" to the value of this field.
@@ -3158,7 +2950,6 @@ class ReportList {
    * persisted.
    */
   core.String nextPageToken;
-
 
   ReportList();
 
@@ -3195,24 +2986,20 @@ class ReportList {
   }
 }
 
-
 /** Represents a sorted dimension. */
 class SortedDimension {
   /**
    * The kind of resource this is, in this case dfareporting#sortedDimension.
    */
   core.String kind;
-
   /** The name of the dimension. */
   core.String name;
-
   /**
    * An optional sort order for the dimension column, one of:
    * - "ASCENDING"
    * - "DESCENDING"
    */
   core.String sortOrder;
-
 
   SortedDimension();
 
@@ -3243,33 +3030,24 @@ class SortedDimension {
   }
 }
 
-
 /** Represents a UserProfile resource. */
 class UserProfile {
   /** The account ID to which this profile belongs. */
   core.String accountId;
-
   /** The account name this profile belongs to. */
   core.String accountName;
-
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The kind of resource this is, in this case dfareporting#userProfile. */
   core.String kind;
-
   /** The unique ID of the user profile. */
   core.String profileId;
-
   /** The sub account ID this profile belongs to if applicable. */
   core.String subAccountId;
-
   /** The sub account name this profile belongs to if applicable. */
   core.String subAccountName;
-
   /** The user name. */
   core.String userName;
-
 
   UserProfile();
 
@@ -3330,18 +3108,14 @@ class UserProfile {
   }
 }
 
-
 /** Represents the list of user profiles. */
 class UserProfileList {
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The user profiles returned in this response. */
   core.List<UserProfile> items;
-
   /** The kind of list this is, in this case dfareporting#userProfileList. */
   core.String kind;
-
 
   UserProfileList();
 

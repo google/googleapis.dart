@@ -52,7 +52,7 @@ class ApisResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RestDescription> getRest(core.String api, core.String version) {
     var _url = null;
@@ -68,7 +68,6 @@ class ApisResourceApi {
     if (version == null) {
       throw new core.ArgumentError("Parameter version is required.");
     }
-
 
     _url = 'apis/' + commons.Escaper.ecapeVariable('$api') + '/' + commons.Escaper.ecapeVariable('$version') + '/rest';
 
@@ -97,7 +96,7 @@ class ApisResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DirectoryList> list({core.String name, core.bool preferred}) {
     var _url = null;
@@ -113,7 +112,6 @@ class ApisResourceApi {
     if (preferred != null) {
       _queryParams["preferred"] = ["${preferred}"];
     }
-
 
     _url = 'apis';
 
@@ -135,10 +133,8 @@ class ApisResourceApi {
 class DirectoryListItemsIcons {
   /** The URL of the 16x16 icon. */
   core.String x16;
-
   /** The URL of the 32x32 icon. */
   core.String x32;
-
 
   DirectoryListItemsIcons();
 
@@ -163,44 +159,31 @@ class DirectoryListItemsIcons {
   }
 }
 
-
 class DirectoryListItems {
   /** The description of this API. */
   core.String description;
-
   /** A link to the discovery document. */
   core.String discoveryLink;
-
   /** The URL for the discovery REST document. */
   core.String discoveryRestUrl;
-
   /** A link to human readable documentation for the API. */
   core.String documentationLink;
-
   /** Links to 16x16 and 32x32 icons representing the API. */
   DirectoryListItemsIcons icons;
-
   /** The id of this API. */
   core.String id;
-
   /** The kind for this response. */
   core.String kind;
-
   /** Labels for the status of this API, such as labs or deprecated. */
   core.List<core.String> labels;
-
   /** The name of the API. */
   core.String name;
-
   /** True if this version is the preferred version to use. */
   core.bool preferred;
-
   /** The title of this API. */
   core.String title;
-
   /** The version of the API. */
   core.String version;
-
 
   DirectoryListItems();
 
@@ -285,17 +268,13 @@ class DirectoryListItems {
   }
 }
 
-
 class DirectoryList {
   /** Indicate the version of the Discovery API used to generate this doc. */
   core.String discoveryVersion;
-
   /** The individual directory entries. One entry per api/version pair. */
   core.List<DirectoryListItems> items;
-
   /** The kind for this response. */
   core.String kind;
-
 
   DirectoryList();
 
@@ -326,12 +305,10 @@ class DirectoryList {
   }
 }
 
-
 /** Additional information about this property. */
 class JsonSchemaAnnotations {
   /** A list of methods for which this property is required on requests. */
   core.List<core.String> required;
-
 
   JsonSchemaAnnotations();
 
@@ -350,12 +327,9 @@ class JsonSchemaAnnotations {
   }
 }
 
-
 class JsonSchemaVariantMap {
   core.String P_ref;
-
   core.String typeValue;
-
 
   JsonSchemaVariantMap();
 
@@ -380,7 +354,6 @@ class JsonSchemaVariantMap {
   }
 }
 
-
 /**
  * In a variant data type, the value of one property is used to determine how to
  * interpret the entire entity. Its value must exist in a map of descriminant
@@ -389,10 +362,8 @@ class JsonSchemaVariantMap {
 class JsonSchemaVariant {
   /** The name of the type discriminant property. */
   core.String discriminant;
-
   /** The map of discriminant value to schema to use for parsing.. */
   core.List<JsonSchemaVariantMap> map;
-
 
   JsonSchemaVariant();
 
@@ -417,104 +388,83 @@ class JsonSchemaVariant {
   }
 }
 
-
 class JsonSchema {
   /**
    * A reference to another schema. The value of this property is the "id" of
    * another schema.
    */
   core.String P_ref;
-
   /**
    * If this is a schema for an object, this property is the schema for any
    * additional properties with dynamic keys on this object.
    */
   JsonSchema additionalProperties;
-
   /** Additional information about this property. */
   JsonSchemaAnnotations annotations;
-
   /** The default value of this property (if one exists). */
   core.String default_;
-
   /** A description of this object. */
   core.String description;
-
   /** Values this parameter may take (if it is an enum). */
   core.List<core.String> enum_;
-
   /**
    * The descriptions for the enums. Each position maps to the corresponding
    * value in the "enum" array.
    */
   core.List<core.String> enumDescriptions;
-
   /**
    * An additional regular expression or key that helps constrain the value. For
    * more details see:
    * http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.23
    */
   core.String format;
-
   /** Unique identifier for this schema. */
   core.String id;
-
   /**
    * If this is a schema for an array, this property is the schema for each
    * element in the array.
    */
   JsonSchema items;
-
   /**
    * Whether this parameter goes in the query or the path for REST requests.
    */
   core.String location;
-
   /** The maximum value of this parameter. */
   core.String maximum;
-
   /** The minimum value of this parameter. */
   core.String minimum;
-
   /**
    * The regular expression this parameter must conform to. Uses Java 6 regex
    * format:
    * http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html
    */
   core.String pattern;
-
   /**
    * If this is a schema for an object, list the schema for each property of
    * this object.
    */
   core.Map<core.String, JsonSchema> properties;
-
   /**
    * The value is read-only, generated by the service. The value cannot be
    * modified by the client. If the value is included in a POST, PUT, or PATCH
    * request, it is ignored by the service.
    */
   core.bool readOnly;
-
   /** Whether this parameter may appear multiple times. */
   core.bool repeated;
-
   /** Whether the parameter is required. */
   core.bool required;
-
   /**
    * The value type for this schema. A list of values can be found here:
    * http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1
    */
   core.String type;
-
   /**
    * In a variant data type, the value of one property is used to determine how
    * to interpret the entire entity. Its value must exist in a map of
    * descriminant values to schema names.
    */
   JsonSchemaVariant variant;
-
 
   JsonSchema();
 
@@ -647,12 +597,10 @@ class JsonSchema {
   }
 }
 
-
 /** The scope value. */
 class RestDescriptionAuthOauth2ScopesValue {
   /** Description of scope. */
   core.String description;
-
 
   RestDescriptionAuthOauth2ScopesValue();
 
@@ -671,12 +619,10 @@ class RestDescriptionAuthOauth2ScopesValue {
   }
 }
 
-
 /** OAuth 2.0 authentication information. */
 class RestDescriptionAuthOauth2 {
   /** Available OAuth 2.0 scopes. */
   core.Map<core.String, RestDescriptionAuthOauth2ScopesValue> scopes;
-
 
   RestDescriptionAuthOauth2();
 
@@ -695,12 +641,10 @@ class RestDescriptionAuthOauth2 {
   }
 }
 
-
 /** Authentication information. */
 class RestDescriptionAuth {
   /** OAuth 2.0 authentication information. */
   RestDescriptionAuthOauth2 oauth2;
-
 
   RestDescriptionAuth();
 
@@ -719,15 +663,12 @@ class RestDescriptionAuth {
   }
 }
 
-
 /** Links to 16x16 and 32x32 icons representing the API. */
 class RestDescriptionIcons {
   /** The URL of the 16x16 icon. */
   core.String x16;
-
   /** The URL of the 32x32 icon. */
   core.String x32;
-
 
   RestDescriptionIcons();
 
@@ -752,99 +693,70 @@ class RestDescriptionIcons {
   }
 }
 
-
 class RestDescription {
   /** Authentication information. */
   RestDescriptionAuth auth;
-
   /** [DEPRECATED] The base path for REST requests. */
   core.String basePath;
-
   /** [DEPRECATED] The base URL for REST requests. */
   core.String baseUrl;
-
   /** The path for REST batch requests. */
   core.String batchPath;
-
   /**
    * Indicates how the API name should be capitalized and split into various
    * parts. Useful for generating pretty class names.
    */
   core.String canonicalName;
-
   /** The description of this API. */
   core.String description;
-
   /** Indicate the version of the Discovery API used to generate this doc. */
   core.String discoveryVersion;
-
   /** A link to human readable documentation for the API. */
   core.String documentationLink;
-
   /** The ETag for this response. */
   core.String etag;
-
   /** A list of supported features for this API. */
   core.List<core.String> features;
-
   /** Links to 16x16 and 32x32 icons representing the API. */
   RestDescriptionIcons icons;
-
   /** The ID of this API. */
   core.String id;
-
   /** The kind for this response. */
   core.String kind;
-
   /** Labels for the status of this API, such as labs or deprecated. */
   core.List<core.String> labels;
-
   /** API-level methods for this API. */
   core.Map<core.String, RestMethod> methods;
-
   /** The name of this API. */
   core.String name;
-
   /**
    * The domain of the owner of this API. Together with the ownerName and a
    * packagePath values, this can be used to generate a library for this API
    * which would have a unique fully qualified name.
    */
   core.String ownerDomain;
-
   /** The name of the owner of this API. See ownerDomain. */
   core.String ownerName;
-
   /** The package of the owner of this API. See ownerDomain. */
   core.String packagePath;
-
   /** Common parameters that apply across all apis. */
   core.Map<core.String, JsonSchema> parameters;
-
   /** The protocol described by this document. */
   core.String protocol;
-
   /** The resources in this API. */
   core.Map<core.String, RestResource> resources;
-
   /** The version of this API. */
   core.String revision;
-
   /** The root URL under which all API services live. */
   core.String rootUrl;
-
   /** The schemas for this API. */
   core.Map<core.String, JsonSchema> schemas;
-
   /** The base path for all REST requests. */
   core.String servicePath;
-
   /** The title of this API. */
   core.String title;
-
   /** The version of this API. */
   core.String version;
-
 
   RestDescription();
 
@@ -1025,18 +937,15 @@ class RestDescription {
   }
 }
 
-
 /** Supports the Resumable Media Upload protocol. */
 class RestMethodMediaUploadProtocolsResumable {
   /** True if this endpoint supports uploading multipart media. */
   core.bool multipart;
-
   /**
    * The URI path to be used for upload. Should be used in conjunction with the
    * basePath property at the api-level.
    */
   core.String path;
-
 
   RestMethodMediaUploadProtocolsResumable();
 
@@ -1061,18 +970,15 @@ class RestMethodMediaUploadProtocolsResumable {
   }
 }
 
-
 /** Supports uploading as a single HTTP request. */
 class RestMethodMediaUploadProtocolsSimple {
   /** True if this endpoint supports upload multipart media. */
   core.bool multipart;
-
   /**
    * The URI path to be used for upload. Should be used in conjunction with the
    * basePath property at the api-level.
    */
   core.String path;
-
 
   RestMethodMediaUploadProtocolsSimple();
 
@@ -1097,15 +1003,12 @@ class RestMethodMediaUploadProtocolsSimple {
   }
 }
 
-
 /** Supported upload protocols. */
 class RestMethodMediaUploadProtocols {
   /** Supports the Resumable Media Upload protocol. */
   RestMethodMediaUploadProtocolsResumable resumable;
-
   /** Supports uploading as a single HTTP request. */
   RestMethodMediaUploadProtocolsSimple simple;
-
 
   RestMethodMediaUploadProtocols();
 
@@ -1130,18 +1033,14 @@ class RestMethodMediaUploadProtocols {
   }
 }
 
-
 /** Media upload parameters. */
 class RestMethodMediaUpload {
   /** MIME Media Ranges for acceptable media uploads to this method. */
   core.List<core.String> accept;
-
   /** Maximum size of a media upload, such as "1MB", "2GB" or "3TB". */
   core.String maxSize;
-
   /** Supported upload protocols. */
   RestMethodMediaUploadProtocols protocols;
-
 
   RestMethodMediaUpload();
 
@@ -1172,15 +1071,12 @@ class RestMethodMediaUpload {
   }
 }
 
-
 /** The schema for the request. */
 class RestMethodRequest {
   /** Schema ID for the request schema. */
   core.String P_ref;
-
   /** parameter name. */
   core.String parameterName;
-
 
   RestMethodRequest();
 
@@ -1205,12 +1101,10 @@ class RestMethodRequest {
   }
 }
 
-
 /** The schema for the response. */
 class RestMethodResponse {
   /** Schema ID for the response schema. */
   core.String P_ref;
-
 
   RestMethodResponse();
 
@@ -1229,69 +1123,53 @@ class RestMethodResponse {
   }
 }
 
-
 class RestMethod {
   /** Description of this method. */
   core.String description;
-
   /**
    * Whether this method requires an ETag to be specified. The ETag is sent as
    * an HTTP If-Match or If-None-Match header.
    */
   core.bool etagRequired;
-
   /** HTTP method used by this method. */
   core.String httpMethod;
-
   /**
    * A unique ID for this method. This property can be used to match methods
    * between different versions of Discovery.
    */
   core.String id;
-
   /** Media upload parameters. */
   RestMethodMediaUpload mediaUpload;
-
   /**
    * Ordered list of required parameters, serves as a hint to clients on how to
    * structure their method signatures. The array is ordered such that the
    * "most-significant" parameter appears first.
    */
   core.List<core.String> parameterOrder;
-
   /** Details for all parameters in this method. */
   core.Map<core.String, JsonSchema> parameters;
-
   /**
    * The URI path of this REST method. Should be used in conjunction with the
    * basePath property at the api-level.
    */
   core.String path;
-
   /** The schema for the request. */
   RestMethodRequest request;
-
   /** The schema for the response. */
   RestMethodResponse response;
-
   /** OAuth 2.0 scopes applicable to this method. */
   core.List<core.String> scopes;
-
   /** Whether this method supports media downloads. */
   core.bool supportsMediaDownload;
-
   /** Whether this method supports media uploads. */
   core.bool supportsMediaUpload;
-
   /** Whether this method supports subscriptions. */
   core.bool supportsSubscription;
-
   /**
    * Indicates that downloads from this method should use the download service
    * URL (i.e. "/download"). Only applies if the method supports media download.
    */
   core.bool useMediaDownloadService;
-
 
   RestMethod();
 
@@ -1394,14 +1272,11 @@ class RestMethod {
   }
 }
 
-
 class RestResource {
   /** Methods on this resource. */
   core.Map<core.String, RestMethod> methods;
-
   /** Sub-resources on this resource. */
   core.Map<core.String, RestResource> resources;
-
 
   RestResource();
 

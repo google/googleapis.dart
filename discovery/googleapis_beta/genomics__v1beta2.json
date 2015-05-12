@@ -23,7 +23,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/V_2cw8Jox8McJ3ZeGn5dcgBvvSM\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/IqSB8sibomkxDrONkpdbncL_fWM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1151,6 +1151,22 @@
                 }
             }
         },
+        "streamingReadstore": {
+            "methods": {
+                "streamreads": {
+                    "description": "Gets a stream of reads for one or more read group sets. Reads search operates over a genomic coordinate space of reference sequence & position defined over the reference sequences to which the requested read group sets are aligned.\n\nIf a target positional range is specified, all reads whose alignment to the reference genome overlap the range are returned.\n\nAll reads returned are ordered by genomic coordinate (reference sequence & position). Reads with equivalent genomic coordinates are returned in a deterministic order.",
+                    "httpMethod": "POST",
+                    "id": "genomics.streamingReadstore.streamreads",
+                    "path": "streamingReadstore/streamreads",
+                    "request": {
+                        "$ref": "StreamReadsRequest"
+                    },
+                    "response": {
+                        "$ref": "StreamReadsResponse"
+                    }
+                }
+            }
+        },
         "variants": {
             "methods": {
                 "create": {
@@ -1450,7 +1466,7 @@
             }
         }
     },
-    "revision": "20150401",
+    "revision": "20150415",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AlignReadGroupSetsRequest": {
@@ -1794,12 +1810,14 @@
                         "CLIP_SOFT",
                         "DELETE",
                         "INSERT",
+                        "OPERATION_UNSPECIFIED",
                         "PAD",
                         "SEQUENCE_MATCH",
                         "SEQUENCE_MISMATCH",
                         "SKIP"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -3430,6 +3448,45 @@
                     "description": "The list of matching Variants.",
                     "items": {
                         "$ref": "Variant"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "StreamReadsRequest": {
+            "id": "StreamReadsRequest",
+            "properties": {
+                "end": {
+                    "description": "The end position of the range on the reference, 0-based exclusive. If specified, referenceName must also be specified.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "readGroupSetIds": {
+                    "description": "The ID of the read groups set within which to search for reads. Exactly one ID must be provided.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "referenceName": {
+                    "description": "The reference sequence name, for example chr1, 1, or chrX. If set to *, only unmapped reads are returned.",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "The start position of the range on the reference, 0-based inclusive. If specified, referenceName must also be specified.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StreamReadsResponse": {
+            "id": "StreamReadsResponse",
+            "properties": {
+                "alignments": {
+                    "items": {
+                        "$ref": "Read"
                     },
                     "type": "array"
                 }

@@ -15,7 +15,7 @@
     "description": "API for accessing Google Cloud and API monitoring data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/monitoring/v2beta2/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/0w-YIuPYwzHxSYesfhwgY81j7Ic\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/0KGNZYzpExP0Fa02QodNaVGygTU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -402,7 +402,7 @@
             }
         }
     },
-    "revision": "20150305",
+    "revision": "20150311",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "DeleteMetricDescriptorResponse": {
@@ -592,11 +592,11 @@
             "id": "MetricDescriptorTypeDescriptor",
             "properties": {
                 "metricType": {
-                    "description": "The method of collecting data for the metric.",
+                    "description": "The method of collecting data for the metric. See Metric types.",
                     "type": "string"
                 },
                 "valueType": {
-                    "description": "The type of data that is written to a timeseries point for this metric.",
+                    "description": "The data type of of individual points in the metric's time series. See Metric value types.",
                     "type": "string"
                 }
             },

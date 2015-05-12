@@ -67,7 +67,7 @@ class ChangesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Change> create(Change request, core.String project, core.String managedZone) {
     var _url = null;
@@ -86,7 +86,6 @@ class ChangesResourceApi {
     if (managedZone == null) {
       throw new core.ArgumentError("Parameter managedZone is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/changes';
 
@@ -119,7 +118,7 @@ class ChangesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Change> get(core.String project, core.String managedZone, core.String changeId) {
     var _url = null;
@@ -138,7 +137,6 @@ class ChangesResourceApi {
     if (changeId == null) {
       throw new core.ArgumentError("Parameter changeId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/changes/' + commons.Escaper.ecapeVariable('$changeId');
 
@@ -180,7 +178,7 @@ class ChangesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChangesListResponse> list(core.String project, core.String managedZone, {core.int maxResults, core.String pageToken, core.String sortBy, core.String sortOrder}) {
     var _url = null;
@@ -208,7 +206,6 @@ class ChangesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/changes';
 
@@ -246,7 +243,7 @@ class ManagedZonesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ManagedZone> create(ManagedZone request, core.String project) {
     var _url = null;
@@ -262,7 +259,6 @@ class ManagedZonesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones';
 
@@ -290,7 +286,7 @@ class ManagedZonesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String project, core.String managedZone) {
     var _url = null;
@@ -337,7 +333,7 @@ class ManagedZonesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ManagedZone> get(core.String project, core.String managedZone) {
     var _url = null;
@@ -353,7 +349,6 @@ class ManagedZonesResourceApi {
     if (managedZone == null) {
       throw new core.ArgumentError("Parameter managedZone is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone');
 
@@ -386,7 +381,7 @@ class ManagedZonesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ManagedZonesListResponse> list(core.String project, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -405,7 +400,6 @@ class ManagedZonesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones';
 
@@ -441,7 +435,7 @@ class ProjectsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Project> get(core.String project) {
     var _url = null;
@@ -454,7 +448,6 @@ class ProjectsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$project');
 
@@ -505,7 +498,7 @@ class ResourceRecordSetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ResourceRecordSetsListResponse> list(core.String project, core.String managedZone, {core.int maxResults, core.String name, core.String pageToken, core.String type}) {
     var _url = null;
@@ -534,7 +527,6 @@ class ResourceRecordSetsResourceApi {
       _queryParams["type"] = [type];
     }
 
-
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/rrsets';
 
     var _response = _requester.request(_url,
@@ -555,30 +547,24 @@ class ResourceRecordSetsResourceApi {
 class Change {
   /** Which ResourceRecordSets to add? */
   core.List<ResourceRecordSet> additions;
-
   /** Which ResourceRecordSets to remove? Must match existing data exactly. */
   core.List<ResourceRecordSet> deletions;
-
   /**
    * Unique identifier for the resource; defined by the server (output only).
    */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dns#change".
    */
   core.String kind;
-
   /**
    * The time that this operation was started by the server. This is in RFC3339
    * text format.
    */
   core.String startTime;
-
   /** Status of the operation (output only). */
   core.String status;
-
 
   Change();
 
@@ -627,7 +613,6 @@ class Change {
   }
 }
 
-
 /**
  * The response to a request to enumerate Changes to a ResourceRecordSets
  * collection.
@@ -635,10 +620,8 @@ class Change {
 class ChangesListResponse {
   /** The requested changes. */
   core.List<Change> changes;
-
   /** Type of resource. */
   core.String kind;
-
   /**
    * The presence of this field indicates that there exist more results
    * following your last page of results in pagination order. To fetch them,
@@ -652,7 +635,6 @@ class ChangesListResponse {
    * size.
    */
   core.String nextPageToken;
-
 
   ChangesListResponse();
 
@@ -683,7 +665,6 @@ class ChangesListResponse {
   }
 }
 
-
 /**
  * A zone is a subtree of the DNS namespace under one administrative
  * responsibility. A ManagedZone is a resource that represents a DNS zone hosted
@@ -695,47 +676,39 @@ class ManagedZone {
    * text format. Output only.
    */
   core.String creationTime;
-
   /**
    * A mutable string of at most 1024 characters associated with this resource
    * for the user's convenience. Has no effect on the managed zone's function.
    */
   core.String description;
-
   /** The DNS name of this managed zone, for instance "example.com.". */
   core.String dnsName;
-
   /**
    * Unique identifier for the resource; defined by the server (output only)
    */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dns#managedZone".
    */
   core.String kind;
-
   /**
    * User assigned name for this resource. Must be unique within the project.
    * The name must be 1-32 characters long, must begin with a letter, end with a
    * letter or digit, and only contain lowercase letters, digits or dashes.
    */
   core.String name;
-
   /**
    * Optionally specifies the NameServerSet for this ManagedZone. A
    * NameServerSet is a set of DNS name servers that all host the same
    * ManagedZones. Most users will leave this field unset.
    */
   core.String nameServerSet;
-
   /**
    * Delegate your managed_zone to these virtual name servers; defined by the
    * server (output only)
    */
   core.List<core.String> nameServers;
-
 
   ManagedZone();
 
@@ -796,14 +769,11 @@ class ManagedZone {
   }
 }
 
-
 class ManagedZonesListResponse {
   /** Type of resource. */
   core.String kind;
-
   /** The managed zone resources. */
   core.List<ManagedZone> managedZones;
-
   /**
    * The presence of this field indicates that there exist more results
    * following your last page of results in pagination order. To fetch them,
@@ -817,7 +787,6 @@ class ManagedZonesListResponse {
    * maximum page size.
    */
   core.String nextPageToken;
-
 
   ManagedZonesListResponse();
 
@@ -848,7 +817,6 @@ class ManagedZonesListResponse {
   }
 }
 
-
 /**
  * A project resource. The project is a top level container for resources
  * including Cloud DNS ManagedZones. Projects can be created only in the APIs
@@ -857,22 +825,18 @@ class ManagedZonesListResponse {
 class Project {
   /** User assigned unique identifier for the resource (output only). */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dns#project".
    */
   core.String kind;
-
   /**
    * Unique numeric identifier for the resource; defined by the server (output
    * only).
    */
   core.String number;
-
   /** Quotas assigned to this project (output only). */
   Quota quota;
-
 
   Project();
 
@@ -909,7 +873,6 @@ class Project {
   }
 }
 
-
 /** Limits associated with a Project. */
 class Quota {
   /**
@@ -917,33 +880,26 @@ class Quota {
    * "dns#quota".
    */
   core.String kind;
-
   /** Maximum allowed number of managed zones in the project. */
   core.int managedZones;
-
   /** Maximum allowed number of ResourceRecords per ResourceRecordSet. */
   core.int resourceRecordsPerRrset;
-
   /**
    * Maximum allowed number of ResourceRecordSets to add per
    * ChangesCreateRequest.
    */
   core.int rrsetAdditionsPerChange;
-
   /**
    * Maximum allowed number of ResourceRecordSets to delete per
    * ChangesCreateRequest.
    */
   core.int rrsetDeletionsPerChange;
-
   /** Maximum allowed number of ResourceRecordSets per zone in the project. */
   core.int rrsetsPerManagedZone;
-
   /**
    * Maximum allowed size for total rrdata in one ChangesCreateRequest in bytes.
    */
   core.int totalRrdataSizePerChange;
-
 
   Quota();
 
@@ -998,7 +954,6 @@ class Quota {
   }
 }
 
-
 /** A unit of data that will be returned by the DNS servers. */
 class ResourceRecordSet {
   /**
@@ -1006,24 +961,19 @@ class ResourceRecordSet {
    * "dns#resourceRecordSet".
    */
   core.String kind;
-
   /** For example, www.example.com. */
   core.String name;
-
   /** As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1). */
   core.List<core.String> rrdatas;
-
   /**
    * Number of seconds that this ResourceRecordSet can be cached by resolvers.
    */
   core.int ttl;
-
   /**
    * The identifier of a supported record type, for example, A, AAAA, MX, TXT,
    * and so on.
    */
   core.String type;
-
 
   ResourceRecordSet();
 
@@ -1066,11 +1016,9 @@ class ResourceRecordSet {
   }
 }
 
-
 class ResourceRecordSetsListResponse {
   /** Type of resource. */
   core.String kind;
-
   /**
    * The presence of this field indicates that there exist more results
    * following your last page of results in pagination order. To fetch them,
@@ -1084,10 +1032,8 @@ class ResourceRecordSetsListResponse {
    * maximum page size.
    */
   core.String nextPageToken;
-
   /** The resource record set resources. */
   core.List<ResourceRecordSet> rrsets;
-
 
   ResourceRecordSetsListResponse();
 

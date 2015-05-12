@@ -47,7 +47,7 @@ class Oauth2Api {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Jwk> getCertForOpenIdConnect() {
     var _url = null;
@@ -56,7 +56,6 @@ class Oauth2Api {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'oauth2/v2/certs';
@@ -86,7 +85,7 @@ class Oauth2Api {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Tokeninfo> tokeninfo({core.String accessToken, core.String idToken, core.String tokenHandle}) {
     var _url = null;
@@ -105,7 +104,6 @@ class Oauth2Api {
     if (tokenHandle != null) {
       _queryParams["token_handle"] = [tokenHandle];
     }
-
 
     _url = 'oauth2/v2/tokeninfo';
 
@@ -139,7 +137,7 @@ class UserinfoResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Userinfoplus> get() {
     var _url = null;
@@ -148,7 +146,6 @@ class UserinfoResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'oauth2/v2/userinfo';
@@ -191,7 +188,7 @@ class UserinfoV2MeResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Userinfoplus> get() {
     var _url = null;
@@ -200,7 +197,6 @@ class UserinfoV2MeResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'userinfo/v2/me';
@@ -221,17 +217,11 @@ class UserinfoV2MeResourceApi {
 
 class JwkKeys {
   core.String alg;
-
   core.String e;
-
   core.String kid;
-
   core.String kty;
-
   core.String n;
-
   core.String use;
-
 
   JwkKeys();
 
@@ -280,10 +270,8 @@ class JwkKeys {
   }
 }
 
-
 class Jwk {
   core.List<JwkKeys> keys;
-
 
   Jwk();
 
@@ -302,44 +290,34 @@ class Jwk {
   }
 }
 
-
 class Tokeninfo {
   /** The access type granted with this token. It can be offline or online. */
   core.String accessType;
-
   /**
    * Who is the intended audience for this token. In general the same as
    * issued_to.
    */
   core.String audience;
-
   /**
    * The email address of the user. Present only if the email scope is present
    * in the request.
    */
   core.String email;
-
   /** The expiry time of the token, as number of seconds left until expiry. */
   core.int expiresIn;
-
   /** To whom was the token issued to. In general the same as audience. */
   core.String issuedTo;
-
   /** The space separated list of scopes granted to this token. */
   core.String scope;
-
   /** The token handle associated with this token. */
   core.String tokenHandle;
-
   /** The obfuscated user id. */
   core.String userId;
-
   /**
    * Boolean flag which is true if the email address is verified. Present only
    * if the email scope is present in the request.
    */
   core.bool verifiedEmail;
-
 
   Tokeninfo();
 
@@ -406,44 +384,32 @@ class Tokeninfo {
   }
 }
 
-
 class Userinfoplus {
   /** The user's email address. */
   core.String email;
-
   /** The user's last name. */
   core.String familyName;
-
   /** The user's gender. */
   core.String gender;
-
   /** The user's first name. */
   core.String givenName;
-
   /** The hosted domain e.g. example.com if the user is Google apps user. */
   core.String hd;
-
   /** The obfuscated ID of the user. */
   core.String id;
-
   /** URL of the profile page. */
   core.String link;
-
   /** The user's preferred locale. */
   core.String locale;
-
   /** The user's full name. */
   core.String name;
-
   /** URL of the user's picture image. */
   core.String picture;
-
   /**
    * Boolean flag which is true if the email address is verified. Always
    * verified because we only return the user's primary email address.
    */
   core.bool verifiedEmail;
-
 
   Userinfoplus();
 

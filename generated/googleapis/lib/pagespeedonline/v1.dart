@@ -70,7 +70,7 @@ class PagespeedapiResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Result> runpagespeed(core.String url, {core.bool filterThirdPartyResources, core.String locale, core.List<core.String> rule, core.bool screenshot, core.String strategy}) {
     var _url = null;
@@ -100,7 +100,6 @@ class PagespeedapiResourceApi {
       _queryParams["strategy"] = [strategy];
     }
 
-
     _url = 'runPagespeed';
 
     var _response = _requester.request(_url,
@@ -123,10 +122,8 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksHeaderArgs {
    * DURATION.
    */
   core.String type;
-
   /** Argument value, as a localized string. */
   core.String value;
-
 
   ResultFormattedResultsRuleResultsValueUrlBlocksHeaderArgs();
 
@@ -151,19 +148,16 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksHeaderArgs {
   }
 }
 
-
 /** Heading to be displayed with the list of URLs. */
 class ResultFormattedResultsRuleResultsValueUrlBlocksHeader {
   /** List of arguments for the format string. */
   core.List<ResultFormattedResultsRuleResultsValueUrlBlocksHeaderArgs> args;
-
   /**
    * A localized format string with $N placeholders, where N is the 1-indexed
    * argument number, e.g. 'Minifying the following $1 resources would save a
    * total of $2 bytes'.
    */
   core.String format;
-
 
   ResultFormattedResultsRuleResultsValueUrlBlocksHeader();
 
@@ -188,17 +182,14 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksHeader {
   }
 }
 
-
 class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs {
   /**
    * Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or
    * DURATION.
    */
   core.String type;
-
   /** Argument value, as a localized string. */
   core.String value;
-
 
   ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs();
 
@@ -223,18 +214,15 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs {
   }
 }
 
-
 class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails {
   /** List of arguments for the format string. */
   core.List<ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs> args;
-
   /**
    * A localized format string with $N placeholders, where N is the 1-indexed
    * argument number, e.g. 'Unnecessary metadata for this resource adds an
    * additional $1 bytes to its download size'.
    */
   core.String format;
-
 
   ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails();
 
@@ -259,17 +247,14 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails {
   }
 }
 
-
 class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResultArgs {
   /**
    * Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or
    * DURATION.
    */
   core.String type;
-
   /** Argument value, as a localized string. */
   core.String value;
-
 
   ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResultArgs();
 
@@ -294,7 +279,6 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResultArgs {
   }
 }
 
-
 /**
  * A format string that gives information about the URL, and a list of arguments
  * for that format string.
@@ -302,13 +286,11 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResultArgs {
 class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResult {
   /** List of arguments for the format string. */
   core.List<ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResultArgs> args;
-
   /**
    * A localized format string with $N placeholders, where N is the 1-indexed
    * argument number, e.g. 'Minifying the resource at URL $1 can save $2 bytes'.
    */
   core.String format;
-
 
   ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResult();
 
@@ -333,20 +315,17 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResult {
   }
 }
 
-
 class ResultFormattedResultsRuleResultsValueUrlBlocksUrls {
   /**
    * List of entries that provide additional details about a single URL.
    * Optional.
    */
   core.List<ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails> details;
-
   /**
    * A format string that gives information about the URL, and a list of
    * arguments for that format string.
    */
   ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResult result;
-
 
   ResultFormattedResultsRuleResultsValueUrlBlocksUrls();
 
@@ -371,17 +350,14 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrls {
   }
 }
 
-
 class ResultFormattedResultsRuleResultsValueUrlBlocks {
   /** Heading to be displayed with the list of URLs. */
   ResultFormattedResultsRuleResultsValueUrlBlocksHeader header;
-
   /**
    * List of entries that provide information about URLs in the url block.
    * Optional.
    */
   core.List<ResultFormattedResultsRuleResultsValueUrlBlocksUrls> urls;
-
 
   ResultFormattedResultsRuleResultsValueUrlBlocks();
 
@@ -406,7 +382,6 @@ class ResultFormattedResultsRuleResultsValueUrlBlocks {
   }
 }
 
-
 /**
  * The enum-like identifier for this rule. For instance "EnableKeepAlive" or
  * "AvoidCssImport". Not localized.
@@ -414,7 +389,6 @@ class ResultFormattedResultsRuleResultsValueUrlBlocks {
 class ResultFormattedResultsRuleResultsValue {
   /** Localized name of the rule, intended for presentation to a user. */
   core.String localizedRuleName;
-
   /**
    * The impact (unbounded floating point value) that implementing the
    * suggestions for this rule would have on making the page faster. Impact is
@@ -425,13 +399,11 @@ class ResultFormattedResultsRuleResultsValue {
    * rule, all other things being equal.
    */
   core.double ruleImpact;
-
   /**
    * List of blocks of URLs. Each block may contain a heading and a list of
    * URLs. Each URL may optionally include additional details.
    */
   core.List<ResultFormattedResultsRuleResultsValueUrlBlocks> urlBlocks;
-
 
   ResultFormattedResultsRuleResultsValue();
 
@@ -462,7 +434,6 @@ class ResultFormattedResultsRuleResultsValue {
   }
 }
 
-
 /**
  * Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed
  * rule instantiated and run by the server.
@@ -470,13 +441,11 @@ class ResultFormattedResultsRuleResultsValue {
 class ResultFormattedResults {
   /** The locale of the formattedResults, e.g. "en_US". */
   core.String locale;
-
   /**
    * Dictionary of formatted rule results, with one entry for each PageSpeed
    * rule instantiated and run by the server.
    */
   core.Map<core.String, ResultFormattedResultsRuleResultsValue> ruleResults;
-
 
   ResultFormattedResults();
 
@@ -501,7 +470,6 @@ class ResultFormattedResults {
   }
 }
 
-
 /**
  * Summary statistics for the page, such as number of JavaScript bytes, number
  * of HTML bytes, etc.
@@ -509,49 +477,36 @@ class ResultFormattedResults {
 class ResultPageStats {
   /** Number of uncompressed response bytes for CSS resources on the page. */
   core.String cssResponseBytes;
-
   /** Number of response bytes for flash resources on the page. */
   core.String flashResponseBytes;
-
   /**
    * Number of uncompressed response bytes for the main HTML document and all
    * iframes on the page.
    */
   core.String htmlResponseBytes;
-
   /** Number of response bytes for image resources on the page. */
   core.String imageResponseBytes;
-
   /** Number of uncompressed response bytes for JS resources on the page. */
   core.String javascriptResponseBytes;
-
   /** Number of CSS resources referenced by the page. */
   core.int numberCssResources;
-
   /** Number of unique hosts referenced by the page. */
   core.int numberHosts;
-
   /** Number of JavaScript resources referenced by the page. */
   core.int numberJsResources;
-
   /** Number of HTTP resources loaded by the page. */
   core.int numberResources;
-
   /** Number of static (i.e. cacheable) resources on the page. */
   core.int numberStaticResources;
-
   /** Number of response bytes for other resources on the page. */
   core.String otherResponseBytes;
-
   /**
    * Number of uncompressed response bytes for text resources not covered by
    * other statistics (i.e non-HTML, non-script, non-CSS resources) on the page.
    */
   core.String textResponseBytes;
-
   /** Total size of all request bytes sent by the page. */
   core.String totalRequestBytes;
-
 
   ResultPageStats();
 
@@ -642,12 +597,10 @@ class ResultPageStats {
   }
 }
 
-
 /** Base64-encoded screenshot of the page that was analyzed. */
 class ResultScreenshot {
   /** Image data base64 encoded. */
   core.String data;
-
   core.List<core.int> get dataAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(data);
   }
@@ -655,16 +608,12 @@ class ResultScreenshot {
   void set dataAsBytes(core.List<core.int> _bytes) {
     data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** Height of screenshot in pixels. */
   core.int height;
-
   /** Mime type of image data. E.g. "image/jpeg". */
   core.String mimeType;
-
   /** Width of screenshot in pixels. */
   core.int width;
-
 
   ResultScreenshot();
 
@@ -701,15 +650,12 @@ class ResultScreenshot {
   }
 }
 
-
 /** The version of PageSpeed used to generate these results. */
 class ResultVersion {
   /** The major version number of PageSpeed used to generate these results. */
   core.int major;
-
   /** The minor version number of PageSpeed used to generate these results. */
   core.int minor;
-
 
   ResultVersion();
 
@@ -734,57 +680,46 @@ class ResultVersion {
   }
 }
 
-
 class Result {
   /**
    * Localized PageSpeed results. Contains a ruleResults entry for each
    * PageSpeed rule instantiated and run by the server.
    */
   ResultFormattedResults formattedResults;
-
   /**
    * Canonicalized and final URL for the document, after following page
    * redirects (if any).
    */
   core.String id;
-
   /**
    * List of rules that were specified in the request, but which the server did
    * not know how to instantiate.
    */
   core.List<core.String> invalidRules;
-
   /** Kind of result. */
   core.String kind;
-
   /**
    * Summary statistics for the page, such as number of JavaScript bytes, number
    * of HTML bytes, etc.
    */
   ResultPageStats pageStats;
-
   /**
    * Response code for the document. 200 indicates a normal page load. 4xx/5xx
    * indicates an error.
    */
   core.int responseCode;
-
   /**
    * The PageSpeed Score (0-100), which indicates how much faster a page could
    * be. A high score indicates little room for improvement, while a lower score
    * indicates more room for improvement.
    */
   core.int score;
-
   /** Base64-encoded screenshot of the page that was analyzed. */
   ResultScreenshot screenshot;
-
   /** Title of the page, as displayed in the browser's title bar. */
   core.String title;
-
   /** The version of PageSpeed used to generate these results. */
   ResultVersion version;
-
 
   Result();
 

@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.8.0
+    version: 0.9.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -25,7 +25,6 @@ packages:
     - books:v1  # https://developers.google.com/books/
     - civicinfo:v2  # https://developers.google.com/civic-information/
     - calendar:v3  # https://developers.google.com/google-apps/calendar/
-    - cloudsearch:v1 # https://cloud.google.com/appengine/docs/python/search/
     - compute:v1  # https://developers.google.com/compute/
     - content:v2  # https://developers.google.com/shopping-content/
     - coordinate:v1  # https://google-developers.appspot.com/coordinate/
@@ -70,7 +69,7 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.12.0
+    version: 0.13.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -80,8 +79,6 @@ packages:
     - autoscaler:v1beta2  # https://developers.google.com/compute/docs/autoscaler/ (Limited Preview)
     - cloudmonitoring:v2beta2  # https://developers.google.com/cloud-monitoring/
     - container:v1beta1  #
-    - dataflow:v1beta3  # https://cloud.google.com/dataflow/
-    - dataflow:v1b4  # https://cloud.google.com/dataflow/
     - datastore:v1beta2  # https://developers.google.com/datastore/
     - deploymentmanager:v2beta1  # https://cloud.google.com/deployment-manager/
     - dns:v1beta1  # https://developers.google.com/cloud-dns/
@@ -99,34 +96,3 @@ packages:
     - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries
 
 skipped_apis:
-- adexchangebuyer:v1.2  # v1.3 included
-- adexchangeseller:v1  # v1.1 included
-- adsense:v1.2  # v1.4 included
-- adsense:v1.3  # v1.4 included
-- analytics:v2.4  # v3 included
-- androidpublisher:v1  # v2 included
-- androidpublisher:v1.1  # v2 included
-- audit:v1  # Deprecated as of May 15, 2013, https://developers.google.com/google-apps/admin-audit/
-- blogger:v2  # v3 included
-- datastore:v1beta1  # v1beta2 included
-- dfareporting:v1  # v1.3 included
-- dfareporting:v1.1  # v1.3 included
-- dfareporting:v1.2  # v1.3 included
-- drive:v1  # v2 included
-- freebase:v1-sandbox  # v1 included
-- freebase:v1sandbox  # v1 included
-- gan:v1beta1  # Deprecated as of April 16, 2013, https://developers.google.com/affiliate-network/
-- mapsengine:exp2  # v1 included
-- oauth2:v1  # v2 included
-- prediction:v1.2  # v1.6 included
-- prediction:v1.3  # v1.6 included
-- prediction:v1.4  # v1.6 included
-- prediction:v1.5  # v1.6 included
-- reseller:v1sandbox  # v1 included
-- replicapool:v1beta1  # Deprecated
-- spectrum:v1explorer  # Not included, https://developers.google.com/spectrum/
-- sqladmin:v1beta1  # v1beta3 included
-- storage:v1beta1  # v1 included
-- storage:v1beta2  # v1 included
-- taskqueue:v1beta1  # v1beta2 included
-- youtubeAnalytics:v1beta1  # v1 included

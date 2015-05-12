@@ -64,7 +64,7 @@ class BackupRunsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BackupRun> get(core.String project, core.String instance, core.String id) {
     var _url = null;
@@ -83,7 +83,6 @@ class BackupRunsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/backupRuns/' + commons.Escaper.ecapeVariable('$id');
 
@@ -118,7 +117,7 @@ class BackupRunsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BackupRunsListResponse> list(core.String project, core.String instance, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -140,7 +139,6 @@ class BackupRunsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/backupRuns';
 
@@ -181,7 +179,7 @@ class DatabasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String instance, core.String database) {
     var _url = null;
@@ -200,7 +198,6 @@ class DatabasesResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/databases/' + commons.Escaper.ecapeVariable('$database');
 
@@ -232,7 +229,7 @@ class DatabasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Database> get(core.String project, core.String instance, core.String database) {
     var _url = null;
@@ -251,7 +248,6 @@ class DatabasesResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/databases/' + commons.Escaper.ecapeVariable('$database');
 
@@ -283,7 +279,7 @@ class DatabasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(Database request, core.String project, core.String instance) {
     var _url = null;
@@ -302,7 +298,6 @@ class DatabasesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/databases';
 
@@ -332,7 +327,7 @@ class DatabasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DatabasesListResponse> list(core.String project, core.String instance) {
     var _url = null;
@@ -348,7 +343,6 @@ class DatabasesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/databases';
 
@@ -382,7 +376,7 @@ class DatabasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> patch(Database request, core.String project, core.String instance, core.String database) {
     var _url = null;
@@ -404,7 +398,6 @@ class DatabasesResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/databases/' + commons.Escaper.ecapeVariable('$database');
 
@@ -438,7 +431,7 @@ class DatabasesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> update(Database request, core.String project, core.String instance, core.String database) {
     var _url = null;
@@ -460,7 +453,6 @@ class DatabasesResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/databases/' + commons.Escaper.ecapeVariable('$database');
 
@@ -494,7 +486,7 @@ class FlagsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FlagsListResponse> list() {
     var _url = null;
@@ -503,7 +495,6 @@ class FlagsResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'flags';
@@ -546,7 +537,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> clone(InstancesCloneRequest request, core.String project, core.String instance) {
     var _url = null;
@@ -565,7 +556,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/clone';
 
@@ -595,7 +585,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String instance) {
     var _url = null;
@@ -611,7 +601,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
 
@@ -644,7 +633,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> export(InstancesExportRequest request, core.String project, core.String instance) {
     var _url = null;
@@ -663,7 +652,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/export';
 
@@ -692,7 +680,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DatabaseInstance> get(core.String project, core.String instance) {
     var _url = null;
@@ -708,7 +696,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
 
@@ -740,7 +727,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> import(InstancesImportRequest request, core.String project, core.String instance) {
     var _url = null;
@@ -759,7 +746,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/import';
 
@@ -789,7 +775,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(DatabaseInstance request, core.String project) {
     var _url = null;
@@ -805,7 +791,6 @@ class InstancesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances';
 
@@ -839,7 +824,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<InstancesListResponse> list(core.String project, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -858,7 +843,6 @@ class InstancesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances';
 
@@ -892,7 +876,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> patch(DatabaseInstance request, core.String project, core.String instance) {
     var _url = null;
@@ -911,7 +895,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
 
@@ -940,7 +923,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> promoteReplica(core.String project, core.String instance) {
     var _url = null;
@@ -956,7 +939,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/promoteReplica';
 
@@ -988,7 +970,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> resetSslConfig(core.String project, core.String instance) {
     var _url = null;
@@ -1004,7 +986,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/resetSslConfig';
 
@@ -1034,7 +1015,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> restart(core.String project, core.String instance) {
     var _url = null;
@@ -1050,7 +1031,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/restart';
 
@@ -1081,7 +1061,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> restoreBackup(InstancesRestoreBackupRequest request, core.String project, core.String instance) {
     var _url = null;
@@ -1100,7 +1080,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/restoreBackup';
 
@@ -1129,7 +1108,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> startReplica(core.String project, core.String instance) {
     var _url = null;
@@ -1145,7 +1124,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/startReplica';
 
@@ -1174,7 +1152,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> stopReplica(core.String project, core.String instance) {
     var _url = null;
@@ -1190,7 +1168,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/stopReplica';
 
@@ -1223,7 +1200,7 @@ class InstancesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> update(DatabaseInstance request, core.String project, core.String instance) {
     var _url = null;
@@ -1242,7 +1219,6 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
 
@@ -1280,7 +1256,7 @@ class OperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> get(core.String project, core.String operation) {
     var _url = null;
@@ -1296,7 +1272,6 @@ class OperationsResourceApi {
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
@@ -1331,7 +1306,7 @@ class OperationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OperationsListResponse> list(core.String project, core.String instance, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -1354,7 +1329,6 @@ class OperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/operations';
 
@@ -1396,7 +1370,7 @@ class SslCertsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String instance, core.String sha1Fingerprint) {
     var _url = null;
@@ -1415,7 +1389,6 @@ class SslCertsResourceApi {
     if (sha1Fingerprint == null) {
       throw new core.ArgumentError("Parameter sha1Fingerprint is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/sslCerts/' + commons.Escaper.ecapeVariable('$sha1Fingerprint');
 
@@ -1448,7 +1421,7 @@ class SslCertsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SslCert> get(core.String project, core.String instance, core.String sha1Fingerprint) {
     var _url = null;
@@ -1467,7 +1440,6 @@ class SslCertsResourceApi {
     if (sha1Fingerprint == null) {
       throw new core.ArgumentError("Parameter sha1Fingerprint is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/sslCerts/' + commons.Escaper.ecapeVariable('$sha1Fingerprint');
 
@@ -1501,7 +1473,7 @@ class SslCertsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SslCertsInsertResponse> insert(SslCertsInsertRequest request, core.String project, core.String instance) {
     var _url = null;
@@ -1520,7 +1492,6 @@ class SslCertsResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/sslCerts';
 
@@ -1550,7 +1521,7 @@ class SslCertsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SslCertsListResponse> list(core.String project, core.String instance) {
     var _url = null;
@@ -1566,7 +1537,6 @@ class SslCertsResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/sslCerts';
 
@@ -1603,7 +1573,7 @@ class TiersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TiersListResponse> list(core.String project) {
     var _url = null;
@@ -1616,7 +1586,6 @@ class TiersResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/tiers';
 
@@ -1658,7 +1627,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> delete(core.String project, core.String instance, core.String host, core.String name) {
     var _url = null;
@@ -1682,7 +1651,6 @@ class UsersResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
     _queryParams["name"] = [name];
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/users';
 
@@ -1713,7 +1681,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> insert(User request, core.String project, core.String instance) {
     var _url = null;
@@ -1732,7 +1700,6 @@ class UsersResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/users';
 
@@ -1761,7 +1728,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UsersListResponse> list(core.String project, core.String instance) {
     var _url = null;
@@ -1777,7 +1744,6 @@ class UsersResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/users';
 
@@ -1812,7 +1778,7 @@ class UsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Operation> update(User request, core.String project, core.String instance, core.String host, core.String name) {
     var _url = null;
@@ -1840,7 +1806,6 @@ class UsersResourceApi {
     }
     _queryParams["name"] = [name];
 
-
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/users';
 
     var _response = _requester.request(_url,
@@ -1864,16 +1829,12 @@ class AclEntry {
    * example 2012-11-15T16:19:00.094Z.
    */
   core.DateTime expirationTime;
-
   /** This is always sql#aclEntry. */
   core.String kind;
-
   /** An optional label to identify this entry. */
   core.String name;
-
   /** The whitelisted value for the access control list. */
   core.String value;
-
 
   AclEntry();
 
@@ -1910,7 +1871,6 @@ class AclEntry {
   }
 }
 
-
 /** Database instance backup configuration. */
 class BackupConfiguration {
   /**
@@ -1918,19 +1878,15 @@ class BackupConfiguration {
    * log must be disabled as well.
    */
   core.bool binaryLogEnabled;
-
   /** Whether this configuration is enabled. */
   core.bool enabled;
-
   /** This is always sql#backupConfiguration. */
   core.String kind;
-
   /**
    * Start time for the daily backup configuration in UTC timezone in the 24
    * hour format - HH:MM.
    */
   core.String startTime;
-
 
   BackupConfiguration();
 
@@ -1967,7 +1923,6 @@ class BackupConfiguration {
   }
 }
 
-
 /** A database instance backup run resource. */
 class BackupRun {
   /**
@@ -1975,49 +1930,39 @@ class BackupRun {
    * for example 2012-11-15T16:19:00.094Z.
    */
   core.DateTime endTime;
-
   /**
    * The time the run was enqueued in UTC timezone in RFC 3339 format, for
    * example 2012-11-15T16:19:00.094Z.
    */
   core.DateTime enqueuedTime;
-
   /**
    * Information about why the backup operation failed. This is only present if
    * the run has the FAILED status.
    */
   OperationError error;
-
   /**
    * A unique identifier for this backup run. Note that this is unique only
    * within the scope of a particular Cloud SQL instance.
    */
   core.String id;
-
   /** Name of the database instance. */
   core.String instance;
-
   /** This is always sql#backupRun. */
   core.String kind;
-
   /** The URI of this resource. */
   core.String selfLink;
-
   /**
    * The time the backup operation actually started in UTC timezone in RFC 3339
    * format, for example 2012-11-15T16:19:00.094Z.
    */
   core.DateTime startTime;
-
   /** The status of this run. */
   core.String status;
-
   /**
    * The start time of the backup window during which this the backup was
    * attempted in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
    */
   core.DateTime windowStartTime;
-
 
   BackupRun();
 
@@ -2090,23 +2035,19 @@ class BackupRun {
   }
 }
 
-
 /** Backup run list results. */
 class BackupRunsListResponse {
   /**
    * A list of backup runs in reverse chronological order of the enqueued time.
    */
   core.List<BackupRun> items;
-
   /** This is always sql#backupRunsList. */
   core.String kind;
-
   /**
    * The continuation token, used to page through large result sets. Provide
    * this value in a subsequent request to return the next page of results.
    */
   core.String nextPageToken;
-
 
   BackupRunsListResponse();
 
@@ -2137,18 +2078,14 @@ class BackupRunsListResponse {
   }
 }
 
-
 /** Binary log coordinates. */
 class BinLogCoordinates {
   /** Name of the binary log file for a Cloud SQL instance. */
   core.String binLogFileName;
-
   /** Position (offset) within the binary log file. */
   core.String binLogPosition;
-
   /** This is always sql#binLogCoordinates. */
   core.String kind;
-
 
   BinLogCoordinates();
 
@@ -2179,7 +2116,6 @@ class BinLogCoordinates {
   }
 }
 
-
 /** Database instance clone context. */
 class CloneContext {
   /**
@@ -2188,13 +2124,10 @@ class CloneContext {
    * instance is cloned up to the most recent binary log coordintes.
    */
   BinLogCoordinates binLogCoordinates;
-
   /** Name of the Cloud SQL instance to be created as a clone. */
   core.String destinationInstanceName;
-
   /** This is always sql#cloneContext. */
   core.String kind;
-
 
   CloneContext();
 
@@ -2225,41 +2158,32 @@ class CloneContext {
   }
 }
 
-
 /** A database resource inside a Cloud SQL instance. */
 class Database {
   /** The MySQL charset value. */
   core.String charset;
-
   /** The MySQL collation value. */
   core.String collation;
-
   /** HTTP 1.1 Entity tag for the resource. */
   core.String etag;
-
   /**
    * The name of the Cloud SQL instance. This does not include the project ID.
    */
   core.String instance;
-
   /** This is always sql#database. */
   core.String kind;
-
   /**
    * The name of the database in the Cloud SQL instance. This does not include
    * the project ID or instance name.
    */
   core.String name;
-
   /**
    * The project ID of the project containing the Cloud SQL database. The Google
    * apps domain is prefixed if applicable.
    */
   core.String project;
-
   /** The URI of this resource. */
   core.String selfLink;
-
 
   Database();
 
@@ -2320,7 +2244,6 @@ class Database {
   }
 }
 
-
 /** MySQL flags for Cloud SQL instances. */
 class DatabaseFlags {
   /**
@@ -2331,13 +2254,11 @@ class DatabaseFlags {
    * the official MySQL documentation for server options and system variables.
    */
   core.String name;
-
   /**
    * The value of the flag. Booleans should be set to on for true and off for
    * false. This field must be omitted if the flag doesn't take a value.
    */
   core.String value;
-
 
   DatabaseFlags();
 
@@ -2362,22 +2283,18 @@ class DatabaseFlags {
   }
 }
 
-
 /** A Cloud SQL instance resource. */
 class DatabaseInstance {
   /** The current disk usage of the instance in bytes. */
   core.String currentDiskSize;
-
   /**
    * The database engine type and version. Can be MYSQL_5_5 or MYSQL_5_6.
    * Defaults to MYSQL_5_5. The databaseVersion can not be changed after
    * instance creation.
    */
   core.String databaseVersion;
-
   /** HTTP 1.1 Entity tag for the resource. */
   core.String etag;
-
   /**
    * The instance type. This can be one of the following.
    * CLOUD_SQL_INSTANCE: A Cloud SQL instance that is not replicating from a
@@ -2386,64 +2303,48 @@ class DatabaseInstance {
    * READ_REPLICA_INSTANCE: A Cloud SQL instance configured as a read-replica.
    */
   core.String instanceType;
-
   /** The assigned IP addresses for the instance. */
   core.List<IpMapping> ipAddresses;
-
   /** The IPv6 address assigned to the instance. */
   core.String ipv6Address;
-
   /** This is always sql#instance. */
   core.String kind;
-
   /**
    * The name of the instance which will act as master in the replication setup.
    */
   core.String masterInstanceName;
-
   /** The maximum disk size of the instance in bytes. */
   core.String maxDiskSize;
-
   /** Name of the Cloud SQL instance. This does not include the project ID. */
   core.String name;
-
   /** Configuration specific to on-premises instances. */
   OnPremisesConfiguration onPremisesConfiguration;
-
   /**
    * The project ID of the project containing the Cloud SQL instance. The Google
    * apps domain is prefixed if applicable.
    */
   core.String project;
-
   /**
    * The geographical region. Can be us-central, asia-east1 or europe-west1.
    * Defaults to us-central. The region can not be changed after instance
    * creation.
    */
   core.String region;
-
   /**
    * Configuration specific to read-replicas replicating from on-premises
    * masters.
    */
   ReplicaConfiguration replicaConfiguration;
-
   /** The replicas of the instance. */
   core.List<core.String> replicaNames;
-
   /** The URI of this resource. */
   core.String selfLink;
-
   /** SSL configuration. */
   SslCert serverCaCert;
-
   /** The service account email address assigned to the instance. */
   core.String serviceAccountEmailAddress;
-
   /** The user settings. */
   Settings settings;
-
   /**
    * The current serving state of the Cloud SQL instance. This can be one of the
    * following.
@@ -2455,7 +2356,6 @@ class DatabaseInstance {
    * UNKNOWN_STATE: The state of the instance is unknown.
    */
   core.String state;
-
 
   DatabaseInstance();
 
@@ -2588,15 +2488,12 @@ class DatabaseInstance {
   }
 }
 
-
 /** Database list response. */
 class DatabasesListResponse {
   /** List of database resources in the instance. */
   core.List<Database> items;
-
   /** This is always sql#databasesList. */
   core.String kind;
-
 
   DatabasesListResponse();
 
@@ -2621,12 +2518,10 @@ class DatabasesListResponse {
   }
 }
 
-
 /** Options for exporting data as CSV. */
 class ExportContextCsvExportOptions {
   /** The select query used to extract the data. */
   core.String selectQuery;
-
 
   ExportContextCsvExportOptions();
 
@@ -2645,7 +2540,6 @@ class ExportContextCsvExportOptions {
   }
 }
 
-
 /** Options for exporting data as SQL statements. */
 class ExportContextSqlExportOptions {
   /**
@@ -2653,7 +2547,6 @@ class ExportContextSqlExportOptions {
    * you specify tables, specify one and only one database.
    */
   core.List<core.String> tables;
-
 
   ExportContextSqlExportOptions();
 
@@ -2672,12 +2565,10 @@ class ExportContextSqlExportOptions {
   }
 }
 
-
 /** Database instance export context. */
 class ExportContext {
   /** Options for exporting data as CSV. */
   ExportContextCsvExportOptions csvExportOptions;
-
   /**
    * Databases (for example, guestbook) from which the export is made. If
    * fileType is SQL and no database is specified, all databases are exported.
@@ -2686,20 +2577,16 @@ class ExportContext {
    * field will be ignored.
    */
   core.List<core.String> databases;
-
   /**
    * The file type for the specified uri.
    * SQL: The file contains SQL statements.
    * CSV: The file contains CSV data.
    */
   core.String fileType;
-
   /** This is always sql#exportContext. */
   core.String kind;
-
   /** Options for exporting data as SQL statements. */
   ExportContextSqlExportOptions sqlExportOptions;
-
   /**
    * The path to the file in Google Cloud Storage where the export will be
    * stored. The URI is in the form gs://bucketName/fileName. If the file
@@ -2707,7 +2594,6 @@ class ExportContext {
    * ends with .gz, the contents are compressed.
    */
   core.String uri;
-
 
   ExportContext();
 
@@ -2756,40 +2642,32 @@ class ExportContext {
   }
 }
 
-
 /** A Google Cloud SQL service flag resource. */
 class Flag {
   /** For STRING flags, a list of strings that the value can be set to. */
   core.List<core.String> allowedStringValues;
-
   /**
    * The database version this flag applies to. Currently this can only be
    * [MYSQL_5_5].
    */
   core.List<core.String> appliesTo;
-
   /** This is always sql#flag. */
   core.String kind;
-
   /** For INTEGER flags, the maximum allowed value. */
   core.String maxValue;
-
   /** For INTEGER flags, the minimum allowed value. */
   core.String minValue;
-
   /**
    * This is the name of the flag. Flag names always use underscores, not
    * hyphens, e.g. max_allowed_packet
    */
   core.String name;
-
   /**
    * The type of the flag. Flags are typed to being BOOLEAN, STRING, INTEGER or
    * NONE. NONE is used for flags which do not take a value, such as
    * skip_grant_tables.
    */
   core.String type;
-
 
   Flag();
 
@@ -2844,15 +2722,12 @@ class Flag {
   }
 }
 
-
 /** Flags list response. */
 class FlagsListResponse {
   /** List of flags. */
   core.List<Flag> items;
-
   /** This is always sql#flagsList. */
   core.String kind;
-
 
   FlagsListResponse();
 
@@ -2877,7 +2752,6 @@ class FlagsListResponse {
   }
 }
 
-
 /** Options for importing data as CSV. */
 class ImportContextCsvImportOptions {
   /**
@@ -2885,10 +2759,8 @@ class ImportContextCsvImportOptions {
    * the database table are loaded with CSV data.
    */
   core.List<core.String> columns;
-
   /** The table to which CSV data is imported. */
   core.String table;
-
 
   ImportContextCsvImportOptions();
 
@@ -2913,12 +2785,10 @@ class ImportContextCsvImportOptions {
   }
 }
 
-
 /** Database instance import context. */
 class ImportContext {
   /** Options for importing data as CSV. */
   ImportContextCsvImportOptions csvImportOptions;
-
   /**
    * The database (for example, guestbook) to which the import is made. If
    * fileType is SQL and no database is specified, it is assumed that the
@@ -2926,24 +2796,20 @@ class ImportContext {
    * must be specified.
    */
   core.String database;
-
   /**
    * The file type for the specified uri.
    * SQL: The file contains SQL statements.
    * CSV: The file contains CSV data.
    */
   core.String fileType;
-
   /** This is always sql#importContext. */
   core.String kind;
-
   /**
    * A path to the file in Google Cloud Storage from which the import is made.
    * The URI is in the form gs://bucketName/fileName. Compressed gzip files
    * (.gz) are supported when fileType is SQL.
    */
   core.String uri;
-
 
   ImportContext();
 
@@ -2986,12 +2852,10 @@ class ImportContext {
   }
 }
 
-
 /** Database instance clone request. */
 class InstancesCloneRequest {
   /** Contains details about the clone operation. */
   CloneContext cloneContext;
-
 
   InstancesCloneRequest();
 
@@ -3010,12 +2874,10 @@ class InstancesCloneRequest {
   }
 }
 
-
 /** Database instance export request. */
 class InstancesExportRequest {
   /** Contains details about the export operation. */
   ExportContext exportContext;
-
 
   InstancesExportRequest();
 
@@ -3034,12 +2896,10 @@ class InstancesExportRequest {
   }
 }
 
-
 /** Database instance import request. */
 class InstancesImportRequest {
   /** Contains details about the import operation. */
   ImportContext importContext;
-
 
   InstancesImportRequest();
 
@@ -3058,21 +2918,17 @@ class InstancesImportRequest {
   }
 }
 
-
 /** Database instances list response. */
 class InstancesListResponse {
   /** List of database instance resources. */
   core.List<DatabaseInstance> items;
-
   /** This is always sql#instancesList. */
   core.String kind;
-
   /**
    * The continuation token, used to page through large result sets. Provide
    * this value in a subsequent request to return the next page of results.
    */
   core.String nextPageToken;
-
 
   InstancesListResponse();
 
@@ -3103,12 +2959,10 @@ class InstancesListResponse {
   }
 }
 
-
 /** Database instance restore backup request. */
 class InstancesRestoreBackupRequest {
   /** Parameters required to perform the restore backup operation. */
   RestoreBackupContext restoreBackupContext;
-
 
   InstancesRestoreBackupRequest();
 
@@ -3127,7 +2981,6 @@ class InstancesRestoreBackupRequest {
   }
 }
 
-
 /** IP Management configuration. */
 class IpConfiguration {
   /**
@@ -3136,16 +2989,13 @@ class IpConfiguration {
    * 192.168.100.0/24).
    */
   core.List<AclEntry> authorizedNetworks;
-
   /** Whether the instance should be assigned an IP address or not. */
   core.bool ipv4Enabled;
-
   /**
    * Whether the mysqld should default to 'REQUIRE X509' for users connecting
    * over IP.
    */
   core.bool requireSsl;
-
 
   IpConfiguration();
 
@@ -3176,19 +3026,16 @@ class IpConfiguration {
   }
 }
 
-
 /** Database instance IP Mapping. */
 class IpMapping {
   /** The IP address assigned. */
   core.String ipAddress;
-
   /**
    * The due time for this IP to be retired in RFC 3339 format, for example
    * 2012-11-15T16:19:00.094Z. This field is only available when the IP is
    * scheduled to be retired.
    */
   core.DateTime timeToRetire;
-
 
   IpMapping();
 
@@ -3213,7 +3060,6 @@ class IpMapping {
   }
 }
 
-
 /**
  * Preferred location. This specifies where a Cloud SQL instance should
  * preferably be located, either in a specific Compute Engine zone, or
@@ -3227,15 +3073,12 @@ class LocationPreference {
    * Cloud SQL instance.
    */
   core.String followGaeApplication;
-
   /** This is always sql#locationPreference. */
   core.String kind;
-
   /**
    * The preferred Compute Engine zone (e.g. us-centra1-a, us-central1-b, etc.).
    */
   core.String zone;
-
 
   LocationPreference();
 
@@ -3266,26 +3109,21 @@ class LocationPreference {
   }
 }
 
-
 /** Read-replica configuration specific to MySQL databases. */
 class MySqlReplicaConfiguration {
   /** PEM representation of the trusted CA's x509 certificate. */
   core.String caCertificate;
-
   /** PEM representation of the slave's x509 certificate. */
   core.String clientCertificate;
-
   /**
    * PEM representation of the slave's private key. The corresponsing public key
    * is encoded in the client's certificate.
    */
   core.String clientKey;
-
   /**
    * Seconds to wait between connect retries. MySQL's default is 60 seconds.
    */
   core.int connectRetryInterval;
-
   /**
    * Path to a SQL dump file in Google Cloud Storage from which the slave
    * instance is to be created. The URI is in the form gs://bucketName/fileName.
@@ -3294,28 +3132,21 @@ class MySqlReplicaConfiguration {
    * accomplished by setting --master-data to 1 when using mysqldump.
    */
   core.String dumpFilePath;
-
   /** This is always sql#mysqlReplicaConfiguration. */
   core.String kind;
-
   /** Interval in milliseconds between replication heartbeats. */
   core.String masterHeartbeatPeriod;
-
   /** The password for the replication connection. */
   core.String password;
-
   /** A list of permissible ciphers to use for SSL encryption. */
   core.String sslCipher;
-
   /** The username for the replication connection. */
   core.String username;
-
   /**
    * Whether or not to check the master's Common Name value in the certificate
    * that it sends during the SSL handshake.
    */
   core.bool verifyServerCertificate;
-
 
   MySqlReplicaConfiguration();
 
@@ -3394,15 +3225,12 @@ class MySqlReplicaConfiguration {
   }
 }
 
-
 /** On-premises instance configuration. */
 class OnPremisesConfiguration {
   /** The host and port of the on-premises instance in host:port format */
   core.String hostPort;
-
   /** This is always sql#onPremisesConfiguration. */
   core.String kind;
-
 
   OnPremisesConfiguration();
 
@@ -3427,7 +3255,6 @@ class OnPremisesConfiguration {
   }
 }
 
-
 /**
  * An Operations resource contains information about database instance
  * operations such as create, delete, and restart. Operations resources are
@@ -3440,65 +3267,50 @@ class Operation {
    * example 2012-11-15T16:19:00.094Z.
    */
   core.DateTime endTime;
-
   OperationErrors error;
-
   /** The context for export operation, if applicable. */
   ExportContext exportContext;
-
   /** The context for import operation, if applicable. */
   ImportContext importContext;
-
   /**
    * The time this operation was enqueued in UTC timezone in RFC 3339 format,
    * for example 2012-11-15T16:19:00.094Z.
    */
   core.DateTime insertTime;
-
   /** This is always sql#operation. */
   core.String kind;
-
   /**
    * An identifier that uniquely identifies the operation. You can use this
    * identifier to retrieve the Operations resource that has information about
    * the operation.
    */
   core.String name;
-
   /**
    * The type of the operation. Valid values are CREATE, DELETE, UPDATE,
    * RESTART, IMPORT, EXPORT, BACKUP_VOLUME, RESTORE_VOLUME, CREATE_USER,
    * DELETE_USER, CREATE_DATABASE, DELETE_DATABASE .
    */
   core.String operationType;
-
   /** The URI of this resource. */
   core.String selfLink;
-
   /**
    * The time this operation actually started in UTC timezone in RFC 3339
    * format, for example 2012-11-15T16:19:00.094Z.
    */
   core.DateTime startTime;
-
   /**
    * The status of an operation. Valid values are PENDING, RUNNING, DONE,
    * UNKNOWN.
    */
   core.String status;
-
   /** Name of the database instance related to this operation. */
   core.String targetId;
-
   /** The URI of the instance related to the operation. */
   core.String targetLink;
-
   /** The project ID of the target instance related to this operation. */
   core.String targetProject;
-
   /** The email address of the user who initiated this operation. */
   core.String user;
-
 
   Operation();
 
@@ -3601,18 +3413,14 @@ class Operation {
   }
 }
 
-
 /** Database instance operation error. */
 class OperationError {
   /** Identifies the specific error that occurred. */
   core.String code;
-
   /** This is always sql#operationError. */
   core.String kind;
-
   /** Additional information about the error encountered. */
   core.String message;
-
 
   OperationError();
 
@@ -3643,15 +3451,12 @@ class OperationError {
   }
 }
 
-
 /** Database instance operation errors list wrapper. */
 class OperationErrors {
   /** The list of errors encountered while processing this operation. */
   core.List<OperationError> errors;
-
   /** This is always sql#operationErrors. */
   core.String kind;
-
 
   OperationErrors();
 
@@ -3676,21 +3481,17 @@ class OperationErrors {
   }
 }
 
-
 /** Database instance list operations response. */
 class OperationsListResponse {
   /** List of operation resources. */
   core.List<Operation> items;
-
   /** This is always sql#operationsList. */
   core.String kind;
-
   /**
    * The continuation token, used to page through large result sets. Provide
    * this value in a subsequent request to return the next page of results.
    */
   core.String nextPageToken;
-
 
   OperationsListResponse();
 
@@ -3721,12 +3522,10 @@ class OperationsListResponse {
   }
 }
 
-
 /** Read-replica configuration for connecting to the master. */
 class ReplicaConfiguration {
   /** This is always sql#replicaConfiguration. */
   core.String kind;
-
   /**
    * MySQL specific configuration when replicating from a MySQL on-premises
    * master. Replication configuration information such as the username,
@@ -3736,7 +3535,6 @@ class ReplicaConfiguration {
    * directory.
    */
   MySqlReplicaConfiguration mysqlReplicaConfiguration;
-
 
   ReplicaConfiguration();
 
@@ -3761,21 +3559,23 @@ class ReplicaConfiguration {
   }
 }
 
-
 /** Database instance restore from backup context. */
 class RestoreBackupContext {
   /** The ID of the backup run to restore from. */
   core.String backupRunId;
-
+  /** The ID of the instance that the backup was taken from. */
+  core.String instanceId;
   /** This is always sql#restoreBackupContext. */
   core.String kind;
-
 
   RestoreBackupContext();
 
   RestoreBackupContext.fromJson(core.Map _json) {
     if (_json.containsKey("backupRunId")) {
       backupRunId = _json["backupRunId"];
+    }
+    if (_json.containsKey("instanceId")) {
+      instanceId = _json["instanceId"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3787,13 +3587,15 @@ class RestoreBackupContext {
     if (backupRunId != null) {
       _json["backupRunId"] = backupRunId;
     }
+    if (instanceId != null) {
+      _json["instanceId"] = instanceId;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
     return _json;
   }
 }
-
 
 /** Database instance settings. */
 class Settings {
@@ -3806,55 +3608,44 @@ class Settings {
    * ON_DEMAND: The instance is activated upon receiving requests.
    */
   core.String activationPolicy;
-
   /** The App Engine app IDs that can access this instance. */
   core.List<core.String> authorizedGaeApplications;
-
   /** The daily backup configuration for the instance. */
   BackupConfiguration backupConfiguration;
-
   /**
    * Configuration specific to read replica instances. Indicates whether
    * database flags for crash-safe replication are enabled.
    */
   core.bool crashSafeReplicationEnabled;
-
   /** The database flags passed to the instance at startup. */
   core.List<DatabaseFlags> databaseFlags;
-
   /**
    * Configuration specific to read replica instances. Indicates whether
    * replication is enabled or not.
    */
   core.bool databaseReplicationEnabled;
-
   /**
    * The settings for IP Management. This allows to enable or disable the
    * instance IP and manage which external networks can connect to the instance.
    */
   IpConfiguration ipConfiguration;
-
   /** This is always sql#settings. */
   core.String kind;
-
   /**
    * The location preference settings. This allows the instance to be located as
    * near as possible to either an App Engine app or GCE zone for better
    * performance.
    */
   LocationPreference locationPreference;
-
   /**
    * The pricing plan for this instance. This can be either PER_USE or PACKAGE.
    */
   core.String pricingPlan;
-
   /**
    * The type of replication this instance uses. This can be either ASYNCHRONOUS
    * or SYNCHRONOUS.
    */
   core.String replicationType;
-
   /**
    * The version of instance settings. This is a required field for update
    * method to make sure concurrent updates are handled properly. During update,
@@ -3862,13 +3653,11 @@ class Settings {
    * to update this value.
    */
   core.String settingsVersion;
-
   /**
    * The tier of service for this instance, for example D1, D2. For more
    * information, see pricing.
    */
   core.String tier;
-
 
   Settings();
 
@@ -3959,41 +3748,31 @@ class Settings {
   }
 }
 
-
 /** SslCerts Resource */
 class SslCert {
   /** PEM representation. */
   core.String cert;
-
   /** Serial number, as extracted from the certificate. */
   core.String certSerialNumber;
-
   /** User supplied name. Constrained to [a-zA-Z.-_ ]+. */
   core.String commonName;
-
   /**
    * The time when the certificate was created in RFC 3339 format, for example
    * 2012-11-15T16:19:00.094Z
    */
   core.DateTime createTime;
-
   /**
    * The time when the certificate expires in RFC 3339 format, for example
    * 2012-11-15T16:19:00.094Z.
    */
   core.DateTime expirationTime;
-
   /** Name of the database instance. */
   core.String instance;
-
   /** This is always sql#sslCert. */
   core.String kind;
-
   core.String selfLink;
-
   /** Sha1 Fingerprint. */
   core.String sha1Fingerprint;
-
 
   SslCert();
 
@@ -4060,18 +3839,15 @@ class SslCert {
   }
 }
 
-
 /** SslCertDetail. */
 class SslCertDetail {
   /** The public information about the cert. */
   SslCert certInfo;
-
   /**
    * The private key for the client cert, in pem format. Keep private in order
    * to protect your security.
    */
   core.String certPrivateKey;
-
 
   SslCertDetail();
 
@@ -4096,7 +3872,6 @@ class SslCertDetail {
   }
 }
 
-
 /** SslCerts insert request. */
 class SslCertsInsertRequest {
   /**
@@ -4105,7 +3880,6 @@ class SslCertsInsertRequest {
    * restarted.
    */
   core.String commonName;
-
 
   SslCertsInsertRequest();
 
@@ -4124,7 +3898,6 @@ class SslCertsInsertRequest {
   }
 }
 
-
 /** SslCert insert response. */
 class SslCertsInsertResponse {
   /**
@@ -4132,17 +3905,14 @@ class SslCertsInsertResponse {
    * work until the instance is restarted.
    */
   SslCertDetail clientCert;
-
   /** This is always sql#sslCertsInsert. */
   core.String kind;
-
   /**
    * The server Certificate Authority's certificate. If this is missing you can
    * force a new one to be generated by calling resetSslConfig method on
    * instances resource.
    */
   SslCert serverCaCert;
-
 
   SslCertsInsertResponse();
 
@@ -4173,15 +3943,12 @@ class SslCertsInsertResponse {
   }
 }
 
-
 /** SslCerts list response. */
 class SslCertsListResponse {
   /** List of client certificates for the instance. */
   core.List<SslCert> items;
-
   /** This is always sql#sslCertsList. */
   core.String kind;
-
 
   SslCertsListResponse();
 
@@ -4206,30 +3973,24 @@ class SslCertsListResponse {
   }
 }
 
-
 /** A Google Cloud SQL service tier resource. */
 class Tier {
   /** The maximum disk size of this tier in bytes. */
   core.String DiskQuota;
-
   /** The maximum RAM usage of this tier in bytes. */
   core.String RAM;
-
   /** This is always sql#tier. */
   core.String kind;
-
   /**
    * The applicable regions for this tier. Can be us-east1, europe-west1 or
    * asia-east1.
    */
   core.List<core.String> region;
-
   /**
    * An identifier for the service tier, for example D1, D2 etc. For related
    * information, see Pricing.
    */
   core.String tier;
-
 
   Tier();
 
@@ -4272,15 +4033,12 @@ class Tier {
   }
 }
 
-
 /** Tiers list response. */
 class TiersListResponse {
   /** List of tiers. */
   core.List<Tier> items;
-
   /** This is always sql#tiersList. */
   core.String kind;
-
 
   TiersListResponse();
 
@@ -4305,44 +4063,36 @@ class TiersListResponse {
   }
 }
 
-
 /** A Cloud SQL user resource. */
 class User {
   /** HTTP 1.1 Entity tag for the resource. */
   core.String etag;
-
   /**
    * The host name from which the user can connect. For insert operations, host
    * defaults to an empty string. For update operations, host is specified as
    * part of the request URL. The host name is not mutable with this API.
    */
   core.String host;
-
   /**
    * The name of the Cloud SQL instance. This does not include the project ID.
    * Can be omitted for update since it is already specified on the URL.
    */
   core.String instance;
-
   /** This is always sql#user. */
   core.String kind;
-
   /**
    * The name of the user in the Cloud SQL instance. Can be omitted for update
    * since it is already specified on the URL.
    */
   core.String name;
-
   /** The password for the user. */
   core.String password;
-
   /**
    * The project ID of the project containing the Cloud SQL database. The Google
    * apps domain is prefixed if applicable. Can be omitted for update since it
    * is already specified on the URL.
    */
   core.String project;
-
 
   User();
 
@@ -4397,22 +4147,18 @@ class User {
   }
 }
 
-
 /** User list response. */
 class UsersListResponse {
   /** List of user resources in the instance. */
   core.List<User> items;
-
   /** This is always sql#usersList. */
   core.String kind;
-
   /**
    * An identifier that uniquely identifies the operation. You can use this
    * identifier to retrieve the Operations resource that has information about
    * the operation.
    */
   core.String nextPageToken;
-
 
   UsersListResponse();
 

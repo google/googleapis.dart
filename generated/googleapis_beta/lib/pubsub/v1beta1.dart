@@ -58,7 +58,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future acknowledge(AcknowledgeRequest request) {
     var _url = null;
@@ -104,7 +104,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> create(Subscription request) {
     var _url = null;
@@ -117,7 +117,6 @@ class SubscriptionsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'subscriptions';
 
@@ -144,7 +143,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String subscription) {
     var _url = null;
@@ -185,7 +184,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subscription> get(core.String subscription) {
     var _url = null;
@@ -198,7 +197,6 @@ class SubscriptionsResourceApi {
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
     }
-
 
     _url = 'subscriptions/' + commons.Escaper.ecapeVariableReserved('$subscription');
 
@@ -230,7 +228,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListSubscriptionsResponse> list({core.int maxResults, core.String pageToken, core.String query}) {
     var _url = null;
@@ -249,7 +247,6 @@ class SubscriptionsResourceApi {
     if (query != null) {
       _queryParams["query"] = [query];
     }
-
 
     _url = 'subscriptions';
 
@@ -274,7 +271,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future modifyAckDeadline(ModifyAckDeadlineRequest request) {
     var _url = null;
@@ -317,7 +314,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future modifyPushConfig(ModifyPushConfigRequest request) {
     var _url = null;
@@ -362,7 +359,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PullResponse> pull(PullRequest request) {
     var _url = null;
@@ -375,7 +372,6 @@ class SubscriptionsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'subscriptions/pull';
 
@@ -404,7 +400,7 @@ class SubscriptionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PullBatchResponse> pullBatch(PullBatchRequest request) {
     var _url = null;
@@ -417,7 +413,6 @@ class SubscriptionsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'subscriptions/pullBatch';
 
@@ -453,7 +448,7 @@ class TopicsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Topic> create(Topic request) {
     var _url = null;
@@ -466,7 +461,6 @@ class TopicsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'topics';
 
@@ -481,9 +475,9 @@ class TopicsResourceApi {
   }
 
   /**
-   * Deletes the topic with the given name. All subscriptions to this topic are
-   * also deleted. Returns NOT_FOUND if the topic does not exist. After a topic
-   * is deleted, a new topic may be created with the same name.
+   * Deletes the topic with the given name. Returns NOT_FOUND if the topic does
+   * not exist. After a topic is deleted, a new topic may be created with the
+   * same name.
    *
    * Request parameters:
    *
@@ -493,7 +487,7 @@ class TopicsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String topic) {
     var _url = null;
@@ -536,7 +530,7 @@ class TopicsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Topic> get(core.String topic) {
     var _url = null;
@@ -549,7 +543,6 @@ class TopicsResourceApi {
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
     }
-
 
     _url = 'topics/' + commons.Escaper.ecapeVariableReserved('$topic');
 
@@ -581,7 +574,7 @@ class TopicsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ListTopicsResponse> list({core.int maxResults, core.String pageToken, core.String query}) {
     var _url = null;
@@ -600,7 +593,6 @@ class TopicsResourceApi {
     if (query != null) {
       _queryParams["query"] = [query];
     }
-
 
     _url = 'topics';
 
@@ -625,7 +617,7 @@ class TopicsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future publish(PublishRequest request) {
     var _url = null;
@@ -667,7 +659,7 @@ class TopicsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PublishBatchResponse> publishBatch(PublishBatchRequest request) {
     var _url = null;
@@ -680,7 +672,6 @@ class TopicsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'topics/publishBatch';
 
@@ -705,10 +696,8 @@ class AcknowledgeRequest {
    * by the Pub/Sub system in the Pull response.
    */
   core.List<core.String> ackId;
-
   /** The subscription whose message is being acknowledged. */
   core.String subscription;
-
 
   AcknowledgeRequest();
 
@@ -733,7 +722,6 @@ class AcknowledgeRequest {
   }
 }
 
-
 /** A key-value pair applied to a given object. */
 class Label {
   /**
@@ -755,13 +743,10 @@ class Label {
    * Example key: spanner.google.com/universe
    */
   core.String key;
-
   /** An integer value. */
   core.String numValue;
-
   /** A string value. */
   core.String strValue;
-
 
   Label();
 
@@ -792,7 +777,6 @@ class Label {
   }
 }
 
-
 /** Response for the ListSubscriptions method. */
 class ListSubscriptionsResponse {
   /**
@@ -801,10 +785,8 @@ class ListSubscriptionsResponse {
    * ListSubscriptionsRequest to continue.
    */
   core.String nextPageToken;
-
   /** The subscriptions that match the request. */
   core.List<Subscription> subscription;
-
 
   ListSubscriptionsResponse();
 
@@ -829,7 +811,6 @@ class ListSubscriptionsResponse {
   }
 }
 
-
 /** Response for the ListTopics method. */
 class ListTopicsResponse {
   /**
@@ -837,10 +818,8 @@ class ListTopicsResponse {
    * and this value should be passed to the next ListTopicsRequest to continue.
    */
   core.String nextPageToken;
-
   /** The resulting topics. */
   core.List<Topic> topic;
-
 
   ListTopicsResponse();
 
@@ -865,18 +844,20 @@ class ListTopicsResponse {
   }
 }
 
-
 /** Request for the ModifyAckDeadline method. */
 class ModifyAckDeadlineRequest {
-  /** The new Ack deadline. Must be >= 0. */
+  /**
+   * The new ack deadline with respect to the time this request was sent to the
+   * Pub/Sub system. Must be >= 0. For example, if the value is 10, the new ack
+   * deadline will expire 10 seconds after the ModifyAckDeadline call was made.
+   * Specifying zero may immediately make the message available for another pull
+   * request.
+   */
   core.int ackDeadlineSeconds;
-
   /** The acknowledgment ID. */
   core.String ackId;
-
   /** The name of the subscription from which messages are being pulled. */
   core.String subscription;
-
 
   ModifyAckDeadlineRequest();
 
@@ -907,7 +888,6 @@ class ModifyAckDeadlineRequest {
   }
 }
 
-
 /** Request for the ModifyPushConfig method. */
 class ModifyPushConfigRequest {
   /**
@@ -915,10 +895,8 @@ class ModifyPushConfigRequest {
    * messages from the given subscription.
    */
   PushConfig pushConfig;
-
   /** The name of the subscription. */
   core.String subscription;
-
 
   ModifyPushConfigRequest();
 
@@ -943,15 +921,12 @@ class ModifyPushConfigRequest {
   }
 }
 
-
 /** Request for the PublishBatch method. */
 class PublishBatchRequest {
   /** The messages to publish. */
   core.List<PubsubMessage> messages;
-
   /** The messages in the request will be published on this topic. */
   core.String topic;
-
 
   PublishBatchRequest();
 
@@ -976,7 +951,6 @@ class PublishBatchRequest {
   }
 }
 
-
 /** Response for the PublishBatch method. */
 class PublishBatchResponse {
   /**
@@ -984,7 +958,6 @@ class PublishBatchResponse {
    * messages in the request. IDs are guaranteed to be unique within the topic.
    */
   core.List<core.String> messageIds;
-
 
   PublishBatchResponse();
 
@@ -1003,15 +976,12 @@ class PublishBatchResponse {
   }
 }
 
-
 /** Request for the Publish method. */
 class PublishRequest {
   /** The message to publish. */
   PubsubMessage message;
-
   /** The message in the request will be published on this topic. */
   core.String topic;
-
 
   PublishRequest();
 
@@ -1036,7 +1006,6 @@ class PublishRequest {
   }
 }
 
-
 /** An event indicating a received message or truncation event. */
 class PubsubEvent {
   /**
@@ -1045,16 +1014,12 @@ class PubsubEvent {
    * on the subscription, rather than seeing this boolean.)
    */
   core.bool deleted;
-
   /** A received message. */
   PubsubMessage message;
-
   /** The subscription that received the event. */
   core.String subscription;
-
   /** Indicates that this subscription has been truncated. */
   core.bool truncated;
-
 
   PubsubEvent();
 
@@ -1091,12 +1056,10 @@ class PubsubEvent {
   }
 }
 
-
 /** A message data and its labels. */
 class PubsubMessage {
   /** The message payload. */
   core.String data;
-
   core.List<core.int> get dataAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(data);
   }
@@ -1104,13 +1067,11 @@ class PubsubMessage {
   void set dataAsBytes(core.List<core.int> _bytes) {
     data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /**
    * Optional list of labels for this message. Keys in this collection must be
    * unique.
    */
   core.List<Label> label;
-
   /**
    * ID of this message assigned by the server at publication time. Guaranteed
    * to be unique within the topic. This value may be read by a subscriber that
@@ -1118,7 +1079,6 @@ class PubsubMessage {
    * populated by a publisher in a Publish call.
    */
   core.String messageId;
-
 
   PubsubMessage();
 
@@ -1149,7 +1109,6 @@ class PubsubMessage {
   }
 }
 
-
 /** Request for the PullBatch method. */
 class PullBatchRequest {
   /**
@@ -1157,7 +1116,6 @@ class PullBatchRequest {
    * system may return fewer than the number of events specified.
    */
   core.int maxEvents;
-
   /**
    * If this is specified as true the system will respond immediately even if it
    * is not able to return a message in the Pull response. Otherwise the system
@@ -1166,10 +1124,8 @@ class PullBatchRequest {
    * wish to wait any longer for the response.
    */
   core.bool returnImmediately;
-
   /** The subscription from which messages should be pulled. */
   core.String subscription;
-
 
   PullBatchRequest();
 
@@ -1200,7 +1156,6 @@ class PullBatchRequest {
   }
 }
 
-
 /** Response for the PullBatch method. */
 class PullBatchResponse {
   /**
@@ -1210,7 +1165,6 @@ class PullBatchResponse {
    * are more messages available in the backlog.
    */
   core.List<PullResponse> pullResponses;
-
 
   PullBatchResponse();
 
@@ -1229,7 +1183,6 @@ class PullBatchResponse {
   }
 }
 
-
 /** Request for the Pull method. */
 class PullRequest {
   /**
@@ -1240,10 +1193,8 @@ class PullRequest {
    * not wish to wait any longer for the response.
    */
   core.bool returnImmediately;
-
   /** The subscription from which a message should be pulled. */
   core.String subscription;
-
 
   PullRequest();
 
@@ -1268,7 +1219,6 @@ class PullRequest {
   }
 }
 
-
 /**
  * Either a PubsubMessage or a truncation event. One of these two must be
  * populated.
@@ -1276,10 +1226,8 @@ class PullRequest {
 class PullResponse {
   /** This ID must be used to acknowledge the received event or message. */
   core.String ackId;
-
   /** A pubsub message or truncation event. */
   PubsubEvent pubsubEvent;
-
 
   PullResponse();
 
@@ -1304,7 +1252,6 @@ class PullResponse {
   }
 }
 
-
 /** Configuration for a push delivery endpoint. */
 class PushConfig {
   /**
@@ -1312,7 +1259,6 @@ class PushConfig {
    * example, a Webhook endpoint might use "https://example.com/push".
    */
   core.String pushEndpoint;
-
 
   PushConfig();
 
@@ -1330,7 +1276,6 @@ class PushConfig {
     return _json;
   }
 }
-
 
 /** A subscription resource. */
 class Subscription {
@@ -1354,21 +1299,17 @@ class Subscription {
    * subscriber (on a best-effort basis).
    */
   core.int ackDeadlineSeconds;
-
   /** Name of the subscription. */
   core.String name;
-
   /**
    * If push delivery is used with this subscription, this field is used to
    * configure it.
    */
   PushConfig pushConfig;
-
   /**
    * The name of the topic from which this subscription is receiving messages.
    */
   core.String topic;
-
 
   Subscription();
 
@@ -1405,12 +1346,10 @@ class Subscription {
   }
 }
 
-
 /** A topic resource. */
 class Topic {
   /** Name of the topic. */
   core.String name;
-
 
   Topic();
 

@@ -107,7 +107,7 @@ class AccountActiveAdSummariesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountActiveAdSummary> get(core.String profileId, core.String summaryAccountId) {
     var _url = null;
@@ -123,7 +123,6 @@ class AccountActiveAdSummariesResourceApi {
     if (summaryAccountId == null) {
       throw new core.ArgumentError("Parameter summaryAccountId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountActiveAdSummaries/' + commons.Escaper.ecapeVariable('$summaryAccountId');
 
@@ -161,7 +160,7 @@ class AccountPermissionGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountPermissionGroup> get(core.String profileId, core.String id) {
     var _url = null;
@@ -177,7 +176,6 @@ class AccountPermissionGroupsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountPermissionGroups/' + commons.Escaper.ecapeVariable('$id');
 
@@ -204,7 +202,7 @@ class AccountPermissionGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountPermissionGroupsListResponse> list(core.String profileId) {
     var _url = null;
@@ -217,7 +215,6 @@ class AccountPermissionGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountPermissionGroups';
 
@@ -255,7 +252,7 @@ class AccountPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountPermission> get(core.String profileId, core.String id) {
     var _url = null;
@@ -271,7 +268,6 @@ class AccountPermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountPermissions/' + commons.Escaper.ecapeVariable('$id');
 
@@ -298,7 +294,7 @@ class AccountPermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountPermissionsListResponse> list(core.String profileId) {
     var _url = null;
@@ -311,7 +307,6 @@ class AccountPermissionsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountPermissions';
 
@@ -349,7 +344,7 @@ class AccountUserProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountUserProfile> get(core.String profileId, core.String id) {
     var _url = null;
@@ -365,7 +360,6 @@ class AccountUserProfilesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles/' + commons.Escaper.ecapeVariable('$id');
 
@@ -423,7 +417,7 @@ class AccountUserProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountUserProfilesListResponse> list(core.String profileId, {core.bool active, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String subaccountId, core.String userRoleId}) {
     var _url = null;
@@ -464,7 +458,6 @@ class AccountUserProfilesResourceApi {
       _queryParams["userRoleId"] = [userRoleId];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles';
 
     var _response = _requester.request(_url,
@@ -495,7 +488,7 @@ class AccountUserProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountUserProfile> patch(AccountUserProfile request, core.String profileId, core.String id) {
     var _url = null;
@@ -515,7 +508,6 @@ class AccountUserProfilesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles';
 
@@ -544,7 +536,7 @@ class AccountUserProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountUserProfile> update(AccountUserProfile request, core.String profileId) {
     var _url = null;
@@ -560,7 +552,6 @@ class AccountUserProfilesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles';
 
@@ -598,7 +589,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> get(core.String profileId, core.String id) {
     var _url = null;
@@ -614,7 +605,6 @@ class AccountsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accounts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -667,7 +657,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AccountsListResponse> list(core.String profileId, {core.bool active, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -702,7 +692,6 @@ class AccountsResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accounts';
 
     var _response = _requester.request(_url,
@@ -732,7 +721,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> patch(Account request, core.String profileId, core.String id) {
     var _url = null;
@@ -752,7 +741,6 @@ class AccountsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accounts';
 
@@ -781,7 +769,7 @@ class AccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Account> update(Account request, core.String profileId) {
     var _url = null;
@@ -797,7 +785,6 @@ class AccountsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accounts';
 
@@ -835,7 +822,7 @@ class AdsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Ad> get(core.String profileId, core.String id) {
     var _url = null;
@@ -851,7 +838,6 @@ class AdsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads/' + commons.Escaper.ecapeVariable('$id');
 
@@ -880,7 +866,7 @@ class AdsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Ad> insert(Ad request, core.String profileId) {
     var _url = null;
@@ -896,7 +882,6 @@ class AdsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
@@ -1021,7 +1006,7 @@ class AdsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AdsListResponse> list(core.String profileId, {core.bool active, core.String advertiserId, core.bool archived, core.List<core.String> audienceSegmentIds, core.List<core.String> campaignIds, core.String compatibility, core.List<core.String> creativeIds, core.List<core.String> creativeOptimizationConfigurationIds, core.String creativeType, core.bool dynamicClickTracker, core.List<core.String> ids, core.List<core.String> landingPageIds, core.int maxResults, core.String overriddenEventTagId, core.String pageToken, core.List<core.String> placementIds, core.List<core.String> remarketingListIds, core.String searchString, core.List<core.String> sizeIds, core.String sortField, core.String sortOrder, core.bool sslCompliant, core.bool sslRequired, core.List<core.String> type}) {
     var _url = null;
@@ -1107,7 +1092,6 @@ class AdsResourceApi {
       _queryParams["type"] = type;
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
     var _response = _requester.request(_url,
@@ -1137,7 +1121,7 @@ class AdsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Ad> patch(Ad request, core.String profileId, core.String id) {
     var _url = null;
@@ -1157,7 +1141,6 @@ class AdsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
@@ -1186,7 +1169,7 @@ class AdsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Ad> update(Ad request, core.String profileId) {
     var _url = null;
@@ -1202,7 +1185,6 @@ class AdsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
@@ -1238,7 +1220,7 @@ class AdvertiserGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String profileId, core.String id) {
     var _url = null;
@@ -1284,7 +1266,7 @@ class AdvertiserGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AdvertiserGroup> get(core.String profileId, core.String id) {
     var _url = null;
@@ -1300,7 +1282,6 @@ class AdvertiserGroupsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertiserGroups/' + commons.Escaper.ecapeVariable('$id');
 
@@ -1329,7 +1310,7 @@ class AdvertiserGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AdvertiserGroup> insert(AdvertiserGroup request, core.String profileId) {
     var _url = null;
@@ -1345,7 +1326,6 @@ class AdvertiserGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
 
@@ -1396,7 +1376,7 @@ class AdvertiserGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AdvertiserGroupsListResponse> list(core.String profileId, {core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -1428,7 +1408,6 @@ class AdvertiserGroupsResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
 
     var _response = _requester.request(_url,
@@ -1458,7 +1437,7 @@ class AdvertiserGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AdvertiserGroup> patch(AdvertiserGroup request, core.String profileId, core.String id) {
     var _url = null;
@@ -1478,7 +1457,6 @@ class AdvertiserGroupsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
 
@@ -1507,7 +1485,7 @@ class AdvertiserGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AdvertiserGroup> update(AdvertiserGroup request, core.String profileId) {
     var _url = null;
@@ -1523,7 +1501,6 @@ class AdvertiserGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
 
@@ -1561,7 +1538,7 @@ class AdvertisersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Advertiser> get(core.String profileId, core.String id) {
     var _url = null;
@@ -1577,7 +1554,6 @@ class AdvertisersResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertisers/' + commons.Escaper.ecapeVariable('$id');
 
@@ -1606,7 +1582,7 @@ class AdvertisersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Advertiser> insert(Advertiser request, core.String profileId) {
     var _url = null;
@@ -1622,7 +1598,6 @@ class AdvertisersResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertisers';
 
@@ -1692,7 +1667,7 @@ class AdvertisersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<AdvertisersListResponse> list(core.String profileId, {core.List<core.String> advertiserGroupIds, core.List<core.String> floodlightConfigurationIds, core.List<core.String> ids, core.bool includeAdvertisersWithoutGroupsOnly, core.int maxResults, core.bool onlyParent, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String status, core.String subaccountId}) {
     var _url = null;
@@ -1742,7 +1717,6 @@ class AdvertisersResourceApi {
       _queryParams["subaccountId"] = [subaccountId];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertisers';
 
     var _response = _requester.request(_url,
@@ -1772,7 +1746,7 @@ class AdvertisersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Advertiser> patch(Advertiser request, core.String profileId, core.String id) {
     var _url = null;
@@ -1792,7 +1766,6 @@ class AdvertisersResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertisers';
 
@@ -1821,7 +1794,7 @@ class AdvertisersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Advertiser> update(Advertiser request, core.String profileId) {
     var _url = null;
@@ -1837,7 +1810,6 @@ class AdvertisersResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertisers';
 
@@ -1873,7 +1845,7 @@ class BrowsersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<BrowsersListResponse> list(core.String profileId) {
     var _url = null;
@@ -1886,7 +1858,6 @@ class BrowsersResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/browsers';
 
@@ -1928,7 +1899,7 @@ class CampaignCreativeAssociationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CampaignCreativeAssociation> insert(CampaignCreativeAssociation request, core.String profileId, core.String campaignId) {
     var _url = null;
@@ -1947,7 +1918,6 @@ class CampaignCreativeAssociationsResourceApi {
     if (campaignId == null) {
       throw new core.ArgumentError("Parameter campaignId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/campaignCreativeAssociations';
 
@@ -1985,7 +1955,7 @@ class CampaignCreativeAssociationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CampaignCreativeAssociationsListResponse> list(core.String profileId, core.String campaignId, {core.int maxResults, core.String pageToken, core.String sortOrder}) {
     var _url = null;
@@ -2010,7 +1980,6 @@ class CampaignCreativeAssociationsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/campaignCreativeAssociations';
 
@@ -2048,7 +2017,7 @@ class CampaignsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Campaign> get(core.String profileId, core.String id) {
     var _url = null;
@@ -2064,7 +2033,6 @@ class CampaignsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$id');
 
@@ -2098,7 +2066,7 @@ class CampaignsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Campaign> insert(Campaign request, core.String profileId, core.String defaultLandingPageName, core.String defaultLandingPageUrl) {
     var _url = null;
@@ -2122,7 +2090,6 @@ class CampaignsResourceApi {
       throw new core.ArgumentError("Parameter defaultLandingPageUrl is required.");
     }
     _queryParams["defaultLandingPageUrl"] = [defaultLandingPageUrl];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns';
 
@@ -2191,7 +2158,7 @@ class CampaignsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CampaignsListResponse> list(core.String profileId, {core.List<core.String> advertiserGroupIds, core.List<core.String> advertiserIds, core.bool archived, core.bool atLeastOneOptimizationActivity, core.List<core.String> excludedIds, core.List<core.String> ids, core.int maxResults, core.String overriddenEventTagId, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String subaccountId}) {
     var _url = null;
@@ -2244,7 +2211,6 @@ class CampaignsResourceApi {
       _queryParams["subaccountId"] = [subaccountId];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns';
 
     var _response = _requester.request(_url,
@@ -2274,7 +2240,7 @@ class CampaignsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Campaign> patch(Campaign request, core.String profileId, core.String id) {
     var _url = null;
@@ -2294,7 +2260,6 @@ class CampaignsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns';
 
@@ -2323,7 +2288,7 @@ class CampaignsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Campaign> update(Campaign request, core.String profileId) {
     var _url = null;
@@ -2339,7 +2304,6 @@ class CampaignsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns';
 
@@ -2377,7 +2341,7 @@ class ChangeLogsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChangeLog> get(core.String profileId, core.String id) {
     var _url = null;
@@ -2393,7 +2357,6 @@ class ChangeLogsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/changeLogs/' + commons.Escaper.ecapeVariable('$id');
 
@@ -2505,7 +2468,7 @@ class ChangeLogsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ChangeLogsListResponse> list(core.String profileId, {core.String action, core.List<core.String> ids, core.String maxChangeTime, core.int maxResults, core.String minChangeTime, core.List<core.String> objectIds, core.String objectType, core.String pageToken, core.String searchString, core.List<core.String> userProfileIds}) {
     var _url = null;
@@ -2549,7 +2512,6 @@ class ChangeLogsResourceApi {
       _queryParams["userProfileIds"] = userProfileIds;
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/changeLogs';
 
     var _response = _requester.request(_url,
@@ -2592,7 +2554,7 @@ class CitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CitiesListResponse> list(core.String profileId, {core.List<core.String> countryDartIds, core.List<core.String> dartIds, core.String namePrefix, core.List<core.String> regionDartIds}) {
     var _url = null;
@@ -2617,7 +2579,6 @@ class CitiesResourceApi {
     if (regionDartIds != null) {
       _queryParams["regionDartIds"] = regionDartIds;
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/cities';
 
@@ -2653,7 +2614,7 @@ class ConnectionTypesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ConnectionTypesListResponse> list(core.String profileId) {
     var _url = null;
@@ -2666,7 +2627,6 @@ class ConnectionTypesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/connectionTypes';
 
@@ -2702,7 +2662,7 @@ class ContentCategoriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String profileId, core.String id) {
     var _url = null;
@@ -2748,7 +2708,7 @@ class ContentCategoriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ContentCategory> get(core.String profileId, core.String id) {
     var _url = null;
@@ -2764,7 +2724,6 @@ class ContentCategoriesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/contentCategories/' + commons.Escaper.ecapeVariable('$id');
 
@@ -2793,7 +2752,7 @@ class ContentCategoriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ContentCategory> insert(ContentCategory request, core.String profileId) {
     var _url = null;
@@ -2809,7 +2768,6 @@ class ContentCategoriesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/contentCategories';
 
@@ -2860,7 +2818,7 @@ class ContentCategoriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ContentCategoriesListResponse> list(core.String profileId, {core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -2892,7 +2850,6 @@ class ContentCategoriesResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/contentCategories';
 
     var _response = _requester.request(_url,
@@ -2922,7 +2879,7 @@ class ContentCategoriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ContentCategory> patch(ContentCategory request, core.String profileId, core.String id) {
     var _url = null;
@@ -2942,7 +2899,6 @@ class ContentCategoriesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/contentCategories';
 
@@ -2971,7 +2927,7 @@ class ContentCategoriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ContentCategory> update(ContentCategory request, core.String profileId) {
     var _url = null;
@@ -2987,7 +2943,6 @@ class ContentCategoriesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/contentCategories';
 
@@ -3025,7 +2980,7 @@ class CountriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Country> get(core.String profileId, core.String dartId) {
     var _url = null;
@@ -3041,7 +2996,6 @@ class CountriesResourceApi {
     if (dartId == null) {
       throw new core.ArgumentError("Parameter dartId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/countries/' + commons.Escaper.ecapeVariable('$dartId');
 
@@ -3068,7 +3022,7 @@ class CountriesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CountriesListResponse> list(core.String profileId) {
     var _url = null;
@@ -3081,7 +3035,6 @@ class CountriesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/countries';
 
@@ -3126,7 +3079,7 @@ class CreativeAssetsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeAssetMetadata> insert(CreativeAssetMetadata request, core.String profileId, core.String advertiserId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
@@ -3192,7 +3145,7 @@ class CreativeFieldValuesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String profileId, core.String creativeFieldId, core.String id) {
     var _url = null;
@@ -3243,7 +3196,7 @@ class CreativeFieldValuesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeFieldValue> get(core.String profileId, core.String creativeFieldId, core.String id) {
     var _url = null;
@@ -3262,7 +3215,6 @@ class CreativeFieldValuesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues/' + commons.Escaper.ecapeVariable('$id');
 
@@ -3293,7 +3245,7 @@ class CreativeFieldValuesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeFieldValue> insert(CreativeFieldValue request, core.String profileId, core.String creativeFieldId) {
     var _url = null;
@@ -3312,7 +3264,6 @@ class CreativeFieldValuesResourceApi {
     if (creativeFieldId == null) {
       throw new core.ArgumentError("Parameter creativeFieldId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
 
@@ -3360,7 +3311,7 @@ class CreativeFieldValuesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeFieldValuesListResponse> list(core.String profileId, core.String creativeFieldId, {core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -3395,7 +3346,6 @@ class CreativeFieldValuesResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
 
     var _response = _requester.request(_url,
@@ -3428,7 +3378,7 @@ class CreativeFieldValuesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeFieldValue> patch(CreativeFieldValue request, core.String profileId, core.String creativeFieldId, core.String id) {
     var _url = null;
@@ -3451,7 +3401,6 @@ class CreativeFieldValuesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
 
@@ -3482,7 +3431,7 @@ class CreativeFieldValuesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeFieldValue> update(CreativeFieldValue request, core.String profileId, core.String creativeFieldId) {
     var _url = null;
@@ -3501,7 +3450,6 @@ class CreativeFieldValuesResourceApi {
     if (creativeFieldId == null) {
       throw new core.ArgumentError("Parameter creativeFieldId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
 
@@ -3537,7 +3485,7 @@ class CreativeFieldsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String profileId, core.String id) {
     var _url = null;
@@ -3583,7 +3531,7 @@ class CreativeFieldsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeField> get(core.String profileId, core.String id) {
     var _url = null;
@@ -3599,7 +3547,6 @@ class CreativeFieldsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$id');
 
@@ -3628,7 +3575,7 @@ class CreativeFieldsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeField> insert(CreativeField request, core.String profileId) {
     var _url = null;
@@ -3644,7 +3591,6 @@ class CreativeFieldsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields';
 
@@ -3699,7 +3645,7 @@ class CreativeFieldsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeFieldsListResponse> list(core.String profileId, {core.List<core.String> advertiserIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -3734,7 +3680,6 @@ class CreativeFieldsResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields';
 
     var _response = _requester.request(_url,
@@ -3764,7 +3709,7 @@ class CreativeFieldsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeField> patch(CreativeField request, core.String profileId, core.String id) {
     var _url = null;
@@ -3784,7 +3729,6 @@ class CreativeFieldsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields';
 
@@ -3813,7 +3757,7 @@ class CreativeFieldsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeField> update(CreativeField request, core.String profileId) {
     var _url = null;
@@ -3829,7 +3773,6 @@ class CreativeFieldsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields';
 
@@ -3867,7 +3810,7 @@ class CreativeGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeGroup> get(core.String profileId, core.String id) {
     var _url = null;
@@ -3883,7 +3826,6 @@ class CreativeGroupsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeGroups/' + commons.Escaper.ecapeVariable('$id');
 
@@ -3912,7 +3854,7 @@ class CreativeGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeGroup> insert(CreativeGroup request, core.String profileId) {
     var _url = null;
@@ -3928,7 +3870,6 @@ class CreativeGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
 
@@ -3985,7 +3926,7 @@ class CreativeGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeGroupsListResponse> list(core.String profileId, {core.List<core.String> advertiserIds, core.int groupNumber, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -4023,7 +3964,6 @@ class CreativeGroupsResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
 
     var _response = _requester.request(_url,
@@ -4053,7 +3993,7 @@ class CreativeGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeGroup> patch(CreativeGroup request, core.String profileId, core.String id) {
     var _url = null;
@@ -4073,7 +4013,6 @@ class CreativeGroupsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
 
@@ -4102,7 +4041,7 @@ class CreativeGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativeGroup> update(CreativeGroup request, core.String profileId) {
     var _url = null;
@@ -4118,7 +4057,6 @@ class CreativeGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
 
@@ -4156,7 +4094,7 @@ class CreativesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Creative> get(core.String profileId, core.String id) {
     var _url = null;
@@ -4172,7 +4110,6 @@ class CreativesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creatives/' + commons.Escaper.ecapeVariable('$id');
 
@@ -4201,7 +4138,7 @@ class CreativesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Creative> insert(Creative request, core.String profileId) {
     var _url = null;
@@ -4217,7 +4154,6 @@ class CreativesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creatives';
 
@@ -4292,7 +4228,7 @@ class CreativesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreativesListResponse> list(core.String profileId, {core.bool active, core.String advertiserId, core.bool archived, core.String campaignId, core.List<core.String> companionCreativeIds, core.List<core.String> creativeFieldIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.List<core.String> renderingIds, core.String searchString, core.List<core.String> sizeIds, core.String sortField, core.String sortOrder, core.String studioCreativeId, core.List<core.String> types}) {
     var _url = null;
@@ -4354,7 +4290,6 @@ class CreativesResourceApi {
       _queryParams["types"] = types;
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creatives';
 
     var _response = _requester.request(_url,
@@ -4384,7 +4319,7 @@ class CreativesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Creative> patch(Creative request, core.String profileId, core.String id) {
     var _url = null;
@@ -4404,7 +4339,6 @@ class CreativesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creatives';
 
@@ -4433,7 +4367,7 @@ class CreativesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Creative> update(Creative request, core.String profileId) {
     var _url = null;
@@ -4449,7 +4383,6 @@ class CreativesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creatives';
 
@@ -4492,7 +4425,7 @@ class DimensionValuesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DimensionValueList> query(DimensionValueRequest request, core.String profileId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -4514,7 +4447,6 @@ class DimensionValuesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/dimensionvalues/query';
 
@@ -4552,7 +4484,7 @@ class DirectorySiteContactsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DirectorySiteContact> get(core.String profileId, core.String id) {
     var _url = null;
@@ -4568,7 +4500,6 @@ class DirectorySiteContactsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/directorySiteContacts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -4623,7 +4554,7 @@ class DirectorySiteContactsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DirectorySiteContactsListResponse> list(core.String profileId, {core.List<core.String> directorySiteIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -4657,7 +4588,6 @@ class DirectorySiteContactsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/directorySiteContacts';
 
@@ -4695,7 +4625,7 @@ class DirectorySitesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DirectorySite> get(core.String profileId, core.String id) {
     var _url = null;
@@ -4711,7 +4641,6 @@ class DirectorySitesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/directorySites/' + commons.Escaper.ecapeVariable('$id');
 
@@ -4780,7 +4709,7 @@ class DirectorySitesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DirectorySitesListResponse> list(core.String profileId, {core.bool acceptsInStreamVideoPlacements, core.bool acceptsInterstitialPlacements, core.bool acceptsPublisherPaidPlacements, core.bool active, core.String countryId, core.String dfpNetworkCode, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String parentId, core.String searchString, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -4833,7 +4762,6 @@ class DirectorySitesResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/directorySites';
 
     var _response = _requester.request(_url,
@@ -4868,7 +4796,7 @@ class EventTagsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String profileId, core.String id) {
     var _url = null;
@@ -4914,7 +4842,7 @@ class EventTagsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EventTag> get(core.String profileId, core.String id) {
     var _url = null;
@@ -4930,7 +4858,6 @@ class EventTagsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/eventTags/' + commons.Escaper.ecapeVariable('$id');
 
@@ -4959,7 +4886,7 @@ class EventTagsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EventTag> insert(EventTag request, core.String profileId) {
     var _url = null;
@@ -4975,7 +4902,6 @@ class EventTagsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/eventTags';
 
@@ -5046,7 +4972,7 @@ class EventTagsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EventTagsListResponse> list(core.String profileId, {core.String adId, core.String advertiserId, core.String campaignId, core.bool definitionsOnly, core.bool enabled, core.List<core.String> eventTagTypes, core.List<core.String> ids, core.String searchString, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -5090,7 +5016,6 @@ class EventTagsResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/eventTags';
 
     var _response = _requester.request(_url,
@@ -5120,7 +5045,7 @@ class EventTagsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EventTag> patch(EventTag request, core.String profileId, core.String id) {
     var _url = null;
@@ -5140,7 +5065,6 @@ class EventTagsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/eventTags';
 
@@ -5169,7 +5093,7 @@ class EventTagsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<EventTag> update(EventTag request, core.String profileId) {
     var _url = null;
@@ -5185,7 +5109,6 @@ class EventTagsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/eventTags';
 
@@ -5231,7 +5154,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future get(core.String reportId, core.String fileId, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -5302,7 +5225,7 @@ class FilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FileList> list(core.String profileId, {core.int maxResults, core.String pageToken, core.String scope, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -5330,7 +5253,6 @@ class FilesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/files';
 
@@ -5366,7 +5288,7 @@ class FloodlightActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String profileId, core.String id) {
     var _url = null;
@@ -5413,7 +5335,7 @@ class FloodlightActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightActivitiesGenerateTagResponse> generatetag(core.String profileId, {core.String floodlightActivityId}) {
     var _url = null;
@@ -5429,7 +5351,6 @@ class FloodlightActivitiesResourceApi {
     if (floodlightActivityId != null) {
       _queryParams["floodlightActivityId"] = [floodlightActivityId];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities/generatetag';
 
@@ -5458,7 +5379,7 @@ class FloodlightActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightActivity> get(core.String profileId, core.String id) {
     var _url = null;
@@ -5474,7 +5395,6 @@ class FloodlightActivitiesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities/' + commons.Escaper.ecapeVariable('$id');
 
@@ -5503,7 +5423,7 @@ class FloodlightActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightActivity> insert(FloodlightActivity request, core.String profileId) {
     var _url = null;
@@ -5519,7 +5439,6 @@ class FloodlightActivitiesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
 
@@ -5599,7 +5518,7 @@ class FloodlightActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightActivitiesListResponse> list(core.String profileId, {core.String advertiserId, core.List<core.String> floodlightActivityGroupIds, core.String floodlightActivityGroupName, core.String floodlightActivityGroupTagString, core.String floodlightActivityGroupType, core.String floodlightConfigurationId, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String tagString}) {
     var _url = null;
@@ -5652,7 +5571,6 @@ class FloodlightActivitiesResourceApi {
       _queryParams["tagString"] = [tagString];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
 
     var _response = _requester.request(_url,
@@ -5683,7 +5601,7 @@ class FloodlightActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightActivity> patch(FloodlightActivity request, core.String profileId, core.String id) {
     var _url = null;
@@ -5703,7 +5621,6 @@ class FloodlightActivitiesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
 
@@ -5732,7 +5649,7 @@ class FloodlightActivitiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightActivity> update(FloodlightActivity request, core.String profileId) {
     var _url = null;
@@ -5748,7 +5665,6 @@ class FloodlightActivitiesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
 
@@ -5784,7 +5700,7 @@ class FloodlightActivityGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String profileId, core.String id) {
     var _url = null;
@@ -5830,7 +5746,7 @@ class FloodlightActivityGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightActivityGroup> get(core.String profileId, core.String id) {
     var _url = null;
@@ -5846,7 +5762,6 @@ class FloodlightActivityGroupsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups/' + commons.Escaper.ecapeVariable('$id');
 
@@ -5875,7 +5790,7 @@ class FloodlightActivityGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightActivityGroup> insert(FloodlightActivityGroup request, core.String profileId) {
     var _url = null;
@@ -5891,7 +5806,6 @@ class FloodlightActivityGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
 
@@ -5960,7 +5874,7 @@ class FloodlightActivityGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightActivityGroupsListResponse> list(core.String profileId, {core.String advertiserId, core.String floodlightConfigurationId, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String type}) {
     var _url = null;
@@ -6001,7 +5915,6 @@ class FloodlightActivityGroupsResourceApi {
       _queryParams["type"] = [type];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
 
     var _response = _requester.request(_url,
@@ -6032,7 +5945,7 @@ class FloodlightActivityGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightActivityGroup> patch(FloodlightActivityGroup request, core.String profileId, core.String id) {
     var _url = null;
@@ -6052,7 +5965,6 @@ class FloodlightActivityGroupsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
 
@@ -6081,7 +5993,7 @@ class FloodlightActivityGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightActivityGroup> update(FloodlightActivityGroup request, core.String profileId) {
     var _url = null;
@@ -6097,7 +6009,6 @@ class FloodlightActivityGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
 
@@ -6135,7 +6046,7 @@ class FloodlightConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightConfiguration> get(core.String profileId, core.String id) {
     var _url = null;
@@ -6151,7 +6062,6 @@ class FloodlightConfigurationsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations/' + commons.Escaper.ecapeVariable('$id');
 
@@ -6181,7 +6091,7 @@ class FloodlightConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightConfigurationsListResponse> list(core.String profileId, {core.List<core.String> ids}) {
     var _url = null;
@@ -6197,7 +6107,6 @@ class FloodlightConfigurationsResourceApi {
     if (ids != null) {
       _queryParams["ids"] = ids;
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations';
 
@@ -6229,7 +6138,7 @@ class FloodlightConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightConfiguration> patch(FloodlightConfiguration request, core.String profileId, core.String id) {
     var _url = null;
@@ -6249,7 +6158,6 @@ class FloodlightConfigurationsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations';
 
@@ -6278,7 +6186,7 @@ class FloodlightConfigurationsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FloodlightConfiguration> update(FloodlightConfiguration request, core.String profileId) {
     var _url = null;
@@ -6294,7 +6202,6 @@ class FloodlightConfigurationsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations';
 
@@ -6332,7 +6239,7 @@ class LandingPagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String profileId, core.String campaignId, core.String id) {
     var _url = null;
@@ -6383,7 +6290,7 @@ class LandingPagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LandingPage> get(core.String profileId, core.String campaignId, core.String id) {
     var _url = null;
@@ -6402,7 +6309,6 @@ class LandingPagesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/landingPages/' + commons.Escaper.ecapeVariable('$id');
 
@@ -6433,7 +6339,7 @@ class LandingPagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LandingPage> insert(LandingPage request, core.String profileId, core.String campaignId) {
     var _url = null;
@@ -6452,7 +6358,6 @@ class LandingPagesResourceApi {
     if (campaignId == null) {
       throw new core.ArgumentError("Parameter campaignId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/landingPages';
 
@@ -6481,7 +6386,7 @@ class LandingPagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LandingPagesListResponse> list(core.String profileId, core.String campaignId) {
     var _url = null;
@@ -6497,7 +6402,6 @@ class LandingPagesResourceApi {
     if (campaignId == null) {
       throw new core.ArgumentError("Parameter campaignId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/landingPages';
 
@@ -6531,7 +6435,7 @@ class LandingPagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LandingPage> patch(LandingPage request, core.String profileId, core.String campaignId, core.String id) {
     var _url = null;
@@ -6554,7 +6458,6 @@ class LandingPagesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/landingPages';
 
@@ -6585,7 +6488,7 @@ class LandingPagesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<LandingPage> update(LandingPage request, core.String profileId, core.String campaignId) {
     var _url = null;
@@ -6604,7 +6507,6 @@ class LandingPagesResourceApi {
     if (campaignId == null) {
       throw new core.ArgumentError("Parameter campaignId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/landingPages';
 
@@ -6640,7 +6542,7 @@ class MetrosResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<MetrosListResponse> list(core.String profileId) {
     var _url = null;
@@ -6653,7 +6555,6 @@ class MetrosResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/metros';
 
@@ -6689,7 +6590,7 @@ class MobileCarriersResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<MobileCarriersListResponse> list(core.String profileId) {
     var _url = null;
@@ -6702,7 +6603,6 @@ class MobileCarriersResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/mobileCarriers';
 
@@ -6738,7 +6638,7 @@ class OperatingSystemVersionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OperatingSystemVersionsListResponse> list(core.String profileId) {
     var _url = null;
@@ -6751,7 +6651,6 @@ class OperatingSystemVersionsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/operatingSystemVersions';
 
@@ -6787,7 +6686,7 @@ class OperatingSystemsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<OperatingSystemsListResponse> list(core.String profileId) {
     var _url = null;
@@ -6800,7 +6699,6 @@ class OperatingSystemsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/operatingSystems';
 
@@ -6838,7 +6736,7 @@ class PlacementGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlacementGroup> get(core.String profileId, core.String id) {
     var _url = null;
@@ -6854,7 +6752,6 @@ class PlacementGroupsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementGroups/' + commons.Escaper.ecapeVariable('$id');
 
@@ -6883,7 +6780,7 @@ class PlacementGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlacementGroup> insert(PlacementGroup request, core.String profileId) {
     var _url = null;
@@ -6899,7 +6796,6 @@ class PlacementGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementGroups';
 
@@ -6984,7 +6880,7 @@ class PlacementGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlacementGroupsListResponse> list(core.String profileId, {core.List<core.String> advertiserIds, core.bool archived, core.List<core.String> campaignIds, core.List<core.String> contentCategoryIds, core.List<core.String> directorySiteIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String placementGroupType, core.List<core.String> placementStrategyIds, core.List<core.String> pricingTypes, core.String searchString, core.List<core.String> siteIds, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -7043,7 +6939,6 @@ class PlacementGroupsResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementGroups';
 
     var _response = _requester.request(_url,
@@ -7073,7 +6968,7 @@ class PlacementGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlacementGroup> patch(PlacementGroup request, core.String profileId, core.String id) {
     var _url = null;
@@ -7093,7 +6988,6 @@ class PlacementGroupsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementGroups';
 
@@ -7122,7 +7016,7 @@ class PlacementGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlacementGroup> update(PlacementGroup request, core.String profileId) {
     var _url = null;
@@ -7138,7 +7032,6 @@ class PlacementGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementGroups';
 
@@ -7174,7 +7067,7 @@ class PlacementStrategiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String profileId, core.String id) {
     var _url = null;
@@ -7220,7 +7113,7 @@ class PlacementStrategiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlacementStrategy> get(core.String profileId, core.String id) {
     var _url = null;
@@ -7236,7 +7129,6 @@ class PlacementStrategiesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementStrategies/' + commons.Escaper.ecapeVariable('$id');
 
@@ -7265,7 +7157,7 @@ class PlacementStrategiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlacementStrategy> insert(PlacementStrategy request, core.String profileId) {
     var _url = null;
@@ -7281,7 +7173,6 @@ class PlacementStrategiesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
 
@@ -7333,7 +7224,7 @@ class PlacementStrategiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlacementStrategiesListResponse> list(core.String profileId, {core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -7365,7 +7256,6 @@ class PlacementStrategiesResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
 
     var _response = _requester.request(_url,
@@ -7396,7 +7286,7 @@ class PlacementStrategiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlacementStrategy> patch(PlacementStrategy request, core.String profileId, core.String id) {
     var _url = null;
@@ -7416,7 +7306,6 @@ class PlacementStrategiesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
 
@@ -7445,7 +7334,7 @@ class PlacementStrategiesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlacementStrategy> update(PlacementStrategy request, core.String profileId) {
     var _url = null;
@@ -7461,7 +7350,6 @@ class PlacementStrategiesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
 
@@ -7504,7 +7392,7 @@ class PlacementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlacementsGenerateTagsResponse> generatetags(core.String profileId, {core.String campaignId, core.List<core.String> placementIds, core.List<core.String> tagFormats}) {
     var _url = null;
@@ -7526,7 +7414,6 @@ class PlacementsResourceApi {
     if (tagFormats != null) {
       _queryParams["tagFormats"] = tagFormats;
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placements/generatetags';
 
@@ -7555,7 +7442,7 @@ class PlacementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Placement> get(core.String profileId, core.String id) {
     var _url = null;
@@ -7571,7 +7458,6 @@ class PlacementsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placements/' + commons.Escaper.ecapeVariable('$id');
 
@@ -7600,7 +7486,7 @@ class PlacementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Placement> insert(Placement request, core.String profileId) {
     var _url = null;
@@ -7616,7 +7502,6 @@ class PlacementsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placements';
 
@@ -7703,7 +7588,7 @@ class PlacementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlacementsListResponse> list(core.String profileId, {core.List<core.String> advertiserIds, core.bool archived, core.List<core.String> campaignIds, core.List<core.String> compatibilities, core.List<core.String> contentCategoryIds, core.List<core.String> directorySiteIds, core.List<core.String> groupIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String paymentSource, core.List<core.String> placementStrategyIds, core.List<core.String> pricingTypes, core.String searchString, core.List<core.String> siteIds, core.List<core.String> sizeIds, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -7771,7 +7656,6 @@ class PlacementsResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placements';
 
     var _response = _requester.request(_url,
@@ -7801,7 +7685,7 @@ class PlacementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Placement> patch(Placement request, core.String profileId, core.String id) {
     var _url = null;
@@ -7821,7 +7705,6 @@ class PlacementsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placements';
 
@@ -7850,7 +7733,7 @@ class PlacementsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Placement> update(Placement request, core.String profileId) {
     var _url = null;
@@ -7866,7 +7749,6 @@ class PlacementsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placements';
 
@@ -7902,7 +7784,7 @@ class PlatformTypesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PlatformTypesListResponse> list(core.String profileId) {
     var _url = null;
@@ -7915,7 +7797,6 @@ class PlatformTypesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/platformTypes';
 
@@ -7951,7 +7832,7 @@ class PostalCodesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<PostalCodesListResponse> list(core.String profileId) {
     var _url = null;
@@ -7964,7 +7845,6 @@ class PostalCodesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/postalCodes';
 
@@ -8000,7 +7880,7 @@ class RegionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RegionsListResponse> list(core.String profileId) {
     var _url = null;
@@ -8013,7 +7893,6 @@ class RegionsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/regions';
 
@@ -8052,7 +7931,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String profileId, core.String reportId) {
     var _url = null;
@@ -8098,7 +7977,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Report> get(core.String profileId, core.String reportId) {
     var _url = null;
@@ -8114,7 +7993,6 @@ class ReportsResourceApi {
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId');
 
@@ -8143,7 +8021,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Report> insert(Report request, core.String profileId) {
     var _url = null;
@@ -8159,7 +8037,6 @@ class ReportsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports';
 
@@ -8208,7 +8085,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ReportList> list(core.String profileId, {core.int maxResults, core.String pageToken, core.String scope, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -8236,7 +8113,6 @@ class ReportsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports';
 
@@ -8267,7 +8143,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Report> patch(Report request, core.String profileId, core.String reportId) {
     var _url = null;
@@ -8286,7 +8162,6 @@ class ReportsResourceApi {
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId');
 
@@ -8317,7 +8192,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<File> run(core.String profileId, core.String reportId, {core.bool synchronous}) {
     var _url = null;
@@ -8336,7 +8211,6 @@ class ReportsResourceApi {
     if (synchronous != null) {
       _queryParams["synchronous"] = ["${synchronous}"];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId') + '/run';
 
@@ -8367,7 +8241,7 @@ class ReportsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Report> update(Report request, core.String profileId, core.String reportId) {
     var _url = null;
@@ -8386,7 +8260,6 @@ class ReportsResourceApi {
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId');
 
@@ -8426,7 +8299,7 @@ class ReportsCompatibleFieldsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CompatibleFields> query(Report request, core.String profileId) {
     var _url = null;
@@ -8442,7 +8315,6 @@ class ReportsCompatibleFieldsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/compatiblefields/query';
 
@@ -8490,7 +8362,7 @@ class ReportsFilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future get(core.String profileId, core.String reportId, core.String fileId, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -8559,7 +8431,7 @@ class ReportsFilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<FileList> list(core.String profileId, core.String reportId, {core.int maxResults, core.String pageToken, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -8587,7 +8459,6 @@ class ReportsFilesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId') + '/files';
 
@@ -8625,7 +8496,7 @@ class SitesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Site> get(core.String profileId, core.String id) {
     var _url = null;
@@ -8641,7 +8512,6 @@ class SitesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sites/' + commons.Escaper.ecapeVariable('$id');
 
@@ -8670,7 +8540,7 @@ class SitesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Site> insert(Site request, core.String profileId) {
     var _url = null;
@@ -8686,7 +8556,6 @@ class SitesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sites';
 
@@ -8758,7 +8627,7 @@ class SitesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SitesListResponse> list(core.String profileId, {core.bool acceptsInStreamVideoPlacements, core.bool acceptsInterstitialPlacements, core.bool acceptsPublisherPaidPlacements, core.bool adWordsSite, core.bool approved, core.List<core.String> campaignIds, core.List<core.String> directorySiteIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String subaccountId, core.bool unmappedSite}) {
     var _url = null;
@@ -8817,7 +8686,6 @@ class SitesResourceApi {
       _queryParams["unmappedSite"] = ["${unmappedSite}"];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sites';
 
     var _response = _requester.request(_url,
@@ -8847,7 +8715,7 @@ class SitesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Site> patch(Site request, core.String profileId, core.String id) {
     var _url = null;
@@ -8867,7 +8735,6 @@ class SitesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sites';
 
@@ -8896,7 +8763,7 @@ class SitesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Site> update(Site request, core.String profileId) {
     var _url = null;
@@ -8912,7 +8779,6 @@ class SitesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sites';
 
@@ -8950,7 +8816,7 @@ class SizesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Size> get(core.String profileId, core.String id) {
     var _url = null;
@@ -8966,7 +8832,6 @@ class SizesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sizes/' + commons.Escaper.ecapeVariable('$id');
 
@@ -8995,7 +8860,7 @@ class SizesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Size> insert(Size request, core.String profileId) {
     var _url = null;
@@ -9011,7 +8876,6 @@ class SizesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sizes';
 
@@ -9046,7 +8910,7 @@ class SizesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SizesListResponse> list(core.String profileId, {core.int height, core.bool iabStandard, core.List<core.String> ids, core.int width}) {
     var _url = null;
@@ -9071,7 +8935,6 @@ class SizesResourceApi {
     if (width != null) {
       _queryParams["width"] = ["${width}"];
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sizes';
 
@@ -9109,7 +8972,7 @@ class SubaccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subaccount> get(core.String profileId, core.String id) {
     var _url = null;
@@ -9125,7 +8988,6 @@ class SubaccountsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/subaccounts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -9154,7 +9016,7 @@ class SubaccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subaccount> insert(Subaccount request, core.String profileId) {
     var _url = null;
@@ -9170,7 +9032,6 @@ class SubaccountsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/subaccounts';
 
@@ -9221,7 +9082,7 @@ class SubaccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SubaccountsListResponse> list(core.String profileId, {core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
     var _url = null;
@@ -9253,7 +9114,6 @@ class SubaccountsResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/subaccounts';
 
     var _response = _requester.request(_url,
@@ -9283,7 +9143,7 @@ class SubaccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subaccount> patch(Subaccount request, core.String profileId, core.String id) {
     var _url = null;
@@ -9303,7 +9163,6 @@ class SubaccountsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/subaccounts';
 
@@ -9332,7 +9191,7 @@ class SubaccountsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Subaccount> update(Subaccount request, core.String profileId) {
     var _url = null;
@@ -9348,7 +9207,6 @@ class SubaccountsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/subaccounts';
 
@@ -9384,7 +9242,7 @@ class UserProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserProfile> get(core.String profileId) {
     var _url = null;
@@ -9397,7 +9255,6 @@ class UserProfilesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId');
 
@@ -9422,7 +9279,7 @@ class UserProfilesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserProfileList> list() {
     var _url = null;
@@ -9431,7 +9288,6 @@ class UserProfilesResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'userprofiles';
@@ -9470,7 +9326,7 @@ class UserRolePermissionGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserRolePermissionGroup> get(core.String profileId, core.String id) {
     var _url = null;
@@ -9486,7 +9342,6 @@ class UserRolePermissionGroupsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRolePermissionGroups/' + commons.Escaper.ecapeVariable('$id');
 
@@ -9513,7 +9368,7 @@ class UserRolePermissionGroupsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserRolePermissionGroupsListResponse> list(core.String profileId) {
     var _url = null;
@@ -9526,7 +9381,6 @@ class UserRolePermissionGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRolePermissionGroups';
 
@@ -9564,7 +9418,7 @@ class UserRolePermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserRolePermission> get(core.String profileId, core.String id) {
     var _url = null;
@@ -9580,7 +9434,6 @@ class UserRolePermissionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRolePermissions/' + commons.Escaper.ecapeVariable('$id');
 
@@ -9609,7 +9462,7 @@ class UserRolePermissionsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserRolePermissionsListResponse> list(core.String profileId, {core.List<core.String> ids}) {
     var _url = null;
@@ -9625,7 +9478,6 @@ class UserRolePermissionsResourceApi {
     if (ids != null) {
       _queryParams["ids"] = ids;
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRolePermissions';
 
@@ -9661,7 +9513,7 @@ class UserRolesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String profileId, core.String id) {
     var _url = null;
@@ -9707,7 +9559,7 @@ class UserRolesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserRole> get(core.String profileId, core.String id) {
     var _url = null;
@@ -9723,7 +9575,6 @@ class UserRolesResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRoles/' + commons.Escaper.ecapeVariable('$id');
 
@@ -9752,7 +9603,7 @@ class UserRolesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserRole> insert(UserRole request, core.String profileId) {
     var _url = null;
@@ -9768,7 +9619,6 @@ class UserRolesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRoles';
 
@@ -9824,7 +9674,7 @@ class UserRolesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserRolesListResponse> list(core.String profileId, {core.bool accountUserRoleOnly, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String subaccountId}) {
     var _url = null;
@@ -9862,7 +9712,6 @@ class UserRolesResourceApi {
       _queryParams["subaccountId"] = [subaccountId];
     }
 
-
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRoles';
 
     var _response = _requester.request(_url,
@@ -9892,7 +9741,7 @@ class UserRolesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserRole> patch(UserRole request, core.String profileId, core.String id) {
     var _url = null;
@@ -9912,7 +9761,6 @@ class UserRolesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRoles';
 
@@ -9941,7 +9789,7 @@ class UserRolesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UserRole> update(UserRole request, core.String profileId) {
     var _url = null;
@@ -9957,7 +9805,6 @@ class UserRolesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRoles';
 
@@ -9979,7 +9826,6 @@ class UserRolesResourceApi {
 class Account {
   /** Account permissions assigned to this account. */
   core.List<core.String> accountPermissionIds;
-
   /**
    * Profile for this account. This is a read-only field that can be left blank.
    * Possible string values are:
@@ -9987,10 +9833,8 @@ class Account {
    * - "ACCOUNT_PROFILE_STANDARD"
    */
   core.String accountProfile;
-
   /** Whether this account is active. */
   core.bool active;
-
   /**
    * Maximum number of active ads allowed for this account.
    * Possible string values are:
@@ -10001,25 +9845,20 @@ class Account {
    * - "ACTIVE_ADS_TIER_75K"
    */
   core.String activeAdsLimitTier;
-
   /**
    * Whether to serve creatives with Active View tags. If disabled, viewability
    * data will not be available for any impressions.
    */
   core.bool activeViewOptOut;
-
   /** User role permissions available to the user roles of this account. */
   core.List<core.String> availablePermissionIds;
-
   /**
    * Whether campaigns created in this account will be enabled for comScore vCE
    * by default.
    */
   core.bool comscoreVceEnabled;
-
   /** ID of the country associated with this account. */
   core.String countryId;
-
   /**
    * ID of currency associated with this account. This is a required field.
    * Acceptable values are:
@@ -10061,22 +9900,17 @@ class Account {
    * - "36" for GTQ
    */
   core.String currencyId;
-
   /** Default placement dimensions for this account. */
   core.String defaultCreativeSizeId;
-
   /** Description of this account. */
   core.String description;
-
   /** ID of this account. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#account".
    */
   core.String kind;
-
   /**
    * Locale of this account.
    * Acceptable values are:
@@ -10098,31 +9932,25 @@ class Account {
    * - "zh-TW" (Chinese Traditional)
    */
   core.String locale;
-
   /** Maximum image size allowed for this account. */
   core.String maximumImageSize;
-
   /**
    * Name of this account. This is a required field, and must be less than 128
    * characters long and be globally unique.
    */
   core.String name;
-
   /**
    * Whether campaigns created in this account will be enabled for Nielsen OCR
    * reach ratings by default.
    */
   core.bool nielsenOcrEnabled;
-
   /** Reporting configuration of this account. */
   ReportsConfiguration reportsConfiguration;
-
   /**
    * File size limit in kilobytes of Rich Media teaser creatives. Must be
    * between 1 and 10240.
    */
   core.String teaserSizeLimit;
-
 
   Account();
 
@@ -10249,15 +10077,12 @@ class Account {
   }
 }
 
-
 /** Gets a summary of active ads in an account. */
 class AccountActiveAdSummary {
   /** ID of the account. */
   core.String accountId;
-
   /** Ads that have been activated for the account */
   core.String activeAds;
-
   /**
    * Maximum number of active ads allowed for the account.
    * Possible string values are:
@@ -10268,16 +10093,13 @@ class AccountActiveAdSummary {
    * - "ACTIVE_ADS_TIER_75K"
    */
   core.String activeAdsLimitTier;
-
   /** Ads that can be activated for the account. */
   core.String availableAds;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#accountActiveAdSummary".
    */
   core.String kind;
-
 
   AccountActiveAdSummary();
 
@@ -10320,7 +10142,6 @@ class AccountActiveAdSummary {
   }
 }
 
-
 /**
  * AccountPermissions contains information about a particular account
  * permission. Some features of DCM require an account permission to be present
@@ -10335,16 +10156,13 @@ class AccountPermission {
    * - "ACCOUNT_PROFILE_STANDARD"
    */
   core.List<core.String> accountProfiles;
-
   /** ID of this account permission. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#accountPermission".
    */
   core.String kind;
-
   /**
    * Administrative level required to enable this account permission.
    * Possible string values are:
@@ -10352,13 +10170,10 @@ class AccountPermission {
    * - "USER"
    */
   core.String level;
-
   /** Name of this account permission. */
   core.String name;
-
   /** Permission group of this account permission. */
   core.String permissionGroupId;
-
 
   AccountPermission();
 
@@ -10407,7 +10222,6 @@ class AccountPermission {
   }
 }
 
-
 /**
  * AccountPermissionGroups contains a mapping of permission group IDs to names.
  * A permission group is a grouping of account permissions.
@@ -10415,16 +10229,13 @@ class AccountPermission {
 class AccountPermissionGroup {
   /** ID of this account permission group. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#accountPermissionGroup".
    */
   core.String kind;
-
   /** Name of this account permission group. */
   core.String name;
-
 
   AccountPermissionGroup();
 
@@ -10455,18 +10266,15 @@ class AccountPermissionGroup {
   }
 }
 
-
 /** Account Permission Group List Response */
 class AccountPermissionGroupsListResponse {
   /** Account permission group collection. */
   core.List<AccountPermissionGroup> accountPermissionGroups;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#accountPermissionGroupsListResponse".
    */
   core.String kind;
-
 
   AccountPermissionGroupsListResponse();
 
@@ -10491,18 +10299,15 @@ class AccountPermissionGroupsListResponse {
   }
 }
 
-
 /** Account Permission List Response */
 class AccountPermissionsListResponse {
   /** Account permission collection. */
   core.List<AccountPermission> accountPermissions;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#accountPermissionsListResponse".
    */
   core.String kind;
-
 
   AccountPermissionsListResponse();
 
@@ -10527,7 +10332,6 @@ class AccountPermissionsListResponse {
   }
 }
 
-
 /**
  * AccountUserProfiles contains properties of a DCM user profile. This resource
  * is specifically for managing user profiles, whereas UserProfiles is for
@@ -10539,40 +10343,32 @@ class AccountUserProfile {
    * blank.
    */
   core.String accountId;
-
   /**
    * Whether this user profile is active. This defaults to false, and must be
    * set true on insert for the user profile to be usable.
    */
   core.bool active;
-
   /**
    * Filter that describes which advertisers are visible to the user profile.
    */
   ObjectFilter advertiserFilter;
-
   /** Filter that describes which campaigns are visible to the user profile. */
   ObjectFilter campaignFilter;
-
   /** Comments for this user profile. */
   core.String comments;
-
   /**
    * Email of the user profile. The email addresss must be linked to a Google
    * Account. This field is required on insertion and is read-only after
    * insertion.
    */
   core.String email;
-
   /** ID of the user profile. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#accountUserProfile".
    */
   core.String kind;
-
   /**
    * Locale of the user profile. This is a required field.
    * Acceptable values are:
@@ -10594,23 +10390,19 @@ class AccountUserProfile {
    * - "zh-TW" (Chinese Traditional)
    */
   core.String locale;
-
   /**
    * Name of the user profile. This is a required field. Must be less than 64
    * characters long, must be globally unique, and cannot contain whitespace or
    * any of the following characters: "&;"#%,".
    */
   core.String name;
-
   /** Filter that describes which sites are visible to the user profile. */
   ObjectFilter siteFilter;
-
   /**
    * Subaccount ID of the user profile. This is a read-only field that can be
    * left blank.
    */
   core.String subaccountId;
-
   /**
    * Trafficker type of this user profile.
    * Possible string values are:
@@ -10619,7 +10411,6 @@ class AccountUserProfile {
    * - "INTERNAL_TRAFFICKER"
    */
   core.String traffickerType;
-
   /**
    * User type of the user profile. This is a read-only field that can be left
    * blank.
@@ -10629,15 +10420,12 @@ class AccountUserProfile {
    * - "SUPER_USER"
    */
   core.String userAccessType;
-
   /**
    * Filter that describes which user roles are visible to the user profile.
    */
   ObjectFilter userRoleFilter;
-
   /** User role ID of the user profile. This is a required field. */
   core.String userRoleId;
-
 
   AccountUserProfile();
 
@@ -10746,21 +10534,17 @@ class AccountUserProfile {
   }
 }
 
-
 /** Account User Profile List Response */
 class AccountUserProfilesListResponse {
   /** Account user profile collection. */
   core.List<AccountUserProfile> accountUserProfiles;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#accountUserProfilesListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   AccountUserProfilesListResponse();
 
@@ -10791,21 +10575,17 @@ class AccountUserProfilesListResponse {
   }
 }
 
-
 /** Account List Response */
 class AccountsListResponse {
   /** Account collection. */
   core.List<Account> accounts;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#accountsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   AccountsListResponse();
 
@@ -10836,7 +10616,6 @@ class AccountsListResponse {
   }
 }
 
-
 /** Represents an activity group. */
 class Activities {
   /**
@@ -10844,13 +10623,10 @@ class Activities {
    * type "dfa:activity" or "dfa:activityGroup".
    */
   core.List<DimensionValue> filters;
-
   /** The kind of resource this is, in this case dfareporting#activities. */
   core.String kind;
-
   /** List of names of floodlight activity metrics. */
   core.List<core.String> metricNames;
-
 
   Activities();
 
@@ -10881,59 +10657,47 @@ class Activities {
   }
 }
 
-
 /** Contains properties of a DCM ad. */
 class Ad {
   /**
    * Account ID of this ad. This is a read-only field that can be left blank.
    */
   core.String accountId;
-
   /** Whether this ad is active. */
   core.bool active;
-
   /** Advertiser ID of this ad. This is a required field on insertion. */
   core.String advertiserId;
-
   /**
    * Dimension value for the ID of the advertiser. This is a read-only,
    * auto-generated field.
    */
   DimensionValue advertiserIdDimensionValue;
-
   /** Whether this ad is archived. */
   core.bool archived;
-
   /**
    * Audience segment ID that is being targeted for this ad. Applicable when
    * type is AD_SERVING_STANDARD_AD.
    */
   core.String audienceSegmentId;
-
   /** Campaign ID of this ad. This is a required field on insertion. */
   core.String campaignId;
-
   /**
    * Dimension value for the ID of the campaign. This is a read-only,
    * auto-generated field.
    */
   DimensionValue campaignIdDimensionValue;
-
   /**
    * Click-through URL for this ad. This is a required field on insertion.
    * Applicable when type is AD_SERVING_CLICK_TRACKER.
    */
   ClickThroughUrl clickThroughUrl;
-
   /**
    * Click-through URL suffix properties for this ad. Applies to the URL in the
    * ad or (if overriding ad properties) the URL in the creative.
    */
   ClickThroughUrlSuffixProperties clickThroughUrlSuffixProperties;
-
   /** Comments for this ad. */
   core.String comments;
-
   /**
    * Compatibility of this ad. Applicable when type is AD_SERVING_DEFAULT_AD.
    * WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile
@@ -10948,17 +10712,14 @@ class Ad {
    * - "WEB_INTERSTITIAL"
    */
   core.String compatibility;
-
   /** Information about the creation of this ad.This is a read-only field. */
   LastModifiedInfo createInfo;
-
   /**
    * Creative group assignments for this ad. Applicable when type is
    * AD_SERVING_CLICK_TRACKER. Only one assignment per creative group number is
    * allowed for a maximum of two assignments.
    */
   core.List<CreativeGroupAssignment> creativeGroupAssignments;
-
   /**
    * Creative rotation for this ad. Applicable when type is
    * AD_SERVING_DEFAULT_AD, AD_SERVING_STANDARD_AD, or AD_SERVING_TRACKING. When
@@ -10966,16 +10727,13 @@ class Ad {
    * creativeAssignment.
    */
   CreativeRotation creativeRotation;
-
   /**
    * Time and day targeting information for this ad. Applicable when type is
    * AD_SERVING_STANDARD_AD.
    */
   DayPartTargeting dayPartTargeting;
-
   /** Default click-through event tag properties for this ad. */
   DefaultClickThroughEventTagProperties defaultClickThroughEventTagProperties;
-
   /**
    * Delivery schedule information for this ad. Applicable when type is
    * AD_SERVING_STANDARD_AD or AD_SERVING_TRACKING. This field along with
@@ -10983,103 +10741,84 @@ class Ad {
    * is AD_SERVING_STANDARD_AD.
    */
   DeliverySchedule deliverySchedule;
-
   /**
    * Whether this ad is a dynamic click tracker. Applicable when type is
    * AD_SERVING_CLICK_TRACKER. This is a required field on insert, and is
    * read-only after insert.
    */
   core.bool dynamicClickTracker;
-
   /**
    * Date and time that this ad should stop serving. Must be later than the
    * start time. This is a required field on insertion.
    */
   core.DateTime endTime;
-
   /** Event tag overrides for this ad. */
   core.List<EventTagOverride> eventTagOverrides;
-
   /**
    * Geographical targeting information for this ad.Applicable when type is
    * AD_SERVING_STANDARD_AD.
    */
   GeoTargeting geoTargeting;
-
   /** ID of this ad. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Dimension value for the ID of this ad. This is a read-only, auto-generated
    * field.
    */
   DimensionValue idDimensionValue;
-
   /**
    * Key-value targeting information for this ad. Applicable when type is
    * AD_SERVING_STANDARD_AD.
    */
   KeyValueTargetingExpression keyValueTargetingExpression;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#ad".
    */
   core.String kind;
-
   /**
    * Information about the most recent modification of this ad. This is a
    * read-only field.
    */
   LastModifiedInfo lastModifiedInfo;
-
   /**
    * Name of this ad. This is a required field and must be less than 256
    * characters long.
    */
   core.String name;
-
   /** Placement assignments for this ad. */
   core.List<PlacementAssignment> placementAssignments;
-
   /**
    * Applicable when type is AD_SERVING_STANDARD_AD. Remarketing list targeting
    * expression for this ad.
    */
   ListTargetingExpression remarketingListExpression;
-
   /** Size of this ad. Applicable when type is AD_SERVING_DEFAULT_AD. */
   Size size;
-
   /**
    * Whether this ad is ssl compliant. This is a read-only field that is
    * auto-generated when the ad is inserted or updated.
    */
   core.bool sslCompliant;
-
   /**
    * Whether this ad requires ssl. This is a read-only field that is
    * auto-generated when the ad is inserted or updated.
    */
   core.bool sslRequired;
-
   /**
    * Date and time that this ad should start serving. If creating an ad, this
    * field must be a time in the future. This is a required field on insertion.
    */
   core.DateTime startTime;
-
   /**
    * Subaccount ID of this ad. This is a read-only field that can be left blank.
    */
   core.String subaccountId;
-
   /**
    * Technology platform targeting information for this ad. Applicable when type
    * is AD_SERVING_STANDARD_AD.
    */
   TechnologyTargeting technologyTargeting;
-
   /**
    * Type of ad. This is a required field on insertion. Note that default ads
    * (AD_SERVING_DEFAULT_AD) cannot be created directly (see Creative resource).
@@ -11090,7 +10829,6 @@ class Ad {
    * - "AD_SERVING_TRACKING"
    */
   core.String type;
-
 
   Ad();
 
@@ -11325,21 +11063,17 @@ class Ad {
   }
 }
 
-
 /** Ad List Response */
 class AdsListResponse {
   /** Ad collection. */
   core.List<Ad> ads;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#adsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   AdsListResponse();
 
@@ -11370,7 +11104,6 @@ class AdsListResponse {
   }
 }
 
-
 /** Contains properties of a DCM advertiser. */
 class Advertiser {
   /**
@@ -11378,29 +11111,24 @@ class Advertiser {
    * blank.
    */
   core.String accountId;
-
   /**
    * ID of the advertiser group this advertiser belongs to. You can group
    * advertisers for reporting purposes, allowing you to see aggregated
    * information for all advertisers in each group.
    */
   core.String advertiserGroupId;
-
   /**
    * Suffix added to click-through URL of ad creative associations under this
    * advertiser. Must be less than 129 characters long.
    */
   core.String clickThroughUrlSuffix;
-
   /**
    * ID of the click-through event tag to apply by default to the landing pages
    * of this advertiser's campaigns.
    */
   core.String defaultClickThroughEventTagId;
-
   /** Default email address used in sender field for tag emails. */
   core.String defaultEmail;
-
   /**
    * Floodlight configuration ID of this advertiser. The floodlight
    * configuration ID will be created automatically, so on insert this field
@@ -11413,34 +11141,28 @@ class Advertiser {
    * with another advertiser.
    */
   core.String floodlightConfigurationId;
-
   /**
    * Dimension value for the ID of the floodlight configuration. This is a
    * read-only, auto-generated field.
    */
   DimensionValue floodlightConfigurationIdDimensionValue;
-
   /** ID of this advertiser. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Dimension value for the ID of this advertiser. This is a read-only,
    * auto-generated field.
    */
   DimensionValue idDimensionValue;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#advertiser".
    */
   core.String kind;
-
   /**
    * Name of this advertiser. This is a required field and must be less than 256
    * characters long and unique among advertisers of the same account.
    */
   core.String name;
-
   /**
    * Status of this advertiser.
    * Possible string values are:
@@ -11448,13 +11170,11 @@ class Advertiser {
    * - "ON_HOLD"
    */
   core.String status;
-
   /**
    * Subaccount ID of this advertiser.This is a read-only field that can be left
    * blank.
    */
   core.String subaccountId;
-
 
   Advertiser();
 
@@ -11545,7 +11265,6 @@ class Advertiser {
   }
 }
 
-
 /**
  * Groups advertisers together so that reports can be generated for the entire
  * group at once.
@@ -11556,25 +11275,21 @@ class AdvertiserGroup {
    * left blank.
    */
   core.String accountId;
-
   /**
    * ID of this advertiser group. This is a read-only, auto-generated field.
    */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#advertiserGroup".
    */
   core.String kind;
-
   /**
    * Name of this advertiser group. This is a required field and must be less
    * than 256 characters long and unique among advertiser groups of the same
    * account.
    */
   core.String name;
-
 
   AdvertiserGroup();
 
@@ -11611,21 +11326,17 @@ class AdvertiserGroup {
   }
 }
 
-
 /** Advertiser Group List Response */
 class AdvertiserGroupsListResponse {
   /** Advertiser group collection. */
   core.List<AdvertiserGroup> advertiserGroups;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#advertiserGroupsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   AdvertiserGroupsListResponse();
 
@@ -11656,21 +11367,17 @@ class AdvertiserGroupsListResponse {
   }
 }
 
-
 /** Advertiser List Response */
 class AdvertisersListResponse {
   /** Advertiser collection. */
   core.List<Advertiser> advertisers;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#advertisersListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   AdvertisersListResponse();
 
@@ -11701,7 +11408,6 @@ class AdvertisersListResponse {
   }
 }
 
-
 /** Audience Segment. */
 class AudienceSegment {
   /**
@@ -11710,18 +11416,15 @@ class AudienceSegment {
    * segments in the same segment group.
    */
   core.int allocation;
-
   /**
    * ID of this audience segment. This is a read-only, auto-generated field.
    */
   core.String id;
-
   /**
    * Name of this audience segment. This is a required field and must be less
    * than 65 characters long.
    */
   core.String name;
-
 
   AudienceSegment();
 
@@ -11752,7 +11455,6 @@ class AudienceSegment {
   }
 }
 
-
 /** Audience Segment Group. */
 class AudienceSegmentGroup {
   /**
@@ -11760,19 +11462,16 @@ class AudienceSegmentGroup {
    * between 2 and 100.
    */
   core.List<AudienceSegment> audienceSegments;
-
   /**
    * ID of this audience segment group. This is a read-only, auto-generated
    * field.
    */
   core.String id;
-
   /**
    * Name of this audience segment group. This is a required field and must be
    * less than 65 characters long.
    */
   core.String name;
-
 
   AudienceSegmentGroup();
 
@@ -11803,7 +11502,6 @@ class AudienceSegmentGroup {
   }
 }
 
-
 /** Contains information about a browser that can be targeted by ads. */
 class Browser {
   /**
@@ -11811,16 +11509,13 @@ class Browser {
    * ID used for targeting.
    */
   core.String browserVersionId;
-
   /** DART ID of this browser. This is the ID used when generating reports. */
   core.String dartId;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#browser".
    */
   core.String kind;
-
   /**
    * Major version number (leftmost number) of this browser. For example, for
    * Chrome 5.0.376.86 beta, this field should be set to 5. An asterisk (*) may
@@ -11832,7 +11527,6 @@ class Browser {
    * is.
    */
   core.String majorVersion;
-
   /**
    * Minor version number (number after first dot on left) of this browser. For
    * example, for Chrome 5.0.375.86 beta, this field should be set to 0. An
@@ -11844,10 +11538,8 @@ class Browser {
    * but can't tell which version it is.
    */
   core.String minorVersion;
-
   /** Name of this browser. */
   core.String name;
-
 
   Browser();
 
@@ -11896,18 +11588,15 @@ class Browser {
   }
 }
 
-
 /** Browser List Response */
 class BrowsersListResponse {
   /** Browser collection. */
   core.List<Browser> browsers;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#browsersListResponse".
    */
   core.String kind;
-
 
   BrowsersListResponse();
 
@@ -11932,7 +11621,6 @@ class BrowsersListResponse {
   }
 }
 
-
 /** Contains properties of a DCM campaign. */
 class Campaign {
   /**
@@ -11940,63 +11628,48 @@ class Campaign {
    * blank.
    */
   core.String accountId;
-
   /** Additional creative optimization configurations for the campaign. */
   core.List<CreativeOptimizationConfiguration> additionalCreativeOptimizationConfigurations;
-
   /** Advertiser group ID of the associated advertiser. */
   core.String advertiserGroupId;
-
   /** Advertiser ID of this campaign. This is a required field. */
   core.String advertiserId;
-
   /**
    * Dimension value for the advertiser ID of this campaign. This is a
    * read-only, auto-generated field.
    */
   DimensionValue advertiserIdDimensionValue;
-
   /** Whether this campaign has been archived. */
   core.bool archived;
-
   /**
    * Audience segment groups assigned to this campaign. Cannot have more than
    * 300 segment groups.
    */
   core.List<AudienceSegmentGroup> audienceSegmentGroups;
-
   /**
    * Billing invoice code included in the DCM client billing invoices associated
    * with the campaign.
    */
   core.String billingInvoiceCode;
-
   /** Click-through URL suffix override properties for this campaign. */
   ClickThroughUrlSuffixProperties clickThroughUrlSuffixProperties;
-
   /**
    * Arbitrary comments about this campaign. Must be less than 256 characters
    * long.
    */
   core.String comment;
-
   /** Whether comScore vCE reports are enabled for this campaign. */
   core.bool comscoreVceEnabled;
-
   /**
    * Information about the creation of this campaign. This is a read-only field.
    */
   LastModifiedInfo createInfo;
-
   /** List of creative group IDs that are assigned to the campaign. */
   core.List<core.String> creativeGroupIds;
-
   /** Creative optimization configuration for the campaign. */
   CreativeOptimizationConfiguration creativeOptimizationConfiguration;
-
   /** Click-through event tag ID override properties for this campaign. */
   DefaultClickThroughEventTagProperties defaultClickThroughEventTagProperties;
-
   /**
    * Date on which the campaign will stop running. On insert, the end date must
    * be today or a future date. The end date must be later than or be the same
@@ -12006,64 +11679,51 @@ class Campaign {
    * set, as doing so will result in an error. This is a required field.
    */
   core.DateTime endDate;
-
   /**
    * Overrides that can be used to activate or deactivate advertiser event tags.
    */
   core.List<EventTagOverride> eventTagOverrides;
-
   /** External ID for this campaign. */
   core.String externalId;
-
   /** ID of this campaign. This is a read-only auto-generated field. */
   core.String id;
-
   /**
    * Dimension value for the ID of this campaign. This is a read-only,
    * auto-generated field.
    */
   DimensionValue idDimensionValue;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#campaign".
    */
   core.String kind;
-
   /**
    * Information about the most recent modification of this campaign. This is a
    * read-only field.
    */
   LastModifiedInfo lastModifiedInfo;
-
   /** Lookback window settings for the campaign. */
   LookbackConfiguration lookbackConfiguration;
-
   /**
    * Name of this campaign. This is a required field and must be less than 256
    * characters long and unique among campaigns of the same advertiser.
    */
   core.String name;
-
   /** Whether Nielsen reports are enabled for this campaign. */
   core.bool nielsenOcrEnabled;
-
   /**
    * Date on which the campaign starts running. The start date can be any date.
    * The hours, minutes, and seconds of the start date should not be set, as
    * doing so will result in an error. This is a required field.
    */
   core.DateTime startDate;
-
   /**
    * Subaccount ID of this campaign. This is a read-only field that can be left
    * blank.
    */
   core.String subaccountId;
-
   /** Campaign trafficker contact emails. */
   core.List<core.String> traffickerEmails;
-
 
   Campaign();
 
@@ -12244,20 +11904,17 @@ class Campaign {
   }
 }
 
-
 /** Identifies a creative which has been associated with a given campaign. */
 class CampaignCreativeAssociation {
   /**
    * ID of the creative associated with the campaign. This is a required field.
    */
   core.String creativeId;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#campaignCreativeAssociation".
    */
   core.String kind;
-
 
   CampaignCreativeAssociation();
 
@@ -12282,21 +11939,17 @@ class CampaignCreativeAssociation {
   }
 }
 
-
 /** Campaign Creative Association List Response */
 class CampaignCreativeAssociationsListResponse {
   /** Campaign creative association collection */
   core.List<CampaignCreativeAssociation> campaignCreativeAssociations;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#campaignCreativeAssociationsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   CampaignCreativeAssociationsListResponse();
 
@@ -12327,21 +11980,17 @@ class CampaignCreativeAssociationsListResponse {
   }
 }
 
-
 /** Campaign List Response */
 class CampaignsListResponse {
   /** Campaign collection. */
   core.List<Campaign> campaigns;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#campaignsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   CampaignsListResponse();
 
@@ -12372,61 +12021,46 @@ class CampaignsListResponse {
   }
 }
 
-
 /** Describes a change that a user has made to a resource. */
 class ChangeLog {
   /** Account ID of the modified object. */
   core.String accountId;
-
   /** Action which caused the change. */
   core.String action;
-
   /** Time when the object was modified. */
   core.DateTime changeTime;
-
   /** Field name of the object which changed. */
   core.String fieldName;
-
   /** ID of this change log. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#changeLog".
    */
   core.String kind;
-
   /** New value of the object field. */
   core.String newValue;
-
   /**
    * ID of the object of this change log. The object could be a campaign,
    * placement, ad, or other type.
    */
   core.String objectId;
-
   /** Object type of the change log. */
   core.String objectType;
-
   /** Old value of the object field. */
   core.String oldValue;
-
   /** Subaccount ID of the modified object. */
   core.String subaccountId;
-
   /**
    * Transaction ID of this change log. When a single API call results in many
    * changes, each change will have a separate ID in the change log but will
    * share the same transactionId.
    */
   core.String transactionId;
-
   /** ID of the user who modified the object. */
   core.String userProfileId;
-
   /** User profile name of the user who modified the object. */
   core.String userProfileName;
-
 
   ChangeLog();
 
@@ -12523,21 +12157,17 @@ class ChangeLog {
   }
 }
 
-
 /** Change Log List Response */
 class ChangeLogsListResponse {
   /** Change log collection. */
   core.List<ChangeLog> changeLogs;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#changeLogsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   ChangeLogsListResponse();
 
@@ -12568,18 +12198,15 @@ class ChangeLogsListResponse {
   }
 }
 
-
 /** City List Response */
 class CitiesListResponse {
   /** City collection. */
   core.List<City> cities;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#citiesListResponse".
    */
   core.String kind;
-
 
   CitiesListResponse();
 
@@ -12604,44 +12231,34 @@ class CitiesListResponse {
   }
 }
 
-
 /** Contains information about a city that can be targeted by ads. */
 class City {
   /** Country code of the country to which this city belongs. */
   core.String countryCode;
-
   /** DART ID of the country to which this city belongs. */
   core.String countryDartId;
-
   /**
    * DART ID of this city. This is the ID used for targeting and generating
    * reports.
    */
   core.String dartId;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#city".
    */
   core.String kind;
-
   /**
    * Metro region code of the metro region (DMA) to which this city belongs.
    */
   core.String metroCode;
-
   /** ID of the metro region (DMA) to which this city belongs. */
   core.String metroDmaId;
-
   /** Name of this city. */
   core.String name;
-
   /** Region code of the region to which this city belongs. */
   core.String regionCode;
-
   /** DART ID of the region to which this city belongs. */
   core.String regionDartId;
-
 
   City();
 
@@ -12708,7 +12325,6 @@ class City {
   }
 }
 
-
 /** Creative Click Tag. */
 class ClickTag {
   /**
@@ -12716,20 +12332,17 @@ class ClickTag {
    * ENHANCED_BANNER, ENHANCED_IMAGE, and HTML5_BANNER creatives.
    */
   core.String eventName;
-
   /**
    * Parameter name for the specified click tag. For ENHANCED_IMAGE creative
    * assets, this field must match the value of the creative asset's
    * creativeAssetId.name field.
    */
   core.String name;
-
   /**
    * Parameter value for the specified click tag. This field contains a
    * click-through url.
    */
   core.String value;
-
 
   ClickTag();
 
@@ -12760,7 +12373,6 @@ class ClickTag {
   }
 }
 
-
 /** Click-through URL */
 class ClickThroughUrl {
   /**
@@ -12768,16 +12380,13 @@ class ClickThroughUrl {
    * to false and the landingPageId field is left unset.
    */
   core.String customClickThroughUrl;
-
   /** Whether the campaign default landing page is used. */
   core.bool defaultLandingPage;
-
   /**
    * ID of the landing page for the click-through URL. Applicable if the
    * defaultLandingPage field is set to false.
    */
   core.String landingPageId;
-
 
   ClickThroughUrl();
 
@@ -12808,7 +12417,6 @@ class ClickThroughUrl {
   }
 }
 
-
 /** Click Through URL Suffix settings. */
 class ClickThroughUrlSuffixProperties {
   /**
@@ -12816,13 +12424,11 @@ class ClickThroughUrlSuffixProperties {
    * be less than 128 characters long.
    */
   core.String clickThroughUrlSuffix;
-
   /**
    * Whether this entity should override the inherited click-through URL suffix
    * with its own defined value.
    */
   core.bool overrideInheritedSuffix;
-
 
   ClickThroughUrlSuffixProperties();
 
@@ -12847,15 +12453,12 @@ class ClickThroughUrlSuffixProperties {
   }
 }
 
-
 /** Companion Click-through override. */
 class CompanionClickThroughOverride {
   /** Click-through URL of this companion click-through override. */
   ClickThroughUrl clickThroughUrl;
-
   /** ID of the creative for this companion click-through override. */
   core.String creativeId;
-
 
   CompanionClickThroughOverride();
 
@@ -12880,7 +12483,6 @@ class CompanionClickThroughOverride {
   }
 }
 
-
 /** Represents a response to the queryCompatibleFields method. */
 class CompatibleFields {
   /**
@@ -12888,36 +12490,30 @@ class CompatibleFields {
    * "CROSS_DIMENSION_REACH".
    */
   CrossDimensionReachReportCompatibleFields crossDimensionReachReportCompatibleFields;
-
   /**
    * Contains items that are compatible to be selected for a report of type
    * "FLOODLIGHT".
    */
   FloodlightReportCompatibleFields floodlightReportCompatibleFields;
-
   /**
    * The kind of resource this is, in this case dfareporting#compatibleFields.
    */
   core.String kind;
-
   /**
    * Contains items that are compatible to be selected for a report of type
    * "PATH_TO_CONVERSION".
    */
   PathToConversionReportCompatibleFields pathToConversionReportCompatibleFields;
-
   /**
    * Contains items that are compatible to be selected for a report of type
    * "REACH".
    */
   ReachReportCompatibleFields reachReportCompatibleFields;
-
   /**
    * Contains items that are compatible to be selected for a report of type
    * "STANDARD".
    */
   ReportCompatibleFields reportCompatibleFields;
-
 
   CompatibleFields();
 
@@ -12966,7 +12562,6 @@ class CompatibleFields {
   }
 }
 
-
 /**
  * Contains information about an internet connection type that can be targeted
  * by ads. Clients can use the connection type to target mobile vs. broadband
@@ -12975,16 +12570,13 @@ class CompatibleFields {
 class ConnectionType {
   /** ID of this connection type. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#connectionType".
    */
   core.String kind;
-
   /** Name of this connection type. */
   core.String name;
-
 
   ConnectionType();
 
@@ -13015,18 +12607,15 @@ class ConnectionType {
   }
 }
 
-
 /** Connection Type List Response */
 class ConnectionTypesListResponse {
   /** Collection of connection types such as broadband and mobile. */
   core.List<ConnectionType> connectionTypes;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#connectionTypesListResponse".
    */
   core.String kind;
-
 
   ConnectionTypesListResponse();
 
@@ -13051,21 +12640,17 @@ class ConnectionTypesListResponse {
   }
 }
 
-
 /** Content Category List Response */
 class ContentCategoriesListResponse {
   /** Content category collection. */
   core.List<ContentCategory> contentCategories;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#contentCategoriesListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   ContentCategoriesListResponse();
 
@@ -13096,7 +12681,6 @@ class ContentCategoriesListResponse {
   }
 }
 
-
 /**
  * Organizes placements according to the contents of their associated webpages.
  */
@@ -13106,28 +12690,23 @@ class ContentCategory {
    * left blank.
    */
   core.String accountId;
-
   /** Description of this content category. */
   core.String description;
-
   /**
    * ID of this content category. This is a read-only, auto-generated field.
    */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#contentCategory".
    */
   core.String kind;
-
   /**
    * Name of this content category. This is a required field and must be less
    * than 256 characters long and unique among content categories of the same
    * account.
    */
   core.String name;
-
 
   ContentCategory();
 
@@ -13170,18 +12749,15 @@ class ContentCategory {
   }
 }
 
-
 /** Country List Response */
 class CountriesListResponse {
   /** Country collection. */
   core.List<Country> countries;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#countriesListResponse".
    */
   core.String kind;
-
 
   CountriesListResponse();
 
@@ -13206,30 +12782,24 @@ class CountriesListResponse {
   }
 }
 
-
 /** Contains information about a country that can be targeted by ads. */
 class Country {
   /** Country code. */
   core.String countryCode;
-
   /**
    * DART ID of this country. This is the ID used for targeting and generating
    * reports.
    */
   core.String dartId;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#country".
    */
   core.String kind;
-
   /** Name of this country. */
   core.String name;
-
   /** Whether ad serving supports secure servers in this country. */
   core.bool sslEnabled;
-
 
   Country();
 
@@ -13272,7 +12842,6 @@ class Country {
   }
 }
 
-
 /** Contains properties of a Creative. */
 class Creative {
   /**
@@ -13281,16 +12850,13 @@ class Creative {
    * creative types.
    */
   core.String accountId;
-
   /** Whether the creative is active. Applicable to all creative types. */
   core.bool active;
-
   /**
    * Ad parameters user for VPAID creative. This is a read-only field.
    * Applicable to the following creative types: all VPAID.
    */
   core.String adParameters;
-
   /**
    * Keywords for a Rich Media creative. Keywords let you customize the creative
    * settings of a Rich Media ad running on your site without having to contact
@@ -13299,23 +12865,19 @@ class Creative {
    * all RICH_MEDIA, and all VPAID.
    */
   core.List<core.String> adTagKeys;
-
   /**
    * Advertiser ID of this creative. This is a required field. Applicable to all
    * creative types.
    */
   core.String advertiserId;
-
   /**
    * Whether script access is allowed for this creative. This is a read-only and
    * deprecated field which will automatically be set to true on update.
    * Applicable to the following creative types: FLASH_INPAGE.
    */
   core.bool allowScriptAccess;
-
   /** Whether the creative is archived. Applicable to all creative types. */
   core.bool archived;
-
   /**
    * Type of artwork used for the creative. This is a read-only field.
    * Applicable to the following creative types: all RICH_MEDIA, and all VPAID.
@@ -13325,7 +12887,6 @@ class Creative {
    * - "ARTWORK_TYPE_MIXED"
    */
   core.String artworkType;
-
   /**
    * Authoring tool for HTML5 banner creatives. This is a read-only field.
    * Applicable to the following creative types: HTML5_BANNER.
@@ -13334,26 +12895,22 @@ class Creative {
    * - "SWIFFY"
    */
   core.String authoringTool;
-
   /**
    * Whether images are automatically advanced for enhanced image creatives.
    * Applicable to the following creative types: ENHANCED_IMAGE.
    */
   core.bool autoAdvanceImages;
-
   /**
    * The 6-character HTML color code, beginning with #, for the background of
    * the window area where the Flash file is displayed. Default is white.
    * Applicable to the following creative types: FLASH_INPAGE.
    */
   core.String backgroundColor;
-
   /**
    * Click-through URL for backup image. Applicable to the following creative
    * types: ENHANCED_BANNER, FLASH_INPAGE, and HTML5_BANNER.
    */
   core.String backupImageClickThroughUrl;
-
   /**
    * List of feature dependencies that will cause a backup image to be served if
    * the browser that serves the ad does not support them. Feature dependencies
@@ -13365,19 +12922,16 @@ class Creative {
    * types: ENHANCED_BANNER and HTML5_BANNER.
    */
   core.List<core.String> backupImageFeatures;
-
   /**
    * Reporting label used for HTML5 banner backup image. Applicable to the
    * following creative types: ENHANCED_BANNER.
    */
   core.String backupImageReportingLabel;
-
   /**
    * Target window for backup image. Applicable to the following creative types:
    * ENHANCED_BANNER, FLASH_INPAGE, and HTML5_BANNER.
    */
   TargetWindow backupImageTargetWindow;
-
   /**
    * Click tags of the creative. For ENHANCED_BANNER, FLASH_INPAGE, and
    * HTML5_BANNER creatives, this is a subset of detected click tags for the
@@ -13392,20 +12946,17 @@ class Creative {
    * ENHANCED_IMAGE, FLASH_INPAGE, HTML5_BANNER.
    */
   core.List<ClickTag> clickTags;
-
   /**
    * Industry standard ID assigned to creative for reach and frequency.
    * Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.
    */
   core.String commercialId;
-
   /**
    * List of companion creatives assigned to an in-Stream videocreative.
    * Acceptable values include IDs of existing flash and image creatives.
    * Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.
    */
   core.List<core.String> companionCreatives;
-
   /**
    * Compatibilities associated with this creative. This is a read-only field.
    * WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile
@@ -13422,26 +12973,22 @@ class Creative {
    * - "WEB_INTERSTITIAL"
    */
   core.List<core.String> compatibility;
-
   /**
    * List of counter events configured for the creative. Applicable to the
    * following creative types: all RICH_MEDIA, and all VPAID.
    */
   core.List<CreativeCustomEvent> counterCustomEvents;
-
   /**
    * Assets associated with a creative. Applicable to all but the following
    * creative types: INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and
    * REDIRECT
    */
   core.List<CreativeAsset> creativeAssets;
-
   /**
    * Creative field assignments for this creative. Applicable to all creative
    * types.
    */
   core.List<CreativeFieldAssignment> creativeFieldAssignments;
-
   /**
    * Custom key-values for a Rich Media creative. Key-values let you customize
    * the creative settings of a Rich Media ad running on your site without
@@ -13450,13 +12997,11 @@ class Creative {
    * creative types: all RICH_MEDIA, and all VPAID.
    */
   core.List<core.String> customKeyValues;
-
   /**
    * List of exit events configured for the creative. Applicable to the
    * following creative types: all RICH_MEDIA, and all VPAID.
    */
   core.List<CreativeCustomEvent> exitCustomEvents;
-
   /**
    * OpenWindow FSCommand of this creative. This lets the SWF file communicate
    * with either Flash Player or the program hosting Flash Player, such as a web
@@ -13464,7 +13009,6 @@ class Creative {
    * Applicable to the following creative types: FLASH_INPAGE.
    */
   FsCommand fsCommand;
-
   /**
    * HTML code for the creative. This is a required field when applicable. This
    * field is ignored if htmlCodeLocked is false. Applicable to the following
@@ -13472,90 +13016,76 @@ class Creative {
    * RICH_MEDIA.
    */
   core.String htmlCode;
-
   /**
    * Whether HTML code is DCM-generated or manually entered. Set to true to
    * ignore changes to htmlCode. Applicable to the following creative types:
    * FLASH_INPAGE and HTML5_BANNER.
    */
   core.bool htmlCodeLocked;
-
   /**
    * ID of this creative. This is a read-only, auto-generated field. Applicable
    * to all creative types.
    */
   core.String id;
-
   /**
    * Dimension value for the ID of this creative. This is a read-only field.
    * Applicable to all creative types.
    */
   DimensionValue idDimensionValue;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#creative".
    */
   core.String kind;
-
   /**
    * Creative last modification information. This is a read-only field.
    * Applicable to all creative types.
    */
   LastModifiedInfo lastModifiedInfo;
-
   /**
    * Latest Studio trafficked creative ID associated with rich media and VPAID
    * creatives. This is a read-only field. Applicable to the following creative
    * types: all RICH_MEDIA, and all VPAID.
    */
   core.String latestTraffickedCreativeId;
-
   /**
    * Name of the creative. This is a required field and must be less than 256
    * characters long. Applicable to all creative types.
    */
   core.String name;
-
   /**
    * Override CSS value for rich media creatives. Applicable to the following
    * creative types: all RICH_MEDIA.
    */
   core.String overrideCss;
-
   /**
    * URL of hosted image or another ad tag. This is a required field when
    * applicable. Applicable to the following creative types: INTERNAL_REDIRECT,
    * INTERSTITIAL_INTERNAL_REDIRECT, and REDIRECT
    */
   core.String redirectUrl;
-
   /**
    * ID of current rendering version. This is a read-only field. Applicable to
    * all creative types.
    */
   core.String renderingId;
-
   /**
    * Dimension value for the rendering ID of this creative. This is a read-only
    * field. Applicable to all creative types.
    */
   DimensionValue renderingIdDimensionValue;
-
   /**
    * The minimum required Flash plugin version for this creative. For example,
    * 11.2.202.235. This is a read-only field. Applicable to the following
    * creative types: all RICH_MEDIA, and all VPAID.
    */
   core.String requiredFlashPluginVersion;
-
   /**
    * The internal Flash version for this creative as calculated by DoubleClick
    * Studio. This is a read-only field. Applicable to the following creative
    * types: FLASH_INPAGE, ENHANCED_BANNER, all RICH_MEDIA, and all VPAID.
    */
   core.int requiredFlashVersion;
-
   /**
    * Size associated with this creative. When inserting or updating a creative
    * either the size ID field or size width and height fields can be used. This
@@ -13566,77 +13096,65 @@ class Creative {
    * HTML5_BANNER, IMAGE, and all RICH_MEDIA.
    */
   Size size;
-
   /**
    * Whether the user can choose to skip the creative. Applicable to the
    * following creative types: INSTREAM_VIDEO.
    */
   core.bool skippable;
-
   /**
    * Whether the creative is SSL-compliant. This is a read-only field.
    * Applicable to all creative types.
    */
   core.bool sslCompliant;
-
   /**
    * Studio advertiser ID associated with rich media and VPAID creatives. This
    * is a read-only field. Applicable to the following creative types: all
    * RICH_MEDIA, and all VPAID.
    */
   core.String studioAdvertiserId;
-
   /**
    * Studio creative ID associated with rich media and VPAID creatives. This is
    * a read-only field. Applicable to the following creative types: all
    * RICH_MEDIA, and all VPAID.
    */
   core.String studioCreativeId;
-
   /**
    * Studio trafficked creative ID associated with rich media and VPAID
    * creatives. This is a read-only field. Applicable to the following creative
    * types: all RICH_MEDIA, and all VPAID.
    */
   core.String studioTraffickedCreativeId;
-
   /**
    * Subaccount ID of this creative. This field, if left unset, will be
    * auto-generated for both insert and update operations. Applicable to all
    * creative types.
    */
   core.String subaccountId;
-
   /**
    * Third-party URL used to record backup image impressions. Applicable to the
    * following creative types: all RICH_MEDIA
    */
   core.String thirdPartyBackupImageImpressionsUrl;
-
   /**
    * Third-party URL used to record rich media impressions. Applicable to the
    * following creative types: all RICH_MEDIA
    */
   core.String thirdPartyRichMediaImpressionsUrl;
-
   /**
    * Third-party URLs for tracking in-stream video creative events. Applicable
    * to the following creative types: INSTREAM_VIDEO and all VPAID.
    */
   core.List<ThirdPartyTrackingUrl> thirdPartyUrls;
-
   /**
    * List of timer events configured for the creative. Applicable to the
    * following creative types: all RICH_MEDIA, and all VPAID.
    */
   core.List<CreativeCustomEvent> timerCustomEvents;
-
   /**
    * Combined size of all creative assets. This is a read-only field. Applicable
    * to the following creative types: all RICH_MEDIA, and all VPAID.
    */
   core.String totalFileSize;
-
   /**
    * Type of this creative.This is a required field. Applicable to all creative
    * types.
@@ -13666,7 +13184,6 @@ class Creative {
    * - "VPAID_NON_LINEAR"
    */
   core.String type;
-
   /**
    * The version number helps you keep track of multiple versions of your
    * creative in your reports. The version number will always be auto-generated
@@ -13677,20 +13194,17 @@ class Creative {
    * undergoing Rich Media creative merging. Applicable to all creative types.
    */
   core.int version;
-
   /**
    * Description of the video ad. Applicable to the following creative types:
    * INSTREAM_VIDEO and all VPAID.
    */
   core.String videoDescription;
-
   /**
    * Creative video duration in seconds. This is a read-only field. Applicable
    * to the following creative types: INSTREAM_VIDEO, all RICH_MEDIA, and all
    * VPAID.
    */
   core.double videoDuration;
-
 
   Creative();
 
@@ -14033,7 +13547,6 @@ class Creative {
   }
 }
 
-
 /** Creative Asset. */
 class CreativeAsset {
   /**
@@ -14042,14 +13555,12 @@ class CreativeAsset {
    * ENHANCED_BANNER.
    */
   core.bool actionScript3;
-
   /**
    * Whether the video asset is active. This is a read-only field for
    * VPAID_NON_LINEAR assets. Applicable to the following creative types:
    * INSTREAM_VIDEO and all VPAID.
    */
   core.bool active;
-
   /**
    * Possible alignments for an asset. This is a read-only field. Applicable to
    * the following creative types: RICH_MEDIA_MULTI_FLOATING.
@@ -14060,7 +13571,6 @@ class CreativeAsset {
    * - "ALIGNMENT_TOP"
    */
   core.String alignment;
-
   /**
    * Artwork type of rich media creative. This is a read-only field. Applicable
    * to the following creative types: all RICH_MEDIA.
@@ -14070,26 +13580,22 @@ class CreativeAsset {
    * - "ARTWORK_TYPE_MIXED"
    */
   core.String artworkType;
-
   /**
    * Identifier of this asset. This is the same identifier returned during
    * creative asset insert operation. This is a required field. Applicable to
    * all but the following creative types: all REDIRECT and TRACKING_TEXT.
    */
   CreativeAssetId assetIdentifier;
-
   /**
    * Exit event configured for the backup image. Applicable to the following
    * creative types: all RICH_MEDIA.
    */
   CreativeCustomEvent backupImageExit;
-
   /**
    * Detected bit-rate for video asset. This is a read-only field. Applicable to
    * the following creative types: INSTREAM_VIDEO and all VPAID.
    */
   core.int bitRate;
-
   /**
    * Rich media child asset type. This is a read-only field. Applicable to the
    * following creative types: all VPAID.
@@ -14100,7 +13606,6 @@ class CreativeAsset {
    * - "CHILD_ASSET_TYPE_VIDEO"
    */
   core.String childAssetType;
-
   /**
    * Size of an asset when collapsed. This is a read-only field. Applicable to
    * the following creative types: all RICH_MEDIA and all VPAID. Additionally,
@@ -14108,13 +13613,11 @@ class CreativeAsset {
    * ASSET_DISPLAY_TYPE_PEEL_DOWN.
    */
   Size collapsedSize;
-
   /**
    * Custom start time in seconds for making the asset visible. Applicable to
    * the following creative types: all RICH_MEDIA.
    */
   core.int customStartTimeValue;
-
   /**
    * List of feature dependencies for the creative asset that are detected by
    * DCM. Feature dependencies are features that a browser must be able to
@@ -14123,7 +13626,6 @@ class CreativeAsset {
    * types: ENHANCED_BANNER and HTML5_BANNER.
    */
   core.List<core.String> detectedFeatures;
-
   /**
    * Type of rich media asset. This is a read-only field. Applicable to the
    * following creative types: all RICH_MEDIA.
@@ -14139,13 +13641,11 @@ class CreativeAsset {
    * - "ASSET_DISPLAY_TYPE_VPAID_NON_LINEAR"
    */
   core.String displayType;
-
   /**
    * Duration in seconds for which an asset will be displayed. Applicable to the
    * following creative types: INSTREAM_VIDEO and VPAID_LINEAR.
    */
   core.int duration;
-
   /**
    * Duration type for which an asset will be displayed. Applicable to the
    * following creative types: all RICH_MEDIA.
@@ -14155,58 +13655,49 @@ class CreativeAsset {
    * - "ASSET_DURATION_TYPE_NONE"
    */
   core.String durationType;
-
   /**
    * Detected expanded dimension for video asset. This is a read-only field.
    * Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.
    */
   Size expandedDimension;
-
   /**
    * File size associated with this creative asset. This is a read-only field.
    * Applicable to all but the following creative types: all REDIRECT and
    * TRACKING_TEXT.
    */
   core.String fileSize;
-
   /**
    * Flash version of the asset. This is a read-only field. Applicable to the
    * following creative types: FLASH_INPAGE, ENHANCED_BANNER, all RICH_MEDIA,
    * and all VPAID.
    */
   core.int flashVersion;
-
   /**
    * Whether to hide Flash objects flag for an asset. Applicable to the
    * following creative types: all RICH_MEDIA.
    */
   core.bool hideFlashObjects;
-
   /**
    * Whether to hide selection boxes flag for an asset. Applicable to the
    * following creative types: all RICH_MEDIA.
    */
   core.bool hideSelectionBoxes;
-
   /**
    * Whether the asset is horizontally locked. This is a read-only field.
    * Applicable to the following creative types: all RICH_MEDIA.
    */
   core.bool horizontallyLocked;
-
   /**
    * Numeric ID of this creative asset. This is a required field and should not
    * be modified. Applicable to all but the following creative types: all
    * REDIRECT and TRACKING_TEXT.
    */
   core.String id;
-
   /**
    * Detected MIME type for video asset. This is a read-only field. Applicable
    * to the following creative types: INSTREAM_VIDEO and all VPAID.
    */
   core.String mimeType;
-
   /**
    * Offset position for an asset in collapsed mode. This is a read-only field.
    * Applicable to the following creative types: all RICH_MEDIA and all VPAID.
@@ -14214,19 +13705,16 @@ class CreativeAsset {
    * ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN.
    */
   OffsetPosition offset;
-
   /**
    * Whether the backup asset is original or changed by the user in DCM.
    * Applicable to the following creative types: all RICH_MEDIA.
    */
   core.bool originalBackup;
-
   /**
    * Offset position for an asset. Applicable to the following creative types:
    * all RICH_MEDIA.
    */
   OffsetPosition position;
-
   /**
    * Offset left unit for an asset. This is a read-only field. Applicable to the
    * following creative types: all RICH_MEDIA.
@@ -14236,7 +13724,6 @@ class CreativeAsset {
    * - "OFFSET_UNIT_PIXEL_FROM_CENTER"
    */
   core.String positionLeftUnit;
-
   /**
    * Offset top unit for an asset. This is a read-only field if the asset
    * displayType is ASSET_DISPLAY_TYPE_OVERLAY. Applicable to the following
@@ -14247,13 +13734,11 @@ class CreativeAsset {
    * - "OFFSET_UNIT_PIXEL_FROM_CENTER"
    */
   core.String positionTopUnit;
-
   /**
    * Progressive URL for video asset. This is a read-only field. Applicable to
    * the following creative types: INSTREAM_VIDEO and all VPAID.
    */
   core.String progressiveServingUrl;
-
   /**
    * Whether the asset pushes down other content. Applicable to the following
    * creative types: all RICH_MEDIA. Additionally, only applicable when the
@@ -14261,7 +13746,6 @@ class CreativeAsset {
    * collapsedSize.height is less than size.height.
    */
   core.bool pushdown;
-
   /**
    * Pushdown duration in seconds for an asset. Must be between 0 and 9.99.
    * Applicable to the following creative types: all RICH_MEDIA.Additionally,
@@ -14270,7 +13754,6 @@ class CreativeAsset {
    * less than size.height.
    */
   core.double pushdownDuration;
-
   /**
    * Role of the asset in relation to creative. Applicable to all but the
    * following creative types: all REDIRECT and TRACKING_TEXT. This is a
@@ -14305,7 +13788,6 @@ class CreativeAsset {
    * - "TRANSCODED_VIDEO"
    */
   core.String role;
-
   /**
    * Size associated with this creative asset. This is a required field when
    * applicable; however for IMAGE and FLASH_INPAGE creatives, if left blank,
@@ -14315,13 +13797,11 @@ class CreativeAsset {
    * RICH_MEDIA.
    */
   Size size;
-
   /**
    * Whether the asset is SSL-compliant. This is a read-only field. Applicable
    * to all but the following creative types: all REDIRECT and TRACKING_TEXT.
    */
   core.bool sslCompliant;
-
   /**
    * Initial wait time type before making the asset visible. Applicable to the
    * following creative types: all RICH_MEDIA.
@@ -14330,31 +13810,26 @@ class CreativeAsset {
    * - "ASSET_START_TIME_TYPE_NONE"
    */
   core.String startTimeType;
-
   /**
    * Streaming URL for video asset. This is a read-only field. Applicable to the
    * following creative types: INSTREAM_VIDEO and all VPAID.
    */
   core.String streamingServingUrl;
-
   /**
    * Whether the asset is transparent. Applicable to the following creative
    * types: all RICH_MEDIA. Additionally, only applicable to HTML5 assets.
    */
   core.bool transparency;
-
   /**
    * Whether the asset is vertically locked. This is a read-only field.
    * Applicable to the following creative types: all RICH_MEDIA.
    */
   core.bool verticallyLocked;
-
   /**
    * Detected video duration for video asset. This is a read-only field.
    * Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.
    */
   core.double videoDuration;
-
   /**
    * Window mode options for flash assets. Applicable to the following creative
    * types: FLASH_INPAGE, RICH_MEDIA_EXPANDING, RICH_MEDIA_IM_EXPAND,
@@ -14365,7 +13840,6 @@ class CreativeAsset {
    * - "WINDOW"
    */
   core.String windowMode;
-
   /**
    * zIndex value of an asset. This is a read-only field. Applicable to the
    * following creative types: all RICH_MEDIA.Additionally, only applicable to
@@ -14373,19 +13847,16 @@ class CreativeAsset {
    * ASSET_DISPLAY_TYPE_INPAGE or ASSET_DISPLAY_TYPE_OVERLAY.
    */
   core.int zIndex;
-
   /**
    * File name of zip file. This is a read-only field. Applicable to the
    * following creative types: HTML5_BANNER.
    */
   core.String zipFilename;
-
   /**
    * Size of zip file. This is a read-only field. Applicable to the following
    * creative types: HTML5_BANNER.
    */
   core.String zipFilesize;
-
 
   CreativeAsset();
 
@@ -14650,7 +14121,6 @@ class CreativeAsset {
   }
 }
 
-
 /** Creative Asset ID. */
 class CreativeAssetId {
   /**
@@ -14660,7 +14130,6 @@ class CreativeAssetId {
    * following: ".-_ ". Spaces are allowed.
    */
   core.String name;
-
   /**
    * Type of asset to upload. This is a required field. IMAGE is solely used for
    * IMAGE creatives. Other image assets should use HTML_IMAGE.
@@ -14672,7 +14141,6 @@ class CreativeAssetId {
    * - "VIDEO"
    */
   core.String type;
-
 
   CreativeAssetId();
 
@@ -14697,7 +14165,6 @@ class CreativeAssetId {
   }
 }
 
-
 /**
  * CreativeAssets contains properties of a creative asset file which will be
  * uploaded or has already been uploaded. Refer to the creative sample code for
@@ -14706,13 +14173,11 @@ class CreativeAssetId {
 class CreativeAssetMetadata {
   /** ID of the creative asset. This is a required field. */
   CreativeAssetId assetIdentifier;
-
   /**
    * List of detected click tags for assets. This is a read-only auto-generated
    * field.
    */
   core.List<ClickTag> clickTags;
-
   /**
    * List of feature dependencies for the creative asset that are detected by
    * DCM. Feature dependencies are features that a browser must be able to
@@ -14720,13 +14185,11 @@ class CreativeAssetMetadata {
    * read-only, auto-generated field.
    */
   core.List<core.String> detectedFeatures;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#creativeAssetMetadata".
    */
   core.String kind;
-
   /**
    * Rules validated during code generation that generated a warning. This is a
    * read-only, auto-generated field.
@@ -14755,7 +14218,6 @@ class CreativeAssetMetadata {
    * - "HTML5_FEATURE_UNSUPPORTED' "
    */
   core.List<core.String> warnedValidationRules;
-
 
   CreativeAssetMetadata();
 
@@ -14798,7 +14260,6 @@ class CreativeAssetMetadata {
   }
 }
 
-
 /** Creative Assignment. */
 class CreativeAssignment {
   /**
@@ -14806,7 +14267,6 @@ class CreativeAssignment {
    * included in the ad's rotation.
    */
   core.bool active;
-
   /**
    * Whether applicable event tags should fire when this creative assignment is
    * rendered. If this value is unset when the ad is inserted or updated, it
@@ -14814,38 +14274,31 @@ class CreativeAssignment {
    * INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO.
    */
   core.bool applyEventTags;
-
   /** Click-through URL of the creative assignment. */
   ClickThroughUrl clickThroughUrl;
-
   /**
    * Companion creative overrides for this creative assignment. Applicable to
    * video ads.
    */
   core.List<CompanionClickThroughOverride> companionCreativeOverrides;
-
   /**
    * Creative group assignments for this creative assignment. Only one
    * assignment per creative group number is allowed for a maximum of two
    * assignments.
    */
   core.List<CreativeGroupAssignment> creativeGroupAssignments;
-
   /** ID of the creative to be assigned. This is a required field. */
   core.String creativeId;
-
   /**
    * Dimension value for the ID of the creative. This is a read-only,
    * auto-generated field.
    */
   DimensionValue creativeIdDimensionValue;
-
   /**
    * Date and time that the assigned creative should stop serving. Must be later
    * than the start time.
    */
   core.DateTime endTime;
-
   /**
    * Rich media exit overrides for this creative assignment.
    * Applicable when the creative type is any of the following:
@@ -14862,28 +14315,23 @@ class CreativeAssignment {
    * - VPAID_NON_LINEAR
    */
   core.List<RichMediaExitOverride> richMediaExitOverrides;
-
   /**
    * Sequence number of the creative assignment, applicable when the rotation
    * type is CREATIVE_ROTATION_TYPE_SEQUENTIAL.
    */
   core.int sequence;
-
   /**
    * Whether the creative to be assigned is SSL-compliant. This is a read-only
    * field that is auto-generated when the ad is inserted or updated.
    */
   core.bool sslCompliant;
-
   /** Date and time that the assigned creative should start serving. */
   core.DateTime startTime;
-
   /**
    * Weight of the creative assignment, applicable when the rotation type is
    * CREATIVE_ROTATION_TYPE_RANDOM.
    */
   core.int weight;
-
 
   CreativeAssignment();
 
@@ -14974,15 +14422,12 @@ class CreativeAssignment {
   }
 }
 
-
 /** Creative Custom Event. */
 class CreativeCustomEvent {
   /** Whether the event is active. */
   core.bool active;
-
   /** User-entered name for the event. */
   core.String advertiserCustomEventName;
-
   /**
    * Type of the event. This is a read-only field.
    * Possible string values are:
@@ -14991,13 +14436,11 @@ class CreativeCustomEvent {
    * - "ADVERTISER_EVENT_TIMER"
    */
   core.String advertiserCustomEventType;
-
   /**
    * Artwork label column, used to link events in DCM back to events in Studio.
    * This is a required field and should not be modified after insertion.
    */
   core.String artworkLabel;
-
   /**
    * Artwork type used by the creative.This is a read-only field.
    * Possible string values are:
@@ -15006,22 +14449,18 @@ class CreativeCustomEvent {
    * - "ARTWORK_TYPE_MIXED"
    */
   core.String artworkType;
-
   /** Exit URL of the event. This field is used only for exit events. */
   core.String exitUrl;
-
   /**
    * ID of this event. This is a required field and should not be modified after
    * insertion.
    */
   core.String id;
-
   /**
    * Properties for rich media popup windows. This field is used only for exit
    * events.
    */
   PopupWindowProperties popupWindowProperties;
-
   /**
    * Target type used by the event.
    * Possible string values are:
@@ -15032,12 +14471,10 @@ class CreativeCustomEvent {
    * - "TARGET_TOP"
    */
   core.String targetType;
-
   /**
    * Reporting ID, used to differentiate multiple videos in a single creative.
    */
   core.String videoReportingId;
-
 
   CreativeCustomEvent();
 
@@ -15110,7 +14547,6 @@ class CreativeCustomEvent {
   }
 }
 
-
 /** Contains properties of a creative field. */
 class CreativeField {
   /**
@@ -15118,41 +14554,34 @@ class CreativeField {
    * left blank.
    */
   core.String accountId;
-
   /**
    * Advertiser ID of this creative field. This is a required field on
    * insertion.
    */
   core.String advertiserId;
-
   /**
    * Dimension value for the ID of the advertiser. This is a read-only,
    * auto-generated field.
    */
   DimensionValue advertiserIdDimensionValue;
-
   /** ID of this creative field. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#creativeField".
    */
   core.String kind;
-
   /**
    * Name of this creative field. This is a required field and must be less than
    * 256 characters long and unique among creative fields of the same
    * advertiser.
    */
   core.String name;
-
   /**
    * Subaccount ID of this creative field. This is a read-only field that can be
    * left blank.
    */
   core.String subaccountId;
-
 
   CreativeField();
 
@@ -15207,15 +14636,12 @@ class CreativeField {
   }
 }
 
-
 /** Creative Field Assignment. */
 class CreativeFieldAssignment {
   /** ID of the creative field. */
   core.String creativeFieldId;
-
   /** ID of the creative field value. */
   core.String creativeFieldValueId;
-
 
   CreativeFieldAssignment();
 
@@ -15240,26 +14666,22 @@ class CreativeFieldAssignment {
   }
 }
 
-
 /** Contains properties of a creative field value. */
 class CreativeFieldValue {
   /**
    * ID of this creative field value. This is a read-only, auto-generated field.
    */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#creativeFieldValue".
    */
   core.String kind;
-
   /**
    * Value of this creative field value. It needs to be less than 256 characters
    * in length and unique per creative field.
    */
   core.String value;
-
 
   CreativeFieldValue();
 
@@ -15290,21 +14712,17 @@ class CreativeFieldValue {
   }
 }
 
-
 /** Creative Field Value List Response */
 class CreativeFieldValuesListResponse {
   /** Creative field value collection. */
   core.List<CreativeFieldValue> creativeFieldValues;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#creativeFieldValuesListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   CreativeFieldValuesListResponse();
 
@@ -15335,21 +14753,17 @@ class CreativeFieldValuesListResponse {
   }
 }
 
-
 /** Creative Field List Response */
 class CreativeFieldsListResponse {
   /** Creative field collection. */
   core.List<CreativeField> creativeFields;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#creativeFieldsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   CreativeFieldsListResponse();
 
@@ -15380,7 +14794,6 @@ class CreativeFieldsListResponse {
   }
 }
 
-
 /** Contains properties of a creative group. */
 class CreativeGroup {
   /**
@@ -15388,19 +14801,16 @@ class CreativeGroup {
    * left blank.
    */
   core.String accountId;
-
   /**
    * Advertiser ID of this creative group. This is a required field on
    * insertion.
    */
   core.String advertiserId;
-
   /**
    * Dimension value for the ID of the advertiser. This is a read-only,
    * auto-generated field.
    */
   DimensionValue advertiserIdDimensionValue;
-
   /**
    * Subgroup of the creative group. Assign your creative groups to one of the
    * following subgroups in order to filter or manage them more easily. This
@@ -15410,29 +14820,24 @@ class CreativeGroup {
    * - 2
    */
   core.int groupNumber;
-
   /** ID of this creative group. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#creativeGroup".
    */
   core.String kind;
-
   /**
    * Name of this creative group. This is a required field and must be less than
    * 256 characters long and unique among creative groups of the same
    * advertiser.
    */
   core.String name;
-
   /**
    * Subaccount ID of this creative group. This is a read-only field that can be
    * left blank.
    */
   core.String subaccountId;
-
 
   CreativeGroup();
 
@@ -15493,12 +14898,10 @@ class CreativeGroup {
   }
 }
 
-
 /** Creative Group Assignment. */
 class CreativeGroupAssignment {
   /** ID of the creative group to be assigned. */
   core.String creativeGroupId;
-
   /**
    * Creative group number of the creative group assignment.
    * Possible string values are:
@@ -15506,7 +14909,6 @@ class CreativeGroupAssignment {
    * - "CREATIVE_GROUP_TWO"
    */
   core.String creativeGroupNumber;
-
 
   CreativeGroupAssignment();
 
@@ -15531,21 +14933,17 @@ class CreativeGroupAssignment {
   }
 }
 
-
 /** Creative Group List Response */
 class CreativeGroupsListResponse {
   /** Creative group collection. */
   core.List<CreativeGroup> creativeGroups;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#creativeGroupsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   CreativeGroupsListResponse();
 
@@ -15576,7 +14974,6 @@ class CreativeGroupsListResponse {
   }
 }
 
-
 /** Creative optimization settings. */
 class CreativeOptimizationConfiguration {
   /**
@@ -15584,16 +14981,13 @@ class CreativeOptimizationConfiguration {
    * the campaign is inserted or updated. It can be null for existing campaigns.
    */
   core.String id;
-
   /**
    * Name of this creative optimization config. This is a required field and
    * must be less than 129 characters long.
    */
   core.String name;
-
   /** List of optimization activities associated with this configuration. */
   core.List<OptimizationActivity> optimizationActivitys;
-
   /**
    * Optimization model for this configuration.
    * Possible string values are:
@@ -15603,7 +14997,6 @@ class CreativeOptimizationConfiguration {
    * - "POST_IMPRESSION"
    */
   core.String optimizationModel;
-
 
   CreativeOptimizationConfiguration();
 
@@ -15640,12 +15033,10 @@ class CreativeOptimizationConfiguration {
   }
 }
 
-
 /** Creative Rotation. */
 class CreativeRotation {
   /** Creative assignments in this creative rotation. */
   core.List<CreativeAssignment> creativeAssignments;
-
   /**
    * Creative optimization configuration that is used by this ad. It should
    * refer to one of the existing optimization configurations in the ad's
@@ -15653,7 +15044,6 @@ class CreativeRotation {
    * optimization configuration will be used for this ad.
    */
   core.String creativeOptimizationConfigurationId;
-
   /**
    * Type of creative rotation. Can be used to specify whether to use sequential
    * or random rotation.
@@ -15662,7 +15052,6 @@ class CreativeRotation {
    * - "CREATIVE_ROTATION_TYPE_SEQUENTIAL"
    */
   core.String type;
-
   /**
    * Strategy for calculating weights. Used with CREATIVE_ROTATION_TYPE_RANDOM.
    * Possible string values are:
@@ -15672,7 +15061,6 @@ class CreativeRotation {
    * - "WEIGHT_STRATEGY_OPTIMIZED"
    */
   core.String weightCalculationStrategy;
-
 
   CreativeRotation();
 
@@ -15709,7 +15097,6 @@ class CreativeRotation {
   }
 }
 
-
 /** Creative Settings */
 class CreativeSettings {
   /**
@@ -15717,13 +15104,11 @@ class CreativeSettings {
    * characters long.
    */
   core.String iFrameFooter;
-
   /**
    * Header text for iFrames for this site. Must be less than or equal to 2000
    * characters long.
    */
   core.String iFrameHeader;
-
 
   CreativeSettings();
 
@@ -15748,21 +15133,17 @@ class CreativeSettings {
   }
 }
 
-
 /** Creative List Response */
 class CreativesListResponse {
   /** Creative collection. */
   core.List<Creative> creatives;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#creativesListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   CreativesListResponse();
 
@@ -15793,7 +15174,6 @@ class CreativesListResponse {
   }
 }
 
-
 /**
  * Represents fields that are compatible to be selected for a report of type
  * "CROSS_DIMENSION_REACH".
@@ -15804,31 +15184,26 @@ class CrossDimensionReachReportCompatibleFields {
    * of the report.
    */
   core.List<Dimension> breakdown;
-
   /**
    * Dimensions which are compatible to be selected in the "dimensionFilters"
    * section of the report.
    */
   core.List<Dimension> dimensionFilters;
-
   /**
    * The kind of resource this is, in this case
    * dfareporting#crossDimensionReachReportCompatibleFields.
    */
   core.String kind;
-
   /**
    * Metrics which are compatible to be selected in the "metricNames" section of
    * the report.
    */
   core.List<Metric> metrics;
-
   /**
    * Metrics which are compatible to be selected in the "overlapMetricNames"
    * section of the report.
    */
   core.List<Metric> overlapMetrics;
-
 
   CrossDimensionReachReportCompatibleFields();
 
@@ -15871,7 +15246,6 @@ class CrossDimensionReachReportCompatibleFields {
   }
 }
 
-
 /** Represents a Custom Rich Media Events group. */
 class CustomRichMediaEvents {
   /**
@@ -15879,13 +15253,11 @@ class CustomRichMediaEvents {
    * dfa:richMediaEventTypeIdAndName.
    */
   core.List<DimensionValue> filteredEventIds;
-
   /**
    * The kind of resource this is, in this case
    * dfareporting#customRichMediaEvents.
    */
   core.String kind;
-
 
   CustomRichMediaEvents();
 
@@ -15910,7 +15282,6 @@ class CustomRichMediaEvents {
   }
 }
 
-
 /** Represents a date range. */
 class DateRange {
   /**
@@ -15918,10 +15289,8 @@ class DateRange {
    * "yyyy-MM-dd".
    */
   core.DateTime endDate;
-
   /** The kind of resource this is, in this case dfareporting#dateRange. */
   core.String kind;
-
   /**
    * The date range relative to the date of when the report is run.
    * Possible string values are:
@@ -15942,13 +15311,11 @@ class DateRange {
    * - "YESTERDAY"
    */
   core.String relativeDateRange;
-
   /**
    * The start date of the date range, inclusive. A string of the format:
    * "yyyy-MM-dd".
    */
   core.DateTime startDate;
-
 
   DateRange();
 
@@ -15985,7 +15352,6 @@ class DateRange {
   }
 }
 
-
 /** Day Part Targeting. */
 class DayPartTargeting {
   /**
@@ -16001,7 +15367,6 @@ class DayPartTargeting {
    * - "SATURDAY"
    */
   core.List<core.String> daysOfWeek;
-
   /**
    * Hours of the day when the ad will serve. Must be an integer between 0 and
    * 23 (inclusive), where 0 is midnight to 1 AM, and 23 is 11 PM to midnight.
@@ -16012,13 +15377,11 @@ class DayPartTargeting {
    * 9-10am and 3-5pm.
    */
   core.List<core.int> hoursOfDay;
-
   /**
    * Whether or not to use the user's local time. If false, the America/New York
    * time zone applies.
    */
   core.bool userLocalTime;
-
 
   DayPartTargeting();
 
@@ -16049,7 +15412,6 @@ class DayPartTargeting {
   }
 }
 
-
 /**
  * Properties of inheriting and overriding the default click-through event tag.
  * A campaign may override the event tag defined at the advertiser level, and an
@@ -16061,13 +15423,11 @@ class DefaultClickThroughEventTagProperties {
    * scope.
    */
   core.String defaultClickThroughEventTagId;
-
   /**
    * Whether this entity should override the inherited default click-through
    * event tag with its own defined value.
    */
   core.bool overrideInheritedEventTag;
-
 
   DefaultClickThroughEventTagProperties();
 
@@ -16092,7 +15452,6 @@ class DefaultClickThroughEventTagProperties {
   }
 }
 
-
 /** Delivery Schedule. */
 class DeliverySchedule {
   /**
@@ -16100,14 +15459,12 @@ class DeliverySchedule {
    * a specified period of time.
    */
   FrequencyCap frequencyCap;
-
   /**
    * Whether or not hard cutoff is enabled. If true, the ad will not serve after
    * the end date and time. Otherwise the ad will continue to be served until it
    * has reached its delivery goals.
    */
   core.bool hardCutoff;
-
   /**
    * Impression ratio for this ad. This ratio determines how often each ad is
    * served relative to the others. For example, if ad A has an impression ratio
@@ -16115,7 +15472,6 @@ class DeliverySchedule {
    * times as often as ad A. Must be between 1 and 10.
    */
   core.String impressionRatio;
-
   /**
    * Serving priority of an ad, with respect to other ads. The lower the
    * priority number, the greater the priority with which it is served.
@@ -16138,7 +15494,6 @@ class DeliverySchedule {
    * - "AD_PRIORITY_16"
    */
   core.String priority;
-
 
   DeliverySchedule();
 
@@ -16175,27 +15530,21 @@ class DeliverySchedule {
   }
 }
 
-
 /** DFP Settings */
 class DfpSettings {
   /** DFP network code for this directory site. */
   core.String dfpNetworkCode;
-
   /** DFP network name for this directory site. */
   core.String dfpNetworkName;
-
   /** Whether this directory site accepts programmatic placements. */
   core.bool programmaticPlacementAccepted;
-
   /** Whether this directory site accepts publisher-paid tags. */
   core.bool pubPaidPlacementAccepted;
-
   /**
    * Whether this directory site is available only via DoubleClick Publisher
    * Portal.
    */
   core.bool publisherPortalOnly;
-
 
   DfpSettings();
 
@@ -16238,15 +15587,12 @@ class DfpSettings {
   }
 }
 
-
 /** Represents a dimension. */
 class Dimension {
   /** The kind of resource this is, in this case dfareporting#dimension. */
   core.String kind;
-
   /** The dimension name, e.g. dfa:advertiser */
   core.String name;
-
 
   Dimension();
 
@@ -16271,20 +15617,16 @@ class Dimension {
   }
 }
 
-
 /** Represents a dimension filter. */
 class DimensionFilter {
   /** The name of the dimension to filter. */
   core.String dimensionName;
-
   /**
    * The kind of resource this is, in this case dfareporting#dimensionFilter.
    */
   core.String kind;
-
   /** The value of the dimension to filter. */
   core.String value;
-
 
   DimensionFilter();
 
@@ -16315,23 +15657,18 @@ class DimensionFilter {
   }
 }
 
-
 /** Represents a DimensionValue resource. */
 class DimensionValue {
   /** The name of the dimension. */
   core.String dimensionName;
-
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The ID associated with the value if available. */
   core.String id;
-
   /**
    * The kind of resource this is, in this case dfareporting#dimensionValue.
    */
   core.String kind;
-
   /**
    * Determines how the 'value' field is matched when filtering. If not
    * specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is allowed
@@ -16345,10 +15682,8 @@ class DimensionValue {
    * - "WILDCARD_EXPRESSION"
    */
   core.String matchType;
-
   /** The value of the dimension. */
   core.String value;
-
 
   DimensionValue();
 
@@ -16397,20 +15732,16 @@ class DimensionValue {
   }
 }
 
-
 /** Represents the list of DimensionValue resources. */
 class DimensionValueList {
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The dimension values returned in this response. */
   core.List<DimensionValue> items;
-
   /**
    * The kind of list this is, in this case dfareporting#dimensionValueList.
    */
   core.String kind;
-
   /**
    * Continuation token used to page through dimension values. To retrieve the
    * next page of results, set the next request's "pageToken" to the value of
@@ -16418,7 +15749,6 @@ class DimensionValueList {
    * should not be persisted.
    */
   core.String nextPageToken;
-
 
   DimensionValueList();
 
@@ -16455,33 +15785,27 @@ class DimensionValueList {
   }
 }
 
-
 /** Represents a DimensionValuesRequest. */
 class DimensionValueRequest {
   /** The name of the dimension for which values should be requested. */
   core.String dimensionName;
-
   /**
    * The end date of the date range for which to retrieve dimension values. A
    * string of the format "yyyy-MM-dd".
    */
   core.DateTime endDate;
-
   /** The list of filters by which to filter values. The filters are ANDed. */
   core.List<DimensionFilter> filters;
-
   /**
    * The kind of request this is, in this case
    * dfareporting#dimensionValueRequest.
    */
   core.String kind;
-
   /**
    * The start date of the date range for which to retrieve dimension values. A
    * string of the format "yyyy-MM-dd".
    */
   core.DateTime startDate;
-
 
   DimensionValueRequest();
 
@@ -16524,7 +15848,6 @@ class DimensionValueRequest {
   }
 }
 
-
 /**
  * DirectorySites contains properties of a website from the Site Directory.
  * Sites need to be added to an account via the Sites resource before they can
@@ -16533,13 +15856,10 @@ class DimensionValueRequest {
 class DirectorySite {
   /** Whether this directory site is active. */
   core.bool active;
-
   /** Directory site contacts. */
   core.List<DirectorySiteContactAssignment> contactAssignments;
-
   /** Country ID of this directory site. */
   core.String countryId;
-
   /**
    * Currency ID of this directory site.
    * Possible values are:
@@ -16581,19 +15901,15 @@ class DirectorySite {
    * - "36" for GTQ
    */
   core.String currencyId;
-
   /** Description of this directory site. */
   core.String description;
-
   /** ID of this directory site. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Dimension value for the ID of this directory site. This is a read-only,
    * auto-generated field.
    */
   DimensionValue idDimensionValue;
-
   /**
    * Tag types for regular placements.
    *
@@ -16604,7 +15920,6 @@ class DirectorySite {
    * - "JAVASCRIPT_INPAGE"
    */
   core.List<core.String> inpageTagFormats;
-
   /**
    * Tag types for interstitial placements.
    *
@@ -16614,25 +15929,19 @@ class DirectorySite {
    * - "JAVASCRIPT_INTERSTITIAL"
    */
   core.List<core.String> interstitialTagFormats;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#directorySite".
    */
   core.String kind;
-
   /** Name of this directory site. */
   core.String name;
-
   /** Parent directory site ID. */
   core.String parentId;
-
   /** Directory site settings. */
   DirectorySiteSettings settings;
-
   /** URL of this directory site. */
   core.String url;
-
 
   DirectorySite();
 
@@ -16729,30 +16038,24 @@ class DirectorySite {
   }
 }
 
-
 /** Contains properties of a Site Directory contact. */
 class DirectorySiteContact {
   /** Email address of this directory site contact. */
   core.String email;
-
   /** First name of this directory site contact. */
   core.String firstName;
-
   /**
    * ID of this directory site contact. This is a read-only, auto-generated
    * field.
    */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#directorySiteContact".
    */
   core.String kind;
-
   /** Last name of this directory site contact. */
   core.String lastName;
-
   /**
    * Directory site contact role.
    * Possible string values are:
@@ -16761,7 +16064,6 @@ class DirectorySiteContact {
    * - "VIEW"
    */
   core.String role;
-
   /**
    * Directory site contact type.
    * Possible string values are:
@@ -16771,7 +16073,6 @@ class DirectorySiteContact {
    * - "TECHNICAL"
    */
   core.String type;
-
 
   DirectorySiteContact();
 
@@ -16826,7 +16127,6 @@ class DirectorySiteContact {
   }
 }
 
-
 /** Directory Site Contact Assignment */
 class DirectorySiteContactAssignment {
   /**
@@ -16834,7 +16134,6 @@ class DirectorySiteContactAssignment {
    * field.
    */
   core.String contactId;
-
   /**
    * Visibility of this directory site contact assignment. When set to PUBLIC
    * this contact assignment is visible to all account and agency users; when
@@ -16844,7 +16143,6 @@ class DirectorySiteContactAssignment {
    * - "PUBLIC"
    */
   core.String visibility;
-
 
   DirectorySiteContactAssignment();
 
@@ -16869,21 +16167,17 @@ class DirectorySiteContactAssignment {
   }
 }
 
-
 /** Directory Site Contact List Response */
 class DirectorySiteContactsListResponse {
   /** Directory site contact collection */
   core.List<DirectorySiteContact> directorySiteContacts;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#directorySiteContactsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   DirectorySiteContactsListResponse();
 
@@ -16914,36 +16208,28 @@ class DirectorySiteContactsListResponse {
   }
 }
 
-
 /** Directory Site Settings */
 class DirectorySiteSettings {
   /** Whether this directory site has disabled active view creatives. */
   core.bool activeViewOptOut;
-
   /** Directory site DFP settings. */
   DfpSettings dfpSettings;
-
   /** Whether this site accepts in-stream video ads. */
   core.bool instreamVideoPlacementAccepted;
-
   /** Whether this site accepts interstitial ads. */
   core.bool interstitialPlacementAccepted;
-
   /** Whether this directory site has disabled Nielsen OCR reach ratings. */
   core.bool nielsenOcrOptOut;
-
   /**
    * Whether this directory site has disabled generation of Verification ins
    * tags.
    */
   core.bool verificationTagOptOut;
-
   /**
    * Whether this directory site has disabled active view for in-stream video
    * creatives.
    */
   core.bool videoActiveViewOptOut;
-
 
   DirectorySiteSettings();
 
@@ -16998,21 +16284,17 @@ class DirectorySiteSettings {
   }
 }
 
-
 /** Directory Site List Response */
 class DirectorySitesListResponse {
   /** Directory site collection. */
   core.List<DirectorySite> directorySites;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#directorySitesListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   DirectorySitesListResponse();
 
@@ -17043,7 +16325,6 @@ class DirectorySitesListResponse {
   }
 }
 
-
 /** Contains properties of an event tag. */
 class EventTag {
   /**
@@ -17051,52 +16332,43 @@ class EventTag {
    * blank.
    */
   core.String accountId;
-
   /**
    * Advertiser ID of this event tag. This field or the campaignId field is
    * required on insertion.
    */
   core.String advertiserId;
-
   /**
    * Dimension value for the ID of the advertiser. This is a read-only,
    * auto-generated field.
    */
   DimensionValue advertiserIdDimensionValue;
-
   /**
    * Campaign ID of this event tag. This field or the advertiserId field is
    * required on insertion.
    */
   core.String campaignId;
-
   /**
    * Dimension value for the ID of the campaign. This is a read-only,
    * auto-generated field.
    */
   DimensionValue campaignIdDimensionValue;
-
   /**
    * Whether this event tag should be automatically enabled for all of the
    * advertiser's campaigns and ads.
    */
   core.bool enabledByDefault;
-
   /** ID of this event tag. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#eventTag".
    */
   core.String kind;
-
   /**
    * Name of this event tag. This is a required field and must be less than 256
    * characters long.
    */
   core.String name;
-
   /**
    * Site filter type for this event tag. If no type is specified then the event
    * tag will be applied to all sites.
@@ -17105,16 +16377,13 @@ class EventTag {
    * - "WHITELIST"
    */
   core.String siteFilterType;
-
   /**
    * Filter list of site IDs associated with this event tag. The siteFilterType
    * determines whether this is a whitelist or blacklist filter.
    */
   core.List<core.String> siteIds;
-
   /** Whether this tag is SSL-compliant or not. */
   core.bool sslCompliant;
-
   /**
    * Status of this event tag. Must be ENABLED for this event tag to fire. This
    * is a required field.
@@ -17123,13 +16392,11 @@ class EventTag {
    * - "ENABLED"
    */
   core.String status;
-
   /**
    * Subaccount ID of this event tag. This is a read-only field that can be left
    * blank.
    */
   core.String subaccountId;
-
   /**
    * Event tag type. Can be used to specify whether to use a third-party pixel,
    * a third-party JavaScript URL, or a third-party click-through URL for either
@@ -17140,21 +16407,18 @@ class EventTag {
    * - "IMPRESSION_JAVASCRIPT_EVENT_TAG"
    */
   core.String type;
-
   /**
    * Payload URL for this event tag. The URL on a click-through event tag should
    * have a landing page URL appended to the end of it. This field is required
    * on insertion.
    */
   core.String url;
-
   /**
    * Number of times the landing page URL should be URL-escaped before being
    * appended to the click-through event tag URL. Only applies to click-through
    * event tags as specified by the event tag type.
    */
   core.int urlEscapeLevels;
-
 
   EventTag();
 
@@ -17269,17 +16533,14 @@ class EventTag {
   }
 }
 
-
 /** Event tag override information. */
 class EventTagOverride {
   /** Whether this override is enabled. */
   core.bool enabled;
-
   /**
    * ID of this event tag override. This is a read-only, auto-generated field.
    */
   core.String id;
-
 
   EventTagOverride();
 
@@ -17304,18 +16565,15 @@ class EventTagOverride {
   }
 }
 
-
 /** Event Tag List Response */
 class EventTagsListResponse {
   /** Event tag collection. */
   core.List<EventTag> eventTags;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#eventTagsListResponse".
    */
   core.String kind;
-
 
   EventTagsListResponse();
 
@@ -17340,15 +16598,12 @@ class EventTagsListResponse {
   }
 }
 
-
 /** The URLs where the completed report file can be downloaded. */
 class FileUrls {
   /** The URL for downloading the report data through the API. */
   core.String apiUrl;
-
   /** The URL for downloading the report data through a browser. */
   core.String browserUrl;
-
 
   FileUrls();
 
@@ -17373,7 +16628,6 @@ class FileUrls {
   }
 }
 
-
 /**
  * Represents a File resource. A file contains the metadata for a report run. It
  * shows the status of the run and holds the URLs to the generated report data
@@ -17385,13 +16639,10 @@ class File {
    * always be the absolute date range for which the report is run.
    */
   DateRange dateRange;
-
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The filename of the file. */
   core.String fileName;
-
   /**
    * The output format of the report. Only available once the file is available.
    * Possible string values are:
@@ -17399,21 +16650,16 @@ class File {
    * - "EXCEL"
    */
   core.String format;
-
   /** The unique ID of this report file. */
   core.String id;
-
   /** The kind of resource this is, in this case dfareporting#file. */
   core.String kind;
-
   /**
    * The timestamp in milliseconds since epoch when this file was last modified.
    */
   core.String lastModifiedTime;
-
   /** The ID of the report this file was generated from. */
   core.String reportId;
-
   /**
    * The status of the report file.
    * Possible string values are:
@@ -17423,10 +16669,8 @@ class File {
    * - "REPORT_AVAILABLE"
    */
   core.String status;
-
   /** The URLs where the completed report file can be downloaded. */
   FileUrls urls;
-
 
   File();
 
@@ -17499,18 +16743,14 @@ class File {
   }
 }
 
-
 /** Represents the list of File resources. */
 class FileList {
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The files returned in this response. */
   core.List<File> items;
-
   /** The kind of list this is, in this case dfareporting#fileList. */
   core.String kind;
-
   /**
    * Continuation token used to page through files. To retrieve the next page of
    * results, set the next request's "pageToken" to the value of this field. The
@@ -17518,7 +16758,6 @@ class FileList {
    * persisted.
    */
   core.String nextPageToken;
-
 
   FileList();
 
@@ -17555,18 +16794,15 @@ class FileList {
   }
 }
 
-
 /** Floodlight Activity GenerateTag Response */
 class FloodlightActivitiesGenerateTagResponse {
   /** Generated tag for this floodlight activity. */
   core.String floodlightActivityTag;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#floodlightActivitiesGenerateTagResponse".
    */
   core.String kind;
-
 
   FloodlightActivitiesGenerateTagResponse();
 
@@ -17591,21 +16827,17 @@ class FloodlightActivitiesGenerateTagResponse {
   }
 }
 
-
 /** Floodlight Activity List Response */
 class FloodlightActivitiesListResponse {
   /** Floodlight activity collection. */
   core.List<FloodlightActivity> floodlightActivities;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#floodlightActivitiesListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   FloodlightActivitiesListResponse();
 
@@ -17636,7 +16868,6 @@ class FloodlightActivitiesListResponse {
   }
 }
 
-
 /** Contains properties of a Floodlight activity. */
 class FloodlightActivity {
   /**
@@ -17644,20 +16875,17 @@ class FloodlightActivity {
    * be left blank.
    */
   core.String accountId;
-
   /**
    * Advertiser ID of this floodlight activity. If this field is left blank, the
    * value will be copied over either from the activity group's advertiser or
    * the existing activity's advertiser.
    */
   core.String advertiserId;
-
   /**
    * Dimension value for the ID of the advertiser. This is a read-only,
    * auto-generated field.
    */
   DimensionValue advertiserIdDimensionValue;
-
   /**
    * Code type used for cache busting in the generated tag.
    * Possible string values are:
@@ -17668,7 +16896,6 @@ class FloodlightActivity {
    * - "PHP"
    */
   core.String cacheBustingType;
-
   /**
    * Counting method for conversions for this floodlight activity. This is a
    * required field.
@@ -17680,34 +16907,28 @@ class FloodlightActivity {
    * - "UNIQUE_COUNTING"
    */
   core.String countingMethod;
-
   /** Dynamic floodlight tags. */
   core.List<FloodlightActivityDynamicTag> defaultTags;
-
   /**
    * URL where this tag will be deployed. If specified, must be less than 256
    * characters long.
    */
   core.String expectedUrl;
-
   /**
    * Floodlight activity group ID of this floodlight activity. This is a
    * required field.
    */
   core.String floodlightActivityGroupId;
-
   /**
    * Name of the associated floodlight activity group. This is a read-only
    * field.
    */
   core.String floodlightActivityGroupName;
-
   /**
    * Tag string of the associated floodlight activity group. This is a read-only
    * field.
    */
   core.String floodlightActivityGroupTagString;
-
   /**
    * Type of the associated floodlight activity group. This is a read-only
    * field.
@@ -17716,7 +16937,6 @@ class FloodlightActivity {
    * - "SALE"
    */
   core.String floodlightActivityGroupType;
-
   /**
    * Floodlight configuration ID of this floodlight activity. If this field is
    * left blank, the value will be copied over either from the activity group's
@@ -17724,66 +16944,52 @@ class FloodlightActivity {
    * configuration.
    */
   core.String floodlightConfigurationId;
-
   /**
    * Dimension value for the ID of the floodlight configuration. This is a
    * read-only, auto-generated field.
    */
   DimensionValue floodlightConfigurationIdDimensionValue;
-
   /** Whether this activity is archived. */
   core.bool hidden;
-
   /**
    * ID of this floodlight activity. This is a read-only, auto-generated field.
    */
   core.String id;
-
   /**
    * Dimension value for the ID of this floodlight activity. This is a
    * read-only, auto-generated field.
    */
   DimensionValue idDimensionValue;
-
   /** Whether the image tag is enabled for this activity. */
   core.bool imageTagEnabled;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#floodlightActivity".
    */
   core.String kind;
-
   /**
    * Name of this floodlight activity. This is a required field. Must be less
    * than 129 characters long and cannot contain quotes.
    */
   core.String name;
-
   /** General notes or implementation instructions for the tag. */
   core.String notes;
-
   /** Publisher dynamic floodlight tags. */
   core.List<FloodlightActivityPublisherDynamicTag> publisherTags;
-
   /** Whether this tag should use SSL. */
   core.bool secure;
-
   /**
    * Whether the floodlight activity is SSL-compliant. This is a read-only
    * field, its value detected by the system from the floodlight tags.
    */
   core.bool sslCompliant;
-
   /** Whether this floodlight activity must be SSL-compliant. */
   core.bool sslRequired;
-
   /**
    * Subaccount ID of this floodlight activity. This is a read-only field that
    * can be left blank.
    */
   core.String subaccountId;
-
   /**
    * Tag format type for the floodlight activity. If left blank, the tag format
    * will default to HTML.
@@ -17792,7 +16998,6 @@ class FloodlightActivity {
    * - "XHTML"
    */
   core.String tagFormat;
-
   /**
    * Value of the cat= paramter in the floodlight tag, which the ad servers use
    * to identify the activity. This is optional: if empty, a new tag string will
@@ -17802,7 +17007,6 @@ class FloodlightActivity {
    * read-only after insertion.
    */
   core.String tagString;
-
   /**
    * List of the user-defined variables used by this conversion tag. These map
    * to the "u[1-20]=" in the tags. Each of these can have a user defined type.
@@ -17829,7 +17033,6 @@ class FloodlightActivity {
    * - "U20"
    */
   core.List<core.String> userDefinedVariableTypes;
-
 
   FloodlightActivity();
 
@@ -18010,18 +17213,14 @@ class FloodlightActivity {
   }
 }
 
-
 /** Dynamic Tag */
 class FloodlightActivityDynamicTag {
   /** ID of this dynamic tag. This is a read-only, auto-generated field. */
   core.String id;
-
   /** Name of this tag. */
   core.String name;
-
   /** Tag code. */
   core.String tag;
-
 
   FloodlightActivityDynamicTag();
 
@@ -18052,7 +17251,6 @@ class FloodlightActivityDynamicTag {
   }
 }
 
-
 /** Contains properties of a Floodlight activity group. */
 class FloodlightActivityGroup {
   /**
@@ -18060,7 +17258,6 @@ class FloodlightActivityGroup {
    * that can be left blank.
    */
   core.String accountId;
-
   /**
    * Advertiser ID of this floodlight activity group. If this field is left
    * blank, the value will be copied over either from the floodlight
@@ -18068,55 +17265,46 @@ class FloodlightActivityGroup {
    * advertiser.
    */
   core.String advertiserId;
-
   /**
    * Dimension value for the ID of the advertiser. This is a read-only,
    * auto-generated field.
    */
   DimensionValue advertiserIdDimensionValue;
-
   /**
    * Floodlight configuration ID of this floodlight activity group. This is a
    * required field.
    */
   core.String floodlightConfigurationId;
-
   /**
    * Dimension value for the ID of the floodlight configuration. This is a
    * read-only, auto-generated field.
    */
   DimensionValue floodlightConfigurationIdDimensionValue;
-
   /**
    * ID of this floodlight activity group. This is a read-only, auto-generated
    * field.
    */
   core.String id;
-
   /**
    * Dimension value for the ID of this floodlight activity group. This is a
    * read-only, auto-generated field.
    */
   DimensionValue idDimensionValue;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#floodlightActivityGroup".
    */
   core.String kind;
-
   /**
    * Name of this floodlight activity group. This is a required field. Must be
    * less than 65 characters long and cannot contain quotes.
    */
   core.String name;
-
   /**
    * Subaccount ID of this floodlight activity group. This is a read-only field
    * that can be left blank.
    */
   core.String subaccountId;
-
   /**
    * Value of the type= parameter in the floodlight tag, which the ad servers
    * use to identify the activity group that the activity belongs to. This is
@@ -18127,7 +17315,6 @@ class FloodlightActivityGroup {
    * insertion.
    */
   core.String tagString;
-
   /**
    * Type of the floodlight activity group. This is a required field that is
    * read-only after insertion.
@@ -18136,7 +17323,6 @@ class FloodlightActivityGroup {
    * - "SALE"
    */
   core.String type;
-
 
   FloodlightActivityGroup();
 
@@ -18221,21 +17407,17 @@ class FloodlightActivityGroup {
   }
 }
 
-
 /** Floodlight Activity Group List Response */
 class FloodlightActivityGroupsListResponse {
   /** Floodlight activity group collection. */
   core.List<FloodlightActivityGroup> floodlightActivityGroups;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#floodlightActivityGroupsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
 
   FloodlightActivityGroupsListResponse();
 
@@ -18266,34 +17448,27 @@ class FloodlightActivityGroupsListResponse {
   }
 }
 
-
 /** Publisher Dynamic Tag */
 class FloodlightActivityPublisherDynamicTag {
   /** Whether this tag is applicable only for click-throughs. */
   core.bool clickThrough;
-
   /**
    * Directory site ID of this dynamic tag. This is a write-only field that can
    * be used as an alternative to the siteId field. When this resource is
    * retrieved, only the siteId field will be populated.
    */
   core.String directorySiteId;
-
   /** Dynamic floodlight tag. */
   FloodlightActivityDynamicTag dynamicTag;
-
   /** Site ID of this dynamic tag. */
   core.String siteId;
-
   /**
    * Dimension value for the ID of the site. This is a read-only, auto-generated
    * field.
    */
   DimensionValue siteIdDimensionValue;
-
   /** Whether this tag is applicable only for view-throughs. */
   core.bool viewThrough;
-
 
   FloodlightActivityPublisherDynamicTag();
 
@@ -18342,7 +17517,6 @@ class FloodlightActivityPublisherDynamicTag {
   }
 }
 
-
 /** Contains properties of a Floodlight configuration. */
 class FloodlightConfiguration {
   /**
@@ -18350,28 +17524,23 @@ class FloodlightConfiguration {
    * can be left blank.
    */
   core.String accountId;
-
   /**
    * Advertiser ID of the parent advertiser of this floodlight configuration.
    */
   core.String advertiserId;
-
   /**
    * Dimension value for the ID of the advertiser. This is a read-only,
    * auto-generated field.
    */
   DimensionValue advertiserIdDimensionValue;
-
   /** Whether advertiser data is shared with Google Analytics. */
   core.bool analyticsDataSharingEnabled;
-
   /**
    * Whether the exposure-to-conversion report is enabled. This report shows
    * detailed pathway information on up to 10 of the most recent ad exposures
    * seen by a user before converting.
    */
   core.bool exposureToConversionEnabled;
-
   /**
    * Day that will be counted as the first day of the week in reports. This is a
    * required field.
@@ -18380,28 +17549,23 @@ class FloodlightConfiguration {
    * - "SUNDAY"
    */
   core.String firstDayOfWeek;
-
   /**
    * ID of this floodlight configuration. This is a read-only, auto-generated
    * field.
    */
   core.String id;
-
   /**
    * Dimension value for the ID of this floodlight configuration. This is a
    * read-only, auto-generated field.
    */
   DimensionValue idDimensionValue;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#floodlightConfiguration".
    */
   core.String kind;
-
   /** Lookback window settings for this floodlight configuration. */
   LookbackConfiguration lookbackConfiguration;
-
   /**
    * Types of attribution options for natural search conversions.
    * Possible string values are:
@@ -18410,16 +17574,13 @@ class FloodlightConfiguration {
    * - "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION"
    */
   core.String naturalSearchConversionAttributionOption;
-
   /** Settings for DCM Omniture integration. */
   OmnitureSettings omnitureSettings;
-
   /**
    * Whether floodlight activities owned by this configuration are required to
    * be SSL-compliant.
    */
   core.bool sslRequired;
-
   /**
    * List of standard variables enabled for this configuration.
    *
@@ -18428,19 +17589,15 @@ class FloodlightConfiguration {
    * - "NUM"
    */
   core.List<core.String> standardVariableTypes;
-
   /**
    * Subaccount ID of this floodlight configuration. This is a read-only field
    * that can be left blank.
    */
   core.String subaccountId;
-
   /** Configuration settings for dynamic and image floodlight tags. */
   TagSettings tagSettings;
-
   /** List of user defined variables enabled for this configuration. */
   core.List<UserDefinedVariableConfiguration> userDefinedVariableConfigurations;
-
 
   FloodlightConfiguration();
 
@@ -18555,18 +17712,15 @@ class FloodlightConfiguration {
   }
 }
 
-
 /** Floodlight Configuration List Response */
 class FloodlightConfigurationsListResponse {
   /** Floodlight configuration collection. */
   core.List<FloodlightConfiguration> floodlightConfigurations;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#floodlightConfigurationsListResponse".
    */
   core.String kind;
-
 
   FloodlightConfigurationsListResponse();
 
@@ -18591,7 +17745,6 @@ class FloodlightConfigurationsListResponse {
   }
 }
 
-
 /**
  * Represents fields that are compatible to be selected for a report of type
  * "FlOODLIGHT".
@@ -18602,25 +17755,21 @@ class FloodlightReportCompatibleFields {
    * section of the report.
    */
   core.List<Dimension> dimensionFilters;
-
   /**
    * Dimensions which are compatible to be selected in the "dimensions" section
    * of the report.
    */
   core.List<Dimension> dimensions;
-
   /**
    * The kind of resource this is, in this case
    * dfareporting#floodlightReportCompatibleFields.
    */
   core.String kind;
-
   /**
    * Metrics which are compatible to be selected in the "metricNames" section of
    * the report.
    */
   core.List<Metric> metrics;
-
 
   FloodlightReportCompatibleFields();
 
@@ -18657,7 +17806,6 @@ class FloodlightReportCompatibleFields {
   }
 }
 
-
 /** Frequency Cap. */
 class FrequencyCap {
   /**
@@ -18665,13 +17813,11 @@ class FrequencyCap {
    * is 90 days in seconds, or 7,776,000.
    */
   core.String duration;
-
   /**
    * Number of times an individual user can be served the ad within the
    * specified duration. The maximum allowed is 15.
    */
   core.String impressions;
-
 
   FrequencyCap();
 
@@ -18696,7 +17842,6 @@ class FrequencyCap {
   }
 }
 
-
 /** FsCommand. */
 class FsCommand {
   /**
@@ -18704,7 +17849,6 @@ class FsCommand {
    * DISTANCE_FROM_TOP_LEFT_CORNER.
    */
   core.int left;
-
   /**
    * Position in the browser where the window will open.
    * Possible string values are:
@@ -18712,19 +17856,15 @@ class FsCommand {
    * - "DISTANCE_FROM_TOP_LEFT_CORNER"
    */
   core.String positionOption;
-
   /**
    * Distance from the top of the browser. Applicable when positionOption is
    * DISTANCE_FROM_TOP_LEFT_CORNER.
    */
   core.int top;
-
   /** Height of the window. */
   core.int windowHeight;
-
   /** Width of the window. */
   core.int windowWidth;
-
 
   FsCommand();
 
@@ -18767,7 +17907,6 @@ class FsCommand {
   }
 }
 
-
 /** Geographical Targeting. */
 class GeoTargeting {
   /**
@@ -18777,7 +17916,6 @@ class GeoTargeting {
    * not target the metro or region of the city.
    */
   core.List<City> cities;
-
   /**
    * Countries to be targeted or excluded from targeting, depending on the
    * setting of the excludeCountries field. For each country only dartId is
@@ -18786,21 +17924,18 @@ class GeoTargeting {
    * regions, cities, metros, or postal codes in the same country.
    */
   core.List<Country> countries;
-
   /**
    * Whether or not to exclude the countries in the countries field from
    * targeting. If false, the countries field refers to countries which will be
    * targeted by the ad.
    */
   core.bool excludeCountries;
-
   /**
    * Metros to be targeted. For each metro only dmaId is required. The other
    * fields are populated automatically when the ad is inserted or updated. If
    * targeting a metro, do not target or exclude the country of the metro.
    */
   core.List<Metro> metros;
-
   /**
    * Postal codes to be targeted. For each postal code only id is required. The
    * other fields are populated automatically when the ad is inserted or
@@ -18808,14 +17943,12 @@ class GeoTargeting {
    * of the postal code.
    */
   core.List<PostalCode> postalCodes;
-
   /**
    * Regions to be targeted. For each region only dartId is required. The other
    * fields are populated automatically when the ad is inserted or updated. If
    * targeting a region, do not target or exclude the country of the region.
    */
   core.List<Region> regions;
-
 
   GeoTargeting();
 
@@ -18864,12 +17997,10 @@ class GeoTargeting {
   }
 }
 
-
 /** Key Value Targeting Expression. */
 class KeyValueTargetingExpression {
   /** Keyword expression being targeted by the ad. */
   core.String expression;
-
 
   KeyValueTargetingExpression();
 
@@ -18888,7 +18019,6 @@ class KeyValueTargetingExpression {
   }
 }
 
-
 /**
  * Contains information about where a user's browser is taken after the user
  * clicks an ad.
@@ -18900,26 +18030,21 @@ class LandingPage {
    * landing page is allowed per campaign.
    */
   core.bool default_;
-
   /** ID of this landing page. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#landingPage".
    */
   core.String kind;
-
   /**
    * Name of this landing page. This is a required field. It must be less than
    * 256 characters long, and must be unique among landing pages of the same
    * campaign.
    */
   core.String name;
-
   /** URL of this landing page. This is a required field. */
   core.String url;
-
 
   LandingPage();
 
@@ -18962,7 +18087,6 @@ class LandingPage {
   }
 }
 
-
 /** Landing Page List Response */
 class LandingPagesListResponse {
   /**
@@ -18970,10 +18094,8 @@ class LandingPagesListResponse {
    * "dfareporting#landingPagesListResponse".
    */
   core.String kind;
-
   /** Landing page collection */
   core.List<LandingPage> landingPages;
-
 
   LandingPagesListResponse();
 
@@ -18998,12 +18120,10 @@ class LandingPagesListResponse {
   }
 }
 
-
 /** Modification timestamp. */
 class LastModifiedInfo {
   /** Timestamp of the last change in milliseconds since epoch. */
   core.String time;
-
 
   LastModifiedInfo();
 
@@ -19022,12 +18142,10 @@ class LastModifiedInfo {
   }
 }
 
-
 /** Remarketing List Targeting Expression. */
 class ListTargetingExpression {
   /** Expression describing which lists are being targeted by the ad. */
   core.String expression;
-
 
   ListTargetingExpression();
 
@@ -19046,7 +18164,6 @@ class ListTargetingExpression {
   }
 }
 
-
 /** Lookback configuration settings. */
 class LookbackConfiguration {
   /**
@@ -19056,7 +18173,6 @@ class LookbackConfiguration {
    * value for your account will be used.
    */
   core.int clickDuration;
-
   /**
    * Lookback window, in days, from the last time a given user viewed one of
    * your ads. If you enter 0, impressions will not be considered as triggering
@@ -19064,7 +18180,6 @@ class LookbackConfiguration {
    * value for your account will be used.
    */
   core.int postImpressionActivitiesDuration;
-
 
   LookbackConfiguration();
 
@@ -19089,15 +18204,12 @@ class LookbackConfiguration {
   }
 }
 
-
 /** Represents a metric. */
 class Metric {
   /** The kind of resource this is, in this case dfareporting#metric. */
   core.String kind;
-
   /** The metric name, e.g. dfa:impressions */
   core.String name;
-
 
   Metric();
 
@@ -19122,36 +18234,28 @@ class Metric {
   }
 }
 
-
 /** Contains information about a metro region that can be targeted by ads. */
 class Metro {
   /** Country code of the country to which this metro region belongs. */
   core.String countryCode;
-
   /** DART ID of the country to which this metro region belongs. */
   core.String countryDartId;
-
   /** DART ID of this metro region. */
   core.String dartId;
-
   /**
    * DMA ID of this metro region. This is the ID used for targeting and
    * generating reports, and is equivalent to metro_code.
    */
   core.String dmaId;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#metro".
    */
   core.String kind;
-
   /** Metro code of this metro region. This is equivalent to dma_id. */
   core.String metroCode;
-
   /** Name of this metro region. */
   core.String name;
-
 
   Metro();
 
@@ -19206,7 +18310,6 @@ class Metro {
   }
 }
 
-
 /** Metro List Response */
 class MetrosListResponse {
   /**
@@ -19214,10 +18317,8 @@ class MetrosListResponse {
    * "dfareporting#metrosListResponse".
    */
   core.String kind;
-
   /** Metro collection. */
   core.List<Metro> metros;
-
 
   MetrosListResponse();
 
@@ -19242,27 +18343,21 @@ class MetrosListResponse {
   }
 }
 
-
 /** Contains information about a mobile carrier that can be targeted by ads. */
 class MobileCarrier {
   /** Country code of the country to which this mobile carrier belongs. */
   core.String countryCode;
-
   /** DART ID of the country to which this mobile carrier belongs. */
   core.String countryDartId;
-
   /** ID of this mobile carrier. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#mobileCarrier".
    */
   core.String kind;
-
   /** Name of this mobile carrier. */
   core.String name;
-
 
   MobileCarrier();
 
@@ -19305,7 +18400,6 @@ class MobileCarrier {
   }
 }
 
-
 /** Mobile Carrier List Response */
 class MobileCarriersListResponse {
   /**
@@ -19313,10 +18407,8 @@ class MobileCarriersListResponse {
    * "dfareporting#mobileCarriersListResponse".
    */
   core.String kind;
-
   /** Mobile carrier collection. */
   core.List<MobileCarrier> mobileCarriers;
-
 
   MobileCarriersListResponse();
 
@@ -19341,7 +18433,6 @@ class MobileCarriersListResponse {
   }
 }
 
-
 /** Object Filter. */
 class ObjectFilter {
   /**
@@ -19349,13 +18440,11 @@ class ObjectFilter {
    * "dfareporting#objectFilter".
    */
   core.String kind;
-
   /**
    * Applicable when status is ASSIGNED. The user has access to objects with
    * these object IDs.
    */
   core.List<core.String> objectIds;
-
   /**
    * Status of the filter. NONE means the user has access to none of the
    * objects. ALL means the user has access to all objects. ASSIGNED means the
@@ -19366,7 +18455,6 @@ class ObjectFilter {
    * - "NONE"
    */
   core.String status;
-
 
   ObjectFilter();
 
@@ -19397,15 +18485,12 @@ class ObjectFilter {
   }
 }
 
-
 /** Offset Position. */
 class OffsetPosition {
   /** Offset distance from left side of an asset or a window. */
   core.int left;
-
   /** Offset distance from top side of an asset or a window. */
   core.int top;
-
 
   OffsetPosition();
 
@@ -19430,7 +18515,6 @@ class OffsetPosition {
   }
 }
 
-
 /** Omniture Integration Settings. */
 class OmnitureSettings {
   /**
@@ -19438,13 +18522,11 @@ class OmnitureSettings {
    * enabled only if omnitureIntegrationEnabled is true.
    */
   core.bool omnitureCostDataEnabled;
-
   /**
    * Whether Omniture integration is enabled. This property can be enabled only
    * when the "Advanced Ad Serving" account setting is enabled.
    */
   core.bool omnitureIntegrationEnabled;
-
 
   OmnitureSettings();
 
@@ -19469,29 +18551,23 @@ class OmnitureSettings {
   }
 }
 
-
 /**
  * Contains information about an operating system that can be targeted by ads.
  */
 class OperatingSystem {
   /** DART ID of this operating system. This is the ID used for targeting. */
   core.String dartId;
-
   /** Whether this operating system is for desktop. */
   core.bool desktop;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#operatingSystem".
    */
   core.String kind;
-
   /** Whether this operating system is for mobile. */
   core.bool mobile;
-
   /** Name of this operating system. */
   core.String name;
-
 
   OperatingSystem();
 
@@ -19534,7 +18610,6 @@ class OperatingSystem {
   }
 }
 
-
 /**
  * Contains information about a particular version of an operating system that
  * can be targeted by ads.
@@ -19542,28 +18617,22 @@ class OperatingSystem {
 class OperatingSystemVersion {
   /** ID of this operating system version. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#operatingSystemVersion".
    */
   core.String kind;
-
   /** Major version (leftmost number) of this operating system version. */
   core.String majorVersion;
-
   /**
    * Minor version (number after the first dot) of this operating system
    * version.
    */
   core.String minorVersion;
-
   /** Name of this operating system version. */
   core.String name;
-
   /** Operating system of this operating system version. */
   OperatingSystem operatingSystem;
-
 
   OperatingSystemVersion();
 
@@ -19612,7 +18681,6 @@ class OperatingSystemVersion {
   }
 }
 
-
 /** Operating System Version List Response */
 class OperatingSystemVersionsListResponse {
   /**
@@ -19620,10 +18688,8 @@ class OperatingSystemVersionsListResponse {
    * "dfareporting#operatingSystemVersionsListResponse".
    */
   core.String kind;
-
   /** Operating system version collection. */
   core.List<OperatingSystemVersion> operatingSystemVersions;
-
 
   OperatingSystemVersionsListResponse();
 
@@ -19648,7 +18714,6 @@ class OperatingSystemVersionsListResponse {
   }
 }
 
-
 /** Operating System List Response */
 class OperatingSystemsListResponse {
   /**
@@ -19656,10 +18721,8 @@ class OperatingSystemsListResponse {
    * "dfareporting#operatingSystemsListResponse".
    */
   core.String kind;
-
   /** Operating system collection. */
   core.List<OperatingSystem> operatingSystems;
-
 
   OperatingSystemsListResponse();
 
@@ -19684,7 +18747,6 @@ class OperatingSystemsListResponse {
   }
 }
 
-
 /** Creative optimization activity. */
 class OptimizationActivity {
   /**
@@ -19692,20 +18754,17 @@ class OptimizationActivity {
    * field.
    */
   core.String floodlightActivityId;
-
   /**
    * Dimension value for the ID of the floodlight activity. This is a read-only,
    * auto-generated field.
    */
   DimensionValue floodlightActivityIdDimensionValue;
-
   /**
    * Weight associated with this optimization. Must be greater than 1. The
    * weight assigned will be understood in proportion to the weights assigned to
    * the other optimization activities.
    */
   core.int weight;
-
 
   OptimizationActivity();
 
@@ -19736,7 +18795,6 @@ class OptimizationActivity {
   }
 }
 
-
 /**
  * Represents fields that are compatible to be selected for a report of type
  * "PATH_TO_CONVERSION".
@@ -19747,31 +18805,26 @@ class PathToConversionReportCompatibleFields {
    * "conversionDimensions" section of the report.
    */
   core.List<Dimension> conversionDimensions;
-
   /**
    * Custom floodlight variables which are compatible to be selected in the
    * "customFloodlightVariables" section of the report.
    */
   core.List<Dimension> customFloodlightVariables;
-
   /**
    * The kind of resource this is, in this case
    * dfareporting#pathToConversionReportCompatibleFields.
    */
   core.String kind;
-
   /**
    * Metrics which are compatible to be selected in the "metricNames" section of
    * the report.
    */
   core.List<Metric> metrics;
-
   /**
    * Per-interaction dimensions which are compatible to be selected in the
    * "perInteractionDimensions" section of the report.
    */
   core.List<Dimension> perInteractionDimensions;
-
 
   PathToConversionReportCompatibleFields();
 
@@ -19814,38 +18867,30 @@ class PathToConversionReportCompatibleFields {
   }
 }
 
-
 /** Contains properties of a placement. */
 class Placement {
   /** Account ID of this placement. This field can be left blank. */
   core.String accountId;
-
   /** Advertiser ID of this placement. This field can be left blank. */
   core.String advertiserId;
-
   /**
    * Dimension value for the ID of the advertiser. This is a read-only,
    * auto-generated field.
    */
   DimensionValue advertiserIdDimensionValue;
-
   /** Whether this placement is archived. */
   core.bool archived;
-
   /**
    * Campaign ID of this placement. This field is a required field on insertion.
    */
   core.String campaignId;
-
   /**
    * Dimension value for the ID of the campaign. This is a read-only,
    * auto-generated field.
    */
   DimensionValue campaignIdDimensionValue;
-
   /** Comments for this placement. */
   core.String comment;
-
   /**
    * Placement compatibility. WEB and WEB_INTERSTITIAL refer to rendering either
    * on desktop or on mobile devices for regular or interstitial ads,
@@ -19860,71 +18905,57 @@ class Placement {
    * - "WEB_INTERSTITIAL"
    */
   core.String compatibility;
-
   /** ID of the content category assigned to this placement. */
   core.String contentCategoryId;
-
   /**
    * Information about the creation of this placement. This is a read-only
    * field.
    */
   LastModifiedInfo createInfo;
-
   /**
    * Directory site ID of this placement. On insert, you must set either this
    * field or the siteId field to specify the site associated with this
    * placement. This is a required field that is read-only after insertion.
    */
   core.String directorySiteId;
-
   /**
    * Dimension value for the ID of the directory site. This is a read-only,
    * auto-generated field.
    */
   DimensionValue directorySiteIdDimensionValue;
-
   /** External ID for this placement. */
   core.String externalId;
-
   /** ID of this placement. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Dimension value for the ID of this placement. This is a read-only,
    * auto-generated field.
    */
   DimensionValue idDimensionValue;
-
   /** Key name of this placement. This is a read-only, auto-generated field. */
   core.String keyName;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#placement".
    */
   core.String kind;
-
   /**
    * Information about the most recent modification of this placement. This is a
    * read-only field.
    */
   LastModifiedInfo lastModifiedInfo;
-
   /** Lookback window settings for this placement. */
   LookbackConfiguration lookbackConfiguration;
-
   /**
    * Name of this placement.This is a required field and must be less than 256
    * characters long.
    */
   core.String name;
-
   /**
    * Whether payment was approved for this placement. This is a read-only field
    * relevant only to publisher-paid placements.
    */
   core.bool paymentApproved;
-
   /**
    * Payment source for this placement. This is a required field that is
    * read-only after insertion.
@@ -19933,25 +18964,20 @@ class Placement {
    * - "PLACEMENT_PUBLISHER_PAID"
    */
   core.String paymentSource;
-
   /** ID of this placement's group, if applicable. */
   core.String placementGroupId;
-
   /**
    * Dimension value for the ID of the placement group. This is a read-only,
    * auto-generated field.
    */
   DimensionValue placementGroupIdDimensionValue;
-
   /** ID of the placement strategy assigned to this placement. */
   core.String placementStrategyId;
-
   /**
    * Pricing schedule of this placement. This field is required on insertion,
    * specifically subfields startDate, endDate and pricingType.
    */
   PricingSchedule pricingSchedule;
-
   /**
    * Whether this placement is the primary placement of a roadblock (placement
    * group). You cannot change this field from true to false. Setting this field
@@ -19960,35 +18986,29 @@ class Placement {
    * roadblock's primaryPlacementId field to the ID of this placement.
    */
   core.bool primary;
-
   /**
    * Information about the last publisher update. This is a read-only field.
    */
   LastModifiedInfo publisherUpdateInfo;
-
   /**
    * Site ID associated with this placement. On insert, you must set either this
    * field or the directorySiteId field to specify the site associated with this
    * placement. This is a required field that is read-only after insertion.
    */
   core.String siteId;
-
   /**
    * Dimension value for the ID of the site. This is a read-only, auto-generated
    * field.
    */
   DimensionValue siteIdDimensionValue;
-
   /**
    * Size associated with this placement. When inserting or updating a
    * placement, only the size ID field is used. This field is required on
    * insertion.
    */
   Size size;
-
   /** Whether creatives assigned to this placement must be SSL-compliant. */
   core.bool sslRequired;
-
   /**
    * Third-party placement status.
    * Possible string values are:
@@ -20000,10 +19020,8 @@ class Placement {
    * - "PENDING_REVIEW"
    */
   core.String status;
-
   /** Subaccount ID of this placement. This field can be left blank. */
   core.String subaccountId;
-
   /**
    * Tag formats to generate for this placement. This field is required on
    * insertion.
@@ -20023,10 +19041,8 @@ class Placement {
    * - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
    */
   core.List<core.String> tagFormats;
-
   /** Tag settings for this placement. */
   TagSetting tagSetting;
-
 
   Placement();
 
@@ -20255,7 +19271,6 @@ class Placement {
   }
 }
 
-
 /** Placement Assignment. */
 class PlacementAssignment {
   /**
@@ -20263,22 +19278,18 @@ class PlacementAssignment {
    * be included in the ad's rotation.
    */
   core.bool active;
-
   /** ID of the placement to be assigned. This is a required field. */
   core.String placementId;
-
   /**
    * Dimension value for the ID of the placement. This is a read-only,
    * auto-generated field.
    */
   DimensionValue placementIdDimensionValue;
-
   /**
    * Whether the placement to be assigned requires SSL. This is a read-only
    * field that is auto-generated when the ad is inserted or updated.
    */
   core.bool sslRequired;
-
 
   PlacementAssignment();
 
@@ -20315,7 +19326,6 @@ class PlacementAssignment {
   }
 }
 
-
 /** Contains properties of a package or roadblock. */
 class PlacementGroup {
   /**
@@ -20323,51 +19333,41 @@ class PlacementGroup {
    * left blank.
    */
   core.String accountId;
-
   /**
    * Advertiser ID of this placement group. This is a required field on
    * insertion.
    */
   core.String advertiserId;
-
   /**
    * Dimension value for the ID of the advertiser. This is a read-only,
    * auto-generated field.
    */
   DimensionValue advertiserIdDimensionValue;
-
   /** Whether this placement group is archived. */
   core.bool archived;
-
   /**
    * Campaign ID of this placement group. This field is required on insertion.
    */
   core.String campaignId;
-
   /**
    * Dimension value for the ID of the campaign. This is a read-only,
    * auto-generated field.
    */
   DimensionValue campaignIdDimensionValue;
-
   /**
    * IDs of placements which are assigned to this placement group. This is a
    * read-only, auto-generated field.
    */
   core.List<core.String> childPlacementIds;
-
   /** Comments for this placement group. */
   core.String comment;
-
   /** ID of the content category assigned to this placement group. */
   core.String contentCategoryId;
-
   /**
    * Information about the creation of this placement group. This is a read-only
    * field.
    */
   LastModifiedInfo createInfo;
-
   /**
    * Directory site ID associated with this placement group. On insert, you must
    * set either this field or the site_id field to specify the site associated
@@ -20375,43 +19375,35 @@ class PlacementGroup {
    * insertion.
    */
   core.String directorySiteId;
-
   /**
    * Dimension value for the ID of the directory site. This is a read-only,
    * auto-generated field.
    */
   DimensionValue directorySiteIdDimensionValue;
-
   /** External ID for this placement. */
   core.String externalId;
-
   /** ID of this placement group. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Dimension value for the ID of this placement group. This is a read-only,
    * auto-generated field.
    */
   DimensionValue idDimensionValue;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#placementGroup".
    */
   core.String kind;
-
   /**
    * Information about the most recent modification of this placement group.
    * This is a read-only field.
    */
   LastModifiedInfo lastModifiedInfo;
-
   /**
    * Name of this placement group. This is a required field and must be less
    * than 256 characters long.
    */
   core.String name;
-
   /**
    * Type of this placement group. A package is a simple group of placements
    * that acts as a single pricing point for a group of tags. A roadblock is a
@@ -20424,32 +19416,26 @@ class PlacementGroup {
    * - "PLACEMENT_ROADBLOCK"
    */
   core.String placementGroupType;
-
   /** ID of the placement strategy assigned to this placement group. */
   core.String placementStrategyId;
-
   /**
    * Pricing schedule of this placement group. This field is required on
    * insertion.
    */
   PricingSchedule pricingSchedule;
-
   /**
    * ID of the primary placement, used to calculate the media cost of a
    * roadblock (placement group). Modifying this field will automatically modify
    * the primary field on all affected roadblock child placements.
    */
   core.String primaryPlacementId;
-
   /**
    * Dimension value for the ID of the primary placement. This is a read-only,
    * auto-generated field.
    */
   DimensionValue primaryPlacementIdDimensionValue;
-
   /** Settings for a programmatic placement. */
   ProgrammaticSetting programmaticSetting;
-
   /**
    * Site ID associated with this placement group. On insert, you must set
    * either this field or the directorySiteId field to specify the site
@@ -20457,19 +19443,16 @@ class PlacementGroup {
    * read-only after insertion.
    */
   core.String siteId;
-
   /**
    * Dimension value for the ID of the site. This is a read-only, auto-generated
    * field.
    */
   DimensionValue siteIdDimensionValue;
-
   /**
    * Subaccount ID of this placement group. This is a read-only field that can
    * be left blank.
    */
   core.String subaccountId;
-
 
   PlacementGroup();
 
@@ -20644,7 +19627,6 @@ class PlacementGroup {
   }
 }
 
-
 /** Placement Group List Response */
 class PlacementGroupsListResponse {
   /**
@@ -20652,13 +19634,10 @@ class PlacementGroupsListResponse {
    * "dfareporting#placementGroupsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
   /** Placement group collection. */
   core.List<PlacementGroup> placementGroups;
-
 
   PlacementGroupsListResponse();
 
@@ -20689,7 +19668,6 @@ class PlacementGroupsListResponse {
   }
 }
 
-
 /** Placement Strategy List Response */
 class PlacementStrategiesListResponse {
   /**
@@ -20697,13 +19675,10 @@ class PlacementStrategiesListResponse {
    * "dfareporting#placementStrategiesListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
   /** Placement strategy collection. */
   core.List<PlacementStrategy> placementStrategies;
-
 
   PlacementStrategiesListResponse();
 
@@ -20734,7 +19709,6 @@ class PlacementStrategiesListResponse {
   }
 }
 
-
 /** Contains properties of a placement strategy. */
 class PlacementStrategy {
   /**
@@ -20742,25 +19716,21 @@ class PlacementStrategy {
    * left blank.
    */
   core.String accountId;
-
   /**
    * ID of this placement strategy. This is a read-only, auto-generated field.
    */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#placementStrategy".
    */
   core.String kind;
-
   /**
    * Name of this placement strategy. This is a required field. It must be less
    * than 256 characters long and unique among placement strategies of the same
    * account.
    */
   core.String name;
-
 
   PlacementStrategy();
 
@@ -20797,15 +19767,12 @@ class PlacementStrategy {
   }
 }
 
-
 /** Placement Tag */
 class PlacementTag {
   /** Placement ID */
   core.String placementId;
-
   /** Tags generated for this placement. */
   core.List<TagData> tagDatas;
-
 
   PlacementTag();
 
@@ -20830,7 +19797,6 @@ class PlacementTag {
   }
 }
 
-
 /** Placement GenerateTags Response */
 class PlacementsGenerateTagsResponse {
   /**
@@ -20838,10 +19804,8 @@ class PlacementsGenerateTagsResponse {
    * "dfareporting#placementsGenerateTagsResponse".
    */
   core.String kind;
-
   /** Set of generated tags for the specified placements. */
   core.List<PlacementTag> placementTags;
-
 
   PlacementsGenerateTagsResponse();
 
@@ -20866,7 +19830,6 @@ class PlacementsGenerateTagsResponse {
   }
 }
 
-
 /** Placement List Response */
 class PlacementsListResponse {
   /**
@@ -20874,13 +19837,10 @@ class PlacementsListResponse {
    * "dfareporting#placementsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
   /** Placement collection. */
   core.List<Placement> placements;
-
 
   PlacementsListResponse();
 
@@ -20911,21 +19871,17 @@ class PlacementsListResponse {
   }
 }
 
-
 /** Contains information about a platform type that can be targeted by ads. */
 class PlatformType {
   /** ID of this platform type. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#platformType".
    */
   core.String kind;
-
   /** Name of this platform type. */
   core.String name;
-
 
   PlatformType();
 
@@ -20956,7 +19912,6 @@ class PlatformType {
   }
 }
 
-
 /** Platform Type List Response */
 class PlatformTypesListResponse {
   /**
@@ -20964,10 +19919,8 @@ class PlatformTypesListResponse {
    * "dfareporting#platformTypesListResponse".
    */
   core.String kind;
-
   /** Platform type collection. */
   core.List<PlatformType> platformTypes;
-
 
   PlatformTypesListResponse();
 
@@ -20992,7 +19945,6 @@ class PlatformTypesListResponse {
   }
 }
 
-
 /** Popup Window Properties. */
 class PopupWindowProperties {
   /**
@@ -21000,13 +19952,11 @@ class PopupWindowProperties {
    * the following creative types: all RICH_MEDIA and all VPAID
    */
   Size dimension;
-
   /**
    * Upper-left corner coordinates of the popup window. Applicable if
    * positionType is COORDINATES.
    */
   OffsetPosition offset;
-
   /**
    * Popup window position either centered or at specific coordinate.
    * Possible string values are:
@@ -21014,25 +19964,18 @@ class PopupWindowProperties {
    * - "COORDINATES"
    */
   core.String positionType;
-
   /** Whether to display the browser address bar. */
   core.bool showAddressBar;
-
   /** Whether to display the browser menu bar. */
   core.bool showMenuBar;
-
   /** Whether to display the browser scroll bar. */
   core.bool showScrollBar;
-
   /** Whether to display the browser status bar. */
   core.bool showStatusBar;
-
   /** Whether to display the browser tool bar. */
   core.bool showToolBar;
-
   /** Title of popup window. */
   core.String title;
-
 
   PopupWindowProperties();
 
@@ -21099,24 +20042,19 @@ class PopupWindowProperties {
   }
 }
 
-
 /** Contains information about a postal code that can be targeted by ads. */
 class PostalCode {
   /** Country code of the country to which this postal code belongs. */
   core.String countryCode;
-
   /** DART ID of the country to which this postal code belongs. */
   core.String countryDartId;
-
   /** ID of this postal code. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#postalCode".
    */
   core.String kind;
-
 
   PostalCode();
 
@@ -21153,7 +20091,6 @@ class PostalCode {
   }
 }
 
-
 /** Postal Code List Response */
 class PostalCodesListResponse {
   /**
@@ -21161,10 +20098,8 @@ class PostalCodesListResponse {
    * "dfareporting#postalCodesListResponse".
    */
   core.String kind;
-
   /** Postal code collection. */
   core.List<PostalCode> postalCodes;
-
 
   PostalCodesListResponse();
 
@@ -21189,7 +20124,6 @@ class PostalCodesListResponse {
   }
 }
 
-
 /** Pricing Schedule */
 class PricingSchedule {
   /**
@@ -21200,10 +20134,8 @@ class PricingSchedule {
    * - "CAP_COST_NONE"
    */
   core.String capCostOption;
-
   /** Whether cap costs are ignored by ad serving. */
   core.bool disregardOverdelivery;
-
   /**
    * Placement end date. This date must be later than, or the same day as, the
    * placement start date, but not later than the campaign end date. If, for
@@ -21213,22 +20145,18 @@ class PricingSchedule {
    * error. This field is required on insertion.
    */
   core.DateTime endDate;
-
   /**
    * Whether this placement is flighted. If true, pricing periods will be
    * computed automatically.
    */
   core.bool flighted;
-
   /**
    * Floodlight activity ID associated with this placement. This field should be
    * set when placement pricing type is set to PRICING_TYPE_CPA.
    */
   core.String floodlightActivityId;
-
   /** Pricing periods for this placement. */
   core.List<PricingSchedulePricingPeriod> pricingPeriods;
-
   /**
    * Placement pricing type. This field is required on insertion.
    * Possible string values are:
@@ -21239,7 +20167,6 @@ class PricingSchedule {
    * - "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
    */
   core.String pricingType;
-
   /**
    * Placement start date. This date must be later than, or the same day as, the
    * campaign start date. The hours, minutes, and seconds of the start date
@@ -21247,13 +20174,11 @@ class PricingSchedule {
    * required on insertion.
    */
   core.DateTime startDate;
-
   /**
    * Testing start date of this placement. The hours, minutes, and seconds of
    * the start date should not be set, as doing so will result in an error.
    */
   core.DateTime testingStartDate;
-
 
   PricingSchedule();
 
@@ -21320,7 +20245,6 @@ class PricingSchedule {
   }
 }
 
-
 /** Pricing Period */
 class PricingSchedulePricingPeriod {
   /**
@@ -21333,23 +20257,18 @@ class PricingSchedulePricingPeriod {
    * an error.
    */
   core.DateTime endDate;
-
   /** Comments for this pricing period. */
   core.String pricingComment;
-
   /** Rate or cost of this pricing period. */
   core.String rateOrCostNanos;
-
   /**
    * Pricing period start date. This date must be later than, or the same day
    * as, the placement start date. The hours, minutes, and seconds of the start
    * date should not be set, as doing so will result in an error.
    */
   core.DateTime startDate;
-
   /** Units of this pricing period. */
   core.String units;
-
 
   PricingSchedulePricingPeriod();
 
@@ -21392,30 +20311,23 @@ class PricingSchedulePricingPeriod {
   }
 }
 
-
 /** Programmatic Setting */
 class ProgrammaticSetting {
   /** Adx deal IDs assigned to the placement. */
   core.List<core.String> adxDealIds;
-
   /** Insertion order ID. */
   core.String insertionOrderId;
-
   /**
    * Whether insertion order ID has been placed in DFP. This is a read-only
    * field.
    */
   core.bool insertionOrderIdStatus;
-
   /** Media cost for the programmatic placement. */
   core.String mediaCostNanos;
-
   /** Whether programmatic is enabled. */
   core.bool programmatic;
-
   /** Trafficker emails assigned to the placement. */
   core.List<core.String> traffickerEmails;
-
 
   ProgrammaticSetting();
 
@@ -21464,7 +20376,6 @@ class ProgrammaticSetting {
   }
 }
 
-
 /**
  * Represents fields that are compatible to be selected for a report of type
  * "REACH".
@@ -21475,37 +20386,31 @@ class ReachReportCompatibleFields {
    * section of the report.
    */
   core.List<Dimension> dimensionFilters;
-
   /**
    * Dimensions which are compatible to be selected in the "dimensions" section
    * of the report.
    */
   core.List<Dimension> dimensions;
-
   /**
    * The kind of resource this is, in this case
    * dfareporting#reachReportCompatibleFields.
    */
   core.String kind;
-
   /**
    * Metrics which are compatible to be selected in the "metricNames" section of
    * the report.
    */
   core.List<Metric> metrics;
-
   /**
    * Metrics which are compatible to be selected as activity metrics to pivot on
    * in the "activities" section of the report.
    */
   core.List<Metric> pivotedActivityMetrics;
-
   /**
    * Metrics which are compatible to be selected in the
    * "reachByFrequencyMetricNames" section of the report.
    */
   core.List<Metric> reachByFrequencyMetrics;
-
 
   ReachReportCompatibleFields();
 
@@ -21554,7 +20459,6 @@ class ReachReportCompatibleFields {
   }
 }
 
-
 /** Represents a recipient. */
 class Recipient {
   /**
@@ -21564,13 +20468,10 @@ class Recipient {
    * - "LINK"
    */
   core.String deliveryType;
-
   /** The email address of the recipient. */
   core.String email;
-
   /** The kind of resource this is, in this case dfareporting#recipient. */
   core.String kind;
-
 
   Recipient();
 
@@ -21601,30 +20502,23 @@ class Recipient {
   }
 }
 
-
 /** Contains information about a region that can be targeted by ads. */
 class Region {
   /** Country code of the country to which this region belongs. */
   core.String countryCode;
-
   /** DART ID of the country to which this region belongs. */
   core.String countryDartId;
-
   /** DART ID of this region. */
   core.String dartId;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#region".
    */
   core.String kind;
-
   /** Name of this region. */
   core.String name;
-
   /** Region code. */
   core.String regionCode;
-
 
   Region();
 
@@ -21673,7 +20567,6 @@ class Region {
   }
 }
 
-
 /** Region List Response */
 class RegionsListResponse {
   /**
@@ -21681,10 +20574,8 @@ class RegionsListResponse {
    * "dfareporting#regionsListResponse".
    */
   core.String kind;
-
   /** Region collection. */
   core.List<Region> regions;
-
 
   RegionsListResponse();
 
@@ -21709,31 +20600,24 @@ class RegionsListResponse {
   }
 }
 
-
 /** The report criteria for a report of type "STANDARD". */
 class ReportCriteria {
   /** Activity group. */
   Activities activities;
-
   /** Custom Rich Media Events group. */
   CustomRichMediaEvents customRichMediaEvents;
-
   /** The date range for which this report should be run. */
   DateRange dateRange;
-
   /**
    * The list of filters on which dimensions are filtered.
    * Filters for different dimensions are ANDed, filters for the same dimension
    * are grouped together and ORed.
    */
   core.List<DimensionValue> dimensionFilters;
-
   /** The list of standard dimensions the report should include. */
   core.List<SortedDimension> dimensions;
-
   /** The list of names of metrics the report should include. */
   core.List<core.String> metricNames;
-
 
   ReportCriteria();
 
@@ -21782,15 +20666,12 @@ class ReportCriteria {
   }
 }
 
-
 /** The report criteria for a report of type "CROSS_DIMENSION_REACH". */
 class ReportCrossDimensionReachCriteria {
   /** The list of dimensions the report should include. */
   core.List<SortedDimension> breakdown;
-
   /** The date range this report should be run for. */
   DateRange dateRange;
-
   /**
    * The dimension option.
    * Possible string values are:
@@ -21800,19 +20681,14 @@ class ReportCrossDimensionReachCriteria {
    * - "SITE_BY_CAMPAIGN"
    */
   core.String dimension;
-
   /** The list of filters on which dimensions are filtered. */
   core.List<DimensionValue> dimensionFilters;
-
   /** The list of names of metrics the report should include. */
   core.List<core.String> metricNames;
-
   /** The list of names of overlap metrics the report should include. */
   core.List<core.String> overlapMetricNames;
-
   /** Whether the report is pivoted or not. Defaults to true. */
   core.bool pivoted;
-
 
   ReportCrossDimensionReachCriteria();
 
@@ -21867,12 +20743,10 @@ class ReportCrossDimensionReachCriteria {
   }
 }
 
-
 /** The report's email delivery settings. */
 class ReportDelivery {
   /** Whether the report should be emailed to the report owner. */
   core.bool emailOwner;
-
   /**
    * The type of delivery for the owner to receive, if enabled.
    * Possible string values are:
@@ -21880,13 +20754,10 @@ class ReportDelivery {
    * - "LINK"
    */
   core.String emailOwnerDeliveryType;
-
   /** The message to be sent with each email. */
   core.String message;
-
   /** The list of recipients to which to email the report. */
   core.List<Recipient> recipients;
-
 
   ReportDelivery();
 
@@ -21923,12 +20794,10 @@ class ReportDelivery {
   }
 }
 
-
 /** The properties of the report. */
 class ReportFloodlightCriteriaReportProperties {
   /** Include conversions that have no cookie, but do have an exposure path. */
   core.bool includeAttributedIPConversions;
-
   /**
    * Include conversions of users with a DoubleClick cookie but without an
    * exposure. That means the user did not click or see an ad from the
@@ -21936,14 +20805,12 @@ class ReportFloodlightCriteriaReportProperties {
    * outside the lookback window.
    */
   core.bool includeUnattributedCookieConversions;
-
   /**
    * Include conversions that have no associated cookies and no exposures. It’s
    * therefore impossible to know how the user was exposed to your ads during
    * the lookback window prior to a conversion.
    */
   core.bool includeUnattributedIPConversions;
-
 
   ReportFloodlightCriteriaReportProperties();
 
@@ -21974,38 +20841,30 @@ class ReportFloodlightCriteriaReportProperties {
   }
 }
 
-
 /** The report criteria for a report of type "FLOODLIGHT". */
 class ReportFloodlightCriteria {
   /** The list of custom rich media events to include. */
   core.List<DimensionValue> customRichMediaEvents;
-
   /** The date range this report should be run for. */
   DateRange dateRange;
-
   /**
    * The list of filters on which dimensions are filtered.
    * Filters for different dimensions are ANDed, filters for the same dimension
    * are grouped together and ORed.
    */
   core.List<DimensionValue> dimensionFilters;
-
   /** The list of dimensions the report should include. */
   core.List<SortedDimension> dimensions;
-
   /**
    * The floodlight ID for which to show data in this report. All advertisers
    * associated with that ID will automatically be added. The dimension of the
    * value needs to be 'dfa:floodlightConfigId'.
    */
   DimensionValue floodlightConfigId;
-
   /** The list of names of metrics the report should include. */
   core.List<core.String> metricNames;
-
   /** The properties of the report. */
   ReportFloodlightCriteriaReportProperties reportProperties;
-
 
   ReportFloodlightCriteria();
 
@@ -22060,7 +20919,6 @@ class ReportFloodlightCriteria {
   }
 }
 
-
 /** The properties of the report. */
 class ReportPathToConversionCriteriaReportProperties {
   /**
@@ -22069,7 +20927,6 @@ class ReportPathToConversionCriteriaReportProperties {
    * Floodlight or you can manually enter a custom value. Valid values: 1-90.
    */
   core.int clicksLookbackWindow;
-
   /**
    * DFA checks to see if an impression interaction occurred within the
    * specified period of time before a conversion. By default the value is
@@ -22077,10 +20934,8 @@ class ReportPathToConversionCriteriaReportProperties {
    * values: 1-90.
    */
   core.int impressionsLookbackWindow;
-
   /** Deprecated: has no effect. */
   core.bool includeAttributedIPConversions;
-
   /**
    * Include conversions of users with a DoubleClick cookie but without an
    * exposure. That means the user did not click or see an ad from the
@@ -22088,14 +20943,12 @@ class ReportPathToConversionCriteriaReportProperties {
    * outside the lookback window.
    */
   core.bool includeUnattributedCookieConversions;
-
   /**
    * Include conversions that have no associated cookies and no exposures. It’s
    * therefore impossible to know how the user was exposed to your ads during
    * the lookback window prior to a conversion.
    */
   core.bool includeUnattributedIPConversions;
-
   /**
    * The maximum number of click interactions to include in the report.
    * Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100
@@ -22103,7 +20956,6 @@ class ReportPathToConversionCriteriaReportProperties {
    * can have up to 5 total exposures per report.
    */
   core.int maximumClickInteractions;
-
   /**
    * The maximum number of click interactions to include in the report.
    * Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100
@@ -22111,16 +20963,13 @@ class ReportPathToConversionCriteriaReportProperties {
    * can have up to 5 total exposures per report.
    */
   core.int maximumImpressionInteractions;
-
   /**
    * The maximum amount of time that can take place between interactions (clicks
    * or impressions) by the same user. Valid values: 1-90.
    */
   core.int maximumInteractionGap;
-
   /** Enable pivoting on interaction path. */
   core.bool pivotOnInteractionPath;
-
 
   ReportPathToConversionCriteriaReportProperties();
 
@@ -22187,40 +21036,30 @@ class ReportPathToConversionCriteriaReportProperties {
   }
 }
 
-
 /** The report criteria for a report of type "PATH_TO_CONVERSION". */
 class ReportPathToConversionCriteria {
   /** The list of 'dfa:activity' values to filter on. */
   core.List<DimensionValue> activityFilters;
-
   /** The list of conversion dimensions the report should include. */
   core.List<SortedDimension> conversionDimensions;
-
   /** The list of custom floodlight variables the report should include. */
   core.List<SortedDimension> customFloodlightVariables;
-
   /** The list of custom rich media events to include. */
   core.List<DimensionValue> customRichMediaEvents;
-
   /** The date range this report should be run for. */
   DateRange dateRange;
-
   /**
    * The floodlight ID for which to show data in this report. All advertisers
    * associated with that ID will automatically be added. The dimension of the
    * value needs to be 'dfa:floodlightConfigId'.
    */
   DimensionValue floodlightConfigId;
-
   /** The list of names of metrics the report should include. */
   core.List<core.String> metricNames;
-
   /** The list of per interaction dimensions the report should include. */
   core.List<SortedDimension> perInteractionDimensions;
-
   /** The properties of the report. */
   ReportPathToConversionCriteriaReportProperties reportProperties;
-
 
   ReportPathToConversionCriteria();
 
@@ -22287,43 +21126,34 @@ class ReportPathToConversionCriteria {
   }
 }
 
-
 /** The report criteria for a report of type "REACH". */
 class ReportReachCriteria {
   /** Activity group. */
   Activities activities;
-
   /** Custom Rich Media Events group. */
   CustomRichMediaEvents customRichMediaEvents;
-
   /** The date range this report should be run for. */
   DateRange dateRange;
-
   /**
    * The list of filters on which dimensions are filtered.
    * Filters for different dimensions are ANDed, filters for the same dimension
    * are grouped together and ORed.
    */
   core.List<DimensionValue> dimensionFilters;
-
   /** The list of dimensions the report should include. */
   core.List<SortedDimension> dimensions;
-
   /**
    * Whether to enable all reach dimension combinations in the report. Defaults
    * to false. If enabled, the date range of the report should be within the
    * last three months.
    */
   core.bool enableAllDimensionCombinations;
-
   /** The list of names of metrics the report should include. */
   core.List<core.String> metricNames;
-
   /**
    * The list of names of  Reach By Frequency metrics the report should include.
    */
   core.List<core.String> reachByFrequencyMetricNames;
-
 
   ReportReachCriteria();
 
@@ -22384,7 +21214,6 @@ class ReportReachCriteria {
   }
 }
 
-
 /**
  * The report's schedule. Can only be set if the report's 'dateRange' is a
  * relative date range and the relative date range is not "TODAY".
@@ -22394,16 +21223,13 @@ class ReportSchedule {
    * Whether the schedule is active or not. Must be set to either true or false.
    */
   core.bool active;
-
   /**
    * Defines every how many days, weeks or months the report should be run.
    * Needs to be set when "repeats" is either "DAILY", "WEEKLY" or "MONTHLY".
    */
   core.int every;
-
   /** The expiration date when the scheduled report stops running. */
   core.DateTime expirationDate;
-
   /**
    * The interval for which the report is repeated. Note:
    * - "DAILY" also requires field "every" to be set.
@@ -22411,10 +21237,8 @@ class ReportSchedule {
    * - "MONTHLY" also requires fields "every" and "runsOnDayOfMonth" to be set.
    */
   core.String repeats;
-
   /** List of week days "WEEKLY" on which scheduled reports should run. */
   core.List<core.String> repeatsOnWeekDays;
-
   /**
    * Enum to define for "MONTHLY" scheduled reports whether reports should be
    * repeated on the same day of the month as "startDate" or the same day of the
@@ -22428,10 +21252,8 @@ class ReportSchedule {
    * - "WEEK_OF_MONTH"
    */
   core.String runsOnDayOfMonth;
-
   /** Start date of date range for which scheduled reports should be run. */
   core.DateTime startDate;
-
 
   ReportSchedule();
 
@@ -22486,30 +21308,22 @@ class ReportSchedule {
   }
 }
 
-
 /** Represents a Report resource. */
 class Report {
   /** The account ID to which this report belongs. */
   core.String accountId;
-
   /** The report criteria for a report of type "STANDARD". */
   ReportCriteria criteria;
-
   /** The report criteria for a report of type "CROSS_DIMENSION_REACH". */
   ReportCrossDimensionReachCriteria crossDimensionReachCriteria;
-
   /** The report's email delivery settings. */
   ReportDelivery delivery;
-
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The filename used when generating report files for this report. */
   core.String fileName;
-
   /** The report criteria for a report of type "FLOODLIGHT". */
   ReportFloodlightCriteria floodlightCriteria;
-
   /**
    * The output format of the report. If not specified, default format is "CSV".
    * Note that the actual format in the completed report file might differ if
@@ -22520,40 +21334,30 @@ class Report {
    * - "EXCEL"
    */
   core.String format;
-
   /** The unique ID identifying this report resource. */
   core.String id;
-
   /** The kind of resource this is, in this case dfareporting#report. */
   core.String kind;
-
   /**
    * The timestamp (in milliseconds since epoch) of when this report was last
    * modified.
    */
   core.String lastModifiedTime;
-
   /** The name of the report. */
   core.String name;
-
   /** The user profile id of the owner of this report. */
   core.String ownerProfileId;
-
   /** The report criteria for a report of type "PATH_TO_CONVERSION". */
   ReportPathToConversionCriteria pathToConversionCriteria;
-
   /** The report criteria for a report of type "REACH". */
   ReportReachCriteria reachCriteria;
-
   /**
    * The report's schedule. Can only be set if the report's 'dateRange' is a
    * relative date range and the relative date range is not "TODAY".
    */
   ReportSchedule schedule;
-
   /** The subaccount ID to which this report belongs if applicable. */
   core.String subAccountId;
-
   /**
    * The type of the report.
    * Possible string values are:
@@ -22564,7 +21368,6 @@ class Report {
    * - "STANDARD"
    */
   core.String type;
-
 
   Report();
 
@@ -22685,7 +21488,6 @@ class Report {
   }
 }
 
-
 /**
  * Represents fields that are compatible to be selected for a report of type
  * "STANDARD".
@@ -22696,31 +21498,26 @@ class ReportCompatibleFields {
    * section of the report.
    */
   core.List<Dimension> dimensionFilters;
-
   /**
    * Dimensions which are compatible to be selected in the "dimensions" section
    * of the report.
    */
   core.List<Dimension> dimensions;
-
   /**
    * The kind of resource this is, in this case
    * dfareporting#reportCompatibleFields.
    */
   core.String kind;
-
   /**
    * Metrics which are compatible to be selected in the "metricNames" section of
    * the report.
    */
   core.List<Metric> metrics;
-
   /**
    * Metrics which are compatible to be selected as activity metrics to pivot on
    * in the "activities" section of the report.
    */
   core.List<Metric> pivotedActivityMetrics;
-
 
   ReportCompatibleFields();
 
@@ -22763,18 +21560,14 @@ class ReportCompatibleFields {
   }
 }
 
-
 /** Represents the list of reports. */
 class ReportList {
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The reports returned in this response. */
   core.List<Report> items;
-
   /** The kind of list this is, in this case dfareporting#reportList. */
   core.String kind;
-
   /**
    * Continuation token used to page through reports. To retrieve the next page
    * of results, set the next request's "pageToken" to the value of this field.
@@ -22782,7 +21575,6 @@ class ReportList {
    * persisted.
    */
   core.String nextPageToken;
-
 
   ReportList();
 
@@ -22819,7 +21611,6 @@ class ReportList {
   }
 }
 
-
 /** Reporting Configuration */
 class ReportsConfiguration {
   /**
@@ -22828,10 +21619,8 @@ class ReportsConfiguration {
    * seen by a user before converting.
    */
   core.bool exposureToConversionEnabled;
-
   /** Default lookback windows for new advertisers in this account. */
   LookbackConfiguration lookbackConfiguration;
-
   /**
    * Report generation time zone ID of this account. This is a required field
    * that can only be changed by a superuser.
@@ -22852,7 +21641,6 @@ class ReportsConfiguration {
    * - "13" for "America/Sao_Paulo"
    */
   core.String reportGenerationTimeZoneId;
-
 
   ReportsConfiguration();
 
@@ -22883,7 +21671,6 @@ class ReportsConfiguration {
   }
 }
 
-
 /** Rich Media Exit Override. */
 class RichMediaExitOverride {
   /**
@@ -22891,13 +21678,10 @@ class RichMediaExitOverride {
    * useCustomExitUrl field is set to true.
    */
   core.String customExitUrl;
-
   /** ID for the override to refer to a specific exit in the creative. */
   core.String exitId;
-
   /** Whether to use the custom exit URL. */
   core.bool useCustomExitUrl;
-
 
   RichMediaExitOverride();
 
@@ -22928,47 +21712,38 @@ class RichMediaExitOverride {
   }
 }
 
-
 /** Contains properties of a site. */
 class Site {
   /**
    * Account ID of this site. This is a read-only field that can be left blank.
    */
   core.String accountId;
-
   /** Whether this site is approved. */
   core.bool approved;
-
   /**
    * Directory site associated with this site. This is a required field that is
    * read-only after insertion.
    */
   core.String directorySiteId;
-
   /**
    * Dimension value for the ID of the directory site. This is a read-only,
    * auto-generated field.
    */
   DimensionValue directorySiteIdDimensionValue;
-
   /** ID of this site. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Dimension value for the ID of this site. This is a read-only,
    * auto-generated field.
    */
   DimensionValue idDimensionValue;
-
   /** Key name of this site. This is a read-only, auto-generated field. */
   core.String keyName;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#site".
    */
   core.String kind;
-
   /**
    * Name of this site.This is a required field. Must be less than 128
    * characters long. If this site is under a subaccount, the name must be
@@ -22977,19 +21752,15 @@ class Site {
    * same account.
    */
   core.String name;
-
   /** Site contacts. */
   core.List<SiteContact> siteContacts;
-
   /** Site-wide settings. */
   SiteSettings siteSettings;
-
   /**
    * Subaccount ID of this site. This is a read-only field that can be left
    * blank.
    */
   core.String subaccountId;
-
 
   Site();
 
@@ -23074,7 +21845,6 @@ class Site {
   }
 }
 
-
 /** Site Contact */
 class SiteContact {
   /**
@@ -23084,19 +21854,14 @@ class SiteContact {
    * - "TRAFFICKER"
    */
   core.String contactType;
-
   /** Email address of this site contact. This is a required field. */
   core.String email;
-
   /** First name of this site contact. */
   core.String firstName;
-
   /** ID of this site contact. This is a read-only, auto-generated field. */
   core.String id;
-
   /** Last name of this site contact. */
   core.String lastName;
-
 
   SiteContact();
 
@@ -23139,27 +21904,20 @@ class SiteContact {
   }
 }
 
-
 /** Site Settings */
 class SiteSettings {
   /** Whether active view creatives are disabled for this site. */
   core.bool activeViewOptOut;
-
   /** Site-wide creative settings. */
   CreativeSettings creativeSettings;
-
   /** Whether brand safe ads are disabled for this site. */
   core.bool disableBrandSafeAds;
-
   /** Whether new cookies are disabled for this site. */
   core.bool disableNewCookie;
-
   /** Lookback window settings for this site. */
   LookbackConfiguration lookbackConfiguration;
-
   /** Configuration settings for dynamic and image floodlight tags. */
   TagSetting tagSetting;
-
 
   SiteSettings();
 
@@ -23208,7 +21966,6 @@ class SiteSettings {
   }
 }
 
-
 /** Site List Response */
 class SitesListResponse {
   /**
@@ -23216,13 +21973,10 @@ class SitesListResponse {
    * "dfareporting#sitesListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
   /** Site collection */
   core.List<Site> sites;
-
 
   SitesListResponse();
 
@@ -23253,29 +22007,23 @@ class SitesListResponse {
   }
 }
 
-
 /**
  * Represents the dimensions of ads, placements, creatives, or creative assets.
  */
 class Size {
   /** Height of this size. */
   core.int height;
-
   /** IAB standard size. This is a read-only, auto-generated field. */
   core.bool iab;
-
   /** ID of this size. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#size".
    */
   core.String kind;
-
   /** Width of this size. */
   core.int width;
-
 
   Size();
 
@@ -23318,7 +22066,6 @@ class Size {
   }
 }
 
-
 /** Size List Response */
 class SizesListResponse {
   /**
@@ -23326,10 +22073,8 @@ class SizesListResponse {
    * "dfareporting#sizesListResponse".
    */
   core.String kind;
-
   /** Size collection. */
   core.List<Size> sizes;
-
 
   SizesListResponse();
 
@@ -23354,17 +22099,14 @@ class SizesListResponse {
   }
 }
 
-
 /** Represents a sorted dimension. */
 class SortedDimension {
   /**
    * The kind of resource this is, in this case dfareporting#sortedDimension.
    */
   core.String kind;
-
   /** The name of the dimension. */
   core.String name;
-
   /**
    * An optional sort order for the dimension column.
    * Possible string values are:
@@ -23372,7 +22114,6 @@ class SortedDimension {
    * - "DESCENDING"
    */
   core.String sortOrder;
-
 
   SortedDimension();
 
@@ -23403,7 +22144,6 @@ class SortedDimension {
   }
 }
 
-
 /** Contains properties of a DCM subaccount. */
 class Subaccount {
   /**
@@ -23411,25 +22151,20 @@ class Subaccount {
    * that can be left blank.
    */
   core.String accountId;
-
   /** IDs of the available user role permissions for this subaccount. */
   core.List<core.String> availablePermissionIds;
-
   /** ID of this subaccount. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#subaccount".
    */
   core.String kind;
-
   /**
    * Name of this subaccount. This is a required field. Must be less than 128
    * characters long and be unique among subaccounts of the same account.
    */
   core.String name;
-
 
   Subaccount();
 
@@ -23472,7 +22207,6 @@ class Subaccount {
   }
 }
 
-
 /** Subaccount List Response */
 class SubaccountsListResponse {
   /**
@@ -23480,13 +22214,10 @@ class SubaccountsListResponse {
    * "dfareporting#subaccountsListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
   /** Subaccount collection. */
   core.List<Subaccount> subaccounts;
-
 
   SubaccountsListResponse();
 
@@ -23517,18 +22248,14 @@ class SubaccountsListResponse {
   }
 }
 
-
 /** Placement Tag Data */
 class TagData {
   /** Ad associated with this placement tag. */
   core.String adId;
-
   /** Tag string to record a click. */
   core.String clickTag;
-
   /** Creative associated with this placement tag. */
   core.String creativeId;
-
   /**
    * TagData tag format of this tag.
    * Possible string values are:
@@ -23547,10 +22274,8 @@ class TagData {
    * - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
    */
   core.String format;
-
   /** Tag string for serving an ad. */
   core.String impressionTag;
-
 
   TagData();
 
@@ -23593,7 +22318,6 @@ class TagData {
   }
 }
 
-
 /** Tag Settings */
 class TagSetting {
   /**
@@ -23603,16 +22327,13 @@ class TagSetting {
    * value for this field.
    */
   core.String additionalKeyValues;
-
   /**
    * Whether static landing page URLs should be included in the tags. This
    * setting applies only to placements.
    */
   core.bool includeClickThroughUrls;
-
   /** Whether click-tracking string should be included in the tags. */
   core.bool includeClickTracking;
-
   /**
    * Option specifying how keywords are embedded in ad tags. This setting can be
    * used to specify whether keyword placeholders are inserted in placement tags
@@ -23623,7 +22344,6 @@ class TagSetting {
    * - "PLACEHOLDER_WITH_LIST_OF_KEYWORDS"
    */
   core.String keywordOption;
-
 
   TagSetting();
 
@@ -23660,15 +22380,12 @@ class TagSetting {
   }
 }
 
-
 /** Dynamic and Image Tag Settings. */
 class TagSettings {
   /** Whether dynamic floodlight tags are enabled. */
   core.bool dynamicTagEnabled;
-
   /** Whether image tags are enabled. */
   core.bool imageTagEnabled;
-
 
   TagSettings();
 
@@ -23693,12 +22410,10 @@ class TagSettings {
   }
 }
 
-
 /** Target Window. */
 class TargetWindow {
   /** User-entered value. */
   core.String customHtml;
-
   /**
    * Type of browser window for which the backup image of the flash creative can
    * be displayed.
@@ -23708,7 +22423,6 @@ class TargetWindow {
    * - "NEW_WINDOW"
    */
   core.String targetWindowOption;
-
 
   TargetWindow();
 
@@ -23733,7 +22447,6 @@ class TargetWindow {
   }
 }
 
-
 /** Technology Targeting. */
 class TechnologyTargeting {
   /**
@@ -23743,14 +22456,12 @@ class TechnologyTargeting {
    * when the ad is inserted or updated.
    */
   core.List<Browser> browsers;
-
   /**
    * Connection types that this ad targets. For each connection type only id is
    * required.The other fields are populated automatically when the ad is
    * inserted or updated.
    */
   core.List<ConnectionType> connectionTypes;
-
   /**
    * Mobile carriers that this ad targets. For each mobile carrier only id is
    * required, and the other fields are populated automatically when the ad is
@@ -23758,7 +22469,6 @@ class TechnologyTargeting {
    * for any zip codes.
    */
   core.List<MobileCarrier> mobileCarriers;
-
   /**
    * Operating system versions that this ad targets. To target all versions, use
    * operatingSystems. For each operating system version, only id is required.
@@ -23767,7 +22477,6 @@ class TechnologyTargeting {
    * the corresponding operating system in operatingSystems.
    */
   core.List<OperatingSystemVersion> operatingSystemVersions;
-
   /**
    * Operating systems that this ad targets. To target specific versions, use
    * operatingSystemVersions. For each operating system only dartId is required.
@@ -23776,14 +22485,12 @@ class TechnologyTargeting {
    * operating system versions for the same operating system.
    */
   core.List<OperatingSystem> operatingSystems;
-
   /**
    * Platform types that this ad targets. For example, desktop, mobile, or
    * tablet. For each platform type, only id is required, and the other fields
    * are populated automatically when the ad is inserted or updated.
    */
   core.List<PlatformType> platformTypes;
-
 
   TechnologyTargeting();
 
@@ -23832,7 +22539,6 @@ class TechnologyTargeting {
   }
 }
 
-
 /** Third-party Tracking URL. */
 class ThirdPartyTrackingUrl {
   /**
@@ -23857,10 +22563,8 @@ class ThirdPartyTrackingUrl {
    * - "VIDEO_THIRD_QUARTILE"
    */
   core.String thirdPartyUrlType;
-
   /** URL for the specified third-party URL type. */
   core.String url;
-
 
   ThirdPartyTrackingUrl();
 
@@ -23885,7 +22589,6 @@ class ThirdPartyTrackingUrl {
   }
 }
 
-
 /** User Defined Variable configuration. */
 class UserDefinedVariableConfiguration {
   /**
@@ -23895,14 +22598,12 @@ class UserDefinedVariableConfiguration {
    * - "STRING"
    */
   core.String dataType;
-
   /**
    * User-friendly name for the variable which will appear in reports. This is a
    * required field, must be less than 64 characters long, and cannot contain
    * the following characters: ""<>".
    */
   core.String reportName;
-
   /**
    * Variable name in the tag. This is a required field.
    * Possible string values are:
@@ -24009,7 +22710,6 @@ class UserDefinedVariableConfiguration {
    */
   core.String variableType;
 
-
   UserDefinedVariableConfiguration();
 
   UserDefinedVariableConfiguration.fromJson(core.Map _json) {
@@ -24039,33 +22739,24 @@ class UserDefinedVariableConfiguration {
   }
 }
 
-
 /** Represents a UserProfile resource. */
 class UserProfile {
   /** The account ID to which this profile belongs. */
   core.String accountId;
-
   /** The account name this profile belongs to. */
   core.String accountName;
-
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The kind of resource this is, in this case dfareporting#userProfile. */
   core.String kind;
-
   /** The unique ID of the user profile. */
   core.String profileId;
-
   /** The sub account ID this profile belongs to if applicable. */
   core.String subAccountId;
-
   /** The sub account name this profile belongs to if applicable. */
   core.String subAccountName;
-
   /** The user name. */
   core.String userName;
-
 
   UserProfile();
 
@@ -24126,18 +22817,14 @@ class UserProfile {
   }
 }
 
-
 /** Represents the list of user profiles. */
 class UserProfileList {
   /** The eTag of this response for caching purposes. */
   core.String etag;
-
   /** The user profiles returned in this response. */
   core.List<UserProfile> items;
-
   /** The kind of list this is, in this case dfareporting#userProfileList. */
   core.String kind;
-
 
   UserProfileList();
 
@@ -24168,7 +22855,6 @@ class UserProfileList {
   }
 }
 
-
 /** Contains properties of auser role, which is used to manage user access. */
 class UserRole {
   /**
@@ -24176,23 +22862,19 @@ class UserRole {
    * blank.
    */
   core.String accountId;
-
   /**
    * Whether this is a default user role. Default user roles are created by the
    * system for the account/subaccount and cannot be modified or deleted. Each
    * default user role comes with a basic set of preassigned permissions.
    */
   core.bool defaultUserRole;
-
   /** ID of this user role. This is a read-only, auto-generated field. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#userRole".
    */
   core.String kind;
-
   /**
    * Name of this user role. This is a required field. Must be less than 256
    * characters long. If this user role is under a subaccount, the name must be
@@ -24201,22 +22883,18 @@ class UserRole {
    * of the same account.
    */
   core.String name;
-
   /**
    * ID of the user role that this user role is based on or copied from. This is
    * a required field.
    */
   core.String parentUserRoleId;
-
   /** List of permissions associated with this user role. */
   core.List<UserRolePermission> permissions;
-
   /**
    * Subaccount ID of this user role. This is a read-only field that can be left
    * blank.
    */
   core.String subaccountId;
-
 
   UserRole();
 
@@ -24277,7 +22955,6 @@ class UserRole {
   }
 }
 
-
 /** Contains properties of a user role permission. */
 class UserRolePermission {
   /**
@@ -24290,22 +22967,17 @@ class UserRolePermission {
    * - "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT"
    */
   core.String availability;
-
   /** ID of this user role permission. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#userRolePermission".
    */
   core.String kind;
-
   /** Name of this user role permission. */
   core.String name;
-
   /** ID of the permission group that this user role permission belongs to. */
   core.String permissionGroupId;
-
 
   UserRolePermission();
 
@@ -24348,21 +23020,17 @@ class UserRolePermission {
   }
 }
 
-
 /** Represents a grouping of related user role permissions. */
 class UserRolePermissionGroup {
   /** ID of this user role permission. */
   core.String id;
-
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#userRolePermissionGroup".
    */
   core.String kind;
-
   /** Name of this user role permission group. */
   core.String name;
-
 
   UserRolePermissionGroup();
 
@@ -24393,7 +23061,6 @@ class UserRolePermissionGroup {
   }
 }
 
-
 /** User Role Permission Group List Response */
 class UserRolePermissionGroupsListResponse {
   /**
@@ -24401,10 +23068,8 @@ class UserRolePermissionGroupsListResponse {
    * "dfareporting#userRolePermissionGroupsListResponse".
    */
   core.String kind;
-
   /** User role permission group collection. */
   core.List<UserRolePermissionGroup> userRolePermissionGroups;
-
 
   UserRolePermissionGroupsListResponse();
 
@@ -24429,7 +23094,6 @@ class UserRolePermissionGroupsListResponse {
   }
 }
 
-
 /** User Role Permission List Response */
 class UserRolePermissionsListResponse {
   /**
@@ -24437,10 +23101,8 @@ class UserRolePermissionsListResponse {
    * "dfareporting#userRolePermissionsListResponse".
    */
   core.String kind;
-
   /** User role permission collection. */
   core.List<UserRolePermission> userRolePermissions;
-
 
   UserRolePermissionsListResponse();
 
@@ -24465,7 +23127,6 @@ class UserRolePermissionsListResponse {
   }
 }
 
-
 /** User Role List Response */
 class UserRolesListResponse {
   /**
@@ -24473,13 +23134,10 @@ class UserRolesListResponse {
    * "dfareporting#userRolesListResponse".
    */
   core.String kind;
-
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
-
   /** User role collection. */
   core.List<UserRole> userRoles;
-
 
   UserRolesListResponse();
 

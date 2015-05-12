@@ -47,7 +47,7 @@ class RelyingpartyResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<CreateAuthUriResponse> createAuthUri(IdentitytoolkitRelyingpartyCreateAuthUriRequest request) {
     var _url = null;
@@ -60,7 +60,6 @@ class RelyingpartyResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'createAuthUri';
 
@@ -87,7 +86,7 @@ class RelyingpartyResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DeleteAccountResponse> deleteAccount(IdentitytoolkitRelyingpartyDeleteAccountRequest request) {
     var _url = null;
@@ -100,7 +99,6 @@ class RelyingpartyResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'deleteAccount';
 
@@ -127,7 +125,7 @@ class RelyingpartyResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DownloadAccountResponse> downloadAccount(IdentitytoolkitRelyingpartyDownloadAccountRequest request) {
     var _url = null;
@@ -140,7 +138,6 @@ class RelyingpartyResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'downloadAccount';
 
@@ -167,7 +164,7 @@ class RelyingpartyResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<GetAccountInfoResponse> getAccountInfo(IdentitytoolkitRelyingpartyGetAccountInfoRequest request) {
     var _url = null;
@@ -180,7 +177,6 @@ class RelyingpartyResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'getAccountInfo';
 
@@ -207,7 +203,7 @@ class RelyingpartyResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<GetOobConfirmationCodeResponse> getOobConfirmationCode(Relyingparty request) {
     var _url = null;
@@ -220,7 +216,6 @@ class RelyingpartyResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'getOobConfirmationCode';
 
@@ -245,7 +240,7 @@ class RelyingpartyResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<IdentitytoolkitRelyingpartyGetPublicKeysResponse> getPublicKeys() {
     var _url = null;
@@ -254,7 +249,6 @@ class RelyingpartyResourceApi {
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
-
 
 
     _url = 'publicKeys';
@@ -270,6 +264,40 @@ class RelyingpartyResourceApi {
   }
 
   /**
+   * Get recaptcha secure param.
+   *
+   * Request parameters:
+   *
+   * Completes with a [GetRecaptchaParamResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GetRecaptchaParamResponse> getRecaptchaParam() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+
+    _url = 'getRecaptchaParam';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GetRecaptchaParamResponse.fromJson(data));
+  }
+
+  /**
    * Reset password for a user.
    *
    * [request] - The metadata request object.
@@ -282,7 +310,7 @@ class RelyingpartyResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ResetPasswordResponse> resetPassword(IdentitytoolkitRelyingpartyResetPasswordRequest request) {
     var _url = null;
@@ -295,7 +323,6 @@ class RelyingpartyResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'resetPassword';
 
@@ -322,7 +349,7 @@ class RelyingpartyResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<SetAccountInfoResponse> setAccountInfo(IdentitytoolkitRelyingpartySetAccountInfoRequest request) {
     var _url = null;
@@ -335,7 +362,6 @@ class RelyingpartyResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'setAccountInfo';
 
@@ -362,7 +388,7 @@ class RelyingpartyResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<UploadAccountResponse> uploadAccount(IdentitytoolkitRelyingpartyUploadAccountRequest request) {
     var _url = null;
@@ -375,7 +401,6 @@ class RelyingpartyResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'uploadAccount';
 
@@ -402,7 +427,7 @@ class RelyingpartyResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VerifyAssertionResponse> verifyAssertion(IdentitytoolkitRelyingpartyVerifyAssertionRequest request) {
     var _url = null;
@@ -415,7 +440,6 @@ class RelyingpartyResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'verifyAssertion';
 
@@ -442,7 +466,7 @@ class RelyingpartyResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<VerifyPasswordResponse> verifyPassword(IdentitytoolkitRelyingpartyVerifyPasswordRequest request) {
     var _url = null;
@@ -455,7 +479,6 @@ class RelyingpartyResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-
 
     _url = 'verifyPassword';
 
@@ -477,22 +500,16 @@ class RelyingpartyResourceApi {
 class CreateAuthUriResponse {
   /** The URI used by the IDP to authenticate the user. */
   core.String authUri;
-
   /** True if captcha is required. */
   core.bool captchaRequired;
-
   /** True if the authUri is for user's existing provider. */
   core.bool forExistingProvider;
-
   /** The fixed string identitytoolkit#CreateAuthUriResponse". */
   core.String kind;
-
   /** The provider ID of the auth URI. */
   core.String providerId;
-
   /** Whether the user is registered if the identifier is an email. */
   core.bool registered;
-
 
   CreateAuthUriResponse();
 
@@ -541,12 +558,10 @@ class CreateAuthUriResponse {
   }
 }
 
-
 /** Respone of deleting account. */
 class DeleteAccountResponse {
   /** The fixed string "identitytoolkit#DeleteAccountResponse". */
   core.String kind;
-
 
   DeleteAccountResponse();
 
@@ -565,21 +580,17 @@ class DeleteAccountResponse {
   }
 }
 
-
 /** Respone of downloading accounts in batch. */
 class DownloadAccountResponse {
   /** The fixed string "identitytoolkit#DownloadAccountResponse". */
   core.String kind;
-
   /**
    * The next page token. To be used in a subsequent request to return the next
    * page of results.
    */
   core.String nextPageToken;
-
   /** The user accounts data. */
   core.List<UserInfo> users;
-
 
   DownloadAccountResponse();
 
@@ -610,15 +621,12 @@ class DownloadAccountResponse {
   }
 }
 
-
 /** Response of getting account information. */
 class GetAccountInfoResponse {
   /** The fixed string "identitytoolkit#GetAccountInfoResponse". */
   core.String kind;
-
   /** The info of the users. */
   core.List<UserInfo> users;
-
 
   GetAccountInfoResponse();
 
@@ -643,7 +651,6 @@ class GetAccountInfoResponse {
   }
 }
 
-
 /**
  * Response of getting a code for user confirmation (reset password, change
  * email etc.).
@@ -651,10 +658,8 @@ class GetAccountInfoResponse {
 class GetOobConfirmationCodeResponse {
   /** The fixed string "identitytoolkit#GetOobConfirmationCodeResponse". */
   core.String kind;
-
   /** The code to be send to the user. */
   core.String oobCode;
-
 
   GetOobConfirmationCodeResponse();
 
@@ -679,6 +684,46 @@ class GetOobConfirmationCodeResponse {
   }
 }
 
+/** Response of getting recaptcha param. */
+class GetRecaptchaParamResponse {
+  /** The fixed string "identitytoolkit#GetRecaptchaParamResponse". */
+  core.String kind;
+  /** Site key registered at recaptcha. */
+  core.String recaptchaSiteKey;
+  /**
+   * The stoken field for the recaptcha widget, used to request captcha
+   * challenge.
+   */
+  core.String recaptchaStoken;
+
+  GetRecaptchaParamResponse();
+
+  GetRecaptchaParamResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("recaptchaSiteKey")) {
+      recaptchaSiteKey = _json["recaptchaSiteKey"];
+    }
+    if (_json.containsKey("recaptchaStoken")) {
+      recaptchaStoken = _json["recaptchaStoken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (recaptchaSiteKey != null) {
+      _json["recaptchaSiteKey"] = recaptchaSiteKey;
+    }
+    if (recaptchaStoken != null) {
+      _json["recaptchaStoken"] = recaptchaStoken;
+    }
+    return _json;
+  }
+}
 
 /** Request to get the IDP authentication URL. */
 class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
@@ -687,40 +732,39 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
    * BUNDLE_ID for iOS.
    */
   core.String appId;
-
   /** The relying party OAuth client ID. */
   core.String clientId;
-
   /**
    * The opaque value used by the client to maintain context info between the
    * authentication request and the IDP callback.
    */
   core.String context;
-
   /**
    * The URI to which the IDP redirects the user after the federated login flow.
    */
   core.String continueUri;
-
   /** The email or federated ID of the user. */
   core.String identifier;
-
+  /** The developer's consumer key for OpenId OAuth Extension */
+  core.String oauthConsumerKey;
+  /**
+   * Additional oauth scopes, beyond the basid user profile, that the user would
+   * be prompted to grant
+   */
+  core.String oauthScope;
   /**
    * Optional realm for OpenID protocol. The sub string "scheme://domain:port"
    * of the param "continueUri" is used if this is not set.
    */
   core.String openidRealm;
-
   /** The native app package for OTA installation. */
   core.String otaApp;
-
   /**
    * The IdP ID. For white listed IdPs it's a short domain name e.g. google.com,
    * aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP
    * identifier.
    */
   core.String providerId;
-
 
   IdentitytoolkitRelyingpartyCreateAuthUriRequest();
 
@@ -739,6 +783,12 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     }
     if (_json.containsKey("identifier")) {
       identifier = _json["identifier"];
+    }
+    if (_json.containsKey("oauthConsumerKey")) {
+      oauthConsumerKey = _json["oauthConsumerKey"];
+    }
+    if (_json.containsKey("oauthScope")) {
+      oauthScope = _json["oauthScope"];
     }
     if (_json.containsKey("openidRealm")) {
       openidRealm = _json["openidRealm"];
@@ -768,6 +818,12 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     if (identifier != null) {
       _json["identifier"] = identifier;
     }
+    if (oauthConsumerKey != null) {
+      _json["oauthConsumerKey"] = oauthConsumerKey;
+    }
+    if (oauthScope != null) {
+      _json["oauthScope"] = oauthScope;
+    }
     if (openidRealm != null) {
       _json["openidRealm"] = openidRealm;
     }
@@ -781,12 +837,10 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
   }
 }
 
-
 /** Request to delete account. */
 class IdentitytoolkitRelyingpartyDeleteAccountRequest {
   /** The local ID of the user. */
   core.String localId;
-
 
   IdentitytoolkitRelyingpartyDeleteAccountRequest();
 
@@ -805,18 +859,15 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
   }
 }
 
-
 /** Request to download user account in batch. */
 class IdentitytoolkitRelyingpartyDownloadAccountRequest {
   /** The max number of results to return in the response. */
   core.int maxResults;
-
   /**
    * The token for the next page. This should be taken from the previous
    * response.
    */
   core.String nextPageToken;
-
 
   IdentitytoolkitRelyingpartyDownloadAccountRequest();
 
@@ -841,18 +892,14 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
   }
 }
 
-
 /** Request to get the account information. */
 class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
   /** The list of emails of the users to inquiry. */
   core.List<core.String> email;
-
   /** The GITKit token of the authenticated user. */
   core.String idToken;
-
   /** The list of local ID's of the users to inquiry. */
   core.List<core.String> localId;
-
 
   IdentitytoolkitRelyingpartyGetAccountInfoRequest();
 
@@ -882,7 +929,6 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
     return _json;
   }
 }
-
 
 /** Respone of getting public keys. */
 class IdentitytoolkitRelyingpartyGetPublicKeysResponse
@@ -921,21 +967,16 @@ class IdentitytoolkitRelyingpartyGetPublicKeysResponse
   core.String remove(core.Object key) => _innerMap.remove(key);
 }
 
-
 /** Request to reset the password. */
 class IdentitytoolkitRelyingpartyResetPasswordRequest {
   /** The email address of the user. */
   core.String email;
-
   /** The new password inputted by the user. */
   core.String newPassword;
-
   /** The old password inputted by the user. */
   core.String oldPassword;
-
   /** The confirmation code. */
   core.String oobCode;
-
 
   IdentitytoolkitRelyingpartyResetPasswordRequest();
 
@@ -972,42 +1013,34 @@ class IdentitytoolkitRelyingpartyResetPasswordRequest {
   }
 }
 
-
 /** Request to set the account information. */
 class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   /** The captcha challenge. */
   core.String captchaChallenge;
-
   /** Response to the captcha. */
   core.String captchaResponse;
-
+  /** Whether to disable the user. */
+  core.bool disableUser;
   /** The name of the user. */
   core.String displayName;
-
   /** The email of the user. */
   core.String email;
-
   /** Mark the email as verified or not. */
   core.bool emailVerified;
-
   /** The GITKit token of the authenticated user. */
   core.String idToken;
-
   /** The local ID of the user. */
   core.String localId;
-
   /** The out-of-band code of the change email request. */
   core.String oobCode;
-
   /** The new password of the user. */
   core.String password;
-
   /** The associated IDPs of the user. */
   core.List<core.String> provider;
-
   /** Mark the user to upgrade to federated login. */
   core.bool upgradeToFederatedLogin;
-
+  /** Timestamp in seconds for valid login token. */
+  core.String validSince;
 
   IdentitytoolkitRelyingpartySetAccountInfoRequest();
 
@@ -1017,6 +1050,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
     if (_json.containsKey("captchaResponse")) {
       captchaResponse = _json["captchaResponse"];
+    }
+    if (_json.containsKey("disableUser")) {
+      disableUser = _json["disableUser"];
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -1045,6 +1081,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     if (_json.containsKey("upgradeToFederatedLogin")) {
       upgradeToFederatedLogin = _json["upgradeToFederatedLogin"];
     }
+    if (_json.containsKey("validSince")) {
+      validSince = _json["validSince"];
+    }
   }
 
   core.Map toJson() {
@@ -1054,6 +1093,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
     if (captchaResponse != null) {
       _json["captchaResponse"] = captchaResponse;
+    }
+    if (disableUser != null) {
+      _json["disableUser"] = disableUser;
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
@@ -1082,25 +1124,23 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     if (upgradeToFederatedLogin != null) {
       _json["upgradeToFederatedLogin"] = upgradeToFederatedLogin;
     }
+    if (validSince != null) {
+      _json["validSince"] = validSince;
+    }
     return _json;
   }
 }
-
 
 /** Request to upload user account in batch. */
 class IdentitytoolkitRelyingpartyUploadAccountRequest {
   /** The password hash algorithm. */
   core.String hashAlgorithm;
-
   /** Memory cost for hash calculation. Used by scrypt similar algorithms. */
   core.int memoryCost;
-
   /** Rounds for hash calculation. Used by scrypt and similar algorithms. */
   core.int rounds;
-
   /** The salt separator. */
   core.String saltSeparator;
-
   core.List<core.int> get saltSeparatorAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(saltSeparator);
   }
@@ -1108,10 +1148,8 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   void set saltSeparatorAsBytes(core.List<core.int> _bytes) {
     saltSeparator = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** The key for to hash the password. */
   core.String signerKey;
-
   core.List<core.int> get signerKeyAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(signerKey);
   }
@@ -1119,10 +1157,8 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   void set signerKeyAsBytes(core.List<core.int> _bytes) {
     signerKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** The account info to be stored. */
   core.List<UserInfo> users;
-
 
   IdentitytoolkitRelyingpartyUploadAccountRequest();
 
@@ -1171,7 +1207,6 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   }
 }
 
-
 /** Request to verify the IDP assertion. */
 class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   /**
@@ -1179,16 +1214,15 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
    * user.
    */
   core.String pendingIdToken;
-
   /** The post body if the request is a HTTP POST. */
   core.String postBody;
-
   /**
    * The URI to which the IDP redirects the user back. It may contain federated
    * login result params added by the IDP.
    */
   core.String requestUri;
-
+  /** Whether to return refresh tokens. */
+  core.bool returnRefreshToken;
 
   IdentitytoolkitRelyingpartyVerifyAssertionRequest();
 
@@ -1201,6 +1235,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     }
     if (_json.containsKey("requestUri")) {
       requestUri = _json["requestUri"];
+    }
+    if (_json.containsKey("returnRefreshToken")) {
+      returnRefreshToken = _json["returnRefreshToken"];
     }
   }
 
@@ -1215,31 +1252,28 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     if (requestUri != null) {
       _json["requestUri"] = requestUri;
     }
+    if (returnRefreshToken != null) {
+      _json["returnRefreshToken"] = returnRefreshToken;
+    }
     return _json;
   }
 }
-
 
 /** Request to verify the password. */
 class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
   /** The captcha challenge. */
   core.String captchaChallenge;
-
   /** Response to the captcha. */
   core.String captchaResponse;
-
   /** The email of the user. */
   core.String email;
-
   /** The password inputed by the user. */
   core.String password;
-
   /**
    * The GITKit token for the non-trusted IDP, which is to be confirmed by the
    * user.
    */
   core.String pendingIdToken;
-
 
   IdentitytoolkitRelyingpartyVerifyPasswordRequest();
 
@@ -1282,7 +1316,6 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
   }
 }
 
-
 /**
  * Request of getting a code for user confirmation (reset password, change email
  * etc.)
@@ -1290,28 +1323,20 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
 class Relyingparty {
   /** The recaptcha response from the user. */
   core.String captchaResp;
-
   /** The recaptcha challenge presented to the user. */
   core.String challenge;
-
   /** The email of the user. */
   core.String email;
-
   /** The user's Gitkit login token for email change. */
   core.String idToken;
-
   /** The fixed string "identitytoolkit#relyingparty". */
   core.String kind;
-
   /** The new email if the code is for email change. */
   core.String newEmail;
-
   /** The request type. */
   core.String requestType;
-
   /** The IP address of the user. */
   core.String userIp;
-
 
   Relyingparty();
 
@@ -1372,15 +1397,12 @@ class Relyingparty {
   }
 }
 
-
 /** Response of resetting the password. */
 class ResetPasswordResponse {
   /** The user's email. */
   core.String email;
-
   /** The fixed string "identitytoolkit#ResetPasswordResponse". */
   core.String kind;
-
 
   ResetPasswordResponse();
 
@@ -1405,21 +1427,17 @@ class ResetPasswordResponse {
   }
 }
 
-
 class SetAccountInfoResponseProviderUserInfo {
   /** The user's display name at the IDP. */
   core.String displayName;
-
   /** The user's photo url at the IDP. */
   core.String photoUrl;
-
   /**
    * The IdP ID. For whitelisted IdPs it's a short domain name, e.g.,
    * google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the
    * OP identifier.
    */
   core.String providerId;
-
 
   SetAccountInfoResponseProviderUserInfo();
 
@@ -1450,24 +1468,18 @@ class SetAccountInfoResponseProviderUserInfo {
   }
 }
 
-
 /** Respone of setting the account information. */
 class SetAccountInfoResponse {
   /** The name of the user. */
   core.String displayName;
-
   /** The email of the user. */
   core.String email;
-
   /** The Gitkit id token to login the newly sign up user. */
   core.String idToken;
-
   /** The fixed string "identitytoolkit#SetAccountInfoResponse". */
   core.String kind;
-
   /** The user's profiles at the associated IdPs. */
   core.List<SetAccountInfoResponseProviderUserInfo> providerUserInfo;
-
 
   SetAccountInfoResponse();
 
@@ -1510,14 +1522,11 @@ class SetAccountInfoResponse {
   }
 }
 
-
 class UploadAccountResponseError {
   /** The index of the malformed account, starting from 0. */
   core.int index;
-
   /** Detailed error message for the account info. */
   core.String message;
-
 
   UploadAccountResponseError();
 
@@ -1542,15 +1551,12 @@ class UploadAccountResponseError {
   }
 }
 
-
 /** Respone of uploading accounts in batch. */
 class UploadAccountResponse {
   /** The error encountered while processing the account info. */
   core.List<UploadAccountResponseError> error;
-
   /** The fixed string "identitytoolkit#UploadAccountResponse". */
   core.String kind;
-
 
   UploadAccountResponse();
 
@@ -1575,24 +1581,19 @@ class UploadAccountResponse {
   }
 }
 
-
 class UserInfoProviderUserInfo {
   /** The user's display name at the IDP. */
   core.String displayName;
-
   /** User's identifier at IDP. */
   core.String federatedId;
-
   /** The user's photo url at the IDP. */
   core.String photoUrl;
-
   /**
    * The IdP ID. For white listed IdPs it's a short domain name, e.g.,
    * google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the
    * OP identifier.
    */
   core.String providerId;
-
 
   UserInfoProviderUserInfo();
 
@@ -1629,24 +1630,20 @@ class UserInfoProviderUserInfo {
   }
 }
 
-
 /** Template for an individual account info. */
 class UserInfo {
+  /** Whether the user is disabled. */
+  core.bool disabled;
   /** The name of the user. */
   core.String displayName;
-
   /** The email of the user. */
   core.String email;
-
   /** Whether the email has been verified. */
   core.bool emailVerified;
-
   /** The local ID of the user. */
   core.String localId;
-
   /** The user's hashed password. */
   core.String passwordHash;
-
   core.List<core.int> get passwordHashAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(passwordHash);
   }
@@ -1654,19 +1651,14 @@ class UserInfo {
   void set passwordHashAsBytes(core.List<core.int> _bytes) {
     passwordHash = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
   /** The timestamp when the password was last updated. */
   core.double passwordUpdatedAt;
-
   /** The URL of the user profile photo. */
   core.String photoUrl;
-
   /** The IDP of the user. */
   core.List<UserInfoProviderUserInfo> providerUserInfo;
-
   /** The user's password salt. */
   core.String salt;
-
   core.List<core.int> get saltAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(salt);
   }
@@ -1674,14 +1666,17 @@ class UserInfo {
   void set saltAsBytes(core.List<core.int> _bytes) {
     salt = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-
+  /** Timestamp in seconds for valid login token. */
+  core.String validSince;
   /** Version of the user's password. */
   core.int version;
-
 
   UserInfo();
 
   UserInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("disabled")) {
+      disabled = _json["disabled"];
+    }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
@@ -1709,6 +1704,9 @@ class UserInfo {
     if (_json.containsKey("salt")) {
       salt = _json["salt"];
     }
+    if (_json.containsKey("validSince")) {
+      validSince = _json["validSince"];
+    }
     if (_json.containsKey("version")) {
       version = _json["version"];
     }
@@ -1716,6 +1714,9 @@ class UserInfo {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (disabled != null) {
+      _json["disabled"] = disabled;
+    }
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -1743,6 +1744,9 @@ class UserInfo {
     if (salt != null) {
       _json["salt"] = salt;
     }
+    if (validSince != null) {
+      _json["validSince"] = validSince;
+    }
     if (version != null) {
       _json["version"] = version;
     }
@@ -1750,103 +1754,84 @@ class UserInfo {
   }
 }
 
-
 /** Response of verifying the IDP assertion. */
 class VerifyAssertionResponse {
   /** The action code. */
   core.String action;
-
   /** URL for OTA app installation. */
   core.String appInstallationUrl;
-
   /** The custom scheme used by mobile app. */
   core.String appScheme;
-
   /**
    * The opaque value used by the client to maintain context info between the
    * authentication request and the IDP callback.
    */
   core.String context;
-
   /** The birth date of the IdP account. */
   core.String dateOfBirth;
-
   /** The display name of the user. */
   core.String displayName;
-
   /**
    * The email returned by the IdP. NOTE: The federated login user may not own
    * the email.
    */
   core.String email;
-
   /** It's true if the email is recycled. */
   core.bool emailRecycled;
-
   /**
    * The value is true if the IDP is also the email provider. It means the user
    * owns the email.
    */
   core.bool emailVerified;
-
   /** The unique ID identifies the IdP account. */
   core.String federatedId;
-
   /** The first name of the user. */
   core.String firstName;
-
   /** The full name of the user. */
   core.String fullName;
-
   /** The ID token. */
   core.String idToken;
-
   /**
    * It's the identifier param in the createAuthUri request if the identifier is
    * an email. It can be used to check whether the user input email is different
    * from the asserted email.
    */
   core.String inputEmail;
-
   /** The fixed string "identitytoolkit#VerifyAssertionResponse". */
   core.String kind;
-
   /** The language preference of the user. */
   core.String language;
-
   /** The last name of the user. */
   core.String lastName;
-
   /**
    * The RP local ID if it's already been mapped to the IdP account identified
    * by the federated ID.
    */
   core.String localId;
-
   /**
    * Whether the assertion is from a non-trusted IDP and need account linking
    * confirmation.
    */
   core.bool needConfirmation;
-
   /** The nick name of the user. */
   core.String nickName;
-
+  /** The OAuth2 access token. */
+  core.String oauthAccessToken;
+  /** The OAuth2 authorization code. */
+  core.String oauthAuthorizationCode;
+  /** The lifetime in seconds of the OAuth2 access token. */
+  core.int oauthExpireIn;
   /** The user approved request token for the OpenID OAuth extension. */
   core.String oauthRequestToken;
-
   /** The scope for the OpenID OAuth extension. */
   core.String oauthScope;
-
   /**
    * The original email stored in the mapping storage. It's returned when the
    * federated ID is associated to a different email.
    */
   core.String originalEmail;
-
   /** The URI of the public accessible profiel picture. */
   core.String photoUrl;
-
   /**
    * The IdP ID. For white listed IdPs it's a short domain name e.g. google.com,
    * aol.com, live.net and yahoo.com. If the "providerId" param is set to OpenID
@@ -1855,15 +1840,12 @@ class VerifyAssertionResponse {
    * request. The domain part of the federated ID is returned.
    */
   core.String providerId;
-
   /** The timezone of the user. */
   core.String timeZone;
-
   /**
    * When action is 'map', contains the idps which can be used for confirmation.
    */
   core.List<core.String> verifiedProvider;
-
 
   VerifyAssertionResponse();
 
@@ -1927,6 +1909,15 @@ class VerifyAssertionResponse {
     }
     if (_json.containsKey("nickName")) {
       nickName = _json["nickName"];
+    }
+    if (_json.containsKey("oauthAccessToken")) {
+      oauthAccessToken = _json["oauthAccessToken"];
+    }
+    if (_json.containsKey("oauthAuthorizationCode")) {
+      oauthAuthorizationCode = _json["oauthAuthorizationCode"];
+    }
+    if (_json.containsKey("oauthExpireIn")) {
+      oauthExpireIn = _json["oauthExpireIn"];
     }
     if (_json.containsKey("oauthRequestToken")) {
       oauthRequestToken = _json["oauthRequestToken"];
@@ -2013,6 +2004,15 @@ class VerifyAssertionResponse {
     if (nickName != null) {
       _json["nickName"] = nickName;
     }
+    if (oauthAccessToken != null) {
+      _json["oauthAccessToken"] = oauthAccessToken;
+    }
+    if (oauthAuthorizationCode != null) {
+      _json["oauthAuthorizationCode"] = oauthAuthorizationCode;
+    }
+    if (oauthExpireIn != null) {
+      _json["oauthExpireIn"] = oauthExpireIn;
+    }
     if (oauthRequestToken != null) {
       _json["oauthRequestToken"] = oauthRequestToken;
     }
@@ -2038,36 +2038,28 @@ class VerifyAssertionResponse {
   }
 }
 
-
 /** Request of verifying the password. */
 class VerifyPasswordResponse {
   /** The name of the user. */
   core.String displayName;
-
   /**
    * The email returned by the IdP. NOTE: The federated login user may not own
    * the email.
    */
   core.String email;
-
   /** The GITKit token for authenticated user. */
   core.String idToken;
-
   /** The fixed string "identitytoolkit#VerifyPasswordResponse". */
   core.String kind;
-
   /**
    * The RP local ID if it's already been mapped to the IdP account identified
    * by the federated ID.
    */
   core.String localId;
-
   /** The URI of the user's photo at IdP */
   core.String photoUrl;
-
   /** Whether the email is registered. */
   core.bool registered;
-
 
   VerifyPasswordResponse();
 

@@ -75,7 +75,7 @@ class DeploymentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String projectId, core.String region, core.String deploymentName) {
     var _url = null;
@@ -124,7 +124,7 @@ class DeploymentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Deployment> get(core.String projectId, core.String region, core.String deploymentName) {
     var _url = null;
@@ -143,7 +143,6 @@ class DeploymentsResourceApi {
     if (deploymentName == null) {
       throw new core.ArgumentError("Parameter deploymentName is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/deployments/' + commons.Escaper.ecapeVariable('$deploymentName');
 
@@ -172,7 +171,7 @@ class DeploymentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Deployment> insert(Deployment request, core.String projectId, core.String region) {
     var _url = null;
@@ -191,7 +190,6 @@ class DeploymentsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/deployments';
 
@@ -226,7 +224,7 @@ class DeploymentsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<DeploymentsListResponse> list(core.String projectId, core.String region, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -248,7 +246,6 @@ class DeploymentsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/deployments';
 
@@ -282,7 +279,7 @@ class TemplatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String projectId, core.String templateName) {
     var _url = null;
@@ -326,7 +323,7 @@ class TemplatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Template> get(core.String projectId, core.String templateName) {
     var _url = null;
@@ -342,7 +339,6 @@ class TemplatesResourceApi {
     if (templateName == null) {
       throw new core.ArgumentError("Parameter templateName is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/templates/' + commons.Escaper.ecapeVariable('$templateName');
 
@@ -369,7 +365,7 @@ class TemplatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<Template> insert(Template request, core.String projectId) {
     var _url = null;
@@ -385,7 +381,6 @@ class TemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/templates';
 
@@ -418,7 +413,7 @@ class TemplatesResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<TemplatesListResponse> list(core.String projectId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -437,7 +432,6 @@ class TemplatesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/templates';
 
@@ -462,16 +456,13 @@ class TemplatesResourceApi {
 class AccessConfig {
   /** Name of this access configuration. */
   core.String name;
-
   /** An external IP address associated with this instance. */
   core.String natIp;
-
   /**
    * Type of this access configuration file. (Currently only ONE_TO_ONE_NAT is
    * legal.)
    */
   core.String type;
-
 
   AccessConfig();
 
@@ -502,7 +493,6 @@ class AccessConfig {
   }
 }
 
-
 /**
  * An Action encapsulates a set of commands as a single runnable module with
  * additional information needed during run-time.
@@ -510,10 +500,8 @@ class AccessConfig {
 class Action {
   /** A list of commands to run sequentially for this action. */
   core.List<core.String> commands;
-
   /** The timeout in milliseconds for this action to run. */
   core.int timeoutMs;
-
 
   Action();
 
@@ -538,18 +526,15 @@ class Action {
   }
 }
 
-
 /** An allowed port resource. */
 class AllowedRule {
   /** ?tcp?, ?udp? or ?icmp? */
   core.String IPProtocol;
-
   /**
    * List of ports or port ranges (Example inputs include: ["22"], [?33?,
    * "12345-12349"].
    */
   core.List<core.String> ports;
-
 
   AllowedRule();
 
@@ -574,23 +559,15 @@ class AllowedRule {
   }
 }
 
-
 class AutoscalingModule {
   core.int coolDownPeriodSec;
-
   core.String description;
-
   core.int maxNumReplicas;
-
   core.int minNumReplicas;
-
   core.String signalType;
-
   core.String targetModule;
-
   /** target_utilization should be in range [0,1]. */
   core.double targetUtilization;
-
 
   AutoscalingModule();
 
@@ -645,11 +622,9 @@ class AutoscalingModule {
   }
 }
 
-
 class AutoscalingModuleStatus {
   /** [Output Only] The URL of the corresponding Autoscaling configuration. */
   core.String autoscalingConfigUrl;
-
 
   AutoscalingModuleStatus();
 
@@ -668,12 +643,10 @@ class AutoscalingModuleStatus {
   }
 }
 
-
 /** [Output Only] The current state of a replica or module. */
 class DeployState {
   /** [Output Only] Human readable details about the current state. */
   core.String details;
-
   /**
    * [Output Only] The status of the deployment. Possible values include:
    * - UNKNOWN
@@ -685,7 +658,6 @@ class DeployState {
    * - DELETE_FAILED
    */
   core.String status;
-
 
   DeployState();
 
@@ -710,36 +682,28 @@ class DeployState {
   }
 }
 
-
 /** A deployment represents a physical instantiation of a Template. */
 class Deployment {
   /** [Output Only] The time when this deployment was created. */
   core.String creationDate;
-
   /** A user-supplied description of this Deployment. */
   core.String description;
-
   /** [Output Only] List of status for the modules in this deployment. */
   core.Map<core.String, ModuleStatus> modules;
-
   /**
    * Name of this deployment. The name must conform to the following regular
    * expression: [a-zA-Z0-9-_]{1,64}
    */
   core.String name;
-
   /**
    * The set of parameter overrides to apply to the corresponding Template
    * before deploying.
    */
   core.List<ParamOverride> overrides;
-
   /** [Output Only] Current status of this deployment. */
   DeployState state;
-
   /** The name of the Template on which this deployment is based. */
   core.String templateName;
-
 
   Deployment();
 
@@ -794,12 +758,9 @@ class Deployment {
   }
 }
 
-
 class DeploymentsListResponse {
   core.String nextPageToken;
-
   core.List<Deployment> resources;
-
 
   DeploymentsListResponse();
 
@@ -824,18 +785,15 @@ class DeploymentsListResponse {
   }
 }
 
-
 /** How to attach a disk to a Replica. */
 class DiskAttachment {
   /** The device name of this disk. */
   core.String deviceName;
-
   /**
    * A zero-based index to assign to this disk, where 0 is reserved for the boot
    * disk. If not specified, this is assigned by the server.
    */
   core.int index;
-
 
   DiskAttachment();
 
@@ -860,15 +818,12 @@ class DiskAttachment {
   }
 }
 
-
 /** An environment variable. */
 class EnvVariable {
   /** Whether this variable is hidden or visible. */
   core.bool hidden;
-
   /** Value of the environment variable. */
   core.String value;
-
 
   EnvVariable();
 
@@ -893,7 +848,6 @@ class EnvVariable {
   }
 }
 
-
 /**
  * A pre-existing persistent disk that will be attached to every Replica in the
  * Pool.
@@ -901,13 +855,11 @@ class EnvVariable {
 class ExistingDisk {
   /** Optional. How the disk will be attached to the Replica. */
   DiskAttachment attachment;
-
   /**
    * The fully-qualified URL of the Persistent Disk resource. It must be in the
    * same zone as the Pool.
    */
   core.String source;
-
 
   ExistingDisk();
 
@@ -932,40 +884,33 @@ class ExistingDisk {
   }
 }
 
-
 /** A Firewall resource */
 class FirewallModule {
   /** The allowed ports or port ranges. */
   core.List<AllowedRule> allowed;
-
   /** The description of the firewall (optional) */
   core.String description;
-
   /**
    * The NetworkModule to which this firewall should apply. If not specified, or
    * if specified as 'default', this firewall will be applied to the 'default'
    * network.
    */
   core.String network;
-
   /**
    * Source IP ranges to apply this firewall to, see the GCE Spec for details on
    * syntax
    */
   core.List<core.String> sourceRanges;
-
   /**
    * Source Tags to apply this firewall to, see the GCE Spec for details on
    * syntax
    */
   core.List<core.String> sourceTags;
-
   /**
    * Target Tags to apply this firewall to, see the GCE Spec for details on
    * syntax
    */
   core.List<core.String> targetTags;
-
 
   FirewallModule();
 
@@ -1014,11 +959,9 @@ class FirewallModule {
   }
 }
 
-
 class FirewallModuleStatus {
   /** [Output Only] The URL of the corresponding Firewall resource. */
   core.String firewallUrl;
-
 
   FirewallModuleStatus();
 
@@ -1037,24 +980,15 @@ class FirewallModuleStatus {
   }
 }
 
-
 class HealthCheckModule {
   core.int checkIntervalSec;
-
   core.String description;
-
   core.int healthyThreshold;
-
   core.String host;
-
   core.String path;
-
   core.int port;
-
   core.int timeoutSec;
-
   core.int unhealthyThreshold;
-
 
   HealthCheckModule();
 
@@ -1115,11 +1049,9 @@ class HealthCheckModule {
   }
 }
 
-
 class HealthCheckModuleStatus {
   /** [Output Only] The HealthCheck URL. */
   core.String healthCheckUrl;
-
 
   HealthCheckModuleStatus();
 
@@ -1138,22 +1070,14 @@ class HealthCheckModuleStatus {
   }
 }
 
-
 class LbModule {
   core.String description;
-
   core.List<core.String> healthChecks;
-
   core.String ipAddress;
-
   core.String ipProtocol;
-
   core.String portRange;
-
   core.String sessionAffinity;
-
   core.List<core.String> targetModules;
-
 
   LbModule();
 
@@ -1208,14 +1132,11 @@ class LbModule {
   }
 }
 
-
 class LbModuleStatus {
   /** [Output Only] The URL of the corresponding ForwardingRule in GCE. */
   core.String forwardingRuleUrl;
-
   /** [Output Only] The URL of the corresponding TargetPool resource in GCE. */
   core.String targetPoolUrl;
-
 
   LbModuleStatus();
 
@@ -1240,7 +1161,6 @@ class LbModuleStatus {
   }
 }
 
-
 /**
  * A Compute Engine metadata entry. Identical to the metadata on the
  * corresponding Compute Engine resource.
@@ -1248,10 +1168,8 @@ class LbModuleStatus {
 class Metadata {
   /** The fingerprint of the metadata. */
   core.String fingerPrint;
-
   /** A list of metadata items. */
   core.List<MetadataItem> items;
-
 
   Metadata();
 
@@ -1276,7 +1194,6 @@ class Metadata {
   }
 }
 
-
 /**
  * A Compute Engine metadata item, defined as a key:value pair. Identical to the
  * metadata on the corresponding Compute Engine resource.
@@ -1284,10 +1201,8 @@ class Metadata {
 class MetadataItem {
   /** A metadata key. */
   core.String key;
-
   /** A metadata value. */
   core.String value;
-
 
   MetadataItem();
 
@@ -1312,30 +1227,22 @@ class MetadataItem {
   }
 }
 
-
 /**
  * A module in a configuration. A module represents a single homogeneous,
  * possibly replicated task.
  */
 class Module {
   AutoscalingModule autoscalingModule;
-
   FirewallModule firewallModule;
-
   HealthCheckModule healthCheckModule;
-
   LbModule lbModule;
-
   NetworkModule networkModule;
-
   ReplicaPoolModule replicaPoolModule;
-
   /**
    * The type of this module. Valid values ("AUTOSCALING", "FIREWALL",
    * "HEALTH_CHECK", "LOAD_BALANCING", "NETWORK", "REPLICA_POOL")
    */
   core.String type;
-
 
   Module();
 
@@ -1390,7 +1297,6 @@ class Module {
   }
 }
 
-
 /** [Output Only] Aggregate status for a module. */
 class ModuleStatus {
   /**
@@ -1398,31 +1304,23 @@ class ModuleStatus {
    * AUTOSCALING.
    */
   AutoscalingModuleStatus autoscalingModuleStatus;
-
   /** [Output Only] The status of the FirewallModule, set for type FIREWALL. */
   FirewallModuleStatus firewallModuleStatus;
-
   /**
    * [Output Only] The status of the HealthCheckModule, set for type
    * HEALTH_CHECK.
    */
   HealthCheckModuleStatus healthCheckModuleStatus;
-
   /** [Output Only] The status of the LbModule, set for type LOAD_BALANCING. */
   LbModuleStatus lbModuleStatus;
-
   /** [Output Only] The status of the NetworkModule, set for type NETWORK. */
   NetworkModuleStatus networkModuleStatus;
-
   /** [Output Only] The status of the ReplicaPoolModule, set for type VM. */
   ReplicaPoolModuleStatus replicaPoolModuleStatus;
-
   /** [Output Only] The current state of the module. */
   DeployState state;
-
   /** [Output Only] The type of the module. */
   core.String type;
-
 
   ModuleStatus();
 
@@ -1483,7 +1381,6 @@ class ModuleStatus {
   }
 }
 
-
 /**
  * A Compute Engine NetworkInterface resource. Identical to the NetworkInterface
  * on the corresponding Compute Engine resource.
@@ -1494,22 +1391,18 @@ class NetworkInterface {
    * interface is configured to interact with other network services
    */
   core.List<AccessConfig> accessConfigs;
-
   /** Name of the interface. */
   core.String name;
-
   /**
    * The name of the NetworkModule to which this interface applies. If not
    * specified, or specified as 'default', this will use the 'default' network.
    */
   core.String network;
-
   /**
    * An optional IPV4 internal network address to assign to the instance for
    * this network interface.
    */
   core.String networkIp;
-
 
   NetworkInterface();
 
@@ -1546,17 +1439,14 @@ class NetworkInterface {
   }
 }
 
-
 class NetworkModule {
   /**
    * Required; The range of internal addresses that are legal on this network.
    * This range is a CIDR specification, for example: 192.168.0.0/16.
    */
   core.String IPv4Range;
-
   /** The description of the network. */
   core.String description;
-
   /**
    * An optional address that is used for default routing to other networks.
    * This must be within the range specified by IPv4Range, and is typicall the
@@ -1564,7 +1454,6 @@ class NetworkModule {
    * the first usable address in IPv4Range.
    */
   core.String gatewayIPv4;
-
 
   NetworkModule();
 
@@ -1595,11 +1484,9 @@ class NetworkModule {
   }
 }
 
-
 class NetworkModuleStatus {
   /** [Output Only] The URL of the corresponding Network resource. */
   core.String networkUrl;
-
 
   NetworkModuleStatus();
 
@@ -1618,7 +1505,6 @@ class NetworkModuleStatus {
   }
 }
 
-
 /**
  * A Persistent Disk resource that will be created and attached to each Replica
  * in the Pool. Each Replica will have a unique persistent disk that is created
@@ -1627,19 +1513,15 @@ class NetworkModuleStatus {
 class NewDisk {
   /** How the disk will be attached to the Replica. */
   DiskAttachment attachment;
-
   /** If true, then this disk will be deleted when the instance is deleted. */
   core.bool autoDelete;
-
   /** If true, indicates that this is the root persistent disk. */
   core.bool boot;
-
   /**
    * Create the new disk using these parameters. The name of the disk will be
    * <instance_name>-<five_random_charactersgt;.
    */
   NewDiskInitializeParams initializeParams;
-
 
   NewDisk();
 
@@ -1676,21 +1558,17 @@ class NewDisk {
   }
 }
 
-
 /** Initialization parameters for creating a new disk. */
 class NewDiskInitializeParams {
   /** The size of the created disk in gigabytes. */
   core.String diskSizeGb;
-
   /**
    * Name of the disk type resource describing which disk type to use to create
    * the disk. For example 'pd-ssd' or 'pd-standard'. Default is 'pd-standard'
    */
   core.String diskType;
-
   /** The fully-qualified URL of a source image to use to create this disk. */
   core.String sourceImage;
-
 
   NewDiskInitializeParams();
 
@@ -1721,7 +1599,6 @@ class NewDiskInitializeParams {
   }
 }
 
-
 /**
  * A specification for overriding parameters in a Template that corresponds to
  * the Deployment.
@@ -1731,10 +1608,8 @@ class ParamOverride {
    * A JSON Path expression that specifies which parameter should be overridden.
    */
   core.String path;
-
   /** The new value to assign to the overridden parameter. */
   core.String value;
-
 
   ParamOverride();
 
@@ -1759,26 +1634,20 @@ class ParamOverride {
   }
 }
 
-
 class ReplicaPoolModule {
   /** A list of environment variables. */
   core.Map<core.String, EnvVariable> envVariables;
-
   /** The Health Checks to configure for the ReplicaPoolModule */
   core.List<core.String> healthChecks;
-
   /** Number of replicas in this module. */
   core.int numReplicas;
-
   /** Information for a ReplicaPoolModule. */
   ReplicaPoolParams replicaPoolParams;
-
   /**
    * [Output Only] The name of the Resource View associated with a
    * ReplicaPoolModule. This field will be generated by the service.
    */
   core.String resourceView;
-
 
   ReplicaPoolModule();
 
@@ -1821,17 +1690,14 @@ class ReplicaPoolModule {
   }
 }
 
-
 class ReplicaPoolModuleStatus {
   /** [Output Only] The URL of the associated ReplicaPool resource. */
   core.String replicaPoolUrl;
-
   /**
    * [Output Only] The URL of the Resource Group associated with this
    * ReplicaPool.
    */
   core.String resourceViewUrl;
-
 
   ReplicaPoolModuleStatus();
 
@@ -1856,7 +1722,6 @@ class ReplicaPoolModuleStatus {
   }
 }
 
-
 /**
  * Configuration information for a ReplicaPools resource. Specifying an item
  * within will determine the ReplicaPools API version used for a
@@ -1865,7 +1730,6 @@ class ReplicaPoolModuleStatus {
 class ReplicaPoolParams {
   /** ReplicaPoolParams specifications for use with ReplicaPools v1beta1. */
   ReplicaPoolParamsV1Beta1 v1beta1;
-
 
   ReplicaPoolParams();
 
@@ -1884,7 +1748,6 @@ class ReplicaPoolParams {
   }
 }
 
-
 /**
  * Configuration information for a ReplicaPools v1beta1 API resource. Directly
  * maps to ReplicaPool InitTemplate.
@@ -1895,22 +1758,17 @@ class ReplicaPoolParamsV1Beta1 {
    * The default value is true.
    */
   core.bool autoRestart;
-
   /** The base name for instances within this ReplicaPool. */
   core.String baseInstanceName;
-
   /** Enables IP Forwarding */
   core.bool canIpForward;
-
   /** An optional textual description of the resource. */
   core.String description;
-
   /**
    * A list of existing Persistent Disk resources to attach to each replica in
    * the pool. Each disk will be attached in read-only mode to every replica.
    */
   core.List<ExistingDisk> disksToAttach;
-
   /**
    * A list of Disk resources to create and attach to each Replica in the Pool.
    * Currently, you can only define one disk and it must be a root persistent
@@ -1918,41 +1776,32 @@ class ReplicaPoolParamsV1Beta1 {
    * replica.
    */
   core.List<NewDisk> disksToCreate;
-
   /**
    * Name of the Action to be run during initialization of a ReplicaPoolModule.
    */
   core.String initAction;
-
   /**
    * The machine type for this instance. Either a complete URL, or the resource
    * name (e.g. n1-standard-1).
    */
   core.String machineType;
-
   /** The metadata key/value pairs assigned to this instance. */
   Metadata metadata;
-
   /**
    * A list of network interfaces for the instance. Currently only one interface
    * is supported by Google Compute Engine.
    */
   core.List<NetworkInterface> networkInterfaces;
-
   core.String onHostMaintenance;
-
   /** A list of Service Accounts to enable for this instance. */
   core.List<ServiceAccount> serviceAccounts;
-
   /**
    * A list of tags to apply to the Google Compute Engine instance to identify
    * resources.
    */
   Tag tags;
-
   /** The zone for this ReplicaPool. */
   core.String zone;
-
 
   ReplicaPoolParamsV1Beta1();
 
@@ -2049,17 +1898,14 @@ class ReplicaPoolParamsV1Beta1 {
   }
 }
 
-
 /**
  * A Compute Engine service account, identical to the Compute Engine resource.
  */
 class ServiceAccount {
   /** Service account email address. */
   core.String email;
-
   /** List of OAuth2 scopes to obtain for the service account. */
   core.List<core.String> scopes;
-
 
   ServiceAccount();
 
@@ -2084,7 +1930,6 @@ class ServiceAccount {
   }
 }
 
-
 /**
  * A Compute Engine Instance tag, identical to the tags on the corresponding
  * Compute Engine Instance resource.
@@ -2092,10 +1937,8 @@ class ServiceAccount {
 class Tag {
   /** The fingerprint of the tag. */
   core.String fingerPrint;
-
   /** Items contained in this tag. */
   core.List<core.String> items;
-
 
   Tag();
 
@@ -2120,24 +1963,19 @@ class Tag {
   }
 }
 
-
 /** A Template represents a complete configuration for a Deployment. */
 class Template {
   /** Action definitions for use in Module intents in this Template. */
   core.Map<core.String, Action> actions;
-
   /** A user-supplied description of this Template. */
   core.String description;
-
   /** A list of modules for this Template. */
   core.Map<core.String, Module> modules;
-
   /**
    * Name of this Template. The name must conform to the expression:
    * [a-zA-Z0-9-_]{1,64}
    */
   core.String name;
-
 
   Template();
 
@@ -2174,12 +2012,9 @@ class Template {
   }
 }
 
-
 class TemplatesListResponse {
   core.String nextPageToken;
-
   core.List<Template> resources;
-
 
   TemplatesListResponse();
 

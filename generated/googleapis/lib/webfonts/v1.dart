@@ -54,7 +54,7 @@ class WebfontsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<WebfontList> list({core.String sort}) {
     var _url = null;
@@ -67,7 +67,6 @@ class WebfontsResourceApi {
     if (sort != null) {
       _queryParams["sort"] = [sort];
     }
-
 
     _url = 'webfonts';
 
@@ -88,33 +87,25 @@ class WebfontsResourceApi {
 class Webfont {
   /** The category of the font. */
   core.String category;
-
   /** The name of the font. */
   core.String family;
-
   /**
    * The font files (with all supported scripts) for each one of the available
    * variants, as a key : value map.
    */
   core.Map<core.String, core.String> files;
-
   /** This kind represents a webfont object in the webfonts service. */
   core.String kind;
-
   /**
    * The date (format "yyyy-MM-dd") the font was modified for the last time.
    */
   core.DateTime lastModified;
-
   /** The scripts supported by the font. */
   core.List<core.String> subsets;
-
   /** The available variants for the font. */
   core.List<core.String> variants;
-
   /** The font version. */
   core.String version;
-
 
   Webfont();
 
@@ -175,16 +166,13 @@ class Webfont {
   }
 }
 
-
 class WebfontList {
   /** The list of fonts currently served by the Google Fonts API. */
   core.List<Webfont> items;
-
   /**
    * This kind represents a list of webfont objects in the webfonts service.
    */
   core.String kind;
-
 
   WebfontList();
 

@@ -15,7 +15,7 @@
     "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content/v2/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/pG4DpZOeXXyxWfg7TLJXC3O_GaI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/G-ZyOp5RRHFr1ENfVUNl9TTyO6w\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -302,6 +302,13 @@
                     "description": "Retrieves and updates the shipping settings of multiple accounts in a single request.",
                     "httpMethod": "POST",
                     "id": "content.accountshipping.custombatch",
+                    "parameters": {
+                        "dryRun": {
+                            "description": "Flag to run the request in dry-run mode.",
+                            "location": "query",
+                            "type": "boolean"
+                        }
+                    },
                     "path": "accountshipping/batch",
                     "request": {
                         "$ref": "AccountshippingCustomBatchRequest"
@@ -396,6 +403,11 @@
                             "required": true,
                             "type": "string"
                         },
+                        "dryRun": {
+                            "description": "Flag to run the request in dry-run mode.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "merchantId": {
                             "description": "The ID of the managing account.",
                             "format": "uint64",
@@ -430,6 +442,11 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "dryRun": {
+                            "description": "Flag to run the request in dry-run mode.",
+                            "location": "query",
+                            "type": "boolean"
                         },
                         "merchantId": {
                             "description": "The ID of the managing account.",
@@ -543,6 +560,13 @@
                     "description": "Retrieves and updates tax settings of multiple accounts in a single request.",
                     "httpMethod": "POST",
                     "id": "content.accounttax.custombatch",
+                    "parameters": {
+                        "dryRun": {
+                            "description": "Flag to run the request in dry-run mode.",
+                            "location": "query",
+                            "type": "boolean"
+                        }
+                    },
                     "path": "accounttax/batch",
                     "request": {
                         "$ref": "AccounttaxCustomBatchRequest"
@@ -637,6 +661,11 @@
                             "required": true,
                             "type": "string"
                         },
+                        "dryRun": {
+                            "description": "Flag to run the request in dry-run mode.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "merchantId": {
                             "description": "The ID of the managing account.",
                             "format": "uint64",
@@ -671,6 +700,11 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "dryRun": {
+                            "description": "Flag to run the request in dry-run mode.",
+                            "location": "query",
+                            "type": "boolean"
                         },
                         "merchantId": {
                             "description": "The ID of the managing account.",
@@ -1281,7 +1315,7 @@
             }
         }
     },
-    "revision": "20150407",
+    "revision": "20150424",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1293,7 +1327,7 @@
                     "type": "boolean"
                 },
                 "adwordsLinks": {
-                    "description": "List of linked AdWords accounts.",
+                    "description": "List of linked AdWords accounts, active or pending approval. To create a new link request, add a new link with status active to the list. It will remain is state pending until approved or rejected in the AdWords interface. To delete an active link or to cancel a link request, remove it from the list.",
                     "items": {
                         "$ref": "AccountAdwordsLink"
                     },
@@ -1355,7 +1389,7 @@
                     "type": "string"
                 },
                 "status": {
-                    "description": "Status of the link between this Merchant Center account and the AdWords account.",
+                    "description": "Status of the link between this Merchant Center account and the AdWords account. Upon retrieval, it represents the actual status of the link and can be either active if it was approved in Google AdWords or pending if it's pending approval. Upon insertion, it represents the intended status of the link. Re-uploading a link with status active when it's still pending or with status pending when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status inactive is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending.",
                     "type": "string"
                 }
             },

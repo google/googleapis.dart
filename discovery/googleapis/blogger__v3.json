@@ -17,7 +17,7 @@
     "description": "API for access to the data within Blogger.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/blogger/docs/3.0/getting_started",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/IrFCn8z3q4ulYVZWC1SJkXJKYC0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ZRgj7Ah7gwQETAdvqLpx-xGEmV8\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/blogger-16.png",
         "x32": "https://www.google.com/images/icons/product/blogger-32.png"
@@ -1725,7 +1725,7 @@
             }
         }
     },
-    "revision": "20150208",
+    "revision": "20150422",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Blog": {
@@ -2005,6 +2005,10 @@
         "CommentList": {
             "id": "CommentList",
             "properties": {
+                "etag": {
+                    "description": "Etag of the response.",
+                    "type": "string"
+                },
                 "items": {
                     "description": "The List of Comments for a Post.",
                     "items": {
@@ -2118,6 +2122,10 @@
         "PageList": {
             "id": "PageList",
             "properties": {
+                "etag": {
+                    "description": "Etag of the response.",
+                    "type": "string"
+                },
                 "items": {
                     "description": "The list of Pages for a Blog.",
                     "items": {
@@ -2337,6 +2345,10 @@
         "PostList": {
             "id": "PostList",
             "properties": {
+                "etag": {
+                    "description": "Etag of the response.",
+                    "type": "string"
+                },
                 "items": {
                     "description": "The list of Posts for this Blog.",
                     "items": {

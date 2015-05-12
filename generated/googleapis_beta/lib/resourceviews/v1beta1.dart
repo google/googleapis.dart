@@ -76,7 +76,7 @@ class RegionViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future addresources(RegionViewsAddResourcesRequest request, core.String projectName, core.String region, core.String resourceViewName) {
     var _url = null;
@@ -128,7 +128,7 @@ class RegionViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String projectName, core.String region, core.String resourceViewName) {
     var _url = null;
@@ -179,7 +179,7 @@ class RegionViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ResourceView> get(core.String projectName, core.String region, core.String resourceViewName) {
     var _url = null;
@@ -198,7 +198,6 @@ class RegionViewsResourceApi {
     if (resourceViewName == null) {
       throw new core.ArgumentError("Parameter resourceViewName is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectName') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName');
 
@@ -229,7 +228,7 @@ class RegionViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RegionViewsInsertResponse> insert(ResourceView request, core.String projectName, core.String region) {
     var _url = null;
@@ -248,7 +247,6 @@ class RegionViewsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectName') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/resourceViews';
 
@@ -285,7 +283,7 @@ class RegionViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RegionViewsListResponse> list(core.String projectName, core.String region, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -307,7 +305,6 @@ class RegionViewsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectName') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/resourceViews';
 
@@ -346,7 +343,7 @@ class RegionViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<RegionViewsListResourcesResponse> listresources(core.String projectName, core.String region, core.String resourceViewName, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -371,7 +368,6 @@ class RegionViewsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectName') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName') + '/resources';
 
@@ -402,7 +398,7 @@ class RegionViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future removeresources(RegionViewsRemoveResourcesRequest request, core.String projectName, core.String region, core.String resourceViewName) {
     var _url = null;
@@ -465,7 +461,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future addresources(ZoneViewsAddResourcesRequest request, core.String projectName, core.String zone, core.String resourceViewName) {
     var _url = null;
@@ -517,7 +513,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future delete(core.String projectName, core.String zone, core.String resourceViewName) {
     var _url = null;
@@ -568,7 +564,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ResourceView> get(core.String projectName, core.String zone, core.String resourceViewName) {
     var _url = null;
@@ -587,7 +583,6 @@ class ZoneViewsResourceApi {
     if (resourceViewName == null) {
       throw new core.ArgumentError("Parameter resourceViewName is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectName') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName');
 
@@ -618,7 +613,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ZoneViewsInsertResponse> insert(ResourceView request, core.String projectName, core.String zone) {
     var _url = null;
@@ -637,7 +632,6 @@ class ZoneViewsResourceApi {
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectName') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews';
 
@@ -674,7 +668,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ZoneViewsListResponse> list(core.String projectName, core.String zone, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -696,7 +690,6 @@ class ZoneViewsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectName') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews';
 
@@ -735,7 +728,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future<ZoneViewsListResourcesResponse> listresources(core.String projectName, core.String zone, core.String resourceViewName, {core.int maxResults, core.String pageToken}) {
     var _url = null;
@@ -760,7 +753,6 @@ class ZoneViewsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-
 
     _url = commons.Escaper.ecapeVariable('$projectName') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName') + '/resources';
 
@@ -791,7 +783,7 @@ class ZoneViewsResourceApi {
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
+   * this method will complete with the same error.
    */
   async.Future removeresources(ZoneViewsRemoveResourcesRequest request, core.String projectName, core.String zone, core.String resourceViewName) {
     var _url = null;
@@ -836,10 +828,8 @@ class ZoneViewsResourceApi {
 class Label {
   /** Key of the label. */
   core.String key;
-
   /** Value of the label. */
   core.String value;
-
 
   Label();
 
@@ -864,12 +854,10 @@ class Label {
   }
 }
 
-
 /** The request to add resources to the resource view. */
 class RegionViewsAddResourcesRequest {
   /** The list of resources to be added. */
   core.List<core.String> resources;
-
 
   RegionViewsAddResourcesRequest();
 
@@ -888,12 +876,10 @@ class RegionViewsAddResourcesRequest {
   }
 }
 
-
 /** The response to a resource view insert request. */
 class RegionViewsInsertResponse {
   /** The resource view object inserted. */
   ResourceView resource;
-
 
   RegionViewsInsertResponse();
 
@@ -912,15 +898,12 @@ class RegionViewsInsertResponse {
   }
 }
 
-
 /** The response to the list resource request. */
 class RegionViewsListResourcesResponse {
   /** The resources in the view. */
   core.List<core.String> members;
-
   /** A token used for pagination. */
   core.String nextPageToken;
-
 
   RegionViewsListResourcesResponse();
 
@@ -945,15 +928,12 @@ class RegionViewsListResourcesResponse {
   }
 }
 
-
 /** The response to the list resource view request. */
 class RegionViewsListResponse {
   /** A token used for pagination. */
   core.String nextPageToken;
-
   /** The list of resource views that meet the criteria. */
   core.List<ResourceView> resourceViews;
-
 
   RegionViewsListResponse();
 
@@ -978,12 +958,10 @@ class RegionViewsListResponse {
   }
 }
 
-
 /** The request to remove resources from the resource view. */
 class RegionViewsRemoveResourcesRequest {
   /** The list of resources to be removed. */
   core.List<core.String> resources;
-
 
   RegionViewsRemoveResourcesRequest();
 
@@ -1002,39 +980,28 @@ class RegionViewsRemoveResourcesRequest {
   }
 }
 
-
 /** The resource view object. */
 class ResourceView {
   /** The creation time of the resource view. */
   core.String creationTime;
-
   /** The detailed description of the resource view. */
   core.String description;
-
   /** [Output Only] The ID of the resource view. */
   core.String id;
-
   /** Type of the resource. */
   core.String kind;
-
   /** The labels for events. */
   core.List<Label> labels;
-
   /** The last modified time of the view. Not supported yet. */
   core.String lastModified;
-
   /** A list of all resources in the resource view. */
   core.List<core.String> members;
-
   /** The name of the resource view. */
   core.String name;
-
   /** The total number of resources in the resource view. */
   core.int numMembers;
-
   /** [Output Only] A self-link to the resource view. */
   core.String selfLink;
-
 
   ResourceView();
 
@@ -1107,12 +1074,10 @@ class ResourceView {
   }
 }
 
-
 /** The request to add resources to the resource view. */
 class ZoneViewsAddResourcesRequest {
   /** The list of resources to be added. */
   core.List<core.String> resources;
-
 
   ZoneViewsAddResourcesRequest();
 
@@ -1131,12 +1096,10 @@ class ZoneViewsAddResourcesRequest {
   }
 }
 
-
 /** The response to an insert request. */
 class ZoneViewsInsertResponse {
   /** The resource view object that has been inserted. */
   ResourceView resource;
-
 
   ZoneViewsInsertResponse();
 
@@ -1155,15 +1118,12 @@ class ZoneViewsInsertResponse {
   }
 }
 
-
 /** The response to a list resource request. */
 class ZoneViewsListResourcesResponse {
   /** The full URL of resources in the view. */
   core.List<core.String> members;
-
   /** A token used for pagination. */
   core.String nextPageToken;
-
 
   ZoneViewsListResourcesResponse();
 
@@ -1188,15 +1148,12 @@ class ZoneViewsListResourcesResponse {
   }
 }
 
-
 /** The response to a list request. */
 class ZoneViewsListResponse {
   /** A token used for pagination. */
   core.String nextPageToken;
-
   /** The result that contains all resource views that meet the criteria. */
   core.List<ResourceView> resourceViews;
-
 
   ZoneViewsListResponse();
 
@@ -1221,12 +1178,10 @@ class ZoneViewsListResponse {
   }
 }
 
-
 /** The request to remove resources from the resource view. */
 class ZoneViewsRemoveResourcesRequest {
   /** The list of resources to be removed. */
   core.List<core.String> resources;
-
 
   ZoneViewsRemoveResourcesRequest();
 
