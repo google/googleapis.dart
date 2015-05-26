@@ -2353,6 +2353,7 @@ class DatabaseInstance {
    * billing.
    * PENDING_CREATE: The instance is being created.
    * MAINTENANCE: The instance is down for maintenance.
+   * FAILED: The instance creation failed.
    * UNKNOWN_STATE: The state of the instance is unknown.
    */
   core.String state;
@@ -3267,6 +3268,10 @@ class Operation {
    * example 2012-11-15T16:19:00.094Z.
    */
   core.DateTime endTime;
+  /**
+   * If errors occurred during processing of this operation, this field will be
+   * populated.
+   */
   OperationErrors error;
   /** The context for export operation, if applicable. */
   ExportContext exportContext;
@@ -3770,6 +3775,7 @@ class SslCert {
   core.String instance;
   /** This is always sql#sslCert. */
   core.String kind;
+  /** The URI of this resource. */
   core.String selfLink;
   /** Sha1 Fingerprint. */
   core.String sha1Fingerprint;

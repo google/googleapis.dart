@@ -35,7 +35,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/q7G5QdguNPp3b-d0oF62ZLMOZNU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ZG83y0bMDotqOLOKtHiQtl2NI3Y\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -748,7 +748,7 @@
                             "type": "boolean"
                         },
                         "ocrLanguage": {
-                            "description": "If ocr is true, hints at the language to use. Valid values are ISO 639-1 codes.",
+                            "description": "If ocr is true, hints at the language to use. Valid values are BCP 47 codes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -923,7 +923,7 @@
                             "type": "boolean"
                         },
                         "ocrLanguage": {
-                            "description": "If ocr is true, hints at the language to use. Valid values are ISO 639-1 codes.",
+                            "description": "If ocr is true, hints at the language to use. Valid values are BCP 47 codes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1082,7 +1082,7 @@
                             "type": "boolean"
                         },
                         "ocrLanguage": {
-                            "description": "If ocr is true, hints at the language to use. Valid values are ISO 639-1 codes.",
+                            "description": "If ocr is true, hints at the language to use. Valid values are BCP 47 codes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1275,7 +1275,7 @@
                             "type": "boolean"
                         },
                         "ocrLanguage": {
-                            "description": "If ocr is true, hints at the language to use. Valid values are ISO 639-1 codes.",
+                            "description": "If ocr is true, hints at the language to use. Valid values are BCP 47 codes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2484,7 +2484,7 @@
             }
         }
     },
-    "revision": "20150326",
+    "revision": "20150513",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -2525,7 +2525,7 @@
                     "type": "array"
                 },
                 "domainSharingPolicy": {
-                    "description": "The domain sharing policy for the current user.",
+                    "description": "The domain sharing policy for the current user. Possible values are:  \n- ALLOWED \n- ALLOWED_WITH_WARNING \n- INCOMING_ONLY \n- DISALLOWED",
                     "type": "string"
                 },
                 "etag": {

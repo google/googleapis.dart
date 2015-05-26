@@ -24,6 +24,9 @@ class AppsactivityApi {
   /** View and manage the files in your Google Drive */
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
+  /** View and manage metadata of files in your Google Drive */
+  static const DriveMetadataScope = "https://www.googleapis.com/auth/drive.metadata";
+
   /** View metadata for files in your Google Drive */
   static const DriveMetadataReadonlyScope = "https://www.googleapis.com/auth/drive.metadata.readonly";
 

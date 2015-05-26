@@ -3624,8 +3624,8 @@ class Object {
   /** Content-Type of the object data. */
   core.String contentType;
   /**
-   * CRC32c checksum, as described in RFC 4960, Appendix B; encoded using
-   * base64.
+   * CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64
+   * in big-endian byte order.
    */
   core.String crc32c;
   /** HTTP 1.1 Entity tag for the object. */

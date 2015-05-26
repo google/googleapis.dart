@@ -21,6 +21,9 @@ class GenomicsApi {
   /** View and manage your data in Google BigQuery */
   static const BigqueryScope = "https://www.googleapis.com/auth/bigquery";
 
+  /** View and manage your data across Google Cloud Platform services */
+  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
   /** Manage your data in Google Cloud Storage */
   static const DevstorageReadWriteScope = "https://www.googleapis.com/auth/devstorage.read_write";
 
@@ -43,7 +46,6 @@ class GenomicsApi {
   ReadsResourceApi get reads => new ReadsResourceApi(_requester);
   ReferencesResourceApi get references => new ReferencesResourceApi(_requester);
   ReferencesetsResourceApi get referencesets => new ReferencesetsResourceApi(_requester);
-  StreamingReadstoreResourceApi get streamingReadstore => new StreamingReadstoreResourceApi(_requester);
   VariantsResourceApi get variants => new VariantsResourceApi(_requester);
   VariantsetsResourceApi get variantsets => new VariantsetsResourceApi(_requester);
 
@@ -2188,64 +2190,6 @@ class ReferencesetsResourceApi {
 }
 
 
-class StreamingReadstoreResourceApi {
-  final commons.ApiRequester _requester;
-
-  StreamingReadstoreResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Gets a stream of reads for one or more read group sets. Reads search
-   * operates over a genomic coordinate space of reference sequence & position
-   * defined over the reference sequences to which the requested read group sets
-   * are aligned.
-   *
-   * If a target positional range is specified, all reads whose alignment to the
-   * reference genome overlap the range are returned.
-   *
-   * All reads returned are ordered by genomic coordinate (reference sequence &
-   * position). Reads with equivalent genomic coordinates are returned in a
-   * deterministic order.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [StreamReadsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<StreamReadsResponse> streamreads(StreamReadsRequest request) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-
-    _url = 'streamingReadstore/streamreads';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new StreamReadsResponse.fromJson(data));
-  }
-
-}
-
-
 class VariantsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -4036,15 +3980,17 @@ class ImportReadGroupSetsResponse {
 /** The variant data import request. */
 class ImportVariantsRequest {
   /**
-   * The format of the variant data being imported.
+   * The format of the variant data being imported. If unspecified, defaults to
+   * to "VCF".
    * Possible string values are:
    * - "COMPLETE_GENOMICS"
    * - "VCF"
    */
   core.String format;
   /**
-   * A list of URIs pointing at VCF files in Google Cloud Storage. See the VCF
-   * Specification for more details on the input format.
+   * A list of URIs referencing variant files in Google Cloud Storage. URIs can
+   * include wildcards as described here. Note that recursive wildcards ('**')
+   * are not supported.
    */
   core.List<core.String> sourceUris;
 
@@ -6594,8 +6540,9 @@ class SearchVariantsRequest {
   /** Only return variants which have exactly this name. */
   core.String variantName;
   /**
-   * Exactly one variant set ID must be provided. Only variants from this
-   * variant set will be returned.
+   * At most one variant set ID must be provided. Only variants from this
+   * variant set will be returned. If omitted, a call set id must be included in
+   * the request.
    */
   core.List<core.String> variantSetIds;
 
@@ -6693,83 +6640,6 @@ class SearchVariantsResponse {
     }
     if (variants != null) {
       _json["variants"] = variants.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-class StreamReadsRequest {
-  /**
-   * The end position of the range on the reference, 0-based exclusive. If
-   * specified, referenceName must also be specified.
-   */
-  core.String end;
-  /**
-   * The ID of the read groups set within which to search for reads. Exactly one
-   * ID must be provided.
-   */
-  core.List<core.String> readGroupSetIds;
-  /**
-   * The reference sequence name, for example chr1, 1, or chrX. If set to *,
-   * only unmapped reads are returned.
-   */
-  core.String referenceName;
-  /**
-   * The start position of the range on the reference, 0-based inclusive. If
-   * specified, referenceName must also be specified.
-   */
-  core.String start;
-
-  StreamReadsRequest();
-
-  StreamReadsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("end")) {
-      end = _json["end"];
-    }
-    if (_json.containsKey("readGroupSetIds")) {
-      readGroupSetIds = _json["readGroupSetIds"];
-    }
-    if (_json.containsKey("referenceName")) {
-      referenceName = _json["referenceName"];
-    }
-    if (_json.containsKey("start")) {
-      start = _json["start"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (end != null) {
-      _json["end"] = end;
-    }
-    if (readGroupSetIds != null) {
-      _json["readGroupSetIds"] = readGroupSetIds;
-    }
-    if (referenceName != null) {
-      _json["referenceName"] = referenceName;
-    }
-    if (start != null) {
-      _json["start"] = start;
-    }
-    return _json;
-  }
-}
-
-class StreamReadsResponse {
-  core.List<Read> alignments;
-
-  StreamReadsResponse();
-
-  StreamReadsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("alignments")) {
-      alignments = _json["alignments"].map((value) => new Read.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (alignments != null) {
-      _json["alignments"] = alignments.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

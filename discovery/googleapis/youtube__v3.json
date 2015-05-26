@@ -30,7 +30,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/8K7GAQtON7Zk2nD5qcZpQnqCcOw\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/xUsuwG4vysgOcdKJyLHzNu9KQlk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -215,11 +215,17 @@
                             "description": "ID of the Google+ Page for the channel that the request is be on behalf of",
                             "location": "query",
                             "type": "string"
+                        },
+                        "onBehalfOfContentOwner": {
+                            "description": "Note: This parameter is intended exclusively for YouTube content partners.\n\nThe onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner.",
+                            "location": "query",
+                            "type": "string"
                         }
                     },
                     "path": "captions",
                     "scopes": [
-                        "https://www.googleapis.com/auth/youtube.force-ssl"
+                        "https://www.googleapis.com/auth/youtube.force-ssl",
+                        "https://www.googleapis.com/auth/youtubepartner"
                     ]
                 },
                 "download": {
@@ -244,6 +250,11 @@
                         },
                         "onBehalfOf": {
                             "description": "ID of the Google+ Page for the channel that the request is be on behalf of",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "onBehalfOfContentOwner": {
+                            "description": "Note: This parameter is intended exclusively for YouTube content partners.\n\nThe onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner.",
                             "location": "query",
                             "type": "string"
                         },
@@ -274,7 +285,8 @@
                     },
                     "path": "captions/{id}",
                     "scopes": [
-                        "https://www.googleapis.com/auth/youtube.force-ssl"
+                        "https://www.googleapis.com/auth/youtube.force-ssl",
+                        "https://www.googleapis.com/auth/youtubepartner"
                     ],
                     "supportsMediaDownload": true
                 },
@@ -315,6 +327,11 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "onBehalfOfContentOwner": {
+                            "description": "Note: This parameter is intended exclusively for YouTube content partners.\n\nThe onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "part": {
                             "description": "The part parameter specifies the caption resource parts that the API response will include. Set the parameter value to snippet.",
                             "location": "query",
@@ -335,7 +352,8 @@
                         "$ref": "Caption"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/youtube.force-ssl"
+                        "https://www.googleapis.com/auth/youtube.force-ssl",
+                        "https://www.googleapis.com/auth/youtubepartner"
                     ],
                     "supportsMediaUpload": true
                 },
@@ -364,6 +382,11 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "onBehalfOfContentOwner": {
+                            "description": "Note: This parameter is intended exclusively for YouTube content partners.\n\nThe onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "part": {
                             "description": "The part parameter specifies a comma-separated list of one or more caption resource parts that the API response will include. The part names that you can include in the parameter value are id and snippet.",
                             "location": "query",
@@ -382,7 +405,8 @@
                         "$ref": "CaptionListResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/youtube.force-ssl"
+                        "https://www.googleapis.com/auth/youtube.force-ssl",
+                        "https://www.googleapis.com/auth/youtubepartner"
                     ]
                 },
                 "update": {
@@ -422,6 +446,11 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "onBehalfOfContentOwner": {
+                            "description": "Note: This parameter is intended exclusively for YouTube content partners.\n\nThe onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "part": {
                             "description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include. Set the property value to snippet if you are updating the track's draft status. Otherwise, set the property value to id.",
                             "location": "query",
@@ -442,7 +471,8 @@
                         "$ref": "Caption"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/youtube.force-ssl"
+                        "https://www.googleapis.com/auth/youtube.force-ssl",
+                        "https://www.googleapis.com/auth/youtubepartner"
                     ],
                     "supportsMediaUpload": true
                 }
@@ -844,6 +874,20 @@
                                 "Returns only comment threads awaiting review by a moderator.",
                                 "Returns only comment threads classified as likely being spam.",
                                 "Returns only published comment threads."
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "order": {
+                            "default": "true",
+                            "description": "The order parameter specifies the order in which the API response should list comment threads. Valid values are: \n- time - Comment threads are ordered by time. This is the default behavior.\n- relevance - Comment threads are ordered by relevance.Note: This parameter is not supported for use in conjunction with the id parameter.",
+                            "enum": [
+                                "relevance",
+                                "time"
+                            ],
+                            "enumDescriptions": [
+                                "Order by relevance.",
+                                "Order by time."
                             ],
                             "location": "query",
                             "type": "string"
@@ -2814,6 +2858,12 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "debugProjectIdOverride": {
+                            "description": "The debugProjectIdOverride parameter should be used for mimicking a request for a certain project ID",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "hl": {
                             "description": "The hl parameter instructs the API to return a localized version of the video details. If localized text is nor available for the requested language, the localizations object in the API response will contain the requested information in the default language instead. The parameter value is a BCP-47 language code. Your application can determine whether the requested localization was returned by checking the value of the snippet.localized.language property in the API response.",
                             "location": "query",
@@ -3072,7 +3122,7 @@
             }
         }
     },
-    "revision": "20150412",
+    "revision": "20150423",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -6690,6 +6740,9 @@
                     "description": "The broadcast's description. As with the title, you can set this field by modifying the broadcast resource or by setting the description field of the corresponding video resource.",
                     "type": "string"
                 },
+                "isDefaultBroadcast": {
+                    "type": "boolean"
+                },
                 "publishedAt": {
                     "description": "The date and time that the broadcast was added to YouTube's live broadcast schedule. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",
                     "format": "date-time",
@@ -6737,10 +6790,6 @@
         "LiveBroadcastStatus": {
             "id": "LiveBroadcastStatus",
             "properties": {
-                "isDefaultBroadcast": {
-                    "description": "Whether or not this broadcast is the default broadcast",
-                    "type": "boolean"
-                },
                 "lifeCycleStatus": {
                     "description": "The broadcast's status. The status can be updated using the API's liveBroadcasts.transition method.",
                     "enum": [
@@ -6863,6 +6912,108 @@
             },
             "type": "object"
         },
+        "LiveStreamConfigurationIssue": {
+            "id": "LiveStreamConfigurationIssue",
+            "properties": {
+                "description": {
+                    "description": "The long-form description of the issue and how to resolve it.",
+                    "type": "string"
+                },
+                "reason": {
+                    "description": "The short-form reason for this issue.",
+                    "type": "string"
+                },
+                "severity": {
+                    "description": "How severe this issue is to the stream.",
+                    "enum": [
+                        "error",
+                        "info",
+                        "warning"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The kind of error happening.",
+                    "enum": [
+                        "audioBitrate",
+                        "audioBitrateHigh",
+                        "audioBitrateLow",
+                        "audioCodec",
+                        "audioCodecMismatch",
+                        "audioSampleRate",
+                        "audioSampleRateMismatch",
+                        "audioStereoMismatch",
+                        "audioTooManyChannel",
+                        "badContainer",
+                        "bitrateHigh",
+                        "bitrateLow",
+                        "framerateHigh",
+                        "framerateMismatch",
+                        "gopMismatch",
+                        "gopSizeLong",
+                        "gopSizeOver",
+                        "gopSizeShort",
+                        "interlaceVideo",
+                        "multipleAudioStreams",
+                        "multipleVideoStreams",
+                        "noAudoStream",
+                        "noVideoStream",
+                        "openGop",
+                        "resolutionMismatch",
+                        "videoBitrateMismatch",
+                        "videoCode",
+                        "videoCodecMismatch",
+                        "videoIngestionStarved",
+                        "videoInterlaceMismatch",
+                        "videoProfileMismatch",
+                        "videoResolutionSuboptimal",
+                        "videoResolutionUnsupported"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "LiveStreamContentDetails": {
             "description": "Detailed settings of a stream.",
             "id": "LiveStreamContentDetails",
@@ -6874,6 +7025,42 @@
                 "isReusable": {
                     "description": "Indicates whether the stream is reusable, which means that it can be bound to multiple broadcasts. It is common for broadcasters to reuse the same stream for many different broadcasts if those broadcasts occur at different times.\n\nIf you set this value to false, then the stream will not be reusable, which means that it can only be bound to one broadcast. Non-reusable streams differ from reusable streams in the following ways:  \n- A non-reusable stream can only be bound to one broadcast. \n- A non-reusable stream might be deleted by an automated process after the broadcast ends. \n- The  liveStreams.list method does not list non-reusable streams if you call the method and set the mine parameter to true. The only way to use that method to retrieve the resource for a non-reusable stream is to use the id parameter to identify the stream.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "LiveStreamHealthStatus": {
+            "id": "LiveStreamHealthStatus",
+            "properties": {
+                "configurationIssues": {
+                    "description": "The configurations issues on this stream",
+                    "items": {
+                        "$ref": "LiveStreamConfigurationIssue"
+                    },
+                    "type": "array"
+                },
+                "lastUpdateTimeS": {
+                    "description": "The last time this status was updated (in seconds)",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "The status code of this stream",
+                    "enum": [
+                        "bad",
+                        "good",
+                        "noData",
+                        "ok",
+                        "revoked"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -6933,6 +7120,9 @@
                     "description": "The stream's description. The value cannot be longer than 10000 characters.",
                     "type": "string"
                 },
+                "isDefaultStream": {
+                    "type": "boolean"
+                },
                 "publishedAt": {
                     "description": "The date and time that the stream was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",
                     "format": "date-time",
@@ -6955,8 +7145,9 @@
             "description": "Brief description of the live stream status.",
             "id": "LiveStreamStatus",
             "properties": {
-                "isDefaultStream": {
-                    "type": "boolean"
+                "healthStatus": {
+                    "$ref": "LiveStreamHealthStatus",
+                    "description": "The health status of the stream."
                 },
                 "streamStatus": {
                     "enum": [

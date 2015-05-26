@@ -1,3 +1,7 @@
+## 0.10.0
+
+* [apis-breaking] youtube:v3: schema changes
+
 ## 0.9.0
 
 * [apis] analytics:v3: schema changes
@@ -14,7 +18,6 @@
 * [apis] youtube:v3: new resource, schema changes
 * [api-breaking] fitness:v1: schema changes
 * [apis-removed] cloudsearch:v1
-
 
 ## 0.8.0
 * [api] admin_directory:v1: schema changes

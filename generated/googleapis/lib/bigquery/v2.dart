@@ -2314,10 +2314,10 @@ class JobConfigurationLoad {
    * table already exists, BigQuery overwrites the table data. WRITE_APPEND: If
    * the table already exists, BigQuery appends the data to the table.
    * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate'
-   * error is returned in the job result. The default value is WRITE_EMPTY. Each
-   * action is atomic and only occurs if BigQuery is able to complete the job
-   * successfully. Creation, truncation and append actions occur as one atomic
-   * update upon job completion.
+   * error is returned in the job result. The default value is WRITE_APPEND.
+   * Each action is atomic and only occurs if BigQuery is able to complete the
+   * job successfully. Creation, truncation and append actions occur as one
+   * atomic update upon job completion.
    */
   core.String writeDisposition;
 
@@ -3594,11 +3594,6 @@ class Table {
   }
 }
 
-/**
- * Represents a single cell in the result set. Users of the java client can
- * detect whether their value result is null by calling
- * 'com.google.api.client.util.Data.isNull(cell.getV())'.
- */
 class TableCell {
   /**
    *
@@ -4044,10 +4039,11 @@ class TableReference {
   }
 }
 
-/**
- * Represents a single row in the result set, consisting of one or more fields.
- */
 class TableRow {
+  /**
+   * Represents a single row in the result set, consisting of one or more
+   * fields.
+   */
   core.List<TableCell> f;
 
   TableRow();

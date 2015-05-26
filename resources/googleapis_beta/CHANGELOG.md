@@ -1,3 +1,9 @@
+## 0.14.0
+
+* [api] pubsub:v1beta2: new methods/schemas
+* [api-breaking] container:v1beta1: removed resource
+* [api-breaking] genomics:v1beta2: removed resource
+
 ## 0.13.0
 
 * [api] container:v1beta1: schema changes

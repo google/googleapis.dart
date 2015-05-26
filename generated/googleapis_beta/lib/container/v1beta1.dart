@@ -147,7 +147,6 @@ class ProjectsZonesResourceApi {
 
   ProjectsZonesClustersResourceApi get clusters => new ProjectsZonesClustersResourceApi(_requester);
   ProjectsZonesOperationsResourceApi get operations => new ProjectsZonesOperationsResourceApi(_requester);
-  ProjectsZonesTokensResourceApi get tokens => new ProjectsZonesTokensResourceApi(_requester);
 
   ProjectsZonesResourceApi(commons.ApiRequester client) : 
       _requester = client;
@@ -171,8 +170,8 @@ class ProjectsZonesClustersResourceApi {
    * containers on that node to communicate with all other instances in the
    * cluster.
    *
-   * Finally, a route named k8s-iproute-10-xx-0-0 is created to track that the
-   * cluster's 10.xx.0.0/16 CIDR has been assigned.
+   * Finally, an entry is added to the project's global metadata indicating
+   * which CIDR range is being used by the cluster.
    *
    * [request] - The metadata request object.
    *
@@ -477,74 +476,6 @@ class ProjectsZonesOperationsResourceApi {
 }
 
 
-class ProjectsZonesTokensResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsZonesTokensResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Gets a compute-rw scoped OAuth2 access token for
-   * . Authentication is performed to ensure that the caller is a member of  and
-   * that the request is coming from the expected master VM for the specified
-   * cluster. See go/gke-cross-project-auth for more details.
-   *
-   * Request parameters:
-   *
-   * [masterProjectId] - The hosted master project from which this request is
-   * coming.
-   *
-   * [zoneId] - The zone of the specified cluster.
-   *
-   * [projectNumber] - The project number for which the access token is being
-   * requested.
-   *
-   * [clusterName] - The name of the specified cluster.
-   *
-   * Completes with a [Token].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Token> get(core.String masterProjectId, core.String zoneId, core.String projectNumber, core.String clusterName) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (masterProjectId == null) {
-      throw new core.ArgumentError("Parameter masterProjectId is required.");
-    }
-    if (zoneId == null) {
-      throw new core.ArgumentError("Parameter zoneId is required.");
-    }
-    if (projectNumber == null) {
-      throw new core.ArgumentError("Parameter projectNumber is required.");
-    }
-    if (clusterName == null) {
-      throw new core.ArgumentError("Parameter clusterName is required.");
-    }
-
-    _url = commons.Escaper.ecapeVariable('$masterProjectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/tokens/' + commons.Escaper.ecapeVariable('$projectNumber') + '/' + commons.Escaper.ecapeVariable('$clusterName');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Token.fromJson(data));
-  }
-
-}
-
-
 
 class Cluster {
   /**
@@ -557,9 +488,9 @@ class Cluster {
    */
   core.String clusterApiVersion;
   /**
-   * The IP addresses of the container pods in this cluster, in  CIDR notation
-   * (e.g. 10.96.0.0/14). Leave blank to have one automatically chosen or
-   * specify a /14 block in 10.0.0.0/8 or 172.16.0.0/12.
+   * The IP address range of the container pods in this cluster, in  CIDR
+   * notation (e.g. 10.96.0.0/14). Leave blank to have one automatically chosen
+   * or specify a /14 block in 10.0.0.0/8 or 172.16.0.0/12.
    */
   core.String containerIpv4Cidr;
   /**
@@ -574,6 +505,11 @@ class Cluster {
    * the cluster as well as logs from the Kubernetes components themselves.
    */
   core.bool enableCloudLogging;
+  /**
+   * Whether metrics from the cluster should be made available via the Google
+   * Cloud Monitoring service.
+   */
+  core.bool enableCloudMonitoring;
   /**
    * [Output only] The IP address of this cluster's Kubernetes master. The
    * endpoint can be accessed from the internet at
@@ -618,9 +554,9 @@ class Cluster {
   /** [Output only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
-   * [Output only] The IP addresses of the Kubernetes services in this cluster,
-   * in  CIDR notation (e.g. 1.2.3.4/29). Service addresses are always in the
-   * 10.0.0.0/16 range.
+   * [Output only] The IP address range of the Kubernetes services in this
+   * cluster, in  CIDR notation (e.g. 1.2.3.4/29). Service addresses are
+   * typically put in the last /16 from the container CIDR.
    */
   core.String servicesIpv4Cidr;
   /**
@@ -660,6 +596,9 @@ class Cluster {
     }
     if (_json.containsKey("enableCloudLogging")) {
       enableCloudLogging = _json["enableCloudLogging"];
+    }
+    if (_json.containsKey("enableCloudMonitoring")) {
+      enableCloudMonitoring = _json["enableCloudMonitoring"];
     }
     if (_json.containsKey("endpoint")) {
       endpoint = _json["endpoint"];
@@ -715,6 +654,9 @@ class Cluster {
     }
     if (enableCloudLogging != null) {
       _json["enableCloudLogging"] = enableCloudLogging;
+    }
+    if (enableCloudMonitoring != null) {
+      _json["enableCloudMonitoring"] = enableCloudMonitoring;
     }
     if (endpoint != null) {
       _json["endpoint"] = endpoint;
@@ -867,9 +809,9 @@ class ListOperationsResponse {
  */
 class MasterAuth {
   /**
-   * The token used to authenticate API requests to the master. The token is be
-   * included in an HTTP Authorization Header included in all requests to the
-   * master endpoint. The format of the header is: "Authorization: Bearer ".
+   * The token used to authenticate API requests to the master. The token is to
+   * be included in an HTTP Authorization Header in all requests to the master
+   * endpoint. The format of the header is: "Authorization: Bearer ".
    */
   core.String bearerToken;
   /**
@@ -973,10 +915,7 @@ class NodeConfig {
 class Operation {
   /** If an error has occurred, a textual description of the error. */
   core.String errorMessage;
-  /**
-   * The server-assigned ID for this operation. If the operation is fulfilled
-   * upfront, it may not have a resource name.
-   */
+  /** The server-assigned ID for the operation. */
   core.String name;
   /**
    * The operation type.
@@ -1092,35 +1031,6 @@ class ServiceAccount {
     }
     if (scopes != null) {
       _json["scopes"] = scopes;
-    }
-    return _json;
-  }
-}
-
-class Token {
-  /** The OAuth2 access token */
-  core.String accessToken;
-  /** The expiration time of the token in seconds since the unix epoch. */
-  core.String expiryTimeSeconds;
-
-  Token();
-
-  Token.fromJson(core.Map _json) {
-    if (_json.containsKey("accessToken")) {
-      accessToken = _json["accessToken"];
-    }
-    if (_json.containsKey("expiryTimeSeconds")) {
-      expiryTimeSeconds = _json["expiryTimeSeconds"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (accessToken != null) {
-      _json["accessToken"] = accessToken;
-    }
-    if (expiryTimeSeconds != null) {
-      _json["expiryTimeSeconds"] = expiryTimeSeconds;
     }
     return _json;
   }

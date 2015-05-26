@@ -29,7 +29,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/n2LVhGPabQO3DmbKxkomJprJEEo\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/U8LxfkiI9isU42wxJZ9c2pKL-h0\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -889,7 +889,7 @@
             }
         }
     },
-    "revision": "20141112",
+    "revision": "20150326",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CsvOptions": {
@@ -1402,7 +1402,7 @@
                     "type": "array"
                 },
                 "writeDisposition": {
-                    "description": "[Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.",
+                    "description": "[Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.",
                     "type": "string"
                 }
             },
@@ -1942,7 +1942,6 @@
             "type": "object"
         },
         "TableCell": {
-            "description": "Represents a single cell in the result set. Users of the java client can detect whether their value result is null by calling 'com.google.api.client.util.Data.isNull(cell.getV())'.",
             "id": "TableCell",
             "properties": {
                 "v": {
@@ -2167,10 +2166,10 @@
             "type": "object"
         },
         "TableRow": {
-            "description": "Represents a single row in the result set, consisting of one or more fields.",
             "id": "TableRow",
             "properties": {
                 "f": {
+                    "description": "Represents a single row in the result set, consisting of one or more fields.",
                     "items": {
                         "$ref": "TableCell"
                     },

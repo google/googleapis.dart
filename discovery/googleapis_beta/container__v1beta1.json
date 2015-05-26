@@ -14,7 +14,7 @@
     "description": "The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/container-engine/docs/v1beta1/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/dYpTeptRRQe2JpT9NpqLcHD0A_0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/P1LZ6hi0smRe7P4p3LvMgnaMkn4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -132,7 +132,7 @@
                         "clusters": {
                             "methods": {
                                 "create": {
-                                    "description": "Creates a cluster, consisting of the specified number and type of Google Compute Engine instances, plus a Kubernetes master instance.\n\nThe cluster is created in the project's default network.\n\nA firewall is added that allows traffic into port 443 on the master, which enables HTTPS. A firewall and a route is added for each node to allow the containers on that node to communicate with all other instances in the cluster.\n\nFinally, a route named k8s-iproute-10-xx-0-0 is created to track that the cluster's 10.xx.0.0/16 CIDR has been assigned.",
+                                    "description": "Creates a cluster, consisting of the specified number and type of Google Compute Engine instances, plus a Kubernetes master instance.\n\nThe cluster is created in the project's default network.\n\nA firewall is added that allows traffic into port 443 on the master, which enables HTTPS. A firewall and a route is added for each node to allow the containers on that node to communicate with all other instances in the cluster.\n\nFinally, an entry is added to the project's global metadata indicating which CIDR range is being used by the cluster.",
                                     "httpMethod": "POST",
                                     "id": "container.projects.zones.clusters.create",
                                     "parameterOrder": [
@@ -340,59 +340,13 @@
                                     ]
                                 }
                             }
-                        },
-                        "tokens": {
-                            "methods": {
-                                "get": {
-                                    "description": "Gets a compute-rw scoped OAuth2 access token for\n. Authentication is performed to ensure that the caller is a member of  and that the request is coming from the expected master VM for the specified cluster. See go/gke-cross-project-auth for more details.",
-                                    "httpMethod": "GET",
-                                    "id": "container.projects.zones.tokens.get",
-                                    "parameterOrder": [
-                                        "masterProjectId",
-                                        "zoneId",
-                                        "projectNumber",
-                                        "clusterName"
-                                    ],
-                                    "parameters": {
-                                        "clusterName": {
-                                            "description": "The name of the specified cluster.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "masterProjectId": {
-                                            "description": "The hosted master project from which this request is coming.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "projectNumber": {
-                                            "description": "The project number for which the access token is being requested.",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "zoneId": {
-                                            "description": "The zone of the specified cluster.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "{masterProjectId}/zones/{zoneId}/tokens/{projectNumber}/{clusterName}",
-                                    "response": {
-                                        "$ref": "Token"
-                                    }
-                                }
-                            }
                         }
                     }
                 }
             }
         }
     },
-    "revision": "20150420",
+    "revision": "20150513",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Cluster": {
@@ -403,7 +357,7 @@
                     "type": "string"
                 },
                 "containerIpv4Cidr": {
-                    "description": "The IP addresses of the container pods in this cluster, in  CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one automatically chosen or specify a /14 block in 10.0.0.0/8 or 172.16.0.0/12.",
+                    "description": "The IP address range of the container pods in this cluster, in  CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one automatically chosen or specify a /14 block in 10.0.0.0/8 or 172.16.0.0/12.",
                     "type": "string"
                 },
                 "creationTimestamp": {
@@ -416,6 +370,10 @@
                 },
                 "enableCloudLogging": {
                     "description": "Whether logs from the cluster should be made available via the Google Cloud Logging service. This includes both logs from your applications running in the cluster as well as logs from the Kubernetes components themselves.",
+                    "type": "boolean"
+                },
+                "enableCloudMonitoring": {
+                    "description": "Whether metrics from the cluster should be made available via the Google Cloud Monitoring service.",
                     "type": "boolean"
                 },
                 "endpoint": {
@@ -453,7 +411,7 @@
                     "type": "string"
                 },
                 "servicesIpv4Cidr": {
-                    "description": "[Output only] The IP addresses of the Kubernetes services in this cluster, in  CIDR notation (e.g. 1.2.3.4/29). Service addresses are always in the 10.0.0.0/16 range.",
+                    "description": "[Output only] The IP address range of the Kubernetes services in this cluster, in  CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.",
                     "type": "string"
                 },
                 "status": {
@@ -550,7 +508,7 @@
             "id": "MasterAuth",
             "properties": {
                 "bearerToken": {
-                    "description": "The token used to authenticate API requests to the master. The token is be included in an HTTP Authorization Header included in all requests to the master endpoint. The format of the header is: \"Authorization: Bearer \".",
+                    "description": "The token used to authenticate API requests to the master. The token is to be included in an HTTP Authorization Header in all requests to the master endpoint. The format of the header is: \"Authorization: Bearer \".",
                     "type": "string"
                 },
                 "password": {
@@ -594,7 +552,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The server-assigned ID for this operation. If the operation is fulfilled upfront, it may not have a resource name.",
+                    "description": "The server-assigned ID for the operation.",
                     "type": "string"
                 },
                 "operationType": {
@@ -656,21 +614,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Token": {
-            "id": "Token",
-            "properties": {
-                "accessToken": {
-                    "description": "The OAuth2 access token",
-                    "type": "string"
-                },
-                "expiryTimeSeconds": {
-                    "description": "The expiration time of the token in seconds since the unix epoch.",
-                    "format": "int64",
-                    "type": "string"
                 }
             },
             "type": "object"

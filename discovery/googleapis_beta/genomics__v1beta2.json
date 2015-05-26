@@ -5,6 +5,9 @@
                 "https://www.googleapis.com/auth/bigquery": {
                     "description": "View and manage your data in Google BigQuery"
                 },
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/devstorage.read_write": {
                     "description": "Manage your data in Google Cloud Storage"
                 },
@@ -23,7 +26,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/IqSB8sibomkxDrONkpdbncL_fWM\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/TWLs0mMo9CYFbDpWEb5l06bmcUs\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -94,6 +97,7 @@
                         "$ref": "AnnotationSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -114,6 +118,7 @@
                     },
                     "path": "annotationSets/{annotationSetId}",
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -137,6 +142,7 @@
                         "$ref": "AnnotationSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -164,6 +170,7 @@
                         "$ref": "AnnotationSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -179,6 +186,7 @@
                         "$ref": "SearchAnnotationSetsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -206,6 +214,7 @@
                         "$ref": "AnnotationSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 }
@@ -225,6 +234,7 @@
                         "$ref": "BatchAnnotationsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -240,6 +250,7 @@
                         "$ref": "Annotation"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -260,6 +271,7 @@
                     },
                     "path": "annotations/{annotationId}",
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -283,6 +295,7 @@
                         "$ref": "Annotation"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -310,6 +323,7 @@
                         "$ref": "Annotation"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -325,6 +339,7 @@
                         "$ref": "SearchAnnotationsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -352,6 +367,7 @@
                         "$ref": "Annotation"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 }
@@ -371,6 +387,7 @@
                         "$ref": "CallSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -391,6 +408,7 @@
                     },
                     "path": "callsets/{callSetId}",
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -414,6 +432,7 @@
                         "$ref": "CallSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -441,6 +460,7 @@
                         "$ref": "CallSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -456,6 +476,7 @@
                         "$ref": "SearchCallSetsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -483,6 +504,7 @@
                         "$ref": "CallSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 }
@@ -502,6 +524,7 @@
                         "$ref": "Dataset"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -522,6 +545,7 @@
                     },
                     "path": "datasets/{datasetId}",
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -545,6 +569,7 @@
                         "$ref": "Dataset"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -577,6 +602,7 @@
                         "$ref": "ListDatasetsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -604,6 +630,7 @@
                         "$ref": "Dataset"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -627,6 +654,7 @@
                         "$ref": "Dataset"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -653,6 +681,7 @@
                         "$ref": "Dataset"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 }
@@ -674,6 +703,7 @@
                                 "$ref": "ExperimentalCreateJobResponse"
                             },
                             "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/devstorage.read_write",
                                 "https://www.googleapis.com/auth/genomics"
                             ]
@@ -701,6 +731,7 @@
                     },
                     "path": "jobs/{jobId}/cancel",
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -724,6 +755,7 @@
                         "$ref": "Job"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -740,6 +772,7 @@
                         "$ref": "SearchJobsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -760,6 +793,7 @@
                         "$ref": "AlignReadGroupSetsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.read_write",
                         "https://www.googleapis.com/auth/genomics"
                     ]
@@ -776,6 +810,7 @@
                         "$ref": "CallReadGroupSetsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.read_write",
                         "https://www.googleapis.com/auth/genomics"
                     ]
@@ -797,6 +832,7 @@
                     },
                     "path": "readgroupsets/{readGroupSetId}",
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -812,6 +848,7 @@
                         "$ref": "ExportReadGroupSetsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.read_write",
                         "https://www.googleapis.com/auth/genomics"
                     ]
@@ -836,6 +873,7 @@
                         "$ref": "ReadGroupSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -852,6 +890,7 @@
                         "$ref": "ImportReadGroupSetsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.read_write",
                         "https://www.googleapis.com/auth/genomics"
                     ]
@@ -879,6 +918,7 @@
                         "$ref": "ReadGroupSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -894,6 +934,7 @@
                         "$ref": "SearchReadGroupSetsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -921,6 +962,7 @@
                         "$ref": "ReadGroupSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 }
@@ -982,6 +1024,7 @@
                                 "$ref": "ListCoverageBucketsResponse"
                             },
                             "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/genomics",
                                 "https://www.googleapis.com/auth/genomics.readonly"
                             ]
@@ -1004,6 +1047,7 @@
                         "$ref": "SearchReadsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -1032,6 +1076,7 @@
                         "$ref": "Reference"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -1048,6 +1093,7 @@
                         "$ref": "SearchReferencesResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -1099,6 +1145,7 @@
                                 "$ref": "ListBasesResponse"
                             },
                             "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/genomics",
                                 "https://www.googleapis.com/auth/genomics.readonly"
                             ]
@@ -1129,6 +1176,7 @@
                         "$ref": "ReferenceSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -1145,25 +1193,10 @@
                         "$ref": "SearchReferenceSetsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
-                }
-            }
-        },
-        "streamingReadstore": {
-            "methods": {
-                "streamreads": {
-                    "description": "Gets a stream of reads for one or more read group sets. Reads search operates over a genomic coordinate space of reference sequence & position defined over the reference sequences to which the requested read group sets are aligned.\n\nIf a target positional range is specified, all reads whose alignment to the reference genome overlap the range are returned.\n\nAll reads returned are ordered by genomic coordinate (reference sequence & position). Reads with equivalent genomic coordinates are returned in a deterministic order.",
-                    "httpMethod": "POST",
-                    "id": "genomics.streamingReadstore.streamreads",
-                    "path": "streamingReadstore/streamreads",
-                    "request": {
-                        "$ref": "StreamReadsRequest"
-                    },
-                    "response": {
-                        "$ref": "StreamReadsResponse"
-                    }
                 }
             }
         },
@@ -1181,6 +1214,7 @@
                         "$ref": "Variant"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -1201,6 +1235,7 @@
                     },
                     "path": "variants/{variantId}",
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -1224,6 +1259,7 @@
                         "$ref": "Variant"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -1240,6 +1276,7 @@
                         "$ref": "SearchVariantsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -1267,6 +1304,7 @@
                         "$ref": "Variant"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 }
@@ -1291,6 +1329,7 @@
                     },
                     "path": "variantsets/{variantSetId}",
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -1318,6 +1357,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -1341,6 +1381,7 @@
                         "$ref": "VariantSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -1368,6 +1409,7 @@
                         "$ref": "ImportVariantsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.read_write",
                         "https://www.googleapis.com/auth/genomics"
                     ]
@@ -1392,6 +1434,7 @@
                         "$ref": "MergeVariantsRequest"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -1418,6 +1461,7 @@
                         "$ref": "VariantSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
@@ -1433,6 +1477,7 @@
                         "$ref": "SearchVariantSetsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics",
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
@@ -1460,13 +1505,14 @@
                         "$ref": "VariantSet"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 }
             }
         }
     },
-    "revision": "20150415",
+    "revision": "20150326",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AlignReadGroupSetsRequest": {
@@ -2111,7 +2157,7 @@
             "id": "ImportVariantsRequest",
             "properties": {
                 "format": {
-                    "description": "The format of the variant data being imported.",
+                    "description": "The format of the variant data being imported. If unspecified, defaults to to \"VCF\".",
                     "enum": [
                         "COMPLETE_GENOMICS",
                         "VCF"
@@ -2123,7 +2169,7 @@
                     "type": "string"
                 },
                 "sourceUris": {
-                    "description": "A list of URIs pointing at VCF files in Google Cloud Storage. See the VCF Specification for more details on the input format.",
+                    "description": "A list of URIs referencing variant files in Google Cloud Storage. URIs can include wildcards as described here. Note that recursive wildcards ('**') are not supported.",
                     "items": {
                         "type": "string"
                     },
@@ -3427,7 +3473,7 @@
                     "type": "string"
                 },
                 "variantSetIds": {
-                    "description": "Exactly one variant set ID must be provided. Only variants from this variant set will be returned.",
+                    "description": "At most one variant set ID must be provided. Only variants from this variant set will be returned. If omitted, a call set id must be included in the request.",
                     "items": {
                         "type": "string"
                     },
@@ -3448,45 +3494,6 @@
                     "description": "The list of matching Variants.",
                     "items": {
                         "$ref": "Variant"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "StreamReadsRequest": {
-            "id": "StreamReadsRequest",
-            "properties": {
-                "end": {
-                    "description": "The end position of the range on the reference, 0-based exclusive. If specified, referenceName must also be specified.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "readGroupSetIds": {
-                    "description": "The ID of the read groups set within which to search for reads. Exactly one ID must be provided.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "referenceName": {
-                    "description": "The reference sequence name, for example chr1, 1, or chrX. If set to *, only unmapped reads are returned.",
-                    "type": "string"
-                },
-                "start": {
-                    "description": "The start position of the range on the reference, 0-based inclusive. If specified, referenceName must also be specified.",
-                    "format": "int64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "StreamReadsResponse": {
-            "id": "StreamReadsResponse",
-            "properties": {
-                "alignments": {
-                    "items": {
-                        "$ref": "Read"
                     },
                     "type": "array"
                 }

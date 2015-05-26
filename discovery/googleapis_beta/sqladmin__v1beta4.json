@@ -17,8 +17,8 @@
     "canonicalName": "SQL Admin",
     "description": "API for Cloud SQL database instance management.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/cloud-sql/docs/admin-api/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/RQeW5SiC9TtgAuq37iD3_HNih1g\"",
+    "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/5soduF8PrPVjL_-niuaFSHDnPoQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1303,7 +1303,7 @@
             }
         }
     },
-    "revision": "20150325",
+    "revision": "20150330",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -1643,7 +1643,7 @@
                     "description": "The user settings."
                 },
                 "state": {
-                    "description": "The current serving state of the Cloud SQL instance. This can be one of the following.\nRUNNABLE: The instance is running, or is ready to run when accessed.\nSUSPENDED: The instance is not available, for example due to problems with billing.\nPENDING_CREATE: The instance is being created.\nMAINTENANCE: The instance is down for maintenance.\nUNKNOWN_STATE: The state of the instance is unknown.",
+                    "description": "The current serving state of the Cloud SQL instance. This can be one of the following.\nRUNNABLE: The instance is running, or is ready to run when accessed.\nSUSPENDED: The instance is not available, for example due to problems with billing.\nPENDING_CREATE: The instance is being created.\nMAINTENANCE: The instance is down for maintenance.\nFAILED: The instance creation failed.\nUNKNOWN_STATE: The state of the instance is unknown.",
                     "type": "string"
                 }
             },
@@ -2027,7 +2027,8 @@
                     "type": "string"
                 },
                 "error": {
-                    "$ref": "OperationErrors"
+                    "$ref": "OperationErrors",
+                    "description": "If errors occurred during processing of this operation, this field will be populated."
                 },
                 "exportContext": {
                     "$ref": "ExportContext",
@@ -2305,6 +2306,7 @@
                     "type": "string"
                 },
                 "selfLink": {
+                    "description": "The URI of this resource.",
                     "type": "string"
                 },
                 "sha1Fingerprint": {

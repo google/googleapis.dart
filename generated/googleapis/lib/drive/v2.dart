@@ -989,7 +989,7 @@ class FilesResourceApi {
    * [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
    *
    * [ocrLanguage] - If ocr is true, hints at the language to use. Valid values
-   * are ISO 639-1 codes.
+   * are BCP 47 codes.
    *
    * [pinned] - Whether to pin the head revision of the new copy. A file can
    * have a maximum of 200 pinned revisions.
@@ -1228,7 +1228,7 @@ class FilesResourceApi {
    * [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
    *
    * [ocrLanguage] - If ocr is true, hints at the language to use. Valid values
-   * are ISO 639-1 codes.
+   * are BCP 47 codes.
    *
    * [pinned] - Whether to pin the head revision of the uploaded file. A file
    * can have a maximum of 200 pinned revisions.
@@ -1404,7 +1404,7 @@ class FilesResourceApi {
    * [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
    *
    * [ocrLanguage] - If ocr is true, hints at the language to use. Valid values
-   * are ISO 639-1 codes.
+   * are BCP 47 codes.
    *
    * [pinned] - Whether to pin the new revision. A file can have a maximum of
    * 200 pinned revisions.
@@ -1633,7 +1633,7 @@ class FilesResourceApi {
    * [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
    *
    * [ocrLanguage] - If ocr is true, hints at the language to use. Valid values
-   * are ISO 639-1 codes.
+   * are BCP 47 codes.
    *
    * [pinned] - Whether to pin the new revision. A file can have a maximum of
    * 200 pinned revisions.
@@ -3558,7 +3558,13 @@ class About {
    * specific type takes precedence.
    */
   core.List<AboutAdditionalRoleInfo> additionalRoleInfo;
-  /** The domain sharing policy for the current user. */
+  /**
+   * The domain sharing policy for the current user. Possible values are:
+   * - ALLOWED
+   * - ALLOWED_WITH_WARNING
+   * - INCOMING_ONLY
+   * - DISALLOWED
+   */
   core.String domainSharingPolicy;
   /** The ETag of the item. */
   core.String etag;

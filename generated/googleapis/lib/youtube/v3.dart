@@ -273,13 +273,26 @@ class CaptionsResourceApi {
    * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
    * be on behalf of
    *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The actual
+   * CMS account that the user authenticates with must be linked to the
+   * specified YouTube content owner.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String id, {core.String debugProjectIdOverride, core.String onBehalfOf}) {
+  async.Future delete(core.String id, {core.String debugProjectIdOverride, core.String onBehalfOf, core.String onBehalfOfContentOwner}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -296,6 +309,9 @@ class CaptionsResourceApi {
     }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
 
     _downloadOptions = null;
@@ -330,6 +346,19 @@ class CaptionsResourceApi {
    * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
    * be on behalf of
    *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The actual
+   * CMS account that the user authenticates with must be linked to the
+   * specified YouTube content owner.
+   *
    * [tfmt] - The tfmt parameter specifies that the caption track should be
    * returned in a specific format. If the parameter is not included in the
    * request, the track is returned in its original format.
@@ -356,7 +385,7 @@ class CaptionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future download(core.String id, {core.String debugProjectIdOverride, core.String onBehalfOf, core.String tfmt, core.String tlang, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future download(core.String id, {core.String debugProjectIdOverride, core.String onBehalfOf, core.String onBehalfOfContentOwner, core.String tfmt, core.String tlang, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -372,6 +401,9 @@ class CaptionsResourceApi {
     }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if (tfmt != null) {
       _queryParams["tfmt"] = [tfmt];
@@ -415,6 +447,19 @@ class CaptionsResourceApi {
    * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
    * be on behalf of
    *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The actual
+   * CMS account that the user authenticates with must be linked to the
+   * specified YouTube content owner.
+   *
    * [sync] - The sync parameter indicates whether YouTube should automatically
    * synchronize the caption file with the audio track of the video. If you set
    * the value to true, YouTube will disregard any time codes that are in the
@@ -437,7 +482,7 @@ class CaptionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Caption> insert(Caption request, core.String part, {core.String debugProjectIdOverride, core.String onBehalfOf, core.bool sync, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  async.Future<Caption> insert(Caption request, core.String part, {core.String debugProjectIdOverride, core.String onBehalfOf, core.String onBehalfOfContentOwner, core.bool sync, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -457,6 +502,9 @@ class CaptionsResourceApi {
     }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if (sync != null) {
       _queryParams["sync"] = ["${sync}"];
@@ -509,6 +557,19 @@ class CaptionsResourceApi {
    * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
    * on behalf of.
    *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The actual
+   * CMS account that the user authenticates with must be linked to the
+   * specified YouTube content owner.
+   *
    * Completes with a [CaptionListResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -517,7 +578,7 @@ class CaptionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<CaptionListResponse> list(core.String part, core.String videoId, {core.String debugProjectIdOverride, core.String id, core.String onBehalfOf}) {
+  async.Future<CaptionListResponse> list(core.String part, core.String videoId, {core.String debugProjectIdOverride, core.String id, core.String onBehalfOf, core.String onBehalfOfContentOwner}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -541,6 +602,9 @@ class CaptionsResourceApi {
     }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
 
     _url = 'captions';
@@ -575,6 +639,19 @@ class CaptionsResourceApi {
    * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
    * be on behalf of
    *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The actual
+   * CMS account that the user authenticates with must be linked to the
+   * specified YouTube content owner.
+   *
    * [sync] - Note: The API server only processes the parameter value if the
    * request contains an updated caption file.
    *
@@ -596,7 +673,7 @@ class CaptionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Caption> update(Caption request, core.String part, {core.String debugProjectIdOverride, core.String onBehalfOf, core.bool sync, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  async.Future<Caption> update(Caption request, core.String part, {core.String debugProjectIdOverride, core.String onBehalfOf, core.String onBehalfOfContentOwner, core.bool sync, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -616,6 +693,9 @@ class CaptionsResourceApi {
     }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if (sync != null) {
       _queryParams["sync"] = ["${sync}"];
@@ -1353,6 +1433,15 @@ class CommentThreadsResourceApi {
    * spam.
    * - "published" : Returns only published comment threads.
    *
+   * [order] - The order parameter specifies the order in which the API response
+   * should list comment threads. Valid values are:
+   * - time - Comment threads are ordered by time. This is the default behavior.
+   * - relevance - Comment threads are ordered by relevance.Note: This parameter
+   * is not supported for use in conjunction with the id parameter.
+   * Possible string values are:
+   * - "relevance" : Order by relevance.
+   * - "time" : Order by time.
+   *
    * [pageToken] - The pageToken parameter identifies a specific page in the
    * result set that should be returned. In an API response, the nextPageToken
    * property identifies the next page of the result that can be retrieved.
@@ -1384,7 +1473,7 @@ class CommentThreadsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<CommentThreadListResponse> list(core.String part, {core.String allThreadsRelatedToChannelId, core.String channelId, core.String id, core.int maxResults, core.String moderationStatus, core.String pageToken, core.String searchTerms, core.String textFormat, core.String videoId}) {
+  async.Future<CommentThreadListResponse> list(core.String part, {core.String allThreadsRelatedToChannelId, core.String channelId, core.String id, core.int maxResults, core.String moderationStatus, core.String order, core.String pageToken, core.String searchTerms, core.String textFormat, core.String videoId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1410,6 +1499,9 @@ class CommentThreadsResourceApi {
     }
     if (moderationStatus != null) {
       _queryParams["moderationStatus"] = [moderationStatus];
+    }
+    if (order != null) {
+      _queryParams["order"] = [order];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -4865,6 +4957,9 @@ class VideosResourceApi {
    * - "mostPopular" : Return the most popular videos for the specified content
    * region and video category.
    *
+   * [debugProjectIdOverride] - The debugProjectIdOverride parameter should be
+   * used for mimicking a request for a certain project ID
+   *
    * [hl] - The hl parameter instructs the API to return a localized version of
    * the video details. If localized text is nor available for the requested
    * language, the localizations object in the API response will contain the
@@ -4932,7 +5027,7 @@ class VideosResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<VideoListResponse> list(core.String part, {core.String chart, core.String hl, core.String id, core.String locale, core.int maxResults, core.String myRating, core.String onBehalfOfContentOwner, core.String pageToken, core.String regionCode, core.String videoCategoryId}) {
+  async.Future<VideoListResponse> list(core.String part, {core.String chart, core.String debugProjectIdOverride, core.String hl, core.String id, core.String locale, core.int maxResults, core.String myRating, core.String onBehalfOfContentOwner, core.String pageToken, core.String regionCode, core.String videoCategoryId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4946,6 +5041,9 @@ class VideosResourceApi {
     _queryParams["part"] = [part];
     if (chart != null) {
       _queryParams["chart"] = [chart];
+    }
+    if (debugProjectIdOverride != null) {
+      _queryParams["debugProjectIdOverride"] = [debugProjectIdOverride];
     }
     if (hl != null) {
       _queryParams["hl"] = [hl];
@@ -10917,6 +11015,7 @@ class LiveBroadcastSnippet {
    * corresponding video resource.
    */
   core.String description;
+  core.bool isDefaultBroadcast;
   /**
    * The date and time that the broadcast was added to YouTube's live broadcast
    * schedule. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ)
@@ -10961,6 +11060,9 @@ class LiveBroadcastSnippet {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("isDefaultBroadcast")) {
+      isDefaultBroadcast = _json["isDefaultBroadcast"];
+    }
     if (_json.containsKey("publishedAt")) {
       publishedAt = core.DateTime.parse(_json["publishedAt"]);
     }
@@ -10992,6 +11094,9 @@ class LiveBroadcastSnippet {
     if (description != null) {
       _json["description"] = description;
     }
+    if (isDefaultBroadcast != null) {
+      _json["isDefaultBroadcast"] = isDefaultBroadcast;
+    }
     if (publishedAt != null) {
       _json["publishedAt"] = (publishedAt).toIso8601String();
     }
@@ -11012,8 +11117,6 @@ class LiveBroadcastSnippet {
 }
 
 class LiveBroadcastStatus {
-  /** Whether or not this broadcast is the default broadcast */
-  core.bool isDefaultBroadcast;
   /**
    * The broadcast's status. The status can be updated using the API's
    * liveBroadcasts.transition method.
@@ -11063,9 +11166,6 @@ class LiveBroadcastStatus {
   LiveBroadcastStatus();
 
   LiveBroadcastStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("isDefaultBroadcast")) {
-      isDefaultBroadcast = _json["isDefaultBroadcast"];
-    }
     if (_json.containsKey("lifeCycleStatus")) {
       lifeCycleStatus = _json["lifeCycleStatus"];
     }
@@ -11082,9 +11182,6 @@ class LiveBroadcastStatus {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (isDefaultBroadcast != null) {
-      _json["isDefaultBroadcast"] = isDefaultBroadcast;
-    }
     if (lifeCycleStatus != null) {
       _json["lifeCycleStatus"] = lifeCycleStatus;
     }
@@ -11184,6 +11281,93 @@ class LiveStream {
   }
 }
 
+class LiveStreamConfigurationIssue {
+  /** The long-form description of the issue and how to resolve it. */
+  core.String description;
+  /** The short-form reason for this issue. */
+  core.String reason;
+  /**
+   * How severe this issue is to the stream.
+   * Possible string values are:
+   * - "error"
+   * - "info"
+   * - "warning"
+   */
+  core.String severity;
+  /**
+   * The kind of error happening.
+   * Possible string values are:
+   * - "audioBitrate"
+   * - "audioBitrateHigh"
+   * - "audioBitrateLow"
+   * - "audioCodec"
+   * - "audioCodecMismatch"
+   * - "audioSampleRate"
+   * - "audioSampleRateMismatch"
+   * - "audioStereoMismatch"
+   * - "audioTooManyChannel"
+   * - "badContainer"
+   * - "bitrateHigh"
+   * - "bitrateLow"
+   * - "framerateHigh"
+   * - "framerateMismatch"
+   * - "gopMismatch"
+   * - "gopSizeLong"
+   * - "gopSizeOver"
+   * - "gopSizeShort"
+   * - "interlaceVideo"
+   * - "multipleAudioStreams"
+   * - "multipleVideoStreams"
+   * - "noAudoStream"
+   * - "noVideoStream"
+   * - "openGop"
+   * - "resolutionMismatch"
+   * - "videoBitrateMismatch"
+   * - "videoCode"
+   * - "videoCodecMismatch"
+   * - "videoIngestionStarved"
+   * - "videoInterlaceMismatch"
+   * - "videoProfileMismatch"
+   * - "videoResolutionSuboptimal"
+   * - "videoResolutionUnsupported"
+   */
+  core.String type;
+
+  LiveStreamConfigurationIssue();
+
+  LiveStreamConfigurationIssue.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
+    }
+    if (_json.containsKey("severity")) {
+      severity = _json["severity"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (reason != null) {
+      _json["reason"] = reason;
+    }
+    if (severity != null) {
+      _json["severity"] = severity;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /** Detailed settings of a stream. */
 class LiveStreamContentDetails {
   /** The ingestion URL where the closed captions of this stream are sent. */
@@ -11225,6 +11409,51 @@ class LiveStreamContentDetails {
     }
     if (isReusable != null) {
       _json["isReusable"] = isReusable;
+    }
+    return _json;
+  }
+}
+
+class LiveStreamHealthStatus {
+  /** The configurations issues on this stream */
+  core.List<LiveStreamConfigurationIssue> configurationIssues;
+  /** The last time this status was updated (in seconds) */
+  core.String lastUpdateTimeS;
+  /**
+   * The status code of this stream
+   * Possible string values are:
+   * - "bad"
+   * - "good"
+   * - "noData"
+   * - "ok"
+   * - "revoked"
+   */
+  core.String status;
+
+  LiveStreamHealthStatus();
+
+  LiveStreamHealthStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("configurationIssues")) {
+      configurationIssues = _json["configurationIssues"].map((value) => new LiveStreamConfigurationIssue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("lastUpdateTimeS")) {
+      lastUpdateTimeS = _json["lastUpdateTimeS"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (configurationIssues != null) {
+      _json["configurationIssues"] = configurationIssues.map((value) => (value).toJson()).toList();
+    }
+    if (lastUpdateTimeS != null) {
+      _json["lastUpdateTimeS"] = lastUpdateTimeS;
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }
@@ -11332,6 +11561,7 @@ class LiveStreamSnippet {
    * The stream's description. The value cannot be longer than 10000 characters.
    */
   core.String description;
+  core.bool isDefaultStream;
   /**
    * The date and time that the stream was created. The value is specified in
    * ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
@@ -11351,6 +11581,9 @@ class LiveStreamSnippet {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("isDefaultStream")) {
+      isDefaultStream = _json["isDefaultStream"];
+    }
     if (_json.containsKey("publishedAt")) {
       publishedAt = core.DateTime.parse(_json["publishedAt"]);
     }
@@ -11367,6 +11600,9 @@ class LiveStreamSnippet {
     if (description != null) {
       _json["description"] = description;
     }
+    if (isDefaultStream != null) {
+      _json["isDefaultStream"] = isDefaultStream;
+    }
     if (publishedAt != null) {
       _json["publishedAt"] = (publishedAt).toIso8601String();
     }
@@ -11379,7 +11615,8 @@ class LiveStreamSnippet {
 
 /** Brief description of the live stream status. */
 class LiveStreamStatus {
-  core.bool isDefaultStream;
+  /** The health status of the stream. */
+  LiveStreamHealthStatus healthStatus;
   /**
    *
    * Possible string values are:
@@ -11394,8 +11631,8 @@ class LiveStreamStatus {
   LiveStreamStatus();
 
   LiveStreamStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("isDefaultStream")) {
-      isDefaultStream = _json["isDefaultStream"];
+    if (_json.containsKey("healthStatus")) {
+      healthStatus = new LiveStreamHealthStatus.fromJson(_json["healthStatus"]);
     }
     if (_json.containsKey("streamStatus")) {
       streamStatus = _json["streamStatus"];
@@ -11404,8 +11641,8 @@ class LiveStreamStatus {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (isDefaultStream != null) {
-      _json["isDefaultStream"] = isDefaultStream;
+    if (healthStatus != null) {
+      _json["healthStatus"] = (healthStatus).toJson();
     }
     if (streamStatus != null) {
       _json["streamStatus"] = streamStatus;
