@@ -3,7 +3,6 @@
 library googleapis.gmail.v1;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
@@ -98,6 +97,91 @@ class UsersResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Profile.fromJson(data));
+  }
+
+  /**
+   * Stop receiving push notifications for the given user mailbox.
+   *
+   * Request parameters:
+   *
+   * [userId] - The user's email address. The special value me can be used to
+   * indicate the authenticated user.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future stop(core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/stop';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Set up or update a push notification watch on the given user mailbox.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [userId] - The user's email address. The special value me can be used to
+   * indicate the authenticated user.
+   *
+   * Completes with a [WatchResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<WatchResponse> watch(WatchRequest request, core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/watch';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new WatchResponse.fromJson(data));
   }
 
 }
@@ -2639,6 +2723,95 @@ class Thread {
     }
     if (snippet != null) {
       _json["snippet"] = snippet;
+    }
+    return _json;
+  }
+}
+
+/** Set up or update a new push notification watch on this user's mailbox. */
+class WatchRequest {
+  /**
+   * Filtering behavior of labelIds list specified.
+   * Possible string values are:
+   * - "exclude"
+   * - "include"
+   */
+  core.String labelFilterAction;
+  /**
+   * List of label_ids to restrict notifications about. By default, if
+   * unspecified, all changes are pushed out. If specified then dictates which
+   * labels are required for a push notification to be generated.
+   */
+  core.List<core.String> labelIds;
+  /**
+   * Fully qualified Cloud PubSub API topic name to publish events to. This
+   * topic name should already exist in Cloud PubSub and you should have already
+   * granted gmail "publish" privileges on it. For example,
+   * "projects/my-project-identifier/topics/my-topic-name" (using the new Cloud
+   * PubSub "v1beta2" topic naming format).
+   *
+   * Note that the "my-project-identifier" portion must exactly match your
+   * developer console project id (the one executing this watch request).
+   */
+  core.String topicName;
+
+  WatchRequest();
+
+  WatchRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("labelFilterAction")) {
+      labelFilterAction = _json["labelFilterAction"];
+    }
+    if (_json.containsKey("labelIds")) {
+      labelIds = _json["labelIds"];
+    }
+    if (_json.containsKey("topicName")) {
+      topicName = _json["topicName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (labelFilterAction != null) {
+      _json["labelFilterAction"] = labelFilterAction;
+    }
+    if (labelIds != null) {
+      _json["labelIds"] = labelIds;
+    }
+    if (topicName != null) {
+      _json["topicName"] = topicName;
+    }
+    return _json;
+  }
+}
+
+/** Push notification watch response. */
+class WatchResponse {
+  /**
+   * When Gmail will stop sending notifications for mailbox updates. Call watch
+   * again before this time to renew the subscription.
+   */
+  core.String expiration;
+  /** The ID of the mailbox's current history record. */
+  core.String historyId;
+
+  WatchResponse();
+
+  WatchResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("expiration")) {
+      expiration = _json["expiration"];
+    }
+    if (_json.containsKey("historyId")) {
+      historyId = _json["historyId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (expiration != null) {
+      _json["expiration"] = expiration;
+    }
+    if (historyId != null) {
+      _json["historyId"] = historyId;
     }
     return _json;
   }

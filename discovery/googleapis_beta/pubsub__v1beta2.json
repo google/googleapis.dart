@@ -16,8 +16,8 @@
     "batchPath": "batch",
     "description": "Provides reliable, many-to-many, asynchronous messaging between applications.",
     "discoveryVersion": "v1",
-    "documentationLink": "",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Yiwef_oSXJNfnqyM1APXdR-9W68\"",
+    "documentationLink": "https://cloud.google.com/pubsub/docs",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/VK6LFY090HaPGVrEqnv6Rpqzlmo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -202,7 +202,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "The name of the topic. It must have the format > `\"projects/\n/topics/\"` for Google Cloud Pub/Sub > API v1beta2. > `topic` must start with a letter, and contain only > letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), > periods (.), tildes (~), plus (+) or percent signs (%). It must be > between 3 and 255 characters in length, and cannot begin with the > string goog.",
+                                    "description": "The name of the topic. It must have the format \"projects/{project}/topics/{topic}\" for Google Cloud Pub/Sub API v1beta2. {topic} must start with a letter, and contain only letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), periods (.), tildes (~), plus (+) or percent signs (%). It must be between 3 and 255 characters in length, and it must not start with \"goog\".",
                                     "location": "path",
                                     "pattern": "^projects/[^/]*/topics/[^/]*$",
                                     "required": true,
@@ -471,7 +471,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "The name of the subscription. It must have the format > `\"projects/\n/subscriptions/\"` for Google > Cloud Pub/Sub API v1beta2. > `subscription` must start with a letter, and contain only > letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), > periods (.), tildes (~), plus (+) or percent signs (%). It must be > between 3 and 255 characters in length, and cannot begin with the > string goog.",
+                                    "description": "The name of the subscription. It must have the format \"projects/{project}/subscriptions/{subscription}\" for Google Cloud Pub/Sub API v1beta2. {subscription} must start with a letter, and contain only letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), periods (.), tildes (~), plus (+) or percent signs (%). It must be between 3 and 255 characters in length, and it must not start with \"goog\".",
                                     "location": "path",
                                     "pattern": "^projects/[^/]*/subscriptions/[^/]*$",
                                     "required": true,
@@ -693,7 +693,7 @@
             }
         }
     },
-    "revision": "20150520",
+    "revision": "20150427",
     "rootUrl": "https://pubsub.googleapis.com/",
     "schemas": {
         "SetIamPolicyRequest": {
@@ -703,14 +703,6 @@
                 "policy": {
                     "$ref": "Policy",
                     "description": "REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them."
-                },
-                "changeDescription": {
-                    "$ref": "ChangeDescription",
-                    "description": "Description of the change."
-                },
-                "wait": {
-                    "description": "If true the SetPolicy call returns only after it is guaranteed that a subsequent CheckPolicy call will observe the new policy. NOTE: We may support this guarantee only for policy changes that broaden access.",
-                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -754,7 +746,7 @@
                     "type": "string"
                 },
                 "members": {
-                    "description": "Format of member entries: 1. * Matches any requesting principal (users, service accounts or anonymous). 2. user:{emailid} A google user account using an email address. For example alice@gmail.com, joe@example.com 3. serviceAccount:{emailid} An service account email. 4. group:{emailid} A google group with an email address. For example auth-ti-cloud@google.com 5. domain:{domain} A Google Apps domain name. For example google.com, example.com",
+                    "description": "Format of member entries: 1. allUsers Matches any requesting principal (users, service accounts or anonymous). 2. allAuthenticatedUsers Matches any requesting authenticated principal (users or service accounts). 3. user:{emailid} A google user account using an email address. For example alice@gmail.com, joe@example.com 4. serviceAccount:{emailid} An service account email. 5. group:{emailid} A google group with an email address. For example auth-ti-cloud@google.com 6. domain:{domain} A Google Apps domain name. For example google.com, example.com",
                     "items": {
                         "type": "string"
                     },
@@ -919,17 +911,6 @@
             "id": "CloudAuditOptions",
             "type": "object"
         },
-        "ChangeDescription": {
-            "description": "Description of a change to a policy.",
-            "id": "ChangeDescription",
-            "properties": {
-                "summary": {
-                    "description": "Human-readable summary of the change.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "TestIamPermissionsRequest": {
             "description": "Request message for `TestIamPermissions` method.",
             "id": "TestIamPermissionsRequest",
@@ -963,7 +944,7 @@
             "id": "Topic",
             "properties": {
                 "name": {
-                    "description": "The name of the topic. It must have the format > `\"projects/\n/topics/\"` for Google Cloud Pub/Sub > API v1beta2. > `topic` must start with a letter, and contain only > letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), > periods (.), tildes (~), plus (+) or percent signs (%). It must be > between 3 and 255 characters in length, and cannot begin with the > string goog.",
+                    "description": "The name of the topic. It must have the format \"projects/{project}/topics/{topic}\" for Google Cloud Pub/Sub API v1beta2. {topic} must start with a letter, and contain only letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), periods (.), tildes (~), plus (+) or percent signs (%). It must be between 3 and 255 characters in length, and it must not start with \"goog\".",
                     "type": "string"
                 }
             },
@@ -1066,7 +1047,7 @@
             "id": "Subscription",
             "properties": {
                 "name": {
-                    "description": "The name of the subscription. It must have the format > `\"projects/\n/subscriptions/\"` for Google > Cloud Pub/Sub API v1beta2. > `subscription` must start with a letter, and contain only > letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), > periods (.), tildes (~), plus (+) or percent signs (%). It must be > between 3 and 255 characters in length, and cannot begin with the > string goog.",
+                    "description": "The name of the subscription. It must have the format \"projects/{project}/subscriptions/{subscription}\" for Google Cloud Pub/Sub API v1beta2. {subscription} must start with a letter, and contain only letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), periods (.), tildes (~), plus (+) or percent signs (%). It must be between 3 and 255 characters in length, and it must not start with \"goog\".",
                     "type": "string"
                 },
                 "topic": {
@@ -1097,7 +1078,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the CreateSubscription call, it will default to the version of the API used to make such call. If not present during a ModifyPushConfig call, its value will not be changed. GetSubscription calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1beta2`: uses the push format defined in the v1beta2 Pub/Sub API.",
+                    "description": "Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the CreateSubscription call, it will default to the version of the API used to make such call. If not present during a ModifyPushConfig call, its value will not be changed. GetSubscription calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.",
                     "type": "object"
                 }
             },
@@ -1128,6 +1109,13 @@
                 "ackId": {
                     "description": "The acknowledgment ID.",
                     "type": "string"
+                },
+                "ackIds": {
+                    "description": "List of acknowledgment IDs.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "ackDeadlineSeconds": {
                     "description": "The new ack deadline with respect to the time this request was sent to the Pub/Sub system. Must be >= 0. For example, if the value is 10, the new ack deadline will expire 10 seconds after the ModifyAckDeadline call was made. Specifying zero may immediately make the message available for another pull request.",

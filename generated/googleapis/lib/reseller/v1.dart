@@ -3,12 +3,10 @@
 library googleapis.reseller.v1;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1183,6 +1181,8 @@ class Subscription {
   core.String status;
   /** The id of the subscription. */
   core.String subscriptionId;
+  /** Suspension Reasons */
+  core.List<core.String> suspensionReasons;
   /** Transfer related information for the subscription. */
   SubscriptionTransferInfo transferInfo;
   /** Trial Settings of the subscription. */
@@ -1226,6 +1226,9 @@ class Subscription {
     }
     if (_json.containsKey("subscriptionId")) {
       subscriptionId = _json["subscriptionId"];
+    }
+    if (_json.containsKey("suspensionReasons")) {
+      suspensionReasons = _json["suspensionReasons"];
     }
     if (_json.containsKey("transferInfo")) {
       transferInfo = new SubscriptionTransferInfo.fromJson(_json["transferInfo"]);
@@ -1272,6 +1275,9 @@ class Subscription {
     }
     if (subscriptionId != null) {
       _json["subscriptionId"] = subscriptionId;
+    }
+    if (suspensionReasons != null) {
+      _json["suspensionReasons"] = suspensionReasons;
     }
     if (transferInfo != null) {
       _json["transferInfo"] = (transferInfo).toJson();

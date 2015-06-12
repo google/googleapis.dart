@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/LngzzVwqv1YJhBSD4vnWK91Oc64\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ekf6O2lwsP92coEGgGA2ge5cRGA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20150326",
+    "revision": "20150520",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1179,6 +1179,16 @@
             "description": "The configuration data for an Ad Exchange performance report list.",
             "id": "PerformanceReport",
             "properties": {
+                "bidRate": {
+                    "description": "The number of bid responses with an ad.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "bidRequestRate": {
+                    "description": "The number of bid requests sent to your bidder.",
+                    "format": "double",
+                    "type": "number"
+                },
                 "calloutStatusRate": {
                     "description": "Rate of various prefiltering statuses per match. Please refer to the callout-status-codes.txt file for different statuses.",
                     "items": {
@@ -1200,12 +1210,22 @@
                     },
                     "type": "array"
                 },
+                "filteredBidRate": {
+                    "description": "The number of bid responses that were filtered due to a policy violation or other errors.",
+                    "format": "double",
+                    "type": "number"
+                },
                 "hostedMatchStatusRate": {
                     "description": "Average QPS for hosted match operations.",
                     "items": {
                         "type": "any"
                     },
                     "type": "array"
+                },
+                "inventoryMatchRate": {
+                    "description": "The number of potential queries based on your pretargeting settings.",
+                    "format": "double",
+                    "type": "number"
                 },
                 "kind": {
                     "default": "adexchangebuyer#performanceReport",
@@ -1261,10 +1281,20 @@
                     "description": "The trading location of this data.",
                     "type": "string"
                 },
+                "successfulRequestRate": {
+                    "description": "The number of properly formed bid responses received by our servers within the deadline.",
+                    "format": "double",
+                    "type": "number"
+                },
                 "timestamp": {
                     "description": "The unix timestamp of the starting time of this performance data.",
                     "format": "int64",
                     "type": "string"
+                },
+                "unsuccessfulRequestRate": {
+                    "description": "The number of bid responses that were unsuccessful due to timeouts, incorrect formatting, etc.",
+                    "format": "double",
+                    "type": "number"
                 }
             },
             "type": "object"

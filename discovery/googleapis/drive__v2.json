@@ -12,7 +12,7 @@
                     "description": "View your Google Drive apps"
                 },
                 "https://www.googleapis.com/auth/drive.file": {
-                    "description": "View and manage Google Drive files that you have opened or created with this app"
+                    "description": "View and manage Google Drive files and folders that you have opened or created with this app"
                 },
                 "https://www.googleapis.com/auth/drive.metadata": {
                     "description": "View and manage metadata of files in your Google Drive"
@@ -35,7 +35,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ZG83y0bMDotqOLOKtHiQtl2NI3Y\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/0DBQIyfrYkiVIj8LdBNKrODG4u4\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -259,6 +259,11 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "spaces": {
+                            "description": "A comma-separated list of spaces to query. Supported values are 'drive' and 'appDataFolder'.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "startChangeId": {
                             "description": "Change ID to start listing changes from.",
                             "format": "int64",
@@ -308,6 +313,11 @@
                         },
                         "pageToken": {
                             "description": "Page token for changes.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "spaces": {
+                            "description": "A comma-separated list of spaces to query. Supported values are 'drive' and 'appDataFolder'.",
                             "location": "query",
                             "type": "string"
                         },
@@ -530,8 +540,7 @@
                     "path": "files/{fileId}/comments/{commentId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/drive",
-                        "https://www.googleapis.com/auth/drive.file",
-                        "https://www.googleapis.com/auth/drive.readonly"
+                        "https://www.googleapis.com/auth/drive.file"
                     ]
                 },
                 "get": {
@@ -1026,6 +1035,11 @@
                         },
                         "q": {
                             "description": "Query string for searching files.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "spaces": {
+                            "description": "A comma-separated list of spaces to query. Supported values are 'drive' and 'appDataFolder'.",
                             "location": "query",
                             "type": "string"
                         }
@@ -2484,7 +2498,7 @@
             }
         }
     },
-    "revision": "20150513",
+    "revision": "20150326",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -3611,6 +3625,13 @@
                 "sharingUser": {
                     "$ref": "User",
                     "description": "User that shared the item with the current user, if available."
+                },
+                "spaces": {
+                    "description": "The list of spaces which contain the file. Supported values are 'drive' and 'appDataFolder'.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "thumbnail": {
                     "description": "Thumbnail for the file. Only accepted on upload and for files that are not already thumbnailed by Google.",

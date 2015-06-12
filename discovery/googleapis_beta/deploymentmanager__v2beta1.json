@@ -20,7 +20,7 @@
     "description": "The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/deployment-manager/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/yZZ2K4KPIkaf-i6EuvmGKGy5csg\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/oNAS2WD2lJBNCIcsZ4l8uhi__pI\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -529,7 +529,7 @@
             }
         }
     },
-    "revision": "20150427",
+    "revision": "20150526",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Deployment": {

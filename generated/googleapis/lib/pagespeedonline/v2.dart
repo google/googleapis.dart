@@ -3,7 +3,6 @@
 library googleapis.pagespeedonline.v2;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 

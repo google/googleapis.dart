@@ -3,12 +3,10 @@
 library googleapis.adexchangebuyer.v1_3;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1916,6 +1914,10 @@ class DirectDealsList {
 
 /** The configuration data for an Ad Exchange performance report list. */
 class PerformanceReport {
+  /** The number of bid responses with an ad. */
+  core.double bidRate;
+  /** The number of bid requests sent to your bidder. */
+  core.double bidRequestRate;
   /**
    * Rate of various prefiltering statuses per match. Please refer to the
    * callout-status-codes.txt file for different statuses.
@@ -1940,12 +1942,19 @@ class PerformanceReport {
    */
   core.List<core.Object> creativeStatusRate;
   /**
+   * The number of bid responses that were filtered due to a policy violation or
+   * other errors.
+   */
+  core.double filteredBidRate;
+  /**
    * Average QPS for hosted match operations.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Object> hostedMatchStatusRate;
+  /** The number of potential queries based on your pretargeting settings. */
+  core.double inventoryMatchRate;
   /** Resource type. */
   core.String kind;
   /**
@@ -1977,12 +1986,28 @@ class PerformanceReport {
   core.double quotaThrottledLimit;
   /** The trading location of this data. */
   core.String region;
+  /**
+   * The number of properly formed bid responses received by our servers within
+   * the deadline.
+   */
+  core.double successfulRequestRate;
   /** The unix timestamp of the starting time of this performance data. */
   core.String timestamp;
+  /**
+   * The number of bid responses that were unsuccessful due to timeouts,
+   * incorrect formatting, etc.
+   */
+  core.double unsuccessfulRequestRate;
 
   PerformanceReport();
 
   PerformanceReport.fromJson(core.Map _json) {
+    if (_json.containsKey("bidRate")) {
+      bidRate = _json["bidRate"];
+    }
+    if (_json.containsKey("bidRequestRate")) {
+      bidRequestRate = _json["bidRequestRate"];
+    }
     if (_json.containsKey("calloutStatusRate")) {
       calloutStatusRate = _json["calloutStatusRate"];
     }
@@ -1992,8 +2017,14 @@ class PerformanceReport {
     if (_json.containsKey("creativeStatusRate")) {
       creativeStatusRate = _json["creativeStatusRate"];
     }
+    if (_json.containsKey("filteredBidRate")) {
+      filteredBidRate = _json["filteredBidRate"];
+    }
     if (_json.containsKey("hostedMatchStatusRate")) {
       hostedMatchStatusRate = _json["hostedMatchStatusRate"];
+    }
+    if (_json.containsKey("inventoryMatchRate")) {
+      inventoryMatchRate = _json["inventoryMatchRate"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2028,13 +2059,25 @@ class PerformanceReport {
     if (_json.containsKey("region")) {
       region = _json["region"];
     }
+    if (_json.containsKey("successfulRequestRate")) {
+      successfulRequestRate = _json["successfulRequestRate"];
+    }
     if (_json.containsKey("timestamp")) {
       timestamp = _json["timestamp"];
+    }
+    if (_json.containsKey("unsuccessfulRequestRate")) {
+      unsuccessfulRequestRate = _json["unsuccessfulRequestRate"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (bidRate != null) {
+      _json["bidRate"] = bidRate;
+    }
+    if (bidRequestRate != null) {
+      _json["bidRequestRate"] = bidRequestRate;
+    }
     if (calloutStatusRate != null) {
       _json["calloutStatusRate"] = calloutStatusRate;
     }
@@ -2044,8 +2087,14 @@ class PerformanceReport {
     if (creativeStatusRate != null) {
       _json["creativeStatusRate"] = creativeStatusRate;
     }
+    if (filteredBidRate != null) {
+      _json["filteredBidRate"] = filteredBidRate;
+    }
     if (hostedMatchStatusRate != null) {
       _json["hostedMatchStatusRate"] = hostedMatchStatusRate;
+    }
+    if (inventoryMatchRate != null) {
+      _json["inventoryMatchRate"] = inventoryMatchRate;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2080,8 +2129,14 @@ class PerformanceReport {
     if (region != null) {
       _json["region"] = region;
     }
+    if (successfulRequestRate != null) {
+      _json["successfulRequestRate"] = successfulRequestRate;
+    }
     if (timestamp != null) {
       _json["timestamp"] = timestamp;
+    }
+    if (unsuccessfulRequestRate != null) {
+      _json["unsuccessfulRequestRate"] = unsuccessfulRequestRate;
     }
     return _json;
   }

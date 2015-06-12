@@ -8,7 +8,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -366,6 +365,52 @@ class JobsResourceApi {
 
   JobsResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Requests that a job be cancelled. This call will return immediately, and
+   * the client will need to poll for the job status to see if the cancel
+   * completed successfully.
+   *
+   * Request parameters:
+   *
+   * [projectId] - Project ID of the job to cancel
+   *
+   * [jobId] - Job ID of the job to cancel
+   *
+   * Completes with a [JobCancelResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<JobCancelResponse> cancel(core.String projectId, core.String jobId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+
+    _url = 'project/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/cancel';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new JobCancelResponse.fromJson(data));
+  }
 
   /**
    * Returns information about a specific job. Job information is available for
@@ -1983,6 +2028,35 @@ class Job {
   }
 }
 
+class JobCancelResponse {
+  /** The final state of the job. */
+  Job job;
+  /** The resource type of the response. */
+  core.String kind;
+
+  JobCancelResponse();
+
+  JobCancelResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("job")) {
+      job = new Job.fromJson(_json["job"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (job != null) {
+      _json["job"] = (job).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
 class JobConfiguration {
   /** [Pick one] Copies a table. */
   JobConfigurationTableCopy copy;
@@ -2485,7 +2559,8 @@ class JobConfigurationQuery {
    * [Optional] Whether to look for the result in the query cache. The query
    * cache is a best-effort cache that will be flushed whenever tables in the
    * query are modified. Moreover, the query cache is only available when a
-   * query does not have a destination table specified.
+   * query does not have a destination table specified. The default value is
+   * true.
    */
   core.bool useQueryCache;
   /**
@@ -2748,8 +2823,6 @@ class JobList {
   core.String kind;
   /** A token to request the next page of results. */
   core.String nextPageToken;
-  /** Total number of jobs in this collection. */
-  core.int totalItems;
 
   JobList();
 
@@ -2766,9 +2839,6 @@ class JobList {
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
     }
-    if (_json.containsKey("totalItems")) {
-      totalItems = _json["totalItems"];
-    }
   }
 
   core.Map toJson() {
@@ -2784,9 +2854,6 @@ class JobList {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
-    }
-    if (totalItems != null) {
-      _json["totalItems"] = totalItems;
     }
     return _json;
   }

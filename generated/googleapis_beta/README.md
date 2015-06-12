@@ -132,7 +132,7 @@ Official API documentation: https://developers.google.com/pubsub/v1beta1
 
 Provides reliable, many-to-many, asynchronous messaging between applications.
 
-Official API documentation: 
+Official API documentation: https://cloud.google.com/pubsub/docs
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Instance Group Manager API - replicapool v1beta2
 

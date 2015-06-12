@@ -3,7 +3,6 @@
 library googleapis_beta.datastore.v1beta2;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 

@@ -3,7 +3,6 @@
 library googleapis_beta.pubsub.v1beta1;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
@@ -854,9 +853,20 @@ class ModifyAckDeadlineRequest {
    * request.
    */
   core.int ackDeadlineSeconds;
-  /** The acknowledgment ID. */
+  /**
+   * The acknowledgment ID. Either this or ack_ids must be populated, not both.
+   */
   core.String ackId;
-  /** The name of the subscription from which messages are being pulled. */
+  /**
+   * List of acknowledgment IDs. Either this field or ack_id should be
+   * populated, not both. TODO(handrei): mark the above field deprecated once
+   * it's not used internally.
+   */
+  core.List<core.String> ackIds;
+  /**
+   * Next Index: 5 The name of the subscription from which messages are being
+   * pulled.
+   */
   core.String subscription;
 
   ModifyAckDeadlineRequest();
@@ -867,6 +877,9 @@ class ModifyAckDeadlineRequest {
     }
     if (_json.containsKey("ackId")) {
       ackId = _json["ackId"];
+    }
+    if (_json.containsKey("ackIds")) {
+      ackIds = _json["ackIds"];
     }
     if (_json.containsKey("subscription")) {
       subscription = _json["subscription"];
@@ -880,6 +893,9 @@ class ModifyAckDeadlineRequest {
     }
     if (ackId != null) {
       _json["ackId"] = ackId;
+    }
+    if (ackIds != null) {
+      _json["ackIds"] = ackIds;
     }
     if (subscription != null) {
       _json["subscription"] = subscription;
@@ -1292,9 +1308,9 @@ class Subscription {
    * call to the push endpoint.
    *
    * For pull delivery, this value is used as the initial value for the Ack
-   * deadline. It may be overridden for a specific pull request (message) with
-   * ModifyAckDeadline. While a message is outstanding (i.e. it has been
-   * delivered to a pull subscriber and the subscriber has not yet Acked or
+   * deadline. It may be overridden for each message using its corresponding
+   * ack_id with ModifyAckDeadline. While a message is outstanding (i.e. it has
+   * been delivered to a pull subscriber and the subscriber has not yet Acked or
    * Nacked), the Pub/Sub system will not deliver that message to another pull
    * subscriber (on a best-effort basis).
    */

@@ -3,12 +3,10 @@
 library googleapis_beta.genomics.v1beta2;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -2645,7 +2643,7 @@ class VariantsetsResourceApi {
    *
    * Request parameters:
    *
-   * [variantSetId] - The ID of the variant to be updated.
+   * [variantSetId] - The ID of the variant to be updated (must already exist).
    *
    * Completes with a [VariantSet].
    *
@@ -2731,7 +2729,7 @@ class VariantsetsResourceApi {
    *
    * Request parameters:
    *
-   * [variantSetId] - The ID of the variant to be updated.
+   * [variantSetId] - The ID of the variant to be updated (must already exist).
    *
    * Completes with a [VariantSet].
    *
@@ -2884,7 +2882,7 @@ class Annotation {
   core.String annotationSetId;
   /** The generated unique ID for this annotation. */
   core.String id;
-  /** A map of additional data for this annotation. */
+  /** A string which maps to an array of values. */
   core.Map<core.String, core.List<core.String>> info;
   /** The display name of this annotation. */
   core.String name;
@@ -2984,7 +2982,7 @@ class AnnotationSet {
   core.String datasetId;
   /** The generated unique ID for this annotation set. */
   core.String id;
-  /** A map of additional data for this annotation set. */
+  /** A string which maps to an array of values. */
   core.Map<core.String, core.List<core.String>> info;
   /** The display name for this annotation set. */
   core.String name;
@@ -3198,7 +3196,7 @@ class Call {
    * are stored in info.
    */
   core.List<core.double> genotypeLikelihood;
-  /** A map of additional variant call information. */
+  /** A string which maps to an array of values. */
   core.Map<core.String, core.List<core.String>> info;
   /**
    * If this field is present, this variant call's genotype ordering implies the
@@ -3336,7 +3334,7 @@ class CallSet {
   core.String created;
   /** The Google generated ID of the call set, immutable. */
   core.String id;
-  /** A map of additional call set information. */
+  /** A string which maps to an array of values. */
   core.Map<core.String, core.List<core.String>> info;
   /** The call set name. */
   core.String name;
@@ -3641,14 +3639,17 @@ class ExperimentalCreateJobResponse {
 /** The read group set export request. */
 class ExportReadGroupSetsRequest {
   /**
-   * A Google Cloud Storage URI for the exported BAM file. The currently
-   * authenticated user must have write access to the new file. An error will be
-   * returned if the URI already contains data.
+   * Required. A Google Cloud Storage URI for the exported BAM file. The
+   * currently authenticated user must have write access to the new file. An
+   * error will be returned if the URI already contains data.
    */
   core.String exportUri;
-  /** The Google Developers Console project number that owns this export. */
+  /**
+   * Required. The Google Developers Console project number that owns this
+   * export.
+   */
   core.String projectNumber;
-  /** The IDs of the read group sets to export. */
+  /** Required. The IDs of the read group sets to export. */
   core.List<core.String> readGroupSetIds;
   /**
    * The reference names to export. If this is not specified, all reference
@@ -3717,13 +3718,13 @@ class ExportReadGroupSetsResponse {
 /** The variant data export request. */
 class ExportVariantSetRequest {
   /**
-   * The BigQuery dataset to export data to. Note that this is distinct from the
-   * Genomics concept of "dataset".
+   * Required. The BigQuery dataset to export data to. This dataset must already
+   * exist. Note that this is distinct from the Genomics concept of "dataset".
    */
   core.String bigqueryDataset;
   /**
-   * The BigQuery table to export data to. If the table doesn't exist, it will
-   * be created. If it already exists, it will be overwritten.
+   * Required. The BigQuery table to export data to. If the table doesn't exist,
+   * it will be created. If it already exists, it will be overwritten.
    */
   core.String bigqueryTable;
   /**
@@ -3738,9 +3739,9 @@ class ExportVariantSetRequest {
    */
   core.String format;
   /**
-   * The Google Cloud project number that owns the destination BigQuery dataset.
-   * The caller must have WRITE access to this project. This project will also
-   * own the resulting export job.
+   * Required. The Google Cloud project number that owns the destination
+   * BigQuery dataset. The caller must have WRITE access to this project. This
+   * project will also own the resulting export job.
    */
   core.String projectNumber;
 
@@ -3988,6 +3989,16 @@ class ImportVariantsRequest {
    */
   core.String format;
   /**
+   * Convert reference names to the canonical representation. hg19 haploytypes
+   * (those reference names containing "_hap") are not modified in any way. All
+   * other reference names are modified according to the following rules: The
+   * reference name is capitalized. The "chr" prefix is dropped for all
+   * autosomes and sex chromsomes. For example "chr17" becomes "17" and "chrX"
+   * becomes "X". All mitochondrial chromosomes ("chrM", "chrMT", etc) become
+   * "MT".
+   */
+  core.bool normalizeReferenceNames;
+  /**
    * A list of URIs referencing variant files in Google Cloud Storage. URIs can
    * include wildcards as described here. Note that recursive wildcards ('**')
    * are not supported.
@@ -4000,6 +4011,9 @@ class ImportVariantsRequest {
     if (_json.containsKey("format")) {
       format = _json["format"];
     }
+    if (_json.containsKey("normalizeReferenceNames")) {
+      normalizeReferenceNames = _json["normalizeReferenceNames"];
+    }
     if (_json.containsKey("sourceUris")) {
       sourceUris = _json["sourceUris"];
     }
@@ -4009,6 +4023,9 @@ class ImportVariantsRequest {
     var _json = new core.Map();
     if (format != null) {
       _json["format"] = format;
+    }
+    if (normalizeReferenceNames != null) {
+      _json["normalizeReferenceNames"] = normalizeReferenceNames;
     }
     if (sourceUris != null) {
       _json["sourceUris"] = sourceUris;
@@ -4039,7 +4056,11 @@ class ImportVariantsResponse {
   }
 }
 
-/** Wrapper message for int32. */
+/**
+ * Wrapper message for `int32`.
+ *
+ * The JSON representation for `Int32Value` is JSON number.
+ */
 class Int32Value {
   /** The int32 value. */
   core.int value;
@@ -4257,6 +4278,36 @@ class JobRequest {
   }
 }
 
+/** Used to hold basic key value information. */
+class KeyValue {
+  /** A string which maps to an array of values. */
+  core.String key;
+  /** The string values. */
+  core.List<core.String> value;
+
+  KeyValue();
+
+  KeyValue.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /**
  * A linear alignment can be represented by one CIGAR string. Describes the
  * mapped position and local alignment of the read to the reference.
@@ -4468,7 +4519,7 @@ class Metadata {
    * equivalent.
    */
   core.String id;
-  /** Remaining structured metadata key-value pairs. */
+  /** A string which maps to an array of values. */
   core.Map<core.String, core.List<core.String>> info;
   /** The top-level key. */
   core.String key;
@@ -4879,7 +4930,7 @@ class Read {
    * confused with fragmentName.
    */
   core.String id;
-  /** A map of additional read alignment information. */
+  /** A string which maps to an array of values. */
   core.Map<core.String, core.List<core.String>> info;
   /**
    * The position of the primary alignment of the (readNumber+1)%numberReads
@@ -5061,7 +5112,7 @@ class ReadGroup {
    * field in the SAM spec. For that value, see the name field.
    */
   core.String id;
-  /** A map of additional read group information. */
+  /** A string which maps to an array of values. */
   core.Map<core.String, core.List<core.String>> info;
   /**
    * The read group name. This corresponds to the @RG ID field in the SAM spec.
@@ -5290,7 +5341,7 @@ class ReadGroupSet {
   core.String filename;
   /** The read group set ID. */
   core.String id;
-  /** A map of additional read group set information. */
+  /** A string which maps to an array of values. */
   core.Map<core.String, core.List<core.String>> info;
   /**
    * The read group set name. By default this will be initialized to the sample
@@ -6841,7 +6892,7 @@ class Variant {
   core.List<core.String> filter;
   /** The Google generated ID of the variant, immutable. */
   core.String id;
-  /** A map of additional variant information. */
+  /** A string which maps to an array of values. */
   core.Map<core.String, core.List<core.String>> info;
   /** Names for the variant, for example a RefSNP ID. */
   core.List<core.String> names;

@@ -29,7 +29,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/U8LxfkiI9isU42wxJZ9c2pKL-h0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/zF6WSOslXZR0-Huj86jdBh1t6cI\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -293,6 +293,37 @@
         },
         "jobs": {
             "methods": {
+                "cancel": {
+                    "description": "Requests that a job be cancelled. This call will return immediately, and the client will need to poll for the job status to see if the cancel completed successfully.",
+                    "httpMethod": "POST",
+                    "id": "bigquery.jobs.cancel",
+                    "parameterOrder": [
+                        "projectId",
+                        "jobId"
+                    ],
+                    "parameters": {
+                        "jobId": {
+                            "description": "Job ID of the job to cancel",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "projectId": {
+                            "description": "Project ID of the job to cancel",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "project/{projectId}/jobs/{jobId}/cancel",
+                    "response": {
+                        "$ref": "JobCancelResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
                 "get": {
                     "description": "Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role.",
                     "httpMethod": "GET",
@@ -889,7 +920,7 @@
             }
         }
     },
-    "revision": "20150326",
+    "revision": "20150520",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CsvOptions": {
@@ -912,7 +943,9 @@
                     "type": "string"
                 },
                 "quote": {
+                    "default": "\"",
                     "description": "[Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('\"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.",
+                    "pattern": ".?",
                     "type": "string"
                 },
                 "skipLeadingRows": {
@@ -1234,6 +1267,21 @@
             },
             "type": "object"
         },
+        "JobCancelResponse": {
+            "id": "JobCancelResponse",
+            "properties": {
+                "job": {
+                    "$ref": "Job",
+                    "description": "The final state of the job."
+                },
+                "kind": {
+                    "default": "bigquery#jobCancelResponse",
+                    "description": "The resource type of the response.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "JobConfiguration": {
             "id": "JobConfiguration",
             "properties": {
@@ -1291,6 +1339,7 @@
                     "type": "string"
                 },
                 "printHeader": {
+                    "default": "true",
                     "description": "[Optional] Whether to print out a header row in the results. Default is true.",
                     "type": "boolean"
                 },
@@ -1370,7 +1419,9 @@
                     "type": "array"
                 },
                 "quote": {
+                    "default": "\"",
                     "description": "[Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('\"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.",
+                    "pattern": ".?",
                     "type": "string"
                 },
                 "schema": {
@@ -1428,6 +1479,7 @@
                     "description": "[Optional] Describes the table where the query results should be stored. If not present, a new table will be created to store the results."
                 },
                 "flattenResults": {
+                    "default": "true",
                     "description": "[Optional] Flattens all nested and repeated fields in the query results. The default value is true. allowLargeResults must be true if this is set to false.",
                     "type": "boolean"
                 },
@@ -1451,7 +1503,8 @@
                     "type": "object"
                 },
                 "useQueryCache": {
-                    "description": "[Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.",
+                    "default": "true",
+                    "description": "[Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.",
                     "type": "boolean"
                 },
                 "writeDisposition": {
@@ -1551,11 +1604,6 @@
                 "nextPageToken": {
                     "description": "A token to request the next page of results.",
                     "type": "string"
-                },
-                "totalItems": {
-                    "description": "Total number of jobs in this collection.",
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"
@@ -1815,6 +1863,7 @@
                     "type": "integer"
                 },
                 "useQueryCache": {
+                    "default": "true",
                     "description": "[Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. The default value is true.",
                     "type": "boolean"
                 }

@@ -3,12 +3,10 @@
 library googleapis_beta.container.v1beta1;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -519,6 +517,11 @@ class Cluster {
    * information.
    */
   core.String endpoint;
+  /**
+   * [Output only] The resource URLs of [instance
+   * groups](/compute/docs/instance-groups/) associated with this cluster.
+   */
+  core.List<core.String> instanceGroupUrls;
   /** The authentication information for accessing the master. */
   MasterAuth masterAuth;
   /**
@@ -603,6 +606,9 @@ class Cluster {
     if (_json.containsKey("endpoint")) {
       endpoint = _json["endpoint"];
     }
+    if (_json.containsKey("instanceGroupUrls")) {
+      instanceGroupUrls = _json["instanceGroupUrls"];
+    }
     if (_json.containsKey("masterAuth")) {
       masterAuth = new MasterAuth.fromJson(_json["masterAuth"]);
     }
@@ -660,6 +666,9 @@ class Cluster {
     }
     if (endpoint != null) {
       _json["endpoint"] = endpoint;
+    }
+    if (instanceGroupUrls != null) {
+      _json["instanceGroupUrls"] = instanceGroupUrls;
     }
     if (masterAuth != null) {
       _json["masterAuth"] = (masterAuth).toJson();
@@ -815,6 +824,21 @@ class MasterAuth {
    */
   core.String bearerToken;
   /**
+   * [Output only] Base64 encoded public certificate used by clients to
+   * authenticate to the cluster endpoint.
+   */
+  core.String clientCertificate;
+  /**
+   * [Output only] Base64 encoded private key used by clients to authenticate to
+   * the cluster endpoint.
+   */
+  core.String clientKey;
+  /**
+   * [Output only] Base64 encoded public certificate that is the root of trust
+   * for the cluster.
+   */
+  core.String clusterCaCertificate;
+  /**
    * The password to use for HTTP basic authentication when accessing the
    * Kubernetes master endpoint. Because the master endpoint is open to the
    * internet, you should create a strong password.
@@ -832,6 +856,15 @@ class MasterAuth {
     if (_json.containsKey("bearerToken")) {
       bearerToken = _json["bearerToken"];
     }
+    if (_json.containsKey("clientCertificate")) {
+      clientCertificate = _json["clientCertificate"];
+    }
+    if (_json.containsKey("clientKey")) {
+      clientKey = _json["clientKey"];
+    }
+    if (_json.containsKey("clusterCaCertificate")) {
+      clusterCaCertificate = _json["clusterCaCertificate"];
+    }
     if (_json.containsKey("password")) {
       password = _json["password"];
     }
@@ -844,6 +877,15 @@ class MasterAuth {
     var _json = new core.Map();
     if (bearerToken != null) {
       _json["bearerToken"] = bearerToken;
+    }
+    if (clientCertificate != null) {
+      _json["clientCertificate"] = clientCertificate;
+    }
+    if (clientKey != null) {
+      _json["clientKey"] = clientKey;
+    }
+    if (clusterCaCertificate != null) {
+      _json["clusterCaCertificate"] = clusterCaCertificate;
     }
     if (password != null) {
       _json["password"] = password;

@@ -3,7 +3,6 @@
 library googleapis_beta.pubsub.v1beta2;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
@@ -113,13 +112,12 @@ class ProjectsSubscriptionsResourceApi {
    *
    * Request parameters:
    *
-   * [name] - The name of the subscription. It must have the format >
-   * `"projects/
-   * /subscriptions/"` for Google > Cloud Pub/Sub API v1beta2. > `subscription`
-   * must start with a letter, and contain only > letters ([A-Za-z]), numbers
-   * ([0-9], dashes (-), underscores (_), > periods (.), tildes (~), plus (+) or
-   * percent signs (%). It must be > between 3 and 255 characters in length, and
-   * cannot begin with the > string goog.
+   * [name] - The name of the subscription. It must have the format
+   * "projects/{project}/subscriptions/{subscription}" for Google Cloud Pub/Sub
+   * API v1beta2. {subscription} must start with a letter, and contain only
+   * letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), periods
+   * (.), tildes (~), plus (+) or percent signs (%). It must be between 3 and
+   * 255 characters in length, and it must not start with "goog".
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [Subscription].
@@ -591,12 +589,12 @@ class ProjectsTopicsResourceApi {
    *
    * Request parameters:
    *
-   * [name] - The name of the topic. It must have the format > `"projects/
-   * /topics/"` for Google Cloud Pub/Sub > API v1beta2. > `topic` must start
-   * with a letter, and contain only > letters ([A-Za-z]), numbers ([0-9],
-   * dashes (-), underscores (_), > periods (.), tildes (~), plus (+) or percent
-   * signs (%). It must be > between 3 and 255 characters in length, and cannot
-   * begin with the > string goog.
+   * [name] - The name of the topic. It must have the format
+   * "projects/{project}/topics/{topic}" for Google Cloud Pub/Sub API v1beta2.
+   * {topic} must start with a letter, and contain only letters ([A-Za-z]),
+   * numbers ([0-9], dashes (-), underscores (_), periods (.), tildes (~), plus
+   * (+) or percent signs (%). It must be between 3 and 255 characters in
+   * length, and it must not start with "goog".
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [Topic].
@@ -1047,13 +1045,14 @@ class AcknowledgeRequest {
  */
 class Binding {
   /**
-   * Format of member entries: 1. * Matches any requesting principal (users,
-   * service accounts or anonymous). 2. user:{emailid} A google user account
-   * using an email address. For example alice@gmail.com, joe@example.com 3.
-   * serviceAccount:{emailid} An service account email. 4. group:{emailid} A
-   * google group with an email address. For example auth-ti-cloud@google.com 5.
-   * domain:{domain} A Google Apps domain name. For example google.com,
-   * example.com
+   * Format of member entries: 1. allUsers Matches any requesting principal
+   * (users, service accounts or anonymous). 2. allAuthenticatedUsers Matches
+   * any requesting authenticated principal (users or service accounts). 3.
+   * user:{emailid} A google user account using an email address. For example
+   * alice@gmail.com, joe@example.com 4. serviceAccount:{emailid} An service
+   * account email. 5. group:{emailid} A google group with an email address. For
+   * example auth-ti-cloud@google.com 6. domain:{domain} A Google Apps domain
+   * name. For example google.com, example.com
    */
   core.List<core.String> members;
   /**
@@ -1080,28 +1079,6 @@ class Binding {
     }
     if (role != null) {
       _json["role"] = role;
-    }
-    return _json;
-  }
-}
-
-/** Description of a change to a policy. */
-class ChangeDescription {
-  /** Human-readable summary of the change. */
-  core.String summary;
-
-  ChangeDescription();
-
-  ChangeDescription.fromJson(core.Map _json) {
-    if (_json.containsKey("summary")) {
-      summary = _json["summary"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (summary != null) {
-      _json["summary"] = summary;
     }
     return _json;
   }
@@ -1434,6 +1411,8 @@ class ModifyAckDeadlineRequest {
   core.int ackDeadlineSeconds;
   /** The acknowledgment ID. */
   core.String ackId;
+  /** List of acknowledgment IDs. */
+  core.List<core.String> ackIds;
 
   ModifyAckDeadlineRequest();
 
@@ -1444,6 +1423,9 @@ class ModifyAckDeadlineRequest {
     if (_json.containsKey("ackId")) {
       ackId = _json["ackId"];
     }
+    if (_json.containsKey("ackIds")) {
+      ackIds = _json["ackIds"];
+    }
   }
 
   core.Map toJson() {
@@ -1453,6 +1435,9 @@ class ModifyAckDeadlineRequest {
     }
     if (ackId != null) {
       _json["ackId"] = ackId;
+    }
+    if (ackIds != null) {
+      _json["ackIds"] = ackIds;
     }
     return _json;
   }
@@ -1740,8 +1725,8 @@ class PushConfig {
    * will not be changed. GetSubscription calls will always return a valid
    * version, even if the subscription was created without this attribute. The
    * possible values for this attribute are: * `v1beta1`: uses the push format
-   * defined in the v1beta1 Pub/Sub API. * `v1beta2`: uses the push format
-   * defined in the v1beta2 Pub/Sub API.
+   * defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push
+   * format defined in the v1 Pub/Sub API.
    */
   core.Map<core.String, core.String> attributes;
   /**
@@ -1898,45 +1883,25 @@ class Rule {
 
 /** Request message for `SetIamPolicy` method. */
 class SetIamPolicyRequest {
-  /** Description of the change. */
-  ChangeDescription changeDescription;
   /**
    * REQUIRED: The complete policy to be applied to the 'resource'. The size of
    * the policy is limited to a few 10s of KB. An empty policy is in general a
    * valid policy but certain services (like Projects) might reject them.
    */
   Policy policy;
-  /**
-   * If true the SetPolicy call returns only after it is guaranteed that a
-   * subsequent CheckPolicy call will observe the new policy. NOTE: We may
-   * support this guarantee only for policy changes that broaden access.
-   */
-  core.bool wait;
 
   SetIamPolicyRequest();
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("changeDescription")) {
-      changeDescription = new ChangeDescription.fromJson(_json["changeDescription"]);
-    }
     if (_json.containsKey("policy")) {
       policy = new Policy.fromJson(_json["policy"]);
-    }
-    if (_json.containsKey("wait")) {
-      wait = _json["wait"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (changeDescription != null) {
-      _json["changeDescription"] = (changeDescription).toJson();
-    }
     if (policy != null) {
       _json["policy"] = (policy).toJson();
-    }
-    if (wait != null) {
-      _json["wait"] = wait;
     }
     return _json;
   }
@@ -1959,12 +1924,12 @@ class Subscription {
    */
   core.int ackDeadlineSeconds;
   /**
-   * The name of the subscription. It must have the format > `"projects/
-   * /subscriptions/"` for Google > Cloud Pub/Sub API v1beta2. > `subscription`
-   * must start with a letter, and contain only > letters ([A-Za-z]), numbers
-   * ([0-9], dashes (-), underscores (_), > periods (.), tildes (~), plus (+) or
-   * percent signs (%). It must be > between 3 and 255 characters in length, and
-   * cannot begin with the > string goog.
+   * The name of the subscription. It must have the format
+   * "projects/{project}/subscriptions/{subscription}" for Google Cloud Pub/Sub
+   * API v1beta2. {subscription} must start with a letter, and contain only
+   * letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), periods
+   * (.), tildes (~), plus (+) or percent signs (%). It must be between 3 and
+   * 255 characters in length, and it must not start with "goog".
    */
   core.String name;
   /**
@@ -2068,12 +2033,12 @@ class TestIamPermissionsResponse {
 /** A topic resource. */
 class Topic {
   /**
-   * The name of the topic. It must have the format > `"projects/
-   * /topics/"` for Google Cloud Pub/Sub > API v1beta2. > `topic` must start
-   * with a letter, and contain only > letters ([A-Za-z]), numbers ([0-9],
-   * dashes (-), underscores (_), > periods (.), tildes (~), plus (+) or percent
-   * signs (%). It must be > between 3 and 255 characters in length, and cannot
-   * begin with the > string goog.
+   * The name of the topic. It must have the format
+   * "projects/{project}/topics/{topic}" for Google Cloud Pub/Sub API v1beta2.
+   * {topic} must start with a letter, and contain only letters ([A-Za-z]),
+   * numbers ([0-9], dashes (-), underscores (_), periods (.), tildes (~), plus
+   * (+) or percent signs (%). It must be between 3 and 255 characters in
+   * length, and it must not start with "goog".
    */
   core.String name;
 

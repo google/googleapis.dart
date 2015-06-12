@@ -3,12 +3,10 @@
 library googleapis.fitness.v1;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -50,6 +48,7 @@ class UsersResourceApi {
   final commons.ApiRequester _requester;
 
   UsersDataSourcesResourceApi get dataSources => new UsersDataSourcesResourceApi(_requester);
+  UsersDatasetResourceApi get dataset => new UsersDatasetResourceApi(_requester);
   UsersSessionsResourceApi get sessions => new UsersSessionsResourceApi(_requester);
 
   UsersResourceApi(commons.ApiRequester client) : 
@@ -593,6 +592,57 @@ class UsersDataSourcesDatasetsResourceApi {
 }
 
 
+class UsersDatasetResourceApi {
+  final commons.ApiRequester _requester;
+
+  UsersDatasetResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [userId] - null
+   *
+   * Completes with a [AggregateResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AggregateResponse> aggregate(AggregateRequest request, core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/dataset:aggregate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AggregateResponse.fromJson(data));
+  }
+
+}
+
+
 class UsersSessionsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -776,6 +826,200 @@ class UsersSessionsResourceApi {
 
 
 
+class AggregateBucket {
+  /** available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT */
+  core.int activity;
+  /** There will be one dataset per datatype/datasource */
+  core.List<Dataset> dataset;
+  core.String endTimeMillis;
+  /** available for Bucket.Type.SESSION */
+  Session session;
+  core.String startTimeMillis;
+  /**
+   * The type of a bucket signifies how the data aggregation is performed in the
+   * bucket.
+   * Possible string values are:
+   * - "activitySegment"
+   * - "activityType"
+   * - "session"
+   * - "time"
+   * - "unknown"
+   */
+  core.String type;
+
+  AggregateBucket();
+
+  AggregateBucket.fromJson(core.Map _json) {
+    if (_json.containsKey("activity")) {
+      activity = _json["activity"];
+    }
+    if (_json.containsKey("dataset")) {
+      dataset = _json["dataset"].map((value) => new Dataset.fromJson(value)).toList();
+    }
+    if (_json.containsKey("endTimeMillis")) {
+      endTimeMillis = _json["endTimeMillis"];
+    }
+    if (_json.containsKey("session")) {
+      session = new Session.fromJson(_json["session"]);
+    }
+    if (_json.containsKey("startTimeMillis")) {
+      startTimeMillis = _json["startTimeMillis"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (activity != null) {
+      _json["activity"] = activity;
+    }
+    if (dataset != null) {
+      _json["dataset"] = dataset.map((value) => (value).toJson()).toList();
+    }
+    if (endTimeMillis != null) {
+      _json["endTimeMillis"] = endTimeMillis;
+    }
+    if (session != null) {
+      _json["session"] = (session).toJson();
+    }
+    if (startTimeMillis != null) {
+      _json["startTimeMillis"] = startTimeMillis;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class AggregateBy {
+  core.String dataSourceId;
+  /** by dataype or by datasource */
+  core.String dataTypeName;
+  core.String outputDataSourceId;
+  core.String outputDataTypeName;
+
+  AggregateBy();
+
+  AggregateBy.fromJson(core.Map _json) {
+    if (_json.containsKey("dataSourceId")) {
+      dataSourceId = _json["dataSourceId"];
+    }
+    if (_json.containsKey("dataTypeName")) {
+      dataTypeName = _json["dataTypeName"];
+    }
+    if (_json.containsKey("outputDataSourceId")) {
+      outputDataSourceId = _json["outputDataSourceId"];
+    }
+    if (_json.containsKey("outputDataTypeName")) {
+      outputDataTypeName = _json["outputDataTypeName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dataSourceId != null) {
+      _json["dataSourceId"] = dataSourceId;
+    }
+    if (dataTypeName != null) {
+      _json["dataTypeName"] = dataTypeName;
+    }
+    if (outputDataSourceId != null) {
+      _json["outputDataSourceId"] = outputDataSourceId;
+    }
+    if (outputDataTypeName != null) {
+      _json["outputDataTypeName"] = outputDataTypeName;
+    }
+    return _json;
+  }
+}
+
+class AggregateRequest {
+  core.List<AggregateBy> aggregateBy;
+  BucketByActivity bucketByActivitySegment;
+  BucketByActivity bucketByActivityType;
+  BucketBySession bucketBySession;
+  /** apparently oneof is not supported by reduced_nano_proto */
+  BucketByTime bucketByTime;
+  core.String endTimeMillis;
+  /** required time range */
+  core.String startTimeMillis;
+
+  AggregateRequest();
+
+  AggregateRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("aggregateBy")) {
+      aggregateBy = _json["aggregateBy"].map((value) => new AggregateBy.fromJson(value)).toList();
+    }
+    if (_json.containsKey("bucketByActivitySegment")) {
+      bucketByActivitySegment = new BucketByActivity.fromJson(_json["bucketByActivitySegment"]);
+    }
+    if (_json.containsKey("bucketByActivityType")) {
+      bucketByActivityType = new BucketByActivity.fromJson(_json["bucketByActivityType"]);
+    }
+    if (_json.containsKey("bucketBySession")) {
+      bucketBySession = new BucketBySession.fromJson(_json["bucketBySession"]);
+    }
+    if (_json.containsKey("bucketByTime")) {
+      bucketByTime = new BucketByTime.fromJson(_json["bucketByTime"]);
+    }
+    if (_json.containsKey("endTimeMillis")) {
+      endTimeMillis = _json["endTimeMillis"];
+    }
+    if (_json.containsKey("startTimeMillis")) {
+      startTimeMillis = _json["startTimeMillis"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (aggregateBy != null) {
+      _json["aggregateBy"] = aggregateBy.map((value) => (value).toJson()).toList();
+    }
+    if (bucketByActivitySegment != null) {
+      _json["bucketByActivitySegment"] = (bucketByActivitySegment).toJson();
+    }
+    if (bucketByActivityType != null) {
+      _json["bucketByActivityType"] = (bucketByActivityType).toJson();
+    }
+    if (bucketBySession != null) {
+      _json["bucketBySession"] = (bucketBySession).toJson();
+    }
+    if (bucketByTime != null) {
+      _json["bucketByTime"] = (bucketByTime).toJson();
+    }
+    if (endTimeMillis != null) {
+      _json["endTimeMillis"] = endTimeMillis;
+    }
+    if (startTimeMillis != null) {
+      _json["startTimeMillis"] = startTimeMillis;
+    }
+    return _json;
+  }
+}
+
+class AggregateResponse {
+  core.List<AggregateBucket> bucket;
+
+  AggregateResponse();
+
+  AggregateResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("bucket")) {
+      bucket = _json["bucket"].map((value) => new AggregateBucket.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bucket != null) {
+      _json["bucket"] = bucket.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /**
  * See: google3/java/com/google/android/apps/heart/platform/api/Application.java
  */
@@ -832,6 +1076,76 @@ class Application {
     }
     if (version != null) {
       _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+class BucketByActivity {
+  /** default activity stream will be used if not specified */
+  core.String activityDataSourceId;
+  /** Only activity segments of duration longer than this is used */
+  core.String minDurationMillis;
+
+  BucketByActivity();
+
+  BucketByActivity.fromJson(core.Map _json) {
+    if (_json.containsKey("activityDataSourceId")) {
+      activityDataSourceId = _json["activityDataSourceId"];
+    }
+    if (_json.containsKey("minDurationMillis")) {
+      minDurationMillis = _json["minDurationMillis"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (activityDataSourceId != null) {
+      _json["activityDataSourceId"] = activityDataSourceId;
+    }
+    if (minDurationMillis != null) {
+      _json["minDurationMillis"] = minDurationMillis;
+    }
+    return _json;
+  }
+}
+
+class BucketBySession {
+  /** Only sessions of duration longer than this is used */
+  core.String minDurationMillis;
+
+  BucketBySession();
+
+  BucketBySession.fromJson(core.Map _json) {
+    if (_json.containsKey("minDurationMillis")) {
+      minDurationMillis = _json["minDurationMillis"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (minDurationMillis != null) {
+      _json["minDurationMillis"] = minDurationMillis;
+    }
+    return _json;
+  }
+}
+
+class BucketByTime {
+  core.String durationMillis;
+
+  BucketByTime();
+
+  BucketByTime.fromJson(core.Map _json) {
+    if (_json.containsKey("durationMillis")) {
+      durationMillis = _json["durationMillis"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (durationMillis != null) {
+      _json["durationMillis"] = durationMillis;
     }
     return _json;
   }

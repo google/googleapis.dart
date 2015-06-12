@@ -3,7 +3,6 @@
 library googleapis.games.v1;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection_1;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 

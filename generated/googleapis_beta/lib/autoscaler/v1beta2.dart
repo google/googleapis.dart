@@ -3,12 +3,10 @@
 library googleapis_beta.autoscaler.v1beta2;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1078,7 +1076,7 @@ class Operation {
   core.String id;
   core.String insertTime;
   /**
-   * [Output Only] Type of the resource. Always kind#operation for Operation
+   * [Output Only] Type of the resource. Always compute#Operation for Operation
    * resources.
    */
   core.String kind;
@@ -1242,7 +1240,10 @@ class Operation {
 class OperationList {
   core.String id;
   core.List<Operation> items;
-  /** Type of resource. Always compute#operations for Operations resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#operations for Operations
+   * resource.
+   */
   core.String kind;
   core.String nextPageToken;
   core.String selfLink;
@@ -1334,12 +1335,12 @@ class Zone {
   DeprecationStatus deprecated;
   core.String description;
   core.String id;
-  /** Type of the resource. */
+  /** [Output Only] Type of the resource. Always kind#zone for zones. */
   core.String kind;
   core.List<ZoneMaintenanceWindows> maintenanceWindows;
   core.String name;
   core.String region;
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
   core.String status;
 

@@ -3,7 +3,6 @@
 library googleapis_beta.replicapool.v1beta2;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
@@ -776,6 +775,11 @@ class ZoneOperationsResourceApi {
 /** An Instance Group Manager resource. */
 class InstanceGroupManager {
   /**
+   * The autohealing policy for this managed instance group. You can specify
+   * only one value.
+   */
+  core.List<ReplicaPoolAutoHealingPolicy> autoHealingPolicies;
+  /**
    * The base instance name to use for instances in this group. The value must
    * be a valid RFC1035 name. Supported characters are lowercase letters,
    * numbers, and hyphens (-). Instances are named by appending a hyphen and a
@@ -849,6 +853,9 @@ class InstanceGroupManager {
   InstanceGroupManager();
 
   InstanceGroupManager.fromJson(core.Map _json) {
+    if (_json.containsKey("autoHealingPolicies")) {
+      autoHealingPolicies = _json["autoHealingPolicies"].map((value) => new ReplicaPoolAutoHealingPolicy.fromJson(value)).toList();
+    }
     if (_json.containsKey("baseInstanceName")) {
       baseInstanceName = _json["baseInstanceName"];
     }
@@ -892,6 +899,9 @@ class InstanceGroupManager {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (autoHealingPolicies != null) {
+      _json["autoHealingPolicies"] = autoHealingPolicies.map((value) => (value).toJson()).toList();
+    }
     if (baseInstanceName != null) {
       _json["baseInstanceName"] = baseInstanceName;
     }
@@ -1575,6 +1585,27 @@ class OperationList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class ReplicaPoolAutoHealingPolicy {
+  /** The URL for the HealthCheck that signals autohealing. */
+  core.String healthCheck;
+
+  ReplicaPoolAutoHealingPolicy();
+
+  ReplicaPoolAutoHealingPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("healthCheck")) {
+      healthCheck = _json["healthCheck"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (healthCheck != null) {
+      _json["healthCheck"] = healthCheck;
     }
     return _json;
   }

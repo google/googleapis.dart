@@ -3,12 +3,10 @@
 library googleapis.androidenterprise.v1;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection_1;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1890,6 +1888,108 @@ class ProductsResourceApi {
       _requester = client;
 
   /**
+   * Approves the specified product (and the relevant app permissions, if any).
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [productId] - The ID of the product.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future approve(ProductsApproveRequest request, core.String enterpriseId, core.String productId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (productId == null) {
+      throw new core.ArgumentError("Parameter productId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/products/' + commons.Escaper.ecapeVariable('$productId') + '/approve';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Generates a URL that can be used to display an iframe to view the product's
+   * permissions (if any) and approve the product. This URL can be used to
+   * approve the product for a limited time (currently 1 hour) using the
+   * Products.approve call.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [productId] - The ID of the product.
+   *
+   * [languageCode] - The language code that will be used for permission names
+   * and descriptions in the returned iframe.
+   *
+   * Completes with a [ProductsGenerateApprovalUrlResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ProductsGenerateApprovalUrlResponse> generateApprovalUrl(core.String enterpriseId, core.String productId, {core.String languageCode}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (productId == null) {
+      throw new core.ArgumentError("Parameter productId is required.");
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/products/' + commons.Escaper.ecapeVariable('$productId') + '/generateApprovalUrl';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ProductsGenerateApprovalUrlResponse.fromJson(data));
+  }
+
+  /**
    * Retrieves details of a product for display to an enterprise admin.
    *
    * Request parameters:
@@ -2442,6 +2542,76 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
     }
     if (valueString != null) {
       _json["valueString"] = valueString;
+    }
+    return _json;
+  }
+}
+
+/** App version represents a single APK version. */
+class AppVersion {
+  /** Unique increasing identifier for the apk version. */
+  core.int versionCode;
+  /**
+   * The string used in the Play Store by the app developer to identify a
+   * version of an app. The string is not necessarily unique or localized (e.g.
+   * "1.4").
+   */
+  core.String versionString;
+
+  AppVersion();
+
+  AppVersion.fromJson(core.Map _json) {
+    if (_json.containsKey("versionCode")) {
+      versionCode = _json["versionCode"];
+    }
+    if (_json.containsKey("versionString")) {
+      versionString = _json["versionString"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (versionCode != null) {
+      _json["versionCode"] = versionCode;
+    }
+    if (versionString != null) {
+      _json["versionString"] = versionString;
+    }
+    return _json;
+  }
+}
+
+/** Information on an approval URL. */
+class ApprovalUrlInfo {
+  /**
+   * A URL that displays a product's permissions and that can also be used to
+   * approve the product with the Products.approve call.
+   */
+  core.String approvalUrl;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#approvalUrlInfo".
+   */
+  core.String kind;
+
+  ApprovalUrlInfo();
+
+  ApprovalUrlInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("approvalUrl")) {
+      approvalUrl = _json["approvalUrl"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (approvalUrl != null) {
+      _json["approvalUrl"] = approvalUrl;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }
@@ -3354,10 +3524,18 @@ class Permission {
  * the product within an MDM user interface.
  */
 class Product {
+  /**
+   * List of app versions available for this product. The returned list contains
+   * only public versions. E.g. alpha, beta or canary versions will not be
+   * included.
+   */
+  core.List<AppVersion> appVersion;
   /** The name of the author of the product (e.g. the app developer). */
   core.String authorName;
   /** A link to the (consumer) Google Play details page for the product. */
   core.String detailsUrl;
+  /** How and to whom the package is made available. */
+  core.String distributionChannel;
   /** A link to an image that can be used as an icon for the product. */
   core.String iconUrl;
   /**
@@ -3386,11 +3564,17 @@ class Product {
   Product();
 
   Product.fromJson(core.Map _json) {
+    if (_json.containsKey("appVersion")) {
+      appVersion = _json["appVersion"].map((value) => new AppVersion.fromJson(value)).toList();
+    }
     if (_json.containsKey("authorName")) {
       authorName = _json["authorName"];
     }
     if (_json.containsKey("detailsUrl")) {
       detailsUrl = _json["detailsUrl"];
+    }
+    if (_json.containsKey("distributionChannel")) {
+      distributionChannel = _json["distributionChannel"];
     }
     if (_json.containsKey("iconUrl")) {
       iconUrl = _json["iconUrl"];
@@ -3414,11 +3598,17 @@ class Product {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (appVersion != null) {
+      _json["appVersion"] = appVersion.map((value) => (value).toJson()).toList();
+    }
     if (authorName != null) {
       _json["authorName"] = authorName;
     }
     if (detailsUrl != null) {
       _json["detailsUrl"] = detailsUrl;
+    }
+    if (distributionChannel != null) {
+      _json["distributionChannel"] = distributionChannel;
     }
     if (iconUrl != null) {
       _json["iconUrl"] = iconUrl;
@@ -3521,6 +3711,54 @@ class ProductPermissions {
     }
     if (productId != null) {
       _json["productId"] = productId;
+    }
+    return _json;
+  }
+}
+
+class ProductsApproveRequest {
+  ApprovalUrlInfo approvalUrlInfo;
+
+  ProductsApproveRequest();
+
+  ProductsApproveRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("approvalUrlInfo")) {
+      approvalUrlInfo = new ApprovalUrlInfo.fromJson(_json["approvalUrlInfo"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (approvalUrlInfo != null) {
+      _json["approvalUrlInfo"] = (approvalUrlInfo).toJson();
+    }
+    return _json;
+  }
+}
+
+class ProductsGenerateApprovalUrlResponse {
+  /**
+   * A iframe-able URL that displays a product's permissions (if any). This URL
+   * can be used to approve the product only once and for a limited time (1
+   * hour), using the Products.approve call. If the product is not currently
+   * approved and has no permissions, this URL will point to an empty page. If
+   * the product is currently approved and all of its permissions (if any) are
+   * also approved, this field will not be populated.
+   */
+  core.String url;
+
+  ProductsGenerateApprovalUrlResponse();
+
+  ProductsGenerateApprovalUrlResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (url != null) {
+      _json["url"] = url;
     }
     return _json;
   }

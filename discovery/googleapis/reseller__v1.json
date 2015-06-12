@@ -17,7 +17,7 @@
     "description": "Lets you create and manage your customers and their subscriptions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/reseller/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/30NaCo58E-23RA5z0DPpA4cSWB8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/PnLFTM2U5cy1zCZ4AhS9GnZG4B0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -524,7 +524,7 @@
             }
         }
     },
-    "revision": "20141112",
+    "revision": "20150603",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Address": {
@@ -757,6 +757,13 @@
                 "subscriptionId": {
                     "description": "The id of the subscription.",
                     "type": "string"
+                },
+                "suspensionReasons": {
+                    "description": "Suspension Reasons",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "transferInfo": {
                     "description": "Transfer related information for the subscription.",

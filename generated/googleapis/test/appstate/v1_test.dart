@@ -76,14 +76,14 @@ checkGetResponse(api.GetResponse o) {
   buildCounterGetResponse--;
 }
 
-buildUnnamed1363() {
+buildUnnamed452() {
   var o = new core.List<api.GetResponse>();
   o.add(buildGetResponse());
   o.add(buildGetResponse());
   return o;
 }
 
-checkUnnamed1363(core.List<api.GetResponse> o) {
+checkUnnamed452(core.List<api.GetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGetResponse(o[0]);
   checkGetResponse(o[1]);
@@ -94,7 +94,7 @@ buildListResponse() {
   var o = new api.ListResponse();
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    o.items = buildUnnamed1363();
+    o.items = buildUnnamed452();
     o.kind = "foo";
     o.maximumKeyCount = 42;
   }
@@ -105,7 +105,7 @@ buildListResponse() {
 checkListResponse(api.ListResponse o) {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    checkUnnamed1363(o.items);
+    checkUnnamed452(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.maximumKeyCount, unittest.equals(42));
   }

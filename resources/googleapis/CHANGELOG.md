@@ -1,3 +1,16 @@
+## 0.11.0
+
+* [apis-breaking] bigquery:v2: schema/method changes, removed schema field
+* [apis-breaking] youtube:v3: renamed enum values, schema changes
+* [apis] adexchangebuyer:v1.3: schema changes
+* [apis] androidenterprise:v1: schema/method changes
+* [apis] compute:v1: schema changes
+* [apis] drive:v2 method changes
+* [apis] fitness:v1: schema/method changes
+* [apis] gmail:v1: schema/method changes
+* [apis] reseller:v1: schema changes
+* [apis] tagmanager:v1: schema changes
+
 ## 0.10.0
 
 * [apis-breaking] youtube:v3: schema changes

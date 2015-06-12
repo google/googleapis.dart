@@ -3,7 +3,6 @@
 library googleapis.compute.v1;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
@@ -4371,7 +4370,7 @@ class InstancesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [instance] - Name of the instance resource to start.
+   * [instance] - Name of the instance resource to stop.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -8875,9 +8874,10 @@ class Backend {
    */
   core.String balancingMode;
   /**
-   * The multiplier (a value between 0 and 1e6) of the max capacity (CPU or RPS,
-   * depending on 'balancingMode') the group should serve up to. 0 means the
-   * group is totally drained. Default value is 1. Valid range is [0, 1e6].
+   * The multiplier (a value between 0.0 and 1.0) of the max capacity (CPU or
+   * RPS, depending on 'balancingMode') the group should serve up to. 0 means
+   * the group is totally drained. Default value is 1. Valid range is [0.0,
+   * 1.0].
    */
   core.double capacityScaler;
   /**
@@ -8968,6 +8968,21 @@ class Backend {
 /**
  * A BackendService resource. This resource defines a group of backend VMs
  * together with their serving capacity.
+ *
+ * If you add field foo, you probably need to also add:
+ * com.google.cloud.cluster.manager.api.BackendServiceResource: foo
+ * com.google.cloud.cluster.manager.networking.entities: BackendService,
+ * BackendServiceEntity: getFoo, setFoo:
+ *
+ * Converters/mappers will need to be updated:
+ * com.google.cloud.cluster.manager.networking.services.backendservice.BackendServiceResourceConverter:
+ * toResource, updateEntity: copy foo
+ * com.google.cloud.cluster.mixer.protomappers.BackendServiceMappers.ResourceMapper:
+ * ResourceMapper: add a new map call
+ *
+ * Tests to update:
+ * com.google.cloud.cluster.manager.networking.services.backendservice.BackendServiceResourceConverterTest
+ * com.google.cloud.cluster.mixer.protomappers.BackendServiceMappersTest.testResourceMapping
  */
 class BackendService {
   /** The list of backends that serve this BackendService. */
@@ -11411,13 +11426,15 @@ class Instance {
   core.List<ServiceAccount> serviceAccounts;
   /**
    * [Output Only] The status of the instance. One of the following values:
-   * PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, TERMINATED.
+   * PROVISIONING, STAGING, RUNNING, STOPPING, and TERMINATED.
    * Possible string values are:
    * - "PROVISIONING"
    * - "RUNNING"
    * - "STAGING"
    * - "STOPPED"
    * - "STOPPING"
+   * - "SUSPENDED"
+   * - "SUSPENDING"
    * - "TERMINATED"
    */
   core.String status;
@@ -13733,6 +13750,7 @@ class Quota {
    * - "HEALTH_CHECKS"
    * - "IMAGES"
    * - "INSTANCES"
+   * - "INSTANCE_TEMPLATES"
    * - "IN_USE_ADDRESSES"
    * - "LOCAL_SSD_TOTAL_GB"
    * - "NETWORKS"
@@ -16496,6 +16514,7 @@ class VpnTunnel {
    * - "FIRST_HANDSHAKE"
    * - "NEGOTIATION_FAILURE"
    * - "NETWORK_ERROR"
+   * - "NO_INCOMING_PACKETS"
    * - "PROVISIONING"
    * - "WAITING_FOR_FULL_CONFIG"
    */

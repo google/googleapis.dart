@@ -33,7 +33,7 @@
     "description": "API for accessing Tag Manager accounts and containers.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/tag-manager/api/v1/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/VOqeEOPH-o9v8dt3uW3tHJ6u1a4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/RYltSVORyo-2lH4YNllLHLLyJN4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1696,7 +1696,7 @@
             }
         }
     },
-    "revision": "20150121",
+    "revision": "20150526",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1782,6 +1782,7 @@
                     "description": "The type of operator for this condition.",
                     "enum": [
                         "contains",
+                        "cssSelector",
                         "endsWith",
                         "equals",
                         "greater",
@@ -1792,6 +1793,7 @@
                         "startsWith"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -1830,6 +1832,12 @@
                     "description": "List of enabled built-in variables. Valid values include: pageUrl, pageHostname, pagePath, referrer, event, clickElement, clickClasses, clickId, clickTarget, clickUrl, clickText, formElement, formClasses, formId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine, newHistoryFragment, oldHistoryFragment, newHistoryState, oldHistoryState, historySource, containerVersion, debugMode, randomNumber, containerId.",
                     "items": {
                         "enum": [
+                            "advertiserId",
+                            "advertisingTrackingEnabled",
+                            "appId",
+                            "appName",
+                            "appVersionCode",
+                            "appVersionName",
                             "clickClasses",
                             "clickElement",
                             "clickId",
@@ -1839,6 +1847,7 @@
                             "containerId",
                             "containerVersion",
                             "debugMode",
+                            "deviceName",
                             "errorLine",
                             "errorMessage",
                             "errorUrl",
@@ -1850,17 +1859,34 @@
                             "formText",
                             "formUrl",
                             "historySource",
+                            "language",
                             "newHistoryFragment",
                             "newHistoryState",
                             "oldHistoryFragment",
                             "oldHistoryState",
+                            "osVersion",
                             "pageHostname",
                             "pagePath",
                             "pageUrl",
+                            "platform",
                             "randomNumber",
-                            "referrer"
+                            "referrer",
+                            "resolution",
+                            "sdkVersion"
                         ],
                         "enumDescriptions": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
                             "",
                             "",
                             "",

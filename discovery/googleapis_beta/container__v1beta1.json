@@ -14,7 +14,7 @@
     "description": "The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/container-engine/docs/v1beta1/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/P1LZ6hi0smRe7P4p3LvMgnaMkn4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/KKfKAT7mXQEW_Rh9SJ-kt6ms9D4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -380,6 +380,13 @@
                     "description": "[Output only] The IP address of this cluster's Kubernetes master. The endpoint can be accessed from the internet at https://username:password@endpoint/.\n\nSee the masterAuth property of this resource for username and password information.",
                     "type": "string"
                 },
+                "instanceGroupUrls": {
+                    "description": "[Output only] The resource URLs of [instance groups](/compute/docs/instance-groups/) associated with this cluster.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "masterAuth": {
                     "$ref": "MasterAuth",
                     "description": "The authentication information for accessing the master."
@@ -509,6 +516,18 @@
             "properties": {
                 "bearerToken": {
                     "description": "The token used to authenticate API requests to the master. The token is to be included in an HTTP Authorization Header in all requests to the master endpoint. The format of the header is: \"Authorization: Bearer \".",
+                    "type": "string"
+                },
+                "clientCertificate": {
+                    "description": "[Output only] Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.",
+                    "type": "string"
+                },
+                "clientKey": {
+                    "description": "[Output only] Base64 encoded private key used by clients to authenticate to the cluster endpoint.",
+                    "type": "string"
+                },
+                "clusterCaCertificate": {
+                    "description": "[Output only] Base64 encoded public certificate that is the root of trust for the cluster.",
                     "type": "string"
                 },
                 "password": {

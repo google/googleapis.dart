@@ -3,7 +3,6 @@
 library googleapis.youtube.v3;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
@@ -8917,7 +8916,10 @@ class ContentRating {
    * Rating system in Ireland - Irish Film Classification Office
    * Possible string values are:
    * - "ifco12"
+   * - "ifco12a"
    * - "ifco15"
+   * - "ifco15a"
+   * - "ifco16"
    * - "ifco18"
    * - "ifcoG"
    * - "ifcoPg"
@@ -10727,6 +10729,13 @@ class LiveBroadcast {
    * title, description, start time, and end time.
    */
   LiveBroadcastSnippet snippet;
+  /**
+   * The statistics object contains info about the event's current stats. These
+   * include concurrent viewers and total chat count. Statistics can change (in
+   * either direction) during the lifetime of an event. Statistics are only
+   * returned while the event is live.
+   */
+  LiveBroadcastStatistics statistics;
   /** The status object contains information about the event's status. */
   LiveBroadcastStatus status;
 
@@ -10747,6 +10756,9 @@ class LiveBroadcast {
     }
     if (_json.containsKey("snippet")) {
       snippet = new LiveBroadcastSnippet.fromJson(_json["snippet"]);
+    }
+    if (_json.containsKey("statistics")) {
+      statistics = new LiveBroadcastStatistics.fromJson(_json["statistics"]);
     }
     if (_json.containsKey("status")) {
       status = new LiveBroadcastStatus.fromJson(_json["status"]);
@@ -10769,6 +10781,9 @@ class LiveBroadcast {
     }
     if (snippet != null) {
       _json["snippet"] = (snippet).toJson();
+    }
+    if (statistics != null) {
+      _json["statistics"] = (statistics).toJson();
     }
     if (status != null) {
       _json["status"] = (status).toJson();
@@ -10812,6 +10827,7 @@ class LiveBroadcastContentDetails {
    * video.
    */
   core.bool enableEmbed;
+  core.bool enableLowLatency;
   /**
    * The monitorStream object contains information about the monitor stream,
    * which the broadcaster can use to review the event content before the
@@ -10858,6 +10874,9 @@ class LiveBroadcastContentDetails {
     if (_json.containsKey("enableEmbed")) {
       enableEmbed = _json["enableEmbed"];
     }
+    if (_json.containsKey("enableLowLatency")) {
+      enableLowLatency = _json["enableLowLatency"];
+    }
     if (_json.containsKey("monitorStream")) {
       monitorStream = new MonitorStreamInfo.fromJson(_json["monitorStream"]);
     }
@@ -10885,6 +10904,9 @@ class LiveBroadcastContentDetails {
     }
     if (enableEmbed != null) {
       _json["enableEmbed"] = enableEmbed;
+    }
+    if (enableLowLatency != null) {
+      _json["enableLowLatency"] = enableLowLatency;
     }
     if (monitorStream != null) {
       _json["monitorStream"] = (monitorStream).toJson();
@@ -11116,6 +11138,53 @@ class LiveBroadcastSnippet {
   }
 }
 
+/**
+ * Statistics about the live broadcast. These represent a snapshot of the values
+ * at the time of the request. Statistics are only returned for live broadcasts.
+ */
+class LiveBroadcastStatistics {
+  /**
+   * The number of viewers currently watching the broadcast. The property and
+   * its value will be present if the broadcast has current viewers and the
+   * broadcast owner has not hidden the viewcount for the video. Note that
+   * YouTube stops tracking the number of concurrent viewers for a broadcast
+   * when the broadcast ends. So, this property would not identify the number of
+   * viewers watching an archived video of a live broadcast that already ended.
+   */
+  core.String concurrentViewers;
+  /**
+   * The total number of live chat messages currently on the broadcast. The
+   * property and its value will be present if the broadcast is public, has the
+   * live chat feature enabled, and has at least one message. Note that this
+   * field will not be filled after the broadcast ends. So this property would
+   * not identify the number of chat messages for an archived video of a
+   * completed live broadcast.
+   */
+  core.String totalChatCount;
+
+  LiveBroadcastStatistics();
+
+  LiveBroadcastStatistics.fromJson(core.Map _json) {
+    if (_json.containsKey("concurrentViewers")) {
+      concurrentViewers = _json["concurrentViewers"];
+    }
+    if (_json.containsKey("totalChatCount")) {
+      totalChatCount = _json["totalChatCount"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (concurrentViewers != null) {
+      _json["concurrentViewers"] = concurrentViewers;
+    }
+    if (totalChatCount != null) {
+      _json["totalChatCount"] = totalChatCount;
+    }
+    return _json;
+  }
+}
+
 class LiveBroadcastStatus {
   /**
    * The broadcast's status. The status can be updated using the API's
@@ -11318,12 +11387,12 @@ class LiveStreamConfigurationIssue {
    * - "interlaceVideo"
    * - "multipleAudioStreams"
    * - "multipleVideoStreams"
-   * - "noAudoStream"
+   * - "noAudioStream"
    * - "noVideoStream"
    * - "openGop"
    * - "resolutionMismatch"
    * - "videoBitrateMismatch"
-   * - "videoCode"
+   * - "videoCodec"
    * - "videoCodecMismatch"
    * - "videoIngestionStarved"
    * - "videoInterlaceMismatch"
@@ -15340,6 +15409,11 @@ class VideoSnippet {
   core.String channelId;
   /** Channel title for the channel that the video belongs to. */
   core.String channelTitle;
+  /**
+   * The default_audio_language property specifies the language spoken in the
+   * video's default audio track.
+   */
+  core.String defaultAudioLanguage;
   /** The language of the videos's default snippet. */
   core.String defaultLanguage;
   /** The video's description. */
@@ -15389,6 +15463,9 @@ class VideoSnippet {
     if (_json.containsKey("channelTitle")) {
       channelTitle = _json["channelTitle"];
     }
+    if (_json.containsKey("defaultAudioLanguage")) {
+      defaultAudioLanguage = _json["defaultAudioLanguage"];
+    }
     if (_json.containsKey("defaultLanguage")) {
       defaultLanguage = _json["defaultLanguage"];
     }
@@ -15425,6 +15502,9 @@ class VideoSnippet {
     }
     if (channelTitle != null) {
       _json["channelTitle"] = channelTitle;
+    }
+    if (defaultAudioLanguage != null) {
+      _json["defaultAudioLanguage"] = defaultAudioLanguage;
     }
     if (defaultLanguage != null) {
       _json["defaultLanguage"] = defaultLanguage;

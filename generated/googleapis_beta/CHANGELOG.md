@@ -1,3 +1,11 @@
+## 0.15.0
+
+* [apis-breaking] pubsub:v1beta2: schema changes, removed properties
+* [apis] container:v1beta1: schema changes
+* [apis] genomics:v1beta2: schema changes
+* [apis] pubsub:v1beta1: schema changes
+* [apis] replicapool:v1beta2: schema changes
+
 ## 0.14.0
 
 * [api] pubsub:v1beta2: new methods/schemas

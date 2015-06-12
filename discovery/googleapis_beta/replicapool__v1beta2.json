@@ -20,7 +20,7 @@
     "description": "The Google Compute Engine Instance Group Manager API provides groups of homogenous Compute Engine Instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/instance-groups/manager/v1beta2",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/GOQCR1ua2wlqdDdPhDp_nZFzTYw\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/H3mDQDqOlflMvFSf76ymqE9zKI8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -633,13 +633,20 @@
             }
         }
     },
-    "revision": "20150223",
+    "revision": "20150311",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InstanceGroupManager": {
             "description": "An Instance Group Manager resource.",
             "id": "InstanceGroupManager",
             "properties": {
+                "autoHealingPolicies": {
+                    "description": "The autohealing policy for this managed instance group. You can specify only one value.",
+                    "items": {
+                        "$ref": "ReplicaPoolAutoHealingPolicy"
+                    },
+                    "type": "array"
+                },
                 "baseInstanceName": {
                     "description": "The base instance name to use for instances in this group. The value must be a valid RFC1035 name. Supported characters are lowercase letters, numbers, and hyphens (-). Instances are named by appending a hyphen and a random four-character string to the base instance name.",
                     "type": "string"
@@ -1018,6 +1025,16 @@
                 },
                 "selfLink": {
                     "description": "Server defined URL for this resource (output only).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReplicaPoolAutoHealingPolicy": {
+            "id": "ReplicaPoolAutoHealingPolicy",
+            "properties": {
+                "healthCheck": {
+                    "description": "The URL for the HealthCheck that signals autohealing.",
                     "type": "string"
                 }
             },

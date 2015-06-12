@@ -3,7 +3,6 @@
 library googleapis.drive.v2;
 
 import 'dart:core' as core;
-import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert_1;
 
@@ -30,8 +29,8 @@ class DriveApi {
   static const DriveAppsReadonlyScope = "https://www.googleapis.com/auth/drive.apps.readonly";
 
   /**
-   * View and manage Google Drive files that you have opened or created with
-   * this app
+   * View and manage Google Drive files and folders that you have opened or
+   * created with this app
    */
   static const DriveFileScope = "https://www.googleapis.com/auth/drive.file";
 
@@ -299,6 +298,9 @@ class ChangesResourceApi {
    *
    * [pageToken] - Page token for changes.
    *
+   * [spaces] - A comma-separated list of spaces to query. Supported values are
+   * 'drive' and 'appDataFolder'.
+   *
    * [startChangeId] - Change ID to start listing changes from.
    *
    * Completes with a [ChangeList].
@@ -309,7 +311,7 @@ class ChangesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ChangeList> list({core.bool includeDeleted, core.bool includeSubscribed, core.int maxResults, core.String pageToken, core.String startChangeId}) {
+  async.Future<ChangeList> list({core.bool includeDeleted, core.bool includeSubscribed, core.int maxResults, core.String pageToken, core.String spaces, core.String startChangeId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -328,6 +330,9 @@ class ChangesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (spaces != null) {
+      _queryParams["spaces"] = [spaces];
     }
     if (startChangeId != null) {
       _queryParams["startChangeId"] = [startChangeId];
@@ -363,6 +368,9 @@ class ChangesResourceApi {
    *
    * [pageToken] - Page token for changes.
    *
+   * [spaces] - A comma-separated list of spaces to query. Supported values are
+   * 'drive' and 'appDataFolder'.
+   *
    * [startChangeId] - Change ID to start listing changes from.
    *
    * Completes with a [Channel].
@@ -373,7 +381,7 @@ class ChangesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Channel> watch(Channel request, {core.bool includeDeleted, core.bool includeSubscribed, core.int maxResults, core.String pageToken, core.String startChangeId}) {
+  async.Future<Channel> watch(Channel request, {core.bool includeDeleted, core.bool includeSubscribed, core.int maxResults, core.String pageToken, core.String spaces, core.String startChangeId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -395,6 +403,9 @@ class ChangesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (spaces != null) {
+      _queryParams["spaces"] = [spaces];
     }
     if (startChangeId != null) {
       _queryParams["startChangeId"] = [startChangeId];
@@ -1338,6 +1349,9 @@ class FilesResourceApi {
    *
    * [q] - Query string for searching files.
    *
+   * [spaces] - A comma-separated list of spaces to query. Supported values are
+   * 'drive' and 'appDataFolder'.
+   *
    * Completes with a [FileList].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1346,7 +1360,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<FileList> list({core.String corpus, core.int maxResults, core.String pageToken, core.String projection, core.String q}) {
+  async.Future<FileList> list({core.String corpus, core.int maxResults, core.String pageToken, core.String projection, core.String q, core.String spaces}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1368,6 +1382,9 @@ class FilesResourceApi {
     }
     if (q != null) {
       _queryParams["q"] = [q];
+    }
+    if (spaces != null) {
+      _queryParams["spaces"] = [spaces];
     }
 
     _url = 'files';
@@ -5400,6 +5417,11 @@ class File {
   /** User that shared the item with the current user, if available. */
   User sharingUser;
   /**
+   * The list of spaces which contain the file. Supported values are 'drive' and
+   * 'appDataFolder'.
+   */
+  core.List<core.String> spaces;
+  /**
    * Thumbnail for the file. Only accepted on upload and for files that are not
    * already thumbnailed by Google.
    */
@@ -5564,6 +5586,9 @@ class File {
     if (_json.containsKey("sharingUser")) {
       sharingUser = new User.fromJson(_json["sharingUser"]);
     }
+    if (_json.containsKey("spaces")) {
+      spaces = _json["spaces"];
+    }
     if (_json.containsKey("thumbnail")) {
       thumbnail = new FileThumbnail.fromJson(_json["thumbnail"]);
     }
@@ -5720,6 +5745,9 @@ class File {
     }
     if (sharingUser != null) {
       _json["sharingUser"] = (sharingUser).toJson();
+    }
+    if (spaces != null) {
+      _json["spaces"] = spaces;
     }
     if (thumbnail != null) {
       _json["thumbnail"] = (thumbnail).toJson();
