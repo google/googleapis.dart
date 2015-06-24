@@ -562,10 +562,11 @@ class UsersHistoryResourceApi {
    * increase chronologically but are not contiguous with random gaps in between
    * valid IDs. Supplying an invalid or out of date startHistoryId typically
    * returns an HTTP 404 error code. A historyId is typically valid for at least
-   * a week, but in some circumstances may be valid for only a few hours. If you
-   * receive an HTTP 404 error response, your application should perform a full
-   * sync. If you receive no nextPageToken in the response, there are no updates
-   * to retrieve and you can store the returned historyId for a future request.
+   * a week, but in some rare circumstances may be valid for only a few hours.
+   * If you receive an HTTP 404 error response, your application should perform
+   * a full sync. If you receive no nextPageToken in the response, there are no
+   * updates to retrieve and you can store the returned historyId for a future
+   * request.
    *
    * Completes with a [ListHistoryResponse].
    *
@@ -2324,6 +2325,14 @@ class Message {
   core.String historyId;
   /** The immutable ID of the message. */
   core.String id;
+  /**
+   * The internal message creation timestamp (epoch ms), which determines
+   * ordering in the inbox. For normal SMTP-received email, this represents the
+   * time the message was originally accepted by Google, which is more reliable
+   * than the Date header. However, for API-migrated mail, it can be configured
+   * by client to be based on the Date header.
+   */
+  core.String internalDate;
   /** List of IDs of labels applied to this message. */
   core.List<core.String> labelIds;
   /** The parsed email structure in the message parts. */
@@ -2365,6 +2374,9 @@ class Message {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("internalDate")) {
+      internalDate = _json["internalDate"];
+    }
     if (_json.containsKey("labelIds")) {
       labelIds = _json["labelIds"];
     }
@@ -2392,6 +2404,9 @@ class Message {
     }
     if (id != null) {
       _json["id"] = id;
+    }
+    if (internalDate != null) {
+      _json["internalDate"] = internalDate;
     }
     if (labelIds != null) {
       _json["labelIds"] = labelIds;
@@ -2744,14 +2759,14 @@ class WatchRequest {
    */
   core.List<core.String> labelIds;
   /**
-   * Fully qualified Cloud PubSub API topic name to publish events to. This
-   * topic name should already exist in Cloud PubSub and you should have already
-   * granted gmail "publish" privileges on it. For example,
-   * "projects/my-project-identifier/topics/my-topic-name" (using the new Cloud
-   * PubSub "v1beta2" topic naming format).
+   * A fully qualified Google Cloud Pub/Sub API topic name to publish the events
+   * to. This topic name **must** already exist in Cloud Pub/Sub and you
+   * **must** have already granted gmail "publish" permission on it. For
+   * example, "projects/my-project-identifier/topics/my-topic-name" (using the
+   * new Cloud Pub/Sub "v1beta2" topic naming format).
    *
    * Note that the "my-project-identifier" portion must exactly match your
-   * developer console project id (the one executing this watch request).
+   * Google developer project id (the one executing this watch request).
    */
   core.String topicName;
 
@@ -2787,8 +2802,8 @@ class WatchRequest {
 /** Push notification watch response. */
 class WatchResponse {
   /**
-   * When Gmail will stop sending notifications for mailbox updates. Call watch
-   * again before this time to renew the subscription.
+   * When Gmail will stop sending notifications for mailbox updates (epoch
+   * millis). Call watch again before this time to renew the watch.
    */
   core.String expiration;
   /** The ID of the mailbox's current history record. */

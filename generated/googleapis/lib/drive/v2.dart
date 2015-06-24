@@ -1415,8 +1415,10 @@ class FilesResourceApi {
    *
    * [newRevision] - Whether a blob upload should create a new revision. If
    * false, the blob data in the current head revision is replaced. If true or
-   * not set, a new blob is created as head revision, and previous revisions are
-   * preserved (causing increased use of the user's data storage quota).
+   * not set, a new blob is created as head revision, and previous unpinned
+   * revisions are preserved for a short period of time. Pinned revisions are
+   * stored indefinitely, using additional storage quota, up to a maximum of 200
+   * revisions.
    *
    * [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
    *
@@ -1644,8 +1646,10 @@ class FilesResourceApi {
    *
    * [newRevision] - Whether a blob upload should create a new revision. If
    * false, the blob data in the current head revision is replaced. If true or
-   * not set, a new blob is created as head revision, and previous revisions are
-   * preserved (causing increased use of the user's data storage quota).
+   * not set, a new blob is created as head revision, and previous unpinned
+   * revisions are preserved for a short period of time. Pinned revisions are
+   * stored indefinitely, using additional storage quota, up to a maximum of 200
+   * revisions.
    *
    * [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
    *
@@ -5274,6 +5278,8 @@ class File {
   core.String alternateLink;
   /** Whether this file is in the Application Data folder. */
   core.bool appDataContents;
+  /** Whether the current user can comment on the file. */
+  core.bool canComment;
   /** Whether the file can be copied by the current user. */
   core.bool copyable;
   /** Create time for this file (formatted RFC 3339 timestamp). */
@@ -5388,6 +5394,8 @@ class File {
    * files with content stored in Drive.
    */
   core.String originalFilename;
+  /** Whether the file is owned by the current user. */
+  core.bool ownedByMe;
   /** Name(s) of the owner(s) of this file. */
   core.List<core.String> ownerNames;
   /** The owner(s) of this file. */
@@ -5407,6 +5415,10 @@ class File {
   core.String quotaBytesUsed;
   /** A link back to this file. */
   core.String selfLink;
+  /**
+   * Whether the file's sharing settings can be modified by the current user.
+   */
+  core.bool shareable;
   /** Whether the file has been shared. */
   core.bool shared;
   /**
@@ -5465,6 +5477,9 @@ class File {
     }
     if (_json.containsKey("appDataContents")) {
       appDataContents = _json["appDataContents"];
+    }
+    if (_json.containsKey("canComment")) {
+      canComment = _json["canComment"];
     }
     if (_json.containsKey("copyable")) {
       copyable = _json["copyable"];
@@ -5556,6 +5571,9 @@ class File {
     if (_json.containsKey("originalFilename")) {
       originalFilename = _json["originalFilename"];
     }
+    if (_json.containsKey("ownedByMe")) {
+      ownedByMe = _json["ownedByMe"];
+    }
     if (_json.containsKey("ownerNames")) {
       ownerNames = _json["ownerNames"];
     }
@@ -5576,6 +5594,9 @@ class File {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("shareable")) {
+      shareable = _json["shareable"];
     }
     if (_json.containsKey("shared")) {
       shared = _json["shared"];
@@ -5625,6 +5646,9 @@ class File {
     }
     if (appDataContents != null) {
       _json["appDataContents"] = appDataContents;
+    }
+    if (canComment != null) {
+      _json["canComment"] = canComment;
     }
     if (copyable != null) {
       _json["copyable"] = copyable;
@@ -5716,6 +5740,9 @@ class File {
     if (originalFilename != null) {
       _json["originalFilename"] = originalFilename;
     }
+    if (ownedByMe != null) {
+      _json["ownedByMe"] = ownedByMe;
+    }
     if (ownerNames != null) {
       _json["ownerNames"] = ownerNames;
     }
@@ -5736,6 +5763,9 @@ class File {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (shareable != null) {
+      _json["shareable"] = shareable;
     }
     if (shared != null) {
       _json["shared"] = shared;

@@ -35,7 +35,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/0DBQIyfrYkiVIj8LdBNKrODG4u4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/J6dE1M58sjfuQiJ7V-RzmM6Yktw\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1085,7 +1085,7 @@
                         },
                         "newRevision": {
                             "default": "true",
-                            "description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous revisions are preserved (causing increased use of the user's data storage quota).",
+                            "description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous unpinned revisions are preserved for a short period of time. Pinned revisions are stored indefinitely, using additional storage quota, up to a maximum of 200 revisions.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1278,7 +1278,7 @@
                         },
                         "newRevision": {
                             "default": "true",
-                            "description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous revisions are preserved (causing increased use of the user's data storage quota).",
+                            "description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous unpinned revisions are preserved for a short period of time. Pinned revisions are stored indefinitely, using additional storage quota, up to a maximum of 200 revisions.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -2498,7 +2498,7 @@
             }
         }
     },
-    "revision": "20150326",
+    "revision": "20150526",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -3294,6 +3294,10 @@
                     "description": "Whether this file is in the Application Data folder.",
                     "type": "boolean"
                 },
+                "canComment": {
+                    "description": "Whether the current user can comment on the file.",
+                    "type": "boolean"
+                },
                 "copyable": {
                     "description": "Whether the file can be copied by the current user.",
                     "type": "boolean"
@@ -3569,6 +3573,10 @@
                     "description": "The original filename if the file was uploaded manually, or the original title if the file was inserted through the API. Note that renames of the title will not change the original filename. This will only be populated on files with content stored in Drive.",
                     "type": "string"
                 },
+                "ownedByMe": {
+                    "description": "Whether the file is owned by the current user.",
+                    "type": "boolean"
+                },
                 "ownerNames": {
                     "description": "Name(s) of the owner(s) of this file.",
                     "items": {
@@ -3612,6 +3620,10 @@
                 "selfLink": {
                     "description": "A link back to this file.",
                     "type": "string"
+                },
+                "shareable": {
+                    "description": "Whether the file's sharing settings can be modified by the current user.",
+                    "type": "boolean"
                 },
                 "shared": {
                     "description": "Whether the file has been shared.",

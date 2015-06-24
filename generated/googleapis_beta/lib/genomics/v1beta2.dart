@@ -3483,6 +3483,8 @@ class CoverageBucket {
 
 /** A Dataset is a collection of genomic data. */
 class Dataset {
+  /** The time this dataset was created, in seconds from the epoch. */
+  core.String createTime;
   /** The Google generated ID of the dataset, immutable. */
   core.String id;
   /**
@@ -3500,6 +3502,9 @@ class Dataset {
   Dataset();
 
   Dataset.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -3516,6 +3521,9 @@ class Dataset {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
     if (id != null) {
       _json["id"] = id;
     }

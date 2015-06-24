@@ -9314,6 +9314,10 @@ class Disk {
   core.String id;
   /** [Output Only] Type of the resource. Always compute#disk for disks. */
   core.String kind;
+  /** [Output Only] Last attach timestamp in RFC3339 text format. */
+  core.String lastAttachTimestamp;
+  /** [Output Only] Last detach timestamp in RFC3339 text format. */
+  core.String lastDetachTimestamp;
   /** Any applicable publicly visible licenses. */
   core.List<core.String> licenses;
   /**
@@ -9402,6 +9406,11 @@ class Disk {
    * the disk; provided by the client when the disk is created.
    */
   core.String type;
+  /**
+   * Links to the users of the disk (attached instances) in form:
+   * project/zones/zone/instances/instance
+   */
+  core.List<core.String> users;
   /** [Output Only] URL of the zone where the disk resides. */
   core.String zone;
 
@@ -9419,6 +9428,12 @@ class Disk {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("lastAttachTimestamp")) {
+      lastAttachTimestamp = _json["lastAttachTimestamp"];
+    }
+    if (_json.containsKey("lastDetachTimestamp")) {
+      lastDetachTimestamp = _json["lastDetachTimestamp"];
     }
     if (_json.containsKey("licenses")) {
       licenses = _json["licenses"];
@@ -9453,6 +9468,9 @@ class Disk {
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
+    if (_json.containsKey("users")) {
+      users = _json["users"];
+    }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
     }
@@ -9471,6 +9489,12 @@ class Disk {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (lastAttachTimestamp != null) {
+      _json["lastAttachTimestamp"] = lastAttachTimestamp;
+    }
+    if (lastDetachTimestamp != null) {
+      _json["lastDetachTimestamp"] = lastDetachTimestamp;
     }
     if (licenses != null) {
       _json["licenses"] = licenses;
@@ -9504,6 +9528,9 @@ class Disk {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (users != null) {
+      _json["users"] = users;
     }
     if (zone != null) {
       _json["zone"] = zone;

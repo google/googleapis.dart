@@ -1,3 +1,12 @@
+## 0.12.0
+
+* [apis-breaking] doubleclicksearch:v2: schema changes
+* [apis-breaking] youtube:v3: method/schema changes
+* [apis] admin_directory:v1: schema changes
+* [apis] compute:v1: schema changes
+* [apis] drive:v2: schema changes
+* [apis] gmail:v1: schema changes
+
 ## 0.11.0
 
 * [apis-breaking] bigquery:v2: schema/method changes, removed schema field

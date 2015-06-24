@@ -14,7 +14,7 @@
     "description": "The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/container-engine/docs/v1beta1/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/KKfKAT7mXQEW_Rh9SJ-kt6ms9D4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/OAfpRt1IaExVFs9TE2m103dNYns\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -346,7 +346,7 @@
             }
         }
     },
-    "revision": "20150513",
+    "revision": "20150617",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Cluster": {

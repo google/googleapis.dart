@@ -665,15 +665,26 @@ class Conversion {
   core.String advertiserId;
   /** DS agency ID. */
   core.String agencyId;
-  /** Attribution model name. This field is ignored. */
+  /** This field is ignored. */
   core.String attributionModel;
   /** DS campaign ID. */
   core.String campaignId;
-  /** Channel of the product: local or online. */
+  /**
+   * Sales channel for the product. Acceptable values are:
+   * - "local": a physical store
+   * - "online": an online store
+   */
   core.String channel;
   /** DS click ID for the conversion. */
   core.String clickId;
-  /** Advertiser-provided ID for the conversion, also known as the order ID. */
+  /**
+   * For offline conversions, this is an ID provided by advertisers. Advertisers
+   * can use this property to specify an ID that is meaningful to them. If an
+   * advertiser doesn't specify a conversionId, DoubleClick Search generates
+   * one. For online conversions, DS copies the dsConversionId or
+   * floodlightOrderId into this property depending on the advertiser's
+   * Floodlight instructions.
+   */
   core.String conversionId;
   /**
    * The time at which the conversion was last modified, in epoch millis UTC.
@@ -681,10 +692,7 @@ class Conversion {
   core.String conversionModifiedTimestamp;
   /** The time at which the conversion took place, in epoch millis UTC. */
   core.String conversionTimestamp;
-  /**
-   * The number of conversions, formatted in millis (conversions multiplied by
-   * 1000). This field is ignored.
-   */
+  /** This field is ignored. */
   core.String countMillis;
   /** DS criterion (keyword) ID. */
   core.String criterionId;
@@ -700,26 +708,32 @@ class Conversion {
   core.List<CustomDimension> customDimension;
   /** Custom metrics for the conversion. */
   core.List<CustomMetric> customMetric;
-  /**
-   * The type of device on which the conversion occurred. Valid values are
-   * "DESKTOP", "TABLET", "HIGH_END_MOBILE", "OTHER_DEVICE".
-   */
+  /** The type of device on which the conversion occurred. */
   core.String deviceType;
-  /** DS conversion ID. */
+  /** ID that DoubleClick Search generates for each conversion. */
   core.String dsConversionId;
   /** DS engine account ID. */
   core.String engineAccountId;
-  /** DS inventory feed ID. */
-  core.String feedId;
-  /** The advertiser-provided order id for the conversion. */
+  /** The Floodlight order ID provided by the advertiser for the conversion. */
   core.String floodlightOrderId;
-  /** ISO 3166 code of the product country. */
+  /**
+   * ID that DS generates and uses to uniquely identify the inventory account
+   * that contains the product.
+   */
+  core.String inventoryAccountId;
+  /**
+   * The country registered for the Merchant Center feed that contains the
+   * product. Use an ISO 3166 code to specify a country.
+   */
   core.String productCountry;
   /** DS product group ID. */
   core.String productGroupId;
   /** The product ID (SKU). */
   core.String productId;
-  /** ISO 639 code of the product language. */
+  /**
+   * The language registered for the Merchant Center feed that contains the
+   * product. Use an ISO 639 code to specify a language.
+   */
   core.String productLanguage;
   /** The quantity of this conversion, in millis. */
   core.String quantityMillis;
@@ -743,8 +757,8 @@ class Conversion {
    */
   core.String state;
   /**
-   * The store id for which the product was advertised, when the channel is
-   * "local".
+   * The ID of the local store for which the product was advertised. Applicable
+   * only when the channel is "local".
    */
   core.String storeId;
   /**
@@ -816,11 +830,11 @@ class Conversion {
     if (_json.containsKey("engineAccountId")) {
       engineAccountId = _json["engineAccountId"];
     }
-    if (_json.containsKey("feedId")) {
-      feedId = _json["feedId"];
-    }
     if (_json.containsKey("floodlightOrderId")) {
       floodlightOrderId = _json["floodlightOrderId"];
+    }
+    if (_json.containsKey("inventoryAccountId")) {
+      inventoryAccountId = _json["inventoryAccountId"];
     }
     if (_json.containsKey("productCountry")) {
       productCountry = _json["productCountry"];
@@ -919,11 +933,11 @@ class Conversion {
     if (engineAccountId != null) {
       _json["engineAccountId"] = engineAccountId;
     }
-    if (feedId != null) {
-      _json["feedId"] = feedId;
-    }
     if (floodlightOrderId != null) {
       _json["floodlightOrderId"] = floodlightOrderId;
+    }
+    if (inventoryAccountId != null) {
+      _json["inventoryAccountId"] = inventoryAccountId;
     }
     if (productCountry != null) {
       _json["productCountry"] = productCountry;

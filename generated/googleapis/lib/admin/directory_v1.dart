@@ -5518,6 +5518,8 @@ class User {
   core.bool suspended;
   /** Suspension reason if user is suspended (Read-only) */
   core.String suspensionReason;
+  /** ETag of the user's photo (Read-only) */
+  core.String thumbnailPhotoEtag;
   /** Photo Url of the user (Read-only) */
   core.String thumbnailPhotoUrl;
   /**
@@ -5627,6 +5629,9 @@ class User {
     if (_json.containsKey("suspensionReason")) {
       suspensionReason = _json["suspensionReason"];
     }
+    if (_json.containsKey("thumbnailPhotoEtag")) {
+      thumbnailPhotoEtag = _json["thumbnailPhotoEtag"];
+    }
     if (_json.containsKey("thumbnailPhotoUrl")) {
       thumbnailPhotoUrl = _json["thumbnailPhotoUrl"];
     }
@@ -5732,6 +5737,9 @@ class User {
     }
     if (suspensionReason != null) {
       _json["suspensionReason"] = suspensionReason;
+    }
+    if (thumbnailPhotoEtag != null) {
+      _json["thumbnailPhotoEtag"] = thumbnailPhotoEtag;
     }
     if (thumbnailPhotoUrl != null) {
       _json["thumbnailPhotoUrl"] = thumbnailPhotoUrl;

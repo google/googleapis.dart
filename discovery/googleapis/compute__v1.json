@@ -29,7 +29,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Mcq_0oJ8dzxod4x0kt0yWn8hud0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/KR3ZwQmcUACaSsWyMOhFw8te6OA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -6014,7 +6014,7 @@
             }
         }
     },
-    "revision": "20150526",
+    "revision": "20150305",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -6590,6 +6590,14 @@
                     "description": "[Output Only] Type of the resource. Always compute#disk for disks.",
                     "type": "string"
                 },
+                "lastAttachTimestamp": {
+                    "description": "[Output Only] Last attach timestamp in RFC3339 text format.",
+                    "type": "string"
+                },
+                "lastDetachTimestamp": {
+                    "description": "[Output Only] Last detach timestamp in RFC3339 text format.",
+                    "type": "string"
+                },
                 "licenses": {
                     "description": "Any applicable publicly visible licenses.",
                     "items": {
@@ -6655,6 +6663,13 @@
                 "type": {
                     "description": "URL of the disk type resource describing which disk type to use to create the disk; provided by the client when the disk is created.",
                     "type": "string"
+                },
+                "users": {
+                    "description": "Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "zone": {
                     "description": "[Output Only] URL of the zone where the disk resides.",

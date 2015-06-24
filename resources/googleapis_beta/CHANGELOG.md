@@ -1,3 +1,7 @@
+## 0.15.1
+
+* [apis] genomics:v1beta2: schema changes
+
 ## 0.15.0
 
 * [apis-breaking] pubsub:v1beta2: schema changes, removed properties

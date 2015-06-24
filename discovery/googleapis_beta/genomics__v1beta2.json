@@ -26,7 +26,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/BphSGRZ5KurzPJE7SxaYy5VauHE\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/5Ip5gxD2IW-n7qngRG7WOKp94TA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1512,7 +1512,7 @@
             }
         }
     },
-    "revision": "20150505",
+    "revision": "20150618",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AlignReadGroupSetsRequest": {
@@ -1908,6 +1908,11 @@
             "description": "A Dataset is a collection of genomic data.",
             "id": "Dataset",
             "properties": {
+                "createTime": {
+                    "description": "The time this dataset was created, in seconds from the epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "id": {
                     "description": "The Google generated ID of the dataset, immutable.",
                     "type": "string"

@@ -69,7 +69,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Gkp35yY2tnMjjfSgryNCrENSB-w\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/QlXkTp8arWMqhMMilmdrbkzNu_E\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -2511,7 +2511,7 @@
             }
         }
     },
-    "revision": "20150314",
+    "revision": "20150326",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -3683,6 +3683,10 @@
                 },
                 "suspensionReason": {
                     "description": "Suspension reason if user is suspended (Read-only)",
+                    "type": "string"
+                },
+                "thumbnailPhotoEtag": {
+                    "description": "ETag of the user's photo (Read-only)",
                     "type": "string"
                 },
                 "thumbnailPhotoUrl": {
