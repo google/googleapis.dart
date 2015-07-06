@@ -15,7 +15,7 @@
     "description": "API for accessing Google Cloud and API monitoring data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/monitoring/v2beta2/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/-ljPm2yVKKaBbJo9gwx1YPyHZqo\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/6-frgYvuLSeQiNGDW6G68t8i3SQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -402,7 +402,7 @@
             }
         }
     },
-    "revision": "20150616",
+    "revision": "20150628",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "DeleteMetricDescriptorResponse": {

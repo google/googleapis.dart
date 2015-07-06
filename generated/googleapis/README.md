@@ -412,7 +412,7 @@ Official API documentation: https://developers.google.com/fonts/docs/developer_a
 
 Lets you view Google Webmaster Tools data for your verified sites.
 
-Official API documentation: https://developers.google.com/webmaster-tools/v3/welcome
+Official API documentation: https://developers.google.com/webmaster-tools/
 
 #### ![Logo](https://www.google.com/images/icons/product/youtube-16.png) YouTube Data API - youtube v3
 

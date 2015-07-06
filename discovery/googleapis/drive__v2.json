@@ -35,7 +35,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/J6dE1M58sjfuQiJ7V-RzmM6Yktw\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/2GklHAwx5ffZUxuQnPgLyVNUl4I\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -2498,7 +2498,7 @@
             }
         }
     },
-    "revision": "20150526",
+    "revision": "20150618",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -3316,7 +3316,6 @@
                     "type": "string"
                 },
                 "downloadUrl": {
-                    "description": "Short lived download URL for the file. This is only populated for files with content stored in Drive.",
                     "type": "string"
                 },
                 "editable": {
@@ -3332,7 +3331,7 @@
                     "type": "string"
                 },
                 "explicitlyTrashed": {
-                    "description": "Whether this file has been explicitly trashed, as opposed to recursively trashed. This will only be populated if the file is trashed.",
+                    "description": "Whether this file has been explicitly trashed, as opposed to recursively trashed.",
                     "type": "boolean"
                 },
                 "exportLinks": {

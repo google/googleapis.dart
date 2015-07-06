@@ -1,3 +1,10 @@
+## 0.12.1
+
+* [apis] bigquery:v2: schema changes
+* [apis] calendar:v3: schema/method changes
+* [apis] webmasters:v3: schema changes
+* [apis] compute:v1: resource/schema changes
+
 ## 0.12.0
 
 * [apis-breaking] doubleclicksearch:v2: schema changes

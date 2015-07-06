@@ -51,14 +51,202 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1397() {
+buildUnnamed654() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed654(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterApiDataRow = 0;
+buildApiDataRow() {
+  var o = new api.ApiDataRow();
+  buildCounterApiDataRow++;
+  if (buildCounterApiDataRow < 3) {
+    o.clicks = 42.0;
+    o.ctr = 42.0;
+    o.impressions = 42.0;
+    o.keys = buildUnnamed654();
+    o.position = 42.0;
+  }
+  buildCounterApiDataRow--;
+  return o;
+}
+
+checkApiDataRow(api.ApiDataRow o) {
+  buildCounterApiDataRow++;
+  if (buildCounterApiDataRow < 3) {
+    unittest.expect(o.clicks, unittest.equals(42.0));
+    unittest.expect(o.ctr, unittest.equals(42.0));
+    unittest.expect(o.impressions, unittest.equals(42.0));
+    checkUnnamed654(o.keys);
+    unittest.expect(o.position, unittest.equals(42.0));
+  }
+  buildCounterApiDataRow--;
+}
+
+core.int buildCounterApiDimensionFilter = 0;
+buildApiDimensionFilter() {
+  var o = new api.ApiDimensionFilter();
+  buildCounterApiDimensionFilter++;
+  if (buildCounterApiDimensionFilter < 3) {
+    o.dimension = "foo";
+    o.expression = "foo";
+    o.operator = "foo";
+  }
+  buildCounterApiDimensionFilter--;
+  return o;
+}
+
+checkApiDimensionFilter(api.ApiDimensionFilter o) {
+  buildCounterApiDimensionFilter++;
+  if (buildCounterApiDimensionFilter < 3) {
+    unittest.expect(o.dimension, unittest.equals('foo'));
+    unittest.expect(o.expression, unittest.equals('foo'));
+    unittest.expect(o.operator, unittest.equals('foo'));
+  }
+  buildCounterApiDimensionFilter--;
+}
+
+buildUnnamed655() {
+  var o = new core.List<api.ApiDimensionFilter>();
+  o.add(buildApiDimensionFilter());
+  o.add(buildApiDimensionFilter());
+  return o;
+}
+
+checkUnnamed655(core.List<api.ApiDimensionFilter> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkApiDimensionFilter(o[0]);
+  checkApiDimensionFilter(o[1]);
+}
+
+core.int buildCounterApiDimensionFilterGroup = 0;
+buildApiDimensionFilterGroup() {
+  var o = new api.ApiDimensionFilterGroup();
+  buildCounterApiDimensionFilterGroup++;
+  if (buildCounterApiDimensionFilterGroup < 3) {
+    o.filters = buildUnnamed655();
+    o.groupType = "foo";
+  }
+  buildCounterApiDimensionFilterGroup--;
+  return o;
+}
+
+checkApiDimensionFilterGroup(api.ApiDimensionFilterGroup o) {
+  buildCounterApiDimensionFilterGroup++;
+  if (buildCounterApiDimensionFilterGroup < 3) {
+    checkUnnamed655(o.filters);
+    unittest.expect(o.groupType, unittest.equals('foo'));
+  }
+  buildCounterApiDimensionFilterGroup--;
+}
+
+buildUnnamed656() {
+  var o = new core.List<api.ApiDimensionFilterGroup>();
+  o.add(buildApiDimensionFilterGroup());
+  o.add(buildApiDimensionFilterGroup());
+  return o;
+}
+
+checkUnnamed656(core.List<api.ApiDimensionFilterGroup> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkApiDimensionFilterGroup(o[0]);
+  checkApiDimensionFilterGroup(o[1]);
+}
+
+buildUnnamed657() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed657(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterSearchAnalyticsQueryRequest = 0;
+buildSearchAnalyticsQueryRequest() {
+  var o = new api.SearchAnalyticsQueryRequest();
+  buildCounterSearchAnalyticsQueryRequest++;
+  if (buildCounterSearchAnalyticsQueryRequest < 3) {
+    o.aggregationType = "foo";
+    o.dimensionFilterGroups = buildUnnamed656();
+    o.dimensions = buildUnnamed657();
+    o.endDate = "foo";
+    o.rowLimit = 42;
+    o.searchType = "foo";
+    o.startDate = "foo";
+  }
+  buildCounterSearchAnalyticsQueryRequest--;
+  return o;
+}
+
+checkSearchAnalyticsQueryRequest(api.SearchAnalyticsQueryRequest o) {
+  buildCounterSearchAnalyticsQueryRequest++;
+  if (buildCounterSearchAnalyticsQueryRequest < 3) {
+    unittest.expect(o.aggregationType, unittest.equals('foo'));
+    checkUnnamed656(o.dimensionFilterGroups);
+    checkUnnamed657(o.dimensions);
+    unittest.expect(o.endDate, unittest.equals('foo'));
+    unittest.expect(o.rowLimit, unittest.equals(42));
+    unittest.expect(o.searchType, unittest.equals('foo'));
+    unittest.expect(o.startDate, unittest.equals('foo'));
+  }
+  buildCounterSearchAnalyticsQueryRequest--;
+}
+
+buildUnnamed658() {
+  var o = new core.List<api.ApiDataRow>();
+  o.add(buildApiDataRow());
+  o.add(buildApiDataRow());
+  return o;
+}
+
+checkUnnamed658(core.List<api.ApiDataRow> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkApiDataRow(o[0]);
+  checkApiDataRow(o[1]);
+}
+
+core.int buildCounterSearchAnalyticsQueryResponse = 0;
+buildSearchAnalyticsQueryResponse() {
+  var o = new api.SearchAnalyticsQueryResponse();
+  buildCounterSearchAnalyticsQueryResponse++;
+  if (buildCounterSearchAnalyticsQueryResponse < 3) {
+    o.responseAggregationType = "foo";
+    o.rows = buildUnnamed658();
+  }
+  buildCounterSearchAnalyticsQueryResponse--;
+  return o;
+}
+
+checkSearchAnalyticsQueryResponse(api.SearchAnalyticsQueryResponse o) {
+  buildCounterSearchAnalyticsQueryResponse++;
+  if (buildCounterSearchAnalyticsQueryResponse < 3) {
+    unittest.expect(o.responseAggregationType, unittest.equals('foo'));
+    checkUnnamed658(o.rows);
+  }
+  buildCounterSearchAnalyticsQueryResponse--;
+}
+
+buildUnnamed659() {
   var o = new core.List<api.WmxSitemap>();
   o.add(buildWmxSitemap());
   o.add(buildWmxSitemap());
   return o;
 }
 
-checkUnnamed1397(core.List<api.WmxSitemap> o) {
+checkUnnamed659(core.List<api.WmxSitemap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSitemap(o[0]);
   checkWmxSitemap(o[1]);
@@ -69,7 +257,7 @@ buildSitemapsListResponse() {
   var o = new api.SitemapsListResponse();
   buildCounterSitemapsListResponse++;
   if (buildCounterSitemapsListResponse < 3) {
-    o.sitemap = buildUnnamed1397();
+    o.sitemap = buildUnnamed659();
   }
   buildCounterSitemapsListResponse--;
   return o;
@@ -78,19 +266,19 @@ buildSitemapsListResponse() {
 checkSitemapsListResponse(api.SitemapsListResponse o) {
   buildCounterSitemapsListResponse++;
   if (buildCounterSitemapsListResponse < 3) {
-    checkUnnamed1397(o.sitemap);
+    checkUnnamed659(o.sitemap);
   }
   buildCounterSitemapsListResponse--;
 }
 
-buildUnnamed1398() {
+buildUnnamed660() {
   var o = new core.List<api.WmxSite>();
   o.add(buildWmxSite());
   o.add(buildWmxSite());
   return o;
 }
 
-checkUnnamed1398(core.List<api.WmxSite> o) {
+checkUnnamed660(core.List<api.WmxSite> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSite(o[0]);
   checkWmxSite(o[1]);
@@ -101,7 +289,7 @@ buildSitesListResponse() {
   var o = new api.SitesListResponse();
   buildCounterSitesListResponse++;
   if (buildCounterSitesListResponse < 3) {
-    o.siteEntry = buildUnnamed1398();
+    o.siteEntry = buildUnnamed660();
   }
   buildCounterSitesListResponse--;
   return o;
@@ -110,7 +298,7 @@ buildSitesListResponse() {
 checkSitesListResponse(api.SitesListResponse o) {
   buildCounterSitesListResponse++;
   if (buildCounterSitesListResponse < 3) {
-    checkUnnamed1398(o.siteEntry);
+    checkUnnamed660(o.siteEntry);
   }
   buildCounterSitesListResponse--;
 }
@@ -136,14 +324,14 @@ checkUrlCrawlErrorCount(api.UrlCrawlErrorCount o) {
   buildCounterUrlCrawlErrorCount--;
 }
 
-buildUnnamed1399() {
+buildUnnamed661() {
   var o = new core.List<api.UrlCrawlErrorCount>();
   o.add(buildUrlCrawlErrorCount());
   o.add(buildUrlCrawlErrorCount());
   return o;
 }
 
-checkUnnamed1399(core.List<api.UrlCrawlErrorCount> o) {
+checkUnnamed661(core.List<api.UrlCrawlErrorCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorCount(o[0]);
   checkUrlCrawlErrorCount(o[1]);
@@ -155,7 +343,7 @@ buildUrlCrawlErrorCountsPerType() {
   buildCounterUrlCrawlErrorCountsPerType++;
   if (buildCounterUrlCrawlErrorCountsPerType < 3) {
     o.category = "foo";
-    o.entries = buildUnnamed1399();
+    o.entries = buildUnnamed661();
     o.platform = "foo";
   }
   buildCounterUrlCrawlErrorCountsPerType--;
@@ -166,20 +354,20 @@ checkUrlCrawlErrorCountsPerType(api.UrlCrawlErrorCountsPerType o) {
   buildCounterUrlCrawlErrorCountsPerType++;
   if (buildCounterUrlCrawlErrorCountsPerType < 3) {
     unittest.expect(o.category, unittest.equals('foo'));
-    checkUnnamed1399(o.entries);
+    checkUnnamed661(o.entries);
     unittest.expect(o.platform, unittest.equals('foo'));
   }
   buildCounterUrlCrawlErrorCountsPerType--;
 }
 
-buildUnnamed1400() {
+buildUnnamed662() {
   var o = new core.List<api.UrlCrawlErrorCountsPerType>();
   o.add(buildUrlCrawlErrorCountsPerType());
   o.add(buildUrlCrawlErrorCountsPerType());
   return o;
 }
 
-checkUnnamed1400(core.List<api.UrlCrawlErrorCountsPerType> o) {
+checkUnnamed662(core.List<api.UrlCrawlErrorCountsPerType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorCountsPerType(o[0]);
   checkUrlCrawlErrorCountsPerType(o[1]);
@@ -190,7 +378,7 @@ buildUrlCrawlErrorsCountsQueryResponse() {
   var o = new api.UrlCrawlErrorsCountsQueryResponse();
   buildCounterUrlCrawlErrorsCountsQueryResponse++;
   if (buildCounterUrlCrawlErrorsCountsQueryResponse < 3) {
-    o.countPerTypes = buildUnnamed1400();
+    o.countPerTypes = buildUnnamed662();
   }
   buildCounterUrlCrawlErrorsCountsQueryResponse--;
   return o;
@@ -199,7 +387,7 @@ buildUrlCrawlErrorsCountsQueryResponse() {
 checkUrlCrawlErrorsCountsQueryResponse(api.UrlCrawlErrorsCountsQueryResponse o) {
   buildCounterUrlCrawlErrorsCountsQueryResponse++;
   if (buildCounterUrlCrawlErrorsCountsQueryResponse < 3) {
-    checkUnnamed1400(o.countPerTypes);
+    checkUnnamed662(o.countPerTypes);
   }
   buildCounterUrlCrawlErrorsCountsQueryResponse--;
 }
@@ -231,14 +419,14 @@ checkUrlCrawlErrorsSample(api.UrlCrawlErrorsSample o) {
   buildCounterUrlCrawlErrorsSample--;
 }
 
-buildUnnamed1401() {
+buildUnnamed663() {
   var o = new core.List<api.UrlCrawlErrorsSample>();
   o.add(buildUrlCrawlErrorsSample());
   o.add(buildUrlCrawlErrorsSample());
   return o;
 }
 
-checkUnnamed1401(core.List<api.UrlCrawlErrorsSample> o) {
+checkUnnamed663(core.List<api.UrlCrawlErrorsSample> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorsSample(o[0]);
   checkUrlCrawlErrorsSample(o[1]);
@@ -249,7 +437,7 @@ buildUrlCrawlErrorsSamplesListResponse() {
   var o = new api.UrlCrawlErrorsSamplesListResponse();
   buildCounterUrlCrawlErrorsSamplesListResponse++;
   if (buildCounterUrlCrawlErrorsSamplesListResponse < 3) {
-    o.urlCrawlErrorSample = buildUnnamed1401();
+    o.urlCrawlErrorSample = buildUnnamed663();
   }
   buildCounterUrlCrawlErrorsSamplesListResponse--;
   return o;
@@ -258,32 +446,32 @@ buildUrlCrawlErrorsSamplesListResponse() {
 checkUrlCrawlErrorsSamplesListResponse(api.UrlCrawlErrorsSamplesListResponse o) {
   buildCounterUrlCrawlErrorsSamplesListResponse++;
   if (buildCounterUrlCrawlErrorsSamplesListResponse < 3) {
-    checkUnnamed1401(o.urlCrawlErrorSample);
+    checkUnnamed663(o.urlCrawlErrorSample);
   }
   buildCounterUrlCrawlErrorsSamplesListResponse--;
 }
 
-buildUnnamed1402() {
+buildUnnamed664() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1402(core.List<core.String> o) {
+checkUnnamed664(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1403() {
+buildUnnamed665() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1403(core.List<core.String> o) {
+checkUnnamed665(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -294,8 +482,8 @@ buildUrlSampleDetails() {
   var o = new api.UrlSampleDetails();
   buildCounterUrlSampleDetails++;
   if (buildCounterUrlSampleDetails < 3) {
-    o.containingSitemaps = buildUnnamed1402();
-    o.linkedFromUrls = buildUnnamed1403();
+    o.containingSitemaps = buildUnnamed664();
+    o.linkedFromUrls = buildUnnamed665();
   }
   buildCounterUrlSampleDetails--;
   return o;
@@ -304,8 +492,8 @@ buildUrlSampleDetails() {
 checkUrlSampleDetails(api.UrlSampleDetails o) {
   buildCounterUrlSampleDetails++;
   if (buildCounterUrlSampleDetails < 3) {
-    checkUnnamed1402(o.containingSitemaps);
-    checkUnnamed1403(o.linkedFromUrls);
+    checkUnnamed664(o.containingSitemaps);
+    checkUnnamed665(o.linkedFromUrls);
   }
   buildCounterUrlSampleDetails--;
 }
@@ -331,14 +519,14 @@ checkWmxSite(api.WmxSite o) {
   buildCounterWmxSite--;
 }
 
-buildUnnamed1404() {
+buildUnnamed666() {
   var o = new core.List<api.WmxSitemapContent>();
   o.add(buildWmxSitemapContent());
   o.add(buildWmxSitemapContent());
   return o;
 }
 
-checkUnnamed1404(core.List<api.WmxSitemapContent> o) {
+checkUnnamed666(core.List<api.WmxSitemapContent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSitemapContent(o[0]);
   checkWmxSitemapContent(o[1]);
@@ -349,7 +537,7 @@ buildWmxSitemap() {
   var o = new api.WmxSitemap();
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
-    o.contents = buildUnnamed1404();
+    o.contents = buildUnnamed666();
     o.errors = "foo";
     o.isPending = true;
     o.isSitemapsIndex = true;
@@ -366,7 +554,7 @@ buildWmxSitemap() {
 checkWmxSitemap(api.WmxSitemap o) {
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
-    checkUnnamed1404(o.contents);
+    checkUnnamed666(o.contents);
     unittest.expect(o.errors, unittest.equals('foo'));
     unittest.expect(o.isPending, unittest.isTrue);
     unittest.expect(o.isSitemapsIndex, unittest.isTrue);
@@ -404,6 +592,51 @@ checkWmxSitemapContent(api.WmxSitemapContent o) {
 
 
 main() {
+  unittest.group("obj-schema-ApiDataRow", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildApiDataRow();
+      var od = new api.ApiDataRow.fromJson(o.toJson());
+      checkApiDataRow(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ApiDimensionFilter", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildApiDimensionFilter();
+      var od = new api.ApiDimensionFilter.fromJson(o.toJson());
+      checkApiDimensionFilter(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ApiDimensionFilterGroup", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildApiDimensionFilterGroup();
+      var od = new api.ApiDimensionFilterGroup.fromJson(o.toJson());
+      checkApiDimensionFilterGroup(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-SearchAnalyticsQueryRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSearchAnalyticsQueryRequest();
+      var od = new api.SearchAnalyticsQueryRequest.fromJson(o.toJson());
+      checkSearchAnalyticsQueryRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-SearchAnalyticsQueryResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSearchAnalyticsQueryResponse();
+      var od = new api.SearchAnalyticsQueryResponse.fromJson(o.toJson());
+      checkSearchAnalyticsQueryResponse(od);
+    });
+  });
+
+
   unittest.group("obj-schema-SitemapsListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSitemapsListResponse();
@@ -500,6 +733,67 @@ main() {
       var od = new api.WmxSitemapContent.fromJson(o.toJson());
       checkWmxSitemapContent(od);
     });
+  });
+
+
+  unittest.group("resource-SearchanalyticsResourceApi", () {
+    unittest.test("method--query", () {
+
+      var mock = new HttpServerMock();
+      api.SearchanalyticsResourceApi res = new api.WebmastersApi(mock).searchanalytics;
+      var arg_request = buildSearchAnalyticsQueryRequest();
+      var arg_siteUrl = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.SearchAnalyticsQueryRequest.fromJson(json);
+        checkSearchAnalyticsQueryRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("webmasters/v3/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("sites/"));
+        pathOffset += 6;
+        index = path.indexOf("/searchAnalytics/query", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_siteUrl"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("/searchAnalytics/query"));
+        pathOffset += 22;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildSearchAnalyticsQueryResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.query(arg_request, arg_siteUrl).then(unittest.expectAsync(((api.SearchAnalyticsQueryResponse response) {
+        checkSearchAnalyticsQueryResponse(response);
+      })));
+    });
+
   });
 
 

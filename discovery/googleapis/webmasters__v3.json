@@ -16,8 +16,8 @@
     "batchPath": "batch",
     "description": "Lets you view Google Webmaster Tools data for your verified sites.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/webmaster-tools/v3/welcome",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/sCAxuVQJb4ynjZxsnsm28T2muEw\"",
+    "documentationLink": "https://developers.google.com/webmaster-tools/",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/j0enR1Y0uYrSDV6RMbQcmkIwHg4\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/webmaster_tools-16.png",
         "x32": "https://www.google.com/images/icons/product/webmaster_tools-32.png"
@@ -74,6 +74,37 @@
     },
     "protocol": "rest",
     "resources": {
+        "searchanalytics": {
+            "methods": {
+                "query": {
+                    "description": "[LIMITED ACCESS]\n\nQuery your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days.\n\nWhen date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.",
+                    "httpMethod": "POST",
+                    "id": "webmasters.searchanalytics.query",
+                    "parameterOrder": [
+                        "siteUrl"
+                    ],
+                    "parameters": {
+                        "siteUrl": {
+                            "description": "The site's URL, including protocol. For example: http://www.example.com/",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "sites/{siteUrl}/searchAnalytics/query",
+                    "request": {
+                        "$ref": "SearchAnalyticsQueryRequest"
+                    },
+                    "response": {
+                        "$ref": "SearchAnalyticsQueryResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/webmasters",
+                        "https://www.googleapis.com/auth/webmasters.readonly"
+                    ]
+                }
+            }
+        },
         "sitemaps": {
             "methods": {
                 "delete": {
@@ -86,13 +117,13 @@
                     ],
                     "parameters": {
                         "feedpath": {
-                            "description": "The URL of the actual sitemap (for example http://www.example.com/sitemap.xml).",
+                            "description": "The URL of the actual sitemap. For example: http://www.example.com/sitemap.xml",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "siteUrl": {
-                            "description": "The site's URL, including protocol, for example 'http://www.example.com/'",
+                            "description": "The site's URL, including protocol. For example: http://www.example.com/",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -113,13 +144,13 @@
                     ],
                     "parameters": {
                         "feedpath": {
-                            "description": "The URL of the actual sitemap (for example http://www.example.com/sitemap.xml).",
+                            "description": "The URL of the actual sitemap. For example: http://www.example.com/sitemap.xml",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "siteUrl": {
-                            "description": "The site's URL, including protocol, for example 'http://www.example.com/'",
+                            "description": "The site's URL, including protocol. For example: http://www.example.com/",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -135,7 +166,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists sitemaps uploaded to the site.",
+                    "description": "Lists the sitemaps-entries submitted for this site, or included in the sitemap index file (if sitemapIndex is specified in the request).",
                     "httpMethod": "GET",
                     "id": "webmasters.sitemaps.list",
                     "parameterOrder": [
@@ -143,13 +174,13 @@
                     ],
                     "parameters": {
                         "siteUrl": {
-                            "description": "The site's URL, including protocol, for example 'http://www.example.com/'",
+                            "description": "The site's URL, including protocol. For example: http://www.example.com/",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "sitemapIndex": {
-                            "description": "A URL of a site's sitemap index.",
+                            "description": "A URL of a site's sitemap index. For example: http://www.example.com/sitemapindex.xml",
                             "location": "query",
                             "type": "string"
                         }
@@ -173,13 +204,13 @@
                     ],
                     "parameters": {
                         "feedpath": {
-                            "description": "The URL of the sitemap to add.",
+                            "description": "The URL of the sitemap to add. For example: http://www.example.com/sitemap.xml",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "siteUrl": {
-                            "description": "The site's URL, including protocol, for example 'http://www.example.com/'",
+                            "description": "The site's URL, including protocol. For example: http://www.example.com/",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -223,7 +254,7 @@
                     ],
                     "parameters": {
                         "siteUrl": {
-                            "description": "The site's URL, including protocol, for example 'http://www.example.com/'",
+                            "description": "The URI of the property as defined in Search Console. Examples: http://www.example.com/ or android-app://com.example/",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -243,7 +274,7 @@
                     ],
                     "parameters": {
                         "siteUrl": {
-                            "description": "The site's URL, including protocol, for example 'http://www.example.com/'",
+                            "description": "The URI of the property as defined in Search Console. Examples: http://www.example.com/ or android-app://com.example/",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -259,7 +290,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists your Webmaster Tools sites.",
+                    "description": "Lists the user's Webmaster Tools sites.",
                     "httpMethod": "GET",
                     "id": "webmasters.sites.list",
                     "path": "sites",
@@ -284,7 +315,7 @@
                     ],
                     "parameters": {
                         "category": {
-                            "description": "The crawl error category, for example 'serverError'. If not specified, we return results for all categories.",
+                            "description": "The crawl error category. For example: serverError. If not specified, returns results for all categories.",
                             "enum": [
                                 "authPermissions",
                                 "manyToOneRedirect",
@@ -315,7 +346,7 @@
                             "type": "boolean"
                         },
                         "platform": {
-                            "description": "The user agent type (platform) that made the request, for example 'web'. If not specified, we return results for all platforms.",
+                            "description": "The user agent type (platform) that made the request. For example: web. If not specified, returns results for all platforms.",
                             "enum": [
                                 "mobile",
                                 "smartphoneOnly",
@@ -330,7 +361,7 @@
                             "type": "string"
                         },
                         "siteUrl": {
-                            "description": "The site's URL, including protocol, for example 'http://www.example.com/'",
+                            "description": "The site's URL, including protocol. For example: http://www.example.com/",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -361,7 +392,7 @@
                     ],
                     "parameters": {
                         "category": {
-                            "description": "The crawl error category, for example 'authPermissions'",
+                            "description": "The crawl error category. For example: authPermissions",
                             "enum": [
                                 "authPermissions",
                                 "manyToOneRedirect",
@@ -387,7 +418,7 @@
                             "type": "string"
                         },
                         "platform": {
-                            "description": "The user agent type (platform) that made the request, for example 'web'",
+                            "description": "The user agent type (platform) that made the request. For example: web",
                             "enum": [
                                 "mobile",
                                 "smartphoneOnly",
@@ -403,13 +434,13 @@
                             "type": "string"
                         },
                         "siteUrl": {
-                            "description": "The site's URL, including protocol, for example 'http://www.example.com/'",
+                            "description": "The site's URL, including protocol. For example: http://www.example.com/",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "url": {
-                            "description": "The relative path (without the site) of the sample URL; must be one of the URLs returned by list",
+                            "description": "The relative path (without the site) of the sample URL. It must be one of the URLs returned by list(). For example, for the URL https://www.example.com/pagename on the site https://www.example.com/, the url value is pagename",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -435,7 +466,7 @@
                     ],
                     "parameters": {
                         "category": {
-                            "description": "The crawl error category, for example 'authPermissions'",
+                            "description": "The crawl error category. For example: authPermissions",
                             "enum": [
                                 "authPermissions",
                                 "manyToOneRedirect",
@@ -461,7 +492,7 @@
                             "type": "string"
                         },
                         "platform": {
-                            "description": "The user agent type (platform) that made the request, for example 'web'",
+                            "description": "The user agent type (platform) that made the request. For example: web",
                             "enum": [
                                 "mobile",
                                 "smartphoneOnly",
@@ -477,7 +508,7 @@
                             "type": "string"
                         },
                         "siteUrl": {
-                            "description": "The site's URL, including protocol, for example 'http://www.example.com/'",
+                            "description": "The site's URL, including protocol. For example: http://www.example.com/",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -504,7 +535,7 @@
                     ],
                     "parameters": {
                         "category": {
-                            "description": "The crawl error category, for example 'authPermissions'",
+                            "description": "The crawl error category. For example: authPermissions",
                             "enum": [
                                 "authPermissions",
                                 "manyToOneRedirect",
@@ -530,7 +561,7 @@
                             "type": "string"
                         },
                         "platform": {
-                            "description": "The user agent type (platform) that made the request, for example 'web'",
+                            "description": "The user agent type (platform) that made the request. For example: web",
                             "enum": [
                                 "mobile",
                                 "smartphoneOnly",
@@ -546,13 +577,13 @@
                             "type": "string"
                         },
                         "siteUrl": {
-                            "description": "The site's URL, including protocol, for example 'http://www.example.com/'",
+                            "description": "The site's URL, including protocol. For example: http://www.example.com/",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "url": {
-                            "description": "The relative path (without the site) of the sample URL; must be one of the URLs returned by list",
+                            "description": "The relative path (without the site) of the sample URL. It must be one of the URLs returned by list(). For example, for the URL https://www.example.com/pagename on the site https://www.example.com/, the url value is pagename",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -566,15 +597,132 @@
             }
         }
     },
-    "revision": "20140908",
+    "revision": "20150624",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
+        "ApiDataRow": {
+            "id": "ApiDataRow",
+            "properties": {
+                "clicks": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "ctr": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "impressions": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "keys": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "position": {
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "ApiDimensionFilter": {
+            "id": "ApiDimensionFilter",
+            "properties": {
+                "dimension": {
+                    "type": "string"
+                },
+                "expression": {
+                    "type": "string"
+                },
+                "operator": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ApiDimensionFilterGroup": {
+            "id": "ApiDimensionFilterGroup",
+            "properties": {
+                "filters": {
+                    "items": {
+                        "$ref": "ApiDimensionFilter"
+                    },
+                    "type": "array"
+                },
+                "groupType": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchAnalyticsQueryRequest": {
+            "id": "SearchAnalyticsQueryRequest",
+            "properties": {
+                "aggregationType": {
+                    "description": "[Optional; Default is AUTO] How data is aggregated. If aggregated by property, all data for the same property is aggregated; if aggregated by page, all data is aggregated by canonical URI. If you filter or group by page, choose AUTO; otherwise you can aggregate either by property or by page, depending on how you want your data calculated; see  the help documentation to learn how data is calculated differently by site versus by page.\n\nNote: If you group or filter by page, you cannot aggregate by property.\n\nIf you specify any value other than AUTO, the aggregation type in the result will match the requested type, or if you request an invalid type, you will get an error. The API will never change your aggregation type if the requested type is invalid.",
+                    "type": "string"
+                },
+                "dimensionFilterGroups": {
+                    "description": "[Optional] Zero or more filters to apply to the dimension grouping values; for example, 'Country CONTAINS \"Guinea\"' to see only data where the country contains the substring \"Guinea\". You can filter by a dimension without grouping by it.",
+                    "items": {
+                        "$ref": "ApiDimensionFilterGroup"
+                    },
+                    "type": "array"
+                },
+                "dimensions": {
+                    "description": "[Optional] Zero or more dimensions to group results by. Dimensions are the group-by values in the Search Analytics page. Dimensions are combined to create a unique row key for each row. Results are grouped in the order that you supply these dimensions.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "endDate": {
+                    "description": "[Required] End date of the requested date range, in YYYY-MM-DD format, in PST (UTC - 8:00). Must be greater than or equal to the start date. This value is included in the range.",
+                    "type": "string"
+                },
+                "rowLimit": {
+                    "description": "[Optional; Default is 1000] The maximum number of rows to return. Must be a number from 1 to 1,000 (inclusive).",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "searchType": {
+                    "description": "[Optional; Default is WEB] The search type to filter for.",
+                    "type": "string"
+                },
+                "startDate": {
+                    "description": "[Required] Start date of the requested date range, in YYYY-MM-DD format, in PST time (UTC - 8:00). Must be less than or equal to the end date. This value is included in the range.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchAnalyticsQueryResponse": {
+            "description": "A list of rows, one per result, grouped by key. Metrics in each row are aggregated for all data grouped by that key either by page or property, as specified by the aggregation type parameter.",
+            "id": "SearchAnalyticsQueryResponse",
+            "properties": {
+                "responseAggregationType": {
+                    "description": "How the results were aggregated.",
+                    "type": "string"
+                },
+                "rows": {
+                    "description": "A list of rows grouped by the key values in the order given in the query.",
+                    "items": {
+                        "$ref": "ApiDataRow"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "SitemapsListResponse": {
             "description": "List of sitemaps.",
             "id": "SitemapsListResponse",
             "properties": {
                 "sitemap": {
-                    "description": "Information about a sitemap entry.",
+                    "description": "Contains detailed information about a specific URL submitted as a sitemap.",
                     "items": {
                         "$ref": "WmxSitemap"
                     },
@@ -588,7 +736,7 @@
             "id": "SitesListResponse",
             "properties": {
                 "siteEntry": {
-                    "description": "Access level information for a Webmaster Tools site.",
+                    "description": "Contains permission level information about a Webmaster Tools site. For more information, see Permissions in Webmaster Tools.",
                     "items": {
                         "$ref": "WmxSite"
                     },
@@ -607,7 +755,7 @@
                     "type": "string"
                 },
                 "timestamp": {
-                    "description": "The time (well, date) when errors were detected, in RFC 3339 format.",
+                    "description": "The date and time when the crawl attempt took place, in RFC 3339 format.",
                     "format": "date-time",
                     "type": "string"
                 }
@@ -630,7 +778,7 @@
                     "type": "array"
                 },
                 "platform": {
-                    "description": "Corresponding to the user agent that made the request.",
+                    "description": "The general type of Googlebot that made the request (see list of Googlebot user-agents for the user-agents used).",
                     "type": "string"
                 }
             },
@@ -641,7 +789,7 @@
             "id": "UrlCrawlErrorsCountsQueryResponse",
             "properties": {
                 "countPerTypes": {
-                    "description": "The time series of the number of URL crawl errors for per error category and platform.",
+                    "description": "The time series of the number of URL crawl errors per error category and platform.",
                     "items": {
                         "$ref": "UrlCrawlErrorCountsPerType"
                     },
@@ -651,6 +799,7 @@
             "type": "object"
         },
         "UrlCrawlErrorsSample": {
+            "description": "Contains information about specific crawl errors.",
             "id": "UrlCrawlErrorsSample",
             "properties": {
                 "first_detected": {
@@ -715,7 +864,7 @@
             "type": "object"
         },
         "WmxSite": {
-            "description": "Access level information for a Webmaster Tools site.",
+            "description": "Contains permission level information about a Webmaster Tools site. For more information, see  Permissions in Webmaster Tools.",
             "id": "WmxSite",
             "properties": {
                 "permissionLevel": {
@@ -730,6 +879,7 @@
             "type": "object"
         },
         "WmxSitemap": {
+            "description": "Contains detailed information about a specific URL submitted as a sitemap.",
             "id": "WmxSitemap",
             "properties": {
                 "contents": {
@@ -740,7 +890,7 @@
                     "type": "array"
                 },
                 "errors": {
-                    "description": "Number of errors in the sitemap - issues with the sitemap itself, that needs to be fixed before it can be processed correctly.",
+                    "description": "Number of errors in the sitemap. These are issues with the sitemap itself that need to be fixed before it can be processed correctly.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -767,11 +917,11 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "The type of the sitemap (for example \"sitemap\").",
+                    "description": "The type of the sitemap. For example: rssFeed.",
                     "type": "string"
                 },
                 "warnings": {
-                    "description": "Number of warnings for the sitemap - issues with URLs in the sitemaps.",
+                    "description": "Number of warnings for the sitemap. These are generally non-critical issues with URLs in the sitemaps.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -793,7 +943,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "The specific type of content in this sitemap (for example \"web\", \"images\").",
+                    "description": "The specific type of content in this sitemap. For example: web.",
                     "type": "string"
                 }
             },

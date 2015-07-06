@@ -1324,6 +1324,9 @@ class EventsResourceApi {
    *
    * [calendarId] - Calendar identifier.
    *
+   * [supportsAttachments] - Whether API client performing operation supports
+   * event attachments. Optional. The default is False.
+   *
    * Completes with a [Event].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1332,7 +1335,7 @@ class EventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Event> import(Event request, core.String calendarId) {
+  async.Future<Event> import(Event request, core.String calendarId, {core.bool supportsAttachments}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1345,6 +1348,9 @@ class EventsResourceApi {
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
+    }
+    if (supportsAttachments != null) {
+      _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/import';
@@ -1375,6 +1381,9 @@ class EventsResourceApi {
    * [sendNotifications] - Whether to send notifications about the creation of
    * the new event. Optional. The default is False.
    *
+   * [supportsAttachments] - Whether API client performing operation supports
+   * event attachments. Optional. The default is False.
+   *
    * Completes with a [Event].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1383,7 +1392,7 @@ class EventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Event> insert(Event request, core.String calendarId, {core.int maxAttendees, core.bool sendNotifications}) {
+  async.Future<Event> insert(Event request, core.String calendarId, {core.int maxAttendees, core.bool sendNotifications, core.bool supportsAttachments}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1402,6 +1411,9 @@ class EventsResourceApi {
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if (supportsAttachments != null) {
+      _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
@@ -1784,6 +1796,9 @@ class EventsResourceApi {
    * (e.g. attendee's responses, title changes, etc.). Optional. The default is
    * False.
    *
+   * [supportsAttachments] - Whether API client performing operation supports
+   * event attachments. Optional. The default is False.
+   *
    * Completes with a [Event].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1792,7 +1807,7 @@ class EventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Event> patch(Event request, core.String calendarId, core.String eventId, {core.bool alwaysIncludeEmail, core.int maxAttendees, core.bool sendNotifications}) {
+  async.Future<Event> patch(Event request, core.String calendarId, core.String eventId, {core.bool alwaysIncludeEmail, core.int maxAttendees, core.bool sendNotifications, core.bool supportsAttachments}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1817,6 +1832,9 @@ class EventsResourceApi {
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if (supportsAttachments != null) {
+      _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
@@ -1908,6 +1926,9 @@ class EventsResourceApi {
    * (e.g. attendee's responses, title changes, etc.). Optional. The default is
    * False.
    *
+   * [supportsAttachments] - Whether API client performing operation supports
+   * event attachments. Optional. The default is False.
+   *
    * Completes with a [Event].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1916,7 +1937,7 @@ class EventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Event> update(Event request, core.String calendarId, core.String eventId, {core.bool alwaysIncludeEmail, core.int maxAttendees, core.bool sendNotifications}) {
+  async.Future<Event> update(Event request, core.String calendarId, core.String eventId, {core.bool alwaysIncludeEmail, core.int maxAttendees, core.bool sendNotifications, core.bool supportsAttachments}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1941,6 +1962,9 @@ class EventsResourceApi {
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if (supportsAttachments != null) {
+      _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
@@ -3457,6 +3481,14 @@ class Event {
    * False.
    */
   core.bool anyoneCanAddSelf;
+  /**
+   * File attachments for the event. Currently only Google Drive attachments are
+   * supported.
+   * In order to modify attachments the supportsAttachments request parameter
+   * should be set to true.
+   * There can be at most 25 attachments per event,
+   */
+  core.List<EventAttachment> attachments;
   /** The attendees of the event. */
   core.List<EventAttendee> attendees;
   /**
@@ -3626,6 +3658,9 @@ class Event {
     if (_json.containsKey("anyoneCanAddSelf")) {
       anyoneCanAddSelf = _json["anyoneCanAddSelf"];
     }
+    if (_json.containsKey("attachments")) {
+      attachments = _json["attachments"].map((value) => new EventAttachment.fromJson(value)).toList();
+    }
     if (_json.containsKey("attendees")) {
       attendees = _json["attendees"].map((value) => new EventAttendee.fromJson(value)).toList();
     }
@@ -3738,6 +3773,9 @@ class Event {
     if (anyoneCanAddSelf != null) {
       _json["anyoneCanAddSelf"] = anyoneCanAddSelf;
     }
+    if (attachments != null) {
+      _json["attachments"] = attachments.map((value) => (value).toJson()).toList();
+    }
     if (attendees != null) {
       _json["attendees"] = attendees.map((value) => (value).toJson()).toList();
     }
@@ -3848,14 +3886,50 @@ class Event {
 }
 
 class EventAttachment {
+  /**
+   * URL link to the attachment.
+   * For adding Google Drive file attachments use the same format as in
+   * alternateLink property of the Files resource in the Drive API.
+   */
+  core.String fileUrl;
+  /** URL link to the attachment's icon. Read-only. */
+  core.String iconLink;
+  /** Internet media type (MIME type) of the attachment. */
+  core.String mimeType;
+  /** Attachment title. */
+  core.String title;
 
   EventAttachment();
 
   EventAttachment.fromJson(core.Map _json) {
+    if (_json.containsKey("fileUrl")) {
+      fileUrl = _json["fileUrl"];
+    }
+    if (_json.containsKey("iconLink")) {
+      iconLink = _json["iconLink"];
+    }
+    if (_json.containsKey("mimeType")) {
+      mimeType = _json["mimeType"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (fileUrl != null) {
+      _json["fileUrl"] = fileUrl;
+    }
+    if (iconLink != null) {
+      _json["iconLink"] = iconLink;
+    }
+    if (mimeType != null) {
+      _json["mimeType"] = mimeType;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
     return _json;
   }
 }

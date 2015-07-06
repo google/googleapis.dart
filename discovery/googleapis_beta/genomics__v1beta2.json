@@ -26,7 +26,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/5Ip5gxD2IW-n7qngRG7WOKp94TA\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Rb7-9Pk3C2nyGTw9tsYHv2nAxPQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -591,7 +591,7 @@
                             "type": "string"
                         },
                         "projectNumber": {
-                            "description": "The project to list datasets for.",
+                            "description": "Required. The project to list datasets for.",
                             "format": "int64",
                             "location": "query",
                             "type": "string"
@@ -1512,7 +1512,7 @@
             }
         }
     },
-    "revision": "20150618",
+    "revision": "20150629",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AlignReadGroupSetsRequest": {

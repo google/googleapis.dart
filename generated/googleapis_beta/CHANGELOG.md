@@ -1,3 +1,7 @@
+## 0.15.2
+
+* [apis] replicapool:v1beta2: schema changes
+
 ## 0.15.1
 
 * [apis] genomics:v1beta2: schema changes

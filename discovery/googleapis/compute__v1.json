@@ -29,7 +29,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/KR3ZwQmcUACaSsWyMOhFw8te6OA\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/TXj-QYszFUs8fm2nkvQThCBXd6Y\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -97,7 +97,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -111,7 +111,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -262,7 +262,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -276,7 +276,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -449,7 +449,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -463,7 +463,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -570,7 +570,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -584,7 +584,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -658,7 +658,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -672,7 +672,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -714,7 +714,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -728,7 +728,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -928,7 +928,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -942,7 +942,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1079,7 +1079,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1093,7 +1093,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1200,7 +1200,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1214,7 +1214,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1365,7 +1365,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1379,7 +1379,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1560,7 +1560,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1574,7 +1574,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1704,7 +1704,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1718,7 +1718,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1789,7 +1789,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1803,7 +1803,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1826,7 +1826,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Deletes the specified operation resource.",
+                    "description": "Deletes the specified Operations resource.",
                     "httpMethod": "DELETE",
                     "id": "compute.globalOperations.delete",
                     "parameterOrder": [
@@ -1835,7 +1835,7 @@
                     ],
                     "parameters": {
                         "operation": {
-                            "description": "Name of the operation resource to delete.",
+                            "description": "Name of the Operations resource to delete.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -1856,7 +1856,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Retrieves the specified operation resource.",
+                    "description": "Retrieves the specified Operations resource.",
                     "httpMethod": "GET",
                     "id": "compute.globalOperations.get",
                     "parameterOrder": [
@@ -1865,7 +1865,7 @@
                     ],
                     "parameters": {
                         "operation": {
-                            "description": "Name of the operation resource to return.",
+                            "description": "Name of the Operations resource to return.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -1890,7 +1890,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of operation resources contained within the specified project.",
+                    "description": "Retrieves the list of Operation resources contained within the specified project.",
                     "httpMethod": "GET",
                     "id": "compute.globalOperations.list",
                     "parameterOrder": [
@@ -1898,7 +1898,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1912,7 +1912,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2042,7 +2042,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2056,7 +2056,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2297,7 +2297,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2311,7 +2311,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2331,6 +2331,921 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
                         "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                }
+            }
+        },
+        "instanceGroupManagers": {
+            "methods": {
+                "abandonInstances": {
+                    "description": "Removes the specified instances from the managed instance group, and from any target pools where they are a member. The instances are not deleted. The managed instance group automatically reduces its targetSize value by the number of instances that you abandon from the group.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroupManagers.abandonInstances",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "description": "The name of the instance group manager.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the managed instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/abandonInstances",
+                    "request": {
+                        "$ref": "InstanceGroupManagersAbandonInstancesRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "aggregatedList": {
+                    "description": "Retrieves the list of managed instance groups, and groups them by project and zone.",
+                    "httpMethod": "GET",
+                    "id": "compute.instanceGroupManagers.aggregatedList",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "Maximum count of results to be returned.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/aggregated/instanceGroupManagers",
+                    "response": {
+                        "$ref": "InstanceGroupManagerAggregatedList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "delete": {
+                    "description": "Deletes the specified managed instance group resource.",
+                    "httpMethod": "DELETE",
+                    "id": "compute.instanceGroupManagers.delete",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "description": "The name of the instance group manager to delete.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the managed instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "deleteInstances": {
+                    "description": "Deletes the specified instances. The instances are deleted and removed from the instance group and any target pools where they are a member. The managed instance group automatically reduces its targetSize value by the number of instances that you delete.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroupManagers.deleteInstances",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "description": "The name of the instance group manager.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the managed instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deleteInstances",
+                    "request": {
+                        "$ref": "InstanceGroupManagersDeleteInstancesRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "get": {
+                    "description": "Returns the specified managed instance group resource.",
+                    "httpMethod": "GET",
+                    "id": "compute.instanceGroupManagers.get",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "description": "The name of the instance group manager resource.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the managed instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}",
+                    "response": {
+                        "$ref": "InstanceGroupManager"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "insert": {
+                    "description": "Creates a managed instance group resource in the specified project using the data that is included in the request.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroupManagers.insert",
+                    "parameterOrder": [
+                        "project",
+                        "zone"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the managed instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers",
+                    "request": {
+                        "$ref": "InstanceGroupManager"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "list": {
+                    "description": "Retrieves a list of managed instance groups that are contained within the specified project and zone.",
+                    "httpMethod": "GET",
+                    "id": "compute.instanceGroupManagers.list",
+                    "parameterOrder": [
+                        "project",
+                        "zone"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "Maximum count of results to be returned.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the managed instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers",
+                    "response": {
+                        "$ref": "InstanceGroupManagerList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "listManagedInstances": {
+                    "description": "Lists managed instances.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroupManagers.listManagedInstances",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "description": "The name of the managed instance group.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the managed instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances",
+                    "response": {
+                        "$ref": "InstanceGroupManagersListManagedInstancesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "recreateInstances": {
+                    "description": "Recreates the specified instances. The instances are deleted, then recreated using the managed instance group's current instance template.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroupManagers.recreateInstances",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "description": "The name of the instance group manager.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the managed instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/recreateInstances",
+                    "request": {
+                        "$ref": "InstanceGroupManagersRecreateInstancesRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "resize": {
+                    "description": "Resizes the managed instance group. If you increase the size, the group creates new instances using the current instance template. If you decrease the size, the group removes instances in the order that is outlined in Resizing a managed instance group.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroupManagers.resize",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager",
+                        "size"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "description": "The name of the instance group manager.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "size": {
+                            "description": "The number of running instances that the managed instance group should maintain at any given time. The group automatically adds or removes instances to maintain the number of instances specified by this parameter.",
+                            "format": "int32",
+                            "location": "query",
+                            "required": true,
+                            "type": "integer"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the managed instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resize",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "setInstanceTemplate": {
+                    "description": "Specifies the instance template to use when creating new instances in this group. The templates for existing instances in the group do not change unless you recreate them.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroupManagers.setInstanceTemplate",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "description": "The name of the instance group manager.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the managed instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate",
+                    "request": {
+                        "$ref": "InstanceGroupManagersSetInstanceTemplateRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "setTargetPools": {
+                    "description": "Modifies the target pools to which all new instances in this group are assigned. The target pools for existing instances in the group do not change unless you recreate them.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroupManagers.setTargetPools",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "description": "The name of the instance group manager.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the managed instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools",
+                    "request": {
+                        "$ref": "InstanceGroupManagersSetTargetPoolsRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                }
+            }
+        },
+        "instanceGroups": {
+            "methods": {
+                "addInstances": {
+                    "description": "Adds a list of instances to an instance group. All of the instances in the instance group must be in the same network.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroups.addInstances",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroup"
+                    ],
+                    "parameters": {
+                        "instanceGroup": {
+                            "description": "The name of the instance group where you are adding instances.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroups/{instanceGroup}/addInstances",
+                    "request": {
+                        "$ref": "InstanceGroupsAddInstancesRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "aggregatedList": {
+                    "description": "Retrieves the list of instance groups, and sorts them by zone.",
+                    "httpMethod": "GET",
+                    "id": "compute.instanceGroups.aggregatedList",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "Maximum count of results to be returned.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/aggregated/instanceGroups",
+                    "response": {
+                        "$ref": "InstanceGroupAggregatedList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "delete": {
+                    "description": "Deletes the specified instance group.",
+                    "httpMethod": "DELETE",
+                    "id": "compute.instanceGroups.delete",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroup"
+                    ],
+                    "parameters": {
+                        "instanceGroup": {
+                            "description": "The name of the instance group to delete.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroups/{instanceGroup}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "get": {
+                    "description": "Returns the specified instance group resource.",
+                    "httpMethod": "GET",
+                    "id": "compute.instanceGroups.get",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroup"
+                    ],
+                    "parameters": {
+                        "instanceGroup": {
+                            "description": "The name of the instance group.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroups/{instanceGroup}",
+                    "response": {
+                        "$ref": "InstanceGroup"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "insert": {
+                    "description": "Creates an instance group in the specified project using the parameters that are included in the request.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroups.insert",
+                    "parameterOrder": [
+                        "project",
+                        "zone"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroups",
+                    "request": {
+                        "$ref": "InstanceGroup"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "list": {
+                    "description": "Retrieves the list of instance groups that are located in the specified project and zone.",
+                    "httpMethod": "GET",
+                    "id": "compute.instanceGroups.list",
+                    "parameterOrder": [
+                        "project",
+                        "zone"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "Maximum count of results to be returned.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroups",
+                    "response": {
+                        "$ref": "InstanceGroupList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "listInstances": {
+                    "description": "Lists instances in an instance group. The parameters for this method specify whether the list filters instances by state and named ports information.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroups.listInstances",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroup"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "instanceGroup": {
+                            "description": "The name of the instance group from which you want to generate a list of included instances.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "Maximum count of results to be returned.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroups/{instanceGroup}/listInstances",
+                    "request": {
+                        "$ref": "InstanceGroupsListInstancesRequest"
+                    },
+                    "response": {
+                        "$ref": "InstanceGroupsListInstances"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "removeInstances": {
+                    "description": "Removes a list of instances from an instance group.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroups.removeInstances",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroup"
+                    ],
+                    "parameters": {
+                        "instanceGroup": {
+                            "description": "The name of the instance group where the specified instances will be removed.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroups/{instanceGroup}/removeInstances",
+                    "request": {
+                        "$ref": "InstanceGroupsRemoveInstancesRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "setNamedPorts": {
+                    "description": "Sets the named ports in an instance group.",
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroups.setNamedPorts",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroup"
+                    ],
+                    "parameters": {
+                        "instanceGroup": {
+                            "description": "The name of the instance group where the named ports are updated.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The URL of the zone where the instance group is located.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroups/{instanceGroup}/setNamedPorts",
+                    "request": {
+                        "$ref": "InstanceGroupsSetNamedPortsRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
                     ]
                 }
             }
@@ -2441,7 +3356,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2455,7 +3370,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2540,7 +3455,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2554,7 +3469,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2826,7 +3741,7 @@
                         },
                         "port": {
                             "default": "1",
-                            "description": "Which COM port to retrieve data from.",
+                            "description": "Specifies which COM or serial port to retrieve data from.",
                             "format": "int32",
                             "location": "query",
                             "maximum": "4",
@@ -2904,7 +3819,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2918,7 +3833,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3309,7 +4224,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3323,7 +4238,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3397,7 +4312,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3411,7 +4326,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3548,7 +4463,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3562,7 +4477,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3734,7 +4649,7 @@
         "regionOperations": {
             "methods": {
                 "delete": {
-                    "description": "Deletes the specified region-specific operation resource.",
+                    "description": "Deletes the specified region-specific Operations resource.",
                     "httpMethod": "DELETE",
                     "id": "compute.regionOperations.delete",
                     "parameterOrder": [
@@ -3744,7 +4659,7 @@
                     ],
                     "parameters": {
                         "operation": {
-                            "description": "Name of the operation resource to delete.",
+                            "description": "Name of the Operations resource to delete.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -3772,7 +4687,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Retrieves the specified region-specific operation resource.",
+                    "description": "Retrieves the specified region-specific Operations resource.",
                     "httpMethod": "GET",
                     "id": "compute.regionOperations.get",
                     "parameterOrder": [
@@ -3782,7 +4697,7 @@
                     ],
                     "parameters": {
                         "operation": {
-                            "description": "Name of the operation resource to return.",
+                            "description": "Name of the Operations resource to return.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -3814,7 +4729,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of operation resources contained within the specified region.",
+                    "description": "Retrieves the list of Operation resources contained within the specified region.",
                     "httpMethod": "GET",
                     "id": "compute.regionOperations.list",
                     "parameterOrder": [
@@ -3823,7 +4738,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3837,7 +4752,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3913,7 +4828,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3927,7 +4842,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4057,7 +4972,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4071,7 +4986,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4173,7 +5088,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4187,7 +5102,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4317,7 +5232,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4331,7 +5246,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4402,7 +5317,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4416,7 +5331,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4567,7 +5482,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4581,7 +5496,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4709,7 +5624,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4723,7 +5638,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4918,7 +5833,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4932,7 +5847,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5110,7 +6025,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5124,7 +6039,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5275,7 +6190,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5289,7 +6204,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5426,7 +6341,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5440,7 +6355,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5583,7 +6498,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5597,7 +6512,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5748,7 +6663,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5762,7 +6677,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5796,7 +6711,7 @@
         "zoneOperations": {
             "methods": {
                 "delete": {
-                    "description": "Deletes the specified zone-specific operation resource.",
+                    "description": "Deletes the specified zone-specific Operations resource.",
                     "httpMethod": "DELETE",
                     "id": "compute.zoneOperations.delete",
                     "parameterOrder": [
@@ -5806,7 +6721,7 @@
                     ],
                     "parameters": {
                         "operation": {
-                            "description": "Name of the operation resource to delete.",
+                            "description": "Name of the Operations resource to delete.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -5834,7 +6749,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Retrieves the specified zone-specific operation resource.",
+                    "description": "Retrieves the specified zone-specific Operations resource.",
                     "httpMethod": "GET",
                     "id": "compute.zoneOperations.get",
                     "parameterOrder": [
@@ -5844,7 +6759,7 @@
                     ],
                     "parameters": {
                         "operation": {
-                            "description": "Name of the operation resource to return.",
+                            "description": "Name of the Operations resource to return.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -5876,7 +6791,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of operation resources contained within the specified zone.",
+                    "description": "Retrieves the list of Operation resources contained within the specified zone.",
                     "httpMethod": "GET",
                     "id": "compute.zoneOperations.list",
                     "parameterOrder": [
@@ -5885,7 +6800,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5899,7 +6814,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5975,7 +6890,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Filter expression for filtering listed resources.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5989,7 +6904,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Tag returned by a previous list request when that list was truncated to maxResults. Used to continue a previous list request.",
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -6014,7 +6929,7 @@
             }
         }
     },
-    "revision": "20150305",
+    "revision": "20150625",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -7800,6 +8715,682 @@
             },
             "type": "object"
         },
+        "InstanceGroup": {
+            "id": "InstanceGroup",
+            "properties": {
+                "creationTimestamp": {
+                    "description": "[Output Only] The creation timestamp for this instance group in RFC3339 text format.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An optional text description for the instance group.",
+                    "type": "string"
+                },
+                "fingerprint": {
+                    "description": "[Output Only] The fingerprint of the named ports information. The system uses this fingerprint to detect conflicts when multiple users change the named ports information concurrently.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "[Output Only] A unique identifier for this instance group. The server defines this identifier.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#instanceGroup",
+                    "description": "[Output Only] The resource type, which is always compute#instanceGroup for instance groups.",
+                    "type": "string"
+                },
+                "name": {
+                    "annotations": {
+                        "required": [
+                            "compute.instanceGroupManagers.insert"
+                        ]
+                    },
+                    "description": "The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "namedPorts": {
+                    "description": "Assigns a name to a port number. For example: {name: ?http?, port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: ?http?, port: 80},{name: \"http\", port: 8080}] Named ports apply to all instances in this instance group.",
+                    "items": {
+                        "$ref": "NamedPort"
+                    },
+                    "type": "array"
+                },
+                "network": {
+                    "description": "The URL of the network to which all instances in the instance group belong.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] The URL for this instance group. The server defines this URL.",
+                    "type": "string"
+                },
+                "size": {
+                    "description": "[Output Only] The total number of instances in the instance group.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "zone": {
+                    "description": "The URL of the zone where the instance group is located.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupAggregatedList": {
+            "id": "InstanceGroupAggregatedList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] A unique identifier for this aggregated list of instance groups. The server defines this identifier.",
+                    "type": "string"
+                },
+                "items": {
+                    "additionalProperties": {
+                        "$ref": "InstanceGroupsScopedList",
+                        "description": "The name of the scope that contains this set of instance groups."
+                    },
+                    "description": "A map of scoped instance group lists.",
+                    "type": "object"
+                },
+                "kind": {
+                    "default": "compute#instanceGroupAggregatedList",
+                    "description": "[Output Only] The resource type, which is always compute#instanceGroupAggregatedList for aggregated lists of instance groups.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] A token that is used to continue a truncated list request.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] A unique identifier for this aggregated list of instance groups. The server defines this identifier.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupList": {
+            "description": "A list of InstanceGroup resources.",
+            "id": "InstanceGroupList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] A unique identifier for this list of instance groups. The server defines this identifier.",
+                    "type": "string"
+                },
+                "items": {
+                    "description": "A list of InstanceGroup resources.",
+                    "items": {
+                        "$ref": "InstanceGroup"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#instanceGroupList",
+                    "description": "[Output Only] The resource type, which is always compute#instanceGroupList for instance group lists.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] A token that is used to continue a truncated list request.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] The URL for this instance group. The server defines this URL.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManager": {
+            "description": "InstanceGroupManagers\n\nNext available tag: 17",
+            "id": "InstanceGroupManager",
+            "properties": {
+                "autoHealingPolicies": {
+                    "description": "The autohealing policy for this managed instance group. You can specify only one value.",
+                    "items": {
+                        "$ref": "InstanceGroupManagerAutoHealingPolicy"
+                    },
+                    "type": "array"
+                },
+                "baseInstanceName": {
+                    "annotations": {
+                        "required": [
+                            "compute.instanceGroupManagers.insert"
+                        ]
+                    },
+                    "description": "The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.",
+                    "pattern": "[a-z][-a-z0-9]{0,57}",
+                    "type": "string"
+                },
+                "creationTimestamp": {
+                    "description": "[Output Only] The creation timestamp for this managed instance group in RFC3339 text format.",
+                    "type": "string"
+                },
+                "currentActions": {
+                    "$ref": "InstanceGroupManagerActionsSummary",
+                    "description": "[Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for those actions."
+                },
+                "currentSize": {
+                    "description": "[Output Only] The number of instances that currently exist and are a part of this group. The number includes instances that are in a RUNNING state, instances that are starting, and instances that are scheduled to be deleted or abandoned.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "description": {
+                    "description": "An optional text description for the managed instance group.",
+                    "type": "string"
+                },
+                "fingerprint": {
+                    "description": "[Output Only] The fingerprint of the target pools information, which is a hash of the contents. This field is used for optimistic locking when updating the target pool entries.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "[Output Only] A unique identifier for this managed instance group. The server defines this identifier.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "instanceGroup": {
+                    "description": "[Output Only] The URL of the InstanceGroup resource.",
+                    "type": "string"
+                },
+                "instanceTemplate": {
+                    "annotations": {
+                        "required": [
+                            "compute.instanceGroupManagers.insert"
+                        ]
+                    },
+                    "description": "The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#instanceGroupManager",
+                    "description": "[Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.",
+                    "type": "string"
+                },
+                "name": {
+                    "annotations": {
+                        "required": [
+                            "compute.instanceGroupManagers.insert"
+                        ]
+                    },
+                    "description": "The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server defined URL for this managed instance group.",
+                    "type": "string"
+                },
+                "targetPools": {
+                    "description": "The URL of all TargetPool resources to which new instances in the instanceGroup field are added. Updating the target pool values does not affect existing instances.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "targetSize": {
+                    "annotations": {
+                        "required": [
+                            "compute.instanceGroupManagers.insert"
+                        ]
+                    },
+                    "description": "The target number of running instances for this managed instance group. Deleting or abandoning instances reduces this number. Resizing the group changes this number.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "zone": {
+                    "description": "The URL of the zone where the managed instance group is located.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagerActionsSummary": {
+            "id": "InstanceGroupManagerActionsSummary",
+            "properties": {
+                "abandoning": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "creating": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "deleting": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "none": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "rebooting": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "recreating": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "refreshing": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagerAggregatedList": {
+            "id": "InstanceGroupManagerAggregatedList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] A unique identifier for this aggregated list of managed instance groups. The server defines this identifier.",
+                    "type": "string"
+                },
+                "items": {
+                    "additionalProperties": {
+                        "$ref": "InstanceGroupManagersScopedList",
+                        "description": "The name of the scope that contains this set of managed instance groups."
+                    },
+                    "description": "A map of filtered managed instance group lists.",
+                    "type": "object"
+                },
+                "kind": {
+                    "default": "compute#instanceGroupManagerAggregatedList",
+                    "description": "[Output Only] Type of the resource. Always compute#instanceGroupManagerAggregatedList for an aggregated list of managed instance groups.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] A token that is used to continue a truncated list request.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] The URL for this aggregated list of managed instance groups. The server defines this URL.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagerAutoHealingPolicy": {
+            "id": "InstanceGroupManagerAutoHealingPolicy",
+            "properties": {
+                "actionType": {
+                    "description": "The action to perform when an instance becomes unhealthy. Possible values are RECREATE or REBOOT. RECREATE replaces an unhealthy instance with a new instance that is based on the instance template for this managed instance group. REBOOT performs a soft reboot on an instance. If the instance cannot reboot, the instance performs a hard restart.",
+                    "enum": [
+                        "REBOOT",
+                        "RECREATE"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "healthCheck": {
+                    "description": "The URL for the HealthCheck that signals autohealing.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagerList": {
+            "description": "[Output Only] A list of InstanceGroupManager resources.",
+            "id": "InstanceGroupManagerList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] A unique identifier for this managed instance group. The server defines this identifier.",
+                    "type": "string"
+                },
+                "items": {
+                    "description": "[Output Only] A list of managed instance group resources.",
+                    "items": {
+                        "$ref": "InstanceGroupManager"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#instanceGroupManagerList",
+                    "description": "[Output Only] Type of the resource. Always compute#instanceGroupManagerList for a list of managed instance group resources.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] A token that is used to continue a truncated list request.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] The URL for this managed instance group. The server defines this URL.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagersAbandonInstancesRequest": {
+            "id": "InstanceGroupManagersAbandonInstancesRequest",
+            "properties": {
+                "instances": {
+                    "description": "The names of instances to abandon from the managed instance group.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagersDeleteInstancesRequest": {
+            "id": "InstanceGroupManagersDeleteInstancesRequest",
+            "properties": {
+                "instances": {
+                    "description": "The names of one or more instances to delete.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagersListManagedInstancesResponse": {
+            "id": "InstanceGroupManagersListManagedInstancesResponse",
+            "properties": {
+                "managedInstances": {
+                    "description": "List of managed instances. If empty - all instances are listed.",
+                    "items": {
+                        "$ref": "ManagedInstance"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagersRecreateInstancesRequest": {
+            "id": "InstanceGroupManagersRecreateInstancesRequest",
+            "properties": {
+                "instances": {
+                    "description": "The names of one or more instances to recreate.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagersScopedList": {
+            "id": "InstanceGroupManagersScopedList",
+            "properties": {
+                "instanceGroupManagers": {
+                    "description": "[Output Only] The list of managed instance groups that are contained in the specified project and zone.",
+                    "items": {
+                        "$ref": "InstanceGroupManager"
+                    },
+                    "type": "array"
+                },
+                "warning": {
+                    "description": "[Output Only] The warning that replaces the list of managed instance groups when the list is empty.",
+                    "properties": {
+                        "code": {
+                            "description": "[Output Only] The warning type identifier for this warning.",
+                            "enum": [
+                                "DEPRECATED_RESOURCE_USED",
+                                "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "INJECTED_KERNELS_DEPRECATED",
+                                "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                                "NEXT_HOP_CANNOT_IP_FORWARD",
+                                "NEXT_HOP_INSTANCE_NOT_FOUND",
+                                "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                                "NEXT_HOP_NOT_RUNNING",
+                                "NOT_CRITICAL_ERROR",
+                                "NO_RESULTS_ON_PAGE",
+                                "REQUIRED_TOS_AGREEMENT",
+                                "RESOURCE_NOT_DELETED",
+                                "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                                "UNREACHABLE"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "type": "string"
+                        },
+                        "data": {
+                            "description": "[Output Only] Metadata for this warning in key: value format.",
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "description": "[Output Only] A key for the warning data.",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "[Output Only] A warning data value corresponding to the key.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "message": {
+                            "description": "[Output Only] Optional human-readable details for this warning.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagersSetInstanceTemplateRequest": {
+            "id": "InstanceGroupManagersSetInstanceTemplateRequest",
+            "properties": {
+                "instanceTemplate": {
+                    "description": "The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagersSetTargetPoolsRequest": {
+            "id": "InstanceGroupManagersSetTargetPoolsRequest",
+            "properties": {
+                "fingerprint": {
+                    "description": "The fingerprint of the target pools information, which is a hash of the contents. This field is used for optimistic locking when updating the target pool entries.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "targetPools": {
+                    "description": "The list of target pool URLs that instances in this managed instance group belong to. When the managed instance group creates new instances, the group automatically adds those instances to the target pools that are specified in this parameter. Changing the value of this parameter does not change the target pools of existing instances in this managed instance group.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupsAddInstancesRequest": {
+            "id": "InstanceGroupsAddInstancesRequest",
+            "properties": {
+                "instances": {
+                    "description": "The instances to add to the instance group.",
+                    "items": {
+                        "$ref": "InstanceReference"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupsListInstances": {
+            "id": "InstanceGroupsListInstances",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] A unique identifier for this list of instance groups. The server defines this identifier.",
+                    "type": "string"
+                },
+                "items": {
+                    "description": "A list of InstanceWithNamedPorts resources, which contains all named ports for the given instance.",
+                    "items": {
+                        "$ref": "InstanceWithNamedPorts"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#instanceGroupsListInstances",
+                    "description": "[Output Only] The resource type, which is always compute#instanceGroupsListInstances for lists of instance groups.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] A token that is used to continue a truncated list request.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] The URL for this list of instance groups. The server defines this URL.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupsListInstancesRequest": {
+            "id": "InstanceGroupsListInstancesRequest",
+            "properties": {
+                "instanceState": {
+                    "description": "A filter for the state of the instances in the instance group. Valid options are ALL or RUNNING. If you do not specify this parameter the list includes all instances regardless of their state.",
+                    "enum": [
+                        "ALL",
+                        "RUNNING"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "portName": {
+                    "description": "A filter for the named ports that are associated with instances in the instance group. If you specify this parameter, the generated list includes only instances that are associated with the specified named ports. If you do not specify this parameter, the generated list includes all instances regardless of their named ports.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupsRemoveInstancesRequest": {
+            "id": "InstanceGroupsRemoveInstancesRequest",
+            "properties": {
+                "instances": {
+                    "description": "The instances to remove from the instance group.",
+                    "items": {
+                        "$ref": "InstanceReference"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupsScopedList": {
+            "id": "InstanceGroupsScopedList",
+            "properties": {
+                "instanceGroups": {
+                    "description": "[Output Only] The list of instance groups that are contained in this scope.",
+                    "items": {
+                        "$ref": "InstanceGroup"
+                    },
+                    "type": "array"
+                },
+                "warning": {
+                    "description": "[Output Only] An informational warning that replaces the list of instance groups when the list is empty.",
+                    "properties": {
+                        "code": {
+                            "description": "[Output Only] The warning type identifier for this warning.",
+                            "enum": [
+                                "DEPRECATED_RESOURCE_USED",
+                                "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "INJECTED_KERNELS_DEPRECATED",
+                                "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                                "NEXT_HOP_CANNOT_IP_FORWARD",
+                                "NEXT_HOP_INSTANCE_NOT_FOUND",
+                                "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                                "NEXT_HOP_NOT_RUNNING",
+                                "NOT_CRITICAL_ERROR",
+                                "NO_RESULTS_ON_PAGE",
+                                "REQUIRED_TOS_AGREEMENT",
+                                "RESOURCE_NOT_DELETED",
+                                "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                                "UNREACHABLE"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "type": "string"
+                        },
+                        "data": {
+                            "description": "[Output Only] Metadata for this warning in key: value format.",
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "description": "[Output Only] A key for the warning data.",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "[Output Only] A warning data value corresponding to the key.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "message": {
+                            "description": "[Output Only] Optional human-readable details for this warning.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupsSetNamedPortsRequest": {
+            "id": "InstanceGroupsSetNamedPortsRequest",
+            "properties": {
+                "fingerprint": {
+                    "description": "The fingerprint of the named ports information, which is a hash of the contents. Use this field for optimistic locking when you update the named ports entries.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "namedPorts": {
+                    "description": "The list of named ports to set for this instance group.",
+                    "items": {
+                        "$ref": "NamedPort"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "InstanceList": {
             "description": "Contains a list of instance resources.",
             "id": "InstanceList",
@@ -7980,6 +9571,47 @@
                 },
                 "selfLink": {
                     "description": "[Output Only] The URL for this instance template list. The server defines this URL.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceWithNamedPorts": {
+            "id": "InstanceWithNamedPorts",
+            "properties": {
+                "instance": {
+                    "description": "The URL of the instance.",
+                    "type": "string"
+                },
+                "namedPorts": {
+                    "description": "The named ports that belong to this instance group.",
+                    "items": {
+                        "$ref": "NamedPort"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "description": "The status of the instance.",
+                    "enum": [
+                        "PROVISIONING",
+                        "RUNNING",
+                        "STAGING",
+                        "STOPPED",
+                        "STOPPING",
+                        "SUSPENDED",
+                        "SUSPENDING",
+                        "TERMINATED"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
                     "type": "string"
                 }
             },
@@ -8310,6 +9942,104 @@
             },
             "type": "object"
         },
+        "ManagedInstance": {
+            "id": "ManagedInstance",
+            "properties": {
+                "currentAction": {
+                    "description": "The current action that the managed instance group has scheduled for the instance.",
+                    "enum": [
+                        "ABANDONING",
+                        "CREATING",
+                        "DELETING",
+                        "NONE",
+                        "REBOOTING",
+                        "RECREATING",
+                        "REFRESHING"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "incarnationId": {
+                    "description": "The unique identifier for this resource (empty when instance does not exist).",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "instance": {
+                    "description": "The URL of the instance (set even though instance does not exist yet).",
+                    "type": "string"
+                },
+                "instanceStatus": {
+                    "description": "The status of the instance (empty when instance does not exist).",
+                    "enum": [
+                        "PROVISIONING",
+                        "RUNNING",
+                        "STAGING",
+                        "STOPPED",
+                        "STOPPING",
+                        "SUSPENDED",
+                        "SUSPENDING",
+                        "TERMINATED"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "lastAttempt": {
+                    "$ref": "ManagedInstanceLastAttempt",
+                    "description": "Information about the last attempt to create or delete the instance."
+                }
+            },
+            "type": "object"
+        },
+        "ManagedInstanceLastAttempt": {
+            "id": "ManagedInstanceLastAttempt",
+            "properties": {
+                "errors": {
+                    "description": "Encountered errors during the last attempt to create or delete the instance.",
+                    "properties": {
+                        "errors": {
+                            "description": "[Output Only] The array of errors encountered while processing this operation.",
+                            "items": {
+                                "properties": {
+                                    "code": {
+                                        "description": "[Output Only] The error type identifier for this error.",
+                                        "type": "string"
+                                    },
+                                    "location": {
+                                        "description": "[Output Only] Indicates the field in the request which caused the error. This property is optional.",
+                                        "type": "string"
+                                    },
+                                    "message": {
+                                        "description": "[Output Only] An optional, human-readable error message.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "Metadata": {
             "description": "A metadata key/value entry.",
             "id": "Metadata",
@@ -8353,6 +10083,23 @@
                     "default": "compute#metadata",
                     "description": "[Output Only] Type of the resource. Always compute#metadata for metadata.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "NamedPort": {
+            "description": "The named port information. For example: .",
+            "id": "NamedPort",
+            "properties": {
+                "name": {
+                    "description": "The name for this NamedPort.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "port": {
+                    "description": "The port number, which can be a value between 1 and 65535.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -8474,11 +10221,11 @@
             "type": "object"
         },
         "Operation": {
-            "description": "An operation resource, used to manage asynchronous API requests.",
+            "description": "An Operation resource, used to manage asynchronous API requests.",
             "id": "Operation",
             "properties": {
                 "clientOperationId": {
-                    "description": "[Output Only] An optional identifier specified by the client when the mutation was initiated. Must be unique for all operation resources in the project.",
+                    "description": "[Output Only] An optional identifier specified by the client when the mutation was initiated. Must be unique for all Operation resources in the project.",
                     "type": "string"
                 },
                 "creationTimestamp": {
@@ -8700,7 +10447,7 @@
             "type": "object"
         },
         "OperationList": {
-            "description": "Contains a list of operation resources.",
+            "description": "Contains a list of Operation resources.",
             "id": "OperationList",
             "properties": {
                 "id": {
@@ -8708,7 +10455,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "[Output Only] The operation resources.",
+                    "description": "[Output Only] The Operation resources.",
                     "items": {
                         "$ref": "Operation"
                     },
@@ -8917,6 +10664,8 @@
                         "HEALTH_CHECKS",
                         "IMAGES",
                         "INSTANCES",
+                        "INSTANCE_GROUPS",
+                        "INSTANCE_GROUP_MANAGERS",
                         "INSTANCE_TEMPLATES",
                         "IN_USE_ADDRESSES",
                         "LOCAL_SSD_TOTAL_GB",
@@ -8933,6 +10682,8 @@
                         "VPN_TUNNELS"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -10524,9 +12275,11 @@
                         "NETWORK_ERROR",
                         "NO_INCOMING_PACKETS",
                         "PROVISIONING",
+                        "REJECTED",
                         "WAITING_FOR_FULL_CONFIG"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",

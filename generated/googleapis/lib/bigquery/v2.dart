@@ -3535,6 +3535,8 @@ class Table {
    * since the epoch.
    */
   core.String lastModifiedTime;
+  /** [Optional] The backing storage location. */
+  core.String location;
   /**
    * [Output-only] The size of the table in bytes. This property is unavailable
    * for tables that are actively receiving streaming inserts.
@@ -3587,6 +3589,9 @@ class Table {
     if (_json.containsKey("lastModifiedTime")) {
       lastModifiedTime = _json["lastModifiedTime"];
     }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
     if (_json.containsKey("numBytes")) {
       numBytes = _json["numBytes"];
     }
@@ -3635,6 +3640,9 @@ class Table {
     }
     if (lastModifiedTime != null) {
       _json["lastModifiedTime"] = lastModifiedTime;
+    }
+    if (location != null) {
+      _json["location"] = location;
     }
     if (numBytes != null) {
       _json["numBytes"] = numBytes;

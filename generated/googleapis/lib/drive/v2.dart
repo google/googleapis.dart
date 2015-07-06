@@ -5291,10 +5291,6 @@ class File {
   core.String defaultOpenWithLink;
   /** A short description of the file. */
   core.String description;
-  /**
-   * Short lived download URL for the file. This is only populated for files
-   * with content stored in Drive.
-   */
   core.String downloadUrl;
   /** Whether the file can be edited by the current user. */
   core.bool editable;
@@ -5304,7 +5300,7 @@ class File {
   core.String etag;
   /**
    * Whether this file has been explicitly trashed, as opposed to recursively
-   * trashed. This will only be populated if the file is trashed.
+   * trashed.
    */
   core.bool explicitlyTrashed;
   /** Links for exporting Google Docs to specific formats. */

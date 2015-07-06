@@ -114,10 +114,10 @@ class ProjectsSubscriptionsResourceApi {
    *
    * [name] - The name of the subscription. It must have the format
    * "projects/{project}/subscriptions/{subscription}" for Google Cloud Pub/Sub
-   * API v1beta2. {subscription} must start with a letter, and contain only
-   * letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), periods
-   * (.), tildes (~), plus (+) or percent signs (%). It must be between 3 and
-   * 255 characters in length, and it must not start with "goog".
+   * API v1 and v1beta2. {subscription} must start with a letter, and contain
+   * only letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_),
+   * periods (.), tildes (~), plus (+) or percent signs (%). It must be between
+   * 3 and 255 characters in length, and it must not start with "goog".
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [Subscription].
@@ -240,13 +240,13 @@ class ProjectsSubscriptionsResourceApi {
   }
 
   /**
-   * Gets the access control policy for a resource. May be empty if no such
-   * policy or resource exists.
+   * Gets the access control policy for a resource. Is empty if the policy or
+   * the resource does not exist.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being requested.
-   * Usually some path like projects/{project}.
+   * Resource is usually specified as a path, such as, projects/{project}.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [Policy].
@@ -487,7 +487,8 @@ class ProjectsSubscriptionsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
-   * Usually some path like projects/{project}/zones/{zone}/disks/{disk}.
+   * Resource is usually specified as a path, such as,
+   * projects/{project}/zones/{zone}/disks/{disk}.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [Policy].
@@ -533,7 +534,8 @@ class ProjectsSubscriptionsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy detail is being
-   * requested. Usually some path like projects/{project}.
+   * requested. Resource is usually specified as a path, such as,
+   * projects/{project}.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -590,11 +592,11 @@ class ProjectsTopicsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the topic. It must have the format
-   * "projects/{project}/topics/{topic}" for Google Cloud Pub/Sub API v1beta2.
-   * {topic} must start with a letter, and contain only letters ([A-Za-z]),
-   * numbers ([0-9], dashes (-), underscores (_), periods (.), tildes (~), plus
-   * (+) or percent signs (%). It must be between 3 and 255 characters in
-   * length, and it must not start with "goog".
+   * "projects/{project}/topics/{topic}" for Google Cloud Pub/Sub API v1 and
+   * v1beta2. {topic} must start with a letter, and contain only letters
+   * ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), periods (.),
+   * tildes (~), plus (+) or percent signs (%). It must be between 3 and 255
+   * characters in length, and it must not start with "goog".
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [Topic].
@@ -636,7 +638,8 @@ class ProjectsTopicsResourceApi {
    * Deletes the topic with the given name. Returns NOT_FOUND if the topic does
    * not exist. After a topic is deleted, a new topic may be created with the
    * same name; this is an entirely new topic with none of the old configuration
-   * or subscriptions. Existing subscriptions to this topic are not deleted.
+   * or subscriptions. Existing subscriptions to this topic are not deleted, but
+   * their `topic` field is set to `_deleted-topic_`.
    *
    * Request parameters:
    *
@@ -716,13 +719,13 @@ class ProjectsTopicsResourceApi {
   }
 
   /**
-   * Gets the access control policy for a resource. May be empty if no such
-   * policy or resource exists.
+   * Gets the access control policy for a resource. Is empty if the policy or
+   * the resource does not exist.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being requested.
-   * Usually some path like projects/{project}.
+   * Resource is usually specified as a path, such as, projects/{project}.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [Policy].
@@ -864,7 +867,8 @@ class ProjectsTopicsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
-   * Usually some path like projects/{project}/zones/{zone}/disks/{disk}.
+   * Resource is usually specified as a path, such as,
+   * projects/{project}/zones/{zone}/disks/{disk}.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [Policy].
@@ -910,7 +914,8 @@ class ProjectsTopicsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy detail is being
-   * requested. Usually some path like projects/{project}.
+   * requested. Resource is usually specified as a path, such as,
+   * projects/{project}.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -1039,10 +1044,7 @@ class AcknowledgeRequest {
   }
 }
 
-/**
- * Associates members of various types with roles. See below for details of the
- * various objects that can be included as members.
- */
+/** Associates members with roles. See below for allowed formats of members. */
 class Binding {
   /**
    * Format of member entries: 1. allUsers Matches any requesting principal
@@ -1232,7 +1234,8 @@ class DataAccessOptions {
  * A generic empty message that you can re-use to avoid defining duplicated
  * empty messages in your APIs. A typical example is to use it as the request or
  * the response type of an API method. For instance: service Foo { rpc
- * Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+ * Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+ * representation for `Empty` is empty JSON object `{}`.
  */
 class Empty {
 
@@ -1409,7 +1412,10 @@ class ModifyAckDeadlineRequest {
    * request.
    */
   core.int ackDeadlineSeconds;
-  /** The acknowledgment ID. */
+  /**
+   * The acknowledgment ID. Either this or ack_ids must be populated, but not
+   * both.
+   */
   core.String ackId;
   /** List of acknowledgment IDs. */
   core.List<core.String> ackIds;
@@ -1471,19 +1477,18 @@ class ModifyPushConfigRequest {
 }
 
 /**
- * # Overview The `Policy` defines an access control policy language. It can be
- * used to define policies that can be attached to resources like files,
- * folders, VMs, etc. # Policy structure A `Policy` consists of a list of
- * bindings. A `Binding` binds a set of members to a role, where the members can
- * include user accounts, user groups, user domains, and service accounts. A
- * role is a named set of permissions, defined by the IAM system. The definition
- * of a role is outside the policy. A permission check involves determining the
- * roles that include the specified permission, and then determining if the
- * principal specified by the check is a member of a binding to at least one of
- * these roles. The membership check is recursive when a group is bound to a
- * role. Policy examples: ``` { "bindings": [ { "role": "roles/owner",
- * "members": [ "user:mike@example.com", "group::admins@example.com",
- * "domain:google.com",
+ * # Overview The `Policy` defines an access control policy language. It is used
+ * to define policies that are attached to resources like files, folders, VMs,
+ * etc. # Policy structure A `Policy` consists of a list of bindings. A
+ * `Binding` binds a set of members to a role, where the members include user
+ * accounts, user groups, user domains, and service accounts. A 'role' is a
+ * named set of permissions, defined by IAM. The definition of a role is outside
+ * the policy. A permission check first determines the roles that include the
+ * specified permission, and then determines if the principal specified is a
+ * member of a binding to at least one of these roles. The membership check is
+ * recursive when a group is bound to a role. Policy examples: ``` { "bindings":
+ * [ { "role": "roles/owner", "members": [ "user:mike@example.com",
+ * "group:admins@example.com", "domain:google.com",
  * "serviceAccount:frontend@example.iam.gserviceaccounts.com"] }, { "role":
  * "roles/viewer", "members": ["user:sean@example.com"] } ] } ```
  */
@@ -1504,8 +1509,8 @@ class Policy {
   }
   core.List<Rule> rules;
   /**
-   * The policy language version. The version of the policy itself is
-   * represented by the etag. The current version is 0.
+   * The policy language version. The version of the policy is represented by
+   * the etag. The default version is 0.
    */
   core.int version;
 
@@ -1926,10 +1931,10 @@ class Subscription {
   /**
    * The name of the subscription. It must have the format
    * "projects/{project}/subscriptions/{subscription}" for Google Cloud Pub/Sub
-   * API v1beta2. {subscription} must start with a letter, and contain only
-   * letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), periods
-   * (.), tildes (~), plus (+) or percent signs (%). It must be between 3 and
-   * 255 characters in length, and it must not start with "goog".
+   * API v1 and v1beta2. {subscription} must start with a letter, and contain
+   * only letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_),
+   * periods (.), tildes (~), plus (+) or percent signs (%). It must be between
+   * 3 and 255 characters in length, and it must not start with "goog".
    */
   core.String name;
   /**
@@ -1940,8 +1945,8 @@ class Subscription {
   PushConfig pushConfig;
   /**
    * The name of the topic from which this subscription is receiving messages.
-   * This will be present if and only if the subscription has not been detached
-   * from its topic.
+   * The value of this field will be `_deleted-topic_` if the topic has been
+   * deleted.
    */
   core.String topic;
 
@@ -2034,11 +2039,11 @@ class TestIamPermissionsResponse {
 class Topic {
   /**
    * The name of the topic. It must have the format
-   * "projects/{project}/topics/{topic}" for Google Cloud Pub/Sub API v1beta2.
-   * {topic} must start with a letter, and contain only letters ([A-Za-z]),
-   * numbers ([0-9], dashes (-), underscores (_), periods (.), tildes (~), plus
-   * (+) or percent signs (%). It must be between 3 and 255 characters in
-   * length, and it must not start with "goog".
+   * "projects/{project}/topics/{topic}" for Google Cloud Pub/Sub API v1 and
+   * v1beta2. {topic} must start with a letter, and contain only letters
+   * ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), periods (.),
+   * tildes (~), plus (+) or percent signs (%). It must be between 3 and 255
+   * characters in length, and it must not start with "goog".
    */
   core.String name;
 

@@ -29,7 +29,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/dfyqUMrFd-mvh1ZHmWj5OJLDhTI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/6_j3-L3xDTpJRP-qmfT7ZpU_5Bg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -920,7 +920,7 @@
             }
         }
     },
-    "revision": "20150526",
+    "revision": "20150626",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CsvOptions": {
@@ -1955,6 +1955,10 @@
                 "lastModifiedTime": {
                     "description": "[Output-only] The time when this table was last modified, in milliseconds since the epoch.",
                     "format": "uint64",
+                    "type": "string"
+                },
+                "location": {
+                    "description": "[Optional] The backing storage location.",
                     "type": "string"
                 },
                 "numBytes": {

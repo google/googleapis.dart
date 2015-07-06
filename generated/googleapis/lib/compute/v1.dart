@@ -49,6 +49,8 @@ class ComputeApi {
   GlobalOperationsResourceApi get globalOperations => new GlobalOperationsResourceApi(_requester);
   HttpHealthChecksResourceApi get httpHealthChecks => new HttpHealthChecksResourceApi(_requester);
   ImagesResourceApi get images => new ImagesResourceApi(_requester);
+  InstanceGroupManagersResourceApi get instanceGroupManagers => new InstanceGroupManagersResourceApi(_requester);
+  InstanceGroupsResourceApi get instanceGroups => new InstanceGroupsResourceApi(_requester);
   InstanceTemplatesResourceApi get instanceTemplates => new InstanceTemplatesResourceApi(_requester);
   InstancesResourceApi get instances => new InstancesResourceApi(_requester);
   LicensesResourceApi get licenses => new LicensesResourceApi(_requester);
@@ -88,13 +90,32 @@ class AddressesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [AddressAggregatedList].
    *
@@ -309,13 +330,32 @@ class AddressesResourceApi {
    * [region] - The name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [AddressList].
    *
@@ -574,13 +614,32 @@ class BackendServicesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [BackendServiceList].
    *
@@ -746,13 +805,32 @@ class DiskTypesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [DiskTypeAggregatedList].
    *
@@ -861,13 +939,32 @@ class DiskTypesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [DiskTypeList].
    *
@@ -931,13 +1028,32 @@ class DisksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [DiskAggregatedList].
    *
@@ -1214,13 +1330,32 @@ class DisksResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [DiskList].
    *
@@ -1426,13 +1561,32 @@ class FirewallsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [FirewallList].
    *
@@ -1599,13 +1753,32 @@ class ForwardingRulesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [ForwardingRuleAggregatedList].
    *
@@ -1820,13 +1993,32 @@ class ForwardingRulesResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [ForwardingRuleList].
    *
@@ -2090,13 +2282,32 @@ class GlobalAddressesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [AddressList].
    *
@@ -2299,13 +2510,32 @@ class GlobalForwardingRulesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [ForwardingRuleList].
    *
@@ -2419,13 +2649,32 @@ class GlobalOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [OperationAggregatedList].
    *
@@ -2469,7 +2718,7 @@ class GlobalOperationsResourceApi {
   }
 
   /**
-   * Deletes the specified operation resource.
+   * Deletes the specified Operations resource.
    *
    * Request parameters:
    *
@@ -2477,7 +2726,7 @@ class GlobalOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [operation] - Name of the operation resource to delete.
+   * [operation] - Name of the Operations resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2516,7 +2765,7 @@ class GlobalOperationsResourceApi {
   }
 
   /**
-   * Retrieves the specified operation resource.
+   * Retrieves the specified Operations resource.
    *
    * Request parameters:
    *
@@ -2524,7 +2773,7 @@ class GlobalOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [operation] - Name of the operation resource to return.
+   * [operation] - Name of the Operations resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -2563,7 +2812,7 @@ class GlobalOperationsResourceApi {
   }
 
   /**
-   * Retrieves the list of operation resources contained within the specified
+   * Retrieves the list of Operation resources contained within the specified
    * project.
    *
    * Request parameters:
@@ -2572,13 +2821,32 @@ class GlobalOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [OperationList].
    *
@@ -2781,13 +3049,32 @@ class HttpHealthChecksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [HttpHealthCheckList].
    *
@@ -3149,13 +3436,32 @@ class ImagesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [ImageList].
    *
@@ -3196,6 +3502,1324 @@ class ImagesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ImageList.fromJson(data));
+  }
+
+}
+
+
+class InstanceGroupManagersResourceApi {
+  final commons.ApiRequester _requester;
+
+  InstanceGroupManagersResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Removes the specified instances from the managed instance group, and from
+   * any target pools where they are a member. The instances are not deleted.
+   * The managed instance group automatically reduces its targetSize value by
+   * the number of instances that you abandon from the group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the managed instance group is located.
+   *
+   * [instanceGroupManager] - The name of the instance group manager.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> abandonInstances(InstanceGroupManagersAbandonInstancesRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/abandonInstances';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of managed instance groups, and groups them by project
+   * and zone.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
+   *
+   * [maxResults] - Maximum count of results to be returned.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
+   *
+   * Completes with a [InstanceGroupManagerAggregatedList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<InstanceGroupManagerAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/instanceGroupManagers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceGroupManagerAggregatedList.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified managed instance group resource.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the managed instance group is located.
+   *
+   * [instanceGroupManager] - The name of the instance group manager to delete.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String zone, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified instances. The instances are deleted and removed from
+   * the instance group and any target pools where they are a member. The
+   * managed instance group automatically reduces its targetSize value by the
+   * number of instances that you delete.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the managed instance group is located.
+   *
+   * [instanceGroupManager] - The name of the instance group manager.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> deleteInstances(InstanceGroupManagersDeleteInstancesRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/deleteInstances';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified managed instance group resource.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the managed instance group is located.
+   *
+   * [instanceGroupManager] - The name of the instance group manager resource.
+   *
+   * Completes with a [InstanceGroupManager].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<InstanceGroupManager> get(core.String project, core.String zone, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceGroupManager.fromJson(data));
+  }
+
+  /**
+   * Creates a managed instance group resource in the specified project using
+   * the data that is included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the managed instance group is located.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(InstanceGroupManager request, core.String project, core.String zone) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of managed instance groups that are contained within the
+   * specified project and zone.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the managed instance group is located.
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
+   *
+   * [maxResults] - Maximum count of results to be returned.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
+   *
+   * Completes with a [InstanceGroupManagerList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<InstanceGroupManagerList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceGroupManagerList.fromJson(data));
+  }
+
+  /**
+   * Lists managed instances.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the managed instance group is located.
+   *
+   * [instanceGroupManager] - The name of the managed instance group.
+   *
+   * Completes with a [InstanceGroupManagersListManagedInstancesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<InstanceGroupManagersListManagedInstancesResponse> listManagedInstances(core.String project, core.String zone, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/listManagedInstances';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceGroupManagersListManagedInstancesResponse.fromJson(data));
+  }
+
+  /**
+   * Recreates the specified instances. The instances are deleted, then
+   * recreated using the managed instance group's current instance template.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the managed instance group is located.
+   *
+   * [instanceGroupManager] - The name of the instance group manager.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> recreateInstances(InstanceGroupManagersRecreateInstancesRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/recreateInstances';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Resizes the managed instance group. If you increase the size, the group
+   * creates new instances using the current instance template. If you decrease
+   * the size, the group removes instances in the order that is outlined in
+   * Resizing a managed instance group.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the managed instance group is located.
+   *
+   * [instanceGroupManager] - The name of the instance group manager.
+   *
+   * [size] - The number of running instances that the managed instance group
+   * should maintain at any given time. The group automatically adds or removes
+   * instances to maintain the number of instances specified by this parameter.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> resize(core.String project, core.String zone, core.String instanceGroupManager, core.int size) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (size == null) {
+      throw new core.ArgumentError("Parameter size is required.");
+    }
+    _queryParams["size"] = ["${size}"];
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/resize';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Specifies the instance template to use when creating new instances in this
+   * group. The templates for existing instances in the group do not change
+   * unless you recreate them.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the managed instance group is located.
+   *
+   * [instanceGroupManager] - The name of the instance group manager.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setInstanceTemplate(InstanceGroupManagersSetInstanceTemplateRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/setInstanceTemplate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Modifies the target pools to which all new instances in this group are
+   * assigned. The target pools for existing instances in the group do not
+   * change unless you recreate them.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the managed instance group is located.
+   *
+   * [instanceGroupManager] - The name of the instance group manager.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setTargetPools(InstanceGroupManagersSetTargetPoolsRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/setTargetPools';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
+class InstanceGroupsResourceApi {
+  final commons.ApiRequester _requester;
+
+  InstanceGroupsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Adds a list of instances to an instance group. All of the instances in the
+   * instance group must be in the same network.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the instance group is located.
+   *
+   * [instanceGroup] - The name of the instance group where you are adding
+   * instances.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> addInstances(InstanceGroupsAddInstancesRequest request, core.String project, core.String zone, core.String instanceGroup) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroup == null) {
+      throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup') + '/addInstances';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of instance groups, and sorts them by zone.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
+   *
+   * [maxResults] - Maximum count of results to be returned.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
+   *
+   * Completes with a [InstanceGroupAggregatedList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<InstanceGroupAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/instanceGroups';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceGroupAggregatedList.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified instance group.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the instance group is located.
+   *
+   * [instanceGroup] - The name of the instance group to delete.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String zone, core.String instanceGroup) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroup == null) {
+      throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified instance group resource.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the instance group is located.
+   *
+   * [instanceGroup] - The name of the instance group.
+   *
+   * Completes with a [InstanceGroup].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<InstanceGroup> get(core.String project, core.String zone, core.String instanceGroup) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroup == null) {
+      throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceGroup.fromJson(data));
+  }
+
+  /**
+   * Creates an instance group in the specified project using the parameters
+   * that are included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the instance group is located.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(InstanceGroup request, core.String project, core.String zone) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of instance groups that are located in the specified
+   * project and zone.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the instance group is located.
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
+   *
+   * [maxResults] - Maximum count of results to be returned.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
+   *
+   * Completes with a [InstanceGroupList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<InstanceGroupList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceGroupList.fromJson(data));
+  }
+
+  /**
+   * Lists instances in an instance group. The parameters for this method
+   * specify whether the list filters instances by state and named ports
+   * information.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the instance group is located.
+   *
+   * [instanceGroup] - The name of the instance group from which you want to
+   * generate a list of included instances.
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
+   *
+   * [maxResults] - Maximum count of results to be returned.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
+   *
+   * Completes with a [InstanceGroupsListInstances].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<InstanceGroupsListInstances> listInstances(InstanceGroupsListInstancesRequest request, core.String project, core.String zone, core.String instanceGroup, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroup == null) {
+      throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup') + '/listInstances';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceGroupsListInstances.fromJson(data));
+  }
+
+  /**
+   * Removes a list of instances from an instance group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the instance group is located.
+   *
+   * [instanceGroup] - The name of the instance group where the specified
+   * instances will be removed.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> removeInstances(InstanceGroupsRemoveInstancesRequest request, core.String project, core.String zone, core.String instanceGroup) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroup == null) {
+      throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup') + '/removeInstances';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Sets the named ports in an instance group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The URL of the zone where the instance group is located.
+   *
+   * [instanceGroup] - The name of the instance group where the named ports are
+   * updated.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setNamedPorts(InstanceGroupsSetNamedPortsRequest request, core.String project, core.String zone, core.String instanceGroup) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroup == null) {
+      throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup') + '/setNamedPorts';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
 }
@@ -3358,13 +4982,32 @@ class InstanceTemplatesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [InstanceTemplateList].
    *
@@ -3488,13 +5131,32 @@ class InstancesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [InstanceAggregatedList].
    *
@@ -3842,7 +5504,7 @@ class InstancesResourceApi {
    * [instance] - Name of the instance scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [port] - Which COM port to retrieve data from.
+   * [port] - Specifies which COM or serial port to retrieve data from.
    * Value must be between "1" and "4".
    *
    * Completes with a [SerialPortOutput].
@@ -3952,13 +5614,32 @@ class InstancesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [InstanceList].
    *
@@ -4485,13 +6166,32 @@ class MachineTypesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [MachineTypeAggregatedList].
    *
@@ -4600,13 +6300,32 @@ class MachineTypesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [MachineTypeList].
    *
@@ -4811,13 +6530,32 @@ class NetworksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [NetworkList].
    *
@@ -5108,7 +6846,7 @@ class RegionOperationsResourceApi {
       _requester = client;
 
   /**
-   * Deletes the specified region-specific operation resource.
+   * Deletes the specified region-specific Operations resource.
    *
    * Request parameters:
    *
@@ -5119,7 +6857,7 @@ class RegionOperationsResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [operation] - Name of the operation resource to delete.
+   * [operation] - Name of the Operations resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5161,7 +6899,7 @@ class RegionOperationsResourceApi {
   }
 
   /**
-   * Retrieves the specified region-specific operation resource.
+   * Retrieves the specified region-specific Operations resource.
    *
    * Request parameters:
    *
@@ -5172,7 +6910,7 @@ class RegionOperationsResourceApi {
    * [region] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [operation] - Name of the operation resource to return.
+   * [operation] - Name of the Operations resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -5214,7 +6952,7 @@ class RegionOperationsResourceApi {
   }
 
   /**
-   * Retrieves the list of operation resources contained within the specified
+   * Retrieves the list of Operation resources contained within the specified
    * region.
    *
    * Request parameters:
@@ -5226,13 +6964,32 @@ class RegionOperationsResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [OperationList].
    *
@@ -5343,13 +7100,32 @@ class RegionsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [RegionList].
    *
@@ -5551,13 +7327,32 @@ class RoutesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [RouteList].
    *
@@ -5713,13 +7508,32 @@ class SnapshotsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [SnapshotList].
    *
@@ -5922,13 +7736,32 @@ class TargetHttpProxiesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [TargetHttpProxyList].
    *
@@ -6042,13 +7875,32 @@ class TargetInstancesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [TargetInstanceAggregatedList].
    *
@@ -6263,13 +8115,32 @@ class TargetInstancesResourceApi {
    * [zone] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [TargetInstanceList].
    *
@@ -6451,13 +8322,32 @@ class TargetPoolsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [TargetPoolAggregatedList].
    *
@@ -6732,13 +8622,32 @@ class TargetPoolsResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [TargetPoolList].
    *
@@ -6984,13 +8893,32 @@ class TargetVpnGatewaysResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [TargetVpnGatewayAggregatedList].
    *
@@ -7205,13 +9133,32 @@ class TargetVpnGatewaysResourceApi {
    * [region] - The name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [TargetVpnGatewayList].
    *
@@ -7416,13 +9363,32 @@ class UrlMapsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [UrlMapList].
    *
@@ -7642,13 +9608,32 @@ class VpnTunnelsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [VpnTunnelAggregatedList].
    *
@@ -7863,13 +9848,32 @@ class VpnTunnelsResourceApi {
    * [region] - The name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [VpnTunnelList].
    *
@@ -7925,7 +9929,7 @@ class ZoneOperationsResourceApi {
       _requester = client;
 
   /**
-   * Deletes the specified zone-specific operation resource.
+   * Deletes the specified zone-specific Operations resource.
    *
    * Request parameters:
    *
@@ -7936,7 +9940,7 @@ class ZoneOperationsResourceApi {
    * [zone] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [operation] - Name of the operation resource to delete.
+   * [operation] - Name of the Operations resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7978,7 +9982,7 @@ class ZoneOperationsResourceApi {
   }
 
   /**
-   * Retrieves the specified zone-specific operation resource.
+   * Retrieves the specified zone-specific Operations resource.
    *
    * Request parameters:
    *
@@ -7989,7 +9993,7 @@ class ZoneOperationsResourceApi {
    * [zone] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [operation] - Name of the operation resource to return.
+   * [operation] - Name of the Operations resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -8031,7 +10035,7 @@ class ZoneOperationsResourceApi {
   }
 
   /**
-   * Retrieves the list of operation resources contained within the specified
+   * Retrieves the list of Operation resources contained within the specified
    * zone.
    *
    * Request parameters:
@@ -8043,13 +10047,32 @@ class ZoneOperationsResourceApi {
    * [zone] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [OperationList].
    *
@@ -8160,13 +10183,32 @@ class ZonesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Filter expression for filtering listed resources.
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must contain the following:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   *
+   * - FIELD_NAME: The name of the field you want to compare. The field name
+   * must be valid for the type of resource being filtered. Only atomic field
+   * types are supported (string, number, boolean). Array and object fields are
+   * not currently supported.
+   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+   * equals).
+   * - LITERAL_STRING: The literal string value to filter to. The literal value
+   * must be valid for the type of field (string, number, boolean). For string
+   * fields, the literal value is interpreted as a regular expression using RE2
+   * syntax. The literal value must match the entire field.  For example, you
+   * can filter by the name of a resource:
+   * filter=name ne example-instance
+   * The above filter returns only results whose name field does not equal
+   * example-instance. You can also enclose your literal string in single,
+   * double, or no quotes.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Tag returned by a previous list request when that list was
-   * truncated to maxResults. Used to continue a previous list request.
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
    *
    * Completes with a [ZoneList].
    *
@@ -11654,6 +13696,1285 @@ class InstanceAggregatedList {
   }
 }
 
+class InstanceGroup {
+  /**
+   * [Output Only] The creation timestamp for this instance group in RFC3339
+   * text format.
+   */
+  core.String creationTimestamp;
+  /** An optional text description for the instance group. */
+  core.String description;
+  /**
+   * [Output Only] The fingerprint of the named ports information. The system
+   * uses this fingerprint to detect conflicts when multiple users change the
+   * named ports information concurrently.
+   */
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+  }
+
+  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+  /**
+   * [Output Only] A unique identifier for this instance group. The server
+   * defines this identifier.
+   */
+  core.String id;
+  /**
+   * [Output Only] The resource type, which is always compute#instanceGroup for
+   * instance groups.
+   */
+  core.String kind;
+  /**
+   * The name of the instance group. The name must be 1-63 characters long, and
+   * comply with RFC1035.
+   */
+  core.String name;
+  /**
+   * Assigns a name to a port number. For example: {name: ?http?, port: 80} This
+   * allows the system to reference ports by the assigned name instead of a port
+   * number. Named ports can also contain multiple ports. For example: [{name:
+   * ?http?, port: 80},{name: "http", port: 8080}] Named ports apply to all
+   * instances in this instance group.
+   */
+  core.List<NamedPort> namedPorts;
+  /**
+   * The URL of the network to which all instances in the instance group belong.
+   */
+  core.String network;
+  /**
+   * [Output Only] The URL for this instance group. The server defines this URL.
+   */
+  core.String selfLink;
+  /** [Output Only] The total number of instances in the instance group. */
+  core.int size;
+  /** The URL of the zone where the instance group is located. */
+  core.String zone;
+
+  InstanceGroup();
+
+  InstanceGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("namedPorts")) {
+      namedPorts = _json["namedPorts"].map((value) => new NamedPort.fromJson(value)).toList();
+    }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("size")) {
+      size = _json["size"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (namedPorts != null) {
+      _json["namedPorts"] = namedPorts.map((value) => (value).toJson()).toList();
+    }
+    if (network != null) {
+      _json["network"] = network;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (size != null) {
+      _json["size"] = size;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupAggregatedList {
+  /**
+   * [Output Only] A unique identifier for this aggregated list of instance
+   * groups. The server defines this identifier.
+   */
+  core.String id;
+  /** A map of scoped instance group lists. */
+  core.Map<core.String, InstanceGroupsScopedList> items;
+  /**
+   * [Output Only] The resource type, which is always
+   * compute#instanceGroupAggregatedList for aggregated lists of instance
+   * groups.
+   */
+  core.String kind;
+  /**
+   * [Output Only] A token that is used to continue a truncated list request.
+   */
+  core.String nextPageToken;
+  /**
+   * [Output Only] A unique identifier for this aggregated list of instance
+   * groups. The server defines this identifier.
+   */
+  core.String selfLink;
+
+  InstanceGroupAggregatedList();
+
+  InstanceGroupAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap(_json["items"], (item) => new InstanceGroupsScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** A list of InstanceGroup resources. */
+class InstanceGroupList {
+  /**
+   * [Output Only] A unique identifier for this list of instance groups. The
+   * server defines this identifier.
+   */
+  core.String id;
+  /** A list of InstanceGroup resources. */
+  core.List<InstanceGroup> items;
+  /**
+   * [Output Only] The resource type, which is always compute#instanceGroupList
+   * for instance group lists.
+   */
+  core.String kind;
+  /**
+   * [Output Only] A token that is used to continue a truncated list request.
+   */
+  core.String nextPageToken;
+  /**
+   * [Output Only] The URL for this instance group. The server defines this URL.
+   */
+  core.String selfLink;
+
+  InstanceGroupList();
+
+  InstanceGroupList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new InstanceGroup.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/**
+ * InstanceGroupManagers
+ *
+ * Next available tag: 17
+ */
+class InstanceGroupManager {
+  /**
+   * The autohealing policy for this managed instance group. You can specify
+   * only one value.
+   */
+  core.List<InstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
+  /**
+   * The base instance name to use for instances in this group. The value must
+   * be 1-58 characters long. Instances are named by appending a hyphen and a
+   * random four-character string to the base instance name. The base instance
+   * name must comply with RFC1035.
+   */
+  core.String baseInstanceName;
+  /**
+   * [Output Only] The creation timestamp for this managed instance group in
+   * RFC3339 text format.
+   */
+  core.String creationTimestamp;
+  /**
+   * [Output Only] The list of instance actions and the number of instances in
+   * this managed instance group that are scheduled for those actions.
+   */
+  InstanceGroupManagerActionsSummary currentActions;
+  /**
+   * [Output Only] The number of instances that currently exist and are a part
+   * of this group. The number includes instances that are in a RUNNING state,
+   * instances that are starting, and instances that are scheduled to be deleted
+   * or abandoned.
+   */
+  core.int currentSize;
+  /** An optional text description for the managed instance group. */
+  core.String description;
+  /**
+   * [Output Only] The fingerprint of the target pools information, which is a
+   * hash of the contents. This field is used for optimistic locking when
+   * updating the target pool entries.
+   */
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+  }
+
+  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+  /**
+   * [Output Only] A unique identifier for this managed instance group. The
+   * server defines this identifier.
+   */
+  core.String id;
+  /** [Output Only] The URL of the InstanceGroup resource. */
+  core.String instanceGroup;
+  /**
+   * The URL of the instance template that is specified for this managed
+   * instance group. The group uses this template to create all new instances in
+   * the managed instance group.
+   */
+  core.String instanceTemplate;
+  /**
+   * [Output Only] The resource type, which is always
+   * compute#instanceGroupManager for managed instance groups.
+   */
+  core.String kind;
+  /**
+   * The name of the managed instance group. The name must be 1-63 characters
+   * long, and comply with RFC1035.
+   */
+  core.String name;
+  /** [Output Only] Server defined URL for this managed instance group. */
+  core.String selfLink;
+  /**
+   * The URL of all TargetPool resources to which new instances in the
+   * instanceGroup field are added. Updating the target pool values does not
+   * affect existing instances.
+   */
+  core.List<core.String> targetPools;
+  /**
+   * The target number of running instances for this managed instance group.
+   * Deleting or abandoning instances reduces this number. Resizing the group
+   * changes this number.
+   */
+  core.int targetSize;
+  /** The URL of the zone where the managed instance group is located. */
+  core.String zone;
+
+  InstanceGroupManager();
+
+  InstanceGroupManager.fromJson(core.Map _json) {
+    if (_json.containsKey("autoHealingPolicies")) {
+      autoHealingPolicies = _json["autoHealingPolicies"].map((value) => new InstanceGroupManagerAutoHealingPolicy.fromJson(value)).toList();
+    }
+    if (_json.containsKey("baseInstanceName")) {
+      baseInstanceName = _json["baseInstanceName"];
+    }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("currentActions")) {
+      currentActions = new InstanceGroupManagerActionsSummary.fromJson(_json["currentActions"]);
+    }
+    if (_json.containsKey("currentSize")) {
+      currentSize = _json["currentSize"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("instanceGroup")) {
+      instanceGroup = _json["instanceGroup"];
+    }
+    if (_json.containsKey("instanceTemplate")) {
+      instanceTemplate = _json["instanceTemplate"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("targetPools")) {
+      targetPools = _json["targetPools"];
+    }
+    if (_json.containsKey("targetSize")) {
+      targetSize = _json["targetSize"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (autoHealingPolicies != null) {
+      _json["autoHealingPolicies"] = autoHealingPolicies.map((value) => (value).toJson()).toList();
+    }
+    if (baseInstanceName != null) {
+      _json["baseInstanceName"] = baseInstanceName;
+    }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (currentActions != null) {
+      _json["currentActions"] = (currentActions).toJson();
+    }
+    if (currentSize != null) {
+      _json["currentSize"] = currentSize;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (instanceGroup != null) {
+      _json["instanceGroup"] = instanceGroup;
+    }
+    if (instanceTemplate != null) {
+      _json["instanceTemplate"] = instanceTemplate;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (targetPools != null) {
+      _json["targetPools"] = targetPools;
+    }
+    if (targetSize != null) {
+      _json["targetSize"] = targetSize;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagerActionsSummary {
+  core.int abandoning;
+  core.int creating;
+  core.int deleting;
+  core.int none;
+  core.int rebooting;
+  core.int recreating;
+  core.int refreshing;
+
+  InstanceGroupManagerActionsSummary();
+
+  InstanceGroupManagerActionsSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("abandoning")) {
+      abandoning = _json["abandoning"];
+    }
+    if (_json.containsKey("creating")) {
+      creating = _json["creating"];
+    }
+    if (_json.containsKey("deleting")) {
+      deleting = _json["deleting"];
+    }
+    if (_json.containsKey("none")) {
+      none = _json["none"];
+    }
+    if (_json.containsKey("rebooting")) {
+      rebooting = _json["rebooting"];
+    }
+    if (_json.containsKey("recreating")) {
+      recreating = _json["recreating"];
+    }
+    if (_json.containsKey("refreshing")) {
+      refreshing = _json["refreshing"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (abandoning != null) {
+      _json["abandoning"] = abandoning;
+    }
+    if (creating != null) {
+      _json["creating"] = creating;
+    }
+    if (deleting != null) {
+      _json["deleting"] = deleting;
+    }
+    if (none != null) {
+      _json["none"] = none;
+    }
+    if (rebooting != null) {
+      _json["rebooting"] = rebooting;
+    }
+    if (recreating != null) {
+      _json["recreating"] = recreating;
+    }
+    if (refreshing != null) {
+      _json["refreshing"] = refreshing;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagerAggregatedList {
+  /**
+   * [Output Only] A unique identifier for this aggregated list of managed
+   * instance groups. The server defines this identifier.
+   */
+  core.String id;
+  /** A map of filtered managed instance group lists. */
+  core.Map<core.String, InstanceGroupManagersScopedList> items;
+  /**
+   * [Output Only] Type of the resource. Always
+   * compute#instanceGroupManagerAggregatedList for an aggregated list of
+   * managed instance groups.
+   */
+  core.String kind;
+  /**
+   * [Output Only] A token that is used to continue a truncated list request.
+   */
+  core.String nextPageToken;
+  /**
+   * [Output Only] The URL for this aggregated list of managed instance groups.
+   * The server defines this URL.
+   */
+  core.String selfLink;
+
+  InstanceGroupManagerAggregatedList();
+
+  InstanceGroupManagerAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap(_json["items"], (item) => new InstanceGroupManagersScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagerAutoHealingPolicy {
+  /**
+   * The action to perform when an instance becomes unhealthy. Possible values
+   * are RECREATE or REBOOT. RECREATE replaces an unhealthy instance with a new
+   * instance that is based on the instance template for this managed instance
+   * group. REBOOT performs a soft reboot on an instance. If the instance cannot
+   * reboot, the instance performs a hard restart.
+   * Possible string values are:
+   * - "REBOOT"
+   * - "RECREATE"
+   */
+  core.String actionType;
+  /** The URL for the HealthCheck that signals autohealing. */
+  core.String healthCheck;
+
+  InstanceGroupManagerAutoHealingPolicy();
+
+  InstanceGroupManagerAutoHealingPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("actionType")) {
+      actionType = _json["actionType"];
+    }
+    if (_json.containsKey("healthCheck")) {
+      healthCheck = _json["healthCheck"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (actionType != null) {
+      _json["actionType"] = actionType;
+    }
+    if (healthCheck != null) {
+      _json["healthCheck"] = healthCheck;
+    }
+    return _json;
+  }
+}
+
+/** [Output Only] A list of InstanceGroupManager resources. */
+class InstanceGroupManagerList {
+  /**
+   * [Output Only] A unique identifier for this managed instance group. The
+   * server defines this identifier.
+   */
+  core.String id;
+  /** [Output Only] A list of managed instance group resources. */
+  core.List<InstanceGroupManager> items;
+  /**
+   * [Output Only] Type of the resource. Always compute#instanceGroupManagerList
+   * for a list of managed instance group resources.
+   */
+  core.String kind;
+  /**
+   * [Output Only] A token that is used to continue a truncated list request.
+   */
+  core.String nextPageToken;
+  /**
+   * [Output Only] The URL for this managed instance group. The server defines
+   * this URL.
+   */
+  core.String selfLink;
+
+  InstanceGroupManagerList();
+
+  InstanceGroupManagerList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new InstanceGroupManager.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagersAbandonInstancesRequest {
+  /** The names of instances to abandon from the managed instance group. */
+  core.List<core.String> instances;
+
+  InstanceGroupManagersAbandonInstancesRequest();
+
+  InstanceGroupManagersAbandonInstancesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instances")) {
+      instances = _json["instances"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instances != null) {
+      _json["instances"] = instances;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagersDeleteInstancesRequest {
+  /** The names of one or more instances to delete. */
+  core.List<core.String> instances;
+
+  InstanceGroupManagersDeleteInstancesRequest();
+
+  InstanceGroupManagersDeleteInstancesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instances")) {
+      instances = _json["instances"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instances != null) {
+      _json["instances"] = instances;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagersListManagedInstancesResponse {
+  /** List of managed instances. If empty - all instances are listed. */
+  core.List<ManagedInstance> managedInstances;
+
+  InstanceGroupManagersListManagedInstancesResponse();
+
+  InstanceGroupManagersListManagedInstancesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("managedInstances")) {
+      managedInstances = _json["managedInstances"].map((value) => new ManagedInstance.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (managedInstances != null) {
+      _json["managedInstances"] = managedInstances.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagersRecreateInstancesRequest {
+  /** The names of one or more instances to recreate. */
+  core.List<core.String> instances;
+
+  InstanceGroupManagersRecreateInstancesRequest();
+
+  InstanceGroupManagersRecreateInstancesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instances")) {
+      instances = _json["instances"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instances != null) {
+      _json["instances"] = instances;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagersScopedListWarningData {
+  /** [Output Only] A key for the warning data. */
+  core.String key;
+  /** [Output Only] A warning data value corresponding to the key. */
+  core.String value;
+
+  InstanceGroupManagersScopedListWarningData();
+
+  InstanceGroupManagersScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/**
+ * [Output Only] The warning that replaces the list of managed instance groups
+ * when the list is empty.
+ */
+class InstanceGroupManagersScopedListWarning {
+  /**
+   * [Output Only] The warning type identifier for this warning.
+   * Possible string values are:
+   * - "DEPRECATED_RESOURCE_USED"
+   * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "INJECTED_KERNELS_DEPRECATED"
+   * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+   * - "NEXT_HOP_CANNOT_IP_FORWARD"
+   * - "NEXT_HOP_INSTANCE_NOT_FOUND"
+   * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+   * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
+   * - "NO_RESULTS_ON_PAGE"
+   * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+   * - "UNREACHABLE"
+   */
+  core.String code;
+  /** [Output Only] Metadata for this warning in key: value format. */
+  core.List<InstanceGroupManagersScopedListWarningData> data;
+  /** [Output Only] Optional human-readable details for this warning. */
+  core.String message;
+
+  InstanceGroupManagersScopedListWarning();
+
+  InstanceGroupManagersScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"].map((value) => new InstanceGroupManagersScopedListWarningData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagersScopedList {
+  /**
+   * [Output Only] The list of managed instance groups that are contained in the
+   * specified project and zone.
+   */
+  core.List<InstanceGroupManager> instanceGroupManagers;
+  /**
+   * [Output Only] The warning that replaces the list of managed instance groups
+   * when the list is empty.
+   */
+  InstanceGroupManagersScopedListWarning warning;
+
+  InstanceGroupManagersScopedList();
+
+  InstanceGroupManagersScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("instanceGroupManagers")) {
+      instanceGroupManagers = _json["instanceGroupManagers"].map((value) => new InstanceGroupManager.fromJson(value)).toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new InstanceGroupManagersScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instanceGroupManagers != null) {
+      _json["instanceGroupManagers"] = instanceGroupManagers.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagersSetInstanceTemplateRequest {
+  /**
+   * The URL of the instance template that is specified for this managed
+   * instance group. The group uses this template to create all new instances in
+   * the managed instance group.
+   */
+  core.String instanceTemplate;
+
+  InstanceGroupManagersSetInstanceTemplateRequest();
+
+  InstanceGroupManagersSetInstanceTemplateRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instanceTemplate")) {
+      instanceTemplate = _json["instanceTemplate"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instanceTemplate != null) {
+      _json["instanceTemplate"] = instanceTemplate;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagersSetTargetPoolsRequest {
+  /**
+   * The fingerprint of the target pools information, which is a hash of the
+   * contents. This field is used for optimistic locking when updating the
+   * target pool entries.
+   */
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+  }
+
+  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+  /**
+   * The list of target pool URLs that instances in this managed instance group
+   * belong to. When the managed instance group creates new instances, the group
+   * automatically adds those instances to the target pools that are specified
+   * in this parameter. Changing the value of this parameter does not change the
+   * target pools of existing instances in this managed instance group.
+   */
+  core.List<core.String> targetPools;
+
+  InstanceGroupManagersSetTargetPoolsRequest();
+
+  InstanceGroupManagersSetTargetPoolsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("targetPools")) {
+      targetPools = _json["targetPools"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (targetPools != null) {
+      _json["targetPools"] = targetPools;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupsAddInstancesRequest {
+  /** The instances to add to the instance group. */
+  core.List<InstanceReference> instances;
+
+  InstanceGroupsAddInstancesRequest();
+
+  InstanceGroupsAddInstancesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instances")) {
+      instances = _json["instances"].map((value) => new InstanceReference.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instances != null) {
+      _json["instances"] = instances.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupsListInstances {
+  /**
+   * [Output Only] A unique identifier for this list of instance groups. The
+   * server defines this identifier.
+   */
+  core.String id;
+  /**
+   * A list of InstanceWithNamedPorts resources, which contains all named ports
+   * for the given instance.
+   */
+  core.List<InstanceWithNamedPorts> items;
+  /**
+   * [Output Only] The resource type, which is always
+   * compute#instanceGroupsListInstances for lists of instance groups.
+   */
+  core.String kind;
+  /**
+   * [Output Only] A token that is used to continue a truncated list request.
+   */
+  core.String nextPageToken;
+  /**
+   * [Output Only] The URL for this list of instance groups. The server defines
+   * this URL.
+   */
+  core.String selfLink;
+
+  InstanceGroupsListInstances();
+
+  InstanceGroupsListInstances.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new InstanceWithNamedPorts.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupsListInstancesRequest {
+  /**
+   * A filter for the state of the instances in the instance group. Valid
+   * options are ALL or RUNNING. If you do not specify this parameter the list
+   * includes all instances regardless of their state.
+   * Possible string values are:
+   * - "ALL"
+   * - "RUNNING"
+   */
+  core.String instanceState;
+  /**
+   * A filter for the named ports that are associated with instances in the
+   * instance group. If you specify this parameter, the generated list includes
+   * only instances that are associated with the specified named ports. If you
+   * do not specify this parameter, the generated list includes all instances
+   * regardless of their named ports.
+   */
+  core.String portName;
+
+  InstanceGroupsListInstancesRequest();
+
+  InstanceGroupsListInstancesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instanceState")) {
+      instanceState = _json["instanceState"];
+    }
+    if (_json.containsKey("portName")) {
+      portName = _json["portName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instanceState != null) {
+      _json["instanceState"] = instanceState;
+    }
+    if (portName != null) {
+      _json["portName"] = portName;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupsRemoveInstancesRequest {
+  /** The instances to remove from the instance group. */
+  core.List<InstanceReference> instances;
+
+  InstanceGroupsRemoveInstancesRequest();
+
+  InstanceGroupsRemoveInstancesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instances")) {
+      instances = _json["instances"].map((value) => new InstanceReference.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instances != null) {
+      _json["instances"] = instances.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupsScopedListWarningData {
+  /** [Output Only] A key for the warning data. */
+  core.String key;
+  /** [Output Only] A warning data value corresponding to the key. */
+  core.String value;
+
+  InstanceGroupsScopedListWarningData();
+
+  InstanceGroupsScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/**
+ * [Output Only] An informational warning that replaces the list of instance
+ * groups when the list is empty.
+ */
+class InstanceGroupsScopedListWarning {
+  /**
+   * [Output Only] The warning type identifier for this warning.
+   * Possible string values are:
+   * - "DEPRECATED_RESOURCE_USED"
+   * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "INJECTED_KERNELS_DEPRECATED"
+   * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+   * - "NEXT_HOP_CANNOT_IP_FORWARD"
+   * - "NEXT_HOP_INSTANCE_NOT_FOUND"
+   * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+   * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
+   * - "NO_RESULTS_ON_PAGE"
+   * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+   * - "UNREACHABLE"
+   */
+  core.String code;
+  /** [Output Only] Metadata for this warning in key: value format. */
+  core.List<InstanceGroupsScopedListWarningData> data;
+  /** [Output Only] Optional human-readable details for this warning. */
+  core.String message;
+
+  InstanceGroupsScopedListWarning();
+
+  InstanceGroupsScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"].map((value) => new InstanceGroupsScopedListWarningData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupsScopedList {
+  /**
+   * [Output Only] The list of instance groups that are contained in this scope.
+   */
+  core.List<InstanceGroup> instanceGroups;
+  /**
+   * [Output Only] An informational warning that replaces the list of instance
+   * groups when the list is empty.
+   */
+  InstanceGroupsScopedListWarning warning;
+
+  InstanceGroupsScopedList();
+
+  InstanceGroupsScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("instanceGroups")) {
+      instanceGroups = _json["instanceGroups"].map((value) => new InstanceGroup.fromJson(value)).toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new InstanceGroupsScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instanceGroups != null) {
+      _json["instanceGroups"] = instanceGroups.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupsSetNamedPortsRequest {
+  /**
+   * The fingerprint of the named ports information, which is a hash of the
+   * contents. Use this field for optimistic locking when you update the named
+   * ports entries.
+   */
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+  }
+
+  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+  /** The list of named ports to set for this instance group. */
+  core.List<NamedPort> namedPorts;
+
+  InstanceGroupsSetNamedPortsRequest();
+
+  InstanceGroupsSetNamedPortsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("namedPorts")) {
+      namedPorts = _json["namedPorts"].map((value) => new NamedPort.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (namedPorts != null) {
+      _json["namedPorts"] = namedPorts.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** Contains a list of instance resources. */
 class InstanceList {
   /**
@@ -12043,6 +15364,54 @@ class InstanceTemplateList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class InstanceWithNamedPorts {
+  /** The URL of the instance. */
+  core.String instance;
+  /** The named ports that belong to this instance group. */
+  core.List<NamedPort> namedPorts;
+  /**
+   * The status of the instance.
+   * Possible string values are:
+   * - "PROVISIONING"
+   * - "RUNNING"
+   * - "STAGING"
+   * - "STOPPED"
+   * - "STOPPING"
+   * - "SUSPENDED"
+   * - "SUSPENDING"
+   * - "TERMINATED"
+   */
+  core.String status;
+
+  InstanceWithNamedPorts();
+
+  InstanceWithNamedPorts.fromJson(core.Map _json) {
+    if (_json.containsKey("instance")) {
+      instance = _json["instance"];
+    }
+    if (_json.containsKey("namedPorts")) {
+      namedPorts = _json["namedPorts"].map((value) => new NamedPort.fromJson(value)).toList();
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instance != null) {
+      _json["instance"] = instance;
+    }
+    if (namedPorts != null) {
+      _json["namedPorts"] = namedPorts.map((value) => (value).toJson()).toList();
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }
@@ -12615,6 +15984,175 @@ class MachineTypesScopedList {
   }
 }
 
+class ManagedInstance {
+  /**
+   * The current action that the managed instance group has scheduled for the
+   * instance.
+   * Possible string values are:
+   * - "ABANDONING"
+   * - "CREATING"
+   * - "DELETING"
+   * - "NONE"
+   * - "REBOOTING"
+   * - "RECREATING"
+   * - "REFRESHING"
+   */
+  core.String currentAction;
+  /**
+   * The unique identifier for this resource (empty when instance does not
+   * exist).
+   */
+  core.String incarnationId;
+  /** The URL of the instance (set even though instance does not exist yet). */
+  core.String instance;
+  /**
+   * The status of the instance (empty when instance does not exist).
+   * Possible string values are:
+   * - "PROVISIONING"
+   * - "RUNNING"
+   * - "STAGING"
+   * - "STOPPED"
+   * - "STOPPING"
+   * - "SUSPENDED"
+   * - "SUSPENDING"
+   * - "TERMINATED"
+   */
+  core.String instanceStatus;
+  /** Information about the last attempt to create or delete the instance. */
+  ManagedInstanceLastAttempt lastAttempt;
+
+  ManagedInstance();
+
+  ManagedInstance.fromJson(core.Map _json) {
+    if (_json.containsKey("currentAction")) {
+      currentAction = _json["currentAction"];
+    }
+    if (_json.containsKey("incarnationId")) {
+      incarnationId = _json["incarnationId"];
+    }
+    if (_json.containsKey("instance")) {
+      instance = _json["instance"];
+    }
+    if (_json.containsKey("instanceStatus")) {
+      instanceStatus = _json["instanceStatus"];
+    }
+    if (_json.containsKey("lastAttempt")) {
+      lastAttempt = new ManagedInstanceLastAttempt.fromJson(_json["lastAttempt"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (currentAction != null) {
+      _json["currentAction"] = currentAction;
+    }
+    if (incarnationId != null) {
+      _json["incarnationId"] = incarnationId;
+    }
+    if (instance != null) {
+      _json["instance"] = instance;
+    }
+    if (instanceStatus != null) {
+      _json["instanceStatus"] = instanceStatus;
+    }
+    if (lastAttempt != null) {
+      _json["lastAttempt"] = (lastAttempt).toJson();
+    }
+    return _json;
+  }
+}
+
+class ManagedInstanceLastAttemptErrorsErrors {
+  /** [Output Only] The error type identifier for this error. */
+  core.String code;
+  /**
+   * [Output Only] Indicates the field in the request which caused the error.
+   * This property is optional.
+   */
+  core.String location;
+  /** [Output Only] An optional, human-readable error message. */
+  core.String message;
+
+  ManagedInstanceLastAttemptErrorsErrors();
+
+  ManagedInstanceLastAttemptErrorsErrors.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Encountered errors during the last attempt to create or delete the instance.
+ */
+class ManagedInstanceLastAttemptErrors {
+  /**
+   * [Output Only] The array of errors encountered while processing this
+   * operation.
+   */
+  core.List<ManagedInstanceLastAttemptErrorsErrors> errors;
+
+  ManagedInstanceLastAttemptErrors();
+
+  ManagedInstanceLastAttemptErrors.fromJson(core.Map _json) {
+    if (_json.containsKey("errors")) {
+      errors = _json["errors"].map((value) => new ManagedInstanceLastAttemptErrorsErrors.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (errors != null) {
+      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class ManagedInstanceLastAttempt {
+  /**
+   * Encountered errors during the last attempt to create or delete the
+   * instance.
+   */
+  ManagedInstanceLastAttemptErrors errors;
+
+  ManagedInstanceLastAttempt();
+
+  ManagedInstanceLastAttempt.fromJson(core.Map _json) {
+    if (_json.containsKey("errors")) {
+      errors = new ManagedInstanceLastAttemptErrors.fromJson(_json["errors"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (errors != null) {
+      _json["errors"] = (errors).toJson();
+    }
+    return _json;
+  }
+}
+
 class MetadataItems {
   /**
    * Key for the metadata entry. Keys must conform to the following regexp:
@@ -12705,6 +16243,36 @@ class Metadata {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/** The named port information. For example: . */
+class NamedPort {
+  /** The name for this NamedPort. */
+  core.String name;
+  /** The port number, which can be a value between 1 and 65535. */
+  core.int port;
+
+  NamedPort();
+
+  NamedPort.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (port != null) {
+      _json["port"] = port;
     }
     return _json;
   }
@@ -13091,11 +16659,11 @@ class OperationWarnings {
   }
 }
 
-/** An operation resource, used to manage asynchronous API requests. */
+/** An Operation resource, used to manage asynchronous API requests. */
 class Operation {
   /**
    * [Output Only] An optional identifier specified by the client when the
-   * mutation was initiated. Must be unique for all operation resources in the
+   * mutation was initiated. Must be unique for all Operation resources in the
    * project.
    */
   core.String clientOperationId;
@@ -13396,13 +16964,13 @@ class OperationAggregatedList {
   }
 }
 
-/** Contains a list of operation resources. */
+/** Contains a list of Operation resources. */
 class OperationList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] The operation resources. */
+  /** [Output Only] The Operation resources. */
   core.List<Operation> items;
   /**
    * [Output Only] Type of resource. Always compute#operations for Operations
@@ -13777,6 +17345,8 @@ class Quota {
    * - "HEALTH_CHECKS"
    * - "IMAGES"
    * - "INSTANCES"
+   * - "INSTANCE_GROUPS"
+   * - "INSTANCE_GROUP_MANAGERS"
    * - "INSTANCE_TEMPLATES"
    * - "IN_USE_ADDRESSES"
    * - "LOCAL_SSD_TOTAL_GB"
@@ -16543,6 +20113,7 @@ class VpnTunnel {
    * - "NETWORK_ERROR"
    * - "NO_INCOMING_PACKETS"
    * - "PROVISIONING"
+   * - "REJECTED"
    * - "WAITING_FOR_FULL_CONFIG"
    */
   core.String status;

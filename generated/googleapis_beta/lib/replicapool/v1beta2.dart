@@ -1591,12 +1591,26 @@ class OperationList {
 }
 
 class ReplicaPoolAutoHealingPolicy {
+  /**
+   * The action to perform when an instance becomes unhealthy. Possible values
+   * are RECREATE or REBOOT. RECREATE replaces an unhealthy instance with a new
+   * instance that is based on the instance template for this managed instance
+   * group. REBOOT performs a soft reboot on an instance. If the instance cannot
+   * reboot, the instance performs a hard restart.
+   * Possible string values are:
+   * - "REBOOT"
+   * - "RECREATE"
+   */
+  core.String actionType;
   /** The URL for the HealthCheck that signals autohealing. */
   core.String healthCheck;
 
   ReplicaPoolAutoHealingPolicy();
 
   ReplicaPoolAutoHealingPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("actionType")) {
+      actionType = _json["actionType"];
+    }
     if (_json.containsKey("healthCheck")) {
       healthCheck = _json["healthCheck"];
     }
@@ -1604,6 +1618,9 @@ class ReplicaPoolAutoHealingPolicy {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (actionType != null) {
+      _json["actionType"] = actionType;
+    }
     if (healthCheck != null) {
       _json["healthCheck"] = healthCheck;
     }

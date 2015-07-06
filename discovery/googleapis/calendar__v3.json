@@ -17,7 +17,7 @@
     "description": "Lets you manipulate events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/uB0KPjQ-_FKwri9S67F19ijFpA4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/gZ3dylzm2EVgH6aR8x8XhHMIdxI\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -845,6 +845,11 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "supportsAttachments": {
+                            "description": "Whether API client performing operation supports event attachments. Optional. The default is False.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "calendars/{calendarId}/events/import",
@@ -881,6 +886,11 @@
                         },
                         "sendNotifications": {
                             "description": "Whether to send notifications about the creation of the new event. Optional. The default is False.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "supportsAttachments": {
+                            "description": "Whether API client performing operation supports event attachments. Optional. The default is False.",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -1185,6 +1195,11 @@
                             "description": "Whether to send notifications about the event update (e.g. attendee's responses, title changes, etc.). Optional. The default is False.",
                             "location": "query",
                             "type": "boolean"
+                        },
+                        "supportsAttachments": {
+                            "description": "Whether API client performing operation supports event attachments. Optional. The default is False.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "calendars/{calendarId}/events/{eventId}",
@@ -1268,6 +1283,11 @@
                         },
                         "sendNotifications": {
                             "description": "Whether to send notifications about the event update (e.g. attendee's responses, title changes, etc.). Optional. The default is False.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "supportsAttachments": {
+                            "description": "Whether API client performing operation supports event attachments. Optional. The default is False.",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -1535,7 +1555,7 @@
             }
         }
     },
-    "revision": "20150408",
+    "revision": "20150623",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {
@@ -1936,6 +1956,13 @@
                     "description": "Whether anyone can invite themselves to the event. Optional. The default is False.",
                     "type": "boolean"
                 },
+                "attachments": {
+                    "description": "File attachments for the event. Currently only Google Drive attachments are supported.\nIn order to modify attachments the supportsAttachments request parameter should be set to true.\nThere can be at most 25 attachments per event,",
+                    "items": {
+                        "$ref": "EventAttachment"
+                    },
+                    "type": "array"
+                },
                 "attendees": {
                     "description": "The attendees of the event.",
                     "items": {
@@ -2238,6 +2265,31 @@
         },
         "EventAttachment": {
             "id": "EventAttachment",
+            "properties": {
+                "fileUrl": {
+                    "annotations": {
+                        "required": [
+                            "calendar.events.import",
+                            "calendar.events.insert",
+                            "calendar.events.update"
+                        ]
+                    },
+                    "description": "URL link to the attachment.\nFor adding Google Drive file attachments use the same format as in alternateLink property of the Files resource in the Drive API.",
+                    "type": "string"
+                },
+                "iconLink": {
+                    "description": "URL link to the attachment's icon. Read-only.",
+                    "type": "string"
+                },
+                "mimeType": {
+                    "description": "Internet media type (MIME type) of the attachment.",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Attachment title.",
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "EventAttendee": {

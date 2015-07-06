@@ -25,6 +25,7 @@ class WebmastersApi {
 
   final commons.ApiRequester _requester;
 
+  SearchanalyticsResourceApi get searchanalytics => new SearchanalyticsResourceApi(_requester);
   SitemapsResourceApi get sitemaps => new SitemapsResourceApi(_requester);
   SitesResourceApi get sites => new SitesResourceApi(_requester);
   UrlcrawlerrorscountsResourceApi get urlcrawlerrorscounts => new UrlcrawlerrorscountsResourceApi(_requester);
@@ -32,6 +33,69 @@ class WebmastersApi {
 
   WebmastersApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "webmasters/v3/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+
+class SearchanalyticsResourceApi {
+  final commons.ApiRequester _requester;
+
+  SearchanalyticsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * [LIMITED ACCESS]
+   *
+   * Query your data with filters and parameters that you define. Returns zero
+   * or more rows grouped by the row keys that you define. You must define a
+   * date range of one or more days.
+   *
+   * When date is one of the group by values, any days without data are omitted
+   * from the result list. If you need to know which days have data, issue a
+   * broad date range query grouped by date for any metric, and see which day
+   * rows are returned.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [siteUrl] - The site's URL, including protocol. For example:
+   * http://www.example.com/
+   *
+   * Completes with a [SearchAnalyticsQueryResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SearchAnalyticsQueryResponse> query(SearchAnalyticsQueryRequest request, core.String siteUrl) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (siteUrl == null) {
+      throw new core.ArgumentError("Parameter siteUrl is required.");
+    }
+
+    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/searchAnalytics/query';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SearchAnalyticsQueryResponse.fromJson(data));
+  }
+
 }
 
 
@@ -46,11 +110,11 @@ class SitemapsResourceApi {
    *
    * Request parameters:
    *
-   * [siteUrl] - The site's URL, including protocol, for example
-   * 'http://www.example.com/'
+   * [siteUrl] - The site's URL, including protocol. For example:
+   * http://www.example.com/
    *
-   * [feedpath] - The URL of the actual sitemap (for example
-   * http://www.example.com/sitemap.xml).
+   * [feedpath] - The URL of the actual sitemap. For example:
+   * http://www.example.com/sitemap.xml
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -92,11 +156,11 @@ class SitemapsResourceApi {
    *
    * Request parameters:
    *
-   * [siteUrl] - The site's URL, including protocol, for example
-   * 'http://www.example.com/'
+   * [siteUrl] - The site's URL, including protocol. For example:
+   * http://www.example.com/
    *
-   * [feedpath] - The URL of the actual sitemap (for example
-   * http://www.example.com/sitemap.xml).
+   * [feedpath] - The URL of the actual sitemap. For example:
+   * http://www.example.com/sitemap.xml
    *
    * Completes with a [WmxSitemap].
    *
@@ -134,14 +198,16 @@ class SitemapsResourceApi {
   }
 
   /**
-   * Lists sitemaps uploaded to the site.
+   * Lists the sitemaps-entries submitted for this site, or included in the
+   * sitemap index file (if sitemapIndex is specified in the request).
    *
    * Request parameters:
    *
-   * [siteUrl] - The site's URL, including protocol, for example
-   * 'http://www.example.com/'
+   * [siteUrl] - The site's URL, including protocol. For example:
+   * http://www.example.com/
    *
-   * [sitemapIndex] - A URL of a site's sitemap index.
+   * [sitemapIndex] - A URL of a site's sitemap index. For example:
+   * http://www.example.com/sitemapindex.xml
    *
    * Completes with a [SitemapsListResponse].
    *
@@ -183,10 +249,11 @@ class SitemapsResourceApi {
    *
    * Request parameters:
    *
-   * [siteUrl] - The site's URL, including protocol, for example
-   * 'http://www.example.com/'
+   * [siteUrl] - The site's URL, including protocol. For example:
+   * http://www.example.com/
    *
-   * [feedpath] - The URL of the sitemap to add.
+   * [feedpath] - The URL of the sitemap to add. For example:
+   * http://www.example.com/sitemap.xml
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -276,8 +343,8 @@ class SitesResourceApi {
    *
    * Request parameters:
    *
-   * [siteUrl] - The site's URL, including protocol, for example
-   * 'http://www.example.com/'
+   * [siteUrl] - The URI of the property as defined in Search Console. Examples:
+   * http://www.example.com/ or android-app://com.example/
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -316,8 +383,8 @@ class SitesResourceApi {
    *
    * Request parameters:
    *
-   * [siteUrl] - The site's URL, including protocol, for example
-   * 'http://www.example.com/'
+   * [siteUrl] - The URI of the property as defined in Search Console. Examples:
+   * http://www.example.com/ or android-app://com.example/
    *
    * Completes with a [WmxSite].
    *
@@ -352,7 +419,7 @@ class SitesResourceApi {
   }
 
   /**
-   * Lists your Webmaster Tools sites.
+   * Lists the user's Webmaster Tools sites.
    *
    * Request parameters:
    *
@@ -400,11 +467,11 @@ class UrlcrawlerrorscountsResourceApi {
    *
    * Request parameters:
    *
-   * [siteUrl] - The site's URL, including protocol, for example
-   * 'http://www.example.com/'
+   * [siteUrl] - The site's URL, including protocol. For example:
+   * http://www.example.com/
    *
-   * [category] - The crawl error category, for example 'serverError'. If not
-   * specified, we return results for all categories.
+   * [category] - The crawl error category. For example: serverError. If not
+   * specified, returns results for all categories.
    * Possible string values are:
    * - "authPermissions"
    * - "manyToOneRedirect"
@@ -417,8 +484,8 @@ class UrlcrawlerrorscountsResourceApi {
    *
    * [latestCountsOnly] - If true, returns only the latest crawl error counts.
    *
-   * [platform] - The user agent type (platform) that made the request, for
-   * example 'web'. If not specified, we return results for all platforms.
+   * [platform] - The user agent type (platform) that made the request. For
+   * example: web. If not specified, returns results for all platforms.
    * Possible string values are:
    * - "mobile"
    * - "smartphoneOnly"
@@ -479,13 +546,15 @@ class UrlcrawlerrorssamplesResourceApi {
    *
    * Request parameters:
    *
-   * [siteUrl] - The site's URL, including protocol, for example
-   * 'http://www.example.com/'
+   * [siteUrl] - The site's URL, including protocol. For example:
+   * http://www.example.com/
    *
-   * [url] - The relative path (without the site) of the sample URL; must be one
-   * of the URLs returned by list
+   * [url] - The relative path (without the site) of the sample URL. It must be
+   * one of the URLs returned by list(). For example, for the URL
+   * https://www.example.com/pagename on the site https://www.example.com/, the
+   * url value is pagename
    *
-   * [category] - The crawl error category, for example 'authPermissions'
+   * [category] - The crawl error category. For example: authPermissions
    * Possible string values are:
    * - "authPermissions"
    * - "manyToOneRedirect"
@@ -496,8 +565,8 @@ class UrlcrawlerrorssamplesResourceApi {
    * - "serverError"
    * - "soft404"
    *
-   * [platform] - The user agent type (platform) that made the request, for
-   * example 'web'
+   * [platform] - The user agent type (platform) that made the request. For
+   * example: web
    * Possible string values are:
    * - "mobile"
    * - "smartphoneOnly"
@@ -552,10 +621,10 @@ class UrlcrawlerrorssamplesResourceApi {
    *
    * Request parameters:
    *
-   * [siteUrl] - The site's URL, including protocol, for example
-   * 'http://www.example.com/'
+   * [siteUrl] - The site's URL, including protocol. For example:
+   * http://www.example.com/
    *
-   * [category] - The crawl error category, for example 'authPermissions'
+   * [category] - The crawl error category. For example: authPermissions
    * Possible string values are:
    * - "authPermissions"
    * - "manyToOneRedirect"
@@ -566,8 +635,8 @@ class UrlcrawlerrorssamplesResourceApi {
    * - "serverError"
    * - "soft404"
    *
-   * [platform] - The user agent type (platform) that made the request, for
-   * example 'web'
+   * [platform] - The user agent type (platform) that made the request. For
+   * example: web
    * Possible string values are:
    * - "mobile"
    * - "smartphoneOnly"
@@ -619,13 +688,15 @@ class UrlcrawlerrorssamplesResourceApi {
    *
    * Request parameters:
    *
-   * [siteUrl] - The site's URL, including protocol, for example
-   * 'http://www.example.com/'
+   * [siteUrl] - The site's URL, including protocol. For example:
+   * http://www.example.com/
    *
-   * [url] - The relative path (without the site) of the sample URL; must be one
-   * of the URLs returned by list
+   * [url] - The relative path (without the site) of the sample URL. It must be
+   * one of the URLs returned by list(). For example, for the URL
+   * https://www.example.com/pagename on the site https://www.example.com/, the
+   * url value is pagename
    *
-   * [category] - The crawl error category, for example 'authPermissions'
+   * [category] - The crawl error category. For example: authPermissions
    * Possible string values are:
    * - "authPermissions"
    * - "manyToOneRedirect"
@@ -636,8 +707,8 @@ class UrlcrawlerrorssamplesResourceApi {
    * - "serverError"
    * - "soft404"
    *
-   * [platform] - The user agent type (platform) that made the request, for
-   * example 'web'
+   * [platform] - The user agent type (platform) that made the request. For
+   * example: web
    * Possible string values are:
    * - "mobile"
    * - "smartphoneOnly"
@@ -690,9 +761,261 @@ class UrlcrawlerrorssamplesResourceApi {
 
 
 
+class ApiDataRow {
+  core.double clicks;
+  core.double ctr;
+  core.double impressions;
+  core.List<core.String> keys;
+  core.double position;
+
+  ApiDataRow();
+
+  ApiDataRow.fromJson(core.Map _json) {
+    if (_json.containsKey("clicks")) {
+      clicks = _json["clicks"];
+    }
+    if (_json.containsKey("ctr")) {
+      ctr = _json["ctr"];
+    }
+    if (_json.containsKey("impressions")) {
+      impressions = _json["impressions"];
+    }
+    if (_json.containsKey("keys")) {
+      keys = _json["keys"];
+    }
+    if (_json.containsKey("position")) {
+      position = _json["position"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (clicks != null) {
+      _json["clicks"] = clicks;
+    }
+    if (ctr != null) {
+      _json["ctr"] = ctr;
+    }
+    if (impressions != null) {
+      _json["impressions"] = impressions;
+    }
+    if (keys != null) {
+      _json["keys"] = keys;
+    }
+    if (position != null) {
+      _json["position"] = position;
+    }
+    return _json;
+  }
+}
+
+class ApiDimensionFilter {
+  core.String dimension;
+  core.String expression;
+  core.String operator;
+
+  ApiDimensionFilter();
+
+  ApiDimensionFilter.fromJson(core.Map _json) {
+    if (_json.containsKey("dimension")) {
+      dimension = _json["dimension"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("operator")) {
+      operator = _json["operator"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dimension != null) {
+      _json["dimension"] = dimension;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (operator != null) {
+      _json["operator"] = operator;
+    }
+    return _json;
+  }
+}
+
+class ApiDimensionFilterGroup {
+  core.List<ApiDimensionFilter> filters;
+  core.String groupType;
+
+  ApiDimensionFilterGroup();
+
+  ApiDimensionFilterGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("filters")) {
+      filters = _json["filters"].map((value) => new ApiDimensionFilter.fromJson(value)).toList();
+    }
+    if (_json.containsKey("groupType")) {
+      groupType = _json["groupType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (filters != null) {
+      _json["filters"] = filters.map((value) => (value).toJson()).toList();
+    }
+    if (groupType != null) {
+      _json["groupType"] = groupType;
+    }
+    return _json;
+  }
+}
+
+class SearchAnalyticsQueryRequest {
+  /**
+   * [Optional; Default is AUTO] How data is aggregated. If aggregated by
+   * property, all data for the same property is aggregated; if aggregated by
+   * page, all data is aggregated by canonical URI. If you filter or group by
+   * page, choose AUTO; otherwise you can aggregate either by property or by
+   * page, depending on how you want your data calculated; see  the help
+   * documentation to learn how data is calculated differently by site versus by
+   * page.
+   *
+   * Note: If you group or filter by page, you cannot aggregate by property.
+   *
+   * If you specify any value other than AUTO, the aggregation type in the
+   * result will match the requested type, or if you request an invalid type,
+   * you will get an error. The API will never change your aggregation type if
+   * the requested type is invalid.
+   */
+  core.String aggregationType;
+  /**
+   * [Optional] Zero or more filters to apply to the dimension grouping values;
+   * for example, 'Country CONTAINS "Guinea"' to see only data where the country
+   * contains the substring "Guinea". You can filter by a dimension without
+   * grouping by it.
+   */
+  core.List<ApiDimensionFilterGroup> dimensionFilterGroups;
+  /**
+   * [Optional] Zero or more dimensions to group results by. Dimensions are the
+   * group-by values in the Search Analytics page. Dimensions are combined to
+   * create a unique row key for each row. Results are grouped in the order that
+   * you supply these dimensions.
+   */
+  core.List<core.String> dimensions;
+  /**
+   * [Required] End date of the requested date range, in YYYY-MM-DD format, in
+   * PST (UTC - 8:00). Must be greater than or equal to the start date. This
+   * value is included in the range.
+   */
+  core.String endDate;
+  /**
+   * [Optional; Default is 1000] The maximum number of rows to return. Must be a
+   * number from 1 to 1,000 (inclusive).
+   */
+  core.int rowLimit;
+  /** [Optional; Default is WEB] The search type to filter for. */
+  core.String searchType;
+  /**
+   * [Required] Start date of the requested date range, in YYYY-MM-DD format, in
+   * PST time (UTC - 8:00). Must be less than or equal to the end date. This
+   * value is included in the range.
+   */
+  core.String startDate;
+
+  SearchAnalyticsQueryRequest();
+
+  SearchAnalyticsQueryRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("aggregationType")) {
+      aggregationType = _json["aggregationType"];
+    }
+    if (_json.containsKey("dimensionFilterGroups")) {
+      dimensionFilterGroups = _json["dimensionFilterGroups"].map((value) => new ApiDimensionFilterGroup.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dimensions")) {
+      dimensions = _json["dimensions"];
+    }
+    if (_json.containsKey("endDate")) {
+      endDate = _json["endDate"];
+    }
+    if (_json.containsKey("rowLimit")) {
+      rowLimit = _json["rowLimit"];
+    }
+    if (_json.containsKey("searchType")) {
+      searchType = _json["searchType"];
+    }
+    if (_json.containsKey("startDate")) {
+      startDate = _json["startDate"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (aggregationType != null) {
+      _json["aggregationType"] = aggregationType;
+    }
+    if (dimensionFilterGroups != null) {
+      _json["dimensionFilterGroups"] = dimensionFilterGroups.map((value) => (value).toJson()).toList();
+    }
+    if (dimensions != null) {
+      _json["dimensions"] = dimensions;
+    }
+    if (endDate != null) {
+      _json["endDate"] = endDate;
+    }
+    if (rowLimit != null) {
+      _json["rowLimit"] = rowLimit;
+    }
+    if (searchType != null) {
+      _json["searchType"] = searchType;
+    }
+    if (startDate != null) {
+      _json["startDate"] = startDate;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A list of rows, one per result, grouped by key. Metrics in each row are
+ * aggregated for all data grouped by that key either by page or property, as
+ * specified by the aggregation type parameter.
+ */
+class SearchAnalyticsQueryResponse {
+  /** How the results were aggregated. */
+  core.String responseAggregationType;
+  /**
+   * A list of rows grouped by the key values in the order given in the query.
+   */
+  core.List<ApiDataRow> rows;
+
+  SearchAnalyticsQueryResponse();
+
+  SearchAnalyticsQueryResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("responseAggregationType")) {
+      responseAggregationType = _json["responseAggregationType"];
+    }
+    if (_json.containsKey("rows")) {
+      rows = _json["rows"].map((value) => new ApiDataRow.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (responseAggregationType != null) {
+      _json["responseAggregationType"] = responseAggregationType;
+    }
+    if (rows != null) {
+      _json["rows"] = rows.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** List of sitemaps. */
 class SitemapsListResponse {
-  /** Information about a sitemap entry. */
+  /**
+   * Contains detailed information about a specific URL submitted as a sitemap.
+   */
   core.List<WmxSitemap> sitemap;
 
   SitemapsListResponse();
@@ -714,7 +1037,10 @@ class SitemapsListResponse {
 
 /** List of sites with access level information. */
 class SitesListResponse {
-  /** Access level information for a Webmaster Tools site. */
+  /**
+   * Contains permission level information about a Webmaster Tools site. For
+   * more information, see Permissions in Webmaster Tools.
+   */
   core.List<WmxSite> siteEntry;
 
   SitesListResponse();
@@ -738,7 +1064,9 @@ class SitesListResponse {
 class UrlCrawlErrorCount {
   /** The error count at the given timestamp. */
   core.String count;
-  /** The time (well, date) when errors were detected, in RFC 3339 format. */
+  /**
+   * The date and time when the crawl attempt took place, in RFC 3339 format.
+   */
   core.DateTime timestamp;
 
   UrlCrawlErrorCount();
@@ -773,7 +1101,10 @@ class UrlCrawlErrorCountsPerType {
   core.String category;
   /** The error count entries time series. */
   core.List<UrlCrawlErrorCount> entries;
-  /** Corresponding to the user agent that made the request. */
+  /**
+   * The general type of Googlebot that made the request (see list of Googlebot
+   * user-agents for the user-agents used).
+   */
   core.String platform;
 
   UrlCrawlErrorCountsPerType();
@@ -811,8 +1142,8 @@ class UrlCrawlErrorCountsPerType {
  */
 class UrlCrawlErrorsCountsQueryResponse {
   /**
-   * The time series of the number of URL crawl errors for per error category
-   * and platform.
+   * The time series of the number of URL crawl errors per error category and
+   * platform.
    */
   core.List<UrlCrawlErrorCountsPerType> countPerTypes;
 
@@ -833,6 +1164,7 @@ class UrlCrawlErrorsCountsQueryResponse {
   }
 }
 
+/** Contains information about specific crawl errors. */
 class UrlCrawlErrorsSample {
   /** The time the error was first detected, in RFC 3339 format. */
   core.DateTime firstDetected;
@@ -938,7 +1270,10 @@ class UrlSampleDetails {
   }
 }
 
-/** Access level information for a Webmaster Tools site. */
+/**
+ * Contains permission level information about a Webmaster Tools site. For more
+ * information, see  Permissions in Webmaster Tools.
+ */
 class WmxSite {
   /** The user's permission level for the site. */
   core.String permissionLevel;
@@ -968,12 +1303,15 @@ class WmxSite {
   }
 }
 
+/**
+ * Contains detailed information about a specific URL submitted as a sitemap.
+ */
 class WmxSitemap {
   /** The various content types in the sitemap. */
   core.List<WmxSitemapContent> contents;
   /**
-   * Number of errors in the sitemap - issues with the sitemap itself, that
-   * needs to be fixed before it can be processed correctly.
+   * Number of errors in the sitemap. These are issues with the sitemap itself
+   * that need to be fixed before it can be processed correctly.
    */
   core.String errors;
   /** If true, the sitemap has not been processed. */
@@ -992,9 +1330,12 @@ class WmxSitemap {
   core.DateTime lastSubmitted;
   /** The url of the sitemap. */
   core.String path;
-  /** The type of the sitemap (for example "sitemap"). */
+  /** The type of the sitemap. For example: rssFeed. */
   core.String type;
-  /** Number of warnings for the sitemap - issues with URLs in the sitemaps. */
+  /**
+   * Number of warnings for the sitemap. These are generally non-critical issues
+   * with URLs in the sitemaps.
+   */
   core.String warnings;
 
   WmxSitemap();
@@ -1071,9 +1412,7 @@ class WmxSitemapContent {
   core.String indexed;
   /** The number of URLs in the sitemap (of the content type). */
   core.String submitted;
-  /**
-   * The specific type of content in this sitemap (for example "web", "images").
-   */
+  /** The specific type of content in this sitemap. For example: web. */
   core.String type;
 
   WmxSitemapContent();

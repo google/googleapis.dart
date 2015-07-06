@@ -20,7 +20,7 @@
     "description": "The Google Compute Engine Instance Group Manager API provides groups of homogenous Compute Engine Instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/instance-groups/manager/v1beta2",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/H3mDQDqOlflMvFSf76ymqE9zKI8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/hxZHyVR8o7NlFJHS3Uy8zV28OM8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -633,7 +633,7 @@
             }
         }
     },
-    "revision": "20150311",
+    "revision": "20150623",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InstanceGroupManager": {
@@ -1033,6 +1033,18 @@
         "ReplicaPoolAutoHealingPolicy": {
             "id": "ReplicaPoolAutoHealingPolicy",
             "properties": {
+                "actionType": {
+                    "description": "The action to perform when an instance becomes unhealthy. Possible values are RECREATE or REBOOT. RECREATE replaces an unhealthy instance with a new instance that is based on the instance template for this managed instance group. REBOOT performs a soft reboot on an instance. If the instance cannot reboot, the instance performs a hard restart.",
+                    "enum": [
+                        "REBOOT",
+                        "RECREATE"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
                 "healthCheck": {
                     "description": "The URL for the HealthCheck that signals autohealing.",
                     "type": "string"
