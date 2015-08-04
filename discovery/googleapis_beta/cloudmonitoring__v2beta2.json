@@ -2,6 +2,9 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/monitoring": {
                     "description": "View and write monitoring data for all of your Google and third-party Cloud and API projects"
                 }
@@ -15,7 +18,7 @@
     "description": "API for accessing Google Cloud and API monitoring data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/monitoring/v2beta2/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/6-frgYvuLSeQiNGDW6G68t8i3SQ\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/rVitpxhNEZ6iAPRSVrOe1VEkzHo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -97,6 +100,7 @@
                         "$ref": "MetricDescriptor"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/monitoring"
                     ]
                 },
@@ -127,6 +131,7 @@
                         "$ref": "DeleteMetricDescriptorResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/monitoring"
                     ]
                 },
@@ -172,6 +177,7 @@
                         "$ref": "ListMetricDescriptorsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/monitoring"
                     ]
                 }
@@ -271,6 +277,7 @@
                         "$ref": "ListTimeseriesResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/monitoring"
                     ]
                 },
@@ -297,6 +304,7 @@
                         "$ref": "WriteTimeseriesResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/monitoring"
                     ]
                 }
@@ -396,13 +404,14 @@
                         "$ref": "ListTimeseriesDescriptorsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/monitoring"
                     ]
                 }
             }
         }
     },
-    "revision": "20150628",
+    "revision": "20150727",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "DeleteMetricDescriptorResponse": {

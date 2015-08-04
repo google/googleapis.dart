@@ -668,10 +668,51 @@ class Contest {
   /** If this is a partisan election, the name of the party it is for. */
   core.String primaryParty;
   /**
+   * The set of ballot responses for the referendum. A ballot response
+   * represents a line on the ballot. Common examples might include "yes" or
+   * "no" for referenda, or a judge's name for a retention contest. This field
+   * is only populated for contests of type 'Referendum'.
+   */
+  core.List<core.String> referendumBallotResponses;
+  /**
+   * Specifies a short summary of the referendum that is on the ballot below the
+   * title but above the text. This field is only populated for contests of type
+   * 'Referendum'.
+   */
+  core.String referendumBrief;
+  /**
+   * A statement in opposition to the referendum. It does not necessarily appear
+   * on the ballot. This field is only populated for contests of type
+   * 'Referendum'.
+   */
+  core.String referendumConStatement;
+  /**
+   * Specifies what effect abstaining (not voting) on the proposition will have
+   * (i.e. whether abstaining is considered a vote against it). This field is
+   * only populated for contests of type 'Referendum'.
+   */
+  core.String referendumEffectOfAbstain;
+  /**
+   * The threshold of votes that the referendum needs in order to pass, e.g.
+   * "two-thirds". This field is only populated for contests of type
+   * 'Referendum'.
+   */
+  core.String referendumPassageThreshold;
+  /**
+   * A statement in favor of the referendum. It does not necessarily appear on
+   * the ballot. This field is only populated for contests of type 'Referendum'.
+   */
+  core.String referendumProStatement;
+  /**
    * A brief description of the referendum. This field is only populated for
    * contests of type 'Referendum'.
    */
   core.String referendumSubtitle;
+  /**
+   * The full text of the referendum. This field is only populated for contests
+   * of type 'Referendum'.
+   */
+  core.String referendumText;
   /**
    * The title of the referendum (e.g. 'Proposition 42'). This field is only
    * populated for contests of type 'Referendum'.
@@ -734,8 +775,29 @@ class Contest {
     if (_json.containsKey("primaryParty")) {
       primaryParty = _json["primaryParty"];
     }
+    if (_json.containsKey("referendumBallotResponses")) {
+      referendumBallotResponses = _json["referendumBallotResponses"];
+    }
+    if (_json.containsKey("referendumBrief")) {
+      referendumBrief = _json["referendumBrief"];
+    }
+    if (_json.containsKey("referendumConStatement")) {
+      referendumConStatement = _json["referendumConStatement"];
+    }
+    if (_json.containsKey("referendumEffectOfAbstain")) {
+      referendumEffectOfAbstain = _json["referendumEffectOfAbstain"];
+    }
+    if (_json.containsKey("referendumPassageThreshold")) {
+      referendumPassageThreshold = _json["referendumPassageThreshold"];
+    }
+    if (_json.containsKey("referendumProStatement")) {
+      referendumProStatement = _json["referendumProStatement"];
+    }
     if (_json.containsKey("referendumSubtitle")) {
       referendumSubtitle = _json["referendumSubtitle"];
+    }
+    if (_json.containsKey("referendumText")) {
+      referendumText = _json["referendumText"];
     }
     if (_json.containsKey("referendumTitle")) {
       referendumTitle = _json["referendumTitle"];
@@ -789,8 +851,29 @@ class Contest {
     if (primaryParty != null) {
       _json["primaryParty"] = primaryParty;
     }
+    if (referendumBallotResponses != null) {
+      _json["referendumBallotResponses"] = referendumBallotResponses;
+    }
+    if (referendumBrief != null) {
+      _json["referendumBrief"] = referendumBrief;
+    }
+    if (referendumConStatement != null) {
+      _json["referendumConStatement"] = referendumConStatement;
+    }
+    if (referendumEffectOfAbstain != null) {
+      _json["referendumEffectOfAbstain"] = referendumEffectOfAbstain;
+    }
+    if (referendumPassageThreshold != null) {
+      _json["referendumPassageThreshold"] = referendumPassageThreshold;
+    }
+    if (referendumProStatement != null) {
+      _json["referendumProStatement"] = referendumProStatement;
+    }
     if (referendumSubtitle != null) {
       _json["referendumSubtitle"] = referendumSubtitle;
+    }
+    if (referendumText != null) {
+      _json["referendumText"] = referendumText;
     }
     if (referendumTitle != null) {
       _json["referendumTitle"] = referendumTitle;
@@ -1617,6 +1700,11 @@ class VoterInfoResponse {
    * "civicinfo#voterInfoResponse".
    */
   core.String kind;
+  /**
+   * Specifies whether voters in the precinct vote only by mailing their ballots
+   * (with the possible option of dropping off their ballots as well).
+   */
+  core.bool mailOnly;
   /** The normalized version of the requested address */
   SimpleAddressType normalizedInput;
   /**
@@ -1652,6 +1740,9 @@ class VoterInfoResponse {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("mailOnly")) {
+      mailOnly = _json["mailOnly"];
+    }
     if (_json.containsKey("normalizedInput")) {
       normalizedInput = new SimpleAddressType.fromJson(_json["normalizedInput"]);
     }
@@ -1685,6 +1776,9 @@ class VoterInfoResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (mailOnly != null) {
+      _json["mailOnly"] = mailOnly;
     }
     if (normalizedInput != null) {
       _json["normalizedInput"] = (normalizedInput).toJson();

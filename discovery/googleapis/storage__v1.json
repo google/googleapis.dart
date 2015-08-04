@@ -5,6 +5,9 @@
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
                 },
+                "https://www.googleapis.com/auth/cloud-platform.read-only": {
+                    "description": "MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/devstorage.full_control": {
                     "description": "Manage your data and permissions in Google Cloud Storage"
                 },
@@ -23,7 +26,7 @@
     "description": "Lets you store and retrieve potentially-large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/lTxRjj5-AURGfd9glUYk42wgbOA\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/kWLJzEBeeLCaXvxPFKyXDnqCzaY\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -341,6 +344,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
@@ -478,6 +482,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
@@ -684,6 +689,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
@@ -1472,6 +1478,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
@@ -1652,6 +1659,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
@@ -2070,6 +2078,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
@@ -2079,7 +2088,7 @@
             }
         }
     },
-    "revision": "20150326",
+    "revision": "20150723",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -2560,6 +2569,7 @@
                 "contentType": {
                     "annotations": {
                         "required": [
+                            "storage.objects.insert",
                             "storage.objects.update"
                         ]
                     },
@@ -2567,7 +2577,7 @@
                     "type": "string"
                 },
                 "crc32c": {
-                    "description": "CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order.",
+                    "description": "CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.",
                     "type": "string"
                 },
                 "etag": {
@@ -2589,7 +2599,7 @@
                     "type": "string"
                 },
                 "md5Hash": {
-                    "description": "MD5 hash of the data; encoded using base64.",
+                    "description": "MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and ETags: Best Practices.",
                     "type": "string"
                 },
                 "mediaLink": {

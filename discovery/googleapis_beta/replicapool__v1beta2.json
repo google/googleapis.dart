@@ -5,6 +5,9 @@
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
                 },
+                "https://www.googleapis.com/auth/cloud-platform.read-only": {
+                    "description": "MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/compute": {
                     "description": "View and manage your Google Compute Engine resources"
                 },
@@ -20,7 +23,7 @@
     "description": "The Google Compute Engine Instance Group Manager API provides groups of homogenous Compute Engine Instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/instance-groups/manager/v1beta2",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/hxZHyVR8o7NlFJHS3Uy8zV28OM8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/HrqN7apzYYATrDJa_-brBSqNIcw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -249,6 +252,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/compute",
                         "https://www.googleapis.com/auth/compute.readonly"
                     ]
@@ -347,6 +351,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/compute",
                         "https://www.googleapis.com/auth/compute.readonly"
                     ]
@@ -633,7 +638,7 @@
             }
         }
     },
-    "revision": "20150623",
+    "revision": "20150708",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InstanceGroupManager": {

@@ -25,6 +25,12 @@ class ManagerApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
+  /**
+   * MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform
+   * services
+   */
+  static const CloudPlatformReadOnlyScope = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
   /** View and manage your Google Compute Engine resources */
   static const ComputeScope = "https://www.googleapis.com/auth/compute";
 

@@ -6,7 +6,7 @@
     "description": "An API for accessing civic information.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/civic-information",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/COqImd_5mbMNjVXE2KjAxTFdRoU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/79Y1HrgSgdJCTf1b4Qz0Z9zJqHE\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -301,7 +301,7 @@
             }
         }
     },
-    "revision": "20150302",
+    "revision": "20150707",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AdministrationRegion": {
@@ -510,8 +510,39 @@
                     "description": "If this is a partisan election, the name of the party it is for.",
                     "type": "string"
                 },
+                "referendumBallotResponses": {
+                    "description": "The set of ballot responses for the referendum. A ballot response represents a line on the ballot. Common examples might include \"yes\" or \"no\" for referenda, or a judge's name for a retention contest. This field is only populated for contests of type 'Referendum'.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "referendumBrief": {
+                    "description": "Specifies a short summary of the referendum that is on the ballot below the title but above the text. This field is only populated for contests of type 'Referendum'.",
+                    "type": "string"
+                },
+                "referendumConStatement": {
+                    "description": "A statement in opposition to the referendum. It does not necessarily appear on the ballot. This field is only populated for contests of type 'Referendum'.",
+                    "type": "string"
+                },
+                "referendumEffectOfAbstain": {
+                    "description": "Specifies what effect abstaining (not voting) on the proposition will have (i.e. whether abstaining is considered a vote against it). This field is only populated for contests of type 'Referendum'.",
+                    "type": "string"
+                },
+                "referendumPassageThreshold": {
+                    "description": "The threshold of votes that the referendum needs in order to pass, e.g. \"two-thirds\". This field is only populated for contests of type 'Referendum'.",
+                    "type": "string"
+                },
+                "referendumProStatement": {
+                    "description": "A statement in favor of the referendum. It does not necessarily appear on the ballot. This field is only populated for contests of type 'Referendum'.",
+                    "type": "string"
+                },
                 "referendumSubtitle": {
                     "description": "A brief description of the referendum. This field is only populated for contests of type 'Referendum'.",
+                    "type": "string"
+                },
+                "referendumText": {
+                    "description": "The full text of the referendum. This field is only populated for contests of type 'Referendum'.",
                     "type": "string"
                 },
                 "referendumTitle": {
@@ -991,6 +1022,10 @@
                     "default": "civicinfo#voterInfoResponse",
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"civicinfo#voterInfoResponse\".",
                     "type": "string"
+                },
+                "mailOnly": {
+                    "description": "Specifies whether voters in the precinct vote only by mailing their ballots (with the possible option of dropping off their ballots as well).",
+                    "type": "boolean"
                 },
                 "normalizedInput": {
                     "$ref": "SimpleAddressType",

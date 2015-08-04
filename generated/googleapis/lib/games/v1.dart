@@ -968,7 +968,7 @@ class PlayersResourceApi {
    * [maxResults] - The maximum number of player resources to return in the
    * response, used for paging. For any response, the actual number of player
    * resources returned may be less than the specified maxResults.
-   * Value must be between "1" and "15".
+   * Value must be between "1" and "50".
    *
    * [pageToken] - The token returned by the previous request.
    *

@@ -4,6 +4,15 @@
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
+                },
+                "https://www.googleapis.com/auth/logging.admin": {
+                    "description": "Administrate log data for your projects"
+                },
+                "https://www.googleapis.com/auth/logging.read": {
+                    "description": "View log data for your projects"
+                },
+                "https://www.googleapis.com/auth/logging.write": {
+                    "description": "Submit log data for your projects"
                 }
             }
         }
@@ -13,8 +22,8 @@
     "batchPath": "batch",
     "description": "Google Cloud Logging API lets you create logs, ingest log entries, and manage log sinks.",
     "discoveryVersion": "v1",
-    "documentationLink": "",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/WoU1Y-TPU2mFiyKWAKMijLjE-Hc\"",
+    "documentationLink": "https://cloud.google.com/logging/docs/",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/su6xARXDviFKMcCcXpmlSeVVUas\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -83,6 +92,16 @@
             "location": "query",
             "type": "string"
         },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enumDescriptions": [
@@ -140,7 +159,9 @@
                                 "$ref": "ListLogsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin",
+                                "https://www.googleapis.com/auth/logging.read"
                             ]
                         },
                         "delete": {
@@ -170,7 +191,8 @@
                                 "$ref": "Empty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin"
                             ]
                         }
                     },
@@ -207,7 +229,9 @@
                                         "$ref": "WriteLogEntriesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/logging.admin",
+                                        "https://www.googleapis.com/auth/logging.write"
                                     ]
                                 }
                             }
@@ -241,7 +265,9 @@
                                         "$ref": "ListLogSinksResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/logging.admin",
+                                        "https://www.googleapis.com/auth/logging.read"
                                     ]
                                 },
                                 "get": {
@@ -278,7 +304,9 @@
                                         "$ref": "LogSink"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/logging.admin",
+                                        "https://www.googleapis.com/auth/logging.read"
                                     ]
                                 },
                                 "create": {
@@ -311,7 +339,8 @@
                                         "$ref": "LogSink"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/logging.admin"
                                     ]
                                 },
                                 "update": {
@@ -351,7 +380,8 @@
                                         "$ref": "LogSink"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/logging.admin"
                                     ]
                                 },
                                 "delete": {
@@ -388,7 +418,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/logging.admin"
                                     ]
                                 }
                             }
@@ -433,7 +464,9 @@
                                 "$ref": "ListLogServicesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin",
+                                "https://www.googleapis.com/auth/logging.read"
                             ]
                         }
                     },
@@ -494,7 +527,9 @@
                                         "$ref": "ListLogServiceIndexesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/logging.admin",
+                                        "https://www.googleapis.com/auth/logging.read"
                                     ]
                                 }
                             }
@@ -528,7 +563,9 @@
                                         "$ref": "ListLogServiceSinksResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/logging.admin",
+                                        "https://www.googleapis.com/auth/logging.read"
                                     ]
                                 },
                                 "get": {
@@ -565,7 +602,9 @@
                                         "$ref": "LogSink"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/logging.admin",
+                                        "https://www.googleapis.com/auth/logging.read"
                                     ]
                                 },
                                 "create": {
@@ -598,7 +637,8 @@
                                         "$ref": "LogSink"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/logging.admin"
                                     ]
                                 },
                                 "update": {
@@ -638,7 +678,8 @@
                                         "$ref": "LogSink"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/logging.admin"
                                     ]
                                 },
                                 "delete": {
@@ -675,17 +716,171 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/logging.admin"
                                     ]
                                 }
                             }
+                        }
+                    }
+                },
+                "sinks": {
+                    "methods": {
+                        "list": {
+                            "description": "Lists sinks associated with the specified project.",
+                            "httpMethod": "GET",
+                            "id": "logging.projects.sinks.list",
+                            "parameterOrder": [
+                                "projectsId"
+                            ],
+                            "parameters": {
+                                "projectsId": {
+                                    "description": "Part of `projectName`. The name of the project for which to list sinks.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta3/projects/{projectsId}/sinks",
+                            "response": {
+                                "$ref": "ListSinksResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin",
+                                "https://www.googleapis.com/auth/logging.read"
+                            ]
+                        },
+                        "get": {
+                            "description": "Gets the specified sink resource.",
+                            "httpMethod": "GET",
+                            "id": "logging.projects.sinks.get",
+                            "parameterOrder": [
+                                "projectsId",
+                                "sinksId"
+                            ],
+                            "parameters": {
+                                "projectsId": {
+                                    "description": "Part of `sinkName`. The name of the sink to return.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "sinksId": {
+                                    "description": "Part of `sinkName`. See documentation of `projectsId`.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta3/projects/{projectsId}/sinks/{sinksId}",
+                            "response": {
+                                "$ref": "LogSink"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin",
+                                "https://www.googleapis.com/auth/logging.read"
+                            ]
+                        },
+                        "create": {
+                            "description": "Creates the specified sink resource.",
+                            "httpMethod": "POST",
+                            "id": "logging.projects.sinks.create",
+                            "parameterOrder": [
+                                "projectsId"
+                            ],
+                            "parameters": {
+                                "projectsId": {
+                                    "description": "Part of `projectName`. The name of the project in which to create a sink.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta3/projects/{projectsId}/sinks",
+                            "request": {
+                                "$ref": "LogSink"
+                            },
+                            "response": {
+                                "$ref": "LogSink"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin"
+                            ]
+                        },
+                        "update": {
+                            "description": "Creates or update the specified sink resource.",
+                            "httpMethod": "PUT",
+                            "id": "logging.projects.sinks.update",
+                            "parameterOrder": [
+                                "projectsId",
+                                "sinksId"
+                            ],
+                            "parameters": {
+                                "projectsId": {
+                                    "description": "Part of `sinkName`. The name of the sink to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "sinksId": {
+                                    "description": "Part of `sinkName`. See documentation of `projectsId`.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta3/projects/{projectsId}/sinks/{sinksId}",
+                            "request": {
+                                "$ref": "LogSink"
+                            },
+                            "response": {
+                                "$ref": "LogSink"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin"
+                            ]
+                        },
+                        "delete": {
+                            "description": "Deletes the specified sink.",
+                            "httpMethod": "DELETE",
+                            "id": "logging.projects.sinks.delete",
+                            "parameterOrder": [
+                                "projectsId",
+                                "sinksId"
+                            ],
+                            "parameters": {
+                                "projectsId": {
+                                    "description": "Part of `sinkName`. The name of the sink to delete.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "sinksId": {
+                                    "description": "Part of `sinkName`. See documentation of `projectsId`.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta3/projects/{projectsId}/sinks/{sinksId}",
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin"
+                            ]
                         }
                     }
                 }
             }
         }
     },
-    "revision": "20150326",
+    "revision": "20150615",
     "rootUrl": "https://logging.googleapis.com/",
     "schemas": {
         "ListLogsResponse": {
@@ -711,7 +906,7 @@
             "id": "Log",
             "properties": {
                 "name": {
-                    "description": "REQUIRED: The log's name name. Example: `\"compute.googleapis.com/activity_log\"`.",
+                    "description": "REQUIRED: The log's name. Example: `\"compute.googleapis.com/activity_log\"`.",
                     "type": "string"
                 },
                 "displayName": {
@@ -726,7 +921,7 @@
             "type": "object"
         },
         "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
             "id": "Empty",
             "type": "object"
         },
@@ -738,7 +933,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Metadata labels that apply to all entries in this request. If one of the log entries contains a (key, value) with the same key that is in `commonLabels`, then the entry's (key, value) overrides the one in `commonLabels`.",
+                    "description": "Metadata labels that apply to all log entries in this request, so that you don't have to repeat them in each log entry's `metadata.labels` field. If any of the log entries contains a (key, value) with the same key that is in `commonLabels`, then the entry's (key, value) overrides the one in `commonLabels`.",
                     "type": "object"
                 },
                 "entries": {
@@ -786,6 +981,10 @@
                 "log": {
                     "description": "The log to which this entry belongs. When a log entry is ingested, the value of this field is set by the logging system.",
                     "type": "string"
+                },
+                "httpRequest": {
+                    "$ref": "HttpRequest",
+                    "description": "Information about the HTTP request associated with this log entry, if applicable."
                 }
             },
             "type": "object"
@@ -843,6 +1042,48 @@
             },
             "type": "object"
         },
+        "HttpRequest": {
+            "description": "A common proto for logging HTTP requests.",
+            "id": "HttpRequest",
+            "properties": {
+                "requestMethod": {
+                    "description": "Request method, such as `GET`, `HEAD`, `PUT` or `POST`.",
+                    "type": "string"
+                },
+                "requestUrl": {
+                    "description": "Contains the scheme (http|https), the host name, the path and the query portion of the URL that was requested.",
+                    "type": "string"
+                },
+                "requestSize": {
+                    "description": "Size of the HTTP request message in bytes, including request headers and the request body.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "A response code indicates the status of response, e.g., 200.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "responseSize": {
+                    "description": "Size of the HTTP response message in bytes sent back to the client, including response headers and response body.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "userAgent": {
+                    "description": "User agent sent by the client, e.g., \"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET CLR 1.0.3705)\".",
+                    "type": "string"
+                },
+                "remoteIp": {
+                    "description": "IP address of the client who issues the HTTP request. Could be either IPv4 or IPv6.",
+                    "type": "string"
+                },
+                "referer": {
+                    "description": "Referer (a.k.a. referrer) URL of request, as defined in http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "WriteLogEntriesResponse": {
             "description": "Result returned from WriteLogEntries. empty",
             "id": "WriteLogEntriesResponse",
@@ -896,7 +1137,7 @@
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "If there are more results, then `nextPageToken` is returned in the response. To get the next batch of indexes, use the value of `nextPageToken` as `pageToken` in the next call of `ListLogServiceIndexess`. If `nextPageToken` is empty, then there are no more results.",
+                    "description": "If there are more results, then `nextPageToken` is returned in the response. To get the next batch of indexes, use the value of `nextPageToken` as `pageToken` in the next call of `ListLogServiceIndexes`. If `nextPageToken` is empty, then there are no more results.",
                     "type": "string"
                 }
             },
@@ -926,6 +1167,10 @@
                 },
                 "destination": {
                     "description": "The resource to send log entries to. The supported sink resource types are: + Google Cloud Storage: `storage.googleapis.com/BUCKET` or `BUCKET.storage.googleapis.com/` + Google BigQuery: `bigquery.googleapis.com/projects/PROJECT/datasets/DATASET` Currently the Cloud Logging API supports at most one sink for each resource type per log or log service resource.",
+                    "type": "string"
+                },
+                "filter": {
+                    "description": "One Platform filter expression. If provided, only the messages matching the filter will be published.",
                     "type": "string"
                 },
                 "errors": {
@@ -959,7 +1204,7 @@
             "type": "object"
         },
         "Status": {
-            "description": "Represents the RPC error status for Google APIs. See http://go/errormodel for details.",
+            "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model is designed to be: - Simple to use and understand for most users - Flexible enough to meet unexpected needs # Overview The `Status` message contains three pieces of data: error code, error message, and error details. The error code should be an enum value of [google.rpc.Code][], but it may accept additional error codes if needed. The error message should be a developer-facing English message that helps developers *understand* and *resolve* the error. If a localized user-facing error message is needed, put the localized message in the error details or localize it in the client. The optional error details may contain arbitrary information about the error. There is a predefined set of error detail types in the package `google.rpc` which can be used for common error conditions. # Language mapping The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire format. When the `Status` message is exposed in different client libraries and different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped to some error codes in C. # Other uses The error model and the `Status` message can be used in a variety of environments, either with or without APIs, to provide a consistent developer experience across different environments. Example uses of this error model include: - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the normal response to indicate the partial errors. - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error reporting purpose. - Batch operations. If a client uses batch request and batch response, the `Status` message should be used directly inside batch response, one for each error sub-response. - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of those operations should be represented directly using the `Status` message. - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any stripping needed for security/privacy reasons.",
             "id": "Status",
             "properties": {
                 "code": {
@@ -968,7 +1213,7 @@
                     "type": "integer"
                 },
                 "message": {
-                    "description": "A developer-facing error message, which should be in English. The user-facing error message should be localized and stored in the [google.rpc.Status.details][google.rpc.Status.details] field.",
+                    "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.",
                     "type": "string"
                 },
                 "details": {
@@ -995,6 +1240,1093 @@
                         "$ref": "LogSink"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListSinksResponse": {
+            "description": "Result returned from `ListSinks`.",
+            "id": "ListSinksResponse",
+            "properties": {
+                "sinks": {
+                    "description": "The requested sinks.",
+                    "items": {
+                        "$ref": "LogSink"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "RequestLog": {
+            "description": "Complete log information about a single request to an application.",
+            "id": "RequestLog",
+            "properties": {
+                "appId": {
+                    "description": "Identifies the application that handled this request.",
+                    "type": "string"
+                },
+                "moduleId": {
+                    "description": "Identifies the module of the application that handled this request.",
+                    "type": "string"
+                },
+                "versionId": {
+                    "description": "Version of the application that handled this request.",
+                    "type": "string"
+                },
+                "requestId": {
+                    "description": "Globally unique identifier for a request, based on request start time. Request IDs for requests which started later will compare greater as binary strings than those for requests which started earlier.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "ip": {
+                    "description": "Origin IP address.",
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "Time at which request was known to have begun processing.",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Time at which request was known to end processing.",
+                    "type": "string"
+                },
+                "latency": {
+                    "description": "Latency of the request.",
+                    "type": "string"
+                },
+                "megaCycles": {
+                    "description": "Number of CPU megacycles used to process request.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "method": {
+                    "description": "Request method, such as `GET`, `HEAD`, `PUT`, `POST`, or `DELETE`.",
+                    "type": "string"
+                },
+                "resource": {
+                    "description": "Contains the path and query portion of the URL that was requested. For example, if the URL was \"http://example.com/app?name=val\", the resource would be \"/app?name=val\". Any trailing fragment (separated by a '#' character) will not be included.",
+                    "type": "string"
+                },
+                "httpVersion": {
+                    "description": "HTTP version of request.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Response status of request.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "responseSize": {
+                    "description": "Size in bytes sent back to client by request.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "referrer": {
+                    "description": "Referrer URL of request.",
+                    "type": "string"
+                },
+                "userAgent": {
+                    "description": "User agent used for making request.",
+                    "type": "string"
+                },
+                "nickname": {
+                    "description": "A string that identifies a logged-in user who made this request, or empty if the user is not logged in. Most likely, this is the part of the user's email before the '@' sign. The field value is the same for different requests from the same user, but different users may have a similar name. This information is also available to the application via Users API. This field will be populated starting with App Engine 1.9.21.",
+                    "type": "string"
+                },
+                "urlMapEntry": {
+                    "description": "File or class within URL mapping used for request. Useful for tracking down the source code which was responsible for managing request. Especially for multiply mapped handlers.",
+                    "type": "string"
+                },
+                "host": {
+                    "description": "The Internet host and port number of the resource being requested.",
+                    "type": "string"
+                },
+                "cost": {
+                    "description": "An indication of the relative cost of serving this request.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "taskQueueName": {
+                    "description": "Queue name of the request (for an offline request).",
+                    "type": "string"
+                },
+                "taskName": {
+                    "description": "Task name of the request (for an offline request).",
+                    "type": "string"
+                },
+                "wasLoadingRequest": {
+                    "description": "Was this request a loading request for this instance?",
+                    "type": "boolean"
+                },
+                "pendingTime": {
+                    "description": "Time this request spent in the pending request queue, if it was pending at all.",
+                    "type": "string"
+                },
+                "instanceIndex": {
+                    "description": "If the instance that processed this request was individually addressable (i.e. belongs to a manually scaled module), this is the index of the instance.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "finished": {
+                    "description": "If true, represents a finished request. Otherwise, the request is active.",
+                    "type": "boolean"
+                },
+                "instanceId": {
+                    "description": "An opaque identifier for the instance that handled the request.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "line": {
+                    "description": "List of log lines emitted by the application while serving this request, if requested.",
+                    "items": {
+                        "$ref": "LogLine"
+                    },
+                    "type": "array"
+                },
+                "appEngineRelease": {
+                    "description": "App Engine release version string.",
+                    "type": "string"
+                },
+                "traceId": {
+                    "description": "Cloud Trace identifier of the trace for this request.",
+                    "type": "string"
+                },
+                "sourceReference": {
+                    "description": "Source code for the application that handled this request. There can be more than one source reference per deployed application if source code is distributed among multiple repositories.",
+                    "items": {
+                        "$ref": "SourceReference"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "LogLine": {
+            "description": "Application log line emitted while processing a request.",
+            "id": "LogLine",
+            "properties": {
+                "time": {
+                    "description": "Time when log entry was made. May be inaccurate.",
+                    "type": "string"
+                },
+                "severity": {
+                    "description": "Severity of log.",
+                    "enum": [
+                        "DEFAULT",
+                        "DEBUG",
+                        "INFO",
+                        "NOTICE",
+                        "WARNING",
+                        "ERROR",
+                        "CRITICAL",
+                        "ALERT",
+                        "EMERGENCY"
+                    ],
+                    "type": "string"
+                },
+                "logMessage": {
+                    "description": "App provided log message.",
+                    "type": "string"
+                },
+                "sourceLocation": {
+                    "$ref": "SourceLocation",
+                    "description": "Line of code that generated this log message."
+                }
+            },
+            "type": "object"
+        },
+        "SourceLocation": {
+            "description": "Specifies a location in a source file.",
+            "id": "SourceLocation",
+            "properties": {
+                "file": {
+                    "description": "Source file name. May or may not be a fully qualified name, depending on the runtime environment.",
+                    "type": "string"
+                },
+                "line": {
+                    "description": "Line within the source file.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "functionName": {
+                    "description": "Human-readable name of the function or method being invoked, with optional context such as the class or package name, for use in contexts such as the logs viewer where file:line number is less meaningful. This may vary by language, for example: in Java: qual.if.ied.Class.method in Go: dir/package.func in Python: function ...",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SourceReference": {
+            "description": "A reference to a particular snapshot of the source tree used to build and deploy an application.",
+            "id": "SourceReference",
+            "properties": {
+                "repository": {
+                    "description": "Optional. A URI string identifying the repository. Example: \"https://github.com/GoogleCloudPlatform/kubernetes.git\"",
+                    "type": "string"
+                },
+                "revisionId": {
+                    "description": "The canonical (and persistent) identifier of the deployed revision. Example (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\"",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AuditLog": {
+            "description": "Common audit log format for Google Cloud Platform API calls.",
+            "id": "AuditLog",
+            "properties": {
+                "serviceName": {
+                    "description": "Name of the API service for the request. e.g., datastore.googleapis.com",
+                    "type": "string"
+                },
+                "methodName": {
+                    "description": "Name of the service method or operation. Defined by the service. For API call events, should match the name of the API method. For example, `google.datastore.v1.Datastore.RunQuery` `google.logging.v1.LoggingService.DeleteLog`",
+                    "type": "string"
+                },
+                "resourceName": {
+                    "description": "Resource name of the resource or collection that is the target of this request, as a scheme-less URI, not including the API service name. For example: shelves/shelf_id/books shelves/shelf_id/books/book_id",
+                    "type": "string"
+                },
+                "numResponseItems": {
+                    "description": "If applicable, the number of items returned from a List or Query API method.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "Status",
+                    "description": "The status of the overall API call."
+                },
+                "authenticationInfo": {
+                    "$ref": "AuthenticationInfo",
+                    "description": "Authentication information about the call."
+                },
+                "authorizationInfo": {
+                    "description": "Authorization information about the call. If there are multiple resources or permissions involved in authorizing the request, there will be one AuthorizationInfo element for each {resource, permission} tuple.",
+                    "items": {
+                        "$ref": "AuthorizationInfo"
+                    },
+                    "type": "array"
+                },
+                "requestMetadata": {
+                    "$ref": "RequestMetadata",
+                    "description": "Metadata about the request."
+                },
+                "serviceData": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @ype with type URL.",
+                        "type": "any"
+                    },
+                    "description": "Service specific data about the request, response, and other event data. This should include all request parameters or response elements, except for parameters that are large or privacy-sensitive. It should never contain user-generated data (such as file contents).",
+                    "type": "object"
+                },
+                "bigqueryData": {
+                    "$ref": "AuditData",
+                    "description": "Service-specific data for BigQuery."
+                }
+            },
+            "type": "object"
+        },
+        "AuthenticationInfo": {
+            "description": "Authentication information for the call.",
+            "id": "AuthenticationInfo",
+            "properties": {
+                "principalEmail": {
+                    "description": "Email address of the authenticated user making the request",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AuthorizationInfo": {
+            "description": "Authorization information for the call.",
+            "id": "AuthorizationInfo",
+            "properties": {
+                "resource": {
+                    "description": "The resource being accessed, as a REST-style string. For example: `bigquery.googlapis.com/projects/PROJECTID/datasets/DATASETID`",
+                    "type": "string"
+                },
+                "permission": {
+                    "description": "The required IAM permission.",
+                    "type": "string"
+                },
+                "granted": {
+                    "description": "Whether or not authorization for this resource and permission was granted.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "RequestMetadata": {
+            "description": "Metadata about the request.",
+            "id": "RequestMetadata",
+            "properties": {
+                "callerIp": {
+                    "description": "IP address of the caller",
+                    "type": "string"
+                },
+                "callerSuppliedUserAgent": {
+                    "description": "User-Agent of the caller. This is not authenticated, so a malicious caller could provide a misleading value. For example: `google-api-python-client/1.4.0` The request was made by the Google API client for Python. `Cloud SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62` The request was made by the Google Cloud SDK CLI (gcloud). `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project` The request was made from the `my-project` App Engine app.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AuditData": {
+            "description": "BigQuery request and response messages for audit log.",
+            "id": "AuditData",
+            "properties": {
+                "tableInsertRequest": {
+                    "$ref": "TableInsertRequest",
+                    "description": "Table insert request."
+                },
+                "tableUpdateRequest": {
+                    "$ref": "TableUpdateRequest",
+                    "description": "Table update request."
+                },
+                "datasetListRequest": {
+                    "$ref": "DatasetListRequest",
+                    "description": "Dataset list request."
+                },
+                "datasetInsertRequest": {
+                    "$ref": "DatasetInsertRequest",
+                    "description": "Dataset insert request."
+                },
+                "datasetUpdateRequest": {
+                    "$ref": "DatasetUpdateRequest",
+                    "description": "Dataset update request."
+                },
+                "jobInsertRequest": {
+                    "$ref": "JobInsertRequest",
+                    "description": "Job insert request."
+                },
+                "jobQueryRequest": {
+                    "$ref": "JobQueryRequest",
+                    "description": "Job query request."
+                },
+                "jobGetQueryResultsRequest": {
+                    "$ref": "JobGetQueryResultsRequest",
+                    "description": "Job get query results request."
+                },
+                "tableDataListRequest": {
+                    "$ref": "TableDataListRequest",
+                    "description": "Table data-list request."
+                },
+                "tableInsertResponse": {
+                    "$ref": "TableInsertResponse",
+                    "description": "Table insert response."
+                },
+                "tableUpdateResponse": {
+                    "$ref": "TableUpdateResponse",
+                    "description": "Table update response."
+                },
+                "datasetInsertResponse": {
+                    "$ref": "DatasetInsertResponse",
+                    "description": "Dataset insert response."
+                },
+                "datasetUpdateResponse": {
+                    "$ref": "DatasetUpdateResponse",
+                    "description": "Dataset update response."
+                },
+                "jobQueryResponse": {
+                    "$ref": "JobQueryResponse",
+                    "description": "Job query response."
+                },
+                "jobGetQueryResultsResponse": {
+                    "$ref": "JobGetQueryResultsResponse",
+                    "description": "Job get query results response."
+                },
+                "jobQueryDoneResponse": {
+                    "$ref": "JobQueryDoneResponse",
+                    "description": "Job query-done response. Use this information for usage analysis."
+                }
+            },
+            "type": "object"
+        },
+        "TableInsertRequest": {
+            "description": "==== Table =======// Table insert request.",
+            "id": "TableInsertRequest",
+            "properties": {
+                "resource": {
+                    "$ref": "Table",
+                    "description": "Table insert payload."
+                }
+            },
+            "type": "object"
+        },
+        "Table": {
+            "description": "Message containing BigQuery table information.",
+            "id": "Table",
+            "properties": {
+                "tableName": {
+                    "$ref": "TableName",
+                    "description": "The table and dataset IDs uniquely describing this table."
+                },
+                "info": {
+                    "$ref": "TableInfo",
+                    "description": "User-modifiable metadata for this table."
+                },
+                "schema": {
+                    "$ref": "TableSchema",
+                    "description": "The table schema."
+                },
+                "view": {
+                    "$ref": "TableViewDefinition",
+                    "description": "The table provides a Database View behavior and functionality based on a query."
+                },
+                "expireTime": {
+                    "description": "The expiration date for this table. After this time, the table will not be externally visible and all storage associated with the table may be garbage collected. If this field is not present, the HelixDataset.default_table_expiration_ms value will be used to calculate the expiration time. Otherwise, the table will live until explicitly deleted.",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "The creation time for this table.",
+                    "type": "string"
+                },
+                "truncateTime": {
+                    "description": "The last truncation time for this table. This will only be updated when operation specified with WRITE_TRUNCATE.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TableName": {
+            "description": "Fully-qualified name for a table -- referenced through a dataset.",
+            "id": "TableName",
+            "properties": {
+                "projectId": {
+                    "description": "A string containing the id of this project. The id be the alphanumeric project ID, or the project number.",
+                    "type": "string"
+                },
+                "datasetId": {
+                    "description": "The ID of the dataset (scoped to the project above).",
+                    "type": "string"
+                },
+                "tableId": {
+                    "description": "The ID of the table (scoped to the dataset above).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TableInfo": {
+            "description": "User-provided metadata for a table, primarily for display in the UI.",
+            "id": "TableInfo",
+            "properties": {
+                "friendlyName": {
+                    "description": "The human-readable name of a table. This should be a short phrase identifying the table (e.g., \"Analytics Data - Jan 2011\").",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "The description of a table. This can be several sentences or paragraphs describing the table contents in detail.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TableSchema": {
+            "description": "BigQuery table schema.",
+            "id": "TableSchema",
+            "properties": {
+                "fields": {
+                    "description": "One field per column in the table",
+                    "items": {
+                        "$ref": "FieldSchema"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "FieldSchema": {
+            "description": "BigQuery field schema.",
+            "id": "FieldSchema",
+            "properties": {
+                "name": {
+                    "description": "Column name Matches: [A-Za-z_][A-Za-z_0-9]{0,127}",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Column type",
+                    "type": "string"
+                },
+                "mode": {
+                    "description": "Column mode",
+                    "type": "string"
+                },
+                "schema": {
+                    "$ref": "TableSchema",
+                    "description": "Present iff type == RECORD."
+                }
+            },
+            "type": "object"
+        },
+        "TableViewDefinition": {
+            "description": "Metadata for a table to become like a Database View based on a SQL-like query.",
+            "id": "TableViewDefinition",
+            "properties": {
+                "query": {
+                    "description": "Sql query to run.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TableUpdateRequest": {
+            "description": "Table update request.",
+            "id": "TableUpdateRequest",
+            "properties": {
+                "resource": {
+                    "$ref": "Table",
+                    "description": "Table update payload."
+                }
+            },
+            "type": "object"
+        },
+        "DatasetListRequest": {
+            "description": "Dataset list request.",
+            "id": "DatasetListRequest",
+            "properties": {
+                "listAll": {
+                    "description": "Whether to list all datasets, including hidden ones.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "DatasetInsertRequest": {
+            "description": "Dataset insert request.",
+            "id": "DatasetInsertRequest",
+            "properties": {
+                "resource": {
+                    "$ref": "Dataset",
+                    "description": "Dataset insert payload."
+                }
+            },
+            "type": "object"
+        },
+        "Dataset": {
+            "description": "BigQuery dataset information.",
+            "id": "Dataset",
+            "properties": {
+                "datasetName": {
+                    "$ref": "DatasetName",
+                    "description": "The name of this dataset."
+                },
+                "info": {
+                    "$ref": "DatasetInfo",
+                    "description": "User-modifiable metadata for this dataset."
+                },
+                "createTime": {
+                    "description": "The creation time for this dataset.",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "The last modified time for this dataset.",
+                    "type": "string"
+                },
+                "acl": {
+                    "$ref": "BigQueryAcl",
+                    "description": "Access contol list for this dataset."
+                },
+                "defaultTableExpireDuration": {
+                    "description": "The number of milliseconds which should be added to the creation time to determine the expiration time for newly created tables. If this value is null then no expiration time will be set for new tables.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatasetName": {
+            "description": "Fully qualified name for a dataset.",
+            "id": "DatasetName",
+            "properties": {
+                "projectId": {
+                    "description": "A string containing the id of this project. The id may be the alphanumeric project ID, or the project number.",
+                    "type": "string"
+                },
+                "datasetId": {
+                    "description": "The ID of the dataset (scoped to the project above).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatasetInfo": {
+            "description": "User-provided metadata for a dataset, primarily for display in the UI.",
+            "id": "DatasetInfo",
+            "properties": {
+                "friendlyName": {
+                    "description": "The human-readable name of a dataset. This should be a short phrase identifying the dataset (e.g., \"Analytics Data 2011\").",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "The description of a dataset. This can be several sentences or paragraphs describing the dataset contents in detail.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BigQueryAcl": {
+            "description": "Access control list.",
+            "id": "BigQueryAcl",
+            "properties": {
+                "entries": {
+                    "description": "Access control entry list.",
+                    "items": {
+                        "$ref": "Entry"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Entry": {
+            "description": "Access control entry.",
+            "id": "Entry",
+            "properties": {
+                "role": {
+                    "description": "Granted role. Valid roles are READER, WRITER, OWNER.",
+                    "type": "string"
+                },
+                "groupEmail": {
+                    "description": "Grants access to a group, by e-mail.",
+                    "type": "string"
+                },
+                "userEmail": {
+                    "description": "Grants access to a user, by e-mail.",
+                    "type": "string"
+                },
+                "domain": {
+                    "description": "Grants access to all members of a domain.",
+                    "type": "string"
+                },
+                "specialGroup": {
+                    "description": "Grants access to special groups. Valid groups are PROJECT_OWNERS, PROJECT_READERS, PROJECT_WRITERS and ALL_AUTHENTICATED_USERS.",
+                    "type": "string"
+                },
+                "viewName": {
+                    "$ref": "TableName",
+                    "description": "Grants access to a BigQuery View."
+                }
+            },
+            "type": "object"
+        },
+        "DatasetUpdateRequest": {
+            "description": "Dataset update request.",
+            "id": "DatasetUpdateRequest",
+            "properties": {
+                "resource": {
+                    "$ref": "Dataset",
+                    "description": "Dataset update payload."
+                }
+            },
+            "type": "object"
+        },
+        "JobInsertRequest": {
+            "description": "Job insert request.",
+            "id": "JobInsertRequest",
+            "properties": {
+                "resource": {
+                    "$ref": "Job",
+                    "description": "Job insert payload."
+                }
+            },
+            "type": "object"
+        },
+        "Job": {
+            "description": "Combines all of the information about a job.",
+            "id": "Job",
+            "properties": {
+                "jobName": {
+                    "$ref": "JobName",
+                    "description": "Job name."
+                },
+                "jobConfiguration": {
+                    "$ref": "JobConfiguration",
+                    "description": "Job configuration."
+                },
+                "jobStatus": {
+                    "$ref": "JobStatus",
+                    "description": "Job status."
+                },
+                "jobStatistics": {
+                    "$ref": "JobStatistics",
+                    "description": "Job statistics."
+                }
+            },
+            "type": "object"
+        },
+        "JobName": {
+            "description": "Fully-qualified name for a job.",
+            "id": "JobName",
+            "properties": {
+                "projectId": {
+                    "description": "A string containing the id of this project.",
+                    "type": "string"
+                },
+                "jobId": {
+                    "description": "The ID of the job (scoped to the project above).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "JobConfiguration": {
+            "description": "Job configuration information.",
+            "id": "JobConfiguration",
+            "properties": {
+                "query": {
+                    "$ref": "Query",
+                    "description": "Query job information."
+                },
+                "load": {
+                    "$ref": "Load",
+                    "description": "Load job information."
+                },
+                "extract": {
+                    "$ref": "Extract",
+                    "description": "Extract job information."
+                },
+                "tableCopy": {
+                    "$ref": "TableCopy",
+                    "description": "TableCopy job information."
+                },
+                "dryRun": {
+                    "description": "If set, don't actually run the job. Just check that it would run.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Query": {
+            "description": "Describes a query job, which executes a SQL-like query.",
+            "id": "Query",
+            "properties": {
+                "query": {
+                    "description": "SQL query to run.",
+                    "type": "string"
+                },
+                "destinationTable": {
+                    "$ref": "TableName",
+                    "description": "table where results should be written."
+                },
+                "createDisposition": {
+                    "description": "Describe when a job should create a table.",
+                    "type": "string"
+                },
+                "writeDisposition": {
+                    "description": "Describes how writes should affect the table associated with the job.",
+                    "type": "string"
+                },
+                "defaultDataset": {
+                    "$ref": "DatasetName",
+                    "description": "If a table name is specified without a dataset in a query, this dataset will be added to table name."
+                },
+                "tableDefinitions": {
+                    "description": "Additional tables that this query might reference beyond the tables already defined in BigQuery. This is typically used to provide external data references for this query.",
+                    "items": {
+                        "$ref": "TableDefinition"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TableDefinition": {
+            "description": "Per Query external tables. These tables can be referenced with 'name' in the query and can be read just like any other table.",
+            "id": "TableDefinition",
+            "properties": {
+                "name": {
+                    "description": "Name of the table. This will be used to reference this table in the query.",
+                    "type": "string"
+                },
+                "sourceUris": {
+                    "description": "URIs for the data to be imported.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Load": {
+            "description": "Describes a load job, which loads data from an external source via the import pipeline.",
+            "id": "Load",
+            "properties": {
+                "sourceUris": {
+                    "description": "URIs for the data to be imported. Only Bigstore URIs are supported (e.g., \"gs://bucket/object\").",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "schema": {
+                    "$ref": "TableSchema",
+                    "description": "Schema for the data to be imported."
+                },
+                "destinationTable": {
+                    "$ref": "TableName",
+                    "description": "table where the imported data should be written."
+                },
+                "createDisposition": {
+                    "description": "Describes when a job should create a table.",
+                    "type": "string"
+                },
+                "writeDisposition": {
+                    "description": "Describes how writes should affect the table associated with the job.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Extract": {
+            "description": "Describes an extract job, which exports data to an external source via the export pipeline.",
+            "id": "Extract",
+            "properties": {
+                "destinationUris": {
+                    "description": "URI or URIs where extracted data should be written. Currently, only Bigstore URIs are supported (e.g., \"gs://bucket/object\"). If more than one URI given, output will be divided into 'partitions' of data, with each partition containing one or more files. If more than one URI is given, each URI must contain exactly one '*' which will be replaced with the file number (within the partition) padded out to 9 digits.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sourceTable": {
+                    "$ref": "TableName",
+                    "description": "Source table."
+                }
+            },
+            "type": "object"
+        },
+        "TableCopy": {
+            "description": "Describes a copy job, which copies an existing table to another table.",
+            "id": "TableCopy",
+            "properties": {
+                "sourceTables": {
+                    "description": "Source tables.",
+                    "items": {
+                        "$ref": "TableName"
+                    },
+                    "type": "array"
+                },
+                "destinationTable": {
+                    "$ref": "TableName",
+                    "description": "Destination table."
+                },
+                "createDisposition": {
+                    "description": "Describe when a job should create a table.",
+                    "type": "string"
+                },
+                "writeDisposition": {
+                    "description": "Describe whether the copy operation should append or not.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "JobStatus": {
+            "description": "Running state of a job (whether it is running, failed, etc).",
+            "id": "JobStatus",
+            "properties": {
+                "state": {
+                    "description": "State of a job: PENDING, RUNNING, DONE. Includes no information about whether the job was successful or not.",
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "Status",
+                    "description": "If the job did not complete successfully, this will contain an error."
+                }
+            },
+            "type": "object"
+        },
+        "JobStatistics": {
+            "description": "Job statistics that may change after a job starts.",
+            "id": "JobStatistics",
+            "properties": {
+                "createTime": {
+                    "description": "Time when the job was created (in milliseconds since the POSIX epoch).",
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "Time when the job started.",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Time when the job ended.",
+                    "type": "string"
+                },
+                "totalProcessedBytes": {
+                    "description": "Total bytes processed for a job.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "JobQueryRequest": {
+            "description": "Job query request.",
+            "id": "JobQueryRequest",
+            "properties": {
+                "query": {
+                    "description": "The query to execute.",
+                    "type": "string"
+                },
+                "maxResults": {
+                    "description": "Maximum number of results to return.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "defaultDataset": {
+                    "$ref": "DatasetName",
+                    "description": "Default dataset to use when tables in a query do not have a dataset specified."
+                },
+                "projectId": {
+                    "description": "Project that the query should be charged to.",
+                    "type": "string"
+                },
+                "dryRun": {
+                    "description": "If set, don't actually run the query.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "JobGetQueryResultsRequest": {
+            "description": "Job get-query-results request.",
+            "id": "JobGetQueryResultsRequest",
+            "properties": {
+                "maxResults": {
+                    "description": "Maximum number of results to return.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "startRow": {
+                    "description": "Row number to start returning results from.",
+                    "format": "uint64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TableDataListRequest": {
+            "description": "Table data-list request.",
+            "id": "TableDataListRequest",
+            "properties": {
+                "startRow": {
+                    "description": "Starting row offset.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "maxResults": {
+                    "description": "Maximum number of results to return.",
+                    "format": "uint32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "TableInsertResponse": {
+            "description": "Table insert response.",
+            "id": "TableInsertResponse",
+            "properties": {
+                "resource": {
+                    "$ref": "Table",
+                    "description": "Final state of inserted table."
+                }
+            },
+            "type": "object"
+        },
+        "TableUpdateResponse": {
+            "description": "Table update response.",
+            "id": "TableUpdateResponse",
+            "properties": {
+                "resource": {
+                    "$ref": "Table",
+                    "description": "Final state of updated table."
+                }
+            },
+            "type": "object"
+        },
+        "DatasetInsertResponse": {
+            "description": "Dataset insert response.",
+            "id": "DatasetInsertResponse",
+            "properties": {
+                "resource": {
+                    "$ref": "Dataset",
+                    "description": "Final state of inserted dataset."
+                }
+            },
+            "type": "object"
+        },
+        "DatasetUpdateResponse": {
+            "description": "Dataset update response.",
+            "id": "DatasetUpdateResponse",
+            "properties": {
+                "resource": {
+                    "$ref": "Dataset",
+                    "description": "Final state of updated dataset."
+                }
+            },
+            "type": "object"
+        },
+        "JobQueryResponse": {
+            "description": "Job query response.",
+            "id": "JobQueryResponse",
+            "properties": {
+                "totalResults": {
+                    "description": "The total number of rows in the complete query result set.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "job": {
+                    "$ref": "Job",
+                    "description": "Information about queried job."
+                }
+            },
+            "type": "object"
+        },
+        "JobGetQueryResultsResponse": {
+            "description": "Job get-query-results response.",
+            "id": "JobGetQueryResultsResponse",
+            "properties": {
+                "totalResults": {
+                    "description": "Total number of results in query results.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "job": {
+                    "$ref": "Job",
+                    "description": "Job that was created to run the query. Includes job state, job statistics, and job errors (if any). To determine whether the job has completed, check that job.status.state == DONE. If job.status.error_result is set, then the job failed. If the job has not yet completed, call GetQueryResults again."
+                }
+            },
+            "type": "object"
+        },
+        "JobQueryDoneResponse": {
+            "description": "Job get query-done response.",
+            "id": "JobQueryDoneResponse",
+            "properties": {
+                "job": {
+                    "$ref": "Job",
+                    "description": "Usage information about completed job."
+                }
+            },
+            "type": "object"
+        },
+        "Money": {
+            "description": "Represents an amount of money with its currency type.",
+            "id": "Money",
+            "properties": {
+                "currencyCode": {
+                    "description": "The 3-letter currency code defined in ISO 4217.",
+                    "type": "string"
+                },
+                "units": {
+                    "description": "The whole units of the amount. For example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "nanos": {
+                    "description": "Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"

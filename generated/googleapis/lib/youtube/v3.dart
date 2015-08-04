@@ -2221,6 +2221,106 @@ class LiveBroadcastsResourceApi {
   }
 
   /**
+   * Binds a YouTube broadcast to a stream or removes an existing binding
+   * between a broadcast and a stream. A broadcast can only be bound to one
+   * video stream, though a video stream may be bound to more than one
+   * broadcast.
+   *
+   * Request parameters:
+   *
+   * [id] - The id parameter specifies the unique ID of the broadcast that is
+   * being bound to a video stream.
+   *
+   * [part] - The part parameter specifies a comma-separated list of one or more
+   * liveBroadcast resource properties that the API response will include. The
+   * part names that you can include in the parameter value are id, snippet,
+   * contentDetails, and status.
+   *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
+   * [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
+   * properly authorized request. Note: This parameter is intended exclusively
+   * for YouTube content partners.
+   *
+   * The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
+   * ID of the channel to which a video is being added. This parameter is
+   * required when a request specifies a value for the onBehalfOfContentOwner
+   * parameter, and it can only be used in conjunction with that parameter. In
+   * addition, the request must be authorized using a CMS account that is linked
+   * to the content owner that the onBehalfOfContentOwner parameter specifies.
+   * Finally, the channel that the onBehalfOfContentOwnerChannel parameter value
+   * specifies must be linked to the content owner that the
+   * onBehalfOfContentOwner parameter specifies.
+   *
+   * This parameter is intended for YouTube content partners that own and manage
+   * many different YouTube channels. It allows content owners to authenticate
+   * once and perform actions on behalf of the channel specified in the
+   * parameter value, without having to provide authentication credentials for
+   * each separate channel.
+   *
+   * [streamId] - The streamId parameter specifies the unique ID of the video
+   * stream that is being bound to a broadcast. If this parameter is omitted,
+   * the API will remove any existing binding between the broadcast and a video
+   * stream.
+   *
+   * Completes with a [LiveBroadcast].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LiveBroadcast> bindDirect(core.String id, core.String part, {core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.String streamId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (onBehalfOfContentOwnerChannel != null) {
+      _queryParams["onBehalfOfContentOwnerChannel"] = [onBehalfOfContentOwnerChannel];
+    }
+    if (streamId != null) {
+      _queryParams["streamId"] = [streamId];
+    }
+
+    _url = 'liveBroadcasts/bind/direct';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LiveBroadcast.fromJson(data));
+  }
+
+  /**
    * Controls the settings for a slate that can be displayed in the broadcast
    * stream.
    *
@@ -8972,6 +9072,9 @@ class ContentRating {
   /**
    * Rating system for Indonesia - Lembaga Sensor Film
    * Possible string values are:
+   * - "lsf13"
+   * - "lsf17"
+   * - "lsf21"
    * - "lsfA"
    * - "lsfBo"
    * - "lsfD"
@@ -11454,25 +11557,25 @@ class LiveStreamConfigurationIssue {
   /**
    * The kind of error happening.
    * Possible string values are:
-   * - "audioBitrate"
    * - "audioBitrateHigh"
    * - "audioBitrateLow"
+   * - "audioBitrateMismatch"
    * - "audioCodec"
    * - "audioCodecMismatch"
    * - "audioSampleRate"
    * - "audioSampleRateMismatch"
    * - "audioStereoMismatch"
-   * - "audioTooManyChannel"
+   * - "audioTooManyChannels"
    * - "badContainer"
    * - "bitrateHigh"
    * - "bitrateLow"
-   * - "framerateHigh"
+   * - "frameRateHigh"
    * - "framerateMismatch"
    * - "gopMismatch"
    * - "gopSizeLong"
    * - "gopSizeOver"
    * - "gopSizeShort"
-   * - "interlaceVideo"
+   * - "interlacedVideo"
    * - "multipleAudioStreams"
    * - "multipleVideoStreams"
    * - "noAudioStream"
@@ -11575,7 +11678,7 @@ class LiveStreamHealthStatus {
   /** The configurations issues on this stream */
   core.List<LiveStreamConfigurationIssue> configurationIssues;
   /** The last time this status was updated (in seconds) */
-  core.String lastUpdateTimeS;
+  core.String lastUpdateTimeSeconds;
   /**
    * The status code of this stream
    * Possible string values are:
@@ -11593,8 +11696,8 @@ class LiveStreamHealthStatus {
     if (_json.containsKey("configurationIssues")) {
       configurationIssues = _json["configurationIssues"].map((value) => new LiveStreamConfigurationIssue.fromJson(value)).toList();
     }
-    if (_json.containsKey("lastUpdateTimeS")) {
-      lastUpdateTimeS = _json["lastUpdateTimeS"];
+    if (_json.containsKey("lastUpdateTimeSeconds")) {
+      lastUpdateTimeSeconds = _json["lastUpdateTimeSeconds"];
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
@@ -11606,8 +11709,8 @@ class LiveStreamHealthStatus {
     if (configurationIssues != null) {
       _json["configurationIssues"] = configurationIssues.map((value) => (value).toJson()).toList();
     }
-    if (lastUpdateTimeS != null) {
-      _json["lastUpdateTimeS"] = lastUpdateTimeS;
+    if (lastUpdateTimeSeconds != null) {
+      _json["lastUpdateTimeSeconds"] = lastUpdateTimeSeconds;
     }
     if (status != null) {
       _json["status"] = status;

@@ -1,3 +1,16 @@
+## 0.16.0
+
+* [apis-breaking] replicapoolupdater:v1beta1: method/schema changes
+* [apis-new] appengine:v1beta4
+* [apis-new] cloudresourcemanager:v1beta1
+* [apis-new] dataflow:v1b3
+* [apis-new] deploymentmanager:v2beta2
+* [apis] dns:v1beta1: method/schema changes
+* [apis] genomics:v1beta2: method changes
+* [apis] logging:v1beta3: method/schema changes
+* [apis] resourceviews:v1beta1: schema changes
+* [apis] resourceviews:v1beta2: schema changes
+
 ## 0.15.2
 
 * [apis] replicapool:v1beta2: schema changes

@@ -69,7 +69,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/QlXkTp8arWMqhMMilmdrbkzNu_E\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/uQEY1lxUpBjGfWxd7mioMh_V8P8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -2511,7 +2511,7 @@
             }
         }
     },
-    "revision": "20150326",
+    "revision": "20150720",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -2995,6 +2995,10 @@
             "description": "JSON template for Mobile Device resource in Directory API.",
             "id": "MobileDevice",
             "properties": {
+                "adbStatus": {
+                    "description": "Adb (USB debugging) enabled or disabled on device (Read-only)",
+                    "type": "boolean"
+                },
                 "applications": {
                     "description": "List of applications installed on Mobile Device",
                     "items": {
@@ -3039,6 +3043,10 @@
                 "defaultLanguage": {
                     "description": "The default locale used on the Mobile Device (Read-only)",
                     "type": "string"
+                },
+                "developerOptionsStatus": {
+                    "description": "Developer options enabled or disabled on device (Read-only)",
+                    "type": "boolean"
                 },
                 "deviceCompromisedStatus": {
                     "description": "Mobile Device compromised status (Read-only)",
@@ -3113,6 +3121,13 @@
                     "description": "Name of the mobile operating system",
                     "type": "string"
                 },
+                "otherAccountsInfo": {
+                    "description": "List of accounts added on device (Read-only)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "resourceId": {
                     "description": "Unique identifier of Mobile Device (Read-only)",
                     "type": "string"
@@ -3125,9 +3140,17 @@
                     "description": "Status of the device (Read-only)",
                     "type": "string"
                 },
+                "supportsWorkProfile": {
+                    "description": "Work profile supported on device (Read-only)",
+                    "type": "boolean"
+                },
                 "type": {
                     "description": "The type of device (Read-only)",
                     "type": "string"
+                },
+                "unknownSourcesStatus": {
+                    "description": "Unknown sources enabled or disabled on device (Read-only)",
+                    "type": "boolean"
                 },
                 "userAgent": {
                     "description": "Mobile Device user agent",

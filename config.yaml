@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.12.1
+    version: 0.13.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -8,6 +8,7 @@ packages:
     changelog: resources/googleapis/CHANGELOG.md
     apis:
     - adexchangebuyer:v1.3  # https://developers.google.com/ad-exchange/buyer-rest/
+    - adexchangebuyer:v1.4  # https://developers.google.com/ad-exchange/buyer-rest/
     - adexchangeseller:v1.1  # https://developers.google.com/ad-exchange/seller-rest/
     - adexchangeseller:v2.0  # https://developers.google.com/ad-exchange/seller-rest/
     - admin:directory_v1  # https://developers.google.com/admin-sdk/directory/
@@ -25,14 +26,22 @@ packages:
     - books:v1  # https://developers.google.com/books/
     - civicinfo:v2  # https://developers.google.com/civic-information/
     - calendar:v3  # https://developers.google.com/google-apps/calendar/
+    - classroom:v1  # https://developers.google.com/classroom/
+    - clouddebugger:v2
+    - cloudlatencytest:v2
     - compute:v1  # https://developers.google.com/compute/
+    - container:v1
     - content:v2  # https://developers.google.com/shopping-content/
     - coordinate:v1  # https://google-developers.appspot.com/coordinate/
     - customsearch:v1  # https://developers.google.com/custom-search/
+    - deploymentmanager:v2
     - discovery:v1  # https://developers.google.com/discovery/
     - drive:v2  # https://developers.google.com/drive/v2/reference/
     - dfareporting:v1.3  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.0  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dfareporting:v2.1  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dfareporting:v2.2  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dns:v1  # https://cloud.google.com/dns/api/v1/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
     - doubleclicksearch:v2  # https://developers.google.com/doubleclick-search/
     - fitness:v1  # https://developers.google.com/fitness/
@@ -42,6 +51,7 @@ packages:
     - games:v1  # https://developers.google.com/games/services/
     - gamesConfiguration:v1configuration  # https://developers.google.com/games/services/publishing/api/
     - gamesManagement:v1management  # https://developers.google.com/games/services/management/api/
+    - genomics:v1
     - gmail:v1  # https://developers.google.com/gmail/
     - groupsmigration:v1  # https://developers.google.com/admin-sdk/groups-migration/
     - groupssettings:v1  # https://developers.google.com/admin-sdk/groups-settings/
@@ -52,13 +62,17 @@ packages:
     - oauth2:v2  # https://developers.google.com/accounts/docs/OAuth2UserAgent
     - pagespeedonline:v1  # https://developers.google.com/speed/docs/insights/about
     - pagespeedonline:v2  # https://developers.google.com/speed/docs/insights/about
+    - partners:v2  # https://developers.google.com/partners/
+    - playmoviespartner:v1
     - plus:v1  # https://developers.google.com/+/api/
     - plusDomains:v1  # https://developers.google.com/+/domains/
     - prediction:v1.6  # https://developers.google.com/prediction/
+    - pubsub:v1  # https://cloud.google.com/pubsub/
     - qpxExpress:v1  # https://developers.google.com/qpx-express/
     - reseller:v1  # https://developers.google.com/admin-sdk/reseller/
     - siteVerification:v1  # https://developers.google.com/site-verification/
     - storage:v1  # https://developers.google.com/storage/
+    - storagetransfer:v1  # https://cloud.google.com/storage/transfer/
     - tagmanager:v1  # https://developers.google.com/tag-manager/
     - tasks:v1  # https://developers.google.com/google-apps/tasks/
     - translate:v2  # https://developers.google.com/translate/
@@ -69,18 +83,22 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.15.2
+    version: 0.16.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis_beta/CHANGELOG.md
     apis:
+    - appengine:v1beta4
     - autoscaler:v1beta2  # https://developers.google.com/compute/docs/autoscaler/ (Limited Preview)
     - cloudmonitoring:v2beta2  # https://developers.google.com/cloud-monitoring/
-    - container:v1beta1  #
+    - cloudresourcemanager:v1beta1
+    - container:v1beta1  # https://cloud.google.com/container-engine/
+    - dataflow:v1b3  # https://cloud.google.com/dataflow/
     - datastore:v1beta2  # https://developers.google.com/datastore/
     - deploymentmanager:v2beta1  # https://cloud.google.com/deployment-manager/
+    - deploymentmanager:v2beta2  # https://cloud.google.com/deployment-manager/
     - dns:v1beta1  # https://developers.google.com/cloud-dns/
     - genomics:v1beta2  # https://developers.google.com/genomics/
     - logging:v1beta3 # https://cloud.google.com/appengine/articles/logging
@@ -96,3 +114,35 @@ packages:
     - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries
 
 skipped_apis:
+- adexchangebuyer:v1.2  # v1.3 included
+- adexchangeseller:v1  # v1.1 included
+- adsense:v1.2  # v1.4 included
+- adsense:v1.3  # v1.4 included
+- analytics:v2.4  # v3 included
+- androidpublisher:v1  # v2 included
+- androidpublisher:v1.1  # v2 included
+- blogger:v2  # v3 included
+- classroom:v1beta1  # v1 included
+- clouduseraccounts:alpha  # Leave out alpha versions for now
+- clouduseraccounts:vm_alpha  # Leave out alpha versions for now
+- computeaccounts:alpha  # Leave out alpha versions for now
+- datastore:v1beta1  # v1beta2 included
+- dfareporting:v1  # v1.3 included
+- dfareporting:v1.1  # v1.3 included
+- dfareporting:v1.2  # v1.3 included
+- drive:v1  # v2 included
+- gan:v1beta1  # Deprecated as of April 16, 2013, https://developers.google.com/affiliate-network/
+- mapsengine:exp2  # v1 included
+- oauth2:v1  # v2 included
+- prediction:v1.2  # v1.6 included
+- prediction:v1.3  # v1.6 included
+- prediction:v1.4  # v1.6 included
+- prediction:v1.5  # v1.6 included
+- pubsub:v1beta1a  # v1beta1, v1bets2 and v1 included
+- reseller:v1sandbox  # v1 included
+- replicapool:v1beta1  # Deprecated
+- spectrum:v1explorer  # Not included, https://developers.google.com/spectrum/
+- storage:v1beta1  # v1 included
+- storage:v1beta2  # v1 included
+- taskqueue:v1beta1  # v1beta2 included
+- youtubeAnalytics:v1beta1  # v1 included

@@ -20,6 +20,9 @@
                 "https://www.googleapis.com/auth/drive.metadata.readonly": {
                     "description": "View metadata for files in your Google Drive"
                 },
+                "https://www.googleapis.com/auth/drive.photos.readonly": {
+                    "description": "View the photos, videos and albums in your Google Photos"
+                },
                 "https://www.googleapis.com/auth/drive.readonly": {
                     "description": "View the files in your Google Drive"
                 },
@@ -35,7 +38,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/2GklHAwx5ffZUxuQnPgLyVNUl4I\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/bAPHf5F8Rbt2-sbWbBvk_7rc12E\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -129,6 +132,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 }
@@ -226,6 +230,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -260,7 +265,7 @@
                             "type": "string"
                         },
                         "spaces": {
-                            "description": "A comma-separated list of spaces to query. Supported values are 'drive' and 'appDataFolder'.",
+                            "description": "A comma-separated list of spaces to query. Supported values are 'drive', 'appDataFolder' and 'photos'.",
                             "location": "query",
                             "type": "string"
                         },
@@ -282,6 +287,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ],
                     "supportsSubscription": true
@@ -317,7 +323,7 @@
                             "type": "string"
                         },
                         "spaces": {
-                            "description": "A comma-separated list of spaces to query. Supported values are 'drive' and 'appDataFolder'.",
+                            "description": "A comma-separated list of spaces to query. Supported values are 'drive', 'appDataFolder' and 'photos'.",
                             "location": "query",
                             "type": "string"
                         },
@@ -343,6 +349,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ],
                     "supportsSubscription": true
@@ -367,6 +374,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 }
@@ -434,6 +442,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -508,6 +517,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 }
@@ -803,7 +813,8 @@
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.appdata",
                         "https://www.googleapis.com/auth/drive.apps.readonly",
-                        "https://www.googleapis.com/auth/drive.file"
+                        "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.photos.readonly"
                     ]
                 },
                 "delete": {
@@ -893,6 +904,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ],
                     "supportsMediaDownload": true,
@@ -1039,7 +1051,7 @@
                             "type": "string"
                         },
                         "spaces": {
-                            "description": "A comma-separated list of spaces to query. Supported values are 'drive' and 'appDataFolder'.",
+                            "description": "A comma-separated list of spaces to query. Supported values are 'drive', 'appDataFolder' and 'photos'.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1055,6 +1067,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -1081,6 +1094,27 @@
                             "description": "The ID of the file to update.",
                             "location": "path",
                             "required": true,
+                            "type": "string"
+                        },
+                        "modifiedDateBehavior": {
+                            "description": "How the modifiedDate field should be updated. This overrides setModifiedDate.",
+                            "enum": [
+                                "fromBody",
+                                "fromBodyIfNeeded",
+                                "fromBodyOrNow",
+                                "noChange",
+                                "now",
+                                "nowIfNeeded"
+                            ],
+                            "enumDescriptions": [
+                                "Set modifiedDate to the value provided in the body of the request. No change if no value was provided.",
+                                "Set modifiedDate to the value provided in the body of the request depending on other contents of the update.",
+                                "Set modifiedDate to the value provided in the body of the request, or to the current time if no value was provided.",
+                                "Maintain the previous value of modifiedDate.",
+                                "Set modifiedDate to the current time.",
+                                "Set modifiedDate to the current time depending on contents of the update."
+                            ],
+                            "location": "query",
                             "type": "string"
                         },
                         "newRevision": {
@@ -1184,7 +1218,7 @@
                     ]
                 },
                 "trash": {
-                    "description": "Moves a file to the trash.",
+                    "description": "Moves a file to the trash. The currently authenticated user must own the file.",
                     "httpMethod": "POST",
                     "id": "drive.files.trash",
                     "parameterOrder": [
@@ -1274,6 +1308,27 @@
                             "description": "The ID of the file to update.",
                             "location": "path",
                             "required": true,
+                            "type": "string"
+                        },
+                        "modifiedDateBehavior": {
+                            "description": "How the modifiedDate field should be updated. This overrides setModifiedDate.",
+                            "enum": [
+                                "fromBody",
+                                "fromBodyIfNeeded",
+                                "fromBodyOrNow",
+                                "noChange",
+                                "now",
+                                "nowIfNeeded"
+                            ],
+                            "enumDescriptions": [
+                                "Set modifiedDate to the value provided in the body of the request. No change if no value was provided.",
+                                "Set modifiedDate to the value provided in the body of the request depending on other contents of the update.",
+                                "Set modifiedDate to the value provided in the body of the request, or to the current time if no value was provided.",
+                                "Maintain the previous value of modifiedDate.",
+                                "Set modifiedDate to the current time.",
+                                "Set modifiedDate to the current time depending on contents of the update."
+                            ],
+                            "location": "query",
                             "type": "string"
                         },
                         "newRevision": {
@@ -1410,6 +1465,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ],
                     "supportsMediaDownload": true,
@@ -1479,6 +1535,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -1535,6 +1592,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 }
@@ -1601,6 +1659,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -1630,6 +1689,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -1695,6 +1755,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -1856,6 +1917,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -1913,6 +1975,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -2394,6 +2457,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -2422,6 +2486,7 @@
                         "https://www.googleapis.com/auth/drive.file",
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
@@ -2498,7 +2563,7 @@
             }
         }
     },
-    "revision": "20150618",
+    "revision": "20150716",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -3638,7 +3703,7 @@
                     "description": "User that shared the item with the current user, if available."
                 },
                 "spaces": {
-                    "description": "The list of spaces which contain the file. Supported values are 'drive' and 'appDataFolder'.",
+                    "description": "The list of spaces which contain the file. Supported values are 'drive', 'appDataFolder' and 'photos'.",
                     "items": {
                         "type": "string"
                     },

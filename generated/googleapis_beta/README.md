@@ -68,6 +68,12 @@ void main() {
 The following is a list of APIs that are currently available inside this
 package.
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1beta4
+
+The App Engine Admin API enables developers to provision and manage their App Engine applications.
+
+Official API documentation: https://developers.google.com/appengine/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Autoscaler API - autoscaler v1beta2
 
 The Google Compute Engine Autoscaler API provides autoscaling for groups of Cloud VMs.
@@ -80,11 +86,23 @@ API for accessing Google Cloud and API monitoring data.
 
 Official API documentation: https://cloud.google.com/monitoring/v2beta2/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Resource Manager API - cloudresourcemanager v1beta1
+
+The Google Cloud Resource Manager API provides methods for creating, reading, and updating of project metadata.
+
+Official API documentation: https://cloud.google.com/resource-manager
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Container Engine API - container v1beta1
 
 The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.
 
 Official API documentation: https://cloud.google.com/container-engine/docs/v1beta1/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Dataflow API - dataflow v1b3
+
+Google Dataflow API.
+
+Official API documentation: https://cloud.google.com/dataflow
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Datastore API - datastore v1beta2
 
@@ -93,6 +111,12 @@ API for accessing Google Cloud Datastore.
 Official API documentation: https://developers.google.com/datastore/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Deployment Manager API V2 - deploymentmanager v2beta1
+
+The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
+
+Official API documentation: https://developers.google.com/deployment-manager/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Deployment Manager API V2 - deploymentmanager v2beta2
 
 The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
 
@@ -114,7 +138,7 @@ Official API documentation: https://developers.google.com/genomics/v1beta2/refer
 
 Google Cloud Logging API lets you create logs, ingest log entries, and manage log sinks.
 
-Official API documentation: 
+Official API documentation: https://cloud.google.com/logging/docs/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Deployment Manager API - manager v1beta2
 

@@ -21,6 +21,12 @@ class StorageApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
+  /**
+   * MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform
+   * services
+   */
+  static const CloudPlatformReadOnlyScope = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
   /** Manage your data and permissions in Google Cloud Storage */
   static const DevstorageFullControlScope = "https://www.googleapis.com/auth/devstorage.full_control";
 
@@ -3623,7 +3629,8 @@ class Object {
   core.String contentType;
   /**
    * CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64
-   * in big-endian byte order.
+   * in big-endian byte order. For more information about using the CRC32c
+   * checksum, see Hashes and ETags: Best Practices.
    */
   core.String crc32c;
   /** HTTP 1.1 Entity tag for the object. */
@@ -3634,7 +3641,10 @@ class Object {
   core.String id;
   /** The kind of item this is. For objects, this is always storage#object. */
   core.String kind;
-  /** MD5 hash of the data; encoded using base64. */
+  /**
+   * MD5 hash of the data; encoded using base64. For more information about
+   * using the MD5 hash, see Hashes and ETags: Best Practices.
+   */
   core.String md5Hash;
   /** Media download link. */
   core.String mediaLink;

@@ -22,6 +22,12 @@ class ReplicapoolupdaterApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
+  /**
+   * MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform
+   * services
+   */
+  static const CloudPlatformReadOnlyScope = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
   /** View and manage replica pools */
   static const ReplicapoolScope = "https://www.googleapis.com/auth/replicapool";
 
@@ -213,10 +219,6 @@ class RollingUpdatesResourceApi {
    *
    * [filter] - Optional. Filter expression for filtering listed resources.
    *
-   * [instanceGroupManager] - The name of the instance group manager. Use this
-   * parameter to return only updates to instances that are part of a specific
-   * instance group.
-   *
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum
    * value is 500 and default value is 500.
    * Value must be between "0" and "500".
@@ -232,7 +234,7 @@ class RollingUpdatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RollingUpdateList> list(core.String project, core.String zone, {core.String filter, core.String instanceGroupManager, core.int maxResults, core.String pageToken}) {
+  async.Future<RollingUpdateList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -248,9 +250,6 @@ class RollingUpdatesResourceApi {
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (instanceGroupManager != null) {
-      _queryParams["instanceGroupManager"] = [instanceGroupManager];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -629,7 +628,7 @@ class InstanceUpdateError {
 class InstanceUpdate {
   /** Errors that occurred during the instance update. */
   InstanceUpdateError error;
-  /** URL of the instance being updated. */
+  /** Fully-qualified URL of the instance being updated. */
   core.String instance;
   /**
    * Status of the instance update. Possible values are:
@@ -1241,6 +1240,11 @@ class RollingUpdate {
   core.String instanceTemplate;
   /** [Output Only] Type of the resource. */
   core.String kind;
+  /**
+   * Fully-qualified URL of the instance template encountered while starting the
+   * update.
+   */
+  core.String oldInstanceTemplate;
   /** Parameters of the update process. */
   RollingUpdatePolicy policy;
   /**
@@ -1306,6 +1310,9 @@ class RollingUpdate {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("oldInstanceTemplate")) {
+      oldInstanceTemplate = _json["oldInstanceTemplate"];
+    }
     if (_json.containsKey("policy")) {
       policy = new RollingUpdatePolicy.fromJson(_json["policy"]);
     }
@@ -1354,6 +1361,9 @@ class RollingUpdate {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (oldInstanceTemplate != null) {
+      _json["oldInstanceTemplate"] = oldInstanceTemplate;
     }
     if (policy != null) {
       _json["policy"] = (policy).toJson();

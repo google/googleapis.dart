@@ -11,6 +11,9 @@
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
                 },
+                "https://www.googleapis.com/auth/cloud-platform.read-only": {
+                    "description": "MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/devstorage.full_control": {
                     "description": "Manage your data and permissions in Google Cloud Storage"
                 },
@@ -29,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/6_j3-L3xDTpJRP-qmfT7ZpU_5Bg\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/r06f0hHpX4mVebOueiwIFm0vurA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -151,7 +154,8 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 },
                 "insert": {
@@ -218,7 +222,8 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 },
                 "patch": {
@@ -352,7 +357,8 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 },
                 "getQueryResults": {
@@ -394,7 +400,7 @@
                             "type": "string"
                         },
                         "timeoutMs": {
-                            "description": "How long to wait for the query to complete, in milliseconds, before returning. Default is to return immediately. If the timeout passes before the job completes, the request will fail with a TIMEOUT error",
+                            "description": "How long to wait for the query to complete, in milliseconds, before returning. Default is 10 seconds. If the timeout passes before the job completes, the 'jobComplete' field in the response will be false",
                             "format": "uint32",
                             "location": "query",
                             "type": "integer"
@@ -406,7 +412,8 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 },
                 "insert": {
@@ -456,7 +463,7 @@
                     "supportsMediaUpload": true
                 },
                 "list": {
-                    "description": "Lists all jobs that you started in the specified project. The job list returns in reverse chronological order of when the jobs were created, starting with the most recent job created. Requires the Can View project role, or the Is Owner project role if you set the allUsers property.",
+                    "description": "Lists all jobs that you started in the specified project. Job information is available for a six month period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires the Can View project role, or the Is Owner project role if you set the allUsers property.",
                     "httpMethod": "GET",
                     "id": "bigquery.jobs.list",
                     "parameterOrder": [
@@ -521,7 +528,8 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 },
                 "query": {
@@ -548,7 +556,8 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 }
             }
@@ -578,7 +587,8 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 }
             }
@@ -679,7 +689,8 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 }
             }
@@ -756,7 +767,8 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 },
                 "insert": {
@@ -832,7 +844,8 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 },
                 "patch": {
@@ -920,7 +933,7 @@
             }
         }
     },
-    "revision": "20150626",
+    "revision": "20150723",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CsvOptions": {
@@ -1033,7 +1046,7 @@
                     "type": "string"
                 },
                 "location": {
-                    "description": "[Experimental] The location where the data resides. If not present, the data will be stored in the US.",
+                    "description": "[Experimental] The geographic location where the dataset should reside. Possible values include EU and US. The default value is US.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -1507,6 +1520,13 @@
                     "description": "[Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.",
                     "type": "boolean"
                 },
+                "userDefinedFunctionResources": {
+                    "description": "[Experimental] Describes user-defined function resources used in the query.",
+                    "items": {
+                        "$ref": "UserDefinedFunctionResource"
+                    },
+                    "type": "array"
+                },
                 "writeDisposition": {
                     "description": "[Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.",
                     "type": "string"
@@ -1831,7 +1851,7 @@
                     "description": "[Optional] Specifies the default datasetId and projectId to assume for any unqualified table names in the query. If not set, all table names in the query string must be qualified in the format 'datasetId.tableId'."
                 },
                 "dryRun": {
-                    "description": "[Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run.",
+                    "description": "[Optional] If set to true, BigQuery doesn't run the job. Instead, if the query is valid, BigQuery returns statistics about the job such as how many bytes would be processed. If the query is invalid, an error returns. The default value is false.",
                     "type": "boolean"
                 },
                 "kind": {
@@ -1939,6 +1959,10 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "externalDataConfiguration": {
+                    "$ref": "ExternalDataConfiguration",
+                    "description": "[Experimental] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table."
+                },
                 "friendlyName": {
                     "description": "[Optional] A descriptive name for this table.",
                     "type": "string"
@@ -1958,7 +1982,7 @@
                     "type": "string"
                 },
                 "location": {
-                    "description": "[Optional] The backing storage location.",
+                    "description": "[Output-only] The geographic location where the table resides. This value is inherited from the dataset.",
                     "type": "string"
                 },
                 "numBytes": {
@@ -2240,6 +2264,20 @@
                         "$ref": "TableFieldSchema"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "UserDefinedFunctionResource": {
+            "id": "UserDefinedFunctionResource",
+            "properties": {
+                "inlineCode": {
+                    "description": "[Pick one] An inline resource that contains code for a user-defined function (UDF). Providing a inline code resource is equivalent to providing a URI for a file containing the same code.",
+                    "type": "string"
+                },
+                "resourceUri": {
+                    "description": "[Pick one] A code resource to load from a Google Cloud Storage URI (gs://bucket/path).",
+                    "type": "string"
                 }
             },
             "type": "object"

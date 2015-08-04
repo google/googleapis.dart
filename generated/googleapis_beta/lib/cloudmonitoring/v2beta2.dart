@@ -16,6 +16,9 @@ const core.String USER_AGENT = 'dart-api-client cloudmonitoring/v2beta2';
 
 /** API for accessing Google Cloud and API monitoring data. */
 class CloudmonitoringApi {
+  /** View and manage your data across Google Cloud Platform services */
+  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
   /**
    * View and write monitoring data for all of your Google and third-party Cloud
    * and API projects

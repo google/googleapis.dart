@@ -22,6 +22,12 @@ class DnsApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
+  /**
+   * MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform
+   * services
+   */
+  static const CloudPlatformReadOnlyScope = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
   /** View your DNS records hosted by Google Cloud DNS */
   static const NdevClouddnsReadonlyScope = "https://www.googleapis.com/auth/ndev.clouddns.readonly";
 
@@ -367,6 +373,8 @@ class ManagedZonesResourceApi {
    *
    * [project] - Identifies the project addressed by this request.
    *
+   * [dnsName] - Restricts the list to return only zones with this domain name.
+   *
    * [maxResults] - Optional. Maximum number of results to be returned. If
    * unspecified, the server will decide how many results to return.
    *
@@ -381,7 +389,7 @@ class ManagedZonesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ManagedZonesListResponse> list(core.String project, {core.int maxResults, core.String pageToken}) {
+  async.Future<ManagedZonesListResponse> list(core.String project, {core.String dnsName, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -391,6 +399,9 @@ class ManagedZonesResourceApi {
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (dnsName != null) {
+      _queryParams["dnsName"] = [dnsName];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];

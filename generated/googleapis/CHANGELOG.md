@@ -1,3 +1,31 @@
+## 0.13.0
+
+* [apis-breaking] fitness:v1: schema changes
+* [apis-breaking] compute:v1: resource/schema changes
+* [apis-new] adexchangebuyer:v1.4
+* [apis-new] classroom:v1
+* [apis-new] clouddebugger:v2
+* [apis-new] cloudlatencytest:v2
+* [apis-new] deploymentmanager:v2
+* [apis-new] dfareporting:v2.1
+* [apis-new] dfareporting:v2.2
+* [apis-new] dns:v1
+* [apis-new] genomics:v1
+* [apis-new] partners:v2
+* [apis-new] playmoviespartner:v1
+* [apis-new] pubsub:v1
+* [apis-new] storagetransfer:v1
+* [apis] directory:v1: schema changes
+* [apis] androidenterprise:v1: schema/method changes
+* [apis] bigquery:v2: schema changes
+* [apis] calendar:v3: schema changes
+* [apis] civicinfo:v2: schema changes
+* [apis] content:v2: method/schema changes
+* [apis] discovery:v1: schema changes
+* [apis] drive:v2: schema changes
+* [apis] tagmanager:v1: schema changes
+* [apis] youtube:v3: method/schema changes
+
 ## 0.12.1
 
 * [apis] bigquery:v2: schema changes

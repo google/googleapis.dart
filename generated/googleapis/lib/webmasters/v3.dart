@@ -872,7 +872,7 @@ class ApiDimensionFilterGroup {
 
 class SearchAnalyticsQueryRequest {
   /**
-   * [Optional; Default is AUTO] How data is aggregated. If aggregated by
+   * [Optional; Default is "auto"] How data is aggregated. If aggregated by
    * property, all data for the same property is aggregated; if aggregated by
    * page, all data is aggregated by canonical URI. If you filter or group by
    * page, choose AUTO; otherwise you can aggregate either by property or by
@@ -890,9 +890,9 @@ class SearchAnalyticsQueryRequest {
   core.String aggregationType;
   /**
    * [Optional] Zero or more filters to apply to the dimension grouping values;
-   * for example, 'Country CONTAINS "Guinea"' to see only data where the country
-   * contains the substring "Guinea". You can filter by a dimension without
-   * grouping by it.
+   * for example, 'query contains "buy"' to see only data where the query string
+   * contains the substring "buy" (not case-sensitive). You can filter by a
+   * dimension without grouping by it.
    */
   core.List<ApiDimensionFilterGroup> dimensionFilterGroups;
   /**
@@ -910,10 +910,10 @@ class SearchAnalyticsQueryRequest {
   core.String endDate;
   /**
    * [Optional; Default is 1000] The maximum number of rows to return. Must be a
-   * number from 1 to 1,000 (inclusive).
+   * number from 1 to 5,000 (inclusive).
    */
   core.int rowLimit;
-  /** [Optional; Default is WEB] The search type to filter for. */
+  /** [Optional; Default is "web"] The search type to filter for. */
   core.String searchType;
   /**
    * [Required] Start date of the requested date range, in YYYY-MM-DD format, in

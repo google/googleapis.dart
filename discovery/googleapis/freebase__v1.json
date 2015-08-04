@@ -5,7 +5,7 @@
     "description": "Find Freebase entities using textual queries and other constraints.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/freebase/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/tv8vDjrZWf-puRKfT3bKfsGPp8o\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/0Zea4KQ6RcBXE82yubsnEJqPrYs\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/freebase-16.png",
         "x32": "https://www.google.com/images/icons/product/freebase-32.png"
@@ -311,7 +311,7 @@
         }
     },
     "protocol": "rest",
-    "revision": "20150330",
+    "revision": "20150728",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ReconcileCandidate": {

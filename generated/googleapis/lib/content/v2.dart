@@ -88,6 +88,8 @@ class AccountsResourceApi {
    *
    * Request parameters:
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [AccountsCustomBatchResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -96,7 +98,7 @@ class AccountsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AccountsCustomBatchResponse> custombatch(AccountsCustomBatchRequest request) {
+  async.Future<AccountsCustomBatchResponse> custombatch(AccountsCustomBatchRequest request, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -106,6 +108,9 @@ class AccountsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _url = 'accounts/batch';
@@ -129,13 +134,15 @@ class AccountsResourceApi {
    *
    * [accountId] - The ID of the account.
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String merchantId, core.String accountId) {
+  async.Future delete(core.String merchantId, core.String accountId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -148,6 +155,9 @@ class AccountsResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _downloadOptions = null;
@@ -217,6 +227,8 @@ class AccountsResourceApi {
    *
    * [merchantId] - The ID of the managing account.
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [Account].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -225,7 +237,7 @@ class AccountsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Account> insert(Account request, core.String merchantId) {
+  async.Future<Account> insert(Account request, core.String merchantId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -238,6 +250,9 @@ class AccountsResourceApi {
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts';
@@ -313,6 +328,8 @@ class AccountsResourceApi {
    *
    * [accountId] - The ID of the account.
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [Account].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -321,7 +338,7 @@ class AccountsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Account> patch(Account request, core.String merchantId, core.String accountId) {
+  async.Future<Account> patch(Account request, core.String merchantId, core.String accountId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -337,6 +354,9 @@ class AccountsResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts/' + commons.Escaper.ecapeVariable('$accountId');
@@ -362,6 +382,8 @@ class AccountsResourceApi {
    *
    * [accountId] - The ID of the account.
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [Account].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -370,7 +392,7 @@ class AccountsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Account> update(Account request, core.String merchantId, core.String accountId) {
+  async.Future<Account> update(Account request, core.String merchantId, core.String accountId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -386,6 +408,9 @@ class AccountsResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts/' + commons.Escaper.ecapeVariable('$accountId');
@@ -1075,6 +1100,8 @@ class DatafeedsResourceApi {
    *
    * Request parameters:
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [DatafeedsCustomBatchResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1083,7 +1110,7 @@ class DatafeedsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<DatafeedsCustomBatchResponse> custombatch(DatafeedsCustomBatchRequest request) {
+  async.Future<DatafeedsCustomBatchResponse> custombatch(DatafeedsCustomBatchRequest request, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1093,6 +1120,9 @@ class DatafeedsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _url = 'datafeeds/batch';
@@ -1116,13 +1146,15 @@ class DatafeedsResourceApi {
    *
    * [datafeedId] - null
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String merchantId, core.String datafeedId) {
+  async.Future delete(core.String merchantId, core.String datafeedId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1135,6 +1167,9 @@ class DatafeedsResourceApi {
     }
     if (datafeedId == null) {
       throw new core.ArgumentError("Parameter datafeedId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _downloadOptions = null;
@@ -1204,6 +1239,8 @@ class DatafeedsResourceApi {
    *
    * [merchantId] - null
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [Datafeed].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1212,7 +1249,7 @@ class DatafeedsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Datafeed> insert(Datafeed request, core.String merchantId) {
+  async.Future<Datafeed> insert(Datafeed request, core.String merchantId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1225,6 +1262,9 @@ class DatafeedsResourceApi {
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds';
@@ -1301,6 +1341,8 @@ class DatafeedsResourceApi {
    *
    * [datafeedId] - null
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [Datafeed].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1309,7 +1351,7 @@ class DatafeedsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Datafeed> patch(Datafeed request, core.String merchantId, core.String datafeedId) {
+  async.Future<Datafeed> patch(Datafeed request, core.String merchantId, core.String datafeedId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1325,6 +1367,9 @@ class DatafeedsResourceApi {
     }
     if (datafeedId == null) {
       throw new core.ArgumentError("Parameter datafeedId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + commons.Escaper.ecapeVariable('$datafeedId');
@@ -1350,6 +1395,8 @@ class DatafeedsResourceApi {
    *
    * [datafeedId] - null
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [Datafeed].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1358,7 +1405,7 @@ class DatafeedsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Datafeed> update(Datafeed request, core.String merchantId, core.String datafeedId) {
+  async.Future<Datafeed> update(Datafeed request, core.String merchantId, core.String datafeedId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1374,6 +1421,9 @@ class DatafeedsResourceApi {
     }
     if (datafeedId == null) {
       throw new core.ArgumentError("Parameter datafeedId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + commons.Escaper.ecapeVariable('$datafeedId');
@@ -1539,11 +1589,14 @@ class InventoryResourceApi {
 
   /**
    * Updates price and availability for multiple products or stores in a single
-   * request.
+   * request. This operation does not update the expiration date of the
+   * products.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
+   *
+   * [dryRun] - Flag to run the request in dry-run mode.
    *
    * Completes with a [InventoryCustomBatchResponse].
    *
@@ -1553,7 +1606,7 @@ class InventoryResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InventoryCustomBatchResponse> custombatch(InventoryCustomBatchRequest request) {
+  async.Future<InventoryCustomBatchResponse> custombatch(InventoryCustomBatchRequest request, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1563,6 +1616,9 @@ class InventoryResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _url = 'inventory/batch';
@@ -1579,7 +1635,7 @@ class InventoryResourceApi {
 
   /**
    * Updates price and availability of a product in your Merchant Center
-   * account.
+   * account. This operation does not update the expiration date of the product.
    *
    * [request] - The metadata request object.
    *
@@ -1594,6 +1650,8 @@ class InventoryResourceApi {
    * [productId] - The ID of the product for which to update price and
    * availability.
    *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
    * Completes with a [InventorySetResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1602,7 +1660,7 @@ class InventoryResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InventorySetResponse> set(InventorySetRequest request, core.String merchantId, core.String storeCode, core.String productId) {
+  async.Future<InventorySetResponse> set(InventorySetRequest request, core.String merchantId, core.String storeCode, core.String productId, {core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1621,6 +1679,9 @@ class InventoryResourceApi {
     }
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/inventory/' + commons.Escaper.ecapeVariable('$storeCode') + '/products/' + commons.Escaper.ecapeVariable('$productId');
@@ -2281,8 +2342,8 @@ class AccountShippingCarrierRate {
   /** The name of the carrier rate. */
   core.String name;
   /**
-   * Sale country for which this carrier rate is valid, represented as an ISO
-   * 3166-1 Alpha-2 code.
+   * The sale country for which this carrier rate is valid, represented as a
+   * CLDR territory code.
    */
   core.String saleCountry;
   /** Shipping origin represented as a postal code. */
@@ -2430,8 +2491,7 @@ class AccountShippingCondition {
  */
 class AccountShippingLocationGroup {
   /**
-   * The country in which this location group is, represented as ISO 3166-1
-   * Alpha-2 code.
+   * The CLDR territory code of the country in which this location group is.
    */
   core.String country;
   /**
@@ -2542,8 +2602,8 @@ class AccountShippingRateTable {
   /** The name of the rate table. */
   core.String name;
   /**
-   * Sale country for which this table is valid, represented as an ISO 3166-1
-   * Alpha-2 code.
+   * The sale country for which this table is valid, represented as a CLDR
+   * territory code.
    */
   core.String saleCountry;
 
@@ -2622,8 +2682,8 @@ class AccountShippingShippingService {
   /** The name of this shipping service. */
   core.String name;
   /**
-   * Sale country for which this service can be used, represented as an ISO
-   * 3166-1 Alpha-2 code.
+   * The CLDR territory code of the sale country for which this service can be
+   * used.
    */
   core.String saleCountry;
 
@@ -3945,8 +4005,8 @@ class Datafeed {
   /** A descriptive name of the data feed. */
   core.String name;
   /**
-   * The two-letter ISO 3166 country where the items in the feed will be
-   * included in the search index.
+   * The country where the items in the feed will be included in the search
+   * index, represented as a CLDR territory code.
    */
   core.String targetCountry;
 
@@ -4788,6 +4848,11 @@ class Inventory {
    * comma, or slash. Both dates might be specified as 'null' if undecided.
    */
   core.String salePriceEffectiveDate;
+  /**
+   * The quantity of the product that is reserved for sell-on-google ads.
+   * Supported only for online products.
+   */
+  core.int sellOnGoogleQuantity;
 
   Inventory();
 
@@ -4810,6 +4875,9 @@ class Inventory {
     if (_json.containsKey("salePriceEffectiveDate")) {
       salePriceEffectiveDate = _json["salePriceEffectiveDate"];
     }
+    if (_json.containsKey("sellOnGoogleQuantity")) {
+      sellOnGoogleQuantity = _json["sellOnGoogleQuantity"];
+    }
   }
 
   core.Map toJson() {
@@ -4831,6 +4899,9 @@ class Inventory {
     }
     if (salePriceEffectiveDate != null) {
       _json["salePriceEffectiveDate"] = salePriceEffectiveDate;
+    }
+    if (sellOnGoogleQuantity != null) {
+      _json["sellOnGoogleQuantity"] = sellOnGoogleQuantity;
     }
     return _json;
   }
@@ -5007,6 +5078,11 @@ class InventorySetRequest {
    * comma, or slash. Both dates might be specified as 'null' if undecided.
    */
   core.String salePriceEffectiveDate;
+  /**
+   * The quantity of the product that is reserved for sell-on-google ads.
+   * Supported only for online products.
+   */
+  core.int sellOnGoogleQuantity;
 
   InventorySetRequest();
 
@@ -5026,6 +5102,9 @@ class InventorySetRequest {
     if (_json.containsKey("salePriceEffectiveDate")) {
       salePriceEffectiveDate = _json["salePriceEffectiveDate"];
     }
+    if (_json.containsKey("sellOnGoogleQuantity")) {
+      sellOnGoogleQuantity = _json["sellOnGoogleQuantity"];
+    }
   }
 
   core.Map toJson() {
@@ -5044,6 +5123,9 @@ class InventorySetRequest {
     }
     if (salePriceEffectiveDate != null) {
       _json["salePriceEffectiveDate"] = salePriceEffectiveDate;
+    }
+    if (sellOnGoogleQuantity != null) {
+      _json["sellOnGoogleQuantity"] = sellOnGoogleQuantity;
     }
     return _json;
   }
@@ -5313,7 +5395,7 @@ class Product {
   core.String sizeType;
   /** Size of the item. */
   core.List<core.String> sizes;
-  /** The two-letter ISO 3166 country code for the item. */
+  /** The CLDR territory code for the item. */
   core.String targetCountry;
   /** Tax information. */
   core.List<ProductTax> taxes;
@@ -5932,10 +6014,7 @@ class ProductInstallment {
 }
 
 class ProductShipping {
-  /**
-   * The two-letter ISO 3166 country code for the country to which an item will
-   * ship.
-   */
+  /** The CLDR territory code of the country to which an item will ship. */
   core.String country;
   /**
    * The location where the shipping is applicable, represented by a location
@@ -6295,8 +6374,8 @@ class ProductStatusDestinationStatus {
 
 class ProductTax {
   /**
-   * The country within which the item is taxed, specified with a two-letter ISO
-   * 3166 country code.
+   * The country within which the item is taxed, specified as a CLDR territory
+   * code.
    */
   core.String country;
   /**

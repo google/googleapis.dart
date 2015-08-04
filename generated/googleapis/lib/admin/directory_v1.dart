@@ -4502,6 +4502,8 @@ class MobileDeviceApplications {
 
 /** JSON template for Mobile Device resource in Directory API. */
 class MobileDevice {
+  /** Adb (USB debugging) enabled or disabled on device (Read-only) */
+  core.bool adbStatus;
   /** List of applications installed on Mobile Device */
   core.List<MobileDeviceApplications> applications;
   /** Mobile Device Baseband version (Read-only) */
@@ -4510,6 +4512,8 @@ class MobileDevice {
   core.String buildNumber;
   /** The default locale used on the Mobile Device (Read-only) */
   core.String defaultLanguage;
+  /** Developer options enabled or disabled on device (Read-only) */
+  core.bool developerOptionsStatus;
   /** Mobile Device compromised status (Read-only) */
   core.String deviceCompromisedStatus;
   /** Mobile Device serial number (Read-only) */
@@ -4551,14 +4555,20 @@ class MobileDevice {
   core.String networkOperator;
   /** Name of the mobile operating system */
   core.String os;
+  /** List of accounts added on device (Read-only) */
+  core.List<core.String> otherAccountsInfo;
   /** Unique identifier of Mobile Device (Read-only) */
   core.String resourceId;
   /** Mobile Device SSN or Serial Number (Read-only) */
   core.String serialNumber;
   /** Status of the device (Read-only) */
   core.String status;
+  /** Work profile supported on device (Read-only) */
+  core.bool supportsWorkProfile;
   /** The type of device (Read-only) */
   core.String type;
+  /** Unknown sources enabled or disabled on device (Read-only) */
+  core.bool unknownSourcesStatus;
   /** Mobile Device user agent */
   core.String userAgent;
   /** Mobile Device WiFi MAC address (Read-only) */
@@ -4567,6 +4577,9 @@ class MobileDevice {
   MobileDevice();
 
   MobileDevice.fromJson(core.Map _json) {
+    if (_json.containsKey("adbStatus")) {
+      adbStatus = _json["adbStatus"];
+    }
     if (_json.containsKey("applications")) {
       applications = _json["applications"].map((value) => new MobileDeviceApplications.fromJson(value)).toList();
     }
@@ -4578,6 +4591,9 @@ class MobileDevice {
     }
     if (_json.containsKey("defaultLanguage")) {
       defaultLanguage = _json["defaultLanguage"];
+    }
+    if (_json.containsKey("developerOptionsStatus")) {
+      developerOptionsStatus = _json["developerOptionsStatus"];
     }
     if (_json.containsKey("deviceCompromisedStatus")) {
       deviceCompromisedStatus = _json["deviceCompromisedStatus"];
@@ -4627,6 +4643,9 @@ class MobileDevice {
     if (_json.containsKey("os")) {
       os = _json["os"];
     }
+    if (_json.containsKey("otherAccountsInfo")) {
+      otherAccountsInfo = _json["otherAccountsInfo"];
+    }
     if (_json.containsKey("resourceId")) {
       resourceId = _json["resourceId"];
     }
@@ -4636,8 +4655,14 @@ class MobileDevice {
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
+    if (_json.containsKey("supportsWorkProfile")) {
+      supportsWorkProfile = _json["supportsWorkProfile"];
+    }
     if (_json.containsKey("type")) {
       type = _json["type"];
+    }
+    if (_json.containsKey("unknownSourcesStatus")) {
+      unknownSourcesStatus = _json["unknownSourcesStatus"];
     }
     if (_json.containsKey("userAgent")) {
       userAgent = _json["userAgent"];
@@ -4649,6 +4674,9 @@ class MobileDevice {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (adbStatus != null) {
+      _json["adbStatus"] = adbStatus;
+    }
     if (applications != null) {
       _json["applications"] = applications.map((value) => (value).toJson()).toList();
     }
@@ -4660,6 +4688,9 @@ class MobileDevice {
     }
     if (defaultLanguage != null) {
       _json["defaultLanguage"] = defaultLanguage;
+    }
+    if (developerOptionsStatus != null) {
+      _json["developerOptionsStatus"] = developerOptionsStatus;
     }
     if (deviceCompromisedStatus != null) {
       _json["deviceCompromisedStatus"] = deviceCompromisedStatus;
@@ -4709,6 +4740,9 @@ class MobileDevice {
     if (os != null) {
       _json["os"] = os;
     }
+    if (otherAccountsInfo != null) {
+      _json["otherAccountsInfo"] = otherAccountsInfo;
+    }
     if (resourceId != null) {
       _json["resourceId"] = resourceId;
     }
@@ -4718,8 +4752,14 @@ class MobileDevice {
     if (status != null) {
       _json["status"] = status;
     }
+    if (supportsWorkProfile != null) {
+      _json["supportsWorkProfile"] = supportsWorkProfile;
+    }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (unknownSourcesStatus != null) {
+      _json["unknownSourcesStatus"] = unknownSourcesStatus;
     }
     if (userAgent != null) {
       _json["userAgent"] = userAgent;

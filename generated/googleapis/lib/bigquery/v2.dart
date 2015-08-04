@@ -28,6 +28,12 @@ class BigqueryApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
+  /**
+   * MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform
+   * services
+   */
+  static const CloudPlatformReadOnlyScope = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
   /** Manage your data and permissions in Google Cloud Storage */
   static const DevstorageFullControlScope = "https://www.googleapis.com/auth/devstorage.full_control";
 
@@ -475,8 +481,8 @@ class JobsResourceApi {
    * [startIndex] - Zero-based index of the starting row
    *
    * [timeoutMs] - How long to wait for the query to complete, in milliseconds,
-   * before returning. Default is to return immediately. If the timeout passes
-   * before the job completes, the request will fail with a TIMEOUT error
+   * before returning. Default is 10 seconds. If the timeout passes before the
+   * job completes, the 'jobComplete' field in the response will be false
    *
    * Completes with a [GetQueryResultsResponse].
    *
@@ -585,10 +591,11 @@ class JobsResourceApi {
   }
 
   /**
-   * Lists all jobs that you started in the specified project. The job list
-   * returns in reverse chronological order of when the jobs were created,
-   * starting with the most recent job created. Requires the Can View project
-   * role, or the Is Owner project role if you set the allUsers property.
+   * Lists all jobs that you started in the specified project. Job information
+   * is available for a six month period after creation. The job list is sorted
+   * in reverse chronological order, by job creation time. Requires the Can View
+   * project role, or the Is Owner project role if you set the allUsers
+   * property.
    *
    * Request parameters:
    *
@@ -1445,8 +1452,8 @@ class Dataset {
    */
   core.String lastModifiedTime;
   /**
-   * [Experimental] The location where the data resides. If not present, the
-   * data will be stored in the US.
+   * [Experimental] The geographic location where the dataset should reside.
+   * Possible values include EU and US. The default value is US.
    */
   core.String location;
   /**
@@ -2564,6 +2571,10 @@ class JobConfigurationQuery {
    */
   core.bool useQueryCache;
   /**
+   * [Experimental] Describes user-defined function resources used in the query.
+   */
+  core.List<UserDefinedFunctionResource> userDefinedFunctionResources;
+  /**
    * [Optional] Specifies the action that occurs if the destination table
    * already exists. The following values are supported: WRITE_TRUNCATE: If the
    * table already exists, BigQuery overwrites the table data. WRITE_APPEND: If
@@ -2609,6 +2620,9 @@ class JobConfigurationQuery {
     if (_json.containsKey("useQueryCache")) {
       useQueryCache = _json["useQueryCache"];
     }
+    if (_json.containsKey("userDefinedFunctionResources")) {
+      userDefinedFunctionResources = _json["userDefinedFunctionResources"].map((value) => new UserDefinedFunctionResource.fromJson(value)).toList();
+    }
     if (_json.containsKey("writeDisposition")) {
       writeDisposition = _json["writeDisposition"];
     }
@@ -2645,6 +2659,9 @@ class JobConfigurationQuery {
     }
     if (useQueryCache != null) {
       _json["useQueryCache"] = useQueryCache;
+    }
+    if (userDefinedFunctionResources != null) {
+      _json["userDefinedFunctionResources"] = userDefinedFunctionResources.map((value) => (value).toJson()).toList();
     }
     if (writeDisposition != null) {
       _json["writeDisposition"] = writeDisposition;
@@ -3300,9 +3317,10 @@ class QueryRequest {
    */
   DatasetReference defaultDataset;
   /**
-   * [Optional] If set, don't actually run this job. A valid query will return a
-   * mostly empty response with some processing statistics, while an invalid
-   * query will return the same error it would if it wasn't a dry run.
+   * [Optional] If set to true, BigQuery doesn't run the job. Instead, if the
+   * query is valid, BigQuery returns statistics about the job such as how many
+   * bytes would be processed. If the query is invalid, an error returns. The
+   * default value is false.
    */
   core.bool dryRun;
   /** The resource type of the request. */
@@ -3524,6 +3542,12 @@ class Table {
    * will be deleted and their storage reclaimed.
    */
   core.String expirationTime;
+  /**
+   * [Experimental] Describes the data format, location, and other properties of
+   * a table stored outside of BigQuery. By defining these properties, the data
+   * source can then be queried as if it were a standard BigQuery table.
+   */
+  ExternalDataConfiguration externalDataConfiguration;
   /** [Optional] A descriptive name for this table. */
   core.String friendlyName;
   /** [Output-only] An opaque ID uniquely identifying the table. */
@@ -3535,7 +3559,10 @@ class Table {
    * since the epoch.
    */
   core.String lastModifiedTime;
-  /** [Optional] The backing storage location. */
+  /**
+   * [Output-only] The geographic location where the table resides. This value
+   * is inherited from the dataset.
+   */
   core.String location;
   /**
    * [Output-only] The size of the table in bytes. This property is unavailable
@@ -3576,6 +3603,9 @@ class Table {
     }
     if (_json.containsKey("expirationTime")) {
       expirationTime = _json["expirationTime"];
+    }
+    if (_json.containsKey("externalDataConfiguration")) {
+      externalDataConfiguration = new ExternalDataConfiguration.fromJson(_json["externalDataConfiguration"]);
     }
     if (_json.containsKey("friendlyName")) {
       friendlyName = _json["friendlyName"];
@@ -3628,6 +3658,9 @@ class Table {
     }
     if (expirationTime != null) {
       _json["expirationTime"] = expirationTime;
+    }
+    if (externalDataConfiguration != null) {
+      _json["externalDataConfiguration"] = (externalDataConfiguration).toJson();
     }
     if (friendlyName != null) {
       _json["friendlyName"] = friendlyName;
@@ -4154,6 +4187,42 @@ class TableSchema {
     var _json = new core.Map();
     if (fields != null) {
       _json["fields"] = fields.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class UserDefinedFunctionResource {
+  /**
+   * [Pick one] An inline resource that contains code for a user-defined
+   * function (UDF). Providing a inline code resource is equivalent to providing
+   * a URI for a file containing the same code.
+   */
+  core.String inlineCode;
+  /**
+   * [Pick one] A code resource to load from a Google Cloud Storage URI
+   * (gs://bucket/path).
+   */
+  core.String resourceUri;
+
+  UserDefinedFunctionResource();
+
+  UserDefinedFunctionResource.fromJson(core.Map _json) {
+    if (_json.containsKey("inlineCode")) {
+      inlineCode = _json["inlineCode"];
+    }
+    if (_json.containsKey("resourceUri")) {
+      resourceUri = _json["resourceUri"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (inlineCode != null) {
+      _json["inlineCode"] = inlineCode;
+    }
+    if (resourceUri != null) {
+      _json["resourceUri"] = resourceUri;
     }
     return _json;
   }

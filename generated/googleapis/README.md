@@ -74,6 +74,12 @@ Accesses your bidding-account information, submits creatives for validation, fin
 
 Official API documentation: https://developers.google.com/ad-exchange/buyer-rest
 
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) Ad Exchange Buyer API - adexchangebuyer v1.4
+
+Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.
+
+Official API documentation: https://developers.google.com/ad-exchange/buyer-rest
+
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) Ad Exchange Seller API - adexchangeseller v1.1
 
 Gives Ad Exchange seller users access to their inventory and the ability to generate reports
@@ -126,6 +132,8 @@ Official API documentation: https://developers.google.com/analytics/
 
 Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android for Work users.
 
+Official API documentation: https://developers.google.com/play/enterprise
+
 #### ![Logo](https://www.google.com/images/icons/product/android-16.png) Google Play Developer API - androidpublisher v2
 
 Lets Android application developers access their Google Play accounts.
@@ -174,11 +182,35 @@ An API for accessing civic information.
 
 Official API documentation: https://developers.google.com/civic-information
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Classroom API - classroom v1
+
+Google Classroom API
+
+Official API documentation: 
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Debugger API - clouddebugger v2
+
+
+
+Official API documentation: https://cloud.google.com/tools/cloud-debugger
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Network Performance Monitoring API - cloudlatencytest v2
+
+A Test API to report latency data.
+
+Official API documentation: 
+
 #### ![Logo](https://www.google.com/images/icons/product/compute_engine-16.png) Compute Engine API - compute v1
 
 API for the Google Compute Engine service.
 
 Official API documentation: https://developers.google.com/compute/docs/reference/latest/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Container Engine API - container v1
+
+The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.
+
+Official API documentation: https://cloud.google.com/container-engine/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Content API for Shopping - content v2
 
@@ -198,6 +230,12 @@ Lets you search over a website or collection of websites
 
 Official API documentation: https://developers.google.com/custom-search/v1/using_rest
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Deployment Manager API - deploymentmanager v2
+
+The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
+
+Official API documentation: https://cloud.google.com/deployment-manager/
+
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DFA Reporting API - dfareporting v1.3
 
 Lets you create, run and download reports.
@@ -210,11 +248,29 @@ Manage your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.1
+
+Manage your DoubleClick Campaign Manager ad campaigns and reports.
+
+Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
+
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.2
+
+Manage your DoubleClick Campaign Manager ad campaigns and reports.
+
+Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
+
 #### ![Logo](http://www.google.com/images/icons/feature/filing_cabinet_search-g16.png) APIs Discovery Service - discovery v1
 
 Lets you discover information about other Google APIs, such as what APIs are available, the resource and method details for each API.
 
 Official API documentation: https://developers.google.com/discovery/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud DNS API - dns v1
+
+The Google Cloud DNS API provides services for configuring and serving authoritative DNS records.
+
+Official API documentation: https://developers.google.com/cloud-dns
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) DoubleClick Bid Manager API - doubleclickbidmanager v1
 
@@ -276,6 +332,12 @@ The Management API for Google Play Game Services.
 
 Official API documentation: https://developers.google.com/games/services
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1
+
+An API to store, process, explore, and share DNA sequence reads, reference-based alignments, and variant calls.
+
+Official API documentation: 
+
 #### ![Logo](https://www.google.com/images/icons/product/googlemail-16.png) Gmail API - gmail v1
 
 The Gmail REST API.
@@ -336,6 +398,18 @@ Lets you analyze the performance of a web page and get tailored suggestions to m
 
 Official API documentation: https://developers.google.com/speed/docs/insights/v2/getting-started
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Partners API - partners v2
+
+Lets advertisers search certified companies and create contact leads with them, and also audits the usage of clients.
+
+Official API documentation: https://developers.google.com/partners/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Play Movies Partner API - playmoviespartner v1
+
+An API providing Google Play Movies Partners a way to get the delivery status of their titles.
+
+Official API documentation: 
+
 #### ![Logo](http://www.google.com/images/icons/product/gplus-16.png) Google+ API - plus v1
 
 The Google+ API enables developers to build on top of the Google+ platform.
@@ -353,6 +427,12 @@ Official API documentation: https://developers.google.com/+/domains/
 Lets you access a cloud hosted machine learning service that makes it easy to build smart apps
 
 Official API documentation: https://developers.google.com/prediction/docs/developer-guide
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1
+
+Provides reliable, many-to-many, asynchronous messaging between applications.
+
+Official API documentation: https://cloud.google.com/pubsub/docs
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) QPX Express API - qpxExpress v1
 
@@ -377,6 +457,12 @@ Official API documentation: https://developers.google.com/site-verification/
 Lets you store and retrieve potentially-large, immutable data objects.
 
 Official API documentation: https://developers.google.com/storage/docs/json_api/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Storage Transfer API - storagetransfer v1
+
+Transfers data from external data sources to a Google Cloud Storage bucket or between Google Cloud Storage buckets.
+
+Official API documentation: https://cloud.google.com/storage/transfer
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Tag Manager API - tagmanager v1
 

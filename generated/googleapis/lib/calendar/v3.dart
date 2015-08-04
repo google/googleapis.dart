@@ -50,7 +50,9 @@ class AclResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [ruleId] - ACL rule identifier.
    *
@@ -94,7 +96,9 @@ class AclResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [ruleId] - ACL rule identifier.
    *
@@ -140,7 +144,9 @@ class AclResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * Completes with a [AclRule].
    *
@@ -182,7 +188,9 @@ class AclResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [maxResults] - Maximum number of entries returned on one result page. By
    * default the value is 100 entries. The page size can never be larger than
@@ -256,7 +264,9 @@ class AclResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [ruleId] - ACL rule identifier.
    *
@@ -305,7 +315,9 @@ class AclResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [ruleId] - ACL rule identifier.
    *
@@ -354,7 +366,9 @@ class AclResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [maxResults] - Maximum number of entries returned on one result page. By
    * default the value is 100 entries. The page size can never be larger than
@@ -438,7 +452,9 @@ class CalendarListResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -477,7 +493,9 @@ class CalendarListResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * Completes with a [CalendarListEntry].
    *
@@ -653,7 +671,9 @@ class CalendarListResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [colorRgbFormat] - Whether to use the foregroundColor and backgroundColor
    * fields to write the calendar colors (RGB). If this feature is used, the
@@ -705,7 +725,9 @@ class CalendarListResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [colorRgbFormat] - Whether to use the foregroundColor and backgroundColor
    * fields to write the calendar colors (RGB). If this feature is used, the
@@ -857,7 +879,9 @@ class CalendarsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -897,7 +921,9 @@ class CalendarsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -936,7 +962,9 @@ class CalendarsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * Completes with a [Calendar].
    *
@@ -1016,7 +1044,9 @@ class CalendarsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * Completes with a [Calendar].
    *
@@ -1060,7 +1090,9 @@ class CalendarsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * Completes with a [Calendar].
    *
@@ -1202,7 +1234,9 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [eventId] - Event identifier.
    *
@@ -1252,7 +1286,9 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [eventId] - Event identifier.
    *
@@ -1322,7 +1358,9 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [supportsAttachments] - Whether API client performing operation supports
    * event attachments. Optional. The default is False.
@@ -1372,7 +1410,9 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [maxAttendees] - The maximum number of attendees to include in the
    * response. If there are more than the specified number of attendees, only
@@ -1433,7 +1473,9 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [eventId] - Recurring event identifier.
    *
@@ -1462,10 +1504,12 @@ class EventsResourceApi {
    * still be included if singleEvents is False. Optional. The default is False.
    *
    * [timeMax] - Upper bound (exclusive) for an event's start time to filter by.
-   * Optional. The default is not to filter by start time.
+   * Optional. The default is not to filter by start time. Must be an RFC3339
+   * timestamp with mandatory time zone offset.
    *
    * [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
-   * Optional. The default is not to filter by end time.
+   * Optional. The default is not to filter by end time. Must be an RFC3339
+   * timestamp with mandatory time zone offset.
    *
    * [timeZone] - Time zone used in the response. Optional. The default is the
    * time zone of the calendar.
@@ -1537,7 +1581,9 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [alwaysIncludeEmail] - Whether to always include a value in the email field
    * for the organizer, creator and attendees, even if no real email is
@@ -1616,16 +1662,20 @@ class EventsResourceApi {
    * Optional. The default is to return all entries.
    *
    * [timeMax] - Upper bound (exclusive) for an event's start time to filter by.
-   * Optional. The default is not to filter by start time.
+   * Optional. The default is not to filter by start time. Must be an RFC3339
+   * timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00,
+   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored.
    *
    * [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
-   * Optional. The default is not to filter by end time.
+   * Optional. The default is not to filter by end time. Must be an RFC3339
+   * timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00,
+   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored.
    *
    * [timeZone] - Time zone used in the response. Optional. The default is the
    * time zone of the calendar.
    *
-   * [updatedMin] - Lower bound for an event's last modification time (as a RFC
-   * 3339 timestamp) to filter by. When specified, entries deleted since this
+   * [updatedMin] - Lower bound for an event's last modification time (as a
+   * RFC3339 timestamp) to filter by. When specified, entries deleted since this
    * time will always be included regardless of showDeleted. Optional. The
    * default is not to filter by last modification time.
    *
@@ -1777,7 +1827,9 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [eventId] - Event identifier.
    *
@@ -1854,7 +1906,9 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [text] - The text describing the event to be created.
    *
@@ -1907,7 +1961,9 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [eventId] - Event identifier.
    *
@@ -1986,7 +2042,9 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
-   * [calendarId] - Calendar identifier.
+   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+   * calendarList.list method. If you want to access the primary calendar of the
+   * currently logged in user, use the "primary" keyword.
    *
    * [alwaysIncludeEmail] - Whether to always include a value in the email field
    * for the organizer, creator and attendees, even if no real email is
@@ -2065,16 +2123,20 @@ class EventsResourceApi {
    * Optional. The default is to return all entries.
    *
    * [timeMax] - Upper bound (exclusive) for an event's start time to filter by.
-   * Optional. The default is not to filter by start time.
+   * Optional. The default is not to filter by start time. Must be an RFC3339
+   * timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00,
+   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored.
    *
    * [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
-   * Optional. The default is not to filter by end time.
+   * Optional. The default is not to filter by end time. Must be an RFC3339
+   * timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00,
+   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored.
    *
    * [timeZone] - Time zone used in the response. Optional. The default is the
    * time zone of the calendar.
    *
-   * [updatedMin] - Lower bound for an event's last modification time (as a RFC
-   * 3339 timestamp) to filter by. When specified, entries deleted since this
+   * [updatedMin] - Lower bound for an event's last modification time (as a
+   * RFC3339 timestamp) to filter by. When specified, entries deleted since this
    * time will always be included regardless of showDeleted. Optional. The
    * default is not to filter by last modification time.
    *
@@ -2554,7 +2616,10 @@ class Calendar {
   core.String description;
   /** ETag of the resource. */
   core.String etag;
-  /** Identifier of the calendar. */
+  /**
+   * Identifier of the calendar. To retrieve IDs you call the
+   * calendarList.list() method.
+   */
   core.String id;
   /** Type of the resource ("calendar#calendar"). */
   core.String kind;
@@ -2721,13 +2786,16 @@ class CalendarListEntry {
   core.String accessRole;
   /**
    * The main color of the calendar in the hexadecimal format "#0088aa". This
-   * property supersedes the index-based colorId property. Optional.
+   * property supersedes the index-based colorId property. To set or change this
+   * property, you need to specify colorRgbFormat=true in the parameters of the
+   * insert, update and patch methods. Optional.
    */
   core.String backgroundColor;
   /**
    * The color of the calendar. This is an ID referring to an entry in the
-   * calendar section of the colors definition (see the colors endpoint).
-   * Optional.
+   * calendar section of the colors definition (see the colors endpoint). This
+   * property is superseded by the backgroundColor and foregroundColor
+   * properties and can be ignored when using these properties. Optional.
    */
   core.String colorId;
   /**
@@ -2745,7 +2813,9 @@ class CalendarListEntry {
   core.String etag;
   /**
    * The foreground color of the calendar in the hexadecimal format "#ffffff".
-   * This property supersedes the index-based colorId property. Optional.
+   * This property supersedes the index-based colorId property. To set or change
+   * this property, you need to specify colorRgbFormat=true in the parameters of
+   * the insert, update and patch methods. Optional.
    */
   core.String foregroundColor;
   /**
@@ -2910,7 +2980,8 @@ class CalendarNotification {
    * The method used to deliver the notification. Possible values are:
    * - "email" - Reminders are sent via email.
    * - "sms" - Reminders are sent via SMS. This value is read-only and is
-   * ignored on inserts and updates.
+   * ignored on inserts and updates. SMS reminders are only available for Google
+   * Apps for Work, Education, and Government customers.
    */
   core.String method;
   /**
@@ -3087,21 +3158,21 @@ class ColorDefinition {
 
 class Colors {
   /**
-   * Palette of calendar colors, mapping from the color ID to its definition. A
-   * calendarListEntry resource refers to one of these color IDs in its color
-   * field. Read-only.
+   * A global palette of calendar colors, mapping from the color ID to its
+   * definition. A calendarListEntry resource refers to one of these color IDs
+   * in its color field. Read-only.
    */
   core.Map<core.String, ColorDefinition> calendar;
   /**
-   * Palette of event colors, mapping from the color ID to its definition. An
-   * event resource may refer to one of these color IDs in its color field.
-   * Read-only.
+   * A global palette of event colors, mapping from the color ID to its
+   * definition. An event resource may refer to one of these color IDs in its
+   * color field. Read-only.
    */
   core.Map<core.String, ColorDefinition> event;
   /** Type of the resource ("calendar#colors"). */
   core.String kind;
   /**
-   * Last modification time of the color palette (as a RFC 3339 timestamp).
+   * Last modification time of the color palette (as a RFC3339 timestamp).
    * Read-only.
    */
   core.DateTime updated;
@@ -3186,7 +3257,10 @@ class EventCreator {
   core.String displayName;
   /** The creator's email address, if available. */
   core.String email;
-  /** The creator's Profile ID, if available. */
+  /**
+   * The creator's Profile ID, if available. It corresponds to theid field in
+   * the People collection of the Google+ API
+   */
   core.String id;
   /**
    * Whether the creator corresponds to the calendar on which this copy of the
@@ -3274,11 +3348,14 @@ class EventGadget {
    * - "chip" - The gadget displays when the event is clicked.
    */
   core.String display;
-  /** The gadget's height in pixels. Optional. */
+  /**
+   * The gadget's height in pixels. The height must be an integer greater than
+   * 0. Optional.
+   */
   core.int height;
-  /** The gadget's icon URL. */
+  /** The gadget's icon URL. The URL scheme must be HTTPS. */
   core.String iconLink;
-  /** The gadget's URL. */
+  /** The gadget's URL. The URL scheme must be HTTPS. */
   core.String link;
   /** Preferences. */
   core.Map<core.String, core.String> preferences;
@@ -3286,7 +3363,10 @@ class EventGadget {
   core.String title;
   /** The gadget's type. */
   core.String type;
-  /** The gadget's width in pixels. Optional. */
+  /**
+   * The gadget's width in pixels. The width must be an integer greater than 0.
+   * Optional.
+   */
   core.int width;
 
   EventGadget();
@@ -3357,9 +3437,15 @@ class EventGadget {
 class EventOrganizer {
   /** The organizer's name, if available. */
   core.String displayName;
-  /** The organizer's email address, if available. */
+  /**
+   * The organizer's email address, if available. It must be a valid email
+   * address as per RFC5322.
+   */
   core.String email;
-  /** The organizer's Profile ID, if available. */
+  /**
+   * The organizer's Profile ID, if available. It corresponds to theid field in
+   * the People collection of the Google+ API
+   */
   core.String id;
   /**
    * Whether the organizer corresponds to the calendar on which this copy of the
@@ -3407,7 +3493,7 @@ class EventReminders {
   /**
    * If the event doesn't use the default reminders, this lists the reminders
    * specific to the event, or, if not set, indicates that no reminders are set
-   * for this event.
+   * for this event. The maximum number of override reminders is 5.
    */
   core.List<EventReminder> overrides;
   /** Whether the default reminders of the calendar apply to the event. */
@@ -3437,9 +3523,9 @@ class EventReminders {
 }
 
 /**
- * Source of an event from which it was created; for example a web page, an
- * email message or any document identifiable by an URL using HTTP/HTTPS
- * protocol. Accessible only by the creator of the event.
+ * Source from which the event was created. For example, a web page, an email
+ * message or any document identifiable by an URL with HTTP or HTTPS scheme. Can
+ * only be seen or modified by the creator of the event.
  */
 class EventSource {
   /**
@@ -3447,7 +3533,7 @@ class EventSource {
    */
   core.String title;
   /**
-   * URL of the source pointing to a resource. URL's protocol must be HTTP or
+   * URL of the source pointing to a resource. The URL scheme must be HTTP or
    * HTTPS.
    */
   core.String url;
@@ -3489,7 +3575,10 @@ class Event {
    * There can be at most 25 attachments per event,
    */
   core.List<EventAttachment> attachments;
-  /** The attendees of the event. */
+  /**
+   * The attendees of the event. See the Events with attendees guide for more
+   * information on scheduling events with other calendar users.
+   */
   core.List<EventAttendee> attendees;
   /**
    * Whether attendees may have been omitted from the event's representation.
@@ -3503,7 +3592,7 @@ class Event {
    * section of the colors definition (see the  colors endpoint). Optional.
    */
   core.String colorId;
-  /** Creation time of the event (as a RFC 3339 timestamp). Read-only. */
+  /** Creation time of the event (as a RFC3339 timestamp). Read-only. */
   core.DateTime created;
   /** The creator of the event. Read-only. */
   EventCreator creator;
@@ -3550,11 +3639,19 @@ class Event {
    * An absolute link to this event in the Google Calendar Web UI. Read-only.
    */
   core.String htmlLink;
-  /** Event ID in the iCalendar format. */
+  /**
+   * Event unique identifier as defined in RFC5545. It is used to uniquely
+   * identify events accross calendaring systems and must be supplied when
+   * importing events via the import method.
+   * Note that the icalUID and the id are not identical and only one of them
+   * should be supplied at event creation time. One difference in their
+   * semantics is that in recurring events, all occurrences of one event have
+   * different ids while they all share the same icalUIDs.
+   */
   core.String iCalUID;
   /**
-   * Identifier of the event. When creating new single or recurring events, you
-   * can specify their IDs. Provided IDs must follow these rules:
+   * Opaque identifier of the event. When creating new single or recurring
+   * events, you can specify their IDs. Provided IDs must follow these rules:
    * - characters allowed in the ID are those used in base32hex encoding, i.e.
    * lowercase letters a-v and digits 0-9, see section 3.1.2 in RFC2938
    * - the length of the ID must be between 5 and 1024 characters
@@ -3563,6 +3660,12 @@ class Event {
    * detected at event creation time. To minimize the risk of collisions we
    * recommend using an established UUID algorithm such as one described in
    * RFC4122.
+   * If you do not specify an ID, it will be automatically generated by the
+   * server.
+   * Note that the icalUID and the id are not identical and only one of them
+   * should be supplied at event creation time. One difference in their
+   * semantics is that in recurring events, all occurrences of one event have
+   * different ids while they all share the same icalUIDs.
    */
   core.String id;
   /** Type of the resource ("calendar#event"). */
@@ -3594,13 +3697,16 @@ class Event {
    */
   core.bool privateCopy;
   /**
-   * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event. This
-   * field is omitted for single events or instances of recurring events.
+   * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as
+   * specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in
+   * this field; event start and end times are specified in the start and end
+   * fields. This field is omitted for single events or instances of recurring
+   * events.
    */
   core.List<core.String> recurrence;
   /**
-   * For an instance of a recurring event, this is the event ID of the recurring
-   * event itself. Immutable.
+   * For an instance of a recurring event, this is the id of the recurring event
+   * to which this instance belongs. Immutable.
    */
   core.String recurringEventId;
   /** Information about the event's reminders for the authenticated user. */
@@ -3608,9 +3714,9 @@ class Event {
   /** Sequence number as per iCalendar. */
   core.int sequence;
   /**
-   * Source of an event from which it was created; for example a web page, an
-   * email message or any document identifiable by an URL using HTTP/HTTPS
-   * protocol. Accessible only by the creator of the event.
+   * Source from which the event was created. For example, a web page, an email
+   * message or any document identifiable by an URL with HTTP or HTTPS scheme.
+   * Can only be seen or modified by the creator of the event.
    */
   EventSource source;
   /**
@@ -3636,7 +3742,7 @@ class Event {
    */
   core.String transparency;
   /**
-   * Last modification time of the event (as a RFC 3339 timestamp). Read-only.
+   * Last modification time of the event (as a RFC3339 timestamp). Read-only.
    */
   core.DateTime updated;
   /**
@@ -3887,6 +3993,12 @@ class Event {
 
 class EventAttachment {
   /**
+   * ID of the attached file. Read-only.
+   * For Google Drive files, this is the ID of the corresponding Files resource
+   * entry in the Drive API.
+   */
+  core.String fileId;
+  /**
    * URL link to the attachment.
    * For adding Google Drive file attachments use the same format as in
    * alternateLink property of the Files resource in the Drive API.
@@ -3902,6 +4014,9 @@ class EventAttachment {
   EventAttachment();
 
   EventAttachment.fromJson(core.Map _json) {
+    if (_json.containsKey("fileId")) {
+      fileId = _json["fileId"];
+    }
     if (_json.containsKey("fileUrl")) {
       fileUrl = _json["fileUrl"];
     }
@@ -3918,6 +4033,9 @@ class EventAttachment {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (fileId != null) {
+      _json["fileId"] = fileId;
+    }
     if (fileUrl != null) {
       _json["fileUrl"] = fileUrl;
     }
@@ -3943,10 +4061,13 @@ class EventAttendee {
   core.String displayName;
   /**
    * The attendee's email address, if available. This field must be present when
-   * adding an attendee.
+   * adding an attendee. It must be a valid email address as per RFC5322.
    */
   core.String email;
-  /** The attendee's Profile ID, if available. */
+  /**
+   * The attendee's Profile ID, if available. It corresponds to theid field in
+   * the People collection of the Google+ API
+   */
   core.String id;
   /** Whether this is an optional attendee. Optional. The default is False. */
   core.bool optional;
@@ -4046,9 +4167,9 @@ class EventDateTime {
   /** The date, in the format "yyyy-mm-dd", if this is an all-day event. */
   core.DateTime date;
   /**
-   * The time, as a combined date-time value (formatted according to RFC 3339).
-   * A time zone offset is required unless a time zone is explicitly specified
-   * in timeZone.
+   * The time, as a combined date-time value (formatted according to RFC3339). A
+   * time zone offset is required unless a time zone is explicitly specified in
+   * timeZone.
    */
   core.DateTime dateTime;
   /**
@@ -4093,13 +4214,15 @@ class EventReminder {
   /**
    * The method used by this reminder. Possible values are:
    * - "email" - Reminders are sent via email.
-   * - "sms" - Reminders are sent via SMS.
+   * - "sms" - Reminders are sent via SMS. These are only available for Google
+   * Apps for Work, Education, and Government customers. Requests to set SMS
+   * reminders for other account types are ignored.
    * - "popup" - Reminders are sent via a UI popup.
    */
   core.String method;
   /**
    * Number of minutes before the start of the event when the reminder should
-   * trigger.
+   * trigger. Valid values are between 0 and 40320 (4 weeks in minutes).
    */
   core.int minutes;
 
@@ -4171,8 +4294,7 @@ class Events {
   /** The time zone of the calendar. Read-only. */
   core.String timeZone;
   /**
-   * Last modification time of the calendar (as a RFC 3339 timestamp).
-   * Read-only.
+   * Last modification time of the calendar (as a RFC3339 timestamp). Read-only.
    */
   core.DateTime updated;
 

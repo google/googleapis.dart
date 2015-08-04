@@ -39,6 +39,7 @@ class ComputeApi {
   final commons.ApiRequester _requester;
 
   AddressesResourceApi get addresses => new AddressesResourceApi(_requester);
+  AutoscalersResourceApi get autoscalers => new AutoscalersResourceApi(_requester);
   BackendServicesResourceApi get backendServices => new BackendServicesResourceApi(_requester);
   DiskTypesResourceApi get diskTypes => new DiskTypesResourceApi(_requester);
   DisksResourceApi get disks => new DisksResourceApi(_requester);
@@ -91,24 +92,18 @@ class AddressesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -331,24 +326,18 @@ class AddressesResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -399,6 +388,442 @@ class AddressesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new AddressList.fromJson(data));
+  }
+
+}
+
+
+class AutoscalersResourceApi {
+  final commons.ApiRequester _requester;
+
+  AutoscalersResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves the list of autoscalers grouped by scope.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   *
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
+   *
+   * [maxResults] - Maximum count of results to be returned.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
+   *
+   * Completes with a [AutoscalerAggregatedList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AutoscalerAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/autoscalers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AutoscalerAggregatedList.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified autoscaler resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - Name of the zone scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [autoscaler] - Name of the persistent autoscaler resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String zone, core.String autoscaler) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (autoscaler == null) {
+      throw new core.ArgumentError("Parameter autoscaler is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified autoscaler resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - Name of the zone scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [autoscaler] - Name of the persistent autoscaler resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Autoscaler].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Autoscaler> get(core.String project, core.String zone, core.String autoscaler) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (autoscaler == null) {
+      throw new core.ArgumentError("Parameter autoscaler is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Autoscaler.fromJson(data));
+  }
+
+  /**
+   * Creates an autoscaler resource in the specified project using the data
+   * included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - Name of the zone scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(Autoscaler request, core.String project, core.String zone) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of autoscaler resources contained within the specified
+   * zone.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - Name of the zone scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   *
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
+   *
+   * [maxResults] - Maximum count of results to be returned.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
+   *
+   * Completes with a [AutoscalerList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AutoscalerList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AutoscalerList.fromJson(data));
+  }
+
+  /**
+   * Updates an autoscaler resource in the specified project using the data
+   * included in the request. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - Name of the zone scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [autoscaler] - Name of the autoscaler resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(Autoscaler request, core.String project, core.String zone, core.String autoscaler) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (autoscaler == null) {
+      throw new core.ArgumentError("Parameter autoscaler is required.");
+    }
+    _queryParams["autoscaler"] = [autoscaler];
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Updates an autoscaler resource in the specified project using the data
+   * included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - Name of the zone scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [autoscaler] - Name of the autoscaler resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> update(Autoscaler request, core.String project, core.String zone, {core.String autoscaler}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (autoscaler != null) {
+      _queryParams["autoscaler"] = [autoscaler];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
 }
@@ -615,24 +1040,18 @@ class BackendServicesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -806,24 +1225,18 @@ class DiskTypesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -940,24 +1353,18 @@ class DiskTypesResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -1029,24 +1436,18 @@ class DisksResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -1155,7 +1556,10 @@ class DisksResourceApi {
   }
 
   /**
-   * Deletes the specified persistent disk.
+   * Deletes the specified persistent disk. Deleting a disk removes its data
+   * permanently and is irreversible. However, deleting a disk does not delete
+   * any snapshots previously made from the disk. You must separately delete
+   * snapshots.
    *
    * Request parameters:
    *
@@ -1331,24 +1735,18 @@ class DisksResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -1562,24 +1960,18 @@ class FirewallsResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -1754,24 +2146,18 @@ class ForwardingRulesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -1994,24 +2380,18 @@ class ForwardingRulesResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -2283,24 +2663,18 @@ class GlobalAddressesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -2511,24 +2885,18 @@ class GlobalForwardingRulesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -2650,24 +3018,18 @@ class GlobalOperationsResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -2822,24 +3184,18 @@ class GlobalOperationsResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -3050,24 +3406,18 @@ class HttpHealthChecksResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -3437,24 +3787,18 @@ class ImagesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -3583,24 +3927,18 @@ class InstanceGroupManagersResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -3876,24 +4214,18 @@ class InstanceGroupManagersResourceApi {
    * [zone] - The URL of the zone where the managed instance group is located.
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -4309,24 +4641,18 @@ class InstanceGroupsResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -4543,24 +4869,18 @@ class InstanceGroupsResourceApi {
    * [zone] - The URL of the zone where the instance group is located.
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -4632,24 +4952,18 @@ class InstanceGroupsResourceApi {
    * generate a list of included instances.
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -4983,24 +5297,18 @@ class InstanceTemplatesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -5132,24 +5440,18 @@ class InstancesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -5445,7 +5747,7 @@ class InstancesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The name of the The name of the zone for this request..
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [instance] - Name of the instance resource to return.
@@ -5615,24 +5917,18 @@ class InstancesResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -6167,24 +6463,18 @@ class MachineTypesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -6301,24 +6591,18 @@ class MachineTypesResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -6531,24 +6815,18 @@ class NetworksResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -6965,24 +7243,18 @@ class RegionOperationsResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -7101,24 +7373,18 @@ class RegionsResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -7328,24 +7594,18 @@ class RoutesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -7405,7 +7665,13 @@ class SnapshotsResourceApi {
       _requester = client;
 
   /**
-   * Deletes the specified persistent disk snapshot resource.
+   * Deletes the specified Snapshot resource. Keep in mind that deleting a
+   * single snapshot might not necessarily delete all the data on that snapshot.
+   * If any data on the snapshot that is marked for deletion is needed for
+   * subsequent snapshots, the data will be moved to the next corresponding
+   * snapshot.
+   *
+   * For more information, see Deleting snaphots.
    *
    * Request parameters:
    *
@@ -7413,7 +7679,7 @@ class SnapshotsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [snapshot] - Name of the persistent disk snapshot resource to delete.
+   * [snapshot] - Name of the Snapshot resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -7452,7 +7718,7 @@ class SnapshotsResourceApi {
   }
 
   /**
-   * Returns the specified persistent disk snapshot resource.
+   * Returns the specified Snapshot resource.
    *
    * Request parameters:
    *
@@ -7460,7 +7726,7 @@ class SnapshotsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [snapshot] - Name of the persistent disk snapshot resource to return.
+   * [snapshot] - Name of the Snapshot resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Snapshot].
@@ -7499,8 +7765,8 @@ class SnapshotsResourceApi {
   }
 
   /**
-   * Retrieves the list of persistent disk snapshot resources contained within
-   * the specified project.
+   * Retrieves the list of Snapshot resources contained within the specified
+   * project.
    *
    * Request parameters:
    *
@@ -7509,24 +7775,18 @@ class SnapshotsResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -7737,24 +7997,18 @@ class TargetHttpProxiesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -7876,24 +8130,18 @@ class TargetInstancesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -8116,24 +8364,18 @@ class TargetInstancesResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -8323,24 +8565,18 @@ class TargetPoolsResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -8623,24 +8859,18 @@ class TargetPoolsResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -8894,24 +9124,18 @@ class TargetVpnGatewaysResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -9134,24 +9358,18 @@ class TargetVpnGatewaysResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -9364,24 +9582,18 @@ class UrlMapsResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -9609,24 +9821,18 @@ class VpnTunnelsResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -9849,24 +10055,18 @@ class VpnTunnelsResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -10048,24 +10248,18 @@ class ZoneOperationsResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -10184,24 +10378,18 @@ class ZonesResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must contain the following:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
    *
-   * - FIELD_NAME: The name of the field you want to compare. The field name
-   * must be valid for the type of resource being filtered. Only atomic field
-   * types are supported (string, number, boolean). Array and object fields are
-   * not currently supported.
-   * - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-   * equals).
-   * - LITERAL_STRING: The literal string value to filter to. The literal value
-   * must be valid for the type of field (string, number, boolean). For string
-   * fields, the literal value is interpreted as a regular expression using RE2
-   * syntax. The literal value must match the entire field.  For example, you
-   * can filter by the name of a resource:
-   * filter=name ne example-instance
-   * The above filter returns only results whose name field does not equal
-   * example-instance. You can also enclose your literal string in single,
-   * double, or no quotes.
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
    *
    * [maxResults] - Maximum count of results to be returned.
    * Value must be between "0" and "500".
@@ -10906,33 +11094,554 @@ class AttachedDiskInitializeParams {
   }
 }
 
+class Autoscaler {
+  /** Autoscaling configuration. */
+  AutoscalingPolicy autoscalingPolicy;
+  /** Creation timestamp in RFC3339 text format (output only). */
+  core.String creationTimestamp;
+  /**
+   * An optional textual description of the resource; provided by the client
+   * when the resource is created.
+   */
+  core.String description;
+  /**
+   * Unique identifier for the resource; defined by the server (output only).
+   */
+  core.String id;
+  /** Type of the resource. */
+  core.String kind;
+  /**
+   * Name of the resource; provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   */
+  core.String name;
+  /** Server defined URL for the resource (output only). */
+  core.String selfLink;
+  /**
+   * URL of Instance Group Manager or Replica Pool which will be controlled by
+   * Autoscaler.
+   */
+  core.String target;
+  /** URL of the zone where the instance group resides (output only). */
+  core.String zone;
+
+  Autoscaler();
+
+  Autoscaler.fromJson(core.Map _json) {
+    if (_json.containsKey("autoscalingPolicy")) {
+      autoscalingPolicy = new AutoscalingPolicy.fromJson(_json["autoscalingPolicy"]);
+    }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("target")) {
+      target = _json["target"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (autoscalingPolicy != null) {
+      _json["autoscalingPolicy"] = (autoscalingPolicy).toJson();
+    }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (target != null) {
+      _json["target"] = target;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+class AutoscalerAggregatedList {
+  /**
+   * Unique identifier for the resource; defined by the server (output only).
+   */
+  core.String id;
+  /** A map of scoped autoscaler lists. */
+  core.Map<core.String, AutoscalersScopedList> items;
+  /** Type of resource. */
+  core.String kind;
+  /** A token used to continue a truncated list request (output only). */
+  core.String nextPageToken;
+  /** Server defined URL for this resource (output only). */
+  core.String selfLink;
+
+  AutoscalerAggregatedList();
+
+  AutoscalerAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap(_json["items"], (item) => new AutoscalersScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of persistent autoscaler resources. */
+class AutoscalerList {
+  /**
+   * Unique identifier for the resource; defined by the server (output only).
+   */
+  core.String id;
+  /** A list of Autoscaler resources. */
+  core.List<Autoscaler> items;
+  /** Type of resource. */
+  core.String kind;
+  /** A token used to continue a truncated list request (output only). */
+  core.String nextPageToken;
+  /** Server defined URL for this resource (output only). */
+  core.String selfLink;
+
+  AutoscalerList();
+
+  AutoscalerList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Autoscaler.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class AutoscalersScopedListWarningData {
+  /** [Output Only] A key for the warning data. */
+  core.String key;
+  /** [Output Only] A warning data value corresponding to the key. */
+  core.String value;
+
+  AutoscalersScopedListWarningData();
+
+  AutoscalersScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Informational warning which replaces the list of autoscalers when the list is
+ * empty.
+ */
+class AutoscalersScopedListWarning {
+  /**
+   * [Output Only] The warning type identifier for this warning.
+   * Possible string values are:
+   * - "DEPRECATED_RESOURCE_USED"
+   * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "INJECTED_KERNELS_DEPRECATED"
+   * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+   * - "NEXT_HOP_CANNOT_IP_FORWARD"
+   * - "NEXT_HOP_INSTANCE_NOT_FOUND"
+   * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+   * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
+   * - "NO_RESULTS_ON_PAGE"
+   * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+   * - "UNREACHABLE"
+   */
+  core.String code;
+  /** [Output Only] Metadata for this warning in key: value format. */
+  core.List<AutoscalersScopedListWarningData> data;
+  /** [Output Only] Optional human-readable details for this warning. */
+  core.String message;
+
+  AutoscalersScopedListWarning();
+
+  AutoscalersScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"].map((value) => new AutoscalersScopedListWarningData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class AutoscalersScopedList {
+  /** List of autoscalers contained in this scope. */
+  core.List<Autoscaler> autoscalers;
+  /**
+   * Informational warning which replaces the list of autoscalers when the list
+   * is empty.
+   */
+  AutoscalersScopedListWarning warning;
+
+  AutoscalersScopedList();
+
+  AutoscalersScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("autoscalers")) {
+      autoscalers = _json["autoscalers"].map((value) => new Autoscaler.fromJson(value)).toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new AutoscalersScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (autoscalers != null) {
+      _json["autoscalers"] = autoscalers.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Cloud Autoscaler policy. */
+class AutoscalingPolicy {
+  /**
+   * The number of seconds that the Autoscaler should wait between two
+   * succeeding changes to the number of virtual machines. You should define an
+   * interval that is at least as long as the initialization time of a virtual
+   * machine and the time it may take for replica pool to create the virtual
+   * machine. The default is 60 seconds.
+   */
+  core.int coolDownPeriodSec;
+  /**
+   * TODO(jbartosik): Add support for scaling based on muliple utilization
+   * metrics (take max recommendation). Exactly one utilization policy should be
+   * provided. Configuration parameters of CPU based autoscaling policy.
+   */
+  AutoscalingPolicyCpuUtilization cpuUtilization;
+  /** Configuration parameters of autoscaling based on custom metric. */
+  core.List<AutoscalingPolicyCustomMetricUtilization> customMetricUtilizations;
+  /** Configuration parameters of autoscaling based on load balancer. */
+  AutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization;
+  /**
+   * The maximum number of replicas that the Autoscaler can scale up to. This
+   * field is required for config to be effective. Maximum number of replicas
+   * should be not lower than minimal number of replicas. Absolute limit for
+   * this value is defined in Autoscaler backend.
+   */
+  core.int maxNumReplicas;
+  /**
+   * The minimum number of replicas that the Autoscaler can scale down to. Can't
+   * be less than 0. If not provided Autoscaler will choose default value
+   * depending on maximal number of replicas.
+   */
+  core.int minNumReplicas;
+
+  AutoscalingPolicy();
+
+  AutoscalingPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("coolDownPeriodSec")) {
+      coolDownPeriodSec = _json["coolDownPeriodSec"];
+    }
+    if (_json.containsKey("cpuUtilization")) {
+      cpuUtilization = new AutoscalingPolicyCpuUtilization.fromJson(_json["cpuUtilization"]);
+    }
+    if (_json.containsKey("customMetricUtilizations")) {
+      customMetricUtilizations = _json["customMetricUtilizations"].map((value) => new AutoscalingPolicyCustomMetricUtilization.fromJson(value)).toList();
+    }
+    if (_json.containsKey("loadBalancingUtilization")) {
+      loadBalancingUtilization = new AutoscalingPolicyLoadBalancingUtilization.fromJson(_json["loadBalancingUtilization"]);
+    }
+    if (_json.containsKey("maxNumReplicas")) {
+      maxNumReplicas = _json["maxNumReplicas"];
+    }
+    if (_json.containsKey("minNumReplicas")) {
+      minNumReplicas = _json["minNumReplicas"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (coolDownPeriodSec != null) {
+      _json["coolDownPeriodSec"] = coolDownPeriodSec;
+    }
+    if (cpuUtilization != null) {
+      _json["cpuUtilization"] = (cpuUtilization).toJson();
+    }
+    if (customMetricUtilizations != null) {
+      _json["customMetricUtilizations"] = customMetricUtilizations.map((value) => (value).toJson()).toList();
+    }
+    if (loadBalancingUtilization != null) {
+      _json["loadBalancingUtilization"] = (loadBalancingUtilization).toJson();
+    }
+    if (maxNumReplicas != null) {
+      _json["maxNumReplicas"] = maxNumReplicas;
+    }
+    if (minNumReplicas != null) {
+      _json["minNumReplicas"] = minNumReplicas;
+    }
+    return _json;
+  }
+}
+
+/** CPU utilization policy. */
+class AutoscalingPolicyCpuUtilization {
+  /**
+   * The target utilization that the Autoscaler should maintain. It is
+   * represented as a fraction of used cores. For example: 6 cores used in
+   * 8-core VM are represented here as 0.75. Must be a float value between (0,
+   * 1]. If not defined, the default is 0.8.
+   */
+  core.double utilizationTarget;
+
+  AutoscalingPolicyCpuUtilization();
+
+  AutoscalingPolicyCpuUtilization.fromJson(core.Map _json) {
+    if (_json.containsKey("utilizationTarget")) {
+      utilizationTarget = _json["utilizationTarget"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (utilizationTarget != null) {
+      _json["utilizationTarget"] = utilizationTarget;
+    }
+    return _json;
+  }
+}
+
+/** Custom utilization metric policy. */
+class AutoscalingPolicyCustomMetricUtilization {
+  /**
+   * Identifier of the metric. It should be a Cloud Monitoring metric. The
+   * metric can not have negative values. The metric should be an utilization
+   * metric (increasing number of VMs handling requests x times should reduce
+   * average value of the metric roughly x times). For example you could use:
+   * compute.googleapis.com/instance/network/received_bytes_count.
+   */
+  core.String metric;
+  /**
+   * Target value of the metric which Autoscaler should maintain. Must be a
+   * positive value.
+   */
+  core.double utilizationTarget;
+  /**
+   * Defines type in which utilization_target is expressed.
+   * Possible string values are:
+   * - "DELTA_PER_MINUTE"
+   * - "DELTA_PER_SECOND"
+   * - "GAUGE"
+   */
+  core.String utilizationTargetType;
+
+  AutoscalingPolicyCustomMetricUtilization();
+
+  AutoscalingPolicyCustomMetricUtilization.fromJson(core.Map _json) {
+    if (_json.containsKey("metric")) {
+      metric = _json["metric"];
+    }
+    if (_json.containsKey("utilizationTarget")) {
+      utilizationTarget = _json["utilizationTarget"];
+    }
+    if (_json.containsKey("utilizationTargetType")) {
+      utilizationTargetType = _json["utilizationTargetType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (metric != null) {
+      _json["metric"] = metric;
+    }
+    if (utilizationTarget != null) {
+      _json["utilizationTarget"] = utilizationTarget;
+    }
+    if (utilizationTargetType != null) {
+      _json["utilizationTargetType"] = utilizationTargetType;
+    }
+    return _json;
+  }
+}
+
+/** Load balancing utilization policy. */
+class AutoscalingPolicyLoadBalancingUtilization {
+  /**
+   * Fraction of backend capacity utilization (set in HTTP load balancing
+   * configuration) that Autoscaler should maintain. Must be a positive float
+   * value. If not defined, the default is 0.8. For example if your
+   * maxRatePerInstance capacity (in HTTP Load Balancing configuration) is set
+   * at 10 and you would like to keep number of instances such that each
+   * instance receives 7 QPS on average, set this to 0.7.
+   */
+  core.double utilizationTarget;
+
+  AutoscalingPolicyLoadBalancingUtilization();
+
+  AutoscalingPolicyLoadBalancingUtilization.fromJson(core.Map _json) {
+    if (_json.containsKey("utilizationTarget")) {
+      utilizationTarget = _json["utilizationTarget"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (utilizationTarget != null) {
+      _json["utilizationTarget"] = utilizationTarget;
+    }
+    return _json;
+  }
+}
+
 /** Message containing information of one individual backend. */
 class Backend {
   /**
-   * The balancing mode of this backend, default is UTILIZATION.
+   * Specifies the balancing mode for this backend. The default is UTILIZATION
+   * but available values are UTILIZATION and RATE.
    * Possible string values are:
    * - "RATE"
    * - "UTILIZATION"
    */
   core.String balancingMode;
   /**
-   * The multiplier (a value between 0.0 and 1.0) of the max capacity (CPU or
-   * RPS, depending on 'balancingMode') the group should serve up to. 0 means
-   * the group is totally drained. Default value is 1. Valid range is [0.0,
-   * 1.0].
+   * A multiplier applied to the group's maximum servicing capacity (either
+   * UTILIZATION or RATE). Default value is 1, which means the group will serve
+   * up to 100% of its configured CPU or RPS (depending on balancingMode). A
+   * setting of 0 means the group is completely drained, offering 0% of its
+   * available CPU or RPS. Valid range is [0.0,1.0].
    */
   core.double capacityScaler;
   /**
-   * An optional textual description of the resource, which is provided by the
-   * client when the resource is created.
+   * An optional textual description of the resource. Provided by the client
+   * when the resource is created.
    */
   core.String description;
   /**
-   * URL of a zonal Cloud Resource View resource. This resource view defines the
-   * list of instances that serve traffic. Member virtual machine instances from
-   * each resource view must live in the same zone as the resource view itself.
-   * No two backends in a backend service are allowed to use same Resource View
-   * resource.
+   * The fully-qualified URL of a zonal Instance Group resource. This instance
+   * group defines the list of instances that serve traffic. Member virtual
+   * machine instances from each instance group must live in the same zone as
+   * the instance group itself. No two backends in a backend service are allowed
+   * to use same Instance Group resource.
+   *
+   * Note that you must specify an Instance Group resource using the
+   * fully-qualified URL, rather than a partial URL.
    */
   core.String group;
   /**
@@ -10948,9 +11657,9 @@ class Backend {
    */
   core.double maxRatePerInstance;
   /**
-   * Used when 'balancingMode' is UTILIZATION. This ratio defines the CPU
-   * utilization target for the group. The default is 0.8. Valid range is [0,
-   * 1].
+   * Used when balancingMode is UTILIZATION. This ratio defines the CPU
+   * utilization target for the group. The default is 0.8. Valid range is [0.0,
+   * 1.0].
    */
   core.double maxUtilization;
 
@@ -11010,29 +11719,14 @@ class Backend {
 /**
  * A BackendService resource. This resource defines a group of backend VMs
  * together with their serving capacity.
- *
- * If you add field foo, you probably need to also add:
- * com.google.cloud.cluster.manager.api.BackendServiceResource: foo
- * com.google.cloud.cluster.manager.networking.entities: BackendService,
- * BackendServiceEntity: getFoo, setFoo:
- *
- * Converters/mappers will need to be updated:
- * com.google.cloud.cluster.manager.networking.services.backendservice.BackendServiceResourceConverter:
- * toResource, updateEntity: copy foo
- * com.google.cloud.cluster.mixer.protomappers.BackendServiceMappers.ResourceMapper:
- * ResourceMapper: add a new map call
- *
- * Tests to update:
- * com.google.cloud.cluster.manager.networking.services.backendservice.BackendServiceResourceConverterTest
- * com.google.cloud.cluster.mixer.protomappers.BackendServiceMappersTest.testResourceMapping
  */
 class BackendService {
   /** The list of backends that serve this BackendService. */
   core.List<Backend> backends;
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
+   * An optional textual description of the resource. Provided by the client
    * when the resource is created.
    */
   core.String description;
@@ -11057,18 +11751,26 @@ class BackendService {
    */
   core.List<core.String> healthChecks;
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#backendService for backend
+   * services.
+   */
   core.String kind;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
   /**
-   * Deprecated in favor of port_name. The TCP port to connect on the backend.
+   * Deprecated in favor of port name. The TCP port to connect on the backend.
    * The default value is 80.
    */
   core.int port;
@@ -11083,7 +11785,7 @@ class BackendService {
    * - "HTTP"
    */
   core.String protocol;
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
   /**
    * How many seconds to wait for the backend before considering it a failed
@@ -11182,7 +11884,10 @@ class BackendService {
 
 class BackendServiceGroupHealth {
   core.List<HealthStatus> healthStatus;
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#backendServiceGroupHealth
+   * for the health of backend services.
+   */
   core.String kind;
 
   BackendServiceGroupHealth();
@@ -11211,16 +11916,19 @@ class BackendServiceGroupHealth {
 /** Contains a list of BackendService resources. */
 class BackendServiceList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of BackendService resources. */
   core.List<BackendService> items;
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#backendServiceList for lists
+   * of backend services.
+   */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   BackendServiceList();
@@ -12238,7 +12946,7 @@ class Firewall {
    * protocol and port-range tuple that describes a permitted connection.
    */
   core.List<FirewallAllowed> allowed;
-  /** [Output Only] Creation timestamp in RFC3339text format. */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
    * An optional textual description of the resource; provided by the client
@@ -12284,8 +12992,8 @@ class Firewall {
    * One or both of sourceRanges and sourceTags may be set.
    *
    * If both properties are set, an inbound connection is allowed if the range
-   * or the tag of the source matches the sourceRanges OR matches the sourceTags
-   * property; the connection does not need to match both properties.
+   * matches the sourceRanges OR the tag of the source matches the sourceTags
+   * property. The connection does not need to match both properties.
    */
   core.List<core.String> sourceRanges;
   /**
@@ -12293,13 +13001,13 @@ class Firewall {
    * sourceRanges and sourceTags may be set.
    *
    * If both properties are set, an inbound connection is allowed if the range
-   * or the tag of the source matches the sourceRanges OR matches the sourceTags
-   * property; the connection does not need to match both properties.
+   * matches the sourceRanges OR the tag of the source matches the sourceTags
+   * property. The connection does not need to match both properties.
    */
   core.List<core.String> sourceTags;
   /**
-   * A list of instance tags indicating sets of instances located on network
-   * which may make network connections as specified in allowed[]. If no
+   * A list of instance tags indicating sets of instances located in the network
+   * that may make network connections as specified in allowed[]. If no
    * targetTags are specified, the firewall rule applies to all instances on the
    * specified network.
    */
@@ -12456,8 +13164,8 @@ class ForwardingRule {
    */
   core.String IPAddress;
   /**
-   * The IP protocol to which this rule applies, valid options are 'TCP', 'UDP',
-   * 'ESP', 'AH' or 'SCTP'.
+   * The IP protocol to which this rule applies, valid options are TCP, UDP,
+   * ESP, AH or SCTP.
    * Possible string values are:
    * - "AH"
    * - "ESP"
@@ -12466,7 +13174,7 @@ class ForwardingRule {
    * - "UDP"
    */
   core.String IPProtocol;
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
    * An optional textual description of the resource; provided by the client
@@ -12474,7 +13182,7 @@ class ForwardingRule {
    */
   core.String description;
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** Type of the resource. */
@@ -12482,28 +13190,33 @@ class ForwardingRule {
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
   /**
-   * Applicable only when 'IPProtocol' is 'TCP', 'UDP' or 'SCTP', only packets
-   * addressed to ports in the specified range will be forwarded to 'target'. If
-   * 'portRange' is left empty (default value), all ports are forwarded.
-   * Forwarding rules with the same [IPAddress, IPProtocol] pair must have
+   * Applicable only when `IPProtocol` is TCP, UDP, or SCTP, only packets
+   * addressed to ports in the specified range will be forwarded to target. If
+   * portRange is left empty (default value), all ports are forwarded.
+   * Forwarding rules with the same `[IPAddress, IPProtocol]` pair must have
    * disjoint port ranges.
    */
   core.String portRange;
   /**
-   * URL of the region where the regional forwarding rule resides (output only).
+   * [Output Only] URL of the region where the regional forwarding rule resides.
    * This field is not applicable to global forwarding rules.
    */
   core.String region;
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * The URL of the target resource to receive the matched traffic. For regional
    * forwarding rules, this target must live in the same region as the
    * forwarding rule. For global forwarding rules, this target must be a global
-   * TargetHttpProxy resource.
+   * TargetHttpProxy or TargetHttpsProxy resource.
    */
   core.String target;
 
@@ -12586,16 +13299,16 @@ class ForwardingRule {
 
 class ForwardingRuleAggregatedList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A map of scoped forwarding rule lists. */
   core.Map<core.String, ForwardingRulesScopedList> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
   ForwardingRuleAggregatedList();
@@ -12641,17 +13354,15 @@ class ForwardingRuleAggregatedList {
 
 /** Contains a list of ForwardingRule resources. */
 class ForwardingRuleList {
-  /**
-   * Unique identifier for the resource; defined by the server (output only).
-   */
+  /** [Output Only] Unique identifier for the resource. Set by the server. */
   core.String id;
   /** A list of ForwardingRule resources. */
   core.List<ForwardingRule> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
   ForwardingRuleList();
@@ -12885,10 +13596,11 @@ class HealthStatus {
 }
 
 /**
- * A host-matching rule for a URL. If matched, will use the named PathMatcher to
- * select the BackendService.
+ * UrlMaps A host-matching rule for a URL. If matched, will use the named
+ * PathMatcher to select the BackendService.
  */
 class HostRule {
+  /** An optional textual description. */
   core.String description;
   /**
    * The list of host patterns to match. They must be valid hostnames except
@@ -12898,7 +13610,7 @@ class HostRule {
   core.List<core.String> hosts;
   /**
    * The name of the PathMatcher to match the path portion of the URL, if the
-   * this HostRule matches the URL's host portion.
+   * this hostRule matches the URL's host portion.
    */
   core.String pathMatcher;
 
@@ -13987,13 +14699,6 @@ class InstanceGroupManager {
    * this managed instance group that are scheduled for those actions.
    */
   InstanceGroupManagerActionsSummary currentActions;
-  /**
-   * [Output Only] The number of instances that currently exist and are a part
-   * of this group. The number includes instances that are in a RUNNING state,
-   * instances that are starting, and instances that are scheduled to be deleted
-   * or abandoned.
-   */
-  core.int currentSize;
   /** An optional text description for the managed instance group. */
   core.String description;
   /**
@@ -14035,7 +14740,7 @@ class InstanceGroupManager {
   /** [Output Only] Server defined URL for this managed instance group. */
   core.String selfLink;
   /**
-   * The URL of all TargetPool resources to which new instances in the
+   * The URLs of all TargetPool resources to which new instances in the
    * instanceGroup field are added. Updating the target pool values does not
    * affect existing instances.
    */
@@ -14063,9 +14768,6 @@ class InstanceGroupManager {
     }
     if (_json.containsKey("currentActions")) {
       currentActions = new InstanceGroupManagerActionsSummary.fromJson(_json["currentActions"]);
-    }
-    if (_json.containsKey("currentSize")) {
-      currentSize = _json["currentSize"];
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -14116,9 +14818,6 @@ class InstanceGroupManager {
     if (currentActions != null) {
       _json["currentActions"] = (currentActions).toJson();
     }
-    if (currentSize != null) {
-      _json["currentSize"] = currentSize;
-    }
     if (description != null) {
       _json["description"] = description;
     }
@@ -14157,13 +14856,46 @@ class InstanceGroupManager {
 }
 
 class InstanceGroupManagerActionsSummary {
+  /**
+   * [Output Only] Total number of instances in the managed instance group that
+   * are scheduled to be abandoned. Abandoning an instance removes it from the
+   * managed instance group without deleting it.
+   */
   core.int abandoning;
+  /**
+   * [Output Only] The number of instances in the managed instance group that
+   * are scheduled to be created or are currently being created.
+   */
   core.int creating;
+  /**
+   * [Output Only] The number of instances in the managed instance group that
+   * are scheduled to be deleted or are currently being deleted.
+   */
   core.int deleting;
+  /**
+   * [Output Only] The number of instances in the managed instance group that
+   * currently have no scheduled actions.
+   */
   core.int none;
-  core.int rebooting;
+  /**
+   * [Output Only] The number of instances in the managed instance group that
+   * are scheduled to be recreated or are currently being being recreated.
+   * Recreating an instance deletes the existing root persistent disk and
+   * creates a new disk from the image that is defined in the instance template.
+   */
   core.int recreating;
+  /**
+   * [Output Only] The number of instances in the managed instance group that
+   * are being reconfigured with properties that do not require a restart or a
+   * recreate action. For example, setting or removing target pools for the
+   * instance.
+   */
   core.int refreshing;
+  /**
+   * [Output Only] The number of instances in the managed instance group that
+   * are scheduled to be restarted or are currently being restarted.
+   */
+  core.int restarting;
 
   InstanceGroupManagerActionsSummary();
 
@@ -14180,14 +14912,14 @@ class InstanceGroupManagerActionsSummary {
     if (_json.containsKey("none")) {
       none = _json["none"];
     }
-    if (_json.containsKey("rebooting")) {
-      rebooting = _json["rebooting"];
-    }
     if (_json.containsKey("recreating")) {
       recreating = _json["recreating"];
     }
     if (_json.containsKey("refreshing")) {
       refreshing = _json["refreshing"];
+    }
+    if (_json.containsKey("restarting")) {
+      restarting = _json["restarting"];
     }
   }
 
@@ -14205,14 +14937,14 @@ class InstanceGroupManagerActionsSummary {
     if (none != null) {
       _json["none"] = none;
     }
-    if (rebooting != null) {
-      _json["rebooting"] = rebooting;
-    }
     if (recreating != null) {
       _json["recreating"] = recreating;
     }
     if (refreshing != null) {
       _json["refreshing"] = refreshing;
+    }
+    if (restarting != null) {
+      _json["restarting"] = restarting;
     }
     return _json;
   }
@@ -14286,13 +15018,13 @@ class InstanceGroupManagerAggregatedList {
 class InstanceGroupManagerAutoHealingPolicy {
   /**
    * The action to perform when an instance becomes unhealthy. Possible values
-   * are RECREATE or REBOOT. RECREATE replaces an unhealthy instance with a new
+   * are RECREATE or RESTART. RECREATE replaces an unhealthy instance with a new
    * instance that is based on the instance template for this managed instance
-   * group. REBOOT performs a soft reboot on an instance. If the instance cannot
-   * reboot, the instance performs a hard restart.
+   * group. RESTART performs a soft restart on an instance. If the instance
+   * cannot restart softly, the instance performs a hard restart.
    * Possible string values are:
-   * - "REBOOT"
    * - "RECREATE"
+   * - "RESTART"
    */
   core.String actionType;
   /** The URL for the HealthCheck that signals autohealing. */
@@ -15993,16 +16725,16 @@ class ManagedInstance {
    * - "CREATING"
    * - "DELETING"
    * - "NONE"
-   * - "REBOOTING"
    * - "RECREATING"
    * - "REFRESHING"
+   * - "RESTARTING"
    */
   core.String currentAction;
   /**
    * The unique identifier for this resource (empty when instance does not
    * exist).
    */
-  core.String incarnationId;
+  core.String id;
   /** The URL of the instance (set even though instance does not exist yet). */
   core.String instance;
   /**
@@ -16027,8 +16759,8 @@ class ManagedInstance {
     if (_json.containsKey("currentAction")) {
       currentAction = _json["currentAction"];
     }
-    if (_json.containsKey("incarnationId")) {
-      incarnationId = _json["incarnationId"];
+    if (_json.containsKey("id")) {
+      id = _json["id"];
     }
     if (_json.containsKey("instance")) {
       instance = _json["instance"];
@@ -16046,8 +16778,8 @@ class ManagedInstance {
     if (currentAction != null) {
       _json["currentAction"] = currentAction;
     }
-    if (incarnationId != null) {
-      _json["incarnationId"] = incarnationId;
+    if (id != null) {
+      _json["id"] = id;
     }
     if (instance != null) {
       _json["instance"] = instance;
@@ -16289,7 +17021,7 @@ class Network {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
+   * An optional textual description of the resource. Provided by the client
    * when the resource is created.
    */
   core.String description;
@@ -16300,7 +17032,7 @@ class Network {
    */
   core.String gatewayIPv4;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
   /**
@@ -16308,7 +17040,7 @@ class Network {
    */
   core.String kind;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    * Specifically, the name must be 1-63 characters long and match the regular
    * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
@@ -16382,10 +17114,9 @@ class Network {
 /** A network interface resource attached to an instance. */
 class NetworkInterface {
   /**
-   * An array of configurations for this interface. Currently,
-   * <codeONE_TO_ONE_NAT is the only access config supported. If there are no
-   * accessConfigs specified, then this instance will have no external internet
-   * access.
+   * An array of configurations for this interface. Currently, ONE_TO_ONE_NAT is
+   * the only access config supported. If there are no accessConfigs specified,
+   * then this instance will have no external internet access.
    */
   core.List<AccessConfig> accessConfigs;
   /**
@@ -16452,7 +17183,7 @@ class NetworkInterface {
 /** Contains a list of Network resources. */
 class NetworkList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
   /** [Output Only] A list of Network resources. */
@@ -17153,6 +17884,7 @@ class PathMatcher {
    * 'pathRules' defined by this PathMatcher is met by the URL's path portion.
    */
   core.String defaultService;
+  /** An optional textual description of the resource. */
   core.String description;
   /** The name to which this PathMatcher is referred by the HostRule. */
   core.String name;
@@ -17674,39 +18406,52 @@ class RouteWarnings {
  * tie, the system selects the Route with the smallest priority value. If there
  * is still a tie, it uses the layer three and four packet headers to select
  * just one of the remaining matching Routes. The packet is then forwarded as
- * specified by the next_hop field of the winning Route -- either to another VM
+ * specified by the nextHop field of the winning Route -- either to another VM
  * destination, a VM gateway or a GCE operated gateway. Packets that do not
- * match any Route in the sending VM's routing table will be dropped.
+ * match any Route in the sending VM's routing table are dropped.
  */
 class Route {
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
+   * An optional textual description of the resource. Provided by the client
    * when the resource is created.
    */
   core.String description;
-  /** Which packets does this route apply to? */
+  /** The destination range of outgoing packets that this route applies to. */
   core.String destRange;
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of this resource. Always compute#routes for Route
+   * resources.
+   */
   core.String kind;
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
-  /**
-   * URL of the network to which this route is applied; provided by the client
-   * when the route is created.
-   */
+  /** Fully-qualified URL of the network that this route applies to. */
   core.String network;
-  /** The URL to a gateway that should handle matching packets. */
+  /**
+   * The URL to a gateway that should handle matching packets. Currently, this
+   * is only the internet gateway:
+   * projects/<project-id>/global/gateways/default-internet-gateway
+   */
   core.String nextHopGateway;
-  /** The URL to an instance that should handle matching packets. */
+  /**
+   * The fully-qualified URL to an instance that should handle matching packets.
+   * For example:
+   * https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+   */
   core.String nextHopInstance;
   /**
    * The network IP address of an instance that should handle matching packets.
@@ -17722,13 +18467,13 @@ class Route {
    * valid range is between 0 and 65535.
    */
   core.int priority;
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server-defined fully-qualified URL for this resource. */
   core.String selfLink;
   /** A list of instance tags to which this route applies. */
   core.List<core.String> tags;
   /**
-   * If potential misconfigurations are detected for this route, this field will
-   * be populated with warning messages.
+   * [Output Only] If potential misconfigurations are detected for this route,
+   * this field will be populated with warning messages.
    */
   core.List<RouteWarnings> warnings;
 
@@ -17842,16 +18587,16 @@ class Route {
 /** Contains a list of route resources. */
 class RouteList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
   /** A list of Route resources. */
   core.List<Route> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
   RouteList();
@@ -18015,40 +18760,48 @@ class ServiceAccount {
 
 /** A persistent disk snapshot resource. */
 class Snapshot {
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
    * An optional textual description of the resource; provided by the client
    * when the resource is created.
    */
   core.String description;
-  /** Size of the persistent disk snapshot, specified in GB (output only). */
+  /** [Output Only] Size of the snapshot, specified in GB. */
   core.String diskSizeGb;
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#snapshot for Snapshot
+   * resources.
+   */
   core.String kind;
   /** Public visible licenses. */
   core.List<core.String> licenses;
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /** The source disk used to create this snapshot. */
   core.String sourceDisk;
   /**
-   * The 'id' value of the disk used to create this snapshot. This value may be
-   * used to determine whether the snapshot was taken from the current or a
-   * previous instance of a given disk name.
+   * [Output Only] The ID value of the disk used to create this snapshot. This
+   * value may be used to determine whether the snapshot was taken from the
+   * current or a previous instance of a given disk name.
    */
   core.String sourceDiskId;
   /**
-   * The status of the persistent disk snapshot (output only).
+   * [Output Only] The status of the snapshot.
    * Possible string values are:
    * - "CREATING"
    * - "DELETING"
@@ -18058,13 +18811,14 @@ class Snapshot {
    */
   core.String status;
   /**
-   * A size of the the storage used by the snapshot. As snapshots share storage
-   * this number is expected to change with snapshot creation/deletion.
+   * [Output Only] A size of the the storage used by the snapshot. As snapshots
+   * share storage, this number is expected to change with snapshot
+   * creation/deletion.
    */
   core.String storageBytes;
   /**
-   * An indicator whether storageBytes is in a stable state, or it is being
-   * adjusted as a result of shared storage reallocation.
+   * [Output Only] An indicator whether storageBytes is in a stable state or it
+   * is being adjusted as a result of shared storage reallocation.
    * Possible string values are:
    * - "UPDATING"
    * - "UP_TO_DATE"
@@ -18160,7 +18914,7 @@ class Snapshot {
   }
 }
 
-/** Contains a list of persistent disk snapshot resources. */
+/** Contains a list of Snapshot resources. */
 class SnapshotList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
@@ -18266,7 +19020,7 @@ class Tags {
 
 /** A TargetHttpProxy resource. This resource defines an HTTP proxy. */
 class TargetHttpProxy {
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
    * An optional textual description of the resource; provided by the client
@@ -18274,17 +19028,25 @@ class TargetHttpProxy {
    */
   core.String description;
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#Operation for Operation
+   * resources.
+   */
   core.String kind;
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
   /**
    * URL to the UrlMap resource that defines the mapping from URL to the
@@ -18345,19 +19107,22 @@ class TargetHttpProxy {
   }
 }
 
-/** Contains a list of TargetHttpProxy resources. */
+/** A list of TargetHttpProxy resources. */
 class TargetHttpProxyList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of TargetHttpProxy resources. */
   core.List<TargetHttpProxy> items;
-  /** Type of resource. */
+  /**
+   * Type of resource. Always compute#targetHttpProxyList for lists of Target
+   * HTTP proxies.
+   */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   TargetHttpProxyList();
@@ -19286,8 +20051,13 @@ class TargetVpnGateway {
    */
   core.String kind;
   /**
-   * Name of the resource. Provided by the client when the resource is created.
-   * The name must be 1-63 characters long and comply with RFC1035.
+   * Name of the resource; provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
   /**
@@ -19674,12 +20444,12 @@ class TestFailure {
  * path.
  */
 class UrlMap {
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /** The URL of the BackendService resource if none of the hostRules match. */
   core.String defaultService;
   /**
-   * An optional textual description of the resource; provided by the client
+   * An optional textual description of the resource. Provided by the client
    * when the resource is created.
    */
   core.String description;
@@ -19699,20 +20469,23 @@ class UrlMap {
   }
   /** The list of HostRules to use against the URL. */
   core.List<HostRule> hostRules;
-  /**
-   * Unique identifier for the resource; defined by the server (output only).
-   */
+  /** [Output Only] Unique identifier for the resource. Set by the server. */
   core.String id;
   /** Type of the resource. */
   core.String kind;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
   /** The list of named PathMatchers to use against the URL. */
   core.List<PathMatcher> pathMatchers;
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
   /**
    * The list of expected URL mappings. Request to update this UrlMap will
@@ -19799,17 +20572,15 @@ class UrlMap {
 
 /** Contains a list of UrlMap resources. */
 class UrlMapList {
-  /**
-   * Unique identifier for the resource; defined by the server (output only).
-   */
+  /** [Output Only] Unique identifier for the resource. Set by the server. */
   core.String id;
   /** A list of UrlMap resources. */
   core.List<UrlMap> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
   UrlMapList();
@@ -20069,12 +20840,6 @@ class VpnTunnel {
    */
   core.String id;
   /**
-   * IKE networks to use when establishing the VPN tunnel with peer VPN gateway.
-   * The value should be a CIDR formatted string, for example: 192.168.0.0/16.
-   * The ranges should be disjoint.
-   */
-  core.List<core.String> ikeNetworks;
-  /**
    * IKE protocol version to use when establishing the VPN tunnel with peer VPN
    * gateway. Acceptable IKE versions are 1 or 2. Default version is 2.
    */
@@ -20084,8 +20849,13 @@ class VpnTunnel {
    */
   core.String kind;
   /**
-   * Name of the resource. Provided by the client when the resource is created.
-   * The name must be 1-63 characters long and comply with RFC1035.
+   * Name of the resource; provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
   /** IP address of the peer VPN gateway. */
@@ -20138,9 +20908,6 @@ class VpnTunnel {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
-    if (_json.containsKey("ikeNetworks")) {
-      ikeNetworks = _json["ikeNetworks"];
-    }
     if (_json.containsKey("ikeVersion")) {
       ikeVersion = _json["ikeVersion"];
     }
@@ -20186,9 +20953,6 @@ class VpnTunnel {
     }
     if (id != null) {
       _json["id"] = id;
-    }
-    if (ikeNetworks != null) {
-      _json["ikeNetworks"] = ikeNetworks;
     }
     if (ikeVersion != null) {
       _json["ikeVersion"] = ikeVersion;

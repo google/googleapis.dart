@@ -40,6 +40,9 @@ class DriveApi {
   /** View metadata for files in your Google Drive */
   static const DriveMetadataReadonlyScope = "https://www.googleapis.com/auth/drive.metadata.readonly";
 
+  /** View the photos, videos and albums in your Google Photos */
+  static const DrivePhotosReadonlyScope = "https://www.googleapis.com/auth/drive.photos.readonly";
+
   /** View the files in your Google Drive */
   static const DriveReadonlyScope = "https://www.googleapis.com/auth/drive.readonly";
 
@@ -299,7 +302,7 @@ class ChangesResourceApi {
    * [pageToken] - Page token for changes.
    *
    * [spaces] - A comma-separated list of spaces to query. Supported values are
-   * 'drive' and 'appDataFolder'.
+   * 'drive', 'appDataFolder' and 'photos'.
    *
    * [startChangeId] - Change ID to start listing changes from.
    *
@@ -369,7 +372,7 @@ class ChangesResourceApi {
    * [pageToken] - Page token for changes.
    *
    * [spaces] - A comma-separated list of spaces to query. Supported values are
-   * 'drive' and 'appDataFolder'.
+   * 'drive', 'appDataFolder' and 'photos'.
    *
    * [startChangeId] - Change ID to start listing changes from.
    *
@@ -1350,7 +1353,7 @@ class FilesResourceApi {
    * [q] - Query string for searching files.
    *
    * [spaces] - A comma-separated list of spaces to query. Supported values are
-   * 'drive' and 'appDataFolder'.
+   * 'drive', 'appDataFolder' and 'photos'.
    *
    * Completes with a [FileList].
    *
@@ -1413,6 +1416,20 @@ class FilesResourceApi {
    * [convert] - Whether to convert this file to the corresponding Google Docs
    * format.
    *
+   * [modifiedDateBehavior] - How the modifiedDate field should be updated. This
+   * overrides setModifiedDate.
+   * Possible string values are:
+   * - "fromBody" : Set modifiedDate to the value provided in the body of the
+   * request. No change if no value was provided.
+   * - "fromBodyIfNeeded" : Set modifiedDate to the value provided in the body
+   * of the request depending on other contents of the update.
+   * - "fromBodyOrNow" : Set modifiedDate to the value provided in the body of
+   * the request, or to the current time if no value was provided.
+   * - "noChange" : Maintain the previous value of modifiedDate.
+   * - "now" : Set modifiedDate to the current time.
+   * - "nowIfNeeded" : Set modifiedDate to the current time depending on
+   * contents of the update.
+   *
    * [newRevision] - Whether a blob upload should create a new revision. If
    * false, the blob data in the current head revision is replaced. If true or
    * not set, a new blob is created as head revision, and previous unpinned
@@ -1450,7 +1467,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<File> patch(File request, core.String fileId, {core.String addParents, core.bool convert, core.bool newRevision, core.bool ocr, core.String ocrLanguage, core.bool pinned, core.String removeParents, core.bool setModifiedDate, core.String timedTextLanguage, core.String timedTextTrackName, core.bool updateViewedDate, core.bool useContentAsIndexableText}) {
+  async.Future<File> patch(File request, core.String fileId, {core.String addParents, core.bool convert, core.String modifiedDateBehavior, core.bool newRevision, core.bool ocr, core.String ocrLanguage, core.bool pinned, core.String removeParents, core.bool setModifiedDate, core.String timedTextLanguage, core.String timedTextTrackName, core.bool updateViewedDate, core.bool useContentAsIndexableText}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1469,6 +1486,9 @@ class FilesResourceApi {
     }
     if (convert != null) {
       _queryParams["convert"] = ["${convert}"];
+    }
+    if (modifiedDateBehavior != null) {
+      _queryParams["modifiedDateBehavior"] = [modifiedDateBehavior];
     }
     if (newRevision != null) {
       _queryParams["newRevision"] = ["${newRevision}"];
@@ -1553,7 +1573,8 @@ class FilesResourceApi {
   }
 
   /**
-   * Moves a file to the trash.
+   * Moves a file to the trash. The currently authenticated user must own the
+   * file.
    *
    * Request parameters:
    *
@@ -1644,6 +1665,20 @@ class FilesResourceApi {
    * [convert] - Whether to convert this file to the corresponding Google Docs
    * format.
    *
+   * [modifiedDateBehavior] - How the modifiedDate field should be updated. This
+   * overrides setModifiedDate.
+   * Possible string values are:
+   * - "fromBody" : Set modifiedDate to the value provided in the body of the
+   * request. No change if no value was provided.
+   * - "fromBodyIfNeeded" : Set modifiedDate to the value provided in the body
+   * of the request depending on other contents of the update.
+   * - "fromBodyOrNow" : Set modifiedDate to the value provided in the body of
+   * the request, or to the current time if no value was provided.
+   * - "noChange" : Maintain the previous value of modifiedDate.
+   * - "now" : Set modifiedDate to the current time.
+   * - "nowIfNeeded" : Set modifiedDate to the current time depending on
+   * contents of the update.
+   *
    * [newRevision] - Whether a blob upload should create a new revision. If
    * false, the blob data in the current head revision is replaced. If true or
    * not set, a new blob is created as head revision, and previous unpinned
@@ -1686,7 +1721,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<File> update(File request, core.String fileId, {core.String addParents, core.bool convert, core.bool newRevision, core.bool ocr, core.String ocrLanguage, core.bool pinned, core.String removeParents, core.bool setModifiedDate, core.String timedTextLanguage, core.String timedTextTrackName, core.bool updateViewedDate, core.bool useContentAsIndexableText, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  async.Future<File> update(File request, core.String fileId, {core.String addParents, core.bool convert, core.String modifiedDateBehavior, core.bool newRevision, core.bool ocr, core.String ocrLanguage, core.bool pinned, core.String removeParents, core.bool setModifiedDate, core.String timedTextLanguage, core.String timedTextTrackName, core.bool updateViewedDate, core.bool useContentAsIndexableText, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1705,6 +1740,9 @@ class FilesResourceApi {
     }
     if (convert != null) {
       _queryParams["convert"] = ["${convert}"];
+    }
+    if (modifiedDateBehavior != null) {
+      _queryParams["modifiedDateBehavior"] = [modifiedDateBehavior];
     }
     if (newRevision != null) {
       _queryParams["newRevision"] = ["${newRevision}"];
@@ -5425,8 +5463,8 @@ class File {
   /** User that shared the item with the current user, if available. */
   User sharingUser;
   /**
-   * The list of spaces which contain the file. Supported values are 'drive' and
-   * 'appDataFolder'.
+   * The list of spaces which contain the file. Supported values are 'drive',
+   * 'appDataFolder' and 'photos'.
    */
   core.List<core.String> spaces;
   /**

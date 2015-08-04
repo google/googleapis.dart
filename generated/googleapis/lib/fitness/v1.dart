@@ -599,11 +599,16 @@ class UsersDatasetResourceApi {
       _requester = client;
 
   /**
+   * Aggregates data of a certain type or stream into buckets divided by a given
+   * type of boundary. Multiple data sets of multiple types and from multiple
+   * sources can be aggreated into exactly one bucket type per request.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [userId] - null
+   * [userId] - Aggregate data for the person identified. Use me to indicate the
+   * authenticated user. Only me is supported at this time.
    *
    * Completes with a [AggregateResponse].
    *
@@ -827,13 +832,21 @@ class UsersSessionsResourceApi {
 
 
 class AggregateBucket {
-  /** available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT */
+  /** Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT */
   core.int activity;
-  /** There will be one dataset per datatype/datasource */
+  /** There will be one dataset per AggregateBy in the request. */
   core.List<Dataset> dataset;
+  /**
+   * The end time for the aggregated data, in milliseconds since epoch,
+   * inclusive.
+   */
   core.String endTimeMillis;
-  /** available for Bucket.Type.SESSION */
+  /** Available for Bucket.Type.SESSION */
   Session session;
+  /**
+   * The start time for the aggregated data, in milliseconds since epoch,
+   * inclusive.
+   */
   core.String startTimeMillis;
   /**
    * The type of a bucket signifies how the data aggregation is performed in the
@@ -894,12 +907,21 @@ class AggregateBucket {
   }
 }
 
+/** The specification of which data to aggregate. */
 class AggregateBy {
+  /**
+   * A data source ID to aggregate. Mutually exclusive of dataTypeName. Only
+   * data from the specified data source ID will be included in the aggregation.
+   * The dataset in the response will have the same data source ID.
+   */
   core.String dataSourceId;
-  /** by dataype or by datasource */
+  /**
+   * The data type to aggregate. All data sources providing this data type will
+   * contribute data to the aggregation. The response will contain a single
+   * dataset for this data type name. The dataset will have a data source ID of
+   * derived:com.google.:com.google.android.gms:aggregated
+   */
   core.String dataTypeName;
-  core.String outputDataSourceId;
-  core.String outputDataTypeName;
 
   AggregateBy();
 
@@ -909,12 +931,6 @@ class AggregateBy {
     }
     if (_json.containsKey("dataTypeName")) {
       dataTypeName = _json["dataTypeName"];
-    }
-    if (_json.containsKey("outputDataSourceId")) {
-      outputDataSourceId = _json["outputDataSourceId"];
-    }
-    if (_json.containsKey("outputDataTypeName")) {
-      outputDataTypeName = _json["outputDataTypeName"];
     }
   }
 
@@ -926,25 +942,54 @@ class AggregateBy {
     if (dataTypeName != null) {
       _json["dataTypeName"] = dataTypeName;
     }
-    if (outputDataSourceId != null) {
-      _json["outputDataSourceId"] = outputDataSourceId;
-    }
-    if (outputDataTypeName != null) {
-      _json["outputDataTypeName"] = outputDataTypeName;
-    }
     return _json;
   }
 }
 
 class AggregateRequest {
+  /**
+   * The specification of data to be aggregated. At least one aggregateBy spec
+   * must be provided. All data that is specified will be aggregated using the
+   * same bucketing criteria. There will be one dataset in the response for
+   * every aggregateBy spec.
+   */
   core.List<AggregateBy> aggregateBy;
+  /**
+   * Specifies that data be aggregated each activity segment recored for a user.
+   * Similar to bucketByActivitySegment, but bucketing is done for each activity
+   * segment rather than all segments of the same type. Mutually exclusive of
+   * other bucketing specifications.
+   */
   BucketByActivity bucketByActivitySegment;
+  /**
+   * Specifies that data be aggregated by the type of activity being performed
+   * when the data was recorded. All data that was recorded during a certain
+   * activity type (for the given time range) will be aggregated into the same
+   * bucket. Data that was recorded while the user was not active will not be
+   * included in the response. Mutually exclusive of other bucketing
+   * specifications.
+   */
   BucketByActivity bucketByActivityType;
+  /**
+   * Specifies that data be aggregated by user sessions. Data that does not fall
+   * within the time range of a session will not be included in the response.
+   * Mutually exclusive of other bucketing specifications.
+   */
   BucketBySession bucketBySession;
-  /** apparently oneof is not supported by reduced_nano_proto */
+  /**
+   * Specifies that data be aggregated by a single time interval. Mutually
+   * exclusive of other bucketing specifications.
+   */
   BucketByTime bucketByTime;
+  /**
+   * The end of a window of time. Data that intersects with this time window
+   * will be aggregated. The time is in milliseconds since epoch, inclusive.
+   */
   core.String endTimeMillis;
-  /** required time range */
+  /**
+   * The start of a window of time. Data that intersects with this time window
+   * will be aggregated. The time is in milliseconds since epoch, inclusive.
+   */
   core.String startTimeMillis;
 
   AggregateRequest();
@@ -1001,6 +1046,7 @@ class AggregateRequest {
 }
 
 class AggregateResponse {
+  /** A list of buckets containing the aggregated data. */
   core.List<AggregateBucket> bucket;
 
   AggregateResponse();
@@ -1082,9 +1128,16 @@ class Application {
 }
 
 class BucketByActivity {
-  /** default activity stream will be used if not specified */
+  /**
+   * The default activity stream will be used if a specific activityDataSourceId
+   * is not specified.
+   */
   core.String activityDataSourceId;
-  /** Only activity segments of duration longer than this is used */
+  /**
+   * Specifies that only activity segments of duration longer than
+   * minDurationMillis are considered and used as a container for aggregated
+   * data.
+   */
   core.String minDurationMillis;
 
   BucketByActivity();
@@ -1111,7 +1164,10 @@ class BucketByActivity {
 }
 
 class BucketBySession {
-  /** Only sessions of duration longer than this is used */
+  /**
+   * Specifies that only sessions of duration longer than minDurationMillis are
+   * considered and used as a container for aggregated data.
+   */
   core.String minDurationMillis;
 
   BucketBySession();
@@ -1132,6 +1188,11 @@ class BucketBySession {
 }
 
 class BucketByTime {
+  /**
+   * Specifies that result buckets aggregate data by exactly durationMillis time
+   * frames. Time frames that contain no data will be included in the response
+   * with an empty dataset.
+   */
   core.String durationMillis;
 
   BucketByTime();
@@ -1725,6 +1786,32 @@ class ListSessionsResponse {
 }
 
 /**
+ * Holder object for the value of an entry in a map field of a data point.
+ *
+ * A map value supports a subset of the formats that the regular Value supports.
+ */
+class MapValue {
+  /** Floating point value. */
+  core.double fpVal;
+
+  MapValue();
+
+  MapValue.fromJson(core.Map _json) {
+    if (_json.containsKey("fpVal")) {
+      fpVal = _json["fpVal"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fpVal != null) {
+      _json["fpVal"] = fpVal;
+    }
+    return _json;
+  }
+}
+
+/**
  * Sessions contain metadata, such as a user-friendly name and time interval
  * information.
  */
@@ -1829,10 +1916,23 @@ class Session {
  * integer or a floating point value.
  */
 class Value {
-  /** Floating point value. When this is set, intVal must not be set. */
+  /** Floating point value. When this is set, other values must not be set. */
   core.double fpVal;
-  /** Integer value. When this is set, fpVal must not be set. */
+  /** Integer value. When this is set, other values must not be set. */
   core.int intVal;
+  /**
+   * Map value. The valid key space and units for the corresponding value of
+   * each entry should be documented as part of the data type definition. Keys
+   * should be kept small whenever possible. Data streams with large keys and
+   * high data frequency may be down sampled.
+   */
+  core.List<ValueMapValEntry> mapVal;
+  /**
+   * String value. When this is set, other values must not be set. Strings
+   * should be kept small whenever possible. Data streams with large string
+   * values and high data frequency may be down sampled.
+   */
+  core.String stringVal;
 
   Value();
 
@@ -1843,6 +1943,12 @@ class Value {
     if (_json.containsKey("intVal")) {
       intVal = _json["intVal"];
     }
+    if (_json.containsKey("mapVal")) {
+      mapVal = _json["mapVal"].map((value) => new ValueMapValEntry.fromJson(value)).toList();
+    }
+    if (_json.containsKey("stringVal")) {
+      stringVal = _json["stringVal"];
+    }
   }
 
   core.Map toJson() {
@@ -1852,6 +1958,39 @@ class Value {
     }
     if (intVal != null) {
       _json["intVal"] = intVal;
+    }
+    if (mapVal != null) {
+      _json["mapVal"] = mapVal.map((value) => (value).toJson()).toList();
+    }
+    if (stringVal != null) {
+      _json["stringVal"] = stringVal;
+    }
+    return _json;
+  }
+}
+
+class ValueMapValEntry {
+  core.String key;
+  MapValue value;
+
+  ValueMapValEntry();
+
+  ValueMapValEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = new MapValue.fromJson(_json["value"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = (value).toJson();
     }
     return _json;
   }

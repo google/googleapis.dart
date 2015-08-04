@@ -113,11 +113,11 @@ class ProjectsSubscriptionsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the subscription. It must have the format
-   * "projects/{project}/subscriptions/{subscription}" for Google Cloud Pub/Sub
-   * API v1 and v1beta2. {subscription} must start with a letter, and contain
-   * only letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_),
-   * periods (.), tildes (~), plus (+) or percent signs (%). It must be between
-   * 3 and 255 characters in length, and it must not start with "goog".
+   * `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
+   * start with a letter, and contain only letters (`[A-Za-z]`), numbers
+   * (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
+   * plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
+   * in length, and it must not start with `"goog"`.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [Subscription].
@@ -592,11 +592,11 @@ class ProjectsTopicsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the topic. It must have the format
-   * "projects/{project}/topics/{topic}" for Google Cloud Pub/Sub API v1 and
-   * v1beta2. {topic} must start with a letter, and contain only letters
-   * ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), periods (.),
-   * tildes (~), plus (+) or percent signs (%). It must be between 3 and 255
-   * characters in length, and it must not start with "goog".
+   * `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
+   * and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+   * underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs
+   * (`%`). It must be between 3 and 255 characters in length, and it must not
+   * start with `"goog"`.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [Topic].
@@ -814,7 +814,8 @@ class ProjectsTopicsResourceApi {
 
   /**
    * Adds one or more messages to the topic. Returns NOT_FOUND if the topic does
-   * not exist.
+   * not exist. The message payload must not be empty; it must contain either a
+   * non-empty data field, or at least one attribute.
    *
    * [request] - The metadata request object.
    *
@@ -1596,7 +1597,10 @@ class PublishResponse {
   }
 }
 
-/** A message data and its attributes. */
+/**
+ * A message data and its attributes. The message payload must not be empty; it
+ * must contain either a non-empty data field, or at least one attribute.
+ */
 class PubsubMessage {
   /** Optional attributes for this message. */
   core.Map<core.String, core.String> attributes;
@@ -1920,21 +1924,21 @@ class Subscription {
    * before the ack deadline expires and before the message is acknowledged, it
    * is an outstanding message and will not be delivered again during that time
    * (on a best-effort basis). For pull delivery this value is used as the
-   * initial value for the ack deadline. It may be overridden for each message
-   * using its corresponding ack_id by calling ModifyAckDeadline. For push
+   * initial value for the ack deadline. To override this value for a given
+   * message, call ModifyAckDeadline with the corresponding ack_id. For push
    * delivery, this value is also used to set the request timeout for the call
    * to the push endpoint. If the subscriber never acknowledges the message, the
    * Pub/Sub system will eventually redeliver the message. If this parameter is
-   * not set, the default value of 60 seconds is used.
+   * not set, the default value of 10 seconds is used.
    */
   core.int ackDeadlineSeconds;
   /**
    * The name of the subscription. It must have the format
-   * "projects/{project}/subscriptions/{subscription}" for Google Cloud Pub/Sub
-   * API v1 and v1beta2. {subscription} must start with a letter, and contain
-   * only letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_),
-   * periods (.), tildes (~), plus (+) or percent signs (%). It must be between
-   * 3 and 255 characters in length, and it must not start with "goog".
+   * `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
+   * start with a letter, and contain only letters (`[A-Za-z]`), numbers
+   * (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
+   * plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
+   * in length, and it must not start with `"goog"`.
    */
   core.String name;
   /**
@@ -2039,11 +2043,11 @@ class TestIamPermissionsResponse {
 class Topic {
   /**
    * The name of the topic. It must have the format
-   * "projects/{project}/topics/{topic}" for Google Cloud Pub/Sub API v1 and
-   * v1beta2. {topic} must start with a letter, and contain only letters
-   * ([A-Za-z]), numbers ([0-9], dashes (-), underscores (_), periods (.),
-   * tildes (~), plus (+) or percent signs (%). It must be between 3 and 255
-   * characters in length, and it must not start with "goog".
+   * `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
+   * and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+   * underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs
+   * (`%`). It must be between 3 and 255 characters in length, and it must not
+   * start with `"goog"`.
    */
   core.String name;
 

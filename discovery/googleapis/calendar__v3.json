@@ -17,7 +17,7 @@
     "description": "Lets you manipulate events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/gZ3dylzm2EVgH6aR8x8XhHMIdxI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/1mZqecM-TBcvMz8DeykD5V-x60E\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -86,7 +86,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -113,7 +113,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -143,7 +143,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -169,7 +169,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -216,7 +216,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -249,7 +249,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -281,7 +281,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -335,7 +335,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -355,7 +355,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -461,7 +461,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -492,7 +492,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -591,7 +591,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -611,7 +611,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -631,7 +631,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -670,7 +670,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -696,7 +696,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -762,7 +762,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -799,7 +799,7 @@
                             "type": "boolean"
                         },
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -841,7 +841,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -872,7 +872,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -921,7 +921,7 @@
                             "type": "boolean"
                         },
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -962,13 +962,13 @@
                             "type": "boolean"
                         },
                         "timeMax": {
-                            "description": "Upper bound (exclusive) for an event's start time to filter by. Optional. The default is not to filter by start time.",
+                            "description": "Upper bound (exclusive) for an event's start time to filter by. Optional. The default is not to filter by start time. Must be an RFC3339 timestamp with mandatory time zone offset.",
                             "format": "date-time",
                             "location": "query",
                             "type": "string"
                         },
                         "timeMin": {
-                            "description": "Lower bound (inclusive) for an event's end time to filter by. Optional. The default is not to filter by end time.",
+                            "description": "Lower bound (inclusive) for an event's end time to filter by. Optional. The default is not to filter by end time. Must be an RFC3339 timestamp with mandatory time zone offset.",
                             "format": "date-time",
                             "location": "query",
                             "type": "string"
@@ -1003,7 +1003,7 @@
                             "type": "boolean"
                         },
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1083,13 +1083,13 @@
                             "type": "string"
                         },
                         "timeMax": {
-                            "description": "Upper bound (exclusive) for an event's start time to filter by. Optional. The default is not to filter by start time.",
+                            "description": "Upper bound (exclusive) for an event's start time to filter by. Optional. The default is not to filter by start time. Must be an RFC3339 timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored.",
                             "format": "date-time",
                             "location": "query",
                             "type": "string"
                         },
                         "timeMin": {
-                            "description": "Lower bound (inclusive) for an event's end time to filter by. Optional. The default is not to filter by end time.",
+                            "description": "Lower bound (inclusive) for an event's end time to filter by. Optional. The default is not to filter by end time. Must be an RFC3339 timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored.",
                             "format": "date-time",
                             "location": "query",
                             "type": "string"
@@ -1100,7 +1100,7 @@
                             "type": "string"
                         },
                         "updatedMin": {
-                            "description": "Lower bound for an event's last modification time (as a RFC 3339 timestamp) to filter by. When specified, entries deleted since this time will always be included regardless of showDeleted. Optional. The default is not to filter by last modification time.",
+                            "description": "Lower bound for an event's last modification time (as a RFC3339 timestamp) to filter by. When specified, entries deleted since this time will always be included regardless of showDeleted. Optional. The default is not to filter by last modification time.",
                             "format": "date-time",
                             "location": "query",
                             "type": "string"
@@ -1173,7 +1173,7 @@
                             "type": "boolean"
                         },
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1223,7 +1223,7 @@
                     ],
                     "parameters": {
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1263,7 +1263,7 @@
                             "type": "boolean"
                         },
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1317,7 +1317,7 @@
                             "type": "boolean"
                         },
                         "calendarId": {
-                            "description": "Calendar identifier.",
+                            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1397,13 +1397,13 @@
                             "type": "string"
                         },
                         "timeMax": {
-                            "description": "Upper bound (exclusive) for an event's start time to filter by. Optional. The default is not to filter by start time.",
+                            "description": "Upper bound (exclusive) for an event's start time to filter by. Optional. The default is not to filter by start time. Must be an RFC3339 timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored.",
                             "format": "date-time",
                             "location": "query",
                             "type": "string"
                         },
                         "timeMin": {
-                            "description": "Lower bound (inclusive) for an event's end time to filter by. Optional. The default is not to filter by end time.",
+                            "description": "Lower bound (inclusive) for an event's end time to filter by. Optional. The default is not to filter by end time. Must be an RFC3339 timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored.",
                             "format": "date-time",
                             "location": "query",
                             "type": "string"
@@ -1414,7 +1414,7 @@
                             "type": "string"
                         },
                         "updatedMin": {
-                            "description": "Lower bound for an event's last modification time (as a RFC 3339 timestamp) to filter by. When specified, entries deleted since this time will always be included regardless of showDeleted. Optional. The default is not to filter by last modification time.",
+                            "description": "Lower bound for an event's last modification time (as a RFC3339 timestamp) to filter by. When specified, entries deleted since this time will always be included regardless of showDeleted. Optional. The default is not to filter by last modification time.",
                             "format": "date-time",
                             "location": "query",
                             "type": "string"
@@ -1555,7 +1555,7 @@
             }
         }
     },
-    "revision": "20150623",
+    "revision": "20150729",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {
@@ -1652,7 +1652,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "Identifier of the calendar.",
+                    "description": "Identifier of the calendar. To retrieve IDs you call the calendarList.list() method.",
                     "type": "string"
                 },
                 "kind": {
@@ -1718,11 +1718,11 @@
                     "type": "string"
                 },
                 "backgroundColor": {
-                    "description": "The main color of the calendar in the hexadecimal format \"#0088aa\". This property supersedes the index-based colorId property. Optional.",
+                    "description": "The main color of the calendar in the hexadecimal format \"#0088aa\". This property supersedes the index-based colorId property. To set or change this property, you need to specify colorRgbFormat=true in the parameters of the insert, update and patch methods. Optional.",
                     "type": "string"
                 },
                 "colorId": {
-                    "description": "The color of the calendar. This is an ID referring to an entry in the calendar section of the colors definition (see the colors endpoint). Optional.",
+                    "description": "The color of the calendar. This is an ID referring to an entry in the calendar section of the colors definition (see the colors endpoint). This property is superseded by the backgroundColor and foregroundColor properties and can be ignored when using these properties. Optional.",
                     "type": "string"
                 },
                 "defaultReminders": {
@@ -1746,7 +1746,7 @@
                     "type": "string"
                 },
                 "foregroundColor": {
-                    "description": "The foreground color of the calendar in the hexadecimal format \"#ffffff\". This property supersedes the index-based colorId property. Optional.",
+                    "description": "The foreground color of the calendar in the hexadecimal format \"#ffffff\". This property supersedes the index-based colorId property. To set or change this property, you need to specify colorRgbFormat=true in the parameters of the insert, update and patch methods. Optional.",
                     "type": "string"
                 },
                 "hidden": {
@@ -1820,7 +1820,7 @@
                             "calendar.calendarList.update"
                         ]
                     },
-                    "description": "The method used to deliver the notification. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"sms\" - Reminders are sent via SMS. This value is read-only and is ignored on inserts and updates.",
+                    "description": "The method used to deliver the notification. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"sms\" - Reminders are sent via SMS. This value is read-only and is ignored on inserts and updates. SMS reminders are only available for Google Apps for Work, Education, and Government customers.",
                     "type": "string"
                 },
                 "type": {
@@ -1910,7 +1910,7 @@
                         "$ref": "ColorDefinition",
                         "description": "A calendar color defintion."
                     },
-                    "description": "Palette of calendar colors, mapping from the color ID to its definition. A calendarListEntry resource refers to one of these color IDs in its color field. Read-only.",
+                    "description": "A global palette of calendar colors, mapping from the color ID to its definition. A calendarListEntry resource refers to one of these color IDs in its color field. Read-only.",
                     "type": "object"
                 },
                 "event": {
@@ -1918,7 +1918,7 @@
                         "$ref": "ColorDefinition",
                         "description": "An event color definition."
                     },
-                    "description": "Palette of event colors, mapping from the color ID to its definition. An event resource may refer to one of these color IDs in its color field. Read-only.",
+                    "description": "A global palette of event colors, mapping from the color ID to its definition. An event resource may refer to one of these color IDs in its color field. Read-only.",
                     "type": "object"
                 },
                 "kind": {
@@ -1927,7 +1927,7 @@
                     "type": "string"
                 },
                 "updated": {
-                    "description": "Last modification time of the color palette (as a RFC 3339 timestamp). Read-only.",
+                    "description": "Last modification time of the color palette (as a RFC3339 timestamp). Read-only.",
                     "format": "date-time",
                     "type": "string"
                 }
@@ -1964,7 +1964,7 @@
                     "type": "array"
                 },
                 "attendees": {
-                    "description": "The attendees of the event.",
+                    "description": "The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users.",
                     "items": {
                         "$ref": "EventAttendee"
                     },
@@ -1980,7 +1980,7 @@
                     "type": "string"
                 },
                 "created": {
-                    "description": "Creation time of the event (as a RFC 3339 timestamp). Read-only.",
+                    "description": "Creation time of the event (as a RFC3339 timestamp). Read-only.",
                     "format": "date-time",
                     "type": "string"
                 },
@@ -1996,7 +1996,7 @@
                             "type": "string"
                         },
                         "id": {
-                            "description": "The creator's Profile ID, if available.",
+                            "description": "The creator's Profile ID, if available. It corresponds to theid field in the People collection of the Google+ API",
                             "type": "string"
                         },
                         "self": {
@@ -2061,16 +2061,16 @@
                             "type": "string"
                         },
                         "height": {
-                            "description": "The gadget's height in pixels. Optional.",
+                            "description": "The gadget's height in pixels. The height must be an integer greater than 0. Optional.",
                             "format": "int32",
                             "type": "integer"
                         },
                         "iconLink": {
-                            "description": "The gadget's icon URL.",
+                            "description": "The gadget's icon URL. The URL scheme must be HTTPS.",
                             "type": "string"
                         },
                         "link": {
-                            "description": "The gadget's URL.",
+                            "description": "The gadget's URL. The URL scheme must be HTTPS.",
                             "type": "string"
                         },
                         "preferences": {
@@ -2090,7 +2090,7 @@
                             "type": "string"
                         },
                         "width": {
-                            "description": "The gadget's width in pixels. Optional.",
+                            "description": "The gadget's width in pixels. The width must be an integer greater than 0. Optional.",
                             "format": "int32",
                             "type": "integer"
                         }
@@ -2126,11 +2126,11 @@
                             "calendar.events.import"
                         ]
                     },
-                    "description": "Event ID in the iCalendar format.",
+                    "description": "Event unique identifier as defined in RFC5545. It is used to uniquely identify events accross calendaring systems and must be supplied when importing events via the import method.\nNote that the icalUID and the id are not identical and only one of them should be supplied at event creation time. One difference in their semantics is that in recurring events, all occurrences of one event have different ids while they all share the same icalUIDs.",
                     "type": "string"
                 },
                 "id": {
-                    "description": "Identifier of the event. When creating new single or recurring events, you can specify their IDs. Provided IDs must follow these rules:  \n- characters allowed in the ID are those used in base32hex encoding, i.e. lowercase letters a-v and digits 0-9, see section 3.1.2 in RFC2938 \n- the length of the ID must be between 5 and 1024 characters \n- the ID must be unique per calendar  Due to the globally distributed nature of the system, we cannot guarantee that ID collisions will be detected at event creation time. To minimize the risk of collisions we recommend using an established UUID algorithm such as one described in RFC4122.",
+                    "description": "Opaque identifier of the event. When creating new single or recurring events, you can specify their IDs. Provided IDs must follow these rules:  \n- characters allowed in the ID are those used in base32hex encoding, i.e. lowercase letters a-v and digits 0-9, see section 3.1.2 in RFC2938 \n- the length of the ID must be between 5 and 1024 characters \n- the ID must be unique per calendar  Due to the globally distributed nature of the system, we cannot guarantee that ID collisions will be detected at event creation time. To minimize the risk of collisions we recommend using an established UUID algorithm such as one described in RFC4122.\nIf you do not specify an ID, it will be automatically generated by the server.\nNote that the icalUID and the id are not identical and only one of them should be supplied at event creation time. One difference in their semantics is that in recurring events, all occurrences of one event have different ids while they all share the same icalUIDs.",
                     "type": "string"
                 },
                 "kind": {
@@ -2155,11 +2155,11 @@
                             "type": "string"
                         },
                         "email": {
-                            "description": "The organizer's email address, if available.",
+                            "description": "The organizer's email address, if available. It must be a valid email address as per RFC5322.",
                             "type": "string"
                         },
                         "id": {
-                            "description": "The organizer's Profile ID, if available.",
+                            "description": "The organizer's Profile ID, if available. It corresponds to theid field in the People collection of the Google+ API",
                             "type": "string"
                         },
                         "self": {
@@ -2180,21 +2180,21 @@
                     "type": "boolean"
                 },
                 "recurrence": {
-                    "description": "List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event. This field is omitted for single events or instances of recurring events.",
+                    "description": "List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in this field; event start and end times are specified in the start and end fields. This field is omitted for single events or instances of recurring events.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "recurringEventId": {
-                    "description": "For an instance of a recurring event, this is the event ID of the recurring event itself. Immutable.",
+                    "description": "For an instance of a recurring event, this is the id of the recurring event to which this instance belongs. Immutable.",
                     "type": "string"
                 },
                 "reminders": {
                     "description": "Information about the event's reminders for the authenticated user.",
                     "properties": {
                         "overrides": {
-                            "description": "If the event doesn't use the default reminders, this lists the reminders specific to the event, or, if not set, indicates that no reminders are set for this event.",
+                            "description": "If the event doesn't use the default reminders, this lists the reminders specific to the event, or, if not set, indicates that no reminders are set for this event. The maximum number of override reminders is 5.",
                             "items": {
                                 "$ref": "EventReminder"
                             },
@@ -2213,14 +2213,14 @@
                     "type": "integer"
                 },
                 "source": {
-                    "description": "Source of an event from which it was created; for example a web page, an email message or any document identifiable by an URL using HTTP/HTTPS protocol. Accessible only by the creator of the event.",
+                    "description": "Source from which the event was created. For example, a web page, an email message or any document identifiable by an URL with HTTP or HTTPS scheme. Can only be seen or modified by the creator of the event.",
                     "properties": {
                         "title": {
                             "description": "Title of the source; for example a title of a web page or an email subject.",
                             "type": "string"
                         },
                         "url": {
-                            "description": "URL of the source pointing to a resource. URL's protocol must be HTTP or HTTPS.",
+                            "description": "URL of the source pointing to a resource. The URL scheme must be HTTP or HTTPS.",
                             "type": "string"
                         }
                     },
@@ -2251,7 +2251,7 @@
                     "type": "string"
                 },
                 "updated": {
-                    "description": "Last modification time of the event (as a RFC 3339 timestamp). Read-only.",
+                    "description": "Last modification time of the event (as a RFC3339 timestamp). Read-only.",
                     "format": "date-time",
                     "type": "string"
                 },
@@ -2266,6 +2266,10 @@
         "EventAttachment": {
             "id": "EventAttachment",
             "properties": {
+                "fileId": {
+                    "description": "ID of the attached file. Read-only.\nFor Google Drive files, this is the ID of the corresponding Files resource entry in the Drive API.",
+                    "type": "string"
+                },
                 "fileUrl": {
                     "annotations": {
                         "required": [
@@ -2317,11 +2321,11 @@
                             "calendar.events.update"
                         ]
                     },
-                    "description": "The attendee's email address, if available. This field must be present when adding an attendee.",
+                    "description": "The attendee's email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.",
                     "type": "string"
                 },
                 "id": {
-                    "description": "The attendee's Profile ID, if available.",
+                    "description": "The attendee's Profile ID, if available. It corresponds to theid field in the People collection of the Google+ API",
                     "type": "string"
                 },
                 "optional": {
@@ -2359,7 +2363,7 @@
                     "type": "string"
                 },
                 "dateTime": {
-                    "description": "The time, as a combined date-time value (formatted according to RFC 3339). A time zone offset is required unless a time zone is explicitly specified in timeZone.",
+                    "description": "The time, as a combined date-time value (formatted according to RFC3339). A time zone offset is required unless a time zone is explicitly specified in timeZone.",
                     "format": "date-time",
                     "type": "string"
                 },
@@ -2383,7 +2387,7 @@
                             "calendar.events.update"
                         ]
                     },
-                    "description": "The method used by this reminder. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"sms\" - Reminders are sent via SMS. \n- \"popup\" - Reminders are sent via a UI popup.",
+                    "description": "The method used by this reminder. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"sms\" - Reminders are sent via SMS. These are only available for Google Apps for Work, Education, and Government customers. Requests to set SMS reminders for other account types are ignored. \n- \"popup\" - Reminders are sent via a UI popup.",
                     "type": "string"
                 },
                 "minutes": {
@@ -2396,7 +2400,7 @@
                             "calendar.events.update"
                         ]
                     },
-                    "description": "Number of minutes before the start of the event when the reminder should trigger.",
+                    "description": "Number of minutes before the start of the event when the reminder should trigger. Valid values are between 0 and 40320 (4 weeks in minutes).",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -2454,7 +2458,7 @@
                     "type": "string"
                 },
                 "updated": {
-                    "description": "Last modification time of the calendar (as a RFC 3339 timestamp). Read-only.",
+                    "description": "Last modification time of the calendar (as a RFC3339 timestamp). Read-only.",
                     "format": "date-time",
                     "type": "string"
                 }

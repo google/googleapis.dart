@@ -5,6 +5,9 @@
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
                 },
+                "https://www.googleapis.com/auth/cloud-platform.read-only": {
+                    "description": "MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/ndev.clouddns.readonly": {
                     "description": "View your DNS records hosted by Google Cloud DNS"
                 },
@@ -20,7 +23,7 @@
     "description": "The Google Cloud DNS API provides services for configuring and serving authoritative DNS records.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-dns",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/oh0OKkMoXiShh-fNWjMyGYxRkos\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Og8_23UueiyoyKT_xkjsiyVktJ8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -148,6 +151,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/ndev.clouddns.readonly",
                         "https://www.googleapis.com/auth/ndev.clouddns.readwrite"
                     ]
@@ -208,6 +212,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/ndev.clouddns.readonly",
                         "https://www.googleapis.com/auth/ndev.clouddns.readwrite"
                     ]
@@ -299,6 +304,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/ndev.clouddns.readonly",
                         "https://www.googleapis.com/auth/ndev.clouddns.readwrite"
                     ]
@@ -311,6 +317,11 @@
                         "project"
                     ],
                     "parameters": {
+                        "dnsName": {
+                            "description": "Restricts the list to return only zones with this domain name.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "maxResults": {
                             "description": "Optional. Maximum number of results to be returned. If unspecified, the server will decide how many results to return.",
                             "format": "int32",
@@ -335,6 +346,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/ndev.clouddns.readonly",
                         "https://www.googleapis.com/auth/ndev.clouddns.readwrite"
                     ]
@@ -364,6 +376,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/ndev.clouddns.readonly",
                         "https://www.googleapis.com/auth/ndev.clouddns.readwrite"
                     ]
@@ -421,6 +434,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/ndev.clouddns.readonly",
                         "https://www.googleapis.com/auth/ndev.clouddns.readwrite"
                     ]
@@ -428,7 +442,7 @@
             }
         }
     },
-    "revision": "20150218",
+    "revision": "20150624",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Change": {

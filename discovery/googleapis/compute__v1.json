@@ -29,7 +29,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/TXj-QYszFUs8fm2nkvQThCBXd6Y\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/9hN2u4BIyPfYCs0vlKKKfL8-TdM\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -97,7 +97,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -262,7 +262,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -303,6 +303,313 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
                         "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                }
+            }
+        },
+        "autoscalers": {
+            "methods": {
+                "aggregatedList": {
+                    "description": "Retrieves the list of autoscalers grouped by scope.",
+                    "httpMethod": "GET",
+                    "id": "compute.autoscalers.aggregatedList",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "Maximum count of results to be returned.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Name of the project scoping this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/aggregated/autoscalers",
+                    "response": {
+                        "$ref": "AutoscalerAggregatedList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "delete": {
+                    "description": "Deletes the specified autoscaler resource.",
+                    "httpMethod": "DELETE",
+                    "id": "compute.autoscalers.delete",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "autoscaler"
+                    ],
+                    "parameters": {
+                        "autoscaler": {
+                            "description": "Name of the persistent autoscaler resource to delete.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Name of the project scoping this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "Name of the zone scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/autoscalers/{autoscaler}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "get": {
+                    "description": "Returns the specified autoscaler resource.",
+                    "httpMethod": "GET",
+                    "id": "compute.autoscalers.get",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "autoscaler"
+                    ],
+                    "parameters": {
+                        "autoscaler": {
+                            "description": "Name of the persistent autoscaler resource to return.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Name of the project scoping this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "Name of the zone scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/autoscalers/{autoscaler}",
+                    "response": {
+                        "$ref": "Autoscaler"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "insert": {
+                    "description": "Creates an autoscaler resource in the specified project using the data included in the request.",
+                    "httpMethod": "POST",
+                    "id": "compute.autoscalers.insert",
+                    "parameterOrder": [
+                        "project",
+                        "zone"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Name of the project scoping this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "Name of the zone scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/autoscalers",
+                    "request": {
+                        "$ref": "Autoscaler"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "list": {
+                    "description": "Retrieves the list of autoscaler resources contained within the specified zone.",
+                    "httpMethod": "GET",
+                    "id": "compute.autoscalers.list",
+                    "parameterOrder": [
+                        "project",
+                        "zone"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "Maximum count of results to be returned.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Use this parameter if you want to list the next page of results. Set pageToken to the nextPageToken returned by a previous list request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Name of the project scoping this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "Name of the zone scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/autoscalers",
+                    "response": {
+                        "$ref": "AutoscalerList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "patch": {
+                    "description": "Updates an autoscaler resource in the specified project using the data included in the request. This method supports patch semantics.",
+                    "httpMethod": "PATCH",
+                    "id": "compute.autoscalers.patch",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "autoscaler"
+                    ],
+                    "parameters": {
+                        "autoscaler": {
+                            "description": "Name of the autoscaler resource to update.",
+                            "location": "query",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Name of the project scoping this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "Name of the zone scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/autoscalers",
+                    "request": {
+                        "$ref": "Autoscaler"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "update": {
+                    "description": "Updates an autoscaler resource in the specified project using the data included in the request.",
+                    "httpMethod": "PUT",
+                    "id": "compute.autoscalers.update",
+                    "parameterOrder": [
+                        "project",
+                        "zone"
+                    ],
+                    "parameters": {
+                        "autoscaler": {
+                            "description": "Name of the autoscaler resource to update.",
+                            "location": "query",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Name of the project scoping this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "Name of the zone scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/autoscalers",
+                    "request": {
+                        "$ref": "Autoscaler"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
                     ]
                 }
             }
@@ -449,7 +756,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -570,7 +877,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -658,7 +965,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -714,7 +1021,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -795,7 +1102,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Deletes the specified persistent disk.",
+                    "description": "Deletes the specified persistent disk. Deleting a disk removes its data permanently and is irreversible. However, deleting a disk does not delete any snapshots previously made from the disk. You must separately delete snapshots.",
                     "httpMethod": "DELETE",
                     "id": "compute.disks.delete",
                     "parameterOrder": [
@@ -928,7 +1235,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1079,7 +1386,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1200,7 +1507,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1365,7 +1672,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1560,7 +1867,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1704,7 +2011,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1789,7 +2096,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1898,7 +2205,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2042,7 +2349,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2297,7 +2604,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2388,7 +2695,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2590,7 +2897,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2900,7 +3207,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3060,7 +3367,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3113,7 +3420,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3356,7 +3663,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3455,7 +3762,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3705,7 +4012,7 @@
                             "type": "string"
                         },
                         "zone": {
-                            "description": "The name of the The name of the zone for this request..",
+                            "description": "The name of the zone for this request.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -3819,7 +4126,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4224,7 +4531,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4312,7 +4619,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4463,7 +4770,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4738,7 +5045,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4828,7 +5135,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -4972,7 +5279,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5013,7 +5320,7 @@
         "snapshots": {
             "methods": {
                 "delete": {
-                    "description": "Deletes the specified persistent disk snapshot resource.",
+                    "description": "Deletes the specified Snapshot resource. Keep in mind that deleting a single snapshot might not necessarily delete all the data on that snapshot. If any data on the snapshot that is marked for deletion is needed for subsequent snapshots, the data will be moved to the next corresponding snapshot.\n\nFor more information, see Deleting snaphots.",
                     "httpMethod": "DELETE",
                     "id": "compute.snapshots.delete",
                     "parameterOrder": [
@@ -5029,7 +5336,7 @@
                             "type": "string"
                         },
                         "snapshot": {
-                            "description": "Name of the persistent disk snapshot resource to delete.",
+                            "description": "Name of the Snapshot resource to delete.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -5046,7 +5353,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Returns the specified persistent disk snapshot resource.",
+                    "description": "Returns the specified Snapshot resource.",
                     "httpMethod": "GET",
                     "id": "compute.snapshots.get",
                     "parameterOrder": [
@@ -5062,7 +5369,7 @@
                             "type": "string"
                         },
                         "snapshot": {
-                            "description": "Name of the persistent disk snapshot resource to return.",
+                            "description": "Name of the Snapshot resource to return.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -5080,7 +5387,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of persistent disk snapshot resources contained within the specified project.",
+                    "description": "Retrieves the list of Snapshot resources contained within the specified project.",
                     "httpMethod": "GET",
                     "id": "compute.snapshots.list",
                     "parameterOrder": [
@@ -5088,7 +5395,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5232,7 +5539,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5317,7 +5624,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5482,7 +5789,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5624,7 +5931,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -5833,7 +6140,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -6025,7 +6332,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -6190,7 +6497,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -6341,7 +6648,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -6498,7 +6805,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -6663,7 +6970,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -6800,7 +7107,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -6890,7 +7197,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must contain the following:\nFIELD_NAME COMPARISON_STRING LITERAL_STRING\n \n- FIELD_NAME: The name of the field you want to compare. The field name must be valid for the type of resource being filtered. Only atomic field types are supported (string, number, boolean). Array and object fields are not currently supported. \n- COMPARISON_STRING: The comparison string, either eq (equals) or ne (not equals). \n- LITERAL_STRING: The literal string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.  For example, you can filter by the name of a resource:\nfilter=name ne example-instance\nThe above filter returns only results whose name field does not equal example-instance. You can also enclose your literal string in single, double, or no quotes.",
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: FIELD_NAME COMPARISON_STRING LITERAL_STRING.\n\nThe FIELD_NAME is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The COMPARISON_STRING must be either eq (equals) or ne (not equals). The LITERAL_STRING is the string value to filter to. The literal value must be valid for the type of field (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.",
                             "location": "query",
                             "type": "string"
                         },
@@ -6929,7 +7236,7 @@
             }
         }
     },
-    "revision": "20150625",
+    "revision": "20150723",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -7275,12 +7582,291 @@
             },
             "type": "object"
         },
+        "Autoscaler": {
+            "id": "Autoscaler",
+            "properties": {
+                "autoscalingPolicy": {
+                    "$ref": "AutoscalingPolicy",
+                    "description": "Autoscaling configuration."
+                },
+                "creationTimestamp": {
+                    "description": "Creation timestamp in RFC3339 text format (output only).",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An optional textual description of the resource; provided by the client when the resource is created.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#autoscaler",
+                    "description": "Type of the resource.",
+                    "type": "string"
+                },
+                "name": {
+                    "annotations": {
+                        "required": [
+                            "compute.instanceGroups.insert"
+                        ]
+                    },
+                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "Server defined URL for the resource (output only).",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "URL of Instance Group Manager or Replica Pool which will be controlled by Autoscaler.",
+                    "type": "string"
+                },
+                "zone": {
+                    "description": "URL of the zone where the instance group resides (output only).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AutoscalerAggregatedList": {
+            "id": "AutoscalerAggregatedList",
+            "properties": {
+                "id": {
+                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "type": "string"
+                },
+                "items": {
+                    "additionalProperties": {
+                        "$ref": "AutoscalersScopedList",
+                        "description": "Name of the scope containing this set of autoscalers."
+                    },
+                    "description": "A map of scoped autoscaler lists.",
+                    "type": "object"
+                },
+                "kind": {
+                    "default": "compute#autoscalerAggregatedList",
+                    "description": "Type of resource.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "A token used to continue a truncated list request (output only).",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "Server defined URL for this resource (output only).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AutoscalerList": {
+            "description": "Contains a list of persistent autoscaler resources.",
+            "id": "AutoscalerList",
+            "properties": {
+                "id": {
+                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "type": "string"
+                },
+                "items": {
+                    "description": "A list of Autoscaler resources.",
+                    "items": {
+                        "$ref": "Autoscaler"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#autoscalerList",
+                    "description": "Type of resource.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "A token used to continue a truncated list request (output only).",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "Server defined URL for this resource (output only).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AutoscalersScopedList": {
+            "id": "AutoscalersScopedList",
+            "properties": {
+                "autoscalers": {
+                    "description": "List of autoscalers contained in this scope.",
+                    "items": {
+                        "$ref": "Autoscaler"
+                    },
+                    "type": "array"
+                },
+                "warning": {
+                    "description": "Informational warning which replaces the list of autoscalers when the list is empty.",
+                    "properties": {
+                        "code": {
+                            "description": "[Output Only] The warning type identifier for this warning.",
+                            "enum": [
+                                "DEPRECATED_RESOURCE_USED",
+                                "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "INJECTED_KERNELS_DEPRECATED",
+                                "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                                "NEXT_HOP_CANNOT_IP_FORWARD",
+                                "NEXT_HOP_INSTANCE_NOT_FOUND",
+                                "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                                "NEXT_HOP_NOT_RUNNING",
+                                "NOT_CRITICAL_ERROR",
+                                "NO_RESULTS_ON_PAGE",
+                                "REQUIRED_TOS_AGREEMENT",
+                                "RESOURCE_NOT_DELETED",
+                                "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                                "UNREACHABLE"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "type": "string"
+                        },
+                        "data": {
+                            "description": "[Output Only] Metadata for this warning in key: value format.",
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "description": "[Output Only] A key for the warning data.",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "[Output Only] A warning data value corresponding to the key.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "message": {
+                            "description": "[Output Only] Optional human-readable details for this warning.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AutoscalingPolicy": {
+            "description": "Cloud Autoscaler policy.",
+            "id": "AutoscalingPolicy",
+            "properties": {
+                "coolDownPeriodSec": {
+                    "description": "The number of seconds that the Autoscaler should wait between two succeeding changes to the number of virtual machines. You should define an interval that is at least as long as the initialization time of a virtual machine and the time it may take for replica pool to create the virtual machine. The default is 60 seconds.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "cpuUtilization": {
+                    "$ref": "AutoscalingPolicyCpuUtilization",
+                    "description": "TODO(jbartosik): Add support for scaling based on muliple utilization metrics (take max recommendation). Exactly one utilization policy should be provided. Configuration parameters of CPU based autoscaling policy."
+                },
+                "customMetricUtilizations": {
+                    "description": "Configuration parameters of autoscaling based on custom metric.",
+                    "items": {
+                        "$ref": "AutoscalingPolicyCustomMetricUtilization"
+                    },
+                    "type": "array"
+                },
+                "loadBalancingUtilization": {
+                    "$ref": "AutoscalingPolicyLoadBalancingUtilization",
+                    "description": "Configuration parameters of autoscaling based on load balancer."
+                },
+                "maxNumReplicas": {
+                    "description": "The maximum number of replicas that the Autoscaler can scale up to. This field is required for config to be effective. Maximum number of replicas should be not lower than minimal number of replicas. Absolute limit for this value is defined in Autoscaler backend.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "minNumReplicas": {
+                    "description": "The minimum number of replicas that the Autoscaler can scale down to. Can't be less than 0. If not provided Autoscaler will choose default value depending on maximal number of replicas.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "AutoscalingPolicyCpuUtilization": {
+            "description": "CPU utilization policy.",
+            "id": "AutoscalingPolicyCpuUtilization",
+            "properties": {
+                "utilizationTarget": {
+                    "description": "The target utilization that the Autoscaler should maintain. It is represented as a fraction of used cores. For example: 6 cores used in 8-core VM are represented here as 0.75. Must be a float value between (0, 1]. If not defined, the default is 0.8.",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "AutoscalingPolicyCustomMetricUtilization": {
+            "description": "Custom utilization metric policy.",
+            "id": "AutoscalingPolicyCustomMetricUtilization",
+            "properties": {
+                "metric": {
+                    "description": "Identifier of the metric. It should be a Cloud Monitoring metric. The metric can not have negative values. The metric should be an utilization metric (increasing number of VMs handling requests x times should reduce average value of the metric roughly x times). For example you could use: compute.googleapis.com/instance/network/received_bytes_count.",
+                    "type": "string"
+                },
+                "utilizationTarget": {
+                    "description": "Target value of the metric which Autoscaler should maintain. Must be a positive value.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "utilizationTargetType": {
+                    "description": "Defines type in which utilization_target is expressed.",
+                    "enum": [
+                        "DELTA_PER_MINUTE",
+                        "DELTA_PER_SECOND",
+                        "GAUGE"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AutoscalingPolicyLoadBalancingUtilization": {
+            "description": "Load balancing utilization policy.",
+            "id": "AutoscalingPolicyLoadBalancingUtilization",
+            "properties": {
+                "utilizationTarget": {
+                    "description": "Fraction of backend capacity utilization (set in HTTP load balancing configuration) that Autoscaler should maintain. Must be a positive float value. If not defined, the default is 0.8. For example if your maxRatePerInstance capacity (in HTTP Load Balancing configuration) is set at 10 and you would like to keep number of instances such that each instance receives 7 QPS on average, set this to 0.7.",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
         "Backend": {
             "description": "Message containing information of one individual backend.",
             "id": "Backend",
             "properties": {
                 "balancingMode": {
-                    "description": "The balancing mode of this backend, default is UTILIZATION.",
+                    "description": "Specifies the balancing mode for this backend. The default is UTILIZATION but available values are UTILIZATION and RATE.",
                     "enum": [
                         "RATE",
                         "UTILIZATION"
@@ -7292,16 +7878,16 @@
                     "type": "string"
                 },
                 "capacityScaler": {
-                    "description": "The multiplier (a value between 0.0 and 1.0) of the max capacity (CPU or RPS, depending on 'balancingMode') the group should serve up to. 0 means the group is totally drained. Default value is 1. Valid range is [0.0, 1.0].",
+                    "description": "A multiplier applied to the group's maximum servicing capacity (either UTILIZATION or RATE). Default value is 1, which means the group will serve up to 100% of its configured CPU or RPS (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available CPU or RPS. Valid range is [0.0,1.0].",
                     "format": "float",
                     "type": "number"
                 },
                 "description": {
-                    "description": "An optional textual description of the resource, which is provided by the client when the resource is created.",
+                    "description": "An optional textual description of the resource. Provided by the client when the resource is created.",
                     "type": "string"
                 },
                 "group": {
-                    "description": "URL of a zonal Cloud Resource View resource. This resource view defines the list of instances that serve traffic. Member virtual machine instances from each resource view must live in the same zone as the resource view itself. No two backends in a backend service are allowed to use same Resource View resource.",
+                    "description": "The fully-qualified URL of a zonal Instance Group resource. This instance group defines the list of instances that serve traffic. Member virtual machine instances from each instance group must live in the same zone as the instance group itself. No two backends in a backend service are allowed to use same Instance Group resource.\n\nNote that you must specify an Instance Group resource using the fully-qualified URL, rather than a partial URL.",
                     "type": "string"
                 },
                 "maxRate": {
@@ -7315,7 +7901,7 @@
                     "type": "number"
                 },
                 "maxUtilization": {
-                    "description": "Used when 'balancingMode' is UTILIZATION. This ratio defines the CPU utilization target for the group. The default is 0.8. Valid range is [0, 1].",
+                    "description": "Used when balancingMode is UTILIZATION. This ratio defines the CPU utilization target for the group. The default is 0.8. Valid range is [0.0, 1.0].",
                     "format": "float",
                     "type": "number"
                 }
@@ -7323,7 +7909,7 @@
             "type": "object"
         },
         "BackendService": {
-            "description": "A BackendService resource. This resource defines a group of backend VMs together with their serving capacity.\n\nIf you add field foo, you probably need to also add: com.google.cloud.cluster.manager.api.BackendServiceResource: foo com.google.cloud.cluster.manager.networking.entities: BackendService, BackendServiceEntity: getFoo, setFoo:\n\nConverters/mappers will need to be updated: com.google.cloud.cluster.manager.networking.services.backendservice.BackendServiceResourceConverter: toResource, updateEntity: copy foo com.google.cloud.cluster.mixer.protomappers.BackendServiceMappers.ResourceMapper: ResourceMapper: add a new map call\n\nTests to update: com.google.cloud.cluster.manager.networking.services.backendservice.BackendServiceResourceConverterTest com.google.cloud.cluster.mixer.protomappers.BackendServiceMappersTest.testResourceMapping",
+            "description": "A BackendService resource. This resource defines a group of backend VMs together with their serving capacity.",
             "id": "BackendService",
             "properties": {
                 "backends": {
@@ -7334,11 +7920,11 @@
                     "type": "array"
                 },
                 "creationTimestamp": {
-                    "description": "Creation timestamp in RFC3339 text format (output only).",
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
                     "type": "string"
                 },
                 "description": {
-                    "description": "An optional textual description of the resource; provided by the client when the resource is created.",
+                    "description": "An optional textual description of the resource. Provided by the client when the resource is created.",
                     "type": "string"
                 },
                 "fingerprint": {
@@ -7354,22 +7940,22 @@
                     "type": "array"
                 },
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "format": "uint64",
                     "type": "string"
                 },
                 "kind": {
                     "default": "compute#backendService",
-                    "description": "Type of the resource.",
+                    "description": "[Output Only] Type of resource. Always compute#backendService for backend services.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.",
+                    "description": "Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
                 },
                 "port": {
-                    "description": "Deprecated in favor of port_name. The TCP port to connect on the backend. The default value is 80.",
+                    "description": "Deprecated in favor of port name. The TCP port to connect on the backend. The default value is 80.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -7387,7 +7973,7 @@
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for the resource (output only).",
+                    "description": "[Output Only] Server defined URL for the resource.",
                     "type": "string"
                 },
                 "timeoutSec": {
@@ -7409,7 +7995,7 @@
                 },
                 "kind": {
                     "default": "compute#backendServiceGroupHealth",
-                    "description": "Type of resource.",
+                    "description": "[Output Only] Type of resource. Always compute#backendServiceGroupHealth for the health of backend services.",
                     "type": "string"
                 }
             },
@@ -7420,7 +8006,7 @@
             "id": "BackendServiceList",
             "properties": {
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "type": "string"
                 },
                 "items": {
@@ -7432,15 +8018,15 @@
                 },
                 "kind": {
                     "default": "compute#backendServiceList",
-                    "description": "Type of resource.",
+                    "description": "[Output Only] Type of resource. Always compute#backendServiceList for lists of backend services.",
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request (output only).",
+                    "description": "[Output Only] A token used to continue a truncated list request.",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for this resource (output only).",
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -7959,7 +8545,7 @@
                     "type": "array"
                 },
                 "creationTimestamp": {
-                    "description": "[Output Only] Creation timestamp in RFC3339text format.",
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
                     "type": "string"
                 },
                 "description": {
@@ -7996,21 +8582,21 @@
                     "type": "string"
                 },
                 "sourceRanges": {
-                    "description": "The IP address blocks that this rule applies to, expressed in CIDR format. One or both of sourceRanges and sourceTags may be set.\n\nIf both properties are set, an inbound connection is allowed if the range or the tag of the source matches the sourceRanges OR matches the sourceTags property; the connection does not need to match both properties.",
+                    "description": "The IP address blocks that this rule applies to, expressed in CIDR format. One or both of sourceRanges and sourceTags may be set.\n\nIf both properties are set, an inbound connection is allowed if the range matches the sourceRanges OR the tag of the source matches the sourceTags property. The connection does not need to match both properties.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "sourceTags": {
-                    "description": "A list of instance tags which this rule applies to. One or both of sourceRanges and sourceTags may be set.\n\nIf both properties are set, an inbound connection is allowed if the range or the tag of the source matches the sourceRanges OR matches the sourceTags property; the connection does not need to match both properties.",
+                    "description": "A list of instance tags which this rule applies to. One or both of sourceRanges and sourceTags may be set.\n\nIf both properties are set, an inbound connection is allowed if the range matches the sourceRanges OR the tag of the source matches the sourceTags property. The connection does not need to match both properties.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "targetTags": {
-                    "description": "A list of instance tags indicating sets of instances located on network which may make network connections as specified in allowed[]. If no targetTags are specified, the firewall rule applies to all instances on the specified network.",
+                    "description": "A list of instance tags indicating sets of instances located in the network that may make network connections as specified in allowed[]. If no targetTags are specified, the firewall rule applies to all instances on the specified network.",
                     "items": {
                         "type": "string"
                     },
@@ -8059,7 +8645,7 @@
                     "type": "string"
                 },
                 "IPProtocol": {
-                    "description": "The IP protocol to which this rule applies, valid options are 'TCP', 'UDP', 'ESP', 'AH' or 'SCTP'.",
+                    "description": "The IP protocol to which this rule applies, valid options are TCP, UDP, ESP, AH or SCTP.",
                     "enum": [
                         "AH",
                         "ESP",
@@ -8077,7 +8663,7 @@
                     "type": "string"
                 },
                 "creationTimestamp": {
-                    "description": "Creation timestamp in RFC3339 text format (output only).",
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
                     "type": "string"
                 },
                 "description": {
@@ -8085,7 +8671,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "format": "uint64",
                     "type": "string"
                 },
@@ -8095,24 +8681,24 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.",
+                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
                 },
                 "portRange": {
-                    "description": "Applicable only when 'IPProtocol' is 'TCP', 'UDP' or 'SCTP', only packets addressed to ports in the specified range will be forwarded to 'target'. If 'portRange' is left empty (default value), all ports are forwarded. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.",
+                    "description": "Applicable only when `IPProtocol` is TCP, UDP, or SCTP, only packets addressed to ports in the specified range will be forwarded to target. If portRange is left empty (default value), all ports are forwarded. Forwarding rules with the same `[IPAddress, IPProtocol]` pair must have disjoint port ranges.",
                     "type": "string"
                 },
                 "region": {
-                    "description": "URL of the region where the regional forwarding rule resides (output only). This field is not applicable to global forwarding rules.",
+                    "description": "[Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules.",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for the resource (output only).",
+                    "description": "[Output Only] Server-defined URL for the resource.",
                     "type": "string"
                 },
                 "target": {
-                    "description": "The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in the same region as the forwarding rule. For global forwarding rules, this target must be a global TargetHttpProxy resource.",
+                    "description": "The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in the same region as the forwarding rule. For global forwarding rules, this target must be a global TargetHttpProxy or TargetHttpsProxy resource.",
                     "type": "string"
                 }
             },
@@ -8122,7 +8708,7 @@
             "id": "ForwardingRuleAggregatedList",
             "properties": {
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "type": "string"
                 },
                 "items": {
@@ -8139,11 +8725,11 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request (output only).",
+                    "description": "[Output Only] A token used to continue a truncated list request.",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for this resource (output only).",
+                    "description": "[Output Only] Server defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -8154,7 +8740,7 @@
             "id": "ForwardingRuleList",
             "properties": {
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource. Set by the server.",
                     "type": "string"
                 },
                 "items": {
@@ -8170,11 +8756,11 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request (output only).",
+                    "description": "[Output Only] A token used to continue a truncated list request.",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for this resource (output only).",
+                    "description": "[Output Only] Server defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -8297,10 +8883,11 @@
             "type": "object"
         },
         "HostRule": {
-            "description": "A host-matching rule for a URL. If matched, will use the named PathMatcher to select the BackendService.",
+            "description": "UrlMaps A host-matching rule for a URL. If matched, will use the named PathMatcher to select the BackendService.",
             "id": "HostRule",
             "properties": {
                 "description": {
+                    "description": "An optional textual description.",
                     "type": "string"
                 },
                 "hosts": {
@@ -8311,7 +8898,7 @@
                     "type": "array"
                 },
                 "pathMatcher": {
-                    "description": "The name of the PathMatcher to match the path portion of the URL, if the this HostRule matches the URL's host portion.",
+                    "description": "The name of the PathMatcher to match the path portion of the URL, if the this hostRule matches the URL's host portion.",
                     "type": "string"
                 }
             },
@@ -8869,11 +9456,6 @@
                     "$ref": "InstanceGroupManagerActionsSummary",
                     "description": "[Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for those actions."
                 },
-                "currentSize": {
-                    "description": "[Output Only] The number of instances that currently exist and are a part of this group. The number includes instances that are in a RUNNING state, instances that are starting, and instances that are scheduled to be deleted or abandoned.",
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "description": {
                     "description": "An optional text description for the managed instance group.",
                     "type": "string"
@@ -8921,7 +9503,7 @@
                     "type": "string"
                 },
                 "targetPools": {
-                    "description": "The URL of all TargetPool resources to which new instances in the instanceGroup field are added. Updating the target pool values does not affect existing instances.",
+                    "description": "The URLs of all TargetPool resources to which new instances in the instanceGroup field are added. Updating the target pool values does not affect existing instances.",
                     "items": {
                         "type": "string"
                     },
@@ -8948,30 +9530,37 @@
             "id": "InstanceGroupManagerActionsSummary",
             "properties": {
                 "abandoning": {
+                    "description": "[Output Only] Total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "creating": {
+                    "description": "[Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "deleting": {
+                    "description": "[Output Only] The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "none": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "rebooting": {
+                    "description": "[Output Only] The number of instances in the managed instance group that currently have no scheduled actions.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "recreating": {
+                    "description": "[Output Only] The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "refreshing": {
+                    "description": "[Output Only] The number of instances in the managed instance group that are being reconfigured with properties that do not require a restart or a recreate action. For example, setting or removing target pools for the instance.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "restarting": {
+                    "description": "[Output Only] The number of instances in the managed instance group that are scheduled to be restarted or are currently being restarted.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -9013,10 +9602,10 @@
             "id": "InstanceGroupManagerAutoHealingPolicy",
             "properties": {
                 "actionType": {
-                    "description": "The action to perform when an instance becomes unhealthy. Possible values are RECREATE or REBOOT. RECREATE replaces an unhealthy instance with a new instance that is based on the instance template for this managed instance group. REBOOT performs a soft reboot on an instance. If the instance cannot reboot, the instance performs a hard restart.",
+                    "description": "The action to perform when an instance becomes unhealthy. Possible values are RECREATE or RESTART. RECREATE replaces an unhealthy instance with a new instance that is based on the instance template for this managed instance group. RESTART performs a soft restart on an instance. If the instance cannot restart softly, the instance performs a hard restart.",
                     "enum": [
-                        "REBOOT",
-                        "RECREATE"
+                        "RECREATE",
+                        "RESTART"
                     ],
                     "enumDescriptions": [
                         "",
@@ -9952,9 +10541,9 @@
                         "CREATING",
                         "DELETING",
                         "NONE",
-                        "REBOOTING",
                         "RECREATING",
-                        "REFRESHING"
+                        "REFRESHING",
+                        "RESTARTING"
                     ],
                     "enumDescriptions": [
                         "",
@@ -9967,9 +10556,9 @@
                     ],
                     "type": "string"
                 },
-                "incarnationId": {
+                "id": {
                     "description": "The unique identifier for this resource (empty when instance does not exist).",
-                    "format": "int64",
+                    "format": "uint64",
                     "type": "string"
                 },
                 "instance": {
@@ -10123,7 +10712,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "An optional textual description of the resource; provided by the client when the resource is created.",
+                    "description": "An optional textual description of the resource. Provided by the client when the resource is created.",
                     "type": "string"
                 },
                 "gatewayIPv4": {
@@ -10132,7 +10721,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+                    "description": "[Output Only] Unique identifier for the resource. Defined by the server.",
                     "format": "uint64",
                     "type": "string"
                 },
@@ -10147,7 +10736,7 @@
                             "compute.networks.insert"
                         ]
                     },
-                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+                    "description": "Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
                 },
@@ -10163,7 +10752,7 @@
             "id": "NetworkInterface",
             "properties": {
                 "accessConfigs": {
-                    "description": "An array of configurations for this interface. Currently, <codeONE_TO_ONE_NAT is the only access config supported. If there are no accessConfigs specified, then this instance will have no external internet access.",
+                    "description": "An array of configurations for this interface. Currently, ONE_TO_ONE_NAT is the only access config supported. If there are no accessConfigs specified, then this instance will have no external internet access.",
                     "items": {
                         "$ref": "AccessConfig"
                     },
@@ -10194,7 +10783,7 @@
             "id": "NetworkList",
             "properties": {
                 "id": {
-                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+                    "description": "[Output Only] Unique identifier for the resource. Defined by the server.",
                     "type": "string"
                 },
                 "items": {
@@ -10562,6 +11151,7 @@
                     "type": "string"
                 },
                 "description": {
+                    "description": "An optional textual description of the resource.",
                     "type": "string"
                 },
                 "name": {
@@ -10822,15 +11412,15 @@
             "type": "object"
         },
         "Route": {
-            "description": "The route resource. A Route is a rule that specifies how certain packets should be handled by the virtual network. Routes are associated with VMs by tag and the set of Routes for a particular VM is called its routing table. For each packet leaving a VM, the system searches that VM's routing table for a single best matching Route. Routes match packets by destination IP address, preferring smaller or more specific ranges over larger ones. If there is a tie, the system selects the Route with the smallest priority value. If there is still a tie, it uses the layer three and four packet headers to select just one of the remaining matching Routes. The packet is then forwarded as specified by the next_hop field of the winning Route -- either to another VM destination, a VM gateway or a GCE operated gateway. Packets that do not match any Route in the sending VM's routing table will be dropped.",
+            "description": "The route resource. A Route is a rule that specifies how certain packets should be handled by the virtual network. Routes are associated with VMs by tag and the set of Routes for a particular VM is called its routing table. For each packet leaving a VM, the system searches that VM's routing table for a single best matching Route. Routes match packets by destination IP address, preferring smaller or more specific ranges over larger ones. If there is a tie, the system selects the Route with the smallest priority value. If there is still a tie, it uses the layer three and four packet headers to select just one of the remaining matching Routes. The packet is then forwarded as specified by the nextHop field of the winning Route -- either to another VM destination, a VM gateway or a GCE operated gateway. Packets that do not match any Route in the sending VM's routing table are dropped.",
             "id": "Route",
             "properties": {
                 "creationTimestamp": {
-                    "description": "Creation timestamp in RFC3339 text format (output only).",
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
                     "type": "string"
                 },
                 "description": {
-                    "description": "An optional textual description of the resource; provided by the client when the resource is created.",
+                    "description": "An optional textual description of the resource. Provided by the client when the resource is created.",
                     "type": "string"
                 },
                 "destRange": {
@@ -10839,17 +11429,17 @@
                             "compute.routes.insert"
                         ]
                     },
-                    "description": "Which packets does this route apply to?",
+                    "description": "The destination range of outgoing packets that this route applies to.",
                     "type": "string"
                 },
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource. Defined by the server.",
                     "format": "uint64",
                     "type": "string"
                 },
                 "kind": {
                     "default": "compute#route",
-                    "description": "Type of the resource.",
+                    "description": "[Output Only] Type of this resource. Always compute#routes for Route resources.",
                     "type": "string"
                 },
                 "name": {
@@ -10858,7 +11448,7 @@
                             "compute.routes.insert"
                         ]
                     },
-                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.",
+                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
                 },
@@ -10868,15 +11458,15 @@
                             "compute.routes.insert"
                         ]
                     },
-                    "description": "URL of the network to which this route is applied; provided by the client when the route is created.",
+                    "description": "Fully-qualified URL of the network that this route applies to.",
                     "type": "string"
                 },
                 "nextHopGateway": {
-                    "description": "The URL to a gateway that should handle matching packets.",
+                    "description": "The URL to a gateway that should handle matching packets. Currently, this is only the internet gateway:  projects/<project-id>/global/gateways/default-internet-gateway",
                     "type": "string"
                 },
                 "nextHopInstance": {
-                    "description": "The URL to an instance that should handle matching packets.",
+                    "description": "The fully-qualified URL to an instance that should handle matching packets. For example:\nhttps://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/",
                     "type": "string"
                 },
                 "nextHopIp": {
@@ -10902,7 +11492,7 @@
                     "type": "integer"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for the resource (output only).",
+                    "description": "[Output Only] Server-defined fully-qualified URL for this resource.",
                     "type": "string"
                 },
                 "tags": {
@@ -10918,7 +11508,7 @@
                     "type": "array"
                 },
                 "warnings": {
-                    "description": "If potential misconfigurations are detected for this route, this field will be populated with warning messages.",
+                    "description": "[Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.",
                     "items": {
                         "properties": {
                             "code": {
@@ -10991,7 +11581,7 @@
             "id": "RouteList",
             "properties": {
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource. Defined by the server.",
                     "type": "string"
                 },
                 "items": {
@@ -11007,11 +11597,11 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request (output only).",
+                    "description": "[Output Only] A token used to continue a truncated list request.",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for this resource (output only).",
+                    "description": "[Output Only] Server defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -11087,7 +11677,7 @@
             "id": "Snapshot",
             "properties": {
                 "creationTimestamp": {
-                    "description": "Creation timestamp in RFC3339 text format (output only).",
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
                     "type": "string"
                 },
                 "description": {
@@ -11095,18 +11685,18 @@
                     "type": "string"
                 },
                 "diskSizeGb": {
-                    "description": "Size of the persistent disk snapshot, specified in GB (output only).",
+                    "description": "[Output Only] Size of the snapshot, specified in GB.",
                     "format": "int64",
                     "type": "string"
                 },
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "format": "uint64",
                     "type": "string"
                 },
                 "kind": {
                     "default": "compute#snapshot",
-                    "description": "Type of the resource.",
+                    "description": "[Output Only] Type of the resource. Always compute#snapshot for Snapshot resources.",
                     "type": "string"
                 },
                 "licenses": {
@@ -11117,12 +11707,12 @@
                     "type": "array"
                 },
                 "name": {
-                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.",
+                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for the resource (output only).",
+                    "description": "[Output Only] Server-defined URL for the resource.",
                     "type": "string"
                 },
                 "sourceDisk": {
@@ -11130,11 +11720,11 @@
                     "type": "string"
                 },
                 "sourceDiskId": {
-                    "description": "The 'id' value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.",
+                    "description": "[Output Only] The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.",
                     "type": "string"
                 },
                 "status": {
-                    "description": "The status of the persistent disk snapshot (output only).",
+                    "description": "[Output Only] The status of the snapshot.",
                     "enum": [
                         "CREATING",
                         "DELETING",
@@ -11152,12 +11742,12 @@
                     "type": "string"
                 },
                 "storageBytes": {
-                    "description": "A size of the the storage used by the snapshot. As snapshots share storage this number is expected to change with snapshot creation/deletion.",
+                    "description": "[Output Only] A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.",
                     "format": "int64",
                     "type": "string"
                 },
                 "storageBytesStatus": {
-                    "description": "An indicator whether storageBytes is in a stable state, or it is being adjusted as a result of shared storage reallocation.",
+                    "description": "[Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation.",
                     "enum": [
                         "UPDATING",
                         "UP_TO_DATE"
@@ -11172,7 +11762,7 @@
             "type": "object"
         },
         "SnapshotList": {
-            "description": "Contains a list of persistent disk snapshot resources.",
+            "description": "Contains a list of Snapshot resources.",
             "id": "SnapshotList",
             "properties": {
                 "id": {
@@ -11226,7 +11816,7 @@
             "id": "TargetHttpProxy",
             "properties": {
                 "creationTimestamp": {
-                    "description": "Creation timestamp in RFC3339 text format (output only).",
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
                     "type": "string"
                 },
                 "description": {
@@ -11234,22 +11824,22 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource. Defined by the server.",
                     "format": "uint64",
                     "type": "string"
                 },
                 "kind": {
                     "default": "compute#targetHttpProxy",
-                    "description": "Type of the resource.",
+                    "description": "[Output Only] Type of resource. Always compute#Operation for Operation resources.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.",
+                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for the resource (output only).",
+                    "description": "[Output Only] Server defined URL for the resource.",
                     "type": "string"
                 },
                 "urlMap": {
@@ -11260,11 +11850,11 @@
             "type": "object"
         },
         "TargetHttpProxyList": {
-            "description": "Contains a list of TargetHttpProxy resources.",
+            "description": "A list of TargetHttpProxy resources.",
             "id": "TargetHttpProxyList",
             "properties": {
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "type": "string"
                 },
                 "items": {
@@ -11276,15 +11866,15 @@
                 },
                 "kind": {
                     "default": "compute#targetHttpProxyList",
-                    "description": "Type of resource.",
+                    "description": "Type of resource. Always compute#targetHttpProxyList for lists of Target HTTP proxies.",
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request (output only).",
+                    "description": "[Output Only] A token used to continue a truncated list request.",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for this resource (output only).",
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -11805,7 +12395,7 @@
                             "compute.targetVpnGateways.insert"
                         ]
                     },
-                    "description": "Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long and comply with RFC1035.",
+                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
                 },
@@ -12013,7 +12603,7 @@
             "id": "UrlMap",
             "properties": {
                 "creationTimestamp": {
-                    "description": "Creation timestamp in RFC3339 text format (output only).",
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
                     "type": "string"
                 },
                 "defaultService": {
@@ -12021,7 +12611,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "An optional textual description of the resource; provided by the client when the resource is created.",
+                    "description": "An optional textual description of the resource. Provided by the client when the resource is created.",
                     "type": "string"
                 },
                 "fingerprint": {
@@ -12037,7 +12627,7 @@
                     "type": "array"
                 },
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource. Set by the server.",
                     "format": "uint64",
                     "type": "string"
                 },
@@ -12047,7 +12637,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.",
+                    "description": "Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
                 },
@@ -12059,7 +12649,7 @@
                     "type": "array"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for the resource (output only).",
+                    "description": "[Output Only] Server defined URL for the resource.",
                     "type": "string"
                 },
                 "tests": {
@@ -12077,7 +12667,7 @@
             "id": "UrlMapList",
             "properties": {
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource. Set by the server.",
                     "type": "string"
                 },
                 "items": {
@@ -12093,11 +12683,11 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request (output only).",
+                    "description": "[Output Only] A token used to continue a truncated list request.",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for this resource (output only).",
+                    "description": "[Output Only] Server defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -12216,13 +12806,6 @@
                     "format": "uint64",
                     "type": "string"
                 },
-                "ikeNetworks": {
-                    "description": "IKE networks to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "ikeVersion": {
                     "description": "IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or 2. Default version is 2.",
                     "format": "int32",
@@ -12239,7 +12822,7 @@
                             "compute.vpnTunnels.insert"
                         ]
                     },
-                    "description": "Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long and comply with RFC1035.",
+                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
                 },

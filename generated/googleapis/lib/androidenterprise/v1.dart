@@ -1937,10 +1937,16 @@ class ProductsResourceApi {
   }
 
   /**
-   * Generates a URL that can be used to display an iframe to view the product's
-   * permissions (if any) and approve the product. This URL can be used to
-   * approve the product for a limited time (currently 1 hour) using the
-   * Products.approve call.
+   * Generates a URL that can be rendered in an iframe to display the
+   * permissions (if any) of a product. An enterprise admin must view these
+   * permissions and accept them on behalf of their organization in order to
+   * approve that product.
+   *
+   * Admins should accept the displayed permissions by interacting with a
+   * separate UI element in the EMM console, which in turn should trigger the
+   * use of this URL as the approvalUrlInfo.approvalUrl property in a
+   * Products.approve call to approve the product. This URL can only be used to
+   * display permissions for up to 1 day.
    *
    * Request parameters:
    *
@@ -1948,8 +1954,8 @@ class ProductsResourceApi {
    *
    * [productId] - The ID of the product.
    *
-   * [languageCode] - The language code that will be used for permission names
-   * and descriptions in the returned iframe.
+   * [languageCode] - The BCP 47 language code used for permission names and
+   * descriptions in the returned iframe, for instance "en-US".
    *
    * Completes with a [ProductsGenerateApprovalUrlResponse].
    *
@@ -2285,6 +2291,50 @@ class UsersResourceApi {
   }
 
   /**
+   * Retrieves the set of products a user is entitled to access.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * Completes with a [ProductSet].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ProductSet> getAvailableProductSet(core.String enterpriseId, core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/availableProductSet';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ProductSet.fromJson(data));
+  }
+
+  /**
    * Looks up a user by email address.
    *
    * Request parameters:
@@ -2373,6 +2423,55 @@ class UsersResourceApi {
     return _response.then((data) => null);
   }
 
+  /**
+   * Modifies the set of products a user is entitled to access.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * Completes with a [ProductSet].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ProductSet> setAvailableProductSet(ProductSet request, core.String enterpriseId, core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/availableProductSet';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ProductSet.fromJson(data));
+  }
+
 }
 
 
@@ -2382,12 +2481,20 @@ class UsersResourceApi {
  * the product.
  */
 class AppRestrictionsSchema {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#appRestrictionsSchema".
+   */
+  core.String kind;
   /** The set of restrictions that make up this schema. */
   core.List<AppRestrictionsSchemaRestriction> restrictions;
 
   AppRestrictionsSchema();
 
   AppRestrictionsSchema.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
     if (_json.containsKey("restrictions")) {
       restrictions = _json["restrictions"].map((value) => new AppRestrictionsSchemaRestriction.fromJson(value)).toList();
     }
@@ -2395,6 +2502,9 @@ class AppRestrictionsSchema {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
     if (restrictions != null) {
       _json["restrictions"] = restrictions.map((value) => (value).toJson()).toList();
     }
@@ -2547,14 +2657,14 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
   }
 }
 
-/** App version represents a single APK version. */
+/** This represents a single version of the app. */
 class AppVersion {
-  /** Unique increasing identifier for the apk version. */
+  /** Unique increasing identifier for the app version. */
   core.int versionCode;
   /**
-   * The string used in the Play Store by the app developer to identify a
-   * version of an app. The string is not necessarily unique or localized (e.g.
-   * "1.4").
+   * The string used in the Play Store by the app developer to identify the
+   * version. The string is not necessarily unique or localized (for example,
+   * the string could be "1.4").
    */
   core.String versionString;
 
@@ -2651,10 +2761,12 @@ class Collection {
   core.List<core.String> productId;
   /**
    * Whether this collection is visible to all users, or only to the users that
-   * have been granted access through the collection_viewers api. Even if a
-   * collection is visible to allUsers, it is possible to add and remove
-   * viewers, but this will have no effect until the collection's visibility
-   * changes to viewersOnly.
+   * have been granted access through the "Collectionviewers" API. With the
+   * launch of the "setAvailableProductSet" API, this property should always be
+   * set to "viewersOnly", as the "allUsers" option will bypass the
+   * "availableProductSet" for all users within a domain.
+   *
+   * The "allUsers" setting is deprecated, and will be removed.
    */
   core.String visibility;
 
@@ -3166,19 +3278,19 @@ class EntitlementsListResponse {
  * admin approves a product in Google Play, if the product is added to a
  * collection, or if an entitlement for the product is created for a user via
  * the API. For paid products, a group license object is only created as part of
- * the first bulk purchase of that product in Google Play done by the enterprise
+ * the first bulk purchase of that product in Google Play by the enterprise
  * admin.
  *
  * The API can be used to query group licenses; the available information
  * includes the total number of licenses purchased (for paid products) and the
- * total number of licenses that have been provisioned, i.e. the total number of
- * user entitlements in existence for the product.
+ * total number of licenses that have been provisioned, that is, the total
+ * number of user entitlements in existence for the product.
  *
- * Group license objects are never deleted; if e.g. a free app is added to a
- * collection and then removed, the group license will remain, allowing to keep
- * track of any remaining entitlements. An enterprise admin may indicate they
- * are no longer interested in the group license by marking it as unapproved in
- * Google Play.
+ * Group license objects are never deleted. If, for example, a free app is added
+ * to a collection and then removed, the group license will remain, allowing the
+ * enterprise admin to keep track of any remaining entitlements. An enterprise
+ * admin may indicate they are no longer interested in the group license by
+ * marking it as unapproved in Google Play.
  */
 class GroupLicense {
   /**
@@ -3525,16 +3637,22 @@ class Permission {
  */
 class Product {
   /**
-   * List of app versions available for this product. The returned list contains
-   * only public versions. E.g. alpha, beta or canary versions will not be
-   * included.
+   * App versions currently available for this product. The returned list
+   * contains only public versions. Alpha and beta versions are not included.
    */
   core.List<AppVersion> appVersion;
   /** The name of the author of the product (e.g. the app developer). */
   core.String authorName;
   /** A link to the (consumer) Google Play details page for the product. */
   core.String detailsUrl;
-  /** How and to whom the package is made available. */
+  /**
+   * How and to whom the package is made available. The value publicGoogleHosted
+   * means that the package is available through the Play Store and not
+   * restricted to a specific enterprise. The value privateGoogleHosted means
+   * that the package is a private app (restricted to an enterprise) but hosted
+   * by Google. The value privateSelfHosted means that the package is a private
+   * app (restricted to an enterprise) and is privately hosted.
+   */
   core.String distributionChannel;
   /** A link to an image that can be used as an icon for the product. */
   core.String iconUrl;
@@ -3544,8 +3662,8 @@ class Product {
    */
   core.String kind;
   /**
-   * A string of the form "app:
-   * " - e.g. "app:com.google.android.gm" represents the GMail app.
+   * A string of the form app:<package name>. For example,
+   * app:com.google.android.gm represents the Gmail app.
    */
   core.String productId;
   /**
@@ -3716,7 +3834,47 @@ class ProductPermissions {
   }
 }
 
+/** A set of products. */
+class ProductSet {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#productSet".
+   */
+  core.String kind;
+  /** The list of product IDs making up the set of products. */
+  core.List<core.String> productId;
+
+  ProductSet();
+
+  ProductSet.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    return _json;
+  }
+}
+
 class ProductsApproveRequest {
+  /**
+   * The approval URL that was shown to the user. Only the permissions shown to
+   * the user with that URL will be accepted, which may not be the product's
+   * entire set of permissions. For example, the URL may only display new
+   * permissions from an update after the product was approved, or not include
+   * new permissions if the product was updated since the URL was generated.
+   */
   ApprovalUrlInfo approvalUrlInfo;
 
   ProductsApproveRequest();
@@ -3738,12 +3896,14 @@ class ProductsApproveRequest {
 
 class ProductsGenerateApprovalUrlResponse {
   /**
-   * A iframe-able URL that displays a product's permissions (if any). This URL
-   * can be used to approve the product only once and for a limited time (1
-   * hour), using the Products.approve call. If the product is not currently
-   * approved and has no permissions, this URL will point to an empty page. If
-   * the product is currently approved and all of its permissions (if any) are
-   * also approved, this field will not be populated.
+   * A URL that can be rendered in an iframe to display the permissions (if any)
+   * of a product. This URL can be used to approve the product only once and
+   * only within 24 hours of being generated, using the Products.approve call.
+   * If the product is currently unapproved and has no permissions, this URL
+   * will point to an empty page. If the product is currently approved, a URL
+   * will only be generated if that product has added permissions since it was
+   * last approved, and the URL will only display those new permissions that
+   * have not yet been accepted.
    */
   core.String url;
 

@@ -185,7 +185,9 @@ class AccountsResourceApi {
 class AccountsContainersResourceApi {
   final commons.ApiRequester _requester;
 
+  AccountsContainersFoldersResourceApi get folders => new AccountsContainersFoldersResourceApi(_requester);
   AccountsContainersMacrosResourceApi get macros => new AccountsContainersMacrosResourceApi(_requester);
+  AccountsContainersMoveFoldersResourceApi get moveFolders => new AccountsContainersMoveFoldersResourceApi(_requester);
   AccountsContainersRulesResourceApi get rules => new AccountsContainersRulesResourceApi(_requester);
   AccountsContainersTagsResourceApi get tags => new AccountsContainersTagsResourceApi(_requester);
   AccountsContainersTriggersResourceApi get triggers => new AccountsContainersTriggersResourceApi(_requester);
@@ -419,6 +421,326 @@ class AccountsContainersResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Container.fromJson(data));
+  }
+
+}
+
+
+class AccountsContainersFoldersResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsContainersFoldersEntitiesResourceApi get entities => new AccountsContainersFoldersEntitiesResourceApi(_requester);
+
+  AccountsContainersFoldersResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a GTM Folder.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * Completes with a [Folder].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Folder> create(Folder request, core.String accountId, core.String containerId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/folders';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Folder.fromJson(data));
+  }
+
+  /**
+   * Deletes a GTM Folder.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * [folderId] - The GTM Folder ID.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String accountId, core.String containerId, core.String folderId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if (folderId == null) {
+      throw new core.ArgumentError("Parameter folderId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/folders/' + commons.Escaper.ecapeVariable('$folderId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets a GTM Folder.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * [folderId] - The GTM Folder ID.
+   *
+   * Completes with a [Folder].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Folder> get(core.String accountId, core.String containerId, core.String folderId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if (folderId == null) {
+      throw new core.ArgumentError("Parameter folderId is required.");
+    }
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/folders/' + commons.Escaper.ecapeVariable('$folderId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Folder.fromJson(data));
+  }
+
+  /**
+   * Lists all GTM Folders of a Container.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * Completes with a [ListFoldersResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListFoldersResponse> list(core.String accountId, core.String containerId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/folders';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListFoldersResponse.fromJson(data));
+  }
+
+  /**
+   * Updates a GTM Folder.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * [folderId] - The GTM Folder ID.
+   *
+   * [fingerprint] - When provided, this fingerprint must match the fingerprint
+   * of the folder in storage.
+   *
+   * Completes with a [Folder].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Folder> update(Folder request, core.String accountId, core.String containerId, core.String folderId, {core.String fingerprint}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if (folderId == null) {
+      throw new core.ArgumentError("Parameter folderId is required.");
+    }
+    if (fingerprint != null) {
+      _queryParams["fingerprint"] = [fingerprint];
+    }
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/folders/' + commons.Escaper.ecapeVariable('$folderId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Folder.fromJson(data));
+  }
+
+}
+
+
+class AccountsContainersFoldersEntitiesResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsContainersFoldersEntitiesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List all entities in a GTM Folder.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * [folderId] - The GTM Folder ID.
+   *
+   * Completes with a [FolderEntities].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<FolderEntities> list(core.String accountId, core.String containerId, core.String folderId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if (folderId == null) {
+      throw new core.ArgumentError("Parameter folderId is required.");
+    }
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/folders/' + commons.Escaper.ecapeVariable('$folderId') + '/entities';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FolderEntities.fromJson(data));
   }
 
 }
@@ -679,6 +1001,79 @@ class AccountsContainersMacrosResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Macro.fromJson(data));
+  }
+
+}
+
+
+class AccountsContainersMoveFoldersResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsContainersMoveFoldersResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Moves entities to a GTM Folder.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * [folderId] - The GTM Folder ID.
+   *
+   * [tagId] - The tags to be moved to the folder.
+   *
+   * [triggerId] - The triggers to be moved to the folder.
+   *
+   * [variableId] - The variables to be moved to the folder.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future update(core.String accountId, core.String containerId, core.String folderId, {core.List<core.String> tagId, core.List<core.String> triggerId, core.List<core.String> variableId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if (folderId == null) {
+      throw new core.ArgumentError("Parameter folderId is required.");
+    }
+    if (tagId != null) {
+      _queryParams["tagId"] = tagId;
+    }
+    if (triggerId != null) {
+      _queryParams["triggerId"] = triggerId;
+    }
+    if (variableId != null) {
+      _queryParams["variableId"] = variableId;
+    }
+
+    _downloadOptions = null;
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/move_folders/' + commons.Escaper.ecapeVariable('$folderId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
   }
 
 }
@@ -2480,6 +2875,7 @@ class Condition {
    * - "lessOrEquals"
    * - "matchRegex"
    * - "startsWith"
+   * - "urlMatches"
    */
   core.String type;
 
@@ -2673,6 +3069,8 @@ class ContainerVersion {
    * This value is recomputed whenever the container version is modified.
    */
   core.String fingerprint;
+  /** The folders in the container that this version was taken from. */
+  core.List<Folder> folder;
   /** The macros in the container that this version was taken from. */
   core.List<Macro> macro;
   /** Container version display name. */
@@ -2708,6 +3106,9 @@ class ContainerVersion {
     }
     if (_json.containsKey("fingerprint")) {
       fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("folder")) {
+      folder = _json["folder"].map((value) => new Folder.fromJson(value)).toList();
     }
     if (_json.containsKey("macro")) {
       macro = _json["macro"].map((value) => new Macro.fromJson(value)).toList();
@@ -2751,6 +3152,9 @@ class ContainerVersion {
     }
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
+    }
+    if (folder != null) {
+      _json["folder"] = folder.map((value) => (value).toJson()).toList();
     }
     if (macro != null) {
       _json["macro"] = macro.map((value) => (value).toJson()).toList();
@@ -2944,6 +3348,101 @@ class CreateContainerVersionResponse {
   }
 }
 
+/** Represents a Google Tag Manager Folder. */
+class Folder {
+  /** GTM Account ID. */
+  core.String accountId;
+  /** GTM Container ID. */
+  core.String containerId;
+  /**
+   * The fingerprint of the GTM Folder as computed at storage time. This value
+   * is recomputed whenever the folder is modified.
+   */
+  core.String fingerprint;
+  /** The Folder ID uniquely identifies the GTM Folder. */
+  core.String folderId;
+  /** Folder display name. */
+  core.String name;
+
+  Folder();
+
+  Folder.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("containerId")) {
+      containerId = _json["containerId"];
+    }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("folderId")) {
+      folderId = _json["folderId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (containerId != null) {
+      _json["containerId"] = containerId;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (folderId != null) {
+      _json["folderId"] = folderId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/** Represents a Google Tag Manager Folder's contents. */
+class FolderEntities {
+  /** The list of tags inside the folder. */
+  core.List<Tag> tag;
+  /** The list of triggers inside the folder. */
+  core.List<Trigger> trigger;
+  /** The list of variables inside the folder. */
+  core.List<Variable> variable;
+
+  FolderEntities();
+
+  FolderEntities.fromJson(core.Map _json) {
+    if (_json.containsKey("tag")) {
+      tag = _json["tag"].map((value) => new Tag.fromJson(value)).toList();
+    }
+    if (_json.containsKey("trigger")) {
+      trigger = _json["trigger"].map((value) => new Trigger.fromJson(value)).toList();
+    }
+    if (_json.containsKey("variable")) {
+      variable = _json["variable"].map((value) => new Variable.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (tag != null) {
+      _json["tag"] = tag.map((value) => (value).toJson()).toList();
+    }
+    if (trigger != null) {
+      _json["trigger"] = trigger.map((value) => (value).toJson()).toList();
+    }
+    if (variable != null) {
+      _json["variable"] = variable.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** List AccountUsers Response. */
 class ListAccountUsersResponse {
   /** All GTM AccountUsers of a GTM Account. */
@@ -3035,6 +3534,28 @@ class ListContainersResponse {
     var _json = new core.Map();
     if (containers != null) {
       _json["containers"] = containers.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** List Folders Response. */
+class ListFoldersResponse {
+  /** All GTM Folders of a GTM Container. */
+  core.List<Folder> folders;
+
+  ListFoldersResponse();
+
+  ListFoldersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("folders")) {
+      folders = _json["folders"].map((value) => new Folder.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (folders != null) {
+      _json["folders"] = folders.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -3181,6 +3702,8 @@ class Macro {
   core.String notes;
   /** The macro's parameters. */
   core.List<Parameter> parameter;
+  /** Parent folder id. */
+  core.String parentFolderId;
   /** The end timestamp in milliseconds to schedule a macro. */
   core.String scheduleEndMs;
   /** The start timestamp in milliseconds to schedule a macro. */
@@ -3217,6 +3740,9 @@ class Macro {
     }
     if (_json.containsKey("parameter")) {
       parameter = _json["parameter"].map((value) => new Parameter.fromJson(value)).toList();
+    }
+    if (_json.containsKey("parentFolderId")) {
+      parentFolderId = _json["parentFolderId"];
     }
     if (_json.containsKey("scheduleEndMs")) {
       scheduleEndMs = _json["scheduleEndMs"];
@@ -3257,6 +3783,9 @@ class Macro {
     }
     if (parameter != null) {
       _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
+    }
+    if (parentFolderId != null) {
+      _json["parentFolderId"] = parentFolderId;
     }
     if (scheduleEndMs != null) {
       _json["scheduleEndMs"] = scheduleEndMs;
@@ -3450,6 +3979,38 @@ class Rule {
   }
 }
 
+class SetupTag {
+  /**
+   * If true, fire the main tag if and only if the setup tag fires successfully.
+   * If false, fire the main tag regardless of setup tag firing status.
+   */
+  core.bool stopOnSetupFailure;
+  /** The name of the setup tag. */
+  core.String tagName;
+
+  SetupTag();
+
+  SetupTag.fromJson(core.Map _json) {
+    if (_json.containsKey("stopOnSetupFailure")) {
+      stopOnSetupFailure = _json["stopOnSetupFailure"];
+    }
+    if (_json.containsKey("tagName")) {
+      tagName = _json["tagName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (stopOnSetupFailure != null) {
+      _json["stopOnSetupFailure"] = stopOnSetupFailure;
+    }
+    if (tagName != null) {
+      _json["tagName"] = tagName;
+    }
+    return _json;
+  }
+}
+
 /** Represents a Google Tag Manager Tag. */
 class Tag {
   /** GTM Account ID. */
@@ -3492,6 +4053,8 @@ class Tag {
   core.String notes;
   /** The tag's parameters. */
   core.List<Parameter> parameter;
+  /** Parent folder id. */
+  core.String parentFolderId;
   /**
    * User defined numeric priority of the tag. Tags are fired asynchronously in
    * order of priority. Tags with higher numeric value fire first. A tag's
@@ -3502,8 +4065,12 @@ class Tag {
   core.String scheduleEndMs;
   /** The start timestamp in milliseconds to schedule a tag. */
   core.String scheduleStartMs;
+  /** The list of setup tags. Currently we only allow one. */
+  core.List<SetupTag> setupTag;
   /** The Tag ID uniquely identifies the GTM Tag. */
   core.String tagId;
+  /** The list of teardown tags. Currently we only allow one. */
+  core.List<TeardownTag> teardownTag;
   /** GTM Tag Type. */
   core.String type;
 
@@ -3543,6 +4110,9 @@ class Tag {
     if (_json.containsKey("parameter")) {
       parameter = _json["parameter"].map((value) => new Parameter.fromJson(value)).toList();
     }
+    if (_json.containsKey("parentFolderId")) {
+      parentFolderId = _json["parentFolderId"];
+    }
     if (_json.containsKey("priority")) {
       priority = new Parameter.fromJson(_json["priority"]);
     }
@@ -3552,8 +4122,14 @@ class Tag {
     if (_json.containsKey("scheduleStartMs")) {
       scheduleStartMs = _json["scheduleStartMs"];
     }
+    if (_json.containsKey("setupTag")) {
+      setupTag = _json["setupTag"].map((value) => new SetupTag.fromJson(value)).toList();
+    }
     if (_json.containsKey("tagId")) {
       tagId = _json["tagId"];
+    }
+    if (_json.containsKey("teardownTag")) {
+      teardownTag = _json["teardownTag"].map((value) => new TeardownTag.fromJson(value)).toList();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -3595,6 +4171,9 @@ class Tag {
     if (parameter != null) {
       _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
     }
+    if (parentFolderId != null) {
+      _json["parentFolderId"] = parentFolderId;
+    }
     if (priority != null) {
       _json["priority"] = (priority).toJson();
     }
@@ -3604,11 +4183,50 @@ class Tag {
     if (scheduleStartMs != null) {
       _json["scheduleStartMs"] = scheduleStartMs;
     }
+    if (setupTag != null) {
+      _json["setupTag"] = setupTag.map((value) => (value).toJson()).toList();
+    }
     if (tagId != null) {
       _json["tagId"] = tagId;
     }
+    if (teardownTag != null) {
+      _json["teardownTag"] = teardownTag.map((value) => (value).toJson()).toList();
+    }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class TeardownTag {
+  /**
+   * If true, fire the teardown tag if and only if the main tag fires
+   * successfully. If false, fire the teardown tag regardless of main tag firing
+   * status.
+   */
+  core.bool stopTeardownOnFailure;
+  /** The name of the teardown tag. */
+  core.String tagName;
+
+  TeardownTag();
+
+  TeardownTag.fromJson(core.Map _json) {
+    if (_json.containsKey("stopTeardownOnFailure")) {
+      stopTeardownOnFailure = _json["stopTeardownOnFailure"];
+    }
+    if (_json.containsKey("tagName")) {
+      tagName = _json["tagName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (stopTeardownOnFailure != null) {
+      _json["stopTeardownOnFailure"] = stopTeardownOnFailure;
+    }
+    if (tagName != null) {
+      _json["tagName"] = tagName;
     }
     return _json;
   }
@@ -3661,6 +4279,8 @@ class Trigger {
   Parameter limit;
   /** Trigger display name. */
   core.String name;
+  /** Parent folder id. */
+  core.String parentFolderId;
   /** The Trigger ID uniquely identifies the GTM Trigger. */
   core.String triggerId;
   /**
@@ -3748,6 +4368,9 @@ class Trigger {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("parentFolderId")) {
+      parentFolderId = _json["parentFolderId"];
+    }
     if (_json.containsKey("triggerId")) {
       triggerId = _json["triggerId"];
     }
@@ -3805,6 +4428,9 @@ class Trigger {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (parentFolderId != null) {
+      _json["parentFolderId"] = parentFolderId;
     }
     if (triggerId != null) {
       _json["triggerId"] = triggerId;
@@ -3911,6 +4537,8 @@ class Variable {
   core.String notes;
   /** The variable's parameters. */
   core.List<Parameter> parameter;
+  /** Parent folder id. */
+  core.String parentFolderId;
   /** The end timestamp in milliseconds to schedule a variable. */
   core.String scheduleEndMs;
   /** The start timestamp in milliseconds to schedule a variable. */
@@ -3946,6 +4574,9 @@ class Variable {
     }
     if (_json.containsKey("parameter")) {
       parameter = _json["parameter"].map((value) => new Parameter.fromJson(value)).toList();
+    }
+    if (_json.containsKey("parentFolderId")) {
+      parentFolderId = _json["parentFolderId"];
     }
     if (_json.containsKey("scheduleEndMs")) {
       scheduleEndMs = _json["scheduleEndMs"];
@@ -3986,6 +4617,9 @@ class Variable {
     }
     if (parameter != null) {
       _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
+    }
+    if (parentFolderId != null) {
+      _json["parentFolderId"] = parentFolderId;
     }
     if (scheduleEndMs != null) {
       _json["scheduleEndMs"] = scheduleEndMs;

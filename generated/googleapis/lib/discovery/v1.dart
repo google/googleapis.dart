@@ -713,6 +713,10 @@ class RestDescription {
   core.String documentationLink;
   /** The ETag for this response. */
   core.String etag;
+  /**
+   * Enable exponential backoff for suitable methods in the generated clients.
+   */
+  core.bool exponentialBackoffDefault;
   /** A list of supported features for this API. */
   core.List<core.String> features;
   /** Links to 16x16 and 32x32 icons representing the API. */
@@ -785,6 +789,9 @@ class RestDescription {
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
+    }
+    if (_json.containsKey("exponentialBackoffDefault")) {
+      exponentialBackoffDefault = _json["exponentialBackoffDefault"];
     }
     if (_json.containsKey("features")) {
       features = _json["features"];
@@ -873,6 +880,9 @@ class RestDescription {
     }
     if (etag != null) {
       _json["etag"] = etag;
+    }
+    if (exponentialBackoffDefault != null) {
+      _json["exponentialBackoffDefault"] = exponentialBackoffDefault;
     }
     if (features != null) {
       _json["features"] = features;

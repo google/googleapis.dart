@@ -5,7 +5,7 @@
     "description": "Lets you discover information about other Google APIs, such as what APIs are available, the resource and method details for each API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/discovery/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/rJ-Wlqqs_yJDjtCFAIylPtmqXPY\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/jn2m36Cyj5Ei-KQXTI8Znl-wUic\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/feature/filing_cabinet_search-g16.png",
         "x32": "http://www.google.com/images/icons/feature/filing_cabinet_search-g32.png"
@@ -394,6 +394,10 @@
                     "description": "The ETag for this response.",
                     "readOnly": true,
                     "type": "string"
+                },
+                "exponentialBackoffDefault": {
+                    "description": "Enable exponential backoff for suitable methods in the generated clients.",
+                    "type": "boolean"
                 },
                 "features": {
                     "description": "A list of supported features for this API.",

@@ -2407,6 +2407,45 @@ class VariantsetsResourceApi {
       _requester = client;
 
   /**
+   * Creates a new variant set (only necessary in v1).
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [VariantSet].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<VariantSet> create(VariantSet request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'variantsets';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new VariantSet.fromJson(data));
+  }
+
+  /**
    * Deletes the contents of a variant set. The variant set object is not
    * deleted.
    *
@@ -6245,7 +6284,7 @@ class SearchReadsResponse {
   /**
    * The list of matching alignments sorted by mapped genomic coordinate, if
    * any, ascending in position within the same reference. Unmapped reads, which
-   * have no position, are returned last and are further sorted in ascending
+   * have no position, are returned contiguously and are sorted in ascending
    * lexicographic order by fragment name.
    */
   core.List<Read> alignments;

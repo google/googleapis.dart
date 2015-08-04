@@ -104,9 +104,7 @@ class DiscoveryPackagesConfiguration {
                                              ids: package.apis));
     });
 
-    return Future.wait(futures).then((List<List<RestDescription>> results) {
-      _initialize(results.expand((result) => result).toList());
-    });
+    return Future.wait(futures);
   }
 
   /**

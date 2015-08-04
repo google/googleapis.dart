@@ -5,6 +5,9 @@
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
                 },
+                "https://www.googleapis.com/auth/cloud-platform.read-only": {
+                    "description": "MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/replicapool": {
                     "description": "View and manage replica pools"
                 },
@@ -20,7 +23,7 @@
     "description": "The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/VmJ_vmyXHKjcZlOaFyHKHkKE8I0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ls6prcFEwNExLeKeNy_PY2Dokdc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -157,6 +160,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/replicapool",
                         "https://www.googleapis.com/auth/replicapool.readonly"
                     ]
@@ -210,11 +214,6 @@
                             "location": "query",
                             "type": "string"
                         },
-                        "instanceGroupManager": {
-                            "description": "The name of the instance group manager. Use this parameter to return only updates to instances that are part of a specific instance group.",
-                            "location": "query",
-                            "type": "string"
-                        },
                         "maxResults": {
                             "default": "500",
                             "description": "Optional. Maximum count of results to be returned. Maximum value is 500 and default value is 500.",
@@ -249,6 +248,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/replicapool",
                         "https://www.googleapis.com/auth/replicapool.readonly"
                     ]
@@ -308,6 +308,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/replicapool",
                         "https://www.googleapis.com/auth/replicapool.readonly"
                     ]
@@ -475,7 +476,7 @@
             }
         }
     },
-    "revision": "20150326",
+    "revision": "20150722",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InstanceUpdate": {
@@ -510,7 +511,7 @@
                     "type": "object"
                 },
                 "instance": {
-                    "description": "URL of the instance being updated.",
+                    "description": "Fully-qualified URL of the instance being updated.",
                     "type": "string"
                 },
                 "status": {
@@ -754,6 +755,10 @@
                 "kind": {
                     "default": "replicapoolupdater#rollingUpdate",
                     "description": "[Output Only] Type of the resource.",
+                    "type": "string"
+                },
+                "oldInstanceTemplate": {
+                    "description": "Fully-qualified URL of the instance template encountered while starting the update.",
                     "type": "string"
                 },
                 "policy": {
