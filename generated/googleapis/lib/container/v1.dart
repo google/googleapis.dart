@@ -50,6 +50,54 @@ class ProjectsZonesResourceApi {
 
   ProjectsZonesResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Returns configuration info about the Container Engine service.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) to return operations for, or "-" for
+   * all zones.
+   *
+   * Completes with a [ServerConfig].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ServerConfig> getServerconfig(core.String projectId, core.String zone) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/serverconfig';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ServerConfig.fromJson(data));
+  }
+
 }
 
 
@@ -63,7 +111,7 @@ class ProjectsZonesClustersResourceApi {
    * Creates a cluster, consisting of the specified number and type of Google
    * Compute Engine instances, plus a Kubernetes master endpoint. By default,
    * the cluster is created in the project's [default
-   * network]('/compute/docs/networking#networks_1'). One firewall is added for
+   * network](/compute/docs/networking#networks_1). One firewall is added for
    * the cluster. After cluster creation, the cluster creates routes for each
    * node to allow the containers on that node to communicate with all other
    * instances in the cluster. Finally, an entry is added to the project's
@@ -73,9 +121,8 @@ class ProjectsZonesClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - The Google Developers Console [project
-   * ID](https://console.developers.google.com/project) or [project
-   * number](https://developers.google.com/console/help/project-number)
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
@@ -125,9 +172,8 @@ class ProjectsZonesClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - The Google Developers Console [project
-   * ID](https://console.developers.google.com/project) or [project
-   * number](https://developers.google.com/console/help/project-number)
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
@@ -177,9 +223,8 @@ class ProjectsZonesClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - The Google Developers Console A [project
-   * ID](https://console.developers.google.com/project) or [project
-   * number](https://developers.google.com/console/help/project-number)
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
@@ -230,9 +275,8 @@ class ProjectsZonesClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - The Google Developers Console [project
-   * ID](https://console.developers.google.com/project) or [project
-   * number](https://developers.google.com/console/help/project-number)
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides, or "-"
@@ -280,9 +324,8 @@ class ProjectsZonesClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - The Google Developers Console [project
-   * ID](https://console.developers.google.com/project) or [project
-   * number](https://developers.google.com/console/help/project-number)
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
@@ -344,9 +387,8 @@ class ProjectsZonesOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - The Google Developers Console [project
-   * ID](https://console.developers.google.com/project) or [project
-   * number](https://developers.google.com/console/help/project-number)
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
@@ -396,9 +438,8 @@ class ProjectsZonesOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - The Google Developers Console [project
-   * ID](https://console.developers.google.com/project) or [project
-   * number](https://developers.google.com/console/help/project-number)
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) to return operations for, or "-" for
@@ -449,24 +490,20 @@ class Cluster {
    * The IP address range of the container pods in this cluster, in
    * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
    * notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically
-   * chosen or specify a `/14` block in `10.0.0.0/8` or `172.16.0.0/12`.
+   * chosen or specify a `/14` block in `10.0.0.0/8`.
    */
   core.String clusterIpv4Cidr;
   /**
    * [Output only] The time the cluster was created, in
-   * [RFC3339](href='https://www.ietf.org/rfc/rfc3339.txt) text format.
-   * @OutputOnly.
+   * [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
    */
   core.String createTime;
-  /**
-   * [Output only] The current software version of the master endpoint.
-   * @OutputOnly.
-   */
+  /** [Output only] The current software version of the master endpoint. */
   core.String currentMasterVersion;
   /**
    * [Output only] The current version of the node software components. If they
    * are currently at different versions because they're in the process of being
-   * upgraded, this reflects the minimum version of any of them. @OutputOnly.
+   * upgraded, this reflects the minimum version of any of them.
    */
   core.String currentNodeVersion;
   /** An optional description of this cluster. */
@@ -474,14 +511,14 @@ class Cluster {
   /**
    * [Output only] The IP address of this cluster's Kubernetes master endpoint.
    * The endpoint can be accessed from the internet at
-   * `https://username:password@endpoint/`. @OutputOnly. See the `masterAuth`
-   * property of this resource for username and password information.
+   * `https://username:password@endpoint/`. See the `masterAuth` property of
+   * this resource for username and password information.
    */
   core.String endpoint;
   /**
    * [Output only] The software version of Kubernetes master and kubelets used
    * in the cluster when it was first created. The version can be upgraded over
-   * time. @OutputOnly.
+   * time.
    */
   core.String initialClusterVersion;
   /**
@@ -494,7 +531,6 @@ class Cluster {
   /**
    * [Output only] The resource URLs of [instance
    * groups](/compute/docs/instance-groups/) associated with this cluster.
-   * @OutputOnly.
    */
   core.List<core.String> instanceGroupUrls;
   /**
@@ -528,27 +564,27 @@ class Cluster {
   core.String network;
   /**
    * Parameters used in creating the cluster's nodes. See the descriptions of
-   * the child properties of `nodeConfig`.
+   * the child properties of `nodeConfig`. If unspecified, the defaults for all
+   * child properties are used.
    */
   NodeConfig nodeConfig;
   /**
    * [Output only] The size of the address space on each node for hosting
    * containers. This is provisioned from within the container_ipv4_cidr range.
-   * @OutputOnly.
    */
   core.int nodeIpv4CidrSize;
-  /** [Output only] Server-defined URL for the resource. @OutputOnly. */
+  /** [Output only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * [Output only] The IP address range of the Kubernetes services in this
    * cluster, in
    * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
    * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the
-   * last /16 from the container CIDR. @OutputOnly.
+   * last /16 from the container CIDR.
    */
   core.String servicesIpv4Cidr;
   /**
-   * [Output only] The current status of this cluster. @OutputOnly.
+   * [Output only] The current status of this cluster.
    * Possible string values are:
    * - "STATUS_UNSPECIFIED" : A STATUS_UNSPECIFIED.
    * - "PROVISIONING" : A PROVISIONING.
@@ -560,13 +596,12 @@ class Cluster {
   core.String status;
   /**
    * [Output only] Additional information about the current status of this
-   * cluster, if available. @OutputOnly.
+   * cluster, if available.
    */
   core.String statusMessage;
   /**
    * [Output only] The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
-   * @OutputOnly.
    */
   core.String zone;
 
@@ -735,7 +770,8 @@ class ClusterUpdate {
 /** CreateClusterRequest creates a cluster. */
 class CreateClusterRequest {
   /**
-   * A [cluster resource](/container-engine/docs/v1/projects/zones/clusters)
+   * A [cluster
+   * resource](/container-engine/reference/rest/v1/projects.zones.clusters)
    */
   Cluster cluster;
 
@@ -811,17 +847,17 @@ class ListOperationsResponse {
 class MasterAuth {
   /**
    * [Output only] Base64 encoded public certificate used by clients to
-   * authenticate to the cluster endpoint. @OutputOnly.
+   * authenticate to the cluster endpoint.
    */
   core.String clientCertificate;
   /**
    * [Output only] Base64 encoded private key used by clients to authenticate to
-   * the cluster endpoint. @OutputOnly.
+   * the cluster endpoint.
    */
   core.String clientKey;
   /**
    * [Output only] Base64 encoded public certificate that is the root of trust
-   * for the cluster. @OutputOnly.
+   * for the cluster.
    */
   core.String clusterCaCertificate;
   /**
@@ -881,7 +917,7 @@ class MasterAuth {
 class NodeConfig {
   /**
    * Size of the disk attached to each node, specified in GB. The smallest
-   * allowed disk size is 10GB, and the default is 100GB.
+   * allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
    */
   core.int diskSizeGb;
   /**
@@ -892,10 +928,12 @@ class NodeConfig {
   core.String machineType;
   /**
    * The set of Google API scopes to be made available on all of the node VMs
-   * under the "default" service account. Currently, the following scopes are
-   * necessary to ensure the correct functioning of the cluster: *
-   * "https://www.googleapis.com/auth/compute" *
-   * "https://www.googleapis.com/auth/devstorage.read_only"
+   * under the "default" service account. The following scopes are recommended,
+   * but not required, and by default are not included: *
+   * `https://www.googleapis.com/auth/compute` is required for mounting
+   * persistent storage on your nodes. *
+   * `https://www.googleapis.com/auth/devstorage.read_only` is required for
+   * communicating with *gcr.io*. If unspecified, no scopes are added.
    */
   core.List<core.String> oauthScopes;
 
@@ -930,10 +968,10 @@ class NodeConfig {
 
 /** Defines the operation resource. All fields are output only. */
 class Operation {
-  /** The server-assigned ID for the operation. @OutputOnly. */
+  /** The server-assigned ID for the operation. */
   core.String name;
   /**
-   * The operation type. @OutputOnly.
+   * The operation type.
    * Possible string values are:
    * - "TYPE_UNSPECIFIED" : A TYPE_UNSPECIFIED.
    * - "CREATE_CLUSTER" : A CREATE_CLUSTER.
@@ -943,10 +981,10 @@ class Operation {
    * - "REPAIR_CLUSTER" : A REPAIR_CLUSTER.
    */
   core.String operationType;
-  /** Server-defined URL for the resource. @OutputOnly. */
+  /** Server-defined URL for the resource. */
   core.String selfLink;
   /**
-   * The current status of the operation. @OutputOnly.
+   * The current status of the operation.
    * Possible string values are:
    * - "STATUS_UNSPECIFIED" : A STATUS_UNSPECIFIED.
    * - "PENDING" : A PENDING.
@@ -954,15 +992,13 @@ class Operation {
    * - "DONE" : A DONE.
    */
   core.String status;
-  /**
-   * If an error has occurred, a textual description of the error. @OutputOnly.
-   */
+  /** If an error has occurred, a textual description of the error. */
   core.String statusMessage;
-  /** Server-defined URL for the target of the operation. @OutputOnly. */
+  /** Server-defined URL for the target of the operation. */
   core.String targetLink;
   /**
    * The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-   * in which the operation is taking place. @OutputOnly.
+   * in which the operation is taking place.
    */
   core.String zone;
 
@@ -1014,6 +1050,36 @@ class Operation {
     }
     if (zone != null) {
       _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/** Container Engine Server configuration. */
+class ServerConfig {
+  /** What version this server deploys by default. */
+  core.String defaultClusterVersion;
+  /** List of valid node upgrade target versions. */
+  core.List<core.String> validNodeVersions;
+
+  ServerConfig();
+
+  ServerConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("defaultClusterVersion")) {
+      defaultClusterVersion = _json["defaultClusterVersion"];
+    }
+    if (_json.containsKey("validNodeVersions")) {
+      validNodeVersions = _json["validNodeVersions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (defaultClusterVersion != null) {
+      _json["defaultClusterVersion"] = defaultClusterVersion;
+    }
+    if (validNodeVersions != null) {
+      _json["validNodeVersions"] = validNodeVersions;
     }
     return _json;
   }

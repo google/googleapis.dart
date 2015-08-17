@@ -10536,7 +10536,7 @@ class Address {
    * field is not applicable to global addresses.
    */
   core.String region;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * [Output Only] The status of the address, which can be either IN_USE or
@@ -10636,7 +10636,7 @@ class AddressAggregatedList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   AddressAggregatedList();
@@ -10695,7 +10695,7 @@ class AddressList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
 
   AddressList();
@@ -10872,9 +10872,9 @@ class AttachedDisk {
   core.bool boot;
   /**
    * Specifies a unique device name of your choice that is reflected into the
-   * /dev/ tree of a Linux operating system running within the instance. This
-   * name can be used to reference the device for mounting, resizing, and so on,
-   * from within the instance.
+   * /dev/disk/by-id/google-* tree of a Linux operating system running within
+   * the instance. This name can be used to reference the device for mounting,
+   * resizing, and so on, from within the instance.
    *
    * If not specified, the server chooses a default device name to apply to this
    * disk, in the form persistent-disks-x, where x is a number assigned by
@@ -11097,7 +11097,7 @@ class AttachedDiskInitializeParams {
 class Autoscaler {
   /** Autoscaling configuration. */
   AutoscalingPolicy autoscalingPolicy;
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
    * An optional textual description of the resource; provided by the client
@@ -11105,24 +11105,29 @@ class Autoscaler {
    */
   core.String description;
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** Type of the resource. */
   core.String kind;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * URL of Instance Group Manager or Replica Pool which will be controlled by
    * Autoscaler.
    */
   core.String target;
-  /** URL of the zone where the instance group resides (output only). */
+  /** [Output Only] URL of the zone where the instance group resides. */
   core.String zone;
 
   Autoscaler();
@@ -11192,16 +11197,16 @@ class Autoscaler {
 
 class AutoscalerAggregatedList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A map of scoped autoscaler lists. */
   core.Map<core.String, AutoscalersScopedList> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   AutoscalerAggregatedList();
@@ -11248,16 +11253,16 @@ class AutoscalerAggregatedList {
 /** Contains a list of persistent autoscaler resources. */
 class AutoscalerList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of Autoscaler resources. */
   core.List<Autoscaler> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   AutoscalerList();
@@ -11717,8 +11722,8 @@ class Backend {
 }
 
 /**
- * A BackendService resource. This resource defines a group of backend VMs
- * together with their serving capacity.
+ * A BackendService resource. This resource defines a group of backend virtual
+ * machines together with their serving capacity.
  */
 class BackendService {
   /** The list of backends that serve this BackendService. */
@@ -11785,7 +11790,7 @@ class BackendService {
    * - "HTTP"
    */
   core.String protocol;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * How many seconds to wait for the backend before considering it a failed
@@ -12303,7 +12308,7 @@ class DiskAggregatedList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   DiskAggregatedList();
@@ -12361,7 +12366,7 @@ class DiskList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   DiskList();
@@ -12451,7 +12456,7 @@ class DiskMoveRequest {
 class DiskType {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
-  /** [Output Only] Server defined default disk size in GB. */
+  /** [Output Only] Server-defined default disk size in GB. */
   core.String defaultDiskSizeGb;
   /** [Output Only] The deprecation status associated with this disk type. */
   DeprecationStatus deprecated;
@@ -12467,7 +12472,7 @@ class DiskType {
   core.String kind;
   /** [Output Only] Name of the resource. */
   core.String name;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * [Output Only] An optional textual description of the valid disk size, such
@@ -12559,7 +12564,7 @@ class DiskTypeAggregatedList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   DiskTypeAggregatedList();
@@ -12617,7 +12622,7 @@ class DiskTypeList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   DiskTypeList();
@@ -12985,7 +12990,7 @@ class Firewall {
    * - global/networks/default
    */
   core.String network;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * The IP address blocks that this rule applies to, expressed in CIDR format.
@@ -13105,7 +13110,7 @@ class FirewallList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   FirewallList();
@@ -13151,8 +13156,8 @@ class FirewallList {
 
 /**
  * A ForwardingRule resource. A ForwardingRule resource specifies which pool of
- * target VMs to forward a packet to if it matches the given [IPAddress,
- * IPProtocol, portRange] tuple.
+ * target virtual machines to forward a packet to if it matches the given
+ * [IPAddress, IPProtocol, portRange] tuple.
  */
 class ForwardingRule {
   /**
@@ -13164,7 +13169,7 @@ class ForwardingRule {
    */
   core.String IPAddress;
   /**
-   * The IP protocol to which this rule applies, valid options are TCP, UDP,
+   * The IP protocol to which this rule applies. Valid options are TCP, UDP,
    * ESP, AH or SCTP.
    * Possible string values are:
    * - "AH"
@@ -13308,7 +13313,7 @@ class ForwardingRuleAggregatedList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   ForwardingRuleAggregatedList();
@@ -13362,7 +13367,7 @@ class ForwardingRuleList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   ForwardingRuleList();
@@ -13645,7 +13650,7 @@ class HostRule {
 
 /**
  * An HttpHealthCheck resource. This resource defines a template for how
- * individual VMs should be checked for health, via HTTP.
+ * individual instances should be checked for health, via HTTP.
  */
 class HttpHealthCheck {
   /**
@@ -13653,7 +13658,7 @@ class HttpHealthCheck {
    * seconds.
    */
   core.int checkIntervalSec;
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
    * An optional textual description of the resource; provided by the client
@@ -13661,8 +13666,8 @@ class HttpHealthCheck {
    */
   core.String description;
   /**
-   * A so-far unhealthy VM will be marked healthy after this many consecutive
-   * successes. The default value is 2.
+   * A so-far unhealthy instance will be marked healthy after this many
+   * consecutive successes. The default value is 2.
    */
   core.int healthyThreshold;
   /**
@@ -13672,14 +13677,19 @@ class HttpHealthCheck {
    */
   core.String host;
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
   /** Type of the resource. */
   core.String kind;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
   /**
@@ -13692,7 +13702,7 @@ class HttpHealthCheck {
    * "/".
    */
   core.String requestPath;
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * How long (in seconds) to wait before claiming failure. The default value is
@@ -13701,8 +13711,8 @@ class HttpHealthCheck {
    */
   core.int timeoutSec;
   /**
-   * A so-far healthy VM will be marked unhealthy after this many consecutive
-   * failures. The default value is 2.
+   * A so-far healthy instance will be marked unhealthy after this many
+   * consecutive failures. The default value is 2.
    */
   core.int unhealthyThreshold;
 
@@ -13798,16 +13808,16 @@ class HttpHealthCheck {
 /** Contains a list of HttpHealthCheck resources. */
 class HttpHealthCheckList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
   /** A list of HttpHealthCheck resources. */
   core.List<HttpHealthCheck> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   HttpHealthCheckList();
@@ -13938,7 +13948,7 @@ class Image {
   core.String name;
   /** The parameters of the raw disk image. */
   ImageRawDisk rawDisk;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * URL of the The source disk used to create this image. This can be a full or
@@ -14080,16 +14090,16 @@ class Image {
 /** Contains a list of Image resources. */
 class ImageList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of Image resources. */
   core.List<Image> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   ImageList();
@@ -14195,7 +14205,7 @@ class Instance {
   core.List<NetworkInterface> networkInterfaces;
   /** Scheduling options for this instance. */
   Scheduling scheduling;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
   /**
    * A list of service accounts, with their specified scopes, authorized for
@@ -14364,7 +14374,7 @@ class InstanceAggregatedList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   InstanceAggregatedList();
@@ -14737,7 +14747,7 @@ class InstanceGroupManager {
    * long, and comply with RFC1035.
    */
   core.String name;
-  /** [Output Only] Server defined URL for this managed instance group. */
+  /** [Output Only] Server-defined URL for this managed instance group. */
   core.String selfLink;
   /**
    * The URLs of all TargetPool resources to which new instances in the
@@ -15493,14 +15503,6 @@ class InstanceGroupsListInstancesRequest {
    * - "RUNNING"
    */
   core.String instanceState;
-  /**
-   * A filter for the named ports that are associated with instances in the
-   * instance group. If you specify this parameter, the generated list includes
-   * only instances that are associated with the specified named ports. If you
-   * do not specify this parameter, the generated list includes all instances
-   * regardless of their named ports.
-   */
-  core.String portName;
 
   InstanceGroupsListInstancesRequest();
 
@@ -15508,18 +15510,12 @@ class InstanceGroupsListInstancesRequest {
     if (_json.containsKey("instanceState")) {
       instanceState = _json["instanceState"];
     }
-    if (_json.containsKey("portName")) {
-      portName = _json["portName"];
-    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (instanceState != null) {
       _json["instanceState"] = instanceState;
-    }
-    if (portName != null) {
-      _json["portName"] = portName;
     }
     return _json;
   }
@@ -15722,7 +15718,7 @@ class InstanceList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   InstanceList();
@@ -16279,10 +16275,10 @@ class License {
   core.String kind;
   /**
    * Name of the resource. The name must be 1-63 characters long, and comply
-   * with RCF1035.
+   * with RFC1035.
    */
   core.String name;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
 
   License();
@@ -16377,7 +16373,7 @@ class MachineType {
   core.String name;
   /** [Output Only] List of extended scratch disks assigned to the instance. */
   core.List<MachineTypeScratchDisks> scratchDisks;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * [Output Only] The name of the zone where the machine type resides, such as
@@ -16494,7 +16490,7 @@ class MachineTypeAggregatedList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   MachineTypeAggregatedList();
@@ -16553,7 +16549,7 @@ class MachineTypeList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   MachineTypeList();
@@ -17049,7 +17045,7 @@ class Network {
    * dash.
    */
   core.String name;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
 
   Network();
@@ -17195,7 +17191,7 @@ class NetworkList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource . */
+  /** [Output Only] Server-defined URL for this resource . */
   core.String selfLink;
 
   NetworkList();
@@ -17453,7 +17449,7 @@ class Operation {
    * applicable for regional resources.
    */
   core.String region;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * [Output Only] The time that this operation was started by the server. This
@@ -17651,7 +17647,7 @@ class OperationAggregatedList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   OperationAggregatedList();
@@ -17710,7 +17706,7 @@ class OperationList {
   core.String kind;
   /** [Output Only] A token used to continue a truncate. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   OperationList();
@@ -17978,6 +17974,8 @@ class Project {
   core.String creationTimestamp;
   /** An optional textual description of the resource. */
   core.String description;
+  /** Restricted features enabled for use on this project. */
+  core.List<core.String> enabledFeatures;
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
@@ -17990,7 +17988,7 @@ class Project {
   core.String name;
   /** [Output Only] Quotas assigned to this project. */
   core.List<Quota> quotas;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * The location in Cloud Storage and naming method of the daily usage report.
@@ -18008,6 +18006,9 @@ class Project {
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("enabledFeatures")) {
+      enabledFeatures = _json["enabledFeatures"];
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -18039,6 +18040,9 @@ class Project {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (enabledFeatures != null) {
+      _json["enabledFeatures"] = enabledFeatures;
     }
     if (id != null) {
       _json["id"] = id;
@@ -18145,7 +18149,7 @@ class Region {
   core.String name;
   /** [Output Only] Quotas assigned to this region. */
   core.List<Quota> quotas;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * [Output Only] Status of the region, either UP or DOWN.
@@ -18246,7 +18250,7 @@ class RegionList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   RegionList();
@@ -18398,17 +18402,18 @@ class RouteWarnings {
 
 /**
  * The route resource. A Route is a rule that specifies how certain packets
- * should be handled by the virtual network. Routes are associated with VMs by
- * tag and the set of Routes for a particular VM is called its routing table.
- * For each packet leaving a VM, the system searches that VM's routing table for
- * a single best matching Route. Routes match packets by destination IP address,
- * preferring smaller or more specific ranges over larger ones. If there is a
- * tie, the system selects the Route with the smallest priority value. If there
- * is still a tie, it uses the layer three and four packet headers to select
- * just one of the remaining matching Routes. The packet is then forwarded as
- * specified by the nextHop field of the winning Route -- either to another VM
- * destination, a VM gateway or a GCE operated gateway. Packets that do not
- * match any Route in the sending VM's routing table are dropped.
+ * should be handled by the virtual network. Routes are associated with
+ * instances by tag and the set of Routes for a particular instance is called
+ * its routing table. For each packet leaving a instance, the system searches
+ * that instance's routing table for a single best matching Route. Routes match
+ * packets by destination IP address, preferring smaller or more specific ranges
+ * over larger ones. If there is a tie, the system selects the Route with the
+ * smallest priority value. If there is still a tie, it uses the layer three and
+ * four packet headers to select just one of the remaining matching Routes. The
+ * packet is then forwarded as specified by the nextHop field of the winning
+ * Route -- either to another instance destination, a instance gateway or a
+ * Google Compute Engien-operated gateway. Packets that do not match any Route
+ * in the sending instance's routing table are dropped.
  */
 class Route {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
@@ -18596,7 +18601,7 @@ class RouteList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   RouteList();
@@ -18696,7 +18701,7 @@ class SerialPortOutput {
    * serial port output.
    */
   core.String kind;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
 
   SerialPortOutput();
@@ -18917,16 +18922,16 @@ class Snapshot {
 /** Contains a list of Snapshot resources. */
 class SnapshotList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
   /** A list of Snapshot resources. */
   core.List<Snapshot> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   SnapshotList();
@@ -19046,7 +19051,7 @@ class TargetHttpProxy {
    * dash.
    */
   core.String name;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * URL to the UrlMap resource that defines the mapping from URL to the
@@ -19167,11 +19172,11 @@ class TargetHttpProxyList {
 }
 
 /**
- * A TargetInstance resource. This resource defines an endpoint VM that
+ * A TargetInstance resource. This resource defines an endpoint instance that
  * terminates traffic of certain protocols.
  */
 class TargetInstance {
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
    * An optional textual description of the resource; provided by the client
@@ -19179,7 +19184,7 @@ class TargetInstance {
    */
   core.String description;
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** The URL to the instance that terminates the relevant traffic. */
@@ -19187,20 +19192,25 @@ class TargetInstance {
   /** Type of the resource. */
   core.String kind;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
   /**
-   * NAT option controlling how IPs are NAT'ed to the VM. Currently only NO_NAT
-   * (default value) is supported.
+   * NAT option controlling how IPs are NAT'ed to the instance. Currently only
+   * NO_NAT (default value) is supported.
    * Possible string values are:
    * - "NO_NAT"
    */
   core.String natPolicy;
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
-  /** URL of the zone where the target instance resides (output only). */
+  /** [Output Only] URL of the zone where the target instance resides. */
   core.String zone;
 
   TargetInstance();
@@ -19270,16 +19280,16 @@ class TargetInstance {
 
 class TargetInstanceAggregatedList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A map of scoped target instance lists. */
   core.Map<core.String, TargetInstancesScopedList> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   TargetInstanceAggregatedList();
@@ -19326,16 +19336,16 @@ class TargetInstanceAggregatedList {
 /** Contains a list of TargetInstance resources. */
 class TargetInstanceList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of TargetInstance resources. */
   core.List<TargetInstance> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   TargetInstanceList();
@@ -19499,27 +19509,28 @@ class TargetInstancesScopedList {
 }
 
 /**
- * A TargetPool resource. This resource defines a pool of VMs, associated
+ * A TargetPool resource. This resource defines a pool of instances, associated
  * HttpHealthCheck resources, and the fallback TargetPool.
  */
 class TargetPool {
   /**
    * This field is applicable only when the containing target pool is serving a
-   * forwarding rule as the primary pool, and its 'failoverRatio' field is
+   * forwarding rule as the primary pool, and its failoverRatio field is
    * properly set to a value between [0, 1].
    *
-   * 'backupPool' and 'failoverRatio' together define the fallback behavior of
-   * the primary target pool: if the ratio of the healthy VMs in the primary
-   * pool is at or below 'failoverRatio', traffic arriving at the load-balanced
-   * IP will be directed to the backup pool.
+   * backupPool and failoverRatio together define the fallback behavior of the
+   * primary target pool: if the ratio of the healthy instances in the primary
+   * pool is at or below failoverRatio, traffic arriving at the load-balanced IP
+   * will be directed to the backup pool.
    *
-   * In case where 'failoverRatio' and 'backupPool' are not set, or all the VMs
-   * in the backup pool are unhealthy, the traffic will be directed back to the
-   * primary pool in the "force" mode, where traffic will be spread to the
-   * healthy VMs with the best effort, or to all VMs when no VM is healthy.
+   * In case where failoverRatio and backupPool are not set, or all the
+   * instances in the backup pool are unhealthy, the traffic will be directed
+   * back to the primary pool in the "force" mode, where traffic will be spread
+   * to the healthy instances with the best effort, or to all instances when no
+   * instance is healthy.
    */
   core.String backupPool;
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
    * An optional textual description of the resource; provided by the client
@@ -19531,50 +19542,56 @@ class TargetPool {
    * forwarding rule as the primary pool (i.e., not as a backup pool to some
    * other target pool). The value of the field must be in [0, 1].
    *
-   * If set, 'backupPool' must also be set. They together define the fallback
-   * behavior of the primary target pool: if the ratio of the healthy VMs in the
-   * primary pool is at or below this number, traffic arriving at the
+   * If set, backupPool must also be set. They together define the fallback
+   * behavior of the primary target pool: if the ratio of the healthy instances
+   * in the primary pool is at or below this number, traffic arriving at the
    * load-balanced IP will be directed to the backup pool.
    *
-   * In case where 'failoverRatio' is not set or all the VMs in the backup pool
-   * are unhealthy, the traffic will be directed back to the primary pool in the
-   * "force" mode, where traffic will be spread to the healthy VMs with the best
-   * effort, or to all VMs when no VM is healthy.
+   * In case where failoverRatio is not set or all the instances in the backup
+   * pool are unhealthy, the traffic will be directed back to the primary pool
+   * in the "force" mode, where traffic will be spread to the healthy instances
+   * with the best effort, or to all instances when no instance is healthy.
    */
   core.double failoverRatio;
   /**
-   * A list of URLs to the HttpHealthCheck resource. A member VM in this pool is
-   * considered healthy if and only if all specified health checks pass. An
-   * empty list means all member VMs will be considered healthy at all times.
+   * A list of URLs to the HttpHealthCheck resource. A member instance in this
+   * pool is considered healthy if and only if all specified health checks pass.
+   * An empty list means all member instances will be considered healthy at all
+   * times.
    */
   core.List<core.String> healthChecks;
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /**
-   * A list of resource URLs to the member VMs serving this pool. They must live
-   * in zones contained in the same region as this pool.
+   * A list of resource URLs to the member virtual machines serving this pool.
+   * They must live in zones contained in the same region as this pool.
    */
   core.List<core.String> instances;
   /** Type of the resource. */
   core.String kind;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
-  /** URL of the region where the target pool resides (output only). */
+  /** [Output Only] URL of the region where the target pool resides. */
   core.String region;
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
-   * Sesssion affinity option, must be one of the following values: 'NONE':
-   * Connections from the same client IP may go to any VM in the pool;
-   * 'CLIENT_IP': Connections from the same client IP will go to the same VM in
-   * the pool while that VM remains healthy. 'CLIENT_IP_PROTO': Connections from
-   * the same client IP with the same IP protocol will go to the same VM in the
-   * pool while that VM remains healthy.
+   * Sesssion affinity option, must be one of the following values: NONE:
+   * Connections from the same client IP may go to any instance in the pool;
+   * CLIENT_IP: Connections from the same client IP will go to the same instance
+   * in the pool while that instance remains healthy. CLIENT_IP_PROTO:
+   * Connections from the same client IP with the same IP protocol will go to
+   * the same instance in the pool while that instance remains healthy.
    * Possible string values are:
    * - "CLIENT_IP"
    * - "CLIENT_IP_PROTO"
@@ -19667,16 +19684,16 @@ class TargetPool {
 
 class TargetPoolAggregatedList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
   /** A map of scoped target pool lists. */
   core.Map<core.String, TargetPoolsScopedList> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   TargetPoolAggregatedList();
@@ -19751,16 +19768,16 @@ class TargetPoolInstanceHealth {
 /** Contains a list of TargetPool resources. */
 class TargetPoolList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
   /** A list of TargetPool resources. */
   core.List<TargetPool> items;
   /** Type of resource. */
   core.String kind;
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   TargetPoolList();
@@ -20485,7 +20502,7 @@ class UrlMap {
   core.String name;
   /** The list of named PathMatchers to use against the URL. */
   core.List<PathMatcher> pathMatchers;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * The list of expected URL mappings. Request to update this UrlMap will
@@ -20580,7 +20597,7 @@ class UrlMapList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   UrlMapList();
@@ -20862,7 +20879,7 @@ class VpnTunnel {
   core.String peerIp;
   /** [Output Only] URL of the region where the VPN tunnel resides. */
   core.String region;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * Shared secret used to set the secure session between the GCE VPN gateway
@@ -21001,7 +21018,7 @@ class VpnTunnelAggregatedList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   VpnTunnelAggregatedList();
@@ -21295,7 +21312,7 @@ class Zone {
   core.String name;
   /** [Output Only] Full URL reference to the region which hosts the zone. */
   core.String region;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * [Output Only] Status of the zone, either UP or DOWN.
@@ -21388,7 +21405,7 @@ class ZoneList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   ZoneList();

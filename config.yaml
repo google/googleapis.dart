@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.13.0
+    version: 0.14.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -27,7 +27,8 @@ packages:
     - civicinfo:v2  # https://developers.google.com/civic-information/
     - calendar:v3  # https://developers.google.com/google-apps/calendar/
     - classroom:v1  # https://developers.google.com/classroom/
-    - clouddebugger:v2
+    - cloudbilling:v1 # https://cloud.google.com/billing/
+    - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
     - cloudlatencytest:v2
     - compute:v1  # https://developers.google.com/compute/
     - container:v1
@@ -83,7 +84,7 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.16.0
+    version: 0.17.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -94,7 +95,6 @@ packages:
     - autoscaler:v1beta2  # https://developers.google.com/compute/docs/autoscaler/ (Limited Preview)
     - cloudmonitoring:v2beta2  # https://developers.google.com/cloud-monitoring/
     - cloudresourcemanager:v1beta1
-    - container:v1beta1  # https://cloud.google.com/container-engine/
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
     - datastore:v1beta2  # https://developers.google.com/datastore/
     - deploymentmanager:v2beta1  # https://cloud.google.com/deployment-manager/
@@ -122,7 +122,6 @@ skipped_apis:
 - androidpublisher:v1  # v2 included
 - androidpublisher:v1.1  # v2 included
 - blogger:v2  # v3 included
-- classroom:v1beta1  # v1 included
 - clouduseraccounts:alpha  # Leave out alpha versions for now
 - clouduseraccounts:vm_alpha  # Leave out alpha versions for now
 - computeaccounts:alpha  # Leave out alpha versions for now

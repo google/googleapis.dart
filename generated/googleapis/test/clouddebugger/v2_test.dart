@@ -51,53 +51,53 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed497() {
+buildUnnamed1078() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed497(core.List<api.Variable> o) {
+checkUnnamed1078(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
 }
 
-buildUnnamed498() {
+buildUnnamed1079() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed498(core.List<core.String> o) {
+checkUnnamed1079(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed499() {
+buildUnnamed1080() {
   var o = new core.List<api.StackFrame>();
   o.add(buildStackFrame());
   o.add(buildStackFrame());
   return o;
 }
 
-checkUnnamed499(core.List<api.StackFrame> o) {
+checkUnnamed1080(core.List<api.StackFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStackFrame(o[0]);
   checkStackFrame(o[1]);
 }
 
-buildUnnamed500() {
+buildUnnamed1081() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed500(core.List<api.Variable> o) {
+checkUnnamed1081(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -111,18 +111,18 @@ buildBreakpoint() {
     o.action = "foo";
     o.condition = "foo";
     o.createTime = "foo";
-    o.evaluatedExpressions = buildUnnamed497();
-    o.expressions = buildUnnamed498();
+    o.evaluatedExpressions = buildUnnamed1078();
+    o.expressions = buildUnnamed1079();
     o.finalTime = "foo";
     o.id = "foo";
     o.isFinalState = true;
     o.location = buildSourceLocation();
     o.logLevel = "foo";
     o.logMessageFormat = "foo";
-    o.stackFrames = buildUnnamed499();
+    o.stackFrames = buildUnnamed1080();
     o.status = buildStatusMessage();
     o.userEmail = "foo";
-    o.variableTable = buildUnnamed500();
+    o.variableTable = buildUnnamed1081();
   }
   buildCounterBreakpoint--;
   return o;
@@ -134,18 +134,18 @@ checkBreakpoint(api.Breakpoint o) {
     unittest.expect(o.action, unittest.equals('foo'));
     unittest.expect(o.condition, unittest.equals('foo'));
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUnnamed497(o.evaluatedExpressions);
-    checkUnnamed498(o.expressions);
+    checkUnnamed1078(o.evaluatedExpressions);
+    checkUnnamed1079(o.expressions);
     unittest.expect(o.finalTime, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.isFinalState, unittest.isTrue);
     checkSourceLocation(o.location);
     unittest.expect(o.logLevel, unittest.equals('foo'));
     unittest.expect(o.logMessageFormat, unittest.equals('foo'));
-    checkUnnamed499(o.stackFrames);
+    checkUnnamed1080(o.stackFrames);
     checkStatusMessage(o.status);
     unittest.expect(o.userEmail, unittest.equals('foo'));
-    checkUnnamed500(o.variableTable);
+    checkUnnamed1081(o.variableTable);
   }
   buildCounterBreakpoint--;
 }
@@ -215,27 +215,27 @@ checkCloudWorkspaceSourceContext(api.CloudWorkspaceSourceContext o) {
   buildCounterCloudWorkspaceSourceContext--;
 }
 
-buildUnnamed501() {
+buildUnnamed1082() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed501(core.Map<core.String, core.String> o) {
+checkUnnamed1082(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed502() {
+buildUnnamed1083() {
   var o = new core.List<api.SourceContext>();
   o.add(buildSourceContext());
   o.add(buildSourceContext());
   return o;
 }
 
-checkUnnamed502(core.List<api.SourceContext> o) {
+checkUnnamed1083(core.List<api.SourceContext> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSourceContext(o[0]);
   checkSourceContext(o[1]);
@@ -251,9 +251,9 @@ buildDebuggee() {
     o.id = "foo";
     o.isDisabled = true;
     o.isInactive = true;
-    o.labels = buildUnnamed501();
+    o.labels = buildUnnamed1082();
     o.project = "foo";
-    o.sourceContexts = buildUnnamed502();
+    o.sourceContexts = buildUnnamed1083();
     o.status = buildStatusMessage();
     o.uniquifier = "foo";
   }
@@ -269,9 +269,9 @@ checkDebuggee(api.Debuggee o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.isDisabled, unittest.isTrue);
     unittest.expect(o.isInactive, unittest.isTrue);
-    checkUnnamed501(o.labels);
+    checkUnnamed1082(o.labels);
     unittest.expect(o.project, unittest.equals('foo'));
-    checkUnnamed502(o.sourceContexts);
+    checkUnnamed1083(o.sourceContexts);
     checkStatusMessage(o.status);
     unittest.expect(o.uniquifier, unittest.equals('foo'));
   }
@@ -295,14 +295,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed503() {
+buildUnnamed1084() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed503(core.List<core.String> o) {
+checkUnnamed1084(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -314,7 +314,7 @@ buildFormatMessage() {
   buildCounterFormatMessage++;
   if (buildCounterFormatMessage < 3) {
     o.format = "foo";
-    o.parameters = buildUnnamed503();
+    o.parameters = buildUnnamed1084();
   }
   buildCounterFormatMessage--;
   return o;
@@ -324,7 +324,7 @@ checkFormatMessage(api.FormatMessage o) {
   buildCounterFormatMessage++;
   if (buildCounterFormatMessage < 3) {
     unittest.expect(o.format, unittest.equals('foo'));
-    checkUnnamed503(o.parameters);
+    checkUnnamed1084(o.parameters);
   }
   buildCounterFormatMessage--;
 }
@@ -373,14 +373,35 @@ checkGetBreakpointResponse(api.GetBreakpointResponse o) {
   buildCounterGetBreakpointResponse--;
 }
 
-buildUnnamed504() {
+core.int buildCounterGitSourceContext = 0;
+buildGitSourceContext() {
+  var o = new api.GitSourceContext();
+  buildCounterGitSourceContext++;
+  if (buildCounterGitSourceContext < 3) {
+    o.revisionId = "foo";
+    o.url = "foo";
+  }
+  buildCounterGitSourceContext--;
+  return o;
+}
+
+checkGitSourceContext(api.GitSourceContext o) {
+  buildCounterGitSourceContext++;
+  if (buildCounterGitSourceContext < 3) {
+    unittest.expect(o.revisionId, unittest.equals('foo'));
+    unittest.expect(o.url, unittest.equals('foo'));
+  }
+  buildCounterGitSourceContext--;
+}
+
+buildUnnamed1085() {
   var o = new core.List<api.Breakpoint>();
   o.add(buildBreakpoint());
   o.add(buildBreakpoint());
   return o;
 }
 
-checkUnnamed504(core.List<api.Breakpoint> o) {
+checkUnnamed1085(core.List<api.Breakpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBreakpoint(o[0]);
   checkBreakpoint(o[1]);
@@ -391,7 +412,7 @@ buildListActiveBreakpointsResponse() {
   var o = new api.ListActiveBreakpointsResponse();
   buildCounterListActiveBreakpointsResponse++;
   if (buildCounterListActiveBreakpointsResponse < 3) {
-    o.breakpoints = buildUnnamed504();
+    o.breakpoints = buildUnnamed1085();
     o.nextWaitToken = "foo";
   }
   buildCounterListActiveBreakpointsResponse--;
@@ -401,20 +422,20 @@ buildListActiveBreakpointsResponse() {
 checkListActiveBreakpointsResponse(api.ListActiveBreakpointsResponse o) {
   buildCounterListActiveBreakpointsResponse++;
   if (buildCounterListActiveBreakpointsResponse < 3) {
-    checkUnnamed504(o.breakpoints);
+    checkUnnamed1085(o.breakpoints);
     unittest.expect(o.nextWaitToken, unittest.equals('foo'));
   }
   buildCounterListActiveBreakpointsResponse--;
 }
 
-buildUnnamed505() {
+buildUnnamed1086() {
   var o = new core.List<api.Breakpoint>();
   o.add(buildBreakpoint());
   o.add(buildBreakpoint());
   return o;
 }
 
-checkUnnamed505(core.List<api.Breakpoint> o) {
+checkUnnamed1086(core.List<api.Breakpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBreakpoint(o[0]);
   checkBreakpoint(o[1]);
@@ -425,7 +446,7 @@ buildListBreakpointsResponse() {
   var o = new api.ListBreakpointsResponse();
   buildCounterListBreakpointsResponse++;
   if (buildCounterListBreakpointsResponse < 3) {
-    o.breakpoints = buildUnnamed505();
+    o.breakpoints = buildUnnamed1086();
     o.nextWaitToken = "foo";
   }
   buildCounterListBreakpointsResponse--;
@@ -435,20 +456,20 @@ buildListBreakpointsResponse() {
 checkListBreakpointsResponse(api.ListBreakpointsResponse o) {
   buildCounterListBreakpointsResponse++;
   if (buildCounterListBreakpointsResponse < 3) {
-    checkUnnamed505(o.breakpoints);
+    checkUnnamed1086(o.breakpoints);
     unittest.expect(o.nextWaitToken, unittest.equals('foo'));
   }
   buildCounterListBreakpointsResponse--;
 }
 
-buildUnnamed506() {
+buildUnnamed1087() {
   var o = new core.List<api.Debuggee>();
   o.add(buildDebuggee());
   o.add(buildDebuggee());
   return o;
 }
 
-checkUnnamed506(core.List<api.Debuggee> o) {
+checkUnnamed1087(core.List<api.Debuggee> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDebuggee(o[0]);
   checkDebuggee(o[1]);
@@ -459,7 +480,7 @@ buildListDebuggeesResponse() {
   var o = new api.ListDebuggeesResponse();
   buildCounterListDebuggeesResponse++;
   if (buildCounterListDebuggeesResponse < 3) {
-    o.debuggees = buildUnnamed506();
+    o.debuggees = buildUnnamed1087();
   }
   buildCounterListDebuggeesResponse--;
   return o;
@@ -468,7 +489,7 @@ buildListDebuggeesResponse() {
 checkListDebuggeesResponse(api.ListDebuggeesResponse o) {
   buildCounterListDebuggeesResponse++;
   if (buildCounterListDebuggeesResponse < 3) {
-    checkUnnamed506(o.debuggees);
+    checkUnnamed1087(o.debuggees);
   }
   buildCounterListDebuggeesResponse--;
 }
@@ -580,6 +601,7 @@ buildSourceContext() {
     o.cloudRepo = buildCloudRepoSourceContext();
     o.cloudWorkspace = buildCloudWorkspaceSourceContext();
     o.gerrit = buildGerritSourceContext();
+    o.git = buildGitSourceContext();
   }
   buildCounterSourceContext--;
   return o;
@@ -591,6 +613,7 @@ checkSourceContext(api.SourceContext o) {
     checkCloudRepoSourceContext(o.cloudRepo);
     checkCloudWorkspaceSourceContext(o.cloudWorkspace);
     checkGerritSourceContext(o.gerrit);
+    checkGitSourceContext(o.git);
   }
   buildCounterSourceContext--;
 }
@@ -616,27 +639,27 @@ checkSourceLocation(api.SourceLocation o) {
   buildCounterSourceLocation--;
 }
 
-buildUnnamed507() {
+buildUnnamed1088() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed507(core.List<api.Variable> o) {
+checkUnnamed1088(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
 }
 
-buildUnnamed508() {
+buildUnnamed1089() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed508(core.List<api.Variable> o) {
+checkUnnamed1089(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -647,9 +670,9 @@ buildStackFrame() {
   var o = new api.StackFrame();
   buildCounterStackFrame++;
   if (buildCounterStackFrame < 3) {
-    o.arguments = buildUnnamed507();
+    o.arguments = buildUnnamed1088();
     o.function = "foo";
-    o.locals = buildUnnamed508();
+    o.locals = buildUnnamed1089();
     o.location = buildSourceLocation();
   }
   buildCounterStackFrame--;
@@ -659,9 +682,9 @@ buildStackFrame() {
 checkStackFrame(api.StackFrame o) {
   buildCounterStackFrame++;
   if (buildCounterStackFrame < 3) {
-    checkUnnamed507(o.arguments);
+    checkUnnamed1088(o.arguments);
     unittest.expect(o.function, unittest.equals('foo'));
-    checkUnnamed508(o.locals);
+    checkUnnamed1089(o.locals);
     checkSourceLocation(o.location);
   }
   buildCounterStackFrame--;
@@ -726,14 +749,14 @@ checkUpdateActiveBreakpointResponse(api.UpdateActiveBreakpointResponse o) {
   buildCounterUpdateActiveBreakpointResponse--;
 }
 
-buildUnnamed509() {
+buildUnnamed1090() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed509(core.List<api.Variable> o) {
+checkUnnamed1090(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -744,7 +767,7 @@ buildVariable() {
   var o = new api.Variable();
   buildCounterVariable++;
   if (buildCounterVariable < 3) {
-    o.members = buildUnnamed509();
+    o.members = buildUnnamed1090();
     o.name = "foo";
     o.status = buildStatusMessage();
     o.value = "foo";
@@ -757,7 +780,7 @@ buildVariable() {
 checkVariable(api.Variable o) {
   buildCounterVariable++;
   if (buildCounterVariable < 3) {
-    checkUnnamed509(o.members);
+    checkUnnamed1090(o.members);
     unittest.expect(o.name, unittest.equals('foo'));
     checkStatusMessage(o.status);
     unittest.expect(o.value, unittest.equals('foo'));
@@ -845,6 +868,15 @@ main() {
       var o = buildGetBreakpointResponse();
       var od = new api.GetBreakpointResponse.fromJson(o.toJson());
       checkGetBreakpointResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-GitSourceContext", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGitSourceContext();
+      var od = new api.GitSourceContext.fromJson(o.toJson());
+      checkGitSourceContext(od);
     });
   });
 

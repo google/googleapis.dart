@@ -14,6 +14,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client clouddebugger/v2';
 
+/**
+ * Lets you examine the stack and variables of your running application without
+ * stopping or slowing it down.
+ */
 class ClouddebuggerApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -1072,6 +1076,39 @@ class GetBreakpointResponse {
   }
 }
 
+/**
+ * A GitSourceContext denotes a particular revision in a third party Git
+ * repository (e.g. GitHub).
+ */
+class GitSourceContext {
+  /** Git commit hash. required. */
+  core.String revisionId;
+  /** Git repository URL. */
+  core.String url;
+
+  GitSourceContext();
+
+  GitSourceContext.fromJson(core.Map _json) {
+    if (_json.containsKey("revisionId")) {
+      revisionId = _json["revisionId"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (revisionId != null) {
+      _json["revisionId"] = revisionId;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
 /** The response of listing active breakpoints. */
 class ListActiveBreakpointsResponse {
   /**
@@ -1320,6 +1357,8 @@ class SourceContext {
   CloudWorkspaceSourceContext cloudWorkspace;
   /** A SourceContext referring to a Gerrit project. */
   GerritSourceContext gerrit;
+  /** A SourceContext referring to any third party Git repo (e.g. GitHub). */
+  GitSourceContext git;
 
   SourceContext();
 
@@ -1333,6 +1372,9 @@ class SourceContext {
     if (_json.containsKey("gerrit")) {
       gerrit = new GerritSourceContext.fromJson(_json["gerrit"]);
     }
+    if (_json.containsKey("git")) {
+      git = new GitSourceContext.fromJson(_json["git"]);
+    }
   }
 
   core.Map toJson() {
@@ -1345,6 +1387,9 @@ class SourceContext {
     }
     if (gerrit != null) {
       _json["gerrit"] = (gerrit).toJson();
+    }
+    if (git != null) {
+      _json["git"] = (git).toJson();
     }
     return _json;
   }

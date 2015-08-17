@@ -26,7 +26,7 @@
     "description": "An API to store, process, explore, and share DNA sequence reads, reference-based alignments, and variant calls.",
     "discoveryVersion": "v1",
     "documentationLink": "",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/XILvP_efgPuxb7JT-rkhdFInZts\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/vh8VgNEma49U1w-wXC7hcxIfBa8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -274,6 +274,90 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/genomics"
                     ]
+                },
+                "setIamPolicy": {
+                    "description": "",
+                    "httpMethod": "POST",
+                    "id": "genomics.datasets.setIamPolicy",
+                    "parameterOrder": [
+                        "resource"
+                    ],
+                    "parameters": {
+                        "resource": {
+                            "description": "REQUIRED: The resource for which policy is being specified. Format is `datasets/`.",
+                            "location": "path",
+                            "pattern": "^datasets/[^/]*$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+resource}:setIamPolicy",
+                    "request": {
+                        "$ref": "SetIamPolicyRequest"
+                    },
+                    "response": {
+                        "$ref": "Policy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "getIamPolicy": {
+                    "description": "",
+                    "httpMethod": "POST",
+                    "id": "genomics.datasets.getIamPolicy",
+                    "parameterOrder": [
+                        "resource"
+                    ],
+                    "parameters": {
+                        "resource": {
+                            "description": "REQUIRED: The resource for which policy is being specified. Format is `datasets/`.",
+                            "location": "path",
+                            "pattern": "^datasets/[^/]*$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+resource}:getIamPolicy",
+                    "request": {
+                        "$ref": "GetIamPolicyRequest"
+                    },
+                    "response": {
+                        "$ref": "Policy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "testIamPermissions": {
+                    "description": "",
+                    "httpMethod": "POST",
+                    "id": "genomics.datasets.testIamPermissions",
+                    "parameterOrder": [
+                        "resource"
+                    ],
+                    "parameters": {
+                        "resource": {
+                            "description": "REQUIRED: The resource for which policy is being specified. Format is `datasets/`.",
+                            "location": "path",
+                            "pattern": "^datasets/[^/]*$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+resource}:testIamPermissions",
+                    "request": {
+                        "$ref": "TestIamPermissionsRequest"
+                    },
+                    "response": {
+                        "$ref": "TestIamPermissionsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
                 }
             }
         },
@@ -403,7 +487,7 @@
         "readgroupsets": {
             "methods": {
                 "import": {
-                    "description": "Creates read group sets by asynchronously importing the provided information. Note that currently comments in the input file header are **not** imported and some custom tags will be converted to strings, rather than preserving tag types. The caller must have WRITE permissions to the dataset.",
+                    "description": "Creates read group sets by asynchronously importing the provided information. The caller must have WRITE permissions to the dataset. ## Notes on [BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) import - Tags will be converted to strings - tag types are not preserved - Comments (`@CO`) in the input file header will not be preserved - Original header order of references (`@SQ`) will not be preserved - Any reverse stranded unmapped reads will be reverse complemented, and their qualities (and \"BQ\" tag, if any) will be reversed - Unmapped reads will be stripped of positional information (reference name and position)",
                     "httpMethod": "POST",
                     "id": "genomics.readgroupsets.import",
                     "path": "v1/readgroupsets:import",
@@ -420,7 +504,7 @@
                     ]
                 },
                 "export": {
-                    "description": "Exports a read group set to a BAM file in Google Cloud Storage. Note that currently there may be some differences between exported BAM files and the original BAM file at the time of import. In particular, comments in the input file header will not be preserved, some custom tags will be converted to strings, and original reference sequence order is not necessarily preserved.",
+                    "description": "Exports a read group set to a BAM file in Google Cloud Storage. Note that currently there may be some differences between exported BAM files and the original BAM file at the time of import. See [ImportReadGroupSets](google.genomics.v1.ReadServiceV1.ImportReadGroupSets) for caveats.",
                     "httpMethod": "POST",
                     "id": "genomics.readgroupsets.export",
                     "parameterOrder": [
@@ -917,7 +1001,7 @@
         "variantsets": {
             "methods": {
                 "create": {
-                    "description": "Creates a new variant set.",
+                    "description": "Creates a new variant set. The provided variant set must have a valid `datasetId` set - all other fields are optional. Note that the `id` field will be ignored, as this is assigned by the server.",
                     "httpMethod": "POST",
                     "id": "genomics.variantsets.create",
                     "path": "v1/variantsets",
@@ -1179,7 +1263,7 @@
             }
         }
     },
-    "revision": "20150725",
+    "revision": "20150813",
     "rootUrl": "https://genomics.googleapis.com/",
     "schemas": {
         "ListDatasetsResponse": {
@@ -1230,6 +1314,254 @@
         },
         "UndeleteDatasetRequest": {
             "id": "UndeleteDatasetRequest",
+            "type": "object"
+        },
+        "SetIamPolicyRequest": {
+            "description": "Request message for `SetIamPolicy` method.",
+            "id": "SetIamPolicyRequest",
+            "properties": {
+                "policy": {
+                    "$ref": "Policy",
+                    "description": "REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them."
+                }
+            },
+            "type": "object"
+        },
+        "Policy": {
+            "description": "# Overview The `Policy` defines an access control policy language. It is used to define policies that are attached to resources like files, folders, VMs, etc. # Policy structure A `Policy` consists of a list of bindings. A `Binding` binds a set of members to a role, where the members include user accounts, user groups, user domains, and service accounts. A 'role' is a named set of permissions, defined by IAM. The definition of a role is outside the policy. A permission check first determines the roles that include the specified permission, and then determines if the principal specified is a member of a binding to at least one of these roles. The membership check is recursive when a group is bound to a role. Policy examples: ``` { \"bindings\": [ { \"role\": \"roles/owner\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:frontend@example.iam.gserviceaccounts.com\"] }, { \"role\": \"roles/viewer\", \"members\": [\"user:sean@example.com\"] } ] } ```",
+            "id": "Policy",
+            "properties": {
+                "version": {
+                    "description": "The policy language version. The version of the policy is represented by the etag. The default version is 0.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "bindings": {
+                    "description": "It is an error to specify multiple bindings for the same role. It is an error to specify a binding with no members.",
+                    "items": {
+                        "$ref": "Binding"
+                    },
+                    "type": "array"
+                },
+                "rules": {
+                    "items": {
+                        "$ref": "Rule"
+                    },
+                    "type": "array"
+                },
+                "etag": {
+                    "description": "Can be used to perform a read-modify-write.",
+                    "format": "byte",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Binding": {
+            "description": "Associates members with roles. See below for allowed formats of members.",
+            "id": "Binding",
+            "properties": {
+                "role": {
+                    "description": "The name of the role to which the members should be bound. Examples: \"roles/viewer\", \"roles/editor\", \"roles/owner\". Required",
+                    "type": "string"
+                },
+                "members": {
+                    "description": "Format of member entries: 1. allUsers Matches any requesting principal (users, service accounts or anonymous). 2. allAuthenticatedUsers Matches any requesting authenticated principal (users or service accounts). 3. user:{emailid} A google user account using an email address. For example alice@gmail.com, joe@example.com 4. serviceAccount:{emailid} An service account email. 5. group:{emailid} A google group with an email address. For example auth-ti-cloud@google.com 6. domain:{domain} A Google Apps domain name. For example google.com, example.com",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Rule": {
+            "description": "A rule to be applied in a Policy.",
+            "id": "Rule",
+            "properties": {
+                "description": {
+                    "description": "Human-readable description of the rule.",
+                    "type": "string"
+                },
+                "permissions": {
+                    "description": "A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "action": {
+                    "description": "Required",
+                    "enum": [
+                        "NO_ACTION",
+                        "ALLOW",
+                        "ALLOW_WITH_LOG",
+                        "DENY",
+                        "DENY_WITH_LOG",
+                        "LOG"
+                    ],
+                    "type": "string"
+                },
+                "in": {
+                    "description": "The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in this set of entries.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "notIn": {
+                    "description": "The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is not in this set of entries. The formation for in and not_in entries is the same as members in a Binding above.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "conditions": {
+                    "description": "Additional restrictions that must be met",
+                    "items": {
+                        "$ref": "Condition"
+                    },
+                    "type": "array"
+                },
+                "logConfig": {
+                    "description": "The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.",
+                    "items": {
+                        "$ref": "LogConfig"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Condition": {
+            "description": "A condition to be met.",
+            "id": "Condition",
+            "properties": {
+                "iam": {
+                    "description": "Trusted attributes supplied by the IAM system.",
+                    "enum": [
+                        "NO_ATTR",
+                        "AUTHORITY",
+                        "ATTRIBUTION"
+                    ],
+                    "type": "string"
+                },
+                "sys": {
+                    "description": "Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.",
+                    "enum": [
+                        "NO_ATTR",
+                        "REGION",
+                        "SERVICE",
+                        "NAME",
+                        "IP"
+                    ],
+                    "type": "string"
+                },
+                "svc": {
+                    "description": "Trusted attributes discharged by the service.",
+                    "type": "string"
+                },
+                "op": {
+                    "description": "An operator to apply the subject with.",
+                    "enum": [
+                        "NO_OP",
+                        "EQUALS",
+                        "NOT_EQUALS",
+                        "IN",
+                        "NOT_IN",
+                        "DISCHARGED"
+                    ],
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The object of the condition. Exactly one of these must be set.",
+                    "type": "string"
+                },
+                "values": {
+                    "description": "The objects of the condition. This is mutually exclusive with 'value'.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "LogConfig": {
+            "description": "Specifies what kind of log the caller must write Increment a streamz counter with the specified metric and field names. Metric names should start with a '/', generally be lowercase-only, and end in \"_count\". Field names should not contain an initial slash. The actual exported metric names will have \"/iam/policy\" prepended. Field names correspond to IAM request parameters and field values are their respective values. At present only \"iam_principal\", corresponding to IAMContext.principal, is supported. Examples: counter { metric: \"/debug_access_count\" field: \"iam_principal\" } ==> increment counter /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]} At this time we do not support: * multiple field names (though this may be supported in the future) * decrementing the counter * incrementing it by anything other than 1",
+            "id": "LogConfig",
+            "properties": {
+                "counter": {
+                    "$ref": "CounterOptions",
+                    "description": "Counter options."
+                },
+                "dataAccess": {
+                    "$ref": "DataAccessOptions",
+                    "description": "Data access options."
+                },
+                "cloudAudit": {
+                    "$ref": "CloudAuditOptions",
+                    "description": "Cloud audit options."
+                }
+            },
+            "type": "object"
+        },
+        "CounterOptions": {
+            "description": "Options for counters",
+            "id": "CounterOptions",
+            "properties": {
+                "metric": {
+                    "description": "The metric to update.",
+                    "type": "string"
+                },
+                "field": {
+                    "description": "The field value to attribute.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DataAccessOptions": {
+            "description": "Write a Data Access (Gin) log",
+            "id": "DataAccessOptions",
+            "type": "object"
+        },
+        "CloudAuditOptions": {
+            "description": "Write a Cloud Audit log",
+            "id": "CloudAuditOptions",
+            "type": "object"
+        },
+        "GetIamPolicyRequest": {
+            "description": "Request message for `GetIamPolicy` method.",
+            "id": "GetIamPolicyRequest",
+            "type": "object"
+        },
+        "TestIamPermissionsRequest": {
+            "description": "Request message for `TestIamPermissions` method.",
+            "id": "TestIamPermissionsRequest",
+            "properties": {
+                "permissions": {
+                    "description": "REQUIRED: The set of permissions to check for the 'resource'. Permissions with wildcards (such as '*' or 'storage.*') are not allowed. Allowed permissions are: * `genomics.datasets.create` * `genomics.datasets.delete` * `genomics.datasets.get` * `genomics.datasets.list` * `genomics.datasets.update` * `genomics.datasets.getIamPolicy` * `genomics.datasets.setIamPolicy`",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TestIamPermissionsResponse": {
+            "description": "Response message for `TestIamPermissions` method.",
+            "id": "TestIamPermissionsResponse",
+            "properties": {
+                "permissions": {
+                    "description": "A subset of `TestPermissionsRequest.permissions` that the caller is allowed.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
             "type": "object"
         },
         "Operation": {
@@ -1330,7 +1662,7 @@
                     "type": "string"
                 },
                 "sourceUris": {
-                    "description": "A list of URIs pointing at BAM files in Google Cloud Storage.",
+                    "description": "A list of URIs pointing at [BAM files](https://samtools.github.io/hts-specs/SAMv1.pdf) in Google Cloud Storage.",
                     "items": {
                         "type": "string"
                     },

@@ -41,7 +41,7 @@
     "description": "The Google+ API enables developers to build on top of the Google+ platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/+/domains/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/T5ClqEST_1znpP6tPbRCfKlJvKU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/jxHHHTxphOxRRj1e-6n-4T9e23M\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/gplus-16.png",
         "x32": "http://www.google.com/images/icons/product/gplus-32.png"
@@ -852,7 +852,7 @@
             }
         }
     },
-    "revision": "20150801",
+    "revision": "20150812",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {
@@ -926,6 +926,16 @@
                         "url": {
                             "description": "The link to the actor's Google profile.",
                             "type": "string"
+                        },
+                        "verification": {
+                            "description": "Verification status of actor.",
+                            "properties": {
+                                "adHocVerified": {
+                                    "description": "Verification for one-time or manual processes.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "type": "object"
@@ -990,6 +1000,16 @@
                                 "url": {
                                     "description": "A link to the original actor's Google profile.",
                                     "type": "string"
+                                },
+                                "verification": {
+                                    "description": "Verification status of actor.",
+                                    "properties": {
+                                        "adHocVerified": {
+                                            "description": "Verification for one-time or manual processes.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             },
                             "type": "object"
@@ -1498,6 +1518,16 @@
                         "url": {
                             "description": "A link to the Person resource for this actor.",
                             "type": "string"
+                        },
+                        "verification": {
+                            "description": "Verification status of actor.",
+                            "properties": {
+                                "adHocVerified": {
+                                    "description": "Verification for one-time or manual processes.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "type": "object"

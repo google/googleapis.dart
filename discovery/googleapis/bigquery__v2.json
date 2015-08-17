@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/r06f0hHpX4mVebOueiwIFm0vurA\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ovkdPsOHcZEpYM40IgRvTc9GjXY\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -933,7 +933,7 @@
             }
         }
     },
-    "revision": "20150723",
+    "revision": "20150811",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CsvOptions": {
@@ -1191,6 +1191,13 @@
                 "cacheHit": {
                     "description": "Whether the query result was fetched from the query cache.",
                     "type": "boolean"
+                },
+                "errors": {
+                    "description": "[Output-only] All errors and warnings encountered during the running of the job. Errors here do not necessarily mean that the job has completed or was unsuccessful.",
+                    "items": {
+                        "$ref": "ErrorProto"
+                    },
+                    "type": "array"
                 },
                 "etag": {
                     "description": "A hash of this response.",
@@ -1897,6 +1904,13 @@
                     "description": "Whether the query result was fetched from the query cache.",
                     "type": "boolean"
                 },
+                "errors": {
+                    "description": "[Output-only] All errors and warnings encountered during the running of the job. Errors here do not necessarily mean that the job has completed or was unsuccessful.",
+                    "items": {
+                        "$ref": "ErrorProto"
+                    },
+                    "type": "array"
+                },
                 "jobComplete": {
                     "description": "Whether the query has completed or not. If rows or totalRows are present, this will always be true. If this is false, totalRows will not be available.",
                     "type": "boolean"
@@ -1932,6 +1946,27 @@
                 },
                 "totalRows": {
                     "description": "The total number of rows in the complete query result set, which can be more than the number of rows in this single page of results.",
+                    "format": "uint64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Streamingbuffer": {
+            "id": "Streamingbuffer",
+            "properties": {
+                "estimatedBytes": {
+                    "description": "[Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "estimatedRows": {
+                    "description": "[Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "oldestEntryTime": {
+                    "description": "[Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.",
                     "format": "uint64",
                     "type": "string"
                 }
@@ -1986,12 +2021,12 @@
                     "type": "string"
                 },
                 "numBytes": {
-                    "description": "[Output-only] The size of the table in bytes. This property is unavailable for tables that are actively receiving streaming inserts.",
+                    "description": "[Output-only] The size of this table in bytes, excluding any data in the streaming buffer.",
                     "format": "int64",
                     "type": "string"
                 },
                 "numRows": {
-                    "description": "[Output-only] The number of rows of data in this table. This property is unavailable for tables that are actively receiving streaming inserts.",
+                    "description": "[Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.",
                     "format": "uint64",
                     "type": "string"
                 },
@@ -2002,6 +2037,10 @@
                 "selfLink": {
                     "description": "[Output-only] A URL that can be used to access this resource again.",
                     "type": "string"
+                },
+                "streamingBuffer": {
+                    "$ref": "Streamingbuffer",
+                    "description": "[Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer."
                 },
                 "tableReference": {
                     "$ref": "TableReference",

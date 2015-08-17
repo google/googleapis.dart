@@ -261,9 +261,6 @@ class CaptionsResourceApi {
    * The value is a caption track ID as identified by the id property in a
    * caption resource.
    *
-   * [debugProjectIdOverride] - The debugProjectIdOverride parameter should be
-   * used for mimicking a request for a certain project ID
-   *
    * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
    * be on behalf of
    *
@@ -286,7 +283,7 @@ class CaptionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String id, {core.String debugProjectIdOverride, core.String onBehalfOf, core.String onBehalfOfContentOwner}) {
+  async.Future delete(core.String id, {core.String onBehalfOf, core.String onBehalfOfContentOwner}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -298,9 +295,6 @@ class CaptionsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-    if (debugProjectIdOverride != null) {
-      _queryParams["debugProjectIdOverride"] = [debugProjectIdOverride];
-    }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
     }
@@ -333,9 +327,6 @@ class CaptionsResourceApi {
    * [id] - The id parameter identifies the caption track that is being
    * retrieved. The value is a caption track ID as identified by the id property
    * in a caption resource.
-   *
-   * [debugProjectIdOverride] - The debugProjectIdOverride parameter should be
-   * used for mimicking a request for a certain project ID
    *
    * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
    * be on behalf of
@@ -379,7 +370,7 @@ class CaptionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future download(core.String id, {core.String debugProjectIdOverride, core.String onBehalfOf, core.String onBehalfOfContentOwner, core.String tfmt, core.String tlang, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future download(core.String id, {core.String onBehalfOf, core.String onBehalfOfContentOwner, core.String tfmt, core.String tlang, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -389,9 +380,6 @@ class CaptionsResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
-    }
-    if (debugProjectIdOverride != null) {
-      _queryParams["debugProjectIdOverride"] = [debugProjectIdOverride];
     }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
@@ -435,9 +423,6 @@ class CaptionsResourceApi {
    * [part] - The part parameter specifies the caption resource parts that the
    * API response will include. Set the parameter value to snippet.
    *
-   * [debugProjectIdOverride] - The debugProjectIdOverride parameter should be
-   * used for mimicking a request for a certain project ID.
-   *
    * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
    * be on behalf of
    *
@@ -476,7 +461,7 @@ class CaptionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Caption> insert(Caption request, core.String part, {core.String debugProjectIdOverride, core.String onBehalfOf, core.String onBehalfOfContentOwner, core.bool sync, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  async.Future<Caption> insert(Caption request, core.String part, {core.String onBehalfOf, core.String onBehalfOfContentOwner, core.bool sync, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -491,9 +476,6 @@ class CaptionsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = [part];
-    if (debugProjectIdOverride != null) {
-      _queryParams["debugProjectIdOverride"] = [debugProjectIdOverride];
-    }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
     }
@@ -541,9 +523,6 @@ class CaptionsResourceApi {
    * [videoId] - The videoId parameter specifies the YouTube video ID of the
    * video for which the API should return caption tracks.
    *
-   * [debugProjectIdOverride] - The debugProjectIdOverride parameter should be
-   * used for mimicking a request for a certain project ID.
-   *
    * [id] - The id parameter specifies a comma-separated list of IDs that
    * identify the caption resources that should be retrieved. Each ID must
    * identify a caption track associated with the specified video.
@@ -572,7 +551,7 @@ class CaptionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<CaptionListResponse> list(core.String part, core.String videoId, {core.String debugProjectIdOverride, core.String id, core.String onBehalfOf, core.String onBehalfOfContentOwner}) {
+  async.Future<CaptionListResponse> list(core.String part, core.String videoId, {core.String id, core.String onBehalfOf, core.String onBehalfOfContentOwner}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -588,9 +567,6 @@ class CaptionsResourceApi {
       throw new core.ArgumentError("Parameter videoId is required.");
     }
     _queryParams["videoId"] = [videoId];
-    if (debugProjectIdOverride != null) {
-      _queryParams["debugProjectIdOverride"] = [debugProjectIdOverride];
-    }
     if (id != null) {
       _queryParams["id"] = [id];
     }
@@ -626,9 +602,6 @@ class CaptionsResourceApi {
    * properties that the API response will include. Set the property value to
    * snippet if you are updating the track's draft status. Otherwise, set the
    * property value to id.
-   *
-   * [debugProjectIdOverride] - The debugProjectIdOverride parameter should be
-   * used for mimicking a request for a certain project ID.
    *
    * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
    * be on behalf of
@@ -667,7 +640,7 @@ class CaptionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Caption> update(Caption request, core.String part, {core.String debugProjectIdOverride, core.String onBehalfOf, core.String onBehalfOfContentOwner, core.bool sync, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  async.Future<Caption> update(Caption request, core.String part, {core.String onBehalfOf, core.String onBehalfOfContentOwner, core.bool sync, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -682,9 +655,6 @@ class CaptionsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = [part];
-    if (debugProjectIdOverride != null) {
-      _queryParams["debugProjectIdOverride"] = [debugProjectIdOverride];
-    }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
     }
@@ -5053,9 +5023,6 @@ class VideosResourceApi {
    * - "mostPopular" : Return the most popular videos for the specified content
    * region and video category.
    *
-   * [debugProjectIdOverride] - The debugProjectIdOverride parameter should be
-   * used for mimicking a request for a certain project ID
-   *
    * [hl] - The hl parameter instructs the API to retrieve localized resource
    * metadata for a specific application language that the YouTube website
    * supports. The parameter value must be a language code included in the list
@@ -5125,7 +5092,7 @@ class VideosResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<VideoListResponse> list(core.String part, {core.String chart, core.String debugProjectIdOverride, core.String hl, core.String id, core.String locale, core.int maxResults, core.String myRating, core.String onBehalfOfContentOwner, core.String pageToken, core.String regionCode, core.String videoCategoryId}) {
+  async.Future<VideoListResponse> list(core.String part, {core.String chart, core.String hl, core.String id, core.String locale, core.int maxResults, core.String myRating, core.String onBehalfOfContentOwner, core.String pageToken, core.String regionCode, core.String videoCategoryId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5139,9 +5106,6 @@ class VideosResourceApi {
     _queryParams["part"] = [part];
     if (chart != null) {
       _queryParams["chart"] = [chart];
-    }
-    if (debugProjectIdOverride != null) {
-      _queryParams["debugProjectIdOverride"] = [debugProjectIdOverride];
     }
     if (hl != null) {
       _queryParams["hl"] = [hl];
@@ -8652,7 +8616,7 @@ class CommentThreadSnippet {
 
 /**
  * Ratings schemes. The country-specific ratings are mostly for movies and
- * shows. NEXT_ID: 65
+ * shows. NEXT_ID: 66
  */
 class ContentRating {
   /**
@@ -8831,6 +8795,18 @@ class ContentRating {
    */
   core.String cnaRating;
   /**
+   * Rating system in France - Commission de classification cinematographique
+   * Possible string values are:
+   * - "cnc10"
+   * - "cnc12"
+   * - "cnc16"
+   * - "cnc18"
+   * - "cncE"
+   * - "cncT"
+   * - "cncUnrated"
+   */
+  core.String cncRating;
+  /**
    * Rating system for France - Conseil sup�rieur de l?audiovisuel
    * Possible string values are:
    * - "csa10"
@@ -8838,6 +8814,7 @@ class ContentRating {
    * - "csa16"
    * - "csa18"
    * - "csaInterdiction"
+   * - "csaT"
    * - "csaUnrated"
    */
   core.String csaRating;
@@ -8938,7 +8915,7 @@ class ContentRating {
    */
   core.String fcoRating;
   /**
-   * Rating system in France - French Minister of Culture
+   * Deprecated use CNC rating instead
    * Possible string values are:
    * - "fmoc10"
    * - "fmoc12"
@@ -9442,6 +9419,9 @@ class ContentRating {
     if (_json.containsKey("cnaRating")) {
       cnaRating = _json["cnaRating"];
     }
+    if (_json.containsKey("cncRating")) {
+      cncRating = _json["cncRating"];
+    }
     if (_json.containsKey("csaRating")) {
       csaRating = _json["csaRating"];
     }
@@ -9637,6 +9617,9 @@ class ContentRating {
     }
     if (cnaRating != null) {
       _json["cnaRating"] = cnaRating;
+    }
+    if (cncRating != null) {
+      _json["cncRating"] = cncRating;
     }
     if (csaRating != null) {
       _json["csaRating"] = csaRating;
@@ -15630,7 +15613,6 @@ class VideoSnippet {
   core.DateTime publishedAt;
   /**
    * A list of keyword tags associated with the video. Tags may contain spaces.
-   * This field is only visible to the video's uploader.
    */
   core.List<core.String> tags;
   /**

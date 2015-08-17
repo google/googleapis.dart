@@ -245,6 +245,8 @@ class JobsResourceApi {
    * [minModifiedTimestampMs] - Minimum time a job was modified in milliseconds
    * since epoch.
    *
+   * [omitJobChanges] - Whether to omit detail job history information.
+   *
    * [pageToken] - Continuation token
    *
    * Completes with a [JobListResponse].
@@ -255,7 +257,7 @@ class JobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<JobListResponse> list(core.String teamId, {core.int maxResults, core.String minModifiedTimestampMs, core.String pageToken}) {
+  async.Future<JobListResponse> list(core.String teamId, {core.int maxResults, core.String minModifiedTimestampMs, core.bool omitJobChanges, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -271,6 +273,9 @@ class JobsResourceApi {
     }
     if (minModifiedTimestampMs != null) {
       _queryParams["minModifiedTimestampMs"] = [minModifiedTimestampMs];
+    }
+    if (omitJobChanges != null) {
+      _queryParams["omitJobChanges"] = ["${omitJobChanges}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];

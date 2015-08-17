@@ -51,14 +51,14 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed169() {
+buildUnnamed0() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed169(core.List<core.String> o) {
+checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -77,7 +77,7 @@ buildMailItem() {
     o.isTrash = true;
     o.isUnread = true;
     o.kind = "foo";
-    o.labels = buildUnnamed169();
+    o.labels = buildUnnamed0();
   }
   buildCounterMailItem--;
   return o;
@@ -94,7 +94,7 @@ checkMailItem(api.MailItem o) {
     unittest.expect(o.isTrash, unittest.isTrue);
     unittest.expect(o.isUnread, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed169(o.labels);
+    checkUnnamed0(o.labels);
   }
   buildCounterMailItem--;
 }

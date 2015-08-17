@@ -14,7 +14,7 @@
     "description": "Transfers data from external data sources to a Google Cloud Storage bucket or between Google Cloud Storage buckets.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/storage/transfer",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/8WMJiL8K16v_wlyCbIDiawRcHDI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/kIKmIuVZZtLBsmibJocpfpmvAHU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -431,7 +431,7 @@
             }
         }
     },
-    "revision": "20150728",
+    "revision": "20150811",
     "rootUrl": "https://storagetransfer.googleapis.com/",
     "schemas": {
         "GoogleServiceAccount": {
@@ -590,14 +590,14 @@
                     "type": "string"
                 },
                 "includePrefixes": {
-                    "description": "If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. Requirements: * Each include-prefix and exclude-prefix can contain any sequence of Unicode characters, of max length 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * None of the include-prefix or the exclude-prefix can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace, i.e. no include-prefix may be a prefix of another include-prefix. * Each exclude-prefix must exclude a distinct portion of the bucket, i.e., no exclude-prefix may be a prefix of another exclude-prefix`. * If `includePrefixes` is specified, then each exclude-prefix must exclude paths that were explicitly included by `includePrefixes`. * The max size of `includePrefixes` is 20.",
+                    "description": "If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. Requirements: * Each include-prefix and exclude-prefix can contain any sequence of Unicode characters, of max length 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * None of the include-prefix or the exclude-prefix values can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace, i.e., no include-prefix may be a prefix of another include-prefix. * Each exclude-prefix must exclude a distinct portion of the object namespace, i.e., no exclude-prefix may be a prefix of another exclude-prefix. * If `includePrefixes` is specified, then each exclude-prefix must start with the value of a path explicitly included by `includePrefixes`. The max size of `includePrefixes` is 20.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "excludePrefixes": {
-                    "description": "`excludePrefixes` must follow the constraints described for `includePrefixes`. The max size of `excludePrefixes` is 20.",
+                    "description": "`excludePrefixes` must follow the requirements described for `includePrefixes`. The max size of `excludePrefixes` is 20.",
                     "items": {
                         "type": "string"
                     },

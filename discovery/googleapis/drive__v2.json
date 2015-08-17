@@ -38,7 +38,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/bAPHf5F8Rbt2-sbWbBvk_7rc12E\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/plQwzVIDWGtIGduRkjd1Yo9v3ps\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -846,6 +846,37 @@
                     "path": "files/trash",
                     "scopes": [
                         "https://www.googleapis.com/auth/drive"
+                    ]
+                },
+                "generateIds": {
+                    "description": "Generates a set of file IDs which can be provided in insert requests.",
+                    "httpMethod": "GET",
+                    "id": "drive.files.generateIds",
+                    "parameters": {
+                        "maxResults": {
+                            "default": "10",
+                            "description": "Maximum number of IDs to return.",
+                            "format": "int32",
+                            "location": "query",
+                            "maximum": "1000",
+                            "minimum": "1",
+                            "type": "integer"
+                        },
+                        "space": {
+                            "default": "drive",
+                            "description": "The space in which the IDs can be used to create new files. Supported values are 'drive' and 'appDataFolder'.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "files/generateIds",
+                    "response": {
+                        "$ref": "GeneratedIds"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.appdata",
+                        "https://www.googleapis.com/auth/drive.file"
                     ]
                 },
                 "get": {
@@ -2563,7 +2594,7 @@
             }
         }
     },
-    "revision": "20150716",
+    "revision": "20150806",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -2604,7 +2635,7 @@
                     "type": "array"
                 },
                 "domainSharingPolicy": {
-                    "description": "The domain sharing policy for the current user. Possible values are:  \n- ALLOWED \n- ALLOWED_WITH_WARNING \n- INCOMING_ONLY \n- DISALLOWED",
+                    "description": "The domain sharing policy for the current user. Possible values are:  \n- allowed \n- allowedWithWarning \n- incomingOnly \n- disallowed",
                     "type": "string"
                 },
                 "etag": {
@@ -3408,11 +3439,11 @@
                     "type": "object"
                 },
                 "fileExtension": {
-                    "description": "The file extension used when downloading this file. This field is read only. To set the extension, include it in the title when creating the file. This is only populated for files with content stored in Drive.",
+                    "description": "The final component of fullFileExtension with trailing text that does not appear to be part of the extension removed. This field is only populated for files with content stored in Drive; it is not populated for Google Docs or shortcut files.",
                     "type": "string"
                 },
                 "fileSize": {
-                    "description": "The size of the file in bytes. This is only populated for files with content stored in Drive.",
+                    "description": "The size of the file in bytes. This field is only populated for files with content stored in Drive; it is not populated for Google Docs or shortcut files.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -3420,8 +3451,12 @@
                     "description": "Folder color as an RGB hex string if the file is a folder. The list of supported colors is available in the folderColorPalette field of the About resource. If an unsupported color is specified, it will be changed to the closest color in the palette.",
                     "type": "string"
                 },
+                "fullFileExtension": {
+                    "description": "The full file extension; extracted from the title. May contain multiple concatenated extensions, such as \"tar.gz\". Removing an extension from the title does not clear this field; however, changing the extension on the title does update this field. This field is only populated for files with content stored in Drive; it is not populated for Google Docs or shortcut files.",
+                    "type": "string"
+                },
                 "headRevisionId": {
-                    "description": "The ID of the file's head revision. This will only be populated for files with content stored in Drive.",
+                    "description": "The ID of the file's head revision. This field is only populated for files with content stored in Drive; it is not populated for Google Docs or shortcut files.",
                     "type": "string"
                 },
                 "iconLink": {
@@ -3609,7 +3644,7 @@
                     "type": "string"
                 },
                 "md5Checksum": {
-                    "description": "An MD5 checksum for the content of this file. This is populated only for files with content stored in Drive.",
+                    "description": "An MD5 checksum for the content of this file. This field is only populated for files with content stored in Drive; it is not populated for Google Docs or shortcut files.",
                     "type": "string"
                 },
                 "mimeType": {
@@ -3634,7 +3669,7 @@
                     "type": "object"
                 },
                 "originalFilename": {
-                    "description": "The original filename if the file was uploaded manually, or the original title if the file was inserted through the API. Note that renames of the title will not change the original filename. This will only be populated on files with content stored in Drive.",
+                    "description": "The original filename if the file was uploaded manually, or the original title if the file was inserted through the API. Note that renames of the title will not change the original filename. This field is only populated for files with content stored in Drive; it is not populated for Google Docs or shortcut files.",
                     "type": "string"
                 },
                 "ownedByMe": {
@@ -3807,6 +3842,29 @@
                 },
                 "selfLink": {
                     "description": "A link back to this list.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GeneratedIds": {
+            "description": "A list of generated IDs which can be provided in insert requests",
+            "id": "GeneratedIds",
+            "properties": {
+                "ids": {
+                    "description": "The IDs generated for the requesting user in the specified space.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "drive#generatedIds",
+                    "description": "This is always drive#generatedIds",
+                    "type": "string"
+                },
+                "space": {
+                    "description": "The type of file that can be created with these IDs.",
                     "type": "string"
                 }
             },

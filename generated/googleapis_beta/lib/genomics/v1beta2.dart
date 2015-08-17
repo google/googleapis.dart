@@ -1510,10 +1510,8 @@ class ReadgroupsetsResourceApi {
    * Exports read group sets to a BAM file in Google Cloud Storage.
    *
    * Note that currently there may be some differences between exported BAM
-   * files and the original BAM file at the time of import. In particular,
-   * comments in the input file header will not be preserved, some custom tags
-   * will be converted to strings, and original reference sequence order is not
-   * necessarily preserved.
+   * files and the original BAM file at the time of import. See
+   * ImportReadGroupSets for details.
    *
    * [request] - The metadata request object.
    *
@@ -1592,11 +1590,16 @@ class ReadgroupsetsResourceApi {
 
   /**
    * Creates read group sets by asynchronously importing the provided
-   * information.
+   * information. The caller must have WRITE permissions to the dataset.
    *
-   * Note that currently comments in the input file header are not imported and
-   * some custom tags will be converted to strings, rather than preserving tag
-   * types. The caller must have WRITE permissions to the dataset.
+   * Notes on BAM import:
+   * - Tags will be converted to strings - tag types are not preserved
+   * - Comments (@CO) in the input file header are not imported
+   * - Original order of reference headers is not preserved
+   * - Any reverse stranded unmapped reads will be reverse complemented, and
+   * their qualities (and "BQ" tag, if any) will be reversed
+   * - Unmapped reads will be stripped of positional information (referenceName
+   * and position)
    *
    * [request] - The metadata request object.
    *
@@ -2408,6 +2411,10 @@ class VariantsetsResourceApi {
 
   /**
    * Creates a new variant set (only necessary in v1).
+   *
+   * The provided variant set must have a valid datasetId set - all other fields
+   * are optional. Note that the id field will be ignored, as this is assigned
+   * by the server.
    *
    * [request] - The metadata request object.
    *

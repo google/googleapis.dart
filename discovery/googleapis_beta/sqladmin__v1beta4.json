@@ -18,7 +18,7 @@
     "description": "API for Cloud SQL database instance management.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/tWiKG-tAYUfQIEzSxsK_muuAjks\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/PiWRyQxPs-4Ktfq_grOnClEFQ5M\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1109,6 +1109,40 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/sqlservice.admin"
                     ]
+                },
+                "sign": {
+                    "description": "Generates a short-lived X509 certificate containing the provided public key and signed by a private key specific to the target instance. Users may use the certificate to authenticate as themselves when connecting to the database.",
+                    "httpMethod": "POST",
+                    "id": "sql.sslCerts.sign",
+                    "parameterOrder": [
+                        "project",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "description": "Cloud SQL instance ID. This does not include the project ID.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID of the Cloud SQL project.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "projects/{project}/instances/{instance}/certSign",
+                    "request": {
+                        "$ref": "SslCertsSignRequest"
+                    },
+                    "response": {
+                        "$ref": "SslCert"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
+                    ]
                 }
             }
         },
@@ -1303,7 +1337,7 @@
             }
         }
     },
-    "revision": "20150305",
+    "revision": "20150806",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -2376,6 +2410,17 @@
                 "kind": {
                     "default": "sql#sslCertsList",
                     "description": "This is always sql#sslCertsList.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SslCertsSignRequest": {
+            "description": "SslCerts sign request.",
+            "id": "SslCertsSignRequest",
+            "properties": {
+                "public_key": {
+                    "description": "PEM encoded public key to include in the signed certificate.",
                     "type": "string"
                 }
             },

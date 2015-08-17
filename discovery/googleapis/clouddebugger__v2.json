@@ -17,10 +17,10 @@
     "basePath": "",
     "baseUrl": "https://clouddebugger.googleapis.com/",
     "batchPath": "batch",
-    "description": "",
+    "description": "Lets you examine the stack and variables of your running application without stopping or slowing it down.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/tools/cloud-debugger",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Wr2nY13LMpGgsT7w2l5JsXnAVu4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Uxjs8-mLkSVyfZFdV4VVGF9Ux4M\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -386,7 +386,7 @@
             }
         }
     },
-    "revision": "20150710",
+    "revision": "20150807",
     "rootUrl": "https://clouddebugger.googleapis.com/",
     "schemas": {
         "RegisterDebuggeeRequest": {
@@ -513,6 +513,10 @@
                 "gerrit": {
                     "$ref": "GerritSourceContext",
                     "description": "A SourceContext referring to a Gerrit project."
+                },
+                "git": {
+                    "$ref": "GitSourceContext",
+                    "description": "A SourceContext referring to any third party Git repo (e.g. GitHub)."
                 }
             },
             "type": "object"
@@ -614,6 +618,21 @@
                 },
                 "aliasName": {
                     "description": "The name of an alias (branch, tag, etc.).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GitSourceContext": {
+            "description": "A GitSourceContext denotes a particular revision in a third party Git repository (e.g. GitHub).",
+            "id": "GitSourceContext",
+            "properties": {
+                "url": {
+                    "description": "Git repository URL.",
+                    "type": "string"
+                },
+                "revisionId": {
+                    "description": "Git commit hash. required.",
                     "type": "string"
                 }
             },

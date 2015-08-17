@@ -7,6 +7,7 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -394,6 +395,50 @@ class DatasetsResourceApi {
   }
 
   /**
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which policy is being specified.
+   * Format is `datasets/`.
+   * Value must have pattern "^datasets/[^/]*$".
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> getIamPolicy(GetIamPolicyRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
    * Lists datasets within a project.
    *
    * Request parameters:
@@ -495,6 +540,94 @@ class DatasetsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Dataset.fromJson(data));
+  }
+
+  /**
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which policy is being specified.
+   * Format is `datasets/`.
+   * Value must have pattern "^datasets/[^/]*$".
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> setIamPolicy(SetIamPolicyRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which policy is being specified.
+   * Format is `datasets/`.
+   * Value must have pattern "^datasets/[^/]*$".
+   *
+   * Completes with a [TestIamPermissionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TestIamPermissionsResponse> testIamPermissions(TestIamPermissionsRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
 
   /**
@@ -803,10 +936,9 @@ class ReadgroupsetsResourceApi {
   /**
    * Exports a read group set to a BAM file in Google Cloud Storage. Note that
    * currently there may be some differences between exported BAM files and the
-   * original BAM file at the time of import. In particular, comments in the
-   * input file header will not be preserved, some custom tags will be converted
-   * to strings, and original reference sequence order is not necessarily
-   * preserved.
+   * original BAM file at the time of import. See
+   * [ImportReadGroupSets](google.genomics.v1.ReadServiceV1.ImportReadGroupSets)
+   * for caveats.
    *
    * [request] - The metadata request object.
    *
@@ -890,10 +1022,14 @@ class ReadgroupsetsResourceApi {
 
   /**
    * Creates read group sets by asynchronously importing the provided
-   * information. Note that currently comments in the input file header are
-   * **not** imported and some custom tags will be converted to strings, rather
-   * than preserving tag types. The caller must have WRITE permissions to the
-   * dataset.
+   * information. The caller must have WRITE permissions to the dataset. ##
+   * Notes on [BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) import -
+   * Tags will be converted to strings - tag types are not preserved - Comments
+   * (`@CO`) in the input file header will not be preserved - Original header
+   * order of references (`@SQ`) will not be preserved - Any reverse stranded
+   * unmapped reads will be reverse complemented, and their qualities (and "BQ"
+   * tag, if any) will be reversed - Unmapped reads will be stripped of
+   * positional information (reference name and position)
    *
    * [request] - The metadata request object.
    *
@@ -1712,7 +1848,9 @@ class VariantsetsResourceApi {
       _requester = client;
 
   /**
-   * Creates a new variant set.
+   * Creates a new variant set. The provided variant set must have a valid
+   * `datasetId` set - all other fields are optional. Note that the `id` field
+   * will be ignored, as this is assigned by the server.
    *
    * [request] - The metadata request object.
    *
@@ -1971,6 +2109,48 @@ class VariantsetsResourceApi {
 
 
 
+/** Associates members with roles. See below for allowed formats of members. */
+class Binding {
+  /**
+   * Format of member entries: 1. allUsers Matches any requesting principal
+   * (users, service accounts or anonymous). 2. allAuthenticatedUsers Matches
+   * any requesting authenticated principal (users or service accounts). 3.
+   * user:{emailid} A google user account using an email address. For example
+   * alice@gmail.com, joe@example.com 4. serviceAccount:{emailid} An service
+   * account email. 5. group:{emailid} A google group with an email address. For
+   * example auth-ti-cloud@google.com 6. domain:{domain} A Google Apps domain
+   * name. For example google.com, example.com
+   */
+  core.List<core.String> members;
+  /**
+   * The name of the role to which the members should be bound. Examples:
+   * "roles/viewer", "roles/editor", "roles/owner". Required
+   */
+  core.String role;
+
+  Binding();
+
+  Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("members")) {
+      members = _json["members"];
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (members != null) {
+      _json["members"] = members;
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
+    return _json;
+  }
+}
+
 /**
  * A call set is a collection of variant calls, typically for one sample. It
  * belongs to a variant set.
@@ -2119,6 +2299,136 @@ class CigarUnit {
   }
 }
 
+/** Write a Cloud Audit log */
+class CloudAuditOptions {
+
+  CloudAuditOptions();
+
+  CloudAuditOptions.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
+/** A condition to be met. */
+class Condition {
+  /**
+   * Trusted attributes supplied by the IAM system.
+   * Possible string values are:
+   * - "NO_ATTR" : A NO_ATTR.
+   * - "AUTHORITY" : A AUTHORITY.
+   * - "ATTRIBUTION" : A ATTRIBUTION.
+   */
+  core.String iam;
+  /**
+   * An operator to apply the subject with.
+   * Possible string values are:
+   * - "NO_OP" : A NO_OP.
+   * - "EQUALS" : A EQUALS.
+   * - "NOT_EQUALS" : A NOT_EQUALS.
+   * - "IN" : A IN.
+   * - "NOT_IN" : A NOT_IN.
+   * - "DISCHARGED" : A DISCHARGED.
+   */
+  core.String op;
+  /** Trusted attributes discharged by the service. */
+  core.String svc;
+  /**
+   * Trusted attributes supplied by any service that owns resources and uses the
+   * IAM system for access control.
+   * Possible string values are:
+   * - "NO_ATTR" : A NO_ATTR.
+   * - "REGION" : A REGION.
+   * - "SERVICE" : A SERVICE.
+   * - "NAME" : A NAME.
+   * - "IP" : A IP.
+   */
+  core.String sys;
+  /** The object of the condition. Exactly one of these must be set. */
+  core.String value;
+  /** The objects of the condition. This is mutually exclusive with 'value'. */
+  core.List<core.String> values;
+
+  Condition();
+
+  Condition.fromJson(core.Map _json) {
+    if (_json.containsKey("iam")) {
+      iam = _json["iam"];
+    }
+    if (_json.containsKey("op")) {
+      op = _json["op"];
+    }
+    if (_json.containsKey("svc")) {
+      svc = _json["svc"];
+    }
+    if (_json.containsKey("sys")) {
+      sys = _json["sys"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+    if (_json.containsKey("values")) {
+      values = _json["values"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (iam != null) {
+      _json["iam"] = iam;
+    }
+    if (op != null) {
+      _json["op"] = op;
+    }
+    if (svc != null) {
+      _json["svc"] = svc;
+    }
+    if (sys != null) {
+      _json["sys"] = sys;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    if (values != null) {
+      _json["values"] = values;
+    }
+    return _json;
+  }
+}
+
+/** Options for counters */
+class CounterOptions {
+  /** The field value to attribute. */
+  core.String field;
+  /** The metric to update. */
+  core.String metric;
+
+  CounterOptions();
+
+  CounterOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("field")) {
+      field = _json["field"];
+    }
+    if (_json.containsKey("metric")) {
+      metric = _json["metric"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (field != null) {
+      _json["field"] = field;
+    }
+    if (metric != null) {
+      _json["metric"] = metric;
+    }
+    return _json;
+  }
+}
+
 /**
  * A bucket over which read coverage has been precomputed. A bucket corresponds
  * to a specific range of the reference sequence.
@@ -2151,6 +2461,20 @@ class CoverageBucket {
     if (range != null) {
       _json["range"] = (range).toJson();
     }
+    return _json;
+  }
+}
+
+/** Write a Data Access (Gin) log */
+class DataAccessOptions {
+
+  DataAccessOptions();
+
+  DataAccessOptions.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
     return _json;
   }
 }
@@ -2397,6 +2721,20 @@ class ExportVariantSetRequest {
   }
 }
 
+/** Request message for `GetIamPolicy` method. */
+class GetIamPolicyRequest {
+
+  GetIamPolicyRequest();
+
+  GetIamPolicyRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
 /** The read group set import request. */
 class ImportReadGroupSetsRequest {
   /**
@@ -2420,7 +2758,11 @@ class ImportReadGroupSetsRequest {
    * best effort is made to associate with a matching reference set.
    */
   core.String referenceSetId;
-  /** A list of URIs pointing at BAM files in Google Cloud Storage. */
+  /**
+   * A list of URIs pointing at [BAM
+   * files](https://samtools.github.io/hts-specs/SAMv1.pdf) in Google Cloud
+   * Storage.
+   */
   core.List<core.String> sourceUris;
 
   ImportReadGroupSetsRequest();
@@ -2779,6 +3121,57 @@ class ListOperationsResponse {
 }
 
 /**
+ * Specifies what kind of log the caller must write Increment a streamz counter
+ * with the specified metric and field names. Metric names should start with a
+ * '/', generally be lowercase-only, and end in "_count". Field names should not
+ * contain an initial slash. The actual exported metric names will have
+ * "/iam/policy" prepended. Field names correspond to IAM request parameters and
+ * field values are their respective values. At present only "iam_principal",
+ * corresponding to IAMContext.principal, is supported. Examples: counter {
+ * metric: "/debug_access_count" field: "iam_principal" } ==> increment counter
+ * /iam/policy/backend_debug_access_count {iam_principal=[value of
+ * IAMContext.principal]} At this time we do not support: * multiple field names
+ * (though this may be supported in the future) * decrementing the counter *
+ * incrementing it by anything other than 1
+ */
+class LogConfig {
+  /** Cloud audit options. */
+  CloudAuditOptions cloudAudit;
+  /** Counter options. */
+  CounterOptions counter;
+  /** Data access options. */
+  DataAccessOptions dataAccess;
+
+  LogConfig();
+
+  LogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudAudit")) {
+      cloudAudit = new CloudAuditOptions.fromJson(_json["cloudAudit"]);
+    }
+    if (_json.containsKey("counter")) {
+      counter = new CounterOptions.fromJson(_json["counter"]);
+    }
+    if (_json.containsKey("dataAccess")) {
+      dataAccess = new DataAccessOptions.fromJson(_json["dataAccess"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cloudAudit != null) {
+      _json["cloudAudit"] = (cloudAudit).toJson();
+    }
+    if (counter != null) {
+      _json["counter"] = (counter).toJson();
+    }
+    if (dataAccess != null) {
+      _json["dataAccess"] = (dataAccess).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
  * This resource represents a long-running operation that is the result of a
  * network API call.
  */
@@ -2933,6 +3326,79 @@ class OperationMetadata {
     }
     if (request != null) {
       _json["request"] = request;
+    }
+    return _json;
+  }
+}
+
+/**
+ * # Overview The `Policy` defines an access control policy language. It is used
+ * to define policies that are attached to resources like files, folders, VMs,
+ * etc. # Policy structure A `Policy` consists of a list of bindings. A
+ * `Binding` binds a set of members to a role, where the members include user
+ * accounts, user groups, user domains, and service accounts. A 'role' is a
+ * named set of permissions, defined by IAM. The definition of a role is outside
+ * the policy. A permission check first determines the roles that include the
+ * specified permission, and then determines if the principal specified is a
+ * member of a binding to at least one of these roles. The membership check is
+ * recursive when a group is bound to a role. Policy examples: ``` { "bindings":
+ * [ { "role": "roles/owner", "members": [ "user:mike@example.com",
+ * "group:admins@example.com", "domain:google.com",
+ * "serviceAccount:frontend@example.iam.gserviceaccounts.com"] }, { "role":
+ * "roles/viewer", "members": ["user:sean@example.com"] } ] } ```
+ */
+class Policy {
+  /**
+   * It is an error to specify multiple bindings for the same role. It is an
+   * error to specify a binding with no members.
+   */
+  core.List<Binding> bindings;
+  /** Can be used to perform a read-modify-write. */
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+  core.List<Rule> rules;
+  /**
+   * The policy language version. The version of the policy is represented by
+   * the etag. The default version is 0.
+   */
+  core.int version;
+
+  Policy();
+
+  Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("bindings")) {
+      bindings = _json["bindings"].map((value) => new Binding.fromJson(value)).toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("rules")) {
+      rules = _json["rules"].map((value) => new Rule.fromJson(value)).toList();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bindings != null) {
+      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (rules != null) {
+      _json["rules"] = rules.map((value) => (value).toJson()).toList();
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }
@@ -3754,6 +4220,99 @@ class ReferenceSet {
   }
 }
 
+/** A rule to be applied in a Policy. */
+class Rule {
+  /**
+   * Required
+   * Possible string values are:
+   * - "NO_ACTION" : A NO_ACTION.
+   * - "ALLOW" : A ALLOW.
+   * - "ALLOW_WITH_LOG" : A ALLOW_WITH_LOG.
+   * - "DENY" : A DENY.
+   * - "DENY_WITH_LOG" : A DENY_WITH_LOG.
+   * - "LOG" : A LOG.
+   */
+  core.String action;
+  /** Additional restrictions that must be met */
+  core.List<Condition> conditions;
+  /** Human-readable description of the rule. */
+  core.String description;
+  /**
+   * The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in this set of
+   * entries.
+   */
+  core.List<core.String> in_;
+  /**
+   * The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
+   * that match the LOG action.
+   */
+  core.List<LogConfig> logConfig;
+  /**
+   * The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is not in this set of
+   * entries. The formation for in and not_in entries is the same as members in
+   * a Binding above.
+   */
+  core.List<core.String> notIn;
+  /**
+   * A permission is a string of form '..' (e.g., 'storage.buckets.list'). A
+   * value of '*' matches all permissions, and a verb part of '*' (e.g.,
+   * 'storage.buckets.*') matches all verbs.
+   */
+  core.List<core.String> permissions;
+
+  Rule();
+
+  Rule.fromJson(core.Map _json) {
+    if (_json.containsKey("action")) {
+      action = _json["action"];
+    }
+    if (_json.containsKey("conditions")) {
+      conditions = _json["conditions"].map((value) => new Condition.fromJson(value)).toList();
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("in")) {
+      in_ = _json["in"];
+    }
+    if (_json.containsKey("logConfig")) {
+      logConfig = _json["logConfig"].map((value) => new LogConfig.fromJson(value)).toList();
+    }
+    if (_json.containsKey("notIn")) {
+      notIn = _json["notIn"];
+    }
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (action != null) {
+      _json["action"] = action;
+    }
+    if (conditions != null) {
+      _json["conditions"] = conditions.map((value) => (value).toJson()).toList();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (in_ != null) {
+      _json["in"] = in_;
+    }
+    if (logConfig != null) {
+      _json["logConfig"] = logConfig.map((value) => (value).toJson()).toList();
+    }
+    if (notIn != null) {
+      _json["notIn"] = notIn;
+    }
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
 /** The call set search request. */
 class SearchCallSetsRequest {
   /**
@@ -4499,6 +5058,32 @@ class SearchVariantsResponse {
   }
 }
 
+/** Request message for `SetIamPolicy` method. */
+class SetIamPolicyRequest {
+  /**
+   * REQUIRED: The complete policy to be applied to the 'resource'. The size of
+   * the policy is limited to a few 10s of KB. An empty policy is in general a
+   * valid policy but certain services (like Projects) might reject them.
+   */
+  Policy policy;
+
+  SetIamPolicyRequest();
+
+  SetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("policy")) {
+      policy = new Policy.fromJson(_json["policy"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
+    }
+    return _json;
+  }
+}
+
 /**
  * The `Status` type defines a logical error model that is suitable for
  * different programming environments, including REST APIs and RPC APIs. It is
@@ -4580,6 +5165,60 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/** Request message for `TestIamPermissions` method. */
+class TestIamPermissionsRequest {
+  /**
+   * REQUIRED: The set of permissions to check for the 'resource'. Permissions
+   * with wildcards (such as '*' or 'storage.*') are not allowed. Allowed
+   * permissions are: * `genomics.datasets.create` * `genomics.datasets.delete`
+   * * `genomics.datasets.get` * `genomics.datasets.list` *
+   * `genomics.datasets.update` * `genomics.datasets.getIamPolicy` *
+   * `genomics.datasets.setIamPolicy`
+   */
+  core.List<core.String> permissions;
+
+  TestIamPermissionsRequest();
+
+  TestIamPermissionsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
+/** Response message for `TestIamPermissions` method. */
+class TestIamPermissionsResponse {
+  /**
+   * A subset of `TestPermissionsRequest.permissions` that the caller is
+   * allowed.
+   */
+  core.List<core.String> permissions;
+
+  TestIamPermissionsResponse();
+
+  TestIamPermissionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
     }
     return _json;
   }

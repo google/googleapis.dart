@@ -1028,7 +1028,7 @@ class ListTransferJobsResponse {
 /** Conditions that determine which objects will be transferred. */
 class ObjectConditions {
   /**
-   * `excludePrefixes` must follow the constraints described for
+   * `excludePrefixes` must follow the requirements described for
    * `includePrefixes`. The max size of `excludePrefixes` is 20.
    */
   core.List<core.String> excludePrefixes;
@@ -1042,14 +1042,14 @@ class ObjectConditions {
    * sequence of Unicode characters, of max length 1024 bytes when UTF8-encoded,
    * and must not contain Carriage Return or Line Feed characters. Wildcard
    * matching and regular expression matching are not supported. * None of the
-   * include-prefix or the exclude-prefix can be empty, if specified. * Each
-   * include-prefix must include a distinct portion of the object namespace,
-   * i.e. no include-prefix may be a prefix of another include-prefix. * Each
-   * exclude-prefix must exclude a distinct portion of the bucket, i.e., no
-   * exclude-prefix may be a prefix of another exclude-prefix`. * If
-   * `includePrefixes` is specified, then each exclude-prefix must exclude paths
-   * that were explicitly included by `includePrefixes`. * The max size of
-   * `includePrefixes` is 20.
+   * include-prefix or the exclude-prefix values can be empty, if specified. *
+   * Each include-prefix must include a distinct portion of the object
+   * namespace, i.e., no include-prefix may be a prefix of another
+   * include-prefix. * Each exclude-prefix must exclude a distinct portion of
+   * the object namespace, i.e., no exclude-prefix may be a prefix of another
+   * exclude-prefix. * If `includePrefixes` is specified, then each
+   * exclude-prefix must start with the value of a path explicitly included by
+   * `includePrefixes`. The max size of `includePrefixes` is 20.
    */
   core.List<core.String> includePrefixes;
   /**

@@ -1,3 +1,18 @@
+## 0.14.0
+
+* [apis-new] cloudbilling:v1
+* [apis] bigquery:v2: schema changes
+* [apis] clouddebugger:v2: schema changes
+* [apis] container:v1: added method/schema
+* [apis] content:v2: schema changes
+* [apis] drive:v2: added method/schema
+* [apis] genomics:v1: added methods/schemas
+* [apis] playmoviespartner:v1: added schemas/resources
+* [apis] plusDomains:v1: schema changes
+* [apis-breaking] compute:v1: schema-changes
+* [apis-breaking] plus:v1: method changes
+* [apis-breaking] youtube:v3: schema changes
+
 ## 0.13.0
 
 * [apis-breaking] fitness:v1: schema changes

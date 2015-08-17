@@ -1,3 +1,9 @@
+## 0.17.0
+
+* [apis] dataflow:v1b3: added schemas/resources
+* [apis] sqladmin:v1beta4: added method/schema
+* [apis-removed] container:v1beta1
+
 ## 0.16.0
 
 * [apis-breaking] replicapoolupdater:v1beta1: method/schema changes

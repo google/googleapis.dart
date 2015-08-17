@@ -1548,6 +1548,58 @@ class SslCertsResourceApi {
     return _response.then((data) => new SslCertsListResponse.fromJson(data));
   }
 
+  /**
+   * Generates a short-lived X509 certificate containing the provided public key
+   * and signed by a private key specific to the target instance. Users may use
+   * the certificate to authenticate as themselves when connecting to the
+   * database.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID of the Cloud SQL project.
+   *
+   * [instance] - Cloud SQL instance ID. This does not include the project ID.
+   *
+   * Completes with a [SslCert].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SslCert> sign(SslCertsSignRequest request, core.String project, core.String instance) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/certSign';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SslCert.fromJson(data));
+  }
+
 }
 
 
@@ -3972,6 +4024,28 @@ class SslCertsListResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/** SslCerts sign request. */
+class SslCertsSignRequest {
+  /** PEM encoded public key to include in the signed certificate. */
+  core.String publicKey;
+
+  SslCertsSignRequest();
+
+  SslCertsSignRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("public_key")) {
+      publicKey = _json["public_key"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (publicKey != null) {
+      _json["public_key"] = publicKey;
     }
     return _json;
   }

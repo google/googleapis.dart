@@ -23,7 +23,7 @@
     "description": "The Google+ API enables developers to build on top of the Google+ platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/+/api/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/GnnfotbAucgSG_5d5BUzARDmn2c\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/90Fsmn74mRQHRUsKROmfqGNapec\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/gplus-16.png",
         "x32": "http://www.google.com/images/icons/product/gplus-32.png"
@@ -404,26 +404,6 @@
                         "https://www.googleapis.com/auth/plus.login",
                         "https://www.googleapis.com/auth/plus.me"
                     ]
-                },
-                "remove": {
-                    "description": "Delete a moment.",
-                    "httpMethod": "DELETE",
-                    "id": "plus.moments.remove",
-                    "parameterOrder": [
-                        "id"
-                    ],
-                    "parameters": {
-                        "id": {
-                            "description": "The ID of the moment to delete.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "moments/{id}",
-                    "scopes": [
-                        "https://www.googleapis.com/auth/plus.login"
-                    ]
                 }
             }
         },
@@ -621,7 +601,7 @@
             }
         }
     },
-    "revision": "20150801",
+    "revision": "20150812",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {
@@ -691,6 +671,16 @@
                         "url": {
                             "description": "The link to the actor's Google profile.",
                             "type": "string"
+                        },
+                        "verification": {
+                            "description": "Verification status of actor.",
+                            "properties": {
+                                "adHocVerified": {
+                                    "description": "Verification for one-time or manual processes.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "type": "object"
@@ -755,6 +745,16 @@
                                 "url": {
                                     "description": "A link to the original actor's Google profile.",
                                     "type": "string"
+                                },
+                                "verification": {
+                                    "description": "Verification status of actor.",
+                                    "properties": {
+                                        "adHocVerified": {
+                                            "description": "Verification for one-time or manual processes.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             },
                             "type": "object"
@@ -1080,6 +1080,16 @@
                         "url": {
                             "description": "A link to the Person resource for this actor.",
                             "type": "string"
+                        },
+                        "verification": {
+                            "description": "Verification status of actor.",
+                            "properties": {
+                                "adHocVerified": {
+                                    "description": "Verification for one-time or manual processes.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "type": "object"

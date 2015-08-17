@@ -17,7 +17,7 @@
     "description": "Lets you view Google Webmaster Tools data for your verified sites.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/webmaster-tools/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/gUIwZD0pLIW2gJKtKYSb4CtXxBI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/2KfwPsPFjdvTmw1MTymtM96q3zo\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/webmaster_tools-16.png",
         "x32": "https://www.google.com/images/icons/product/webmaster_tools-32.png"
@@ -77,7 +77,7 @@
         "searchanalytics": {
             "methods": {
                 "query": {
-                    "description": "[LIMITED ACCESS]\n\nQuery your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days.\n\nWhen date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.",
+                    "description": "Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days.\n\nWhen date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.",
                     "httpMethod": "POST",
                     "id": "webmasters.searchanalytics.query",
                     "parameterOrder": [
@@ -597,7 +597,7 @@
             }
         }
     },
-    "revision": "20150715",
+    "revision": "20150804",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ApiDataRow": {

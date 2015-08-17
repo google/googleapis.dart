@@ -1250,6 +1250,28 @@ class ActivityActorName {
   }
 }
 
+/** Verification status of actor. */
+class ActivityActorVerification {
+  /** Verification for one-time or manual processes. */
+  core.String adHocVerified;
+
+  ActivityActorVerification();
+
+  ActivityActorVerification.fromJson(core.Map _json) {
+    if (_json.containsKey("adHocVerified")) {
+      adHocVerified = _json["adHocVerified"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (adHocVerified != null) {
+      _json["adHocVerified"] = adHocVerified;
+    }
+    return _json;
+  }
+}
+
 /** The person who performed this activity. */
 class ActivityActor {
   /** The name of the actor, suitable for display. */
@@ -1262,6 +1284,8 @@ class ActivityActor {
   ActivityActorName name;
   /** The link to the actor's Google profile. */
   core.String url;
+  /** Verification status of actor. */
+  ActivityActorVerification verification;
 
   ActivityActor();
 
@@ -1281,6 +1305,9 @@ class ActivityActor {
     if (_json.containsKey("url")) {
       url = _json["url"];
     }
+    if (_json.containsKey("verification")) {
+      verification = new ActivityActorVerification.fromJson(_json["verification"]);
+    }
   }
 
   core.Map toJson() {
@@ -1299,6 +1326,9 @@ class ActivityActor {
     }
     if (url != null) {
       _json["url"] = url;
+    }
+    if (verification != null) {
+      _json["verification"] = (verification).toJson();
     }
     return _json;
   }
@@ -1326,6 +1356,28 @@ class ActivityObjectActorImage {
   }
 }
 
+/** Verification status of actor. */
+class ActivityObjectActorVerification {
+  /** Verification for one-time or manual processes. */
+  core.String adHocVerified;
+
+  ActivityObjectActorVerification();
+
+  ActivityObjectActorVerification.fromJson(core.Map _json) {
+    if (_json.containsKey("adHocVerified")) {
+      adHocVerified = _json["adHocVerified"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (adHocVerified != null) {
+      _json["adHocVerified"] = adHocVerified;
+    }
+    return _json;
+  }
+}
+
 /**
  * If this activity's object is itself another activity, such as when a person
  * reshares an activity, this property specifies the original activity's actor.
@@ -1339,6 +1391,8 @@ class ActivityObjectActor {
   ActivityObjectActorImage image;
   /** A link to the original actor's Google profile. */
   core.String url;
+  /** Verification status of actor. */
+  ActivityObjectActorVerification verification;
 
   ActivityObjectActor();
 
@@ -1355,6 +1409,9 @@ class ActivityObjectActor {
     if (_json.containsKey("url")) {
       url = _json["url"];
     }
+    if (_json.containsKey("verification")) {
+      verification = new ActivityObjectActorVerification.fromJson(_json["verification"]);
+    }
   }
 
   core.Map toJson() {
@@ -1370,6 +1427,9 @@ class ActivityObjectActor {
     }
     if (url != null) {
       _json["url"] = url;
+    }
+    if (verification != null) {
+      _json["verification"] = (verification).toJson();
     }
     return _json;
   }
@@ -2621,6 +2681,28 @@ class CommentActorImage {
   }
 }
 
+/** Verification status of actor. */
+class CommentActorVerification {
+  /** Verification for one-time or manual processes. */
+  core.String adHocVerified;
+
+  CommentActorVerification();
+
+  CommentActorVerification.fromJson(core.Map _json) {
+    if (_json.containsKey("adHocVerified")) {
+      adHocVerified = _json["adHocVerified"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (adHocVerified != null) {
+      _json["adHocVerified"] = adHocVerified;
+    }
+    return _json;
+  }
+}
+
 /** The person who posted this comment. */
 class CommentActor {
   /** The name of this actor, suitable for display. */
@@ -2631,6 +2713,8 @@ class CommentActor {
   CommentActorImage image;
   /** A link to the Person resource for this actor. */
   core.String url;
+  /** Verification status of actor. */
+  CommentActorVerification verification;
 
   CommentActor();
 
@@ -2647,6 +2731,9 @@ class CommentActor {
     if (_json.containsKey("url")) {
       url = _json["url"];
     }
+    if (_json.containsKey("verification")) {
+      verification = new CommentActorVerification.fromJson(_json["verification"]);
+    }
   }
 
   core.Map toJson() {
@@ -2662,6 +2749,9 @@ class CommentActor {
     }
     if (url != null) {
       _json["url"] = url;
+    }
+    if (verification != null) {
+      _json["verification"] = (verification).toJson();
     }
     return _json;
   }

@@ -1670,7 +1670,7 @@ class Operation {
    * applicable for regional resources.
    */
   core.String region;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
    * [Output Only] The time that this operation was started by the server. This

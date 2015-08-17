@@ -1150,6 +1150,52 @@ class FilesResourceApi {
   }
 
   /**
+   * Generates a set of file IDs which can be provided in insert requests.
+   *
+   * Request parameters:
+   *
+   * [maxResults] - Maximum number of IDs to return.
+   * Value must be between "1" and "1000".
+   *
+   * [space] - The space in which the IDs can be used to create new files.
+   * Supported values are 'drive' and 'appDataFolder'.
+   *
+   * Completes with a [GeneratedIds].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GeneratedIds> generateIds({core.int maxResults, core.String space}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (space != null) {
+      _queryParams["space"] = [space];
+    }
+
+    _url = 'files/generateIds';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GeneratedIds.fromJson(data));
+  }
+
+  /**
    * Gets a file's metadata by ID.
    *
    * Request parameters:
@@ -3619,10 +3665,10 @@ class About {
   core.List<AboutAdditionalRoleInfo> additionalRoleInfo;
   /**
    * The domain sharing policy for the current user. Possible values are:
-   * - ALLOWED
-   * - ALLOWED_WITH_WARNING
-   * - INCOMING_ONLY
-   * - DISALLOWED
+   * - allowed
+   * - allowedWithWarning
+   * - incomingOnly
+   * - disallowed
    */
   core.String domainSharingPolicy;
   /** The ETag of the item. */
@@ -5344,14 +5390,16 @@ class File {
   /** Links for exporting Google Docs to specific formats. */
   core.Map<core.String, core.String> exportLinks;
   /**
-   * The file extension used when downloading this file. This field is read
-   * only. To set the extension, include it in the title when creating the file.
-   * This is only populated for files with content stored in Drive.
+   * The final component of fullFileExtension with trailing text that does not
+   * appear to be part of the extension removed. This field is only populated
+   * for files with content stored in Drive; it is not populated for Google Docs
+   * or shortcut files.
    */
   core.String fileExtension;
   /**
-   * The size of the file in bytes. This is only populated for files with
-   * content stored in Drive.
+   * The size of the file in bytes. This field is only populated for files with
+   * content stored in Drive; it is not populated for Google Docs or shortcut
+   * files.
    */
   core.String fileSize;
   /**
@@ -5362,8 +5410,18 @@ class File {
    */
   core.String folderColorRgb;
   /**
-   * The ID of the file's head revision. This will only be populated for files
-   * with content stored in Drive.
+   * The full file extension; extracted from the title. May contain multiple
+   * concatenated extensions, such as "tar.gz". Removing an extension from the
+   * title does not clear this field; however, changing the extension on the
+   * title does update this field. This field is only populated for files with
+   * content stored in Drive; it is not populated for Google Docs or shortcut
+   * files.
+   */
+  core.String fullFileExtension;
+  /**
+   * The ID of the file's head revision. This field is only populated for files
+   * with content stored in Drive; it is not populated for Google Docs or
+   * shortcut files.
    */
   core.String headRevisionId;
   /** A link to the file's icon. */
@@ -5395,8 +5453,9 @@ class File {
    */
   core.DateTime markedViewedByMeDate;
   /**
-   * An MD5 checksum for the content of this file. This is populated only for
-   * files with content stored in Drive.
+   * An MD5 checksum for the content of this file. This field is only populated
+   * for files with content stored in Drive; it is not populated for Google Docs
+   * or shortcut files.
    */
   core.String md5Checksum;
   /**
@@ -5424,8 +5483,9 @@ class File {
   /**
    * The original filename if the file was uploaded manually, or the original
    * title if the file was inserted through the API. Note that renames of the
-   * title will not change the original filename. This will only be populated on
-   * files with content stored in Drive.
+   * title will not change the original filename. This field is only populated
+   * for files with content stored in Drive; it is not populated for Google Docs
+   * or shortcut files.
    */
   core.String originalFilename;
   /** Whether the file is owned by the current user. */
@@ -5553,6 +5613,9 @@ class File {
     }
     if (_json.containsKey("folderColorRgb")) {
       folderColorRgb = _json["folderColorRgb"];
+    }
+    if (_json.containsKey("fullFileExtension")) {
+      fullFileExtension = _json["fullFileExtension"];
     }
     if (_json.containsKey("headRevisionId")) {
       headRevisionId = _json["headRevisionId"];
@@ -5722,6 +5785,9 @@ class File {
     }
     if (folderColorRgb != null) {
       _json["folderColorRgb"] = folderColorRgb;
+    }
+    if (fullFileExtension != null) {
+      _json["fullFileExtension"] = fullFileExtension;
     }
     if (headRevisionId != null) {
       _json["headRevisionId"] = headRevisionId;
@@ -5901,6 +5967,44 @@ class FileList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** A list of generated IDs which can be provided in insert requests */
+class GeneratedIds {
+  /** The IDs generated for the requesting user in the specified space. */
+  core.List<core.String> ids;
+  /** This is always drive#generatedIds */
+  core.String kind;
+  /** The type of file that can be created with these IDs. */
+  core.String space;
+
+  GeneratedIds();
+
+  GeneratedIds.fromJson(core.Map _json) {
+    if (_json.containsKey("ids")) {
+      ids = _json["ids"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("space")) {
+      space = _json["space"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (ids != null) {
+      _json["ids"] = ids;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (space != null) {
+      _json["space"] = space;
     }
     return _json;
   }

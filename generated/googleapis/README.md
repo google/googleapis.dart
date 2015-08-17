@@ -188,9 +188,15 @@ Google Classroom API
 
 Official API documentation: 
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Billing API - cloudbilling v1
+
+
+
+Official API documentation: https://cloud.google.com/billing/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Debugger API - clouddebugger v2
 
-
+Lets you examine the stack and variables of your running application without stopping or slowing it down.
 
 Official API documentation: https://cloud.google.com/tools/cloud-debugger
 
@@ -406,9 +412,9 @@ Official API documentation: https://developers.google.com/partners/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Play Movies Partner API - playmoviespartner v1
 
-An API providing Google Play Movies Partners a way to get the delivery status of their titles.
+Lets Google Play Movies Partners get the delivery status of their titles.
 
-Official API documentation: 
+Official API documentation: https://developers.google.com/playmoviespartner/
 
 #### ![Logo](http://www.google.com/images/icons/product/gplus-16.png) Google+ API - plus v1
 

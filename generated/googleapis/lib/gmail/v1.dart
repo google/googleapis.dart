@@ -37,6 +37,9 @@ class GmailApi {
   /** View your emails messages and settings */
   static const GmailReadonlyScope = "https://www.googleapis.com/auth/gmail.readonly";
 
+  /** Send email on your behalf */
+  static const GmailSendScope = "https://www.googleapis.com/auth/gmail.send";
+
 
   final commons.ApiRequester _requester;
 

@@ -19,6 +19,9 @@
                 },
                 "https://www.googleapis.com/auth/gmail.readonly": {
                     "description": "View your emails messages and settings"
+                },
+                "https://www.googleapis.com/auth/gmail.send": {
+                    "description": "Send email on your behalf"
                 }
             }
         }
@@ -29,7 +32,7 @@
     "description": "The Gmail REST API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/rcmL92SXMKTyKvGjL_5VhC8zz9s\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/hPQpcOx1jxdLJJoNmiYxoTv2oFc\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
@@ -1051,7 +1054,8 @@
                             "scopes": [
                                 "https://mail.google.com/",
                                 "https://www.googleapis.com/auth/gmail.compose",
-                                "https://www.googleapis.com/auth/gmail.modify"
+                                "https://www.googleapis.com/auth/gmail.modify",
+                                "https://www.googleapis.com/auth/gmail.send"
                             ],
                             "supportsMediaUpload": true
                         },
@@ -1411,7 +1415,7 @@
             }
         }
     },
-    "revision": "20150526",
+    "revision": "20150805",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Draft": {

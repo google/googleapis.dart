@@ -1832,6 +1832,12 @@ class ExternalDataConfiguration {
 class GetQueryResultsResponse {
   /** Whether the query result was fetched from the query cache. */
   core.bool cacheHit;
+  /**
+   * [Output-only] All errors and warnings encountered during the running of the
+   * job. Errors here do not necessarily mean that the job has completed or was
+   * unsuccessful.
+   */
+  core.List<ErrorProto> errors;
   /** A hash of this response. */
   core.String etag;
   /**
@@ -1879,6 +1885,9 @@ class GetQueryResultsResponse {
     if (_json.containsKey("cacheHit")) {
       cacheHit = _json["cacheHit"];
     }
+    if (_json.containsKey("errors")) {
+      errors = _json["errors"].map((value) => new ErrorProto.fromJson(value)).toList();
+    }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
@@ -1912,6 +1921,9 @@ class GetQueryResultsResponse {
     var _json = new core.Map();
     if (cacheHit != null) {
       _json["cacheHit"] = cacheHit;
+    }
+    if (errors != null) {
+      _json["errors"] = errors.map((value) => (value).toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -3421,6 +3433,12 @@ class QueryResponse {
   /** Whether the query result was fetched from the query cache. */
   core.bool cacheHit;
   /**
+   * [Output-only] All errors and warnings encountered during the running of the
+   * job. Errors here do not necessarily mean that the job has completed or was
+   * unsuccessful.
+   */
+  core.List<ErrorProto> errors;
+  /**
    * Whether the query has completed or not. If rows or totalRows are present,
    * this will always be true. If this is false, totalRows will not be
    * available.
@@ -3467,6 +3485,9 @@ class QueryResponse {
     if (_json.containsKey("cacheHit")) {
       cacheHit = _json["cacheHit"];
     }
+    if (_json.containsKey("errors")) {
+      errors = _json["errors"].map((value) => new ErrorProto.fromJson(value)).toList();
+    }
     if (_json.containsKey("jobComplete")) {
       jobComplete = _json["jobComplete"];
     }
@@ -3498,6 +3519,9 @@ class QueryResponse {
     if (cacheHit != null) {
       _json["cacheHit"] = cacheHit;
     }
+    if (errors != null) {
+      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+    }
     if (jobComplete != null) {
       _json["jobComplete"] = jobComplete;
     }
@@ -3521,6 +3545,53 @@ class QueryResponse {
     }
     if (totalRows != null) {
       _json["totalRows"] = totalRows;
+    }
+    return _json;
+  }
+}
+
+class Streamingbuffer {
+  /**
+   * [Output-only] A lower-bound estimate of the number of bytes currently in
+   * the streaming buffer.
+   */
+  core.String estimatedBytes;
+  /**
+   * [Output-only] A lower-bound estimate of the number of rows currently in the
+   * streaming buffer.
+   */
+  core.String estimatedRows;
+  /**
+   * [Output-only] Contains the timestamp of the oldest entry in the streaming
+   * buffer, in milliseconds since the epoch, if the streaming buffer is
+   * available.
+   */
+  core.String oldestEntryTime;
+
+  Streamingbuffer();
+
+  Streamingbuffer.fromJson(core.Map _json) {
+    if (_json.containsKey("estimatedBytes")) {
+      estimatedBytes = _json["estimatedBytes"];
+    }
+    if (_json.containsKey("estimatedRows")) {
+      estimatedRows = _json["estimatedRows"];
+    }
+    if (_json.containsKey("oldestEntryTime")) {
+      oldestEntryTime = _json["oldestEntryTime"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (estimatedBytes != null) {
+      _json["estimatedBytes"] = estimatedBytes;
+    }
+    if (estimatedRows != null) {
+      _json["estimatedRows"] = estimatedRows;
+    }
+    if (oldestEntryTime != null) {
+      _json["oldestEntryTime"] = oldestEntryTime;
     }
     return _json;
   }
@@ -3565,19 +3636,25 @@ class Table {
    */
   core.String location;
   /**
-   * [Output-only] The size of the table in bytes. This property is unavailable
-   * for tables that are actively receiving streaming inserts.
+   * [Output-only] The size of this table in bytes, excluding any data in the
+   * streaming buffer.
    */
   core.String numBytes;
   /**
-   * [Output-only] The number of rows of data in this table. This property is
-   * unavailable for tables that are actively receiving streaming inserts.
+   * [Output-only] The number of rows of data in this table, excluding any data
+   * in the streaming buffer.
    */
   core.String numRows;
   /** [Optional] Describes the schema of this table. */
   TableSchema schema;
   /** [Output-only] A URL that can be used to access this resource again. */
   core.String selfLink;
+  /**
+   * [Output-only] Contains information regarding this table's streaming buffer,
+   * if one is present. This field will be absent if the table is not being
+   * streamed to or if there is no data in the streaming buffer.
+   */
+  Streamingbuffer streamingBuffer;
   /** [Required] Reference describing the ID of this table. */
   TableReference tableReference;
   /**
@@ -3634,6 +3711,9 @@ class Table {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("streamingBuffer")) {
+      streamingBuffer = new Streamingbuffer.fromJson(_json["streamingBuffer"]);
+    }
     if (_json.containsKey("tableReference")) {
       tableReference = new TableReference.fromJson(_json["tableReference"]);
     }
@@ -3688,6 +3768,9 @@ class Table {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (streamingBuffer != null) {
+      _json["streamingBuffer"] = (streamingBuffer).toJson();
     }
     if (tableReference != null) {
       _json["tableReference"] = (tableReference).toJson();
