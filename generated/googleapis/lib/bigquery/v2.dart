@@ -375,7 +375,7 @@ class JobsResourceApi {
   /**
    * Requests that a job be cancelled. This call will return immediately, and
    * the client will need to poll for the job status to see if the cancel
-   * completed successfully.
+   * completed successfully. Cancelled jobs may still incur costs.
    *
    * Request parameters:
    *
@@ -1750,7 +1750,8 @@ class ExternalDataConfiguration {
    * false, records with extra columns are treated as bad records, and if there
    * are too many bad records, an invalid error is returned in the job result.
    * The default value is false. The sourceFormat property determines what
-   * BigQuery treats as an extra value: CSV: Trailing columns
+   * BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values
+   * that don't match any column names
    */
   core.bool ignoreUnknownValues;
   /**
@@ -1763,14 +1764,14 @@ class ExternalDataConfiguration {
   /** [Required] The schema for the data. */
   TableSchema schema;
   /**
-   * [Optional] The data format. External data sources must be in CSV format.
-   * The default value is CSV.
+   * [Required] The data format. For CSV files, specify "CSV". For
+   * newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON".
    */
   core.String sourceFormat;
   /**
    * [Required] The fully-qualified URIs that point to your data in Google Cloud
    * Storage. Each URI can contain one '*' wildcard character and it must come
-   * after the 'bucket' name. CSV limits related to load jobs apply to external
+   * after the 'bucket' name. Size limits related to load jobs apply to external
    * data sources, plus an additional limit of 10 GB maximum size across all
    * URIs.
    */
@@ -3087,7 +3088,7 @@ class JobStatistics3 {
 
 class JobStatistics4 {
   /**
-   * [Experimental] Number of files per destination URI or URI pattern specified
+   * [Output-only] Number of files per destination URI or URI pattern specified
    * in the extract configuration. These values will be in the same order as the
    * URIs specified in the 'destinationUris' field.
    */

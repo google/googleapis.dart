@@ -17,13 +17,13 @@
             }
         }
     },
-    "basePath": "",
+    "basePath": "/",
     "baseUrl": "https://logging.googleapis.com/",
     "batchPath": "batch",
     "description": "Google Cloud Logging API lets you create logs, ingest log entries, and manage log sinks.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/logging/docs/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/su6xARXDviFKMcCcXpmlSeVVUas\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/xN_rDDaTMQdWkLus-WD2apbtTvg\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

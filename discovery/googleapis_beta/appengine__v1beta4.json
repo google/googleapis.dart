@@ -8,13 +8,13 @@
             }
         }
     },
-    "basePath": "",
+    "basePath": "/",
     "baseUrl": "https://appengine.googleapis.com/",
     "batchPath": "batch",
-    "description": "The App Engine Admin API enables developers to provision and manage their App Engine applications.",
+    "description": "The Google App Engine Admin API enables developers to provision and manage their App Engine applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/appengine/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/5-TWXZdLOUBo15RKT-gc4uxrObI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/MxcrsWLtc_45Vl0dvlLXLZx13VM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -179,7 +179,7 @@
                             ],
                             "parameters": {
                                 "appsId": {
-                                    "description": "Part of `name`. Name of the resource requested. For example: \"/apps/myapp/modules/default\".",
+                                    "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/modules/default\".",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -208,7 +208,7 @@
                             ],
                             "parameters": {
                                 "appsId": {
-                                    "description": "Part of `name`. Name of the resource requested. For example: \"/apps/myapp\".",
+                                    "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp\".",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -497,18 +497,18 @@
                                     "type": "string"
                                 },
                                 "filter": {
-                                    "description": "The standard List filter.",
+                                    "description": "The standard list filter.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "pageSize": {
-                                    "description": "The standard List page size.",
+                                    "description": "The standard list page size.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "The standard List page token.",
+                                    "description": "The standard list page token.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -526,7 +526,7 @@
             }
         }
     },
-    "revision": "20150720",
+    "revision": "20150831",
     "rootUrl": "https://appengine.googleapis.com/",
     "schemas": {
         "Application": {
@@ -549,7 +549,7 @@
                     "type": "array"
                 },
                 "location": {
-                    "description": "The location from which the application will be run. Choices are \"us\" for United States and \"eu\" for European Union. Application instances will run out of data centers in the chosen location and all of the application's End User Content will be stored at rest in the chosen location. The default is \"us\".",
+                    "description": "The location from which the application will be run. Choices are \"us-central\" for United States and \"europe-west\" for European Union. Application instances will run out of data centers in the chosen location and all of the application's End User Content will be stored at rest in the chosen location. The default is \"us-central\".",
                     "type": "string"
                 },
                 "codeBucket": {
@@ -587,7 +587,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "The relative name/path of the Version within the module. Example: \"v1\"",
+                    "description": "The relative name/path of the Version within the module. Example: \"v1\". Version specifiers can contain lowercase letters, digits, and hyphens. It cannot begin with the prefix `ah-` and the names `default` and `latest` are reserved and cannot be used.",
                     "type": "string"
                 },
                 "automaticScaling": {
@@ -632,7 +632,7 @@
                     "type": "array"
                 },
                 "instanceClass": {
-                    "description": "The frontend instance class to use to run this app. Valid values are `[F1, F2, F4, F4_1G]`.",
+                    "description": "The frontend instance class to use to run this app. Valid values are `[F1, F2, F4, F4_1G]`. Default: \"F1\"",
                     "type": "string"
                 },
                 "network": {
@@ -652,7 +652,7 @@
                     "type": "boolean"
                 },
                 "vm": {
-                    "description": "Whether to deploy this app in a VM container.",
+                    "description": "Whether to deploy this app in a VM container (deprecated, use \"env\":\"2\").",
                     "type": "boolean"
                 },
                 "betaSettings": {
@@ -661,6 +661,27 @@
                     },
                     "description": "Beta settings supplied to the application via metadata.",
                     "type": "object"
+                },
+                "env": {
+                    "description": "The App Engine execution environment to use for this version. Default: \"1\"",
+                    "type": "string"
+                },
+                "servingStatus": {
+                    "description": "The current serving status of this version. Only `SERVING` versions will have instances created or billed for. If this field is unset when a version is created, `SERVING` status will be assumed. It is an error to explicitly set this field to `SERVING_STATUS_UNSPECIFIED`.",
+                    "enum": [
+                        "SERVING_STATUS_UNSPECIFIED",
+                        "SERVING",
+                        "STOPPED"
+                    ],
+                    "type": "string"
+                },
+                "deployer": {
+                    "description": "The email address of the user who created this version. @OutputOnly",
+                    "type": "string"
+                },
+                "creationTime": {
+                    "description": "Creation time of this version. This will be between the start and end times of the operation that creates this version. @OutputOnly",
+                    "type": "string"
                 },
                 "handlers": {
                     "description": "An ordered list of URL Matching patterns that should be applied to incoming requests. The first matching URL consumes the request, and subsequent handlers are not attempted. Only returned in `GET` requests if `view=FULL` is set. May only be set on create requests; once created, is immutable.",
@@ -821,7 +842,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The Google Compute Engine network where the VMs will be created. If not specified, or empty, the network named 'default' will be used. (The short name should be specified, not the resource path.)",
+                    "description": "The Google Compute Engine network where the VMs will be created. If not specified, or empty, the network named \"default\" will be used. (The short name should be specified, not the resource path.)",
                     "type": "string"
                 }
             },
@@ -1186,10 +1207,6 @@
                 "image": {
                     "description": "Reference to a hosted container image. Must be a URI to a resource in a Docker repository. Must be fully qualified, including tag or digest. e.g. gcr.io/my-project/image:tag or gcr.io/my-project/image@digest",
                     "type": "string"
-                },
-                "sha256": {
-                    "description": "The SHA256 hash of the image in hex.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -1226,7 +1243,7 @@
                     "type": "object"
                 },
                 "done": {
-                    "description": "If the value is `false`, it means the operation is still in progress. If true, the operation is completed and the `result` is available.",
+                    "description": "If the value is `false`, it means the operation is still in progress. If true, the operation is completed, and either `error` or `response` is available.",
                     "type": "boolean"
                 },
                 "error": {
@@ -1245,7 +1262,7 @@
             "type": "object"
         },
         "Status": {
-            "description": "The `Status` defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model is designed to be: - Simple to use and understand for most users. - Flexible enough to meet unexpected needs. # Overview The `Status` message contains 3 pieces of data: error code, error message, and error details. The error code should be an enum value of [google.rpc.Code][google.rpc.Code], but it may accept additional error codes if needed. The error message should be a developer-facing English message that helps developers *understand* and *resolve* the error. If a localized user-facing error message is needed, it can be sent in the error details or localized by the client. The optional error details may contain arbitrary information about the error. There is a predefined set of error detail types in the package `google.rpc` which can be used for common error conditions. # Language mapping The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire format. When the `Status` message is exposed in different client libraries and different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped to some error codes in C. # Other uses The error model and the `Status` message can be used in a variety of environments - either with or without APIs - to provide consistent developer experience across different environments. Example uses of this error model include: - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the normal response to indicate the partial errors. - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error reporting purpose. - Batch operations. If a client uses batch request and batch response, the `Status` message should be used directly inside batch response, one for each error sub-response. - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of those operations should be represented directly using the `Status` message. - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any stripping needed for security/privacy reasons.",
+            "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model is designed to be: - Simple to use and understand for most users - Flexible enough to meet unexpected needs # Overview The `Status` message contains three pieces of data: error code, error message, and error details. The error code should be an enum value of [google.rpc.Code][google.rpc.Code], but it may accept additional error codes if needed. The error message should be a developer-facing English message that helps developers *understand* and *resolve* the error. If a localized user-facing error message is needed, put the localized message in the error details or localize it in the client. The optional error details may contain arbitrary information about the error. There is a predefined set of error detail types in the package `google.rpc` which can be used for common error conditions. # Language mapping The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire format. When the `Status` message is exposed in different client libraries and different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped to some error codes in C. # Other uses The error model and the `Status` message can be used in a variety of environments, either with or without APIs, to provide a consistent developer experience across different environments. Example uses of this error model include: - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the normal response to indicate the partial errors. - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error reporting purpose. - Batch operations. If a client uses batch request and batch response, the `Status` message should be used directly inside batch response, one for each error sub-response. - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of those operations should be represented directly using the `Status` message. - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any stripping needed for security/privacy reasons.",
             "id": "Status",
             "properties": {
                 "code": {
@@ -1373,7 +1390,7 @@
             "id": "OperationMetadata",
             "properties": {
                 "operationType": {
-                    "description": "The type of the operation, e.g. 'deployment'. @OutputOnly",
+                    "description": "The type of the operation (deprecated, use method field instead). Example: \"create_version\". @OutputOnly",
                     "type": "string"
                 },
                 "insertTime": {
@@ -1387,154 +1404,13 @@
                 "user": {
                     "description": "The user who requested this operation. @OutputOnly",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Type": {
-            "description": "A light-weight descriptor for a proto message type.",
-            "id": "Type",
-            "properties": {
-                "name": {
-                    "description": "The fully qualified message name.",
+                },
+                "target": {
+                    "description": "Resource that this operation is acting on. Example: \"apps/myapp/modules/default\". @OutputOnly",
                     "type": "string"
                 },
-                "fields": {
-                    "description": "The list of fields.",
-                    "items": {
-                        "$ref": "Field"
-                    },
-                    "type": "array"
-                },
-                "oneofs": {
-                    "description": "The list of oneof definitions. The list of oneofs declared in this Type",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "options": {
-                    "description": "The proto options.",
-                    "items": {
-                        "$ref": "Option"
-                    },
-                    "type": "array"
-                },
-                "sourceContext": {
-                    "$ref": "SourceContext",
-                    "description": "The source context."
-                },
-                "syntax": {
-                    "description": "The source syntax.",
-                    "enum": [
-                        "SYNTAX_PROTO2",
-                        "SYNTAX_PROTO3"
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Field": {
-            "description": "Field represents a single field of a message type.",
-            "id": "Field",
-            "properties": {
-                "kind": {
-                    "description": "The field kind.",
-                    "enum": [
-                        "TYPE_UNKNOWN",
-                        "TYPE_DOUBLE",
-                        "TYPE_FLOAT",
-                        "TYPE_INT64",
-                        "TYPE_UINT64",
-                        "TYPE_INT32",
-                        "TYPE_FIXED64",
-                        "TYPE_FIXED32",
-                        "TYPE_BOOL",
-                        "TYPE_STRING",
-                        "TYPE_GROUP",
-                        "TYPE_MESSAGE",
-                        "TYPE_BYTES",
-                        "TYPE_UINT32",
-                        "TYPE_ENUM",
-                        "TYPE_SFIXED32",
-                        "TYPE_SFIXED64",
-                        "TYPE_SINT32",
-                        "TYPE_SINT64"
-                    ],
-                    "type": "string"
-                },
-                "cardinality": {
-                    "description": "The field cardinality, i.e. optional/required/repeated.",
-                    "enum": [
-                        "CARDINALITY_UNKNOWN",
-                        "CARDINALITY_OPTIONAL",
-                        "CARDINALITY_REQUIRED",
-                        "CARDINALITY_REPEATED"
-                    ],
-                    "type": "string"
-                },
-                "number": {
-                    "description": "The proto field number.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "name": {
-                    "description": "The field name.",
-                    "type": "string"
-                },
-                "typeUrl": {
-                    "description": "The type URL (without the scheme) when the type is MESSAGE or ENUM, such as `type.googleapis.com/google.protobuf.Empty`.",
-                    "type": "string"
-                },
-                "oneofIndex": {
-                    "description": "Index in Type.oneofs. Starts at 1. Zero means no oneof mapping.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "packed": {
-                    "description": "Whether to use alternative packed wire representation.",
-                    "type": "boolean"
-                },
-                "options": {
-                    "description": "The proto options.",
-                    "items": {
-                        "$ref": "Option"
-                    },
-                    "type": "array"
-                },
-                "jsonName": {
-                    "description": "The JSON name for this field.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Option": {
-            "description": "Proto option attached to messages/fields/enums etc.",
-            "id": "Option",
-            "properties": {
-                "name": {
-                    "description": "Proto option name.",
-                    "type": "string"
-                },
-                "value": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @ype with type URL.",
-                        "type": "any"
-                    },
-                    "description": "Proto option value.",
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "SourceContext": {
-            "description": "`SourceContext` represents information about the source of a protobuf element, like the file in which it is defined.",
-            "id": "SourceContext",
-            "properties": {
-                "fileName": {
-                    "description": "The path-qualified name of the .proto file that contained the associated protobuf element. For example: `\"google/protobuf/source.proto\"`.",
+                "method": {
+                    "description": "API method name that initiated the operation. Example: \"google.appengine.v1beta4.Version.CreateVersion\". @OutputOnly",
                     "type": "string"
                 }
             },

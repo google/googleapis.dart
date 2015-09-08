@@ -24,7 +24,7 @@
     "description": "The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/deployment-manager/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/MkIYb0BD-XLeiL84D_TVVMXuZWU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/PdE5ZrqEyWwzzJ5ypC41_n0Qz8I\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -780,7 +780,7 @@
             }
         }
     },
-    "revision": "20150807",
+    "revision": "20150831",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ConfigFile": {
@@ -1349,8 +1349,21 @@
             "description": "A resource type supported by Deployment Manager.",
             "id": "Type",
             "properties": {
+                "id": {
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "insertTime": {
+                    "description": "[Output Only] Timestamp when the type was created, in RFC3339 text format.",
+                    "type": "string"
+                },
                 "name": {
                     "description": "Name of the type.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Self link for the type.",
                     "type": "string"
                 }
             },

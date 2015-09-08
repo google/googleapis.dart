@@ -1964,21 +1964,49 @@ class TargetConfiguration {
 
 /** A resource type supported by Deployment Manager. */
 class Type {
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
+  core.String id;
+  /**
+   * [Output Only] Timestamp when the type was created, in RFC3339 text format.
+   */
+  core.String insertTime;
   /** Name of the type. */
   core.String name;
+  /** [Output Only] Self link for the type. */
+  core.String selfLink;
 
   Type();
 
   Type.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("insertTime")) {
+      insertTime = _json["insertTime"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (insertTime != null) {
+      _json["insertTime"] = insertTime;
+    }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
     }
     return _json;
   }

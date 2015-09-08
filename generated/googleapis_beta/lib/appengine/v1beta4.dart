@@ -15,8 +15,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client appengine/v1beta4';
 
 /**
- * The App Engine Admin API enables developers to provision and manage their App
- * Engine applications.
+ * The Google App Engine Admin API enables developers to provision and manage
+ * their App Engine applications.
  */
 class AppengineApi {
   /** View and manage your data across Google Cloud Platform services */
@@ -151,7 +151,7 @@ class AppsModulesResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "/apps/myapp/modules/default".
+   * "apps/myapp/modules/default".
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -196,7 +196,7 @@ class AppsModulesResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "/apps/myapp".
+   * "apps/myapp".
    *
    * [pageSize] - Maximum results to return per page.
    *
@@ -597,11 +597,11 @@ class AppsOperationsResourceApi {
    *
    * [appsId] - Part of `name`. The name of the operation collection.
    *
-   * [filter] - The standard List filter.
+   * [filter] - The standard list filter.
    *
-   * [pageSize] - The standard List page size.
+   * [pageSize] - The standard list page size.
    *
-   * [pageToken] - The standard List page token.
+   * [pageToken] - The standard list page token.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -768,11 +768,11 @@ class Application {
    */
   core.String id;
   /**
-   * The location from which the application will be run. Choices are "us" for
-   * United States and "eu" for European Union. Application instances will run
-   * out of data centers in the chosen location and all of the application's End
-   * User Content will be stored at rest in the chosen location. The default is
-   * "us".
+   * The location from which the application will be run. Choices are
+   * "us-central" for United States and "europe-west" for European Union.
+   * Application instances will run out of data centers in the chosen location
+   * and all of the application's End User Content will be stored at rest in the
+   * chosen location. The default is "us-central".
    */
   core.String location;
   /**
@@ -986,8 +986,6 @@ class ContainerInfo {
    * gcr.io/my-project/image:tag or gcr.io/my-project/image@digest
    */
   core.String image;
-  /** The SHA256 hash of the image in hex. */
-  core.String sha256;
 
   ContainerInfo();
 
@@ -995,18 +993,12 @@ class ContainerInfo {
     if (_json.containsKey("image")) {
       image = _json["image"];
     }
-    if (_json.containsKey("sha256")) {
-      sha256 = _json["sha256"];
-    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (image != null) {
       _json["image"] = image;
-    }
-    if (sha256 != null) {
-      _json["sha256"] = sha256;
     }
     return _json;
   }
@@ -1132,124 +1124,6 @@ class ErrorHandler {
     }
     if (staticFile != null) {
       _json["staticFile"] = staticFile;
-    }
-    return _json;
-  }
-}
-
-/** Field represents a single field of a message type. */
-class Field {
-  /**
-   * The field cardinality, i.e. optional/required/repeated.
-   * Possible string values are:
-   * - "CARDINALITY_UNKNOWN" : A CARDINALITY_UNKNOWN.
-   * - "CARDINALITY_OPTIONAL" : A CARDINALITY_OPTIONAL.
-   * - "CARDINALITY_REQUIRED" : A CARDINALITY_REQUIRED.
-   * - "CARDINALITY_REPEATED" : A CARDINALITY_REPEATED.
-   */
-  core.String cardinality;
-  /** The JSON name for this field. */
-  core.String jsonName;
-  /**
-   * The field kind.
-   * Possible string values are:
-   * - "TYPE_UNKNOWN" : A TYPE_UNKNOWN.
-   * - "TYPE_DOUBLE" : A TYPE_DOUBLE.
-   * - "TYPE_FLOAT" : A TYPE_FLOAT.
-   * - "TYPE_INT64" : A TYPE_INT64.
-   * - "TYPE_UINT64" : A TYPE_UINT64.
-   * - "TYPE_INT32" : A TYPE_INT32.
-   * - "TYPE_FIXED64" : A TYPE_FIXED64.
-   * - "TYPE_FIXED32" : A TYPE_FIXED32.
-   * - "TYPE_BOOL" : A TYPE_BOOL.
-   * - "TYPE_STRING" : A TYPE_STRING.
-   * - "TYPE_GROUP" : A TYPE_GROUP.
-   * - "TYPE_MESSAGE" : A TYPE_MESSAGE.
-   * - "TYPE_BYTES" : A TYPE_BYTES.
-   * - "TYPE_UINT32" : A TYPE_UINT32.
-   * - "TYPE_ENUM" : A TYPE_ENUM.
-   * - "TYPE_SFIXED32" : A TYPE_SFIXED32.
-   * - "TYPE_SFIXED64" : A TYPE_SFIXED64.
-   * - "TYPE_SINT32" : A TYPE_SINT32.
-   * - "TYPE_SINT64" : A TYPE_SINT64.
-   */
-  core.String kind;
-  /** The field name. */
-  core.String name;
-  /** The proto field number. */
-  core.int number;
-  /** Index in Type.oneofs. Starts at 1. Zero means no oneof mapping. */
-  core.int oneofIndex;
-  /** The proto options. */
-  core.List<Option> options;
-  /** Whether to use alternative packed wire representation. */
-  core.bool packed;
-  /**
-   * The type URL (without the scheme) when the type is MESSAGE or ENUM, such as
-   * `type.googleapis.com/google.protobuf.Empty`.
-   */
-  core.String typeUrl;
-
-  Field();
-
-  Field.fromJson(core.Map _json) {
-    if (_json.containsKey("cardinality")) {
-      cardinality = _json["cardinality"];
-    }
-    if (_json.containsKey("jsonName")) {
-      jsonName = _json["jsonName"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("number")) {
-      number = _json["number"];
-    }
-    if (_json.containsKey("oneofIndex")) {
-      oneofIndex = _json["oneofIndex"];
-    }
-    if (_json.containsKey("options")) {
-      options = _json["options"].map((value) => new Option.fromJson(value)).toList();
-    }
-    if (_json.containsKey("packed")) {
-      packed = _json["packed"];
-    }
-    if (_json.containsKey("typeUrl")) {
-      typeUrl = _json["typeUrl"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (cardinality != null) {
-      _json["cardinality"] = cardinality;
-    }
-    if (jsonName != null) {
-      _json["jsonName"] = jsonName;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (number != null) {
-      _json["number"] = number;
-    }
-    if (oneofIndex != null) {
-      _json["oneofIndex"] = oneofIndex;
-    }
-    if (options != null) {
-      _json["options"] = options.map((value) => (value).toJson()).toList();
-    }
-    if (packed != null) {
-      _json["packed"] = packed;
-    }
-    if (typeUrl != null) {
-      _json["typeUrl"] = typeUrl;
     }
     return _json;
   }
@@ -1598,7 +1472,7 @@ class Network {
   core.String instanceTag;
   /**
    * The Google Compute Engine network where the VMs will be created. If not
-   * specified, or empty, the network named 'default' will be used. (The short
+   * specified, or empty, the network named "default" will be used. (The short
    * name should be specified, not the resource path.)
    */
   core.String name;
@@ -1639,7 +1513,8 @@ class Network {
 class Operation {
   /**
    * If the value is `false`, it means the operation is still in progress. If
-   * true, the operation is completed and the `result` is available.
+   * true, the operation is completed, and either `error` or `response` is
+   * available.
    */
   core.bool done;
   /** The error result of the operation in case of failure. */
@@ -1727,8 +1602,21 @@ class OperationMetadata {
   core.String endTime;
   /** Timestamp that this operation was received. @OutputOnly */
   core.String insertTime;
-  /** The type of the operation, e.g. 'deployment'. @OutputOnly */
+  /**
+   * API method name that initiated the operation. Example:
+   * "google.appengine.v1beta4.Version.CreateVersion". @OutputOnly
+   */
+  core.String method;
+  /**
+   * The type of the operation (deprecated, use method field instead). Example:
+   * "create_version". @OutputOnly
+   */
   core.String operationType;
+  /**
+   * Resource that this operation is acting on. Example:
+   * "apps/myapp/modules/default". @OutputOnly
+   */
+  core.String target;
   /** The user who requested this operation. @OutputOnly */
   core.String user;
 
@@ -1741,8 +1629,14 @@ class OperationMetadata {
     if (_json.containsKey("insertTime")) {
       insertTime = _json["insertTime"];
     }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
     if (_json.containsKey("operationType")) {
       operationType = _json["operationType"];
+    }
+    if (_json.containsKey("target")) {
+      target = _json["target"];
     }
     if (_json.containsKey("user")) {
       user = _json["user"];
@@ -1757,46 +1651,17 @@ class OperationMetadata {
     if (insertTime != null) {
       _json["insertTime"] = insertTime;
     }
+    if (method != null) {
+      _json["method"] = method;
+    }
     if (operationType != null) {
       _json["operationType"] = operationType;
     }
+    if (target != null) {
+      _json["target"] = target;
+    }
     if (user != null) {
       _json["user"] = user;
-    }
-    return _json;
-  }
-}
-
-/** Proto option attached to messages/fields/enums etc. */
-class Option {
-  /** Proto option name. */
-  core.String name;
-  /**
-   * Proto option value.
-   *
-   * The values for Object must be JSON objects. It can consist of `num`,
-   * `String`, `bool` and `null` as well as `Map` and `List` values.
-   */
-  core.Map<core.String, core.Object> value;
-
-  Option();
-
-  Option.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (value != null) {
-      _json["value"] = value;
     }
     return _json;
   }
@@ -1857,34 +1722,6 @@ class ScriptHandler {
     var _json = new core.Map();
     if (scriptPath != null) {
       _json["scriptPath"] = scriptPath;
-    }
-    return _json;
-  }
-}
-
-/**
- * `SourceContext` represents information about the source of a protobuf
- * element, like the file in which it is defined.
- */
-class SourceContext {
-  /**
-   * The path-qualified name of the .proto file that contained the associated
-   * protobuf element. For example: `"google/protobuf/source.proto"`.
-   */
-  core.String fileName;
-
-  SourceContext();
-
-  SourceContext.fromJson(core.Map _json) {
-    if (_json.containsKey("fileName")) {
-      fileName = _json["fileName"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (fileName != null) {
-      _json["fileName"] = fileName;
     }
     return _json;
   }
@@ -2118,38 +1955,39 @@ class StaticFilesHandler {
 }
 
 /**
- * The `Status` defines a logical error model that is suitable for different
- * programming environments, including REST APIs and RPC APIs. It is used by
- * [gRPC](https://github.com/grpc). The error model is designed to be: - Simple
- * to use and understand for most users. - Flexible enough to meet unexpected
- * needs. # Overview The `Status` message contains 3 pieces of data: error code,
- * error message, and error details. The error code should be an enum value of
- * [google.rpc.Code][google.rpc.Code], but it may accept additional error codes
- * if needed. The error message should be a developer-facing English message
- * that helps developers *understand* and *resolve* the error. If a localized
- * user-facing error message is needed, it can be sent in the error details or
- * localized by the client. The optional error details may contain arbitrary
- * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions. #
- * Language mapping The `Status` message is the logical representation of the
- * error model, but it is not necessarily the actual wire format. When the
- * `Status` message is exposed in different client libraries and different wire
- * protocols, it can be mapped differently. For example, it will likely be
- * mapped to some exceptions in Java, but more likely mapped to some error codes
- * in C. # Other uses The error model and the `Status` message can be used in a
- * variety of environments - either with or without APIs - to provide consistent
- * developer experience across different environments. Example uses of this
- * error model include: - Partial errors. If a service needs to return partial
- * errors to the client, it may embed the `Status` in the normal response to
- * indicate the partial errors. - Workflow errors. A typical workflow has
- * multiple steps. Each step may have a `Status` message for error reporting
- * purpose. - Batch operations. If a client uses batch request and batch
- * response, the `Status` message should be used directly inside batch response,
- * one for each error sub-response. - Asynchronous operations. If an API call
- * embeds asynchronous operation results in its response, the status of those
- * operations should be represented directly using the `Status` message. -
- * Logging. If some API errors are stored in logs, the message `Status` could be
- * used directly after any stripping needed for security/privacy reasons.
+ * The `Status` type defines a logical error model that is suitable for
+ * different programming environments, including REST APIs and RPC APIs. It is
+ * used by [gRPC](https://github.com/grpc). The error model is designed to be: -
+ * Simple to use and understand for most users - Flexible enough to meet
+ * unexpected needs # Overview The `Status` message contains three pieces of
+ * data: error code, error message, and error details. The error code should be
+ * an enum value of [google.rpc.Code][google.rpc.Code], but it may accept
+ * additional error codes if needed. The error message should be a
+ * developer-facing English message that helps developers *understand* and
+ * *resolve* the error. If a localized user-facing error message is needed, put
+ * the localized message in the error details or localize it in the client. The
+ * optional error details may contain arbitrary information about the error.
+ * There is a predefined set of error detail types in the package `google.rpc`
+ * which can be used for common error conditions. # Language mapping The
+ * `Status` message is the logical representation of the error model, but it is
+ * not necessarily the actual wire format. When the `Status` message is exposed
+ * in different client libraries and different wire protocols, it can be mapped
+ * differently. For example, it will likely be mapped to some exceptions in
+ * Java, but more likely mapped to some error codes in C. # Other uses The error
+ * model and the `Status` message can be used in a variety of environments,
+ * either with or without APIs, to provide a consistent developer experience
+ * across different environments. Example uses of this error model include: -
+ * Partial errors. If a service needs to return partial errors to the client, it
+ * may embed the `Status` in the normal response to indicate the partial errors.
+ * - Workflow errors. A typical workflow has multiple steps. Each step may have
+ * a `Status` message for error reporting purpose. - Batch operations. If a
+ * client uses batch request and batch response, the `Status` message should be
+ * used directly inside batch response, one for each error sub-response. -
+ * Asynchronous operations. If an API call embeds asynchronous operation results
+ * in its response, the status of those operations should be represented
+ * directly using the `Status` message. - Logging. If some API errors are stored
+ * in logs, the message `Status` could be used directly after any stripping
+ * needed for security/privacy reasons.
  */
 class Status {
   /**
@@ -2248,75 +2086,6 @@ class TrafficSplit {
     }
     if (shardBy != null) {
       _json["shardBy"] = shardBy;
-    }
-    return _json;
-  }
-}
-
-/** A light-weight descriptor for a proto message type. */
-class Type {
-  /** The list of fields. */
-  core.List<Field> fields;
-  /** The fully qualified message name. */
-  core.String name;
-  /**
-   * The list of oneof definitions. The list of oneofs declared in this Type
-   */
-  core.List<core.String> oneofs;
-  /** The proto options. */
-  core.List<Option> options;
-  /** The source context. */
-  SourceContext sourceContext;
-  /**
-   * The source syntax.
-   * Possible string values are:
-   * - "SYNTAX_PROTO2" : A SYNTAX_PROTO2.
-   * - "SYNTAX_PROTO3" : A SYNTAX_PROTO3.
-   */
-  core.String syntax;
-
-  Type();
-
-  Type.fromJson(core.Map _json) {
-    if (_json.containsKey("fields")) {
-      fields = _json["fields"].map((value) => new Field.fromJson(value)).toList();
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("oneofs")) {
-      oneofs = _json["oneofs"];
-    }
-    if (_json.containsKey("options")) {
-      options = _json["options"].map((value) => new Option.fromJson(value)).toList();
-    }
-    if (_json.containsKey("sourceContext")) {
-      sourceContext = new SourceContext.fromJson(_json["sourceContext"]);
-    }
-    if (_json.containsKey("syntax")) {
-      syntax = _json["syntax"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (fields != null) {
-      _json["fields"] = fields.map((value) => (value).toJson()).toList();
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (oneofs != null) {
-      _json["oneofs"] = oneofs;
-    }
-    if (options != null) {
-      _json["options"] = options.map((value) => (value).toJson()).toList();
-    }
-    if (sourceContext != null) {
-      _json["sourceContext"] = (sourceContext).toJson();
-    }
-    if (syntax != null) {
-      _json["syntax"] = syntax;
     }
     return _json;
   }
@@ -2530,18 +2299,29 @@ class Version {
   /** Beta settings supplied to the application via metadata. */
   core.Map<core.String, core.String> betaSettings;
   /**
+   * Creation time of this version. This will be between the start and end times
+   * of the operation that creates this version. @OutputOnly
+   */
+  core.String creationTime;
+  /**
    * The length of time a static file served by a static file handler ought to
    * be cached by web proxies and browsers, if the handler does not specify its
    * own expiration. Only returned in `GET` requests if `view=FULL` is set. May
    * only be set on create requests; once created, is immutable.
    */
   core.String defaultExpiration;
+  /** The email address of the user who created this version. @OutputOnly */
+  core.String deployer;
   /**
    * Code and application artifacts that make up this version. Only returned in
    * `GET` requests if `view=FULL` is set. May only be set on create requests;
    * once created, is immutable.
    */
   Deployment deployment;
+  /**
+   * The App Engine execution environment to use for this version. Default: "1"
+   */
+  core.String env;
   /**
    * Environment variables made available to the application. Only returned in
    * `GET` requests if `view=FULL` is set. May only be set on create requests;
@@ -2568,7 +2348,12 @@ class Version {
    * immutable.
    */
   HealthCheck healthCheck;
-  /** The relative name/path of the Version within the module. Example: "v1" */
+  /**
+   * The relative name/path of the Version within the module. Example: "v1".
+   * Version specifiers can contain lowercase letters, digits, and hyphens. It
+   * cannot begin with the prefix `ah-` and the names `default` and `latest` are
+   * reserved and cannot be used.
+   */
   core.String id;
   /**
    * Before an application can receive email or XMPP messages, the application
@@ -2577,7 +2362,7 @@ class Version {
   core.List<core.String> inboundServices;
   /**
    * The frontend instance class to use to run this app. Valid values are `[F1,
-   * F2, F4, F4_1G]`.
+   * F2, F4, F4_1G]`. Default: "F1"
    */
   core.String instanceClass;
   /**
@@ -2610,9 +2395,22 @@ class Version {
   Resources resources;
   /** The desired runtime. Values can include python27, java7, go, etc. */
   core.String runtime;
+  /**
+   * The current serving status of this version. Only `SERVING` versions will
+   * have instances created or billed for. If this field is unset when a version
+   * is created, `SERVING` status will be assumed. It is an error to explicitly
+   * set this field to `SERVING_STATUS_UNSPECIFIED`.
+   * Possible string values are:
+   * - "SERVING_STATUS_UNSPECIFIED" : A SERVING_STATUS_UNSPECIFIED.
+   * - "SERVING" : A SERVING.
+   * - "STOPPED" : A STOPPED.
+   */
+  core.String servingStatus;
   /** If true, multiple requests can be dispatched to the app at once. */
   core.bool threadsafe;
-  /** Whether to deploy this app in a VM container. */
+  /**
+   * Whether to deploy this app in a VM container (deprecated, use "env":"2").
+   */
   core.bool vm;
 
   Version();
@@ -2630,11 +2428,20 @@ class Version {
     if (_json.containsKey("betaSettings")) {
       betaSettings = _json["betaSettings"];
     }
+    if (_json.containsKey("creationTime")) {
+      creationTime = _json["creationTime"];
+    }
     if (_json.containsKey("defaultExpiration")) {
       defaultExpiration = _json["defaultExpiration"];
     }
+    if (_json.containsKey("deployer")) {
+      deployer = _json["deployer"];
+    }
     if (_json.containsKey("deployment")) {
       deployment = new Deployment.fromJson(_json["deployment"]);
+    }
+    if (_json.containsKey("env")) {
+      env = _json["env"];
     }
     if (_json.containsKey("envVariables")) {
       envVariables = _json["envVariables"];
@@ -2678,6 +2485,9 @@ class Version {
     if (_json.containsKey("runtime")) {
       runtime = _json["runtime"];
     }
+    if (_json.containsKey("servingStatus")) {
+      servingStatus = _json["servingStatus"];
+    }
     if (_json.containsKey("threadsafe")) {
       threadsafe = _json["threadsafe"];
     }
@@ -2700,11 +2510,20 @@ class Version {
     if (betaSettings != null) {
       _json["betaSettings"] = betaSettings;
     }
+    if (creationTime != null) {
+      _json["creationTime"] = creationTime;
+    }
     if (defaultExpiration != null) {
       _json["defaultExpiration"] = defaultExpiration;
     }
+    if (deployer != null) {
+      _json["deployer"] = deployer;
+    }
     if (deployment != null) {
       _json["deployment"] = (deployment).toJson();
+    }
+    if (env != null) {
+      _json["env"] = env;
     }
     if (envVariables != null) {
       _json["envVariables"] = envVariables;
@@ -2747,6 +2566,9 @@ class Version {
     }
     if (runtime != null) {
       _json["runtime"] = runtime;
+    }
+    if (servingStatus != null) {
+      _json["servingStatus"] = servingStatus;
     }
     if (threadsafe != null) {
       _json["threadsafe"] = threadsafe;

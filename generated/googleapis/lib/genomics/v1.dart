@@ -2109,22 +2109,27 @@ class VariantsetsResourceApi {
 
 
 
-/** Associates members with roles. See below for allowed formats of members. */
+/** Associates `members` with a `role`. */
 class Binding {
   /**
-   * Format of member entries: 1. allUsers Matches any requesting principal
-   * (users, service accounts or anonymous). 2. allAuthenticatedUsers Matches
-   * any requesting authenticated principal (users or service accounts). 3.
-   * user:{emailid} A google user account using an email address. For example
-   * alice@gmail.com, joe@example.com 4. serviceAccount:{emailid} An service
-   * account email. 5. group:{emailid} A google group with an email address. For
-   * example auth-ti-cloud@google.com 6. domain:{domain} A Google Apps domain
-   * name. For example google.com, example.com
+   * Specifies the identities requesting access for a Cloud Platform resource.
+   * `members` can have the following formats: * `allUsers`: A special
+   * identifier that represents anyone who is on the internet; with or without a
+   * Google account. * `allAuthenticatedUsers`: A special identifier that
+   * represents anyone who is authenticated with a Google account or a service
+   * account. * `user:{emailid}`: An email address that represents a specific
+   * Google account. For example, `alice@gmail.com` or `joe@example.com`. *
+   * `serviceAccount:{emailid}`: An email address that represents a service
+   * account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+   * `group:{emailid}`: An email address that represents a Google group. For
+   * example, `admins@example.com`. * `domain:{domain}`: A Google Apps domain
+   * name that represents all the users of that domain. For example,
+   * `google.com` or `example.com`.
    */
   core.List<core.String> members;
   /**
-   * The name of the role to which the members should be bound. Examples:
-   * "roles/viewer", "roles/editor", "roles/owner". Required
+   * Role that is assigned to `members`. For example, `roles/viewer`,
+   * `roles/editor`, or `roles/owner`. Required
    */
   core.String role;
 
@@ -2299,136 +2304,6 @@ class CigarUnit {
   }
 }
 
-/** Write a Cloud Audit log */
-class CloudAuditOptions {
-
-  CloudAuditOptions();
-
-  CloudAuditOptions.fromJson(core.Map _json) {
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    return _json;
-  }
-}
-
-/** A condition to be met. */
-class Condition {
-  /**
-   * Trusted attributes supplied by the IAM system.
-   * Possible string values are:
-   * - "NO_ATTR" : A NO_ATTR.
-   * - "AUTHORITY" : A AUTHORITY.
-   * - "ATTRIBUTION" : A ATTRIBUTION.
-   */
-  core.String iam;
-  /**
-   * An operator to apply the subject with.
-   * Possible string values are:
-   * - "NO_OP" : A NO_OP.
-   * - "EQUALS" : A EQUALS.
-   * - "NOT_EQUALS" : A NOT_EQUALS.
-   * - "IN" : A IN.
-   * - "NOT_IN" : A NOT_IN.
-   * - "DISCHARGED" : A DISCHARGED.
-   */
-  core.String op;
-  /** Trusted attributes discharged by the service. */
-  core.String svc;
-  /**
-   * Trusted attributes supplied by any service that owns resources and uses the
-   * IAM system for access control.
-   * Possible string values are:
-   * - "NO_ATTR" : A NO_ATTR.
-   * - "REGION" : A REGION.
-   * - "SERVICE" : A SERVICE.
-   * - "NAME" : A NAME.
-   * - "IP" : A IP.
-   */
-  core.String sys;
-  /** The object of the condition. Exactly one of these must be set. */
-  core.String value;
-  /** The objects of the condition. This is mutually exclusive with 'value'. */
-  core.List<core.String> values;
-
-  Condition();
-
-  Condition.fromJson(core.Map _json) {
-    if (_json.containsKey("iam")) {
-      iam = _json["iam"];
-    }
-    if (_json.containsKey("op")) {
-      op = _json["op"];
-    }
-    if (_json.containsKey("svc")) {
-      svc = _json["svc"];
-    }
-    if (_json.containsKey("sys")) {
-      sys = _json["sys"];
-    }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
-    }
-    if (_json.containsKey("values")) {
-      values = _json["values"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (iam != null) {
-      _json["iam"] = iam;
-    }
-    if (op != null) {
-      _json["op"] = op;
-    }
-    if (svc != null) {
-      _json["svc"] = svc;
-    }
-    if (sys != null) {
-      _json["sys"] = sys;
-    }
-    if (value != null) {
-      _json["value"] = value;
-    }
-    if (values != null) {
-      _json["values"] = values;
-    }
-    return _json;
-  }
-}
-
-/** Options for counters */
-class CounterOptions {
-  /** The field value to attribute. */
-  core.String field;
-  /** The metric to update. */
-  core.String metric;
-
-  CounterOptions();
-
-  CounterOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = _json["field"];
-    }
-    if (_json.containsKey("metric")) {
-      metric = _json["metric"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (field != null) {
-      _json["field"] = field;
-    }
-    if (metric != null) {
-      _json["metric"] = metric;
-    }
-    return _json;
-  }
-}
-
 /**
  * A bucket over which read coverage has been precomputed. A bucket corresponds
  * to a specific range of the reference sequence.
@@ -2461,20 +2336,6 @@ class CoverageBucket {
     if (range != null) {
       _json["range"] = (range).toJson();
     }
-    return _json;
-  }
-}
-
-/** Write a Data Access (Gin) log */
-class DataAccessOptions {
-
-  DataAccessOptions();
-
-  DataAccessOptions.fromJson(core.Map _json) {
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
     return _json;
   }
 }
@@ -3121,64 +2982,14 @@ class ListOperationsResponse {
 }
 
 /**
- * Specifies what kind of log the caller must write Increment a streamz counter
- * with the specified metric and field names. Metric names should start with a
- * '/', generally be lowercase-only, and end in "_count". Field names should not
- * contain an initial slash. The actual exported metric names will have
- * "/iam/policy" prepended. Field names correspond to IAM request parameters and
- * field values are their respective values. At present only "iam_principal",
- * corresponding to IAMContext.principal, is supported. Examples: counter {
- * metric: "/debug_access_count" field: "iam_principal" } ==> increment counter
- * /iam/policy/backend_debug_access_count {iam_principal=[value of
- * IAMContext.principal]} At this time we do not support: * multiple field names
- * (though this may be supported in the future) * decrementing the counter *
- * incrementing it by anything other than 1
- */
-class LogConfig {
-  /** Cloud audit options. */
-  CloudAuditOptions cloudAudit;
-  /** Counter options. */
-  CounterOptions counter;
-  /** Data access options. */
-  DataAccessOptions dataAccess;
-
-  LogConfig();
-
-  LogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("cloudAudit")) {
-      cloudAudit = new CloudAuditOptions.fromJson(_json["cloudAudit"]);
-    }
-    if (_json.containsKey("counter")) {
-      counter = new CounterOptions.fromJson(_json["counter"]);
-    }
-    if (_json.containsKey("dataAccess")) {
-      dataAccess = new DataAccessOptions.fromJson(_json["dataAccess"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (cloudAudit != null) {
-      _json["cloudAudit"] = (cloudAudit).toJson();
-    }
-    if (counter != null) {
-      _json["counter"] = (counter).toJson();
-    }
-    if (dataAccess != null) {
-      _json["dataAccess"] = (dataAccess).toJson();
-    }
-    return _json;
-  }
-}
-
-/**
  * This resource represents a long-running operation that is the result of a
  * network API call.
  */
 class Operation {
   /**
    * If the value is `false`, it means the operation is still in progress. If
-   * true, the operation is completed and the `result` is available.
+   * true, the operation is completed, and either `error` or `response` is
+   * available.
    */
   core.bool done;
   /** The error result of the operation in case of failure. */
@@ -3332,25 +3143,23 @@ class OperationMetadata {
 }
 
 /**
- * # Overview The `Policy` defines an access control policy language. It is used
- * to define policies that are attached to resources like files, folders, VMs,
- * etc. # Policy structure A `Policy` consists of a list of bindings. A
- * `Binding` binds a set of members to a role, where the members include user
- * accounts, user groups, user domains, and service accounts. A 'role' is a
- * named set of permissions, defined by IAM. The definition of a role is outside
- * the policy. A permission check first determines the roles that include the
- * specified permission, and then determines if the principal specified is a
- * member of a binding to at least one of these roles. The membership check is
- * recursive when a group is bound to a role. Policy examples: ``` { "bindings":
- * [ { "role": "roles/owner", "members": [ "user:mike@example.com",
- * "group:admins@example.com", "domain:google.com",
- * "serviceAccount:frontend@example.iam.gserviceaccounts.com"] }, { "role":
- * "roles/viewer", "members": ["user:sean@example.com"] } ] } ```
+ * Defines an Identity and Access Management (IAM) policy. It is used to specify
+ * access control policies for Cloud Platform resources. A `Policy` consists of
+ * a list of `bindings`. A `Binding` binds a list of `members` to a `role`,
+ * where the members can be user accounts, Google groups, Google domains, and
+ * service accounts. A `role` is a named list of permissions defined by IAM.
+ * **Example** ``` { "bindings": [ { "role": "roles/owner", "members": [
+ * "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+ * "serviceAccount:my-other-app@appspot.gserviceaccount.com"] }, { "role":
+ * "roles/viewer", "members": ["user:sean@example.com"] } ] } ``` For a
+ * description of IAM and its features, see the [IAM developer's
+ * guide][https://cloud.google.com/iam].
  */
 class Policy {
   /**
-   * It is an error to specify multiple bindings for the same role. It is an
-   * error to specify a binding with no members.
+   * Associates a list of `members` to a `role`. Multiple `bindings` must not be
+   * specified for the same `role`. `bindings` with no members will result in an
+   * error.
    */
   core.List<Binding> bindings;
   /** Can be used to perform a read-modify-write. */
@@ -3362,11 +3171,7 @@ class Policy {
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-  core.List<Rule> rules;
-  /**
-   * The policy language version. The version of the policy is represented by
-   * the etag. The default version is 0.
-   */
+  /** Version of the `Policy`. The default version is 0. */
   core.int version;
 
   Policy();
@@ -3377,9 +3182,6 @@ class Policy {
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
-    }
-    if (_json.containsKey("rules")) {
-      rules = _json["rules"].map((value) => new Rule.fromJson(value)).toList();
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -3393,9 +3195,6 @@ class Policy {
     }
     if (etag != null) {
       _json["etag"] = etag;
-    }
-    if (rules != null) {
-      _json["rules"] = rules.map((value) => (value).toJson()).toList();
     }
     if (version != null) {
       _json["version"] = version;
@@ -4220,99 +4019,6 @@ class ReferenceSet {
   }
 }
 
-/** A rule to be applied in a Policy. */
-class Rule {
-  /**
-   * Required
-   * Possible string values are:
-   * - "NO_ACTION" : A NO_ACTION.
-   * - "ALLOW" : A ALLOW.
-   * - "ALLOW_WITH_LOG" : A ALLOW_WITH_LOG.
-   * - "DENY" : A DENY.
-   * - "DENY_WITH_LOG" : A DENY_WITH_LOG.
-   * - "LOG" : A LOG.
-   */
-  core.String action;
-  /** Additional restrictions that must be met */
-  core.List<Condition> conditions;
-  /** Human-readable description of the rule. */
-  core.String description;
-  /**
-   * The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in this set of
-   * entries.
-   */
-  core.List<core.String> in_;
-  /**
-   * The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-   * that match the LOG action.
-   */
-  core.List<LogConfig> logConfig;
-  /**
-   * The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is not in this set of
-   * entries. The formation for in and not_in entries is the same as members in
-   * a Binding above.
-   */
-  core.List<core.String> notIn;
-  /**
-   * A permission is a string of form '..' (e.g., 'storage.buckets.list'). A
-   * value of '*' matches all permissions, and a verb part of '*' (e.g.,
-   * 'storage.buckets.*') matches all verbs.
-   */
-  core.List<core.String> permissions;
-
-  Rule();
-
-  Rule.fromJson(core.Map _json) {
-    if (_json.containsKey("action")) {
-      action = _json["action"];
-    }
-    if (_json.containsKey("conditions")) {
-      conditions = _json["conditions"].map((value) => new Condition.fromJson(value)).toList();
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("in")) {
-      in_ = _json["in"];
-    }
-    if (_json.containsKey("logConfig")) {
-      logConfig = _json["logConfig"].map((value) => new LogConfig.fromJson(value)).toList();
-    }
-    if (_json.containsKey("notIn")) {
-      notIn = _json["notIn"];
-    }
-    if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (action != null) {
-      _json["action"] = action;
-    }
-    if (conditions != null) {
-      _json["conditions"] = conditions.map((value) => (value).toJson()).toList();
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (in_ != null) {
-      _json["in"] = in_;
-    }
-    if (logConfig != null) {
-      _json["logConfig"] = logConfig.map((value) => (value).toJson()).toList();
-    }
-    if (notIn != null) {
-      _json["notIn"] = notIn;
-    }
-    if (permissions != null) {
-      _json["permissions"] = permissions;
-    }
-    return _json;
-  }
-}
-
 /** The call set search request. */
 class SearchCallSetsRequest {
   /**
@@ -5061,9 +4767,9 @@ class SearchVariantsResponse {
 /** Request message for `SetIamPolicy` method. */
 class SetIamPolicyRequest {
   /**
-   * REQUIRED: The complete policy to be applied to the 'resource'. The size of
-   * the policy is limited to a few 10s of KB. An empty policy is in general a
-   * valid policy but certain services (like Projects) might reject them.
+   * REQUIRED: The complete policy to be applied to the `resource`. The size of
+   * the policy is limited to a few 10s of KB. An empty policy is a valid policy
+   * but certain Cloud Platform services (such as Projects) might reject them.
    */
   Policy policy;
 

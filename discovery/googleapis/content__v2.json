@@ -14,8 +14,8 @@
     "canonicalName": "Shopping Content",
     "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/shopping-content/v2/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/_ShH7PLsBs50VVcr4nTUh4lLrP0\"",
+    "documentationLink": "https://developers.google.com/shopping-content",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/KECVKrXPpZO8tdVw90R6MG2pveY\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1352,7 +1352,7 @@
                     ],
                     "parameters": {
                         "maxResults": {
-                            "description": "The maximum number of product statuses to return in the response, used for paging.",
+                            "description": "The maximum number of product statuses to return in the response, used for paging. The default value is 25 and the maximum allowed value is 250.\nKnown issue: Note that for the time being all List calls will return by default all orders without limit.",
                             "format": "uint32",
                             "location": "query",
                             "type": "integer"
@@ -1381,7 +1381,7 @@
             }
         }
     },
-    "revision": "20150810",
+    "revision": "20150831",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -3361,6 +3361,11 @@
                 },
                 "salePriceEffectiveDate": {
                     "description": "Date range during which the item is on sale (see product feed specifications).",
+                    "type": "string"
+                },
+                "sellOnGoogleQuantity": {
+                    "description": "The quantity of the product that is reserved for sell-on-google ads.",
+                    "format": "int64",
                     "type": "string"
                 },
                 "shipping": {

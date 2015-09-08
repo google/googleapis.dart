@@ -23,7 +23,7 @@
     "description": "The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ls6prcFEwNExLeKeNy_PY2Dokdc\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/0iKhDgqnp8fZJa4OTsWBmkkBreo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -472,11 +472,62 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/replicapool"
                     ]
+                },
+                "list": {
+                    "description": "Retrieves the list of Operation resources contained within the specified zone.",
+                    "httpMethod": "GET",
+                    "id": "replicapoolupdater.zoneOperations.list",
+                    "parameterOrder": [
+                        "project",
+                        "zone"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Optional. Filter expression for filtering listed resources.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "Optional. Maximum count of results to be returned. Maximum value is 500 and default value is 500.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Name of the project scoping this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "Name of the zone scoping this request.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/operations",
+                    "response": {
+                        "$ref": "OperationList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/replicapool"
+                    ]
                 }
             }
         }
     },
-    "revision": "20150722",
+    "revision": "20150904",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InstanceUpdate": {
@@ -607,7 +658,7 @@
                 },
                 "kind": {
                     "default": "replicapoolupdater#operation",
-                    "description": "[Output Only] Type of the resource. Always kind#operation for Operation resources.",
+                    "description": "[Output Only] Type of the resource. Always replicapoolupdater#operation for Operation resources.",
                     "type": "string"
                 },
                 "name": {
@@ -688,6 +739,37 @@
                 },
                 "zone": {
                     "description": "[Output Only] URL of the zone where the operation resides.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OperationList": {
+            "description": "Contains a list of Operation resources.",
+            "id": "OperationList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+                    "type": "string"
+                },
+                "items": {
+                    "description": "[Output Only] The Operation resources.",
+                    "items": {
+                        "$ref": "Operation"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "replicapoolupdater#operationList",
+                    "description": "[Output Only] Type of resource. Always replicapoolupdater#operations for Operations resource.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] A token used to continue a truncate.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 }
             },

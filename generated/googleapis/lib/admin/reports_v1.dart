@@ -55,7 +55,8 @@ class ActivitiesResourceApi {
    *
    * [applicationName] - Application name for which the events are to be
    * retrieved.
-   * Value must have pattern "(admin)|(calendar)|(drive)|(login)|(token)".
+   * Value must have pattern
+   * "(admin)|(calendar)|(drive)|(login)|(token)|(groups)".
    *
    * [actorIpAddress] - IP Address of host where the event was performed.
    * Supports both IPv4 and IPv6 addresses.
@@ -155,7 +156,8 @@ class ActivitiesResourceApi {
    *
    * [applicationName] - Application name for which the events are to be
    * retrieved.
-   * Value must have pattern "(admin)|(calendar)|(drive)|(login)|(token)".
+   * Value must have pattern
+   * "(admin)|(calendar)|(drive)|(login)|(token)|(groups)".
    *
    * [actorIpAddress] - IP Address of host where the event was performed.
    * Supports both IPv4 and IPv6 addresses.

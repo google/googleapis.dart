@@ -1,3 +1,14 @@
+## 0.18.0
+
+* [apis-breaking] appengine:v1beta4: schema changes
+* [apis-breaking] cloudresourcemanager:v1beta: method/schema changes
+* [apis-breaking] pubsub:v1beta2: method/schema changes
+* [apis-breaking] sqladmin:v1beta4: method/schema changes
+* [apis] dataflow:v1b3: schema changes
+* [apis] deploymentmanager:v2beta2: schema changes
+* [apis] replicapoolupdater:v1beta1: method/schema changes
+* [apis-new] proximitybeacon:v1beta1
+
 ## 0.17.0
 
 * [apis] dataflow:v1b3: added schemas/resources

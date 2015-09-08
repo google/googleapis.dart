@@ -69,7 +69,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/uQEY1lxUpBjGfWxd7mioMh_V8P8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/dRUDnKF5NFt4KhZoG25oexAneVY\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -2511,7 +2511,7 @@
             }
         }
     },
-    "revision": "20150720",
+    "revision": "20150902",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {

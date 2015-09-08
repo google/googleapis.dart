@@ -15,7 +15,7 @@
     "description": "Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android for Work users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/play/enterprise",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/iV3v-C_yUys3U_llqVYPlrZ-gmI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/G6EgYjNU-ojgndBQyBgS2Y6o-AY\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -696,6 +696,29 @@
                     "path": "enterprises",
                     "response": {
                         "$ref": "EnterprisesListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/androidenterprise"
+                    ]
+                },
+                "sendTestPushNotification": {
+                    "description": "Sends a test push notification to validate the MDM integration with the Google Cloud Pubsub service for this enterprise.",
+                    "httpMethod": "POST",
+                    "id": "androidenterprise.enterprises.sendTestPushNotification",
+                    "parameterOrder": [
+                        "enterpriseId"
+                    ],
+                    "parameters": {
+                        "enterpriseId": {
+                            "description": "The ID of the enterprise.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "enterprises/{enterpriseId}/sendTestPushNotification",
+                    "response": {
+                        "$ref": "EnterprisesSendTestPushNotificationResponse"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
@@ -1674,7 +1697,7 @@
             }
         }
     },
-    "revision": "20150729",
+    "revision": "20150902",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AppRestrictionsSchema": {
@@ -1867,7 +1890,7 @@
             "id": "CollectionsListResponse",
             "properties": {
                 "collection": {
-                    "description": "An ordered collection of products which can be made visible on the Google Play Store app to a selected group of users.",
+                    "description": "An ordered collection of products which can be made visible on the Google Play Store to a selected group of users.",
                     "items": {
                         "$ref": "Collection"
                     },
@@ -1995,6 +2018,20 @@
                 "kind": {
                     "default": "androidenterprise#enterprisesListResponse",
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#enterprisesListResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EnterprisesSendTestPushNotificationResponse": {
+            "id": "EnterprisesSendTestPushNotificationResponse",
+            "properties": {
+                "messageId": {
+                    "description": "The message ID of the test push notification that was sent.",
+                    "type": "string"
+                },
+                "topicName": {
+                    "description": "The name of the Cloud Pubsub topic to which notifications for this enterprise's enrolled account will be sent.",
                     "type": "string"
                 }
             },

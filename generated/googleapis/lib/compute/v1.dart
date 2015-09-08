@@ -14205,7 +14205,7 @@ class Instance {
   core.List<NetworkInterface> networkInterfaces;
   /** Scheduling options for this instance. */
   Scheduling scheduling;
-  /** [Output Only] Server-defined URL for this resource. */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
   /**
    * A list of service accounts, with their specified scopes, authorized for
@@ -14374,7 +14374,7 @@ class InstanceAggregatedList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server-defined URL for this resource. */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
   InstanceAggregatedList();
@@ -14684,14 +14684,9 @@ class InstanceGroupList {
 /**
  * InstanceGroupManagers
  *
- * Next available tag: 17
+ * Next available tag: 19
  */
 class InstanceGroupManager {
-  /**
-   * The autohealing policy for this managed instance group. You can specify
-   * only one value.
-   */
-  core.List<InstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
   /**
    * The base instance name to use for instances in this group. The value must
    * be 1-58 characters long. Instances are named by appending a hyphen and a
@@ -14767,9 +14762,6 @@ class InstanceGroupManager {
   InstanceGroupManager();
 
   InstanceGroupManager.fromJson(core.Map _json) {
-    if (_json.containsKey("autoHealingPolicies")) {
-      autoHealingPolicies = _json["autoHealingPolicies"].map((value) => new InstanceGroupManagerAutoHealingPolicy.fromJson(value)).toList();
-    }
     if (_json.containsKey("baseInstanceName")) {
       baseInstanceName = _json["baseInstanceName"];
     }
@@ -14816,9 +14808,6 @@ class InstanceGroupManager {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (autoHealingPolicies != null) {
-      _json["autoHealingPolicies"] = autoHealingPolicies.map((value) => (value).toJson()).toList();
-    }
     if (baseInstanceName != null) {
       _json["baseInstanceName"] = baseInstanceName;
     }
@@ -15020,44 +15009,6 @@ class InstanceGroupManagerAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
-    }
-    return _json;
-  }
-}
-
-class InstanceGroupManagerAutoHealingPolicy {
-  /**
-   * The action to perform when an instance becomes unhealthy. Possible values
-   * are RECREATE or RESTART. RECREATE replaces an unhealthy instance with a new
-   * instance that is based on the instance template for this managed instance
-   * group. RESTART performs a soft restart on an instance. If the instance
-   * cannot restart softly, the instance performs a hard restart.
-   * Possible string values are:
-   * - "RECREATE"
-   * - "RESTART"
-   */
-  core.String actionType;
-  /** The URL for the HealthCheck that signals autohealing. */
-  core.String healthCheck;
-
-  InstanceGroupManagerAutoHealingPolicy();
-
-  InstanceGroupManagerAutoHealingPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey("actionType")) {
-      actionType = _json["actionType"];
-    }
-    if (_json.containsKey("healthCheck")) {
-      healthCheck = _json["healthCheck"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (actionType != null) {
-      _json["actionType"] = actionType;
-    }
-    if (healthCheck != null) {
-      _json["healthCheck"] = healthCheck;
     }
     return _json;
   }
@@ -15718,7 +15669,7 @@ class InstanceList {
   core.String kind;
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
-  /** [Output Only] Server-defined URL for this resource. */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
   InstanceList();
@@ -16274,8 +16225,8 @@ class License {
   /** [Output Only] Type of resource. Always compute#license for licenses. */
   core.String kind;
   /**
-   * Name of the resource. The name must be 1-63 characters long, and comply
-   * with RFC1035.
+   * [Output Only] Name of the resource. The name is 1-63 characters long and
+   * complies with RFC1035.
    */
   core.String name;
   /** [Output Only] Server-defined URL for the resource. */
@@ -18649,18 +18600,22 @@ class RouteList {
 class Scheduling {
   /**
    * Specifies whether the instance should be automatically restarted if it is
-   * terminated by Compute Engine (not terminated by a user).
+   * terminated by Compute Engine (not terminated by a user). You can only set
+   * the automatic restart option for standard instances. Preemptible instances
+   * cannot be automatically restarted.
    */
   core.bool automaticRestart;
   /**
-   * Defines the maintenance behavior for this instance. The default behavior is
-   * MIGRATE. For more information, see Setting maintenance behavior.
+   * Defines the maintenance behavior for this instance. For standard instances,
+   * the default behavior is MIGRATE. For preemptible instances, the default and
+   * only possible behavior is TERMINATE. For more information, see Setting
+   * maintenance behavior.
    * Possible string values are:
    * - "MIGRATE"
    * - "TERMINATE"
    */
   core.String onHostMaintenance;
-  /** Whether the Instance is preemptible. */
+  /** Whether the instance is preemptible. */
   core.bool preemptible;
 
   Scheduling();
@@ -18701,7 +18656,7 @@ class SerialPortOutput {
    * serial port output.
    */
   core.String kind;
-  /** [Output Only] Server-defined URL for the resource. */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
   SerialPortOutput();

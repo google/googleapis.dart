@@ -859,8 +859,7 @@ class ModifyAckDeadlineRequest {
   core.String ackId;
   /**
    * List of acknowledgment IDs. Either this field or ack_id should be
-   * populated, not both. TODO(handrei): mark the above field deprecated once
-   * it's not used internally.
+   * populated, not both.
    */
   core.List<core.String> ackIds;
   /**

@@ -672,6 +672,40 @@ class ComputationTopology {
   }
 }
 
+/**
+ * A position that encapsulates an inner position and an index for the inner
+ * position. A ConcatPosition can be used by a reader of a source that
+ * encapsulates a set of other sources.
+ */
+class ConcatPosition {
+  /** Index of the inner source. */
+  core.int index;
+  /** Position within the inner source. */
+  Position position;
+
+  ConcatPosition();
+
+  ConcatPosition.fromJson(core.Map _json) {
+    if (_json.containsKey("index")) {
+      index = _json["index"];
+    }
+    if (_json.containsKey("position")) {
+      position = new Position.fromJson(_json["position"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (index != null) {
+      _json["index"] = index;
+    }
+    if (position != null) {
+      _json["position"] = (position).toJson();
+    }
+    return _json;
+  }
+}
+
 /** Identifies the location of a custom souce. */
 class CustomSourceLocation {
   /** Whether this source is stateful. */
@@ -1073,6 +1107,8 @@ class InstructionOutput {
   core.Map<core.String, core.Object> codec;
   /** The user-provided name of this output. */
   core.String name;
+  /** System-defined name of this output. Unique across the workflow. */
+  core.String systemName;
 
   InstructionOutput();
 
@@ -1083,6 +1119,9 @@ class InstructionOutput {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("systemName")) {
+      systemName = _json["systemName"];
+    }
   }
 
   core.Map toJson() {
@@ -1092,6 +1131,9 @@ class InstructionOutput {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (systemName != null) {
+      _json["systemName"] = systemName;
     }
     return _json;
   }
@@ -2226,6 +2268,8 @@ class PartialGroupByKeyInstruction {
 class Position {
   /** Position is a byte offset. */
   core.String byteOffset;
+  /** CloudPosition is a concat position. */
+  ConcatPosition concatPosition;
   /**
    * Position is past all other positions. Also useful for the end position of
    * an unbounded range.
@@ -2247,6 +2291,9 @@ class Position {
     if (_json.containsKey("byteOffset")) {
       byteOffset = _json["byteOffset"];
     }
+    if (_json.containsKey("concatPosition")) {
+      concatPosition = new ConcatPosition.fromJson(_json["concatPosition"]);
+    }
     if (_json.containsKey("end")) {
       end = _json["end"];
     }
@@ -2265,6 +2312,9 @@ class Position {
     var _json = new core.Map();
     if (byteOffset != null) {
       _json["byteOffset"] = byteOffset;
+    }
+    if (concatPosition != null) {
+      _json["concatPosition"] = (concatPosition).toJson();
     }
     if (end != null) {
       _json["end"] = end;

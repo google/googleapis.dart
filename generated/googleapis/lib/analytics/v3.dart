@@ -6755,8 +6755,8 @@ class Experiment {
    */
   core.String status;
   /**
-   * A floating-point number between 0 and 1. Specifies the fraction of the
-   * traffic that participates in the experiment. Can be changed for a running
+   * A floating-point number in (0, 1]. Specifies the fraction of the traffic
+   * that participates in the experiment. Can be changed for a running
    * experiment. This field may not be changed for an experiments whose status
    * is ENDED.
    */
@@ -6776,9 +6776,9 @@ class Experiment {
    */
   core.String webPropertyId;
   /**
-   * A floating-point number between 0 and 1. Specifies the necessary confidence
-   * level to choose a winner. This field may not be changed for an experiments
-   * whose status is ENDED.
+   * A floating-point number in (0, 1). Specifies the necessary confidence level
+   * to choose a winner. This field may not be changed for an experiments whose
+   * status is ENDED.
    */
   core.double winnerConfidenceLevel;
   /**
@@ -7584,11 +7584,9 @@ class FilterExpression {
   core.String kind;
   /**
    * Match type for this filter. Possible values are BEGINS_WITH, EQUAL,
-   * ENDS_WITH, CONTAINS, MATCHES. Include and Exclude filters can use any match
-   * type. Match type is not applicable to Upper case and Lower case filters.
-   * Search and Replace expressions in the Search and Replace filter and all
-   * filter expressions in the Advanced filter default to MATCHES. User should
-   * not set match type for those filters.
+   * ENDS_WITH, CONTAINS, or MATCHES. GEO_DOMAIN, GEO_IP_ADDRESS,
+   * PAGE_REQUEST_URI, or PAGE_HOSTNAME filters can use any match type; all
+   * other filters must use MATCHES.
    */
   core.String matchType;
 
@@ -9338,8 +9336,8 @@ class Profile {
   /** Time this view (profile) was created. */
   core.DateTime created;
   /**
-   * The currency type associated with this view (profile). The supported values
-   * are:
+   * The currency type associated with this view (profile), defaults to USD. The
+   * supported values are:
    * ARS, AUD, BGN, BRL, CAD, CHF, CNY, CZK, DKK, EUR, GBP, HKD, HUF, IDR, INR,
    * JPY, KRW, LTL, MXN, NOK, NZD, PHP, PLN, RUB, SEK, THB, TRY, TWD, USD, VND,
    * ZAR

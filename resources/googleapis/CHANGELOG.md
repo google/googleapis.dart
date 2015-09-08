@@ -1,3 +1,21 @@
+## 0.15.0
+
+* [apis-breaking] compute:v1: schema changes
+* [apis-breaking] genomics:v1: schema changes
+* [apis-breaking] pubsub:v1: method/schema changes
+* [apis-breaking] youtube:v3: method changes
+* [apis] adexchangebuyer:v1.3: schema changes
+* [apis] adexchangebuyer:v1.4: added method/schema
+* [apis] admin_reports:v1: schema changes
+* [apis] androidenterprise:v1: added method/schema
+* [apis] civicinfo:v2: schema changes
+* [apis] content:v2: schema changes
+* [apis] deploymentmanager:v2: schema changes
+* [apis] drive:v2: schema changes
+* [apis] identitytoolkit:v3: schema changes
+* [apis] partners:v2: schema/method changes
+* [apis] tagmanager:v1: schema changes
+
 ## 0.14.0
 
 * [apis-new] cloudbilling:v1

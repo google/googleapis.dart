@@ -4067,6 +4067,14 @@ class Tag {
   core.String scheduleStartMs;
   /** The list of setup tags. Currently we only allow one. */
   core.List<SetupTag> setupTag;
+  /**
+   * Option to fire this tag.
+   * Possible string values are:
+   * - "oncePerEvent"
+   * - "oncePerLoad"
+   * - "unlimited"
+   */
+  core.String tagFiringOption;
   /** The Tag ID uniquely identifies the GTM Tag. */
   core.String tagId;
   /** The list of teardown tags. Currently we only allow one. */
@@ -4124,6 +4132,9 @@ class Tag {
     }
     if (_json.containsKey("setupTag")) {
       setupTag = _json["setupTag"].map((value) => new SetupTag.fromJson(value)).toList();
+    }
+    if (_json.containsKey("tagFiringOption")) {
+      tagFiringOption = _json["tagFiringOption"];
     }
     if (_json.containsKey("tagId")) {
       tagId = _json["tagId"];
@@ -4185,6 +4196,9 @@ class Tag {
     }
     if (setupTag != null) {
       _json["setupTag"] = setupTag.map((value) => (value).toJson()).toList();
+    }
+    if (tagFiringOption != null) {
+      _json["tagFiringOption"] = tagFiringOption;
     }
     if (tagId != null) {
       _json["tagId"] = tagId;

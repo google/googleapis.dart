@@ -70,7 +70,7 @@ package.
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1beta4
 
-The App Engine Admin API enables developers to provision and manage their App Engine applications.
+The Google App Engine Admin API enables developers to provision and manage their App Engine applications.
 
 Official API documentation: https://developers.google.com/appengine/
 
@@ -139,6 +139,12 @@ Official API documentation: https://cloud.google.com/logging/docs/
 The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
 
 Official API documentation: https://developers.google.com/deployment-manager/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Proximity Beacon API - proximitybeacon v1beta1
+
+This API provides services to register, manage, index, and search beacons.
+
+Official API documentation: https://developers.google.com/beacons/proximity/
 
 #### ![Logo](https://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1beta1
 

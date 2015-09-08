@@ -30,7 +30,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/W5t9TOfEJ0i1qWNP9JX0Xv9x3ws\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/6OzqKvjjWBUG3GDeUDY3a5aInr4\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -781,12 +781,6 @@
                             "location": "query",
                             "required": true,
                             "type": "string"
-                        },
-                        "shareOnGooglePlus": {
-                            "default": "false",
-                            "description": "The shareOnGooglePlus parameter indicates whether the top-level comment and any replies that are made to that comment should also be posted to the author's Google+ profile.",
-                            "location": "query",
-                            "type": "boolean"
                         }
                     },
                     "path": "commentThreads",
@@ -3127,7 +3121,7 @@
             }
         }
     },
-    "revision": "20150727",
+    "revision": "20150810",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {

@@ -1,11 +1,11 @@
 {
-    "basePath": "",
+    "basePath": "/",
     "baseUrl": "https://partners.googleapis.com/",
     "batchPath": "batch",
     "description": "Lets advertisers search certified companies and create contact leads with them, and also audits the usage of clients.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/partners/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/3SoBVNZsU1tDlZ0YDtjED6JoyBk\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/xZsnzXoHMxo__HCG9-5q9Z9kx5M\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -135,6 +135,16 @@
                     "httpMethod": "GET",
                     "id": "partners.userStates.list",
                     "parameters": {
+                        "requestMetadata.userOverrides.ipAddress": {
+                            "description": "IP address to use instead of the user's geo-located IP address.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "requestMetadata.userOverrides.userId": {
+                            "description": "Logged-in user ID to impersonate instead of the user's ID.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "requestMetadata.locale": {
                             "description": "Locale to use for the current request.",
                             "location": "query",
@@ -149,6 +159,16 @@
                             "description": "Experiment IDs the current request belongs to.",
                             "location": "query",
                             "repeated": true,
+                            "type": "string"
+                        },
+                        "requestMetadata.trafficSource.trafficSourceId": {
+                            "description": "Identifier to indicate where the traffic comes from. An identifier has multiple letters created by a team which redirected the traffic to us.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "requestMetadata.trafficSource.trafficSubId": {
+                            "description": "Second level identifier to indicate where the traffic comes from. An identifier has multiple letters created by a team which redirected the traffic to us.",
+                            "location": "query",
                             "type": "string"
                         }
                     },
@@ -175,6 +195,16 @@
                             "required": true,
                             "type": "string"
                         },
+                        "requestMetadata.userOverrides.ipAddress": {
+                            "description": "IP address to use instead of the user's geo-located IP address.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "requestMetadata.userOverrides.userId": {
+                            "description": "Logged-in user ID to impersonate instead of the user's ID.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "requestMetadata.locale": {
                             "description": "Locale to use for the current request.",
                             "location": "query",
@@ -189,6 +219,16 @@
                             "description": "Experiment IDs the current request belongs to.",
                             "location": "query",
                             "repeated": true,
+                            "type": "string"
+                        },
+                        "requestMetadata.trafficSource.trafficSourceId": {
+                            "description": "Identifier to indicate where the traffic comes from. An identifier has multiple letters created by a team which redirected the traffic to us.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "requestMetadata.trafficSource.trafficSubId": {
+                            "description": "Second level identifier to indicate where the traffic comes from. An identifier has multiple letters created by a team which redirected the traffic to us.",
+                            "location": "query",
                             "type": "string"
                         },
                         "view": {
@@ -226,6 +266,16 @@
                     "httpMethod": "GET",
                     "id": "partners.companies.list",
                     "parameters": {
+                        "requestMetadata.userOverrides.ipAddress": {
+                            "description": "IP address to use instead of the user's geo-located IP address.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "requestMetadata.userOverrides.userId": {
+                            "description": "Logged-in user ID to impersonate instead of the user's ID.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "requestMetadata.locale": {
                             "description": "Locale to use for the current request.",
                             "location": "query",
@@ -240,6 +290,16 @@
                             "description": "Experiment IDs the current request belongs to.",
                             "location": "query",
                             "repeated": true,
+                            "type": "string"
+                        },
+                        "requestMetadata.trafficSource.trafficSourceId": {
+                            "description": "Identifier to indicate where the traffic comes from. An identifier has multiple letters created by a team which redirected the traffic to us.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "requestMetadata.trafficSource.trafficSubId": {
+                            "description": "Second level identifier to indicate where the traffic comes from. An identifier has multiple letters created by a team which redirected the traffic to us.",
+                            "location": "query",
                             "type": "string"
                         },
                         "pageSize": {
@@ -405,7 +465,7 @@
             }
         }
     },
-    "revision": "20150807",
+    "revision": "20150901",
     "rootUrl": "https://partners.googleapis.com/",
     "schemas": {
         "LogUserEventRequest": {
@@ -628,6 +688,10 @@
             "description": "Common data that is in each API request.",
             "id": "RequestMetadata",
             "properties": {
+                "userOverrides": {
+                    "$ref": "UserOverrides",
+                    "description": "Values to use instead of the user's respective defaults for the current request. These are only honored by whitelisted products."
+                },
                 "locale": {
                     "description": "Locale to use for the current request.",
                     "type": "string"
@@ -642,6 +706,40 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "trafficSource": {
+                    "$ref": "TrafficSource",
+                    "description": "Source of traffic for the current request."
+                }
+            },
+            "type": "object"
+        },
+        "UserOverrides": {
+            "description": "Values to use instead of the user's respective defaults. These are only honored by whitelisted products.",
+            "id": "UserOverrides",
+            "properties": {
+                "ipAddress": {
+                    "description": "IP address to use instead of the user's geo-located IP address.",
+                    "type": "string"
+                },
+                "userId": {
+                    "description": "Logged-in user ID to impersonate instead of the user's ID.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TrafficSource": {
+            "description": "Source of traffic for the current request.",
+            "id": "TrafficSource",
+            "properties": {
+                "trafficSourceId": {
+                    "description": "Identifier to indicate where the traffic comes from. An identifier has multiple letters created by a team which redirected the traffic to us.",
+                    "type": "string"
+                },
+                "trafficSubId": {
+                    "description": "Second level identifier to indicate where the traffic comes from. An identifier has multiple letters created by a team which redirected the traffic to us.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -816,6 +914,20 @@
         "DebugInfo": {
             "description": "Debug information about this request.",
             "id": "DebugInfo",
+            "properties": {
+                "serverInfo": {
+                    "description": "Info about the server that serviced this request.",
+                    "type": "string"
+                },
+                "serviceUrl": {
+                    "description": "URL of the service that handled this request.",
+                    "type": "string"
+                },
+                "serverTraceInfo": {
+                    "description": "Server-side debug stack trace.",
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "LogMessageRequest": {
@@ -1060,7 +1172,7 @@
             "type": "object"
         },
         "LatLng": {
-            "description": "An object representing a latitude/longitude pair. This is expressed as a pair of doubles representing degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.",
+            "description": "An object representing a latitude/longitude pair. This is expressed as a pair of doubles representing degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges. Example of normalization code in Python: def NormalizeLongitude(longitude): \"\"\"Wrapsdecimal degrees longitude to [-180.0, 180.0].\"\"\" q, r = divmod(longitude, 360.0) if r > 180.0 or (r == 180.0 and q <= -1.0): return r - 360.0 return r def NormalizeLatLng(latitude, longitude): \"\"\"Wraps decimal degrees latitude and longitude to [-180.0, 180.0] and [-90.0, 90.0], respectively.\"\"\" r = latitude % 360.0 if r = 270.0: return r - 360, NormalizeLongitude(longitude) else: return 180 - r, NormalizeLongitude(longitude + 180.0) assert 180.0 == NormalizeLongitude(180.0) assert -180.0 == NormalizeLongitude(-180.0) assert -179.0 == NormalizeLongitude(181.0) assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0) assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0) assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0) assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0) assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0) assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0) assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0) assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0) assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0) assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)",
             "id": "LatLng",
             "properties": {
                 "latitude": {

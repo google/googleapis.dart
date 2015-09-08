@@ -33,7 +33,7 @@
     "description": "API for accessing Tag Manager accounts and containers.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/tag-manager/api/v1/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/LbLzPv65qQp3dOE7QCbBe3EGElQ\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/N2n1iYnDyuh2rPS2JpjnBtCuGt0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1978,7 +1978,7 @@
             }
         }
     },
-    "revision": "20150730",
+    "revision": "20150831",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -2974,6 +2974,20 @@
                         "$ref": "SetupTag"
                     },
                     "type": "array"
+                },
+                "tagFiringOption": {
+                    "description": "Option to fire this tag.",
+                    "enum": [
+                        "oncePerEvent",
+                        "oncePerLoad",
+                        "unlimited"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 },
                 "tagId": {
                     "description": "The Tag ID uniquely identifies the GTM Tag.",

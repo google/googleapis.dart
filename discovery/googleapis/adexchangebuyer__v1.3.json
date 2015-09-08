@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/8nsIrKsc1vAa3qubc_DXk_Tozg4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/FAPpLW1Ujfy6AKjixZl25akuukg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20150720",
+    "revision": "20150822",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1013,6 +1013,13 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "impressionTrackingUrl": {
+                    "description": "The set of urls to be called to record an impression.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "kind": {
                     "default": "adexchangebuyer#creative",
                     "description": "Resource type.",
@@ -1053,6 +1060,11 @@
                         "type": "integer"
                     },
                     "type": "array"
+                },
+                "version": {
+                    "description": "The version for this creative. Read-only. This field should not be set in requests.",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "videoURL": {
                     "description": "The url to fetch a video ad. If set, HTMLSnippet should not be set.",

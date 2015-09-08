@@ -29,7 +29,7 @@
     "description": "View and manage your Google Analytics data",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/analytics/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/DBMpwoPoBbdea-3gvvfC6pL3VKM\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/tkvvUCeQm-DiyKpCr0Y-A0UaVuo\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/analytics-16.png",
         "x32": "https://www.google.com/images/icons/product/analytics-32.png"
@@ -3460,7 +3460,7 @@
             }
         }
     },
-    "revision": "20150417",
+    "revision": "20150814",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -4524,7 +4524,7 @@
                     "type": "string"
                 },
                 "trafficCoverage": {
-                    "description": "A floating-point number between 0 and 1. Specifies the fraction of the traffic that participates in the experiment. Can be changed for a running experiment. This field may not be changed for an experiments whose status is ENDED.",
+                    "description": "A floating-point number in (0, 1]. Specifies the fraction of the traffic that participates in the experiment. Can be changed for a running experiment. This field may not be changed for an experiments whose status is ENDED.",
                     "format": "double",
                     "type": "number"
                 },
@@ -4574,7 +4574,7 @@
                     "type": "string"
                 },
                 "winnerConfidenceLevel": {
-                    "description": "A floating-point number between 0 and 1. Specifies the necessary confidence level to choose a winner. This field may not be changed for an experiments whose status is ENDED.",
+                    "description": "A floating-point number in (0, 1). Specifies the necessary confidence level to choose a winner. This field may not be changed for an experiments whose status is ENDED.",
                     "format": "double",
                     "type": "number"
                 },
@@ -4857,7 +4857,7 @@
                     "type": "string"
                 },
                 "matchType": {
-                    "description": "Match type for this filter. Possible values are BEGINS_WITH, EQUAL, ENDS_WITH, CONTAINS, MATCHES. Include and Exclude filters can use any match type. Match type is not applicable to Upper case and Lower case filters. Search and Replace expressions in the Search and Replace filter and all filter expressions in the Advanced filter default to MATCHES. User should not set match type for those filters.",
+                    "description": "Match type for this filter. Possible values are BEGINS_WITH, EQUAL, ENDS_WITH, CONTAINS, or MATCHES. GEO_DOMAIN, GEO_IP_ADDRESS, PAGE_REQUEST_URI, or PAGE_HOSTNAME filters can use any match type; all other filters must use MATCHES.",
                     "type": "string"
                 }
             },
@@ -5635,7 +5635,7 @@
                     "type": "string"
                 },
                 "currency": {
-                    "description": "The currency type associated with this view (profile). The supported values are:\nARS, AUD, BGN, BRL, CAD, CHF, CNY, CZK, DKK, EUR, GBP, HKD, HUF, IDR, INR, JPY, KRW, LTL, MXN, NOK, NZD, PHP, PLN, RUB, SEK, THB, TRY, TWD, USD, VND, ZAR",
+                    "description": "The currency type associated with this view (profile), defaults to USD. The supported values are:\nARS, AUD, BGN, BRL, CAD, CHF, CNY, CZK, DKK, EUR, GBP, HKD, HUF, IDR, INR, JPY, KRW, LTL, MXN, NOK, NZD, PHP, PLN, RUB, SEK, THB, TRY, TWD, USD, VND, ZAR",
                     "type": "string"
                 },
                 "defaultPage": {

@@ -1321,10 +1321,6 @@ class CommentThreadsResourceApi {
    * will include. Set the parameter value to snippet. The snippet part has a
    * quota cost of 2 units.
    *
-   * [shareOnGooglePlus] - The shareOnGooglePlus parameter indicates whether the
-   * top-level comment and any replies that are made to that comment should also
-   * be posted to the author's Google+ profile.
-   *
    * Completes with a [CommentThread].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1333,7 +1329,7 @@ class CommentThreadsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<CommentThread> insert(CommentThread request, core.String part, {core.bool shareOnGooglePlus}) {
+  async.Future<CommentThread> insert(CommentThread request, core.String part) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1348,9 +1344,6 @@ class CommentThreadsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = [part];
-    if (shareOnGooglePlus != null) {
-      _queryParams["shareOnGooglePlus"] = ["${shareOnGooglePlus}"];
-    }
 
     _url = 'commentThreads';
 

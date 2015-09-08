@@ -2056,6 +2056,12 @@ class VerifyPasswordResponse {
    * by the federated ID.
    */
   core.String localId;
+  /** The OAuth2 access token. */
+  core.String oauthAccessToken;
+  /** The OAuth2 authorization code. */
+  core.String oauthAuthorizationCode;
+  /** The lifetime in seconds of the OAuth2 access token. */
+  core.int oauthExpireIn;
   /** The URI of the user's photo at IdP */
   core.String photoUrl;
   /** Whether the email is registered. */
@@ -2078,6 +2084,15 @@ class VerifyPasswordResponse {
     }
     if (_json.containsKey("localId")) {
       localId = _json["localId"];
+    }
+    if (_json.containsKey("oauthAccessToken")) {
+      oauthAccessToken = _json["oauthAccessToken"];
+    }
+    if (_json.containsKey("oauthAuthorizationCode")) {
+      oauthAuthorizationCode = _json["oauthAuthorizationCode"];
+    }
+    if (_json.containsKey("oauthExpireIn")) {
+      oauthExpireIn = _json["oauthExpireIn"];
     }
     if (_json.containsKey("photoUrl")) {
       photoUrl = _json["photoUrl"];
@@ -2103,6 +2118,15 @@ class VerifyPasswordResponse {
     }
     if (localId != null) {
       _json["localId"] = localId;
+    }
+    if (oauthAccessToken != null) {
+      _json["oauthAccessToken"] = oauthAccessToken;
+    }
+    if (oauthAuthorizationCode != null) {
+      _json["oauthAuthorizationCode"] = oauthAuthorizationCode;
+    }
+    if (oauthExpireIn != null) {
+      _json["oauthExpireIn"] = oauthExpireIn;
     }
     if (photoUrl != null) {
       _json["photoUrl"] = photoUrl;

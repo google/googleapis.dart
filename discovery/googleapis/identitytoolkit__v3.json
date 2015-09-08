@@ -6,7 +6,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/GjMYVSVyLqOyv-ANl0uM1bR0w3c\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/EhuUOPPlYPrmY4sLFYuHLiUXEXw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -206,7 +206,7 @@
             }
         }
     },
-    "revision": "20150710",
+    "revision": "20150902",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -980,6 +980,19 @@
                 "localId": {
                     "description": "The RP local ID if it's already been mapped to the IdP account identified by the federated ID.",
                     "type": "string"
+                },
+                "oauthAccessToken": {
+                    "description": "The OAuth2 access token.",
+                    "type": "string"
+                },
+                "oauthAuthorizationCode": {
+                    "description": "The OAuth2 authorization code.",
+                    "type": "string"
+                },
+                "oauthExpireIn": {
+                    "description": "The lifetime in seconds of the OAuth2 access token.",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "photoUrl": {
                     "description": "The URI of the user's photo at IdP",

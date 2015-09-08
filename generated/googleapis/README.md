@@ -222,7 +222,7 @@ Official API documentation: https://cloud.google.com/container-engine/
 
 Manage product items, inventory, and Merchant Center accounts for Google Shopping.
 
-Official API documentation: https://developers.google.com/shopping-content/v2/
+Official API documentation: https://developers.google.com/shopping-content
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Maps Coordinate API - coordinate v1
 

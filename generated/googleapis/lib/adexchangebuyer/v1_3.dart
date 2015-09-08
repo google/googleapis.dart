@@ -1542,6 +1542,8 @@ class Creative {
   CreativeFilteringReasons filteringReasons;
   /** Ad height. */
   core.int height;
+  /** The set of urls to be called to record an impression. */
+  core.List<core.String> impressionTrackingUrl;
   /** Resource type. */
   core.String kind;
   /**
@@ -1565,6 +1567,11 @@ class Creative {
   core.String status;
   /** All vendor types for the ads that may be shown from this snippet. */
   core.List<core.int> vendorType;
+  /**
+   * The version for this creative. Read-only. This field should not be set in
+   * requests.
+   */
+  core.int version;
   /** The url to fetch a video ad. If set, HTMLSnippet should not be set. */
   core.String videoURL;
   /** Ad width. */
@@ -1609,6 +1616,9 @@ class Creative {
     if (_json.containsKey("height")) {
       height = _json["height"];
     }
+    if (_json.containsKey("impressionTrackingUrl")) {
+      impressionTrackingUrl = _json["impressionTrackingUrl"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -1626,6 +1636,9 @@ class Creative {
     }
     if (_json.containsKey("vendorType")) {
       vendorType = _json["vendorType"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
     }
     if (_json.containsKey("videoURL")) {
       videoURL = _json["videoURL"];
@@ -1673,6 +1686,9 @@ class Creative {
     if (height != null) {
       _json["height"] = height;
     }
+    if (impressionTrackingUrl != null) {
+      _json["impressionTrackingUrl"] = impressionTrackingUrl;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1690,6 +1706,9 @@ class Creative {
     }
     if (vendorType != null) {
       _json["vendorType"] = vendorType;
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     if (videoURL != null) {
       _json["videoURL"] = videoURL;

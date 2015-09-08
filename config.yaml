@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.14.0
+    version: 0.15.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -84,7 +84,7 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.17.0
+    version: 0.18.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -103,6 +103,7 @@ packages:
     - genomics:v1beta2  # https://developers.google.com/genomics/
     - logging:v1beta3 # https://cloud.google.com/appengine/articles/logging
     - manager:v1beta2  # https://developers.google.com/deployment-manager/
+    - proximitybeacon:v1beta1  # https://developers.google.com/beacons/proximity/guides
     - pubsub:v1beta1  # https://developers.google.com/pubsub/ (Limited Preview)
     - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)
     - replicapool:v1beta2  # https://cloud.google.com/compute/docs/instance-groups/manager/
@@ -125,6 +126,7 @@ skipped_apis:
 - clouduseraccounts:alpha  # Leave out alpha versions for now
 - clouduseraccounts:vm_alpha  # Leave out alpha versions for now
 - computeaccounts:alpha  # Leave out alpha versions for now
+- content:v2sandbox # Leaving out sandboxed APIs
 - datastore:v1beta1  # v1beta2 included
 - dfareporting:v1  # v1.3 included
 - dfareporting:v1.1  # v1.3 included

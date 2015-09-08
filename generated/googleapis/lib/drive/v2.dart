@@ -624,6 +624,15 @@ class ChildrenResourceApi {
    *
    * [maxResults] - Maximum number of children to return.
    *
+   * [orderBy] - A comma-separated list of sort keys. Valid keys are
+   * 'createdDate', 'folder', 'lastViewedByMeDate', 'modifiedByMeDate',
+   * 'modifiedDate', 'quotaBytesUsed', 'recency', 'sharedWithMeDate', 'starred',
+   * and 'title'. Each key sorts ascending by default, but may be reversed with
+   * the 'desc' modifier. Example usage: ?orderBy=folder,modifiedDate
+   * desc,title. Please note that there is a current limitation for users with
+   * approximately one million files in which the requested sort order is
+   * ignored.
+   *
    * [pageToken] - Page token for children.
    *
    * [q] - Query string for searching children.
@@ -636,7 +645,7 @@ class ChildrenResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ChildList> list(core.String folderId, {core.int maxResults, core.String pageToken, core.String q}) {
+  async.Future<ChildList> list(core.String folderId, {core.int maxResults, core.String orderBy, core.String pageToken, core.String q}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -649,6 +658,9 @@ class ChildrenResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1389,6 +1401,15 @@ class FilesResourceApi {
    *
    * [maxResults] - Maximum number of files to return.
    *
+   * [orderBy] - A comma-separated list of sort keys. Valid keys are
+   * 'createdDate', 'folder', 'lastViewedByMeDate', 'modifiedByMeDate',
+   * 'modifiedDate', 'quotaBytesUsed', 'recency', 'sharedWithMeDate', 'starred',
+   * and 'title'. Each key sorts ascending by default, but may be reversed with
+   * the 'desc' modifier. Example usage: ?orderBy=folder,modifiedDate
+   * desc,title. Please note that there is a current limitation for users with
+   * approximately one million files in which the requested sort order is
+   * ignored.
+   *
    * [pageToken] - Page token for files.
    *
    * [projection] - This parameter is deprecated and has no function.
@@ -1409,7 +1430,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<FileList> list({core.String corpus, core.int maxResults, core.String pageToken, core.String projection, core.String q, core.String spaces}) {
+  async.Future<FileList> list({core.String corpus, core.int maxResults, core.String orderBy, core.String pageToken, core.String projection, core.String q, core.String spaces}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1422,6 +1443,9 @@ class FilesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1459,11 +1483,10 @@ class FilesResourceApi {
    *
    * [addParents] - Comma-separated list of parent IDs to add.
    *
-   * [convert] - Whether to convert this file to the corresponding Google Docs
-   * format.
+   * [convert] - This parameter is deprecated and has no function.
    *
-   * [modifiedDateBehavior] - How the modifiedDate field should be updated. This
-   * overrides setModifiedDate.
+   * [modifiedDateBehavior] - Determines the behavior in which modifiedDate is
+   * updated. This overrides setModifiedDate.
    * Possible string values are:
    * - "fromBody" : Set modifiedDate to the value provided in the body of the
    * request. No change if no value was provided.
@@ -1481,7 +1504,8 @@ class FilesResourceApi {
    * not set, a new blob is created as head revision, and previous unpinned
    * revisions are preserved for a short period of time. Pinned revisions are
    * stored indefinitely, using additional storage quota, up to a maximum of 200
-   * revisions.
+   * revisions. For details on how revisions are retained, see the Drive Help
+   * Center.
    *
    * [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
    *
@@ -1708,11 +1732,10 @@ class FilesResourceApi {
    *
    * [addParents] - Comma-separated list of parent IDs to add.
    *
-   * [convert] - Whether to convert this file to the corresponding Google Docs
-   * format.
+   * [convert] - This parameter is deprecated and has no function.
    *
-   * [modifiedDateBehavior] - How the modifiedDate field should be updated. This
-   * overrides setModifiedDate.
+   * [modifiedDateBehavior] - Determines the behavior in which modifiedDate is
+   * updated. This overrides setModifiedDate.
    * Possible string values are:
    * - "fromBody" : Set modifiedDate to the value provided in the body of the
    * request. No change if no value was provided.
@@ -1730,7 +1753,8 @@ class FilesResourceApi {
    * not set, a new blob is created as head revision, and previous unpinned
    * revisions are preserved for a short period of time. Pinned revisions are
    * stored indefinitely, using additional storage quota, up to a maximum of 200
-   * revisions.
+   * revisions. For details on how revisions are retained, see the Drive Help
+   * Center.
    *
    * [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
    *
@@ -5221,7 +5245,10 @@ class FileIndexableText {
 class FileLabels {
   /** Deprecated. */
   core.bool hidden;
-  /** Whether viewers are prevented from downloading this file. */
+  /**
+   * Whether viewers and commenters are prevented from downloading, printing,
+   * and copying this file.
+   */
   core.bool restricted;
   /** Whether this file is starred by the user. */
   core.bool starred;

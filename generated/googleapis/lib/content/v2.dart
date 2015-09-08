@@ -2041,7 +2041,10 @@ class ProductstatusesResourceApi {
    * [merchantId] - The ID of the managing account.
    *
    * [maxResults] - The maximum number of product statuses to return in the
-   * response, used for paging.
+   * response, used for paging. The default value is 25 and the maximum allowed
+   * value is 250.
+   * Known issue: Note that for the time being all List calls will return by
+   * default all orders without limit.
    *
    * [pageToken] - The token returned by the previous request.
    *
@@ -5374,6 +5377,8 @@ class Product {
    * specifications).
    */
   core.String salePriceEffectiveDate;
+  /** The quantity of the product that is reserved for sell-on-google ads. */
+  core.String sellOnGoogleQuantity;
   /** Shipping rules. */
   core.List<ProductShipping> shipping;
   /** Height of the item for shipping. */
@@ -5571,6 +5576,9 @@ class Product {
     }
     if (_json.containsKey("salePriceEffectiveDate")) {
       salePriceEffectiveDate = _json["salePriceEffectiveDate"];
+    }
+    if (_json.containsKey("sellOnGoogleQuantity")) {
+      sellOnGoogleQuantity = _json["sellOnGoogleQuantity"];
     }
     if (_json.containsKey("shipping")) {
       shipping = _json["shipping"].map((value) => new ProductShipping.fromJson(value)).toList();
@@ -5782,6 +5790,9 @@ class Product {
     }
     if (salePriceEffectiveDate != null) {
       _json["salePriceEffectiveDate"] = salePriceEffectiveDate;
+    }
+    if (sellOnGoogleQuantity != null) {
+      _json["sellOnGoogleQuantity"] = sellOnGoogleQuantity;
     }
     if (shipping != null) {
       _json["shipping"] = shipping.map((value) => (value).toJson()).toList();

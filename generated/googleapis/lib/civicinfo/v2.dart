@@ -675,9 +675,9 @@ class Contest {
    */
   core.List<core.String> referendumBallotResponses;
   /**
-   * Specifies a short summary of the referendum that is on the ballot below the
-   * title but above the text. This field is only populated for contests of type
-   * 'Referendum'.
+   * Specifies a short summary of the referendum that is typically on the ballot
+   * below the title but above the text. This field is only populated for
+   * contests of type 'Referendum'.
    */
   core.String referendumBrief;
   /**
@@ -984,6 +984,14 @@ class Election {
   core.String id;
   /** A displayable name for the election. */
   core.String name;
+  /**
+   * The political division of the election. Represented as an OCD Division ID.
+   * Voters within these political jurisdictions are covered by this election.
+   * This is typically a state such as ocd-division/country:us/state:ca or for
+   * the midterms or general election the entire US (i.e.
+   * ocd-division/country:us).
+   */
+  core.String ocdDivisionId;
 
   Election();
 
@@ -997,6 +1005,9 @@ class Election {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("ocdDivisionId")) {
+      ocdDivisionId = _json["ocdDivisionId"];
+    }
   }
 
   core.Map toJson() {
@@ -1009,6 +1020,9 @@ class Election {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (ocdDivisionId != null) {
+      _json["ocdDivisionId"] = ocdDivisionId;
     }
     return _json;
   }

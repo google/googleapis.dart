@@ -11,13 +11,13 @@
             }
         }
     },
-    "basePath": "",
+    "basePath": "/",
     "baseUrl": "https://dataflow.googleapis.com/",
     "batchPath": "batch",
     "description": "Google Dataflow API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataflow",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/tjir0NSBUJPbjWGXQgblQTQtnAA\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/5KuD_AhxWtT--XElMYogfy5V-SU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -458,7 +458,7 @@
             }
         }
     },
-    "revision": "20150303",
+    "revision": "20150401",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
         "Job": {
@@ -1250,6 +1250,26 @@
                 "shufflePosition": {
                     "description": "CloudPosition is a base64 encoded BatchShufflePosition (with FIXED sharding).",
                     "type": "string"
+                },
+                "concatPosition": {
+                    "$ref": "ConcatPosition",
+                    "description": "CloudPosition is a concat position."
+                }
+            },
+            "type": "object"
+        },
+        "ConcatPosition": {
+            "description": "A position that encapsulates an inner position and an index for the inner position. A ConcatPosition can be used by a reader of a source that encapsulates a set of other sources.",
+            "id": "ConcatPosition",
+            "properties": {
+                "index": {
+                    "description": "Index of the inner source.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "position": {
+                    "$ref": "Position",
+                    "description": "Position within the inner source."
                 }
             },
             "type": "object"
@@ -1869,6 +1889,10 @@
             "properties": {
                 "name": {
                     "description": "The user-provided name of this output.",
+                    "type": "string"
+                },
+                "systemName": {
+                    "description": "System-defined name of this output. Unique across the workflow.",
                     "type": "string"
                 },
                 "codec": {

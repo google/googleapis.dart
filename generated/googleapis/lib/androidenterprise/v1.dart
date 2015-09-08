@@ -1020,6 +1020,46 @@ class EnterprisesResourceApi {
   }
 
   /**
+   * Sends a test push notification to validate the MDM integration with the
+   * Google Cloud Pubsub service for this enterprise.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * Completes with a [EnterprisesSendTestPushNotificationResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<EnterprisesSendTestPushNotificationResponse> sendTestPushNotification(core.String enterpriseId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/sendTestPushNotification';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new EnterprisesSendTestPushNotificationResponse.fromJson(data));
+  }
+
+  /**
    * Set the account that will be used to authenticate to the API as the
    * enterprise.
    *
@@ -2848,7 +2888,7 @@ class CollectionViewersListResponse {
 class CollectionsListResponse {
   /**
    * An ordered collection of products which can be made visible on the Google
-   * Play Store app to a selected group of users.
+   * Play Store to a selected group of users.
    */
   core.List<Collection> collection;
   /**
@@ -3152,6 +3192,38 @@ class EnterprisesListResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class EnterprisesSendTestPushNotificationResponse {
+  /** The message ID of the test push notification that was sent. */
+  core.String messageId;
+  /**
+   * The name of the Cloud Pubsub topic to which notifications for this
+   * enterprise's enrolled account will be sent.
+   */
+  core.String topicName;
+
+  EnterprisesSendTestPushNotificationResponse();
+
+  EnterprisesSendTestPushNotificationResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("messageId")) {
+      messageId = _json["messageId"];
+    }
+    if (_json.containsKey("topicName")) {
+      topicName = _json["topicName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (messageId != null) {
+      _json["messageId"] = messageId;
+    }
+    if (topicName != null) {
+      _json["topicName"] = topicName;
     }
     return _json;
   }
