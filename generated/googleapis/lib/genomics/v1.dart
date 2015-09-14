@@ -1701,13 +1701,17 @@ class VariantsResourceApi {
 
   /**
    * Creates variant data by asynchronously importing the provided information.
-   * The variants for import will be merged with any existing data and each
-   * other according to the behavior of mergeVariants. In particular, this means
-   * for merged VCF variants that have conflicting INFO fields, some data will
-   * be arbitrarily discarded. As a special case, for single-sample VCF files,
-   * QUAL and FILTER fields will be moved to the call level; these are sometimes
-   * interpreted in a call-specific context. Imported VCF headers are appended
-   * to the metadata already in a variant set.
+   * The variants for import will be merged with any existing variant that
+   * matches its reference sequence, start, end, reference bases, and
+   * alternative bases. If no such variant exists, a new one will be created.
+   * When variants are merged, the call information from the new variant is
+   * added to the existing variant, and other fields (such as key/value pairs)
+   * are discarded. In particular, this means for merged VCF variants that have
+   * conflicting INFO fields, some data will be arbitrarily discarded. As a
+   * special case, for single-sample VCF files, QUAL and FILTER fields will be
+   * moved to the call level; these are sometimes interpreted in a call-specific
+   * context. Imported VCF headers are appended to the metadata already in a
+   * variant set.
    *
    * [request] - The metadata request object.
    *
@@ -3148,12 +3152,12 @@ class OperationMetadata {
  * a list of `bindings`. A `Binding` binds a list of `members` to a `role`,
  * where the members can be user accounts, Google groups, Google domains, and
  * service accounts. A `role` is a named list of permissions defined by IAM.
- * **Example** ``` { "bindings": [ { "role": "roles/owner", "members": [
+ * **Example** { "bindings": [ { "role": "roles/owner", "members": [
  * "user:mike@example.com", "group:admins@example.com", "domain:google.com",
  * "serviceAccount:my-other-app@appspot.gserviceaccount.com"] }, { "role":
- * "roles/viewer", "members": ["user:sean@example.com"] } ] } ``` For a
- * description of IAM and its features, see the [IAM developer's
- * guide][https://cloud.google.com/iam].
+ * "roles/viewer", "members": ["user:sean@example.com"] } ] } For a description
+ * of IAM and its features, see the [IAM developer's
+ * guide](https://cloud.google.com/iam).
  */
 class Policy {
   /**

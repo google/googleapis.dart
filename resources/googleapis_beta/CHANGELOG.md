@@ -1,3 +1,8 @@
+## 0.19.0
+
+* [apis-breaking] logging:v1beta3: method/schema removals
+* [apis] cloudresourcemanager:v1beta: method/schema changes
+
 ## 0.18.0
 
 * [apis-breaking] appengine:v1beta4: schema changes

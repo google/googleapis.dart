@@ -190,7 +190,7 @@ Official API documentation:
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Billing API - cloudbilling v1
 
-
+Retrieves Google Developers Console billing accounts and associates them with projects.
 
 Official API documentation: https://cloud.google.com/billing/
 
@@ -219,6 +219,12 @@ The Google Container Engine API is used for building and managing container base
 Official API documentation: https://cloud.google.com/container-engine/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Content API for Shopping - content v2
+
+Manage product items, inventory, and Merchant Center accounts for Google Shopping.
+
+Official API documentation: https://developers.google.com/shopping-content
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Content API for Shopping - content v2sandbox
 
 Manage product items, inventory, and Merchant Center accounts for Google Shopping.
 
@@ -447,6 +453,12 @@ Lets you find the least expensive flights between an origin and a destination.
 Official API documentation: http://developers.google.com/qpx-express
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Enterprise Apps Reseller API - reseller v1
+
+Lets you create and manage your customers and their subscriptions.
+
+Official API documentation: https://developers.google.com/google-apps/reseller/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Enterprise Apps Reseller API - reseller v1sandbox
 
 Lets you create and manage your customers and their subscriptions.
 

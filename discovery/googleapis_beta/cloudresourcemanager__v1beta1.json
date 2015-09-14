@@ -14,7 +14,7 @@
     "description": "The Google Cloud Resource Manager API provides methods for creating, reading, and updating of project metadata.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/resource-manager",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Aq466s9sdTI1sXVUXMT64euWFm0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/YIS10F0R5FiTmx2jJKQHlRv-GwY\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -256,7 +256,7 @@
                     ],
                     "parameters": {
                         "resource": {
-                            "description": "REQUIRED: The resource for which policy is being requested. Resource is usually specified as a path, such as, projects/{project}.",
+                            "description": "REQUIRED: The resource for which policy is being requested. Resource is usually specified as a path, such as, `projects/{project}`.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -282,7 +282,7 @@
                     ],
                     "parameters": {
                         "resource": {
-                            "description": "REQUIRED: The resource for which policy is being specified. Resource is usually specified as a path, such as, projects/{project}/zones/{zone}/disks/{disk}.",
+                            "description": "REQUIRED: The resource for which policy is being specified. `resource` is usually specified as a path, such as, `projects/{project}/zones/{zone}/disks/{disk}`.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -308,7 +308,7 @@
                     ],
                     "parameters": {
                         "resource": {
-                            "description": "REQUIRED: The resource for which policy detail is being requested. Resource is usually specified as a path, such as, projects/{project}.",
+                            "description": "REQUIRED: The resource for which policy detail is being requested. `resource` is usually specified as a path, such as, `projects/{project}`.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -326,9 +326,170 @@
                     ]
                 }
             }
+        },
+        "organizations": {
+            "methods": {
+                "list": {
+                    "description": "Query Organization resources.",
+                    "httpMethod": "GET",
+                    "id": "cloudresourcemanager.organizations.list",
+                    "parameters": {
+                        "pageSize": {
+                            "description": "The maximum number of Organizations to return in the response. This field is optional.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "A pagination token returned from a previous call to ListOrganizations that indicates from where listing should continue. This field is optional.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "filter": {
+                            "description": "An optional query string used to filter the Organizations to be return in the response. Filter rules are case-insensitive. Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the domain is a Google for Work domain, for example: |Filter|Description| |------|-----------| |owner.directorycustomerid:123456789|Organizations with `owner.directory_customer_id` equal to `123456789`.| |domain:google.com|Organizations corresponding to the domain `google.com`.| This field is optional.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/organizations",
+                    "response": {
+                        "$ref": "ListOrganizationsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "get": {
+                    "description": "Fetches an Organization resource by id.",
+                    "httpMethod": "GET",
+                    "id": "cloudresourcemanager.organizations.get",
+                    "parameterOrder": [
+                        "organizationId"
+                    ],
+                    "parameters": {
+                        "organizationId": {
+                            "description": "The id of the Organization resource to fetch.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/organizations/{organizationId}",
+                    "response": {
+                        "$ref": "Organization"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "update": {
+                    "description": "Updates an Organization resource.",
+                    "httpMethod": "PUT",
+                    "id": "cloudresourcemanager.organizations.update",
+                    "parameterOrder": [
+                        "organizationId"
+                    ],
+                    "parameters": {
+                        "organizationId": {
+                            "description": "An immutable id for the Organization that is assigned on creation. This should be omitted when creating a new Organization. This field is read-only.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/organizations/{organizationId}",
+                    "request": {
+                        "$ref": "Organization"
+                    },
+                    "response": {
+                        "$ref": "Organization"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "setIamPolicy": {
+                    "description": "Sets the access control policy on a Organization resource. Replaces any existing policy.",
+                    "httpMethod": "POST",
+                    "id": "cloudresourcemanager.organizations.setIamPolicy",
+                    "parameterOrder": [
+                        "resource"
+                    ],
+                    "parameters": {
+                        "resource": {
+                            "description": "REQUIRED: The resource for which policy is being specified. `resource` is usually specified as a path, such as, `projects/{project}/zones/{zone}/disks/{disk}`.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/organizations/{resource}:setIamPolicy",
+                    "request": {
+                        "$ref": "SetIamPolicyRequest"
+                    },
+                    "response": {
+                        "$ref": "Policy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "getIamPolicy": {
+                    "description": "Gets the access control policy for a Organization resource. May be empty if no such policy or resource exists.",
+                    "httpMethod": "POST",
+                    "id": "cloudresourcemanager.organizations.getIamPolicy",
+                    "parameterOrder": [
+                        "resource"
+                    ],
+                    "parameters": {
+                        "resource": {
+                            "description": "REQUIRED: The resource for which policy is being requested. Resource is usually specified as a path, such as, `projects/{project}`.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/organizations/{resource}:getIamPolicy",
+                    "request": {
+                        "$ref": "GetIamPolicyRequest"
+                    },
+                    "response": {
+                        "$ref": "Policy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "testIamPermissions": {
+                    "description": "Returns permissions that a caller has on the specified Organization.",
+                    "httpMethod": "POST",
+                    "id": "cloudresourcemanager.organizations.testIamPermissions",
+                    "parameterOrder": [
+                        "resource"
+                    ],
+                    "parameters": {
+                        "resource": {
+                            "description": "REQUIRED: The resource for which policy detail is being requested. `resource` is usually specified as a path, such as, `projects/{project}`.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/organizations/{resource}:testIamPermissions",
+                    "request": {
+                        "$ref": "TestIamPermissionsRequest"
+                    },
+                    "response": {
+                        "$ref": "TestIamPermissionsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                }
+            }
         }
     },
-    "revision": "20150818",
+    "revision": "20150909",
     "rootUrl": "https://cloudresourcemanager.googleapis.com/",
     "schemas": {
         "Project": {
@@ -355,7 +516,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The user-assigned name of the project. This field is optional and can remain unset. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: My Project Read-write.",
+                    "description": "The user-assigned name of the project. It must be 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: My Project Read-write.",
                     "type": "string"
                 },
                 "createTime": {
@@ -368,6 +529,25 @@
                     },
                     "description": "The labels associated with this project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: \\[a-z\\](\\[-a-z0-9\\]*\\[a-z0-9\\])?. Label values must be between 0 and 63 characters long and must conform to the regular expression (\\[a-z\\](\\[-a-z0-9\\]*\\[a-z0-9\\])?)?. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: \"environment\" : \"dev\" Read-write.",
                     "type": "object"
+                },
+                "parent": {
+                    "$ref": "ResourceId",
+                    "description": "An optional reference to a parent Resource. The only supported parent type is \"organization\". Once set, the parent cannot be modified. Read-write."
+                }
+            },
+            "type": "object"
+        },
+        "ResourceId": {
+            "description": "A container to reference an id for any resource type. A 'resource' in Google Cloud Platform is a generic term for something you (a developer) may want to interact with through one of our API's. Some examples are an AppEngine app, a Compute Engine instance, Cloud SQL database, ...",
+            "id": "ResourceId",
+            "properties": {
+                "type": {
+                    "description": "Required field representing the resource type this id is for. At present, the only valid type is \"organization\".",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Required field for the type-specific id. This should correspond to the id used in the type-specific API's.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -401,16 +581,16 @@
             "type": "object"
         },
         "Policy": {
-            "description": "# Overview The `Policy` defines an access control policy language. It is used to define policies that are attached to resources like files, folders, VMs, etc. # Policy structure A `Policy` consists of a list of bindings. A `Binding` binds a set of members to a role, where the members include user accounts, user groups, user domains, and service accounts. A 'role' is a named set of permissions, defined by IAM. The definition of a role is outside the policy. A permission check first determines the roles that include the specified permission, and then determines if the principal specified is a member of a binding to at least one of these roles. The membership check is recursive when a group is bound to a role. Policy examples: ``` { \"bindings\": [ { \"role\": \"roles/owner\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:frontend@example.iam.gserviceaccounts.com\"] }, { \"role\": \"roles/viewer\", \"members\": [\"user:sean@example.com\"] } ] } ```",
+            "description": "Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies for Cloud Platform resources. A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of permissions defined by IAM. **Example** ``` { \"bindings\": [ { \"role\": \"roles/owner\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"] }, { \"role\": \"roles/viewer\", \"members\": [\"user:sean@example.com\"] } ] } ``` For a description of IAM and its features, see the [IAM developer's guide][https://cloud.google.com/iam].",
             "id": "Policy",
             "properties": {
                 "version": {
-                    "description": "The policy language version. The version of the policy is represented by the etag. The default version is 0.",
+                    "description": "Version of the `Policy`. The default version is 0.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "bindings": {
-                    "description": "It is an error to specify multiple bindings for the same role. It is an error to specify a binding with no members.",
+                    "description": "Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same `role`. `bindings` with no members will result in an error.",
                     "items": {
                         "$ref": "Binding"
                     },
@@ -425,15 +605,15 @@
             "type": "object"
         },
         "Binding": {
-            "description": "Associates members with roles. See below for allowed formats of members.",
+            "description": "Associates `members` with a `role`.",
             "id": "Binding",
             "properties": {
                 "role": {
-                    "description": "The name of the role to which the members should be bound. Examples: \"roles/viewer\", \"roles/editor\", \"roles/owner\". Required",
+                    "description": "Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. Required",
                     "type": "string"
                 },
                 "members": {
-                    "description": "Format of member entries: 1. allUsers Matches any requesting principal (users, service accounts or anonymous). 2. allAuthenticatedUsers Matches any requesting authenticated principal (users or service accounts). 3. user:{emailid} A google user account using an email address. For example alice@gmail.com, joe@example.com 4. serviceAccount:{emailid} An service account email. 5. group:{emailid} A google group with an email address. For example auth-ti-cloud@google.com 6. domain:{domain} A Google Apps domain name. For example google.com, example.com",
+                    "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following formats: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@gmail.com` or `joe@example.com`. * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example, `google.com` or `example.com`.",
                     "items": {
                         "type": "string"
                     },
@@ -448,7 +628,7 @@
             "properties": {
                 "policy": {
                     "$ref": "Policy",
-                    "description": "REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them."
+                    "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
                 }
             },
             "type": "object"
@@ -458,7 +638,7 @@
             "id": "TestIamPermissionsRequest",
             "properties": {
                 "permissions": {
-                    "description": "The set of permissions to check for the 'resource'. Permissions with wildcards (such as '*' or 'storage.*') are not allowed.",
+                    "description": "The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*') are not allowed.",
                     "items": {
                         "type": "string"
                     },
@@ -477,6 +657,54 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListOrganizationsResponse": {
+            "description": "The response returned from the ListOrganizations method.",
+            "id": "ListOrganizationsResponse",
+            "properties": {
+                "organizations": {
+                    "description": "The list of Organizations that matched the list query, possibly paginated.",
+                    "items": {
+                        "$ref": "Organization"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A pagination token to be used to retrieve the next page of results. If the result is too large to fit within the page size specified in the request, this field will be set with a token that can be used to fetch the next page of results. If this field is empty, it indicates that this response contains the last page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Organization": {
+            "description": "The root node in the resource hierarchy to which a particular entity's (e.g., company) resources belong.",
+            "id": "Organization",
+            "properties": {
+                "organizationId": {
+                    "description": "An immutable id for the Organization that is assigned on creation. This should be omitted when creating a new Organization. This field is read-only.",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "A friendly string to be used to refer to the Organization in the UI. This field is required.",
+                    "type": "string"
+                },
+                "owner": {
+                    "$ref": "OrganizationOwner",
+                    "description": "The owner of this Organization. The owner should be specified upon creation. Once set, it cannot be changed. This field is required."
+                }
+            },
+            "type": "object"
+        },
+        "OrganizationOwner": {
+            "description": "The entity that owns an Organization. The lifetime of the Organization and all of its descendants are bound to the OrganizationOwner. If the OrganizationOwner is deleted, the Organization and all its descendants will be deleted.",
+            "id": "OrganizationOwner",
+            "properties": {
+                "directoryCustomerId": {
+                    "description": "The Google for Work customer id used in the Directory API.",
+                    "type": "string"
                 }
             },
             "type": "object"

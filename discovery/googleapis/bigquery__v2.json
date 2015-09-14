@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Z4Mq-N2hxzXoiWGo0RMQpmYYkZE\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/IBi6HWoZ_l-OZDPndh--eK34OWU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -933,7 +933,7 @@
             }
         }
     },
-    "revision": "20150828",
+    "revision": "20150905",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CsvOptions": {
@@ -1700,12 +1700,22 @@
         "JobStatistics2": {
             "id": "JobStatistics2",
             "properties": {
+                "billingTier": {
+                    "description": "[Output-only] Billing tier for the job.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "cacheHit": {
                     "description": "[Output-only] Whether the query result was fetched from the query cache.",
                     "type": "boolean"
                 },
+                "totalBytesBilled": {
+                    "description": "[Output-only] Total bytes billed for the job.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "totalBytesProcessed": {
-                    "description": "[Output-only] Total bytes processed for this job.",
+                    "description": "[Output-only] Total bytes processed for the job.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -1716,7 +1726,7 @@
             "id": "JobStatistics3",
             "properties": {
                 "inputFileBytes": {
-                    "description": "[Output-only] Number of bytes of source data in a joad job.",
+                    "description": "[Output-only] Number of bytes of source data in a load job.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -1726,7 +1736,7 @@
                     "type": "string"
                 },
                 "outputBytes": {
-                    "description": "[Output-only] Size of the loaded data in bytes. Note that while an import job is in the running state, this value may change.",
+                    "description": "[Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.",
                     "format": "int64",
                     "type": "string"
                 },

@@ -29,7 +29,7 @@
     "description": "View and manage your Google Analytics data",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/analytics/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/tkvvUCeQm-DiyKpCr0Y-A0UaVuo\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/zd-dA3tVxT-ybd-lzTeggwUiTGg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/analytics-16.png",
         "x32": "https://www.google.com/images/icons/product/analytics-32.png"
@@ -3460,7 +3460,7 @@
             }
         }
     },
-    "revision": "20150814",
+    "revision": "20150901",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

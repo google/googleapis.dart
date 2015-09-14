@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.15.0
+    version: 0.16.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -33,6 +33,7 @@ packages:
     - compute:v1  # https://developers.google.com/compute/
     - container:v1
     - content:v2  # https://developers.google.com/shopping-content/
+    - content:v2sandbox
     - coordinate:v1  # https://google-developers.appspot.com/coordinate/
     - customsearch:v1  # https://developers.google.com/custom-search/
     - deploymentmanager:v2
@@ -71,6 +72,7 @@ packages:
     - pubsub:v1  # https://cloud.google.com/pubsub/
     - qpxExpress:v1  # https://developers.google.com/qpx-express/
     - reseller:v1  # https://developers.google.com/admin-sdk/reseller/
+    - reseller:v1sandbox
     - siteVerification:v1  # https://developers.google.com/site-verification/
     - storage:v1  # https://developers.google.com/storage/
     - storagetransfer:v1  # https://cloud.google.com/storage/transfer/
@@ -84,7 +86,7 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.18.0
+    version: 0.19.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -125,8 +127,6 @@ skipped_apis:
 - blogger:v2  # v3 included
 - clouduseraccounts:alpha  # Leave out alpha versions for now
 - clouduseraccounts:vm_alpha  # Leave out alpha versions for now
-- computeaccounts:alpha  # Leave out alpha versions for now
-- content:v2sandbox # Leaving out sandboxed APIs
 - datastore:v1beta1  # v1beta2 included
 - dfareporting:v1  # v1.3 included
 - dfareporting:v1.1  # v1.3 included
@@ -140,7 +140,6 @@ skipped_apis:
 - prediction:v1.4  # v1.6 included
 - prediction:v1.5  # v1.6 included
 - pubsub:v1beta1a  # v1beta1, v1bets2 and v1 included
-- reseller:v1sandbox  # v1 included
 - replicapool:v1beta1  # Deprecated
 - spectrum:v1explorer  # Not included, https://developers.google.com/spectrum/
 - storage:v1beta1  # v1 included

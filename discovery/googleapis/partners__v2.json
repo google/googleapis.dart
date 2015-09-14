@@ -5,7 +5,7 @@
     "description": "Lets advertisers search certified companies and create contact leads with them, and also audits the usage of clients.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/partners/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/xZsnzXoHMxo__HCG9-5q9Z9kx5M\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Oex6IdRfx1XIrUSRqNsJm2G1ago\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -630,7 +630,8 @@
                         "AGENCY_DISMISSED_AFFILIATION_WIDGET",
                         "AGENCY_CLICKED_INSIGHTS_DOWNLOAD_CONTENT",
                         "AGENCY_PROGRESS_INSIGHTS_VIEW_CONTENT",
-                        "AGENCY_CLICKED_CANCEL_ACCEPT_TOS_BUTTON"
+                        "AGENCY_CLICKED_CANCEL_ACCEPT_TOS_BUTTON",
+                        "SMB_ENTERED_WEBSITE_IN_CONTACT_PARTNER_FORM"
                     ],
                     "type": "string"
                 },

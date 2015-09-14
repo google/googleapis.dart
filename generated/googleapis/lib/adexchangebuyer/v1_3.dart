@@ -1498,6 +1498,220 @@ class CreativeFilteringReasons {
   }
 }
 
+/** The app icon, for app download ads. */
+class CreativeNativeAdAppIcon {
+  core.int height;
+  core.String url;
+  core.int width;
+
+  CreativeNativeAdAppIcon();
+
+  CreativeNativeAdAppIcon.fromJson(core.Map _json) {
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+/** A large image. */
+class CreativeNativeAdImage {
+  core.int height;
+  core.String url;
+  core.int width;
+
+  CreativeNativeAdImage();
+
+  CreativeNativeAdImage.fromJson(core.Map _json) {
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+/** A smaller image, for the advertiser logo. */
+class CreativeNativeAdLogo {
+  core.int height;
+  core.String url;
+  core.int width;
+
+  CreativeNativeAdLogo();
+
+  CreativeNativeAdLogo.fromJson(core.Map _json) {
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+/** If nativeAd is set, HTMLSnippet and videoURL should not be set. */
+class CreativeNativeAd {
+  core.String advertiser;
+  /** The app icon, for app download ads. */
+  CreativeNativeAdAppIcon appIcon;
+  /** A long description of the ad. */
+  core.String body;
+  /** A label for the button that the user is supposed to click. */
+  core.String callToAction;
+  /** The URL to use for click tracking. */
+  core.String clickTrackingUrl;
+  /** A short title for the ad. */
+  core.String headline;
+  /** A large image. */
+  CreativeNativeAdImage image;
+  /** The URLs are called when the impression is rendered. */
+  core.List<core.String> impressionTrackingUrl;
+  /** A smaller image, for the advertiser logo. */
+  CreativeNativeAdLogo logo;
+  /** The price of the promoted app including the currency info. */
+  core.String price;
+  /** The app rating in the app store. Must be in the range [0-5]. */
+  core.double starRating;
+  /** The URL to the app store to purchase/download the promoted app. */
+  core.String store;
+
+  CreativeNativeAd();
+
+  CreativeNativeAd.fromJson(core.Map _json) {
+    if (_json.containsKey("advertiser")) {
+      advertiser = _json["advertiser"];
+    }
+    if (_json.containsKey("appIcon")) {
+      appIcon = new CreativeNativeAdAppIcon.fromJson(_json["appIcon"]);
+    }
+    if (_json.containsKey("body")) {
+      body = _json["body"];
+    }
+    if (_json.containsKey("callToAction")) {
+      callToAction = _json["callToAction"];
+    }
+    if (_json.containsKey("clickTrackingUrl")) {
+      clickTrackingUrl = _json["clickTrackingUrl"];
+    }
+    if (_json.containsKey("headline")) {
+      headline = _json["headline"];
+    }
+    if (_json.containsKey("image")) {
+      image = new CreativeNativeAdImage.fromJson(_json["image"]);
+    }
+    if (_json.containsKey("impressionTrackingUrl")) {
+      impressionTrackingUrl = _json["impressionTrackingUrl"];
+    }
+    if (_json.containsKey("logo")) {
+      logo = new CreativeNativeAdLogo.fromJson(_json["logo"]);
+    }
+    if (_json.containsKey("price")) {
+      price = _json["price"];
+    }
+    if (_json.containsKey("starRating")) {
+      starRating = _json["starRating"];
+    }
+    if (_json.containsKey("store")) {
+      store = _json["store"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (advertiser != null) {
+      _json["advertiser"] = advertiser;
+    }
+    if (appIcon != null) {
+      _json["appIcon"] = (appIcon).toJson();
+    }
+    if (body != null) {
+      _json["body"] = body;
+    }
+    if (callToAction != null) {
+      _json["callToAction"] = callToAction;
+    }
+    if (clickTrackingUrl != null) {
+      _json["clickTrackingUrl"] = clickTrackingUrl;
+    }
+    if (headline != null) {
+      _json["headline"] = headline;
+    }
+    if (image != null) {
+      _json["image"] = (image).toJson();
+    }
+    if (impressionTrackingUrl != null) {
+      _json["impressionTrackingUrl"] = impressionTrackingUrl;
+    }
+    if (logo != null) {
+      _json["logo"] = (logo).toJson();
+    }
+    if (price != null) {
+      _json["price"] = price;
+    }
+    if (starRating != null) {
+      _json["starRating"] = starRating;
+    }
+    if (store != null) {
+      _json["store"] = store;
+    }
+    return _json;
+  }
+}
+
 /** A creative and its classification data. */
 class Creative {
   /**
@@ -1516,6 +1730,12 @@ class Creative {
   core.String advertiserName;
   /** The agency id for this creative. */
   core.String agencyId;
+  /**
+   * The last upload timestamp of this creative if it was uploaded via API.
+   * Read-only. The value of this field is generated, and will be ignored for
+   * uploads. (formatted RFC 3339 timestamp).
+   */
+  core.DateTime apiUploadTimestamp;
   /** All attributes for the ads that may be shown from this snippet. */
   core.List<core.int> attribute;
   /** A buyer-specific id identifying the creative in this ad. */
@@ -1546,6 +1766,8 @@ class Creative {
   core.List<core.String> impressionTrackingUrl;
   /** Resource type. */
   core.String kind;
+  /** If nativeAd is set, HTMLSnippet and videoURL should not be set. */
+  CreativeNativeAd nativeAd;
   /**
    * Detected product categories, if any. Read-only. This field should not be
    * set in requests.
@@ -1595,6 +1817,9 @@ class Creative {
     if (_json.containsKey("agencyId")) {
       agencyId = _json["agencyId"];
     }
+    if (_json.containsKey("api_upload_timestamp")) {
+      apiUploadTimestamp = core.DateTime.parse(_json["api_upload_timestamp"]);
+    }
     if (_json.containsKey("attribute")) {
       attribute = _json["attribute"];
     }
@@ -1621,6 +1846,9 @@ class Creative {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("nativeAd")) {
+      nativeAd = new CreativeNativeAd.fromJson(_json["nativeAd"]);
     }
     if (_json.containsKey("productCategories")) {
       productCategories = _json["productCategories"];
@@ -1665,6 +1893,9 @@ class Creative {
     if (agencyId != null) {
       _json["agencyId"] = agencyId;
     }
+    if (apiUploadTimestamp != null) {
+      _json["api_upload_timestamp"] = (apiUploadTimestamp).toIso8601String();
+    }
     if (attribute != null) {
       _json["attribute"] = attribute;
     }
@@ -1691,6 +1922,9 @@ class Creative {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (nativeAd != null) {
+      _json["nativeAd"] = (nativeAd).toJson();
     }
     if (productCategories != null) {
       _json["productCategories"] = productCategories;

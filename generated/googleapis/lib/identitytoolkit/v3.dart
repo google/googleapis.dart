@@ -1478,6 +1478,8 @@ class SetAccountInfoResponse {
   core.String idToken;
   /** The fixed string "identitytoolkit#SetAccountInfoResponse". */
   core.String kind;
+  /** The new email the user attempts to change to. */
+  core.String newEmail;
   /** The user's profiles at the associated IdPs. */
   core.List<SetAccountInfoResponseProviderUserInfo> providerUserInfo;
 
@@ -1495,6 +1497,9 @@ class SetAccountInfoResponse {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("newEmail")) {
+      newEmail = _json["newEmail"];
     }
     if (_json.containsKey("providerUserInfo")) {
       providerUserInfo = _json["providerUserInfo"].map((value) => new SetAccountInfoResponseProviderUserInfo.fromJson(value)).toList();
@@ -1514,6 +1519,9 @@ class SetAccountInfoResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (newEmail != null) {
+      _json["newEmail"] = newEmail;
     }
     if (providerUserInfo != null) {
       _json["providerUserInfo"] = providerUserInfo.map((value) => (value).toJson()).toList();

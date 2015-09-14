@@ -2617,8 +2617,8 @@ class Calendar {
   /** ETag of the resource. */
   core.String etag;
   /**
-   * Identifier of the calendar. To retrieve IDs you call the
-   * calendarList.list() method.
+   * Identifier of the calendar. To retrieve IDs call the calendarList.list()
+   * method.
    */
   core.String id;
   /** Type of the resource ("calendar#calendar"). */

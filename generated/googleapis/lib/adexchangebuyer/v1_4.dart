@@ -972,50 +972,6 @@ class MarketplacedealsResourceApi {
       _requester = client;
 
   /**
-   * Add new deals for the specified order
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [orderId] - OrderId for which deals need to be added.
-   *
-   * Completes with a [AddOrderDealsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<AddOrderDealsResponse> create(AddOrderDealsRequest request, core.String orderId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
-    }
-
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/deals/create';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new AddOrderDealsResponse.fromJson(data));
-  }
-
-  /**
    * Delete the specified deals from the order
    *
    * [request] - The metadata request object.
@@ -1057,6 +1013,50 @@ class MarketplacedealsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new DeleteOrderDealsResponse.fromJson(data));
+  }
+
+  /**
+   * Add new deals for the specified order
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [orderId] - OrderId for which deals need to be added.
+   *
+   * Completes with a [AddOrderDealsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AddOrderDealsResponse> insert(AddOrderDealsRequest request, core.String orderId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (orderId == null) {
+      throw new core.ArgumentError("Parameter orderId is required.");
+    }
+
+    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/deals/insert';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AddOrderDealsResponse.fromJson(data));
   }
 
   /**
@@ -1115,51 +1115,7 @@ class MarketplacedealsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<EditAllOrderDealsResponse> replace(EditAllOrderDealsRequest request, core.String orderId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
-    }
-
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/deals/replace';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new EditAllOrderDealsResponse.fromJson(data));
-  }
-
-  /**
-   * Update the specified deals on the order
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [orderId] - The orderId to update deals for.
-   *
-   * Completes with a [UpdateOrderDealsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<UpdateOrderDealsResponse> update(UpdateOrderDealsRequest request, core.String orderId) {
+  async.Future<EditAllOrderDealsResponse> update(EditAllOrderDealsRequest request, core.String orderId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1183,7 +1139,7 @@ class MarketplacedealsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UpdateOrderDealsResponse.fromJson(data));
+    return _response.then((data) => new EditAllOrderDealsResponse.fromJson(data));
   }
 
 }
@@ -1212,7 +1168,7 @@ class MarketplacenotesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AddOrderNotesResponse> create(AddOrderNotesRequest request, core.String orderId) {
+  async.Future<AddOrderNotesResponse> insert(AddOrderNotesRequest request, core.String orderId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1227,7 +1183,7 @@ class MarketplacenotesResourceApi {
       throw new core.ArgumentError("Parameter orderId is required.");
     }
 
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/notes/add';
+    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/notes/insert';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1375,45 +1331,6 @@ class MarketplaceordersResourceApi {
       _requester = client;
 
   /**
-   * Create the given list of orders
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [CreateOrdersResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CreateOrdersResponse> create(CreateOrdersRequest request) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-
-    _url = 'marketplaceOrders/create';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreateOrdersResponse.fromJson(data));
-  }
-
-  /**
    * Get an order given its id
    *
    * Request parameters:
@@ -1453,6 +1370,45 @@ class MarketplaceordersResourceApi {
   }
 
   /**
+   * Create the given list of orders
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [CreateOrdersResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<CreateOrdersResponse> insert(CreateOrdersRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'marketplaceOrders/insert';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreateOrdersResponse.fromJson(data));
+  }
+
+  /**
    * Update the given order. This method supports patch semantics.
    *
    * [request] - The metadata request object.
@@ -1460,6 +1416,19 @@ class MarketplaceordersResourceApi {
    * Request parameters:
    *
    * [orderId] - The order id to update.
+   *
+   * [revisionNumber] - The last known revision number to update. If the head
+   * revision in the marketplace database has since changed, an error will be
+   * thrown. The caller should then fetch the lastest order at head revision and
+   * retry the update at that revision.
+   *
+   * [updateAction] - The proposed action to take on the order.
+   * Possible string values are:
+   * - "accept"
+   * - "cancel"
+   * - "propose"
+   * - "unknownAction"
+   * - "updateFinalized"
    *
    * Completes with a [MarketplaceOrder].
    *
@@ -1469,7 +1438,7 @@ class MarketplaceordersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<MarketplaceOrder> patch(MarketplaceOrder request, core.String orderId) {
+  async.Future<MarketplaceOrder> patch(MarketplaceOrder request, core.String orderId, core.String revisionNumber, core.String updateAction) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1483,8 +1452,14 @@ class MarketplaceordersResourceApi {
     if (orderId == null) {
       throw new core.ArgumentError("Parameter orderId is required.");
     }
+    if (revisionNumber == null) {
+      throw new core.ArgumentError("Parameter revisionNumber is required.");
+    }
+    if (updateAction == null) {
+      throw new core.ArgumentError("Parameter updateAction is required.");
+    }
 
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId');
+    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/' + commons.Escaper.ecapeVariable('$revisionNumber') + '/' + commons.Escaper.ecapeVariable('$updateAction');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1544,6 +1519,19 @@ class MarketplaceordersResourceApi {
    *
    * [orderId] - The order id to update.
    *
+   * [revisionNumber] - The last known revision number to update. If the head
+   * revision in the marketplace database has since changed, an error will be
+   * thrown. The caller should then fetch the lastest order at head revision and
+   * retry the update at that revision.
+   *
+   * [updateAction] - The proposed action to take on the order.
+   * Possible string values are:
+   * - "accept"
+   * - "cancel"
+   * - "propose"
+   * - "unknownAction"
+   * - "updateFinalized"
+   *
    * Completes with a [MarketplaceOrder].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1552,7 +1540,7 @@ class MarketplaceordersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<MarketplaceOrder> update(MarketplaceOrder request, core.String orderId) {
+  async.Future<MarketplaceOrder> update(MarketplaceOrder request, core.String orderId, core.String revisionNumber, core.String updateAction) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1566,8 +1554,14 @@ class MarketplaceordersResourceApi {
     if (orderId == null) {
       throw new core.ArgumentError("Parameter orderId is required.");
     }
+    if (revisionNumber == null) {
+      throw new core.ArgumentError("Parameter revisionNumber is required.");
+    }
+    if (updateAction == null) {
+      throw new core.ArgumentError("Parameter updateAction is required.");
+    }
 
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId');
+    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/' + commons.Escaper.ecapeVariable('$revisionNumber') + '/' + commons.Escaper.ecapeVariable('$updateAction');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -3016,6 +3010,7 @@ class ContactInformation {
 class CreateOrdersRequest {
   /** The list of orders to create. */
   core.List<MarketplaceOrder> orders;
+  core.String webPropertyCode;
 
   CreateOrdersRequest();
 
@@ -3023,12 +3018,18 @@ class CreateOrdersRequest {
     if (_json.containsKey("orders")) {
       orders = _json["orders"].map((value) => new MarketplaceOrder.fromJson(value)).toList();
     }
+    if (_json.containsKey("webPropertyCode")) {
+      webPropertyCode = _json["webPropertyCode"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (orders != null) {
       _json["orders"] = orders.map((value) => (value).toJson()).toList();
+    }
+    if (webPropertyCode != null) {
+      _json["webPropertyCode"] = webPropertyCode;
     }
     return _json;
   }
@@ -3150,6 +3151,220 @@ class CreativeFilteringReasons {
     }
     if (reasons != null) {
       _json["reasons"] = reasons.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** The app icon, for app download ads. */
+class CreativeNativeAdAppIcon {
+  core.int height;
+  core.String url;
+  core.int width;
+
+  CreativeNativeAdAppIcon();
+
+  CreativeNativeAdAppIcon.fromJson(core.Map _json) {
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+/** A large image. */
+class CreativeNativeAdImage {
+  core.int height;
+  core.String url;
+  core.int width;
+
+  CreativeNativeAdImage();
+
+  CreativeNativeAdImage.fromJson(core.Map _json) {
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+/** A smaller image, for the advertiser logo. */
+class CreativeNativeAdLogo {
+  core.int height;
+  core.String url;
+  core.int width;
+
+  CreativeNativeAdLogo();
+
+  CreativeNativeAdLogo.fromJson(core.Map _json) {
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+/** If nativeAd is set, HTMLSnippet and videoURL should not be set. */
+class CreativeNativeAd {
+  core.String advertiser;
+  /** The app icon, for app download ads. */
+  CreativeNativeAdAppIcon appIcon;
+  /** A long description of the ad. */
+  core.String body;
+  /** A label for the button that the user is supposed to click. */
+  core.String callToAction;
+  /** The URL to use for click tracking. */
+  core.String clickTrackingUrl;
+  /** A short title for the ad. */
+  core.String headline;
+  /** A large image. */
+  CreativeNativeAdImage image;
+  /** The URLs are called when the impression is rendered. */
+  core.List<core.String> impressionTrackingUrl;
+  /** A smaller image, for the advertiser logo. */
+  CreativeNativeAdLogo logo;
+  /** The price of the promoted app including the currency info. */
+  core.String price;
+  /** The app rating in the app store. Must be in the range [0-5]. */
+  core.double starRating;
+  /** The URL to the app store to purchase/download the promoted app. */
+  core.String store;
+
+  CreativeNativeAd();
+
+  CreativeNativeAd.fromJson(core.Map _json) {
+    if (_json.containsKey("advertiser")) {
+      advertiser = _json["advertiser"];
+    }
+    if (_json.containsKey("appIcon")) {
+      appIcon = new CreativeNativeAdAppIcon.fromJson(_json["appIcon"]);
+    }
+    if (_json.containsKey("body")) {
+      body = _json["body"];
+    }
+    if (_json.containsKey("callToAction")) {
+      callToAction = _json["callToAction"];
+    }
+    if (_json.containsKey("clickTrackingUrl")) {
+      clickTrackingUrl = _json["clickTrackingUrl"];
+    }
+    if (_json.containsKey("headline")) {
+      headline = _json["headline"];
+    }
+    if (_json.containsKey("image")) {
+      image = new CreativeNativeAdImage.fromJson(_json["image"]);
+    }
+    if (_json.containsKey("impressionTrackingUrl")) {
+      impressionTrackingUrl = _json["impressionTrackingUrl"];
+    }
+    if (_json.containsKey("logo")) {
+      logo = new CreativeNativeAdLogo.fromJson(_json["logo"]);
+    }
+    if (_json.containsKey("price")) {
+      price = _json["price"];
+    }
+    if (_json.containsKey("starRating")) {
+      starRating = _json["starRating"];
+    }
+    if (_json.containsKey("store")) {
+      store = _json["store"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (advertiser != null) {
+      _json["advertiser"] = advertiser;
+    }
+    if (appIcon != null) {
+      _json["appIcon"] = (appIcon).toJson();
+    }
+    if (body != null) {
+      _json["body"] = body;
+    }
+    if (callToAction != null) {
+      _json["callToAction"] = callToAction;
+    }
+    if (clickTrackingUrl != null) {
+      _json["clickTrackingUrl"] = clickTrackingUrl;
+    }
+    if (headline != null) {
+      _json["headline"] = headline;
+    }
+    if (image != null) {
+      _json["image"] = (image).toJson();
+    }
+    if (impressionTrackingUrl != null) {
+      _json["impressionTrackingUrl"] = impressionTrackingUrl;
+    }
+    if (logo != null) {
+      _json["logo"] = (logo).toJson();
+    }
+    if (price != null) {
+      _json["price"] = price;
+    }
+    if (starRating != null) {
+      _json["starRating"] = starRating;
+    }
+    if (store != null) {
+      _json["store"] = store;
     }
     return _json;
   }
@@ -3304,6 +3519,12 @@ class Creative {
   core.String advertiserName;
   /** The agency id for this creative. */
   core.String agencyId;
+  /**
+   * The last upload timestamp of this creative if it was uploaded via API.
+   * Read-only. The value of this field is generated, and will be ignored for
+   * uploads. (formatted RFC 3339 timestamp).
+   */
+  core.DateTime apiUploadTimestamp;
   /** All attributes for the ads that may be shown from this snippet. */
   core.List<core.int> attribute;
   /** A buyer-specific id identifying the creative in this ad. */
@@ -3334,6 +3555,8 @@ class Creative {
   core.List<core.String> impressionTrackingUrl;
   /** Resource type. */
   core.String kind;
+  /** If nativeAd is set, HTMLSnippet and videoURL should not be set. */
+  CreativeNativeAd nativeAd;
   /**
    * Top-level open auction status. Read-only. This field should not be set in
    * requests. If disapproved, an entry for auctionType=OPEN_AUCTION (or ALL) in
@@ -3393,6 +3616,9 @@ class Creative {
     if (_json.containsKey("agencyId")) {
       agencyId = _json["agencyId"];
     }
+    if (_json.containsKey("api_upload_timestamp")) {
+      apiUploadTimestamp = core.DateTime.parse(_json["api_upload_timestamp"]);
+    }
     if (_json.containsKey("attribute")) {
       attribute = _json["attribute"];
     }
@@ -3419,6 +3645,9 @@ class Creative {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("nativeAd")) {
+      nativeAd = new CreativeNativeAd.fromJson(_json["nativeAd"]);
     }
     if (_json.containsKey("openAuctionStatus")) {
       openAuctionStatus = _json["openAuctionStatus"];
@@ -3466,6 +3695,9 @@ class Creative {
     if (agencyId != null) {
       _json["agencyId"] = agencyId;
     }
+    if (apiUploadTimestamp != null) {
+      _json["api_upload_timestamp"] = (apiUploadTimestamp).toIso8601String();
+    }
     if (attribute != null) {
       _json["attribute"] = attribute;
     }
@@ -3492,6 +3724,9 @@ class Creative {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (nativeAd != null) {
+      _json["nativeAd"] = (nativeAd).toJson();
     }
     if (openAuctionStatus != null) {
       _json["openAuctionStatus"] = openAuctionStatus;
@@ -3964,8 +4199,6 @@ class EditAllOrderDealsRequest {
   core.String orderRevisionNumber;
   /** Indicates an optional action to take on the order */
   core.String updateAction;
-  /** True, if the finalized view of the deal should be updated. */
-  core.bool updateFinalizedView;
 
   EditAllOrderDealsRequest();
 
@@ -3982,9 +4215,6 @@ class EditAllOrderDealsRequest {
     if (_json.containsKey("updateAction")) {
       updateAction = _json["updateAction"];
     }
-    if (_json.containsKey("updateFinalizedView")) {
-      updateFinalizedView = _json["updateFinalizedView"];
-    }
   }
 
   core.Map toJson() {
@@ -4000,9 +4230,6 @@ class EditAllOrderDealsRequest {
     }
     if (updateAction != null) {
       _json["updateAction"] = updateAction;
-    }
-    if (updateFinalizedView != null) {
-      _json["updateFinalizedView"] = updateFinalizedView;
     }
     return _json;
   }
@@ -4672,6 +4899,7 @@ class MarketplaceDeal {
   core.String syndicationProduct;
   /** The negotiable terms of the deal. (updatable) */
   DealTerms terms;
+  core.String webPropertyCode;
 
   MarketplaceDeal();
 
@@ -4730,6 +4958,9 @@ class MarketplaceDeal {
     if (_json.containsKey("terms")) {
       terms = new DealTerms.fromJson(_json["terms"]);
     }
+    if (_json.containsKey("webPropertyCode")) {
+      webPropertyCode = _json["webPropertyCode"];
+    }
   }
 
   core.Map toJson() {
@@ -4787,6 +5018,9 @@ class MarketplaceDeal {
     }
     if (terms != null) {
       _json["terms"] = (terms).toJson();
+    }
+    if (webPropertyCode != null) {
+      _json["webPropertyCode"] = webPropertyCode;
     }
     return _json;
   }
@@ -5030,6 +5264,7 @@ class MarketplaceOffer {
   core.String syndicationProduct;
   /** The negotiable terms of the deal (buyer-readonly) */
   DealTerms terms;
+  core.String webPropertyCode;
 
   MarketplaceOffer();
 
@@ -5082,6 +5317,9 @@ class MarketplaceOffer {
     if (_json.containsKey("terms")) {
       terms = new DealTerms.fromJson(_json["terms"]);
     }
+    if (_json.containsKey("webPropertyCode")) {
+      webPropertyCode = _json["webPropertyCode"];
+    }
   }
 
   core.Map toJson() {
@@ -5133,6 +5371,9 @@ class MarketplaceOffer {
     }
     if (terms != null) {
       _json["terms"] = (terms).toJson();
+    }
+    if (webPropertyCode != null) {
+      _json["webPropertyCode"] = webPropertyCode;
     }
     return _json;
   }
@@ -6998,78 +7239,6 @@ class TermsDto {
     }
     if (urls != null) {
       _json["urls"] = urls;
-    }
-    return _json;
-  }
-}
-
-class UpdateOrderDealsRequest {
-  /** List of deals to update */
-  core.List<MarketplaceDeal> deals;
-  /** The last known revision number for the order. */
-  core.String orderRevisionNumber;
-  core.String updateAction;
-  core.bool updatedFinalizedView;
-
-  UpdateOrderDealsRequest();
-
-  UpdateOrderDealsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("deals")) {
-      deals = _json["deals"].map((value) => new MarketplaceDeal.fromJson(value)).toList();
-    }
-    if (_json.containsKey("orderRevisionNumber")) {
-      orderRevisionNumber = _json["orderRevisionNumber"];
-    }
-    if (_json.containsKey("updateAction")) {
-      updateAction = _json["updateAction"];
-    }
-    if (_json.containsKey("updatedFinalizedView")) {
-      updatedFinalizedView = _json["updatedFinalizedView"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (deals != null) {
-      _json["deals"] = deals.map((value) => (value).toJson()).toList();
-    }
-    if (orderRevisionNumber != null) {
-      _json["orderRevisionNumber"] = orderRevisionNumber;
-    }
-    if (updateAction != null) {
-      _json["updateAction"] = updateAction;
-    }
-    if (updatedFinalizedView != null) {
-      _json["updatedFinalizedView"] = updatedFinalizedView;
-    }
-    return _json;
-  }
-}
-
-class UpdateOrderDealsResponse {
-  /** List of deals updated (in the same order as passed in the request) */
-  core.List<MarketplaceDeal> deals;
-  /** The updated revision number for the order. */
-  core.String orderRevisionNumber;
-
-  UpdateOrderDealsResponse();
-
-  UpdateOrderDealsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("deals")) {
-      deals = _json["deals"].map((value) => new MarketplaceDeal.fromJson(value)).toList();
-    }
-    if (_json.containsKey("orderRevisionNumber")) {
-      orderRevisionNumber = _json["orderRevisionNumber"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (deals != null) {
-      _json["deals"] = deals.map((value) => (value).toJson()).toList();
-    }
-    if (orderRevisionNumber != null) {
-      _json["orderRevisionNumber"] = orderRevisionNumber;
     }
     return _json;
   }

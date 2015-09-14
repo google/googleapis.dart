@@ -18,7 +18,7 @@
     "description": "Allows the administrators of Google Apps customers to fetch reports about the usage, collaboration, security and risk for their users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/reports/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/69d830Y-ukeBilq2ZofYxg_sxFU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/lycAHH8x-Ct6oDsJmcDO1AWwIZ4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -95,7 +95,7 @@
                         "applicationName": {
                             "description": "Application name for which the events are to be retrieved.",
                             "location": "path",
-                            "pattern": "(admin)|(calendar)|(drive)|(login)|(token)|(groups)",
+                            "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)",
                             "required": true,
                             "type": "string"
                         },
@@ -174,7 +174,7 @@
                         "applicationName": {
                             "description": "Application name for which the events are to be retrieved.",
                             "location": "path",
-                            "pattern": "(admin)|(calendar)|(drive)|(login)|(token)|(groups)",
+                            "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)",
                             "required": true,
                             "type": "string"
                         },
@@ -370,7 +370,7 @@
             }
         }
     },
-    "revision": "20150817",
+    "revision": "20150907",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Activities": {

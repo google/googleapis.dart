@@ -26,10 +26,303 @@ class CloudresourcemanagerApi {
 
   final commons.ApiRequester _requester;
 
+  OrganizationsResourceApi get organizations => new OrganizationsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   CloudresourcemanagerApi(http.Client client, {core.String rootUrl: "https://cloudresourcemanager.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+
+class OrganizationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Fetches an Organization resource by id.
+   *
+   * Request parameters:
+   *
+   * [organizationId] - The id of the Organization resource to fetch.
+   *
+   * Completes with a [Organization].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Organization> get(core.String organizationId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (organizationId == null) {
+      throw new core.ArgumentError("Parameter organizationId is required.");
+    }
+
+    _url = 'v1beta1/organizations/' + commons.Escaper.ecapeVariable('$organizationId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Organization.fromJson(data));
+  }
+
+  /**
+   * Gets the access control policy for a Organization resource. May be empty if
+   * no such policy or resource exists.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which policy is being requested.
+   * Resource is usually specified as a path, such as, `projects/{project}`.
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> getIamPolicy(GetIamPolicyRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1beta1/organizations/' + commons.Escaper.ecapeVariable('$resource') + ':getIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
+   * Query Organization resources.
+   *
+   * Request parameters:
+   *
+   * [pageSize] - The maximum number of Organizations to return in the response.
+   * This field is optional.
+   *
+   * [pageToken] - A pagination token returned from a previous call to
+   * ListOrganizations that indicates from where listing should continue. This
+   * field is optional.
+   *
+   * [filter] - An optional query string used to filter the Organizations to be
+   * return in the response. Filter rules are case-insensitive. Organizations
+   * may be filtered by `owner.directoryCustomerId` or by `domain`, where the
+   * domain is a Google for Work domain, for example: |Filter|Description|
+   * |------|-----------| |owner.directorycustomerid:123456789|Organizations
+   * with `owner.directory_customer_id` equal to `123456789`.|
+   * |domain:google.com|Organizations corresponding to the domain `google.com`.|
+   * This field is optional.
+   *
+   * Completes with a [ListOrganizationsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListOrganizationsResponse> list({core.int pageSize, core.String pageToken, core.String filter}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+
+    _url = 'v1beta1/organizations';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListOrganizationsResponse.fromJson(data));
+  }
+
+  /**
+   * Sets the access control policy on a Organization resource. Replaces any
+   * existing policy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which policy is being specified.
+   * `resource` is usually specified as a path, such as,
+   * `projects/{project}/zones/{zone}/disks/{disk}`.
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> setIamPolicy(SetIamPolicyRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1beta1/organizations/' + commons.Escaper.ecapeVariable('$resource') + ':setIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
+   * Returns permissions that a caller has on the specified Organization.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which policy detail is being
+   * requested. `resource` is usually specified as a path, such as,
+   * `projects/{project}`.
+   *
+   * Completes with a [TestIamPermissionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TestIamPermissionsResponse> testIamPermissions(TestIamPermissionsRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1beta1/organizations/' + commons.Escaper.ecapeVariable('$resource') + ':testIamPermissions';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestIamPermissionsResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an Organization resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [organizationId] - An immutable id for the Organization that is assigned on
+   * creation. This should be omitted when creating a new Organization. This
+   * field is read-only.
+   *
+   * Completes with a [Organization].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Organization> update(Organization request, core.String organizationId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (organizationId == null) {
+      throw new core.ArgumentError("Parameter organizationId is required.");
+    }
+
+    _url = 'v1beta1/organizations/' + commons.Escaper.ecapeVariable('$organizationId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Organization.fromJson(data));
+  }
+
 }
 
 
@@ -191,7 +484,7 @@ class ProjectsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being requested.
-   * Resource is usually specified as a path, such as, projects/{project}.
+   * Resource is usually specified as a path, such as, `projects/{project}`.
    *
    * Completes with a [Policy].
    *
@@ -303,8 +596,8 @@ class ProjectsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
-   * Resource is usually specified as a path, such as,
-   * projects/{project}/zones/{zone}/disks/{disk}.
+   * `resource` is usually specified as a path, such as,
+   * `projects/{project}/zones/{zone}/disks/{disk}`.
    *
    * Completes with a [Policy].
    *
@@ -350,8 +643,8 @@ class ProjectsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy detail is being
-   * requested. Resource is usually specified as a path, such as,
-   * projects/{project}.
+   * requested. `resource` is usually specified as a path, such as,
+   * `projects/{project}`.
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -485,22 +778,27 @@ class ProjectsResourceApi {
 
 
 
-/** Associates members with roles. See below for allowed formats of members. */
+/** Associates `members` with a `role`. */
 class Binding {
   /**
-   * Format of member entries: 1. allUsers Matches any requesting principal
-   * (users, service accounts or anonymous). 2. allAuthenticatedUsers Matches
-   * any requesting authenticated principal (users or service accounts). 3.
-   * user:{emailid} A google user account using an email address. For example
-   * alice@gmail.com, joe@example.com 4. serviceAccount:{emailid} An service
-   * account email. 5. group:{emailid} A google group with an email address. For
-   * example auth-ti-cloud@google.com 6. domain:{domain} A Google Apps domain
-   * name. For example google.com, example.com
+   * Specifies the identities requesting access for a Cloud Platform resource.
+   * `members` can have the following formats: * `allUsers`: A special
+   * identifier that represents anyone who is on the internet; with or without a
+   * Google account. * `allAuthenticatedUsers`: A special identifier that
+   * represents anyone who is authenticated with a Google account or a service
+   * account. * `user:{emailid}`: An email address that represents a specific
+   * Google account. For example, `alice@gmail.com` or `joe@example.com`. *
+   * `serviceAccount:{emailid}`: An email address that represents a service
+   * account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+   * `group:{emailid}`: An email address that represents a Google group. For
+   * example, `admins@example.com`. * `domain:{domain}`: A Google Apps domain
+   * name that represents all the users of that domain. For example,
+   * `google.com` or `example.com`.
    */
   core.List<core.String> members;
   /**
-   * The name of the role to which the members should be bound. Examples:
-   * "roles/viewer", "roles/editor", "roles/owner". Required
+   * Role that is assigned to `members`. For example, `roles/viewer`,
+   * `roles/editor`, or `roles/owner`. Required
    */
   core.String role;
 
@@ -561,6 +859,44 @@ class GetIamPolicyRequest {
   }
 }
 
+/** The response returned from the ListOrganizations method. */
+class ListOrganizationsResponse {
+  /**
+   * A pagination token to be used to retrieve the next page of results. If the
+   * result is too large to fit within the page size specified in the request,
+   * this field will be set with a token that can be used to fetch the next page
+   * of results. If this field is empty, it indicates that this response
+   * contains the last page of results.
+   */
+  core.String nextPageToken;
+  /**
+   * The list of Organizations that matched the list query, possibly paginated.
+   */
+  core.List<Organization> organizations;
+
+  ListOrganizationsResponse();
+
+  ListOrganizationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("organizations")) {
+      organizations = _json["organizations"].map((value) => new Organization.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (organizations != null) {
+      _json["organizations"] = organizations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /**
  * A page of the response received from the
  * [ListProjects][google.cloudresourcemanager.projects.v1beta1.DeveloperProjects.ListProjects]
@@ -610,25 +946,101 @@ class ListProjectsResponse {
 }
 
 /**
- * # Overview The `Policy` defines an access control policy language. It is used
- * to define policies that are attached to resources like files, folders, VMs,
- * etc. # Policy structure A `Policy` consists of a list of bindings. A
- * `Binding` binds a set of members to a role, where the members include user
- * accounts, user groups, user domains, and service accounts. A 'role' is a
- * named set of permissions, defined by IAM. The definition of a role is outside
- * the policy. A permission check first determines the roles that include the
- * specified permission, and then determines if the principal specified is a
- * member of a binding to at least one of these roles. The membership check is
- * recursive when a group is bound to a role. Policy examples: ``` { "bindings":
- * [ { "role": "roles/owner", "members": [ "user:mike@example.com",
- * "group:admins@example.com", "domain:google.com",
- * "serviceAccount:frontend@example.iam.gserviceaccounts.com"] }, { "role":
- * "roles/viewer", "members": ["user:sean@example.com"] } ] } ```
+ * The root node in the resource hierarchy to which a particular entity's (e.g.,
+ * company) resources belong.
+ */
+class Organization {
+  /**
+   * A friendly string to be used to refer to the Organization in the UI. This
+   * field is required.
+   */
+  core.String displayName;
+  /**
+   * An immutable id for the Organization that is assigned on creation. This
+   * should be omitted when creating a new Organization. This field is
+   * read-only.
+   */
+  core.String organizationId;
+  /**
+   * The owner of this Organization. The owner should be specified upon
+   * creation. Once set, it cannot be changed. This field is required.
+   */
+  OrganizationOwner owner;
+
+  Organization();
+
+  Organization.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("organizationId")) {
+      organizationId = _json["organizationId"];
+    }
+    if (_json.containsKey("owner")) {
+      owner = new OrganizationOwner.fromJson(_json["owner"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (organizationId != null) {
+      _json["organizationId"] = organizationId;
+    }
+    if (owner != null) {
+      _json["owner"] = (owner).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * The entity that owns an Organization. The lifetime of the Organization and
+ * all of its descendants are bound to the OrganizationOwner. If the
+ * OrganizationOwner is deleted, the Organization and all its descendants will
+ * be deleted.
+ */
+class OrganizationOwner {
+  /** The Google for Work customer id used in the Directory API. */
+  core.String directoryCustomerId;
+
+  OrganizationOwner();
+
+  OrganizationOwner.fromJson(core.Map _json) {
+    if (_json.containsKey("directoryCustomerId")) {
+      directoryCustomerId = _json["directoryCustomerId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (directoryCustomerId != null) {
+      _json["directoryCustomerId"] = directoryCustomerId;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Defines an Identity and Access Management (IAM) policy. It is used to specify
+ * access control policies for Cloud Platform resources. A `Policy` consists of
+ * a list of `bindings`. A `Binding` binds a list of `members` to a `role`,
+ * where the members can be user accounts, Google groups, Google domains, and
+ * service accounts. A `role` is a named list of permissions defined by IAM.
+ * **Example** ``` { "bindings": [ { "role": "roles/owner", "members": [
+ * "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+ * "serviceAccount:my-other-app@appspot.gserviceaccount.com"] }, { "role":
+ * "roles/viewer", "members": ["user:sean@example.com"] } ] } ``` For a
+ * description of IAM and its features, see the [IAM developer's
+ * guide][https://cloud.google.com/iam].
  */
 class Policy {
   /**
-   * It is an error to specify multiple bindings for the same role. It is an
-   * error to specify a binding with no members.
+   * Associates a list of `members` to a `role`. Multiple `bindings` must not be
+   * specified for the same `role`. `bindings` with no members will result in an
+   * error.
    */
   core.List<Binding> bindings;
   /** Can be used to perform a read-modify-write. */
@@ -640,10 +1052,7 @@ class Policy {
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-  /**
-   * The policy language version. The version of the policy is represented by
-   * the etag. The default version is 0.
-   */
+  /** Version of the `Policy`. The default version is 0. */
   core.int version;
 
   Policy();
@@ -703,12 +1112,17 @@ class Project {
    */
   core.String lifecycleState;
   /**
-   * The user-assigned name of the project. This field is optional and can
-   * remain unset. Allowed characters are: lowercase and uppercase letters,
-   * numbers, hyphen, single-quote, double-quote, space, and exclamation point.
-   * Example: My Project Read-write.
+   * The user-assigned name of the project. It must be 4 to 30 characters.
+   * Allowed characters are: lowercase and uppercase letters, numbers, hyphen,
+   * single-quote, double-quote, space, and exclamation point. Example: My
+   * Project Read-write.
    */
   core.String name;
+  /**
+   * An optional reference to a parent Resource. The only supported parent type
+   * is "organization". Once set, the parent cannot be modified. Read-write.
+   */
+  ResourceId parent;
   /**
    * The unique, user-assigned ID of the project. It must be 6 to 30 lowercase
    * letters, digits, or hyphens. It must start with a letter. Trailing hyphens
@@ -736,6 +1150,9 @@ class Project {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("parent")) {
+      parent = new ResourceId.fromJson(_json["parent"]);
+    }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
     }
@@ -758,6 +1175,9 @@ class Project {
     if (name != null) {
       _json["name"] = name;
     }
+    if (parent != null) {
+      _json["parent"] = (parent).toJson();
+    }
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
@@ -768,12 +1188,53 @@ class Project {
   }
 }
 
+/**
+ * A container to reference an id for any resource type. A 'resource' in Google
+ * Cloud Platform is a generic term for something you (a developer) may want to
+ * interact with through one of our API's. Some examples are an AppEngine app, a
+ * Compute Engine instance, Cloud SQL database, ...
+ */
+class ResourceId {
+  /**
+   * Required field for the type-specific id. This should correspond to the id
+   * used in the type-specific API's.
+   */
+  core.String id;
+  /**
+   * Required field representing the resource type this id is for. At present,
+   * the only valid type is "organization".
+   */
+  core.String type;
+
+  ResourceId();
+
+  ResourceId.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /** Request message for `SetIamPolicy` method. */
 class SetIamPolicyRequest {
   /**
-   * REQUIRED: The complete policy to be applied to the 'resource'. The size of
-   * the policy is limited to a few 10s of KB. An empty policy is in general a
-   * valid policy but certain services (like Projects) might reject them.
+   * REQUIRED: The complete policy to be applied to the `resource`. The size of
+   * the policy is limited to a few 10s of KB. An empty policy is a valid policy
+   * but certain Cloud Platform services (such as Projects) might reject them.
    */
   Policy policy;
 
@@ -797,7 +1258,7 @@ class SetIamPolicyRequest {
 /** Request message for `TestIamPermissions` method. */
 class TestIamPermissionsRequest {
   /**
-   * The set of permissions to check for the 'resource'. Permissions with
+   * The set of permissions to check for the `resource`. Permissions with
    * wildcards (such as '*' or 'storage.*') are not allowed.
    */
   core.List<core.String> permissions;

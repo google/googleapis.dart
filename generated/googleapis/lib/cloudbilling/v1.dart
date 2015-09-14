@@ -14,6 +14,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client cloudbilling/v1';
 
+/**
+ * Retrieves Google Developers Console billing accounts and associates them with
+ * projects.
+ */
 class CloudbillingApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";

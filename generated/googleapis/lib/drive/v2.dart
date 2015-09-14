@@ -2364,7 +2364,7 @@ class PermissionsResourceApi {
   }
 
   /**
-   * Updates a permission. This method supports patch semantics.
+   * Updates a permission using patch semantics.
    *
    * [request] - The metadata request object.
    *

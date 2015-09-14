@@ -51,14 +51,14 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2412() {
+buildUnnamed2432() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2412(core.List<core.String> o) {
+checkUnnamed2432(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,7 +69,7 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.members = buildUnnamed2412();
+    o.members = buildUnnamed2432();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -79,7 +79,7 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkUnnamed2412(o.members);
+    checkUnnamed2432(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -119,14 +119,48 @@ checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest--;
 }
 
-buildUnnamed2413() {
+buildUnnamed2433() {
+  var o = new core.List<api.Organization>();
+  o.add(buildOrganization());
+  o.add(buildOrganization());
+  return o;
+}
+
+checkUnnamed2433(core.List<api.Organization> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkOrganization(o[0]);
+  checkOrganization(o[1]);
+}
+
+core.int buildCounterListOrganizationsResponse = 0;
+buildListOrganizationsResponse() {
+  var o = new api.ListOrganizationsResponse();
+  buildCounterListOrganizationsResponse++;
+  if (buildCounterListOrganizationsResponse < 3) {
+    o.nextPageToken = "foo";
+    o.organizations = buildUnnamed2433();
+  }
+  buildCounterListOrganizationsResponse--;
+  return o;
+}
+
+checkListOrganizationsResponse(api.ListOrganizationsResponse o) {
+  buildCounterListOrganizationsResponse++;
+  if (buildCounterListOrganizationsResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed2433(o.organizations);
+  }
+  buildCounterListOrganizationsResponse--;
+}
+
+buildUnnamed2434() {
   var o = new core.List<api.Project>();
   o.add(buildProject());
   o.add(buildProject());
   return o;
 }
 
-checkUnnamed2413(core.List<api.Project> o) {
+checkUnnamed2434(core.List<api.Project> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProject(o[0]);
   checkProject(o[1]);
@@ -138,7 +172,7 @@ buildListProjectsResponse() {
   buildCounterListProjectsResponse++;
   if (buildCounterListProjectsResponse < 3) {
     o.nextPageToken = "foo";
-    o.projects = buildUnnamed2413();
+    o.projects = buildUnnamed2434();
   }
   buildCounterListProjectsResponse--;
   return o;
@@ -148,19 +182,61 @@ checkListProjectsResponse(api.ListProjectsResponse o) {
   buildCounterListProjectsResponse++;
   if (buildCounterListProjectsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2413(o.projects);
+    checkUnnamed2434(o.projects);
   }
   buildCounterListProjectsResponse--;
 }
 
-buildUnnamed2414() {
+core.int buildCounterOrganization = 0;
+buildOrganization() {
+  var o = new api.Organization();
+  buildCounterOrganization++;
+  if (buildCounterOrganization < 3) {
+    o.displayName = "foo";
+    o.organizationId = "foo";
+    o.owner = buildOrganizationOwner();
+  }
+  buildCounterOrganization--;
+  return o;
+}
+
+checkOrganization(api.Organization o) {
+  buildCounterOrganization++;
+  if (buildCounterOrganization < 3) {
+    unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.organizationId, unittest.equals('foo'));
+    checkOrganizationOwner(o.owner);
+  }
+  buildCounterOrganization--;
+}
+
+core.int buildCounterOrganizationOwner = 0;
+buildOrganizationOwner() {
+  var o = new api.OrganizationOwner();
+  buildCounterOrganizationOwner++;
+  if (buildCounterOrganizationOwner < 3) {
+    o.directoryCustomerId = "foo";
+  }
+  buildCounterOrganizationOwner--;
+  return o;
+}
+
+checkOrganizationOwner(api.OrganizationOwner o) {
+  buildCounterOrganizationOwner++;
+  if (buildCounterOrganizationOwner < 3) {
+    unittest.expect(o.directoryCustomerId, unittest.equals('foo'));
+  }
+  buildCounterOrganizationOwner--;
+}
+
+buildUnnamed2435() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed2414(core.List<api.Binding> o) {
+checkUnnamed2435(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -171,7 +247,7 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed2414();
+    o.bindings = buildUnnamed2435();
     o.etag = "foo";
     o.version = 42;
   }
@@ -182,21 +258,21 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed2414(o.bindings);
+    checkUnnamed2435(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterPolicy--;
 }
 
-buildUnnamed2415() {
+buildUnnamed2436() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed2415(core.Map<core.String, core.String> o) {
+checkUnnamed2436(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -208,9 +284,10 @@ buildProject() {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     o.createTime = "foo";
-    o.labels = buildUnnamed2415();
+    o.labels = buildUnnamed2436();
     o.lifecycleState = "foo";
     o.name = "foo";
+    o.parent = buildResourceId();
     o.projectId = "foo";
     o.projectNumber = "foo";
   }
@@ -222,13 +299,35 @@ checkProject(api.Project o) {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUnnamed2415(o.labels);
+    checkUnnamed2436(o.labels);
     unittest.expect(o.lifecycleState, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
+    checkResourceId(o.parent);
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.projectNumber, unittest.equals('foo'));
   }
   buildCounterProject--;
+}
+
+core.int buildCounterResourceId = 0;
+buildResourceId() {
+  var o = new api.ResourceId();
+  buildCounterResourceId++;
+  if (buildCounterResourceId < 3) {
+    o.id = "foo";
+    o.type = "foo";
+  }
+  buildCounterResourceId--;
+  return o;
+}
+
+checkResourceId(api.ResourceId o) {
+  buildCounterResourceId++;
+  if (buildCounterResourceId < 3) {
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.type, unittest.equals('foo'));
+  }
+  buildCounterResourceId--;
 }
 
 core.int buildCounterSetIamPolicyRequest = 0;
@@ -250,14 +349,14 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed2416() {
+buildUnnamed2437() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2416(core.List<core.String> o) {
+checkUnnamed2437(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -268,7 +367,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed2416();
+    o.permissions = buildUnnamed2437();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -277,19 +376,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed2416(o.permissions);
+    checkUnnamed2437(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed2417() {
+buildUnnamed2438() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2417(core.List<core.String> o) {
+checkUnnamed2438(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -300,7 +399,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed2417();
+    o.permissions = buildUnnamed2438();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -309,7 +408,7 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed2417(o.permissions);
+    checkUnnamed2438(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -343,11 +442,38 @@ main() {
   });
 
 
+  unittest.group("obj-schema-ListOrganizationsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListOrganizationsResponse();
+      var od = new api.ListOrganizationsResponse.fromJson(o.toJson());
+      checkListOrganizationsResponse(od);
+    });
+  });
+
+
   unittest.group("obj-schema-ListProjectsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListProjectsResponse();
       var od = new api.ListProjectsResponse.fromJson(o.toJson());
       checkListProjectsResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-Organization", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildOrganization();
+      var od = new api.Organization.fromJson(o.toJson());
+      checkOrganization(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-OrganizationOwner", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildOrganizationOwner();
+      var od = new api.OrganizationOwner.fromJson(o.toJson());
+      checkOrganizationOwner(od);
     });
   });
 
@@ -366,6 +492,15 @@ main() {
       var o = buildProject();
       var od = new api.Project.fromJson(o.toJson());
       checkProject(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ResourceId", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildResourceId();
+      var od = new api.ResourceId.fromJson(o.toJson());
+      checkResourceId(od);
     });
   });
 
@@ -394,6 +529,322 @@ main() {
       var od = new api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od);
     });
+  });
+
+
+  unittest.group("resource-OrganizationsResourceApi", () {
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_organizationId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("v1beta1/organizations/"));
+        pathOffset += 22;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_organizationId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildOrganization());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_organizationId).then(unittest.expectAsync(((api.Organization response) {
+        checkOrganization(response);
+      })));
+    });
+
+    unittest.test("method--getIamPolicy", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildGetIamPolicyRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.GetIamPolicyRequest.fromJson(json);
+        checkGetIamPolicyRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("v1beta1/organizations/"));
+        pathOffset += 22;
+        index = path.indexOf(":getIamPolicy", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_resource"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals(":getIamPolicy"));
+        pathOffset += 13;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPolicy());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+        checkPolicy(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_pageSize = 42;
+      var arg_pageToken = "foo";
+      var arg_filter = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("v1beta1/organizations"));
+        pathOffset += 21;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildListOrganizationsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.list(pageSize: arg_pageSize, pageToken: arg_pageToken, filter: arg_filter).then(unittest.expectAsync(((api.ListOrganizationsResponse response) {
+        checkListOrganizationsResponse(response);
+      })));
+    });
+
+    unittest.test("method--setIamPolicy", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildSetIamPolicyRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.SetIamPolicyRequest.fromJson(json);
+        checkSetIamPolicyRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("v1beta1/organizations/"));
+        pathOffset += 22;
+        index = path.indexOf(":setIamPolicy", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_resource"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals(":setIamPolicy"));
+        pathOffset += 13;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPolicy());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+        checkPolicy(response);
+      })));
+    });
+
+    unittest.test("method--testIamPermissions", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildTestIamPermissionsRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.TestIamPermissionsRequest.fromJson(json);
+        checkTestIamPermissionsRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("v1beta1/organizations/"));
+        pathOffset += 22;
+        index = path.indexOf(":testIamPermissions", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_resource"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals(":testIamPermissions"));
+        pathOffset += 19;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildTestIamPermissionsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync(((api.TestIamPermissionsResponse response) {
+        checkTestIamPermissionsResponse(response);
+      })));
+    });
+
+    unittest.test("method--update", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildOrganization();
+      var arg_organizationId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.Organization.fromJson(json);
+        checkOrganization(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("v1beta1/organizations/"));
+        pathOffset += 22;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_organizationId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildOrganization());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.update(arg_request, arg_organizationId).then(unittest.expectAsync(((api.Organization response) {
+        checkOrganization(response);
+      })));
+    });
+
   });
 
 

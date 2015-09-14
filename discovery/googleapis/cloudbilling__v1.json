@@ -11,10 +11,10 @@
     "basePath": "/",
     "baseUrl": "https://cloudbilling.googleapis.com/",
     "batchPath": "batch",
-    "description": "",
+    "description": "Retrieves Google Developers Console billing accounts and associates them with projects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/billing/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/-C-cocmB3hdYP8G1pbP8mxOVUcw\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/vc2WYrePuDcqazgNVjmdzE5Mns4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -255,7 +255,7 @@
             }
         }
     },
-    "revision": "20150812",
+    "revision": "20150903",
     "rootUrl": "https://cloudbilling.googleapis.com/",
     "schemas": {
         "BillingAccount": {

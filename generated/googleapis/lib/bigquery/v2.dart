@@ -3005,18 +3005,28 @@ class JobStatistics {
 }
 
 class JobStatistics2 {
+  /** [Output-only] Billing tier for the job. */
+  core.int billingTier;
   /**
    * [Output-only] Whether the query result was fetched from the query cache.
    */
   core.bool cacheHit;
-  /** [Output-only] Total bytes processed for this job. */
+  /** [Output-only] Total bytes billed for the job. */
+  core.String totalBytesBilled;
+  /** [Output-only] Total bytes processed for the job. */
   core.String totalBytesProcessed;
 
   JobStatistics2();
 
   JobStatistics2.fromJson(core.Map _json) {
+    if (_json.containsKey("billingTier")) {
+      billingTier = _json["billingTier"];
+    }
     if (_json.containsKey("cacheHit")) {
       cacheHit = _json["cacheHit"];
+    }
+    if (_json.containsKey("totalBytesBilled")) {
+      totalBytesBilled = _json["totalBytesBilled"];
     }
     if (_json.containsKey("totalBytesProcessed")) {
       totalBytesProcessed = _json["totalBytesProcessed"];
@@ -3025,8 +3035,14 @@ class JobStatistics2 {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (billingTier != null) {
+      _json["billingTier"] = billingTier;
+    }
     if (cacheHit != null) {
       _json["cacheHit"] = cacheHit;
+    }
+    if (totalBytesBilled != null) {
+      _json["totalBytesBilled"] = totalBytesBilled;
     }
     if (totalBytesProcessed != null) {
       _json["totalBytesProcessed"] = totalBytesProcessed;
@@ -3036,13 +3052,13 @@ class JobStatistics2 {
 }
 
 class JobStatistics3 {
-  /** [Output-only] Number of bytes of source data in a joad job. */
+  /** [Output-only] Number of bytes of source data in a load job. */
   core.String inputFileBytes;
   /** [Output-only] Number of source files in a load job. */
   core.String inputFiles;
   /**
-   * [Output-only] Size of the loaded data in bytes. Note that while an import
-   * job is in the running state, this value may change.
+   * [Output-only] Size of the loaded data in bytes. Note that while a load job
+   * is in the running state, this value may change.
    */
   core.String outputBytes;
   /**

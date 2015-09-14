@@ -862,7 +862,9 @@ buildJobStatistics2() {
   var o = new api.JobStatistics2();
   buildCounterJobStatistics2++;
   if (buildCounterJobStatistics2 < 3) {
+    o.billingTier = 42;
     o.cacheHit = true;
+    o.totalBytesBilled = "foo";
     o.totalBytesProcessed = "foo";
   }
   buildCounterJobStatistics2--;
@@ -872,7 +874,9 @@ buildJobStatistics2() {
 checkJobStatistics2(api.JobStatistics2 o) {
   buildCounterJobStatistics2++;
   if (buildCounterJobStatistics2 < 3) {
+    unittest.expect(o.billingTier, unittest.equals(42));
     unittest.expect(o.cacheHit, unittest.isTrue);
+    unittest.expect(o.totalBytesBilled, unittest.equals('foo'));
     unittest.expect(o.totalBytesProcessed, unittest.equals('foo'));
   }
   buildCounterJobStatistics2--;

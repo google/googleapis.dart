@@ -8613,7 +8613,9 @@ class CommentThreadSnippet {
  */
 class ContentRating {
   /**
-   * Rating system in Australia - Australian Classification Board
+   * The video's Australian Classification Board (ACB) or Australian
+   * Communications and Media Authority (ACMA) rating. ACMA ratings are used to
+   * classify children's television programming.
    * Possible string values are:
    * - "acbC"
    * - "acbE"
@@ -8627,7 +8629,8 @@ class ContentRating {
    */
   core.String acbRating;
   /**
-   * Rating system for Italy - Autorit� per le Garanzie nelle Comunicazioni
+   * The video's rating from Italy's Autorità per le Garanzie nelle
+   * Comunicazioni (AGCOM).
    * Possible string values are:
    * - "agcomT"
    * - "agcomUnrated"
@@ -8636,7 +8639,8 @@ class ContentRating {
    */
   core.String agcomRating;
   /**
-   * Rating system for Chile - Asociaci�n Nacional de Televisi�n
+   * The video's Anatel (Asociación Nacional de Televisión) rating for Chilean
+   * television.
    * Possible string values are:
    * - "anatelA"
    * - "anatelF"
@@ -8649,7 +8653,7 @@ class ContentRating {
    */
   core.String anatelRating;
   /**
-   * British Board of Film Classification
+   * The video's British Board of Film Classification (BBFC) rating.
    * Possible string values are:
    * - "bbfc12"
    * - "bbfc12a"
@@ -8662,7 +8666,7 @@ class ContentRating {
    */
   core.String bbfcRating;
   /**
-   * Rating system for Thailand - Board of Filmand Video Censors
+   * The video's rating from Thailand's Board of Film and Video Censors.
    * Possible string values are:
    * - "bfvc13"
    * - "bfvc15"
@@ -8675,8 +8679,8 @@ class ContentRating {
    */
   core.String bfvcRating;
   /**
-   * Rating system for Austria - Bundesministerium f�r Unterricht, Kunst und
-   * Kultur
+   * The video's rating from the Austrian Board of Media Classification
+   * (Bundesministerium für Unterricht, Kunst und Kultur).
    * Possible string values are:
    * - "bmukk10"
    * - "bmukk12"
@@ -8689,7 +8693,10 @@ class ContentRating {
    */
   core.String bmukkRating;
   /**
-   * Rating system for Canadian TV - Canadian TV Classification System
+   * Rating system for Canadian TV - Canadian TV Classification System The
+   * video's rating from the Canadian Radio-Television and Telecommunications
+   * Commission (CRTC) for Canadian English-language broadcasts. For more
+   * information, see the Canadian Broadcast Standards Council website.
    * Possible string values are:
    * - "catv14plus"
    * - "catv18plus"
@@ -8701,7 +8708,10 @@ class ContentRating {
    */
   core.String catvRating;
   /**
-   * Rating system for French Canadian TV - Regie du cinema
+   * The video's rating from the Canadian Radio-Television and
+   * Telecommunications Commission (CRTC) for Canadian French-language
+   * broadcasts. For more information, see the Canadian Broadcast Standards
+   * Council website.
    * Possible string values are:
    * - "catvfr13plus"
    * - "catvfr16plus"
@@ -8712,7 +8722,7 @@ class ContentRating {
    */
   core.String catvfrRating;
   /**
-   * Rating system in India - Central Board of Film Certification
+   * The video's Central Board of Film Certification (CBFC - India) rating.
    * Possible string values are:
    * - "cbfcA"
    * - "cbfcS"
@@ -8722,7 +8732,7 @@ class ContentRating {
    */
   core.String cbfcRating;
   /**
-   * Rating system for Chile - Consejo de Calificaci�n Cinematogr�fica
+   * The video's Consejo de Calificación Cinematográfica (Chile) rating.
    * Possible string values are:
    * - "ccc14"
    * - "ccc18"
@@ -8734,7 +8744,8 @@ class ContentRating {
    */
   core.String cccRating;
   /**
-   * Rating system for Portugal - Comiss�o de Classifica��o de Espect�culos
+   * The video's rating from Portugal's Comissão de Classificação de
+   * Espect´culos.
    * Possible string values are:
    * - "cceM12"
    * - "cceM16"
@@ -8745,7 +8756,7 @@ class ContentRating {
    */
   core.String cceRating;
   /**
-   * Rating system for Switzerland - Switzerland Rating System
+   * The video's rating in Switzerland.
    * Possible string values are:
    * - "chfilm0"
    * - "chfilm12"
@@ -8756,7 +8767,7 @@ class ContentRating {
    */
   core.String chfilmRating;
   /**
-   * Canadian Home Video Rating System
+   * The video's Canadian Home Video Rating System (CHVRS) rating.
    * Possible string values are:
    * - "chvrs14a"
    * - "chvrs18a"
@@ -8768,7 +8779,7 @@ class ContentRating {
    */
   core.String chvrsRating;
   /**
-   * Rating system for Belgium - Belgium Rating System
+   * The video's rating from the Commission de Contrôle des Films (Belgium).
    * Possible string values are:
    * - "cicfE"
    * - "cicfKntEna"
@@ -8777,7 +8788,8 @@ class ContentRating {
    */
   core.String cicfRating;
   /**
-   * Rating system for Romania - CONSILIUL NATIONAL AL AUDIOVIZUALULUI - CNA
+   * The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI
+   * (CNA).
    * Possible string values are:
    * - "cna12"
    * - "cna15"
@@ -8800,7 +8812,8 @@ class ContentRating {
    */
   core.String cncRating;
   /**
-   * Rating system for France - Conseil sup�rieur de l?audiovisuel
+   * The video's rating from France's Conseil supérieur de l?audiovisuel, which
+   * rates broadcast content.
    * Possible string values are:
    * - "csa10"
    * - "csa12"
@@ -8812,8 +8825,8 @@ class ContentRating {
    */
   core.String csaRating;
   /**
-   * Rating system for Luxembourg - Commission de surveillance de la
-   * classification des films
+   * The video's rating from Luxembourg's Commission de surveillance de la
+   * classification des films (CSCF).
    * Possible string values are:
    * - "cscf12"
    * - "cscf16"
@@ -8826,7 +8839,7 @@ class ContentRating {
    */
   core.String cscfRating;
   /**
-   * Rating system for Czech republic - Czech republic Rating System
+   * The video's rating in the Czech Republic.
    * Possible string values are:
    * - "czfilm12"
    * - "czfilm14"
@@ -8836,8 +8849,8 @@ class ContentRating {
    */
   core.String czfilmRating;
   /**
-   * Rating system in Brazil - Department of Justice, Rating, Titles and
-   * Qualification
+   * The video's Departamento de Justiça, Classificação, Qualificação e Títulos
+   * (DJCQT - Brazil) rating.
    * Possible string values are:
    * - "djctq10"
    * - "djctq12"
@@ -8848,9 +8861,10 @@ class ContentRating {
    * - "djctqUnrated"
    */
   core.String djctqRating;
+  /** Reasons that explain why the video received its DJCQT (Brazil) rating. */
   core.List<core.String> djctqRatingReasons;
   /**
-   * Rating system for Estonia - Estonia Rating System
+   * The video's rating in Estonia.
    * Possible string values are:
    * - "eefilmK12"
    * - "eefilmK14"
@@ -8864,7 +8878,7 @@ class ContentRating {
    */
   core.String eefilmRating;
   /**
-   * Rating system for Egypt - Egypt Rating System
+   * The video's rating in Egypt.
    * Possible string values are:
    * - "egfilm18"
    * - "egfilmBn"
@@ -8873,7 +8887,7 @@ class ContentRating {
    */
   core.String egfilmRating;
   /**
-   * Rating system in Japan - Eiga Rinri Kanri Iinkai
+   * The video's Eirin (映倫) rating. Eirin is the Japanese rating system.
    * Possible string values are:
    * - "eirinG"
    * - "eirinPg12"
@@ -8883,7 +8897,7 @@ class ContentRating {
    */
   core.String eirinRating;
   /**
-   * Rating system for Malaysia - Film Censorship Board of Malaysia
+   * The video's rating from Malaysia's Film Censorship Board.
    * Possible string values are:
    * - "fcbm18"
    * - "fcbm18pa"
@@ -8897,10 +8911,11 @@ class ContentRating {
    */
   core.String fcbmRating;
   /**
-   * Rating system for Hong kong - Office for Film, Newspaper and Article
-   * Administration
+   * The video's rating from Hong Kong's Office for Film, Newspaper and Article
+   * Administration.
    * Possible string values are:
    * - "fcoI"
+   * - "fcoIi"
    * - "fcoIia"
    * - "fcoIib"
    * - "fcoIii"
@@ -8908,7 +8923,8 @@ class ContentRating {
    */
   core.String fcoRating;
   /**
-   * Deprecated use CNC rating instead
+   * This property has been deprecated. Use the
+   * contentDetails.contentRating.cncRating instead.
    * Possible string values are:
    * - "fmoc10"
    * - "fmoc12"
@@ -8920,7 +8936,7 @@ class ContentRating {
    */
   core.String fmocRating;
   /**
-   * Rating system for South africa - Film & Publication Board
+   * The video's rating from South Africa's Film and Publication Board.
    * Possible string values are:
    * - "fpb1012Pg"
    * - "fpb13"
@@ -8935,7 +8951,8 @@ class ContentRating {
    */
   core.String fpbRating;
   /**
-   * Rating system in Germany - Voluntary Self Regulation of the Movie Industry
+   * The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany)
+   * rating.
    * Possible string values are:
    * - "fsk0"
    * - "fsk12"
@@ -8946,7 +8963,7 @@ class ContentRating {
    */
   core.String fskRating;
   /**
-   * Rating system for Greece - Greece Rating System
+   * The video's rating in Greece.
    * Possible string values are:
    * - "grfilmE"
    * - "grfilmK"
@@ -8956,8 +8973,8 @@ class ContentRating {
    */
   core.String grfilmRating;
   /**
-   * Rating system in Spain - Instituto de Cinematografia y de las Artes
-   * Audiovisuales
+   * The video's Instituto de la Cinematografía y de las Artes Audiovisuales
+   * (ICAA - Spain) rating.
    * Possible string values are:
    * - "icaa12"
    * - "icaa13"
@@ -8970,7 +8987,8 @@ class ContentRating {
    */
   core.String icaaRating;
   /**
-   * Rating system in Ireland - Irish Film Classification Office
+   * The video's Irish Film Classification Office (IFCO - Ireland) rating. See
+   * the IFCO website for more information.
    * Possible string values are:
    * - "ifco12"
    * - "ifco12a"
@@ -8984,7 +9002,7 @@ class ContentRating {
    */
   core.String ifcoRating;
   /**
-   * Rating system for Israel - Israel Rating System
+   * The video's rating in Israel.
    * Possible string values are:
    * - "ilfilm12"
    * - "ilfilm16"
@@ -8994,8 +9012,8 @@ class ContentRating {
    */
   core.String ilfilmRating;
   /**
-   * Rating system for Argentina - Instituto Nacional de Cine y Artes
-   * Audiovisuales
+   * The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales -
+   * Argentina) rating.
    * Possible string values are:
    * - "incaaAtp"
    * - "incaaC"
@@ -9006,7 +9024,7 @@ class ContentRating {
    */
   core.String incaaRating;
   /**
-   * Rating system for Kenya - Kenya Film Classification Board
+   * The video's rating from the Kenya Film Classification Board.
    * Possible string values are:
    * - "kfcb16plus"
    * - "kfcbG"
@@ -9016,8 +9034,7 @@ class ContentRating {
    */
   core.String kfcbRating;
   /**
-   * Rating system for Netherlands - Nederlands Instituut voor de Classificatie
-   * van Audiovisuele Media
+   * voor de Classificatie van Audiovisuele Media (Netherlands).
    * Possible string values are:
    * - "kijkwijzer12"
    * - "kijkwijzer16"
@@ -9029,7 +9046,8 @@ class ContentRating {
    */
   core.String kijkwijzerRating;
   /**
-   * Rating system in South Korea - Korea Media Rating Board
+   * The video's Korea Media Rating Board (영상물등급위원회) rating. The KMRB rates
+   * videos in South Korea.
    * Possible string values are:
    * - "kmrb12plus"
    * - "kmrb15plus"
@@ -9040,7 +9058,7 @@ class ContentRating {
    */
   core.String kmrbRating;
   /**
-   * Rating system for Indonesia - Lembaga Sensor Film
+   * The video's rating from Indonesia's Lembaga Sensor Film.
    * Possible string values are:
    * - "lsf13"
    * - "lsf17"
@@ -9054,7 +9072,7 @@ class ContentRating {
    */
   core.String lsfRating;
   /**
-   * Rating system for Malta - Film Age-Classification Board
+   * The video's rating from Malta's Film Age-Classification Board.
    * Possible string values are:
    * - "mccaa12"
    * - "mccaa12a"
@@ -9068,7 +9086,8 @@ class ContentRating {
    */
   core.String mccaaRating;
   /**
-   * Rating system for Denmark - The Media Council for Children and Young People
+   * The video's rating from the Danish Film Institute's (Det Danske
+   * Filminstitut) Media Council for Children and Young People.
    * Possible string values are:
    * - "mccyp11"
    * - "mccyp15"
@@ -9078,7 +9097,8 @@ class ContentRating {
    */
   core.String mccypRating;
   /**
-   * Rating system for Singapore - Media Development Authority
+   * The video's rating from Singapore's Media Development Authority (MDA) and,
+   * specifically, it's Board of Film Censors (BFC).
    * Possible string values are:
    * - "mdaG"
    * - "mdaM18"
@@ -9090,19 +9110,22 @@ class ContentRating {
    */
   core.String mdaRating;
   /**
-   * Rating system for Norway - Medietilsynet
+   * The video's rating from Medietilsynet, the Norwegian Media Authority.
    * Possible string values are:
    * - "medietilsynet11"
+   * - "medietilsynet12"
    * - "medietilsynet15"
    * - "medietilsynet18"
+   * - "medietilsynet6"
    * - "medietilsynet7"
+   * - "medietilsynet9"
    * - "medietilsynetA"
    * - "medietilsynetUnrated"
    */
   core.String medietilsynetRating;
   /**
-   * Rating system for Finland - Finnish Centre for Media Education and
-   * Audiovisual Media
+   * The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti
+   * (National Audiovisual Institute).
    * Possible string values are:
    * - "meku12"
    * - "meku16"
@@ -9113,8 +9136,8 @@ class ContentRating {
    */
   core.String mekuRating;
   /**
-   * Rating system in Italy - Ministero dei Beni e delle Attivita Culturali e
-   * del Turismo
+   * The video's rating from the Ministero dei Beni e delle Attività Culturali e
+   * del Turismo (Italy).
    * Possible string values are:
    * - "mibacT"
    * - "mibacUnrated"
@@ -9125,7 +9148,7 @@ class ContentRating {
    */
   core.String mibacRating;
   /**
-   * Rating system for Colombia - MoC
+   * The video's Ministerio de Cultura (Colombia) rating.
    * Possible string values are:
    * - "moc12"
    * - "moc15"
@@ -9139,7 +9162,7 @@ class ContentRating {
    */
   core.String mocRating;
   /**
-   * Rating system for Taiwan - Ministry of Culture - Tawan
+   * The video's rating from Taiwan's Ministry of Culture (文化部).
    * Possible string values are:
    * - "moctwG"
    * - "moctwP"
@@ -9149,7 +9172,7 @@ class ContentRating {
    */
   core.String moctwRating;
   /**
-   * Motion Picture Association of America rating for the content.
+   * The video's Motion Picture Association of America (MPAA) rating.
    * Possible string values are:
    * - "mpaaG"
    * - "mpaaNc17"
@@ -9160,8 +9183,8 @@ class ContentRating {
    */
   core.String mpaaRating;
   /**
-   * Rating system for Philippines - MOVIE AND TELEVISION REVIEW AND
-   * CLASSIFICATION BOARD
+   * The video's rating from the Movie and Television Review and Classification
+   * Board (Philippines).
    * Possible string values are:
    * - "mtrcbG"
    * - "mtrcbPg"
@@ -9173,7 +9196,7 @@ class ContentRating {
    */
   core.String mtrcbRating;
   /**
-   * Rating system for Maldives - National Bureau of Classification
+   * The video's rating from the Maldives National Bureau of Classification.
    * Possible string values are:
    * - "nbc12plus"
    * - "nbc15plus"
@@ -9186,7 +9209,7 @@ class ContentRating {
    */
   core.String nbcRating;
   /**
-   * Rating system for Poland - National Broadcasting Council
+   * The video's rating in Poland.
    * Possible string values are:
    * - "nbcpl18plus"
    * - "nbcplI"
@@ -9197,7 +9220,7 @@ class ContentRating {
    */
   core.String nbcplRating;
   /**
-   * Rating system for Bulgaria - National Film Centre
+   * The video's rating from the Bulgarian National Film Center.
    * Possible string values are:
    * - "nfrcA"
    * - "nfrcB"
@@ -9208,7 +9231,7 @@ class ContentRating {
    */
   core.String nfrcRating;
   /**
-   * Rating system for Nigeria - National Film and Video Censors Board
+   * The video's rating from Nigeria's National Film and Video Censors Board.
    * Possible string values are:
    * - "nfvcb12"
    * - "nfvcb12a"
@@ -9221,7 +9244,8 @@ class ContentRating {
    */
   core.String nfvcbRating;
   /**
-   * Rating system for Latvia - National Film Center of Latvia
+   * The video's rating from the Nacionãlais Kino centrs (National Film Centre
+   * of Latvia).
    * Possible string values are:
    * - "nkclv12plus"
    * - "nkclv18plus"
@@ -9231,7 +9255,8 @@ class ContentRating {
    */
   core.String nkclvRating;
   /**
-   * Rating system in New Zealand - Office of Film and Literature Classification
+   * The video's Office of Film and Literature Classification (OFLC - New
+   * Zealand) rating.
    * Possible string values are:
    * - "oflcG"
    * - "oflcM"
@@ -9246,7 +9271,7 @@ class ContentRating {
    */
   core.String oflcRating;
   /**
-   * Rating system for Peru - Peru Rating System
+   * The video's rating in Peru.
    * Possible string values are:
    * - "pefilm14"
    * - "pefilm18"
@@ -9256,7 +9281,8 @@ class ContentRating {
    */
   core.String pefilmRating;
   /**
-   * Rating system for Hungary - Rating Committee of the National Office of Film
+   * The video's rating from the Hungarian Nemzeti Filmiroda, the Rating
+   * Committee of the National Office of Film.
    * Possible string values are:
    * - "rcnofI"
    * - "rcnofIi"
@@ -9268,7 +9294,7 @@ class ContentRating {
    */
   core.String rcnofRating;
   /**
-   * Rating system for Venezuela - SiBCI
+   * The video's rating in Venezuela.
    * Possible string values are:
    * - "resorteviolenciaA"
    * - "resorteviolenciaB"
@@ -9279,8 +9305,8 @@ class ContentRating {
    */
   core.String resorteviolenciaRating;
   /**
-   * Rating system in Mexico - General Directorate of Radio, Television and
-   * Cinematography
+   * The video's General Directorate of Radio, Television and Cinematography
+   * (Mexico) rating.
    * Possible string values are:
    * - "rtcA"
    * - "rtcAa"
@@ -9292,7 +9318,7 @@ class ContentRating {
    */
   core.String rtcRating;
   /**
-   * Rating system for Ireland - Raidi� Teilif�s �ireann
+   * The video's rating from Ireland's Raidió Teilifís Éireann.
    * Possible string values are:
    * - "rteCh"
    * - "rteGa"
@@ -9302,7 +9328,8 @@ class ContentRating {
    */
   core.String rteRating;
   /**
-   * Rating system in Russia
+   * The video's National Film Registry of the Russian Federation (MKRF -
+   * Russia) rating.
    * Possible string values are:
    * - "russia0"
    * - "russia12"
@@ -9313,7 +9340,7 @@ class ContentRating {
    */
   core.String russiaRating;
   /**
-   * Rating system for Slovakia - Slovakia Rating System
+   * The video's rating in Slovakia.
    * Possible string values are:
    * - "skfilmG"
    * - "skfilmP2"
@@ -9323,7 +9350,7 @@ class ContentRating {
    */
   core.String skfilmRating;
   /**
-   * Rating system for Iceland - SMAIS
+   * The video's rating in Iceland.
    * Possible string values are:
    * - "smais12"
    * - "smais14"
@@ -9335,7 +9362,7 @@ class ContentRating {
    */
   core.String smaisRating;
   /**
-   * Rating system for Sweden - Statens medier�d (National Media Council)
+   * The video's rating from Statens medieråd (Sweden's National Media Council).
    * Possible string values are:
    * - "smsa11"
    * - "smsa15"
@@ -9345,7 +9372,7 @@ class ContentRating {
    */
   core.String smsaRating;
   /**
-   * TV Parental Guidelines rating of the content.
+   * The video's TV Parental Guidelines (TVPG) rating.
    * Possible string values are:
    * - "pg14"
    * - "tvpgG"
@@ -9358,7 +9385,7 @@ class ContentRating {
    */
   core.String tvpgRating;
   /**
-   * Internal YouTube rating.
+   * A rating that YouTube uses to identify age-restricted content.
    * Possible string values are:
    * - "ytAgeRestricted"
    */
@@ -11112,6 +11139,8 @@ class LiveBroadcastSnippet {
    */
   core.String description;
   core.bool isDefaultBroadcast;
+  /** The id of the live chat for this broadcast. */
+  core.String liveChatId;
   /**
    * The date and time that the broadcast was added to YouTube's live broadcast
    * schedule. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ)
@@ -11159,6 +11188,9 @@ class LiveBroadcastSnippet {
     if (_json.containsKey("isDefaultBroadcast")) {
       isDefaultBroadcast = _json["isDefaultBroadcast"];
     }
+    if (_json.containsKey("liveChatId")) {
+      liveChatId = _json["liveChatId"];
+    }
     if (_json.containsKey("publishedAt")) {
       publishedAt = core.DateTime.parse(_json["publishedAt"]);
     }
@@ -11192,6 +11224,9 @@ class LiveBroadcastSnippet {
     }
     if (isDefaultBroadcast != null) {
       _json["isDefaultBroadcast"] = isDefaultBroadcast;
+    }
+    if (liveChatId != null) {
+      _json["liveChatId"] = liveChatId;
     }
     if (publishedAt != null) {
       _json["publishedAt"] = (publishedAt).toIso8601String();

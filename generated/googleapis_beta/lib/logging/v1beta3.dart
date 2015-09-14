@@ -23,6 +23,9 @@ class LoggingApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
+  /** View your data across Google Cloud Platform services */
+  static const CloudPlatformReadOnlyScope = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
   /** Administrate log data for your projects */
   static const LoggingAdminScope = "https://www.googleapis.com/auth/logging.admin";
 
@@ -64,15 +67,19 @@ class ProjectsLogServicesResourceApi {
       _requester = client;
 
   /**
-   * Lists log services associated with log entries ingested for a project.
+   * Lists the log services that have log entries in this project.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `projectName`. The project resource whose services
-   * are to be listed.
+   * [projectsId] - Part of `projectName`. The resource name of the project
+   * whose services are to be listed.
    *
-   * [log] - The name of the log resource whose services are to be listed. log
-   * for which to list services. When empty, all services are listed.
+   * [log] - If empty, all log services contributing log entries to the project
+   * are listed. Otherwise, this field must be the resource name of a log, such
+   * as `"projects/my-project/appengine.googleapis.com%2Frequest_log"`, and then
+   * the only services listed are those associated with entries in the log. A
+   * service is associated with an entry if its name is in the entry's
+   * `LogEntryMetadata.serviceName` field.
    *
    * [pageSize] - The maximum number of `LogService` objects to return in one
    * operation.
@@ -133,34 +140,40 @@ class ProjectsLogServicesIndexesResourceApi {
       _requester = client;
 
   /**
-   * Lists log service indexes associated with a log service.
+   * Lists the current index values for a log service.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `serviceName`. A log service resource of the form
-   * `/projects / * /logServices / * `. The service indexes of the log service
-   * are returned. Example:
-   * `"/projects/myProj/logServices/appengine.googleapis.com"`.
+   * [projectsId] - Part of `serviceName`. The resource name of a log service
+   * whose service indexes are requested. Example:
+   * `"projects/my-project-id/logServices/appengine.googleapis.com"`.
    *
    * [logServicesId] - Part of `serviceName`. See documentation of `projectsId`.
    *
-   * [indexPrefix] - Restricts the indexes returned to be those with a specified
-   * prefix. The prefix has the form `"/label_value/label_value/..."`, in order
-   * corresponding to the [`LogService
+   * [indexPrefix] - Restricts the index values returned to be those with a
+   * specified prefix for each index key. This field has the form
+   * `"/prefix1/prefix2/..."`, in order corresponding to the [`LogService
    * indexKeys`][google.logging.v1.LogService.index_keys]. Non-empty prefixes
-   * must begin with `/` . Example prefixes: + `"/myModule/"` retrieves App
-   * Engine versions associated with `myModule`. The trailing slash terminates
-   * the value. + `"/myModule"` retrieves App Engine modules with names
-   * beginning with `myModule`. + `""` retrieves all indexes.
+   * must begin with `/`. For example, App Engine's two keys are the module ID
+   * and the version ID. Following is the effect of using various values for
+   * `indexPrefix`: + `"/Mod/"` retrieves `/Mod/10` and `/Mod/11` but not
+   * `/ModA/10`. + `"/Mod` retrieves `/Mod/10`, `/Mod/11` and `/ModA/10` but not
+   * `/XXX/33`. + `"/Mod/1"` retrieves `/Mod/10` and `/Mod/11` but not
+   * `/ModA/10`. + `"/Mod/10/"` retrieves `/Mod/10` only. + An empty prefix or
+   * `"/"` retrieves all values.
    *
-   * [depth] - A limit to the number of levels of the index hierarchy that are
-   * expanded. If `depth` is 0, it defaults to the level specified by the prefix
-   * field (the number of slash separators). The default empty prefix implies a
-   * `depth` of 1. It is an error for `depth` to be any non-zero value less than
-   * the number of components in `indexPrefix`.
+   * [depth] - A non-negative integer that limits the number of levels of the
+   * index hierarchy that are returned. If `depth` is 1 (default), only the
+   * first index key value is returned. If `depth` is 2, both primary and
+   * secondary key values are returned. If `depth` is 0, the depth is the number
+   * of slash-separators in the `indexPrefix` field, not counting a slash
+   * appearing as the last character of the prefix. If the `indexPrefix` field
+   * is empty, the default depth is 1. It is an error for `depth` to be any
+   * positive value less than the number of components in `indexPrefix`.
    *
-   * [log] - A log resource like `/projects/project_id/logs/log_name`,
-   * identifying the log for which to list service indexes.
+   * [log] - _Optional_. The resource name of a log, such as
+   * `"projects/project_id/logs/log_name"`. If present, indexes are returned for
+   * any service associated with entries in the log.
    *
    * [pageSize] - The maximum number of log service index resources to return in
    * one operation.
@@ -230,14 +243,15 @@ class ProjectsLogServicesSinksResourceApi {
       _requester = client;
 
   /**
-   * Creates the specified log service sink resource.
+   * Creates a log service sink. All log entries from a specified log service
+   * are written to the destination.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `serviceName`. The name of the service in which to
-   * create a sink.
+   * [projectsId] - Part of `serviceName`. The resource name of the log service
+   * to which the sink is bound.
    *
    * [logServicesId] - Part of `serviceName`. See documentation of `projectsId`.
    *
@@ -280,11 +294,13 @@ class ProjectsLogServicesSinksResourceApi {
   }
 
   /**
-   * Deletes the specified log service sink.
+   * Deletes a log service sink. After deletion, no new log entries are written
+   * to the destination.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `sinkName`. The name of the sink to delete.
+   * [projectsId] - Part of `sinkName`. The resource name of the log service
+   * sink to delete.
    *
    * [logServicesId] - Part of `sinkName`. See documentation of `projectsId`.
    *
@@ -329,11 +345,12 @@ class ProjectsLogServicesSinksResourceApi {
   }
 
   /**
-   * Gets the specified log service sink resource.
+   * Gets a log service sink.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `sinkName`. The name of the sink to return.
+   * [projectsId] - Part of `sinkName`. The resource name of the log service
+   * sink to return.
    *
    * [logServicesId] - Part of `sinkName`. See documentation of `projectsId`.
    *
@@ -378,12 +395,12 @@ class ProjectsLogServicesSinksResourceApi {
   }
 
   /**
-   * Lists log service sinks associated with the specified service.
+   * Lists log service sinks associated with a log service.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `serviceName`. The name of the service for which to
-   * list sinks.
+   * [projectsId] - Part of `serviceName`. The log service whose sinks are
+   * wanted.
    *
    * [logServicesId] - Part of `serviceName`. See documentation of `projectsId`.
    *
@@ -423,13 +440,14 @@ class ProjectsLogServicesSinksResourceApi {
   }
 
   /**
-   * Creates or update the specified log service sink resource.
+   * Updates a log service sink. If the sink does not exist, it is created.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `sinkName`. The name of the sink to update.
+   * [projectsId] - Part of `sinkName`. The resource name of the log service
+   * sink to update.
    *
    * [logServicesId] - Part of `sinkName`. See documentation of `projectsId`.
    *
@@ -489,11 +507,13 @@ class ProjectsLogsResourceApi {
       _requester = client;
 
   /**
-   * Deletes the specified log resource and all log entries contained in it.
+   * Deletes a log and all its log entries. The log will reappear if it receives
+   * new entries.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `logName`. The log resource to delete.
+   * [projectsId] - Part of `logName`. The resource name of the log to be
+   * deleted.
    *
    * [logsId] - Part of `logName`. See documentation of `projectsId`.
    *
@@ -533,26 +553,26 @@ class ProjectsLogsResourceApi {
   }
 
   /**
-   * Lists log resources belonging to the specified project.
+   * Lists the logs in the project. Only logs that have entries are listed.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `projectName`. The project name for which to list
-   * the log resources.
+   * [projectsId] - Part of `projectName`. The resource name of the project
+   * whose logs are requested. If both `serviceName` and `serviceIndexPrefix`
+   * are empty, then all logs with entries in this project are listed.
    *
-   * [serviceName] - A service name for which to list logs. Only logs containing
-   * entries whose metadata includes this service name are returned. If
-   * `serviceName` and `serviceIndexPrefix` are both empty, then all log names
-   * are returned. To list all log names, regardless of service, leave both the
-   * `serviceName` and `serviceIndexPrefix` empty. To list log names containing
-   * entries with a particular service name (or explicitly empty service name)
-   * set `serviceName` to the desired value and `serviceIndexPrefix` to `"/"`.
+   * [serviceName] - If not empty, this field must be a log service name such as
+   * `"compute.googleapis.com"`. Only logs associated with that that log service
+   * are listed.
    *
-   * [serviceIndexPrefix] - A log service index prefix for which to list logs.
-   * Only logs containing entries whose metadata that includes these label
-   * values (associated with index keys) are returned. The prefix is a slash
-   * separated list of values, and need not specify all index labels. An empty
-   * index (or a single slash) matches all log service indexes.
+   * [serviceIndexPrefix] - The purpose of this field is to restrict the listed
+   * logs to those with entries of a certain kind. If `serviceName` is the name
+   * of a log service, then this field may contain values for the log service's
+   * indexes. Only logs that have entries whose indexes include the values are
+   * listed. The format for this field is `"/val1/val2.../valN"`, where `val1`
+   * is a value for the first index, `val2` for the second index, etc. An empty
+   * value (a single slash) for an index matches all values, and you can omit
+   * values for later indexes entirely.
    *
    * [pageSize] - The maximum number of results to return.
    *
@@ -615,20 +635,18 @@ class ProjectsLogsEntriesResourceApi {
       _requester = client;
 
   /**
-   * Creates one or more log entries in a log. You must supply a list of
-   * `LogEntry` objects, named `entries`. Each `LogEntry` object must contain a
-   * payload object and a `LogEntryMetadata` object that describes the entry.
-   * You must fill in all the fields of the entry, metadata, and payload. You
-   * can also supply a map, `commonLabels`, that supplies default (key, value)
-   * data for the `entries[].metadata.labels` maps, saving you the trouble of
-   * creating identical copies for each entry.
+   * Writes log entries to Cloud Logging. Each entry consists of a `LogEntry`
+   * object. You must fill in all the fields of the object, including one of the
+   * payload fields. You may supply a map, `commonLabels`, that holds default
+   * (key, value) data for the `entries[].metadata.labels` map in each entry,
+   * saving you the trouble of creating identical copies for each entry.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `logName`. The name of the log resource into which
-   * to insert the log entries.
+   * [projectsId] - Part of `logName`. The resource name of the log that will
+   * receive the log entries.
    *
    * [logsId] - Part of `logName`. See documentation of `projectsId`.
    *
@@ -680,14 +698,15 @@ class ProjectsLogsSinksResourceApi {
       _requester = client;
 
   /**
-   * Creates the specified log sink resource.
+   * Creates a log sink. All log entries for a specified log are written to the
+   * destination.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `logName`. The log in which to create a sink
-   * resource.
+   * [projectsId] - Part of `logName`. The resource name of the log to which to
+   * the sink is bound.
    *
    * [logsId] - Part of `logName`. See documentation of `projectsId`.
    *
@@ -730,11 +749,13 @@ class ProjectsLogsSinksResourceApi {
   }
 
   /**
-   * Deletes the specified log sink resource.
+   * Deletes a log sink. After deletion, no new log entries are written to the
+   * destination.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `sinkName`. The name of the sink to delete.
+   * [projectsId] - Part of `sinkName`. The resource name of the log sink to
+   * delete.
    *
    * [logsId] - Part of `sinkName`. See documentation of `projectsId`.
    *
@@ -779,11 +800,12 @@ class ProjectsLogsSinksResourceApi {
   }
 
   /**
-   * Gets the specified log sink resource.
+   * Gets a log sink.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `sinkName`. The name of the sink resource to return.
+   * [projectsId] - Part of `sinkName`. The resource name of the log sink to
+   * return.
    *
    * [logsId] - Part of `sinkName`. See documentation of `projectsId`.
    *
@@ -828,11 +850,12 @@ class ProjectsLogsSinksResourceApi {
   }
 
   /**
-   * Lists log sinks associated with the specified log.
+   * Lists log sinks associated with a log.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `logName`. The log for which to list sinks.
+   * [projectsId] - Part of `logName`. The log whose sinks are wanted. For
+   * example, `"compute.google.com/syslog"`.
    *
    * [logsId] - Part of `logName`. See documentation of `projectsId`.
    *
@@ -872,13 +895,13 @@ class ProjectsLogsSinksResourceApi {
   }
 
   /**
-   * Creates or updates the specified log sink resource.
+   * Updates a log sink. If the sink does not exist, it is created.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `sinkName`. The name of the sink to update.
+   * [projectsId] - Part of `sinkName`. The resource name of the sink to update.
    *
    * [logsId] - Part of `sinkName`. See documentation of `projectsId`.
    *
@@ -935,14 +958,15 @@ class ProjectsSinksResourceApi {
       _requester = client;
 
   /**
-   * Creates the specified sink resource.
+   * Creates a project sink. A logs filter determines which log entries are
+   * written to the destination.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `projectName`. The name of the project in which to
-   * create a sink.
+   * [projectsId] - Part of `projectName`. The resource name of the project to
+   * which the sink is bound.
    *
    * Completes with a [LogSink].
    *
@@ -980,11 +1004,13 @@ class ProjectsSinksResourceApi {
   }
 
   /**
-   * Deletes the specified sink.
+   * Deletes a project sink. After deletion, no new log entries are written to
+   * the destination.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `sinkName`. The name of the sink to delete.
+   * [projectsId] - Part of `sinkName`. The resource name of the project sink to
+   * delete.
    *
    * [sinksId] - Part of `sinkName`. See documentation of `projectsId`.
    *
@@ -1024,11 +1050,12 @@ class ProjectsSinksResourceApi {
   }
 
   /**
-   * Gets the specified sink resource.
+   * Gets a project sink.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `sinkName`. The name of the sink to return.
+   * [projectsId] - Part of `sinkName`. The resource name of the project sink to
+   * return.
    *
    * [sinksId] - Part of `sinkName`. See documentation of `projectsId`.
    *
@@ -1068,12 +1095,11 @@ class ProjectsSinksResourceApi {
   }
 
   /**
-   * Lists sinks associated with the specified project.
+   * Lists project sinks associated with a project.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `projectName`. The name of the project for which to
-   * list sinks.
+   * [projectsId] - Part of `projectName`. The project whose sinks are wanted.
    *
    * Completes with a [ListSinksResponse].
    *
@@ -1108,13 +1134,15 @@ class ProjectsSinksResourceApi {
   }
 
   /**
-   * Creates or update the specified sink resource.
+   * Updates a project sink. If the sink does not exist, it is created. The
+   * destination, filter, or both may be updated.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectsId] - Part of `sinkName`. The name of the sink to update.
+   * [projectsId] - Part of `sinkName`. The resource name of the project sink to
+   * update.
    *
    * [sinksId] - Part of `sinkName`. See documentation of `projectsId`.
    *
@@ -1160,600 +1188,6 @@ class ProjectsSinksResourceApi {
 
 
 
-/** BigQuery request and response messages for audit log. */
-class AuditData {
-  /** Dataset insert request. */
-  DatasetInsertRequest datasetInsertRequest;
-  /** Dataset insert response. */
-  DatasetInsertResponse datasetInsertResponse;
-  /** Dataset list request. */
-  DatasetListRequest datasetListRequest;
-  /** Dataset update request. */
-  DatasetUpdateRequest datasetUpdateRequest;
-  /** Dataset update response. */
-  DatasetUpdateResponse datasetUpdateResponse;
-  /** Job get query results request. */
-  JobGetQueryResultsRequest jobGetQueryResultsRequest;
-  /** Job get query results response. */
-  JobGetQueryResultsResponse jobGetQueryResultsResponse;
-  /** Job insert request. */
-  JobInsertRequest jobInsertRequest;
-  /** Job query-done response. Use this information for usage analysis. */
-  JobQueryDoneResponse jobQueryDoneResponse;
-  /** Job query request. */
-  JobQueryRequest jobQueryRequest;
-  /** Job query response. */
-  JobQueryResponse jobQueryResponse;
-  /** Table data-list request. */
-  TableDataListRequest tableDataListRequest;
-  /** Table insert request. */
-  TableInsertRequest tableInsertRequest;
-  /** Table insert response. */
-  TableInsertResponse tableInsertResponse;
-  /** Table update request. */
-  TableUpdateRequest tableUpdateRequest;
-  /** Table update response. */
-  TableUpdateResponse tableUpdateResponse;
-
-  AuditData();
-
-  AuditData.fromJson(core.Map _json) {
-    if (_json.containsKey("datasetInsertRequest")) {
-      datasetInsertRequest = new DatasetInsertRequest.fromJson(_json["datasetInsertRequest"]);
-    }
-    if (_json.containsKey("datasetInsertResponse")) {
-      datasetInsertResponse = new DatasetInsertResponse.fromJson(_json["datasetInsertResponse"]);
-    }
-    if (_json.containsKey("datasetListRequest")) {
-      datasetListRequest = new DatasetListRequest.fromJson(_json["datasetListRequest"]);
-    }
-    if (_json.containsKey("datasetUpdateRequest")) {
-      datasetUpdateRequest = new DatasetUpdateRequest.fromJson(_json["datasetUpdateRequest"]);
-    }
-    if (_json.containsKey("datasetUpdateResponse")) {
-      datasetUpdateResponse = new DatasetUpdateResponse.fromJson(_json["datasetUpdateResponse"]);
-    }
-    if (_json.containsKey("jobGetQueryResultsRequest")) {
-      jobGetQueryResultsRequest = new JobGetQueryResultsRequest.fromJson(_json["jobGetQueryResultsRequest"]);
-    }
-    if (_json.containsKey("jobGetQueryResultsResponse")) {
-      jobGetQueryResultsResponse = new JobGetQueryResultsResponse.fromJson(_json["jobGetQueryResultsResponse"]);
-    }
-    if (_json.containsKey("jobInsertRequest")) {
-      jobInsertRequest = new JobInsertRequest.fromJson(_json["jobInsertRequest"]);
-    }
-    if (_json.containsKey("jobQueryDoneResponse")) {
-      jobQueryDoneResponse = new JobQueryDoneResponse.fromJson(_json["jobQueryDoneResponse"]);
-    }
-    if (_json.containsKey("jobQueryRequest")) {
-      jobQueryRequest = new JobQueryRequest.fromJson(_json["jobQueryRequest"]);
-    }
-    if (_json.containsKey("jobQueryResponse")) {
-      jobQueryResponse = new JobQueryResponse.fromJson(_json["jobQueryResponse"]);
-    }
-    if (_json.containsKey("tableDataListRequest")) {
-      tableDataListRequest = new TableDataListRequest.fromJson(_json["tableDataListRequest"]);
-    }
-    if (_json.containsKey("tableInsertRequest")) {
-      tableInsertRequest = new TableInsertRequest.fromJson(_json["tableInsertRequest"]);
-    }
-    if (_json.containsKey("tableInsertResponse")) {
-      tableInsertResponse = new TableInsertResponse.fromJson(_json["tableInsertResponse"]);
-    }
-    if (_json.containsKey("tableUpdateRequest")) {
-      tableUpdateRequest = new TableUpdateRequest.fromJson(_json["tableUpdateRequest"]);
-    }
-    if (_json.containsKey("tableUpdateResponse")) {
-      tableUpdateResponse = new TableUpdateResponse.fromJson(_json["tableUpdateResponse"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (datasetInsertRequest != null) {
-      _json["datasetInsertRequest"] = (datasetInsertRequest).toJson();
-    }
-    if (datasetInsertResponse != null) {
-      _json["datasetInsertResponse"] = (datasetInsertResponse).toJson();
-    }
-    if (datasetListRequest != null) {
-      _json["datasetListRequest"] = (datasetListRequest).toJson();
-    }
-    if (datasetUpdateRequest != null) {
-      _json["datasetUpdateRequest"] = (datasetUpdateRequest).toJson();
-    }
-    if (datasetUpdateResponse != null) {
-      _json["datasetUpdateResponse"] = (datasetUpdateResponse).toJson();
-    }
-    if (jobGetQueryResultsRequest != null) {
-      _json["jobGetQueryResultsRequest"] = (jobGetQueryResultsRequest).toJson();
-    }
-    if (jobGetQueryResultsResponse != null) {
-      _json["jobGetQueryResultsResponse"] = (jobGetQueryResultsResponse).toJson();
-    }
-    if (jobInsertRequest != null) {
-      _json["jobInsertRequest"] = (jobInsertRequest).toJson();
-    }
-    if (jobQueryDoneResponse != null) {
-      _json["jobQueryDoneResponse"] = (jobQueryDoneResponse).toJson();
-    }
-    if (jobQueryRequest != null) {
-      _json["jobQueryRequest"] = (jobQueryRequest).toJson();
-    }
-    if (jobQueryResponse != null) {
-      _json["jobQueryResponse"] = (jobQueryResponse).toJson();
-    }
-    if (tableDataListRequest != null) {
-      _json["tableDataListRequest"] = (tableDataListRequest).toJson();
-    }
-    if (tableInsertRequest != null) {
-      _json["tableInsertRequest"] = (tableInsertRequest).toJson();
-    }
-    if (tableInsertResponse != null) {
-      _json["tableInsertResponse"] = (tableInsertResponse).toJson();
-    }
-    if (tableUpdateRequest != null) {
-      _json["tableUpdateRequest"] = (tableUpdateRequest).toJson();
-    }
-    if (tableUpdateResponse != null) {
-      _json["tableUpdateResponse"] = (tableUpdateResponse).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Common audit log format for Google Cloud Platform API calls. */
-class AuditLog {
-  /** Authentication information about the call. */
-  AuthenticationInfo authenticationInfo;
-  /**
-   * Authorization information about the call. If there are multiple resources
-   * or permissions involved in authorizing the request, there will be one
-   * AuthorizationInfo element for each {resource, permission} tuple.
-   */
-  core.List<AuthorizationInfo> authorizationInfo;
-  /** Service-specific data for BigQuery. */
-  AuditData bigqueryData;
-  /**
-   * Name of the service method or operation. Defined by the service. For API
-   * call events, should match the name of the API method. For example,
-   * `google.datastore.v1.Datastore.RunQuery`
-   * `google.logging.v1.LoggingService.DeleteLog`
-   */
-  core.String methodName;
-  /**
-   * If applicable, the number of items returned from a List or Query API
-   * method.
-   */
-  core.String numResponseItems;
-  /** Metadata about the request. */
-  RequestMetadata requestMetadata;
-  /**
-   * Resource name of the resource or collection that is the target of this
-   * request, as a scheme-less URI, not including the API service name. For
-   * example: shelves/shelf_id/books shelves/shelf_id/books/book_id
-   */
-  core.String resourceName;
-  /**
-   * Service specific data about the request, response, and other event data.
-   * This should include all request parameters or response elements, except for
-   * parameters that are large or privacy-sensitive. It should never contain
-   * user-generated data (such as file contents).
-   *
-   * The values for Object must be JSON objects. It can consist of `num`,
-   * `String`, `bool` and `null` as well as `Map` and `List` values.
-   */
-  core.Map<core.String, core.Object> serviceData;
-  /**
-   * Name of the API service for the request. e.g., datastore.googleapis.com
-   */
-  core.String serviceName;
-  /** The status of the overall API call. */
-  Status status;
-
-  AuditLog();
-
-  AuditLog.fromJson(core.Map _json) {
-    if (_json.containsKey("authenticationInfo")) {
-      authenticationInfo = new AuthenticationInfo.fromJson(_json["authenticationInfo"]);
-    }
-    if (_json.containsKey("authorizationInfo")) {
-      authorizationInfo = _json["authorizationInfo"].map((value) => new AuthorizationInfo.fromJson(value)).toList();
-    }
-    if (_json.containsKey("bigqueryData")) {
-      bigqueryData = new AuditData.fromJson(_json["bigqueryData"]);
-    }
-    if (_json.containsKey("methodName")) {
-      methodName = _json["methodName"];
-    }
-    if (_json.containsKey("numResponseItems")) {
-      numResponseItems = _json["numResponseItems"];
-    }
-    if (_json.containsKey("requestMetadata")) {
-      requestMetadata = new RequestMetadata.fromJson(_json["requestMetadata"]);
-    }
-    if (_json.containsKey("resourceName")) {
-      resourceName = _json["resourceName"];
-    }
-    if (_json.containsKey("serviceData")) {
-      serviceData = _json["serviceData"];
-    }
-    if (_json.containsKey("serviceName")) {
-      serviceName = _json["serviceName"];
-    }
-    if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (authenticationInfo != null) {
-      _json["authenticationInfo"] = (authenticationInfo).toJson();
-    }
-    if (authorizationInfo != null) {
-      _json["authorizationInfo"] = authorizationInfo.map((value) => (value).toJson()).toList();
-    }
-    if (bigqueryData != null) {
-      _json["bigqueryData"] = (bigqueryData).toJson();
-    }
-    if (methodName != null) {
-      _json["methodName"] = methodName;
-    }
-    if (numResponseItems != null) {
-      _json["numResponseItems"] = numResponseItems;
-    }
-    if (requestMetadata != null) {
-      _json["requestMetadata"] = (requestMetadata).toJson();
-    }
-    if (resourceName != null) {
-      _json["resourceName"] = resourceName;
-    }
-    if (serviceData != null) {
-      _json["serviceData"] = serviceData;
-    }
-    if (serviceName != null) {
-      _json["serviceName"] = serviceName;
-    }
-    if (status != null) {
-      _json["status"] = (status).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Authentication information for the call. */
-class AuthenticationInfo {
-  /** Email address of the authenticated user making the request */
-  core.String principalEmail;
-
-  AuthenticationInfo();
-
-  AuthenticationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("principalEmail")) {
-      principalEmail = _json["principalEmail"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (principalEmail != null) {
-      _json["principalEmail"] = principalEmail;
-    }
-    return _json;
-  }
-}
-
-/** Authorization information for the call. */
-class AuthorizationInfo {
-  /**
-   * Whether or not authorization for this resource and permission was granted.
-   */
-  core.bool granted;
-  /** The required IAM permission. */
-  core.String permission;
-  /**
-   * The resource being accessed, as a REST-style string. For example:
-   * `bigquery.googlapis.com/projects/PROJECTID/datasets/DATASETID`
-   */
-  core.String resource;
-
-  AuthorizationInfo();
-
-  AuthorizationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("granted")) {
-      granted = _json["granted"];
-    }
-    if (_json.containsKey("permission")) {
-      permission = _json["permission"];
-    }
-    if (_json.containsKey("resource")) {
-      resource = _json["resource"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (granted != null) {
-      _json["granted"] = granted;
-    }
-    if (permission != null) {
-      _json["permission"] = permission;
-    }
-    if (resource != null) {
-      _json["resource"] = resource;
-    }
-    return _json;
-  }
-}
-
-/** Access control list. */
-class BigQueryAcl {
-  /** Access control entry list. */
-  core.List<Entry> entries;
-
-  BigQueryAcl();
-
-  BigQueryAcl.fromJson(core.Map _json) {
-    if (_json.containsKey("entries")) {
-      entries = _json["entries"].map((value) => new Entry.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (entries != null) {
-      _json["entries"] = entries.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/** BigQuery dataset information. */
-class Dataset {
-  /** Access contol list for this dataset. */
-  BigQueryAcl acl;
-  /** The creation time for this dataset. */
-  core.String createTime;
-  /** The name of this dataset. */
-  DatasetName datasetName;
-  /**
-   * The number of milliseconds which should be added to the creation time to
-   * determine the expiration time for newly created tables. If this value is
-   * null then no expiration time will be set for new tables.
-   */
-  core.String defaultTableExpireDuration;
-  /** User-modifiable metadata for this dataset. */
-  DatasetInfo info;
-  /** The last modified time for this dataset. */
-  core.String updateTime;
-
-  Dataset();
-
-  Dataset.fromJson(core.Map _json) {
-    if (_json.containsKey("acl")) {
-      acl = new BigQueryAcl.fromJson(_json["acl"]);
-    }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
-    }
-    if (_json.containsKey("datasetName")) {
-      datasetName = new DatasetName.fromJson(_json["datasetName"]);
-    }
-    if (_json.containsKey("defaultTableExpireDuration")) {
-      defaultTableExpireDuration = _json["defaultTableExpireDuration"];
-    }
-    if (_json.containsKey("info")) {
-      info = new DatasetInfo.fromJson(_json["info"]);
-    }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (acl != null) {
-      _json["acl"] = (acl).toJson();
-    }
-    if (createTime != null) {
-      _json["createTime"] = createTime;
-    }
-    if (datasetName != null) {
-      _json["datasetName"] = (datasetName).toJson();
-    }
-    if (defaultTableExpireDuration != null) {
-      _json["defaultTableExpireDuration"] = defaultTableExpireDuration;
-    }
-    if (info != null) {
-      _json["info"] = (info).toJson();
-    }
-    if (updateTime != null) {
-      _json["updateTime"] = updateTime;
-    }
-    return _json;
-  }
-}
-
-/** User-provided metadata for a dataset, primarily for display in the UI. */
-class DatasetInfo {
-  /**
-   * The description of a dataset. This can be several sentences or paragraphs
-   * describing the dataset contents in detail.
-   */
-  core.String description;
-  /**
-   * The human-readable name of a dataset. This should be a short phrase
-   * identifying the dataset (e.g., "Analytics Data 2011").
-   */
-  core.String friendlyName;
-
-  DatasetInfo();
-
-  DatasetInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("friendlyName")) {
-      friendlyName = _json["friendlyName"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (friendlyName != null) {
-      _json["friendlyName"] = friendlyName;
-    }
-    return _json;
-  }
-}
-
-/** Dataset insert request. */
-class DatasetInsertRequest {
-  /** Dataset insert payload. */
-  Dataset resource;
-
-  DatasetInsertRequest();
-
-  DatasetInsertRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("resource")) {
-      resource = new Dataset.fromJson(_json["resource"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (resource != null) {
-      _json["resource"] = (resource).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Dataset insert response. */
-class DatasetInsertResponse {
-  /** Final state of inserted dataset. */
-  Dataset resource;
-
-  DatasetInsertResponse();
-
-  DatasetInsertResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("resource")) {
-      resource = new Dataset.fromJson(_json["resource"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (resource != null) {
-      _json["resource"] = (resource).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Dataset list request. */
-class DatasetListRequest {
-  /** Whether to list all datasets, including hidden ones. */
-  core.bool listAll;
-
-  DatasetListRequest();
-
-  DatasetListRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("listAll")) {
-      listAll = _json["listAll"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (listAll != null) {
-      _json["listAll"] = listAll;
-    }
-    return _json;
-  }
-}
-
-/** Fully qualified name for a dataset. */
-class DatasetName {
-  /** The ID of the dataset (scoped to the project above). */
-  core.String datasetId;
-  /**
-   * A string containing the id of this project. The id may be the alphanumeric
-   * project ID, or the project number.
-   */
-  core.String projectId;
-
-  DatasetName();
-
-  DatasetName.fromJson(core.Map _json) {
-    if (_json.containsKey("datasetId")) {
-      datasetId = _json["datasetId"];
-    }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (datasetId != null) {
-      _json["datasetId"] = datasetId;
-    }
-    if (projectId != null) {
-      _json["projectId"] = projectId;
-    }
-    return _json;
-  }
-}
-
-/** Dataset update request. */
-class DatasetUpdateRequest {
-  /** Dataset update payload. */
-  Dataset resource;
-
-  DatasetUpdateRequest();
-
-  DatasetUpdateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("resource")) {
-      resource = new Dataset.fromJson(_json["resource"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (resource != null) {
-      _json["resource"] = (resource).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Dataset update response. */
-class DatasetUpdateResponse {
-  /** Final state of updated dataset. */
-  Dataset resource;
-
-  DatasetUpdateResponse();
-
-  DatasetUpdateResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("resource")) {
-      resource = new Dataset.fromJson(_json["resource"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (resource != null) {
-      _json["resource"] = (resource).toJson();
-    }
-    return _json;
-  }
-}
-
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
  * empty messages in your APIs. A typical example is to use it as the request or
@@ -1770,157 +1204,6 @@ class Empty {
 
   core.Map toJson() {
     var _json = new core.Map();
-    return _json;
-  }
-}
-
-/** Access control entry. */
-class Entry {
-  /** Grants access to all members of a domain. */
-  core.String domain;
-  /** Grants access to a group, by e-mail. */
-  core.String groupEmail;
-  /** Granted role. Valid roles are READER, WRITER, OWNER. */
-  core.String role;
-  /**
-   * Grants access to special groups. Valid groups are PROJECT_OWNERS,
-   * PROJECT_READERS, PROJECT_WRITERS and ALL_AUTHENTICATED_USERS.
-   */
-  core.String specialGroup;
-  /** Grants access to a user, by e-mail. */
-  core.String userEmail;
-  /** Grants access to a BigQuery View. */
-  TableName viewName;
-
-  Entry();
-
-  Entry.fromJson(core.Map _json) {
-    if (_json.containsKey("domain")) {
-      domain = _json["domain"];
-    }
-    if (_json.containsKey("groupEmail")) {
-      groupEmail = _json["groupEmail"];
-    }
-    if (_json.containsKey("role")) {
-      role = _json["role"];
-    }
-    if (_json.containsKey("specialGroup")) {
-      specialGroup = _json["specialGroup"];
-    }
-    if (_json.containsKey("userEmail")) {
-      userEmail = _json["userEmail"];
-    }
-    if (_json.containsKey("viewName")) {
-      viewName = new TableName.fromJson(_json["viewName"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (domain != null) {
-      _json["domain"] = domain;
-    }
-    if (groupEmail != null) {
-      _json["groupEmail"] = groupEmail;
-    }
-    if (role != null) {
-      _json["role"] = role;
-    }
-    if (specialGroup != null) {
-      _json["specialGroup"] = specialGroup;
-    }
-    if (userEmail != null) {
-      _json["userEmail"] = userEmail;
-    }
-    if (viewName != null) {
-      _json["viewName"] = (viewName).toJson();
-    }
-    return _json;
-  }
-}
-
-/**
- * Describes an extract job, which exports data to an external source via the
- * export pipeline.
- */
-class Extract {
-  /**
-   * URI or URIs where extracted data should be written. Currently, only
-   * Bigstore URIs are supported (e.g., "gs://bucket/object"). If more than one
-   * URI given, output will be divided into 'partitions' of data, with each
-   * partition containing one or more files. If more than one URI is given, each
-   * URI must contain exactly one '*' which will be replaced with the file
-   * number (within the partition) padded out to 9 digits.
-   */
-  core.List<core.String> destinationUris;
-  /** Source table. */
-  TableName sourceTable;
-
-  Extract();
-
-  Extract.fromJson(core.Map _json) {
-    if (_json.containsKey("destinationUris")) {
-      destinationUris = _json["destinationUris"];
-    }
-    if (_json.containsKey("sourceTable")) {
-      sourceTable = new TableName.fromJson(_json["sourceTable"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (destinationUris != null) {
-      _json["destinationUris"] = destinationUris;
-    }
-    if (sourceTable != null) {
-      _json["sourceTable"] = (sourceTable).toJson();
-    }
-    return _json;
-  }
-}
-
-/** BigQuery field schema. */
-class FieldSchema {
-  /** Column mode */
-  core.String mode;
-  /** Column name Matches: [A-Za-z_][A-Za-z_0-9]{0,127} */
-  core.String name;
-  /** Present iff type == RECORD. */
-  TableSchema schema;
-  /** Column type */
-  core.String type;
-
-  FieldSchema();
-
-  FieldSchema.fromJson(core.Map _json) {
-    if (_json.containsKey("mode")) {
-      mode = _json["mode"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("schema")) {
-      schema = new TableSchema.fromJson(_json["schema"]);
-    }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (mode != null) {
-      _json["mode"] = mode;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (schema != null) {
-      _json["schema"] = (schema).toJson();
-    }
-    if (type != null) {
-      _json["type"] = type;
-    }
     return _json;
   }
 }
@@ -2021,411 +1304,6 @@ class HttpRequest {
   }
 }
 
-/** Combines all of the information about a job. */
-class Job {
-  /** Job configuration. */
-  JobConfiguration jobConfiguration;
-  /** Job name. */
-  JobName jobName;
-  /** Job statistics. */
-  JobStatistics jobStatistics;
-  /** Job status. */
-  JobStatus jobStatus;
-
-  Job();
-
-  Job.fromJson(core.Map _json) {
-    if (_json.containsKey("jobConfiguration")) {
-      jobConfiguration = new JobConfiguration.fromJson(_json["jobConfiguration"]);
-    }
-    if (_json.containsKey("jobName")) {
-      jobName = new JobName.fromJson(_json["jobName"]);
-    }
-    if (_json.containsKey("jobStatistics")) {
-      jobStatistics = new JobStatistics.fromJson(_json["jobStatistics"]);
-    }
-    if (_json.containsKey("jobStatus")) {
-      jobStatus = new JobStatus.fromJson(_json["jobStatus"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (jobConfiguration != null) {
-      _json["jobConfiguration"] = (jobConfiguration).toJson();
-    }
-    if (jobName != null) {
-      _json["jobName"] = (jobName).toJson();
-    }
-    if (jobStatistics != null) {
-      _json["jobStatistics"] = (jobStatistics).toJson();
-    }
-    if (jobStatus != null) {
-      _json["jobStatus"] = (jobStatus).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Job configuration information. */
-class JobConfiguration {
-  /** If set, don't actually run the job. Just check that it would run. */
-  core.bool dryRun;
-  /** Extract job information. */
-  Extract extract;
-  /** Load job information. */
-  Load load;
-  /** Query job information. */
-  Query query;
-  /** TableCopy job information. */
-  TableCopy tableCopy;
-
-  JobConfiguration();
-
-  JobConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("dryRun")) {
-      dryRun = _json["dryRun"];
-    }
-    if (_json.containsKey("extract")) {
-      extract = new Extract.fromJson(_json["extract"]);
-    }
-    if (_json.containsKey("load")) {
-      load = new Load.fromJson(_json["load"]);
-    }
-    if (_json.containsKey("query")) {
-      query = new Query.fromJson(_json["query"]);
-    }
-    if (_json.containsKey("tableCopy")) {
-      tableCopy = new TableCopy.fromJson(_json["tableCopy"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (dryRun != null) {
-      _json["dryRun"] = dryRun;
-    }
-    if (extract != null) {
-      _json["extract"] = (extract).toJson();
-    }
-    if (load != null) {
-      _json["load"] = (load).toJson();
-    }
-    if (query != null) {
-      _json["query"] = (query).toJson();
-    }
-    if (tableCopy != null) {
-      _json["tableCopy"] = (tableCopy).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Job get-query-results request. */
-class JobGetQueryResultsRequest {
-  /** Maximum number of results to return. */
-  core.int maxResults;
-  /** Row number to start returning results from. */
-  core.String startRow;
-
-  JobGetQueryResultsRequest();
-
-  JobGetQueryResultsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("maxResults")) {
-      maxResults = _json["maxResults"];
-    }
-    if (_json.containsKey("startRow")) {
-      startRow = _json["startRow"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (maxResults != null) {
-      _json["maxResults"] = maxResults;
-    }
-    if (startRow != null) {
-      _json["startRow"] = startRow;
-    }
-    return _json;
-  }
-}
-
-/** Job get-query-results response. */
-class JobGetQueryResultsResponse {
-  /**
-   * Job that was created to run the query. Includes job state, job statistics,
-   * and job errors (if any). To determine whether the job has completed, check
-   * that job.status.state == DONE. If job.status.error_result is set, then the
-   * job failed. If the job has not yet completed, call GetQueryResults again.
-   */
-  Job job;
-  /** Total number of results in query results. */
-  core.String totalResults;
-
-  JobGetQueryResultsResponse();
-
-  JobGetQueryResultsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("job")) {
-      job = new Job.fromJson(_json["job"]);
-    }
-    if (_json.containsKey("totalResults")) {
-      totalResults = _json["totalResults"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (job != null) {
-      _json["job"] = (job).toJson();
-    }
-    if (totalResults != null) {
-      _json["totalResults"] = totalResults;
-    }
-    return _json;
-  }
-}
-
-/** Job insert request. */
-class JobInsertRequest {
-  /** Job insert payload. */
-  Job resource;
-
-  JobInsertRequest();
-
-  JobInsertRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("resource")) {
-      resource = new Job.fromJson(_json["resource"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (resource != null) {
-      _json["resource"] = (resource).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Fully-qualified name for a job. */
-class JobName {
-  /** The ID of the job (scoped to the project above). */
-  core.String jobId;
-  /** A string containing the id of this project. */
-  core.String projectId;
-
-  JobName();
-
-  JobName.fromJson(core.Map _json) {
-    if (_json.containsKey("jobId")) {
-      jobId = _json["jobId"];
-    }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (jobId != null) {
-      _json["jobId"] = jobId;
-    }
-    if (projectId != null) {
-      _json["projectId"] = projectId;
-    }
-    return _json;
-  }
-}
-
-/** Job get query-done response. */
-class JobQueryDoneResponse {
-  /** Usage information about completed job. */
-  Job job;
-
-  JobQueryDoneResponse();
-
-  JobQueryDoneResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("job")) {
-      job = new Job.fromJson(_json["job"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (job != null) {
-      _json["job"] = (job).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Job query request. */
-class JobQueryRequest {
-  /**
-   * Default dataset to use when tables in a query do not have a dataset
-   * specified.
-   */
-  DatasetName defaultDataset;
-  /** If set, don't actually run the query. */
-  core.bool dryRun;
-  /** Maximum number of results to return. */
-  core.int maxResults;
-  /** Project that the query should be charged to. */
-  core.String projectId;
-  /** The query to execute. */
-  core.String query;
-
-  JobQueryRequest();
-
-  JobQueryRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("defaultDataset")) {
-      defaultDataset = new DatasetName.fromJson(_json["defaultDataset"]);
-    }
-    if (_json.containsKey("dryRun")) {
-      dryRun = _json["dryRun"];
-    }
-    if (_json.containsKey("maxResults")) {
-      maxResults = _json["maxResults"];
-    }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
-    }
-    if (_json.containsKey("query")) {
-      query = _json["query"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (defaultDataset != null) {
-      _json["defaultDataset"] = (defaultDataset).toJson();
-    }
-    if (dryRun != null) {
-      _json["dryRun"] = dryRun;
-    }
-    if (maxResults != null) {
-      _json["maxResults"] = maxResults;
-    }
-    if (projectId != null) {
-      _json["projectId"] = projectId;
-    }
-    if (query != null) {
-      _json["query"] = query;
-    }
-    return _json;
-  }
-}
-
-/** Job query response. */
-class JobQueryResponse {
-  /** Information about queried job. */
-  Job job;
-  /** The total number of rows in the complete query result set. */
-  core.String totalResults;
-
-  JobQueryResponse();
-
-  JobQueryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("job")) {
-      job = new Job.fromJson(_json["job"]);
-    }
-    if (_json.containsKey("totalResults")) {
-      totalResults = _json["totalResults"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (job != null) {
-      _json["job"] = (job).toJson();
-    }
-    if (totalResults != null) {
-      _json["totalResults"] = totalResults;
-    }
-    return _json;
-  }
-}
-
-/** Job statistics that may change after a job starts. */
-class JobStatistics {
-  /** Time when the job was created (in milliseconds since the POSIX epoch). */
-  core.String createTime;
-  /** Time when the job ended. */
-  core.String endTime;
-  /** Time when the job started. */
-  core.String startTime;
-  /** Total bytes processed for a job. */
-  core.String totalProcessedBytes;
-
-  JobStatistics();
-
-  JobStatistics.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
-    }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
-    }
-    if (_json.containsKey("totalProcessedBytes")) {
-      totalProcessedBytes = _json["totalProcessedBytes"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (createTime != null) {
-      _json["createTime"] = createTime;
-    }
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (startTime != null) {
-      _json["startTime"] = startTime;
-    }
-    if (totalProcessedBytes != null) {
-      _json["totalProcessedBytes"] = totalProcessedBytes;
-    }
-    return _json;
-  }
-}
-
-/** Running state of a job (whether it is running, failed, etc). */
-class JobStatus {
-  /** If the job did not complete successfully, this will contain an error. */
-  Status error;
-  /**
-   * State of a job: PENDING, RUNNING, DONE. Includes no information about
-   * whether the job was successful or not.
-   */
-  core.String state;
-
-  JobStatus();
-
-  JobStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (error != null) {
-      _json["error"] = (error).toJson();
-    }
-    if (state != null) {
-      _json["state"] = state;
-    }
-    return _json;
-  }
-}
-
 /** Result returned from ListLogServiceIndexesRequest. */
 class ListLogServiceIndexesResponse {
   /**
@@ -2435,7 +1313,11 @@ class ListLogServiceIndexesResponse {
    * If `nextPageToken` is empty, then there are no more results.
    */
   core.String nextPageToken;
-  /** A list of log service index prefixes. */
+  /**
+   * A list of log service index values. Each index value has the form
+   * `"/value1/value2/..."`, where `value1` is a value in the primary index,
+   * `value2` is a value in the secondary index, and so forth.
+   */
   core.List<core.String> serviceIndexPrefixes;
 
   ListLogServiceIndexesResponse();
@@ -2464,9 +1346,9 @@ class ListLogServiceIndexesResponse {
 /** Result returned from `ListLogServiceSinks`. */
 class ListLogServiceSinksResponse {
   /**
-   * The requested log service sinks. If any of the returned `LogSink` objects
-   * have an empty `destination` field, then call `logServices.sinks.get` to
-   * retrieve the complete `LogSink` object.
+   * The requested log service sinks. If a returned `LogSink` object has an
+   * empty `destination` field, the client can retrieve the complete `LogSink`
+   * object by calling `logServices.sinks.get`.
    */
   core.List<LogSink> sinks;
 
@@ -2525,9 +1407,9 @@ class ListLogServicesResponse {
 /** Result returned from `ListLogSinks`. */
 class ListLogSinksResponse {
   /**
-   * The requested log sinks. If any of the returned `LogSink` objects have an
-   * empty `destination` field, then call `logServices.sinks.get` to retrieve
-   * the complete `LogSink` object.
+   * The requested log sinks. If a returned `LogSink` object has an empty
+   * `destination` field, the client can retrieve the complete `LogSink` object
+   * by calling `log.sinks.get`.
    */
   core.List<LogSink> sinks;
 
@@ -2550,7 +1432,7 @@ class ListLogSinksResponse {
 
 /** Result returned from ListLogs. */
 class ListLogsResponse {
-  /** A list of log resources. */
+  /** A list of log descriptions matching the criteria. */
   core.List<Log> logs;
   /**
    * If there are more results, then `nextPageToken` is returned in the
@@ -2585,7 +1467,11 @@ class ListLogsResponse {
 
 /** Result returned from `ListSinks`. */
 class ListSinksResponse {
-  /** The requested sinks. */
+  /**
+   * The requested sinks. If a returned `LogSink` object has an empty
+   * `destination` field, the client can retrieve the complete `LogSink` object
+   * by calling `projects.sinks.get`.
+   */
   core.List<LogSink> sinks;
 
   ListSinksResponse();
@@ -2605,78 +1491,23 @@ class ListSinksResponse {
   }
 }
 
-/**
- * Describes a load job, which loads data from an external source via the import
- * pipeline.
- */
-class Load {
-  /** Describes when a job should create a table. */
-  core.String createDisposition;
-  /** table where the imported data should be written. */
-  TableName destinationTable;
-  /** Schema for the data to be imported. */
-  TableSchema schema;
-  /**
-   * URIs for the data to be imported. Only Bigstore URIs are supported (e.g.,
-   * "gs://bucket/object").
-   */
-  core.List<core.String> sourceUris;
-  /** Describes how writes should affect the table associated with the job. */
-  core.String writeDisposition;
-
-  Load();
-
-  Load.fromJson(core.Map _json) {
-    if (_json.containsKey("createDisposition")) {
-      createDisposition = _json["createDisposition"];
-    }
-    if (_json.containsKey("destinationTable")) {
-      destinationTable = new TableName.fromJson(_json["destinationTable"]);
-    }
-    if (_json.containsKey("schema")) {
-      schema = new TableSchema.fromJson(_json["schema"]);
-    }
-    if (_json.containsKey("sourceUris")) {
-      sourceUris = _json["sourceUris"];
-    }
-    if (_json.containsKey("writeDisposition")) {
-      writeDisposition = _json["writeDisposition"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (createDisposition != null) {
-      _json["createDisposition"] = createDisposition;
-    }
-    if (destinationTable != null) {
-      _json["destinationTable"] = (destinationTable).toJson();
-    }
-    if (schema != null) {
-      _json["schema"] = (schema).toJson();
-    }
-    if (sourceUris != null) {
-      _json["sourceUris"] = sourceUris;
-    }
-    if (writeDisposition != null) {
-      _json["writeDisposition"] = writeDisposition;
-    }
-    return _json;
-  }
-}
-
-/** A log object. */
+/** _Output only._ Describes a log, which is a named stream of log entries. */
 class Log {
-  /**
-   * Name used when displaying the log to the user (for example, in a UI).
-   * Example: `"activity_log"`
-   */
+  /** _Optional._ The common name of the log. Example: `"request_log"`. */
   core.String displayName;
   /**
-   * REQUIRED: The log's name. Example: `"compute.googleapis.com/activity_log"`.
+   * The resource name of the log. Example:
+   * `"/projects/my-gcp-project-id/logs/LOG_NAME"`, where `LOG_NAME` is the
+   * URL-encoded given name of the log. The log includes those log entries whose
+   * `LogEntry.log` field contains this given name. To avoid name collisions, it
+   * is a best practice to prefix the given log name with the service name, but
+   * this is not required. Examples of log given names:
+   * `"appengine.googleapis.com/request_log"`, `"apache-access"`.
    */
   core.String name;
-  /** Type URL describing the expected payload type for the log. */
+  /**
+   * _Optional_. A URI representing the expected payload type for log entries.
+   */
   core.String payloadType;
 
   Log();
@@ -2926,19 +1757,20 @@ class LogEntryMetadata {
   }
 }
 
-/** A problem in a sink or the sink's configuration. */
+/** Describes a problem with a logging resource or operation. */
 class LogError {
   /**
-   * The resource associated with the error. It may be different from the sink
-   * destination. For example, the sink may point to a BigQuery dataset, but the
-   * error may refer to a table resource inside the dataset.
+   * A resource name associated with this error. For example, the name of a
+   * Cloud Storage bucket that has insufficient permissions to be a destination
+   * for log entries.
    */
   core.String resource;
-  /** The description of the last error observed. */
-  Status status;
   /**
-   * The last time the error was observed, in nanoseconds since the Unix epoch.
+   * The error description, including a classification code, an error message,
+   * and other details.
    */
+  Status status;
+  /** The time the error was observed, in nanoseconds since the Unix epoch. */
   core.String timeNanos;
 
   LogError();
@@ -3028,15 +1860,24 @@ class LogLine {
   }
 }
 
-/** A log service object. */
+/** _Output only._ Describes a service that writes log entries. */
 class LogService {
   /**
-   * Label keys used when labeling log entries for this service. The order of
-   * the keys is significant, with higher priority keys coming earlier in the
-   * list.
+   * A list of the names of the keys used to index and label individual log
+   * entries from this service. The first two keys are used as the primary and
+   * secondary index, respectively. Additional keys may be used to label the
+   * entries. For example, App Engine indexes its entries by module and by
+   * version, so its `indexKeys` field is the following: [
+   * "appengine.googleapis.com/module_id", "appengine.googleapis.com/version_id"
+   * ]
    */
   core.List<core.String> indexKeys;
-  /** The service's name. */
+  /**
+   * The service's name. Example: `"appengine.googleapis.com"`. Log names
+   * beginning with this string are reserved for this service. This value can
+   * appear in the `LogEntry.metadata.serviceName` field of log entries
+   * associated with this log service.
+   */
   core.String name;
 
   LogService();
@@ -3062,27 +1903,28 @@ class LogService {
   }
 }
 
-/** An object that describes where a log may be written. */
+/** Describes where log entries are written outside of Cloud Logging. */
 class LogSink {
   /**
-   * The resource to send log entries to. The supported sink resource types are:
-   * + Google Cloud Storage: `storage.googleapis.com/BUCKET` or
-   * `BUCKET.storage.googleapis.com/` + Google BigQuery:
-   * `bigquery.googleapis.com/projects/PROJECT/datasets/DATASET` Currently the
-   * Cloud Logging API supports at most one sink for each resource type per log
-   * or log service resource.
+   * The resource name of the destination. Cloud Logging writes designated log
+   * entries to this destination. For example,
+   * `"storage.googleapis.com/my-output-bucket"`.
    */
   core.String destination;
-  /** _Output only._ All active errors found for this sink. */
+  /**
+   * _Output only._ If any errors occur when invoking a sink method, then this
+   * field contains descriptions of the errors.
+   */
   core.List<LogError> errors;
   /**
-   * One Platform filter expression. If provided, only the messages matching the
-   * filter will be published.
+   * An advanced logs filter. If present, only log entries matching the filter
+   * are written. Only project sinks use this field; log sinks and log service
+   * sinks must not include a filter.
    */
   core.String filter;
   /**
-   * The name of this sink. This is a client-assigned identifier for the
-   * resource. This is ignored by UpdateLogSink and UpdateLogServicesSink.
+   * The client-assigned name of this sink. For example, `"my-syslog-sink"`. The
+   * name must be unique among the sinks of a similar kind in the project.
    */
   core.String name;
 
@@ -3116,123 +1958,6 @@ class LogSink {
     }
     if (name != null) {
       _json["name"] = name;
-    }
-    return _json;
-  }
-}
-
-/** Represents an amount of money with its currency type. */
-class Money {
-  /** The 3-letter currency code defined in ISO 4217. */
-  core.String currencyCode;
-  /**
-   * Number of nano (10^-9) units of the amount. The value must be between
-   * -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos`
-   * must be positive or zero. If `units` is zero, `nanos` can be positive,
-   * zero, or negative. If `units` is negative, `nanos` must be negative or
-   * zero. For example $-1.75 is represented as `units`=-1 and
-   * `nanos`=-750,000,000.
-   */
-  core.int nanos;
-  /**
-   * The whole units of the amount. For example if `currencyCode` is `"USD"`,
-   * then 1 unit is one US dollar.
-   */
-  core.String units;
-
-  Money();
-
-  Money.fromJson(core.Map _json) {
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
-    }
-    if (_json.containsKey("nanos")) {
-      nanos = _json["nanos"];
-    }
-    if (_json.containsKey("units")) {
-      units = _json["units"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
-    }
-    if (nanos != null) {
-      _json["nanos"] = nanos;
-    }
-    if (units != null) {
-      _json["units"] = units;
-    }
-    return _json;
-  }
-}
-
-/** Describes a query job, which executes a SQL-like query. */
-class Query {
-  /** Describe when a job should create a table. */
-  core.String createDisposition;
-  /**
-   * If a table name is specified without a dataset in a query, this dataset
-   * will be added to table name.
-   */
-  DatasetName defaultDataset;
-  /** table where results should be written. */
-  TableName destinationTable;
-  /** SQL query to run. */
-  core.String query;
-  /**
-   * Additional tables that this query might reference beyond the tables already
-   * defined in BigQuery. This is typically used to provide external data
-   * references for this query.
-   */
-  core.List<TableDefinition> tableDefinitions;
-  /** Describes how writes should affect the table associated with the job. */
-  core.String writeDisposition;
-
-  Query();
-
-  Query.fromJson(core.Map _json) {
-    if (_json.containsKey("createDisposition")) {
-      createDisposition = _json["createDisposition"];
-    }
-    if (_json.containsKey("defaultDataset")) {
-      defaultDataset = new DatasetName.fromJson(_json["defaultDataset"]);
-    }
-    if (_json.containsKey("destinationTable")) {
-      destinationTable = new TableName.fromJson(_json["destinationTable"]);
-    }
-    if (_json.containsKey("query")) {
-      query = _json["query"];
-    }
-    if (_json.containsKey("tableDefinitions")) {
-      tableDefinitions = _json["tableDefinitions"].map((value) => new TableDefinition.fromJson(value)).toList();
-    }
-    if (_json.containsKey("writeDisposition")) {
-      writeDisposition = _json["writeDisposition"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (createDisposition != null) {
-      _json["createDisposition"] = createDisposition;
-    }
-    if (defaultDataset != null) {
-      _json["defaultDataset"] = (defaultDataset).toJson();
-    }
-    if (destinationTable != null) {
-      _json["destinationTable"] = (destinationTable).toJson();
-    }
-    if (query != null) {
-      _json["query"] = query;
-    }
-    if (tableDefinitions != null) {
-      _json["tableDefinitions"] = tableDefinitions.map((value) => (value).toJson()).toList();
-    }
-    if (writeDisposition != null) {
-      _json["writeDisposition"] = writeDisposition;
     }
     return _json;
   }
@@ -3550,44 +2275,6 @@ class RequestLog {
   }
 }
 
-/** Metadata about the request. */
-class RequestMetadata {
-  /** IP address of the caller */
-  core.String callerIp;
-  /**
-   * User-Agent of the caller. This is not authenticated, so a malicious caller
-   * could provide a misleading value. For example:
-   * `google-api-python-client/1.4.0` The request was made by the Google API
-   * client for Python. `Cloud SDK Command Line Tool apitools-client/1.0
-   * gcloud/0.9.62` The request was made by the Google Cloud SDK CLI (gcloud).
-   * `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project`
-   * The request was made from the `my-project` App Engine app.
-   */
-  core.String callerSuppliedUserAgent;
-
-  RequestMetadata();
-
-  RequestMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("callerIp")) {
-      callerIp = _json["callerIp"];
-    }
-    if (_json.containsKey("callerSuppliedUserAgent")) {
-      callerSuppliedUserAgent = _json["callerSuppliedUserAgent"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (callerIp != null) {
-      _json["callerIp"] = callerIp;
-    }
-    if (callerSuppliedUserAgent != null) {
-      _json["callerSuppliedUserAgent"] = callerSuppliedUserAgent;
-    }
-    return _json;
-  }
-}
-
 /** Specifies a location in a source file. */
 class SourceLocation {
   /**
@@ -3752,412 +2439,6 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
-    }
-    return _json;
-  }
-}
-
-/** Message containing BigQuery table information. */
-class Table {
-  /** The creation time for this table. */
-  core.String createTime;
-  /**
-   * The expiration date for this table. After this time, the table will not be
-   * externally visible and all storage associated with the table may be garbage
-   * collected. If this field is not present, the
-   * HelixDataset.default_table_expiration_ms value will be used to calculate
-   * the expiration time. Otherwise, the table will live until explicitly
-   * deleted.
-   */
-  core.String expireTime;
-  /** User-modifiable metadata for this table. */
-  TableInfo info;
-  /** The table schema. */
-  TableSchema schema;
-  /** The table and dataset IDs uniquely describing this table. */
-  TableName tableName;
-  /**
-   * The last truncation time for this table. This will only be updated when
-   * operation specified with WRITE_TRUNCATE.
-   */
-  core.String truncateTime;
-  /**
-   * The table provides a Database View behavior and functionality based on a
-   * query.
-   */
-  TableViewDefinition view;
-
-  Table();
-
-  Table.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
-    }
-    if (_json.containsKey("expireTime")) {
-      expireTime = _json["expireTime"];
-    }
-    if (_json.containsKey("info")) {
-      info = new TableInfo.fromJson(_json["info"]);
-    }
-    if (_json.containsKey("schema")) {
-      schema = new TableSchema.fromJson(_json["schema"]);
-    }
-    if (_json.containsKey("tableName")) {
-      tableName = new TableName.fromJson(_json["tableName"]);
-    }
-    if (_json.containsKey("truncateTime")) {
-      truncateTime = _json["truncateTime"];
-    }
-    if (_json.containsKey("view")) {
-      view = new TableViewDefinition.fromJson(_json["view"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (createTime != null) {
-      _json["createTime"] = createTime;
-    }
-    if (expireTime != null) {
-      _json["expireTime"] = expireTime;
-    }
-    if (info != null) {
-      _json["info"] = (info).toJson();
-    }
-    if (schema != null) {
-      _json["schema"] = (schema).toJson();
-    }
-    if (tableName != null) {
-      _json["tableName"] = (tableName).toJson();
-    }
-    if (truncateTime != null) {
-      _json["truncateTime"] = truncateTime;
-    }
-    if (view != null) {
-      _json["view"] = (view).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Describes a copy job, which copies an existing table to another table. */
-class TableCopy {
-  /** Describe when a job should create a table. */
-  core.String createDisposition;
-  /** Destination table. */
-  TableName destinationTable;
-  /** Source tables. */
-  core.List<TableName> sourceTables;
-  /** Describe whether the copy operation should append or not. */
-  core.String writeDisposition;
-
-  TableCopy();
-
-  TableCopy.fromJson(core.Map _json) {
-    if (_json.containsKey("createDisposition")) {
-      createDisposition = _json["createDisposition"];
-    }
-    if (_json.containsKey("destinationTable")) {
-      destinationTable = new TableName.fromJson(_json["destinationTable"]);
-    }
-    if (_json.containsKey("sourceTables")) {
-      sourceTables = _json["sourceTables"].map((value) => new TableName.fromJson(value)).toList();
-    }
-    if (_json.containsKey("writeDisposition")) {
-      writeDisposition = _json["writeDisposition"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (createDisposition != null) {
-      _json["createDisposition"] = createDisposition;
-    }
-    if (destinationTable != null) {
-      _json["destinationTable"] = (destinationTable).toJson();
-    }
-    if (sourceTables != null) {
-      _json["sourceTables"] = sourceTables.map((value) => (value).toJson()).toList();
-    }
-    if (writeDisposition != null) {
-      _json["writeDisposition"] = writeDisposition;
-    }
-    return _json;
-  }
-}
-
-/** Table data-list request. */
-class TableDataListRequest {
-  /** Maximum number of results to return. */
-  core.int maxResults;
-  /** Starting row offset. */
-  core.String startRow;
-
-  TableDataListRequest();
-
-  TableDataListRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("maxResults")) {
-      maxResults = _json["maxResults"];
-    }
-    if (_json.containsKey("startRow")) {
-      startRow = _json["startRow"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (maxResults != null) {
-      _json["maxResults"] = maxResults;
-    }
-    if (startRow != null) {
-      _json["startRow"] = startRow;
-    }
-    return _json;
-  }
-}
-
-/**
- * Per Query external tables. These tables can be referenced with 'name' in the
- * query and can be read just like any other table.
- */
-class TableDefinition {
-  /**
-   * Name of the table. This will be used to reference this table in the query.
-   */
-  core.String name;
-  /** URIs for the data to be imported. */
-  core.List<core.String> sourceUris;
-
-  TableDefinition();
-
-  TableDefinition.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("sourceUris")) {
-      sourceUris = _json["sourceUris"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (sourceUris != null) {
-      _json["sourceUris"] = sourceUris;
-    }
-    return _json;
-  }
-}
-
-/** User-provided metadata for a table, primarily for display in the UI. */
-class TableInfo {
-  /**
-   * The description of a table. This can be several sentences or paragraphs
-   * describing the table contents in detail.
-   */
-  core.String description;
-  /**
-   * The human-readable name of a table. This should be a short phrase
-   * identifying the table (e.g., "Analytics Data - Jan 2011").
-   */
-  core.String friendlyName;
-
-  TableInfo();
-
-  TableInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("friendlyName")) {
-      friendlyName = _json["friendlyName"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (friendlyName != null) {
-      _json["friendlyName"] = friendlyName;
-    }
-    return _json;
-  }
-}
-
-/** ==== Table =======// Table insert request. */
-class TableInsertRequest {
-  /** Table insert payload. */
-  Table resource;
-
-  TableInsertRequest();
-
-  TableInsertRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("resource")) {
-      resource = new Table.fromJson(_json["resource"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (resource != null) {
-      _json["resource"] = (resource).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Table insert response. */
-class TableInsertResponse {
-  /** Final state of inserted table. */
-  Table resource;
-
-  TableInsertResponse();
-
-  TableInsertResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("resource")) {
-      resource = new Table.fromJson(_json["resource"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (resource != null) {
-      _json["resource"] = (resource).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Fully-qualified name for a table -- referenced through a dataset. */
-class TableName {
-  /** The ID of the dataset (scoped to the project above). */
-  core.String datasetId;
-  /**
-   * A string containing the id of this project. The id be the alphanumeric
-   * project ID, or the project number.
-   */
-  core.String projectId;
-  /** The ID of the table (scoped to the dataset above). */
-  core.String tableId;
-
-  TableName();
-
-  TableName.fromJson(core.Map _json) {
-    if (_json.containsKey("datasetId")) {
-      datasetId = _json["datasetId"];
-    }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
-    }
-    if (_json.containsKey("tableId")) {
-      tableId = _json["tableId"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (datasetId != null) {
-      _json["datasetId"] = datasetId;
-    }
-    if (projectId != null) {
-      _json["projectId"] = projectId;
-    }
-    if (tableId != null) {
-      _json["tableId"] = tableId;
-    }
-    return _json;
-  }
-}
-
-/** BigQuery table schema. */
-class TableSchema {
-  /** One field per column in the table */
-  core.List<FieldSchema> fields;
-
-  TableSchema();
-
-  TableSchema.fromJson(core.Map _json) {
-    if (_json.containsKey("fields")) {
-      fields = _json["fields"].map((value) => new FieldSchema.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (fields != null) {
-      _json["fields"] = fields.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/** Table update request. */
-class TableUpdateRequest {
-  /** Table update payload. */
-  Table resource;
-
-  TableUpdateRequest();
-
-  TableUpdateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("resource")) {
-      resource = new Table.fromJson(_json["resource"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (resource != null) {
-      _json["resource"] = (resource).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Table update response. */
-class TableUpdateResponse {
-  /** Final state of updated table. */
-  Table resource;
-
-  TableUpdateResponse();
-
-  TableUpdateResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("resource")) {
-      resource = new Table.fromJson(_json["resource"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (resource != null) {
-      _json["resource"] = (resource).toJson();
-    }
-    return _json;
-  }
-}
-
-/**
- * Metadata for a table to become like a Database View based on a SQL-like
- * query.
- */
-class TableViewDefinition {
-  /** Sql query to run. */
-  core.String query;
-
-  TableViewDefinition();
-
-  TableViewDefinition.fromJson(core.Map _json) {
-    if (_json.containsKey("query")) {
-      query = _json["query"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (query != null) {
-      _json["query"] = query;
     }
     return _json;
   }

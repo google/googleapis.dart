@@ -38,7 +38,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/FuKfBgqWMugOHYGywxsOsf7Vfb4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/CcfIv_XXBcC9IjW_g6y62udbfTY\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1801,7 +1801,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates a permission. This method supports patch semantics.",
+                    "description": "Updates a permission using patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "drive.permissions.patch",
                     "parameterOrder": [
@@ -2604,7 +2604,7 @@
             }
         }
     },
-    "revision": "20150827",
+    "revision": "20150903",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {

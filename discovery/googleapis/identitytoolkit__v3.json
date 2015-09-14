@@ -6,7 +6,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/EhuUOPPlYPrmY4sLFYuHLiUXEXw\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/SNgmHHGH7wj9KiccwNhS4DpDB0M\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -206,7 +206,7 @@
             }
         }
     },
-    "revision": "20150902",
+    "revision": "20150908",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -687,6 +687,10 @@
                 "kind": {
                     "default": "identitytoolkit#SetAccountInfoResponse",
                     "description": "The fixed string \"identitytoolkit#SetAccountInfoResponse\".",
+                    "type": "string"
+                },
+                "newEmail": {
+                    "description": "The new email the user attempts to change to.",
                     "type": "string"
                 },
                 "providerUserInfo": {

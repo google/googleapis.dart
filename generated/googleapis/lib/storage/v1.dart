@@ -1173,7 +1173,8 @@ class ObjectAccessControlsResourceApi {
    *
    * [bucket] - Name of a bucket.
    *
-   * [object] - Name of the object.
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
    *
    * [entity] - The entity holding the permission. Can be user-userId,
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
@@ -1230,7 +1231,8 @@ class ObjectAccessControlsResourceApi {
    *
    * [bucket] - Name of a bucket.
    *
-   * [object] - Name of the object.
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
    *
    * [entity] - The entity holding the permission. Can be user-userId,
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
@@ -1289,7 +1291,8 @@ class ObjectAccessControlsResourceApi {
    *
    * [bucket] - Name of a bucket.
    *
-   * [object] - Name of the object.
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
    *
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
@@ -1342,7 +1345,8 @@ class ObjectAccessControlsResourceApi {
    *
    * [bucket] - Name of a bucket.
    *
-   * [object] - Name of the object.
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
    *
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
@@ -1395,7 +1399,8 @@ class ObjectAccessControlsResourceApi {
    *
    * [bucket] - Name of a bucket.
    *
-   * [object] - Name of the object.
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
    *
    * [entity] - The entity holding the permission. Can be user-userId,
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
@@ -1457,7 +1462,8 @@ class ObjectAccessControlsResourceApi {
    *
    * [bucket] - Name of a bucket.
    *
-   * [object] - Name of the object.
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
    *
    * [entity] - The entity holding the permission. Can be user-userId,
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
@@ -1529,7 +1535,8 @@ class ObjectsResourceApi {
    *
    * [destinationBucket] - Name of the bucket in which to store the new object.
    *
-   * [destinationObject] - Name of the new object.
+   * [destinationObject] - Name of the new object. For information about how to
+   * URL encode object names to be path safe, see Encoding URI Path Parts.
    *
    * [destinationPredefinedAcl] - Apply a predefined set of access controls to
    * the destination object.
@@ -1624,10 +1631,13 @@ class ObjectsResourceApi {
    *
    * [sourceBucket] - Name of the bucket in which to find the source object.
    *
-   * [sourceObject] - Name of the source object.
+   * [sourceObject] - Name of the source object. For information about how to
+   * URL encode object names to be path safe, see Encoding URI Path Parts.
    *
    * [destinationBucket] - Name of the bucket in which to store the new object.
-   * Overrides the provided object metadata's bucket value, if any.
+   * Overrides the provided object metadata's bucket value, if any.For
+   * information about how to URL encode object names to be path safe, see
+   * Encoding URI Path Parts.
    *
    * [destinationObject] - Name of the new object. Required when the object
    * metadata is not otherwise provided. Overrides the object metadata's name
@@ -1782,7 +1792,8 @@ class ObjectsResourceApi {
    *
    * [bucket] - Name of the bucket in which the object resides.
    *
-   * [object] - Name of the object.
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
    *
    * [generation] - If present, permanently deletes a specific revision of this
    * object (as opposed to the latest version, the default).
@@ -1856,7 +1867,8 @@ class ObjectsResourceApi {
    *
    * [bucket] - Name of the bucket in which the object resides.
    *
-   * [object] - Name of the object.
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
    *
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
@@ -1975,7 +1987,9 @@ class ObjectsResourceApi {
    * object's current metageneration does not match the given value.
    *
    * [name] - Name of the object. Required when the object metadata is not
-   * otherwise provided. Overrides the object metadata's name value, if any.
+   * otherwise provided. Overrides the object metadata's name value, if any. For
+   * information about how to URL encode object names to be path safe, see
+   * Encoding URI Path Parts.
    *
    * [predefinedAcl] - Apply a predefined set of access controls to this object.
    * Possible string values are:
@@ -2175,7 +2189,8 @@ class ObjectsResourceApi {
    *
    * [bucket] - Name of the bucket in which the object resides.
    *
-   * [object] - Name of the object.
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
    *
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
@@ -2280,14 +2295,16 @@ class ObjectsResourceApi {
    *
    * [sourceBucket] - Name of the bucket in which to find the source object.
    *
-   * [sourceObject] - Name of the source object.
+   * [sourceObject] - Name of the source object. For information about how to
+   * URL encode object names to be path safe, see Encoding URI Path Parts.
    *
    * [destinationBucket] - Name of the bucket in which to store the new object.
    * Overrides the provided object metadata's bucket value, if any.
    *
    * [destinationObject] - Name of the new object. Required when the object
    * metadata is not otherwise provided. Overrides the object metadata's name
-   * value, if any.
+   * value, if any. For information about how to URL encode object names to be
+   * path safe, see Encoding URI Path Parts.
    *
    * [destinationPredefinedAcl] - Apply a predefined set of access controls to
    * the destination object.
@@ -2444,7 +2461,8 @@ class ObjectsResourceApi {
    *
    * [bucket] - Name of the bucket in which the object resides.
    *
-   * [object] - Name of the object.
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
    *
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).

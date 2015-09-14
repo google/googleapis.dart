@@ -1,3 +1,13 @@
+## 0.16.0
+
+* [apis-breaking] adexchangebuyer:v1.4: method/schema changes
+* [apis-new] content:v2sandbox
+* [apis-new] reseller:v1sandbox
+* [apis] adexchangebuyer:v1.3: schema changes
+* [apis] bigquery:v2: schema changes
+* [apis] identitytoolkit:v3: schema changes
+* [apis] youtube:v3: schema changes
+
 ## 0.15.0
 
 * [apis-breaking] compute:v1: schema changes

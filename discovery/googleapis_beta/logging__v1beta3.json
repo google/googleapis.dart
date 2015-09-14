@@ -5,6 +5,9 @@
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
                 },
+                "https://www.googleapis.com/auth/cloud-platform.read-only": {
+                    "description": "View your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/logging.admin": {
                     "description": "Administrate log data for your projects"
                 },
@@ -23,7 +26,7 @@
     "description": "Google Cloud Logging API lets you create logs, ingest log entries, and manage log sinks.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/logging/docs/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/xN_rDDaTMQdWkLus-WD2apbtTvg\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Fi_zVio1slK88cI-ko5TXAVA3jo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -119,7 +122,7 @@
                 "logs": {
                     "methods": {
                         "list": {
-                            "description": "Lists log resources belonging to the specified project.",
+                            "description": "Lists the logs in the project. Only logs that have entries are listed.",
                             "httpMethod": "GET",
                             "id": "logging.projects.logs.list",
                             "parameterOrder": [
@@ -127,18 +130,18 @@
                             ],
                             "parameters": {
                                 "projectsId": {
-                                    "description": "Part of `projectName`. The project name for which to list the log resources.",
+                                    "description": "Part of `projectName`. The resource name of the project whose logs are requested. If both `serviceName` and `serviceIndexPrefix` are empty, then all logs with entries in this project are listed.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
                                 },
                                 "serviceName": {
-                                    "description": "A service name for which to list logs. Only logs containing entries whose metadata includes this service name are returned. If `serviceName` and `serviceIndexPrefix` are both empty, then all log names are returned. To list all log names, regardless of service, leave both the `serviceName` and `serviceIndexPrefix` empty. To list log names containing entries with a particular service name (or explicitly empty service name) set `serviceName` to the desired value and `serviceIndexPrefix` to `\"/\"`.",
+                                    "description": "If not empty, this field must be a log service name such as `\"compute.googleapis.com\"`. Only logs associated with that that log service are listed.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "serviceIndexPrefix": {
-                                    "description": "A log service index prefix for which to list logs. Only logs containing entries whose metadata that includes these label values (associated with index keys) are returned. The prefix is a slash separated list of values, and need not specify all index labels. An empty index (or a single slash) matches all log service indexes.",
+                                    "description": "The purpose of this field is to restrict the listed logs to those with entries of a certain kind. If `serviceName` is the name of a log service, then this field may contain values for the log service's indexes. Only logs that have entries whose indexes include the values are listed. The format for this field is `\"/val1/val2.../valN\"`, where `val1` is a value for the first index, `val2` for the second index, etc. An empty value (a single slash) for an index matches all values, and you can omit values for later indexes entirely.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -160,12 +163,13 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only",
                                 "https://www.googleapis.com/auth/logging.admin",
                                 "https://www.googleapis.com/auth/logging.read"
                             ]
                         },
                         "delete": {
-                            "description": "Deletes the specified log resource and all log entries contained in it.",
+                            "description": "Deletes a log and all its log entries. The log will reappear if it receives new entries.",
                             "httpMethod": "DELETE",
                             "id": "logging.projects.logs.delete",
                             "parameterOrder": [
@@ -174,7 +178,7 @@
                             ],
                             "parameters": {
                                 "projectsId": {
-                                    "description": "Part of `logName`. The log resource to delete.",
+                                    "description": "Part of `logName`. The resource name of the log to be deleted.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -200,7 +204,7 @@
                         "entries": {
                             "methods": {
                                 "write": {
-                                    "description": "Creates one or more log entries in a log. You must supply a list of `LogEntry` objects, named `entries`. Each `LogEntry` object must contain a payload object and a `LogEntryMetadata` object that describes the entry. You must fill in all the fields of the entry, metadata, and payload. You can also supply a map, `commonLabels`, that supplies default (key, value) data for the `entries[].metadata.labels` maps, saving you the trouble of creating identical copies for each entry.",
+                                    "description": "Writes log entries to Cloud Logging. Each entry consists of a `LogEntry` object. You must fill in all the fields of the object, including one of the payload fields. You may supply a map, `commonLabels`, that holds default (key, value) data for the `entries[].metadata.labels` map in each entry, saving you the trouble of creating identical copies for each entry.",
                                     "httpMethod": "POST",
                                     "id": "logging.projects.logs.entries.write",
                                     "parameterOrder": [
@@ -209,7 +213,7 @@
                                     ],
                                     "parameters": {
                                         "projectsId": {
-                                            "description": "Part of `logName`. The name of the log resource into which to insert the log entries.",
+                                            "description": "Part of `logName`. The resource name of the log that will receive the log entries.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -239,7 +243,7 @@
                         "sinks": {
                             "methods": {
                                 "list": {
-                                    "description": "Lists log sinks associated with the specified log.",
+                                    "description": "Lists log sinks associated with a log.",
                                     "httpMethod": "GET",
                                     "id": "logging.projects.logs.sinks.list",
                                     "parameterOrder": [
@@ -248,7 +252,7 @@
                                     ],
                                     "parameters": {
                                         "projectsId": {
-                                            "description": "Part of `logName`. The log for which to list sinks.",
+                                            "description": "Part of `logName`. The log whose sinks are wanted. For example, `\"compute.google.com/syslog\"`.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -266,12 +270,13 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                                         "https://www.googleapis.com/auth/logging.admin",
                                         "https://www.googleapis.com/auth/logging.read"
                                     ]
                                 },
                                 "get": {
-                                    "description": "Gets the specified log sink resource.",
+                                    "description": "Gets a log sink.",
                                     "httpMethod": "GET",
                                     "id": "logging.projects.logs.sinks.get",
                                     "parameterOrder": [
@@ -281,7 +286,7 @@
                                     ],
                                     "parameters": {
                                         "projectsId": {
-                                            "description": "Part of `sinkName`. The name of the sink resource to return.",
+                                            "description": "Part of `sinkName`. The resource name of the log sink to return.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -305,12 +310,13 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                                         "https://www.googleapis.com/auth/logging.admin",
                                         "https://www.googleapis.com/auth/logging.read"
                                     ]
                                 },
                                 "create": {
-                                    "description": "Creates the specified log sink resource.",
+                                    "description": "Creates a log sink. All log entries for a specified log are written to the destination.",
                                     "httpMethod": "POST",
                                     "id": "logging.projects.logs.sinks.create",
                                     "parameterOrder": [
@@ -319,7 +325,7 @@
                                     ],
                                     "parameters": {
                                         "projectsId": {
-                                            "description": "Part of `logName`. The log in which to create a sink resource.",
+                                            "description": "Part of `logName`. The resource name of the log to which to the sink is bound.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -344,7 +350,7 @@
                                     ]
                                 },
                                 "update": {
-                                    "description": "Creates or updates the specified log sink resource.",
+                                    "description": "Updates a log sink. If the sink does not exist, it is created.",
                                     "httpMethod": "PUT",
                                     "id": "logging.projects.logs.sinks.update",
                                     "parameterOrder": [
@@ -354,7 +360,7 @@
                                     ],
                                     "parameters": {
                                         "projectsId": {
-                                            "description": "Part of `sinkName`. The name of the sink to update.",
+                                            "description": "Part of `sinkName`. The resource name of the sink to update.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -385,7 +391,7 @@
                                     ]
                                 },
                                 "delete": {
-                                    "description": "Deletes the specified log sink resource.",
+                                    "description": "Deletes a log sink. After deletion, no new log entries are written to the destination.",
                                     "httpMethod": "DELETE",
                                     "id": "logging.projects.logs.sinks.delete",
                                     "parameterOrder": [
@@ -395,7 +401,7 @@
                                     ],
                                     "parameters": {
                                         "projectsId": {
-                                            "description": "Part of `sinkName`. The name of the sink to delete.",
+                                            "description": "Part of `sinkName`. The resource name of the log sink to delete.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -429,7 +435,7 @@
                 "logServices": {
                     "methods": {
                         "list": {
-                            "description": "Lists log services associated with log entries ingested for a project.",
+                            "description": "Lists the log services that have log entries in this project.",
                             "httpMethod": "GET",
                             "id": "logging.projects.logServices.list",
                             "parameterOrder": [
@@ -437,13 +443,13 @@
                             ],
                             "parameters": {
                                 "projectsId": {
-                                    "description": "Part of `projectName`. The project resource whose services are to be listed.",
+                                    "description": "Part of `projectName`. The resource name of the project whose services are to be listed.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
                                 },
                                 "log": {
-                                    "description": "The name of the log resource whose services are to be listed. log for which to list services. When empty, all services are listed.",
+                                    "description": "If empty, all log services contributing log entries to the project are listed. Otherwise, this field must be the resource name of a log, such as `\"projects/my-project/appengine.googleapis.com%2Frequest_log\"`, and then the only services listed are those associated with entries in the log. A service is associated with an entry if its name is in the entry's `LogEntryMetadata.serviceName` field.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -465,6 +471,7 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only",
                                 "https://www.googleapis.com/auth/logging.admin",
                                 "https://www.googleapis.com/auth/logging.read"
                             ]
@@ -474,7 +481,7 @@
                         "indexes": {
                             "methods": {
                                 "list": {
-                                    "description": "Lists log service indexes associated with a log service.",
+                                    "description": "Lists the current index values for a log service.",
                                     "httpMethod": "GET",
                                     "id": "logging.projects.logServices.indexes.list",
                                     "parameterOrder": [
@@ -483,7 +490,7 @@
                                     ],
                                     "parameters": {
                                         "projectsId": {
-                                            "description": "Part of `serviceName`. A log service resource of the form `/projects/*/logServices/*`. The service indexes of the log service are returned. Example: `\"/projects/myProj/logServices/appengine.googleapis.com\"`.",
+                                            "description": "Part of `serviceName`. The resource name of a log service whose service indexes are requested. Example: `\"projects/my-project-id/logServices/appengine.googleapis.com\"`.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -495,18 +502,18 @@
                                             "type": "string"
                                         },
                                         "indexPrefix": {
-                                            "description": "Restricts the indexes returned to be those with a specified prefix. The prefix has the form `\"/label_value/label_value/...\"`, in order corresponding to the [`LogService indexKeys`][google.logging.v1.LogService.index_keys]. Non-empty prefixes must begin with `/` . Example prefixes: + `\"/myModule/\"` retrieves App Engine versions associated with `myModule`. The trailing slash terminates the value. + `\"/myModule\"` retrieves App Engine modules with names beginning with `myModule`. + `\"\"` retrieves all indexes.",
+                                            "description": "Restricts the index values returned to be those with a specified prefix for each index key. This field has the form `\"/prefix1/prefix2/...\"`, in order corresponding to the [`LogService indexKeys`][google.logging.v1.LogService.index_keys]. Non-empty prefixes must begin with `/`. For example, App Engine's two keys are the module ID and the version ID. Following is the effect of using various values for `indexPrefix`: + `\"/Mod/\"` retrieves `/Mod/10` and `/Mod/11` but not `/ModA/10`. + `\"/Mod` retrieves `/Mod/10`, `/Mod/11` and `/ModA/10` but not `/XXX/33`. + `\"/Mod/1\"` retrieves `/Mod/10` and `/Mod/11` but not `/ModA/10`. + `\"/Mod/10/\"` retrieves `/Mod/10` only. + An empty prefix or `\"/\"` retrieves all values.",
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "depth": {
-                                            "description": "A limit to the number of levels of the index hierarchy that are expanded. If `depth` is 0, it defaults to the level specified by the prefix field (the number of slash separators). The default empty prefix implies a `depth` of 1. It is an error for `depth` to be any non-zero value less than the number of components in `indexPrefix`.",
+                                            "description": "A non-negative integer that limits the number of levels of the index hierarchy that are returned. If `depth` is 1 (default), only the first index key value is returned. If `depth` is 2, both primary and secondary key values are returned. If `depth` is 0, the depth is the number of slash-separators in the `indexPrefix` field, not counting a slash appearing as the last character of the prefix. If the `indexPrefix` field is empty, the default depth is 1. It is an error for `depth` to be any positive value less than the number of components in `indexPrefix`.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
                                         },
                                         "log": {
-                                            "description": "A log resource like `/projects/project_id/logs/log_name`, identifying the log for which to list service indexes.",
+                                            "description": "_Optional_. The resource name of a log, such as `\"projects/project_id/logs/log_name\"`. If present, indexes are returned for any service associated with entries in the log.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -528,6 +535,7 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                                         "https://www.googleapis.com/auth/logging.admin",
                                         "https://www.googleapis.com/auth/logging.read"
                                     ]
@@ -537,7 +545,7 @@
                         "sinks": {
                             "methods": {
                                 "list": {
-                                    "description": "Lists log service sinks associated with the specified service.",
+                                    "description": "Lists log service sinks associated with a log service.",
                                     "httpMethod": "GET",
                                     "id": "logging.projects.logServices.sinks.list",
                                     "parameterOrder": [
@@ -546,7 +554,7 @@
                                     ],
                                     "parameters": {
                                         "projectsId": {
-                                            "description": "Part of `serviceName`. The name of the service for which to list sinks.",
+                                            "description": "Part of `serviceName`. The log service whose sinks are wanted.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -564,12 +572,13 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                                         "https://www.googleapis.com/auth/logging.admin",
                                         "https://www.googleapis.com/auth/logging.read"
                                     ]
                                 },
                                 "get": {
-                                    "description": "Gets the specified log service sink resource.",
+                                    "description": "Gets a log service sink.",
                                     "httpMethod": "GET",
                                     "id": "logging.projects.logServices.sinks.get",
                                     "parameterOrder": [
@@ -579,7 +588,7 @@
                                     ],
                                     "parameters": {
                                         "projectsId": {
-                                            "description": "Part of `sinkName`. The name of the sink to return.",
+                                            "description": "Part of `sinkName`. The resource name of the log service sink to return.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -603,12 +612,13 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloud-platform.read-only",
                                         "https://www.googleapis.com/auth/logging.admin",
                                         "https://www.googleapis.com/auth/logging.read"
                                     ]
                                 },
                                 "create": {
-                                    "description": "Creates the specified log service sink resource.",
+                                    "description": "Creates a log service sink. All log entries from a specified log service are written to the destination.",
                                     "httpMethod": "POST",
                                     "id": "logging.projects.logServices.sinks.create",
                                     "parameterOrder": [
@@ -617,7 +627,7 @@
                                     ],
                                     "parameters": {
                                         "projectsId": {
-                                            "description": "Part of `serviceName`. The name of the service in which to create a sink.",
+                                            "description": "Part of `serviceName`. The resource name of the log service to which the sink is bound.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -642,7 +652,7 @@
                                     ]
                                 },
                                 "update": {
-                                    "description": "Creates or update the specified log service sink resource.",
+                                    "description": "Updates a log service sink. If the sink does not exist, it is created.",
                                     "httpMethod": "PUT",
                                     "id": "logging.projects.logServices.sinks.update",
                                     "parameterOrder": [
@@ -652,7 +662,7 @@
                                     ],
                                     "parameters": {
                                         "projectsId": {
-                                            "description": "Part of `sinkName`. The name of the sink to update.",
+                                            "description": "Part of `sinkName`. The resource name of the log service sink to update.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -683,7 +693,7 @@
                                     ]
                                 },
                                 "delete": {
-                                    "description": "Deletes the specified log service sink.",
+                                    "description": "Deletes a log service sink. After deletion, no new log entries are written to the destination.",
                                     "httpMethod": "DELETE",
                                     "id": "logging.projects.logServices.sinks.delete",
                                     "parameterOrder": [
@@ -693,7 +703,7 @@
                                     ],
                                     "parameters": {
                                         "projectsId": {
-                                            "description": "Part of `sinkName`. The name of the sink to delete.",
+                                            "description": "Part of `sinkName`. The resource name of the log service sink to delete.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -727,7 +737,7 @@
                 "sinks": {
                     "methods": {
                         "list": {
-                            "description": "Lists sinks associated with the specified project.",
+                            "description": "Lists project sinks associated with a project.",
                             "httpMethod": "GET",
                             "id": "logging.projects.sinks.list",
                             "parameterOrder": [
@@ -735,7 +745,7 @@
                             ],
                             "parameters": {
                                 "projectsId": {
-                                    "description": "Part of `projectName`. The name of the project for which to list sinks.",
+                                    "description": "Part of `projectName`. The project whose sinks are wanted.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -747,12 +757,13 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only",
                                 "https://www.googleapis.com/auth/logging.admin",
                                 "https://www.googleapis.com/auth/logging.read"
                             ]
                         },
                         "get": {
-                            "description": "Gets the specified sink resource.",
+                            "description": "Gets a project sink.",
                             "httpMethod": "GET",
                             "id": "logging.projects.sinks.get",
                             "parameterOrder": [
@@ -761,7 +772,7 @@
                             ],
                             "parameters": {
                                 "projectsId": {
-                                    "description": "Part of `sinkName`. The name of the sink to return.",
+                                    "description": "Part of `sinkName`. The resource name of the project sink to return.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -779,12 +790,13 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only",
                                 "https://www.googleapis.com/auth/logging.admin",
                                 "https://www.googleapis.com/auth/logging.read"
                             ]
                         },
                         "create": {
-                            "description": "Creates the specified sink resource.",
+                            "description": "Creates a project sink. A logs filter determines which log entries are written to the destination.",
                             "httpMethod": "POST",
                             "id": "logging.projects.sinks.create",
                             "parameterOrder": [
@@ -792,7 +804,7 @@
                             ],
                             "parameters": {
                                 "projectsId": {
-                                    "description": "Part of `projectName`. The name of the project in which to create a sink.",
+                                    "description": "Part of `projectName`. The resource name of the project to which the sink is bound.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -811,7 +823,7 @@
                             ]
                         },
                         "update": {
-                            "description": "Creates or update the specified sink resource.",
+                            "description": "Updates a project sink. If the sink does not exist, it is created. The destination, filter, or both may be updated.",
                             "httpMethod": "PUT",
                             "id": "logging.projects.sinks.update",
                             "parameterOrder": [
@@ -820,7 +832,7 @@
                             ],
                             "parameters": {
                                 "projectsId": {
-                                    "description": "Part of `sinkName`. The name of the sink to update.",
+                                    "description": "Part of `sinkName`. The resource name of the project sink to update.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -845,7 +857,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes the specified sink.",
+                            "description": "Deletes a project sink. After deletion, no new log entries are written to the destination.",
                             "httpMethod": "DELETE",
                             "id": "logging.projects.sinks.delete",
                             "parameterOrder": [
@@ -854,7 +866,7 @@
                             ],
                             "parameters": {
                                 "projectsId": {
-                                    "description": "Part of `sinkName`. The name of the sink to delete.",
+                                    "description": "Part of `sinkName`. The resource name of the project sink to delete.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -880,7 +892,7 @@
             }
         }
     },
-    "revision": "20150615",
+    "revision": "20150610",
     "rootUrl": "https://logging.googleapis.com/",
     "schemas": {
         "ListLogsResponse": {
@@ -888,7 +900,7 @@
             "id": "ListLogsResponse",
             "properties": {
                 "logs": {
-                    "description": "A list of log resources.",
+                    "description": "A list of log descriptions matching the criteria.",
                     "items": {
                         "$ref": "Log"
                     },
@@ -902,19 +914,19 @@
             "type": "object"
         },
         "Log": {
-            "description": "A log object.",
+            "description": "_Output only._ Describes a log, which is a named stream of log entries.",
             "id": "Log",
             "properties": {
                 "name": {
-                    "description": "REQUIRED: The log's name. Example: `\"compute.googleapis.com/activity_log\"`.",
+                    "description": "The resource name of the log. Example: `\"/projects/my-gcp-project-id/logs/LOG_NAME\"`, where `LOG_NAME` is the URL-encoded given name of the log. The log includes those log entries whose `LogEntry.log` field contains this given name. To avoid name collisions, it is a best practice to prefix the given log name with the service name, but this is not required. Examples of log given names: `\"appengine.googleapis.com/request_log\"`, `\"apache-access\"`.",
                     "type": "string"
                 },
                 "displayName": {
-                    "description": "Name used when displaying the log to the user (for example, in a UI). Example: `\"activity_log\"`",
+                    "description": "_Optional._ The common name of the log. Example: `\"request_log\"`.",
                     "type": "string"
                 },
                 "payloadType": {
-                    "description": "Type URL describing the expected payload type for the log.",
+                    "description": "_Optional_. A URI representing the expected payload type for log entries.",
                     "type": "string"
                 }
             },
@@ -1108,15 +1120,15 @@
             "type": "object"
         },
         "LogService": {
-            "description": "A log service object.",
+            "description": "_Output only._ Describes a service that writes log entries.",
             "id": "LogService",
             "properties": {
                 "name": {
-                    "description": "The service's name.",
+                    "description": "The service's name. Example: `\"appengine.googleapis.com\"`. Log names beginning with this string are reserved for this service. This value can appear in the `LogEntry.metadata.serviceName` field of log entries associated with this log service.",
                     "type": "string"
                 },
                 "indexKeys": {
-                    "description": "Label keys used when labeling log entries for this service. The order of the keys is significant, with higher priority keys coming earlier in the list.",
+                    "description": "A list of the names of the keys used to index and label individual log entries from this service. The first two keys are used as the primary and secondary index, respectively. Additional keys may be used to label the entries. For example, App Engine indexes its entries by module and by version, so its `indexKeys` field is the following: [ \"appengine.googleapis.com/module_id\", \"appengine.googleapis.com/version_id\" ]",
                     "items": {
                         "type": "string"
                     },
@@ -1130,7 +1142,7 @@
             "id": "ListLogServiceIndexesResponse",
             "properties": {
                 "serviceIndexPrefixes": {
-                    "description": "A list of log service index prefixes.",
+                    "description": "A list of log service index values. Each index value has the form `\"/value1/value2/...\"`, where `value1` is a value in the primary index, `value2` is a value in the secondary index, and so forth.",
                     "items": {
                         "type": "string"
                     },
@@ -1148,7 +1160,7 @@
             "id": "ListLogSinksResponse",
             "properties": {
                 "sinks": {
-                    "description": "The requested log sinks. If any of the returned `LogSink` objects have an empty `destination` field, then call `logServices.sinks.get` to retrieve the complete `LogSink` object.",
+                    "description": "The requested log sinks. If a returned `LogSink` object has an empty `destination` field, the client can retrieve the complete `LogSink` object by calling `log.sinks.get`.",
                     "items": {
                         "$ref": "LogSink"
                     },
@@ -1158,23 +1170,23 @@
             "type": "object"
         },
         "LogSink": {
-            "description": "An object that describes where a log may be written.",
+            "description": "Describes where log entries are written outside of Cloud Logging.",
             "id": "LogSink",
             "properties": {
                 "name": {
-                    "description": "The name of this sink. This is a client-assigned identifier for the resource. This is ignored by UpdateLogSink and UpdateLogServicesSink.",
+                    "description": "The client-assigned name of this sink. For example, `\"my-syslog-sink\"`. The name must be unique among the sinks of a similar kind in the project.",
                     "type": "string"
                 },
                 "destination": {
-                    "description": "The resource to send log entries to. The supported sink resource types are: + Google Cloud Storage: `storage.googleapis.com/BUCKET` or `BUCKET.storage.googleapis.com/` + Google BigQuery: `bigquery.googleapis.com/projects/PROJECT/datasets/DATASET` Currently the Cloud Logging API supports at most one sink for each resource type per log or log service resource.",
+                    "description": "The resource name of the destination. Cloud Logging writes designated log entries to this destination. For example, `\"storage.googleapis.com/my-output-bucket\"`.",
                     "type": "string"
                 },
                 "filter": {
-                    "description": "One Platform filter expression. If provided, only the messages matching the filter will be published.",
+                    "description": "An advanced logs filter. If present, only log entries matching the filter are written. Only project sinks use this field; log sinks and log service sinks must not include a filter.",
                     "type": "string"
                 },
                 "errors": {
-                    "description": "_Output only._ All active errors found for this sink.",
+                    "description": "_Output only._ If any errors occur when invoking a sink method, then this field contains descriptions of the errors.",
                     "items": {
                         "$ref": "LogError"
                     },
@@ -1184,19 +1196,19 @@
             "type": "object"
         },
         "LogError": {
-            "description": "A problem in a sink or the sink's configuration.",
+            "description": "Describes a problem with a logging resource or operation.",
             "id": "LogError",
             "properties": {
                 "resource": {
-                    "description": "The resource associated with the error. It may be different from the sink destination. For example, the sink may point to a BigQuery dataset, but the error may refer to a table resource inside the dataset.",
+                    "description": "A resource name associated with this error. For example, the name of a Cloud Storage bucket that has insufficient permissions to be a destination for log entries.",
                     "type": "string"
                 },
                 "status": {
                     "$ref": "Status",
-                    "description": "The description of the last error observed."
+                    "description": "The error description, including a classification code, an error message, and other details."
                 },
                 "timeNanos": {
-                    "description": "The last time the error was observed, in nanoseconds since the Unix epoch.",
+                    "description": "The time the error was observed, in nanoseconds since the Unix epoch.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -1235,7 +1247,7 @@
             "id": "ListLogServiceSinksResponse",
             "properties": {
                 "sinks": {
-                    "description": "The requested log service sinks. If any of the returned `LogSink` objects have an empty `destination` field, then call `logServices.sinks.get` to retrieve the complete `LogSink` object.",
+                    "description": "The requested log service sinks. If a returned `LogSink` object has an empty `destination` field, the client can retrieve the complete `LogSink` object by calling `logServices.sinks.get`.",
                     "items": {
                         "$ref": "LogSink"
                     },
@@ -1249,7 +1261,7 @@
             "id": "ListSinksResponse",
             "properties": {
                 "sinks": {
-                    "description": "The requested sinks.",
+                    "description": "The requested sinks. If a returned `LogSink` object has an empty `destination` field, the client can retrieve the complete `LogSink` object by calling `projects.sinks.get`.",
                     "items": {
                         "$ref": "LogSink"
                     },
@@ -1467,866 +1479,6 @@
                 "revisionId": {
                     "description": "The canonical (and persistent) identifier of the deployed revision. Example (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\"",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "AuditLog": {
-            "description": "Common audit log format for Google Cloud Platform API calls.",
-            "id": "AuditLog",
-            "properties": {
-                "serviceName": {
-                    "description": "Name of the API service for the request. e.g., datastore.googleapis.com",
-                    "type": "string"
-                },
-                "methodName": {
-                    "description": "Name of the service method or operation. Defined by the service. For API call events, should match the name of the API method. For example, `google.datastore.v1.Datastore.RunQuery` `google.logging.v1.LoggingService.DeleteLog`",
-                    "type": "string"
-                },
-                "resourceName": {
-                    "description": "Resource name of the resource or collection that is the target of this request, as a scheme-less URI, not including the API service name. For example: shelves/shelf_id/books shelves/shelf_id/books/book_id",
-                    "type": "string"
-                },
-                "numResponseItems": {
-                    "description": "If applicable, the number of items returned from a List or Query API method.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "status": {
-                    "$ref": "Status",
-                    "description": "The status of the overall API call."
-                },
-                "authenticationInfo": {
-                    "$ref": "AuthenticationInfo",
-                    "description": "Authentication information about the call."
-                },
-                "authorizationInfo": {
-                    "description": "Authorization information about the call. If there are multiple resources or permissions involved in authorizing the request, there will be one AuthorizationInfo element for each {resource, permission} tuple.",
-                    "items": {
-                        "$ref": "AuthorizationInfo"
-                    },
-                    "type": "array"
-                },
-                "requestMetadata": {
-                    "$ref": "RequestMetadata",
-                    "description": "Metadata about the request."
-                },
-                "serviceData": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @ype with type URL.",
-                        "type": "any"
-                    },
-                    "description": "Service specific data about the request, response, and other event data. This should include all request parameters or response elements, except for parameters that are large or privacy-sensitive. It should never contain user-generated data (such as file contents).",
-                    "type": "object"
-                },
-                "bigqueryData": {
-                    "$ref": "AuditData",
-                    "description": "Service-specific data for BigQuery."
-                }
-            },
-            "type": "object"
-        },
-        "AuthenticationInfo": {
-            "description": "Authentication information for the call.",
-            "id": "AuthenticationInfo",
-            "properties": {
-                "principalEmail": {
-                    "description": "Email address of the authenticated user making the request",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "AuthorizationInfo": {
-            "description": "Authorization information for the call.",
-            "id": "AuthorizationInfo",
-            "properties": {
-                "resource": {
-                    "description": "The resource being accessed, as a REST-style string. For example: `bigquery.googlapis.com/projects/PROJECTID/datasets/DATASETID`",
-                    "type": "string"
-                },
-                "permission": {
-                    "description": "The required IAM permission.",
-                    "type": "string"
-                },
-                "granted": {
-                    "description": "Whether or not authorization for this resource and permission was granted.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "RequestMetadata": {
-            "description": "Metadata about the request.",
-            "id": "RequestMetadata",
-            "properties": {
-                "callerIp": {
-                    "description": "IP address of the caller",
-                    "type": "string"
-                },
-                "callerSuppliedUserAgent": {
-                    "description": "User-Agent of the caller. This is not authenticated, so a malicious caller could provide a misleading value. For example: `google-api-python-client/1.4.0` The request was made by the Google API client for Python. `Cloud SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62` The request was made by the Google Cloud SDK CLI (gcloud). `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project` The request was made from the `my-project` App Engine app.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "AuditData": {
-            "description": "BigQuery request and response messages for audit log.",
-            "id": "AuditData",
-            "properties": {
-                "tableInsertRequest": {
-                    "$ref": "TableInsertRequest",
-                    "description": "Table insert request."
-                },
-                "tableUpdateRequest": {
-                    "$ref": "TableUpdateRequest",
-                    "description": "Table update request."
-                },
-                "datasetListRequest": {
-                    "$ref": "DatasetListRequest",
-                    "description": "Dataset list request."
-                },
-                "datasetInsertRequest": {
-                    "$ref": "DatasetInsertRequest",
-                    "description": "Dataset insert request."
-                },
-                "datasetUpdateRequest": {
-                    "$ref": "DatasetUpdateRequest",
-                    "description": "Dataset update request."
-                },
-                "jobInsertRequest": {
-                    "$ref": "JobInsertRequest",
-                    "description": "Job insert request."
-                },
-                "jobQueryRequest": {
-                    "$ref": "JobQueryRequest",
-                    "description": "Job query request."
-                },
-                "jobGetQueryResultsRequest": {
-                    "$ref": "JobGetQueryResultsRequest",
-                    "description": "Job get query results request."
-                },
-                "tableDataListRequest": {
-                    "$ref": "TableDataListRequest",
-                    "description": "Table data-list request."
-                },
-                "tableInsertResponse": {
-                    "$ref": "TableInsertResponse",
-                    "description": "Table insert response."
-                },
-                "tableUpdateResponse": {
-                    "$ref": "TableUpdateResponse",
-                    "description": "Table update response."
-                },
-                "datasetInsertResponse": {
-                    "$ref": "DatasetInsertResponse",
-                    "description": "Dataset insert response."
-                },
-                "datasetUpdateResponse": {
-                    "$ref": "DatasetUpdateResponse",
-                    "description": "Dataset update response."
-                },
-                "jobQueryResponse": {
-                    "$ref": "JobQueryResponse",
-                    "description": "Job query response."
-                },
-                "jobGetQueryResultsResponse": {
-                    "$ref": "JobGetQueryResultsResponse",
-                    "description": "Job get query results response."
-                },
-                "jobQueryDoneResponse": {
-                    "$ref": "JobQueryDoneResponse",
-                    "description": "Job query-done response. Use this information for usage analysis."
-                }
-            },
-            "type": "object"
-        },
-        "TableInsertRequest": {
-            "description": "==== Table =======// Table insert request.",
-            "id": "TableInsertRequest",
-            "properties": {
-                "resource": {
-                    "$ref": "Table",
-                    "description": "Table insert payload."
-                }
-            },
-            "type": "object"
-        },
-        "Table": {
-            "description": "Message containing BigQuery table information.",
-            "id": "Table",
-            "properties": {
-                "tableName": {
-                    "$ref": "TableName",
-                    "description": "The table and dataset IDs uniquely describing this table."
-                },
-                "info": {
-                    "$ref": "TableInfo",
-                    "description": "User-modifiable metadata for this table."
-                },
-                "schema": {
-                    "$ref": "TableSchema",
-                    "description": "The table schema."
-                },
-                "view": {
-                    "$ref": "TableViewDefinition",
-                    "description": "The table provides a Database View behavior and functionality based on a query."
-                },
-                "expireTime": {
-                    "description": "The expiration date for this table. After this time, the table will not be externally visible and all storage associated with the table may be garbage collected. If this field is not present, the HelixDataset.default_table_expiration_ms value will be used to calculate the expiration time. Otherwise, the table will live until explicitly deleted.",
-                    "type": "string"
-                },
-                "createTime": {
-                    "description": "The creation time for this table.",
-                    "type": "string"
-                },
-                "truncateTime": {
-                    "description": "The last truncation time for this table. This will only be updated when operation specified with WRITE_TRUNCATE.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TableName": {
-            "description": "Fully-qualified name for a table -- referenced through a dataset.",
-            "id": "TableName",
-            "properties": {
-                "projectId": {
-                    "description": "A string containing the id of this project. The id be the alphanumeric project ID, or the project number.",
-                    "type": "string"
-                },
-                "datasetId": {
-                    "description": "The ID of the dataset (scoped to the project above).",
-                    "type": "string"
-                },
-                "tableId": {
-                    "description": "The ID of the table (scoped to the dataset above).",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TableInfo": {
-            "description": "User-provided metadata for a table, primarily for display in the UI.",
-            "id": "TableInfo",
-            "properties": {
-                "friendlyName": {
-                    "description": "The human-readable name of a table. This should be a short phrase identifying the table (e.g., \"Analytics Data - Jan 2011\").",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "The description of a table. This can be several sentences or paragraphs describing the table contents in detail.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TableSchema": {
-            "description": "BigQuery table schema.",
-            "id": "TableSchema",
-            "properties": {
-                "fields": {
-                    "description": "One field per column in the table",
-                    "items": {
-                        "$ref": "FieldSchema"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "FieldSchema": {
-            "description": "BigQuery field schema.",
-            "id": "FieldSchema",
-            "properties": {
-                "name": {
-                    "description": "Column name Matches: [A-Za-z_][A-Za-z_0-9]{0,127}",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "Column type",
-                    "type": "string"
-                },
-                "mode": {
-                    "description": "Column mode",
-                    "type": "string"
-                },
-                "schema": {
-                    "$ref": "TableSchema",
-                    "description": "Present iff type == RECORD."
-                }
-            },
-            "type": "object"
-        },
-        "TableViewDefinition": {
-            "description": "Metadata for a table to become like a Database View based on a SQL-like query.",
-            "id": "TableViewDefinition",
-            "properties": {
-                "query": {
-                    "description": "Sql query to run.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TableUpdateRequest": {
-            "description": "Table update request.",
-            "id": "TableUpdateRequest",
-            "properties": {
-                "resource": {
-                    "$ref": "Table",
-                    "description": "Table update payload."
-                }
-            },
-            "type": "object"
-        },
-        "DatasetListRequest": {
-            "description": "Dataset list request.",
-            "id": "DatasetListRequest",
-            "properties": {
-                "listAll": {
-                    "description": "Whether to list all datasets, including hidden ones.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "DatasetInsertRequest": {
-            "description": "Dataset insert request.",
-            "id": "DatasetInsertRequest",
-            "properties": {
-                "resource": {
-                    "$ref": "Dataset",
-                    "description": "Dataset insert payload."
-                }
-            },
-            "type": "object"
-        },
-        "Dataset": {
-            "description": "BigQuery dataset information.",
-            "id": "Dataset",
-            "properties": {
-                "datasetName": {
-                    "$ref": "DatasetName",
-                    "description": "The name of this dataset."
-                },
-                "info": {
-                    "$ref": "DatasetInfo",
-                    "description": "User-modifiable metadata for this dataset."
-                },
-                "createTime": {
-                    "description": "The creation time for this dataset.",
-                    "type": "string"
-                },
-                "updateTime": {
-                    "description": "The last modified time for this dataset.",
-                    "type": "string"
-                },
-                "acl": {
-                    "$ref": "BigQueryAcl",
-                    "description": "Access contol list for this dataset."
-                },
-                "defaultTableExpireDuration": {
-                    "description": "The number of milliseconds which should be added to the creation time to determine the expiration time for newly created tables. If this value is null then no expiration time will be set for new tables.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "DatasetName": {
-            "description": "Fully qualified name for a dataset.",
-            "id": "DatasetName",
-            "properties": {
-                "projectId": {
-                    "description": "A string containing the id of this project. The id may be the alphanumeric project ID, or the project number.",
-                    "type": "string"
-                },
-                "datasetId": {
-                    "description": "The ID of the dataset (scoped to the project above).",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "DatasetInfo": {
-            "description": "User-provided metadata for a dataset, primarily for display in the UI.",
-            "id": "DatasetInfo",
-            "properties": {
-                "friendlyName": {
-                    "description": "The human-readable name of a dataset. This should be a short phrase identifying the dataset (e.g., \"Analytics Data 2011\").",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "The description of a dataset. This can be several sentences or paragraphs describing the dataset contents in detail.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "BigQueryAcl": {
-            "description": "Access control list.",
-            "id": "BigQueryAcl",
-            "properties": {
-                "entries": {
-                    "description": "Access control entry list.",
-                    "items": {
-                        "$ref": "Entry"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Entry": {
-            "description": "Access control entry.",
-            "id": "Entry",
-            "properties": {
-                "role": {
-                    "description": "Granted role. Valid roles are READER, WRITER, OWNER.",
-                    "type": "string"
-                },
-                "groupEmail": {
-                    "description": "Grants access to a group, by e-mail.",
-                    "type": "string"
-                },
-                "userEmail": {
-                    "description": "Grants access to a user, by e-mail.",
-                    "type": "string"
-                },
-                "domain": {
-                    "description": "Grants access to all members of a domain.",
-                    "type": "string"
-                },
-                "specialGroup": {
-                    "description": "Grants access to special groups. Valid groups are PROJECT_OWNERS, PROJECT_READERS, PROJECT_WRITERS and ALL_AUTHENTICATED_USERS.",
-                    "type": "string"
-                },
-                "viewName": {
-                    "$ref": "TableName",
-                    "description": "Grants access to a BigQuery View."
-                }
-            },
-            "type": "object"
-        },
-        "DatasetUpdateRequest": {
-            "description": "Dataset update request.",
-            "id": "DatasetUpdateRequest",
-            "properties": {
-                "resource": {
-                    "$ref": "Dataset",
-                    "description": "Dataset update payload."
-                }
-            },
-            "type": "object"
-        },
-        "JobInsertRequest": {
-            "description": "Job insert request.",
-            "id": "JobInsertRequest",
-            "properties": {
-                "resource": {
-                    "$ref": "Job",
-                    "description": "Job insert payload."
-                }
-            },
-            "type": "object"
-        },
-        "Job": {
-            "description": "Combines all of the information about a job.",
-            "id": "Job",
-            "properties": {
-                "jobName": {
-                    "$ref": "JobName",
-                    "description": "Job name."
-                },
-                "jobConfiguration": {
-                    "$ref": "JobConfiguration",
-                    "description": "Job configuration."
-                },
-                "jobStatus": {
-                    "$ref": "JobStatus",
-                    "description": "Job status."
-                },
-                "jobStatistics": {
-                    "$ref": "JobStatistics",
-                    "description": "Job statistics."
-                }
-            },
-            "type": "object"
-        },
-        "JobName": {
-            "description": "Fully-qualified name for a job.",
-            "id": "JobName",
-            "properties": {
-                "projectId": {
-                    "description": "A string containing the id of this project.",
-                    "type": "string"
-                },
-                "jobId": {
-                    "description": "The ID of the job (scoped to the project above).",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "JobConfiguration": {
-            "description": "Job configuration information.",
-            "id": "JobConfiguration",
-            "properties": {
-                "query": {
-                    "$ref": "Query",
-                    "description": "Query job information."
-                },
-                "load": {
-                    "$ref": "Load",
-                    "description": "Load job information."
-                },
-                "extract": {
-                    "$ref": "Extract",
-                    "description": "Extract job information."
-                },
-                "tableCopy": {
-                    "$ref": "TableCopy",
-                    "description": "TableCopy job information."
-                },
-                "dryRun": {
-                    "description": "If set, don't actually run the job. Just check that it would run.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "Query": {
-            "description": "Describes a query job, which executes a SQL-like query.",
-            "id": "Query",
-            "properties": {
-                "query": {
-                    "description": "SQL query to run.",
-                    "type": "string"
-                },
-                "destinationTable": {
-                    "$ref": "TableName",
-                    "description": "table where results should be written."
-                },
-                "createDisposition": {
-                    "description": "Describe when a job should create a table.",
-                    "type": "string"
-                },
-                "writeDisposition": {
-                    "description": "Describes how writes should affect the table associated with the job.",
-                    "type": "string"
-                },
-                "defaultDataset": {
-                    "$ref": "DatasetName",
-                    "description": "If a table name is specified without a dataset in a query, this dataset will be added to table name."
-                },
-                "tableDefinitions": {
-                    "description": "Additional tables that this query might reference beyond the tables already defined in BigQuery. This is typically used to provide external data references for this query.",
-                    "items": {
-                        "$ref": "TableDefinition"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "TableDefinition": {
-            "description": "Per Query external tables. These tables can be referenced with 'name' in the query and can be read just like any other table.",
-            "id": "TableDefinition",
-            "properties": {
-                "name": {
-                    "description": "Name of the table. This will be used to reference this table in the query.",
-                    "type": "string"
-                },
-                "sourceUris": {
-                    "description": "URIs for the data to be imported.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Load": {
-            "description": "Describes a load job, which loads data from an external source via the import pipeline.",
-            "id": "Load",
-            "properties": {
-                "sourceUris": {
-                    "description": "URIs for the data to be imported. Only Bigstore URIs are supported (e.g., \"gs://bucket/object\").",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "schema": {
-                    "$ref": "TableSchema",
-                    "description": "Schema for the data to be imported."
-                },
-                "destinationTable": {
-                    "$ref": "TableName",
-                    "description": "table where the imported data should be written."
-                },
-                "createDisposition": {
-                    "description": "Describes when a job should create a table.",
-                    "type": "string"
-                },
-                "writeDisposition": {
-                    "description": "Describes how writes should affect the table associated with the job.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Extract": {
-            "description": "Describes an extract job, which exports data to an external source via the export pipeline.",
-            "id": "Extract",
-            "properties": {
-                "destinationUris": {
-                    "description": "URI or URIs where extracted data should be written. Currently, only Bigstore URIs are supported (e.g., \"gs://bucket/object\"). If more than one URI given, output will be divided into 'partitions' of data, with each partition containing one or more files. If more than one URI is given, each URI must contain exactly one '*' which will be replaced with the file number (within the partition) padded out to 9 digits.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "sourceTable": {
-                    "$ref": "TableName",
-                    "description": "Source table."
-                }
-            },
-            "type": "object"
-        },
-        "TableCopy": {
-            "description": "Describes a copy job, which copies an existing table to another table.",
-            "id": "TableCopy",
-            "properties": {
-                "sourceTables": {
-                    "description": "Source tables.",
-                    "items": {
-                        "$ref": "TableName"
-                    },
-                    "type": "array"
-                },
-                "destinationTable": {
-                    "$ref": "TableName",
-                    "description": "Destination table."
-                },
-                "createDisposition": {
-                    "description": "Describe when a job should create a table.",
-                    "type": "string"
-                },
-                "writeDisposition": {
-                    "description": "Describe whether the copy operation should append or not.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "JobStatus": {
-            "description": "Running state of a job (whether it is running, failed, etc).",
-            "id": "JobStatus",
-            "properties": {
-                "state": {
-                    "description": "State of a job: PENDING, RUNNING, DONE. Includes no information about whether the job was successful or not.",
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "Status",
-                    "description": "If the job did not complete successfully, this will contain an error."
-                }
-            },
-            "type": "object"
-        },
-        "JobStatistics": {
-            "description": "Job statistics that may change after a job starts.",
-            "id": "JobStatistics",
-            "properties": {
-                "createTime": {
-                    "description": "Time when the job was created (in milliseconds since the POSIX epoch).",
-                    "type": "string"
-                },
-                "startTime": {
-                    "description": "Time when the job started.",
-                    "type": "string"
-                },
-                "endTime": {
-                    "description": "Time when the job ended.",
-                    "type": "string"
-                },
-                "totalProcessedBytes": {
-                    "description": "Total bytes processed for a job.",
-                    "format": "int64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "JobQueryRequest": {
-            "description": "Job query request.",
-            "id": "JobQueryRequest",
-            "properties": {
-                "query": {
-                    "description": "The query to execute.",
-                    "type": "string"
-                },
-                "maxResults": {
-                    "description": "Maximum number of results to return.",
-                    "format": "uint32",
-                    "type": "integer"
-                },
-                "defaultDataset": {
-                    "$ref": "DatasetName",
-                    "description": "Default dataset to use when tables in a query do not have a dataset specified."
-                },
-                "projectId": {
-                    "description": "Project that the query should be charged to.",
-                    "type": "string"
-                },
-                "dryRun": {
-                    "description": "If set, don't actually run the query.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "JobGetQueryResultsRequest": {
-            "description": "Job get-query-results request.",
-            "id": "JobGetQueryResultsRequest",
-            "properties": {
-                "maxResults": {
-                    "description": "Maximum number of results to return.",
-                    "format": "uint32",
-                    "type": "integer"
-                },
-                "startRow": {
-                    "description": "Row number to start returning results from.",
-                    "format": "uint64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TableDataListRequest": {
-            "description": "Table data-list request.",
-            "id": "TableDataListRequest",
-            "properties": {
-                "startRow": {
-                    "description": "Starting row offset.",
-                    "format": "uint64",
-                    "type": "string"
-                },
-                "maxResults": {
-                    "description": "Maximum number of results to return.",
-                    "format": "uint32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "TableInsertResponse": {
-            "description": "Table insert response.",
-            "id": "TableInsertResponse",
-            "properties": {
-                "resource": {
-                    "$ref": "Table",
-                    "description": "Final state of inserted table."
-                }
-            },
-            "type": "object"
-        },
-        "TableUpdateResponse": {
-            "description": "Table update response.",
-            "id": "TableUpdateResponse",
-            "properties": {
-                "resource": {
-                    "$ref": "Table",
-                    "description": "Final state of updated table."
-                }
-            },
-            "type": "object"
-        },
-        "DatasetInsertResponse": {
-            "description": "Dataset insert response.",
-            "id": "DatasetInsertResponse",
-            "properties": {
-                "resource": {
-                    "$ref": "Dataset",
-                    "description": "Final state of inserted dataset."
-                }
-            },
-            "type": "object"
-        },
-        "DatasetUpdateResponse": {
-            "description": "Dataset update response.",
-            "id": "DatasetUpdateResponse",
-            "properties": {
-                "resource": {
-                    "$ref": "Dataset",
-                    "description": "Final state of updated dataset."
-                }
-            },
-            "type": "object"
-        },
-        "JobQueryResponse": {
-            "description": "Job query response.",
-            "id": "JobQueryResponse",
-            "properties": {
-                "totalResults": {
-                    "description": "The total number of rows in the complete query result set.",
-                    "format": "uint64",
-                    "type": "string"
-                },
-                "job": {
-                    "$ref": "Job",
-                    "description": "Information about queried job."
-                }
-            },
-            "type": "object"
-        },
-        "JobGetQueryResultsResponse": {
-            "description": "Job get-query-results response.",
-            "id": "JobGetQueryResultsResponse",
-            "properties": {
-                "totalResults": {
-                    "description": "Total number of results in query results.",
-                    "format": "uint64",
-                    "type": "string"
-                },
-                "job": {
-                    "$ref": "Job",
-                    "description": "Job that was created to run the query. Includes job state, job statistics, and job errors (if any). To determine whether the job has completed, check that job.status.state == DONE. If job.status.error_result is set, then the job failed. If the job has not yet completed, call GetQueryResults again."
-                }
-            },
-            "type": "object"
-        },
-        "JobQueryDoneResponse": {
-            "description": "Job get query-done response.",
-            "id": "JobQueryDoneResponse",
-            "properties": {
-                "job": {
-                    "$ref": "Job",
-                    "description": "Usage information about completed job."
-                }
-            },
-            "type": "object"
-        },
-        "Money": {
-            "description": "Represents an amount of money with its currency type.",
-            "id": "Money",
-            "properties": {
-                "currencyCode": {
-                    "description": "The 3-letter currency code defined in ISO 4217.",
-                    "type": "string"
-                },
-                "units": {
-                    "description": "The whole units of the amount. For example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "nanos": {
-                    "description": "Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.",
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"
