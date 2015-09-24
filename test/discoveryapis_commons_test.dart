@@ -828,6 +828,23 @@ main() {
           }), false);
         }
 
+        makeErrorsError() {
+          var errorJson = '''
+          { "error" :
+            { "code" : 42,
+              "message" : "foo",
+              "errors" : [
+                {"reason" : "InvalidEmailError"},
+                {"domain" : "account", "message": "error"}
+              ]
+            }
+          }
+          ''';
+          httpMock.register(expectAsync((http.BaseRequest request, string) {
+            return stringResponse(400, responseHeaders, errorJson);
+          }), false);
+        }
+
         makeNormal199Error() {
           httpMock.register(expectAsync((http.BaseRequest request, string) {
             return stringResponse(199, {}, '');
@@ -855,6 +872,21 @@ main() {
             DetailedApiRequestError e = error;
             expect(e.status, equals(42));
             expect(e.message, equals('foo'));
+          }));
+        });
+
+        test('error-with-multiple-errors', () {
+          makeErrorsError();
+          requester.request('abc', 'GET')
+              .catchError(expectAsync((error, stack) {
+            expect(error, isDetailedApiRequestError);
+            DetailedApiRequestError e = error;
+            expect(e.status, equals(42));
+            expect(e.message, equals('foo'));
+            expect(e.errors.length, equals(2));
+            expect(e.errors.first.reason, equals('InvalidEmailError'));
+            expect(e.errors.last.domain, equals('account'));
+            expect(e.errors.last.message, equals('error'));
           }));
         });
 
@@ -923,6 +955,38 @@ main() {
             .then(expectAsync((response) {
           expect(response, isNull);
         }));
+      });
+    });
+    group('errors', () {
+      test('error-detail-from-json', () {
+        var detail = new ApiRequestErrorDetail.fromJson({});
+        expect(detail.domain, isNull);
+        expect(detail.reason, isNull);
+        expect(detail.message, isNull);
+        expect(detail.location, isNull);
+        expect(detail.locationType, isNull);
+        expect(detail.extendedHelp, isNull);
+        expect(detail.sendReport, isNull);
+
+        var json = {
+          'domain': 'value-domain',
+          'reason': 'value-reason',
+          'message': 'value-message',
+          'location': 'value-location',
+          'locationType': 'value-locationType',
+          'extendedHelp': 'value-extendedHelp',
+          'sendReport': 'value-sendReport'
+        };
+
+        detail = new ApiRequestErrorDetail.fromJson(json);
+        expect(detail.originalJson, json);
+        expect(detail.domain, json['domain']);
+        expect(detail.reason, json['reason']);
+        expect(detail.message, json['message']);
+        expect(detail.location, json['location']);
+        expect(detail.locationType, json['locationType']);
+        expect(detail.extendedHelp, json['extendedHelp']);
+        expect(detail.sendReport, json['sendReport']);
       });
     });
   });

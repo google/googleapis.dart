@@ -183,8 +183,70 @@ class ApiRequestError extends core.Error {
 class DetailedApiRequestError extends ApiRequestError {
   final core.int status;
 
-  DetailedApiRequestError(this.status, core.String message) : super(message);
+  final core.List<ApiRequestErrorDetail> errors;
+
+  DetailedApiRequestError(this.status, core.String message,
+      {this.errors: const []}) : super(message);
 
   core.String toString()
       => 'DetailedApiRequestError(status: $status, message: $message)';
+}
+
+/// Instances of this class can be added to an [RpcError] to provide detailed
+/// information.
+/// They will be sent back to the client in the `errors` field.
+///
+/// This follows the Google JSON style guide:
+/// http://google-styleguide.googlecode.com/svn/trunk/jsoncstyleguide.xml?showone=error#error.errors
+class ApiRequestErrorDetail {
+  /// Unique identifier for the service raising this error. This helps
+  /// distinguish service-specific errors (i.e. error inserting an event in a
+  /// calendar) from general protocol errors (i.e. file not found).
+  final core.String domain;
+
+  /// Unique identifier for this error. Different from the [RpcError.statusCode]
+  /// property in that this is not an http response code.
+  final core.String reason;
+
+  /// A human readable message providing more details about the error. If there
+  /// is only one error, this field will match error.message.
+  final core.String message;
+
+  /// The location of the error (the interpretation of its value depends on
+  /// [locationType]).
+  final core.String location;
+
+  /// Indicates how the [location] property should be interpreted.
+  final core.String locationType;
+
+  /// A URI for a help text that might shed some more light on the error.
+  final core.String extendedHelp;
+
+  /// A URI for a report form used by the service to collect data about the
+  /// error condition. This URI should be preloaded with parameters describing
+  /// the request.
+  final core.String sendReport;
+
+  /// If this error detail gets created with the `.fromJson` constructor, the
+  /// json will be accessible here.
+  final core.Map originalJson;
+
+  ApiRequestErrorDetail(
+      {this.domain,
+      this.reason,
+      this.message,
+      this.location,
+      this.locationType,
+      this.extendedHelp,
+      this.sendReport});
+
+  ApiRequestErrorDetail.fromJson(core.Map json) :
+      originalJson = json,
+      domain = json.containsKey('domain') ? json['domain'] : null,
+      reason = json.containsKey('reason') ? json['reason'] : null,
+      message = json.containsKey('message') ? json['message'] : null,
+      location = json.containsKey('location') ? json['location'] : null,
+      locationType = json.containsKey('locationType') ? json['locationType'] : null,
+      extendedHelp = json.containsKey('extendedHelp') ? json['extendedHelp'] : null,
+      sendReport = json.containsKey('sendReport') ? json['sendReport'] : null;
 }
