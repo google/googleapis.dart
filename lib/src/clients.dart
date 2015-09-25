@@ -874,10 +874,18 @@ Future<http.StreamedResponse> _validateResponse(
     if (stringStream != null) {
       return stringStream.transform(JSON.decoder).first.then((json) {
         if (json is Map && json['error'] is Map) {
-          var error = json['error'];
+          Map error = json['error'];
           var code = error['code'];
           var message = error['message'];
-          throw new client_requests.DetailedApiRequestError(code, message);
+          var errors = [];
+          if (error.containsKey('errors') && error['errors'] is List) {
+            errors = error['errors']
+                .map((Map json) =>
+                    new client_requests.ApiRequestErrorDetail.fromJson(json))
+                .toList();
+          }
+          throw new client_requests.DetailedApiRequestError(
+              code, message, errors: errors);
         } else {
           throwGeneralError();
         }
