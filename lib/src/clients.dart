@@ -614,7 +614,8 @@ class ResumableMediaUploader {
    */
   Future _uploadChunk(Uri uri, ResumableChunk chunk, {bool lastChunk: false}) {
     // If [uploadMedia.length] is null, we do not know the length.
-    var mediaTotalLength = _uploadMedia.length;
+    var mediaTotalLength = _uploadMedia.length == null ?
+        null : _uploadMedia.length.toString();
     if (mediaTotalLength == null || lastChunk) {
       if (lastChunk) {
         mediaTotalLength = '${chunk.endOfChunk}';

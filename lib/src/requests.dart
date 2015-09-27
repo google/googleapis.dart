@@ -238,7 +238,7 @@ class ApiRequestErrorDetail {
       this.location,
       this.locationType,
       this.extendedHelp,
-      this.sendReport});
+      this.sendReport}) : originalJson = null;
 
   ApiRequestErrorDetail.fromJson(core.Map json) :
       originalJson = json,
