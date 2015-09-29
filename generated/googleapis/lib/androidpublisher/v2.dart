@@ -1259,6 +1259,7 @@ class EditsImagesResourceApi {
    * - "tenInchScreenshots"
    * - "tvBanner"
    * - "tvScreenshots"
+   * - "wearScreenshots"
    *
    * [imageId] - Unique identifier an image within the set of images attached to
    * this edit.
@@ -1331,6 +1332,7 @@ class EditsImagesResourceApi {
    * - "tenInchScreenshots"
    * - "tvBanner"
    * - "tvScreenshots"
+   * - "wearScreenshots"
    *
    * Completes with a [ImagesDeleteAllResponse].
    *
@@ -1397,6 +1399,7 @@ class EditsImagesResourceApi {
    * - "tenInchScreenshots"
    * - "tvBanner"
    * - "tvScreenshots"
+   * - "wearScreenshots"
    *
    * Completes with a [ImagesListResponse].
    *
@@ -1464,6 +1467,7 @@ class EditsImagesResourceApi {
    * - "tenInchScreenshots"
    * - "tvBanner"
    * - "tvScreenshots"
+   * - "wearScreenshots"
    *
    * [uploadMedia] - The media to upload.
    *
@@ -3758,8 +3762,8 @@ class InAppProduct {
   core.String sku;
   core.String status;
   /**
-   * The period of the subscription (if any), i.e. period at which payments must
-   * happen. Defined as ISO 8601 duration, i.e. "P1M" for 1 month period.
+   * Subscription period, specified in ISO 8601 format. Acceptable values are
+   * "P1W" (one week), "P1M" (one month) and "P1Y" (one year).
    */
   core.String subscriptionPeriod;
   /**

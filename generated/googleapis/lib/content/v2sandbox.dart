@@ -458,18 +458,25 @@ class OrdersResourceApi {
    *
    * [acknowledged] - Obtains orders that match the acknowledgement status. When
    * set to true, obtains orders that have been acknowledged. When false,
-   * obtains orders that have not been acknowledged. We recommend using this
-   * filter set to true, in conjunction with the acknowledge call, such that
-   * orders that have already been ingested in the merchant's Order Management
-   * System, are not returned in future list calls.
+   * obtains orders that have not been acknowledged.
+   * We recommend using this filter set to false, in conjunction with the
+   * acknowledge call, such that only un-acknowledged orders are returned.
    *
    * [maxResults] - The maximum number of orders to return in the response, used
-   * for paging.
+   * for paging. The default value is 25 orders per page, and the maximum
+   * allowed value is 250 orders per page.
+   * Known issue: All List calls will return all Orders without limit regardless
+   * of the value of this field.
    *
-   * [orderBy] - The ordering of the returned list. The only supported value is
-   * placedDate desc for now, which returns orders sorted by placement date, in
-   * descending order (oldest first). In future releases we'll support other
-   * sorting criteria and direction.
+   * [orderBy] - The ordering of the returned list. The only supported value are
+   * placedDate desc and placedDate asc for now, which returns orders sorted by
+   * placement date. "placedDate desc" stands for listing orders by placement
+   * date, from oldest to most recent. "placedDate asc" stands for listing
+   * orders by placement date, from most recent to oldest. In future releases
+   * we'll support other sorting criteria.
+   * Possible string values are:
+   * - "placedDate asc"
+   * - "placedDate desc"
    *
    * [pageToken] - The token returned by the previous request.
    *
@@ -480,10 +487,10 @@ class OrdersResourceApi {
    * ISO 8601 format.
    *
    * [statuses] - Obtains orders that match any of the specified statuses.
-   * Multiple values can be specified using comma as a separator. Additionally,
-   * please note that active is a shortcut for pendingShipment, partiallyShipped
-   * and completed is a shortcut for shipped , partiallyDelivered, delivered,
-   * partiallyReturned, returned, and canceled.
+   * Multiple values can be specified with comma separation. Additionally,
+   * please note that active is a shortcut for pendingShipment and
+   * partiallyShipped, and completed is a shortcut for shipped ,
+   * partiallyDelivered, delivered, partiallyReturned, returned, and canceled.
    *
    * Completes with a [OrdersListResponse].
    *
@@ -1399,9 +1406,9 @@ class OrderLineItemProduct {
   /** The title of the product. */
   core.String title;
   /**
-   * Variant attributes for the item. These are dimensions of the product, like
-   * like color, gender, material, pattern, and size. See the comprehensive list
-   * of variant attributes here.
+   * Variant attributes for the item. These are dimensions of the product, such
+   * as color, gender, material, pattern, and size. You can find a comprehensive
+   * list of variant attributes here.
    */
   core.List<OrderLineItemProductVariantAttribute> variantAttributes;
 
@@ -3250,6 +3257,8 @@ class TestOrder {
   core.String kind;
   /** Line items that are ordered. At least one line item must be provided. */
   core.List<TestOrderLineItem> lineItems;
+  /** The details of the payment method. */
+  TestOrderPaymentMethod paymentMethod;
   /**
    * Identifier of one of the predefined delivery addresses for the delivery.
    */
@@ -3272,6 +3281,9 @@ class TestOrder {
     }
     if (_json.containsKey("lineItems")) {
       lineItems = _json["lineItems"].map((value) => new TestOrderLineItem.fromJson(value)).toList();
+    }
+    if (_json.containsKey("paymentMethod")) {
+      paymentMethod = new TestOrderPaymentMethod.fromJson(_json["paymentMethod"]);
     }
     if (_json.containsKey("predefinedDeliveryAddress")) {
       predefinedDeliveryAddress = _json["predefinedDeliveryAddress"];
@@ -3297,6 +3309,9 @@ class TestOrder {
     }
     if (lineItems != null) {
       _json["lineItems"] = lineItems.map((value) => (value).toJson()).toList();
+    }
+    if (paymentMethod != null) {
+      _json["paymentMethod"] = (paymentMethod).toJson();
     }
     if (predefinedDeliveryAddress != null) {
       _json["predefinedDeliveryAddress"] = predefinedDeliveryAddress;
@@ -3421,6 +3436,10 @@ class TestOrderLineItemProduct {
   core.String contentLanguage;
   /** Global Trade Item Number (GTIN) of the item. Optional. */
   core.String gtin;
+  /** URL of an image of the item. */
+  core.String imageLink;
+  /** Shared identifier for all variants of the same product. Optional. */
+  core.String itemGroupId;
   /** Manufacturer Part Number (MPN) of the item. Optional. */
   core.String mpn;
   /** An identifier of the item. */
@@ -3451,6 +3470,12 @@ class TestOrderLineItemProduct {
     }
     if (_json.containsKey("gtin")) {
       gtin = _json["gtin"];
+    }
+    if (_json.containsKey("imageLink")) {
+      imageLink = _json["imageLink"];
+    }
+    if (_json.containsKey("itemGroupId")) {
+      itemGroupId = _json["itemGroupId"];
     }
     if (_json.containsKey("mpn")) {
       mpn = _json["mpn"];
@@ -3489,6 +3514,12 @@ class TestOrderLineItemProduct {
     if (gtin != null) {
       _json["gtin"] = gtin;
     }
+    if (imageLink != null) {
+      _json["imageLink"] = imageLink;
+    }
+    if (itemGroupId != null) {
+      _json["itemGroupId"] = itemGroupId;
+    }
     if (mpn != null) {
       _json["mpn"] = mpn;
     }
@@ -3506,6 +3537,62 @@ class TestOrderLineItemProduct {
     }
     if (variantAttributes != null) {
       _json["variantAttributes"] = variantAttributes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class TestOrderPaymentMethod {
+  /** The card expiration month (January = 1, February = 2 etc.). */
+  core.int expirationMonth;
+  /** The card expiration year (4-digit, e.g. 2015). */
+  core.int expirationYear;
+  /** The last four digits of the card number. */
+  core.String lastFourDigits;
+  /** The billing address. */
+  core.String predefinedBillingAddress;
+  /**
+   * The type of instrument. Note that real orders might have different values
+   * than the four values accepted by createTestOrder.
+   */
+  core.String type;
+
+  TestOrderPaymentMethod();
+
+  TestOrderPaymentMethod.fromJson(core.Map _json) {
+    if (_json.containsKey("expirationMonth")) {
+      expirationMonth = _json["expirationMonth"];
+    }
+    if (_json.containsKey("expirationYear")) {
+      expirationYear = _json["expirationYear"];
+    }
+    if (_json.containsKey("lastFourDigits")) {
+      lastFourDigits = _json["lastFourDigits"];
+    }
+    if (_json.containsKey("predefinedBillingAddress")) {
+      predefinedBillingAddress = _json["predefinedBillingAddress"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (expirationMonth != null) {
+      _json["expirationMonth"] = expirationMonth;
+    }
+    if (expirationYear != null) {
+      _json["expirationYear"] = expirationYear;
+    }
+    if (lastFourDigits != null) {
+      _json["lastFourDigits"] = lastFourDigits;
+    }
+    if (predefinedBillingAddress != null) {
+      _json["predefinedBillingAddress"] = predefinedBillingAddress;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }

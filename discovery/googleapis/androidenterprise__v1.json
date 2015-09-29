@@ -15,7 +15,7 @@
     "description": "Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android for Work users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/play/enterprise",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/G6EgYjNU-ojgndBQyBgS2Y6o-AY\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/8PqIQ90UvLBUWJnOPvX8UUNVYrE\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -702,7 +702,7 @@
                     ]
                 },
                 "sendTestPushNotification": {
-                    "description": "Sends a test push notification to validate the MDM integration with the Google Cloud Pubsub service for this enterprise.",
+                    "description": "Sends a test push notification to validate the MDM integration with the Google Cloud Pub/Sub service for this enterprise.",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.sendTestPushNotification",
                     "parameterOrder": [
@@ -1697,7 +1697,7 @@
             }
         }
     },
-    "revision": "20150902",
+    "revision": "20150922",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AppRestrictionsSchema": {
@@ -2031,7 +2031,7 @@
                     "type": "string"
                 },
                 "topicName": {
-                    "description": "The name of the Cloud Pubsub topic to which notifications for this enterprise's enrolled account will be sent.",
+                    "description": "The name of the Cloud Pub/Sub topic to which notifications for this enterprise's enrolled account will be sent.",
                     "type": "string"
                 }
             },

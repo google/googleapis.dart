@@ -38,7 +38,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/CcfIv_XXBcC9IjW_g6y62udbfTY\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/vDvRzc2SjVzG9hrGn8HU-kRVxfE\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -924,7 +924,7 @@
                         },
                         "updateViewedDate": {
                             "default": "false",
-                            "description": "Whether to update the view date after successfully retrieving the file.",
+                            "description": "Deprecated: Use files.update with modifiedDateBehavior=noChange, updateViewedDate=true and an empty request body.",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -1486,7 +1486,7 @@
                         },
                         "updateViewedDate": {
                             "default": "false",
-                            "description": "Whether to update the view date after successfully retrieving the file.",
+                            "description": "Deprecated: Use files.update with modifiedDateBehavior=noChange, updateViewedDate=true and an empty request body.",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -2604,7 +2604,7 @@
             }
         }
     },
-    "revision": "20150903",
+    "revision": "20150910",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {

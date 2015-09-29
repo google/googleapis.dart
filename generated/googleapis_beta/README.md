@@ -92,6 +92,12 @@ The Google Cloud Resource Manager API provides methods for creating, reading, an
 
 Official API documentation: https://cloud.google.com/resource-manager
 
+#### ![Logo](https://www.google.com/images/icons/product/compute_engine-16.png) Cloud User Accounts API - clouduseraccounts beta
+
+API for the Google Cloud User Accounts service.
+
+Official API documentation: https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Dataflow API - dataflow v1b3
 
 Google Dataflow API.

@@ -1225,8 +1225,9 @@ class FilesResourceApi {
    * [revisionId] - Specifies the Revision ID that should be downloaded. Ignored
    * unless alt=media is specified.
    *
-   * [updateViewedDate] - Whether to update the view date after successfully
-   * retrieving the file.
+   * [updateViewedDate] - Deprecated: Use files.update with
+   * modifiedDateBehavior=noChange, updateViewedDate=true and an empty request
+   * body.
    *
    * [downloadOptions] - Options for downloading. A download can be either a
    * Metadata (default) or Media download. Partial Media downloads are possible
@@ -1887,8 +1888,9 @@ class FilesResourceApi {
    * [revisionId] - Specifies the Revision ID that should be downloaded. Ignored
    * unless alt=media is specified.
    *
-   * [updateViewedDate] - Whether to update the view date after successfully
-   * retrieving the file.
+   * [updateViewedDate] - Deprecated: Use files.update with
+   * modifiedDateBehavior=noChange, updateViewedDate=true and an empty request
+   * body.
    *
    * [downloadOptions] - Options for downloading. A download can be either a
    * Metadata (default) or Media download. Partial Media downloads are possible

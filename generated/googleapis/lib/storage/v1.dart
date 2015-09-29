@@ -21,10 +21,7 @@ class StorageApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
-  /**
-   * MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform
-   * services
-   */
+  /** View your data across Google Cloud Platform services */
   static const CloudPlatformReadOnlyScope = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
   /** Manage your data and permissions in Google Cloud Storage */
@@ -3029,8 +3026,10 @@ class Bucket {
    * For more information, see storage classes.
    */
   core.String storageClass;
-  /** Creation time of the bucket in RFC 3339 format. */
+  /** The creation time of the bucket in RFC 3339 format. */
   core.DateTime timeCreated;
+  /** The modification time of the bucket in RFC 3339 format. */
+  core.DateTime updated;
   /** The bucket's versioning configuration. */
   BucketVersioning versioning;
   /** The bucket's website configuration. */
@@ -3086,6 +3085,9 @@ class Bucket {
     }
     if (_json.containsKey("timeCreated")) {
       timeCreated = core.DateTime.parse(_json["timeCreated"]);
+    }
+    if (_json.containsKey("updated")) {
+      updated = core.DateTime.parse(_json["updated"]);
     }
     if (_json.containsKey("versioning")) {
       versioning = new BucketVersioning.fromJson(_json["versioning"]);
@@ -3144,6 +3146,9 @@ class Bucket {
     }
     if (timeCreated != null) {
       _json["timeCreated"] = (timeCreated).toIso8601String();
+    }
+    if (updated != null) {
+      _json["updated"] = (updated).toIso8601String();
     }
     if (versioning != null) {
       _json["versioning"] = (versioning).toJson();
@@ -3687,16 +3692,14 @@ class Object {
   core.String size;
   /** Storage class of the object. */
   core.String storageClass;
+  /** The creation time of the object in RFC 3339 format. */
+  core.DateTime timeCreated;
   /**
    * The deletion time of the object in RFC 3339 format. Will be returned if and
    * only if this version of the object has been deleted.
    */
   core.DateTime timeDeleted;
-  /**
-   * The creation or modification time of the object in RFC 3339 format. For
-   * buckets with versioning enabled, changing an object's metadata does not
-   * change this property.
-   */
+  /** The modification time of the object metadata in RFC 3339 format. */
   core.DateTime updated;
 
   Object();
@@ -3767,6 +3770,9 @@ class Object {
     }
     if (_json.containsKey("storageClass")) {
       storageClass = _json["storageClass"];
+    }
+    if (_json.containsKey("timeCreated")) {
+      timeCreated = core.DateTime.parse(_json["timeCreated"]);
     }
     if (_json.containsKey("timeDeleted")) {
       timeDeleted = core.DateTime.parse(_json["timeDeleted"]);
@@ -3843,6 +3849,9 @@ class Object {
     }
     if (storageClass != null) {
       _json["storageClass"] = storageClass;
+    }
+    if (timeCreated != null) {
+      _json["timeCreated"] = (timeCreated).toIso8601String();
     }
     if (timeDeleted != null) {
       _json["timeDeleted"] = (timeDeleted).toIso8601String();

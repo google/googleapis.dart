@@ -1,3 +1,7 @@
+## 0.19.1
+
+* [apis-new] clouduseraccounts:beta
+
 ## 0.19.0
 
 * [apis-breaking] logging:v1beta3: method/schema removals

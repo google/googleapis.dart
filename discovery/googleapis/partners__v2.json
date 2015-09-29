@@ -5,7 +5,7 @@
     "description": "Lets advertisers search certified companies and create contact leads with them, and also audits the usage of clients.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/partners/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Oex6IdRfx1XIrUSRqNsJm2G1ago\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Z1ZjKJtkBj9ZEYgBJhjBFfjbM3I\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -309,7 +309,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "A token identifying a page of results that the server returns. Typically, this is the value of `ListCompaniesResponse.next_page_token` returned from the previous call to [ListCompanies][google.partners.v2.Partner.ListCompanies].",
+                            "description": "A token identifying a page of results that the server returns. Typically, this is the value of `ListCompaniesResponse.next_page_token` returned from the previous call to ListCompanies.",
                             "location": "query",
                             "type": "string"
                         },
@@ -465,11 +465,11 @@
             }
         }
     },
-    "revision": "20150901",
+    "revision": "20150915",
     "rootUrl": "https://partners.googleapis.com/",
     "schemas": {
         "LogUserEventRequest": {
-            "description": "Request message for [LogUserEvent][google.partners.v2.ClientAuditor.LogUserEvent].",
+            "description": "Request message for LogUserEvent.",
             "id": "LogUserEventRequest",
             "properties": {
                 "requestMetadata": {
@@ -891,7 +891,7 @@
             "type": "object"
         },
         "LogUserEventResponse": {
-            "description": "Response message for [LogUserEvent][google.partners.v2.ClientAuditor.LogUserEvent].",
+            "description": "Response message for LogUserEvent.",
             "id": "LogUserEventResponse",
             "properties": {
                 "responseMetadata": {
@@ -932,7 +932,7 @@
             "type": "object"
         },
         "LogMessageRequest": {
-            "description": "Request message for [LogClientMessage][google.partners.v2.ClientAuditor.LogClientMessage].",
+            "description": "Request message for LogClientMessage.",
             "id": "LogMessageRequest",
             "properties": {
                 "requestMetadata": {
@@ -965,7 +965,7 @@
             "type": "object"
         },
         "LogMessageResponse": {
-            "description": "Response message for [LogClientMessage][google.partners.v2.ClientAuditor.LogClientMessage].",
+            "description": "Response message for LogClientMessage.",
             "id": "LogMessageResponse",
             "properties": {
                 "responseMetadata": {
@@ -976,7 +976,7 @@
             "type": "object"
         },
         "ListUserStatesResponse": {
-            "description": "Response message for [ListUserStates][google.partners.v2.ClientAuditor.ListUserStates].",
+            "description": "Response message for ListUserStates.",
             "id": "ListUserStatesResponse",
             "properties": {
                 "responseMetadata": {
@@ -1002,7 +1002,7 @@
             "type": "object"
         },
         "GetCompanyResponse": {
-            "description": "Response message for [GetCompany][google.partners.v2.Partner.GetCompany].",
+            "description": "Response message for GetCompany.",
             "id": "GetCompanyResponse",
             "properties": {
                 "responseMetadata": {
@@ -1291,7 +1291,7 @@
             "type": "object"
         },
         "ListCompaniesResponse": {
-            "description": "Response message for [ListCompanies][google.partners.v2.Partner.ListCompanies].",
+            "description": "Response message for ListCompanies.",
             "id": "ListCompaniesResponse",
             "properties": {
                 "responseMetadata": {
@@ -1306,14 +1306,14 @@
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "A token to retrieve next page of results. Pass this value in the `ListCompaniesRequest.page_token` field in the subsequent call to [ListCompanies][google.partners.v2.Partner.ListCompanies] to retrieve the next page of results.",
+                    "description": "A token to retrieve next page of results. Pass this value in the `ListCompaniesRequest.page_token` field in the subsequent call to ListCompanies to retrieve the next page of results.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "CreateLeadRequest": {
-            "description": "Request message for [CreateLead][google.partners.v2.Partner.CreateLead].",
+            "description": "Request message for CreateLead.",
             "id": "CreateLeadRequest",
             "properties": {
                 "requestMetadata": {
@@ -1347,7 +1347,7 @@
             "type": "object"
         },
         "CreateLeadResponse": {
-            "description": "Response message for [CreateLead][google.partners.v2.Partner.CreateLead]. Debug information about this request.",
+            "description": "Response message for CreateLead. Debug information about this request.",
             "id": "CreateLeadResponse",
             "properties": {
                 "responseMetadata": {

@@ -6,7 +6,7 @@
                     "description": "View and manage your data across Google Cloud Platform services"
                 },
                 "https://www.googleapis.com/auth/cloud-platform.read-only": {
-                    "description": "MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform services"
+                    "description": "View your data across Google Cloud Platform services"
                 },
                 "https://www.googleapis.com/auth/devstorage.full_control": {
                     "description": "Manage your data and permissions in Google Cloud Storage"
@@ -26,7 +26,7 @@
     "description": "Lets you store and retrieve potentially-large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/9Bg7_QKT-vp8XVgawS-R0QOOugY\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/W-5ap3NC5QVYqnGyhnPNoKdWJ9A\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -2088,7 +2088,7 @@
             }
         }
     },
-    "revision": "20150826",
+    "revision": "20150916",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -2272,7 +2272,12 @@
                     "type": "string"
                 },
                 "timeCreated": {
-                    "description": "Creation time of the bucket in RFC 3339 format.",
+                    "description": "The creation time of the bucket in RFC 3339 format.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "updated": {
+                    "description": "The modification time of the bucket in RFC 3339 format.",
                     "format": "date-time",
                     "type": "string"
                 },
@@ -2650,13 +2655,18 @@
                     "description": "Storage class of the object.",
                     "type": "string"
                 },
+                "timeCreated": {
+                    "description": "The creation time of the object in RFC 3339 format.",
+                    "format": "date-time",
+                    "type": "string"
+                },
                 "timeDeleted": {
                     "description": "The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.",
                     "format": "date-time",
                     "type": "string"
                 },
                 "updated": {
-                    "description": "The creation or modification time of the object in RFC 3339 format. For buckets with versioning enabled, changing an object's metadata does not change this property.",
+                    "description": "The modification time of the object metadata in RFC 3339 format.",
                     "format": "date-time",
                     "type": "string"
                 }
@@ -2819,6 +2829,6 @@
         }
     },
     "servicePath": "storage/v1/",
-    "title": "Cloud Storage API",
+    "title": "Cloud Storage JSON API",
     "version": "v1"
 }

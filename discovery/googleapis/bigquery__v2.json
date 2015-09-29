@@ -12,7 +12,7 @@
                     "description": "View and manage your data across Google Cloud Platform services"
                 },
                 "https://www.googleapis.com/auth/cloud-platform.read-only": {
-                    "description": "MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform services"
+                    "description": "View your data across Google Cloud Platform services"
                 },
                 "https://www.googleapis.com/auth/devstorage.full_control": {
                     "description": "Manage your data and permissions in Google Cloud Storage"
@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/IBi6HWoZ_l-OZDPndh--eK34OWU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/1lGRzgz8GjQKqwM0l1aq-EApegQ\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -933,7 +933,7 @@
             }
         }
     },
-    "revision": "20150905",
+    "revision": "20150923",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CsvOptions": {

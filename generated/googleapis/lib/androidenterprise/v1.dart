@@ -1021,7 +1021,7 @@ class EnterprisesResourceApi {
 
   /**
    * Sends a test push notification to validate the MDM integration with the
-   * Google Cloud Pubsub service for this enterprise.
+   * Google Cloud Pub/Sub service for this enterprise.
    *
    * Request parameters:
    *
@@ -3201,7 +3201,7 @@ class EnterprisesSendTestPushNotificationResponse {
   /** The message ID of the test push notification that was sent. */
   core.String messageId;
   /**
-   * The name of the Cloud Pubsub topic to which notifications for this
+   * The name of the Cloud Pub/Sub topic to which notifications for this
    * enterprise's enrolled account will be sent.
    */
   core.String topicName;

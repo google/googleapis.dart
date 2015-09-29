@@ -1,3 +1,13 @@
+## 0.16.1
+
+* [apis-new] admin:datatransfer_v1
+* [apis-new] youtubereporting:v1
+* [apis-new] script:v1
+* [apis] content:v2: new resource
+* [apis] content:v2sandbox: new schemas
+* [apis] storage:v1: schema changes
+
+
 ## 0.16.0
 
 * [apis-breaking] adexchangebuyer:v1.4: method/schema changes

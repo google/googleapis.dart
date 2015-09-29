@@ -57,12 +57,13 @@ class CoursesResourceApi {
       _requester = client;
 
   /**
-   * Creates a course. The user specified as the primary teacher in
-   * `primary_teacher_id` is the owner of the created course and added as a
-   * teacher. This method returns the following error codes: *
-   * `PERMISSION_DENIED` if the requesting user is not permitted to create
-   * courses. * `NOT_FOUND` if the primary teacher is not a valid user. *
-   * `ALREADY_EXISTS` if an alias was specified and already exists.
+   * Creates a course. The user specified in `ownerId` is the owner of the
+   * created course and added as a teacher. This method returns the following
+   * error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
+   * to create courses or for [general user permission errors][User Permission
+   * Errors]. * `NOT_FOUND` if the primary teacher is not a valid user. *
+   * `FAILED_PRECONDITION` if the course owner's account is disabled. *
+   * `ALREADY_EXISTS` if an alias was specified in the `id` and already exists.
    *
    * [request] - The metadata request object.
    *
@@ -103,12 +104,13 @@ class CoursesResourceApi {
   /**
    * Deletes a course. This method returns the following error codes: *
    * `PERMISSION_DENIED` if the requesting user is not permitted to delete the
-   * requested course. * `NOT_FOUND` if no course exists with the requested ID.
+   * requested course or for [general user permission errors][User Permission
+   * Errors]. * `NOT_FOUND` if no course exists with the requested ID.
    *
    * Request parameters:
    *
-   * [id] - Identifier of the course to delete. This may either be the
-   * Classroom-assigned identifier or an
+   * [id] - Identifier of the course to delete. This identifier can be either
+   * the Classroom-assigned identifier or an
    * [alias][google.classroom.v1.CourseAlias].
    *
    * Completes with a [Empty].
@@ -146,12 +148,13 @@ class CoursesResourceApi {
   /**
    * Returns a course. This method returns the following error codes: *
    * `PERMISSION_DENIED` if the requesting user is not permitted to access the
-   * requested course. * `NOT_FOUND` if no course exists with the requested ID.
+   * requested course or for [general user permission errors][User Permission
+   * Errors]. * `NOT_FOUND` if no course exists with the requested ID.
    *
    * Request parameters:
    *
-   * [id] - Identifier of the course to return. This may either be the
-   * Classroom-assigned identifier or an
+   * [id] - Identifier of the course to return. This identifier can be either
+   * the Classroom-assigned identifier or an
    * [alias][google.classroom.v1.CourseAlias].
    *
    * Completes with a [Course].
@@ -189,21 +192,22 @@ class CoursesResourceApi {
   /**
    * Returns a list of courses that the requesting user is permitted to view,
    * restricted to those that match the request. This method returns the
-   * following error codes: * `INVALID_ARGUMENT` if the query argument is
-   * malformed. * `NOT_FOUND` if any users specified in the query arguments do
-   * not exist.
+   * following error codes: * `PERMISSION_DENIED` for [general user permission
+   * errors][User Permission Errors]. * `INVALID_ARGUMENT` if the query argument
+   * is malformed. * `NOT_FOUND` if any users specified in the query arguments
+   * do not exist.
    *
    * Request parameters:
    *
    * [studentId] - Restricts returned courses to those having a student with the
-   * specified identifier, or an alias that identifies a student. The following
-   * aliases are supported: * the e-mail address of the user * the string
-   * literal `"me"`, indicating that the requesting user
+   * specified identifier. The identifier can be one of the following: * the
+   * numeric identifier for the user * the email address of the user * the
+   * string literal `"me"`, indicating the requesting user
    *
    * [teacherId] - Restricts returned courses to those having a teacher with the
-   * specified identifier, or an alias that identifies a teacher. The following
-   * aliases are supported: * the e-mail address of the user * the string
-   * literal `"me"`, indicating that the requesting user
+   * specified identifier. The identifier can be one of the following: * the
+   * numeric identifier for the user * the email address of the user * the
+   * string literal `"me"`, indicating the requesting user
    *
    * [pageSize] - Maximum number of items to return. Zero or unspecified
    * indicates that the server may assign a maximum. The server may return fewer
@@ -214,8 +218,8 @@ class CoursesResourceApi {
    * value returned from a previous
    * [list][google.classroom.v1.Courses.ListCourses] call, indicating that the
    * subsequent page of results should be returned. The
-   * [list][google.classroom.v1.Courses.ListCourses] request must be identical
-   * to the one which resulted in this token.
+   * [list][google.classroom.v1.Courses.ListCourses] request must be otherwise
+   * identical to the one that resulted in this token.
    *
    * Completes with a [ListCoursesResponse].
    *
@@ -259,25 +263,26 @@ class CoursesResourceApi {
   }
 
   /**
-   * Updates one or more fields a course. This method returns the following
+   * Updates one or more fields in a course. This method returns the following
    * error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
-   * to modify the requested course. * `NOT_FOUND` if no course exists with the
-   * requested ID. * `INVALID_ARGUMENT` if invalid fields are specified in the
-   * update mask or if no update mask is supplied.
+   * to modify the requested course or for [general user permission errors][User
+   * Permission Errors]. * `NOT_FOUND` if no course exists with the requested
+   * ID. * `INVALID_ARGUMENT` if invalid fields are specified in the update mask
+   * or if no update mask is supplied.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [id] - Identifier of the course to update. This may either be the
-   * Classroom-assigned identifier or an
+   * [id] - Identifier of the course to update. This identifier can be either
+   * the Classroom-assigned identifier or an
    * [alias][google.classroom.v1.CourseAlias].
    *
-   * [updateMask] - Mask which identifies which fields on the course to update.
+   * [updateMask] - Mask that identifies which fields on the course to update.
    * This field is required to do an update. The update will fail if invalid
-   * fields are specified. Valid fields are listed below: * `name` * `section` *
-   * `descriptionHeading` * `description` * `room` * `courseState` When set in a
-   * query parameter, this should be specified as `updateMask=,,...`
+   * fields are specified. The following fields are valid: * `name` * `section`
+   * * `descriptionHeading` * `description` * `room` * `courseState` When set in
+   * a query parameter, this field should be specified as `updateMask=,,...`
    *
    * Completes with a [Course].
    *
@@ -320,14 +325,15 @@ class CoursesResourceApi {
   /**
    * Updates a course. This method returns the following error codes: *
    * `PERMISSION_DENIED` if the requesting user is not permitted to modify the
-   * requested course. * `NOT_FOUND` if no course exists with the requested ID.
+   * requested course or for [general user permission errors][User Permission
+   * Errors]. * `NOT_FOUND` if no course exists with the requested ID.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [id] - Identifier of the course to update. This may either be the
-   * Classroom-assigned identifier or an
+   * [id] - Identifier of the course to update. This identifier can be either
+   * the Classroom-assigned identifier or an
    * [alias][google.classroom.v1.CourseAlias].
    *
    * Completes with a [Course].
@@ -375,17 +381,18 @@ class CoursesAliasesResourceApi {
       _requester = client;
 
   /**
-   * Creates an alias to a course. This method returns the following error
+   * Creates an alias for a course. This method returns the following error
    * codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-   * create the alias. * `NOT_FOUND` if the course does not exist. *
-   * `ALREADY_EXISTS` if the alias already exists.
+   * create the alias or for [general user permission errors][User Permission
+   * Errors]. * `NOT_FOUND` if the course does not exist. * `ALREADY_EXISTS` if
+   * the alias already exists.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [courseId] - The identifier of the course to alias. This may either be the
-   * Classroom-assigned identifier or an
+   * [courseId] - Identifier of the course to alias. This identifier can be
+   * either the Classroom-assigned identifier or an
    * [alias][google.classroom.v1.CourseAlias].
    *
    * Completes with a [CourseAlias].
@@ -426,15 +433,16 @@ class CoursesAliasesResourceApi {
   /**
    * Deletes an alias of a course. This method returns the following error
    * codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-   * remove the alias. * `NOT_FOUND` if the alias does not exist.
+   * remove the alias or for [general user permission errors][User Permission
+   * Errors]. * `NOT_FOUND` if the alias does not exist.
    *
    * Request parameters:
    *
-   * [courseId] - The identifier of the course whose alias should be deleted.
-   * This may either be the Classroom-assigned identifier or an
+   * [courseId] - Identifier of the course whose alias should be deleted. This
+   * identifier can be either the Classroom-assigned identifier or an
    * [alias][google.classroom.v1.CourseAlias].
    *
-   * [alias] - The alias to delete. This may not be the Classroom-assigned
+   * [alias] - Alias to delete. This may not be the Classroom-assigned
    * identifier.
    *
    * Completes with a [Empty].
@@ -473,14 +481,15 @@ class CoursesAliasesResourceApi {
   }
 
   /**
-   * Lists the aliases of a course. This method returns the following error
-   * codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-   * access the course. * `NOT_FOUND` if the course does not exist.
+   * Returns a list of aliases for a course. This method returns the following
+   * error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
+   * to access the course or for [general user permission errors][User
+   * Permission Errors]. * `NOT_FOUND` if the course does not exist.
    *
    * Request parameters:
    *
-   * [courseId] - The identifier of the course. This may either be the
-   * Classroom-assigned identifier or an
+   * [courseId] - The identifier of the course. This identifier can be either
+   * the Classroom-assigned identifier or an
    * [alias][google.classroom.v1.CourseAlias].
    *
    * [pageSize] - Maximum number of items to return. Zero or unspecified
@@ -493,7 +502,7 @@ class CoursesAliasesResourceApi {
    * [list][google.classroom.v1.Courses.ListCourseAliases] call, indicating that
    * the subsequent page of results should be returned. The
    * [list][google.classroom.v1.Courses.ListCourseAliases] request must be
-   * identical to the one which resulted in this token.
+   * otherwise identical to the one that resulted in this token.
    *
    * Completes with a [ListCourseAliasesResponse].
    *
@@ -545,20 +554,23 @@ class CoursesStudentsResourceApi {
   /**
    * Adds a user as a student of a course. This method returns the following
    * error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
-   * to create students in this course. * `NOT_FOUND` if the requested course ID
-   * does not exist. * `ALREADY_EXISTS` if the user is already a student or
-   * student in the course.
+   * to create students in this course or for [general user permission
+   * errors][User Permission Errors]. * `NOT_FOUND` if the requested course ID
+   * does not exist. * `FAILED_PRECONDITION` if the requested user's account is
+   * disabled. * `ALREADY_EXISTS` if the user is already a student or teacher in
+   * the course.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [courseId] - Identifier of the course to create the student in. This may
-   * either be the Classroom-assigned identifier or an alias.
+   * [courseId] - Identifier of the course to create the student in. This
+   * identifier can be either the Classroom-assigned identifier or an
+   * [alias][google.classroom.v1.CourseAlias].
    *
    * [enrollmentCode] - Enrollment code of the course to create the student in.
-   * This is required if [userId][google.classroom.v1.Student.user_id]
-   * corresponds to the requesting user; this may be omitted if the requesting
+   * This code is required if [userId][google.classroom.v1.Student.user_id]
+   * corresponds to the requesting user; it may be omitted if the requesting
    * user has administrative permissions to create students for any user.
    *
    * Completes with a [Student].
@@ -602,17 +614,19 @@ class CoursesStudentsResourceApi {
   /**
    * Deletes a student of a course. This method returns the following error
    * codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-   * delete students of this course. * `NOT_FOUND` if no student of this course
-   * has the requested ID or if the course does not exist.
+   * delete students of this course or for [general user permission errors][User
+   * Permission Errors]. * `NOT_FOUND` if no student of this course has the
+   * requested ID or if the course does not exist.
    *
    * Request parameters:
    *
-   * [courseId] - Unique identifier of the course. This may either be the
-   * Classroom-assigned identifier or an alias.
+   * [courseId] - Identifier of the course. This identifier can be either the
+   * Classroom-assigned identifier or an
+   * [alias][google.classroom.v1.CourseAlias].
    *
-   * [userId] - Identifier of the student to delete, or an alias the identifies
-   * the user. The following aliases are supported: * the e-mail address of the
-   * user * the string literal `"me"`, indicating that the requesting user
+   * [userId] - Identifier of the student to delete. The identifier can be one
+   * of the following: * the numeric identifier for the user * the email address
+   * of the user * the string literal `"me"`, indicating the requesting user
    *
    * Completes with a [Empty].
    *
@@ -652,17 +666,19 @@ class CoursesStudentsResourceApi {
   /**
    * Returns a student of a course. This method returns the following error
    * codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-   * view students of this course. * `NOT_FOUND` if no student of this course
-   * has the requested ID or if the course does not exist.
+   * view students of this course or for [general user permission errors][User
+   * Permission Errors]. * `NOT_FOUND` if no student of this course has the
+   * requested ID or if the course does not exist.
    *
    * Request parameters:
    *
-   * [courseId] - Unique identifier of the course. This may either be the
-   * Classroom-assigned identifier or an alias.
+   * [courseId] - Identifier of the course. This identifier can be either the
+   * Classroom-assigned identifier or an
+   * [alias][google.classroom.v1.CourseAlias].
    *
-   * [userId] - Identifier of the student to return, or an alias the identifies
-   * the user. The following aliases are supported: * the e-mail address of the
-   * user * the string literal `"me"`, indicating that the requesting user
+   * [userId] - Identifier of the student to return. The identifier can be one
+   * of the following: * the numeric identifier for the user * the email address
+   * of the user * the string literal `"me"`, indicating the requesting user
    *
    * Completes with a [Student].
    *
@@ -701,12 +717,15 @@ class CoursesStudentsResourceApi {
 
   /**
    * Returns a list of students of this course that the requester is permitted
-   * to view. Fails with `NOT_FOUND` if the course does not exist.
+   * to view. This method returns the following error codes: * `NOT_FOUND` if
+   * the course does not exist. * `PERMISSION_DENIED` for [general user
+   * permission errors][User Permission Errors].
    *
    * Request parameters:
    *
-   * [courseId] - Unique identifier of the course. This may either be the
-   * Classroom-assigned identifier or an alias.
+   * [courseId] - Identifier of the course. This identifier can be either the
+   * Classroom-assigned identifier or an
+   * [alias][google.classroom.v1.CourseAlias].
    *
    * [pageSize] - Maximum number of items to return. Zero means no maximum. The
    * server may return fewer than the specified number of results.
@@ -716,8 +735,8 @@ class CoursesStudentsResourceApi {
    * value returned from a previous
    * [list][google.classroom.v1.Users.ListStudents] call, indicating that the
    * subsequent page of results should be returned. The
-   * [list][google.classroom.v1.Users.ListStudents] request must be identical to
-   * the one which resulted in this token.
+   * [list][google.classroom.v1.Users.ListStudents] request must be otherwise
+   * identical to the one that resulted in this token.
    *
    * Completes with a [ListStudentsResponse].
    *
@@ -769,16 +788,19 @@ class CoursesTeachersResourceApi {
   /**
    * Creates a teacher of a course. This method returns the following error
    * codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-   * create teachers in this course. * `NOT_FOUND` if the requested course ID
-   * does not exist. * `ALREADY_EXISTS` if the user is already a teacher or
-   * student in the course.
+   * create teachers in this course or for [general user permission errors][User
+   * Permission Errors]. * `NOT_FOUND` if the requested course ID does not
+   * exist. * `FAILED_PRECONDITION` if the requested user's account is disabled.
+   * * `ALREADY_EXISTS` if the user is already a teacher or student in the
+   * course.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [courseId] - Unique identifier of the course. This may either be the
-   * Classroom-assigned identifier or an alias.
+   * [courseId] - Identifier of the course. This identifier can be either the
+   * Classroom-assigned identifier or an
+   * [alias][google.classroom.v1.CourseAlias].
    *
    * Completes with a [Teacher].
    *
@@ -818,19 +840,20 @@ class CoursesTeachersResourceApi {
   /**
    * Deletes a teacher of a course. This method returns the following error
    * codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-   * delete teachers of this course. * `NOT_FOUND` if no teacher of this course
-   * has the requested ID or if the course does not exist. *
-   * `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of
-   * this course.
+   * delete teachers of this course or for [general user permission errors][User
+   * Permission Errors]. * `NOT_FOUND` if no teacher of this course has the
+   * requested ID or if the course does not exist. * `FAILED_PRECONDITION` if
+   * the requested ID belongs to the primary teacher of this course.
    *
    * Request parameters:
    *
-   * [courseId] - Unique identifier of the course. This may either be the
-   * Classroom-assigned identifier or an alias.
+   * [courseId] - Identifier of the course. This identifier can be either the
+   * Classroom-assigned identifier or an
+   * [alias][google.classroom.v1.CourseAlias].
    *
-   * [userId] - Identifier of the teacher to delete, or an alias the identifies
-   * the user. the following aliases are supported: * the e-mail address of the
-   * user * the string literal `"me"`, indicating that the requesting user
+   * [userId] - Identifier of the teacher to delete. The identifier can be one
+   * of the following: * the numeric identifier for the user * the email address
+   * of the user * the string literal `"me"`, indicating the requesting user
    *
    * Completes with a [Empty].
    *
@@ -870,17 +893,19 @@ class CoursesTeachersResourceApi {
   /**
    * Returns a teacher of a course. This method returns the following error
    * codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-   * view teachers of this course. * `NOT_FOUND` if no teacher of this course
-   * has the requested ID or if the course does not exist.
+   * view teachers of this course or for [general user permission errors][User
+   * Permission Errors]. * `NOT_FOUND` if no teacher of this course has the
+   * requested ID or if the course does not exist.
    *
    * Request parameters:
    *
-   * [courseId] - Unique identifier of the course. This may either be the
-   * Classroom-assigned identifier or an alias.
+   * [courseId] - Identifier of the course. This identifier can be either the
+   * Classroom-assigned identifier or an
+   * [alias][google.classroom.v1.CourseAlias].
    *
-   * [userId] - Identifier of the teacher to return, or an alias the identifies
-   * the user. the following aliases are supported: * the e-mail address of the
-   * user * the string literal `"me"`, indicating that the requesting user
+   * [userId] - Identifier of the teacher to return. The identifier can be one
+   * of the following: * the numeric identifier for the user * the email address
+   * of the user * the string literal `"me"`, indicating the requesting user
    *
    * Completes with a [Teacher].
    *
@@ -919,12 +944,15 @@ class CoursesTeachersResourceApi {
 
   /**
    * Returns a list of teachers of this course that the requester is permitted
-   * to view. Fails with `NOT_FOUND` if the course does not exist.
+   * to view. This method returns the following error codes: * `NOT_FOUND` if
+   * the course does not exist. * `PERMISSION_DENIED` for [general user
+   * permission errors][User Permission Errors].
    *
    * Request parameters:
    *
-   * [courseId] - Unique identifier of the course. This may either be the
-   * Classroom-assigned identifier or an alias.
+   * [courseId] - Identifier of the course. This identifier can be either the
+   * Classroom-assigned identifier or an
+   * [alias][google.classroom.v1.CourseAlias].
    *
    * [pageSize] - Maximum number of items to return. Zero means no maximum. The
    * server may return fewer than the specified number of results.
@@ -934,8 +962,8 @@ class CoursesTeachersResourceApi {
    * value returned from a previous
    * [list][google.classroom.v1.Users.ListTeachers] call, indicating that the
    * subsequent page of results should be returned. The
-   * [list][google.classroom.v1.Users.ListTeachers] request must be identical to
-   * the one which resulted in this token.
+   * [list][google.classroom.v1.Users.ListTeachers] request must be otherwise
+   * identical to the one that resulted in this token.
    *
    * Completes with a [ListTeachersResponse].
    *
@@ -989,8 +1017,9 @@ class InvitationsResourceApi {
    * teachers or students (as appropriate) of the specified course. Only the
    * invited user may accept an invitation. This method returns the following
    * error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
-   * to accept the requested invitation. * `NOT_FOUND` if no invitation exists
-   * with the requested ID.
+   * to accept the requested invitation or for [general user permission
+   * errors][User Permission Errors]. * `NOT_FOUND` if no invitation exists with
+   * the requested ID.
    *
    * Request parameters:
    *
@@ -1029,12 +1058,15 @@ class InvitationsResourceApi {
   }
 
   /**
-   * Creates a invitation. Only one invitation for a user and course may exist
-   * at a time. Delete and recreate an invitation to make changes. This method
+   * Creates an invitation. Only one invitation for a user and course may exist
+   * at a time. Delete and re-create an invitation to make changes. This method
    * returns the following error codes: * `PERMISSION_DENIED` if the requesting
-   * user is not permitted to create invitations for this course. * `NOT_FOUND`
-   * if the course or the user does not exist. * `ALREADY_EXISTS` if an
-   * invitation for the specified user and course already exists.
+   * user is not permitted to create invitations for this course or for [general
+   * user permission errors][User Permission Errors]. * `NOT_FOUND` if the
+   * course or the user does not exist. * `FAILED_PRECONDITION` if the requested
+   * user's account is disabled or if the user already has this role or a role
+   * with greater permissions. * `ALREADY_EXISTS` if an invitation for the
+   * specified user and course already exists.
    *
    * [request] - The metadata request object.
    *
@@ -1073,9 +1105,10 @@ class InvitationsResourceApi {
   }
 
   /**
-   * Deletes a invitation. This method returns the following error codes: *
+   * Deletes an invitation. This method returns the following error codes: *
    * `PERMISSION_DENIED` if the requesting user is not permitted to delete the
-   * requested invitation. * `NOT_FOUND` if no invitation exists with the
+   * requested invitation or for [general user permission errors][User
+   * Permission Errors]. * `NOT_FOUND` if no invitation exists with the
    * requested ID.
    *
    * Request parameters:
@@ -1115,9 +1148,10 @@ class InvitationsResourceApi {
   }
 
   /**
-   * Returns a invitation. This method returns the following error codes: *
+   * Returns an invitation. This method returns the following error codes: *
    * `PERMISSION_DENIED` if the requesting user is not permitted to view the
-   * requested invitation. * `NOT_FOUND` if no invitation exists with the
+   * requested invitation or for [general user permission errors][User
+   * Permission Errors]. * `NOT_FOUND` if no invitation exists with the
    * requested ID.
    *
    * Request parameters:
@@ -1158,29 +1192,31 @@ class InvitationsResourceApi {
 
   /**
    * Returns a list of invitations that the requesting user is permitted to
-   * view, restricted to those that match the request. *Note:* At least one of
-   * `user_id` or `course_id` must be supplied.
+   * view, restricted to those that match the list request. *Note:* At least one
+   * of `user_id` or `course_id` must be supplied. Both fields can be supplied.
+   * This method returns the following error codes: * `PERMISSION_DENIED` for
+   * [general user permission errors][User Permission Errors].
    *
    * Request parameters:
    *
-   * [userId] - Restricts returned invitations to those for a specific user.
-   * This may be the unique identifier for the user or an alias. The supported
-   * aliases are: * the e-mail address of the user * the string literal `"me"`,
+   * [userId] - Restricts returned invitations to those for a specific user. The
+   * identifier can be one of the following: * the numeric identifier for the
+   * user * the email address of the user * the string literal `"me"`,
    * indicating the requesting user
    *
    * [courseId] - Restricts returned invitations to those for a course with the
    * specified identifier.
    *
-   * [pageSize] - The maximum number of items to return. Zero means no maximum.
-   * The server may return fewer than the specified number of results.
+   * [pageSize] - Maximum number of items to return. Zero means no maximum. The
+   * server may return fewer than the specified number of results.
    *
    * [pageToken] -
-   * [nextPageToken][google.classroom.v1.ListInvitationsRespnse.next_page_token]
+   * [nextPageToken][google.classroom.v1.ListInvitationsResponse.next_page_token]
    * value returned from a previous
-   * [list][google.classroom.v1.Users.ListInvitations] call, indicating that the
-   * subsequent page of results should be returned. The
-   * [list][google.classroom.v1.Users.ListInvitations] request must be identical
-   * to the one which resulted in this token.
+   * [list][google.classroom.v1.Invitations.ListInvitations] call, indicating
+   * that the subsequent page of results should be returned. The
+   * [list][google.classroom.v1.Invitations.ListInvitations] request must be
+   * otherwise identical to the one that resulted in this token.
    *
    * Completes with a [ListInvitationsResponse].
    *
@@ -1235,13 +1271,14 @@ class UserProfilesResourceApi {
   /**
    * Returns a user profile. This method returns the following error codes: *
    * `PERMISSION_DENIED` if the requesting user is not permitted to access this
-   * user profile. * `NOT_FOUND` if the profile does not exist.
+   * user profile or if no profile exists with the requested ID or for [general
+   * user permission errors][User Permission Errors].
    *
    * Request parameters:
    *
-   * [userId] - Identifier of the profile to return, or an alias the identifies
-   * the user. The following aliases are supported: * the e-mail address of the
-   * user * the string literal `"me"`, indicating the requesting user
+   * [userId] - Identifier of the profile to return. The identifier can be one
+   * of the following: * the numeric identifier for the user * the email address
+   * of the user * the string literal `"me"`, indicating the requesting user
    *
    * Completes with a [UserProfile].
    *
@@ -1284,8 +1321,7 @@ class Course {
   /** Absolute link to this course in the Classroom web UI. Read-only. */
   core.String alternateLink;
   /**
-   * State of the course. If unspecified, the default state will be
-   * `PROVISIONED`.
+   * State of the course. If unspecified, the default state is `PROVISIONED`.
    * Possible string values are:
    * - "COURSE_STATE_UNSPECIFIED" : A COURSE_STATE_UNSPECIFIED.
    * - "ACTIVE" : A ACTIVE.
@@ -1300,16 +1336,16 @@ class Course {
    */
   core.String creationTime;
   /**
-   * Optional description. For example, "We'll be learning about about the
-   * structure of living creatures from a combination of textbooks, guest
-   * lectures, and lab work. Expect to be excited!" If set, this field must be a
-   * valid UTF-8 string and no longer than 30,000 characters.
+   * Optional description. For example, "We'll be learning about the structure
+   * of living creatures from a combination of textbooks, guest lectures, and
+   * lab work. Expect to be excited!" If set, this field must be a valid UTF-8
+   * string and no longer than 30,000 characters.
    */
   core.String description;
   /**
    * Optional heading for the description. For example, "Welcome to 10th Grade
-   * Biology" If set, this field must be a valid UTF-8 string and no longer than
-   * 3600 characters.
+   * Biology." If set, this field must be a valid UTF-8 string and no longer
+   * than 3600 characters.
    */
   core.String descriptionHeading;
   /**
@@ -1318,36 +1354,37 @@ class Course {
    */
   core.String enrollmentCode;
   /**
-   * Unique identifier for this course assigned by Classroom. You may optionally
-   * set this to an [alias string][google.classroom.v1.CourseAlias] as part of
-   * [creating a course][google.classroom.v1.Courses.CreateCourse], creating a
-   * corresponding alias. The `ID` cannot be updated after a course is created.
-   * Specifying this field in a course update mask will result in an error.
+   * Identifier for this course assigned by Classroom. When [creating a
+   * course][google.classroom.v1.Courses.CreateCourse], you may optionally set
+   * this identifier to an [alias string][google.classroom.v1.CourseAlias] in
+   * the request to create a corresponding alias. The `id` is still assigned by
+   * Classroom and cannot be updated after the course is created. Specifying
+   * this field in a course update mask will result in an error.
    */
   core.String id;
   /**
-   * Name of the course. For example, "10th Grade Biology". This is required and
-   * must be between 1 and 750 characters and a valid UTF-8 string.
+   * Name of the course. For example, "10th Grade Biology". The name is
+   * required. It must be between 1 and 750 characters and a valid UTF-8 string.
    */
   core.String name;
   /**
-   * The identifier of the owner (and primary teacher) of a course. When
-   * specified as a parameter of CreateCourseRequest, this field is required. It
-   * may be the numeric identifier for the user, or an alias that identifies the
-   * owner. The following aliases are supported: * the e-mail address of the
-   * user * the string literal `"me"`, indicating that the requesting user This
-   * must be set in a CreateRequest; specifying this field in a course update
-   * mask will result in an error.
+   * The identifier of the owner of a course. When specified as a parameter of a
+   * [create course request][google.classroom.v1.Courses.CreateCourse], this
+   * field is required. The identifier can be one of the following: * the
+   * numeric identifier for the user * the email address of the user * the
+   * string literal `"me"`, indicating the requesting user This must be set in a
+   * create request. Specifying this field in a course update mask will result
+   * in an `INVALID_ARGUMENT` error.
    */
   core.String ownerId;
   /**
-   * Optional room location. For example, "301" If set, this field must be a
+   * Optional room location. For example, "301". If set, this field must be a
    * valid UTF-8 string and no longer than 650 characters.
    */
   core.String room;
   /**
-   * Section of the course For example, "Period 2". If set, this field must be a
-   * valid UTF-8 string and no longer than 2800 characters.
+   * Section of the course. For example, "Period 2". If set, this field must be
+   * a valid UTF-8 string and no longer than 2800 characters.
    */
   core.String section;
   /**
@@ -1441,22 +1478,22 @@ class Course {
 
 /**
  * Alternative identifier for a course. An alias uniquely identifies a course.
- * It will be unique within one of the following scopes: * domain: A
+ * It must be unique within one of the following scopes: * domain: A
  * domain-scoped alias is visible to all users within the alias creator's domain
- * and may only be created by a domain admin. A domain-scoped alias is often
+ * and can be created only by a domain admin. A domain-scoped alias is often
  * used when a course has an identifier external to Classroom. * project: A
  * project-scoped alias is visible to any request from an application using the
- * Developer Console Project ID that created the alias and may be created by any
+ * Developer Console project ID that created the alias and can be created by any
  * project. A project-scoped alias is often used when an application has
  * alternative identifiers. A random value can also be used to avoid duplicate
  * courses in the event of transmission failures, as retrying a request will
- * return ALREADY_EXISTS if a previous one has succeeded.
+ * return `ALREADY_EXISTS` if a previous one has succeeded.
  */
 class CourseAlias {
   /**
-   * Alias string. The format of the string indicated the desired alias scoping.
-   * * "d:" indicates a domain-scoped alias. Example: d:math_101 * "p:"
-   * indicates a project-scoped alias. Example: p:abc123 This field has a
+   * Alias string. The format of the string indicates the desired alias scoping.
+   * * `d:` indicates a domain-scoped alias. Example: `d:math_101` * `p:`
+   * indicates a project-scoped alias. Example: `p:abc123` This field has a
    * maximum length of 256 characters.
    */
   core.String alias;
@@ -1529,7 +1566,7 @@ class GlobalPermission {
 class Invitation {
   /** Identifier of the course to invite the user to. */
   core.String courseId;
-  /** Unique identifier assigned by Classroom. Read-only */
+  /** Identifier assigned by Classroom. Read-only. */
   core.String id;
   /**
    * Role to invite the user to have. Must not be `COURSE_ROLE_UNSPECIFIED`.
@@ -1541,9 +1578,9 @@ class Invitation {
   core.String role;
   /**
    * Identifier of the invited user. When specified as a parameter of a request,
-   * this may be set to an alias that identifies the user to invite. The
-   * supported aliases are: * the e-mail address of the user * the string
-   * literal `"me"`, indicating that the requesting user
+   * this identifier can be set to one of the following: * the numeric
+   * identifier for the user * the email address of the user * the string
+   * literal `"me"`, indicating the requesting user
    */
   core.String userId;
 
@@ -1617,7 +1654,7 @@ class ListCourseAliasesResponse {
 
 /** Response when listing courses. */
 class ListCoursesResponse {
-  /** Courses that match the request. */
+  /** Courses that match the list request. */
   core.List<Course> courses;
   /**
    * Token identifying the next page of results to return. If empty, no further
@@ -1650,7 +1687,7 @@ class ListCoursesResponse {
 
 /** Response when listing invitations. */
 class ListInvitationsResponse {
-  /** Invitations that match the request. */
+  /** Invitations that match the list request. */
   core.List<Invitation> invitations;
   /**
    * Token identifying the next page of results to return. If empty, no further
@@ -1688,7 +1725,7 @@ class ListStudentsResponse {
    * results are available.
    */
   core.String nextPageToken;
-  /** The students who match the list request. */
+  /** Students who match the list request. */
   core.List<Student> students;
 
   ListStudentsResponse();
@@ -1721,7 +1758,7 @@ class ListTeachersResponse {
    * results are available.
    */
   core.String nextPageToken;
-  /** The teachers who match the list request. */
+  /** Teachers who match the list request. */
   core.List<Teacher> teachers;
 
   ListTeachersResponse();
@@ -1749,14 +1786,14 @@ class ListTeachersResponse {
 
 /** Details of the user's name. */
 class Name {
-  /** The user's last name. Read-only */
+  /** The user's last name. Read-only. */
   core.String familyName;
   /**
    * The user's full name formed by concatenating the first and last name
-   * values. Read-only
+   * values. Read-only.
    */
   core.String fullName;
-  /** The user's first name. Read-only */
+  /** The user's first name. Read-only. */
   core.String givenName;
 
   Name();
@@ -1790,15 +1827,15 @@ class Name {
 
 /** Student in a course. */
 class Student {
-  /** Unique identifier of the course. Read-only */
+  /** Identifier of the course. Read-only. */
   core.String courseId;
-  /** Global user information for the student. Read-only */
+  /** Global user information for the student. Read-only. */
   UserProfile profile;
   /**
-   * The identifier of the user. When specified as a parameter of request, this
-   * field may be set to an alias that identifies the student. The following are
-   * supported: * the e-mail address of the user * the string literal `"me"`,
-   * indicating that the requesting user
+   * Identifier of the user. When specified as a parameter of a request, this
+   * identifier can be one of the following: * the numeric identifier for the
+   * user * the email address of the user * the string literal `"me"`,
+   * indicating the requesting user
    */
   core.String userId;
 
@@ -1833,14 +1870,14 @@ class Student {
 
 /** Teacher of a course. */
 class Teacher {
-  /** Unique identifier of the course. Read-only */
+  /** Identifier of the course. Read-only. */
   core.String courseId;
-  /** Global user information for the teacher. Read-only */
+  /** Global user information for the teacher. Read-only. */
   UserProfile profile;
   /**
-   * The identifier of the user. When specified as a parameter of request, this
-   * field may be set to an alias that identifies the teacher. The following are
-   * supported: * the e-mail address of the user * the string literal `"me"`,
+   * Identifier of the user. When specified as a parameter of a request, this
+   * identifier can be one of the following: * the numeric identifier for the
+   * user * the email address of the user * the string literal `"me"`,
    * indicating the requesting user
    */
   core.String userId;
@@ -1876,15 +1913,15 @@ class Teacher {
 
 /** Global information for a user. */
 class UserProfile {
-  /** E-mail address of the user. Read-only */
+  /** Email address of the user. Read-only. */
   core.String emailAddress;
-  /** Unique identifier of the user. Read-only */
+  /** Identifier of the user. Read-only. */
   core.String id;
-  /** Name of the user. Read-only */
+  /** Name of the user. Read-only. */
   Name name;
-  /** Global permissions of the user. Read-only */
+  /** Global permissions of the user. Read-only. */
   core.List<GlobalPermission> permissions;
-  /** Url of user's profile photo. Read-only */
+  /** URL of user's profile photo. Read-only. */
   core.String photoUrl;
 
   UserProfile();

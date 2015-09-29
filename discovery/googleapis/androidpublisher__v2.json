@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/gtEzcfWnBY9EC00QyZ_jjrGf9Io\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/QvChBL9zzkcDEEIqZpwPMr9_TRs\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -962,9 +962,11 @@
                                         "sevenInchScreenshots",
                                         "tenInchScreenshots",
                                         "tvBanner",
-                                        "tvScreenshots"
+                                        "tvScreenshots",
+                                        "wearScreenshots"
                                     ],
                                     "enumDescriptions": [
+                                        "",
                                         "",
                                         "",
                                         "",
@@ -1022,9 +1024,11 @@
                                         "sevenInchScreenshots",
                                         "tenInchScreenshots",
                                         "tvBanner",
-                                        "tvScreenshots"
+                                        "tvScreenshots",
+                                        "wearScreenshots"
                                     ],
                                     "enumDescriptions": [
+                                        "",
                                         "",
                                         "",
                                         "",
@@ -1085,9 +1089,11 @@
                                         "sevenInchScreenshots",
                                         "tenInchScreenshots",
                                         "tvBanner",
-                                        "tvScreenshots"
+                                        "tvScreenshots",
+                                        "wearScreenshots"
                                     ],
                                     "enumDescriptions": [
+                                        "",
                                         "",
                                         "",
                                         "",
@@ -1164,9 +1170,11 @@
                                         "sevenInchScreenshots",
                                         "tenInchScreenshots",
                                         "tvBanner",
-                                        "tvScreenshots"
+                                        "tvScreenshots",
+                                        "wearScreenshots"
                                     ],
                                     "enumDescriptions": [
+                                        "",
                                         "",
                                         "",
                                         "",
@@ -2246,7 +2254,7 @@
             }
         }
     },
-    "revision": "20150316",
+    "revision": "20150910",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -2644,7 +2652,7 @@
                     "type": "string"
                 },
                 "subscriptionPeriod": {
-                    "description": "The period of the subscription (if any), i.e. period at which payments must happen. Defined as ISO 8601 duration, i.e. \"P1M\" for 1 month period.",
+                    "description": "Subscription period, specified in ISO 8601 format. Acceptable values are \"P1W\" (one week), \"P1M\" (one month) and \"P1Y\" (one year).",
                     "type": "string"
                 },
                 "trialPeriod": {

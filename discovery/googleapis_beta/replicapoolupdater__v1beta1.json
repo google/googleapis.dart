@@ -6,7 +6,7 @@
                     "description": "View and manage your data across Google Cloud Platform services"
                 },
                 "https://www.googleapis.com/auth/cloud-platform.read-only": {
-                    "description": "MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform services"
+                    "description": "View your data across Google Cloud Platform services"
                 },
                 "https://www.googleapis.com/auth/replicapool": {
                     "description": "View and manage replica pools"
@@ -23,7 +23,7 @@
     "description": "The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/0iKhDgqnp8fZJa4OTsWBmkkBreo\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/a9_NhKO1DW_f-K-sZ0-h8ToME8I\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

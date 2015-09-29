@@ -186,9 +186,8 @@ class CallsetsResourceApi {
    * [callSetId] - The ID of the call set to be updated.
    *
    * [updateMask] - An optional mask specifying which fields to update. At this
-   * time, the only mutable field is [name][google.genomics.v1.CallSet.name].
-   * The only acceptable value is "name". If unspecified, all mutable fields
-   * will be updated.
+   * time, the only mutable field is name. The only acceptable value is "name".
+   * If unspecified, all mutable fields will be updated.
    *
    * Completes with a [CallSet].
    *
@@ -395,6 +394,9 @@ class DatasetsResourceApi {
   }
 
   /**
+   * Gets the access control policy for the dataset. Is empty if the policy or
+   * the resource does not exist. See Getting a Policy for more information.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -500,9 +502,8 @@ class DatasetsResourceApi {
    * [datasetId] - The ID of the dataset to be updated.
    *
    * [updateMask] - An optional mask specifying which fields to update. At this
-   * time, the only mutable field is [name][google.genomics.v1.Dataset.name].
-   * The only acceptable value is "name". If unspecified, all mutable fields
-   * will be updated.
+   * time, the only mutable field is name. The only acceptable value is "name".
+   * If unspecified, all mutable fields will be updated.
    *
    * Completes with a [Dataset].
    *
@@ -543,6 +544,9 @@ class DatasetsResourceApi {
   }
 
   /**
+   * Sets the access control policy on the specified dataset. Replaces any
+   * existing policy. See Setting a Policy for more information.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -587,6 +591,9 @@ class DatasetsResourceApi {
   }
 
   /**
+   * Returns permissions that a caller has on the specified resource. See
+   * Testing Permissions for more information.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -687,11 +694,9 @@ class OperationsResourceApi {
   /**
    * Starts asynchronous cancellation on a long-running operation. The server
    * makes a best effort to cancel the operation, but success is not guaranteed.
-   * Clients may use
-   * [Operations.GetOperation][google.longrunning.Operations.GetOperation] or
-   * [Operations.ListOperations][google.longrunning.Operations.ListOperations]
-   * to check whether the cancellation succeeded or the operation completed
-   * despite cancellation.
+   * Clients may use Operations.GetOperation or Operations.ListOperations to
+   * check whether the cancellation succeeded or the operation completed despite
+   * cancellation.
    *
    * [request] - The metadata request object.
    *
@@ -737,7 +742,7 @@ class OperationsResourceApi {
 
   /**
    * This method is not implemented. To cancel an operation, please use
-   * [Operations.CancelOperation][google.longrunning.Operations.CancelOperation].
+   * Operations.CancelOperation.
    *
    * Request parameters:
    *
@@ -826,14 +831,12 @@ class OperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^operations$".
    *
-   * [filter] - A string for filtering
-   * [Operations][google.longrunning.Operation]. The following filter fields are
-   * supported: * projectId: Required. Corresponds to
-   * [OperationMetadata.projectId][google.genomics.v1.OperationMetadata.project_id].
-   * * createTime: The time this job was created, in seconds from the
-   * [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `=
-   * 1432140000` * `projectId = my-project AND createTime >= 1432140000 AND
-   * createTime <= 1432150000 AND status = RUNNING`
+   * [filter] - A string for filtering Operations. The following filter fields
+   * are supported: * projectId: Required. Corresponds to
+   * OperationMetadata.projectId. * createTime: The time this job was created,
+   * in seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can
+   * use `>=` and/or `= 1432140000` * `projectId = my-project AND createTime >=
+   * 1432140000 AND createTime <= 1432150000 AND status = RUNNING`
    *
    * [pageSize] - The maximum number of results to return. If unspecified,
    * defaults to 256. The maximum value is 2048.
@@ -1079,9 +1082,7 @@ class ReadgroupsetsResourceApi {
    * set.
    *
    * [updateMask] - An optional mask specifying which fields to update. At this
-   * time, mutable fields are
-   * [referenceSetId][google.genomics.v1.ReadGroupSet.reference_set_id] and
-   * [name][google.genomics.v1.ReadGroupSet.name]. Acceptable values are
+   * time, mutable fields are referenceSetId and name. Acceptable values are
    * "referenceSetId" and "name". If unspecified, all mutable fields will be
    * updated.
    *
@@ -1760,8 +1761,7 @@ class VariantsResourceApi {
    * [variantId] - The ID of the variant to be updated.
    *
    * [updateMask] - An optional mask specifying which fields to update. At this
-   * time, mutable fields are [names][google.genomics.v1.Variant.names] and
-   * [info][google.genomics.v1.Variant.info]. Acceptable values are "names" and
+   * time, mutable fields are names and info. Acceptable values are "names" and
    * "info". If unspecified, all mutable fields will be updated.
    *
    * Completes with a [Variant].
@@ -2027,9 +2027,8 @@ class VariantsetsResourceApi {
    * [variantSetId] - The ID of the variant to be updated (must already exist).
    *
    * [updateMask] - An optional mask specifying which fields to update. At this
-   * time, the only mutable field is
-   * [metadata][google.genomics.v1.VariantSet.metadata]. The only acceptable
-   * value is "metadata". If unspecified, all mutable fields will be updated.
+   * time, the only mutable field is metadata. The only acceptable value is
+   * "metadata". If unspecified, all mutable fields will be updated.
    *
    * Completes with a [VariantSet].
    *
@@ -2236,10 +2235,7 @@ class CallSet {
   }
 }
 
-/**
- * The request message for
- * [Operations.CancelOperation][google.longrunning.Operations.CancelOperation].
- */
+/** The request message for Operations.CancelOperation. */
 class CancelOperationRequest {
 
   CancelOperationRequest();
@@ -2952,10 +2948,7 @@ class ListDatasetsResponse {
   }
 }
 
-/**
- * The response message for
- * [Operations.ListOperations][google.longrunning.Operations.ListOperations].
- */
+/** The response message for Operations.ListOperations. */
 class ListOperationsResponse {
   /** The standard List next-page token. */
   core.String nextPageToken;
@@ -2999,8 +2992,8 @@ class Operation {
   /** The error result of the operation in case of failure. */
   Status error;
   /**
-   * An [OperationMetadata][google.genomics.v1.OperationMetadata] object. This
-   * will always be returned with the [Operation][google.longrunning.Operation].
+   * An OperationMetadata object. This will always be returned with the
+   * Operation.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3013,11 +3006,9 @@ class Operation {
    */
   core.String name;
   /**
-   * If importing [ReadGroupSets][google.genomics.v1.ReadGroupSet], an
-   * [ImportReadGroupSetsResponse][google.genomics.v1.ImportReadGroupSetsResponse]
-   * is returned. If importing [Variants][google.genomics.v1.Variant], an
-   * [ImportVariantsResponse][google.genomics.v1.ImportVariantsResponse] is
-   * returned. For exports, an empty response is returned.
+   * If importing ReadGroupSets, an ImportReadGroupSetsResponse is returned. If
+   * importing Variants, an ImportVariantsResponse is returned. For exports, an
+   * empty response is returned.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3065,9 +3056,7 @@ class Operation {
   }
 }
 
-/**
- * An event that occurred during an [Operation][google.longrunning.Operation].
- */
+/** An event that occurred during an Operation. */
 class OperationEvent {
   /** Required description of event. */
   core.String description;
@@ -3089,7 +3078,7 @@ class OperationEvent {
   }
 }
 
-/** Metadata describing an [Operation][google.longrunning.Operation]. */
+/** Metadata describing an Operation. */
 class OperationMetadata {
   /** The time at which the job was submitted to the Genomics service. */
   core.String createTime;
@@ -3351,11 +3340,10 @@ class Range {
 
 /**
  * A read alignment describes a linear alignment of a string of DNA to a
- * [reference sequence][google.genomics.v1.Reference], in addition to metadata
- * about the fragment (the molecule of DNA sequenced) and the read (the bases
- * which were read by the sequencer). A read is equivalent to a line in a SAM
- * file. A read belongs to exactly one read group and exactly one [read group
- * set][google.genomics.v1.ReadGroupSet]. ### Generating a reference-aligned
+ * reference sequence, in addition to metadata about the fragment (the molecule
+ * of DNA sequenced) and the read (the bases which were read by the sequencer).
+ * A read is equivalent to a line in a SAM file. A read belongs to exactly one
+ * read group and exactly one read group set. ### Generating a reference-aligned
  * sequence string When interacting with mapped reads, it's often useful to
  * produce a string representing the local alignment of the read to reference.
  * The following pseudocode demonstrates one way of doing this: out = "" offset
@@ -4801,39 +4789,36 @@ class SetIamPolicyRequest {
  * Simple to use and understand for most users - Flexible enough to meet
  * unexpected needs # Overview The `Status` message contains three pieces of
  * data: error code, error message, and error details. The error code should be
- * an enum value of [google.rpc.Code][google.rpc.Code], but it may accept
- * additional error codes if needed. The error message should be a
- * developer-facing English message that helps developers *understand* and
- * *resolve* the error. If a localized user-facing error message is needed, put
- * the localized message in the error details or localize it in the client. The
- * optional error details may contain arbitrary information about the error.
- * There is a predefined set of error detail types in the package `google.rpc`
- * which can be used for common error conditions. # Language mapping The
- * `Status` message is the logical representation of the error model, but it is
- * not necessarily the actual wire format. When the `Status` message is exposed
- * in different client libraries and different wire protocols, it can be mapped
- * differently. For example, it will likely be mapped to some exceptions in
- * Java, but more likely mapped to some error codes in C. # Other uses The error
- * model and the `Status` message can be used in a variety of environments,
- * either with or without APIs, to provide a consistent developer experience
- * across different environments. Example uses of this error model include: -
- * Partial errors. If a service needs to return partial errors to the client, it
- * may embed the `Status` in the normal response to indicate the partial errors.
- * - Workflow errors. A typical workflow has multiple steps. Each step may have
- * a `Status` message for error reporting purpose. - Batch operations. If a
- * client uses batch request and batch response, the `Status` message should be
- * used directly inside batch response, one for each error sub-response. -
- * Asynchronous operations. If an API call embeds asynchronous operation results
- * in its response, the status of those operations should be represented
- * directly using the `Status` message. - Logging. If some API errors are stored
- * in logs, the message `Status` could be used directly after any stripping
- * needed for security/privacy reasons.
+ * an enum value of google.rpc.Code, but it may accept additional error codes if
+ * needed. The error message should be a developer-facing English message that
+ * helps developers *understand* and *resolve* the error. If a localized
+ * user-facing error message is needed, put the localized message in the error
+ * details or localize it in the client. The optional error details may contain
+ * arbitrary information about the error. There is a predefined set of error
+ * detail types in the package `google.rpc` which can be used for common error
+ * conditions. # Language mapping The `Status` message is the logical
+ * representation of the error model, but it is not necessarily the actual wire
+ * format. When the `Status` message is exposed in different client libraries
+ * and different wire protocols, it can be mapped differently. For example, it
+ * will likely be mapped to some exceptions in Java, but more likely mapped to
+ * some error codes in C. # Other uses The error model and the `Status` message
+ * can be used in a variety of environments, either with or without APIs, to
+ * provide a consistent developer experience across different environments.
+ * Example uses of this error model include: - Partial errors. If a service
+ * needs to return partial errors to the client, it may embed the `Status` in
+ * the normal response to indicate the partial errors. - Workflow errors. A
+ * typical workflow has multiple steps. Each step may have a `Status` message
+ * for error reporting purpose. - Batch operations. If a client uses batch
+ * request and batch response, the `Status` message should be used directly
+ * inside batch response, one for each error sub-response. - Asynchronous
+ * operations. If an API call embeds asynchronous operation results in its
+ * response, the status of those operations should be represented directly using
+ * the `Status` message. - Logging. If some API errors are stored in logs, the
+ * message `Status` could be used directly after any stripping needed for
+ * security/privacy reasons.
  */
 class Status {
-  /**
-   * The status code, which should be an enum value of
-   * [google.rpc.Code][google.rpc.Code].
-   */
+  /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
    * A list of messages that carry the error details. There will be a common set
@@ -4846,8 +4831,7 @@ class Status {
   /**
    * A developer-facing error message, which should be in English. Any
    * user-facing error message should be localized and sent in the
-   * [google.rpc.Status.details][google.rpc.Status.details] field, or localized
-   * by the client.
+   * google.rpc.Status.details field, or localized by the client.
    */
   core.String message;
 

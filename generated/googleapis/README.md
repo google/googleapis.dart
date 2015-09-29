@@ -92,6 +92,12 @@ Gives Ad Exchange seller users access to their inventory and the ability to gene
 
 Official API documentation: https://developers.google.com/ad-exchange/seller-rest/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Admin Data Transfer API - admin datatransfer_v1
+
+Admin Data Transfer API lets you transfer user data from one user to another.
+
+Official API documentation: https://developers.google.com/admin-sdk/data-transfer/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Admin Directory API - admin directory_v1
 
 The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.
@@ -186,7 +192,7 @@ Official API documentation: https://developers.google.com/civic-information
 
 Google Classroom API
 
-Official API documentation: 
+Official API documentation: https://developers.google.com/classroom/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Billing API - cloudbilling v1
 
@@ -464,13 +470,19 @@ Lets you create and manage your customers and their subscriptions.
 
 Official API documentation: https://developers.google.com/google-apps/reseller/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Apps Script Execution API - script v1
+
+An API for executing Google Apps Script projects.
+
+Official API documentation: https://developers.google.com/apps-script/execution/rest/v1/run
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Site Verification API - siteVerification v1
 
 Lets you programatically verify ownership of websites or domains with Google.
 
 Official API documentation: https://developers.google.com/site-verification/
 
-#### ![Logo](https://www.google.com/images/icons/product/cloud_storage-16.png) Cloud Storage API - storage v1
+#### ![Logo](https://www.google.com/images/icons/product/cloud_storage-16.png) Cloud Storage JSON API - storage v1
 
 Lets you store and retrieve potentially-large, immutable data objects.
 
@@ -529,4 +541,10 @@ Official API documentation: https://developers.google.com/youtube/v3
 Retrieve your YouTube Analytics reports.
 
 Official API documentation: http://developers.google.com/youtube/analytics/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) YouTube Reporting API - youtubereporting v1
+
+An API to schedule reporting jobs and download the resulting bulk data reports about YouTube channels, videos etc. in the form of CSV files.
+
+Official API documentation: https://developers.google.com/youtube/reporting/v1/reports/
 

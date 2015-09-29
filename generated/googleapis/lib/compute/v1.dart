@@ -3778,7 +3778,14 @@ class ImagesResourceApi {
   }
 
   /**
-   * Retrieves the list of image resources available to the specified project.
+   * Retrieves the list of private images available to the specified project.
+   * Private images are images you create that belong to your project. This
+   * method does not get any images that belong to other projects, including
+   * publicly-available images, like Debian 7. If you want to get a list of
+   * publicly-available images, use this method to make a request to the
+   * respective image project, such as debian-cloud or windows-cloud.
+   *
+   * See Accessing images for more information.
    *
    * Request parameters:
    *
@@ -3858,10 +3865,14 @@ class InstanceGroupManagersResourceApi {
       _requester = client;
 
   /**
-   * Removes the specified instances from the managed instance group, and from
-   * any target pools where they are a member. The instances are not deleted.
-   * The managed instance group automatically reduces its targetSize value by
-   * the number of instances that you abandon from the group.
+   * Schedules a group action to remove the specified instances from the managed
+   * instance group. Abandoning an instance does not delete the instance, but it
+   * does remove the instance from any target pools that are applied by the
+   * managed instance group. This method reduces the targetSize of the managed
+   * instance group by the number of instances that you abandon. This operation
+   * is marked as DONE when the action is scheduled even if the instances have
+   * not yet been removed from the group. You must separately verify the status
+   * of the abandoning action with the listmanagedinstances method.
    *
    * [request] - The metadata request object.
    *
@@ -3871,9 +3882,9 @@ class InstanceGroupManagersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the managed instance group is located.
+   * [zone] - The name of the zone where the managed instance group is located.
    *
-   * [instanceGroupManager] - The name of the instance group manager.
+   * [instanceGroupManager] - The name of the managed instance group.
    *
    * Completes with a [Operation].
    *
@@ -3917,8 +3928,7 @@ class InstanceGroupManagersResourceApi {
   }
 
   /**
-   * Retrieves the list of managed instance groups, and groups them by project
-   * and zone.
+   * Retrieves the list of managed instance groups and groups them by zone.
    *
    * Request parameters:
    *
@@ -3989,7 +3999,8 @@ class InstanceGroupManagersResourceApi {
   }
 
   /**
-   * Deletes the specified managed instance group resource.
+   * Deletes the specified managed instance group and all of the instances in
+   * that group.
    *
    * Request parameters:
    *
@@ -3997,9 +4008,9 @@ class InstanceGroupManagersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the managed instance group is located.
+   * [zone] - The name of the zone where the managed instance group is located.
    *
-   * [instanceGroupManager] - The name of the instance group manager to delete.
+   * [instanceGroupManager] - The name of the managed instance group to delete.
    *
    * Completes with a [Operation].
    *
@@ -4040,10 +4051,13 @@ class InstanceGroupManagersResourceApi {
   }
 
   /**
-   * Deletes the specified instances. The instances are deleted and removed from
-   * the instance group and any target pools where they are a member. The
-   * managed instance group automatically reduces its targetSize value by the
-   * number of instances that you delete.
+   * Schedules a group action to delete the specified instances in the managed
+   * instance group. The instances are also removed from any target pools of
+   * which they were a member. This method reduces the targetSize of the managed
+   * instance group by the number of instances that you delete. This operation
+   * is marked as DONE when the action is scheduled even if the instances are
+   * still being deleted. You must separately verify the status of the deleting
+   * action with the listmanagedinstances method.
    *
    * [request] - The metadata request object.
    *
@@ -4053,9 +4067,9 @@ class InstanceGroupManagersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the managed instance group is located.
+   * [zone] - The name of the zone where the managed instance group is located.
    *
-   * [instanceGroupManager] - The name of the instance group manager.
+   * [instanceGroupManager] - The name of the managed instance group.
    *
    * Completes with a [Operation].
    *
@@ -4099,7 +4113,7 @@ class InstanceGroupManagersResourceApi {
   }
 
   /**
-   * Returns the specified managed instance group resource.
+   * Returns all of the details about the specified managed instance group.
    *
    * Request parameters:
    *
@@ -4107,9 +4121,9 @@ class InstanceGroupManagersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the managed instance group is located.
+   * [zone] - The name of the zone where the managed instance group is located.
    *
-   * [instanceGroupManager] - The name of the instance group manager resource.
+   * [instanceGroupManager] - The name of the managed instance group.
    *
    * Completes with a [InstanceGroupManager].
    *
@@ -4150,8 +4164,12 @@ class InstanceGroupManagersResourceApi {
   }
 
   /**
-   * Creates a managed instance group resource in the specified project using
-   * the data that is included in the request.
+   * Creates a managed instance group using the information that you specify in
+   * the request. After the group is created, it schedules an action to create
+   * instances in the group using the specified instance template. This
+   * operation is marked as DONE when the group is created even if the instances
+   * in the group have not yet been created. You must separately verify the
+   * status of the individual instances with the listmanagedinstances method.
    *
    * [request] - The metadata request object.
    *
@@ -4161,7 +4179,8 @@ class InstanceGroupManagersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the managed instance group is located.
+   * [zone] - The name of the zone where you want to create the managed instance
+   * group.
    *
    * Completes with a [Operation].
    *
@@ -4211,7 +4230,7 @@ class InstanceGroupManagersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the managed instance group is located.
+   * [zone] - The name of the zone where the managed instance group is located.
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -4279,7 +4298,11 @@ class InstanceGroupManagersResourceApi {
   }
 
   /**
-   * Lists managed instances.
+   * Lists all of the instances in the managed instance group. Each instance in
+   * the list has a currentAction, which indicates the action that the managed
+   * instance group is performing on the instance. For example, if the group is
+   * still creating an instance, the currentAction is CREATING. If a previous
+   * action failed, the list displays the errors for that failed action.
    *
    * Request parameters:
    *
@@ -4287,7 +4310,7 @@ class InstanceGroupManagersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the managed instance group is located.
+   * [zone] - The name of the zone where the managed instance group is located.
    *
    * [instanceGroupManager] - The name of the managed instance group.
    *
@@ -4330,8 +4353,12 @@ class InstanceGroupManagersResourceApi {
   }
 
   /**
-   * Recreates the specified instances. The instances are deleted, then
-   * recreated using the managed instance group's current instance template.
+   * Schedules a group action to recreate the specified instances in the managed
+   * instance group. The instances are deleted and recreated using the current
+   * instance template for the managed instance group. This operation is marked
+   * as DONE when the action is scheduled even if the instances have not yet
+   * been recreated. You must separately verify the status of the recreating
+   * action with the listmanagedinstances method.
    *
    * [request] - The metadata request object.
    *
@@ -4341,9 +4368,9 @@ class InstanceGroupManagersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the managed instance group is located.
+   * [zone] - The name of the zone where the managed instance group is located.
    *
-   * [instanceGroupManager] - The name of the instance group manager.
+   * [instanceGroupManager] - The name of the managed instance group.
    *
    * Completes with a [Operation].
    *
@@ -4389,8 +4416,10 @@ class InstanceGroupManagersResourceApi {
   /**
    * Resizes the managed instance group. If you increase the size, the group
    * creates new instances using the current instance template. If you decrease
-   * the size, the group removes instances in the order that is outlined in
-   * Resizing a managed instance group.
+   * the size, the group deletes instances. The resize operation is marked DONE
+   * when the resize actions are scheduled even if the group has not yet added
+   * or deleted any instances. You must separately verify the status of the
+   * creating or deleting actions with the listmanagedinstances method.
    *
    * Request parameters:
    *
@@ -4398,9 +4427,9 @@ class InstanceGroupManagersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the managed instance group is located.
+   * [zone] - The name of the zone where the managed instance group is located.
    *
-   * [instanceGroupManager] - The name of the instance group manager.
+   * [instanceGroupManager] - The name of the managed instance group.
    *
    * [size] - The number of running instances that the managed instance group
    * should maintain at any given time. The group automatically adds or removes
@@ -4461,9 +4490,9 @@ class InstanceGroupManagersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the managed instance group is located.
+   * [zone] - The name of the zone where the managed instance group is located.
    *
-   * [instanceGroupManager] - The name of the instance group manager.
+   * [instanceGroupManager] - The name of the managed instance group.
    *
    * Completes with a [Operation].
    *
@@ -4507,9 +4536,12 @@ class InstanceGroupManagersResourceApi {
   }
 
   /**
-   * Modifies the target pools to which all new instances in this group are
-   * assigned. The target pools for existing instances in the group do not
-   * change unless you recreate them.
+   * Modifies the target pools to which all instances in this managed instance
+   * group are assigned. The target pools automatically apply to all of the
+   * instances in the managed instance group. This operation is marked DONE when
+   * you make the request even if the instances have not yet been added to their
+   * target pools. The change might take some time to apply to all of the
+   * instances in the group depending on the size of the group.
    *
    * [request] - The metadata request object.
    *
@@ -4519,9 +4551,9 @@ class InstanceGroupManagersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the managed instance group is located.
+   * [zone] - The name of the zone where the managed instance group is located.
    *
-   * [instanceGroupManager] - The name of the instance group manager.
+   * [instanceGroupManager] - The name of the managed instance group.
    *
    * Completes with a [Operation].
    *
@@ -4574,8 +4606,9 @@ class InstanceGroupsResourceApi {
       _requester = client;
 
   /**
-   * Adds a list of instances to an instance group. All of the instances in the
-   * instance group must be in the same network.
+   * Adds a list of instances to the specified instance group. All of the
+   * instances in the instance group must be in the same network/subnetwork.
+   * TODO: Change to comment to state "if IG is load balanced."
    *
    * [request] - The metadata request object.
    *
@@ -4585,7 +4618,7 @@ class InstanceGroupsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the instance group is located.
+   * [zone] - The name of the zone where the instance group is located.
    *
    * [instanceGroup] - The name of the instance group where you are adding
    * instances.
@@ -4632,7 +4665,7 @@ class InstanceGroupsResourceApi {
   }
 
   /**
-   * Retrieves the list of instance groups, and sorts them by zone.
+   * Retrieves the list of instance groups and sorts them by zone.
    *
    * Request parameters:
    *
@@ -4703,7 +4736,8 @@ class InstanceGroupsResourceApi {
   }
 
   /**
-   * Deletes the specified instance group.
+   * Deletes the specified instance group. The instances in the group are not
+   * deleted.
    *
    * Request parameters:
    *
@@ -4711,7 +4745,7 @@ class InstanceGroupsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the instance group is located.
+   * [zone] - The name of the zone where the instance group is located.
    *
    * [instanceGroup] - The name of the instance group to delete.
    *
@@ -4762,7 +4796,7 @@ class InstanceGroupsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the instance group is located.
+   * [zone] - The name of the zone where the instance group is located.
    *
    * [instanceGroup] - The name of the instance group.
    *
@@ -4816,7 +4850,7 @@ class InstanceGroupsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the instance group is located.
+   * [zone] - The name of the zone where you want to create the instance group.
    *
    * Completes with a [Operation].
    *
@@ -4866,7 +4900,7 @@ class InstanceGroupsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the instance group is located.
+   * [zone] - The name of the zone where the instance group is located.
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -4934,9 +4968,7 @@ class InstanceGroupsResourceApi {
   }
 
   /**
-   * Lists instances in an instance group. The parameters for this method
-   * specify whether the list filters instances by state and named ports
-   * information.
+   * Lists the instances in the specified instance group.
    *
    * [request] - The metadata request object.
    *
@@ -4946,7 +4978,7 @@ class InstanceGroupsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the instance group is located.
+   * [zone] - The name of the zone where the instance group is located.
    *
    * [instanceGroup] - The name of the instance group from which you want to
    * generate a list of included instances.
@@ -5023,7 +5055,8 @@ class InstanceGroupsResourceApi {
   }
 
   /**
-   * Removes a list of instances from an instance group.
+   * Removes one or more instances from the specified instance group, but does
+   * not delete those instances.
    *
    * [request] - The metadata request object.
    *
@@ -5033,7 +5066,7 @@ class InstanceGroupsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the instance group is located.
+   * [zone] - The name of the zone where the instance group is located.
    *
    * [instanceGroup] - The name of the instance group where the specified
    * instances will be removed.
@@ -5080,7 +5113,7 @@ class InstanceGroupsResourceApi {
   }
 
   /**
-   * Sets the named ports in an instance group.
+   * Sets the named ports for the specified instance group.
    *
    * [request] - The metadata request object.
    *
@@ -5090,7 +5123,7 @@ class InstanceGroupsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - The URL of the zone where the instance group is located.
+   * [zone] - The name of the zone where the instance group is located.
    *
    * [instanceGroup] - The name of the instance group where the named ports are
    * updated.
@@ -10898,7 +10931,9 @@ class AttachedDisk {
    */
   AttachedDiskInitializeParams initializeParams;
   /**
-   *
+   * Specifies the disk interface to use for attaching this disk, either SCSI or
+   * NVME. The default is SCSI. For performance characteristics of SCSI over
+   * NVMe, see Local SSD performance.
    * Possible string values are:
    * - "NVME"
    * - "SCSI"
@@ -13190,7 +13225,7 @@ class ForwardingRule {
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** Type of the resource. */
+  /** [Output Only] Type of the resource. Always compute#forwardingRule. */
   core.String kind;
   /**
    * Name of the resource; provided by the client when the resource is created.
@@ -13203,9 +13238,8 @@ class ForwardingRule {
    */
   core.String name;
   /**
-   * Applicable only when `IPProtocol` is TCP, UDP, or SCTP, only packets
-   * addressed to ports in the specified range will be forwarded to target. If
-   * portRange is left empty (default value), all ports are forwarded.
+   * Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
+   * addressed to ports in the specified range will be forwarded to target.
    * Forwarding rules with the same `[IPAddress, IPProtocol]` pair must have
    * disjoint port ranges.
    */
@@ -13608,14 +13642,14 @@ class HostRule {
   /** An optional textual description. */
   core.String description;
   /**
-   * The list of host patterns to match. They must be valid hostnames except
-   * that they may start with *. or *-. The * acts like a glob and will match
-   * any string of atoms (separated by .s and -s) to the left.
+   * The list of host patterns to match. They must be valid hostnames, except *
+   * will match any string of ([a-z0-9-.]*). In that case, * must be the first
+   * character and must be followed in the pattern by either - or ..
    */
   core.List<core.String> hosts;
   /**
-   * The name of the PathMatcher to match the path portion of the URL, if the
-   * this hostRule matches the URL's host portion.
+   * The name of the PathMatcher to use to match the path portion of the URL if
+   * the hostRule matches the URL's host portion.
    */
   core.String pathMatcher;
 
@@ -14093,7 +14127,7 @@ class ImageList {
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** A list of Image resources. */
+  /** [Output Only] A list of Image resources. */
   core.List<Image> items;
   /** Type of resource. */
   core.String kind;
@@ -14427,9 +14461,9 @@ class InstanceGroup {
   /** An optional text description for the instance group. */
   core.String description;
   /**
-   * [Output Only] The fingerprint of the named ports information. The system
-   * uses this fingerprint to detect conflicts when multiple users change the
-   * named ports information concurrently.
+   * [Output Only] The fingerprint of the named ports. The system uses this
+   * fingerprint to detect conflicts when multiple users change the named ports
+   * concurrently.
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
@@ -14440,8 +14474,8 @@ class InstanceGroup {
     fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
   /**
-   * [Output Only] A unique identifier for this instance group. The server
-   * defines this identifier.
+   * [Output Only] A unique identifier for this resource type. The server
+   * generates this identifier.
    */
   core.String id;
   /**
@@ -14455,24 +14489,28 @@ class InstanceGroup {
    */
   core.String name;
   /**
-   * Assigns a name to a port number. For example: {name: ?http?, port: 80} This
-   * allows the system to reference ports by the assigned name instead of a port
-   * number. Named ports can also contain multiple ports. For example: [{name:
-   * ?http?, port: 80},{name: "http", port: 8080}] Named ports apply to all
-   * instances in this instance group.
+   * Assigns a name to a port number. For example: {name: "http", port: 80}
+   *
+   * This allows the system to reference ports by the assigned name instead of a
+   * port number. Named ports can also contain multiple ports. For example:
+   * [{name: "http", port: 80},{name: "http", port: 8080}]
+   *
+   * Named ports apply to all instances in this instance group.
    */
   core.List<NamedPort> namedPorts;
   /**
-   * The URL of the network to which all instances in the instance group belong.
+   * [Output Only] The URL of the network to which all instances in the instance
+   * group belong.
    */
   core.String network;
   /**
-   * [Output Only] The URL for this instance group. The server defines this URL.
+   * [Output Only] The URL for this instance group. The server generates this
+   * URL.
    */
   core.String selfLink;
   /** [Output Only] The total number of instances in the instance group. */
   core.int size;
-  /** The URL of the zone where the instance group is located. */
+  /** [Output Only] The URL of the zone where the instance group is located. */
   core.String zone;
 
   InstanceGroup();
@@ -14555,7 +14593,7 @@ class InstanceGroup {
 class InstanceGroupAggregatedList {
   /**
    * [Output Only] A unique identifier for this aggregated list of instance
-   * groups. The server defines this identifier.
+   * groups. The server generates this identifier.
    */
   core.String id;
   /** A map of scoped instance group lists. */
@@ -14571,8 +14609,8 @@ class InstanceGroupAggregatedList {
    */
   core.String nextPageToken;
   /**
-   * [Output Only] A unique identifier for this aggregated list of instance
-   * groups. The server defines this identifier.
+   * [Output Only] The URL for this resource type. The server generates this
+   * URL.
    */
   core.String selfLink;
 
@@ -14621,10 +14659,10 @@ class InstanceGroupAggregatedList {
 class InstanceGroupList {
   /**
    * [Output Only] A unique identifier for this list of instance groups. The
-   * server defines this identifier.
+   * server generates this identifier.
    */
   core.String id;
-  /** A list of InstanceGroup resources. */
+  /** A list of instance groups. */
   core.List<InstanceGroup> items;
   /**
    * [Output Only] The resource type, which is always compute#instanceGroupList
@@ -14636,7 +14674,8 @@ class InstanceGroupList {
    */
   core.String nextPageToken;
   /**
-   * [Output Only] The URL for this instance group. The server defines this URL.
+   * [Output Only] The URL for this resource type. The server generates this
+   * URL.
    */
   core.String selfLink;
 
@@ -14701,15 +14740,15 @@ class InstanceGroupManager {
   core.String creationTimestamp;
   /**
    * [Output Only] The list of instance actions and the number of instances in
-   * this managed instance group that are scheduled for those actions.
+   * this managed instance group that are scheduled for each of those actions.
    */
   InstanceGroupManagerActionsSummary currentActions;
   /** An optional text description for the managed instance group. */
   core.String description;
   /**
-   * [Output Only] The fingerprint of the target pools information, which is a
-   * hash of the contents. This field is used for optimistic locking when
-   * updating the target pool entries.
+   * [Output Only] The fingerprint of the target pools information. You can use
+   * this optional field for optimistic locking when you update the target pool
+   * entries.
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
@@ -14720,11 +14759,11 @@ class InstanceGroupManager {
     fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
   /**
-   * [Output Only] A unique identifier for this managed instance group. The
-   * server defines this identifier.
+   * [Output Only] A unique identifier for this resource type. The server
+   * generates this identifier.
    */
   core.String id;
-  /** [Output Only] The URL of the InstanceGroup resource. */
+  /** [Output Only] The URL of the Instance Group resource. */
   core.String instanceGroup;
   /**
    * The URL of the instance template that is specified for this managed
@@ -14742,12 +14781,15 @@ class InstanceGroupManager {
    * long, and comply with RFC1035.
    */
   core.String name;
-  /** [Output Only] Server-defined URL for this managed instance group. */
+  /**
+   * [Output Only] The URL for this managed instance group. The server defines
+   * this URL.
+   */
   core.String selfLink;
   /**
-   * The URLs of all TargetPool resources to which new instances in the
-   * instanceGroup field are added. Updating the target pool values does not
-   * affect existing instances.
+   * The URLs for all TargetPool resources to which instances in the
+   * instanceGroup field are added. The target pools automatically apply to all
+   * of the instances in the managed instance group.
    */
   core.List<core.String> targetPools;
   /**
@@ -14756,7 +14798,7 @@ class InstanceGroupManager {
    * changes this number.
    */
   core.int targetSize;
-  /** The URL of the zone where the managed instance group is located. */
+  /** The name of the zone where the managed instance group is located. */
   core.String zone;
 
   InstanceGroupManager();
@@ -14856,9 +14898,9 @@ class InstanceGroupManager {
 
 class InstanceGroupManagerActionsSummary {
   /**
-   * [Output Only] Total number of instances in the managed instance group that
-   * are scheduled to be abandoned. Abandoning an instance removes it from the
-   * managed instance group without deleting it.
+   * [Output Only] The total number of instances in the managed instance group
+   * that are scheduled to be abandoned. Abandoning an instance removes it from
+   * the managed instance group without deleting it.
    */
   core.int abandoning;
   /**
@@ -14873,7 +14915,7 @@ class InstanceGroupManagerActionsSummary {
   core.int deleting;
   /**
    * [Output Only] The number of instances in the managed instance group that
-   * currently have no scheduled actions.
+   * are running and have no scheduled actions.
    */
   core.int none;
   /**
@@ -14952,13 +14994,13 @@ class InstanceGroupManagerActionsSummary {
 class InstanceGroupManagerAggregatedList {
   /**
    * [Output Only] A unique identifier for this aggregated list of managed
-   * instance groups. The server defines this identifier.
+   * instance groups. The server generates this identifier.
    */
   core.String id;
-  /** A map of filtered managed instance group lists. */
+  /** [Output Only] A map of filtered managed instance group lists. */
   core.Map<core.String, InstanceGroupManagersScopedList> items;
   /**
-   * [Output Only] Type of the resource. Always
+   * [Output Only] The resource type, which is always
    * compute#instanceGroupManagerAggregatedList for an aggregated list of
    * managed instance groups.
    */
@@ -14968,8 +15010,8 @@ class InstanceGroupManagerAggregatedList {
    */
   core.String nextPageToken;
   /**
-   * [Output Only] The URL for this aggregated list of managed instance groups.
-   * The server defines this URL.
+   * [Output Only] The URL for this resource type. The server generates this
+   * URL.
    */
   core.String selfLink;
 
@@ -15014,18 +15056,18 @@ class InstanceGroupManagerAggregatedList {
   }
 }
 
-/** [Output Only] A list of InstanceGroupManager resources. */
+/** [Output Only] A list of managed instance groups. */
 class InstanceGroupManagerList {
   /**
-   * [Output Only] A unique identifier for this managed instance group. The
-   * server defines this identifier.
+   * [Output Only] A unique identifier for this resource type. The server
+   * generates this identifier.
    */
   core.String id;
-  /** [Output Only] A list of managed instance group resources. */
+  /** [Output Only] A list of managed instance groups. */
   core.List<InstanceGroupManager> items;
   /**
-   * [Output Only] Type of the resource. Always compute#instanceGroupManagerList
-   * for a list of managed instance group resources.
+   * [Output Only] The resource type, which is always
+   * compute#instanceGroupManagerList for a list of managed instance groups.
    */
   core.String kind;
   /**
@@ -15033,8 +15075,8 @@ class InstanceGroupManagerList {
    */
   core.String nextPageToken;
   /**
-   * [Output Only] The URL for this managed instance group. The server defines
-   * this URL.
+   * [Output Only] The URL for this resource type. The server generates this
+   * URL.
    */
   core.String selfLink;
 
@@ -15080,7 +15122,10 @@ class InstanceGroupManagerList {
 }
 
 class InstanceGroupManagersAbandonInstancesRequest {
-  /** The names of instances to abandon from the managed instance group. */
+  /**
+   * The URL for one or more instances to abandon from the managed instance
+   * group.
+   */
   core.List<core.String> instances;
 
   InstanceGroupManagersAbandonInstancesRequest();
@@ -15101,7 +15146,10 @@ class InstanceGroupManagersAbandonInstancesRequest {
 }
 
 class InstanceGroupManagersDeleteInstancesRequest {
-  /** The names of one or more instances to delete. */
+  /**
+   * The list of instances to delete from this managed instance group. Specify
+   * one or more instance URLs.
+   */
   core.List<core.String> instances;
 
   InstanceGroupManagersDeleteInstancesRequest();
@@ -15122,7 +15170,7 @@ class InstanceGroupManagersDeleteInstancesRequest {
 }
 
 class InstanceGroupManagersListManagedInstancesResponse {
-  /** List of managed instances. If empty - all instances are listed. */
+  /** [Output Only] The list of instances in the managed instance group. */
   core.List<ManagedInstance> managedInstances;
 
   InstanceGroupManagersListManagedInstancesResponse();
@@ -15143,7 +15191,7 @@ class InstanceGroupManagersListManagedInstancesResponse {
 }
 
 class InstanceGroupManagersRecreateInstancesRequest {
-  /** The names of one or more instances to recreate. */
+  /** The URL for one or more instances to recreate. */
   core.List<core.String> instances;
 
   InstanceGroupManagersRecreateInstancesRequest();
@@ -15312,9 +15360,11 @@ class InstanceGroupManagersSetInstanceTemplateRequest {
 
 class InstanceGroupManagersSetTargetPoolsRequest {
   /**
-   * The fingerprint of the target pools information, which is a hash of the
-   * contents. This field is used for optimistic locking when updating the
-   * target pool entries.
+   * The fingerprint of the target pools information. Use this optional property
+   * to prevent conflicts when multiple users change the target pools settings
+   * concurrently. Obtain the fingerprint with the instanceGroupManagers.get
+   * method. Then, include the fingerprint in your request to ensure that you do
+   * not overwrite changes that were applied from another concurrent request.
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
@@ -15326,10 +15376,9 @@ class InstanceGroupManagersSetTargetPoolsRequest {
   }
   /**
    * The list of target pool URLs that instances in this managed instance group
-   * belong to. When the managed instance group creates new instances, the group
-   * automatically adds those instances to the target pools that are specified
-   * in this parameter. Changing the value of this parameter does not change the
-   * target pools of existing instances in this managed instance group.
+   * belong to. The managed instance group applies these target pools to all of
+   * the instances in the group. Existing instances and new instances in the
+   * group all receive these target pool settings.
    */
   core.List<core.String> targetPools;
 
@@ -15357,7 +15406,7 @@ class InstanceGroupManagersSetTargetPoolsRequest {
 }
 
 class InstanceGroupsAddInstancesRequest {
-  /** The instances to add to the instance group. */
+  /** The list of instances to add to the instance group. */
   core.List<InstanceReference> instances;
 
   InstanceGroupsAddInstancesRequest();
@@ -15380,12 +15429,12 @@ class InstanceGroupsAddInstancesRequest {
 class InstanceGroupsListInstances {
   /**
    * [Output Only] A unique identifier for this list of instance groups. The
-   * server defines this identifier.
+   * server generates this identifier.
    */
   core.String id;
   /**
-   * A list of InstanceWithNamedPorts resources, which contains all named ports
-   * for the given instance.
+   * [Output Only] A list of instances and any named ports that are assigned to
+   * those instances.
    */
   core.List<InstanceWithNamedPorts> items;
   /**
@@ -15398,8 +15447,8 @@ class InstanceGroupsListInstances {
    */
   core.String nextPageToken;
   /**
-   * [Output Only] The URL for this list of instance groups. The server defines
-   * this URL.
+   * [Output Only] The URL for this list of instance groups. The server
+   * generates this URL.
    */
   core.String selfLink;
 
@@ -15473,7 +15522,7 @@ class InstanceGroupsListInstancesRequest {
 }
 
 class InstanceGroupsRemoveInstancesRequest {
-  /** The instances to remove from the instance group. */
+  /** The list of instances to remove from the instance group. */
   core.List<InstanceReference> instances;
 
   InstanceGroupsRemoveInstancesRequest();
@@ -15616,9 +15665,12 @@ class InstanceGroupsScopedList {
 
 class InstanceGroupsSetNamedPortsRequest {
   /**
-   * The fingerprint of the named ports information, which is a hash of the
-   * contents. Use this field for optimistic locking when you update the named
-   * ports entries.
+   * The fingerprint of the named ports information for this instance group. Use
+   * this optional property to prevent conflicts when multiple users change the
+   * named ports settings concurrently. Obtain the fingerprint with the
+   * instanceGroups.get method. Then, include the fingerprint in your request to
+   * ensure that you do not overwrite changes that were applied from another
+   * concurrent request.
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
@@ -15757,11 +15809,12 @@ class InstanceMoveRequest {
 
 class InstanceProperties {
   /**
-   * A boolean that specifies if instances created from this template can send
-   * packets with source IP addresses other than their own or receive packets
-   * with destination IP addresses other than their own. If you use these
-   * instances as an IP gateway or as the next-hop in a Route resource, specify
-   * true. Otherwise, specify false.
+   * Enables instances created based on this template to send packets with
+   * source IP addresses other than their own and receive packets with
+   * destination IP addresses other than their own. If these instances will be
+   * used as an IP gateway or it will be set as the next-hop in a Route
+   * resource, specify true. If unsure, leave this set to false. See the
+   * canIpForward documentation for more information.
    */
   core.bool canIpForward;
   /**
@@ -15784,18 +15837,11 @@ class InstanceProperties {
    * keys. See Project and instance metadata for more information.
    */
   Metadata metadata;
-  /**
-   * An array of network access configurations for this interface. This
-   * specifies how this interface is configured to interact with other network
-   * services, such as connecting to the internet. Currently, ONE_TO_ONE_NAT is
-   * the only supported access configuration. If you do not specify any access
-   * configurations, the instances that are created from this template will have
-   * no external internet access.
-   */
+  /** An array of network access configurations for this interface. */
   core.List<NetworkInterface> networkInterfaces;
   /**
-   * A list of scheduling options for the instances that are created from this
-   * template.
+   * Specifies the scheduling options for the instances that are created from
+   * this template.
    */
   Scheduling scheduling;
   /**
@@ -15879,6 +15925,7 @@ class InstanceProperties {
 }
 
 class InstanceReference {
+  /** The URL for a specific instance. */
   core.String instance;
 
   InstanceReference();
@@ -15918,11 +15965,16 @@ class InstanceTemplate {
    */
   core.String kind;
   /**
-   * The name of the instance template. The name must be 1-63 characters long,
-   * and comply with RFC1035.
+   * Name of the resource; provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
-  /** The instance properties for the instance template resource. */
+  /** The instance properties for this instance template. */
   InstanceProperties properties;
   /**
    * [Output Only] The URL for this instance template. The server defines this
@@ -15990,7 +16042,7 @@ class InstanceTemplateList {
    * defines this identifier.
    */
   core.String id;
-  /** A list of InstanceTemplate resources. */
+  /** [Output Only] list of InstanceTemplate resources. */
   core.List<InstanceTemplate> items;
   /**
    * [Output Only] The resource type, which is always
@@ -16049,12 +16101,12 @@ class InstanceTemplateList {
 }
 
 class InstanceWithNamedPorts {
-  /** The URL of the instance. */
+  /** [Output Only] The URL of the instance. */
   core.String instance;
-  /** The named ports that belong to this instance group. */
+  /** [Output Only] The named ports that belong to this instance group. */
   core.List<NamedPort> namedPorts;
   /**
-   * The status of the instance.
+   * [Output Only] The status of the instance.
    * Possible string values are:
    * - "PROVISIONING"
    * - "RUNNING"
@@ -16665,8 +16717,21 @@ class MachineTypesScopedList {
 
 class ManagedInstance {
   /**
-   * The current action that the managed instance group has scheduled for the
+   * [Output Only] The current action that the managed instance group has
+   * scheduled for the instance. Possible values:
+   * - NONE The instance is running, and the managed instance group does not
+   * have any scheduled actions for this instance.
+   * - CREATING The managed instance group is creating this instance.
+   * - RECREATING The managed instance group is recreating this instance.
+   * - DELETING The managed instance group is permanently deleting this
    * instance.
+   * - ABANDONING The managed instance group is abandoning this instance. The
+   * instance will be removed from the instance group and from any target pools
+   * that are associated with this group.
+   * - RESTARTING The managed instance group is restarting the instance.
+   * - REFRESHING The managed instance group is applying configuration changes
+   * to the instance without stopping it. For example, the group can update the
+   * target pool list for an instance without stopping that instance.
    * Possible string values are:
    * - "ABANDONING"
    * - "CREATING"
@@ -16678,14 +16743,18 @@ class ManagedInstance {
    */
   core.String currentAction;
   /**
-   * The unique identifier for this resource (empty when instance does not
-   * exist).
+   * [Output only] The unique identifier for this resource. This field is empty
+   * when instance does not exist.
    */
   core.String id;
-  /** The URL of the instance (set even though instance does not exist yet). */
+  /**
+   * [Output Only] The URL of the instance. The URL can exist even if the
+   * instance has not yet been created.
+   */
   core.String instance;
   /**
-   * The status of the instance (empty when instance does not exist).
+   * [Output Only] The status of the instance. This field is empty when the
+   * instance does not exist.
    * Possible string values are:
    * - "PROVISIONING"
    * - "RUNNING"
@@ -16697,7 +16766,10 @@ class ManagedInstance {
    * - "TERMINATED"
    */
   core.String instanceStatus;
-  /** Information about the last attempt to create or delete the instance. */
+  /**
+   * [Output Only] Information about the last attempt to create or delete the
+   * instance.
+   */
   ManagedInstanceLastAttempt lastAttempt;
 
   ManagedInstance();
@@ -16782,7 +16854,8 @@ class ManagedInstanceLastAttemptErrorsErrors {
 }
 
 /**
- * Encountered errors during the last attempt to create or delete the instance.
+ * [Output Only] Encountered errors during the last attempt to create or delete
+ * the instance.
  */
 class ManagedInstanceLastAttemptErrors {
   /**
@@ -16810,8 +16883,8 @@ class ManagedInstanceLastAttemptErrors {
 
 class ManagedInstanceLastAttempt {
   /**
-   * Encountered errors during the last attempt to create or delete the
-   * instance.
+   * [Output Only] Encountered errors during the last attempt to create or
+   * delete the instance.
    */
   ManagedInstanceLastAttemptErrors errors;
 
@@ -16927,9 +17000,12 @@ class Metadata {
   }
 }
 
-/** The named port information. For example: . */
+/** The named port. For example: . */
 class NamedPort {
-  /** The name for this NamedPort. */
+  /**
+   * The name for this named port. The name must be 1-63 characters long, and
+   * comply with RFC1035.
+   */
   core.String name;
   /** The port number, which can be a value between 1 and 65535. */
   core.int port;
@@ -17377,14 +17453,15 @@ class Operation {
    */
   core.String insertTime;
   /**
-   * [Output Only] Type of the resource. Always compute#Operation for Operation
+   * [Output Only] Type of the resource. Always compute#operation for Operation
    * resources.
    */
   core.String kind;
   /** [Output Only] Name of the resource. */
   core.String name;
   /**
-   * [Output Only] Type of the operation, such as insert, update, and delete.
+   * [Output Only] Type of the operation, such as insert,
+   * compute.instanceGroups.update, or compute.instanceGroups.delete.
    */
   core.String operationType;
   /**
@@ -17822,8 +17899,8 @@ class OperationsScopedList {
 
 /**
  * A matcher for the path portion of the URL. The BackendService from the
- * longest-matched rule will serve the URL. If no rule was matched, the
- * default_service will be used.
+ * longest-matched rule will serve the URL. If no rule was matched, the default
+ * service will be used.
  */
 class PathMatcher {
   /**
@@ -18992,7 +19069,7 @@ class TargetHttpProxy {
    */
   core.String id;
   /**
-   * [Output Only] Type of resource. Always compute#Operation for Operation
+   * [Output Only] Type of resource. Always compute#operation for Operation
    * resources.
    */
   core.String kind;
@@ -19541,12 +19618,14 @@ class TargetPool {
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
-   * Sesssion affinity option, must be one of the following values: NONE:
-   * Connections from the same client IP may go to any instance in the pool;
+   * Sesssion affinity option, must be one of the following values:
+   * NONE: Connections from the same client IP may go to any instance in the
+   * pool.
    * CLIENT_IP: Connections from the same client IP will go to the same instance
-   * in the pool while that instance remains healthy. CLIENT_IP_PROTO:
-   * Connections from the same client IP with the same IP protocol will go to
-   * the same instance in the pool while that instance remains healthy.
+   * in the pool while that instance remains healthy.
+   * CLIENT_IP_PROTO: Connections from the same client IP with the same IP
+   * protocol will go to the same instance in the pool while that instance
+   * remains healthy.
    * Possible string values are:
    * - "CLIENT_IP"
    * - "CLIENT_IP_PROTO"

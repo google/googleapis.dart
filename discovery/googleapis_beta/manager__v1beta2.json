@@ -9,7 +9,7 @@
                     "description": "View and manage your data across Google Cloud Platform services"
                 },
                 "https://www.googleapis.com/auth/cloud-platform.read-only": {
-                    "description": "MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform services"
+                    "description": "View your data across Google Cloud Platform services"
                 },
                 "https://www.googleapis.com/auth/compute": {
                     "description": "View and manage your Google Compute Engine resources"
@@ -32,7 +32,7 @@
     "description": "The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/deployment-manager/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Tf9aFu99HjZlrMK7EdLrOoAacuc\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/E9BDi4qTzFW-I9oO8ahZRyv1jkM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

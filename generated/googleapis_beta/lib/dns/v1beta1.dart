@@ -22,10 +22,7 @@ class DnsApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
-  /**
-   * MESSAGE UNDER CONSTRUCTION View your data across Google Cloud Platform
-   * services
-   */
+  /** View your data across Google Cloud Platform services */
   static const CloudPlatformReadOnlyScope = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
   /** View your DNS records hosted by Google Cloud DNS */

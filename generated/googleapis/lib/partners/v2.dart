@@ -234,7 +234,7 @@ class CompaniesResourceApi {
    * [pageToken] - A token identifying a page of results that the server
    * returns. Typically, this is the value of
    * `ListCompaniesResponse.next_page_token` returned from the previous call to
-   * [ListCompanies][google.partners.v2.Partner.ListCompanies].
+   * ListCompanies.
    *
    * [companyName] - Company name to search for.
    *
@@ -796,7 +796,7 @@ class Company {
   }
 }
 
-/** Request message for [CreateLead][google.partners.v2.Partner.CreateLead]. */
+/** Request message for CreateLead. */
 class CreateLeadRequest {
   /**
    * The lead resource. The `LeadType` must not be `LEAD_TYPE_UNSPECIFIED` and
@@ -837,10 +837,7 @@ class CreateLeadRequest {
   }
 }
 
-/**
- * Response message for [CreateLead][google.partners.v2.Partner.CreateLead].
- * Debug information about this request.
- */
+/** Response message for CreateLead. Debug information about this request. */
 class CreateLeadResponse {
   /**
    * Lead that was created depending on the outcome of reCaptcha validation.
@@ -996,9 +993,7 @@ class EventData {
   }
 }
 
-/**
- * Response message for [GetCompany][google.partners.v2.Partner.GetCompany].
- */
+/** Response message for GetCompany. */
 class GetCompanyResponse {
   /** The company. */
   Company company;
@@ -1181,18 +1176,14 @@ class Lead {
   }
 }
 
-/**
- * Response message for
- * [ListCompanies][google.partners.v2.Partner.ListCompanies].
- */
+/** Response message for ListCompanies. */
 class ListCompaniesResponse {
   /** The list of companies. */
   core.List<Company> companies;
   /**
    * A token to retrieve next page of results. Pass this value in the
    * `ListCompaniesRequest.page_token` field in the subsequent call to
-   * [ListCompanies][google.partners.v2.Partner.ListCompanies] to retrieve the
-   * next page of results.
+   * ListCompanies to retrieve the next page of results.
    */
   core.String nextPageToken;
   /** Current response metadata. */
@@ -1227,10 +1218,7 @@ class ListCompaniesResponse {
   }
 }
 
-/**
- * Response message for
- * [ListUserStates][google.partners.v2.ClientAuditor.ListUserStates].
- */
+/** Response message for ListUserStates. */
 class ListUserStatesResponse {
   /** Current response metadata. */
   ResponseMetadata responseMetadata;
@@ -1341,10 +1329,7 @@ class Location {
   }
 }
 
-/**
- * Request message for
- * [LogClientMessage][google.partners.v2.ClientAuditor.LogClientMessage].
- */
+/** Request message for LogClientMessage. */
 class LogMessageRequest {
   /**
    * Map of client info, such as URL, browser navigator, browser platform, etc.
@@ -1400,10 +1385,7 @@ class LogMessageRequest {
   }
 }
 
-/**
- * Response message for
- * [LogClientMessage][google.partners.v2.ClientAuditor.LogClientMessage].
- */
+/** Response message for LogClientMessage. */
 class LogMessageResponse {
   /** Current response metadata. */
   ResponseMetadata responseMetadata;
@@ -1425,10 +1407,7 @@ class LogMessageResponse {
   }
 }
 
-/**
- * Request message for
- * [LogUserEvent][google.partners.v2.ClientAuditor.LogUserEvent].
- */
+/** Request message for LogUserEvent. */
 class LogUserEventRequest {
   /**
    * The action that occurred.
@@ -1804,10 +1783,7 @@ class LogUserEventRequest {
   }
 }
 
-/**
- * Response message for
- * [LogUserEvent][google.partners.v2.ClientAuditor.LogUserEvent].
- */
+/** Response message for LogUserEvent. */
 class LogUserEventResponse {
   /** Current response metadata. */
   ResponseMetadata responseMetadata;
