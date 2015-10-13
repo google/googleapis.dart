@@ -350,7 +350,6 @@ class Base64Encoder implements StreamTransformer<List<int>, String> {
 
       int chunksOf3 = (bytes.length - start) ~/ 3;
       int end = start + 3 * chunksOf3;
-      int remaining = bytes.length - end;
 
       // Convert & Send main bytes.
       if (start == 0 && end == bytes.length) {

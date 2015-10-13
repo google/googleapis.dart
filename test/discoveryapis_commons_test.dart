@@ -5,7 +5,7 @@
 library discoveryapis_commons_test;
 
 import 'dart:async';
-import 'dart:convert';
+import 'dart:convert' hide Base64Encoder;
 
 import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
