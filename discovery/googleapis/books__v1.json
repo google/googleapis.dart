@@ -14,7 +14,7 @@
     "description": "Lets you search for books and manage your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/5UMRPQM2lE_tfb1BMv9TTmTYYF8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/NfC6HUSyutjMUJzqUOocETnJU2I\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
         "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
@@ -273,7 +273,7 @@
         "dictionary": {
             "methods": {
                 "listOfflineMetadata": {
-                    "description": "Returns a list of offline dictionary meatadata available",
+                    "description": "Returns a list of offline dictionary metadata available",
                     "httpMethod": "GET",
                     "id": "books.dictionary.listOfflineMetadata",
                     "parameterOrder": [
@@ -1502,6 +1502,43 @@
                 }
             }
         },
+        "notification": {
+            "methods": {
+                "get": {
+                    "description": "Returns notification details for a given notification id.",
+                    "httpMethod": "GET",
+                    "id": "books.notification.get",
+                    "parameterOrder": [
+                        "notification_id"
+                    ],
+                    "parameters": {
+                        "locale": {
+                            "description": "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating notification title and body.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "notification_id": {
+                            "description": "String to identify the notification.",
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "source": {
+                            "description": "String to identify the originator of this request.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "notification/get",
+                    "response": {
+                        "$ref": "Notification"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/books"
+                    ]
+                }
+            }
+        },
         "onboarding": {
             "methods": {
                 "listCategories": {
@@ -1567,6 +1604,47 @@
                     "path": "onboarding/listCategoryVolumes",
                     "response": {
                         "$ref": "Volume2"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/books"
+                    ]
+                }
+            }
+        },
+        "personalizedstream": {
+            "methods": {
+                "get": {
+                    "description": "Returns a stream of personalized book clusters",
+                    "httpMethod": "GET",
+                    "id": "books.personalizedstream.get",
+                    "parameters": {
+                        "locale": {
+                            "description": "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxAllowedMaturityRating": {
+                            "description": "The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out.",
+                            "enum": [
+                                "mature",
+                                "not-mature"
+                            ],
+                            "enumDescriptions": [
+                                "Show books which are rated mature or lower.",
+                                "Show books which are rated not mature."
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "source": {
+                            "description": "String to identify the originator of this request.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "personalizedstream/get",
+                    "response": {
+                        "$ref": "Discoveryclusters"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/books"
@@ -2224,7 +2302,7 @@
             }
         }
     },
-    "revision": "20150318",
+    "revision": "20150921",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -2901,6 +2979,71 @@
             },
             "type": "object"
         },
+        "Discoveryclusters": {
+            "id": "Discoveryclusters",
+            "properties": {
+                "clusters": {
+                    "items": {
+                        "properties": {
+                            "banner_with_content_container": {
+                                "properties": {
+                                    "fillColorArgb": {
+                                        "type": "string"
+                                    },
+                                    "imageUrl": {
+                                        "type": "string"
+                                    },
+                                    "maskColorArgb": {
+                                        "type": "string"
+                                    },
+                                    "moreButtonText": {
+                                        "type": "string"
+                                    },
+                                    "moreButtonUrl": {
+                                        "type": "string"
+                                    },
+                                    "textColorArgb": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "subTitle": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "totalVolumes": {
+                                "format": "int32",
+                                "type": "integer"
+                            },
+                            "uid": {
+                                "type": "string"
+                            },
+                            "volumes": {
+                                "items": {
+                                    "$ref": "Volume"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "books#discovery#clusters",
+                    "description": "Resorce type.",
+                    "type": "string"
+                },
+                "totalClusters": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "DownloadAccessRestriction": {
             "id": "DownloadAccessRestriction",
             "properties": {
@@ -3220,6 +3363,29 @@
             },
             "type": "object"
         },
+        "Notification": {
+            "id": "Notification",
+            "properties": {
+                "body": {
+                    "type": "string"
+                },
+                "iconUrl": {
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "books#notification",
+                    "description": "Resource type.",
+                    "type": "string"
+                },
+                "linkUrl": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Offers": {
             "id": "Offers",
             "properties": {
@@ -3413,6 +3579,19 @@
                         },
                         "isEnabled": {
                             "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "notification": {
+                    "properties": {
+                        "moreFromAuthors": {
+                            "properties": {
+                                "opted_state": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "type": "object"
@@ -3686,6 +3865,11 @@
                 "userInfo": {
                     "description": "User specific information related to this volume. (e.g. page this user last read or whether they purchased this book)",
                     "properties": {
+                        "acquisitionType": {
+                            "description": "How this volume was acquired.",
+                            "format": "int32",
+                            "type": "integer"
+                        },
                         "copy": {
                             "description": "Copy/Paste accounting information.",
                             "properties": {
@@ -3706,6 +3890,11 @@
                                 }
                             },
                             "type": "object"
+                        },
+                        "entitlementType": {
+                            "description": "Whether this volume is purchased, sample, pd download etc.",
+                            "format": "int32",
+                            "type": "integer"
                         },
                         "isInMyBooks": {
                             "description": "Whether or not this volume is currently in \"my books.\"",

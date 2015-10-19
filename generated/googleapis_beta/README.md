@@ -140,6 +140,12 @@ Google Cloud Logging API lets you create logs, ingest log entries, and manage lo
 
 Official API documentation: https://cloud.google.com/logging/docs/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v2beta1
+
+Google Cloud Logging API lets you create logs, ingest log entries, and manage log sinks.
+
+Official API documentation: https://cloud.google.com/logging/docs/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Deployment Manager API - manager v1beta2
 
 The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.

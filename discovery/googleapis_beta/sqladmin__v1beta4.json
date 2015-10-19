@@ -18,7 +18,7 @@
     "description": "API for Cloud SQL database instance management.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/CdVfU5tbn5VgAny3uzYYuohH1xY\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/dmM5e1LsyAJYfrXQoy2C4h3tVuA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -88,7 +88,7 @@
                     ],
                     "parameters": {
                         "id": {
-                            "description": "The ID of the Backup Run to delete.",
+                            "description": "The ID of the Backup Run to delete. To find a Backup Run ID, use the list method.",
                             "format": "int64",
                             "location": "path",
                             "required": true,
@@ -541,6 +541,40 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "failover": {
+                    "description": "Failover the instance to its failover replica instance.",
+                    "httpMethod": "POST",
+                    "id": "sql.instances.failover",
+                    "parameterOrder": [
+                        "project",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "description": "Cloud SQL instance ID. This does not include the project ID.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "ID of the project that contains the read replica.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "projects/{project}/instances/{instance}/failover",
+                    "request": {
+                        "$ref": "InstancesFailoverRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
                     ]
                 },
                 "get": {
@@ -1376,7 +1410,7 @@
             }
         }
     },
-    "revision": "20150825",
+    "revision": "20151013",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -1775,7 +1809,7 @@
                     "description": "Options for exporting data as SQL statements.",
                     "properties": {
                         "schemaOnly": {
-                            "description": "Export only schema.",
+                            "description": "Export only schemas.",
                             "type": "boolean"
                         },
                         "tables": {
@@ -1795,6 +1829,23 @@
             },
             "type": "object"
         },
+        "FailoverContext": {
+            "description": "Database instance failover context.",
+            "id": "FailoverContext",
+            "properties": {
+                "kind": {
+                    "default": "sql#failoverContext",
+                    "description": "This is always sql#failoverContext.",
+                    "type": "string"
+                },
+                "settingsVersion": {
+                    "description": "The current settings version of this instance. Request will be rejected if this version doesn't match the current settings version.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Flag": {
             "description": "A Google Cloud SQL service flag resource.",
             "id": "Flag",
@@ -1807,7 +1858,7 @@
                     "type": "array"
                 },
                 "appliesTo": {
-                    "description": "The database version this flag applies to. Currently this can only be [MYSQL_5_5].",
+                    "description": "The database version this flag applies to. Can be MYSQL_5_5, MYSQL_5_6, or both.",
                     "items": {
                         "type": "string"
                     },
@@ -1917,6 +1968,17 @@
                 "exportContext": {
                     "$ref": "ExportContext",
                     "description": "Contains details about the export operation."
+                }
+            },
+            "type": "object"
+        },
+        "InstancesFailoverRequest": {
+            "description": "Instance failover request.",
+            "id": "InstancesFailoverRequest",
+            "properties": {
+                "failoverContext": {
+                    "$ref": "FailoverContext",
+                    "description": "Failover Context."
                 }
             },
             "type": "object"
@@ -2231,6 +2293,10 @@
             "description": "Read-replica configuration for connecting to the master.",
             "id": "ReplicaConfiguration",
             "properties": {
+                "failoverTarget": {
+                    "description": "Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. In case the master instance fails, the replica instance will be promoted as the new master instance.\nOnly one replica can be specified as failover target, and the replica has to be in different zone with the master instance.",
+                    "type": "boolean"
+                },
                 "kind": {
                     "default": "sql#replicaConfiguration",
                     "description": "This is always sql#replicaConfiguration.",
@@ -2291,6 +2357,11 @@
                 "crashSafeReplicationEnabled": {
                     "description": "Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled.",
                     "type": "boolean"
+                },
+                "dataDiskSizeGb": {
+                    "description": "The size of data disk for the performance instance, specified in GB. Setting this value for non-performance instances will result in an error.",
+                    "format": "int64",
+                    "type": "string"
                 },
                 "databaseFlags": {
                     "description": "The database flags passed to the instance at startup.",

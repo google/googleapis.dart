@@ -766,6 +766,50 @@ class Acl {
   }
 }
 
+/** Actor info specific to YouTube clients. */
+class ActivityActorClientSpecificActorInfoYoutubeActorInfo {
+  /** ID of the YouTube channel owned by the Actor. */
+  core.String channelId;
+
+  ActivityActorClientSpecificActorInfoYoutubeActorInfo();
+
+  ActivityActorClientSpecificActorInfoYoutubeActorInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("channelId")) {
+      channelId = _json["channelId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (channelId != null) {
+      _json["channelId"] = channelId;
+    }
+    return _json;
+  }
+}
+
+/** Actor info specific to particular clients. */
+class ActivityActorClientSpecificActorInfo {
+  /** Actor info specific to YouTube clients. */
+  ActivityActorClientSpecificActorInfoYoutubeActorInfo youtubeActorInfo;
+
+  ActivityActorClientSpecificActorInfo();
+
+  ActivityActorClientSpecificActorInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("youtubeActorInfo")) {
+      youtubeActorInfo = new ActivityActorClientSpecificActorInfoYoutubeActorInfo.fromJson(_json["youtubeActorInfo"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (youtubeActorInfo != null) {
+      _json["youtubeActorInfo"] = (youtubeActorInfo).toJson();
+    }
+    return _json;
+  }
+}
+
 /** The image representation of the actor. */
 class ActivityActorImage {
   /**
@@ -846,6 +890,8 @@ class ActivityActorVerification {
 
 /** The person who performed this activity. */
 class ActivityActor {
+  /** Actor info specific to particular clients. */
+  ActivityActorClientSpecificActorInfo clientSpecificActorInfo;
   /** The name of the actor, suitable for display. */
   core.String displayName;
   /** The ID of the actor's Person resource. */
@@ -862,6 +908,9 @@ class ActivityActor {
   ActivityActor();
 
   ActivityActor.fromJson(core.Map _json) {
+    if (_json.containsKey("clientSpecificActorInfo")) {
+      clientSpecificActorInfo = new ActivityActorClientSpecificActorInfo.fromJson(_json["clientSpecificActorInfo"]);
+    }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
@@ -884,6 +933,9 @@ class ActivityActor {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (clientSpecificActorInfo != null) {
+      _json["clientSpecificActorInfo"] = (clientSpecificActorInfo).toJson();
+    }
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -901,6 +953,50 @@ class ActivityActor {
     }
     if (verification != null) {
       _json["verification"] = (verification).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Actor info specific to YouTube clients. */
+class ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo {
+  /** ID of the YouTube channel owned by the Actor. */
+  core.String channelId;
+
+  ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo();
+
+  ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("channelId")) {
+      channelId = _json["channelId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (channelId != null) {
+      _json["channelId"] = channelId;
+    }
+    return _json;
+  }
+}
+
+/** Actor info specific to particular clients. */
+class ActivityObjectActorClientSpecificActorInfo {
+  /** Actor info specific to YouTube clients. */
+  ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo youtubeActorInfo;
+
+  ActivityObjectActorClientSpecificActorInfo();
+
+  ActivityObjectActorClientSpecificActorInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("youtubeActorInfo")) {
+      youtubeActorInfo = new ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo.fromJson(_json["youtubeActorInfo"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (youtubeActorInfo != null) {
+      _json["youtubeActorInfo"] = (youtubeActorInfo).toJson();
     }
     return _json;
   }
@@ -955,6 +1051,8 @@ class ActivityObjectActorVerification {
  * reshares an activity, this property specifies the original activity's actor.
  */
 class ActivityObjectActor {
+  /** Actor info specific to particular clients. */
+  ActivityObjectActorClientSpecificActorInfo clientSpecificActorInfo;
   /** The original actor's name, which is suitable for display. */
   core.String displayName;
   /** ID of the original actor. */
@@ -969,6 +1067,9 @@ class ActivityObjectActor {
   ActivityObjectActor();
 
   ActivityObjectActor.fromJson(core.Map _json) {
+    if (_json.containsKey("clientSpecificActorInfo")) {
+      clientSpecificActorInfo = new ActivityObjectActorClientSpecificActorInfo.fromJson(_json["clientSpecificActorInfo"]);
+    }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
@@ -988,6 +1089,9 @@ class ActivityObjectActor {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (clientSpecificActorInfo != null) {
+      _json["clientSpecificActorInfo"] = (clientSpecificActorInfo).toJson();
+    }
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -1828,6 +1932,50 @@ class ActivityFeed {
   }
 }
 
+/** Actor info specific to YouTube clients. */
+class CommentActorClientSpecificActorInfoYoutubeActorInfo {
+  /** ID of the YouTube channel owned by the Actor. */
+  core.String channelId;
+
+  CommentActorClientSpecificActorInfoYoutubeActorInfo();
+
+  CommentActorClientSpecificActorInfoYoutubeActorInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("channelId")) {
+      channelId = _json["channelId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (channelId != null) {
+      _json["channelId"] = channelId;
+    }
+    return _json;
+  }
+}
+
+/** Actor info specific to particular clients. */
+class CommentActorClientSpecificActorInfo {
+  /** Actor info specific to YouTube clients. */
+  CommentActorClientSpecificActorInfoYoutubeActorInfo youtubeActorInfo;
+
+  CommentActorClientSpecificActorInfo();
+
+  CommentActorClientSpecificActorInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("youtubeActorInfo")) {
+      youtubeActorInfo = new CommentActorClientSpecificActorInfoYoutubeActorInfo.fromJson(_json["youtubeActorInfo"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (youtubeActorInfo != null) {
+      _json["youtubeActorInfo"] = (youtubeActorInfo).toJson();
+    }
+    return _json;
+  }
+}
+
 /** The image representation of this actor. */
 class CommentActorImage {
   /**
@@ -1878,6 +2026,8 @@ class CommentActorVerification {
 
 /** The person who posted this comment. */
 class CommentActor {
+  /** Actor info specific to particular clients. */
+  CommentActorClientSpecificActorInfo clientSpecificActorInfo;
   /** The name of this actor, suitable for display. */
   core.String displayName;
   /** The ID of the actor. */
@@ -1892,6 +2042,9 @@ class CommentActor {
   CommentActor();
 
   CommentActor.fromJson(core.Map _json) {
+    if (_json.containsKey("clientSpecificActorInfo")) {
+      clientSpecificActorInfo = new CommentActorClientSpecificActorInfo.fromJson(_json["clientSpecificActorInfo"]);
+    }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
@@ -1911,6 +2064,9 @@ class CommentActor {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (clientSpecificActorInfo != null) {
+      _json["clientSpecificActorInfo"] = (clientSpecificActorInfo).toJson();
+    }
     if (displayName != null) {
       _json["displayName"] = displayName;
     }

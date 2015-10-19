@@ -21,7 +21,7 @@
     "description": "The API for Google Play Game Services.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/MkLfIaXVLYVgKJmZoSRT3-XyoG4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/P7g-a3C968F6LpsV-dK3V_5H2MQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -645,10 +645,12 @@
                         "collection": {
                             "description": "Collection of players being retrieved",
                             "enum": [
+                                "connected",
                                 "playedWith",
                                 "played_with"
                             ],
                             "enumDescriptions": [
+                                "Retrieve a list of players that are also playing this game in reverse chronological order.",
                                 "(DEPRECATED: please use played_with!) Retrieve a list of players you have played a multiplayer game (realtime or turn-based) with recently.",
                                 "Retrieve a list of players you have played a multiplayer game (realtime or turn-based) with recently."
                             ],
@@ -1907,7 +1909,7 @@
             }
         }
     },
-    "revision": "20150922",
+    "revision": "20151012",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {

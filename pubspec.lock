@@ -36,7 +36,7 @@ packages:
   source_span:
     description: source_span
     source: hosted
-    version: "1.2.0"
+    version: "1.2.1"
   stack_trace:
     description: stack_trace
     source: hosted
@@ -48,4 +48,4 @@ packages:
   yaml:
     description: yaml
     source: hosted
-    version: "2.1.5"
+    version: "2.1.3"

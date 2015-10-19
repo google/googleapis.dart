@@ -29,7 +29,9 @@ class BooksApi {
   LayersResourceApi get layers => new LayersResourceApi(_requester);
   MyconfigResourceApi get myconfig => new MyconfigResourceApi(_requester);
   MylibraryResourceApi get mylibrary => new MylibraryResourceApi(_requester);
+  NotificationResourceApi get notification => new NotificationResourceApi(_requester);
   OnboardingResourceApi get onboarding => new OnboardingResourceApi(_requester);
+  PersonalizedstreamResourceApi get personalizedstream => new PersonalizedstreamResourceApi(_requester);
   PromoofferResourceApi get promooffer => new PromoofferResourceApi(_requester);
   VolumesResourceApi get volumes => new VolumesResourceApi(_requester);
 
@@ -363,7 +365,7 @@ class DictionaryResourceApi {
       _requester = client;
 
   /**
-   * Returns a list of offline dictionary meatadata available
+   * Returns a list of offline dictionary metadata available
    *
    * Request parameters:
    *
@@ -2052,6 +2054,66 @@ class MylibraryReadingpositionsResourceApi {
 }
 
 
+class NotificationResourceApi {
+  final commons.ApiRequester _requester;
+
+  NotificationResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns notification details for a given notification id.
+   *
+   * Request parameters:
+   *
+   * [notificationId] - String to identify the notification.
+   *
+   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
+   * Used for generating notification title and body.
+   *
+   * [source] - String to identify the originator of this request.
+   *
+   * Completes with a [Notification].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Notification> get(core.String notificationId, {core.String locale, core.String source}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (notificationId == null) {
+      throw new core.ArgumentError("Parameter notificationId is required.");
+    }
+    _queryParams["notification_id"] = [notificationId];
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
+    }
+    if (source != null) {
+      _queryParams["source"] = [source];
+    }
+
+    _url = 'notification/get';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Notification.fromJson(data));
+  }
+
+}
+
+
 class OnboardingResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2161,6 +2223,70 @@ class OnboardingResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volume2.fromJson(data));
+  }
+
+}
+
+
+class PersonalizedstreamResourceApi {
+  final commons.ApiRequester _requester;
+
+  PersonalizedstreamResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns a stream of personalized book clusters
+   *
+   * Request parameters:
+   *
+   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
+   * Used for generating recommendations.
+   *
+   * [maxAllowedMaturityRating] - The maximum allowed maturity rating of
+   * returned recommendations. Books with a higher maturity rating are filtered
+   * out.
+   * Possible string values are:
+   * - "mature" : Show books which are rated mature or lower.
+   * - "not-mature" : Show books which are rated not mature.
+   *
+   * [source] - String to identify the originator of this request.
+   *
+   * Completes with a [Discoveryclusters].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Discoveryclusters> get({core.String locale, core.String maxAllowedMaturityRating, core.String source}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
+    }
+    if (maxAllowedMaturityRating != null) {
+      _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
+    }
+    if (source != null) {
+      _queryParams["source"] = [source];
+    }
+
+    _url = 'personalizedstream/get';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Discoveryclusters.fromJson(data));
   }
 
 }
@@ -4482,6 +4608,151 @@ class Dictlayerdata {
   }
 }
 
+class DiscoveryclustersClustersBannerWithContentContainer {
+  core.String fillColorArgb;
+  core.String imageUrl;
+  core.String maskColorArgb;
+  core.String moreButtonText;
+  core.String moreButtonUrl;
+  core.String textColorArgb;
+
+  DiscoveryclustersClustersBannerWithContentContainer();
+
+  DiscoveryclustersClustersBannerWithContentContainer.fromJson(core.Map _json) {
+    if (_json.containsKey("fillColorArgb")) {
+      fillColorArgb = _json["fillColorArgb"];
+    }
+    if (_json.containsKey("imageUrl")) {
+      imageUrl = _json["imageUrl"];
+    }
+    if (_json.containsKey("maskColorArgb")) {
+      maskColorArgb = _json["maskColorArgb"];
+    }
+    if (_json.containsKey("moreButtonText")) {
+      moreButtonText = _json["moreButtonText"];
+    }
+    if (_json.containsKey("moreButtonUrl")) {
+      moreButtonUrl = _json["moreButtonUrl"];
+    }
+    if (_json.containsKey("textColorArgb")) {
+      textColorArgb = _json["textColorArgb"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fillColorArgb != null) {
+      _json["fillColorArgb"] = fillColorArgb;
+    }
+    if (imageUrl != null) {
+      _json["imageUrl"] = imageUrl;
+    }
+    if (maskColorArgb != null) {
+      _json["maskColorArgb"] = maskColorArgb;
+    }
+    if (moreButtonText != null) {
+      _json["moreButtonText"] = moreButtonText;
+    }
+    if (moreButtonUrl != null) {
+      _json["moreButtonUrl"] = moreButtonUrl;
+    }
+    if (textColorArgb != null) {
+      _json["textColorArgb"] = textColorArgb;
+    }
+    return _json;
+  }
+}
+
+class DiscoveryclustersClusters {
+  DiscoveryclustersClustersBannerWithContentContainer bannerWithContentContainer;
+  core.String subTitle;
+  core.String title;
+  core.int totalVolumes;
+  core.String uid;
+  core.List<Volume> volumes;
+
+  DiscoveryclustersClusters();
+
+  DiscoveryclustersClusters.fromJson(core.Map _json) {
+    if (_json.containsKey("banner_with_content_container")) {
+      bannerWithContentContainer = new DiscoveryclustersClustersBannerWithContentContainer.fromJson(_json["banner_with_content_container"]);
+    }
+    if (_json.containsKey("subTitle")) {
+      subTitle = _json["subTitle"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+    if (_json.containsKey("totalVolumes")) {
+      totalVolumes = _json["totalVolumes"];
+    }
+    if (_json.containsKey("uid")) {
+      uid = _json["uid"];
+    }
+    if (_json.containsKey("volumes")) {
+      volumes = _json["volumes"].map((value) => new Volume.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bannerWithContentContainer != null) {
+      _json["banner_with_content_container"] = (bannerWithContentContainer).toJson();
+    }
+    if (subTitle != null) {
+      _json["subTitle"] = subTitle;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    if (totalVolumes != null) {
+      _json["totalVolumes"] = totalVolumes;
+    }
+    if (uid != null) {
+      _json["uid"] = uid;
+    }
+    if (volumes != null) {
+      _json["volumes"] = volumes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class Discoveryclusters {
+  core.List<DiscoveryclustersClusters> clusters;
+  /** Resorce type. */
+  core.String kind;
+  core.int totalClusters;
+
+  Discoveryclusters();
+
+  Discoveryclusters.fromJson(core.Map _json) {
+    if (_json.containsKey("clusters")) {
+      clusters = _json["clusters"].map((value) => new DiscoveryclustersClusters.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("totalClusters")) {
+      totalClusters = _json["totalClusters"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (clusters != null) {
+      _json["clusters"] = clusters.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (totalClusters != null) {
+      _json["totalClusters"] = totalClusters;
+    }
+    return _json;
+  }
+}
+
 class DownloadAccessRestriction {
   /**
    * If restricted, whether access is granted for this (user, device, volume).
@@ -5170,6 +5441,55 @@ class Metadata {
   }
 }
 
+class Notification {
+  core.String body;
+  core.String iconUrl;
+  /** Resource type. */
+  core.String kind;
+  core.String linkUrl;
+  core.String title;
+
+  Notification();
+
+  Notification.fromJson(core.Map _json) {
+    if (_json.containsKey("body")) {
+      body = _json["body"];
+    }
+    if (_json.containsKey("iconUrl")) {
+      iconUrl = _json["iconUrl"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("linkUrl")) {
+      linkUrl = _json["linkUrl"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (body != null) {
+      _json["body"] = body;
+    }
+    if (iconUrl != null) {
+      _json["iconUrl"] = iconUrl;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (linkUrl != null) {
+      _json["linkUrl"] = linkUrl;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
 class OffersItemsItems {
   core.String author;
   core.String canonicalVolumeLink;
@@ -5597,11 +5917,52 @@ class UsersettingsNotesExport {
   }
 }
 
+class UsersettingsNotificationMoreFromAuthors {
+  core.String optedState;
+
+  UsersettingsNotificationMoreFromAuthors();
+
+  UsersettingsNotificationMoreFromAuthors.fromJson(core.Map _json) {
+    if (_json.containsKey("opted_state")) {
+      optedState = _json["opted_state"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (optedState != null) {
+      _json["opted_state"] = optedState;
+    }
+    return _json;
+  }
+}
+
+class UsersettingsNotification {
+  UsersettingsNotificationMoreFromAuthors moreFromAuthors;
+
+  UsersettingsNotification();
+
+  UsersettingsNotification.fromJson(core.Map _json) {
+    if (_json.containsKey("moreFromAuthors")) {
+      moreFromAuthors = new UsersettingsNotificationMoreFromAuthors.fromJson(_json["moreFromAuthors"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (moreFromAuthors != null) {
+      _json["moreFromAuthors"] = (moreFromAuthors).toJson();
+    }
+    return _json;
+  }
+}
+
 class Usersettings {
   /** Resource type. */
   core.String kind;
   /** User settings in sub-objects, each for different purposes. */
   UsersettingsNotesExport notesExport;
+  UsersettingsNotification notification;
 
   Usersettings();
 
@@ -5612,6 +5973,9 @@ class Usersettings {
     if (_json.containsKey("notesExport")) {
       notesExport = new UsersettingsNotesExport.fromJson(_json["notesExport"]);
     }
+    if (_json.containsKey("notification")) {
+      notification = new UsersettingsNotification.fromJson(_json["notification"]);
+    }
   }
 
   core.Map toJson() {
@@ -5621,6 +5985,9 @@ class Usersettings {
     }
     if (notesExport != null) {
       _json["notesExport"] = (notesExport).toJson();
+    }
+    if (notification != null) {
+      _json["notification"] = (notification).toJson();
     }
     return _json;
   }
@@ -6359,8 +6726,12 @@ class VolumeUserInfoUserUploadedVolumeInfo {
  * read or whether they purchased this book)
  */
 class VolumeUserInfo {
+  /** How this volume was acquired. */
+  core.int acquisitionType;
   /** Copy/Paste accounting information. */
   VolumeUserInfoCopy copy;
+  /** Whether this volume is purchased, sample, pd download etc. */
+  core.int entitlementType;
   /** Whether or not this volume is currently in "my books." */
   core.bool isInMyBooks;
   /**
@@ -6397,8 +6768,14 @@ class VolumeUserInfo {
   VolumeUserInfo();
 
   VolumeUserInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("acquisitionType")) {
+      acquisitionType = _json["acquisitionType"];
+    }
     if (_json.containsKey("copy")) {
       copy = new VolumeUserInfoCopy.fromJson(_json["copy"]);
+    }
+    if (_json.containsKey("entitlementType")) {
+      entitlementType = _json["entitlementType"];
     }
     if (_json.containsKey("isInMyBooks")) {
       isInMyBooks = _json["isInMyBooks"];
@@ -6434,8 +6811,14 @@ class VolumeUserInfo {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (acquisitionType != null) {
+      _json["acquisitionType"] = acquisitionType;
+    }
     if (copy != null) {
       _json["copy"] = (copy).toJson();
+    }
+    if (entitlementType != null) {
+      _json["entitlementType"] = entitlementType;
     }
     if (isInMyBooks != null) {
       _json["isInMyBooks"] = isInMyBooks;

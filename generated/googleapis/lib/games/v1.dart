@@ -956,6 +956,8 @@ class PlayersResourceApi {
    *
    * [collection] - Collection of players being retrieved
    * Possible string values are:
+   * - "connected" : Retrieve a list of players that are also playing this game
+   * in reverse chronological order.
    * - "playedWith" : (DEPRECATED: please use played_with!) Retrieve a list of
    * players you have played a multiplayer game (realtime or turn-based) with
    * recently.

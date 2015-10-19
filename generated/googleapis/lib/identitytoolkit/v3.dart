@@ -1821,6 +1821,10 @@ class VerifyAssertionResponse {
    * confirmation.
    */
   core.bool needConfirmation;
+  /**
+   * Whether need client to supply email to complete the federated login flow.
+   */
+  core.bool needEmail;
   /** The nick name of the user. */
   core.String nickName;
   /** The OAuth2 access token. */
@@ -1915,6 +1919,9 @@ class VerifyAssertionResponse {
     if (_json.containsKey("needConfirmation")) {
       needConfirmation = _json["needConfirmation"];
     }
+    if (_json.containsKey("needEmail")) {
+      needEmail = _json["needEmail"];
+    }
     if (_json.containsKey("nickName")) {
       nickName = _json["nickName"];
     }
@@ -2008,6 +2015,9 @@ class VerifyAssertionResponse {
     }
     if (needConfirmation != null) {
       _json["needConfirmation"] = needConfirmation;
+    }
+    if (needEmail != null) {
+      _json["needEmail"] = needEmail;
     }
     if (nickName != null) {
       _json["nickName"] = nickName;

@@ -2364,6 +2364,7 @@ class UrlchannelsResourceApi {
 
 
 class Account {
+  core.String creationTime;
   /** Unique identifier of this account. */
   core.String id;
   /** Kind of resource this is, in this case adsense#account. */
@@ -2380,6 +2381,9 @@ class Account {
   Account();
 
   Account.fromJson(core.Map _json) {
+    if (_json.containsKey("creation_time")) {
+      creationTime = _json["creation_time"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -2402,6 +2406,9 @@ class Account {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (creationTime != null) {
+      _json["creation_time"] = creationTime;
+    }
     if (id != null) {
       _json["id"] = id;
     }

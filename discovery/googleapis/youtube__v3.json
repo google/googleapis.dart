@@ -30,7 +30,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/OiQFuZaPHLebnRB1awkIEBAme6Q\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/4-0NBGYpnIwmGOtwWyiB-28Ef00\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -3121,7 +3121,7 @@
             }
         }
     },
-    "revision": "20150910",
+    "revision": "20151012",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -8219,7 +8219,7 @@
             "properties": {
                 "ageGating": {
                     "$ref": "VideoAgeGating",
-                    "description": "Age restriction details related to a video."
+                    "description": "Age restriction details related to a video. This data can only be retrieved by the video owner."
                 },
                 "contentDetails": {
                     "$ref": "VideoContentDetails",

@@ -38,7 +38,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/vDvRzc2SjVzG9hrGn8HU-kRVxfE\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/j3Wwh3EWBgWZwRehTCtXuS9oPH4\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -2604,7 +2604,7 @@
             }
         }
     },
-    "revision": "20150910",
+    "revision": "20151008",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -3649,7 +3649,7 @@
                     "type": "string"
                 },
                 "markedViewedByMeDate": {
-                    "description": "Time this file was explicitly marked viewed by the user (formatted RFC 3339 timestamp).",
+                    "description": "Deprecated.",
                     "format": "date-time",
                     "type": "string"
                 },

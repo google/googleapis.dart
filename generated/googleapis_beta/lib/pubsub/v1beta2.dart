@@ -53,8 +53,8 @@ class ProjectsSubscriptionsResourceApi {
       _requester = client;
 
   /**
-   * Acknowledges the messages associated with the ack tokens in the
-   * AcknowledgeRequest. The Pub/Sub system can remove the relevant messages
+   * Acknowledges the messages associated with the `ack_ids` in the
+   * `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages
    * from the subscription. Acknowledging a message whose ack deadline has
    * expired may succeed, but such a message may be redelivered later.
    * Acknowledging a message more than once will not result in an error.
@@ -103,10 +103,10 @@ class ProjectsSubscriptionsResourceApi {
 
   /**
    * Creates a subscription to a given topic for a given subscriber. If the
-   * subscription already exists, returns ALREADY_EXISTS. If the corresponding
-   * topic doesn't exist, returns NOT_FOUND. If the name is not provided in the
-   * request, the server will assign a random name for this subscription on the
-   * same project as the topic.
+   * subscription already exists, returns `ALREADY_EXISTS`. If the corresponding
+   * topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in
+   * the request, the server will assign a random name for this subscription on
+   * the same project as the topic.
    *
    * [request] - The metadata request object.
    *
@@ -157,8 +157,8 @@ class ProjectsSubscriptionsResourceApi {
 
   /**
    * Deletes an existing subscription. All pending messages in the subscription
-   * are immediately dropped. Calls to Pull after deletion will return
-   * NOT_FOUND. After a subscription is deleted, a new one may be created with
+   * are immediately dropped. Calls to `Pull` after deletion will return
+   * `NOT_FOUND`. After a subscription is deleted, a new one may be created with
    * the same name, but the new one has no association with the old
    * subscription, or its topic unless the same topic is specified.
    *
@@ -240,13 +240,13 @@ class ProjectsSubscriptionsResourceApi {
   }
 
   /**
-   * Gets the access control policy for a resource. Is empty if the policy or
+   * Gets the access control policy for a `resource`. Is empty if the policy or
    * the resource does not exist.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being requested.
-   * Resource is usually specified as a path, such as, projects/{project}.
+   * Resource is usually specified as a path, such as, `projects/{project}`.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [Policy].
@@ -291,8 +291,8 @@ class ProjectsSubscriptionsResourceApi {
    *
    * [pageSize] - Maximum number of subscriptions to return.
    *
-   * [pageToken] - The value returned by the last ListSubscriptionsResponse;
-   * indicates that this is a continuation of a prior ListSubscriptions call,
+   * [pageToken] - The value returned by the last `ListSubscriptionsResponse`;
+   * indicates that this is a continuation of a prior `ListSubscriptions` call,
    * and that the system should return the next page of data.
    *
    * Completes with a [ListSubscriptionsResponse].
@@ -382,11 +382,11 @@ class ProjectsSubscriptionsResourceApi {
   }
 
   /**
-   * Modifies the PushConfig for a specified subscription. This may be used to
-   * change a push subscription to a pull one (signified by an empty PushConfig)
-   * or vice versa, or change the endpoint URL and other attributes of a push
-   * subscription. Messages will accumulate for delivery continuously through
-   * the call regardless of changes to the PushConfig.
+   * Modifies the `PushConfig` for a specified subscription. This may be used to
+   * change a push subscription to a pull one (signified by an empty
+   * `PushConfig`) or vice versa, or change the endpoint URL and other
+   * attributes of a push subscription. Messages will accumulate for delivery
+   * continuously through the call regardless of changes to the `PushConfig`.
    *
    * [request] - The metadata request object.
    *
@@ -432,7 +432,7 @@ class ProjectsSubscriptionsResourceApi {
 
   /**
    * Pulls messages from the server. Returns an empty list if there are no
-   * messages available in the backlog. The server may return UNAVAILABLE if
+   * messages available in the backlog. The server may return `UNAVAILABLE` if
    * there are too many concurrent pull requests pending for the given
    * subscription.
    *
@@ -487,8 +487,8 @@ class ProjectsSubscriptionsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
-   * Resource is usually specified as a path, such as,
-   * projects/{project}/zones/{zone}/disks/{disk}.
+   * `resource` is usually specified as a path, such as,
+   * `projects/{project}/zones/{zone}/disks/{disk}`.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [Policy].
@@ -534,8 +534,8 @@ class ProjectsSubscriptionsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy detail is being
-   * requested. Resource is usually specified as a path, such as,
-   * projects/{project}.
+   * requested. `resource` is usually specified as a path, such as,
+   * `projects/{project}`.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -635,11 +635,11 @@ class ProjectsTopicsResourceApi {
   }
 
   /**
-   * Deletes the topic with the given name. Returns NOT_FOUND if the topic does
-   * not exist. After a topic is deleted, a new topic may be created with the
-   * same name; this is an entirely new topic with none of the old configuration
-   * or subscriptions. Existing subscriptions to this topic are not deleted, but
-   * their `topic` field is set to `_deleted-topic_`.
+   * Deletes the topic with the given name. Returns `NOT_FOUND` if the topic
+   * does not exist. After a topic is deleted, a new topic may be created with
+   * the same name; this is an entirely new topic with none of the old
+   * configuration or subscriptions. Existing subscriptions to this topic are
+   * not deleted, but their `topic` field is set to `_deleted-topic_`.
    *
    * Request parameters:
    *
@@ -719,13 +719,13 @@ class ProjectsTopicsResourceApi {
   }
 
   /**
-   * Gets the access control policy for a resource. Is empty if the policy or
+   * Gets the access control policy for a `resource`. Is empty if the policy or
    * the resource does not exist.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being requested.
-   * Resource is usually specified as a path, such as, projects/{project}.
+   * Resource is usually specified as a path, such as, `projects/{project}`.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [Policy].
@@ -770,9 +770,9 @@ class ProjectsTopicsResourceApi {
    *
    * [pageSize] - Maximum number of topics to return.
    *
-   * [pageToken] - The value returned by the last ListTopicsResponse; indicates
-   * that this is a continuation of a prior ListTopics call, and that the system
-   * should return the next page of data.
+   * [pageToken] - The value returned by the last `ListTopicsResponse`;
+   * indicates that this is a continuation of a prior `ListTopics` call, and
+   * that the system should return the next page of data.
    *
    * Completes with a [ListTopicsResponse].
    *
@@ -813,9 +813,9 @@ class ProjectsTopicsResourceApi {
   }
 
   /**
-   * Adds one or more messages to the topic. Returns NOT_FOUND if the topic does
-   * not exist. The message payload must not be empty; it must contain either a
-   * non-empty data field, or at least one attribute.
+   * Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic
+   * does not exist. The message payload must not be empty; it must contain
+   * either a non-empty data field, or at least one attribute.
    *
    * [request] - The metadata request object.
    *
@@ -868,8 +868,8 @@ class ProjectsTopicsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
-   * Resource is usually specified as a path, such as,
-   * projects/{project}/zones/{zone}/disks/{disk}.
+   * `resource` is usually specified as a path, such as,
+   * `projects/{project}/zones/{zone}/disks/{disk}`.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [Policy].
@@ -915,8 +915,8 @@ class ProjectsTopicsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy detail is being
-   * requested. Resource is usually specified as a path, such as,
-   * projects/{project}.
+   * requested. `resource` is usually specified as a path, such as,
+   * `projects/{project}`.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -974,9 +974,9 @@ class ProjectsTopicsSubscriptionsResourceApi {
    * [pageSize] - Maximum number of subscription names to return.
    *
    * [pageToken] - The value returned by the last
-   * ListTopicSubscriptionsResponse; indicates that this is a continuation of a
-   * prior ListTopicSubscriptions call, and that the system should return the
-   * next page of data.
+   * `ListTopicSubscriptionsResponse`; indicates that this is a continuation of
+   * a prior `ListTopicSubscriptions` call, and that the system should return
+   * the next page of data.
    *
    * Completes with a [ListTopicSubscriptionsResponse].
    *
@@ -1024,7 +1024,7 @@ class ProjectsTopicsSubscriptionsResourceApi {
 class AcknowledgeRequest {
   /**
    * The acknowledgment ID for the messages being acknowledged that was returned
-   * by the Pub/Sub system in the Pull response. Must not be empty.
+   * by the Pub/Sub system in the `Pull` response. Must not be empty.
    */
   core.List<core.String> ackIds;
 
@@ -1045,22 +1045,27 @@ class AcknowledgeRequest {
   }
 }
 
-/** Associates members with roles. See below for allowed formats of members. */
+/** Associates `members` with a `role`. */
 class Binding {
   /**
-   * Format of member entries: 1. allUsers Matches any requesting principal
-   * (users, service accounts or anonymous). 2. allAuthenticatedUsers Matches
-   * any requesting authenticated principal (users or service accounts). 3.
-   * user:{emailid} A google user account using an email address. For example
-   * alice@gmail.com, joe@example.com 4. serviceAccount:{emailid} An service
-   * account email. 5. group:{emailid} A google group with an email address. For
-   * example auth-ti-cloud@google.com 6. domain:{domain} A Google Apps domain
-   * name. For example google.com, example.com
+   * Specifies the identities requesting access for a Cloud Platform resource.
+   * `members` can have the following formats: * `allUsers`: A special
+   * identifier that represents anyone who is on the internet; with or without a
+   * Google account. * `allAuthenticatedUsers`: A special identifier that
+   * represents anyone who is authenticated with a Google account or a service
+   * account. * `user:{emailid}`: An email address that represents a specific
+   * Google account. For example, `alice@gmail.com` or `joe@example.com`. *
+   * `serviceAccount:{emailid}`: An email address that represents a service
+   * account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+   * `group:{emailid}`: An email address that represents a Google group. For
+   * example, `admins@example.com`. * `domain:{domain}`: A Google Apps domain
+   * name that represents all the users of that domain. For example,
+   * `google.com` or `example.com`.
    */
   core.List<core.String> members;
   /**
-   * The name of the role to which the members should be bound. Examples:
-   * "roles/viewer", "roles/editor", "roles/owner". Required
+   * Role that is assigned to `members`. For example, `roles/viewer`,
+   * `roles/editor`, or `roles/owner`. Required
    */
   core.String role;
 
@@ -1107,11 +1112,11 @@ class Empty {
   }
 }
 
-/** Response for the ListSubscriptions method. */
+/** Response for the `ListSubscriptions` method. */
 class ListSubscriptionsResponse {
   /**
    * If not empty, indicates that there may be more subscriptions that match the
-   * request; this value should be passed in a new ListSubscriptionsRequest to
+   * request; this value should be passed in a new `ListSubscriptionsRequest` to
    * get more subscriptions.
    */
   core.String nextPageToken;
@@ -1141,12 +1146,12 @@ class ListSubscriptionsResponse {
   }
 }
 
-/** Response for the ListTopicSubscriptions method. */
+/** Response for the `ListTopicSubscriptions` method. */
 class ListTopicSubscriptionsResponse {
   /**
    * If not empty, indicates that there may be more subscriptions that match the
-   * request; this value should be passed in a new ListTopicSubscriptionsRequest
-   * to get more subscriptions.
+   * request; this value should be passed in a new
+   * `ListTopicSubscriptionsRequest` to get more subscriptions.
    */
   core.String nextPageToken;
   /** The names of the subscriptions that match the request. */
@@ -1175,11 +1180,11 @@ class ListTopicSubscriptionsResponse {
   }
 }
 
-/** Response for the ListTopics method. */
+/** Response for the `ListTopics` method. */
 class ListTopicsResponse {
   /**
    * If not empty, indicates that there may be more topics that match the
-   * request; this value should be passed in a new ListTopicsRequest.
+   * request; this value should be passed in a new `ListTopicsRequest`.
    */
   core.String nextPageToken;
   /** The resulting topics. */
@@ -1213,9 +1218,9 @@ class ModifyAckDeadlineRequest {
   /**
    * The new ack deadline with respect to the time this request was sent to the
    * Pub/Sub system. Must be >= 0. For example, if the value is 10, the new ack
-   * deadline will expire 10 seconds after the ModifyAckDeadline call was made.
-   * Specifying zero may immediately make the message available for another pull
-   * request.
+   * deadline will expire 10 seconds after the `ModifyAckDeadline` call was
+   * made. Specifying zero may immediately make the message available for
+   * another pull request.
    */
   core.int ackDeadlineSeconds;
   /**
@@ -1258,10 +1263,10 @@ class ModifyAckDeadlineRequest {
 /** Request for the ModifyPushConfig method. */
 class ModifyPushConfigRequest {
   /**
-   * The push configuration for future deliveries. An empty pushConfig indicates
-   * that the Pub/Sub system should stop pushing messages from the given
-   * subscription and allow messages to be pulled and acknowledged - effectively
-   * pausing the subscription if Pull is not called.
+   * The push configuration for future deliveries. An empty `pushConfig`
+   * indicates that the Pub/Sub system should stop pushing messages from the
+   * given subscription and allow messages to be pulled and acknowledged -
+   * effectively pausing the subscription if `Pull` is not called.
    */
   PushConfig pushConfig;
 
@@ -1283,25 +1288,23 @@ class ModifyPushConfigRequest {
 }
 
 /**
- * # Overview The `Policy` defines an access control policy language. It is used
- * to define policies that are attached to resources like files, folders, VMs,
- * etc. # Policy structure A `Policy` consists of a list of bindings. A
- * `Binding` binds a set of members to a role, where the members include user
- * accounts, user groups, user domains, and service accounts. A 'role' is a
- * named set of permissions, defined by IAM. The definition of a role is outside
- * the policy. A permission check first determines the roles that include the
- * specified permission, and then determines if the principal specified is a
- * member of a binding to at least one of these roles. The membership check is
- * recursive when a group is bound to a role. Policy examples: ``` { "bindings":
- * [ { "role": "roles/owner", "members": [ "user:mike@example.com",
- * "group:admins@example.com", "domain:google.com",
- * "serviceAccount:frontend@example.iam.gserviceaccounts.com"] }, { "role":
- * "roles/viewer", "members": ["user:sean@example.com"] } ] } ```
+ * Defines an Identity and Access Management (IAM) policy. It is used to specify
+ * access control policies for Cloud Platform resources. A `Policy` consists of
+ * a list of `bindings`. A `Binding` binds a list of `members` to a `role`,
+ * where the members can be user accounts, Google groups, Google domains, and
+ * service accounts. A `role` is a named list of permissions defined by IAM.
+ * **Example** { "bindings": [ { "role": "roles/owner", "members": [
+ * "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+ * "serviceAccount:my-other-app@appspot.gserviceaccount.com"] }, { "role":
+ * "roles/viewer", "members": ["user:sean@example.com"] } ] } For a description
+ * of IAM and its features, see the [IAM developer's
+ * guide](https://cloud.google.com/iam).
  */
 class Policy {
   /**
-   * It is an error to specify multiple bindings for the same role. It is an
-   * error to specify a binding with no members.
+   * Associates a list of `members` to a `role`. Multiple `bindings` must not be
+   * specified for the same `role`. `bindings` with no members will result in an
+   * error.
    */
   core.List<Binding> bindings;
   /** Can be used to perform a read-modify-write. */
@@ -1313,10 +1316,7 @@ class Policy {
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-  /**
-   * The policy language version. The version of the policy is represented by
-   * the etag. The default version is 0.
-   */
+  /** Version of the `Policy`. The default version is 0. */
   core.int version;
 
   Policy();
@@ -1370,7 +1370,7 @@ class PublishRequest {
   }
 }
 
-/** Response for the Publish method. */
+/** Response for the `Publish` method. */
 class PublishResponse {
   /**
    * The server-assigned ID of each published message, in the same order as the
@@ -1417,8 +1417,8 @@ class PubsubMessage {
   /**
    * ID of this message assigned by the server at publication time. Guaranteed
    * to be unique within the topic. This value may be read by a subscriber that
-   * receives a PubsubMessage via a Pull call or a push delivery. It must not be
-   * populated by a publisher in a Publish call.
+   * receives a `PubsubMessage` via a `Pull` call or a push delivery. It must
+   * not be populated by a publisher in a `Publish` call.
    */
   core.String messageId;
 
@@ -1451,7 +1451,7 @@ class PubsubMessage {
   }
 }
 
-/** Request for the Pull method. */
+/** Request for the `Pull` method. */
 class PullRequest {
   /**
    * The maximum number of messages returned for this request. The Pub/Sub
@@ -1460,10 +1460,10 @@ class PullRequest {
   core.int maxMessages;
   /**
    * If this is specified as true the system will respond immediately even if it
-   * is not able to return a message in the Pull response. Otherwise the system
-   * is allowed to wait until at least one message is available rather than
-   * returning no messages. The client may cancel the request if it does not
-   * wish to wait any longer for the response.
+   * is not able to return a message in the `Pull` response. Otherwise the
+   * system is allowed to wait until at least one message is available rather
+   * than returning no messages. The client may cancel the request if it does
+   * not wish to wait any longer for the response.
    */
   core.bool returnImmediately;
 
@@ -1490,12 +1490,12 @@ class PullRequest {
   }
 }
 
-/** Response for the Pull method. */
+/** Response for the `Pull` method. */
 class PullResponse {
   /**
    * Received Pub/Sub messages. The Pub/Sub system will return zero messages if
    * there are no more available in the backlog. The Pub/Sub system may return
-   * fewer than the maxMessages requested even if there are more messages
+   * fewer than the `maxMessages` requested even if there are more messages
    * available in the backlog.
    */
   core.List<ReceivedMessage> receivedMessages;
@@ -1527,13 +1527,13 @@ class PushConfig {
    * indicates the version of the data expected by the endpoint. This controls
    * the shape of the envelope (i.e. its fields and metadata). The endpoint
    * version is based on the version of the Pub/Sub API. If not present during
-   * the CreateSubscription call, it will default to the version of the API used
-   * to make such call. If not present during a ModifyPushConfig call, its value
-   * will not be changed. GetSubscription calls will always return a valid
-   * version, even if the subscription was created without this attribute. The
-   * possible values for this attribute are: * `v1beta1`: uses the push format
-   * defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push
-   * format defined in the v1 Pub/Sub API.
+   * the `CreateSubscription` call, it will default to the version of the API
+   * used to make such call. If not present during a `ModifyPushConfig` call,
+   * its value will not be changed. `GetSubscription` calls will always return a
+   * valid version, even if the subscription was created without this attribute.
+   * The possible values for this attribute are: * `v1beta1`: uses the push
+   * format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the
+   * push format defined in the v1 Pub/Sub API.
    */
   core.Map<core.String, core.String> attributes;
   /**
@@ -1598,9 +1598,9 @@ class ReceivedMessage {
 /** Request message for `SetIamPolicy` method. */
 class SetIamPolicyRequest {
   /**
-   * REQUIRED: The complete policy to be applied to the 'resource'. The size of
-   * the policy is limited to a few 10s of KB. An empty policy is in general a
-   * valid policy but certain services (like Projects) might reject them.
+   * REQUIRED: The complete policy to be applied to the `resource`. The size of
+   * the policy is limited to a few 10s of KB. An empty policy is a valid policy
+   * but certain Cloud Platform services (such as Projects) might reject them.
    */
   Policy policy;
 
@@ -1630,7 +1630,7 @@ class Subscription {
    * is an outstanding message and will not be delivered again during that time
    * (on a best-effort basis). For pull delivery this value is used as the
    * initial value for the ack deadline. To override this value for a given
-   * message, call ModifyAckDeadline with the corresponding ack_id. For push
+   * message, call `ModifyAckDeadline` with the corresponding `ack_id`. For push
    * delivery, this value is also used to set the request timeout for the call
    * to the push endpoint. If the subscriber never acknowledges the message, the
    * Pub/Sub system will eventually redeliver the message. If this parameter is
@@ -1648,7 +1648,7 @@ class Subscription {
   core.String name;
   /**
    * If push delivery is used with this subscription, this field is used to
-   * configure it. An empty pushConfig signifies that the subscriber will pull
+   * configure it. An empty `pushConfig` signifies that the subscriber will pull
    * and ack messages using API methods.
    */
   PushConfig pushConfig;
@@ -1697,7 +1697,7 @@ class Subscription {
 /** Request message for `TestIamPermissions` method. */
 class TestIamPermissionsRequest {
   /**
-   * The set of permissions to check for the 'resource'. Permissions with
+   * The set of permissions to check for the `resource`. Permissions with
    * wildcards (such as '*' or 'storage.*') are not allowed.
    */
   core.List<core.String> permissions;

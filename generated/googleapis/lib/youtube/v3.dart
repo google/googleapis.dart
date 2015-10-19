@@ -13826,7 +13826,10 @@ class TokenPagination {
 
 /** A video resource represents a YouTube video. */
 class Video {
-  /** Age restriction details related to a video. */
+  /**
+   * Age restriction details related to a video. This data can only be retrieved
+   * by the video owner.
+   */
   VideoAgeGating ageGating;
   /**
    * The contentDetails object contains information about the video content,

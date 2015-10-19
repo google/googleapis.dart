@@ -17,7 +17,7 @@
     "description": "Provides reliable, many-to-many, asynchronous messaging between applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/pubsub/docs",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/s-u3NPfHPprAPtZF56gCDlMWM1U\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/bZNz6VUa9sqtr0UjT-GTq4xvg0E\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -121,7 +121,7 @@
                             ],
                             "parameters": {
                                 "resource": {
-                                    "description": "REQUIRED: The resource for which policy is being specified. Resource is usually specified as a path, such as, projects/{project}/zones/{zone}/disks/{disk}.",
+                                    "description": "REQUIRED: The resource for which policy is being specified. `resource` is usually specified as a path, such as, `projects/{project}/zones/{zone}/disks/{disk}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]*/topics/[^/]*$",
                                     "required": true,
@@ -141,7 +141,7 @@
                             ]
                         },
                         "getIamPolicy": {
-                            "description": "Gets the access control policy for a resource. Is empty if the policy or the resource does not exist.",
+                            "description": "Gets the access control policy for a `resource`. Is empty if the policy or the resource does not exist.",
                             "httpMethod": "GET",
                             "id": "pubsub.projects.topics.getIamPolicy",
                             "parameterOrder": [
@@ -149,7 +149,7 @@
                             ],
                             "parameters": {
                                 "resource": {
-                                    "description": "REQUIRED: The resource for which policy is being requested. Resource is usually specified as a path, such as, projects/{project}.",
+                                    "description": "REQUIRED: The resource for which policy is being requested. Resource is usually specified as a path, such as, `projects/{project}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]*/topics/[^/]*$",
                                     "required": true,
@@ -174,7 +174,7 @@
                             ],
                             "parameters": {
                                 "resource": {
-                                    "description": "REQUIRED: The resource for which policy detail is being requested. Resource is usually specified as a path, such as, projects/{project}.",
+                                    "description": "REQUIRED: The resource for which policy detail is being requested. `resource` is usually specified as a path, such as, `projects/{project}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]*/topics/[^/]*$",
                                     "required": true,
@@ -222,7 +222,7 @@
                             ]
                         },
                         "publish": {
-                            "description": "Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist. The message payload must not be empty; it must contain either a non-empty data field, or at least one attribute.",
+                            "description": "Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic does not exist. The message payload must not be empty; it must contain either a non-empty data field, or at least one attribute.",
                             "httpMethod": "POST",
                             "id": "pubsub.projects.topics.publish",
                             "parameterOrder": [
@@ -296,7 +296,7 @@
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "The value returned by the last ListTopicsResponse; indicates that this is a continuation of a prior ListTopics call, and that the system should return the next page of data.",
+                                    "description": "The value returned by the last `ListTopicsResponse`; indicates that this is a continuation of a prior `ListTopics` call, and that the system should return the next page of data.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -311,7 +311,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes the topic with the given name. Returns NOT_FOUND if the topic does not exist. After a topic is deleted, a new topic may be created with the same name; this is an entirely new topic with none of the old configuration or subscriptions. Existing subscriptions to this topic are not deleted, but their `topic` field is set to `_deleted-topic_`.",
+                            "description": "Deletes the topic with the given name. Returns `NOT_FOUND` if the topic does not exist. After a topic is deleted, a new topic may be created with the same name; this is an entirely new topic with none of the old configuration or subscriptions. Existing subscriptions to this topic are not deleted, but their `topic` field is set to `_deleted-topic_`.",
                             "httpMethod": "DELETE",
                             "id": "pubsub.projects.topics.delete",
                             "parameterOrder": [
@@ -361,7 +361,7 @@
                                             "type": "integer"
                                         },
                                         "pageToken": {
-                                            "description": "The value returned by the last ListTopicSubscriptionsResponse; indicates that this is a continuation of a prior ListTopicSubscriptions call, and that the system should return the next page of data.",
+                                            "description": "The value returned by the last `ListTopicSubscriptionsResponse`; indicates that this is a continuation of a prior `ListTopicSubscriptions` call, and that the system should return the next page of data.",
                                             "location": "query",
                                             "type": "string"
                                         }
@@ -390,7 +390,7 @@
                             ],
                             "parameters": {
                                 "resource": {
-                                    "description": "REQUIRED: The resource for which policy is being specified. Resource is usually specified as a path, such as, projects/{project}/zones/{zone}/disks/{disk}.",
+                                    "description": "REQUIRED: The resource for which policy is being specified. `resource` is usually specified as a path, such as, `projects/{project}/zones/{zone}/disks/{disk}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]*/subscriptions/[^/]*$",
                                     "required": true,
@@ -410,7 +410,7 @@
                             ]
                         },
                         "getIamPolicy": {
-                            "description": "Gets the access control policy for a resource. Is empty if the policy or the resource does not exist.",
+                            "description": "Gets the access control policy for a `resource`. Is empty if the policy or the resource does not exist.",
                             "httpMethod": "GET",
                             "id": "pubsub.projects.subscriptions.getIamPolicy",
                             "parameterOrder": [
@@ -418,7 +418,7 @@
                             ],
                             "parameters": {
                                 "resource": {
-                                    "description": "REQUIRED: The resource for which policy is being requested. Resource is usually specified as a path, such as, projects/{project}.",
+                                    "description": "REQUIRED: The resource for which policy is being requested. Resource is usually specified as a path, such as, `projects/{project}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]*/subscriptions/[^/]*$",
                                     "required": true,
@@ -443,7 +443,7 @@
                             ],
                             "parameters": {
                                 "resource": {
-                                    "description": "REQUIRED: The resource for which policy detail is being requested. Resource is usually specified as a path, such as, projects/{project}.",
+                                    "description": "REQUIRED: The resource for which policy detail is being requested. `resource` is usually specified as a path, such as, `projects/{project}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]*/subscriptions/[^/]*$",
                                     "required": true,
@@ -463,7 +463,7 @@
                             ]
                         },
                         "create": {
-                            "description": "Creates a subscription to a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic.",
+                            "description": "Creates a subscription to a given topic for a given subscriber. If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic.",
                             "httpMethod": "PUT",
                             "id": "pubsub.projects.subscriptions.create",
                             "parameterOrder": [
@@ -537,7 +537,7 @@
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "The value returned by the last ListSubscriptionsResponse; indicates that this is a continuation of a prior ListSubscriptions call, and that the system should return the next page of data.",
+                                    "description": "The value returned by the last `ListSubscriptionsResponse`; indicates that this is a continuation of a prior `ListSubscriptions` call, and that the system should return the next page of data.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -552,7 +552,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to Pull after deletion will return NOT_FOUND. After a subscription is deleted, a new one may be created with the same name, but the new one has no association with the old subscription, or its topic unless the same topic is specified.",
+                            "description": "Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to `Pull` after deletion will return `NOT_FOUND`. After a subscription is deleted, a new one may be created with the same name, but the new one has no association with the old subscription, or its topic unless the same topic is specified.",
                             "httpMethod": "DELETE",
                             "id": "pubsub.projects.subscriptions.delete",
                             "parameterOrder": [
@@ -605,7 +605,7 @@
                             ]
                         },
                         "acknowledge": {
-                            "description": "Acknowledges the messages associated with the ack tokens in the AcknowledgeRequest. The Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message more than once will not result in an error.",
+                            "description": "Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message more than once will not result in an error.",
                             "httpMethod": "POST",
                             "id": "pubsub.projects.subscriptions.acknowledge",
                             "parameterOrder": [
@@ -633,7 +633,7 @@
                             ]
                         },
                         "pull": {
-                            "description": "Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The server may return UNAVAILABLE if there are too many concurrent pull requests pending for the given subscription.",
+                            "description": "Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The server may return `UNAVAILABLE` if there are too many concurrent pull requests pending for the given subscription.",
                             "httpMethod": "POST",
                             "id": "pubsub.projects.subscriptions.pull",
                             "parameterOrder": [
@@ -661,7 +661,7 @@
                             ]
                         },
                         "modifyPushConfig": {
-                            "description": "Modifies the PushConfig for a specified subscription. This may be used to change a push subscription to a pull one (signified by an empty PushConfig) or vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will accumulate for delivery continuously through the call regardless of changes to the PushConfig.",
+                            "description": "Modifies the `PushConfig` for a specified subscription. This may be used to change a push subscription to a pull one (signified by an empty `PushConfig`) or vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will accumulate for delivery continuously through the call regardless of changes to the `PushConfig`.",
                             "httpMethod": "POST",
                             "id": "pubsub.projects.subscriptions.modifyPushConfig",
                             "parameterOrder": [
@@ -693,7 +693,7 @@
             }
         }
     },
-    "revision": "20150427",
+    "revision": "20150526",
     "rootUrl": "https://pubsub.googleapis.com/",
     "schemas": {
         "SetIamPolicyRequest": {
@@ -702,22 +702,22 @@
             "properties": {
                 "policy": {
                     "$ref": "Policy",
-                    "description": "REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them."
+                    "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
                 }
             },
             "type": "object"
         },
         "Policy": {
-            "description": "# Overview The `Policy` defines an access control policy language. It is used to define policies that are attached to resources like files, folders, VMs, etc. # Policy structure A `Policy` consists of a list of bindings. A `Binding` binds a set of members to a role, where the members include user accounts, user groups, user domains, and service accounts. A 'role' is a named set of permissions, defined by IAM. The definition of a role is outside the policy. A permission check first determines the roles that include the specified permission, and then determines if the principal specified is a member of a binding to at least one of these roles. The membership check is recursive when a group is bound to a role. Policy examples: ``` { \"bindings\": [ { \"role\": \"roles/owner\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:frontend@example.iam.gserviceaccounts.com\"] }, { \"role\": \"roles/viewer\", \"members\": [\"user:sean@example.com\"] } ] } ```",
+            "description": "Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies for Cloud Platform resources. A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of permissions defined by IAM. **Example** { \"bindings\": [ { \"role\": \"roles/owner\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"] }, { \"role\": \"roles/viewer\", \"members\": [\"user:sean@example.com\"] } ] } For a description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam).",
             "id": "Policy",
             "properties": {
                 "version": {
-                    "description": "The policy language version. The version of the policy is represented by the etag. The default version is 0.",
+                    "description": "Version of the `Policy`. The default version is 0.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "bindings": {
-                    "description": "It is an error to specify multiple bindings for the same role. It is an error to specify a binding with no members.",
+                    "description": "Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same `role`. `bindings` with no members will result in an error.",
                     "items": {
                         "$ref": "Binding"
                     },
@@ -732,15 +732,15 @@
             "type": "object"
         },
         "Binding": {
-            "description": "Associates members with roles. See below for allowed formats of members.",
+            "description": "Associates `members` with a `role`.",
             "id": "Binding",
             "properties": {
                 "role": {
-                    "description": "The name of the role to which the members should be bound. Examples: \"roles/viewer\", \"roles/editor\", \"roles/owner\". Required",
+                    "description": "Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. Required",
                     "type": "string"
                 },
                 "members": {
-                    "description": "Format of member entries: 1. allUsers Matches any requesting principal (users, service accounts or anonymous). 2. allAuthenticatedUsers Matches any requesting authenticated principal (users or service accounts). 3. user:{emailid} A google user account using an email address. For example alice@gmail.com, joe@example.com 4. serviceAccount:{emailid} An service account email. 5. group:{emailid} A google group with an email address. For example auth-ti-cloud@google.com 6. domain:{domain} A Google Apps domain name. For example google.com, example.com",
+                    "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following formats: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@gmail.com` or `joe@example.com`. * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example, `google.com` or `example.com`.",
                     "items": {
                         "type": "string"
                     },
@@ -754,7 +754,7 @@
             "id": "TestIamPermissionsRequest",
             "properties": {
                 "permissions": {
-                    "description": "The set of permissions to check for the 'resource'. Permissions with wildcards (such as '*' or 'storage.*') are not allowed.",
+                    "description": "The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*') are not allowed.",
                     "items": {
                         "type": "string"
                     },
@@ -819,14 +819,14 @@
                     "type": "object"
                 },
                 "messageId": {
-                    "description": "ID of this message assigned by the server at publication time. Guaranteed to be unique within the topic. This value may be read by a subscriber that receives a PubsubMessage via a Pull call or a push delivery. It must not be populated by a publisher in a Publish call.",
+                    "description": "ID of this message assigned by the server at publication time. Guaranteed to be unique within the topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call or a push delivery. It must not be populated by a publisher in a `Publish` call.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "PublishResponse": {
-            "description": "Response for the Publish method.",
+            "description": "Response for the `Publish` method.",
             "id": "PublishResponse",
             "properties": {
                 "messageIds": {
@@ -840,7 +840,7 @@
             "type": "object"
         },
         "ListTopicsResponse": {
-            "description": "Response for the ListTopics method.",
+            "description": "Response for the `ListTopics` method.",
             "id": "ListTopicsResponse",
             "properties": {
                 "topics": {
@@ -851,14 +851,14 @@
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "If not empty, indicates that there may be more topics that match the request; this value should be passed in a new ListTopicsRequest.",
+                    "description": "If not empty, indicates that there may be more topics that match the request; this value should be passed in a new `ListTopicsRequest`.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "ListTopicSubscriptionsResponse": {
-            "description": "Response for the ListTopicSubscriptions method.",
+            "description": "Response for the `ListTopicSubscriptions` method.",
             "id": "ListTopicSubscriptionsResponse",
             "properties": {
                 "subscriptions": {
@@ -869,7 +869,7 @@
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "If not empty, indicates that there may be more subscriptions that match the request; this value should be passed in a new ListTopicSubscriptionsRequest to get more subscriptions.",
+                    "description": "If not empty, indicates that there may be more subscriptions that match the request; this value should be passed in a new `ListTopicSubscriptionsRequest` to get more subscriptions.",
                     "type": "string"
                 }
             },
@@ -894,10 +894,10 @@
                 },
                 "pushConfig": {
                     "$ref": "PushConfig",
-                    "description": "If push delivery is used with this subscription, this field is used to configure it. An empty pushConfig signifies that the subscriber will pull and ack messages using API methods."
+                    "description": "If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods."
                 },
                 "ackDeadlineSeconds": {
-                    "description": "This value is the maximum time after a subscriber receives a message before the subscriber should acknowledge the message. After message delivery but before the ack deadline expires and before the message is acknowledged, it is an outstanding message and will not be delivered again during that time (on a best-effort basis). For pull delivery this value is used as the initial value for the ack deadline. To override this value for a given message, call ModifyAckDeadline with the corresponding ack_id. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message. If this parameter is not set, the default value of 10 seconds is used.",
+                    "description": "This value is the maximum time after a subscriber receives a message before the subscriber should acknowledge the message. After message delivery but before the ack deadline expires and before the message is acknowledged, it is an outstanding message and will not be delivered again during that time (on a best-effort basis). For pull delivery this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id`. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message. If this parameter is not set, the default value of 10 seconds is used.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -916,14 +916,14 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the CreateSubscription call, it will default to the version of the API used to make such call. If not present during a ModifyPushConfig call, its value will not be changed. GetSubscription calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.",
+                    "description": "Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.",
                     "type": "object"
                 }
             },
             "type": "object"
         },
         "ListSubscriptionsResponse": {
-            "description": "Response for the ListSubscriptions method.",
+            "description": "Response for the `ListSubscriptions` method.",
             "id": "ListSubscriptionsResponse",
             "properties": {
                 "subscriptions": {
@@ -934,7 +934,7 @@
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "If not empty, indicates that there may be more subscriptions that match the request; this value should be passed in a new ListSubscriptionsRequest to get more subscriptions.",
+                    "description": "If not empty, indicates that there may be more subscriptions that match the request; this value should be passed in a new `ListSubscriptionsRequest` to get more subscriptions.",
                     "type": "string"
                 }
             },
@@ -956,7 +956,7 @@
                     "type": "array"
                 },
                 "ackDeadlineSeconds": {
-                    "description": "The new ack deadline with respect to the time this request was sent to the Pub/Sub system. Must be >= 0. For example, if the value is 10, the new ack deadline will expire 10 seconds after the ModifyAckDeadline call was made. Specifying zero may immediately make the message available for another pull request.",
+                    "description": "The new ack deadline with respect to the time this request was sent to the Pub/Sub system. Must be >= 0. For example, if the value is 10, the new ack deadline will expire 10 seconds after the `ModifyAckDeadline` call was made. Specifying zero may immediately make the message available for another pull request.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -968,7 +968,7 @@
             "id": "AcknowledgeRequest",
             "properties": {
                 "ackIds": {
-                    "description": "The acknowledgment ID for the messages being acknowledged that was returned by the Pub/Sub system in the Pull response. Must not be empty.",
+                    "description": "The acknowledgment ID for the messages being acknowledged that was returned by the Pub/Sub system in the `Pull` response. Must not be empty.",
                     "items": {
                         "type": "string"
                     },
@@ -978,11 +978,11 @@
             "type": "object"
         },
         "PullRequest": {
-            "description": "Request for the Pull method.",
+            "description": "Request for the `Pull` method.",
             "id": "PullRequest",
             "properties": {
                 "returnImmediately": {
-                    "description": "If this is specified as true the system will respond immediately even if it is not able to return a message in the Pull response. Otherwise the system is allowed to wait until at least one message is available rather than returning no messages. The client may cancel the request if it does not wish to wait any longer for the response.",
+                    "description": "If this is specified as true the system will respond immediately even if it is not able to return a message in the `Pull` response. Otherwise the system is allowed to wait until at least one message is available rather than returning no messages. The client may cancel the request if it does not wish to wait any longer for the response.",
                     "type": "boolean"
                 },
                 "maxMessages": {
@@ -994,11 +994,11 @@
             "type": "object"
         },
         "PullResponse": {
-            "description": "Response for the Pull method.",
+            "description": "Response for the `Pull` method.",
             "id": "PullResponse",
             "properties": {
                 "receivedMessages": {
-                    "description": "Received Pub/Sub messages. The Pub/Sub system will return zero messages if there are no more available in the backlog. The Pub/Sub system may return fewer than the maxMessages requested even if there are more messages available in the backlog.",
+                    "description": "Received Pub/Sub messages. The Pub/Sub system will return zero messages if there are no more available in the backlog. The Pub/Sub system may return fewer than the `maxMessages` requested even if there are more messages available in the backlog.",
                     "items": {
                         "$ref": "ReceivedMessage"
                     },
@@ -1028,7 +1028,7 @@
             "properties": {
                 "pushConfig": {
                     "$ref": "PushConfig",
-                    "description": "The push configuration for future deliveries. An empty pushConfig indicates that the Pub/Sub system should stop pushing messages from the given subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if Pull is not called."
+                    "description": "The push configuration for future deliveries. An empty `pushConfig` indicates that the Pub/Sub system should stop pushing messages from the given subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if `Pull` is not called."
                 }
             },
             "type": "object"

@@ -50,6 +50,7 @@ class ProjectsResourceApi {
 
   ProjectsLogServicesResourceApi get logServices => new ProjectsLogServicesResourceApi(_requester);
   ProjectsLogsResourceApi get logs => new ProjectsLogsResourceApi(_requester);
+  ProjectsMetricsResourceApi get metrics => new ProjectsMetricsResourceApi(_requester);
   ProjectsSinksResourceApi get sinks => new ProjectsSinksResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : 
@@ -74,13 +75,6 @@ class ProjectsLogServicesResourceApi {
    * [projectsId] - Part of `projectName`. The resource name of the project
    * whose services are to be listed.
    *
-   * [log] - If empty, all log services contributing log entries to the project
-   * are listed. Otherwise, this field must be the resource name of a log, such
-   * as `"projects/my-project/appengine.googleapis.com%2Frequest_log"`, and then
-   * the only services listed are those associated with entries in the log. A
-   * service is associated with an entry if its name is in the entry's
-   * `LogEntryMetadata.serviceName` field.
-   *
    * [pageSize] - The maximum number of `LogService` objects to return in one
    * operation.
    *
@@ -97,7 +91,7 @@ class ProjectsLogServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogServicesResponse> list(core.String projectsId, {core.String log, core.int pageSize, core.String pageToken}) {
+  async.Future<ListLogServicesResponse> list(core.String projectsId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -107,9 +101,6 @@ class ProjectsLogServicesResourceApi {
 
     if (projectsId == null) {
       throw new core.ArgumentError("Parameter projectsId is required.");
-    }
-    if (log != null) {
-      _queryParams["log"] = [log];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -152,15 +143,14 @@ class ProjectsLogServicesIndexesResourceApi {
    *
    * [indexPrefix] - Restricts the index values returned to be those with a
    * specified prefix for each index key. This field has the form
-   * `"/prefix1/prefix2/..."`, in order corresponding to the [`LogService
-   * indexKeys`][google.logging.v1.LogService.index_keys]. Non-empty prefixes
-   * must begin with `/`. For example, App Engine's two keys are the module ID
-   * and the version ID. Following is the effect of using various values for
-   * `indexPrefix`: + `"/Mod/"` retrieves `/Mod/10` and `/Mod/11` but not
-   * `/ModA/10`. + `"/Mod` retrieves `/Mod/10`, `/Mod/11` and `/ModA/10` but not
-   * `/XXX/33`. + `"/Mod/1"` retrieves `/Mod/10` and `/Mod/11` but not
-   * `/ModA/10`. + `"/Mod/10/"` retrieves `/Mod/10` only. + An empty prefix or
-   * `"/"` retrieves all values.
+   * `"/prefix1/prefix2/..."`, in order corresponding to the `LogService
+   * indexKeys`. Non-empty prefixes must begin with `/`. For example, App
+   * Engine's two keys are the module ID and the version ID. Following is the
+   * effect of using various values for `indexPrefix`: + `"/Mod/"` retrieves
+   * `/Mod/10` and `/Mod/11` but not `/ModA/10`. + `"/Mod` retrieves `/Mod/10`,
+   * `/Mod/11` and `/ModA/10` but not `/XXX/33`. + `"/Mod/1"` retrieves
+   * `/Mod/10` and `/Mod/11` but not `/ModA/10`. + `"/Mod/10/"` retrieves
+   * `/Mod/10` only. + An empty prefix or `"/"` retrieves all values.
    *
    * [depth] - A non-negative integer that limits the number of levels of the
    * index hierarchy that are returned. If `depth` is 1 (default), only the
@@ -170,10 +160,6 @@ class ProjectsLogServicesIndexesResourceApi {
    * appearing as the last character of the prefix. If the `indexPrefix` field
    * is empty, the default depth is 1. It is an error for `depth` to be any
    * positive value less than the number of components in `indexPrefix`.
-   *
-   * [log] - _Optional_. The resource name of a log, such as
-   * `"projects/project_id/logs/log_name"`. If present, indexes are returned for
-   * any service associated with entries in the log.
    *
    * [pageSize] - The maximum number of log service index resources to return in
    * one operation.
@@ -191,7 +177,7 @@ class ProjectsLogServicesIndexesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogServiceIndexesResponse> list(core.String projectsId, core.String logServicesId, {core.String indexPrefix, core.int depth, core.String log, core.int pageSize, core.String pageToken}) {
+  async.Future<ListLogServiceIndexesResponse> list(core.String projectsId, core.String logServicesId, {core.String indexPrefix, core.int depth, core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -210,9 +196,6 @@ class ProjectsLogServicesIndexesResourceApi {
     }
     if (depth != null) {
       _queryParams["depth"] = ["${depth}"];
-    }
-    if (log != null) {
-      _queryParams["log"] = [log];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -951,6 +934,254 @@ class ProjectsLogsSinksResourceApi {
 }
 
 
+class ProjectsMetricsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsMetricsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Create the specified log metric resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectsId] - Part of `projectName`. The resource name of the project in
+   * which to create the metric.
+   *
+   * Completes with a [LogMetric].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LogMetric> create(LogMetric request, core.String projectsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectsId == null) {
+      throw new core.ArgumentError("Parameter projectsId is required.");
+    }
+
+    _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/metrics';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogMetric.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified log metric.
+   *
+   * Request parameters:
+   *
+   * [projectsId] - Part of `metricName`. The resource name of the metric to
+   * delete.
+   *
+   * [metricsId] - Part of `metricName`. See documentation of `projectsId`.
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String projectsId, core.String metricsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectsId == null) {
+      throw new core.ArgumentError("Parameter projectsId is required.");
+    }
+    if (metricsId == null) {
+      throw new core.ArgumentError("Parameter metricsId is required.");
+    }
+
+    _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/metrics/' + commons.Escaper.ecapeVariable('$metricsId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * Get the specified log metric resource.
+   *
+   * Request parameters:
+   *
+   * [projectsId] - Part of `metricName`. The resource name of the desired
+   * metric.
+   *
+   * [metricsId] - Part of `metricName`. See documentation of `projectsId`.
+   *
+   * Completes with a [LogMetric].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LogMetric> get(core.String projectsId, core.String metricsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectsId == null) {
+      throw new core.ArgumentError("Parameter projectsId is required.");
+    }
+    if (metricsId == null) {
+      throw new core.ArgumentError("Parameter metricsId is required.");
+    }
+
+    _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/metrics/' + commons.Escaper.ecapeVariable('$metricsId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogMetric.fromJson(data));
+  }
+
+  /**
+   * List log metrics associated with the specified project.
+   *
+   * Request parameters:
+   *
+   * [projectsId] - Part of `projectName`. The resource name for the project
+   * whose metrics are wanted.
+   *
+   * [pageToken] - An opaque token, returned as `nextPageToken` by a prior
+   * `ListLogMetrics` operation. If `pageToken` is supplied, then the other
+   * fields of this request are ignored, and instead the previous
+   * `ListLogMetrics` operation is continued.
+   *
+   * [pageSize] - The maximum number of `LogMetric` objects to return in one
+   * operation.
+   *
+   * Completes with a [ListLogMetricsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListLogMetricsResponse> list(core.String projectsId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectsId == null) {
+      throw new core.ArgumentError("Parameter projectsId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/metrics';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLogMetricsResponse.fromJson(data));
+  }
+
+  /**
+   * Create or update the specified log metric resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectsId] - Part of `metricName`. The resource name of the metric to
+   * update.
+   *
+   * [metricsId] - Part of `metricName`. See documentation of `projectsId`.
+   *
+   * Completes with a [LogMetric].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LogMetric> update(LogMetric request, core.String projectsId, core.String metricsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectsId == null) {
+      throw new core.ArgumentError("Parameter projectsId is required.");
+    }
+    if (metricsId == null) {
+      throw new core.ArgumentError("Parameter metricsId is required.");
+    }
+
+    _url = 'v1beta3/projects/' + commons.Escaper.ecapeVariable('$projectsId') + '/metrics/' + commons.Escaper.ecapeVariable('$metricsId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogMetric.fromJson(data));
+  }
+
+}
+
+
 class ProjectsSinksResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1211,6 +1442,11 @@ class Empty {
 /** A common proto for logging HTTP requests. */
 class HttpRequest {
   /**
+   * Whether or not an entity was served from cache (with or without
+   * validation).
+   */
+  core.bool cacheHit;
+  /**
    * Referer (a.k.a. referrer) URL of request, as defined in
    * http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html.
    */
@@ -1244,10 +1480,19 @@ class HttpRequest {
    * Windows 98; Q312461; .NET CLR 1.0.3705)".
    */
   core.String userAgent;
+  /**
+   * Whether or not the response was validated with the origin server before
+   * being served from cache. This field is only meaningful if cache_hit is
+   * True.
+   */
+  core.bool validatedWithOriginServer;
 
   HttpRequest();
 
   HttpRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("cacheHit")) {
+      cacheHit = _json["cacheHit"];
+    }
     if (_json.containsKey("referer")) {
       referer = _json["referer"];
     }
@@ -1272,10 +1517,16 @@ class HttpRequest {
     if (_json.containsKey("userAgent")) {
       userAgent = _json["userAgent"];
     }
+    if (_json.containsKey("validatedWithOriginServer")) {
+      validatedWithOriginServer = _json["validatedWithOriginServer"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (cacheHit != null) {
+      _json["cacheHit"] = cacheHit;
+    }
     if (referer != null) {
       _json["referer"] = referer;
     }
@@ -1299,6 +1550,44 @@ class HttpRequest {
     }
     if (userAgent != null) {
       _json["userAgent"] = userAgent;
+    }
+    if (validatedWithOriginServer != null) {
+      _json["validatedWithOriginServer"] = validatedWithOriginServer;
+    }
+    return _json;
+  }
+}
+
+/** Result returned from ListLogMetrics. */
+class ListLogMetricsResponse {
+  /** The list of metrics that was requested. */
+  core.List<LogMetric> metrics;
+  /**
+   * If there are more results, then `nextPageToken` is returned in the
+   * response. To get the next batch of entries, use the value of
+   * `nextPageToken` as `pageToken` in the next call of `ListLogMetrics`. If
+   * `nextPageToken` is empty, then there are no more results.
+   */
+  core.String nextPageToken;
+
+  ListLogMetricsResponse();
+
+  ListLogMetricsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("metrics")) {
+      metrics = _json["metrics"].map((value) => new LogMetric.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (metrics != null) {
+      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }
@@ -1860,6 +2149,56 @@ class LogLine {
   }
 }
 
+/**
+ * Describes a collected, logs-based metric. The value of the metric is the
+ * number of log entries in the project that match the advanced logs filter in
+ * the `filter` field.
+ */
+class LogMetric {
+  /** A description of this metric. */
+  core.String description;
+  /**
+   * An [advanced logs filter](/logging/docs/view/advanced_filters). Example:
+   * `"log:syslog AND metadata.severity>=ERROR"`.
+   */
+  core.String filter;
+  /**
+   * The client-assigned name for this metric, such as `"severe_errors"`. Metric
+   * names are limited to 1000 characters and can include only the following
+   * characters: `-A-Za-z0-9_.,+!*',()%/\`. The slash character `/` implies a
+   * hierarchy of name pieces, and cannot be the first character of the name.
+   */
+  core.String name;
+
+  LogMetric();
+
+  LogMetric.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
 /** _Output only._ Describes a service that writes log entries. */
 class LogService {
   /**
@@ -2368,36 +2707,36 @@ class SourceReference {
  * Simple to use and understand for most users - Flexible enough to meet
  * unexpected needs # Overview The `Status` message contains three pieces of
  * data: error code, error message, and error details. The error code should be
- * an enum value of [google.rpc.Code][], but it may accept additional error
- * codes if needed. The error message should be a developer-facing English
- * message that helps developers *understand* and *resolve* the error. If a
- * localized user-facing error message is needed, put the localized message in
- * the error details or localize it in the client. The optional error details
- * may contain arbitrary information about the error. There is a predefined set
- * of error detail types in the package `google.rpc` which can be used for
- * common error conditions. # Language mapping The `Status` message is the
- * logical representation of the error model, but it is not necessarily the
- * actual wire format. When the `Status` message is exposed in different client
- * libraries and different wire protocols, it can be mapped differently. For
- * example, it will likely be mapped to some exceptions in Java, but more likely
- * mapped to some error codes in C. # Other uses The error model and the
- * `Status` message can be used in a variety of environments, either with or
- * without APIs, to provide a consistent developer experience across different
- * environments. Example uses of this error model include: - Partial errors. If
- * a service needs to return partial errors to the client, it may embed the
- * `Status` in the normal response to indicate the partial errors. - Workflow
- * errors. A typical workflow has multiple steps. Each step may have a `Status`
- * message for error reporting purpose. - Batch operations. If a client uses
- * batch request and batch response, the `Status` message should be used
- * directly inside batch response, one for each error sub-response. -
- * Asynchronous operations. If an API call embeds asynchronous operation results
- * in its response, the status of those operations should be represented
- * directly using the `Status` message. - Logging. If some API errors are stored
- * in logs, the message `Status` could be used directly after any stripping
- * needed for security/privacy reasons.
+ * an enum value of google.rpc.Code, but it may accept additional error codes if
+ * needed. The error message should be a developer-facing English message that
+ * helps developers *understand* and *resolve* the error. If a localized
+ * user-facing error message is needed, put the localized message in the error
+ * details or localize it in the client. The optional error details may contain
+ * arbitrary information about the error. There is a predefined set of error
+ * detail types in the package `google.rpc` which can be used for common error
+ * conditions. # Language mapping The `Status` message is the logical
+ * representation of the error model, but it is not necessarily the actual wire
+ * format. When the `Status` message is exposed in different client libraries
+ * and different wire protocols, it can be mapped differently. For example, it
+ * will likely be mapped to some exceptions in Java, but more likely mapped to
+ * some error codes in C. # Other uses The error model and the `Status` message
+ * can be used in a variety of environments, either with or without APIs, to
+ * provide a consistent developer experience across different environments.
+ * Example uses of this error model include: - Partial errors. If a service
+ * needs to return partial errors to the client, it may embed the `Status` in
+ * the normal response to indicate the partial errors. - Workflow errors. A
+ * typical workflow has multiple steps. Each step may have a `Status` message
+ * for error reporting purpose. - Batch operations. If a client uses batch
+ * request and batch response, the `Status` message should be used directly
+ * inside batch response, one for each error sub-response. - Asynchronous
+ * operations. If an API call embeds asynchronous operation results in its
+ * response, the status of those operations should be represented directly using
+ * the `Status` message. - Logging. If some API errors are stored in logs, the
+ * message `Status` could be used directly after any stripping needed for
+ * security/privacy reasons.
  */
 class Status {
-  /** The status code, which should be an enum value of [google.rpc.Code][]. */
+  /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
    * A list of messages that carry the error details. There will be a common set
@@ -2410,8 +2749,7 @@ class Status {
   /**
    * A developer-facing error message, which should be in English. Any
    * user-facing error message should be localized and sent in the
-   * [google.rpc.Status.details][google.rpc.Status.details] field, or localized
-   * by the client.
+   * google.rpc.Status.details field, or localized by the client.
    */
   core.String message;
 

@@ -212,6 +212,12 @@ A Test API to report latency data.
 
 Official API documentation: 
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Trace API - cloudtrace v1
+
+The Google Cloud Trace API provides services for reading and writing runtime trace data for Cloud applications.
+
+Official API documentation: https://cloud.google.com/tools/cloud-trace
+
 #### ![Logo](https://www.google.com/images/icons/product/compute_engine-16.png) Compute Engine API - compute v1
 
 API for the Google Compute Engine service.

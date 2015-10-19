@@ -22,6 +22,12 @@ const core.String USER_AGENT = 'dart-api-client admin/directory_v1';
  * and more.
  */
 class AdminApi {
+  /** View and manage customer related information */
+  static const AdminDirectoryCustomerScope = "https://www.googleapis.com/auth/admin.directory.customer";
+
+  /** View customer related information */
+  static const AdminDirectoryCustomerReadonlyScope = "https://www.googleapis.com/auth/admin.directory.customer.readonly";
+
   /** View and manage your Chrome OS devices' metadata */
   static const AdminDirectoryDeviceChromeosScope = "https://www.googleapis.com/auth/admin.directory.device.chromeos";
 
@@ -36,6 +42,12 @@ class AdminApi {
 
   /** View your mobile devices' metadata */
   static const AdminDirectoryDeviceMobileReadonlyScope = "https://www.googleapis.com/auth/admin.directory.device.mobile.readonly";
+
+  /** View and manage the provisioning of domains for your customers */
+  static const AdminDirectoryDomainScope = "https://www.googleapis.com/auth/admin.directory.domain";
+
+  /** View domains related to your customers */
+  static const AdminDirectoryDomainReadonlyScope = "https://www.googleapis.com/auth/admin.directory.domain.readonly";
 
   /** View and manage the provisioning of groups on your domain */
   static const AdminDirectoryGroupScope = "https://www.googleapis.com/auth/admin.directory.group";
@@ -57,6 +69,12 @@ class AdminApi {
 
   /** View organization units on your domain */
   static const AdminDirectoryOrgunitReadonlyScope = "https://www.googleapis.com/auth/admin.directory.orgunit.readonly";
+
+  /** Manage delegated admin roles for your domain */
+  static const AdminDirectoryRolemanagementScope = "https://www.googleapis.com/auth/admin.directory.rolemanagement";
+
+  /** View delegated admin roles for your domain */
+  static const AdminDirectoryRolemanagementReadonlyScope = "https://www.googleapis.com/auth/admin.directory.rolemanagement.readonly";
 
   /** View and manage the provisioning of users on your domain */
   static const AdminDirectoryUserScope = "https://www.googleapis.com/auth/admin.directory.user";
@@ -85,11 +103,17 @@ class AdminApi {
   AspsResourceApi get asps => new AspsResourceApi(_requester);
   ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
   ChromeosdevicesResourceApi get chromeosdevices => new ChromeosdevicesResourceApi(_requester);
+  CustomersResourceApi get customers => new CustomersResourceApi(_requester);
+  DomainAliasesResourceApi get domainAliases => new DomainAliasesResourceApi(_requester);
+  DomainsResourceApi get domains => new DomainsResourceApi(_requester);
   GroupsResourceApi get groups => new GroupsResourceApi(_requester);
   MembersResourceApi get members => new MembersResourceApi(_requester);
   MobiledevicesResourceApi get mobiledevices => new MobiledevicesResourceApi(_requester);
   NotificationsResourceApi get notifications => new NotificationsResourceApi(_requester);
   OrgunitsResourceApi get orgunits => new OrgunitsResourceApi(_requester);
+  PrivilegesResourceApi get privileges => new PrivilegesResourceApi(_requester);
+  RoleAssignmentsResourceApi get roleAssignments => new RoleAssignmentsResourceApi(_requester);
+  RolesResourceApi get roles => new RolesResourceApi(_requester);
   SchemasResourceApi get schemas => new SchemasResourceApi(_requester);
   TokensResourceApi get tokens => new TokensResourceApi(_requester);
   UsersResourceApi get users => new UsersResourceApi(_requester);
@@ -547,6 +571,508 @@ class ChromeosdevicesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ChromeOsDevice.fromJson(data));
+  }
+
+}
+
+
+class CustomersResourceApi {
+  final commons.ApiRequester _requester;
+
+  CustomersResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrives a customer.
+   *
+   * Request parameters:
+   *
+   * [customerKey] - Id of the customer to be retrieved
+   *
+   * Completes with a [Customer].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Customer> get(core.String customerKey) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customerKey == null) {
+      throw new core.ArgumentError("Parameter customerKey is required.");
+    }
+
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerKey');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Customer.fromJson(data));
+  }
+
+  /**
+   * Updates a customer. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customerKey] - Id of the customer to be updated
+   *
+   * Completes with a [Customer].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Customer> patch(Customer request, core.String customerKey) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customerKey == null) {
+      throw new core.ArgumentError("Parameter customerKey is required.");
+    }
+
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerKey');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Customer.fromJson(data));
+  }
+
+  /**
+   * Updates a customer.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customerKey] - Id of the customer to be updated
+   *
+   * Completes with a [Customer].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Customer> update(Customer request, core.String customerKey) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customerKey == null) {
+      throw new core.ArgumentError("Parameter customerKey is required.");
+    }
+
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerKey');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Customer.fromJson(data));
+  }
+
+}
+
+
+class DomainAliasesResourceApi {
+  final commons.ApiRequester _requester;
+
+  DomainAliasesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a Domain Alias of the customer.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable id of the Google Apps account.
+   *
+   * [domainAliasName] - Name of domain alias to be retrieved.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String customer, core.String domainAliasName) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (domainAliasName == null) {
+      throw new core.ArgumentError("Parameter domainAliasName is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/domainaliases/' + commons.Escaper.ecapeVariable('$domainAliasName');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Retrieves a domain alias of the customer.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable id of the Google Apps account.
+   *
+   * [domainAliasName] - Name of domain alias to be retrieved.
+   *
+   * Completes with a [DomainAlias].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<DomainAlias> get(core.String customer, core.String domainAliasName) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (domainAliasName == null) {
+      throw new core.ArgumentError("Parameter domainAliasName is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/domainaliases/' + commons.Escaper.ecapeVariable('$domainAliasName');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DomainAlias.fromJson(data));
+  }
+
+  /**
+   * Inserts a Domain alias of the customer.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable id of the Google Apps account.
+   *
+   * Completes with a [DomainAlias].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<DomainAlias> insert(DomainAlias request, core.String customer) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/domainaliases';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DomainAlias.fromJson(data));
+  }
+
+  /**
+   * Lists the domain aliases of the customer.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable id of the Google Apps account.
+   *
+   * [parentDomainName] - Name of the parent domain for which domain aliases are
+   * to be fetched.
+   *
+   * Completes with a [DomainAliases].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<DomainAliases> list(core.String customer, {core.String parentDomainName}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (parentDomainName != null) {
+      _queryParams["parentDomainName"] = [parentDomainName];
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/domainaliases';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DomainAliases.fromJson(data));
+  }
+
+}
+
+
+class DomainsResourceApi {
+  final commons.ApiRequester _requester;
+
+  DomainsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a domain of the customer.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable id of the Google Apps account.
+   *
+   * [domainName] - Name of domain to be deleted
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String customer, core.String domainName) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (domainName == null) {
+      throw new core.ArgumentError("Parameter domainName is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/domains/' + commons.Escaper.ecapeVariable('$domainName');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Retrives a domain of the customer.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable id of the Google Apps account.
+   *
+   * [domainName] - Name of domain to be retrieved
+   *
+   * Completes with a [Domains].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Domains> get(core.String customer, core.String domainName) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (domainName == null) {
+      throw new core.ArgumentError("Parameter domainName is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/domains/' + commons.Escaper.ecapeVariable('$domainName');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Domains.fromJson(data));
+  }
+
+  /**
+   * Inserts a domain of the customer.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable id of the Google Apps account.
+   *
+   * Completes with a [Domains].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Domains> insert(Domains request, core.String customer) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/domains';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Domains.fromJson(data));
+  }
+
+  /**
+   * Lists the domains of the customer.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable id of the Google Apps account.
+   *
+   * Completes with a [Domains2].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Domains2> list(core.String customer) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/domains';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Domains2.fromJson(data));
   }
 
 }
@@ -2049,6 +2575,547 @@ class OrgunitsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new OrgUnit.fromJson(data));
+  }
+
+}
+
+
+class PrivilegesResourceApi {
+  final commons.ApiRequester _requester;
+
+  PrivilegesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a paginated list of all privileges for a customer.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable ID of the Google Apps account.
+   *
+   * Completes with a [Privileges].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Privileges> list(core.String customer) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roles/ALL/privileges';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Privileges.fromJson(data));
+  }
+
+}
+
+
+class RoleAssignmentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  RoleAssignmentsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a role assignment.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable ID of the Google Apps account.
+   *
+   * [roleAssignmentId] - Immutable ID of the role assignment.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String customer, core.String roleAssignmentId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (roleAssignmentId == null) {
+      throw new core.ArgumentError("Parameter roleAssignmentId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roleassignments/' + commons.Escaper.ecapeVariable('$roleAssignmentId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Retrieve a role assignment.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable ID of the Google Apps account.
+   *
+   * [roleAssignmentId] - Immutable ID of the role assignment.
+   *
+   * Completes with a [RoleAssignment].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RoleAssignment> get(core.String customer, core.String roleAssignmentId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (roleAssignmentId == null) {
+      throw new core.ArgumentError("Parameter roleAssignmentId is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roleassignments/' + commons.Escaper.ecapeVariable('$roleAssignmentId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RoleAssignment.fromJson(data));
+  }
+
+  /**
+   * Creates a role assignment.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable ID of the Google Apps account.
+   *
+   * Completes with a [RoleAssignment].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RoleAssignment> insert(RoleAssignment request, core.String customer) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roleassignments';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RoleAssignment.fromJson(data));
+  }
+
+  /**
+   * Retrieves a paginated list of all roleAssignments.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable ID of the Google Apps account.
+   *
+   * [maxResults] - Maximum number of results to return.
+   * Value must be between "1" and "200".
+   *
+   * [pageToken] - Token to specify the next page in the list.
+   *
+   * [roleId] - Immutable ID of a role. If included in the request, returns only
+   * role assignments containing this role ID.
+   *
+   * [userKey] - The user's primary email address, alias email address, or
+   * unique user ID. If included in the request, returns role assignments only
+   * for this user.
+   *
+   * Completes with a [RoleAssignments].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RoleAssignments> list(core.String customer, {core.int maxResults, core.String pageToken, core.String roleId, core.String userKey}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (roleId != null) {
+      _queryParams["roleId"] = [roleId];
+    }
+    if (userKey != null) {
+      _queryParams["userKey"] = [userKey];
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roleassignments';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RoleAssignments.fromJson(data));
+  }
+
+}
+
+
+class RolesResourceApi {
+  final commons.ApiRequester _requester;
+
+  RolesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a role.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable ID of the Google Apps account.
+   *
+   * [roleId] - Immutable ID of the role.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String customer, core.String roleId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (roleId == null) {
+      throw new core.ArgumentError("Parameter roleId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roles/' + commons.Escaper.ecapeVariable('$roleId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Retrieves a role.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable ID of the Google Apps account.
+   *
+   * [roleId] - Immutable ID of the role.
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> get(core.String customer, core.String roleId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (roleId == null) {
+      throw new core.ArgumentError("Parameter roleId is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roles/' + commons.Escaper.ecapeVariable('$roleId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+  /**
+   * Creates a role.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable ID of the Google Apps account.
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> insert(Role request, core.String customer) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roles';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+  /**
+   * Retrieves a paginated list of all the roles in a domain.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable id of the Google Apps account.
+   *
+   * [maxResults] - Maximum number of results to return.
+   * Value must be between "1" and "100".
+   *
+   * [pageToken] - Token to specify the next page in the list.
+   *
+   * Completes with a [Roles].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Roles> list(core.String customer, {core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roles';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Roles.fromJson(data));
+  }
+
+  /**
+   * Updates a role. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable ID of the Google Apps account.
+   *
+   * [roleId] - Immutable ID of the role.
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> patch(Role request, core.String customer, core.String roleId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (roleId == null) {
+      throw new core.ArgumentError("Parameter roleId is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roles/' + commons.Escaper.ecapeVariable('$roleId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+  /**
+   * Updates a role.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customer] - Immutable ID of the Google Apps account.
+   *
+   * [roleId] - Immutable ID of the role.
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> update(Role request, core.String customer, core.String roleId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (roleId == null) {
+      throw new core.ArgumentError("Parameter roleId is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roles/' + commons.Escaper.ecapeVariable('$roleId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
   }
 
 }
@@ -4196,6 +5263,411 @@ class ChromeOsDevices {
   }
 }
 
+/** JSON template for Customer Resource object in Directory API. */
+class Customer {
+  /**
+   * The customer's secondary contact email address. This email address cannot
+   * be on the same domain as the customerDomain
+   */
+  core.String alternateEmail;
+  /** The customer's creation time (Readonly) */
+  core.DateTime customerCreationTime;
+  /**
+   * The customer's primary domain name string. Do not include the www prefix
+   * when creating a new customer.
+   */
+  core.String customerDomain;
+  /** ETag of the resource. */
+  core.String etag;
+  /** The unique ID for the customer's Google account. (Readonly) */
+  core.String id;
+  /** Identifies the resource as a customer. Value: admin#directory#customer */
+  core.String kind;
+  /** The customer's ISO 639-2 language code. The default value is en-US */
+  core.String language;
+  /** The customer's contact phone number in E.164 format. */
+  core.String phoneNumber;
+  /** The customer's postal address information. */
+  CustomerPostalAddress postalAddress;
+
+  Customer();
+
+  Customer.fromJson(core.Map _json) {
+    if (_json.containsKey("alternateEmail")) {
+      alternateEmail = _json["alternateEmail"];
+    }
+    if (_json.containsKey("customerCreationTime")) {
+      customerCreationTime = core.DateTime.parse(_json["customerCreationTime"]);
+    }
+    if (_json.containsKey("customerDomain")) {
+      customerDomain = _json["customerDomain"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+    if (_json.containsKey("phoneNumber")) {
+      phoneNumber = _json["phoneNumber"];
+    }
+    if (_json.containsKey("postalAddress")) {
+      postalAddress = new CustomerPostalAddress.fromJson(_json["postalAddress"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (alternateEmail != null) {
+      _json["alternateEmail"] = alternateEmail;
+    }
+    if (customerCreationTime != null) {
+      _json["customerCreationTime"] = (customerCreationTime).toIso8601String();
+    }
+    if (customerDomain != null) {
+      _json["customerDomain"] = customerDomain;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (language != null) {
+      _json["language"] = language;
+    }
+    if (phoneNumber != null) {
+      _json["phoneNumber"] = phoneNumber;
+    }
+    if (postalAddress != null) {
+      _json["postalAddress"] = (postalAddress).toJson();
+    }
+    return _json;
+  }
+}
+
+/** JSON template for postal address of a customer. */
+class CustomerPostalAddress {
+  /**
+   * A customer's physical address. The address can be composed of one to three
+   * lines.
+   */
+  core.String addressLine1;
+  /** Address line 2 of the address. */
+  core.String addressLine2;
+  /** Address line 3 of the address. */
+  core.String addressLine3;
+  /** The customer contact's name. */
+  core.String contactName;
+  /**
+   * This is a required property. For countryCode information see the ISO 3166
+   * country code elements.
+   */
+  core.String countryCode;
+  /**
+   * Name of the locality. An example of a locality value is the city of San
+   * Francisco.
+   */
+  core.String locality;
+  /** The company or company division name. */
+  core.String organizationName;
+  /**
+   * The postal code. A postalCode example is a postal zip code such as 10009.
+   * This is in accordance with -
+   * http://portablecontacts.net/draft-spec.html#address_element.
+   */
+  core.String postalCode;
+  /**
+   * Name of the region. An example of a region value is NY for the state of New
+   * York.
+   */
+  core.String region;
+
+  CustomerPostalAddress();
+
+  CustomerPostalAddress.fromJson(core.Map _json) {
+    if (_json.containsKey("addressLine1")) {
+      addressLine1 = _json["addressLine1"];
+    }
+    if (_json.containsKey("addressLine2")) {
+      addressLine2 = _json["addressLine2"];
+    }
+    if (_json.containsKey("addressLine3")) {
+      addressLine3 = _json["addressLine3"];
+    }
+    if (_json.containsKey("contactName")) {
+      contactName = _json["contactName"];
+    }
+    if (_json.containsKey("countryCode")) {
+      countryCode = _json["countryCode"];
+    }
+    if (_json.containsKey("locality")) {
+      locality = _json["locality"];
+    }
+    if (_json.containsKey("organizationName")) {
+      organizationName = _json["organizationName"];
+    }
+    if (_json.containsKey("postalCode")) {
+      postalCode = _json["postalCode"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (addressLine1 != null) {
+      _json["addressLine1"] = addressLine1;
+    }
+    if (addressLine2 != null) {
+      _json["addressLine2"] = addressLine2;
+    }
+    if (addressLine3 != null) {
+      _json["addressLine3"] = addressLine3;
+    }
+    if (contactName != null) {
+      _json["contactName"] = contactName;
+    }
+    if (countryCode != null) {
+      _json["countryCode"] = countryCode;
+    }
+    if (locality != null) {
+      _json["locality"] = locality;
+    }
+    if (organizationName != null) {
+      _json["organizationName"] = organizationName;
+    }
+    if (postalCode != null) {
+      _json["postalCode"] = postalCode;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    return _json;
+  }
+}
+
+/** JSON template for Domain Alias object in Directory API. */
+class DomainAlias {
+  /** The creation time of the domain alias. (Read-only). */
+  core.String creationTime;
+  /** The domain alias name. */
+  core.String domainAliasName;
+  /** ETag of the resource. */
+  core.String etag;
+  /** Kind of resource this is. */
+  core.String kind;
+  /**
+   * The parent domain name that the domain alias is associated with. This can
+   * either be a primary or secondary domain name within a customer.
+   */
+  core.String parentDomainName;
+  /** Indicates the verification state of a domain alias. (Read-only) */
+  core.bool verified;
+
+  DomainAlias();
+
+  DomainAlias.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTime")) {
+      creationTime = _json["creationTime"];
+    }
+    if (_json.containsKey("domainAliasName")) {
+      domainAliasName = _json["domainAliasName"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("parentDomainName")) {
+      parentDomainName = _json["parentDomainName"];
+    }
+    if (_json.containsKey("verified")) {
+      verified = _json["verified"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTime != null) {
+      _json["creationTime"] = creationTime;
+    }
+    if (domainAliasName != null) {
+      _json["domainAliasName"] = domainAliasName;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (parentDomainName != null) {
+      _json["parentDomainName"] = parentDomainName;
+    }
+    if (verified != null) {
+      _json["verified"] = verified;
+    }
+    return _json;
+  }
+}
+
+/** JSON response template to list domain aliases in Directory API. */
+class DomainAliases {
+  /** List of domain alias objects. */
+  core.List<DomainAlias> domainAliases;
+  /** ETag of the resource. */
+  core.String etag;
+  /** Kind of resource this is. */
+  core.String kind;
+
+  DomainAliases();
+
+  DomainAliases.fromJson(core.Map _json) {
+    if (_json.containsKey("domainAliases")) {
+      domainAliases = _json["domainAliases"].map((value) => new DomainAlias.fromJson(value)).toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (domainAliases != null) {
+      _json["domainAliases"] = domainAliases.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/** JSON template for Domain object in Directory API. */
+class Domains {
+  /** Creation time of the domain. (Read-only). */
+  core.String creationTime;
+  /** List of domain alias objects. (Read-only) */
+  core.List<DomainAlias> domainAliases;
+  /** The domain name of the customer. */
+  core.String domainName;
+  /** ETag of the resource. */
+  core.String etag;
+  /** Indicates if the domain is a primary domain (Read-only). */
+  core.bool isPrimary;
+  /** Kind of resource this is. */
+  core.String kind;
+  /** Indicates the verification state of a domain. (Read-only). */
+  core.bool verified;
+
+  Domains();
+
+  Domains.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTime")) {
+      creationTime = _json["creationTime"];
+    }
+    if (_json.containsKey("domainAliases")) {
+      domainAliases = _json["domainAliases"].map((value) => new DomainAlias.fromJson(value)).toList();
+    }
+    if (_json.containsKey("domainName")) {
+      domainName = _json["domainName"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("isPrimary")) {
+      isPrimary = _json["isPrimary"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("verified")) {
+      verified = _json["verified"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTime != null) {
+      _json["creationTime"] = creationTime;
+    }
+    if (domainAliases != null) {
+      _json["domainAliases"] = domainAliases.map((value) => (value).toJson()).toList();
+    }
+    if (domainName != null) {
+      _json["domainName"] = domainName;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (isPrimary != null) {
+      _json["isPrimary"] = isPrimary;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (verified != null) {
+      _json["verified"] = verified;
+    }
+    return _json;
+  }
+}
+
+/** JSON response template to list Domains in Directory API. */
+class Domains2 {
+  /** List of domain objects. */
+  core.List<Domains> domains;
+  /** ETag of the resource. */
+  core.String etag;
+  /** Kind of resource this is. */
+  core.String kind;
+
+  Domains2();
+
+  Domains2.fromJson(core.Map _json) {
+    if (_json.containsKey("domains")) {
+      domains = _json["domains"].map((value) => new Domains.fromJson(value)).toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (domains != null) {
+      _json["domains"] = domains.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
 /** JSON template for Group resource in Directory API. */
 class Group {
   /** Is the group created by admin (Read-only) * */
@@ -5097,6 +6569,404 @@ class OrgUnits {
     }
     if (organizationUnits != null) {
       _json["organizationUnits"] = organizationUnits.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** JSON template for privilege resource in Directory API. */
+class Privilege {
+  /**
+   * A list of child privileges. Privileges for a service form a tree. Each
+   * privilege can have a list of child privileges; this list is empty for a
+   * leaf privilege.
+   */
+  core.List<Privilege> childPrivileges;
+  /** ETag of the resource. */
+  core.String etag;
+  /** If the privilege can be restricted to an organization unit. */
+  core.bool isOuScopable;
+  /**
+   * The type of the API resource. This is always admin#directory#privilege.
+   */
+  core.String kind;
+  /** The name of the privilege. */
+  core.String privilegeName;
+  /** The obfuscated ID of the service this privilege is for. */
+  core.String serviceId;
+  /** The name of the service this privilege is for. */
+  core.String serviceName;
+
+  Privilege();
+
+  Privilege.fromJson(core.Map _json) {
+    if (_json.containsKey("childPrivileges")) {
+      childPrivileges = _json["childPrivileges"].map((value) => new Privilege.fromJson(value)).toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("isOuScopable")) {
+      isOuScopable = _json["isOuScopable"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("privilegeName")) {
+      privilegeName = _json["privilegeName"];
+    }
+    if (_json.containsKey("serviceId")) {
+      serviceId = _json["serviceId"];
+    }
+    if (_json.containsKey("serviceName")) {
+      serviceName = _json["serviceName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (childPrivileges != null) {
+      _json["childPrivileges"] = childPrivileges.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (isOuScopable != null) {
+      _json["isOuScopable"] = isOuScopable;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (privilegeName != null) {
+      _json["privilegeName"] = privilegeName;
+    }
+    if (serviceId != null) {
+      _json["serviceId"] = serviceId;
+    }
+    if (serviceName != null) {
+      _json["serviceName"] = serviceName;
+    }
+    return _json;
+  }
+}
+
+/** JSON response template for List privileges operation in Directory API. */
+class Privileges {
+  /** ETag of the resource. */
+  core.String etag;
+  /** A list of Privilege resources. */
+  core.List<Privilege> items;
+  /**
+   * The type of the API resource. This is always admin#directory#privileges.
+   */
+  core.String kind;
+
+  Privileges();
+
+  Privileges.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Privilege.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class RoleRolePrivileges {
+  /** The name of the privilege. */
+  core.String privilegeName;
+  /** The obfuscated ID of the service this privilege is for. */
+  core.String serviceId;
+
+  RoleRolePrivileges();
+
+  RoleRolePrivileges.fromJson(core.Map _json) {
+    if (_json.containsKey("privilegeName")) {
+      privilegeName = _json["privilegeName"];
+    }
+    if (_json.containsKey("serviceId")) {
+      serviceId = _json["serviceId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (privilegeName != null) {
+      _json["privilegeName"] = privilegeName;
+    }
+    if (serviceId != null) {
+      _json["serviceId"] = serviceId;
+    }
+    return _json;
+  }
+}
+
+/** JSON template for role resource in Directory API. */
+class Role {
+  /** ETag of the resource. */
+  core.String etag;
+  /** Returns true if the role is a super admin role. */
+  core.bool isSuperAdminRole;
+  /** Returns true if this is a pre-defined system role. */
+  core.bool isSystemRole;
+  /** The type of the API resource. This is always admin#directory#role. */
+  core.String kind;
+  /** A short description of the role. */
+  core.String roleDescription;
+  /** ID of the role. */
+  core.String roleId;
+  /** Name of the role. */
+  core.String roleName;
+  /** The set of privileges that are granted to this role. */
+  core.List<RoleRolePrivileges> rolePrivileges;
+
+  Role();
+
+  Role.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("isSuperAdminRole")) {
+      isSuperAdminRole = _json["isSuperAdminRole"];
+    }
+    if (_json.containsKey("isSystemRole")) {
+      isSystemRole = _json["isSystemRole"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("roleDescription")) {
+      roleDescription = _json["roleDescription"];
+    }
+    if (_json.containsKey("roleId")) {
+      roleId = _json["roleId"];
+    }
+    if (_json.containsKey("roleName")) {
+      roleName = _json["roleName"];
+    }
+    if (_json.containsKey("rolePrivileges")) {
+      rolePrivileges = _json["rolePrivileges"].map((value) => new RoleRolePrivileges.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (isSuperAdminRole != null) {
+      _json["isSuperAdminRole"] = isSuperAdminRole;
+    }
+    if (isSystemRole != null) {
+      _json["isSystemRole"] = isSystemRole;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (roleDescription != null) {
+      _json["roleDescription"] = roleDescription;
+    }
+    if (roleId != null) {
+      _json["roleId"] = roleId;
+    }
+    if (roleName != null) {
+      _json["roleName"] = roleName;
+    }
+    if (rolePrivileges != null) {
+      _json["rolePrivileges"] = rolePrivileges.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** JSON template for roleAssignment resource in Directory API. */
+class RoleAssignment {
+  /** The unique ID of the user this role is assigned to. */
+  core.String assignedTo;
+  /** ETag of the resource. */
+  core.String etag;
+  /**
+   * The type of the API resource. This is always
+   * admin#directory#roleAssignment.
+   */
+  core.String kind;
+  /**
+   * If the role is restricted to an organization unit, this contains the ID for
+   * the organization unit the exercise of this role is restricted to.
+   */
+  core.String orgUnitId;
+  /** ID of this roleAssignment. */
+  core.String roleAssignmentId;
+  /** The ID of the role that is assigned. */
+  core.String roleId;
+  /**
+   * The scope in which this role is assigned. Possible values are:
+   * - CUSTOMER
+   * - ORG_UNIT
+   */
+  core.String scopeType;
+
+  RoleAssignment();
+
+  RoleAssignment.fromJson(core.Map _json) {
+    if (_json.containsKey("assignedTo")) {
+      assignedTo = _json["assignedTo"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("orgUnitId")) {
+      orgUnitId = _json["orgUnitId"];
+    }
+    if (_json.containsKey("roleAssignmentId")) {
+      roleAssignmentId = _json["roleAssignmentId"];
+    }
+    if (_json.containsKey("roleId")) {
+      roleId = _json["roleId"];
+    }
+    if (_json.containsKey("scopeType")) {
+      scopeType = _json["scopeType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (assignedTo != null) {
+      _json["assignedTo"] = assignedTo;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (orgUnitId != null) {
+      _json["orgUnitId"] = orgUnitId;
+    }
+    if (roleAssignmentId != null) {
+      _json["roleAssignmentId"] = roleAssignmentId;
+    }
+    if (roleId != null) {
+      _json["roleId"] = roleId;
+    }
+    if (scopeType != null) {
+      _json["scopeType"] = scopeType;
+    }
+    return _json;
+  }
+}
+
+/**
+ * JSON response template for List roleAssignments operation in Directory API.
+ */
+class RoleAssignments {
+  /** ETag of the resource. */
+  core.String etag;
+  /** A list of RoleAssignment resources. */
+  core.List<RoleAssignment> items;
+  /**
+   * The type of the API resource. This is always
+   * admin#directory#roleAssignments.
+   */
+  core.String kind;
+  core.String nextPageToken;
+
+  RoleAssignments();
+
+  RoleAssignments.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new RoleAssignment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/** JSON response template for List roles operation in Directory API. */
+class Roles {
+  /** ETag of the resource. */
+  core.String etag;
+  /** A list of Role resources. */
+  core.List<Role> items;
+  /** The type of the API resource. This is always admin#directory#roles. */
+  core.String kind;
+  core.String nextPageToken;
+
+  Roles();
+
+  Roles.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Role.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }

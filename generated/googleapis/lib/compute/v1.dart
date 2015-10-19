@@ -49,6 +49,7 @@ class ComputeApi {
   GlobalForwardingRulesResourceApi get globalForwardingRules => new GlobalForwardingRulesResourceApi(_requester);
   GlobalOperationsResourceApi get globalOperations => new GlobalOperationsResourceApi(_requester);
   HttpHealthChecksResourceApi get httpHealthChecks => new HttpHealthChecksResourceApi(_requester);
+  HttpsHealthChecksResourceApi get httpsHealthChecks => new HttpsHealthChecksResourceApi(_requester);
   ImagesResourceApi get images => new ImagesResourceApi(_requester);
   InstanceGroupManagersResourceApi get instanceGroupManagers => new InstanceGroupManagersResourceApi(_requester);
   InstanceGroupsResourceApi get instanceGroups => new InstanceGroupsResourceApi(_requester);
@@ -62,7 +63,9 @@ class ComputeApi {
   RegionsResourceApi get regions => new RegionsResourceApi(_requester);
   RoutesResourceApi get routes => new RoutesResourceApi(_requester);
   SnapshotsResourceApi get snapshots => new SnapshotsResourceApi(_requester);
+  SslCertificatesResourceApi get sslCertificates => new SslCertificatesResourceApi(_requester);
   TargetHttpProxiesResourceApi get targetHttpProxies => new TargetHttpProxiesResourceApi(_requester);
+  TargetHttpsProxiesResourceApi get targetHttpsProxies => new TargetHttpsProxiesResourceApi(_requester);
   TargetInstancesResourceApi get targetInstances => new TargetInstancesResourceApi(_requester);
   TargetPoolsResourceApi get targetPools => new TargetPoolsResourceApi(_requester);
   TargetVpnGatewaysResourceApi get targetVpnGateways => new TargetVpnGatewaysResourceApi(_requester);
@@ -3576,6 +3579,334 @@ class HttpHealthChecksResourceApi {
 }
 
 
+class HttpsHealthChecksResourceApi {
+  final commons.ApiRequester _requester;
+
+  HttpsHealthChecksResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified HttpsHealthCheck resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String httpsHealthCheck) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (httpsHealthCheck == null) {
+      throw new core.ArgumentError("Parameter httpsHealthCheck is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks/' + commons.Escaper.ecapeVariable('$httpsHealthCheck');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified HttpsHealthCheck resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [HttpsHealthCheck].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<HttpsHealthCheck> get(core.String project, core.String httpsHealthCheck) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (httpsHealthCheck == null) {
+      throw new core.ArgumentError("Parameter httpsHealthCheck is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks/' + commons.Escaper.ecapeVariable('$httpsHealthCheck');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new HttpsHealthCheck.fromJson(data));
+  }
+
+  /**
+   * Creates a HttpsHealthCheck resource in the specified project using the data
+   * included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(HttpsHealthCheck request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of HttpsHealthCheck resources available to the specified
+   * project.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   *
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
+   *
+   * [maxResults] - Maximum count of results to be returned.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
+   *
+   * Completes with a [HttpsHealthCheckList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<HttpsHealthCheckList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new HttpsHealthCheckList.fromJson(data));
+  }
+
+  /**
+   * Updates a HttpsHealthCheck resource in the specified project using the data
+   * included in the request. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(HttpsHealthCheck request, core.String project, core.String httpsHealthCheck) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (httpsHealthCheck == null) {
+      throw new core.ArgumentError("Parameter httpsHealthCheck is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks/' + commons.Escaper.ecapeVariable('$httpsHealthCheck');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Updates a HttpsHealthCheck resource in the specified project using the data
+   * included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> update(HttpsHealthCheck request, core.String project, core.String httpsHealthCheck) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (httpsHealthCheck == null) {
+      throw new core.ArgumentError("Parameter httpsHealthCheck is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks/' + commons.Escaper.ecapeVariable('$httpsHealthCheck');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
 class ImagesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -5466,6 +5797,8 @@ class InstancesResourceApi {
   }
 
   /**
+   * Retrieves aggregated list of instance resources.
+   *
    * Request parameters:
    *
    * [project] - Project ID for this request.
@@ -7872,6 +8205,228 @@ class SnapshotsResourceApi {
 }
 
 
+class SslCertificatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  SslCertificatesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified SslCertificate resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [sslCertificate] - Name of the SslCertificate resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String sslCertificate) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (sslCertificate == null) {
+      throw new core.ArgumentError("Parameter sslCertificate is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/sslCertificates/' + commons.Escaper.ecapeVariable('$sslCertificate');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified SslCertificate resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [sslCertificate] - Name of the SslCertificate resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [SslCertificate].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SslCertificate> get(core.String project, core.String sslCertificate) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (sslCertificate == null) {
+      throw new core.ArgumentError("Parameter sslCertificate is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/sslCertificates/' + commons.Escaper.ecapeVariable('$sslCertificate');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SslCertificate.fromJson(data));
+  }
+
+  /**
+   * Creates a SslCertificate resource in the specified project using the data
+   * included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(SslCertificate request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/sslCertificates';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of SslCertificate resources available to the specified
+   * project.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   *
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
+   *
+   * [maxResults] - Maximum count of results to be returned.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
+   *
+   * Completes with a [SslCertificateList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SslCertificateList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/sslCertificates';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SslCertificateList.fromJson(data));
+  }
+
+}
+
+
 class TargetHttpProxiesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -8133,6 +8688,334 @@ class TargetHttpProxiesResourceApi {
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/targetHttpProxies/' + commons.Escaper.ecapeVariable('$targetHttpProxy') + '/setUrlMap';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
+class TargetHttpsProxiesResourceApi {
+  final commons.ApiRequester _requester;
+
+  TargetHttpsProxiesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified TargetHttpsProxy resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetHttpsProxy] - Name of the TargetHttpsProxy resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String targetHttpsProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetHttpsProxy == null) {
+      throw new core.ArgumentError("Parameter targetHttpsProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpsProxies/' + commons.Escaper.ecapeVariable('$targetHttpsProxy');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified TargetHttpsProxy resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetHttpsProxy] - Name of the TargetHttpsProxy resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [TargetHttpsProxy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TargetHttpsProxy> get(core.String project, core.String targetHttpsProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetHttpsProxy == null) {
+      throw new core.ArgumentError("Parameter targetHttpsProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpsProxies/' + commons.Escaper.ecapeVariable('$targetHttpsProxy');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TargetHttpsProxy.fromJson(data));
+  }
+
+  /**
+   * Creates a TargetHttpsProxy resource in the specified project using the data
+   * included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(TargetHttpsProxy request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpsProxies';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of TargetHttpsProxy resources available to the specified
+   * project.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   *
+   * The FIELD_NAME is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The COMPARISON_STRING
+   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field (string, number, boolean). For string fields, the literal value is
+   * interpreted as a regular expression using RE2 syntax. The literal value
+   * must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
+   *
+   * [maxResults] - Maximum count of results to be returned.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Use this parameter if you want
+   * to list the next page of results. Set pageToken to the nextPageToken
+   * returned by a previous list request.
+   *
+   * Completes with a [TargetHttpsProxyList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TargetHttpsProxyList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpsProxies';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TargetHttpsProxyList.fromJson(data));
+  }
+
+  /**
+   * Replaces SslCertificates for TargetHttpsProxy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetHttpsProxy] - Name of the TargetHttpsProxy resource whose URL map is
+   * to be set.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setSslCertificates(TargetHttpsProxiesSetSslCertificatesRequest request, core.String project, core.String targetHttpsProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetHttpsProxy == null) {
+      throw new core.ArgumentError("Parameter targetHttpsProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/targetHttpsProxies/' + commons.Escaper.ecapeVariable('$targetHttpsProxy') + '/setSslCertificates';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Changes the URL map for TargetHttpsProxy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetHttpsProxy] - Name of the TargetHttpsProxy resource whose URL map is
+   * to be set.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setUrlMap(UrlMapReference request, core.String project, core.String targetHttpsProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetHttpsProxy == null) {
+      throw new core.ArgumentError("Parameter targetHttpsProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/targetHttpsProxies/' + commons.Escaper.ecapeVariable('$targetHttpsProxy') + '/setUrlMap';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -11823,6 +12706,7 @@ class BackendService {
    *
    * Possible string values are:
    * - "HTTP"
+   * - "HTTPS"
    */
   core.String protocol;
   /** [Output Only] Server-defined URL for the resource. */
@@ -13862,6 +14746,219 @@ class HttpHealthCheckList {
     }
     if (_json.containsKey("items")) {
       items = _json["items"].map((value) => new HttpHealthCheck.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/**
+ * An HttpsHealthCheck resource. This resource defines a template for how
+ * individual instances should be checked for health, via HTTPS.
+ */
+class HttpsHealthCheck {
+  /**
+   * How often (in seconds) to send a health check. The default value is 5
+   * seconds.
+   */
+  core.int checkIntervalSec;
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  core.String creationTimestamp;
+  /**
+   * An optional textual description of the resource; provided by the client
+   * when the resource is created.
+   */
+  core.String description;
+  /**
+   * A so-far unhealthy instance will be marked healthy after this many
+   * consecutive successes. The default value is 2.
+   */
+  core.int healthyThreshold;
+  /**
+   * The value of the host header in the HTTPS health check request. If left
+   * empty (default value), the public IP on behalf of which this health check
+   * is performed will be used.
+   */
+  core.String host;
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
+  core.String id;
+  /** Type of the resource. */
+  core.String kind;
+  /**
+   * Name of the resource. Provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
+   */
+  core.String name;
+  /**
+   * The TCP port number for the HTTPS health check request. The default value
+   * is 443.
+   */
+  core.int port;
+  /**
+   * The request path of the HTTPS health check request. The default value is
+   * "/".
+   */
+  core.String requestPath;
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+  /**
+   * How long (in seconds) to wait before claiming failure. The default value is
+   * 5 seconds. It is invalid for timeoutSec to have a greater value than
+   * checkIntervalSec.
+   */
+  core.int timeoutSec;
+  /**
+   * A so-far healthy instance will be marked unhealthy after this many
+   * consecutive failures. The default value is 2.
+   */
+  core.int unhealthyThreshold;
+
+  HttpsHealthCheck();
+
+  HttpsHealthCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("checkIntervalSec")) {
+      checkIntervalSec = _json["checkIntervalSec"];
+    }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("healthyThreshold")) {
+      healthyThreshold = _json["healthyThreshold"];
+    }
+    if (_json.containsKey("host")) {
+      host = _json["host"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+    if (_json.containsKey("requestPath")) {
+      requestPath = _json["requestPath"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("timeoutSec")) {
+      timeoutSec = _json["timeoutSec"];
+    }
+    if (_json.containsKey("unhealthyThreshold")) {
+      unhealthyThreshold = _json["unhealthyThreshold"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (checkIntervalSec != null) {
+      _json["checkIntervalSec"] = checkIntervalSec;
+    }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (healthyThreshold != null) {
+      _json["healthyThreshold"] = healthyThreshold;
+    }
+    if (host != null) {
+      _json["host"] = host;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (port != null) {
+      _json["port"] = port;
+    }
+    if (requestPath != null) {
+      _json["requestPath"] = requestPath;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (timeoutSec != null) {
+      _json["timeoutSec"] = timeoutSec;
+    }
+    if (unhealthyThreshold != null) {
+      _json["unhealthyThreshold"] = unhealthyThreshold;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of HttpsHealthCheck resources. */
+class HttpsHealthCheckList {
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
+  core.String id;
+  /** A list of HttpsHealthCheck resources. */
+  core.List<HttpsHealthCheck> items;
+  /** Type of resource. */
+  core.String kind;
+  /** [Output Only] A token used to continue a truncated list request. */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  HttpsHealthCheckList();
+
+  HttpsHealthCheckList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new HttpsHealthCheck.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -19007,6 +20104,167 @@ class SnapshotList {
   }
 }
 
+/**
+ * An SslCertificate resource. This resource provides a mechanism to upload an
+ * SSL key and certificate to global HTTPS loadbalancer to serve secure
+ * connections.
+ */
+class SslCertificate {
+  /**
+   * A local certificate file. The certificate must be in PEM format. The
+   * certificate chain must be no greater than 5 certs long. The chain must
+   * include at least one intermediate cert.
+   */
+  core.String certificate;
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  core.String creationTimestamp;
+  /**
+   * An optional textual description of the resource. Provided by the client
+   * when the resource is created.
+   */
+  core.String description;
+  /**
+   * [Output Only] Unique identifier for the resource. Defined by the server.
+   */
+  core.String id;
+  /**
+   * [Output Only] Type of the resource. Always compute#sslCertificate for SSL
+   * certificates.
+   */
+  core.String kind;
+  /**
+   * Name of the resource. Provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
+   */
+  core.String name;
+  /**
+   * A write-only private key in PEM format. Only insert RPCs will include this
+   * field.
+   */
+  core.String privateKey;
+  /** [Output only] Server-defined URL for the resource. */
+  core.String selfLink;
+
+  SslCertificate();
+
+  SslCertificate.fromJson(core.Map _json) {
+    if (_json.containsKey("certificate")) {
+      certificate = _json["certificate"];
+    }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("privateKey")) {
+      privateKey = _json["privateKey"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (certificate != null) {
+      _json["certificate"] = certificate;
+    }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (privateKey != null) {
+      _json["privateKey"] = privateKey;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of SslCertificate resources. */
+class SslCertificateList {
+  /**
+   * [Output Only] Unique identifier for the resource. Defined by the server.
+   */
+  core.String id;
+  /** A list of SslCertificate resources. */
+  core.List<SslCertificate> items;
+  /** Type of resource. */
+  core.String kind;
+  /** [Output Only] A token used to continue a truncated list request. */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  SslCertificateList();
+
+  SslCertificateList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new SslCertificate.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
 /** A set of instance tags. */
 class Tags {
   /**
@@ -19170,6 +20428,183 @@ class TargetHttpProxyList {
     }
     if (_json.containsKey("items")) {
       items = _json["items"].map((value) => new TargetHttpProxy.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class TargetHttpsProxiesSetSslCertificatesRequest {
+  /**
+   * New set of URLs to SslCertificate resources to associate with this
+   * TargetHttpProxy. Currently exactly one ssl certificate must be specified.
+   */
+  core.List<core.String> sslCertificates;
+
+  TargetHttpsProxiesSetSslCertificatesRequest();
+
+  TargetHttpsProxiesSetSslCertificatesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("sslCertificates")) {
+      sslCertificates = _json["sslCertificates"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (sslCertificates != null) {
+      _json["sslCertificates"] = sslCertificates;
+    }
+    return _json;
+  }
+}
+
+/** A TargetHttpsProxy resource. This resource defines an HTTPS proxy. */
+class TargetHttpsProxy {
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  core.String creationTimestamp;
+  /**
+   * An optional textual description of the resource. Provided by the client
+   * when the resource is created.
+   */
+  core.String description;
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
+  core.String id;
+  /** Type of the resource. */
+  core.String kind;
+  /**
+   * Name of the resource. Provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
+   */
+  core.String name;
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+  /**
+   * URLs to SslCertificate resources that are used to authenticate connections
+   * to Backends. Currently exactly one SSL certificate must be specified.
+   */
+  core.List<core.String> sslCertificates;
+  /**
+   * URL to the UrlMap resource that defines the mapping from URL to the
+   * BackendService.
+   */
+  core.String urlMap;
+
+  TargetHttpsProxy();
+
+  TargetHttpsProxy.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("sslCertificates")) {
+      sslCertificates = _json["sslCertificates"];
+    }
+    if (_json.containsKey("urlMap")) {
+      urlMap = _json["urlMap"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (sslCertificates != null) {
+      _json["sslCertificates"] = sslCertificates;
+    }
+    if (urlMap != null) {
+      _json["urlMap"] = urlMap;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of TargetHttpsProxy resources. */
+class TargetHttpsProxyList {
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
+  core.String id;
+  /** A list of TargetHttpsProxy resources. */
+  core.List<TargetHttpsProxy> items;
+  /** Type of resource. */
+  core.String kind;
+  /** [Output Only] A token used to continue a truncated list request. */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  TargetHttpsProxyList();
+
+  TargetHttpsProxyList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new TargetHttpsProxy.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];

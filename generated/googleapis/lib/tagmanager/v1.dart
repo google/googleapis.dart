@@ -186,9 +186,7 @@ class AccountsContainersResourceApi {
   final commons.ApiRequester _requester;
 
   AccountsContainersFoldersResourceApi get folders => new AccountsContainersFoldersResourceApi(_requester);
-  AccountsContainersMacrosResourceApi get macros => new AccountsContainersMacrosResourceApi(_requester);
   AccountsContainersMoveFoldersResourceApi get moveFolders => new AccountsContainersMoveFoldersResourceApi(_requester);
-  AccountsContainersRulesResourceApi get rules => new AccountsContainersRulesResourceApi(_requester);
   AccountsContainersTagsResourceApi get tags => new AccountsContainersTagsResourceApi(_requester);
   AccountsContainersTriggersResourceApi get triggers => new AccountsContainersTriggersResourceApi(_requester);
   AccountsContainersVariablesResourceApi get variables => new AccountsContainersVariablesResourceApi(_requester);
@@ -746,266 +744,6 @@ class AccountsContainersFoldersEntitiesResourceApi {
 }
 
 
-class AccountsContainersMacrosResourceApi {
-  final commons.ApiRequester _requester;
-
-  AccountsContainersMacrosResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Creates a GTM Macro.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [accountId] - The GTM Account ID.
-   *
-   * [containerId] - The GTM Container ID.
-   *
-   * Completes with a [Macro].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Macro> create(Macro request, core.String accountId, core.String containerId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (containerId == null) {
-      throw new core.ArgumentError("Parameter containerId is required.");
-    }
-
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Macro.fromJson(data));
-  }
-
-  /**
-   * Deletes a GTM Macro.
-   *
-   * Request parameters:
-   *
-   * [accountId] - The GTM Account ID.
-   *
-   * [containerId] - The GTM Container ID.
-   *
-   * [macroId] - The GTM Macro ID.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String accountId, core.String containerId, core.String macroId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (containerId == null) {
-      throw new core.ArgumentError("Parameter containerId is required.");
-    }
-    if (macroId == null) {
-      throw new core.ArgumentError("Parameter macroId is required.");
-    }
-
-    _downloadOptions = null;
-
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros/' + commons.Escaper.ecapeVariable('$macroId');
-
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /**
-   * Gets a GTM Macro.
-   *
-   * Request parameters:
-   *
-   * [accountId] - The GTM Account ID.
-   *
-   * [containerId] - The GTM Container ID.
-   *
-   * [macroId] - The GTM Macro ID.
-   *
-   * Completes with a [Macro].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Macro> get(core.String accountId, core.String containerId, core.String macroId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (containerId == null) {
-      throw new core.ArgumentError("Parameter containerId is required.");
-    }
-    if (macroId == null) {
-      throw new core.ArgumentError("Parameter macroId is required.");
-    }
-
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros/' + commons.Escaper.ecapeVariable('$macroId');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Macro.fromJson(data));
-  }
-
-  /**
-   * Lists all GTM Macros of a Container.
-   *
-   * Request parameters:
-   *
-   * [accountId] - The GTM Account ID.
-   *
-   * [containerId] - The GTM Container ID.
-   *
-   * Completes with a [ListMacrosResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListMacrosResponse> list(core.String accountId, core.String containerId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (containerId == null) {
-      throw new core.ArgumentError("Parameter containerId is required.");
-    }
-
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListMacrosResponse.fromJson(data));
-  }
-
-  /**
-   * Updates a GTM Macro.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [accountId] - The GTM Account ID.
-   *
-   * [containerId] - The GTM Container ID.
-   *
-   * [macroId] - The GTM Macro ID.
-   *
-   * [fingerprint] - When provided, this fingerprint must match the fingerprint
-   * of the macro in storage.
-   *
-   * Completes with a [Macro].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Macro> update(Macro request, core.String accountId, core.String containerId, core.String macroId, {core.String fingerprint}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (containerId == null) {
-      throw new core.ArgumentError("Parameter containerId is required.");
-    }
-    if (macroId == null) {
-      throw new core.ArgumentError("Parameter macroId is required.");
-    }
-    if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
-    }
-
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros/' + commons.Escaper.ecapeVariable('$macroId');
-
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Macro.fromJson(data));
-  }
-
-}
-
-
 class AccountsContainersMoveFoldersResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1074,266 +812,6 @@ class AccountsContainersMoveFoldersResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
-  }
-
-}
-
-
-class AccountsContainersRulesResourceApi {
-  final commons.ApiRequester _requester;
-
-  AccountsContainersRulesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Creates a GTM Rule.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [accountId] - The GTM Account ID.
-   *
-   * [containerId] - The GTM Container ID.
-   *
-   * Completes with a [Rule].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Rule> create(Rule request, core.String accountId, core.String containerId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (containerId == null) {
-      throw new core.ArgumentError("Parameter containerId is required.");
-    }
-
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Rule.fromJson(data));
-  }
-
-  /**
-   * Deletes a GTM Rule.
-   *
-   * Request parameters:
-   *
-   * [accountId] - The GTM Account ID.
-   *
-   * [containerId] - The GTM Container ID.
-   *
-   * [ruleId] - The GTM Rule ID.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String accountId, core.String containerId, core.String ruleId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (containerId == null) {
-      throw new core.ArgumentError("Parameter containerId is required.");
-    }
-    if (ruleId == null) {
-      throw new core.ArgumentError("Parameter ruleId is required.");
-    }
-
-    _downloadOptions = null;
-
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules/' + commons.Escaper.ecapeVariable('$ruleId');
-
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /**
-   * Gets a GTM Rule.
-   *
-   * Request parameters:
-   *
-   * [accountId] - The GTM Account ID.
-   *
-   * [containerId] - The GTM Container ID.
-   *
-   * [ruleId] - The GTM Rule ID.
-   *
-   * Completes with a [Rule].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Rule> get(core.String accountId, core.String containerId, core.String ruleId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (containerId == null) {
-      throw new core.ArgumentError("Parameter containerId is required.");
-    }
-    if (ruleId == null) {
-      throw new core.ArgumentError("Parameter ruleId is required.");
-    }
-
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules/' + commons.Escaper.ecapeVariable('$ruleId');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Rule.fromJson(data));
-  }
-
-  /**
-   * Lists all GTM Rules of a Container.
-   *
-   * Request parameters:
-   *
-   * [accountId] - The GTM Account ID.
-   *
-   * [containerId] - The GTM Container ID.
-   *
-   * Completes with a [ListRulesResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListRulesResponse> list(core.String accountId, core.String containerId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (containerId == null) {
-      throw new core.ArgumentError("Parameter containerId is required.");
-    }
-
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListRulesResponse.fromJson(data));
-  }
-
-  /**
-   * Updates a GTM Rule.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [accountId] - The GTM Account ID.
-   *
-   * [containerId] - The GTM Container ID.
-   *
-   * [ruleId] - The GTM Rule ID.
-   *
-   * [fingerprint] - When provided, this fingerprint must match the fingerprint
-   * of the rule in storage.
-   *
-   * Completes with a [Rule].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Rule> update(Rule request, core.String accountId, core.String containerId, core.String ruleId, {core.String fingerprint}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (containerId == null) {
-      throw new core.ArgumentError("Parameter containerId is required.");
-    }
-    if (ruleId == null) {
-      throw new core.ArgumentError("Parameter ruleId is required.");
-    }
-    if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
-    }
-
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules/' + commons.Escaper.ecapeVariable('$ruleId');
-
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Rule.fromJson(data));
   }
 
 }
@@ -2379,9 +1857,9 @@ class AccountsContainersVersionsResourceApi {
 
   /**
    * Restores a Container Version. This will overwrite the container's current
-   * configuration (including its macros, rules and tags). The operation will
-   * not have any effect on the version that is being served (i.e. the published
-   * version).
+   * configuration (including its variables, triggers and tags). The operation
+   * will not have any effect on the version that is being served (i.e. the
+   * published version).
    *
    * Request parameters:
    *
@@ -2854,7 +2332,7 @@ class Condition {
    * Notes:
    * - For binary operators, include parameters named arg0 and arg1 for
    * specifying the left and right operands, respectively.
-   * - At this time, the left operand (arg0) must be a reference to a macro.
+   * - At this time, the left operand (arg0) must be a reference to a variable.
    * - For case-insensitive Regex matching, include a boolean parameter named
    * ignore_case that is set to true. If not specified or set to any other
    * value, the matching will be case sensitive.
@@ -3561,50 +3039,6 @@ class ListFoldersResponse {
   }
 }
 
-/** List Macros Response. */
-class ListMacrosResponse {
-  /** All GTM Macros of a GTM Container. */
-  core.List<Macro> macros;
-
-  ListMacrosResponse();
-
-  ListMacrosResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("macros")) {
-      macros = _json["macros"].map((value) => new Macro.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (macros != null) {
-      _json["macros"] = macros.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/** List Rules Response. */
-class ListRulesResponse {
-  /** All GTM Rules of a GTM Container. */
-  core.List<Rule> rules;
-
-  ListRulesResponse();
-
-  ListRulesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("rules")) {
-      rules = _json["rules"].map((value) => new Rule.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (rules != null) {
-      _json["rules"] = rules.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
 /** List Tags Response. */
 class ListTagsResponse {
   /** All GTM Tags of a GTM Container. */
@@ -3817,8 +3251,8 @@ class Parameter {
    * - integer: The value represents a 64-bit signed integer value, in base 10
    * - list: A list of parameters should be specified
    * - map: A map of parameters should be specified
-   * - template: The value represents any text; this can include macro
-   * references (even macro references that might return non-string types)
+   * - template: The value represents any text; this can include variable
+   * references (even variable references that might return non-string types)
    * Possible string values are:
    * - "boolean"
    * - "integer"
@@ -3828,8 +3262,8 @@ class Parameter {
    */
   core.String type;
   /**
-   * A parameter's value (may contain macro references such as "{{myMacro}}") as
-   * appropriate to the specified type.
+   * A parameter's value (may contain variable references such as
+   * "{{myVariable}}") as appropriate to the specified type.
    */
   core.String value;
 

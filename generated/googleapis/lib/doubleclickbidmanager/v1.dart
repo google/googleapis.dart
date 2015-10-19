@@ -371,6 +371,14 @@ class ReportsResourceApi {
 /** Request to fetch stored line items. */
 class DownloadLineItemsRequest {
   /**
+   * File specification (column names, types, order) in which the line items
+   * will be returned. Default to EWF.
+   * Possible string values are:
+   * - "EWF"
+   * - "SDF"
+   */
+  core.String fileSpec;
+  /**
    * Ids of the specified filter type used to filter line items to fetch. If
    * omitted, all the line items will be returned.
    */
@@ -393,6 +401,9 @@ class DownloadLineItemsRequest {
   DownloadLineItemsRequest();
 
   DownloadLineItemsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fileSpec")) {
+      fileSpec = _json["fileSpec"];
+    }
     if (_json.containsKey("filterIds")) {
       filterIds = _json["filterIds"];
     }
@@ -406,6 +417,9 @@ class DownloadLineItemsRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (fileSpec != null) {
+      _json["fileSpec"] = fileSpec;
+    }
     if (filterIds != null) {
       _json["filterIds"] = filterIds;
     }
@@ -422,8 +436,8 @@ class DownloadLineItemsRequest {
 /** Download line items response. */
 class DownloadLineItemsResponse {
   /**
-   * Retrieved line items in CSV format. Refer to  Entity Write File Format for
-   * more information on file format.
+   * Retrieved line items in CSV format. Refer to  Entity Write File Format or
+   * Structured Data File Format for more information on file formats.
    */
   core.String lineItems;
 
@@ -464,9 +478,11 @@ class FilterPair {
    * - "FILTER_CITY"
    * - "FILTER_CONVERSION_DELAY"
    * - "FILTER_COUNTRY"
+   * - "FILTER_CREATIVE_HEIGHT"
    * - "FILTER_CREATIVE_ID"
    * - "FILTER_CREATIVE_SIZE"
    * - "FILTER_CREATIVE_TYPE"
+   * - "FILTER_CREATIVE_WIDTH"
    * - "FILTER_DATA_PROVIDER"
    * - "FILTER_DATE"
    * - "FILTER_DAY_OF_WEEK"
@@ -650,6 +666,7 @@ class Parameters {
    * - "TYPE_KEYWORD"
    * - "TYPE_NIELSEN_AUDIENCE_PROFILE"
    * - "TYPE_NIELSEN_DAILY_REACH_BUILD"
+   * - "TYPE_NIELSEN_ONLINE_GLOBAL_MARKET"
    * - "TYPE_NIELSEN_SITE"
    * - "TYPE_ORDER_ID"
    * - "TYPE_PAGE_CATEGORY"

@@ -54,7 +54,8 @@ class BackupRunsResourceApi {
    *
    * [instance] - Cloud SQL instance ID. This does not include the project ID.
    *
-   * [id] - The ID of the Backup Run to delete.
+   * [id] - The ID of the Backup Run to delete. To find a Backup Run ID, use the
+   * list method.
    *
    * Completes with a [Operation].
    *
@@ -701,6 +702,55 @@ class InstancesResourceApi {
     }
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/export';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Failover the instance to its failover replica instance.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - ID of the project that contains the read replica.
+   *
+   * [instance] - Cloud SQL instance ID. This does not include the project ID.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> failover(InstancesFailoverRequest request, core.String project, core.String instance) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/failover';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2642,7 +2692,7 @@ class ExportContextCsvExportOptions {
 
 /** Options for exporting data as SQL statements. */
 class ExportContextSqlExportOptions {
-  /** Export only schema. */
+  /** Export only schemas. */
   core.bool schemaOnly;
   /**
    * Tables to export, or that were exported, from the specified database. If
@@ -2750,13 +2800,46 @@ class ExportContext {
   }
 }
 
+/** Database instance failover context. */
+class FailoverContext {
+  /** This is always sql#failoverContext. */
+  core.String kind;
+  /**
+   * The current settings version of this instance. Request will be rejected if
+   * this version doesn't match the current settings version.
+   */
+  core.String settingsVersion;
+
+  FailoverContext();
+
+  FailoverContext.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("settingsVersion")) {
+      settingsVersion = _json["settingsVersion"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (settingsVersion != null) {
+      _json["settingsVersion"] = settingsVersion;
+    }
+    return _json;
+  }
+}
+
 /** A Google Cloud SQL service flag resource. */
 class Flag {
   /** For STRING flags, a list of strings that the value can be set to. */
   core.List<core.String> allowedStringValues;
   /**
-   * The database version this flag applies to. Currently this can only be
-   * [MYSQL_5_5].
+   * The database version this flag applies to. Can be MYSQL_5_5, MYSQL_5_6, or
+   * both.
    */
   core.List<core.String> appliesTo;
   /** This is always sql#flag. */
@@ -2999,6 +3082,28 @@ class InstancesExportRequest {
     var _json = new core.Map();
     if (exportContext != null) {
       _json["exportContext"] = (exportContext).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Instance failover request. */
+class InstancesFailoverRequest {
+  /** Failover Context. */
+  FailoverContext failoverContext;
+
+  InstancesFailoverRequest();
+
+  InstancesFailoverRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("failoverContext")) {
+      failoverContext = new FailoverContext.fromJson(_json["failoverContext"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (failoverContext != null) {
+      _json["failoverContext"] = (failoverContext).toJson();
     }
     return _json;
   }
@@ -3636,6 +3741,15 @@ class OperationsListResponse {
 
 /** Read-replica configuration for connecting to the master. */
 class ReplicaConfiguration {
+  /**
+   * Specifies if the replica is the failover target. If the field is set to
+   * true the replica will be designated as a failover replica. In case the
+   * master instance fails, the replica instance will be promoted as the new
+   * master instance.
+   * Only one replica can be specified as failover target, and the replica has
+   * to be in different zone with the master instance.
+   */
+  core.bool failoverTarget;
   /** This is always sql#replicaConfiguration. */
   core.String kind;
   /**
@@ -3651,6 +3765,9 @@ class ReplicaConfiguration {
   ReplicaConfiguration();
 
   ReplicaConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("failoverTarget")) {
+      failoverTarget = _json["failoverTarget"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -3661,6 +3778,9 @@ class ReplicaConfiguration {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (failoverTarget != null) {
+      _json["failoverTarget"] = failoverTarget;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3729,6 +3849,11 @@ class Settings {
    * database flags for crash-safe replication are enabled.
    */
   core.bool crashSafeReplicationEnabled;
+  /**
+   * The size of data disk for the performance instance, specified in GB.
+   * Setting this value for non-performance instances will result in an error.
+   */
+  core.String dataDiskSizeGb;
   /** The database flags passed to the instance at startup. */
   core.List<DatabaseFlags> databaseFlags;
   /**
@@ -3786,6 +3911,9 @@ class Settings {
     if (_json.containsKey("crashSafeReplicationEnabled")) {
       crashSafeReplicationEnabled = _json["crashSafeReplicationEnabled"];
     }
+    if (_json.containsKey("dataDiskSizeGb")) {
+      dataDiskSizeGb = _json["dataDiskSizeGb"];
+    }
     if (_json.containsKey("databaseFlags")) {
       databaseFlags = _json["databaseFlags"].map((value) => new DatabaseFlags.fromJson(value)).toList();
     }
@@ -3828,6 +3956,9 @@ class Settings {
     }
     if (crashSafeReplicationEnabled != null) {
       _json["crashSafeReplicationEnabled"] = crashSafeReplicationEnabled;
+    }
+    if (dataDiskSizeGb != null) {
+      _json["dataDiskSizeGb"] = dataDiskSizeGb;
     }
     if (databaseFlags != null) {
       _json["databaseFlags"] = databaseFlags.map((value) => (value).toJson()).toList();

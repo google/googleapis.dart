@@ -1,3 +1,9 @@
+## 0.20.0
+
+* [apis-breaking] logging:v1beta3: resource/schema changes
+* [apis-new] logging:v2beta1
+* [apis] sqladmin:v1beta3: resource/schema changes
+
 ## 0.19.1
 
 * [apis-new] clouduseraccounts:beta

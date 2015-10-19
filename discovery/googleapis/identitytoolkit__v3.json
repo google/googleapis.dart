@@ -6,7 +6,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/SNgmHHGH7wj9KiccwNhS4DpDB0M\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/VJrCHXHaMQfXi6fEi9qa_MKwS3Y\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -206,7 +206,7 @@
             }
         }
     },
-    "revision": "20150908",
+    "revision": "20151008",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -907,6 +907,10 @@
                 },
                 "needConfirmation": {
                     "description": "Whether the assertion is from a non-trusted IDP and need account linking confirmation.",
+                    "type": "boolean"
+                },
+                "needEmail": {
+                    "description": "Whether need client to supply email to complete the federated login flow.",
                     "type": "boolean"
                 },
                 "nickName": {

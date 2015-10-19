@@ -1,3 +1,17 @@
+## 0.17.0
+
+* [apis-breaking] tagmanager:v1: removed resources and schemas
+* [apis-new] cloudtrace:v1
+* [apis] admin_directory:v1: new resources and schemas
+* [apis] adsense:v1.4: schema changes
+* [apis] books:v1: new resources and schemas
+* [apis] compute:v1: new resources and schemas
+* [apis] doubleclickbidmanager:v1: schema changes
+* [apis] doubleclicksearch:v2: schema changes
+* [apis] identitytoolkit:v3: schema changes
+* [apis] plusDomains:v1: schema changes
+* [apis] plus:v1: schema changes
+
 ## 0.16.1
 
 * [apis-new] admin:datatransfer_v1
@@ -6,7 +20,6 @@
 * [apis] content:v2: new resource
 * [apis] content:v2sandbox: new schemas
 * [apis] storage:v1: schema changes
-
 
 ## 0.16.0
 

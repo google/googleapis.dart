@@ -5476,10 +5476,7 @@ class File {
    * Last time this file was viewed by the user (formatted RFC 3339 timestamp).
    */
   core.DateTime lastViewedByMeDate;
-  /**
-   * Time this file was explicitly marked viewed by the user (formatted RFC 3339
-   * timestamp).
-   */
+  /** Deprecated. */
   core.DateTime markedViewedByMeDate;
   /**
    * An MD5 checksum for the content of this file. This field is only populated

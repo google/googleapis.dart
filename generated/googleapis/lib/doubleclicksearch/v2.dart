@@ -1254,9 +1254,14 @@ class ReportApiColumnSpec {
   core.String headerText;
   /**
    * The platform that is used to provide data for the custom dimension.
-   * Acceptable values are "Floodlight".
+   * Acceptable values are "floodlight".
    */
   core.String platformSource;
+  /**
+   * Provide different source for product items. Acceptable values are
+   * "advertised" and "sold".
+   */
+  core.String productReportPerspective;
   /**
    * Name of a saved column to include in the report. The report must be scoped
    * at advertiser or lower, and this saved column must already be created in
@@ -1294,6 +1299,9 @@ class ReportApiColumnSpec {
     if (_json.containsKey("platformSource")) {
       platformSource = _json["platformSource"];
     }
+    if (_json.containsKey("productReportPerspective")) {
+      productReportPerspective = _json["productReportPerspective"];
+    }
     if (_json.containsKey("savedColumnName")) {
       savedColumnName = _json["savedColumnName"];
     }
@@ -1324,6 +1332,9 @@ class ReportApiColumnSpec {
     }
     if (platformSource != null) {
       _json["platformSource"] = platformSource;
+    }
+    if (productReportPerspective != null) {
+      _json["productReportPerspective"] = productReportPerspective;
     }
     if (savedColumnName != null) {
       _json["savedColumnName"] = savedColumnName;
