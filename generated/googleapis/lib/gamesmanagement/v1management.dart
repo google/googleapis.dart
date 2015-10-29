@@ -1594,6 +1594,10 @@ class PlayerName {
 class Player {
   /** The base URL for the image that represents the player. */
   core.String avatarImageUrl;
+  /** The url to the landscape mode player banner image. */
+  core.String bannerUrlLandscape;
+  /** The url to the portrait mode player banner image. */
+  core.String bannerUrlPortrait;
   /** The name to display for the player. */
   core.String displayName;
   /**
@@ -1627,6 +1631,12 @@ class Player {
     if (_json.containsKey("avatarImageUrl")) {
       avatarImageUrl = _json["avatarImageUrl"];
     }
+    if (_json.containsKey("bannerUrlLandscape")) {
+      bannerUrlLandscape = _json["bannerUrlLandscape"];
+    }
+    if (_json.containsKey("bannerUrlPortrait")) {
+      bannerUrlPortrait = _json["bannerUrlPortrait"];
+    }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
@@ -1654,6 +1664,12 @@ class Player {
     var _json = new core.Map();
     if (avatarImageUrl != null) {
       _json["avatarImageUrl"] = avatarImageUrl;
+    }
+    if (bannerUrlLandscape != null) {
+      _json["bannerUrlLandscape"] = bannerUrlLandscape;
+    }
+    if (bannerUrlPortrait != null) {
+      _json["bannerUrlPortrait"] = bannerUrlPortrait;
     }
     if (displayName != null) {
       _json["displayName"] = displayName;

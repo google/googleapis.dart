@@ -68,14 +68,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed622() {
+buildUnnamed627() {
   var o = new core.List<api.Trace>();
   o.add(buildTrace());
   o.add(buildTrace());
   return o;
 }
 
-checkUnnamed622(core.List<api.Trace> o) {
+checkUnnamed627(core.List<api.Trace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrace(o[0]);
   checkTrace(o[1]);
@@ -87,7 +87,7 @@ buildListTracesResponse() {
   buildCounterListTracesResponse++;
   if (buildCounterListTracesResponse < 3) {
     o.nextPageToken = "foo";
-    o.traces = buildUnnamed622();
+    o.traces = buildUnnamed627();
   }
   buildCounterListTracesResponse--;
   return o;
@@ -97,19 +97,19 @@ checkListTracesResponse(api.ListTracesResponse o) {
   buildCounterListTracesResponse++;
   if (buildCounterListTracesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed622(o.traces);
+    checkUnnamed627(o.traces);
   }
   buildCounterListTracesResponse--;
 }
 
-buildUnnamed623() {
+buildUnnamed628() {
   var o = new core.List<api.TraceSpan>();
   o.add(buildTraceSpan());
   o.add(buildTraceSpan());
   return o;
 }
 
-checkUnnamed623(core.List<api.TraceSpan> o) {
+checkUnnamed628(core.List<api.TraceSpan> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTraceSpan(o[0]);
   checkTraceSpan(o[1]);
@@ -121,7 +121,7 @@ buildTrace() {
   buildCounterTrace++;
   if (buildCounterTrace < 3) {
     o.projectId = "foo";
-    o.spans = buildUnnamed623();
+    o.spans = buildUnnamed628();
     o.traceId = "foo";
   }
   buildCounterTrace--;
@@ -132,20 +132,20 @@ checkTrace(api.Trace o) {
   buildCounterTrace++;
   if (buildCounterTrace < 3) {
     unittest.expect(o.projectId, unittest.equals('foo'));
-    checkUnnamed623(o.spans);
+    checkUnnamed628(o.spans);
     unittest.expect(o.traceId, unittest.equals('foo'));
   }
   buildCounterTrace--;
 }
 
-buildUnnamed624() {
+buildUnnamed629() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed624(core.Map<core.String, core.String> o) {
+checkUnnamed629(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -158,7 +158,7 @@ buildTraceSpan() {
   if (buildCounterTraceSpan < 3) {
     o.endTime = "foo";
     o.kind = "foo";
-    o.labels = buildUnnamed624();
+    o.labels = buildUnnamed629();
     o.name = "foo";
     o.parentSpanId = "foo";
     o.spanId = "foo";
@@ -173,7 +173,7 @@ checkTraceSpan(api.TraceSpan o) {
   if (buildCounterTraceSpan < 3) {
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed624(o.labels);
+    checkUnnamed629(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.parentSpanId, unittest.equals('foo'));
     unittest.expect(o.spanId, unittest.equals('foo'));
@@ -182,14 +182,14 @@ checkTraceSpan(api.TraceSpan o) {
   buildCounterTraceSpan--;
 }
 
-buildUnnamed625() {
+buildUnnamed630() {
   var o = new core.List<api.Trace>();
   o.add(buildTrace());
   o.add(buildTrace());
   return o;
 }
 
-checkUnnamed625(core.List<api.Trace> o) {
+checkUnnamed630(core.List<api.Trace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrace(o[0]);
   checkTrace(o[1]);
@@ -200,7 +200,7 @@ buildTraces() {
   var o = new api.Traces();
   buildCounterTraces++;
   if (buildCounterTraces < 3) {
-    o.traces = buildUnnamed625();
+    o.traces = buildUnnamed630();
   }
   buildCounterTraces--;
   return o;
@@ -209,32 +209,32 @@ buildTraces() {
 checkTraces(api.Traces o) {
   buildCounterTraces++;
   if (buildCounterTraces < 3) {
-    checkUnnamed625(o.traces);
+    checkUnnamed630(o.traces);
   }
   buildCounterTraces--;
 }
 
-buildUnnamed626() {
+buildUnnamed631() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed626(core.List<core.String> o) {
+checkUnnamed631(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed627() {
+buildUnnamed632() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed627(core.List<core.String> o) {
+checkUnnamed632(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -476,9 +476,9 @@ main() {
       var mock = new HttpServerMock();
       api.V1ResourceApi res = new api.CloudtraceApi(mock).v1;
       var arg_format = "foo";
-      var arg_labels = buildUnnamed626();
+      var arg_labels = buildUnnamed631();
       var arg_version = "foo";
-      var arg_args = buildUnnamed627();
+      var arg_args = buildUnnamed632();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;

@@ -51,40 +51,40 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2085() {
+buildUnnamed2092() {
   var o = new core.List<api.AuthToken>();
   o.add(buildAuthToken());
   o.add(buildAuthToken());
   return o;
 }
 
-checkUnnamed2085(core.List<api.AuthToken> o) {
+checkUnnamed2092(core.List<api.AuthToken> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthToken(o[0]);
   checkAuthToken(o[1]);
 }
 
-buildUnnamed2086() {
+buildUnnamed2093() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2086(core.List<core.String> o) {
+checkUnnamed2093(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2087() {
+buildUnnamed2094() {
   var o = new core.List<api.UserData>();
   o.add(buildUserData());
   o.add(buildUserData());
   return o;
 }
 
-checkUnnamed2087(core.List<api.UserData> o) {
+checkUnnamed2094(core.List<api.UserData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserData(o[0]);
   checkUserData(o[1]);
@@ -95,10 +95,10 @@ buildAccount() {
   var o = new api.Account();
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    o.authTokens = buildUnnamed2085();
-    o.features = buildUnnamed2086();
+    o.authTokens = buildUnnamed2092();
+    o.features = buildUnnamed2093();
     o.password = "foo";
-    o.userData = buildUnnamed2087();
+    o.userData = buildUnnamed2094();
   }
   buildCounterAccount--;
   return o;
@@ -107,10 +107,10 @@ buildAccount() {
 checkAccount(api.Account o) {
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    checkUnnamed2085(o.authTokens);
-    checkUnnamed2086(o.features);
+    checkUnnamed2092(o.authTokens);
+    checkUnnamed2093(o.features);
     unittest.expect(o.password, unittest.equals('foo'));
-    checkUnnamed2087(o.userData);
+    checkUnnamed2094(o.userData);
   }
   buildCounterAccount--;
 }
@@ -140,14 +140,14 @@ checkAttachment(api.Attachment o) {
   buildCounterAttachment--;
 }
 
-buildUnnamed2088() {
+buildUnnamed2095() {
   var o = new core.List<api.Attachment>();
   o.add(buildAttachment());
   o.add(buildAttachment());
   return o;
 }
 
-checkUnnamed2088(core.List<api.Attachment> o) {
+checkUnnamed2095(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
@@ -158,7 +158,7 @@ buildAttachmentsListResponse() {
   var o = new api.AttachmentsListResponse();
   buildCounterAttachmentsListResponse++;
   if (buildCounterAttachmentsListResponse < 3) {
-    o.items = buildUnnamed2088();
+    o.items = buildUnnamed2095();
     o.kind = "foo";
   }
   buildCounterAttachmentsListResponse--;
@@ -168,7 +168,7 @@ buildAttachmentsListResponse() {
 checkAttachmentsListResponse(api.AttachmentsListResponse o) {
   buildCounterAttachmentsListResponse++;
   if (buildCounterAttachmentsListResponse < 3) {
-    checkUnnamed2088(o.items);
+    checkUnnamed2095(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAttachmentsListResponse--;
@@ -214,53 +214,53 @@ checkCommand(api.Command o) {
   buildCounterCommand--;
 }
 
-buildUnnamed2089() {
+buildUnnamed2096() {
   var o = new core.List<api.Command>();
   o.add(buildCommand());
   o.add(buildCommand());
   return o;
 }
 
-checkUnnamed2089(core.List<api.Command> o) {
+checkUnnamed2096(core.List<api.Command> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCommand(o[0]);
   checkCommand(o[1]);
 }
 
-buildUnnamed2090() {
+buildUnnamed2097() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2090(core.List<core.String> o) {
+checkUnnamed2097(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2091() {
+buildUnnamed2098() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2091(core.List<core.String> o) {
+checkUnnamed2098(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2092() {
+buildUnnamed2099() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2092(core.List<core.String> o) {
+checkUnnamed2099(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -271,15 +271,15 @@ buildContact() {
   var o = new api.Contact();
   buildCounterContact++;
   if (buildCounterContact < 3) {
-    o.acceptCommands = buildUnnamed2089();
-    o.acceptTypes = buildUnnamed2090();
+    o.acceptCommands = buildUnnamed2096();
+    o.acceptTypes = buildUnnamed2097();
     o.displayName = "foo";
     o.id = "foo";
-    o.imageUrls = buildUnnamed2091();
+    o.imageUrls = buildUnnamed2098();
     o.kind = "foo";
     o.phoneNumber = "foo";
     o.priority = 42;
-    o.sharingFeatures = buildUnnamed2092();
+    o.sharingFeatures = buildUnnamed2099();
     o.source = "foo";
     o.speakableName = "foo";
     o.type = "foo";
@@ -291,15 +291,15 @@ buildContact() {
 checkContact(api.Contact o) {
   buildCounterContact++;
   if (buildCounterContact < 3) {
-    checkUnnamed2089(o.acceptCommands);
-    checkUnnamed2090(o.acceptTypes);
+    checkUnnamed2096(o.acceptCommands);
+    checkUnnamed2097(o.acceptTypes);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed2091(o.imageUrls);
+    checkUnnamed2098(o.imageUrls);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.phoneNumber, unittest.equals('foo'));
     unittest.expect(o.priority, unittest.equals(42));
-    checkUnnamed2092(o.sharingFeatures);
+    checkUnnamed2099(o.sharingFeatures);
     unittest.expect(o.source, unittest.equals('foo'));
     unittest.expect(o.speakableName, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -307,14 +307,14 @@ checkContact(api.Contact o) {
   buildCounterContact--;
 }
 
-buildUnnamed2093() {
+buildUnnamed2100() {
   var o = new core.List<api.Contact>();
   o.add(buildContact());
   o.add(buildContact());
   return o;
 }
 
-checkUnnamed2093(core.List<api.Contact> o) {
+checkUnnamed2100(core.List<api.Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContact(o[0]);
   checkContact(o[1]);
@@ -325,7 +325,7 @@ buildContactsListResponse() {
   var o = new api.ContactsListResponse();
   buildCounterContactsListResponse++;
   if (buildCounterContactsListResponse < 3) {
-    o.items = buildUnnamed2093();
+    o.items = buildUnnamed2100();
     o.kind = "foo";
   }
   buildCounterContactsListResponse--;
@@ -335,7 +335,7 @@ buildContactsListResponse() {
 checkContactsListResponse(api.ContactsListResponse o) {
   buildCounterContactsListResponse++;
   if (buildCounterContactsListResponse < 3) {
-    checkUnnamed2093(o.items);
+    checkUnnamed2100(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterContactsListResponse--;
@@ -374,14 +374,14 @@ checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-buildUnnamed2094() {
+buildUnnamed2101() {
   var o = new core.List<api.Location>();
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-checkUnnamed2094(core.List<api.Location> o) {
+checkUnnamed2101(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -392,7 +392,7 @@ buildLocationsListResponse() {
   var o = new api.LocationsListResponse();
   buildCounterLocationsListResponse++;
   if (buildCounterLocationsListResponse < 3) {
-    o.items = buildUnnamed2094();
+    o.items = buildUnnamed2101();
     o.kind = "foo";
   }
   buildCounterLocationsListResponse--;
@@ -402,20 +402,20 @@ buildLocationsListResponse() {
 checkLocationsListResponse(api.LocationsListResponse o) {
   buildCounterLocationsListResponse++;
   if (buildCounterLocationsListResponse < 3) {
-    checkUnnamed2094(o.items);
+    checkUnnamed2101(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterLocationsListResponse--;
 }
 
-buildUnnamed2095() {
+buildUnnamed2102() {
   var o = new core.List<api.MenuValue>();
   o.add(buildMenuValue());
   o.add(buildMenuValue());
   return o;
 }
 
-checkUnnamed2095(core.List<api.MenuValue> o) {
+checkUnnamed2102(core.List<api.MenuValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMenuValue(o[0]);
   checkMenuValue(o[1]);
@@ -431,7 +431,7 @@ buildMenuItem() {
     o.id = "foo";
     o.payload = "foo";
     o.removeWhenSelected = true;
-    o.values = buildUnnamed2095();
+    o.values = buildUnnamed2102();
   }
   buildCounterMenuItem--;
   return o;
@@ -445,7 +445,7 @@ checkMenuItem(api.MenuItem o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.payload, unittest.equals('foo'));
     unittest.expect(o.removeWhenSelected, unittest.isTrue);
-    checkUnnamed2095(o.values);
+    checkUnnamed2102(o.values);
   }
   buildCounterMenuItem--;
 }
@@ -473,14 +473,14 @@ checkMenuValue(api.MenuValue o) {
   buildCounterMenuValue--;
 }
 
-buildUnnamed2096() {
+buildUnnamed2103() {
   var o = new core.List<api.UserAction>();
   o.add(buildUserAction());
   o.add(buildUserAction());
   return o;
 }
 
-checkUnnamed2096(core.List<api.UserAction> o) {
+checkUnnamed2103(core.List<api.UserAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserAction(o[0]);
   checkUserAction(o[1]);
@@ -494,7 +494,7 @@ buildNotification() {
     o.collection = "foo";
     o.itemId = "foo";
     o.operation = "foo";
-    o.userActions = buildUnnamed2096();
+    o.userActions = buildUnnamed2103();
     o.userToken = "foo";
     o.verifyToken = "foo";
   }
@@ -508,7 +508,7 @@ checkNotification(api.Notification o) {
     unittest.expect(o.collection, unittest.equals('foo'));
     unittest.expect(o.itemId, unittest.equals('foo'));
     unittest.expect(o.operation, unittest.equals('foo'));
-    checkUnnamed2096(o.userActions);
+    checkUnnamed2103(o.userActions);
     unittest.expect(o.userToken, unittest.equals('foo'));
     unittest.expect(o.verifyToken, unittest.equals('foo'));
   }
@@ -559,14 +559,14 @@ checkSetting(api.Setting o) {
   buildCounterSetting--;
 }
 
-buildUnnamed2097() {
+buildUnnamed2104() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2097(core.List<core.String> o) {
+checkUnnamed2104(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -582,7 +582,7 @@ buildSubscription() {
     o.id = "foo";
     o.kind = "foo";
     o.notification = buildNotification();
-    o.operation = buildUnnamed2097();
+    o.operation = buildUnnamed2104();
     o.updated = core.DateTime.parse("2002-02-27T14:01:02");
     o.userToken = "foo";
     o.verifyToken = "foo";
@@ -599,7 +599,7 @@ checkSubscription(api.Subscription o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkNotification(o.notification);
-    checkUnnamed2097(o.operation);
+    checkUnnamed2104(o.operation);
     unittest.expect(o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.userToken, unittest.equals('foo'));
     unittest.expect(o.verifyToken, unittest.equals('foo'));
@@ -607,14 +607,14 @@ checkSubscription(api.Subscription o) {
   buildCounterSubscription--;
 }
 
-buildUnnamed2098() {
+buildUnnamed2105() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed2098(core.List<api.Subscription> o) {
+checkUnnamed2105(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -625,7 +625,7 @@ buildSubscriptionsListResponse() {
   var o = new api.SubscriptionsListResponse();
   buildCounterSubscriptionsListResponse++;
   if (buildCounterSubscriptionsListResponse < 3) {
-    o.items = buildUnnamed2098();
+    o.items = buildUnnamed2105();
     o.kind = "foo";
   }
   buildCounterSubscriptionsListResponse--;
@@ -635,46 +635,46 @@ buildSubscriptionsListResponse() {
 checkSubscriptionsListResponse(api.SubscriptionsListResponse o) {
   buildCounterSubscriptionsListResponse++;
   if (buildCounterSubscriptionsListResponse < 3) {
-    checkUnnamed2098(o.items);
+    checkUnnamed2105(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterSubscriptionsListResponse--;
 }
 
-buildUnnamed2099() {
+buildUnnamed2106() {
   var o = new core.List<api.Attachment>();
   o.add(buildAttachment());
   o.add(buildAttachment());
   return o;
 }
 
-checkUnnamed2099(core.List<api.Attachment> o) {
+checkUnnamed2106(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
 }
 
-buildUnnamed2100() {
+buildUnnamed2107() {
   var o = new core.List<api.MenuItem>();
   o.add(buildMenuItem());
   o.add(buildMenuItem());
   return o;
 }
 
-checkUnnamed2100(core.List<api.MenuItem> o) {
+checkUnnamed2107(core.List<api.MenuItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMenuItem(o[0]);
   checkMenuItem(o[1]);
 }
 
-buildUnnamed2101() {
+buildUnnamed2108() {
   var o = new core.List<api.Contact>();
   o.add(buildContact());
   o.add(buildContact());
   return o;
 }
 
-checkUnnamed2101(core.List<api.Contact> o) {
+checkUnnamed2108(core.List<api.Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContact(o[0]);
   checkContact(o[1]);
@@ -685,7 +685,7 @@ buildTimelineItem() {
   var o = new api.TimelineItem();
   buildCounterTimelineItem++;
   if (buildCounterTimelineItem < 3) {
-    o.attachments = buildUnnamed2099();
+    o.attachments = buildUnnamed2106();
     o.bundleId = "foo";
     o.canonicalUrl = "foo";
     o.created = core.DateTime.parse("2002-02-27T14:01:02");
@@ -700,10 +700,10 @@ buildTimelineItem() {
     o.isPinned = true;
     o.kind = "foo";
     o.location = buildLocation();
-    o.menuItems = buildUnnamed2100();
+    o.menuItems = buildUnnamed2107();
     o.notification = buildNotificationConfig();
     o.pinScore = 42;
-    o.recipients = buildUnnamed2101();
+    o.recipients = buildUnnamed2108();
     o.selfLink = "foo";
     o.sourceItemId = "foo";
     o.speakableText = "foo";
@@ -719,7 +719,7 @@ buildTimelineItem() {
 checkTimelineItem(api.TimelineItem o) {
   buildCounterTimelineItem++;
   if (buildCounterTimelineItem < 3) {
-    checkUnnamed2099(o.attachments);
+    checkUnnamed2106(o.attachments);
     unittest.expect(o.bundleId, unittest.equals('foo'));
     unittest.expect(o.canonicalUrl, unittest.equals('foo'));
     unittest.expect(o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
@@ -734,10 +734,10 @@ checkTimelineItem(api.TimelineItem o) {
     unittest.expect(o.isPinned, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkLocation(o.location);
-    checkUnnamed2100(o.menuItems);
+    checkUnnamed2107(o.menuItems);
     checkNotificationConfig(o.notification);
     unittest.expect(o.pinScore, unittest.equals(42));
-    checkUnnamed2101(o.recipients);
+    checkUnnamed2108(o.recipients);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.sourceItemId, unittest.equals('foo'));
     unittest.expect(o.speakableText, unittest.equals('foo'));
@@ -749,14 +749,14 @@ checkTimelineItem(api.TimelineItem o) {
   buildCounterTimelineItem--;
 }
 
-buildUnnamed2102() {
+buildUnnamed2109() {
   var o = new core.List<api.TimelineItem>();
   o.add(buildTimelineItem());
   o.add(buildTimelineItem());
   return o;
 }
 
-checkUnnamed2102(core.List<api.TimelineItem> o) {
+checkUnnamed2109(core.List<api.TimelineItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimelineItem(o[0]);
   checkTimelineItem(o[1]);
@@ -767,7 +767,7 @@ buildTimelineListResponse() {
   var o = new api.TimelineListResponse();
   buildCounterTimelineListResponse++;
   if (buildCounterTimelineListResponse < 3) {
-    o.items = buildUnnamed2102();
+    o.items = buildUnnamed2109();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -778,7 +778,7 @@ buildTimelineListResponse() {
 checkTimelineListResponse(api.TimelineListResponse o) {
   buildCounterTimelineListResponse++;
   if (buildCounterTimelineListResponse < 3) {
-    checkUnnamed2102(o.items);
+    checkUnnamed2109(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }

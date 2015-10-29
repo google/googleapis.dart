@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.17.0
+    version: 0.18.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md

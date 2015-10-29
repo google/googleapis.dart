@@ -32,7 +32,7 @@
     "description": "The Gmail REST API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/epKZlPw-j_GuhHfSnsAczxcvTBU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/SXplt710j0kUBElDUmuzzx7iUac\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
@@ -1415,7 +1415,7 @@
             }
         }
     },
-    "revision": "20150910",
+    "revision": "20151001",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Draft": {

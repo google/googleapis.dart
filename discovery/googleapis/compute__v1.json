@@ -29,7 +29,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/K2YWeNBEH2yOCjdgDssBGJY_KU4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/DlH_OYjJnQwnbj22dSoucVEXdF0\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -3373,7 +3373,7 @@
         "instanceGroups": {
             "methods": {
                 "addInstances": {
-                    "description": "Adds a list of instances to the specified instance group. All of the instances in the instance group must be in the same network/subnetwork. TODO: Change to comment to state \"if IG is load balanced.\"",
+                    "description": "Adds a list of instances to the specified instance group. All of the instances in the instance group must be in the same network/subnetwork.",
                     "httpMethod": "POST",
                     "id": "compute.instanceGroups.addInstances",
                     "parameterOrder": [
@@ -7813,7 +7813,7 @@
             }
         }
     },
-    "revision": "20151015",
+    "revision": "20151022",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -9266,7 +9266,7 @@
                     "type": "string"
                 },
                 "portRange": {
-                    "description": "Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range will be forwarded to target. Forwarding rules with the same `[IPAddress, IPProtocol]` pair must have disjoint port ranges.",
+                    "description": "Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.",
                     "type": "string"
                 },
                 "region": {
@@ -11786,7 +11786,6 @@
             "id": "PathMatcher",
             "properties": {
                 "defaultService": {
-                    "description": "The URL to the BackendService resource. This will be used if none of the 'pathRules' defined by this PathMatcher is met by the URL's path portion.",
                     "type": "string"
                 },
                 "description": {
@@ -11909,7 +11908,9 @@
                         "ROUTES",
                         "SNAPSHOTS",
                         "SSD_TOTAL_GB",
+                        "SSL_CERTIFICATES",
                         "STATIC_ADDRESSES",
+                        "TARGET_HTTPS_PROXIES",
                         "TARGET_HTTP_PROXIES",
                         "TARGET_INSTANCES",
                         "TARGET_POOLS",
@@ -11918,6 +11919,8 @@
                         "VPN_TUNNELS"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         "",
                         "",

@@ -74,27 +74,27 @@ checkAcquisitionTime(api.AcquisitionTime o) {
   buildCounterAcquisitionTime--;
 }
 
-buildUnnamed2033() {
+buildUnnamed2040() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2033(core.List<core.double> o) {
+checkUnnamed2040(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed2034() {
+buildUnnamed2041() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2034(core.List<core.String> o) {
+checkUnnamed2041(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -105,7 +105,7 @@ buildAsset() {
   var o = new api.Asset();
   buildCounterAsset++;
   if (buildCounterAsset < 3) {
-    o.bbox = buildUnnamed2033();
+    o.bbox = buildUnnamed2040();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.creatorEmail = "foo";
     o.description = "foo";
@@ -116,7 +116,7 @@ buildAsset() {
     o.name = "foo";
     o.projectId = "foo";
     o.resource = "foo";
-    o.tags = buildUnnamed2034();
+    o.tags = buildUnnamed2041();
     o.type = "foo";
     o.writersCanEditPermissions = true;
   }
@@ -127,7 +127,7 @@ buildAsset() {
 checkAsset(api.Asset o) {
   buildCounterAsset++;
   if (buildCounterAsset < 3) {
-    checkUnnamed2033(o.bbox);
+    checkUnnamed2040(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
@@ -138,21 +138,21 @@ checkAsset(api.Asset o) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.resource, unittest.equals('foo'));
-    checkUnnamed2034(o.tags);
+    checkUnnamed2041(o.tags);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.writersCanEditPermissions, unittest.isTrue);
   }
   buildCounterAsset--;
 }
 
-buildUnnamed2035() {
+buildUnnamed2042() {
   var o = new core.List<api.Asset>();
   o.add(buildAsset());
   o.add(buildAsset());
   return o;
 }
 
-checkUnnamed2035(core.List<api.Asset> o) {
+checkUnnamed2042(core.List<api.Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAsset(o[0]);
   checkAsset(o[1]);
@@ -163,7 +163,7 @@ buildAssetsListResponse() {
   var o = new api.AssetsListResponse();
   buildCounterAssetsListResponse++;
   if (buildCounterAssetsListResponse < 3) {
-    o.assets = buildUnnamed2035();
+    o.assets = buildUnnamed2042();
     o.nextPageToken = "foo";
   }
   buildCounterAssetsListResponse--;
@@ -173,7 +173,7 @@ buildAssetsListResponse() {
 checkAssetsListResponse(api.AssetsListResponse o) {
   buildCounterAssetsListResponse++;
   if (buildCounterAssetsListResponse < 3) {
-    checkUnnamed2035(o.assets);
+    checkUnnamed2042(o.assets);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterAssetsListResponse--;
@@ -255,14 +255,14 @@ checkDatasources(api.Datasources o) {
   checkDatasource(o[1]);
 }
 
-buildUnnamed2036() {
+buildUnnamed2043() {
   var o = new core.List<api.Filter>();
   o.add(buildFilter());
   o.add(buildFilter());
   return o;
 }
 
-checkUnnamed2036(core.List<api.Filter> o) {
+checkUnnamed2043(core.List<api.Filter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilter(o[0]);
   checkFilter(o[1]);
@@ -273,7 +273,7 @@ buildDisplayRule() {
   var o = new api.DisplayRule();
   buildCounterDisplayRule++;
   if (buildCounterDisplayRule < 3) {
-    o.filters = buildUnnamed2036();
+    o.filters = buildUnnamed2043();
     o.lineOptions = buildLineStyle();
     o.name = "foo";
     o.pointOptions = buildPointStyle();
@@ -287,7 +287,7 @@ buildDisplayRule() {
 checkDisplayRule(api.DisplayRule o) {
   buildCounterDisplayRule++;
   if (buildCounterDisplayRule < 3) {
-    checkUnnamed2036(o.filters);
+    checkUnnamed2043(o.filters);
     checkLineStyle(o.lineOptions);
     unittest.expect(o.name, unittest.equals('foo'));
     checkPointStyle(o.pointOptions);
@@ -339,27 +339,27 @@ checkFeatureInfo(api.FeatureInfo o) {
   buildCounterFeatureInfo--;
 }
 
-buildUnnamed2037() {
+buildUnnamed2044() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2037(core.List<core.String> o) {
+checkUnnamed2044(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2038() {
+buildUnnamed2045() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2038(core.List<core.String> o) {
+checkUnnamed2045(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -370,8 +370,8 @@ buildFeaturesBatchDeleteRequest() {
   var o = new api.FeaturesBatchDeleteRequest();
   buildCounterFeaturesBatchDeleteRequest++;
   if (buildCounterFeaturesBatchDeleteRequest < 3) {
-    o.gxIds = buildUnnamed2037();
-    o.primaryKeys = buildUnnamed2038();
+    o.gxIds = buildUnnamed2044();
+    o.primaryKeys = buildUnnamed2045();
   }
   buildCounterFeaturesBatchDeleteRequest--;
   return o;
@@ -380,20 +380,20 @@ buildFeaturesBatchDeleteRequest() {
 checkFeaturesBatchDeleteRequest(api.FeaturesBatchDeleteRequest o) {
   buildCounterFeaturesBatchDeleteRequest++;
   if (buildCounterFeaturesBatchDeleteRequest < 3) {
-    checkUnnamed2037(o.gxIds);
-    checkUnnamed2038(o.primaryKeys);
+    checkUnnamed2044(o.gxIds);
+    checkUnnamed2045(o.primaryKeys);
   }
   buildCounterFeaturesBatchDeleteRequest--;
 }
 
-buildUnnamed2039() {
+buildUnnamed2046() {
   var o = new core.List<api.Feature>();
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
 }
 
-checkUnnamed2039(core.List<api.Feature> o) {
+checkUnnamed2046(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0]);
   checkFeature(o[1]);
@@ -404,7 +404,7 @@ buildFeaturesBatchInsertRequest() {
   var o = new api.FeaturesBatchInsertRequest();
   buildCounterFeaturesBatchInsertRequest++;
   if (buildCounterFeaturesBatchInsertRequest < 3) {
-    o.features = buildUnnamed2039();
+    o.features = buildUnnamed2046();
     o.normalizeGeometries = true;
   }
   buildCounterFeaturesBatchInsertRequest--;
@@ -414,20 +414,20 @@ buildFeaturesBatchInsertRequest() {
 checkFeaturesBatchInsertRequest(api.FeaturesBatchInsertRequest o) {
   buildCounterFeaturesBatchInsertRequest++;
   if (buildCounterFeaturesBatchInsertRequest < 3) {
-    checkUnnamed2039(o.features);
+    checkUnnamed2046(o.features);
     unittest.expect(o.normalizeGeometries, unittest.isTrue);
   }
   buildCounterFeaturesBatchInsertRequest--;
 }
 
-buildUnnamed2040() {
+buildUnnamed2047() {
   var o = new core.List<api.Feature>();
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
 }
 
-checkUnnamed2040(core.List<api.Feature> o) {
+checkUnnamed2047(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0]);
   checkFeature(o[1]);
@@ -438,7 +438,7 @@ buildFeaturesBatchPatchRequest() {
   var o = new api.FeaturesBatchPatchRequest();
   buildCounterFeaturesBatchPatchRequest++;
   if (buildCounterFeaturesBatchPatchRequest < 3) {
-    o.features = buildUnnamed2040();
+    o.features = buildUnnamed2047();
     o.normalizeGeometries = true;
   }
   buildCounterFeaturesBatchPatchRequest--;
@@ -448,20 +448,20 @@ buildFeaturesBatchPatchRequest() {
 checkFeaturesBatchPatchRequest(api.FeaturesBatchPatchRequest o) {
   buildCounterFeaturesBatchPatchRequest++;
   if (buildCounterFeaturesBatchPatchRequest < 3) {
-    checkUnnamed2040(o.features);
+    checkUnnamed2047(o.features);
     unittest.expect(o.normalizeGeometries, unittest.isTrue);
   }
   buildCounterFeaturesBatchPatchRequest--;
 }
 
-buildUnnamed2041() {
+buildUnnamed2048() {
   var o = new core.List<api.Feature>();
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
 }
 
-checkUnnamed2041(core.List<api.Feature> o) {
+checkUnnamed2048(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0]);
   checkFeature(o[1]);
@@ -473,7 +473,7 @@ buildFeaturesListResponse() {
   buildCounterFeaturesListResponse++;
   if (buildCounterFeaturesListResponse < 3) {
     o.allowedQueriesPerSecond = 42.0;
-    o.features = buildUnnamed2041();
+    o.features = buildUnnamed2048();
     o.nextPageToken = "foo";
     o.schema = buildSchema();
     o.type = "foo";
@@ -486,7 +486,7 @@ checkFeaturesListResponse(api.FeaturesListResponse o) {
   buildCounterFeaturesListResponse++;
   if (buildCounterFeaturesListResponse < 3) {
     unittest.expect(o.allowedQueriesPerSecond, unittest.equals(42.0));
-    checkUnnamed2041(o.features);
+    checkUnnamed2048(o.features);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     checkSchema(o.schema);
     unittest.expect(o.type, unittest.equals('foo'));
@@ -548,7 +548,7 @@ checkGeoJsonGeometry(api.GeoJsonGeometry o) {
   checkGeoJsonGeometryCollection(api.GeoJsonGeometryCollection o) {
   buildCounterGeoJsonGeometryCollection++;
   if (buildCounterGeoJsonGeometryCollection < 3) {
-    checkUnnamed2042(o.geometries);
+    checkUnnamed2049(o.geometries);
   }
   buildCounterGeoJsonGeometryCollection--;
 }
@@ -556,14 +556,14 @@ checkGeoJsonGeometry(api.GeoJsonGeometry o) {
 (o);
 }
 
-buildUnnamed2042() {
+buildUnnamed2049() {
   var o = new core.List<api.GeoJsonGeometry>();
   o.add(buildGeoJsonGeometry());
   o.add(buildGeoJsonGeometry());
   return o;
 }
 
-checkUnnamed2042(core.List<api.GeoJsonGeometry> o) {
+checkUnnamed2049(core.List<api.GeoJsonGeometry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoJsonGeometry(o[0]);
   checkGeoJsonGeometry(o[1]);
@@ -574,7 +574,7 @@ buildGeoJsonGeometryCollection() {
   var o = new api.GeoJsonGeometryCollection();
   buildCounterGeoJsonGeometryCollection++;
   if (buildCounterGeoJsonGeometryCollection < 3) {
-    o.geometries = buildUnnamed2042();
+    o.geometries = buildUnnamed2049();
   }
   buildCounterGeoJsonGeometryCollection--;
   return o;
@@ -583,19 +583,19 @@ buildGeoJsonGeometryCollection() {
 checkGeoJsonGeometryCollection(api.GeoJsonGeometryCollection o) {
   buildCounterGeoJsonGeometryCollection++;
   if (buildCounterGeoJsonGeometryCollection < 3) {
-    checkUnnamed2042(o.geometries);
+    checkUnnamed2049(o.geometries);
   }
   buildCounterGeoJsonGeometryCollection--;
 }
 
-buildUnnamed2043() {
+buildUnnamed2050() {
   var o = new core.List<api.GeoJsonPosition>();
   o.add(buildGeoJsonPosition());
   o.add(buildGeoJsonPosition());
   return o;
 }
 
-checkUnnamed2043(core.List<api.GeoJsonPosition> o) {
+checkUnnamed2050(core.List<api.GeoJsonPosition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoJsonPosition(o[0]);
   checkGeoJsonPosition(o[1]);
@@ -606,7 +606,7 @@ buildGeoJsonLineString() {
   var o = new api.GeoJsonLineString();
   buildCounterGeoJsonLineString++;
   if (buildCounterGeoJsonLineString < 3) {
-    o.coordinates = buildUnnamed2043();
+    o.coordinates = buildUnnamed2050();
   }
   buildCounterGeoJsonLineString--;
   return o;
@@ -615,35 +615,35 @@ buildGeoJsonLineString() {
 checkGeoJsonLineString(api.GeoJsonLineString o) {
   buildCounterGeoJsonLineString++;
   if (buildCounterGeoJsonLineString < 3) {
-    checkUnnamed2043(o.coordinates);
+    checkUnnamed2050(o.coordinates);
   }
   buildCounterGeoJsonLineString--;
 }
 
-buildUnnamed2044() {
+buildUnnamed2051() {
   var o = new core.List<api.GeoJsonPosition>();
   o.add(buildGeoJsonPosition());
   o.add(buildGeoJsonPosition());
   return o;
 }
 
-checkUnnamed2044(core.List<api.GeoJsonPosition> o) {
+checkUnnamed2051(core.List<api.GeoJsonPosition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoJsonPosition(o[0]);
   checkGeoJsonPosition(o[1]);
 }
 
-buildUnnamed2045() {
+buildUnnamed2052() {
   var o = new core.List<core.List<api.GeoJsonPosition>>();
-  o.add(buildUnnamed2044());
-  o.add(buildUnnamed2044());
+  o.add(buildUnnamed2051());
+  o.add(buildUnnamed2051());
   return o;
 }
 
-checkUnnamed2045(core.List<core.List<api.GeoJsonPosition>> o) {
+checkUnnamed2052(core.List<core.List<api.GeoJsonPosition>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2044(o[0]);
-  checkUnnamed2044(o[1]);
+  checkUnnamed2051(o[0]);
+  checkUnnamed2051(o[1]);
 }
 
 core.int buildCounterGeoJsonMultiLineString = 0;
@@ -651,7 +651,7 @@ buildGeoJsonMultiLineString() {
   var o = new api.GeoJsonMultiLineString();
   buildCounterGeoJsonMultiLineString++;
   if (buildCounterGeoJsonMultiLineString < 3) {
-    o.coordinates = buildUnnamed2045();
+    o.coordinates = buildUnnamed2052();
   }
   buildCounterGeoJsonMultiLineString--;
   return o;
@@ -660,19 +660,19 @@ buildGeoJsonMultiLineString() {
 checkGeoJsonMultiLineString(api.GeoJsonMultiLineString o) {
   buildCounterGeoJsonMultiLineString++;
   if (buildCounterGeoJsonMultiLineString < 3) {
-    checkUnnamed2045(o.coordinates);
+    checkUnnamed2052(o.coordinates);
   }
   buildCounterGeoJsonMultiLineString--;
 }
 
-buildUnnamed2046() {
+buildUnnamed2053() {
   var o = new core.List<api.GeoJsonPosition>();
   o.add(buildGeoJsonPosition());
   o.add(buildGeoJsonPosition());
   return o;
 }
 
-checkUnnamed2046(core.List<api.GeoJsonPosition> o) {
+checkUnnamed2053(core.List<api.GeoJsonPosition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoJsonPosition(o[0]);
   checkGeoJsonPosition(o[1]);
@@ -683,7 +683,7 @@ buildGeoJsonMultiPoint() {
   var o = new api.GeoJsonMultiPoint();
   buildCounterGeoJsonMultiPoint++;
   if (buildCounterGeoJsonMultiPoint < 3) {
-    o.coordinates = buildUnnamed2046();
+    o.coordinates = buildUnnamed2053();
   }
   buildCounterGeoJsonMultiPoint--;
   return o;
@@ -692,48 +692,48 @@ buildGeoJsonMultiPoint() {
 checkGeoJsonMultiPoint(api.GeoJsonMultiPoint o) {
   buildCounterGeoJsonMultiPoint++;
   if (buildCounterGeoJsonMultiPoint < 3) {
-    checkUnnamed2046(o.coordinates);
+    checkUnnamed2053(o.coordinates);
   }
   buildCounterGeoJsonMultiPoint--;
 }
 
-buildUnnamed2047() {
+buildUnnamed2054() {
   var o = new core.List<api.GeoJsonPosition>();
   o.add(buildGeoJsonPosition());
   o.add(buildGeoJsonPosition());
   return o;
 }
 
-checkUnnamed2047(core.List<api.GeoJsonPosition> o) {
+checkUnnamed2054(core.List<api.GeoJsonPosition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoJsonPosition(o[0]);
   checkGeoJsonPosition(o[1]);
 }
 
-buildUnnamed2048() {
+buildUnnamed2055() {
   var o = new core.List<core.List<api.GeoJsonPosition>>();
-  o.add(buildUnnamed2047());
-  o.add(buildUnnamed2047());
+  o.add(buildUnnamed2054());
+  o.add(buildUnnamed2054());
   return o;
 }
 
-checkUnnamed2048(core.List<core.List<api.GeoJsonPosition>> o) {
+checkUnnamed2055(core.List<core.List<api.GeoJsonPosition>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2047(o[0]);
-  checkUnnamed2047(o[1]);
+  checkUnnamed2054(o[0]);
+  checkUnnamed2054(o[1]);
 }
 
-buildUnnamed2049() {
+buildUnnamed2056() {
   var o = new core.List<core.List<core.List<api.GeoJsonPosition>>>();
-  o.add(buildUnnamed2048());
-  o.add(buildUnnamed2048());
+  o.add(buildUnnamed2055());
+  o.add(buildUnnamed2055());
   return o;
 }
 
-checkUnnamed2049(core.List<core.List<core.List<api.GeoJsonPosition>>> o) {
+checkUnnamed2056(core.List<core.List<core.List<api.GeoJsonPosition>>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2048(o[0]);
-  checkUnnamed2048(o[1]);
+  checkUnnamed2055(o[0]);
+  checkUnnamed2055(o[1]);
 }
 
 core.int buildCounterGeoJsonMultiPolygon = 0;
@@ -741,7 +741,7 @@ buildGeoJsonMultiPolygon() {
   var o = new api.GeoJsonMultiPolygon();
   buildCounterGeoJsonMultiPolygon++;
   if (buildCounterGeoJsonMultiPolygon < 3) {
-    o.coordinates = buildUnnamed2049();
+    o.coordinates = buildUnnamed2056();
   }
   buildCounterGeoJsonMultiPolygon--;
   return o;
@@ -750,7 +750,7 @@ buildGeoJsonMultiPolygon() {
 checkGeoJsonMultiPolygon(api.GeoJsonMultiPolygon o) {
   buildCounterGeoJsonMultiPolygon++;
   if (buildCounterGeoJsonMultiPolygon < 3) {
-    checkUnnamed2049(o.coordinates);
+    checkUnnamed2056(o.coordinates);
   }
   buildCounterGeoJsonMultiPolygon--;
 }
@@ -774,30 +774,30 @@ checkGeoJsonPoint(api.GeoJsonPoint o) {
   buildCounterGeoJsonPoint--;
 }
 
-buildUnnamed2050() {
+buildUnnamed2057() {
   var o = new core.List<api.GeoJsonPosition>();
   o.add(buildGeoJsonPosition());
   o.add(buildGeoJsonPosition());
   return o;
 }
 
-checkUnnamed2050(core.List<api.GeoJsonPosition> o) {
+checkUnnamed2057(core.List<api.GeoJsonPosition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoJsonPosition(o[0]);
   checkGeoJsonPosition(o[1]);
 }
 
-buildUnnamed2051() {
+buildUnnamed2058() {
   var o = new core.List<core.List<api.GeoJsonPosition>>();
-  o.add(buildUnnamed2050());
-  o.add(buildUnnamed2050());
+  o.add(buildUnnamed2057());
+  o.add(buildUnnamed2057());
   return o;
 }
 
-checkUnnamed2051(core.List<core.List<api.GeoJsonPosition>> o) {
+checkUnnamed2058(core.List<core.List<api.GeoJsonPosition>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2050(o[0]);
-  checkUnnamed2050(o[1]);
+  checkUnnamed2057(o[0]);
+  checkUnnamed2057(o[1]);
 }
 
 core.int buildCounterGeoJsonPolygon = 0;
@@ -805,7 +805,7 @@ buildGeoJsonPolygon() {
   var o = new api.GeoJsonPolygon();
   buildCounterGeoJsonPolygon++;
   if (buildCounterGeoJsonPolygon < 3) {
-    o.coordinates = buildUnnamed2051();
+    o.coordinates = buildUnnamed2058();
   }
   buildCounterGeoJsonPolygon--;
   return o;
@@ -814,7 +814,7 @@ buildGeoJsonPolygon() {
 checkGeoJsonPolygon(api.GeoJsonPolygon o) {
   buildCounterGeoJsonPolygon++;
   if (buildCounterGeoJsonPolygon < 3) {
-    checkUnnamed2051(o.coordinates);
+    checkUnnamed2058(o.coordinates);
   }
   buildCounterGeoJsonPolygon--;
 }
@@ -893,14 +893,14 @@ checkIconStyle(api.IconStyle o) {
   buildCounterIconStyle--;
 }
 
-buildUnnamed2052() {
+buildUnnamed2059() {
   var o = new core.List<api.Icon>();
   o.add(buildIcon());
   o.add(buildIcon());
   return o;
 }
 
-checkUnnamed2052(core.List<api.Icon> o) {
+checkUnnamed2059(core.List<api.Icon> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIcon(o[0]);
   checkIcon(o[1]);
@@ -911,7 +911,7 @@ buildIconsListResponse() {
   var o = new api.IconsListResponse();
   buildCounterIconsListResponse++;
   if (buildCounterIconsListResponse < 3) {
-    o.icons = buildUnnamed2052();
+    o.icons = buildUnnamed2059();
     o.nextPageToken = "foo";
   }
   buildCounterIconsListResponse--;
@@ -921,7 +921,7 @@ buildIconsListResponse() {
 checkIconsListResponse(api.IconsListResponse o) {
   buildCounterIconsListResponse++;
   if (buildCounterIconsListResponse < 3) {
-    checkUnnamed2052(o.icons);
+    checkUnnamed2059(o.icons);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterIconsListResponse--;
@@ -971,14 +971,14 @@ checkLatLngBox(api.LatLngBox o) {
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed2053() {
+buildUnnamed2060() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2053(core.List<core.double> o) {
+checkUnnamed2060(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -989,7 +989,7 @@ buildLayer() {
   var o = new api.Layer();
   buildCounterLayer++;
   if (buildCounterLayer < 3) {
-    o.bbox = buildUnnamed2053();
+    o.bbox = buildUnnamed2060();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.creatorEmail = "foo";
     o.datasourceType = "foo";
@@ -1017,7 +1017,7 @@ buildLayer() {
 checkLayer(api.Layer o) {
   buildCounterLayer++;
   if (buildCounterLayer < 3) {
-    checkUnnamed2053(o.bbox);
+    checkUnnamed2060(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.datasourceType, unittest.equals('foo'));
@@ -1041,14 +1041,14 @@ checkLayer(api.Layer o) {
   buildCounterLayer--;
 }
 
-buildUnnamed2054() {
+buildUnnamed2061() {
   var o = new core.List<api.Layer>();
   o.add(buildLayer());
   o.add(buildLayer());
   return o;
 }
 
-checkUnnamed2054(core.List<api.Layer> o) {
+checkUnnamed2061(core.List<api.Layer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLayer(o[0]);
   checkLayer(o[1]);
@@ -1059,7 +1059,7 @@ buildLayersListResponse() {
   var o = new api.LayersListResponse();
   buildCounterLayersListResponse++;
   if (buildCounterLayersListResponse < 3) {
-    o.layers = buildUnnamed2054();
+    o.layers = buildUnnamed2061();
     o.nextPageToken = "foo";
   }
   buildCounterLayersListResponse--;
@@ -1069,20 +1069,20 @@ buildLayersListResponse() {
 checkLayersListResponse(api.LayersListResponse o) {
   buildCounterLayersListResponse++;
   if (buildCounterLayersListResponse < 3) {
-    checkUnnamed2054(o.layers);
+    checkUnnamed2061(o.layers);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterLayersListResponse--;
 }
 
-buildUnnamed2055() {
+buildUnnamed2062() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2055(core.List<core.double> o) {
+checkUnnamed2062(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1117,7 +1117,7 @@ buildLineStyle() {
   buildCounterLineStyle++;
   if (buildCounterLineStyle < 3) {
     o.border = buildBorder();
-    o.dash = buildUnnamed2055();
+    o.dash = buildUnnamed2062();
     o.label = buildLabelStyle();
     o.stroke = buildLineStyleStroke();
   }
@@ -1129,34 +1129,34 @@ checkLineStyle(api.LineStyle o) {
   buildCounterLineStyle++;
   if (buildCounterLineStyle < 3) {
     checkBorder(o.border);
-    checkUnnamed2055(o.dash);
+    checkUnnamed2062(o.dash);
     checkLabelStyle(o.label);
     checkLineStyleStroke(o.stroke);
   }
   buildCounterLineStyle--;
 }
 
-buildUnnamed2056() {
+buildUnnamed2063() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2056(core.List<core.double> o) {
+checkUnnamed2063(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed2057() {
+buildUnnamed2064() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2057(core.List<core.String> o) {
+checkUnnamed2064(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1167,7 +1167,7 @@ buildMap() {
   var o = new api.Map();
   buildCounterMap++;
   if (buildCounterMap < 3) {
-    o.bbox = buildUnnamed2056();
+    o.bbox = buildUnnamed2063();
     o.contents = buildMapContents();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.creatorEmail = "foo";
@@ -1184,7 +1184,7 @@ buildMap() {
     o.publishedAccessList = "foo";
     o.publishingStatus = "foo";
     o.tags = buildTags();
-    o.versions = buildUnnamed2057();
+    o.versions = buildUnnamed2064();
     o.writersCanEditPermissions = true;
   }
   buildCounterMap--;
@@ -1194,7 +1194,7 @@ buildMap() {
 checkMap(api.Map o) {
   buildCounterMap++;
   if (buildCounterMap < 3) {
-    checkUnnamed2056(o.bbox);
+    checkUnnamed2063(o.bbox);
     checkMapContents(o.contents);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.creatorEmail, unittest.equals('foo'));
@@ -1211,7 +1211,7 @@ checkMap(api.Map o) {
     unittest.expect(o.publishedAccessList, unittest.equals('foo'));
     unittest.expect(o.publishingStatus, unittest.equals('foo'));
     checkTags(o.tags);
-    checkUnnamed2057(o.versions);
+    checkUnnamed2064(o.versions);
     unittest.expect(o.writersCanEditPermissions, unittest.isTrue);
   }
   buildCounterMap--;
@@ -1230,27 +1230,27 @@ checkMapContents(api.MapContents o) {
   checkMapItem(o[1]);
 }
 
-buildUnnamed2058() {
+buildUnnamed2065() {
   var o = new core.List<api.MapItem>();
   o.add(buildMapItem());
   o.add(buildMapItem());
   return o;
 }
 
-checkUnnamed2058(core.List<api.MapItem> o) {
+checkUnnamed2065(core.List<api.MapItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMapItem(o[0]);
   checkMapItem(o[1]);
 }
 
-buildUnnamed2059() {
+buildUnnamed2066() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2059(core.List<core.double> o) {
+checkUnnamed2066(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1261,8 +1261,8 @@ buildMapFolder() {
   var o = new api.MapFolder();
   buildCounterMapFolder++;
   if (buildCounterMapFolder < 3) {
-    o.contents = buildUnnamed2058();
-    o.defaultViewport = buildUnnamed2059();
+    o.contents = buildUnnamed2065();
+    o.defaultViewport = buildUnnamed2066();
     o.expandable = true;
     o.key = "foo";
     o.name = "foo";
@@ -1275,8 +1275,8 @@ buildMapFolder() {
 checkMapFolder(api.MapFolder o) {
   buildCounterMapFolder++;
   if (buildCounterMapFolder < 3) {
-    checkUnnamed2058(o.contents);
-    checkUnnamed2059(o.defaultViewport);
+    checkUnnamed2065(o.contents);
+    checkUnnamed2066(o.defaultViewport);
     unittest.expect(o.expandable, unittest.isTrue);
     unittest.expect(o.key, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1293,8 +1293,8 @@ checkMapItem(api.MapItem o) {
   checkMapFolder(api.MapFolder o) {
   buildCounterMapFolder++;
   if (buildCounterMapFolder < 3) {
-    checkUnnamed2058(o.contents);
-    checkUnnamed2059(o.defaultViewport);
+    checkUnnamed2065(o.contents);
+    checkUnnamed2066(o.defaultViewport);
     unittest.expect(o.expandable, unittest.isTrue);
     unittest.expect(o.key, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1306,14 +1306,14 @@ checkMapItem(api.MapItem o) {
 (o);
 }
 
-buildUnnamed2060() {
+buildUnnamed2067() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2060(core.List<core.double> o) {
+checkUnnamed2067(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1324,7 +1324,7 @@ buildMapKmlLink() {
   var o = new api.MapKmlLink();
   buildCounterMapKmlLink++;
   if (buildCounterMapKmlLink < 3) {
-    o.defaultViewport = buildUnnamed2060();
+    o.defaultViewport = buildUnnamed2067();
     o.kmlUrl = "foo";
     o.name = "foo";
     o.visibility = "foo";
@@ -1336,7 +1336,7 @@ buildMapKmlLink() {
 checkMapKmlLink(api.MapKmlLink o) {
   buildCounterMapKmlLink++;
   if (buildCounterMapKmlLink < 3) {
-    checkUnnamed2060(o.defaultViewport);
+    checkUnnamed2067(o.defaultViewport);
     unittest.expect(o.kmlUrl, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.visibility, unittest.equals('foo'));
@@ -1344,14 +1344,14 @@ checkMapKmlLink(api.MapKmlLink o) {
   buildCounterMapKmlLink--;
 }
 
-buildUnnamed2061() {
+buildUnnamed2068() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2061(core.List<core.double> o) {
+checkUnnamed2068(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1362,7 +1362,7 @@ buildMapLayer() {
   var o = new api.MapLayer();
   buildCounterMapLayer++;
   if (buildCounterMapLayer < 3) {
-    o.defaultViewport = buildUnnamed2061();
+    o.defaultViewport = buildUnnamed2068();
     o.id = "foo";
     o.key = "foo";
     o.name = "foo";
@@ -1375,7 +1375,7 @@ buildMapLayer() {
 checkMapLayer(api.MapLayer o) {
   buildCounterMapLayer++;
   if (buildCounterMapLayer < 3) {
-    checkUnnamed2061(o.defaultViewport);
+    checkUnnamed2068(o.defaultViewport);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.key, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1384,14 +1384,14 @@ checkMapLayer(api.MapLayer o) {
   buildCounterMapLayer--;
 }
 
-buildUnnamed2062() {
+buildUnnamed2069() {
   var o = new core.List<api.Map>();
   o.add(buildMap());
   o.add(buildMap());
   return o;
 }
 
-checkUnnamed2062(core.List<api.Map> o) {
+checkUnnamed2069(core.List<api.Map> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMap(o[0]);
   checkMap(o[1]);
@@ -1402,7 +1402,7 @@ buildMapsListResponse() {
   var o = new api.MapsListResponse();
   buildCounterMapsListResponse++;
   if (buildCounterMapsListResponse < 3) {
-    o.maps = buildUnnamed2062();
+    o.maps = buildUnnamed2069();
     o.nextPageToken = "foo";
   }
   buildCounterMapsListResponse--;
@@ -1412,7 +1412,7 @@ buildMapsListResponse() {
 checkMapsListResponse(api.MapsListResponse o) {
   buildCounterMapsListResponse++;
   if (buildCounterMapsListResponse < 3) {
-    checkUnnamed2062(o.maps);
+    checkUnnamed2069(o.maps);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterMapsListResponse--;
@@ -1437,14 +1437,14 @@ checkParent(api.Parent o) {
   buildCounterParent--;
 }
 
-buildUnnamed2063() {
+buildUnnamed2070() {
   var o = new core.List<api.Parent>();
   o.add(buildParent());
   o.add(buildParent());
   return o;
 }
 
-checkUnnamed2063(core.List<api.Parent> o) {
+checkUnnamed2070(core.List<api.Parent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParent(o[0]);
   checkParent(o[1]);
@@ -1456,7 +1456,7 @@ buildParentsListResponse() {
   buildCounterParentsListResponse++;
   if (buildCounterParentsListResponse < 3) {
     o.nextPageToken = "foo";
-    o.parents = buildUnnamed2063();
+    o.parents = buildUnnamed2070();
   }
   buildCounterParentsListResponse--;
   return o;
@@ -1466,7 +1466,7 @@ checkParentsListResponse(api.ParentsListResponse o) {
   buildCounterParentsListResponse++;
   if (buildCounterParentsListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2063(o.parents);
+    checkUnnamed2070(o.parents);
   }
   buildCounterParentsListResponse--;
 }
@@ -1496,14 +1496,14 @@ checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-buildUnnamed2064() {
+buildUnnamed2071() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2064(core.List<core.String> o) {
+checkUnnamed2071(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1514,7 +1514,7 @@ buildPermissionsBatchDeleteRequest() {
   var o = new api.PermissionsBatchDeleteRequest();
   buildCounterPermissionsBatchDeleteRequest++;
   if (buildCounterPermissionsBatchDeleteRequest < 3) {
-    o.ids = buildUnnamed2064();
+    o.ids = buildUnnamed2071();
   }
   buildCounterPermissionsBatchDeleteRequest--;
   return o;
@@ -1523,7 +1523,7 @@ buildPermissionsBatchDeleteRequest() {
 checkPermissionsBatchDeleteRequest(api.PermissionsBatchDeleteRequest o) {
   buildCounterPermissionsBatchDeleteRequest++;
   if (buildCounterPermissionsBatchDeleteRequest < 3) {
-    checkUnnamed2064(o.ids);
+    checkUnnamed2071(o.ids);
   }
   buildCounterPermissionsBatchDeleteRequest--;
 }
@@ -1545,14 +1545,14 @@ checkPermissionsBatchDeleteResponse(api.PermissionsBatchDeleteResponse o) {
   buildCounterPermissionsBatchDeleteResponse--;
 }
 
-buildUnnamed2065() {
+buildUnnamed2072() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed2065(core.List<api.Permission> o) {
+checkUnnamed2072(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -1563,7 +1563,7 @@ buildPermissionsBatchUpdateRequest() {
   var o = new api.PermissionsBatchUpdateRequest();
   buildCounterPermissionsBatchUpdateRequest++;
   if (buildCounterPermissionsBatchUpdateRequest < 3) {
-    o.permissions = buildUnnamed2065();
+    o.permissions = buildUnnamed2072();
   }
   buildCounterPermissionsBatchUpdateRequest--;
   return o;
@@ -1572,7 +1572,7 @@ buildPermissionsBatchUpdateRequest() {
 checkPermissionsBatchUpdateRequest(api.PermissionsBatchUpdateRequest o) {
   buildCounterPermissionsBatchUpdateRequest++;
   if (buildCounterPermissionsBatchUpdateRequest < 3) {
-    checkUnnamed2065(o.permissions);
+    checkUnnamed2072(o.permissions);
   }
   buildCounterPermissionsBatchUpdateRequest--;
 }
@@ -1594,14 +1594,14 @@ checkPermissionsBatchUpdateResponse(api.PermissionsBatchUpdateResponse o) {
   buildCounterPermissionsBatchUpdateResponse--;
 }
 
-buildUnnamed2066() {
+buildUnnamed2073() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed2066(core.List<api.Permission> o) {
+checkUnnamed2073(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -1612,7 +1612,7 @@ buildPermissionsListResponse() {
   var o = new api.PermissionsListResponse();
   buildCounterPermissionsListResponse++;
   if (buildCounterPermissionsListResponse < 3) {
-    o.permissions = buildUnnamed2066();
+    o.permissions = buildUnnamed2073();
   }
   buildCounterPermissionsListResponse--;
   return o;
@@ -1621,7 +1621,7 @@ buildPermissionsListResponse() {
 checkPermissionsListResponse(api.PermissionsListResponse o) {
   buildCounterPermissionsListResponse++;
   if (buildCounterPermissionsListResponse < 3) {
-    checkUnnamed2066(o.permissions);
+    checkUnnamed2073(o.permissions);
   }
   buildCounterPermissionsListResponse--;
 }
@@ -1708,14 +1708,14 @@ checkProject(api.Project o) {
   buildCounterProject--;
 }
 
-buildUnnamed2067() {
+buildUnnamed2074() {
   var o = new core.List<api.Project>();
   o.add(buildProject());
   o.add(buildProject());
   return o;
 }
 
-checkUnnamed2067(core.List<api.Project> o) {
+checkUnnamed2074(core.List<api.Project> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProject(o[0]);
   checkProject(o[1]);
@@ -1726,7 +1726,7 @@ buildProjectsListResponse() {
   var o = new api.ProjectsListResponse();
   buildCounterProjectsListResponse++;
   if (buildCounterProjectsListResponse < 3) {
-    o.projects = buildUnnamed2067();
+    o.projects = buildUnnamed2074();
   }
   buildCounterProjectsListResponse--;
   return o;
@@ -1735,7 +1735,7 @@ buildProjectsListResponse() {
 checkProjectsListResponse(api.ProjectsListResponse o) {
   buildCounterProjectsListResponse++;
   if (buildCounterProjectsListResponse < 3) {
-    checkUnnamed2067(o.projects);
+    checkUnnamed2074(o.projects);
   }
   buildCounterProjectsListResponse--;
 }
@@ -1784,14 +1784,14 @@ checkPublishedLayer(api.PublishedLayer o) {
   buildCounterPublishedLayer--;
 }
 
-buildUnnamed2068() {
+buildUnnamed2075() {
   var o = new core.List<api.PublishedLayer>();
   o.add(buildPublishedLayer());
   o.add(buildPublishedLayer());
   return o;
 }
 
-checkUnnamed2068(core.List<api.PublishedLayer> o) {
+checkUnnamed2075(core.List<api.PublishedLayer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublishedLayer(o[0]);
   checkPublishedLayer(o[1]);
@@ -1802,7 +1802,7 @@ buildPublishedLayersListResponse() {
   var o = new api.PublishedLayersListResponse();
   buildCounterPublishedLayersListResponse++;
   if (buildCounterPublishedLayersListResponse < 3) {
-    o.layers = buildUnnamed2068();
+    o.layers = buildUnnamed2075();
     o.nextPageToken = "foo";
   }
   buildCounterPublishedLayersListResponse--;
@@ -1812,7 +1812,7 @@ buildPublishedLayersListResponse() {
 checkPublishedLayersListResponse(api.PublishedLayersListResponse o) {
   buildCounterPublishedLayersListResponse++;
   if (buildCounterPublishedLayersListResponse < 3) {
-    checkUnnamed2068(o.layers);
+    checkUnnamed2075(o.layers);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterPublishedLayersListResponse--;
@@ -1847,14 +1847,14 @@ checkPublishedMap(api.PublishedMap o) {
   buildCounterPublishedMap--;
 }
 
-buildUnnamed2069() {
+buildUnnamed2076() {
   var o = new core.List<api.PublishedMap>();
   o.add(buildPublishedMap());
   o.add(buildPublishedMap());
   return o;
 }
 
-checkUnnamed2069(core.List<api.PublishedMap> o) {
+checkUnnamed2076(core.List<api.PublishedMap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublishedMap(o[0]);
   checkPublishedMap(o[1]);
@@ -1865,7 +1865,7 @@ buildPublishedMapsListResponse() {
   var o = new api.PublishedMapsListResponse();
   buildCounterPublishedMapsListResponse++;
   if (buildCounterPublishedMapsListResponse < 3) {
-    o.maps = buildUnnamed2069();
+    o.maps = buildUnnamed2076();
     o.nextPageToken = "foo";
   }
   buildCounterPublishedMapsListResponse--;
@@ -1875,33 +1875,33 @@ buildPublishedMapsListResponse() {
 checkPublishedMapsListResponse(api.PublishedMapsListResponse o) {
   buildCounterPublishedMapsListResponse++;
   if (buildCounterPublishedMapsListResponse < 3) {
-    checkUnnamed2069(o.maps);
+    checkUnnamed2076(o.maps);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterPublishedMapsListResponse--;
 }
 
-buildUnnamed2070() {
+buildUnnamed2077() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2070(core.List<core.double> o) {
+checkUnnamed2077(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed2071() {
+buildUnnamed2078() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed2071(core.List<api.File> o) {
+checkUnnamed2078(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -1914,13 +1914,13 @@ buildRaster() {
   if (buildCounterRaster < 3) {
     o.acquisitionTime = buildAcquisitionTime();
     o.attribution = "foo";
-    o.bbox = buildUnnamed2070();
+    o.bbox = buildUnnamed2077();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.creatorEmail = "foo";
     o.description = "foo";
     o.draftAccessList = "foo";
     o.etag = "foo";
-    o.files = buildUnnamed2071();
+    o.files = buildUnnamed2078();
     o.id = "foo";
     o.lastModifiedTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.lastModifierEmail = "foo";
@@ -1941,13 +1941,13 @@ checkRaster(api.Raster o) {
   if (buildCounterRaster < 3) {
     checkAcquisitionTime(o.acquisitionTime);
     unittest.expect(o.attribution, unittest.equals('foo'));
-    checkUnnamed2070(o.bbox);
+    checkUnnamed2077(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.draftAccessList, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed2071(o.files);
+    checkUnnamed2078(o.files);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastModifiedTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.lastModifierEmail, unittest.equals('foo'));
@@ -1962,14 +1962,14 @@ checkRaster(api.Raster o) {
   buildCounterRaster--;
 }
 
-buildUnnamed2072() {
+buildUnnamed2079() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2072(core.List<core.double> o) {
+checkUnnamed2079(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1981,7 +1981,7 @@ buildRasterCollection() {
   buildCounterRasterCollection++;
   if (buildCounterRasterCollection < 3) {
     o.attribution = "foo";
-    o.bbox = buildUnnamed2072();
+    o.bbox = buildUnnamed2079();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.creatorEmail = "foo";
     o.description = "foo";
@@ -2006,7 +2006,7 @@ checkRasterCollection(api.RasterCollection o) {
   buildCounterRasterCollection++;
   if (buildCounterRasterCollection < 3) {
     unittest.expect(o.attribution, unittest.equals('foo'));
-    checkUnnamed2072(o.bbox);
+    checkUnnamed2079(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
@@ -2026,14 +2026,14 @@ checkRasterCollection(api.RasterCollection o) {
   buildCounterRasterCollection--;
 }
 
-buildUnnamed2073() {
+buildUnnamed2080() {
   var o = new core.List<api.RasterCollection>();
   o.add(buildRasterCollection());
   o.add(buildRasterCollection());
   return o;
 }
 
-checkUnnamed2073(core.List<api.RasterCollection> o) {
+checkUnnamed2080(core.List<api.RasterCollection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRasterCollection(o[0]);
   checkRasterCollection(o[1]);
@@ -2045,7 +2045,7 @@ buildRasterCollectionsListResponse() {
   buildCounterRasterCollectionsListResponse++;
   if (buildCounterRasterCollectionsListResponse < 3) {
     o.nextPageToken = "foo";
-    o.rasterCollections = buildUnnamed2073();
+    o.rasterCollections = buildUnnamed2080();
   }
   buildCounterRasterCollectionsListResponse--;
   return o;
@@ -2055,32 +2055,32 @@ checkRasterCollectionsListResponse(api.RasterCollectionsListResponse o) {
   buildCounterRasterCollectionsListResponse++;
   if (buildCounterRasterCollectionsListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2073(o.rasterCollections);
+    checkUnnamed2080(o.rasterCollections);
   }
   buildCounterRasterCollectionsListResponse--;
 }
 
-buildUnnamed2074() {
+buildUnnamed2081() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2074(core.List<core.double> o) {
+checkUnnamed2081(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed2075() {
+buildUnnamed2082() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2075(core.List<core.String> o) {
+checkUnnamed2082(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2091,7 +2091,7 @@ buildRasterCollectionsRaster() {
   var o = new api.RasterCollectionsRaster();
   buildCounterRasterCollectionsRaster++;
   if (buildCounterRasterCollectionsRaster < 3) {
-    o.bbox = buildUnnamed2074();
+    o.bbox = buildUnnamed2081();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.description = "foo";
     o.id = "foo";
@@ -2099,7 +2099,7 @@ buildRasterCollectionsRaster() {
     o.name = "foo";
     o.projectId = "foo";
     o.rasterType = "foo";
-    o.tags = buildUnnamed2075();
+    o.tags = buildUnnamed2082();
   }
   buildCounterRasterCollectionsRaster--;
   return o;
@@ -2108,7 +2108,7 @@ buildRasterCollectionsRaster() {
 checkRasterCollectionsRaster(api.RasterCollectionsRaster o) {
   buildCounterRasterCollectionsRaster++;
   if (buildCounterRasterCollectionsRaster < 3) {
-    checkUnnamed2074(o.bbox);
+    checkUnnamed2081(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -2116,19 +2116,19 @@ checkRasterCollectionsRaster(api.RasterCollectionsRaster o) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.rasterType, unittest.equals('foo'));
-    checkUnnamed2075(o.tags);
+    checkUnnamed2082(o.tags);
   }
   buildCounterRasterCollectionsRaster--;
 }
 
-buildUnnamed2076() {
+buildUnnamed2083() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2076(core.List<core.String> o) {
+checkUnnamed2083(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2139,7 +2139,7 @@ buildRasterCollectionsRasterBatchDeleteRequest() {
   var o = new api.RasterCollectionsRasterBatchDeleteRequest();
   buildCounterRasterCollectionsRasterBatchDeleteRequest++;
   if (buildCounterRasterCollectionsRasterBatchDeleteRequest < 3) {
-    o.ids = buildUnnamed2076();
+    o.ids = buildUnnamed2083();
   }
   buildCounterRasterCollectionsRasterBatchDeleteRequest--;
   return o;
@@ -2148,7 +2148,7 @@ buildRasterCollectionsRasterBatchDeleteRequest() {
 checkRasterCollectionsRasterBatchDeleteRequest(api.RasterCollectionsRasterBatchDeleteRequest o) {
   buildCounterRasterCollectionsRasterBatchDeleteRequest++;
   if (buildCounterRasterCollectionsRasterBatchDeleteRequest < 3) {
-    checkUnnamed2076(o.ids);
+    checkUnnamed2083(o.ids);
   }
   buildCounterRasterCollectionsRasterBatchDeleteRequest--;
 }
@@ -2170,14 +2170,14 @@ checkRasterCollectionsRastersBatchDeleteResponse(api.RasterCollectionsRastersBat
   buildCounterRasterCollectionsRastersBatchDeleteResponse--;
 }
 
-buildUnnamed2077() {
+buildUnnamed2084() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2077(core.List<core.String> o) {
+checkUnnamed2084(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2188,7 +2188,7 @@ buildRasterCollectionsRastersBatchInsertRequest() {
   var o = new api.RasterCollectionsRastersBatchInsertRequest();
   buildCounterRasterCollectionsRastersBatchInsertRequest++;
   if (buildCounterRasterCollectionsRastersBatchInsertRequest < 3) {
-    o.ids = buildUnnamed2077();
+    o.ids = buildUnnamed2084();
   }
   buildCounterRasterCollectionsRastersBatchInsertRequest--;
   return o;
@@ -2197,7 +2197,7 @@ buildRasterCollectionsRastersBatchInsertRequest() {
 checkRasterCollectionsRastersBatchInsertRequest(api.RasterCollectionsRastersBatchInsertRequest o) {
   buildCounterRasterCollectionsRastersBatchInsertRequest++;
   if (buildCounterRasterCollectionsRastersBatchInsertRequest < 3) {
-    checkUnnamed2077(o.ids);
+    checkUnnamed2084(o.ids);
   }
   buildCounterRasterCollectionsRastersBatchInsertRequest--;
 }
@@ -2219,14 +2219,14 @@ checkRasterCollectionsRastersBatchInsertResponse(api.RasterCollectionsRastersBat
   buildCounterRasterCollectionsRastersBatchInsertResponse--;
 }
 
-buildUnnamed2078() {
+buildUnnamed2085() {
   var o = new core.List<api.RasterCollectionsRaster>();
   o.add(buildRasterCollectionsRaster());
   o.add(buildRasterCollectionsRaster());
   return o;
 }
 
-checkUnnamed2078(core.List<api.RasterCollectionsRaster> o) {
+checkUnnamed2085(core.List<api.RasterCollectionsRaster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRasterCollectionsRaster(o[0]);
   checkRasterCollectionsRaster(o[1]);
@@ -2238,7 +2238,7 @@ buildRasterCollectionsRastersListResponse() {
   buildCounterRasterCollectionsRastersListResponse++;
   if (buildCounterRasterCollectionsRastersListResponse < 3) {
     o.nextPageToken = "foo";
-    o.rasters = buildUnnamed2078();
+    o.rasters = buildUnnamed2085();
   }
   buildCounterRasterCollectionsRastersListResponse--;
   return o;
@@ -2248,19 +2248,19 @@ checkRasterCollectionsRastersListResponse(api.RasterCollectionsRastersListRespon
   buildCounterRasterCollectionsRastersListResponse++;
   if (buildCounterRasterCollectionsRastersListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2078(o.rasters);
+    checkUnnamed2085(o.rasters);
   }
   buildCounterRasterCollectionsRastersListResponse--;
 }
 
-buildUnnamed2079() {
+buildUnnamed2086() {
   var o = new core.List<api.Raster>();
   o.add(buildRaster());
   o.add(buildRaster());
   return o;
 }
 
-checkUnnamed2079(core.List<api.Raster> o) {
+checkUnnamed2086(core.List<api.Raster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRaster(o[0]);
   checkRaster(o[1]);
@@ -2272,7 +2272,7 @@ buildRastersListResponse() {
   buildCounterRastersListResponse++;
   if (buildCounterRastersListResponse < 3) {
     o.nextPageToken = "foo";
-    o.rasters = buildUnnamed2079();
+    o.rasters = buildUnnamed2086();
   }
   buildCounterRastersListResponse--;
   return o;
@@ -2282,7 +2282,7 @@ checkRastersListResponse(api.RastersListResponse o) {
   buildCounterRastersListResponse++;
   if (buildCounterRastersListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2079(o.rasters);
+    checkUnnamed2086(o.rasters);
   }
   buildCounterRastersListResponse--;
 }
@@ -2335,14 +2335,14 @@ checkScalingFunction(api.ScalingFunction o) {
   buildCounterScalingFunction--;
 }
 
-buildUnnamed2080() {
+buildUnnamed2087() {
   var o = new core.List<api.TableColumn>();
   o.add(buildTableColumn());
   o.add(buildTableColumn());
   return o;
 }
 
-checkUnnamed2080(core.List<api.TableColumn> o) {
+checkUnnamed2087(core.List<api.TableColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableColumn(o[0]);
   checkTableColumn(o[1]);
@@ -2353,7 +2353,7 @@ buildSchema() {
   var o = new api.Schema();
   buildCounterSchema++;
   if (buildCounterSchema < 3) {
-    o.columns = buildUnnamed2080();
+    o.columns = buildUnnamed2087();
     o.primaryGeometry = "foo";
     o.primaryKey = "foo";
   }
@@ -2364,7 +2364,7 @@ buildSchema() {
 checkSchema(api.Schema o) {
   buildCounterSchema++;
   if (buildCounterSchema < 3) {
-    checkUnnamed2080(o.columns);
+    checkUnnamed2087(o.columns);
     unittest.expect(o.primaryGeometry, unittest.equals('foo'));
     unittest.expect(o.primaryKey, unittest.equals('foo'));
   }
@@ -2392,27 +2392,27 @@ checkSizeRange(api.SizeRange o) {
   buildCounterSizeRange--;
 }
 
-buildUnnamed2081() {
+buildUnnamed2088() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2081(core.List<core.double> o) {
+checkUnnamed2088(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed2082() {
+buildUnnamed2089() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed2082(core.List<api.File> o) {
+checkUnnamed2089(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -2423,13 +2423,13 @@ buildTable() {
   var o = new api.Table();
   buildCounterTable++;
   if (buildCounterTable < 3) {
-    o.bbox = buildUnnamed2081();
+    o.bbox = buildUnnamed2088();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.creatorEmail = "foo";
     o.description = "foo";
     o.draftAccessList = "foo";
     o.etag = "foo";
-    o.files = buildUnnamed2082();
+    o.files = buildUnnamed2089();
     o.id = "foo";
     o.lastModifiedTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.lastModifierEmail = "foo";
@@ -2449,13 +2449,13 @@ buildTable() {
 checkTable(api.Table o) {
   buildCounterTable++;
   if (buildCounterTable < 3) {
-    checkUnnamed2081(o.bbox);
+    checkUnnamed2088(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.draftAccessList, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed2082(o.files);
+    checkUnnamed2089(o.files);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastModifiedTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.lastModifierEmail, unittest.equals('foo'));
@@ -2492,14 +2492,14 @@ checkTableColumn(api.TableColumn o) {
   buildCounterTableColumn--;
 }
 
-buildUnnamed2083() {
+buildUnnamed2090() {
   var o = new core.List<api.Table>();
   o.add(buildTable());
   o.add(buildTable());
   return o;
 }
 
-checkUnnamed2083(core.List<api.Table> o) {
+checkUnnamed2090(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTable(o[0]);
   checkTable(o[1]);
@@ -2511,7 +2511,7 @@ buildTablesListResponse() {
   buildCounterTablesListResponse++;
   if (buildCounterTablesListResponse < 3) {
     o.nextPageToken = "foo";
-    o.tables = buildUnnamed2083();
+    o.tables = buildUnnamed2090();
   }
   buildCounterTablesListResponse--;
   return o;
@@ -2521,7 +2521,7 @@ checkTablesListResponse(api.TablesListResponse o) {
   buildCounterTablesListResponse++;
   if (buildCounterTablesListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2083(o.tables);
+    checkUnnamed2090(o.tables);
   }
   buildCounterTablesListResponse--;
 }
@@ -2560,14 +2560,14 @@ checkValueRange(api.ValueRange o) {
   buildCounterValueRange--;
 }
 
-buildUnnamed2084() {
+buildUnnamed2091() {
   var o = new core.List<api.DisplayRule>();
   o.add(buildDisplayRule());
   o.add(buildDisplayRule());
   return o;
 }
 
-checkUnnamed2084(core.List<api.DisplayRule> o) {
+checkUnnamed2091(core.List<api.DisplayRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDisplayRule(o[0]);
   checkDisplayRule(o[1]);
@@ -2578,7 +2578,7 @@ buildVectorStyle() {
   var o = new api.VectorStyle();
   buildCounterVectorStyle++;
   if (buildCounterVectorStyle < 3) {
-    o.displayRules = buildUnnamed2084();
+    o.displayRules = buildUnnamed2091();
     o.featureInfo = buildFeatureInfo();
     o.type = "foo";
   }
@@ -2589,7 +2589,7 @@ buildVectorStyle() {
 checkVectorStyle(api.VectorStyle o) {
   buildCounterVectorStyle++;
   if (buildCounterVectorStyle < 3) {
-    checkUnnamed2084(o.displayRules);
+    checkUnnamed2091(o.displayRules);
     checkFeatureInfo(o.featureInfo);
     unittest.expect(o.type, unittest.equals('foo'));
   }

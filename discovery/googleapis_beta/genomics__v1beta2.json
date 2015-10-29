@@ -26,7 +26,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/MA9wNliXwGhlYOlSK8rdRjly7fM\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/pcYCyLKX1Mfiq6lFfeWwFXWb4hA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1524,7 +1524,7 @@
             }
         }
     },
-    "revision": "20151014",
+    "revision": "20151026",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AlignReadGroupSetsRequest": {

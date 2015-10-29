@@ -230,6 +230,40 @@ class RelyingpartyResourceApi {
   }
 
   /**
+   * Get project configuration.
+   *
+   * Request parameters:
+   *
+   * Completes with a [IdentitytoolkitRelyingpartyGetProjectConfigResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<IdentitytoolkitRelyingpartyGetProjectConfigResponse> getProjectConfig() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+
+    _url = 'getProjectConfig';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(data));
+  }
+
+  /**
    * Get token signing public key.
    *
    * Request parameters:
@@ -376,6 +410,45 @@ class RelyingpartyResourceApi {
   }
 
   /**
+   * Set project configuration.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [IdentitytoolkitRelyingpartySetProjectConfigResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<IdentitytoolkitRelyingpartySetProjectConfigResponse> setProjectConfig(IdentitytoolkitRelyingpartySetProjectConfigRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'setProjectConfig';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(data));
+  }
+
+  /**
    * Batch upload existing user accounts.
    *
    * [request] - The metadata request object.
@@ -510,6 +583,10 @@ class CreateAuthUriResponse {
   core.String providerId;
   /** Whether the user is registered if the identifier is an email. */
   core.bool registered;
+  /**
+   * Session ID which should be passed in the following verifyAssertion request.
+   */
+  core.String sessionId;
 
   CreateAuthUriResponse();
 
@@ -532,6 +609,9 @@ class CreateAuthUriResponse {
     if (_json.containsKey("registered")) {
       registered = _json["registered"];
     }
+    if (_json.containsKey("sessionId")) {
+      sessionId = _json["sessionId"];
+    }
   }
 
   core.Map toJson() {
@@ -553,6 +633,9 @@ class CreateAuthUriResponse {
     }
     if (registered != null) {
       _json["registered"] = registered;
+    }
+    if (sessionId != null) {
+      _json["sessionId"] = sessionId;
     }
     return _json;
   }
@@ -930,6 +1013,52 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
   }
 }
 
+/** Response of getting the project configuration. */
+class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
+  /** Whether to allow password user sign in or sign up. */
+  core.bool allowPasswordUser;
+  /** Browser API key, needed when making http request to Apiary. */
+  core.String apiKey;
+  /** OAuth2 provider configuration. */
+  core.List<IdpConfig> idpConfig;
+  /** Project ID of the relying party. */
+  core.String projectId;
+
+  IdentitytoolkitRelyingpartyGetProjectConfigResponse();
+
+  IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("allowPasswordUser")) {
+      allowPasswordUser = _json["allowPasswordUser"];
+    }
+    if (_json.containsKey("apiKey")) {
+      apiKey = _json["apiKey"];
+    }
+    if (_json.containsKey("idpConfig")) {
+      idpConfig = _json["idpConfig"].map((value) => new IdpConfig.fromJson(value)).toList();
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (allowPasswordUser != null) {
+      _json["allowPasswordUser"] = allowPasswordUser;
+    }
+    if (apiKey != null) {
+      _json["apiKey"] = apiKey;
+    }
+    if (idpConfig != null) {
+      _json["idpConfig"] = idpConfig.map((value) => (value).toJson()).toList();
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    return _json;
+  }
+}
+
 /** Respone of getting public keys. */
 class IdentitytoolkitRelyingpartyGetPublicKeysResponse
     extends collection.MapBase<core.String, core.String> {
@@ -1131,6 +1260,66 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   }
 }
 
+/** Request to set the project configuration. */
+class IdentitytoolkitRelyingpartySetProjectConfigRequest {
+  /** Whether to allow password user sign in or sign up. */
+  core.bool allowPasswordUser;
+  /** Browser API key, needed when making http request to Apiary. */
+  core.String apiKey;
+  /** Oauth2 provider configuration. */
+  core.List<IdpConfig> idpConfig;
+
+  IdentitytoolkitRelyingpartySetProjectConfigRequest();
+
+  IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("allowPasswordUser")) {
+      allowPasswordUser = _json["allowPasswordUser"];
+    }
+    if (_json.containsKey("apiKey")) {
+      apiKey = _json["apiKey"];
+    }
+    if (_json.containsKey("idpConfig")) {
+      idpConfig = _json["idpConfig"].map((value) => new IdpConfig.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (allowPasswordUser != null) {
+      _json["allowPasswordUser"] = allowPasswordUser;
+    }
+    if (apiKey != null) {
+      _json["apiKey"] = apiKey;
+    }
+    if (idpConfig != null) {
+      _json["idpConfig"] = idpConfig.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Response of setting the project configuration. */
+class IdentitytoolkitRelyingpartySetProjectConfigResponse {
+  /** Project ID of the relying party. */
+  core.String projectId;
+
+  IdentitytoolkitRelyingpartySetProjectConfigResponse();
+
+  IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    return _json;
+  }
+}
+
 /** Request to upload user account in batch. */
 class IdentitytoolkitRelyingpartyUploadAccountRequest {
   /** The password hash algorithm. */
@@ -1223,6 +1412,10 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   core.String requestUri;
   /** Whether to return refresh tokens. */
   core.bool returnRefreshToken;
+  /**
+   * Session ID, which should match the one in previous createAuthUri request.
+   */
+  core.String sessionId;
 
   IdentitytoolkitRelyingpartyVerifyAssertionRequest();
 
@@ -1239,6 +1432,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     if (_json.containsKey("returnRefreshToken")) {
       returnRefreshToken = _json["returnRefreshToken"];
     }
+    if (_json.containsKey("sessionId")) {
+      sessionId = _json["sessionId"];
+    }
   }
 
   core.Map toJson() {
@@ -1254,6 +1450,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     }
     if (returnRefreshToken != null) {
       _json["returnRefreshToken"] = returnRefreshToken;
+    }
+    if (sessionId != null) {
+      _json["sessionId"] = sessionId;
     }
     return _json;
   }
@@ -1311,6 +1510,63 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     }
     if (pendingIdToken != null) {
       _json["pendingIdToken"] = pendingIdToken;
+    }
+    return _json;
+  }
+}
+
+/** Template for a single idp configuration. */
+class IdpConfig {
+  /** OAuth2 client ID. */
+  core.String clientId;
+  /** Whether this IDP is enabled. */
+  core.bool enabled;
+  /**
+   * Percent of users who will be prompted/redirected federated login for this
+   * IDP.
+   */
+  core.int experimentPercent;
+  /** OAuth2 provider. */
+  core.String provider;
+  /** OAuth2 client secret. */
+  core.String secret;
+
+  IdpConfig();
+
+  IdpConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("clientId")) {
+      clientId = _json["clientId"];
+    }
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+    if (_json.containsKey("experimentPercent")) {
+      experimentPercent = _json["experimentPercent"];
+    }
+    if (_json.containsKey("provider")) {
+      provider = _json["provider"];
+    }
+    if (_json.containsKey("secret")) {
+      secret = _json["secret"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (clientId != null) {
+      _json["clientId"] = clientId;
+    }
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    if (experimentPercent != null) {
+      _json["experimentPercent"] = experimentPercent;
+    }
+    if (provider != null) {
+      _json["provider"] = provider;
+    }
+    if (secret != null) {
+      _json["secret"] = secret;
     }
     return _json;
   }

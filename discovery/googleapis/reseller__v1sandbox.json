@@ -17,7 +17,7 @@
     "description": "Lets you create and manage your customers and their subscriptions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/reseller/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Cbmd7CRXSYNWgkRD3A5YJaaBrgY\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/6n7xpEQ8zC7k2Rxf1zW5XjwY8yg\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -524,7 +524,7 @@
             }
         }
     },
-    "revision": "20150603",
+    "revision": "20151014",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Address": {
@@ -610,6 +610,10 @@
                 "customerDomain": {
                     "description": "The domain name of the customer.",
                     "type": "string"
+                },
+                "customerDomainVerified": {
+                    "description": "Whether the customer's primary domain has been verified.",
+                    "type": "boolean"
                 },
                 "customerId": {
                     "description": "The id of the customer.",
@@ -759,7 +763,7 @@
                     "type": "string"
                 },
                 "suspensionReasons": {
-                    "description": "Suspension Reasons",
+                    "description": "field listing all current reasons the subscription is suspended. It is possible for a subscription to have multiple suspension reasons. A subscription's status is SUSPENDED until all pending suspensions are removed. Possible options include:  \n- PENDING_TOS_ACCEPTANCE — The customer has not logged in and accepted the Google Apps Resold Terms of Services.  \n- RENEWAL_WITH_TYPE_CANCEL — The customer's commitment ended and their service was cancelled at the end of their term.  \n- RESELLER_INITIATED — A manual suspension invoked by a Reseller.  \n- TRIAL_ENDED — The customer's trial expired without a plan selected.  \n- OTHER — The customer is suspended for an internal Google reason (e.g. abuse or otherwise).",
                     "items": {
                         "type": "string"
                     },

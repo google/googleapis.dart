@@ -10928,6 +10928,7 @@ class LiveBroadcastContentDetails {
    * video.
    */
   core.bool enableEmbed;
+  /** Indicates whether this broadcast has low latency enabled. */
   core.bool enableLowLatency;
   /**
    * The monitorStream object contains information about the monitor stream,

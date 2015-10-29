@@ -876,6 +876,8 @@ class Customer {
   core.String alternateEmail;
   /** The domain name of the customer. */
   core.String customerDomain;
+  /** Whether the customer's primary domain has been verified. */
+  core.bool customerDomainVerified;
   /** The id of the customer. */
   core.String customerId;
   /** Identifies the resource as a customer. */
@@ -895,6 +897,9 @@ class Customer {
     }
     if (_json.containsKey("customerDomain")) {
       customerDomain = _json["customerDomain"];
+    }
+    if (_json.containsKey("customerDomainVerified")) {
+      customerDomainVerified = _json["customerDomainVerified"];
     }
     if (_json.containsKey("customerId")) {
       customerId = _json["customerId"];
@@ -920,6 +925,9 @@ class Customer {
     }
     if (customerDomain != null) {
       _json["customerDomain"] = customerDomain;
+    }
+    if (customerDomainVerified != null) {
+      _json["customerDomainVerified"] = customerDomainVerified;
     }
     if (customerId != null) {
       _json["customerId"] = customerId;
@@ -1181,7 +1189,20 @@ class Subscription {
   core.String status;
   /** The id of the subscription. */
   core.String subscriptionId;
-  /** Suspension Reasons */
+  /**
+   * field listing all current reasons the subscription is suspended. It is
+   * possible for a subscription to have multiple suspension reasons. A
+   * subscription's status is SUSPENDED until all pending suspensions are
+   * removed. Possible options include:
+   * - PENDING_TOS_ACCEPTANCE — The customer has not logged in and accepted the
+   * Google Apps Resold Terms of Services.
+   * - RENEWAL_WITH_TYPE_CANCEL — The customer's commitment ended and their
+   * service was cancelled at the end of their term.
+   * - RESELLER_INITIATED — A manual suspension invoked by a Reseller.
+   * - TRIAL_ENDED — The customer's trial expired without a plan selected.
+   * - OTHER — The customer is suspended for an internal Google reason (e.g.
+   * abuse or otherwise).
+   */
   core.List<core.String> suspensionReasons;
   /** Transfer related information for the subscription. */
   SubscriptionTransferInfo transferInfo;

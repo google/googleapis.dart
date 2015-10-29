@@ -33,6 +33,7 @@ class BooksApi {
   OnboardingResourceApi get onboarding => new OnboardingResourceApi(_requester);
   PersonalizedstreamResourceApi get personalizedstream => new PersonalizedstreamResourceApi(_requester);
   PromoofferResourceApi get promooffer => new PromoofferResourceApi(_requester);
+  SeriesResourceApi get series => new SeriesResourceApi(_requester);
   VolumesResourceApi get volumes => new VolumesResourceApi(_requester);
 
   BooksApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "books/v1/"}) :
@@ -2499,6 +2500,117 @@ class PromoofferResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Offers.fromJson(data));
+  }
+
+}
+
+
+class SeriesResourceApi {
+  final commons.ApiRequester _requester;
+
+  SeriesMembershipResourceApi get membership => new SeriesMembershipResourceApi(_requester);
+
+  SeriesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns Series metadata for the given series ids.
+   *
+   * Request parameters:
+   *
+   * [seriesId] - String that identifies the series
+   *
+   * Completes with a [Series].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Series> get(core.List<core.String> seriesId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (seriesId == null || seriesId.isEmpty) {
+      throw new core.ArgumentError("Parameter seriesId is required.");
+    }
+    _queryParams["series_id"] = seriesId;
+
+    _url = 'series/get';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Series.fromJson(data));
+  }
+
+}
+
+
+class SeriesMembershipResourceApi {
+  final commons.ApiRequester _requester;
+
+  SeriesMembershipResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns Series membership data given the series id.
+   *
+   * Request parameters:
+   *
+   * [seriesId] - String that identifies the series
+   *
+   * [pageSize] - Number of maximum results per page to be included in the
+   * response.
+   *
+   * [pageToken] - The value of the nextToken from the previous page.
+   *
+   * Completes with a [Seriesmembership].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Seriesmembership> get(core.String seriesId, {core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (seriesId == null) {
+      throw new core.ArgumentError("Parameter seriesId is required.");
+    }
+    _queryParams["series_id"] = [seriesId];
+    if (pageSize != null) {
+      _queryParams["page_size"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["page_token"] = [pageToken];
+    }
+
+    _url = 'series/membership/get';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Seriesmembership.fromJson(data));
   }
 
 }
@@ -5446,7 +5558,9 @@ class Notification {
   core.String iconUrl;
   /** Resource type. */
   core.String kind;
-  core.String linkUrl;
+  core.String notificationType;
+  core.bool showNotificationSettingsAction;
+  core.String targetUrl;
   core.String title;
 
   Notification();
@@ -5461,8 +5575,14 @@ class Notification {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
-    if (_json.containsKey("linkUrl")) {
-      linkUrl = _json["linkUrl"];
+    if (_json.containsKey("notification_type")) {
+      notificationType = _json["notification_type"];
+    }
+    if (_json.containsKey("show_notification_settings_action")) {
+      showNotificationSettingsAction = _json["show_notification_settings_action"];
+    }
+    if (_json.containsKey("targetUrl")) {
+      targetUrl = _json["targetUrl"];
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -5480,8 +5600,14 @@ class Notification {
     if (kind != null) {
       _json["kind"] = kind;
     }
-    if (linkUrl != null) {
-      _json["linkUrl"] = linkUrl;
+    if (notificationType != null) {
+      _json["notification_type"] = notificationType;
+    }
+    if (showNotificationSettingsAction != null) {
+      _json["show_notification_settings_action"] = showNotificationSettingsAction;
+    }
+    if (targetUrl != null) {
+      _json["targetUrl"] = targetUrl;
     }
     if (title != null) {
       _json["title"] = title;
@@ -5884,6 +6010,110 @@ class Review {
     }
     if (volumeId != null) {
       _json["volumeId"] = volumeId;
+    }
+    return _json;
+  }
+}
+
+class SeriesSeries {
+  core.String bannerImageUrl;
+  core.String imageUrl;
+  core.String seriesId;
+  core.String title;
+
+  SeriesSeries();
+
+  SeriesSeries.fromJson(core.Map _json) {
+    if (_json.containsKey("bannerImageUrl")) {
+      bannerImageUrl = _json["bannerImageUrl"];
+    }
+    if (_json.containsKey("imageUrl")) {
+      imageUrl = _json["imageUrl"];
+    }
+    if (_json.containsKey("seriesId")) {
+      seriesId = _json["seriesId"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bannerImageUrl != null) {
+      _json["bannerImageUrl"] = bannerImageUrl;
+    }
+    if (imageUrl != null) {
+      _json["imageUrl"] = imageUrl;
+    }
+    if (seriesId != null) {
+      _json["seriesId"] = seriesId;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+class Series {
+  /** Resource type. */
+  core.String kind;
+  core.List<SeriesSeries> series;
+
+  Series();
+
+  Series.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("series")) {
+      series = _json["series"].map((value) => new SeriesSeries.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (series != null) {
+      _json["series"] = series.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class Seriesmembership {
+  /** Resorce type. */
+  core.String kind;
+  core.List<Volume> member;
+  core.String nextPageToken;
+
+  Seriesmembership();
+
+  Seriesmembership.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("member")) {
+      member = _json["member"].map((value) => new Volume.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (member != null) {
+      _json["member"] = member.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }
@@ -7072,6 +7302,7 @@ class VolumeVolumeInfo {
   core.Object readingModes;
   /** Total number of sample pages as per publisher metadata. */
   core.int samplePageCount;
+  Volumeseriesinfo seriesInfo;
   /** Volume subtitle. (In LITE projection.) */
   core.String subtitle;
   /** Volume title. (In LITE projection.) */
@@ -7148,6 +7379,9 @@ class VolumeVolumeInfo {
     }
     if (_json.containsKey("samplePageCount")) {
       samplePageCount = _json["samplePageCount"];
+    }
+    if (_json.containsKey("seriesInfo")) {
+      seriesInfo = new Volumeseriesinfo.fromJson(_json["seriesInfo"]);
     }
     if (_json.containsKey("subtitle")) {
       subtitle = _json["subtitle"];
@@ -7227,6 +7461,9 @@ class VolumeVolumeInfo {
     }
     if (samplePageCount != null) {
       _json["samplePageCount"] = samplePageCount;
+    }
+    if (seriesInfo != null) {
+      _json["seriesInfo"] = (seriesInfo).toJson();
     }
     if (subtitle != null) {
       _json["subtitle"] = subtitle;
@@ -7662,6 +7899,121 @@ class Volumes {
     }
     if (totalItems != null) {
       _json["totalItems"] = totalItems;
+    }
+    return _json;
+  }
+}
+
+class VolumeseriesinfoVolumeSeriesIssue {
+  core.int issueOrderNumber;
+
+  VolumeseriesinfoVolumeSeriesIssue();
+
+  VolumeseriesinfoVolumeSeriesIssue.fromJson(core.Map _json) {
+    if (_json.containsKey("issueOrderNumber")) {
+      issueOrderNumber = _json["issueOrderNumber"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (issueOrderNumber != null) {
+      _json["issueOrderNumber"] = issueOrderNumber;
+    }
+    return _json;
+  }
+}
+
+class VolumeseriesinfoVolumeSeries {
+  /** List of issues. Applicable only for Collection Edition and Omnibus. */
+  core.List<VolumeseriesinfoVolumeSeriesIssue> issue;
+  /** The book order number in the series. */
+  core.int orderNumber;
+  /**
+   * The book type in the context of series. Examples - Single Issue, Collection
+   * Edition, etc.
+   */
+  core.String seriesBookType;
+  /** The series id. */
+  core.String seriesId;
+
+  VolumeseriesinfoVolumeSeries();
+
+  VolumeseriesinfoVolumeSeries.fromJson(core.Map _json) {
+    if (_json.containsKey("issue")) {
+      issue = _json["issue"].map((value) => new VolumeseriesinfoVolumeSeriesIssue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("orderNumber")) {
+      orderNumber = _json["orderNumber"];
+    }
+    if (_json.containsKey("seriesBookType")) {
+      seriesBookType = _json["seriesBookType"];
+    }
+    if (_json.containsKey("seriesId")) {
+      seriesId = _json["seriesId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (issue != null) {
+      _json["issue"] = issue.map((value) => (value).toJson()).toList();
+    }
+    if (orderNumber != null) {
+      _json["orderNumber"] = orderNumber;
+    }
+    if (seriesBookType != null) {
+      _json["seriesBookType"] = seriesBookType;
+    }
+    if (seriesId != null) {
+      _json["seriesId"] = seriesId;
+    }
+    return _json;
+  }
+}
+
+class Volumeseriesinfo {
+  /**
+   * The display number string. This should be used only for display purposes
+   * and the actual sequence should be inferred from the below orderNumber.
+   */
+  core.String bookDisplayNumber;
+  /** Resource type. */
+  core.String kind;
+  /** Short book title in the context of the series. */
+  core.String shortSeriesBookTitle;
+  core.List<VolumeseriesinfoVolumeSeries> volumeSeries;
+
+  Volumeseriesinfo();
+
+  Volumeseriesinfo.fromJson(core.Map _json) {
+    if (_json.containsKey("bookDisplayNumber")) {
+      bookDisplayNumber = _json["bookDisplayNumber"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("shortSeriesBookTitle")) {
+      shortSeriesBookTitle = _json["shortSeriesBookTitle"];
+    }
+    if (_json.containsKey("volumeSeries")) {
+      volumeSeries = _json["volumeSeries"].map((value) => new VolumeseriesinfoVolumeSeries.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bookDisplayNumber != null) {
+      _json["bookDisplayNumber"] = bookDisplayNumber;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (shortSeriesBookTitle != null) {
+      _json["shortSeriesBookTitle"] = shortSeriesBookTitle;
+    }
+    if (volumeSeries != null) {
+      _json["volumeSeries"] = volumeSeries.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

@@ -1,3 +1,11 @@
+## 0.18.0
+
+* [apis-breaking] books:v1: new resources and schemas and schema changes
+* [apis] compute:v1: added method/schemas
+* [apis] identitytoolkit:v3: added method/schemas
+* [apis] reseller:v1: schema changes
+* [apis] reseller:v1sandbox: schema changes
+
 ## 0.17.0
 
 * [apis-breaking] tagmanager:v1: removed resources and schemas

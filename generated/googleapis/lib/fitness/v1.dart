@@ -1512,6 +1512,7 @@ class DataTypeField {
   /**
    * The different supported formats for each field in a data type.
    * Possible string values are:
+   * - "blob"
    * - "floatList"
    * - "floatPoint"
    * - "integer"

@@ -4939,7 +4939,6 @@ class InstanceGroupsResourceApi {
   /**
    * Adds a list of instances to the specified instance group. All of the
    * instances in the instance group must be in the same network/subnetwork.
-   * TODO: Change to comment to state "if IG is load balanced."
    *
    * [request] - The metadata request object.
    *
@@ -14124,7 +14123,7 @@ class ForwardingRule {
   /**
    * Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
    * addressed to ports in the specified range will be forwarded to target.
-   * Forwarding rules with the same `[IPAddress, IPProtocol]` pair must have
+   * Forwarding rules with the same [IPAddress, IPProtocol] pair must have
    * disjoint port ranges.
    */
   core.String portRange;
@@ -19000,10 +18999,6 @@ class OperationsScopedList {
  * service will be used.
  */
 class PathMatcher {
-  /**
-   * The URL to the BackendService resource. This will be used if none of the
-   * 'pathRules' defined by this PathMatcher is met by the URL's path portion.
-   */
   core.String defaultService;
   /** An optional textual description of the resource. */
   core.String description;
@@ -19215,7 +19210,9 @@ class Quota {
    * - "ROUTES"
    * - "SNAPSHOTS"
    * - "SSD_TOTAL_GB"
+   * - "SSL_CERTIFICATES"
    * - "STATIC_ADDRESSES"
+   * - "TARGET_HTTPS_PROXIES"
    * - "TARGET_HTTP_PROXIES"
    * - "TARGET_INSTANCES"
    * - "TARGET_POOLS"
