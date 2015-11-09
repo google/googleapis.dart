@@ -1224,6 +1224,14 @@ class Job {
   /** The top-level steps that constitute the entire job. */
   core.List<Step> steps;
   /**
+   * A set of files the system should be aware of that are used for temporary
+   * storage. These temporary files will be removed on job completion. No
+   * duplicates are allowed. No file patterns are supported. The supported files
+   * are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object}
+   * bucket.storage.googleapis.com/{object}
+   */
+  core.List<core.String> tempFiles;
+  /**
    * Map of transform name prefixes of the job to be replaced to the
    * corresponding name prefixes of the new job.
    */
@@ -1279,6 +1287,9 @@ class Job {
     if (_json.containsKey("steps")) {
       steps = _json["steps"].map((value) => new Step.fromJson(value)).toList();
     }
+    if (_json.containsKey("tempFiles")) {
+      tempFiles = _json["tempFiles"];
+    }
     if (_json.containsKey("transformNameMapping")) {
       transformNameMapping = _json["transformNameMapping"];
     }
@@ -1328,6 +1339,9 @@ class Job {
     if (steps != null) {
       _json["steps"] = steps.map((value) => (value).toJson()).toList();
     }
+    if (tempFiles != null) {
+      _json["tempFiles"] = tempFiles;
+    }
     if (transformNameMapping != null) {
       _json["transformNameMapping"] = transformNameMapping;
     }
@@ -1364,9 +1378,8 @@ class JobExecutionInfo {
 }
 
 /**
- * Contains information about how a particular
- * [google.dataflow.v1beta3.Step][google.dataflow.v1beta3.Step] will be
- * executed.
+ * Contains information about how a particular google.dataflow.v1beta3.Step will
+ * be executed.
  */
 class JobExecutionStageInfo {
   /**
@@ -3234,36 +3247,36 @@ class StateFamilyConfig {
  * Simple to use and understand for most users - Flexible enough to meet
  * unexpected needs # Overview The `Status` message contains three pieces of
  * data: error code, error message, and error details. The error code should be
- * an enum value of [google.rpc.Code][], but it may accept additional error
- * codes if needed. The error message should be a developer-facing English
- * message that helps developers *understand* and *resolve* the error. If a
- * localized user-facing error message is needed, put the localized message in
- * the error details or localize it in the client. The optional error details
- * may contain arbitrary information about the error. There is a predefined set
- * of error detail types in the package `google.rpc` which can be used for
- * common error conditions. # Language mapping The `Status` message is the
- * logical representation of the error model, but it is not necessarily the
- * actual wire format. When the `Status` message is exposed in different client
- * libraries and different wire protocols, it can be mapped differently. For
- * example, it will likely be mapped to some exceptions in Java, but more likely
- * mapped to some error codes in C. # Other uses The error model and the
- * `Status` message can be used in a variety of environments, either with or
- * without APIs, to provide a consistent developer experience across different
- * environments. Example uses of this error model include: - Partial errors. If
- * a service needs to return partial errors to the client, it may embed the
- * `Status` in the normal response to indicate the partial errors. - Workflow
- * errors. A typical workflow has multiple steps. Each step may have a `Status`
- * message for error reporting purpose. - Batch operations. If a client uses
- * batch request and batch response, the `Status` message should be used
- * directly inside batch response, one for each error sub-response. -
- * Asynchronous operations. If an API call embeds asynchronous operation results
- * in its response, the status of those operations should be represented
- * directly using the `Status` message. - Logging. If some API errors are stored
- * in logs, the message `Status` could be used directly after any stripping
- * needed for security/privacy reasons.
+ * an enum value of google.rpc.Code, but it may accept additional error codes if
+ * needed. The error message should be a developer-facing English message that
+ * helps developers *understand* and *resolve* the error. If a localized
+ * user-facing error message is needed, put the localized message in the error
+ * details or localize it in the client. The optional error details may contain
+ * arbitrary information about the error. There is a predefined set of error
+ * detail types in the package `google.rpc` which can be used for common error
+ * conditions. # Language mapping The `Status` message is the logical
+ * representation of the error model, but it is not necessarily the actual wire
+ * format. When the `Status` message is exposed in different client libraries
+ * and different wire protocols, it can be mapped differently. For example, it
+ * will likely be mapped to some exceptions in Java, but more likely mapped to
+ * some error codes in C. # Other uses The error model and the `Status` message
+ * can be used in a variety of environments, either with or without APIs, to
+ * provide a consistent developer experience across different environments.
+ * Example uses of this error model include: - Partial errors. If a service
+ * needs to return partial errors to the client, it may embed the `Status` in
+ * the normal response to indicate the partial errors. - Workflow errors. A
+ * typical workflow has multiple steps. Each step may have a `Status` message
+ * for error reporting purpose. - Batch operations. If a client uses batch
+ * request and batch response, the `Status` message should be used directly
+ * inside batch response, one for each error sub-response. - Asynchronous
+ * operations. If an API call embeds asynchronous operation results in its
+ * response, the status of those operations should be represented directly using
+ * the `Status` message. - Logging. If some API errors are stored in logs, the
+ * message `Status` could be used directly after any stripping needed for
+ * security/privacy reasons.
  */
 class Status {
-  /** The status code, which should be an enum value of [google.rpc.Code][]. */
+  /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
    * A list of messages that carry the error details. There will be a common set
@@ -3276,8 +3289,7 @@ class Status {
   /**
    * A developer-facing error message, which should be in English. Any
    * user-facing error message should be localized and sent in the
-   * [google.rpc.Status.details][google.rpc.Status.details] field, or localized
-   * by the client.
+   * google.rpc.Status.details field, or localized by the client.
    */
   core.String message;
 
@@ -3850,7 +3862,7 @@ class WorkItem {
   core.String initialReportIndex;
   /** Identifies the workflow job this WorkItem belongs to. */
   core.String jobId;
-  /** Time when the lease on this [Work][] will expire. */
+  /** Time when the lease on this Work will expire. */
   core.String leaseExpireTime;
   /** Additional information for MapTask WorkItems. */
   MapTask mapTask;

@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -16,8 +15,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client logging/v2beta1';
 
 /**
- * Google Cloud Logging API lets you create logs, ingest log entries, and manage
- * log sinks.
+ * The Google Cloud Logging API lets you write log entries and manage your logs,
+ * log sinks and logs-based metrics.
  */
 class LoggingApi {
 
@@ -107,13 +106,6 @@ class RequestLog {
   core.String httpVersion;
   /** An opaque identifier for the instance that handled the request. */
   core.String instanceId;
-  core.List<core.int> get instanceIdAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(instanceId);
-  }
-
-  void set instanceIdAsBytes(core.List<core.int> _bytes) {
-    instanceId = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
-  }
   /**
    * If the instance that processed this request was individually addressable
    * (i.e. belongs to a manually scaled module), this is the index of the
@@ -153,17 +145,10 @@ class RequestLog {
   core.String referrer;
   /**
    * Globally unique identifier for a request, based on request start time.
-   * Request IDs for requests which started later will compare greater as binary
+   * Request IDs for requests which started later will compare greater as
    * strings than those for requests which started earlier.
    */
   core.String requestId;
-  core.List<core.int> get requestIdAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(requestId);
-  }
-
-  void set requestIdAsBytes(core.List<core.int> _bytes) {
-    requestId = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
-  }
   /**
    * Contains the path and query portion of the URL that was requested. For
    * example, if the URL was "http://example.com/app?name=val", the resource

@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -16,8 +15,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client logging/v1beta3';
 
 /**
- * Google Cloud Logging API lets you create logs, ingest log entries, and manage
- * log sinks.
+ * The Google Cloud Logging API lets you write log entries and manage your logs,
+ * log sinks and logs-based metrics.
  */
 class LoggingApi {
   /** View and manage your data across Google Cloud Platform services */
@@ -941,7 +940,7 @@ class ProjectsMetricsResourceApi {
       _requester = client;
 
   /**
-   * Create the specified log metric resource.
+   * Creates a logs-based metric.
    *
    * [request] - The metadata request object.
    *
@@ -986,7 +985,7 @@ class ProjectsMetricsResourceApi {
   }
 
   /**
-   * Deletes the specified log metric.
+   * Deletes a logs-based metric.
    *
    * Request parameters:
    *
@@ -1031,7 +1030,7 @@ class ProjectsMetricsResourceApi {
   }
 
   /**
-   * Get the specified log metric resource.
+   * Gets a logs-based metric.
    *
    * Request parameters:
    *
@@ -1076,7 +1075,7 @@ class ProjectsMetricsResourceApi {
   }
 
   /**
-   * List log metrics associated with the specified project.
+   * Lists the logs-based metrics associated with a project.
    *
    * Request parameters:
    *
@@ -1130,7 +1129,7 @@ class ProjectsMetricsResourceApi {
   }
 
   /**
-   * Create or update the specified log metric resource.
+   * Creates or updates a logs-based metric.
    *
    * [request] - The metadata request object.
    *
@@ -1865,7 +1864,7 @@ class LogEntry {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> structPayload;
-  /** The log entry payload, represented as a text string. */
+  /** The log entry payload, represented as a Unicode string (UTF-8). */
   core.String textPayload;
 
   LogEntry();
@@ -2150,9 +2149,8 @@ class LogLine {
 }
 
 /**
- * Describes a collected, logs-based metric. The value of the metric is the
- * number of log entries in the project that match the advanced logs filter in
- * the `filter` field.
+ * Describes a logs-based metric. The value of the metric is the number of log
+ * entries in your project that match a logs filter.
  */
 class LogMetric {
   /** A description of this metric. */
@@ -2165,8 +2163,9 @@ class LogMetric {
   /**
    * The client-assigned name for this metric, such as `"severe_errors"`. Metric
    * names are limited to 1000 characters and can include only the following
-   * characters: `-A-Za-z0-9_.,+!*',()%/\`. The slash character `/` implies a
-   * hierarchy of name pieces, and cannot be the first character of the name.
+   * characters: `A-Z`, `a-z`, `0-9`, and the special characters
+   * `_-.,+!*',()%/\`. The slash character (`/`) denotes a hierarchy of name
+   * pieces, and it cannot be the first character of the name.
    */
   core.String name;
 
@@ -2322,13 +2321,6 @@ class RequestLog {
   core.String httpVersion;
   /** An opaque identifier for the instance that handled the request. */
   core.String instanceId;
-  core.List<core.int> get instanceIdAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(instanceId);
-  }
-
-  void set instanceIdAsBytes(core.List<core.int> _bytes) {
-    instanceId = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
-  }
   /**
    * If the instance that processed this request was individually addressable
    * (i.e. belongs to a manually scaled module), this is the index of the
@@ -2368,17 +2360,10 @@ class RequestLog {
   core.String referrer;
   /**
    * Globally unique identifier for a request, based on request start time.
-   * Request IDs for requests which started later will compare greater as binary
+   * Request IDs for requests which started later will compare greater as
    * strings than those for requests which started earlier.
    */
   core.String requestId;
-  core.List<core.int> get requestIdAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(requestId);
-  }
-
-  void set requestIdAsBytes(core.List<core.int> _bytes) {
-    requestId = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
-  }
   /**
    * Contains the path and query portion of the URL that was requested. For
    * example, if the URL was "http://example.com/app?name=val", the resource

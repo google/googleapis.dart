@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.18.0
+    version: 0.19.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -43,6 +43,7 @@ packages:
     - dfareporting:v2.0  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.1  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.2  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dfareporting:v2.3  # https://developers.google.com/doubleclick-advertisers/reporting/
     - discovery:v1  # https://developers.google.com/discovery/
     - dns:v1  # https://cloud.google.com/dns/api/v1/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
@@ -90,7 +91,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.20.0
+    version: 0.21.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -112,7 +113,6 @@ packages:
     - logging:v2beta1 # https://cloud.google.com/logging/docs/
     - manager:v1beta2  # https://developers.google.com/deployment-manager/
     - proximitybeacon:v1beta1  # https://developers.google.com/beacons/proximity/guides
-    - pubsub:v1beta1  # https://developers.google.com/pubsub/ (Limited Preview)
     - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)
     - replicapoolupdater:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/manager/
     - replicapool:v1beta2  # https://cloud.google.com/compute/docs/instance-groups/manager/

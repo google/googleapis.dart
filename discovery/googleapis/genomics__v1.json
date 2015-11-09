@@ -26,7 +26,7 @@
     "description": "An API to store, process, explore, and share DNA sequence reads, reference-based alignments, and variant calls.",
     "discoveryVersion": "v1",
     "documentationLink": "",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/qx4iHElwrLoii-kdmMPZNYIHefs\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/UJeD2-UHC72FNz6g1Vin2O9PkOE\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1263,7 +1263,7 @@
             }
         }
     },
-    "revision": "20151027",
+    "revision": "20151105",
     "rootUrl": "https://genomics.googleapis.com/",
     "schemas": {
         "ListDatasetsResponse": {

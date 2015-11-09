@@ -1311,8 +1311,8 @@ class Budget {
    */
   core.String billingId;
   /**
-   * The budget amount to apply for the billingId provided. This is required for
-   * update requests.
+   * The daily budget amount in unit amount of the account currency to apply for
+   * the billingId provided. This is required for update requests.
    */
   core.String budgetAmount;
   /** The currency code for the buyer. This cannot be altered here. */
@@ -1817,8 +1817,8 @@ class Creative {
     if (_json.containsKey("agencyId")) {
       agencyId = _json["agencyId"];
     }
-    if (_json.containsKey("api_upload_timestamp")) {
-      apiUploadTimestamp = core.DateTime.parse(_json["api_upload_timestamp"]);
+    if (_json.containsKey("apiUploadTimestamp")) {
+      apiUploadTimestamp = core.DateTime.parse(_json["apiUploadTimestamp"]);
     }
     if (_json.containsKey("attribute")) {
       attribute = _json["attribute"];
@@ -1894,7 +1894,7 @@ class Creative {
       _json["agencyId"] = agencyId;
     }
     if (apiUploadTimestamp != null) {
-      _json["api_upload_timestamp"] = (apiUploadTimestamp).toIso8601String();
+      _json["apiUploadTimestamp"] = (apiUploadTimestamp).toIso8601String();
     }
     if (attribute != null) {
       _json["attribute"] = attribute;
@@ -2011,6 +2011,10 @@ class DirectDeal {
    */
   core.String currencyCode;
   /**
+   * The deal type such as programmatic reservation or fixed price and so on.
+   */
+  core.String dealTier;
+  /**
    * End time for when this deal stops being active. If not set then this deal
    * is valid until manually disabled by the publisher. In seconds since the
    * epoch.
@@ -2060,6 +2064,9 @@ class DirectDeal {
     if (_json.containsKey("currencyCode")) {
       currencyCode = _json["currencyCode"];
     }
+    if (_json.containsKey("dealTier")) {
+      dealTier = _json["dealTier"];
+    }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
@@ -2099,6 +2106,9 @@ class DirectDeal {
     }
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
+    }
+    if (dealTier != null) {
+      _json["dealTier"] = dealTier;
     }
     if (endTime != null) {
       _json["endTime"] = endTime;

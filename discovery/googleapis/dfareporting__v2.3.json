@@ -11,18 +11,18 @@
             }
         }
     },
-    "basePath": "/dfareporting/v2.1/",
-    "baseUrl": "https://www.googleapis.com/dfareporting/v2.1/",
+    "basePath": "/dfareporting/v2.3/",
+    "baseUrl": "https://www.googleapis.com/dfareporting/v2.3/",
     "batchPath": "batch",
     "description": "Manage your DoubleClick Campaign Manager ad campaigns and reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/doubleclick-advertisers/reporting/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/eYlvCtckKuy1xg2sNaVU4kqa5A4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/XagzLAoP3q96Q0A0pVBPnGmybd0\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
     },
-    "id": "dfareporting:v2.1",
+    "id": "dfareporting:v2.3",
     "kind": "discovery#restDescription",
     "name": "dfareporting",
     "ownerDomain": "google.com",
@@ -765,6 +765,7 @@
                                 "HTML5_BANNER",
                                 "IMAGE",
                                 "INSTREAM_VIDEO",
+                                "INSTREAM_VIDEO_REDIRECT",
                                 "INTERNAL_REDIRECT",
                                 "INTERSTITIAL_INTERNAL_REDIRECT",
                                 "REDIRECT",
@@ -777,7 +778,6 @@
                                 "RICH_MEDIA_MULTI_FLOATING",
                                 "RICH_MEDIA_PEEL_DOWN",
                                 "TRACKING_TEXT",
-                                "VAST_REDIRECT",
                                 "VPAID_LINEAR",
                                 "VPAID_NON_LINEAR"
                             ],
@@ -2498,11 +2498,11 @@
                         "protocols": {
                             "resumable": {
                                 "multipart": true,
-                                "path": "/resumable/upload/dfareporting/v2.1/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"
+                                "path": "/resumable/upload/dfareporting/v2.3/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"
                             },
                             "simple": {
                                 "multipart": true,
-                                "path": "/upload/dfareporting/v2.1/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"
+                                "path": "/upload/dfareporting/v2.3/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"
                             }
                         }
                     },
@@ -3453,6 +3453,7 @@
                                 "HTML5_BANNER",
                                 "IMAGE",
                                 "INSTREAM_VIDEO",
+                                "INSTREAM_VIDEO_REDIRECT",
                                 "INTERNAL_REDIRECT",
                                 "INTERSTITIAL_INTERNAL_REDIRECT",
                                 "REDIRECT",
@@ -3465,7 +3466,6 @@
                                 "RICH_MEDIA_MULTI_FLOATING",
                                 "RICH_MEDIA_PEEL_DOWN",
                                 "TRACKING_TEXT",
-                                "VAST_REDIRECT",
                                 "VPAID_LINEAR",
                                 "VPAID_NON_LINEAR"
                             ],
@@ -4589,35 +4589,6 @@
         },
         "floodlightActivityGroups": {
             "methods": {
-                "delete": {
-                    "description": "Deletes an existing floodlight activity group.",
-                    "httpMethod": "DELETE",
-                    "id": "dfareporting.floodlightActivityGroups.delete",
-                    "parameterOrder": [
-                        "profileId",
-                        "id"
-                    ],
-                    "parameters": {
-                        "id": {
-                            "description": "Floodlight activity Group ID.",
-                            "format": "int64",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "profileId": {
-                            "description": "User profile ID associated with this request.",
-                            "format": "int64",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "userprofiles/{profileId}/floodlightActivityGroups/{id}",
-                    "scopes": [
-                        "https://www.googleapis.com/auth/dfatrafficking"
-                    ]
-                },
                 "get": {
                     "description": "Gets one floodlight activity group by ID.",
                     "httpMethod": "GET",
@@ -5926,11 +5897,31 @@
                             "repeated": true,
                             "type": "string"
                         },
+                        "maxEndDate": {
+                            "description": "Select only placements or placement groups whose end date is on or before the specified maxEndDate. The date should be formatted as \"yyyy-MM-dd\".",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "maxResults": {
                             "description": "Maximum number of results to return.",
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
+                        },
+                        "maxStartDate": {
+                            "description": "Select only placements or placement groups whose start date is on or before the specified maxStartDate. The date should be formatted as \"yyyy-MM-dd\".",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "minEndDate": {
+                            "description": "Select only placements or placement groups whose end date is on or after the specified minEndDate. The date should be formatted as \"yyyy-MM-dd\".",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "minStartDate": {
+                            "description": "Select only placements or placement groups whose start date is on or after the specified minStartDate. The date should be formatted as \"yyyy-MM-dd\".",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Value of the nextPageToken from the previous result page.",
@@ -6541,11 +6532,31 @@
                             "repeated": true,
                             "type": "string"
                         },
+                        "maxEndDate": {
+                            "description": "Select only placements or placement groups whose end date is on or before the specified maxEndDate. The date should be formatted as \"yyyy-MM-dd\".",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "maxResults": {
                             "description": "Maximum number of results to return.",
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
+                        },
+                        "maxStartDate": {
+                            "description": "Select only placements or placement groups whose start date is on or before the specified maxStartDate. The date should be formatted as \"yyyy-MM-dd\".",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "minEndDate": {
+                            "description": "Select only placements or placement groups whose end date is on or after the specified minEndDate. The date should be formatted as \"yyyy-MM-dd\".",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "minStartDate": {
+                            "description": "Select only placements or placement groups whose start date is on or after the specified minStartDate. The date should be formatted as \"yyyy-MM-dd\".",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Value of the nextPageToken from the previous result page.",
@@ -9397,7 +9408,7 @@
                     },
                     "type": "array"
                 },
-                "remarketing_list_expression": {
+                "remarketingListExpression": {
                     "$ref": "ListTargetingExpression",
                     "description": "Applicable when type is AD_SERVING_STANDARD_AD. Remarketing list targeting expression for this ad."
                 },
@@ -9608,6 +9619,10 @@
                     "description": "Subaccount ID of this advertiser.This is a read-only field that can be left blank.",
                     "format": "int64",
                     "type": "string"
+                },
+                "suspended": {
+                    "description": "Suspension status of this advertiser.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -10171,6 +10186,10 @@
             "description": "Click-through URL",
             "id": "ClickThroughUrl",
             "properties": {
+                "computedClickThroughUrl": {
+                    "description": "Read-only convenience field representing the actual URL that will be used for this click-through. The URL is computed as follows: \n- If defaultLandingPage is enabled then the campaign's default landing page URL is assigned to this field.\n- If defaultLandingPage is not enabled and a landingPageId is specified then that landing page's URL is assigned to this field.\n- If neither of the above cases apply, then the customClickThroughUrl is assigned to this field.",
+                    "type": "string"
+                },
                 "customClickThroughUrl": {
                     "description": "Custom click-through URL. Applicable if the defaultLandingPage field is set to false and the landingPageId field is left unset.",
                     "type": "string"
@@ -10430,6 +10449,20 @@
                         "ARTWORK_TYPE_FLASH",
                         "ARTWORK_TYPE_HTML5",
                         "ARTWORK_TYPE_MIXED"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "authoringSource": {
+                    "description": "Source application where creative was authored. Presently, only DBM authored creatives will have this field set. Applicable to all creative types.",
+                    "enum": [
+                        "CREATIVE_AUTHORING_SOURCE_DBM",
+                        "CREATIVE_AUTHORING_SOURCE_DCM",
+                        "CREATIVE_AUTHORING_SOURCE_STUDIO"
                     ],
                     "enumDescriptions": [
                         "",
@@ -10731,8 +10764,16 @@
                     "description": "Name of the creative. This is a required field and must be less than 256 characters long. Applicable to all creative types.",
                     "type": "string"
                 },
+                "obaIcon": {
+                    "$ref": "ObaIcon",
+                    "description": "Online behavioral advertising icon to be added to the creative. Applicable to the following creative types: all INSTREAM_VIDEO."
+                },
                 "overrideCss": {
                     "description": "Override CSS value for rich media creatives. Applicable to the following creative types: all RICH_MEDIA.",
+                    "type": "string"
+                },
+                "progressOffset": {
+                    "description": "Amount of time to play the video before counting a view. Applicable to the following creative types: all INSTREAM_VIDEO.",
                     "type": "string"
                 },
                 "redirectUrl": {
@@ -10761,12 +10802,20 @@
                     "$ref": "Size",
                     "description": "Size associated with this creative. When inserting or updating a creative either the size ID field or size width and height fields can be used. This is a required field when applicable; however for IMAGE and FLASH_INPAGE creatives, if left blank, this field will be automatically set using the actual size of the associated image assets. Applicable to the following creative types: ENHANCED_BANNER, ENHANCED_IMAGE, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA."
                 },
+                "skipOffset": {
+                    "description": "Amount of time to play the video before the skip button appears. Applicable to the following creative types: all INSTREAM_VIDEO.",
+                    "type": "string"
+                },
                 "skippable": {
                     "description": "Whether the user can choose to skip the creative. Applicable to the following creative types: all INSTREAM_VIDEO and all VPAID.",
                     "type": "boolean"
                 },
                 "sslCompliant": {
                     "description": "Whether the creative is SSL-compliant. This is a read-only field. Applicable to all creative types.",
+                    "type": "boolean"
+                },
+                "sslOverride": {
+                    "description": "Whether creative should be treated as SSL compliant even if the system scan shows it's not. Applicable to all creative types.",
                     "type": "boolean"
                 },
                 "studioAdvertiserId": {
@@ -10828,6 +10877,7 @@
                         "HTML5_BANNER",
                         "IMAGE",
                         "INSTREAM_VIDEO",
+                        "INSTREAM_VIDEO_REDIRECT",
                         "INTERNAL_REDIRECT",
                         "INTERSTITIAL_INTERNAL_REDIRECT",
                         "REDIRECT",
@@ -10840,7 +10890,6 @@
                         "RICH_MEDIA_MULTI_FLOATING",
                         "RICH_MEDIA_PEEL_DOWN",
                         "TRACKING_TEXT",
-                        "VAST_REDIRECT",
                         "VPAID_LINEAR",
                         "VPAID_NON_LINEAR"
                     ],
@@ -11665,9 +11714,10 @@
             "description": "Creative Custom Event.",
             "id": "CreativeCustomEvent",
             "properties": {
-                "active": {
-                    "description": "Whether the event is active.",
-                    "type": "boolean"
+                "advertiserCustomEventId": {
+                    "description": "Unique ID of this event used by DDM Reporting and Data Transfer. This is a read-only field.",
+                    "format": "int64",
+                    "type": "string"
                 },
                 "advertiserCustomEventName": {
                     "description": "User-entered name for the event.",
@@ -12810,6 +12860,10 @@
                     "description": "Whether this event tag should be automatically enabled for all of the advertiser's campaigns and ads.",
                     "type": "boolean"
                 },
+                "excludeFromAdxRequests": {
+                    "description": "Whether to remove this event tag from ads that are trafficked through DoubleClick Bid Manager to Ad Exchange. This may be useful if the event tag uses a pixel that is unapproved for Ad Exchange bids on one or more networks, such as the Google Display Network.",
+                    "type": "boolean"
+                },
                 "id": {
                     "description": "ID of this event tag. This is a read-only, auto-generated field.",
                     "format": "int64",
@@ -13515,6 +13569,10 @@
                     "$ref": "DimensionValue",
                     "description": "Dimension value for the ID of this floodlight configuration. This is a read-only, auto-generated field."
                 },
+                "inAppAttributionTrackingEnabled": {
+                    "description": "Whether in-app attribution tracking is enabled.",
+                    "type": "boolean"
+                },
                 "kind": {
                     "default": "dfareporting#floodlightConfiguration",
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightConfiguration\".",
@@ -13541,10 +13599,6 @@
                 "omnitureSettings": {
                     "$ref": "OmnitureSettings",
                     "description": "Settings for DCM Omniture integration."
-                },
-                "sslRequired": {
-                    "description": "Whether floodlight activities owned by this configuration are required to be SSL-compliant.",
-                    "type": "boolean"
                 },
                 "standardVariableTypes": {
                     "description": "List of standard variables enabled for this configuration.\n\nAcceptable values are:\n- \"ORD\"\n- \"NUM\"",
@@ -13573,6 +13627,13 @@
                 "tagSettings": {
                     "$ref": "TagSettings",
                     "description": "Configuration settings for dynamic and image floodlight tags."
+                },
+                "thirdPartyAuthenticationTokens": {
+                    "description": "List of third-party authentication tokens enabled for this configuration.",
+                    "items": {
+                        "$ref": "ThirdPartyAuthenticationToken"
+                    },
+                    "type": "array"
                 },
                 "userDefinedVariableConfigurations": {
                     "description": "List of user defined variables enabled for this configuration.",
@@ -14188,6 +14249,37 @@
             },
             "type": "object"
         },
+        "ObaIcon": {
+            "description": "Online Behavioral Advertiser icon.",
+            "id": "ObaIcon",
+            "properties": {
+                "iconClickThroughUrl": {
+                    "description": "URL to redirect to when an OBA icon is clicked.",
+                    "type": "string"
+                },
+                "program": {
+                    "description": "Identifies the industry initiative that the icon supports. For example, AdChoices.",
+                    "type": "string"
+                },
+                "resourceUrl": {
+                    "description": "OBA icon resource script URL. DCM only supports image, JavaScript, and Flash icons. Learn more",
+                    "type": "string"
+                },
+                "size": {
+                    "$ref": "Size",
+                    "description": "OBA icon size."
+                },
+                "xPosition": {
+                    "description": "OBA icon x coordinate position.",
+                    "type": "string"
+                },
+                "yPosition": {
+                    "description": "OBA icon y coordinate position.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ObjectFilter": {
             "description": "Object Filter.",
             "id": "ObjectFilter",
@@ -14569,6 +14661,18 @@
                 "kind": {
                     "default": "dfareporting#orderDocument",
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#orderDocument\".",
+                    "type": "string"
+                },
+                "lastSentRecipients": {
+                    "description": "List of email addresses that received the last sent document.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "lastSentTime": {
+                    "description": "Timestamp of the last email sent with this order document.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "orderId": {
@@ -15079,10 +15183,6 @@
                     "$ref": "DimensionValue",
                     "description": "Dimension value for the ID of the primary placement. This is a read-only, auto-generated field."
                 },
-                "programmaticSetting": {
-                    "$ref": "ProgrammaticSetting",
-                    "description": "Settings for a programmatic placement."
-                },
                 "siteId": {
                     "description": "Site ID associated with this placement group. On insert, you must set either this field or the directorySiteId field to specify the site associated with this placement group. This is a required field that is read-only after insertion.",
                     "format": "int64",
@@ -15545,45 +15645,6 @@
                     "description": "Units of this pricing period.",
                     "format": "int64",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ProgrammaticSetting": {
-            "description": "Programmatic Setting",
-            "id": "ProgrammaticSetting",
-            "properties": {
-                "adxDealIds": {
-                    "description": "Adx deal IDs assigned to the placement.",
-                    "items": {
-                        "format": "int64",
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "insertionOrderId": {
-                    "description": "Insertion order ID.",
-                    "type": "string"
-                },
-                "insertionOrderIdStatus": {
-                    "description": "Whether insertion order ID has been placed in DFP. This is a read-only field.",
-                    "type": "boolean"
-                },
-                "mediaCostNanos": {
-                    "description": "Media cost for the programmatic placement.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "programmatic": {
-                    "description": "Whether programmatic is enabled.",
-                    "type": "boolean"
-                },
-                "traffickerEmails": {
-                    "description": "Trafficker emails assigned to the placement.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -16807,6 +16868,10 @@
                 "tagSetting": {
                     "$ref": "TagSetting",
                     "description": "Configuration settings for dynamic and image floodlight tags."
+                },
+                "videoActiveViewOptOut": {
+                    "description": "Whether Verification and ActiveView are disabled for in-stream video creatives on this site. The same setting videoActiveViewOptOut exists on the directory site level -- the opt out occurs if either of these settings are true. These settings are distinct from DirectorySites.settings.activeViewOptOut or Sites.siteSettings.activeViewOptOut which only apply to display ads. However, Accounts.activeViewOptOut opts out both video traffic, as well as display ads, from Verification and ActiveView.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -17259,6 +17324,21 @@
             },
             "type": "object"
         },
+        "ThirdPartyAuthenticationToken": {
+            "description": "Third Party Authentication Token",
+            "id": "ThirdPartyAuthenticationToken",
+            "properties": {
+                "name": {
+                    "description": "Name of the third-party authentication token.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Value of the third-party authentication token. This is a read-only, auto-generated field.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ThirdPartyTrackingUrl": {
             "description": "Third-party Tracking URL.",
             "id": "ThirdPartyTrackingUrl",
@@ -17623,7 +17703,7 @@
             "type": "object"
         }
     },
-    "servicePath": "dfareporting/v2.1/",
+    "servicePath": "dfareporting/v2.3/",
     "title": "DCM/DFA Reporting And Trafficking API",
-    "version": "v2.1"
+    "version": "v2.3"
 }

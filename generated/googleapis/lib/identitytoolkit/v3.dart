@@ -739,6 +739,8 @@ class GetAccountInfoResponse {
  * email etc.).
  */
 class GetOobConfirmationCodeResponse {
+  /** The email address that the email is sent to. */
+  core.String email;
   /** The fixed string "identitytoolkit#GetOobConfirmationCodeResponse". */
   core.String kind;
   /** The code to be send to the user. */
@@ -747,6 +749,9 @@ class GetOobConfirmationCodeResponse {
   GetOobConfirmationCodeResponse();
 
   GetOobConfirmationCodeResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -757,6 +762,9 @@ class GetOobConfirmationCodeResponse {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (email != null) {
+      _json["email"] = email;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }

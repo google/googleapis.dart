@@ -23,10 +23,10 @@
     "description": "Lets you access a cloud hosted machine learning service that makes it easy to build smart apps",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/prediction/docs/developer-guide",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/XH5kx6DVwHOxcDh-sCub5wYn1Ss\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/g4n_9H48adOnnjSWaZFL9Gx2Auc\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/feature/predictionapi-16.png",
-        "x32": "http://www.google.com/images/icons/feature/predictionapi-32.png"
+        "x16": "https://www.google.com/images/icons/feature/predictionapi-16.png",
+        "x32": "https://www.google.com/images/icons/feature/predictionapi-32.png"
     },
     "id": "prediction:v1.6",
     "kind": "discovery#restDescription",
@@ -339,7 +339,7 @@
             }
         }
     },
-    "revision": "20140522",
+    "revision": "20151102",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Analyze": {

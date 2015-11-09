@@ -1,3 +1,14 @@
+## 0.19.0
+
+* [api] adexchangebuyer:v1_3: api changes
+* [api] bigquery:v2: schema changes
+* [api] books:v1: schema changes
+* [api] idenditytoolkit:v3: schema changes
+* [api] pubsub:v1 schema changes
+* [api] youtubereporting:v1: method changes
+* [api-new] dfareporting:v2.3
+* [api-breaking] adexchangebuyer:v1_4: removal of resource apis
+
 ## 0.18.0
 
 * [apis-breaking] books:v1: new resources and schemas and schema changes

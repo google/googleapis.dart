@@ -136,13 +136,13 @@ Official API documentation: https://developers.google.com/genomics/v1beta2/refer
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v1beta3
 
-Google Cloud Logging API lets you create logs, ingest log entries, and manage log sinks.
+The Google Cloud Logging API lets you write log entries and manage your logs, log sinks and logs-based metrics.
 
 Official API documentation: https://cloud.google.com/logging/docs/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v2beta1
 
-Google Cloud Logging API lets you create logs, ingest log entries, and manage log sinks.
+The Google Cloud Logging API lets you write log entries and manage your logs, log sinks and logs-based metrics.
 
 Official API documentation: https://cloud.google.com/logging/docs/
 
@@ -157,12 +157,6 @@ Official API documentation: https://developers.google.com/deployment-manager/
 This API provides services to register, manage, index, and search beacons.
 
 Official API documentation: https://developers.google.com/beacons/proximity/
-
-#### ![Logo](https://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1beta1
-
-Provides reliable, many-to-many, asynchronous messaging between applications.
-
-Official API documentation: https://developers.google.com/pubsub/v1beta1
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1beta2
 

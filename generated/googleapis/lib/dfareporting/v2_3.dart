@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-library googleapis.dfareporting.v2_1;
+library googleapis.dfareporting.v2_3;
 
 import 'dart:core' as core;
 import 'dart:async' as async;
@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
     ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
     ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client dfareporting/v2.1';
+const core.String USER_AGENT = 'dart-api-client dfareporting/v2.3';
 
 /** Manage your DoubleClick Campaign Manager ad campaigns and reports. */
 class DfareportingApi {
@@ -86,7 +86,7 @@ class DfareportingApi {
   UserRolePermissionsResourceApi get userRolePermissions => new UserRolePermissionsResourceApi(_requester);
   UserRolesResourceApi get userRoles => new UserRolesResourceApi(_requester);
 
-  DfareportingApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "dfareporting/v2.1/"}) :
+  DfareportingApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "dfareporting/v2.3/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
@@ -990,6 +990,7 @@ class AdsResourceApi {
    * - "HTML5_BANNER"
    * - "IMAGE"
    * - "INSTREAM_VIDEO"
+   * - "INSTREAM_VIDEO_REDIRECT"
    * - "INTERNAL_REDIRECT"
    * - "INTERSTITIAL_INTERNAL_REDIRECT"
    * - "REDIRECT"
@@ -1002,7 +1003,6 @@ class AdsResourceApi {
    * - "RICH_MEDIA_MULTI_FLOATING"
    * - "RICH_MEDIA_PEEL_DOWN"
    * - "TRACKING_TEXT"
-   * - "VAST_REDIRECT"
    * - "VPAID_LINEAR"
    * - "VPAID_NON_LINEAR"
    *
@@ -3200,9 +3200,9 @@ class CreativeAssetsResourceApi {
     if (_uploadMedia == null) {
       _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + commons.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/dfareporting/v2.1/userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + commons.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
+      _url = '/resumable/upload/dfareporting/v2.3/userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + commons.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
     } else {
-      _url = '/upload/dfareporting/v2.1/userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + commons.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
+      _url = '/upload/dfareporting/v2.3/userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + commons.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
     }
 
 
@@ -5829,50 +5829,6 @@ class FloodlightActivityGroupsResourceApi {
       _requester = client;
 
   /**
-   * Deletes an existing floodlight activity group.
-   *
-   * Request parameters:
-   *
-   * [profileId] - User profile ID associated with this request.
-   *
-   * [id] - Floodlight activity Group ID.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String profileId, core.String id) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
-    }
-    if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
-    }
-
-    _downloadOptions = null;
-
-    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups/' + commons.Escaper.ecapeVariable('$id');
-
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /**
    * Gets one floodlight activity group by ID.
    *
    * Request parameters:
@@ -7564,7 +7520,23 @@ class PlacementGroupsResourceApi {
    *
    * [ids] - Select only placement groups with these IDs.
    *
+   * [maxEndDate] - Select only placements or placement groups whose end date is
+   * on or before the specified maxEndDate. The date should be formatted as
+   * "yyyy-MM-dd".
+   *
    * [maxResults] - Maximum number of results to return.
+   *
+   * [maxStartDate] - Select only placements or placement groups whose start
+   * date is on or before the specified maxStartDate. The date should be
+   * formatted as "yyyy-MM-dd".
+   *
+   * [minEndDate] - Select only placements or placement groups whose end date is
+   * on or after the specified minEndDate. The date should be formatted as
+   * "yyyy-MM-dd".
+   *
+   * [minStartDate] - Select only placements or placement groups whose start
+   * date is on or after the specified minStartDate. The date should be
+   * formatted as "yyyy-MM-dd".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -7613,7 +7585,7 @@ class PlacementGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<PlacementGroupsListResponse> list(core.String profileId, {core.List<core.String> advertiserIds, core.bool archived, core.List<core.String> campaignIds, core.List<core.String> contentCategoryIds, core.List<core.String> directorySiteIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String placementGroupType, core.List<core.String> placementStrategyIds, core.List<core.String> pricingTypes, core.String searchString, core.List<core.String> siteIds, core.String sortField, core.String sortOrder}) {
+  async.Future<PlacementGroupsListResponse> list(core.String profileId, {core.List<core.String> advertiserIds, core.bool archived, core.List<core.String> campaignIds, core.List<core.String> contentCategoryIds, core.List<core.String> directorySiteIds, core.List<core.String> ids, core.String maxEndDate, core.int maxResults, core.String maxStartDate, core.String minEndDate, core.String minStartDate, core.String pageToken, core.String placementGroupType, core.List<core.String> placementStrategyIds, core.List<core.String> pricingTypes, core.String searchString, core.List<core.String> siteIds, core.String sortField, core.String sortOrder}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7642,8 +7614,20 @@ class PlacementGroupsResourceApi {
     if (ids != null) {
       _queryParams["ids"] = ids;
     }
+    if (maxEndDate != null) {
+      _queryParams["maxEndDate"] = [maxEndDate];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (maxStartDate != null) {
+      _queryParams["maxStartDate"] = [maxStartDate];
+    }
+    if (minEndDate != null) {
+      _queryParams["minEndDate"] = [minEndDate];
+    }
+    if (minStartDate != null) {
+      _queryParams["minStartDate"] = [minStartDate];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -8277,7 +8261,23 @@ class PlacementsResourceApi {
    *
    * [ids] - Select only placements with these IDs.
    *
+   * [maxEndDate] - Select only placements or placement groups whose end date is
+   * on or before the specified maxEndDate. The date should be formatted as
+   * "yyyy-MM-dd".
+   *
    * [maxResults] - Maximum number of results to return.
+   *
+   * [maxStartDate] - Select only placements or placement groups whose start
+   * date is on or before the specified maxStartDate. The date should be
+   * formatted as "yyyy-MM-dd".
+   *
+   * [minEndDate] - Select only placements or placement groups whose end date is
+   * on or after the specified minEndDate. The date should be formatted as
+   * "yyyy-MM-dd".
+   *
+   * [minStartDate] - Select only placements or placement groups whose start
+   * date is on or after the specified minStartDate. The date should be
+   * formatted as "yyyy-MM-dd".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -8321,7 +8321,7 @@ class PlacementsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<PlacementsListResponse> list(core.String profileId, {core.List<core.String> advertiserIds, core.bool archived, core.List<core.String> campaignIds, core.List<core.String> compatibilities, core.List<core.String> contentCategoryIds, core.List<core.String> directorySiteIds, core.List<core.String> groupIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String paymentSource, core.List<core.String> placementStrategyIds, core.List<core.String> pricingTypes, core.String searchString, core.List<core.String> siteIds, core.List<core.String> sizeIds, core.String sortField, core.String sortOrder}) {
+  async.Future<PlacementsListResponse> list(core.String profileId, {core.List<core.String> advertiserIds, core.bool archived, core.List<core.String> campaignIds, core.List<core.String> compatibilities, core.List<core.String> contentCategoryIds, core.List<core.String> directorySiteIds, core.List<core.String> groupIds, core.List<core.String> ids, core.String maxEndDate, core.int maxResults, core.String maxStartDate, core.String minEndDate, core.String minStartDate, core.String pageToken, core.String paymentSource, core.List<core.String> placementStrategyIds, core.List<core.String> pricingTypes, core.String searchString, core.List<core.String> siteIds, core.List<core.String> sizeIds, core.String sortField, core.String sortOrder}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8356,8 +8356,20 @@ class PlacementsResourceApi {
     if (ids != null) {
       _queryParams["ids"] = ids;
     }
+    if (maxEndDate != null) {
+      _queryParams["maxEndDate"] = [maxEndDate];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (maxStartDate != null) {
+      _queryParams["maxStartDate"] = [maxStartDate];
+    }
+    if (minEndDate != null) {
+      _queryParams["minEndDate"] = [minEndDate];
+    }
+    if (minStartDate != null) {
+      _queryParams["minStartDate"] = [minStartDate];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -12454,8 +12466,8 @@ class Ad {
     if (_json.containsKey("placementAssignments")) {
       placementAssignments = _json["placementAssignments"].map((value) => new PlacementAssignment.fromJson(value)).toList();
     }
-    if (_json.containsKey("remarketing_list_expression")) {
-      remarketingListExpression = new ListTargetingExpression.fromJson(_json["remarketing_list_expression"]);
+    if (_json.containsKey("remarketingListExpression")) {
+      remarketingListExpression = new ListTargetingExpression.fromJson(_json["remarketingListExpression"]);
     }
     if (_json.containsKey("size")) {
       size = new Size.fromJson(_json["size"]);
@@ -12570,7 +12582,7 @@ class Ad {
       _json["placementAssignments"] = placementAssignments.map((value) => (value).toJson()).toList();
     }
     if (remarketingListExpression != null) {
-      _json["remarketing_list_expression"] = (remarketingListExpression).toJson();
+      _json["remarketingListExpression"] = (remarketingListExpression).toJson();
     }
     if (size != null) {
       _json["size"] = (size).toJson();
@@ -12816,6 +12828,8 @@ class Advertiser {
    * blank.
    */
   core.String subaccountId;
+  /** Suspension status of this advertiser. */
+  core.bool suspended;
 
   Advertiser();
 
@@ -12862,6 +12876,9 @@ class Advertiser {
     if (_json.containsKey("subaccountId")) {
       subaccountId = _json["subaccountId"];
     }
+    if (_json.containsKey("suspended")) {
+      suspended = _json["suspended"];
+    }
   }
 
   core.Map toJson() {
@@ -12907,6 +12924,9 @@ class Advertiser {
     }
     if (subaccountId != null) {
       _json["subaccountId"] = subaccountId;
+    }
+    if (suspended != null) {
+      _json["suspended"] = suspended;
     }
     return _json;
   }
@@ -14023,6 +14043,17 @@ class ClickTag {
 /** Click-through URL */
 class ClickThroughUrl {
   /**
+   * Read-only convenience field representing the actual URL that will be used
+   * for this click-through. The URL is computed as follows:
+   * - If defaultLandingPage is enabled then the campaign's default landing page
+   * URL is assigned to this field.
+   * - If defaultLandingPage is not enabled and a landingPageId is specified
+   * then that landing page's URL is assigned to this field.
+   * - If neither of the above cases apply, then the customClickThroughUrl is
+   * assigned to this field.
+   */
+  core.String computedClickThroughUrl;
+  /**
    * Custom click-through URL. Applicable if the defaultLandingPage field is set
    * to false and the landingPageId field is left unset.
    */
@@ -14038,6 +14069,9 @@ class ClickThroughUrl {
   ClickThroughUrl();
 
   ClickThroughUrl.fromJson(core.Map _json) {
+    if (_json.containsKey("computedClickThroughUrl")) {
+      computedClickThroughUrl = _json["computedClickThroughUrl"];
+    }
     if (_json.containsKey("customClickThroughUrl")) {
       customClickThroughUrl = _json["customClickThroughUrl"];
     }
@@ -14051,6 +14085,9 @@ class ClickThroughUrl {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (computedClickThroughUrl != null) {
+      _json["computedClickThroughUrl"] = computedClickThroughUrl;
+    }
     if (customClickThroughUrl != null) {
       _json["customClickThroughUrl"] = customClickThroughUrl;
     }
@@ -14527,6 +14564,16 @@ class Creative {
    */
   core.String artworkType;
   /**
+   * Source application where creative was authored. Presently, only DBM
+   * authored creatives will have this field set. Applicable to all creative
+   * types.
+   * Possible string values are:
+   * - "CREATIVE_AUTHORING_SOURCE_DBM"
+   * - "CREATIVE_AUTHORING_SOURCE_DCM"
+   * - "CREATIVE_AUTHORING_SOURCE_STUDIO"
+   */
+  core.String authoringSource;
+  /**
    * Authoring tool for HTML5 banner creatives. This is a read-only field.
    * Applicable to the following creative types: HTML5_BANNER.
    * Possible string values are:
@@ -14708,10 +14755,20 @@ class Creative {
    */
   core.String name;
   /**
+   * Online behavioral advertising icon to be added to the creative. Applicable
+   * to the following creative types: all INSTREAM_VIDEO.
+   */
+  ObaIcon obaIcon;
+  /**
    * Override CSS value for rich media creatives. Applicable to the following
    * creative types: all RICH_MEDIA.
    */
   core.String overrideCss;
+  /**
+   * Amount of time to play the video before counting a view. Applicable to the
+   * following creative types: all INSTREAM_VIDEO.
+   */
+  core.String progressOffset;
   /**
    * URL of hosted image or hosted video or another ad tag. For
    * INSTREAM_VIDEO_REDIRECT creatives this is the in-stream video redirect URL.
@@ -14755,6 +14812,11 @@ class Creative {
    */
   Size size;
   /**
+   * Amount of time to play the video before the skip button appears. Applicable
+   * to the following creative types: all INSTREAM_VIDEO.
+   */
+  core.String skipOffset;
+  /**
    * Whether the user can choose to skip the creative. Applicable to the
    * following creative types: all INSTREAM_VIDEO and all VPAID.
    */
@@ -14764,6 +14826,11 @@ class Creative {
    * Applicable to all creative types.
    */
   core.bool sslCompliant;
+  /**
+   * Whether creative should be treated as SSL compliant even if the system scan
+   * shows it's not. Applicable to all creative types.
+   */
+  core.bool sslOverride;
   /**
    * Studio advertiser ID associated with rich media and VPAID creatives. This
    * is a read-only field. Applicable to the following creative types: all
@@ -14828,6 +14895,7 @@ class Creative {
    * - "HTML5_BANNER"
    * - "IMAGE"
    * - "INSTREAM_VIDEO"
+   * - "INSTREAM_VIDEO_REDIRECT"
    * - "INTERNAL_REDIRECT"
    * - "INTERSTITIAL_INTERNAL_REDIRECT"
    * - "REDIRECT"
@@ -14840,7 +14908,6 @@ class Creative {
    * - "RICH_MEDIA_MULTI_FLOATING"
    * - "RICH_MEDIA_PEEL_DOWN"
    * - "TRACKING_TEXT"
-   * - "VAST_REDIRECT"
    * - "VPAID_LINEAR"
    * - "VPAID_NON_LINEAR"
    */
@@ -14893,6 +14960,9 @@ class Creative {
     }
     if (_json.containsKey("artworkType")) {
       artworkType = _json["artworkType"];
+    }
+    if (_json.containsKey("authoringSource")) {
+      authoringSource = _json["authoringSource"];
     }
     if (_json.containsKey("authoringTool")) {
       authoringTool = _json["authoringTool"];
@@ -14972,8 +15042,14 @@ class Creative {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("obaIcon")) {
+      obaIcon = new ObaIcon.fromJson(_json["obaIcon"]);
+    }
     if (_json.containsKey("overrideCss")) {
       overrideCss = _json["overrideCss"];
+    }
+    if (_json.containsKey("progressOffset")) {
+      progressOffset = _json["progressOffset"];
     }
     if (_json.containsKey("redirectUrl")) {
       redirectUrl = _json["redirectUrl"];
@@ -14993,11 +15069,17 @@ class Creative {
     if (_json.containsKey("size")) {
       size = new Size.fromJson(_json["size"]);
     }
+    if (_json.containsKey("skipOffset")) {
+      skipOffset = _json["skipOffset"];
+    }
     if (_json.containsKey("skippable")) {
       skippable = _json["skippable"];
     }
     if (_json.containsKey("sslCompliant")) {
       sslCompliant = _json["sslCompliant"];
+    }
+    if (_json.containsKey("sslOverride")) {
+      sslOverride = _json["sslOverride"];
     }
     if (_json.containsKey("studioAdvertiserId")) {
       studioAdvertiserId = _json["studioAdvertiserId"];
@@ -15065,6 +15147,9 @@ class Creative {
     }
     if (artworkType != null) {
       _json["artworkType"] = artworkType;
+    }
+    if (authoringSource != null) {
+      _json["authoringSource"] = authoringSource;
     }
     if (authoringTool != null) {
       _json["authoringTool"] = authoringTool;
@@ -15144,8 +15229,14 @@ class Creative {
     if (name != null) {
       _json["name"] = name;
     }
+    if (obaIcon != null) {
+      _json["obaIcon"] = (obaIcon).toJson();
+    }
     if (overrideCss != null) {
       _json["overrideCss"] = overrideCss;
+    }
+    if (progressOffset != null) {
+      _json["progressOffset"] = progressOffset;
     }
     if (redirectUrl != null) {
       _json["redirectUrl"] = redirectUrl;
@@ -15165,11 +15256,17 @@ class Creative {
     if (size != null) {
       _json["size"] = (size).toJson();
     }
+    if (skipOffset != null) {
+      _json["skipOffset"] = skipOffset;
+    }
     if (skippable != null) {
       _json["skippable"] = skippable;
     }
     if (sslCompliant != null) {
       _json["sslCompliant"] = sslCompliant;
+    }
+    if (sslOverride != null) {
+      _json["sslOverride"] = sslOverride;
     }
     if (studioAdvertiserId != null) {
       _json["studioAdvertiserId"] = studioAdvertiserId;
@@ -16091,8 +16188,11 @@ class CreativeAssignment {
 
 /** Creative Custom Event. */
 class CreativeCustomEvent {
-  /** Whether the event is active. */
-  core.bool active;
+  /**
+   * Unique ID of this event used by DDM Reporting and Data Transfer. This is a
+   * read-only field.
+   */
+  core.String advertiserCustomEventId;
   /** User-entered name for the event. */
   core.String advertiserCustomEventName;
   /**
@@ -16147,8 +16247,8 @@ class CreativeCustomEvent {
   CreativeCustomEvent();
 
   CreativeCustomEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("active")) {
-      active = _json["active"];
+    if (_json.containsKey("advertiserCustomEventId")) {
+      advertiserCustomEventId = _json["advertiserCustomEventId"];
     }
     if (_json.containsKey("advertiserCustomEventName")) {
       advertiserCustomEventName = _json["advertiserCustomEventName"];
@@ -16181,8 +16281,8 @@ class CreativeCustomEvent {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (active != null) {
-      _json["active"] = active;
+    if (advertiserCustomEventId != null) {
+      _json["advertiserCustomEventId"] = advertiserCustomEventId;
     }
     if (advertiserCustomEventName != null) {
       _json["advertiserCustomEventName"] = advertiserCustomEventName;
@@ -18052,6 +18152,13 @@ class EventTag {
    * advertiser's campaigns and ads.
    */
   core.bool enabledByDefault;
+  /**
+   * Whether to remove this event tag from ads that are trafficked through
+   * DoubleClick Bid Manager to Ad Exchange. This may be useful if the event tag
+   * uses a pixel that is unapproved for Ad Exchange bids on one or more
+   * networks, such as the Google Display Network.
+   */
+  core.bool excludeFromAdxRequests;
   /** ID of this event tag. This is a read-only, auto-generated field. */
   core.String id;
   /**
@@ -18136,6 +18243,9 @@ class EventTag {
     if (_json.containsKey("enabledByDefault")) {
       enabledByDefault = _json["enabledByDefault"];
     }
+    if (_json.containsKey("excludeFromAdxRequests")) {
+      excludeFromAdxRequests = _json["excludeFromAdxRequests"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -18190,6 +18300,9 @@ class EventTag {
     }
     if (enabledByDefault != null) {
       _json["enabledByDefault"] = enabledByDefault;
+    }
+    if (excludeFromAdxRequests != null) {
+      _json["excludeFromAdxRequests"] = excludeFromAdxRequests;
     }
     if (id != null) {
       _json["id"] = id;
@@ -19300,6 +19413,8 @@ class FloodlightConfiguration {
    * read-only, auto-generated field.
    */
   DimensionValue idDimensionValue;
+  /** Whether in-app attribution tracking is enabled. */
+  core.bool inAppAttributionTrackingEnabled;
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "dfareporting#floodlightConfiguration".
@@ -19318,11 +19433,6 @@ class FloodlightConfiguration {
   /** Settings for DCM Omniture integration. */
   OmnitureSettings omnitureSettings;
   /**
-   * Whether floodlight activities owned by this configuration are required to
-   * be SSL-compliant.
-   */
-  core.bool sslRequired;
-  /**
    * List of standard variables enabled for this configuration.
    *
    * Acceptable values are:
@@ -19337,6 +19447,10 @@ class FloodlightConfiguration {
   core.String subaccountId;
   /** Configuration settings for dynamic and image floodlight tags. */
   TagSettings tagSettings;
+  /**
+   * List of third-party authentication tokens enabled for this configuration.
+   */
+  core.List<ThirdPartyAuthenticationToken> thirdPartyAuthenticationTokens;
   /** List of user defined variables enabled for this configuration. */
   core.List<UserDefinedVariableConfiguration> userDefinedVariableConfigurations;
 
@@ -19367,6 +19481,9 @@ class FloodlightConfiguration {
     if (_json.containsKey("idDimensionValue")) {
       idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
     }
+    if (_json.containsKey("inAppAttributionTrackingEnabled")) {
+      inAppAttributionTrackingEnabled = _json["inAppAttributionTrackingEnabled"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -19379,9 +19496,6 @@ class FloodlightConfiguration {
     if (_json.containsKey("omnitureSettings")) {
       omnitureSettings = new OmnitureSettings.fromJson(_json["omnitureSettings"]);
     }
-    if (_json.containsKey("sslRequired")) {
-      sslRequired = _json["sslRequired"];
-    }
     if (_json.containsKey("standardVariableTypes")) {
       standardVariableTypes = _json["standardVariableTypes"];
     }
@@ -19390,6 +19504,9 @@ class FloodlightConfiguration {
     }
     if (_json.containsKey("tagSettings")) {
       tagSettings = new TagSettings.fromJson(_json["tagSettings"]);
+    }
+    if (_json.containsKey("thirdPartyAuthenticationTokens")) {
+      thirdPartyAuthenticationTokens = _json["thirdPartyAuthenticationTokens"].map((value) => new ThirdPartyAuthenticationToken.fromJson(value)).toList();
     }
     if (_json.containsKey("userDefinedVariableConfigurations")) {
       userDefinedVariableConfigurations = _json["userDefinedVariableConfigurations"].map((value) => new UserDefinedVariableConfiguration.fromJson(value)).toList();
@@ -19422,6 +19539,9 @@ class FloodlightConfiguration {
     if (idDimensionValue != null) {
       _json["idDimensionValue"] = (idDimensionValue).toJson();
     }
+    if (inAppAttributionTrackingEnabled != null) {
+      _json["inAppAttributionTrackingEnabled"] = inAppAttributionTrackingEnabled;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -19434,9 +19554,6 @@ class FloodlightConfiguration {
     if (omnitureSettings != null) {
       _json["omnitureSettings"] = (omnitureSettings).toJson();
     }
-    if (sslRequired != null) {
-      _json["sslRequired"] = sslRequired;
-    }
     if (standardVariableTypes != null) {
       _json["standardVariableTypes"] = standardVariableTypes;
     }
@@ -19445,6 +19562,9 @@ class FloodlightConfiguration {
     }
     if (tagSettings != null) {
       _json["tagSettings"] = (tagSettings).toJson();
+    }
+    if (thirdPartyAuthenticationTokens != null) {
+      _json["thirdPartyAuthenticationTokens"] = thirdPartyAuthenticationTokens.map((value) => (value).toJson()).toList();
     }
     if (userDefinedVariableConfigurations != null) {
       _json["userDefinedVariableConfigurations"] = userDefinedVariableConfigurations.map((value) => (value).toJson()).toList();
@@ -20590,6 +20710,74 @@ class MobileCarriersListResponse {
   }
 }
 
+/** Online Behavioral Advertiser icon. */
+class ObaIcon {
+  /** URL to redirect to when an OBA icon is clicked. */
+  core.String iconClickThroughUrl;
+  /**
+   * Identifies the industry initiative that the icon supports. For example,
+   * AdChoices.
+   */
+  core.String program;
+  /**
+   * OBA icon resource script URL. DCM only supports image, JavaScript, and
+   * Flash icons. Learn more
+   */
+  core.String resourceUrl;
+  /** OBA icon size. */
+  Size size;
+  /** OBA icon x coordinate position. */
+  core.String xPosition;
+  /** OBA icon y coordinate position. */
+  core.String yPosition;
+
+  ObaIcon();
+
+  ObaIcon.fromJson(core.Map _json) {
+    if (_json.containsKey("iconClickThroughUrl")) {
+      iconClickThroughUrl = _json["iconClickThroughUrl"];
+    }
+    if (_json.containsKey("program")) {
+      program = _json["program"];
+    }
+    if (_json.containsKey("resourceUrl")) {
+      resourceUrl = _json["resourceUrl"];
+    }
+    if (_json.containsKey("size")) {
+      size = new Size.fromJson(_json["size"]);
+    }
+    if (_json.containsKey("xPosition")) {
+      xPosition = _json["xPosition"];
+    }
+    if (_json.containsKey("yPosition")) {
+      yPosition = _json["yPosition"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (iconClickThroughUrl != null) {
+      _json["iconClickThroughUrl"] = iconClickThroughUrl;
+    }
+    if (program != null) {
+      _json["program"] = program;
+    }
+    if (resourceUrl != null) {
+      _json["resourceUrl"] = resourceUrl;
+    }
+    if (size != null) {
+      _json["size"] = (size).toJson();
+    }
+    if (xPosition != null) {
+      _json["xPosition"] = xPosition;
+    }
+    if (yPosition != null) {
+      _json["yPosition"] = yPosition;
+    }
+    return _json;
+  }
+}
+
 /** Object Filter. */
 class ObjectFilter {
   /**
@@ -21223,6 +21411,10 @@ class OrderDocument {
    * "dfareporting#orderDocument".
    */
   core.String kind;
+  /** List of email addresses that received the last sent document. */
+  core.List<core.String> lastSentRecipients;
+  /** Timestamp of the last email sent with this order document. */
+  core.DateTime lastSentTime;
   /** ID of the order from which this order document is created. */
   core.String orderId;
   /** Project ID of this order document. */
@@ -21270,6 +21462,12 @@ class OrderDocument {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("lastSentRecipients")) {
+      lastSentRecipients = _json["lastSentRecipients"];
+    }
+    if (_json.containsKey("lastSentTime")) {
+      lastSentTime = core.DateTime.parse(_json["lastSentTime"]);
     }
     if (_json.containsKey("orderId")) {
       orderId = _json["orderId"];
@@ -21319,6 +21517,12 @@ class OrderDocument {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (lastSentRecipients != null) {
+      _json["lastSentRecipients"] = lastSentRecipients;
+    }
+    if (lastSentTime != null) {
+      _json["lastSentTime"] = (lastSentTime).toIso8601String();
     }
     if (orderId != null) {
       _json["orderId"] = orderId;
@@ -22063,8 +22267,6 @@ class PlacementGroup {
    * auto-generated field.
    */
   DimensionValue primaryPlacementIdDimensionValue;
-  /** Settings for a programmatic placement. */
-  ProgrammaticSetting programmaticSetting;
   /**
    * Site ID associated with this placement group. On insert, you must set
    * either this field or the directorySiteId field to specify the site
@@ -22155,9 +22357,6 @@ class PlacementGroup {
     if (_json.containsKey("primaryPlacementIdDimensionValue")) {
       primaryPlacementIdDimensionValue = new DimensionValue.fromJson(_json["primaryPlacementIdDimensionValue"]);
     }
-    if (_json.containsKey("programmaticSetting")) {
-      programmaticSetting = new ProgrammaticSetting.fromJson(_json["programmaticSetting"]);
-    }
     if (_json.containsKey("siteId")) {
       siteId = _json["siteId"];
     }
@@ -22239,9 +22438,6 @@ class PlacementGroup {
     }
     if (primaryPlacementIdDimensionValue != null) {
       _json["primaryPlacementIdDimensionValue"] = (primaryPlacementIdDimensionValue).toJson();
-    }
-    if (programmaticSetting != null) {
-      _json["programmaticSetting"] = (programmaticSetting).toJson();
     }
     if (siteId != null) {
       _json["siteId"] = siteId;
@@ -23036,71 +23232,6 @@ class PricingSchedulePricingPeriod {
     }
     if (units != null) {
       _json["units"] = units;
-    }
-    return _json;
-  }
-}
-
-/** Programmatic Setting */
-class ProgrammaticSetting {
-  /** Adx deal IDs assigned to the placement. */
-  core.List<core.String> adxDealIds;
-  /** Insertion order ID. */
-  core.String insertionOrderId;
-  /**
-   * Whether insertion order ID has been placed in DFP. This is a read-only
-   * field.
-   */
-  core.bool insertionOrderIdStatus;
-  /** Media cost for the programmatic placement. */
-  core.String mediaCostNanos;
-  /** Whether programmatic is enabled. */
-  core.bool programmatic;
-  /** Trafficker emails assigned to the placement. */
-  core.List<core.String> traffickerEmails;
-
-  ProgrammaticSetting();
-
-  ProgrammaticSetting.fromJson(core.Map _json) {
-    if (_json.containsKey("adxDealIds")) {
-      adxDealIds = _json["adxDealIds"];
-    }
-    if (_json.containsKey("insertionOrderId")) {
-      insertionOrderId = _json["insertionOrderId"];
-    }
-    if (_json.containsKey("insertionOrderIdStatus")) {
-      insertionOrderIdStatus = _json["insertionOrderIdStatus"];
-    }
-    if (_json.containsKey("mediaCostNanos")) {
-      mediaCostNanos = _json["mediaCostNanos"];
-    }
-    if (_json.containsKey("programmatic")) {
-      programmatic = _json["programmatic"];
-    }
-    if (_json.containsKey("traffickerEmails")) {
-      traffickerEmails = _json["traffickerEmails"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (adxDealIds != null) {
-      _json["adxDealIds"] = adxDealIds;
-    }
-    if (insertionOrderId != null) {
-      _json["insertionOrderId"] = insertionOrderId;
-    }
-    if (insertionOrderIdStatus != null) {
-      _json["insertionOrderIdStatus"] = insertionOrderIdStatus;
-    }
-    if (mediaCostNanos != null) {
-      _json["mediaCostNanos"] = mediaCostNanos;
-    }
-    if (programmatic != null) {
-      _json["programmatic"] = programmatic;
-    }
-    if (traffickerEmails != null) {
-      _json["traffickerEmails"] = traffickerEmails;
     }
     return _json;
   }
@@ -25167,6 +25298,17 @@ class SiteSettings {
   LookbackConfiguration lookbackConfiguration;
   /** Configuration settings for dynamic and image floodlight tags. */
   TagSetting tagSetting;
+  /**
+   * Whether Verification and ActiveView are disabled for in-stream video
+   * creatives on this site. The same setting videoActiveViewOptOut exists on
+   * the directory site level -- the opt out occurs if either of these settings
+   * are true. These settings are distinct from
+   * DirectorySites.settings.activeViewOptOut or
+   * Sites.siteSettings.activeViewOptOut which only apply to display ads.
+   * However, Accounts.activeViewOptOut opts out both video traffic, as well as
+   * display ads, from Verification and ActiveView.
+   */
+  core.bool videoActiveViewOptOut;
 
   SiteSettings();
 
@@ -25189,6 +25331,9 @@ class SiteSettings {
     if (_json.containsKey("tagSetting")) {
       tagSetting = new TagSetting.fromJson(_json["tagSetting"]);
     }
+    if (_json.containsKey("videoActiveViewOptOut")) {
+      videoActiveViewOptOut = _json["videoActiveViewOptOut"];
+    }
   }
 
   core.Map toJson() {
@@ -25210,6 +25355,9 @@ class SiteSettings {
     }
     if (tagSetting != null) {
       _json["tagSetting"] = (tagSetting).toJson();
+    }
+    if (videoActiveViewOptOut != null) {
+      _json["videoActiveViewOptOut"] = videoActiveViewOptOut;
     }
     return _json;
   }
@@ -25974,6 +26122,39 @@ class TechnologyTargeting {
     }
     if (platformTypes != null) {
       _json["platformTypes"] = platformTypes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Third Party Authentication Token */
+class ThirdPartyAuthenticationToken {
+  /** Name of the third-party authentication token. */
+  core.String name;
+  /**
+   * Value of the third-party authentication token. This is a read-only,
+   * auto-generated field.
+   */
+  core.String value;
+
+  ThirdPartyAuthenticationToken();
+
+  ThirdPartyAuthenticationToken.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }

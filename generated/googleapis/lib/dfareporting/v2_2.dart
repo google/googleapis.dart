@@ -11485,6 +11485,9 @@ class Account {
    * - "34" for VEF
    * - "35" for COP
    * - "36" for GTQ
+   * - "37" for PLN
+   * - "39" for INR
+   * - "40" for THB
    */
   core.String currencyId;
   /** Default placement dimensions for this account. */
@@ -14665,13 +14668,15 @@ class Creative {
   core.List<ClickTag> clickTags;
   /**
    * Industry standard ID assigned to creative for reach and frequency.
-   * Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.
+   * Applicable to the following creative types: all INSTREAM_VIDEO and all
+   * VPAID.
    */
   core.String commercialId;
   /**
    * List of companion creatives assigned to an in-Stream videocreative.
    * Acceptable values include IDs of existing flash and image creatives.
-   * Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.
+   * Applicable to the following creative types: all INSTREAM_VIDEO and all
+   * VPAID.
    */
   core.List<core.String> companionCreatives;
   /**
@@ -14699,8 +14704,10 @@ class Creative {
    */
   core.bool convertFlashToHtml5;
   /**
-   * List of counter events configured for the creative. Applicable to the
-   * following creative types: all RICH_MEDIA, and all VPAID.
+   * List of counter events configured for the creative. For ENHANCED_IMAGE
+   * creatives, these are read-only and auto-generated from clickTags.
+   * Applicable to the following creative types: ENHANCED_IMAGE, all RICH_MEDIA,
+   * and all VPAID.
    */
   core.List<CreativeCustomEvent> counterCustomEvents;
   /**
@@ -14723,8 +14730,11 @@ class Creative {
    */
   core.List<core.String> customKeyValues;
   /**
-   * List of exit events configured for the creative. Applicable to the
-   * following creative types: all RICH_MEDIA, and all VPAID.
+   * List of exit events configured for the creative. For ENHANCED_BANNER and
+   * ENHANCED_IMAGE creatives, these are read-only and auto-generated from
+   * clickTags, For ENHANCED_BANNER, an event is also created from the
+   * backupImageReportingLabel. Applicable to the following creative types:
+   * ENHANCED_BANNER, ENHANCED_IMAGE, all RICH_MEDIA, and all VPAID.
    */
   core.List<CreativeCustomEvent> exitCustomEvents;
   /**
@@ -14784,9 +14794,13 @@ class Creative {
    */
   core.String overrideCss;
   /**
-   * URL of hosted image or another ad tag. This is a required field when
-   * applicable. Applicable to the following creative types: INTERNAL_REDIRECT,
-   * INTERSTITIAL_INTERNAL_REDIRECT, and REDIRECT
+   * URL of hosted image or hosted video or another ad tag. For
+   * INSTREAM_VIDEO_REDIRECT creatives this is the in-stream video redirect URL.
+   * The standard for a VAST (Video Ad Serving Template) ad response allows for
+   * a redirect link to another VAST 2.0 or 3.0 call. This is a required field
+   * when applicable. Applicable to the following creative types:
+   * INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, REDIRECT, and
+   * INSTREAM_VIDEO_REDIRECT
    */
   core.String redirectUrl;
   /**
@@ -14823,7 +14837,7 @@ class Creative {
   Size size;
   /**
    * Whether the user can choose to skip the creative. Applicable to the
-   * following creative types: INSTREAM_VIDEO.
+   * following creative types: all INSTREAM_VIDEO and all VPAID.
    */
   core.bool skippable;
   /**
@@ -14833,7 +14847,7 @@ class Creative {
   core.bool sslCompliant;
   /**
    * Whether creative should be treated as SSL compliant even if the system scan
-   * shows it's not.
+   * shows it's not. Applicable to all creative types.
    */
   core.bool sslOverride;
   /**
@@ -14872,12 +14886,14 @@ class Creative {
   core.String thirdPartyRichMediaImpressionsUrl;
   /**
    * Third-party URLs for tracking in-stream video creative events. Applicable
-   * to the following creative types: INSTREAM_VIDEO and all VPAID.
+   * to the following creative types: all INSTREAM_VIDEO and all VPAID.
    */
   core.List<ThirdPartyTrackingUrl> thirdPartyUrls;
   /**
-   * List of timer events configured for the creative. Applicable to the
-   * following creative types: all RICH_MEDIA, and all VPAID.
+   * List of timer events configured for the creative. For ENHANCED_IMAGE
+   * creatives, these are read-only and auto-generated from clickTags.
+   * Applicable to the following creative types: ENHANCED_IMAGE, all RICH_MEDIA,
+   * and all VPAID.
    */
   core.List<CreativeCustomEvent> timerCustomEvents;
   /**
@@ -14927,7 +14943,7 @@ class Creative {
   core.int version;
   /**
    * Description of the video ad. Applicable to the following creative types:
-   * INSTREAM_VIDEO and all VPAID.
+   * all INSTREAM_VIDEO and all VPAID.
    */
   core.String videoDescription;
   /**
@@ -16213,7 +16229,8 @@ class CreativeCustomEvent {
    */
   core.String targetType;
   /**
-   * Reporting ID, used to differentiate multiple videos in a single creative.
+   * Video reporting ID, used to differentiate multiple videos in a single
+   * creative. This is a read-only field.
    */
   core.String videoReportingId;
 
@@ -17634,6 +17651,9 @@ class DirectorySite {
    * - "34" for VEF
    * - "35" for COP
    * - "36" for GTQ
+   * - "37" for PLN
+   * - "39" for INR
+   * - "40" for THB
    */
   core.String currencyId;
   /** Description of this directory site. */

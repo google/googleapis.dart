@@ -298,7 +298,7 @@ class SitesResourceApi {
       _requester = client;
 
   /**
-   * Adds a site to the set of the user's sites in Webmaster Tools.
+   * Adds a site to the set of the user's sites in Search Console.
    *
    * Request parameters:
    *
@@ -337,7 +337,7 @@ class SitesResourceApi {
   }
 
   /**
-   * Removes a site from the set of the user's Webmaster Tools sites.
+   * Removes a site from the set of the user's Search Console sites.
    *
    * Request parameters:
    *
@@ -417,7 +417,7 @@ class SitesResourceApi {
   }
 
   /**
-   * Lists the user's Webmaster Tools sites.
+   * Lists the user's Search Console sites.
    *
    * Request parameters:
    *
@@ -1036,8 +1036,8 @@ class SitemapsListResponse {
 /** List of sites with access level information. */
 class SitesListResponse {
   /**
-   * Contains permission level information about a Webmaster Tools site. For
-   * more information, see Permissions in Webmaster Tools.
+   * Contains permission level information about a Search Console site. For more
+   * information, see Permissions in Search Console.
    */
   core.List<WmxSite> siteEntry;
 
@@ -1269,8 +1269,8 @@ class UrlSampleDetails {
 }
 
 /**
- * Contains permission level information about a Webmaster Tools site. For more
- * information, see  Permissions in Webmaster Tools.
+ * Contains permission level information about a Search Console site. For more
+ * information, see  Permissions in Search Console.
  */
 class WmxSite {
   /** The user's permission level for the site. */

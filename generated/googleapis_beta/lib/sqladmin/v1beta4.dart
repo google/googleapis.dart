@@ -3322,6 +3322,54 @@ class LocationPreference {
   }
 }
 
+/**
+ * Maintenance window. This specifies when a v2 Cloud SQL instance should
+ * preferably be restarted for system maintenance puruposes.
+ */
+class MaintenanceWindow {
+  /** day of week (1-7), starting on Monday. */
+  core.int day;
+  /** hour of day - 0 to 23. */
+  core.int hour;
+  /** This is always sql#maintenanceWindow. */
+  core.String kind;
+  core.String updateTrack;
+
+  MaintenanceWindow();
+
+  MaintenanceWindow.fromJson(core.Map _json) {
+    if (_json.containsKey("day")) {
+      day = _json["day"];
+    }
+    if (_json.containsKey("hour")) {
+      hour = _json["hour"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("updateTrack")) {
+      updateTrack = _json["updateTrack"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (day != null) {
+      _json["day"] = day;
+    }
+    if (hour != null) {
+      _json["hour"] = hour;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (updateTrack != null) {
+      _json["updateTrack"] = updateTrack;
+    }
+    return _json;
+  }
+}
+
 /** Read-replica configuration specific to MySQL databases. */
 class MySqlReplicaConfiguration {
   /** PEM representation of the trusted CA's x509 certificate. */
@@ -3850,8 +3898,8 @@ class Settings {
    */
   core.bool crashSafeReplicationEnabled;
   /**
-   * The size of data disk for the performance instance, specified in GB.
-   * Setting this value for non-performance instances will result in an error.
+   * The size of data disk, in GB. Only supported for 2nd Generation instances.
+   * The data disk size minimum is 10GB.
    */
   core.String dataDiskSizeGb;
   /** The database flags passed to the instance at startup. */
@@ -3874,6 +3922,11 @@ class Settings {
    * performance.
    */
   LocationPreference locationPreference;
+  /**
+   * The maintenance window for this instance. This specifies when the instance
+   * may be restarted for maintenance purposes.
+   */
+  MaintenanceWindow maintenanceWindow;
   /**
    * The pricing plan for this instance. This can be either PER_USE or PACKAGE.
    */
@@ -3929,6 +3982,9 @@ class Settings {
     if (_json.containsKey("locationPreference")) {
       locationPreference = new LocationPreference.fromJson(_json["locationPreference"]);
     }
+    if (_json.containsKey("maintenanceWindow")) {
+      maintenanceWindow = new MaintenanceWindow.fromJson(_json["maintenanceWindow"]);
+    }
     if (_json.containsKey("pricingPlan")) {
       pricingPlan = _json["pricingPlan"];
     }
@@ -3974,6 +4030,9 @@ class Settings {
     }
     if (locationPreference != null) {
       _json["locationPreference"] = (locationPreference).toJson();
+    }
+    if (maintenanceWindow != null) {
+      _json["maintenanceWindow"] = (maintenanceWindow).toJson();
     }
     if (pricingPlan != null) {
       _json["pricingPlan"] = pricingPlan;

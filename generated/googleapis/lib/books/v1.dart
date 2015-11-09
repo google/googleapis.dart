@@ -7905,11 +7905,15 @@ class Volumes {
 }
 
 class VolumeseriesinfoVolumeSeriesIssue {
+  core.String issueDisplayNumber;
   core.int issueOrderNumber;
 
   VolumeseriesinfoVolumeSeriesIssue();
 
   VolumeseriesinfoVolumeSeriesIssue.fromJson(core.Map _json) {
+    if (_json.containsKey("issueDisplayNumber")) {
+      issueDisplayNumber = _json["issueDisplayNumber"];
+    }
     if (_json.containsKey("issueOrderNumber")) {
       issueOrderNumber = _json["issueOrderNumber"];
     }
@@ -7917,6 +7921,9 @@ class VolumeseriesinfoVolumeSeriesIssue {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (issueDisplayNumber != null) {
+      _json["issueDisplayNumber"] = issueDisplayNumber;
+    }
     if (issueOrderNumber != null) {
       _json["issueOrderNumber"] = issueOrderNumber;
     }

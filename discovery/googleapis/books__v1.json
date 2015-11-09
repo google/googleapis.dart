@@ -14,7 +14,7 @@
     "description": "Lets you search for books and manage your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/5ZkilX-Ofi3hj399m9zhq-B2wDk\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/dRgfGk7DF17Jm0ty3Xvqoes1c_4\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
         "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
@@ -2370,7 +2370,7 @@
             }
         }
     },
-    "revision": "20151027",
+    "revision": "20151105",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -4437,6 +4437,9 @@
                                 "description": "List of issues. Applicable only for Collection Edition and Omnibus.",
                                 "items": {
                                     "properties": {
+                                        "issueDisplayNumber": {
+                                            "type": "string"
+                                        },
                                         "issueOrderNumber": {
                                             "format": "int32",
                                             "type": "integer"

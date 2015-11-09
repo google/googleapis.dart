@@ -93,14 +93,14 @@ checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-buildUnnamed2448() {
+buildUnnamed1304() {
   var o = new core.List<api.Job>();
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-checkUnnamed2448(core.List<api.Job> o) {
+checkUnnamed1304(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -111,7 +111,7 @@ buildListJobsResponse() {
   var o = new api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed2448();
+    o.jobs = buildUnnamed1304();
     o.nextPageToken = "foo";
   }
   buildCounterListJobsResponse--;
@@ -121,20 +121,20 @@ buildListJobsResponse() {
 checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed2448(o.jobs);
+    checkUnnamed1304(o.jobs);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListJobsResponse--;
 }
 
-buildUnnamed2449() {
+buildUnnamed1305() {
   var o = new core.List<api.ReportType>();
   o.add(buildReportType());
   o.add(buildReportType());
   return o;
 }
 
-checkUnnamed2449(core.List<api.ReportType> o) {
+checkUnnamed1305(core.List<api.ReportType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportType(o[0]);
   checkReportType(o[1]);
@@ -146,7 +146,7 @@ buildListReportTypesResponse() {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     o.nextPageToken = "foo";
-    o.reportTypes = buildUnnamed2449();
+    o.reportTypes = buildUnnamed1305();
   }
   buildCounterListReportTypesResponse--;
   return o;
@@ -156,19 +156,19 @@ checkListReportTypesResponse(api.ListReportTypesResponse o) {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2449(o.reportTypes);
+    checkUnnamed1305(o.reportTypes);
   }
   buildCounterListReportTypesResponse--;
 }
 
-buildUnnamed2450() {
+buildUnnamed1306() {
   var o = new core.List<api.Report>();
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-checkUnnamed2450(core.List<api.Report> o) {
+checkUnnamed1306(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -180,7 +180,7 @@ buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.nextPageToken = "foo";
-    o.reports = buildUnnamed2450();
+    o.reports = buildUnnamed1306();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -190,7 +190,7 @@ checkListReportsResponse(api.ListReportsResponse o) {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2450(o.reports);
+    checkUnnamed1306(o.reports);
   }
   buildCounterListReportsResponse--;
 }
@@ -604,6 +604,7 @@ main() {
       var arg_onBehalfOfContentOwner = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_createdAfter = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -640,6 +641,7 @@ main() {
         unittest.expect(queryMap["onBehalfOfContentOwner"].first, unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["createdAfter"].first, unittest.equals(arg_createdAfter));
 
 
         var h = {
@@ -648,7 +650,7 @@ main() {
         var resp = convert.JSON.encode(buildListReportsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_jobId, onBehalfOfContentOwner: arg_onBehalfOfContentOwner, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListReportsResponse response) {
+      res.list(arg_jobId, onBehalfOfContentOwner: arg_onBehalfOfContentOwner, pageSize: arg_pageSize, pageToken: arg_pageToken, createdAfter: arg_createdAfter).then(unittest.expectAsync(((api.ListReportsResponse response) {
         checkListReportsResponse(response);
       })));
     });

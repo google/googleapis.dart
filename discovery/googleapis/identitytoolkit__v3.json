@@ -6,7 +6,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/vhSSUBE3RjFbgHKyokEXEk-v5oc\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/53iL22jaDPUsS1g7dANA9fvNDrI\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -227,7 +227,7 @@
             }
         }
     },
-    "revision": "20151023",
+    "revision": "20151029",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -324,6 +324,10 @@
             "description": "Response of getting a code for user confirmation (reset password, change email etc.).",
             "id": "GetOobConfirmationCodeResponse",
             "properties": {
+                "email": {
+                    "description": "The email address that the email is sent to.",
+                    "type": "string"
+                },
                 "kind": {
                     "default": "identitytoolkit#GetOobConfirmationCodeResponse",
                     "description": "The fixed string \"identitytoolkit#GetOobConfirmationCodeResponse\".",

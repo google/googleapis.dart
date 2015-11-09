@@ -322,6 +322,9 @@ class JobsReportsResourceApi {
    * return. Typically, this is the value of ListReportsResponse.next_page_token
    * returned in response to the previous call to the `ListReports` method.
    *
+   * [createdAfter] - If set, only reports created after the specified date/time
+   * are returned.
+   *
    * Completes with a [ListReportsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -330,7 +333,7 @@ class JobsReportsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListReportsResponse> list(core.String jobId, {core.String onBehalfOfContentOwner, core.int pageSize, core.String pageToken}) {
+  async.Future<ListReportsResponse> list(core.String jobId, {core.String onBehalfOfContentOwner, core.int pageSize, core.String pageToken, core.String createdAfter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -349,6 +352,9 @@ class JobsReportsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (createdAfter != null) {
+      _queryParams["createdAfter"] = [createdAfter];
     }
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/reports';

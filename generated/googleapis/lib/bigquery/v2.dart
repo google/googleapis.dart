@@ -4337,6 +4337,10 @@ class UserDefinedFunctionResource {
 class ViewDefinition {
   /** [Required] A query that BigQuery executes when the view is referenced. */
   core.String query;
+  /**
+   * [Experimental] Describes user-defined function resources used in the query.
+   */
+  core.List<UserDefinedFunctionResource> userDefinedFunctionResources;
 
   ViewDefinition();
 
@@ -4344,12 +4348,18 @@ class ViewDefinition {
     if (_json.containsKey("query")) {
       query = _json["query"];
     }
+    if (_json.containsKey("userDefinedFunctionResources")) {
+      userDefinedFunctionResources = _json["userDefinedFunctionResources"].map((value) => new UserDefinedFunctionResource.fromJson(value)).toList();
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (query != null) {
       _json["query"] = query;
+    }
+    if (userDefinedFunctionResources != null) {
+      _json["userDefinedFunctionResources"] = userDefinedFunctionResources.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

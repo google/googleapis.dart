@@ -1,3 +1,12 @@
+## 0.21.0
+
+* [api] dataflow:v1b3: schema changes
+* [api] pubsub:v1beta2: schema changes
+* [api] sqladmin:v1beta4: schema changes
+* [api-breaking] logging:v1beta3: method changes
+* [api-breaking] logging:v2beta1: method changes
+* [api-removal] pubsub:v1beta1
+
 ## 0.20.0
 
 * [apis-breaking] logging:v1beta3: resource/schema changes

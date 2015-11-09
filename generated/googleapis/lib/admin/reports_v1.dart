@@ -322,7 +322,7 @@ class CustomerUsageReportsResourceApi {
    * [parameters] - Represents the application name, parameter name pairs to
    * fetch in csv as app_name1:param_name1, app_name2:param_name2.
    * Value must have pattern
-   * "(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):.+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):.+)".
+   * "(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[^,]+)".
    *
    * Completes with a [UsageReports].
    *
@@ -393,7 +393,7 @@ class UserUsageReportResourceApi {
    * [filters] - Represents the set of filters including parameter operator
    * value.
    * Value must have pattern
-   * "(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):.+[<,<=,==,>=,>,!=].+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):.+[<,<=,==,>=,>,!=].+)".
+   * "(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)".
    *
    * [maxResults] - Maximum number of results to return. Maximum allowed is 1000
    *
@@ -402,7 +402,7 @@ class UserUsageReportResourceApi {
    * [parameters] - Represents the application name, parameter name pairs to
    * fetch in csv as app_name1:param_name1, app_name2:param_name2.
    * Value must have pattern
-   * "(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):.+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):.+)".
+   * "(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[^,]+)".
    *
    * Completes with a [UsageReports].
    *

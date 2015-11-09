@@ -17,7 +17,7 @@
     "description": "Lets you view Google Webmaster Tools data for your verified sites.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/webmaster-tools/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/2KfwPsPFjdvTmw1MTymtM96q3zo\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/w0NTfqbsfkFekC1iKAkIWQ5tRAU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/webmaster_tools-16.png",
         "x32": "https://www.google.com/images/icons/product/webmaster_tools-32.png"
@@ -226,7 +226,7 @@
         "sites": {
             "methods": {
                 "add": {
-                    "description": "Adds a site to the set of the user's sites in Webmaster Tools.",
+                    "description": "Adds a site to the set of the user's sites in Search Console.",
                     "httpMethod": "PUT",
                     "id": "webmasters.sites.add",
                     "parameterOrder": [
@@ -246,7 +246,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Removes a site from the set of the user's Webmaster Tools sites.",
+                    "description": "Removes a site from the set of the user's Search Console sites.",
                     "httpMethod": "DELETE",
                     "id": "webmasters.sites.delete",
                     "parameterOrder": [
@@ -290,7 +290,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists the user's Webmaster Tools sites.",
+                    "description": "Lists the user's Search Console sites.",
                     "httpMethod": "GET",
                     "id": "webmasters.sites.list",
                     "path": "sites",
@@ -597,7 +597,7 @@
             }
         }
     },
-    "revision": "20150804",
+    "revision": "20151102",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ApiDataRow": {
@@ -736,7 +736,7 @@
             "id": "SitesListResponse",
             "properties": {
                 "siteEntry": {
-                    "description": "Contains permission level information about a Webmaster Tools site. For more information, see Permissions in Webmaster Tools.",
+                    "description": "Contains permission level information about a Search Console site. For more information, see Permissions in Search Console.",
                     "items": {
                         "$ref": "WmxSite"
                     },
@@ -864,7 +864,7 @@
             "type": "object"
         },
         "WmxSite": {
-            "description": "Contains permission level information about a Webmaster Tools site. For more information, see  Permissions in Webmaster Tools.",
+            "description": "Contains permission level information about a Search Console site. For more information, see  Permissions in Search Console.",
             "id": "WmxSite",
             "properties": {
                 "permissionLevel": {

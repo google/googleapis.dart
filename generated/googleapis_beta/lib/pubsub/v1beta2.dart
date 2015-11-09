@@ -246,7 +246,10 @@ class ProjectsSubscriptionsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being requested.
-   * Resource is usually specified as a path, such as, `projects/{project}`.
+   * `resource` is usually specified as a path, such as,
+   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * specified in this value is resource specific and is specified in the
+   * documentation for the respective GetIamPolicy rpc.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [Policy].
@@ -488,7 +491,9 @@ class ProjectsSubscriptionsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
    * `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`.
+   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * specified in this value is resource specific and is specified in the
+   * documentation for the respective SetIamPolicy rpc.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [Policy].
@@ -535,7 +540,9 @@ class ProjectsSubscriptionsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which policy detail is being
    * requested. `resource` is usually specified as a path, such as,
-   * `projects/{project}`.
+   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * specified in this value is resource specific and is specified in the
+   * documentation for the respective TestIamPermissions rpc.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -725,7 +732,10 @@ class ProjectsTopicsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being requested.
-   * Resource is usually specified as a path, such as, `projects/{project}`.
+   * `resource` is usually specified as a path, such as,
+   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * specified in this value is resource specific and is specified in the
+   * documentation for the respective GetIamPolicy rpc.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [Policy].
@@ -869,7 +879,9 @@ class ProjectsTopicsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
    * `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`.
+   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * specified in this value is resource specific and is specified in the
+   * documentation for the respective SetIamPolicy rpc.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [Policy].
@@ -916,7 +928,9 @@ class ProjectsTopicsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which policy detail is being
    * requested. `resource` is usually specified as a path, such as,
-   * `projects/{project}`.
+   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * specified in this value is resource specific and is specified in the
+   * documentation for the respective TestIamPermissions rpc.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -1415,12 +1429,18 @@ class PubsubMessage {
     data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
   /**
-   * ID of this message assigned by the server at publication time. Guaranteed
-   * to be unique within the topic. This value may be read by a subscriber that
-   * receives a `PubsubMessage` via a `Pull` call or a push delivery. It must
-   * not be populated by a publisher in a `Publish` call.
+   * ID of this message, assigned by the server when the message is published.
+   * Guaranteed to be unique within the topic. This value may be read by a
+   * subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+   * delivery. It must not be populated by the publisher in a `Publish` call.
    */
   core.String messageId;
+  /**
+   * The time at which the message was published, populated by the server when
+   * it receives the `Publish` call. It must not be populated by the publisher
+   * in a `Publish` call.
+   */
+  core.String publishTime;
 
   PubsubMessage();
 
@@ -1434,6 +1454,9 @@ class PubsubMessage {
     if (_json.containsKey("messageId")) {
       messageId = _json["messageId"];
     }
+    if (_json.containsKey("publishTime")) {
+      publishTime = _json["publishTime"];
+    }
   }
 
   core.Map toJson() {
@@ -1446,6 +1469,9 @@ class PubsubMessage {
     }
     if (messageId != null) {
       _json["messageId"] = messageId;
+    }
+    if (publishTime != null) {
+      _json["publishTime"] = publishTime;
     }
     return _json;
   }
