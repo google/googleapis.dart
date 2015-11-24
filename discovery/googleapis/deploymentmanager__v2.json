@@ -24,7 +24,7 @@
     "description": "The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/deployment-manager/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/3wCGcnGwi3iQywGP6Ncdo6mexyQ\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/2zlx-P25-jKTJ8AXUI6wGK1Asqs\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -780,7 +780,7 @@
             }
         }
     },
-    "revision": "20150831",
+    "revision": "20151110",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ConfigFile": {
@@ -1031,7 +1031,7 @@
                 },
                 "kind": {
                     "default": "deploymentmanager#operation",
-                    "description": "[Output Only] Type of the resource. Always compute#Operation for Operation resources.",
+                    "description": "[Output Only] Type of the resource. Always compute#operation for Operation resources.",
                     "type": "string"
                 },
                 "name": {
@@ -1039,7 +1039,7 @@
                     "type": "string"
                 },
                 "operationType": {
-                    "description": "[Output Only] Type of the operation, such as insert, update, and delete.",
+                    "description": "[Output Only] Type of the operation, such as insert, compute.instanceGroups.update, or compute.instanceGroups.delete.",
                     "type": "string"
                 },
                 "progress": {

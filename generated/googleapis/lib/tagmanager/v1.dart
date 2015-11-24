@@ -1762,6 +1762,8 @@ class AccountsContainersVersionsResourceApi {
    *
    * [headers] - Retrieve headers only when true.
    *
+   * [includeDeleted] - Also retrieve deleted (archived) versions when true.
+   *
    * Completes with a [ListContainerVersionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1770,7 +1772,7 @@ class AccountsContainersVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListContainerVersionsResponse> list(core.String accountId, core.String containerId, {core.bool headers}) {
+  async.Future<ListContainerVersionsResponse> list(core.String accountId, core.String containerId, {core.bool headers, core.bool includeDeleted}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1786,6 +1788,9 @@ class AccountsContainersVersionsResourceApi {
     }
     if (headers != null) {
       _queryParams["headers"] = ["${headers}"];
+    }
+    if (includeDeleted != null) {
+      _queryParams["includeDeleted"] = ["${includeDeleted}"];
     }
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions';

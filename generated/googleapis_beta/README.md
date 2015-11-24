@@ -72,7 +72,7 @@ package.
 
 The Google App Engine Admin API enables developers to provision and manage their App Engine applications.
 
-Official API documentation: https://developers.google.com/appengine/
+Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Autoscaler API - autoscaler v1beta2
 
@@ -135,12 +135,6 @@ Provides access to Genomics data.
 Official API documentation: https://developers.google.com/genomics/v1beta2/reference
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v1beta3
-
-The Google Cloud Logging API lets you write log entries and manage your logs, log sinks and logs-based metrics.
-
-Official API documentation: https://cloud.google.com/logging/docs/
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v2beta1
 
 The Google Cloud Logging API lets you write log entries and manage your logs, log sinks and logs-based metrics.
 

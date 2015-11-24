@@ -759,6 +759,7 @@ class RestDescription {
   core.String title;
   /** The version of this API. */
   core.String version;
+  core.bool versionModule;
 
   RestDescription();
 
@@ -850,6 +851,9 @@ class RestDescription {
     if (_json.containsKey("version")) {
       version = _json["version"];
     }
+    if (_json.containsKey("version_module")) {
+      versionModule = _json["version_module"];
+    }
   }
 
   core.Map toJson() {
@@ -940,6 +944,9 @@ class RestDescription {
     }
     if (version != null) {
       _json["version"] = version;
+    }
+    if (versionModule != null) {
+      _json["version_module"] = versionModule;
     }
     return _json;
   }

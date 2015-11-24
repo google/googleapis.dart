@@ -1,7 +1,7 @@
 name: googleapis_beta
-version: 0.21.0
+version: 0.22.0
 author: Dart Team <misc@dartlang.org>
-description: "Auto-generated client libraries for accessing the following APIs:appengine:v1beta4, autoscaler:v1beta2, cloudmonitoring:v2beta2, cloudresourcemanager:v1beta1, clouduseraccounts:beta, dataflow:v1b3, datastore:v1beta2, deploymentmanager:v2beta1, deploymentmanager:v2beta2, dns:v1beta1, genomics:v1beta2, logging:v1beta3, logging:v2beta1, manager:v1beta2, proximitybeacon:v1beta1, pubsub:v1beta2, replicapool:v1beta2, replicapoolupdater:v1beta1, resourceviews:v1beta1, resourceviews:v1beta2, sqladmin:v1beta3, sqladmin:v1beta4, taskqueue:v1beta2"
+description: "Auto-generated client libraries for accessing the following APIs:appengine:v1beta4, autoscaler:v1beta2, cloudmonitoring:v2beta2, cloudresourcemanager:v1beta1, clouduseraccounts:beta, dataflow:v1b3, datastore:v1beta2, deploymentmanager:v2beta1, deploymentmanager:v2beta2, dns:v1beta1, genomics:v1beta2, logging:v1beta3, manager:v1beta2, proximitybeacon:v1beta1, pubsub:v1beta2, replicapool:v1beta2, replicapoolupdater:v1beta1, resourceviews:v1beta1, resourceviews:v1beta2, sqladmin:v1beta3, sqladmin:v1beta4, taskqueue:v1beta2"
 homepage: http://www.dartlang.org/googleapis/
 environment:
   sdk: '>=1.0.0 <2.0.0'

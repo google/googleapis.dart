@@ -29,7 +29,7 @@
     "description": "View and manage your Google Analytics data",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/analytics/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/qKpuoaOAxGne1atPiOHlAn-BG0I\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/fvFbWC4d-F2dNIv25oDe8GZrlTA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/analytics-16.png",
         "x32": "https://www.google.com/images/icons/product/analytics-32.png"
@@ -126,6 +126,11 @@
                                     "pattern": "ga:[0-9]+",
                                     "required": true,
                                     "type": "string"
+                                },
+                                "include-empty-rows": {
+                                    "description": "The response will include empty rows if this parameter is set to true, the default is true",
+                                    "location": "query",
+                                    "type": "boolean"
                                 },
                                 "max-results": {
                                     "description": "The maximum number of entries to include in this feed.",
@@ -3460,7 +3465,7 @@
             }
         }
     },
-    "revision": "20151028",
+    "revision": "20151030",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

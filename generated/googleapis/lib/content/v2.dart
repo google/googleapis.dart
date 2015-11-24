@@ -2660,6 +2660,10 @@ class ProductsResourceApi {
    *
    * [merchantId] - The ID of the managing account.
    *
+   * [includeInvalidInsertedItems] - Flag to include the invalid inserted items
+   * in the result of the list request. By default the invalid items are not
+   * shown (the default value is false).
+   *
    * [maxResults] - The maximum number of products to return in the response,
    * used for paging.
    *
@@ -2673,7 +2677,7 @@ class ProductsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ProductsListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
+  async.Future<ProductsListResponse> list(core.String merchantId, {core.bool includeInvalidInsertedItems, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2683,6 +2687,9 @@ class ProductsResourceApi {
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (includeInvalidInsertedItems != null) {
+      _queryParams["includeInvalidInsertedItems"] = ["${includeInvalidInsertedItems}"];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -2802,6 +2809,10 @@ class ProductstatusesResourceApi {
    *
    * [merchantId] - The ID of the managing account.
    *
+   * [includeInvalidInsertedItems] - Flag to include the invalid inserted items
+   * in the result of the list request. By default the invalid items are not
+   * shown (the default value is false).
+   *
    * [maxResults] - The maximum number of product statuses to return in the
    * response, used for paging.
    *
@@ -2815,7 +2826,7 @@ class ProductstatusesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ProductstatusesListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
+  async.Future<ProductstatusesListResponse> list(core.String merchantId, {core.bool includeInvalidInsertedItems, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2825,6 +2836,9 @@ class ProductstatusesResourceApi {
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (includeInvalidInsertedItems != null) {
+      _queryParams["includeInvalidInsertedItems"] = ["${includeInvalidInsertedItems}"];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -5585,14 +5599,49 @@ class Errors {
   }
 }
 
+class Installment {
+  /** The amount the buyer has to pay per month. */
+  Price amount;
+  /** The number of installments the buyer has to pay. */
+  core.String months;
+
+  Installment();
+
+  Installment.fromJson(core.Map _json) {
+    if (_json.containsKey("amount")) {
+      amount = new Price.fromJson(_json["amount"]);
+    }
+    if (_json.containsKey("months")) {
+      months = _json["months"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (amount != null) {
+      _json["amount"] = (amount).toJson();
+    }
+    if (months != null) {
+      _json["months"] = months;
+    }
+    return _json;
+  }
+}
+
 class Inventory {
   /** The availability of the product. */
   core.String availability;
+  /** Number and amount of installments to pay for an item. Brazil only. */
+  Installment installment;
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "content#inventory".
    */
   core.String kind;
+  /**
+   * Loyalty points that users receive after purchasing the item. Japan only.
+   */
+  LoyaltyPoints loyaltyPoints;
   /** The price of the product. */
   Price price;
   /**
@@ -5622,8 +5671,14 @@ class Inventory {
     if (_json.containsKey("availability")) {
       availability = _json["availability"];
     }
+    if (_json.containsKey("installment")) {
+      installment = new Installment.fromJson(_json["installment"]);
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("loyaltyPoints")) {
+      loyaltyPoints = new LoyaltyPoints.fromJson(_json["loyaltyPoints"]);
     }
     if (_json.containsKey("price")) {
       price = new Price.fromJson(_json["price"]);
@@ -5647,8 +5702,14 @@ class Inventory {
     if (availability != null) {
       _json["availability"] = availability;
     }
+    if (installment != null) {
+      _json["installment"] = (installment).toJson();
+    }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (loyaltyPoints != null) {
+      _json["loyaltyPoints"] = (loyaltyPoints).toJson();
     }
     if (price != null) {
       _json["price"] = (price).toJson();
@@ -5823,6 +5884,12 @@ class InventoryCustomBatchResponseEntry {
 class InventorySetRequest {
   /** The availability of the product. */
   core.String availability;
+  /** Number and amount of installments to pay for an item. Brazil only. */
+  Installment installment;
+  /**
+   * Loyalty points that users receive after purchasing the item. Japan only.
+   */
+  LoyaltyPoints loyaltyPoints;
   /** The price of the product. */
   Price price;
   /**
@@ -5852,6 +5919,12 @@ class InventorySetRequest {
     if (_json.containsKey("availability")) {
       availability = _json["availability"];
     }
+    if (_json.containsKey("installment")) {
+      installment = new Installment.fromJson(_json["installment"]);
+    }
+    if (_json.containsKey("loyaltyPoints")) {
+      loyaltyPoints = new LoyaltyPoints.fromJson(_json["loyaltyPoints"]);
+    }
     if (_json.containsKey("price")) {
       price = new Price.fromJson(_json["price"]);
     }
@@ -5873,6 +5946,12 @@ class InventorySetRequest {
     var _json = new core.Map();
     if (availability != null) {
       _json["availability"] = availability;
+    }
+    if (installment != null) {
+      _json["installment"] = (installment).toJson();
+    }
+    if (loyaltyPoints != null) {
+      _json["loyaltyPoints"] = (loyaltyPoints).toJson();
     }
     if (price != null) {
       _json["price"] = (price).toJson();
@@ -8438,7 +8517,7 @@ class Product {
   /** URL of an image of the item. */
   core.String imageLink;
   /** Number and amount of installments to pay for an item. Brazil only. */
-  ProductInstallment installment;
+  Installment installment;
   /**
    * Whether the item is a merchant-defined bundle. A bundle is a custom
    * grouping of different products sold by a merchant for a single price.
@@ -8634,7 +8713,7 @@ class Product {
       imageLink = _json["imageLink"];
     }
     if (_json.containsKey("installment")) {
-      installment = new ProductInstallment.fromJson(_json["installment"]);
+      installment = new Installment.fromJson(_json["installment"]);
     }
     if (_json.containsKey("isBundle")) {
       isBundle = _json["isBundle"];
@@ -9097,35 +9176,6 @@ class ProductDestination {
     }
     if (intention != null) {
       _json["intention"] = intention;
-    }
-    return _json;
-  }
-}
-
-class ProductInstallment {
-  /** The amount the buyer has to pay per month. */
-  Price amount;
-  /** The number of installments the buyer has to pay. */
-  core.String months;
-
-  ProductInstallment();
-
-  ProductInstallment.fromJson(core.Map _json) {
-    if (_json.containsKey("amount")) {
-      amount = new Price.fromJson(_json["amount"]);
-    }
-    if (_json.containsKey("months")) {
-      months = _json["months"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (amount != null) {
-      _json["amount"] = (amount).toJson();
-    }
-    if (months != null) {
-      _json["months"] = months;
     }
     return _json;
   }

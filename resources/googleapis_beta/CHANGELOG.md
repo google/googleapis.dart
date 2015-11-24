@@ -1,3 +1,9 @@
+## 0.22.0
+
+* [api] appengine:v1beta4: schema changes
+* [api] cloudresourcemanager:v1beta1: schema changes
+* [api-removed] logging:v2beta1
+
 ## 0.21.0
 
 * [api] dataflow:v1b3: schema changes

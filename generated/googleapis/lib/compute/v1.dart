@@ -2448,7 +2448,8 @@ class ForwardingRulesResourceApi {
   }
 
   /**
-   * Changes target url for forwarding rule.
+   * Changes target url for forwarding rule. The new target should be of the
+   * same type as the old target.
    *
    * [request] - The metadata request object.
    *
@@ -2950,7 +2951,8 @@ class GlobalForwardingRulesResourceApi {
   }
 
   /**
-   * Changes target url for forwarding rule.
+   * Changes target url for forwarding rule. The new target should be of the
+   * same type as the old target.
    *
    * [request] - The metadata request object.
    *
@@ -8931,8 +8933,8 @@ class TargetHttpsProxiesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [targetHttpsProxy] - Name of the TargetHttpsProxy resource whose URL map is
-   * to be set.
+   * [targetHttpsProxy] - Name of the TargetHttpsProxy resource whose
+   * SSLCertificate is to be set.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -12667,9 +12669,9 @@ class BackendService {
     fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
   /**
-   * The list of URLs to the HttpHealthCheck resource for health checking this
-   * BackendService. Currently at most one health check can be specified, and a
-   * health check is required.
+   * The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
+   * health checking this BackendService. Currently at most one health check can
+   * be specified, and a health check is required.
    */
   core.List<core.String> healthChecks;
   /**
@@ -15819,7 +15821,7 @@ class InstanceGroupList {
 /**
  * InstanceGroupManagers
  *
- * Next available tag: 19
+ * Next available tag: 20
  */
 class InstanceGroupManager {
   /**
@@ -15878,6 +15880,11 @@ class InstanceGroupManager {
    */
   core.String name;
   /**
+   * Named ports configured for the Instance Groups complementary to this
+   * Instance Group Manager.
+   */
+  core.List<NamedPort> namedPorts;
+  /**
    * [Output Only] The URL for this managed instance group. The server defines
    * this URL.
    */
@@ -15930,6 +15937,9 @@ class InstanceGroupManager {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("namedPorts")) {
+      namedPorts = _json["namedPorts"].map((value) => new NamedPort.fromJson(value)).toList();
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -15975,6 +15985,9 @@ class InstanceGroupManager {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (namedPorts != null) {
+      _json["namedPorts"] = namedPorts.map((value) => (value).toJson()).toList();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;

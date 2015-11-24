@@ -14755,20 +14755,10 @@ class Creative {
    */
   core.String name;
   /**
-   * Online behavioral advertising icon to be added to the creative. Applicable
-   * to the following creative types: all INSTREAM_VIDEO.
-   */
-  ObaIcon obaIcon;
-  /**
    * Override CSS value for rich media creatives. Applicable to the following
    * creative types: all RICH_MEDIA.
    */
   core.String overrideCss;
-  /**
-   * Amount of time to play the video before counting a view. Applicable to the
-   * following creative types: all INSTREAM_VIDEO.
-   */
-  core.String progressOffset;
   /**
    * URL of hosted image or hosted video or another ad tag. For
    * INSTREAM_VIDEO_REDIRECT creatives this is the in-stream video redirect URL.
@@ -14811,11 +14801,6 @@ class Creative {
    * HTML5_BANNER, IMAGE, and all RICH_MEDIA.
    */
   Size size;
-  /**
-   * Amount of time to play the video before the skip button appears. Applicable
-   * to the following creative types: all INSTREAM_VIDEO.
-   */
-  core.String skipOffset;
   /**
    * Whether the user can choose to skip the creative. Applicable to the
    * following creative types: all INSTREAM_VIDEO and all VPAID.
@@ -15042,14 +15027,8 @@ class Creative {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
-    if (_json.containsKey("obaIcon")) {
-      obaIcon = new ObaIcon.fromJson(_json["obaIcon"]);
-    }
     if (_json.containsKey("overrideCss")) {
       overrideCss = _json["overrideCss"];
-    }
-    if (_json.containsKey("progressOffset")) {
-      progressOffset = _json["progressOffset"];
     }
     if (_json.containsKey("redirectUrl")) {
       redirectUrl = _json["redirectUrl"];
@@ -15068,9 +15047,6 @@ class Creative {
     }
     if (_json.containsKey("size")) {
       size = new Size.fromJson(_json["size"]);
-    }
-    if (_json.containsKey("skipOffset")) {
-      skipOffset = _json["skipOffset"];
     }
     if (_json.containsKey("skippable")) {
       skippable = _json["skippable"];
@@ -15229,14 +15205,8 @@ class Creative {
     if (name != null) {
       _json["name"] = name;
     }
-    if (obaIcon != null) {
-      _json["obaIcon"] = (obaIcon).toJson();
-    }
     if (overrideCss != null) {
       _json["overrideCss"] = overrideCss;
-    }
-    if (progressOffset != null) {
-      _json["progressOffset"] = progressOffset;
     }
     if (redirectUrl != null) {
       _json["redirectUrl"] = redirectUrl;
@@ -15255,9 +15225,6 @@ class Creative {
     }
     if (size != null) {
       _json["size"] = (size).toJson();
-    }
-    if (skipOffset != null) {
-      _json["skipOffset"] = skipOffset;
     }
     if (skippable != null) {
       _json["skippable"] = skippable;
@@ -20705,74 +20672,6 @@ class MobileCarriersListResponse {
     }
     if (mobileCarriers != null) {
       _json["mobileCarriers"] = mobileCarriers.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/** Online Behavioral Advertiser icon. */
-class ObaIcon {
-  /** URL to redirect to when an OBA icon is clicked. */
-  core.String iconClickThroughUrl;
-  /**
-   * Identifies the industry initiative that the icon supports. For example,
-   * AdChoices.
-   */
-  core.String program;
-  /**
-   * OBA icon resource script URL. DCM only supports image, JavaScript, and
-   * Flash icons. Learn more
-   */
-  core.String resourceUrl;
-  /** OBA icon size. */
-  Size size;
-  /** OBA icon x coordinate position. */
-  core.String xPosition;
-  /** OBA icon y coordinate position. */
-  core.String yPosition;
-
-  ObaIcon();
-
-  ObaIcon.fromJson(core.Map _json) {
-    if (_json.containsKey("iconClickThroughUrl")) {
-      iconClickThroughUrl = _json["iconClickThroughUrl"];
-    }
-    if (_json.containsKey("program")) {
-      program = _json["program"];
-    }
-    if (_json.containsKey("resourceUrl")) {
-      resourceUrl = _json["resourceUrl"];
-    }
-    if (_json.containsKey("size")) {
-      size = new Size.fromJson(_json["size"]);
-    }
-    if (_json.containsKey("xPosition")) {
-      xPosition = _json["xPosition"];
-    }
-    if (_json.containsKey("yPosition")) {
-      yPosition = _json["yPosition"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (iconClickThroughUrl != null) {
-      _json["iconClickThroughUrl"] = iconClickThroughUrl;
-    }
-    if (program != null) {
-      _json["program"] = program;
-    }
-    if (resourceUrl != null) {
-      _json["resourceUrl"] = resourceUrl;
-    }
-    if (size != null) {
-      _json["size"] = (size).toJson();
-    }
-    if (xPosition != null) {
-      _json["xPosition"] = xPosition;
-    }
-    if (yPosition != null) {
-      _json["yPosition"] = yPosition;
     }
     return _json;
   }

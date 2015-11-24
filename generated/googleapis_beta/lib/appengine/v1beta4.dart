@@ -837,6 +837,8 @@ class AutomaticScaling {
   core.String coolDownPeriod;
   /** Target scaling by CPU usage. */
   CpuUtilization cpuUtilization;
+  /** Target scaling by disk usage. */
+  DiskUtilization diskUtilization;
   /**
    * The number of concurrent requests an automatic scaling instance can accept
    * before the scheduler spawns a new instance. Default value is chosen based
@@ -870,6 +872,10 @@ class AutomaticScaling {
   core.String minPendingLatency;
   /** Minimum number of instances that App Engine should maintain. */
   core.int minTotalInstances;
+  /** Target scaling by network usage. */
+  NetworkUtilization networkUtilization;
+  /** Target scaling by request utilization. */
+  RequestUtilization requestUtilization;
 
   AutomaticScaling();
 
@@ -879,6 +885,9 @@ class AutomaticScaling {
     }
     if (_json.containsKey("cpuUtilization")) {
       cpuUtilization = new CpuUtilization.fromJson(_json["cpuUtilization"]);
+    }
+    if (_json.containsKey("diskUtilization")) {
+      diskUtilization = new DiskUtilization.fromJson(_json["diskUtilization"]);
     }
     if (_json.containsKey("maxConcurrentRequests")) {
       maxConcurrentRequests = _json["maxConcurrentRequests"];
@@ -901,6 +910,12 @@ class AutomaticScaling {
     if (_json.containsKey("minTotalInstances")) {
       minTotalInstances = _json["minTotalInstances"];
     }
+    if (_json.containsKey("networkUtilization")) {
+      networkUtilization = new NetworkUtilization.fromJson(_json["networkUtilization"]);
+    }
+    if (_json.containsKey("requestUtilization")) {
+      requestUtilization = new RequestUtilization.fromJson(_json["requestUtilization"]);
+    }
   }
 
   core.Map toJson() {
@@ -910,6 +925,9 @@ class AutomaticScaling {
     }
     if (cpuUtilization != null) {
       _json["cpuUtilization"] = (cpuUtilization).toJson();
+    }
+    if (diskUtilization != null) {
+      _json["diskUtilization"] = (diskUtilization).toJson();
     }
     if (maxConcurrentRequests != null) {
       _json["maxConcurrentRequests"] = maxConcurrentRequests;
@@ -931,6 +949,12 @@ class AutomaticScaling {
     }
     if (minTotalInstances != null) {
       _json["minTotalInstances"] = minTotalInstances;
+    }
+    if (networkUtilization != null) {
+      _json["networkUtilization"] = (networkUtilization).toJson();
+    }
+    if (requestUtilization != null) {
+      _json["requestUtilization"] = (requestUtilization).toJson();
     }
     return _json;
   }
@@ -1083,6 +1107,52 @@ class Deployment {
   }
 }
 
+/** Target scaling by disk usage (for VM runtimes only). */
+class DiskUtilization {
+  /** Target bytes per second read. */
+  core.int targetReadBytesPerSec;
+  /** Target ops per second read. */
+  core.int targetReadOpsPerSec;
+  /** Target bytes per second written. */
+  core.int targetWriteBytesPerSec;
+  /** Target ops per second written. */
+  core.int targetWriteOpsPerSec;
+
+  DiskUtilization();
+
+  DiskUtilization.fromJson(core.Map _json) {
+    if (_json.containsKey("targetReadBytesPerSec")) {
+      targetReadBytesPerSec = _json["targetReadBytesPerSec"];
+    }
+    if (_json.containsKey("targetReadOpsPerSec")) {
+      targetReadOpsPerSec = _json["targetReadOpsPerSec"];
+    }
+    if (_json.containsKey("targetWriteBytesPerSec")) {
+      targetWriteBytesPerSec = _json["targetWriteBytesPerSec"];
+    }
+    if (_json.containsKey("targetWriteOpsPerSec")) {
+      targetWriteOpsPerSec = _json["targetWriteOpsPerSec"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (targetReadBytesPerSec != null) {
+      _json["targetReadBytesPerSec"] = targetReadBytesPerSec;
+    }
+    if (targetReadOpsPerSec != null) {
+      _json["targetReadOpsPerSec"] = targetReadOpsPerSec;
+    }
+    if (targetWriteBytesPerSec != null) {
+      _json["targetWriteBytesPerSec"] = targetWriteBytesPerSec;
+    }
+    if (targetWriteOpsPerSec != null) {
+      _json["targetWriteOpsPerSec"] = targetWriteOpsPerSec;
+    }
+    return _json;
+  }
+}
+
 /** A custom static error page to be served when an error occurs. */
 class ErrorHandler {
   /**
@@ -1140,7 +1210,7 @@ class FileInfo {
   core.String sha1Sum;
   /**
    * The URL source to use to fetch this file. Must be a URL to a resource in
-   * Google Cloud Storage.
+   * Google Cloud Storage in the form 'http(s)://storage.googleapis.com/\/\'.
    */
   core.String sourceUrl;
 
@@ -1317,10 +1387,7 @@ class ListModulesResponse {
   }
 }
 
-/**
- * The response message for
- * [Operations.ListOperations][google.longrunning.Operations.ListOperations].
- */
+/** The response message for Operations.ListOperations. */
 class ListOperationsResponse {
   /** The standard List next-page token. */
   core.String nextPageToken;
@@ -1506,6 +1573,52 @@ class Network {
   }
 }
 
+/** Target scaling by network usage (for VM runtimes only). */
+class NetworkUtilization {
+  /** Target bytes per second received. */
+  core.int targetReceivedBytesPerSec;
+  /** Target packets per second received. */
+  core.int targetReceivedPacketsPerSec;
+  /** Target bytes per second sent. */
+  core.int targetSentBytesPerSec;
+  /** Target packets per second sent. */
+  core.int targetSentPacketsPerSec;
+
+  NetworkUtilization();
+
+  NetworkUtilization.fromJson(core.Map _json) {
+    if (_json.containsKey("targetReceivedBytesPerSec")) {
+      targetReceivedBytesPerSec = _json["targetReceivedBytesPerSec"];
+    }
+    if (_json.containsKey("targetReceivedPacketsPerSec")) {
+      targetReceivedPacketsPerSec = _json["targetReceivedPacketsPerSec"];
+    }
+    if (_json.containsKey("targetSentBytesPerSec")) {
+      targetSentBytesPerSec = _json["targetSentBytesPerSec"];
+    }
+    if (_json.containsKey("targetSentPacketsPerSec")) {
+      targetSentPacketsPerSec = _json["targetSentPacketsPerSec"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (targetReceivedBytesPerSec != null) {
+      _json["targetReceivedBytesPerSec"] = targetReceivedBytesPerSec;
+    }
+    if (targetReceivedPacketsPerSec != null) {
+      _json["targetReceivedPacketsPerSec"] = targetReceivedPacketsPerSec;
+    }
+    if (targetSentBytesPerSec != null) {
+      _json["targetSentBytesPerSec"] = targetSentBytesPerSec;
+    }
+    if (targetSentPacketsPerSec != null) {
+      _json["targetSentPacketsPerSec"] = targetSentPacketsPerSec;
+    }
+    return _json;
+  }
+}
+
 /**
  * This resource represents a long-running operation that is the result of a
  * network API call.
@@ -1590,10 +1703,7 @@ class Operation {
   }
 }
 
-/**
- * Metadata for the given
- * [google.longrunning.Operation][google.longrunning.Operation].
- */
+/** Metadata for the given google.longrunning.Operation. */
 class OperationMetadata {
   /**
    * Timestamp that this operation was completed. (Not present if the operation
@@ -1662,6 +1772,36 @@ class OperationMetadata {
     }
     if (user != null) {
       _json["user"] = user;
+    }
+    return _json;
+  }
+}
+
+/** Target scaling by request utilization (for VM runtimes only). */
+class RequestUtilization {
+  /** Target number of concurrent requests. */
+  core.int targetConcurrentRequests;
+  /** Target requests per second. */
+  core.int targetRequestCountPerSec;
+
+  RequestUtilization();
+
+  RequestUtilization.fromJson(core.Map _json) {
+    if (_json.containsKey("targetConcurrentRequests")) {
+      targetConcurrentRequests = _json["targetConcurrentRequests"];
+    }
+    if (_json.containsKey("targetRequestCountPerSec")) {
+      targetRequestCountPerSec = _json["targetRequestCountPerSec"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (targetConcurrentRequests != null) {
+      _json["targetConcurrentRequests"] = targetConcurrentRequests;
+    }
+    if (targetRequestCountPerSec != null) {
+      _json["targetRequestCountPerSec"] = targetRequestCountPerSec;
     }
     return _json;
   }
@@ -1889,10 +2029,9 @@ class StaticFilesHandler {
    */
   core.String path;
   /**
-   * If true, this [UrlMap][google.appengine.v1beta4.UrlMap] entry does not
-   * match the request unless the file referenced by the handler also exists. If
-   * no such file exists, processing will continue with the next
-   * [UrlMap][google.appengine.v1beta4.UrlMap] that matches the requested URL.
+   * If true, this UrlMap entry does not match the request unless the file
+   * referenced by the handler also exists. If no such file exists, processing
+   * will continue with the next UrlMap that matches the requested URL.
    */
   core.bool requireMatchingFile;
   /**
@@ -1961,39 +2100,36 @@ class StaticFilesHandler {
  * Simple to use and understand for most users - Flexible enough to meet
  * unexpected needs # Overview The `Status` message contains three pieces of
  * data: error code, error message, and error details. The error code should be
- * an enum value of [google.rpc.Code][google.rpc.Code], but it may accept
- * additional error codes if needed. The error message should be a
- * developer-facing English message that helps developers *understand* and
- * *resolve* the error. If a localized user-facing error message is needed, put
- * the localized message in the error details or localize it in the client. The
- * optional error details may contain arbitrary information about the error.
- * There is a predefined set of error detail types in the package `google.rpc`
- * which can be used for common error conditions. # Language mapping The
- * `Status` message is the logical representation of the error model, but it is
- * not necessarily the actual wire format. When the `Status` message is exposed
- * in different client libraries and different wire protocols, it can be mapped
- * differently. For example, it will likely be mapped to some exceptions in
- * Java, but more likely mapped to some error codes in C. # Other uses The error
- * model and the `Status` message can be used in a variety of environments,
- * either with or without APIs, to provide a consistent developer experience
- * across different environments. Example uses of this error model include: -
- * Partial errors. If a service needs to return partial errors to the client, it
- * may embed the `Status` in the normal response to indicate the partial errors.
- * - Workflow errors. A typical workflow has multiple steps. Each step may have
- * a `Status` message for error reporting purpose. - Batch operations. If a
- * client uses batch request and batch response, the `Status` message should be
- * used directly inside batch response, one for each error sub-response. -
- * Asynchronous operations. If an API call embeds asynchronous operation results
- * in its response, the status of those operations should be represented
- * directly using the `Status` message. - Logging. If some API errors are stored
- * in logs, the message `Status` could be used directly after any stripping
- * needed for security/privacy reasons.
+ * an enum value of google.rpc.Code, but it may accept additional error codes if
+ * needed. The error message should be a developer-facing English message that
+ * helps developers *understand* and *resolve* the error. If a localized
+ * user-facing error message is needed, put the localized message in the error
+ * details or localize it in the client. The optional error details may contain
+ * arbitrary information about the error. There is a predefined set of error
+ * detail types in the package `google.rpc` which can be used for common error
+ * conditions. # Language mapping The `Status` message is the logical
+ * representation of the error model, but it is not necessarily the actual wire
+ * format. When the `Status` message is exposed in different client libraries
+ * and different wire protocols, it can be mapped differently. For example, it
+ * will likely be mapped to some exceptions in Java, but more likely mapped to
+ * some error codes in C. # Other uses The error model and the `Status` message
+ * can be used in a variety of environments, either with or without APIs, to
+ * provide a consistent developer experience across different environments.
+ * Example uses of this error model include: - Partial errors. If a service
+ * needs to return partial errors to the client, it may embed the `Status` in
+ * the normal response to indicate the partial errors. - Workflow errors. A
+ * typical workflow has multiple steps. Each step may have a `Status` message
+ * for error reporting purpose. - Batch operations. If a client uses batch
+ * request and batch response, the `Status` message should be used directly
+ * inside batch response, one for each error sub-response. - Asynchronous
+ * operations. If an API call embeds asynchronous operation results in its
+ * response, the status of those operations should be represented directly using
+ * the `Status` message. - Logging. If some API errors are stored in logs, the
+ * message `Status` could be used directly after any stripping needed for
+ * security/privacy reasons.
  */
 class Status {
-  /**
-   * The status code, which should be an enum value of
-   * [google.rpc.Code][google.rpc.Code].
-   */
+  /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
    * A list of messages that carry the error details. There will be a common set
@@ -2006,8 +2142,7 @@ class Status {
   /**
    * A developer-facing error message, which should be in English. Any
    * user-facing error message should be localized and sent in the
-   * [google.rpc.Status.details][google.rpc.Status.details] field, or localized
-   * by the client.
+   * google.rpc.Status.details field, or localized by the client.
    */
   core.String message;
 
@@ -2408,9 +2543,7 @@ class Version {
   core.String servingStatus;
   /** If true, multiple requests can be dispatched to the app at once. */
   core.bool threadsafe;
-  /**
-   * Whether to deploy this app in a VM container (deprecated, use "env":"2").
-   */
+  /** Whether to deploy this app in a VM container. */
   core.bool vm;
 
   Version();

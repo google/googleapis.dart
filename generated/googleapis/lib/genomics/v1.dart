@@ -60,7 +60,9 @@ class CallsetsResourceApi {
       _requester = client;
 
   /**
-   * Creates a new call set.
+   * Creates a new call set. For the definitions of call sets and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * [request] - The metadata request object.
    *
@@ -99,7 +101,9 @@ class CallsetsResourceApi {
   }
 
   /**
-   * Deletes a call set.
+   * Deletes a call set. For the definitions of call sets and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
@@ -138,7 +142,9 @@ class CallsetsResourceApi {
   }
 
   /**
-   * Gets a call set by ID.
+   * Gets a call set by ID. For the definitions of call sets and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
@@ -177,7 +183,10 @@ class CallsetsResourceApi {
   }
 
   /**
-   * Updates a call set. This method supports patch semantics.
+   * Updates a call set. For the definitions of call sets and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -228,7 +237,10 @@ class CallsetsResourceApi {
   }
 
   /**
-   * Gets a list of call sets matching the criteria. Implements
+   * Gets a list of call sets matching the criteria. For the definitions of call
+   * sets and other genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Implements
    * [GlobalAllianceApi.searchCallSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L178).
    *
    * [request] - The metadata request object.
@@ -277,7 +289,9 @@ class DatasetsResourceApi {
       _requester = client;
 
   /**
-   * Creates a new dataset.
+   * Creates a new dataset. For the definitions of datasets and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * [request] - The metadata request object.
    *
@@ -316,7 +330,9 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Deletes a dataset.
+   * Deletes a dataset. For the definitions of datasets and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
@@ -355,7 +371,9 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Gets a dataset by ID.
+   * Gets a dataset by ID. For the definitions of datasets and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
@@ -394,8 +412,11 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Gets the access control policy for the dataset. Is empty if the policy or
-   * the resource does not exist. See Getting a Policy for more information.
+   * Gets the access control policy for the dataset. For the definitions of
+   * datasets and other genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Is empty if the policy or the resource does not exist. See Getting a Policy
+   * for more information.
    *
    * [request] - The metadata request object.
    *
@@ -441,7 +462,9 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Lists datasets within a project.
+   * Lists datasets within a project. For the definitions of datasets and other
+   * genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
@@ -493,7 +516,10 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Updates a dataset. This method supports patch semantics.
+   * Updates a dataset. For the definitions of datasets and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -545,7 +571,10 @@ class DatasetsResourceApi {
 
   /**
    * Sets the access control policy on the specified dataset. Replaces any
-   * existing policy. See Setting a Policy for more information.
+   * existing policy. For the definitions of datasets and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * See Setting a Policy for more information.
    *
    * [request] - The metadata request object.
    *
@@ -591,8 +620,11 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Returns permissions that a caller has on the specified resource. See
-   * Testing Permissions for more information.
+   * Returns permissions that a caller has on the specified resource. For the
+   * definitions of datasets and other genomics resources, see [Fundamentals of
+   * Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * See Testing Permissions for more information.
    *
    * [request] - The metadata request object.
    *
@@ -639,6 +671,9 @@ class DatasetsResourceApi {
 
   /**
    * Undeletes a dataset by restoring a dataset which was deleted via this API.
+   * For the definitions of datasets and other genomics resources, see
+   * [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    * This operation is only possible for a week after the deletion occurred.
    *
    * [request] - The metadata request object.
@@ -896,7 +931,9 @@ class ReadgroupsetsResourceApi {
       _requester = client;
 
   /**
-   * Deletes a read group set.
+   * Deletes a read group set. For the definitions of read group sets and other
+   * genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
@@ -937,9 +974,12 @@ class ReadgroupsetsResourceApi {
   }
 
   /**
-   * Exports a read group set to a BAM file in Google Cloud Storage. Note that
-   * currently there may be some differences between exported BAM files and the
-   * original BAM file at the time of import. See
+   * Exports a read group set to a BAM file in Google Cloud Storage. For the
+   * definitions of read group sets and other genomics resources, see
+   * [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Note that currently there may be some differences between exported BAM
+   * files and the original BAM file at the time of import. See
    * [ImportReadGroupSets](google.genomics.v1.ReadServiceV1.ImportReadGroupSets)
    * for caveats.
    *
@@ -985,7 +1025,9 @@ class ReadgroupsetsResourceApi {
   }
 
   /**
-   * Gets a read group set by ID.
+   * Gets a read group set by ID. For the definitions of read group sets and
+   * other genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
@@ -1025,14 +1067,17 @@ class ReadgroupsetsResourceApi {
 
   /**
    * Creates read group sets by asynchronously importing the provided
-   * information. The caller must have WRITE permissions to the dataset. ##
-   * Notes on [BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) import -
-   * Tags will be converted to strings - tag types are not preserved - Comments
-   * (`@CO`) in the input file header will not be preserved - Original header
-   * order of references (`@SQ`) will not be preserved - Any reverse stranded
-   * unmapped reads will be reverse complemented, and their qualities (and "BQ"
-   * tag, if any) will be reversed - Unmapped reads will be stripped of
-   * positional information (reference name and position)
+   * information. For the definitions of read group sets and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * The caller must have WRITE permissions to the dataset. ## Notes on
+   * [BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) import - Tags will be
+   * converted to strings - tag types are not preserved - Comments (`@CO`) in
+   * the input file header will not be preserved - Original header order of
+   * references (`@SQ`) will not be preserved - Any reverse stranded unmapped
+   * reads will be reverse complemented, and their qualities (and "BQ" tag, if
+   * any) will be reversed - Unmapped reads will be stripped of positional
+   * information (reference name and position)
    *
    * [request] - The metadata request object.
    *
@@ -1071,7 +1116,10 @@ class ReadgroupsetsResourceApi {
   }
 
   /**
-   * Updates a read group set. This method supports patch semantics.
+   * Updates a read group set. For the definitions of read group sets and other
+   * genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -1125,7 +1173,10 @@ class ReadgroupsetsResourceApi {
   }
 
   /**
-   * Searches for read group sets matching the criteria. Implements
+   * Searches for read group sets matching the criteria. For the definitions of
+   * read group sets and other genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Implements
    * [GlobalAllianceApi.searchReadGroupSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/readmethods.avdl#L135).
    *
    * [request] - The metadata request object.
@@ -1176,11 +1227,15 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /**
    * Lists fixed width coverage buckets for a read group set, each of which
    * correspond to a range of a reference sequence. Each bucket summarizes
-   * coverage information across its corresponding genomic range. Coverage is
-   * defined as the number of reads which are aligned to a given base in the
-   * reference sequence. Coverage buckets are available at several precomputed
-   * bucket widths, enabling retrieval of various coverage 'zoom levels'. The
-   * caller must have READ permissions for the target read group set.
+   * coverage information across its corresponding genomic range. For the
+   * definitions of read group sets and other genomics resources, see
+   * [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Coverage is defined as the number of reads which are aligned to a given
+   * base in the reference sequence. Coverage buckets are available at several
+   * precomputed bucket widths, enabling retrieval of various coverage 'zoom
+   * levels'. The caller must have READ permissions for the target read group
+   * set.
    *
    * Request parameters:
    *
@@ -1272,16 +1327,19 @@ class ReadsResourceApi {
       _requester = client;
 
   /**
-   * Gets a list of reads for one or more read group sets. Reads search operates
-   * over a genomic coordinate space of reference sequence & position defined
-   * over the reference sequences to which the requested read group sets are
-   * aligned. If a target positional range is specified, search returns all
-   * reads whose alignment to the reference genome overlap the range. A query
-   * which specifies only read group set IDs yields all reads in those read
-   * group sets, including unmapped reads. All reads returned (including reads
-   * on subsequent pages) are ordered by genomic coordinate (reference sequence
-   * & position). Reads with equivalent genomic coordinates are returned in a
-   * deterministic order. Implements
+   * Gets a list of reads for one or more read group sets. For the definitions
+   * of read group sets and other genomics resources, see [Fundamentals of
+   * Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Reads search operates over a genomic coordinate space of reference sequence
+   * & position defined over the reference sequences to which the requested read
+   * group sets are aligned. If a target positional range is specified, search
+   * returns all reads whose alignment to the reference genome overlap the
+   * range. A query which specifies only read group set IDs yields all reads in
+   * those read group sets, including unmapped reads. All reads returned
+   * (including reads on subsequent pages) are ordered by genomic coordinate
+   * (reference sequence & position). Reads with equivalent genomic coordinates
+   * are returned in a deterministic order. Implements
    * [GlobalAllianceApi.searchReads](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/readmethods.avdl#L85).
    *
    * [request] - The metadata request object.
@@ -1332,7 +1390,10 @@ class ReferencesResourceApi {
       _requester = client;
 
   /**
-   * Gets a reference. Implements
+   * Gets a reference. For the definitions of references and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Implements
    * [GlobalAllianceApi.getReference](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L158).
    *
    * Request parameters:
@@ -1372,7 +1433,10 @@ class ReferencesResourceApi {
   }
 
   /**
-   * Searches for references which match the given criteria. Implements
+   * Searches for references which match the given criteria. For the definitions
+   * of references and other genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Implements
    * [GlobalAllianceApi.searchReferences](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L146).
    *
    * [request] - The metadata request object.
@@ -1421,7 +1485,10 @@ class ReferencesBasesResourceApi {
       _requester = client;
 
   /**
-   * Lists the bases in a reference, optionally restricted to a range.
+   * Lists the bases in a reference, optionally restricted to a range. For the
+   * definitions of references and other genomics resources, see [Fundamentals
+   * of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    * Implements
    * [GlobalAllianceApi.getReferenceBases](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L221).
    *
@@ -1495,7 +1562,10 @@ class ReferencesetsResourceApi {
       _requester = client;
 
   /**
-   * Gets a reference set. Implements
+   * Gets a reference set. For the definitions of references and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Implements
    * [GlobalAllianceApi.getReferenceSet](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L83).
    *
    * Request parameters:
@@ -1535,7 +1605,11 @@ class ReferencesetsResourceApi {
   }
 
   /**
-   * Searches for reference sets which match the given criteria. Implements
+   * Searches for reference sets which match the given criteria. For the
+   * definitions of references and other genomics resources, see [Fundamentals
+   * of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Implements
    * [GlobalAllianceApi.searchReferenceSets](http://ga4gh.org/documentation/api/v0.5.1/ga4gh_api.html#/schema/org.ga4gh.searchReferenceSets).
    *
    * [request] - The metadata request object.
@@ -1584,7 +1658,9 @@ class VariantsResourceApi {
       _requester = client;
 
   /**
-   * Creates a new variant.
+   * Creates a new variant. For the definitions of variants and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * [request] - The metadata request object.
    *
@@ -1623,7 +1699,9 @@ class VariantsResourceApi {
   }
 
   /**
-   * Deletes a variant.
+   * Deletes a variant. For the definitions of variants and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
@@ -1662,7 +1740,9 @@ class VariantsResourceApi {
   }
 
   /**
-   * Gets a variant by ID.
+   * Gets a variant by ID. For the definitions of variants and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
@@ -1702,6 +1782,9 @@ class VariantsResourceApi {
 
   /**
    * Creates variant data by asynchronously importing the provided information.
+   * For the definitions of variant sets and other genomics resources, see
+   * [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    * The variants for import will be merged with any existing variant that
    * matches its reference sequence, start, end, reference bases, and
    * alternative bases. If no such variant exists, a new one will be created.
@@ -1751,8 +1834,11 @@ class VariantsResourceApi {
   }
 
   /**
-   * Updates a variant. This method supports patch semantics. Returns the
-   * modified variant without its calls.
+   * Updates a variant. For the definitions of variants and other genomics
+   * resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * This method supports patch semantics. Returns the modified variant without
+   * its calls.
    *
    * [request] - The metadata request object.
    *
@@ -1803,7 +1889,10 @@ class VariantsResourceApi {
   }
 
   /**
-   * Gets a list of variants matching the criteria. Implements
+   * Gets a list of variants matching the criteria. For the definitions of
+   * variants and other genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Implements
    * [GlobalAllianceApi.searchVariants](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L126).
    *
    * [request] - The metadata request object.
@@ -1852,9 +1941,12 @@ class VariantsetsResourceApi {
       _requester = client;
 
   /**
-   * Creates a new variant set. The provided variant set must have a valid
-   * `datasetId` set - all other fields are optional. Note that the `id` field
-   * will be ignored, as this is assigned by the server.
+   * Creates a new variant set. For the definitions of variant sets and other
+   * genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * The provided variant set must have a valid `datasetId` set - all other
+   * fields are optional. Note that the `id` field will be ignored, as this is
+   * assigned by the server.
    *
    * [request] - The metadata request object.
    *
@@ -1894,7 +1986,9 @@ class VariantsetsResourceApi {
 
   /**
    * Deletes the contents of a variant set. The variant set object is not
-   * deleted.
+   * deleted. For the definitions of variant sets and other genomics resources,
+   * see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
@@ -1933,7 +2027,9 @@ class VariantsetsResourceApi {
   }
 
   /**
-   * Exports variant set data to an external destination.
+   * Exports variant set data to an external destination. For the definitions of
+   * variant sets and other genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * [request] - The metadata request object.
    *
@@ -1979,7 +2075,9 @@ class VariantsetsResourceApi {
   }
 
   /**
-   * Gets a variant set by ID.
+   * Gets a variant set by ID. For the definitions of variant sets and other
+   * genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
@@ -2018,7 +2116,9 @@ class VariantsetsResourceApi {
   }
 
   /**
-   * Updates a variant set. This method supports patch semantics.
+   * Updates a variant set using patch semantics. For the definitions of variant
+   * sets and other genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * [request] - The metadata request object.
    *
@@ -2026,9 +2126,9 @@ class VariantsetsResourceApi {
    *
    * [variantSetId] - The ID of the variant to be updated (must already exist).
    *
-   * [updateMask] - An optional mask specifying which fields to update. At this
-   * time, the only mutable field is metadata. The only acceptable value is
-   * "metadata". If unspecified, all mutable fields will be updated.
+   * [updateMask] - An optional mask specifying which fields to update.
+   * Supported fields: * metadata. Leaving `updateMask` unset is equivalent to
+   * specifying all mutable fields.
    *
    * Completes with a [VariantSet].
    *
@@ -2069,7 +2169,11 @@ class VariantsetsResourceApi {
   }
 
   /**
-   * Returns a list of all variant sets matching search criteria. Implements
+   * Returns a list of all variant sets matching search criteria. For the
+   * definitions of variant sets and other genomics resources, see [Fundamentals
+   * of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Implements
    * [GlobalAllianceApi.searchVariantSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L49).
    *
    * [request] - The metadata request object.
@@ -2161,7 +2265,9 @@ class Binding {
 
 /**
  * A call set is a collection of variant calls, typically for one sample. It
- * belongs to a variant set.
+ * belongs to a variant set. For more genomics resource definitions, see
+ * [Fundamentals of Google
+ * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
  */
 class CallSet {
   /** The date this call set was created in milliseconds from the epoch. */
@@ -2340,7 +2446,11 @@ class CoverageBucket {
   }
 }
 
-/** A Dataset is a collection of genomic data. */
+/**
+ * A Dataset is a collection of genomic data. For more genomics resource
+ * definitions, see [Fundamentals of Google
+ * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+ */
 class Dataset {
   /** The time this dataset was created, in seconds from the epoch. */
   core.String createTime;
@@ -3155,7 +3265,17 @@ class Policy {
    * error.
    */
   core.List<Binding> bindings;
-  /** Can be used to perform a read-modify-write. */
+  /**
+   * The etag is used for optimistic concurrency control as a way to help
+   * prevent simultaneous updates of a policy from overwriting each other. It is
+   * strongly suggested that systems make use of the etag in the
+   * read-modify-write cycle to perform policy updates in order to avoid race
+   * conditions: Etags are returned in the response to GetIamPolicy, and systems
+   * are expected to put that etag in the request to SetIamPolicy to ensure that
+   * their change will be applied to the same version of the policy. If no etag
+   * is provided in the call to SetIamPolicy, then the existing policy is
+   * overwritten blindly.
+   */
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(etag);
@@ -3164,7 +3284,11 @@ class Policy {
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-  /** Version of the `Policy`. The default version is 0. */
+  /**
+   * Version of the `Policy`. The default version is 0. 0 =
+   * resourcemanager_projects only support legacy roles. 1 = supports non-legacy
+   * roles 2 = supports AuditConfig
+   */
   core.int version;
 
   Policy();
@@ -3343,13 +3467,15 @@ class Range {
  * reference sequence, in addition to metadata about the fragment (the molecule
  * of DNA sequenced) and the read (the bases which were read by the sequencer).
  * A read is equivalent to a line in a SAM file. A read belongs to exactly one
- * read group and exactly one read group set. ### Generating a reference-aligned
- * sequence string When interacting with mapped reads, it's often useful to
- * produce a string representing the local alignment of the read to reference.
- * The following pseudocode demonstrates one way of doing this: out = "" offset
- * = 0 for c in read.alignment.cigar { switch c.operation { case
- * "ALIGNMENT_MATCH", "SEQUENCE_MATCH", "SEQUENCE_MISMATCH": out +=
- * read.alignedSequence[offset:offset+c.operationLength] offset +=
+ * read group and exactly one read group set. For more genomics resource
+ * definitions, see [Fundamentals of Google
+ * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+ * ### Generating a reference-aligned sequence string When interacting with
+ * mapped reads, it's often useful to produce a string representing the local
+ * alignment of the read to reference. The following pseudocode demonstrates one
+ * way of doing this: out = "" offset = 0 for c in read.alignment.cigar { switch
+ * c.operation { case "ALIGNMENT_MATCH", "SEQUENCE_MATCH", "SEQUENCE_MISMATCH":
+ * out += read.alignedSequence[offset:offset+c.operationLength] offset +=
  * c.operationLength break case "CLIP_SOFT", "INSERT": offset +=
  * c.operationLength break case "PAD": out += repeat("*", c.operationLength)
  * break case "DELETE": out += repeat("-", c.operationLength) break case "SKIP":
@@ -3697,7 +3823,9 @@ class ReadGroup {
  * collections of reads produced by a sequencer. A read group set typically
  * models reads corresponding to one sample, sequenced one way, and aligned one
  * way. * A read group set belongs to one dataset. * A read group belongs to one
- * read group set. * A read belongs to one read group.
+ * read group set. * A read belongs to one read group. For more genomics
+ * resource definitions, see [Fundamentals of Google
+ * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
  */
 class ReadGroupSet {
   /** The dataset ID. */
@@ -3787,7 +3915,9 @@ class ReadGroupSet {
  * A reference is a canonical assembled DNA sequence, intended to act as a
  * reference coordinate space for other genomic annotations. A single reference
  * might represent the human chromosome 1 or mitochandrial DNA, for instance. A
- * reference belongs to one or more reference sets.
+ * reference belongs to one or more reference sets. For more genomics resource
+ * definitions, see [Fundamentals of Google
+ * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
  */
 class Reference {
   /** The server-generated reference ID, unique across all references. */
@@ -3912,7 +4042,9 @@ class ReferenceBound {
  * assembly for a species, such as `GRCh38` which is representative of the human
  * genome. A reference set defines a common coordinate space for comparing
  * reference-aligned experimental data. A reference set contains 1 or more
- * references.
+ * references. For more genomics resource definitions, see [Fundamentals of
+ * Google
+ * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
  */
 class ReferenceSet {
   /** Public id of this reference set, such as `GRCh37`. */
@@ -4934,11 +5066,14 @@ class UndeleteDatasetRequest {
 /**
  * A variant represents a change in DNA sequence relative to a reference
  * sequence. For example, a variant could represent a SNP or an insertion.
- * Variants belong to a variant set. Each of the calls on a variant represent a
- * determination of genotype with respect to that variant. For example, a call
- * might assign probability of 0.32 to the occurrence of a SNP named rs1234 in a
- * sample named NA12345. A call belongs to a call set, which contains related
- * calls typically from one sample.
+ * Variants belong to a variant set. For more genomics resource definitions, see
+ * [Fundamentals of Google
+ * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+ * Each of the calls on a variant represent a determination of genotype with
+ * respect to that variant. For example, a call might assign probability of 0.32
+ * to the occurrence of a SNP named rs1234 in a sample named NA12345. A call
+ * belongs to a call set, which contains related calls typically from one
+ * sample.
  */
 class Variant {
   /** The bases that appear instead of the reference bases. */
@@ -5179,7 +5314,9 @@ class VariantCall {
 
 /**
  * A variant set is a collection of call sets and variants. It contains summary
- * statistics of those contents. A variant set belongs to a dataset.
+ * statistics of those contents. A variant set belongs to a dataset. For more
+ * genomics resource definitions, see [Fundamentals of Google
+ * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
  */
 class VariantSet {
   /** The dataset to which this variant set belongs. */

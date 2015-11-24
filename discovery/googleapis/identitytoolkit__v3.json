@@ -6,7 +6,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/53iL22jaDPUsS1g7dANA9fvNDrI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/e32oSFoZ2KakZjHNn-XHFVe6R6o\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -176,18 +176,6 @@
                         "$ref": "SetAccountInfoResponse"
                     }
                 },
-                "setProjectConfig": {
-                    "description": "Set project configuration.",
-                    "httpMethod": "POST",
-                    "id": "identitytoolkit.relyingparty.setProjectConfig",
-                    "path": "setProjectConfig",
-                    "request": {
-                        "$ref": "IdentitytoolkitRelyingpartySetProjectConfigRequest"
-                    },
-                    "response": {
-                        "$ref": "IdentitytoolkitRelyingpartySetProjectConfigResponse"
-                    }
-                },
                 "uploadAccount": {
                     "description": "Batch upload existing user accounts.",
                     "httpMethod": "POST",
@@ -227,7 +215,7 @@
             }
         }
     },
-    "revision": "20151029",
+    "revision": "20151109",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -579,39 +567,6 @@
             },
             "type": "object"
         },
-        "IdentitytoolkitRelyingpartySetProjectConfigRequest": {
-            "description": "Request to set the project configuration.",
-            "id": "IdentitytoolkitRelyingpartySetProjectConfigRequest",
-            "properties": {
-                "allowPasswordUser": {
-                    "description": "Whether to allow password user sign in or sign up.",
-                    "type": "boolean"
-                },
-                "apiKey": {
-                    "description": "Browser API key, needed when making http request to Apiary.",
-                    "type": "string"
-                },
-                "idpConfig": {
-                    "description": "Oauth2 provider configuration.",
-                    "items": {
-                        "$ref": "IdpConfig"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "IdentitytoolkitRelyingpartySetProjectConfigResponse": {
-            "description": "Response of setting the project configuration.",
-            "id": "IdentitytoolkitRelyingpartySetProjectConfigResponse",
-            "properties": {
-                "projectId": {
-                    "description": "Project ID of the relying party.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "IdentitytoolkitRelyingpartyUploadAccountRequest": {
             "description": "Request to upload user account in batch.",
             "id": "IdentitytoolkitRelyingpartyUploadAccountRequest",
@@ -723,10 +678,6 @@
                 },
                 "provider": {
                     "description": "OAuth2 provider.",
-                    "type": "string"
-                },
-                "secret": {
-                    "description": "OAuth2 client secret.",
                     "type": "string"
                 }
             },

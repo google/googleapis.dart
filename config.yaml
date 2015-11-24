@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.19.0
+    version: 0.20.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -91,7 +91,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.21.0
+    version: 0.22.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -110,7 +110,6 @@ packages:
     - dns:v1beta1  # https://developers.google.com/cloud-dns/
     - genomics:v1beta2  # https://developers.google.com/genomics/
     - logging:v1beta3 # https://cloud.google.com/appengine/articles/logging
-    - logging:v2beta1 # https://cloud.google.com/logging/docs/
     - manager:v1beta2  # https://developers.google.com/deployment-manager/
     - proximitybeacon:v1beta1  # https://developers.google.com/beacons/proximity/guides
     - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)

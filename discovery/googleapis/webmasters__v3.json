@@ -3,10 +3,10 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/webmasters": {
-                    "description": "View and modify Webmaster Tools data for your verified sites"
+                    "description": "View and manage Search Console data for your verified sites"
                 },
                 "https://www.googleapis.com/auth/webmasters.readonly": {
-                    "description": "View Webmaster Tools data for your verified sites"
+                    "description": "View Search Console data for your verified sites"
                 }
             }
         }
@@ -17,7 +17,7 @@
     "description": "Lets you view Google Webmaster Tools data for your verified sites.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/webmaster-tools/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/w0NTfqbsfkFekC1iKAkIWQ5tRAU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/7TyaeniToMAAPVYC9dRmCQ0J2v8\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/webmaster_tools-16.png",
         "x32": "https://www.google.com/images/icons/product/webmaster_tools-32.png"

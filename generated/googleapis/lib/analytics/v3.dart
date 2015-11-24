@@ -103,6 +103,9 @@ class DataGaResourceApi {
    * applied to Analytics data.
    * Value must have pattern "ga:.+".
    *
+   * [include_empty_rows] - The response will include empty rows if this
+   * parameter is set to true, the default is true
+   *
    * [max_results] - The maximum number of entries to include in this feed.
    *
    * [output] - The selected format for the response. Default format is JSON.
@@ -136,7 +139,7 @@ class DataGaResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GaData> get(core.String ids, core.String start_date, core.String end_date, core.String metrics, {core.String dimensions, core.String filters, core.int max_results, core.String output, core.String samplingLevel, core.String segment, core.String sort, core.int start_index}) {
+  async.Future<GaData> get(core.String ids, core.String start_date, core.String end_date, core.String metrics, {core.String dimensions, core.String filters, core.bool include_empty_rows, core.int max_results, core.String output, core.String samplingLevel, core.String segment, core.String sort, core.int start_index}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -165,6 +168,9 @@ class DataGaResourceApi {
     }
     if (filters != null) {
       _queryParams["filters"] = [filters];
+    }
+    if (include_empty_rows != null) {
+      _queryParams["include-empty-rows"] = ["${include_empty_rows}"];
     }
     if (max_results != null) {
       _queryParams["max-results"] = ["${max_results}"];

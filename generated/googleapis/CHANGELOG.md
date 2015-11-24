@@ -1,3 +1,15 @@
+## 0.20.0
+
+* [api-breaking] content:v2: renaming schema, api and schema changes
+* [api-breaking] dfareporting:2.3: removal of schema and schema properties
+* [api-breaking] identitytoolkit:v3: removal of api method and schemas
+* [api-breaking] youtube:v3: removal of api method
+* [api] analytics:v3: api changes
+* [api] bigquery:v2: schema changes
+* [api] compute:v1: schema changes
+* [api] discovery:v1: schema changes
+* [api] tagmanager:v1: api changes
+
 ## 0.19.0
 
 * [api] adexchangebuyer:v1_3: api changes

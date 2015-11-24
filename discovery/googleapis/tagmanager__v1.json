@@ -33,7 +33,7 @@
     "description": "API for accessing Tag Manager accounts and containers.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/tag-manager/api/v1/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/-5hQwJsgwNQCq1DK1Ud7--ggMIg\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/O56CW5d-dWo_5TIxEF1Juc5QIxA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1285,6 +1285,12 @@
                                             "description": "Retrieve headers only when true.",
                                             "location": "query",
                                             "type": "boolean"
+                                        },
+                                        "includeDeleted": {
+                                            "default": "false",
+                                            "description": "Also retrieve deleted (archived) versions when true.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "accounts/{accountId}/containers/{containerId}/versions",
@@ -1608,7 +1614,7 @@
             }
         }
     },
-    "revision": "20151008",
+    "revision": "20151112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

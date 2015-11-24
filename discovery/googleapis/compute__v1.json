@@ -29,7 +29,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/2rjkazzdKSYjd5kyWMMsC1cIfrw\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/3BsBUTzKr01XX9_2lObSs_YRVaA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -1716,7 +1716,7 @@
                     ]
                 },
                 "setTarget": {
-                    "description": "Changes target url for forwarding rule.",
+                    "description": "Changes target url for forwarding rule. The new target should be of the same type as the old target.",
                     "httpMethod": "POST",
                     "id": "compute.forwardingRules.setTarget",
                     "parameterOrder": [
@@ -2048,7 +2048,7 @@
                     ]
                 },
                 "setTarget": {
-                    "description": "Changes target url for forwarding rule.",
+                    "description": "Changes target url for forwarding rule. The new target should be of the same type as the old target.",
                     "httpMethod": "POST",
                     "id": "compute.globalForwardingRules.setTarget",
                     "parameterOrder": [
@@ -6133,7 +6133,7 @@
                             "type": "string"
                         },
                         "targetHttpsProxy": {
-                            "description": "Name of the TargetHttpsProxy resource whose URL map is to be set.",
+                            "description": "Name of the TargetHttpsProxy resource whose SSLCertificate is to be set.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -7813,7 +7813,7 @@
             }
         }
     },
-    "revision": "20151028",
+    "revision": "20151116",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -8511,7 +8511,7 @@
                     "type": "string"
                 },
                 "healthChecks": {
-                    "description": "The list of URLs to the HttpHealthCheck resource for health checking this BackendService. Currently at most one health check can be specified, and a health check is required.",
+                    "description": "The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently at most one health check can be specified, and a health check is required.",
                     "items": {
                         "type": "string"
                     },
@@ -10106,7 +10106,7 @@
             "type": "object"
         },
         "InstanceGroupManager": {
-            "description": "InstanceGroupManagers\n\nNext available tag: 19",
+            "description": "InstanceGroupManagers\n\nNext available tag: 20",
             "id": "InstanceGroupManager",
             "properties": {
                 "baseInstanceName": {
@@ -10168,6 +10168,13 @@
                     "description": "The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
+                },
+                "namedPorts": {
+                    "description": "Named ports configured for the Instance Groups complementary to this Instance Group Manager.",
+                    "items": {
+                        "$ref": "NamedPort"
+                    },
+                    "type": "array"
                 },
                 "selfLink": {
                     "description": "[Output Only] The URL for this managed instance group. The server defines this URL.",

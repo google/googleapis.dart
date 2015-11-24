@@ -18,7 +18,7 @@
     "description": "Allows the administrators of Google Apps customers to fetch reports about the usage, collaboration, security and risk for their users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/reports/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/gshze9dCV9O4SZHdwFLJm3oucPU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/V5eq1G3dXQHLzhN9bZVDSxJH-FU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -370,7 +370,7 @@
             }
         }
     },
-    "revision": "20151106",
+    "revision": "20151113",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Activities": {

@@ -30,7 +30,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Z0QE8htW7iFrdHOEm9ml0M1v9ts\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/jzIteugG3dUE34Q9UIJ3OOS1IIU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -1286,52 +1286,6 @@
                         }
                     },
                     "path": "liveBroadcasts/bind",
-                    "response": {
-                        "$ref": "LiveBroadcast"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/youtube",
-                        "https://www.googleapis.com/auth/youtube.force-ssl"
-                    ]
-                },
-                "bind_direct": {
-                    "description": "Binds a YouTube broadcast to a stream or removes an existing binding between a broadcast and a stream. A broadcast can only be bound to one video stream, though a video stream may be bound to more than one broadcast.",
-                    "httpMethod": "POST",
-                    "id": "youtube.liveBroadcasts.bind_direct",
-                    "parameterOrder": [
-                        "id",
-                        "part"
-                    ],
-                    "parameters": {
-                        "id": {
-                            "description": "The id parameter specifies the unique ID of the broadcast that is being bound to a video stream.",
-                            "location": "query",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "onBehalfOfContentOwner": {
-                            "description": "Note: This parameter is intended exclusively for YouTube content partners.\n\nThe onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "onBehalfOfContentOwnerChannel": {
-                            "description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.\n\nThe onBehalfOfContentOwnerChannel parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies.\n\nThis parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "part": {
-                            "description": "The part parameter specifies a comma-separated list of one or more liveBroadcast resource properties that the API response will include. The part names that you can include in the parameter value are id, snippet, contentDetails, and status.",
-                            "location": "query",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "streamId": {
-                            "description": "The streamId parameter specifies the unique ID of the video stream that is being bound to a broadcast. If this parameter is omitted, the API will remove any existing binding between the broadcast and a video stream.",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "liveBroadcasts/bind/direct",
                     "response": {
                         "$ref": "LiveBroadcast"
                     },
@@ -3121,7 +3075,7 @@
             }
         }
     },
-    "revision": "20151021",
+    "revision": "20151110",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {

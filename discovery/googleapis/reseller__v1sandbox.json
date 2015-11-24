@@ -17,7 +17,7 @@
     "description": "Lets you create and manage your customers and their subscriptions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/reseller/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/6n7xpEQ8zC7k2Rxf1zW5XjwY8yg\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/461mKpl6MBGkRaHsOq8o28ZgRUk\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -524,7 +524,7 @@
             }
         }
     },
-    "revision": "20151014",
+    "revision": "20151110",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Address": {

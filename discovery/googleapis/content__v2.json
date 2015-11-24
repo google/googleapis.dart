@@ -15,7 +15,7 @@
     "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/9a0Kcwe-I_RuYTkvOCAf5DnBIRE\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Zoyc_j6Vu1NAqmp6O8dTzIXnNIE\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1811,6 +1811,11 @@
                         "merchantId"
                     ],
                     "parameters": {
+                        "includeInvalidInsertedItems": {
+                            "description": "Flag to include the invalid inserted items in the result of the list request. By default the invalid items are not shown (the default value is false).",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "maxResults": {
                             "description": "The maximum number of products to return in the response, used for paging.",
                             "format": "uint32",
@@ -1896,6 +1901,11 @@
                         "merchantId"
                     ],
                     "parameters": {
+                        "includeInvalidInsertedItems": {
+                            "description": "Flag to include the invalid inserted items in the result of the list request. By default the invalid items are not shown (the default value is false).",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "maxResults": {
                             "description": "The maximum number of product statuses to return in the response, used for paging.",
                             "format": "uint32",
@@ -1926,7 +1936,7 @@
             }
         }
     },
-    "revision": "20151002",
+    "revision": "20151112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -3458,6 +3468,21 @@
             },
             "type": "object"
         },
+        "Installment": {
+            "id": "Installment",
+            "properties": {
+                "amount": {
+                    "$ref": "Price",
+                    "description": "The amount the buyer has to pay per month."
+                },
+                "months": {
+                    "description": "The number of installments the buyer has to pay.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Inventory": {
             "id": "Inventory",
             "properties": {
@@ -3465,10 +3490,18 @@
                     "description": "The availability of the product.",
                     "type": "string"
                 },
+                "installment": {
+                    "$ref": "Installment",
+                    "description": "Number and amount of installments to pay for an item. Brazil only."
+                },
                 "kind": {
                     "default": "content#inventory",
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#inventory\".",
                     "type": "string"
+                },
+                "loyaltyPoints": {
+                    "$ref": "LoyaltyPoints",
+                    "description": "Loyalty points that users receive after purchasing the item. Japan only."
                 },
                 "price": {
                     "$ref": "Price",
@@ -3582,6 +3615,14 @@
                 "availability": {
                     "description": "The availability of the product.",
                     "type": "string"
+                },
+                "installment": {
+                    "$ref": "Installment",
+                    "description": "Number and amount of installments to pay for an item. Brazil only."
+                },
+                "loyaltyPoints": {
+                    "$ref": "LoyaltyPoints",
+                    "description": "Loyalty points that users receive after purchasing the item. Japan only."
                 },
                 "price": {
                     "$ref": "Price",
@@ -5049,7 +5090,7 @@
                     "type": "string"
                 },
                 "installment": {
-                    "$ref": "ProductInstallment",
+                    "$ref": "Installment",
                     "description": "Number and amount of installments to pay for an item. Brazil only."
                 },
                 "isBundle": {
@@ -5281,21 +5322,6 @@
                 },
                 "intention": {
                     "description": "Whether the destination is required, excluded or should be validated.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ProductInstallment": {
-            "id": "ProductInstallment",
-            "properties": {
-                "amount": {
-                    "$ref": "Price",
-                    "description": "The amount the buyer has to pay per month."
-                },
-                "months": {
-                    "description": "The number of installments the buyer has to pay.",
-                    "format": "int64",
                     "type": "string"
                 }
             },

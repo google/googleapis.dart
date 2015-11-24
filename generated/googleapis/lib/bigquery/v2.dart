@@ -1733,6 +1733,159 @@ class ErrorProto {
   }
 }
 
+class ExplainQueryStage {
+  /** Relative amount of time the average shard spent on CPU-bound tasks. */
+  core.double computeRatioAvg;
+  /** Relative amount of time the slowest shard spent on CPU-bound tasks. */
+  core.double computeRatioMax;
+  /** Unique ID for stage within plan. */
+  core.String id;
+  /** Human-readable name for stage. */
+  core.String name;
+  /** Relative amount of time the average shard spent reading input. */
+  core.double readRatioAvg;
+  /** Relative amount of time the slowest shard spent reading input. */
+  core.double readRatioMax;
+  /** Number of records read into the stage. */
+  core.String recordsRead;
+  /** Number of records written by the stage. */
+  core.String recordsWritten;
+  /**
+   * List of operations within the stage in dependency order (approximately
+   * chronological).
+   */
+  core.List<ExplainQueryStep> steps;
+  /**
+   * Relative amount of time the average shard spent waiting to be scheduled.
+   */
+  core.double waitRatioAvg;
+  /**
+   * Relative amount of time the slowest shard spent waiting to be scheduled.
+   */
+  core.double waitRatioMax;
+  /** Relative amount of time the average shard spent on writing output. */
+  core.double writeRatioAvg;
+  /** Relative amount of time the slowest shard spent on writing output. */
+  core.double writeRatioMax;
+
+  ExplainQueryStage();
+
+  ExplainQueryStage.fromJson(core.Map _json) {
+    if (_json.containsKey("computeRatioAvg")) {
+      computeRatioAvg = _json["computeRatioAvg"];
+    }
+    if (_json.containsKey("computeRatioMax")) {
+      computeRatioMax = _json["computeRatioMax"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("readRatioAvg")) {
+      readRatioAvg = _json["readRatioAvg"];
+    }
+    if (_json.containsKey("readRatioMax")) {
+      readRatioMax = _json["readRatioMax"];
+    }
+    if (_json.containsKey("recordsRead")) {
+      recordsRead = _json["recordsRead"];
+    }
+    if (_json.containsKey("recordsWritten")) {
+      recordsWritten = _json["recordsWritten"];
+    }
+    if (_json.containsKey("steps")) {
+      steps = _json["steps"].map((value) => new ExplainQueryStep.fromJson(value)).toList();
+    }
+    if (_json.containsKey("waitRatioAvg")) {
+      waitRatioAvg = _json["waitRatioAvg"];
+    }
+    if (_json.containsKey("waitRatioMax")) {
+      waitRatioMax = _json["waitRatioMax"];
+    }
+    if (_json.containsKey("writeRatioAvg")) {
+      writeRatioAvg = _json["writeRatioAvg"];
+    }
+    if (_json.containsKey("writeRatioMax")) {
+      writeRatioMax = _json["writeRatioMax"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (computeRatioAvg != null) {
+      _json["computeRatioAvg"] = computeRatioAvg;
+    }
+    if (computeRatioMax != null) {
+      _json["computeRatioMax"] = computeRatioMax;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (readRatioAvg != null) {
+      _json["readRatioAvg"] = readRatioAvg;
+    }
+    if (readRatioMax != null) {
+      _json["readRatioMax"] = readRatioMax;
+    }
+    if (recordsRead != null) {
+      _json["recordsRead"] = recordsRead;
+    }
+    if (recordsWritten != null) {
+      _json["recordsWritten"] = recordsWritten;
+    }
+    if (steps != null) {
+      _json["steps"] = steps.map((value) => (value).toJson()).toList();
+    }
+    if (waitRatioAvg != null) {
+      _json["waitRatioAvg"] = waitRatioAvg;
+    }
+    if (waitRatioMax != null) {
+      _json["waitRatioMax"] = waitRatioMax;
+    }
+    if (writeRatioAvg != null) {
+      _json["writeRatioAvg"] = writeRatioAvg;
+    }
+    if (writeRatioMax != null) {
+      _json["writeRatioMax"] = writeRatioMax;
+    }
+    return _json;
+  }
+}
+
+class ExplainQueryStep {
+  /** Machine-readable operation type. */
+  core.String kind;
+  /** Human-readable stage descriptions. */
+  core.List<core.String> substeps;
+
+  ExplainQueryStep();
+
+  ExplainQueryStep.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("substeps")) {
+      substeps = _json["substeps"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (substeps != null) {
+      _json["substeps"] = substeps;
+    }
+    return _json;
+  }
+}
+
 class ExternalDataConfiguration {
   /**
    * [Optional] The compression type of the data source. Possible values include
@@ -3017,6 +3170,11 @@ class JobStatistics2 {
    * [Output-only] Whether the query result was fetched from the query cache.
    */
   core.bool cacheHit;
+  /**
+   * [Output-only, Experimental] Describes execution plan for the query as a
+   * list of stages.
+   */
+  core.List<ExplainQueryStage> queryPlan;
   /** [Output-only] Total bytes billed for the job. */
   core.String totalBytesBilled;
   /** [Output-only] Total bytes processed for the job. */
@@ -3030,6 +3188,9 @@ class JobStatistics2 {
     }
     if (_json.containsKey("cacheHit")) {
       cacheHit = _json["cacheHit"];
+    }
+    if (_json.containsKey("queryPlan")) {
+      queryPlan = _json["queryPlan"].map((value) => new ExplainQueryStage.fromJson(value)).toList();
     }
     if (_json.containsKey("totalBytesBilled")) {
       totalBytesBilled = _json["totalBytesBilled"];
@@ -3046,6 +3207,9 @@ class JobStatistics2 {
     }
     if (cacheHit != null) {
       _json["cacheHit"] = cacheHit;
+    }
+    if (queryPlan != null) {
+      _json["queryPlan"] = queryPlan.map((value) => (value).toJson()).toList();
     }
     if (totalBytesBilled != null) {
       _json["totalBytesBilled"] = totalBytesBilled;
@@ -3886,6 +4050,13 @@ class TableDataInsertAllRequest {
    * invalid rows exist.
    */
   core.bool skipInvalidRows;
+  /**
+   * [Experimental] If specified, treats the destination table as a base
+   * template, and inserts the rows into an instance table named "". BigQuery
+   * will manage creation of the instance table, using the schema of the base
+   * template table.
+   */
+  core.String templateSuffix;
 
   TableDataInsertAllRequest();
 
@@ -3902,6 +4073,9 @@ class TableDataInsertAllRequest {
     if (_json.containsKey("skipInvalidRows")) {
       skipInvalidRows = _json["skipInvalidRows"];
     }
+    if (_json.containsKey("templateSuffix")) {
+      templateSuffix = _json["templateSuffix"];
+    }
   }
 
   core.Map toJson() {
@@ -3917,6 +4091,9 @@ class TableDataInsertAllRequest {
     }
     if (skipInvalidRows != null) {
       _json["skipInvalidRows"] = skipInvalidRows;
+    }
+    if (templateSuffix != null) {
+      _json["templateSuffix"] = templateSuffix;
     }
     return _json;
   }

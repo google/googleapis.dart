@@ -1644,14 +1644,15 @@ class Operation {
    */
   core.String insertTime;
   /**
-   * [Output Only] Type of the resource. Always compute#Operation for Operation
+   * [Output Only] Type of the resource. Always compute#operation for Operation
    * resources.
    */
   core.String kind;
   /** [Output Only] Name of the resource. */
   core.String name;
   /**
-   * [Output Only] Type of the operation, such as insert, update, and delete.
+   * [Output Only] Type of the operation, such as insert,
+   * compute.instanceGroups.update, or compute.instanceGroups.delete.
    */
   core.String operationType;
   /**
