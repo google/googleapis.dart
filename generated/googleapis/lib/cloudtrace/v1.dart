@@ -15,8 +15,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client cloudtrace/v1';
 
 /**
- * The Google Cloud Trace API provides services for reading and writing runtime
- * trace data for Cloud applications.
+ * The Cloud Trace API allows you to send traces to and retrieve traces from
+ * Google Cloud Trace.
  */
 class CloudtraceApi {
   /** View and manage your data across Google Cloud Platform services */
@@ -26,7 +26,6 @@ class CloudtraceApi {
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
-  V1ResourceApi get v1 => new V1ResourceApi(_requester);
 
   CloudtraceApi(http.Client client, {core.String rootUrl: "https://cloudtrace.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -42,16 +41,17 @@ class ProjectsResourceApi {
       _requester = client;
 
   /**
-   * Updates the existing traces specified by PatchTracesRequest and inserts the
-   * new traces. Any existing trace or span fields included in an update are
-   * overwritten by the update, and any additional fields in an update are
-   * merged with the existing trace data.
+   * Sends new traces to Cloud Trace or updates existing traces. If the ID of a
+   * trace that you send matches that of an existing trace, any fields in the
+   * existing trace and its spans are overwritten by the provided values, and
+   * any new fields provided are merged with the existing trace data. If the ID
+   * does not match, a new trace is created.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectId] - The project id of the trace to patch.
+   * [projectId] - ID of the Cloud project where the trace data is stored.
    *
    * Completes with a [Empty].
    *
@@ -98,13 +98,13 @@ class ProjectsTracesResourceApi {
       _requester = client;
 
   /**
-   * Gets one trace by id.
+   * Gets a single trace by its ID.
    *
    * Request parameters:
    *
-   * [projectId] - The project id of the trace to return.
+   * [projectId] - ID of the Cloud project where the trace data is stored.
    *
-   * [traceId] - The trace id of the trace to return.
+   * [traceId] - ID of the trace to return.
    *
    * Completes with a [Trace].
    *
@@ -142,39 +142,42 @@ class ProjectsTracesResourceApi {
   }
 
   /**
-   * List traces matching the filter expression.
+   * Returns of a list of traces that match the specified filter conditions.
    *
    * Request parameters:
    *
-   * [projectId] - The stringified-version of the project id.
+   * [projectId] - ID of the Cloud project where the trace data is stored.
    *
-   * [view] - ViewType specifies the projection of the result.
+   * [view] - Type of data returned for traces in the list. Optional. Default is
+   * `MINIMAL`.
    * Possible string values are:
    * - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
    * - "MINIMAL" : A MINIMAL.
    * - "ROOTSPAN" : A ROOTSPAN.
    * - "COMPLETE" : A COMPLETE.
    *
-   * [pageSize] - Maximum number of topics to return. If not specified or <= 0,
-   * the implementation will select a reasonable value. The implemenation may
-   * always return fewer than the requested page_size.
+   * [pageSize] - Maximum number of traces to return. If not specified or <= 0,
+   * the implementation selects a reasonable value. The implementation may
+   * return fewer traces than the requested page size. Optional.
    *
-   * [pageToken] - The token identifying the page of results to return from the
-   * ListTraces method. If present, this value is should be taken from the
-   * next_page_token field of a previous ListTracesResponse.
+   * [pageToken] - Token identifying the page of results to return. If provided,
+   * use the value of the `next_page_token` field from a previous request.
+   * Optional.
    *
-   * [startTime] - End of the time interval (inclusive).
+   * [startTime] - End of the time interval (inclusive) during which the trace
+   * data was collected from the application.
    *
-   * [endTime] - Start of the time interval (exclusive).
+   * [endTime] - Start of the time interval (inclusive) during which the trace
+   * data was collected from the application.
    *
    * [filter] - An optional filter for the request.
    *
-   * [orderBy] - The trace field used to establish the order of traces returned
-   * by the ListTraces method. Possible options are: trace_id name (name field
-   * of root span) duration (different between end_time and start_time fields of
-   * root span) start (start_time field of root span) Descending order can be
-   * specified by appending "desc" to the sort field: name desc Only one sort
-   * field is permitted, though this may change in the future.
+   * [orderBy] - Field used to sort the returned traces. Optional. Can be one of
+   * the following: * `trace_id` * `name` (`name` field of root span in the
+   * trace) * `duration` (difference between `end_time` and `start_time` fields
+   * of the root span) * `start` (`start_time` field of the root span)
+   * Descending order can be specified by appending `desc` to the sort field
+   * (for example, `name desc`). Only one sort field is permitted.
    *
    * Completes with a [ListTracesResponse].
    *
@@ -232,71 +235,6 @@ class ProjectsTracesResourceApi {
 }
 
 
-class V1ResourceApi {
-  final commons.ApiRequester _requester;
-
-  V1ResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Returns a discovery document in the specified `format`. The typeurl in the
-   * returned google.protobuf.Any value depends on the requested format.
-   *
-   * Request parameters:
-   *
-   * [format] - The format requested for discovery.
-   *
-   * [labels] - A list of labels (like visibility) influencing the scope of the
-   * requested doc.
-   *
-   * [version] - The API version of the requested discovery doc.
-   *
-   * [args] - Any additional arguments.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future getDiscovery({core.String format, core.List<core.String> labels, core.String version, core.List<core.String> args}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (format != null) {
-      _queryParams["format"] = [format];
-    }
-    if (labels != null) {
-      _queryParams["labels"] = labels;
-    }
-    if (version != null) {
-      _queryParams["version"] = [version];
-    }
-    if (args != null) {
-      _queryParams["args"] = args;
-    }
-
-    _downloadOptions = null;
-
-    _url = 'v1/discovery';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-}
-
-
 
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
@@ -318,14 +256,15 @@ class Empty {
   }
 }
 
-/** The response message for the ListTraces method. */
+/** The response message for the `ListTraces` method. */
 class ListTracesResponse {
   /**
-   * If defined, indicates that there are more topics that match the request,
-   * and this value should be passed to the next ListTopicsRequest to continue.
+   * If defined, indicates that there are more traces that match the request and
+   * that this value should be passed to the next request to continue retrieving
+   * additional traces.
    */
   core.String nextPageToken;
-  /** The list of trace records returned. */
+  /** List of trace records returned. */
   core.List<Trace> traces;
 
   ListTracesResponse();
@@ -352,20 +291,18 @@ class ListTracesResponse {
 }
 
 /**
- * A Trace is a collection of spans describing the execution timings of a single
- * operation.
+ * A trace describes how long it takes for an application to perform an
+ * operation. It consists of a set of spans, each of which represent a single
+ * timed event within the operation.
  */
 class Trace {
-  /** The Project ID of the Google Cloud project. */
+  /** Project ID of the Cloud project where the trace data is stored. */
   core.String projectId;
-  /**
-   * The collection of span records within this trace. Spans that appear in
-   * calls to PatchTraces may be incomplete or partial.
-   */
+  /** Collection of spans in the trace. */
   core.List<TraceSpan> spans;
   /**
-   * A 128-bit numeric value, formatted as a 32-byte hex string, that represents
-   * a trace. Each trace should have an identifier that is globally unique.
+   * Globally unique identifier for the trace. This identifier is a 128-bit
+   * numeric value formatted as a 32-byte hex string.
    */
   core.String traceId;
 
@@ -398,41 +335,43 @@ class Trace {
   }
 }
 
-/** A span is the data recorded with a single span. */
+/**
+ * A span represents a single timed event within a trace. Spans can be nested
+ * and form a trace tree. Often, a trace contains a root span that describes the
+ * end-to-end latency of an operation and, optionally, one or more subspans for
+ * its suboperations. Spans do not need to be contiguous. There may be gaps
+ * between spans in a trace.
+ */
 class TraceSpan {
-  /** The end time of the span in nanoseconds from the UNIX epoch. */
+  /** End time of the span in nanoseconds from the UNIX epoch. */
   core.String endTime;
   /**
-   * SpanKind distinguishes spans generated in a particular context. For
-   * example, two spans with the same name, one with the kind RPC_CLIENT, and
-   * the other with RPC_SERVER can indicate the queueing latency associated with
-   * the span.
+   * Distinguishes between spans generated in a particular context. For example,
+   * two spans with the same name may be distinguished using `RPC_CLIENT` and
+   * `RPC_SERVER` to identify queueing latency associated with the span.
    * Possible string values are:
    * - "SPAN_KIND_UNSPECIFIED" : A SPAN_KIND_UNSPECIFIED.
    * - "RPC_SERVER" : A RPC_SERVER.
    * - "RPC_CLIENT" : A RPC_CLIENT.
    */
   core.String kind;
-  /** Annotations via labels. */
+  /** Collection of labels associated with the span. */
   core.Map<core.String, core.String> labels;
   /**
-   * The name of the trace. This is sanitized and displayed on the UI. This may
-   * be a method name or some other per-callsite name. For the same binary and
-   * the same call point, it is a good practice to choose a consistent name in
-   * order to correlate cross-trace spans.
+   * Name of the trace. The trace name is sanitized and displayed in the Cloud
+   * Trace tool in the Google Developers Console. The name may be a method name
+   * or some other per-call site name. For the same executable and the same call
+   * point, a best practice is to use a consistent name, which makes it easier
+   * to correlate cross-trace spans.
    */
   core.String name;
-  /**
-   * Identifies the parent of the current span. May be missing. Serialized bytes
-   * representation of SpanId.
-   */
+  /** ID of the parent span, if any. Optional. */
   core.String parentSpanId;
   /**
-   * Identifier of the span within the trace. Each span should have an
-   * identifier that is unique per trace.
+   * Identifier for the span. This identifier must be unique within a trace.
    */
   core.String spanId;
-  /** The start time of the span in nanoseconds from the UNIX epoch. */
+  /** Start time of the span in nanoseconds from the UNIX epoch. */
   core.String startTime;
 
   TraceSpan();
@@ -488,9 +427,9 @@ class TraceSpan {
   }
 }
 
-/** A list of traces for the PatchTraces method. */
+/** List of new or updated traces. */
 class Traces {
-  /** A list of traces. */
+  /** List of traces. */
   core.List<Trace> traces;
 
   Traces();

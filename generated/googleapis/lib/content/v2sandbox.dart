@@ -2009,6 +2009,12 @@ class OrdersAdvanceTestOrderResponse {
 }
 
 class OrdersCancelLineItemRequest {
+  /**
+   * Amount to refund for the cancelation. Optional. If not set, Google will
+   * calculate the default based on the price and tax of the items involved. The
+   * amount must not be larger than the net amount left on the order.
+   */
+  Price amount;
   /** The ID of the line item to cancel. */
   core.String lineItemId;
   /**
@@ -2025,6 +2031,9 @@ class OrdersCancelLineItemRequest {
   OrdersCancelLineItemRequest();
 
   OrdersCancelLineItemRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("amount")) {
+      amount = new Price.fromJson(_json["amount"]);
+    }
     if (_json.containsKey("lineItemId")) {
       lineItemId = _json["lineItemId"];
     }
@@ -2044,6 +2053,9 @@ class OrdersCancelLineItemRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (amount != null) {
+      _json["amount"] = (amount).toJson();
+    }
     if (lineItemId != null) {
       _json["lineItemId"] = lineItemId;
     }
@@ -2399,6 +2411,12 @@ class OrdersCustomBatchRequestEntryCancel {
 }
 
 class OrdersCustomBatchRequestEntryCancelLineItem {
+  /**
+   * Amount to refund for the cancelation. Optional. If not set, Google will
+   * calculate the default based on the price and tax of the items involved. The
+   * amount must not be larger than the net amount left on the order.
+   */
+  Price amount;
   /** The ID of the line item to cancel. */
   core.String lineItemId;
   /** The quantity to cancel. */
@@ -2411,6 +2429,9 @@ class OrdersCustomBatchRequestEntryCancelLineItem {
   OrdersCustomBatchRequestEntryCancelLineItem();
 
   OrdersCustomBatchRequestEntryCancelLineItem.fromJson(core.Map _json) {
+    if (_json.containsKey("amount")) {
+      amount = new Price.fromJson(_json["amount"]);
+    }
     if (_json.containsKey("lineItemId")) {
       lineItemId = _json["lineItemId"];
     }
@@ -2427,6 +2448,9 @@ class OrdersCustomBatchRequestEntryCancelLineItem {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (amount != null) {
+      _json["amount"] = (amount).toJson();
+    }
     if (lineItemId != null) {
       _json["lineItemId"] = lineItemId;
     }

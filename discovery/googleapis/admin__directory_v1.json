@@ -50,6 +50,12 @@
                 "https://www.googleapis.com/auth/admin.directory.orgunit.readonly": {
                     "description": "View organization units on your domain"
                 },
+                "https://www.googleapis.com/auth/admin.directory.resource.calendar": {
+                    "description": "View and manage the provisioning of calendar resources on your domain"
+                },
+                "https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly": {
+                    "description": "View calendar resources on your domain"
+                },
                 "https://www.googleapis.com/auth/admin.directory.rolemanagement": {
                     "description": "Manage delegated admin roles for your domain"
                 },
@@ -87,7 +93,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/pRlNMQbyfGTi-02uw0zCmogMSuU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/vE-je_lw5xuMc7X-IbS1gcTrxEY\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1829,6 +1835,201 @@
                 }
             }
         },
+        "resources": {
+            "resources": {
+                "calendars": {
+                    "methods": {
+                        "delete": {
+                            "description": "Deletes a calendar resource.",
+                            "httpMethod": "DELETE",
+                            "id": "directory.resources.calendars.delete",
+                            "parameterOrder": [
+                                "customer",
+                                "calendarResourceId"
+                            ],
+                            "parameters": {
+                                "calendarResourceId": {
+                                    "description": "The unique ID of the calendar resource to delete.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "customer": {
+                                    "description": "The unique ID for the customer's Google account. As an account administrator, you can also use the my_customer alias to represent your account's customer ID.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "customer/{customer}/resources/calendars/{calendarResourceId}",
+                            "scopes": [
+                                "https://www.googleapis.com/auth/admin.directory.resource.calendar"
+                            ]
+                        },
+                        "get": {
+                            "description": "Retrieves a calendar resource.",
+                            "httpMethod": "GET",
+                            "id": "directory.resources.calendars.get",
+                            "parameterOrder": [
+                                "customer",
+                                "calendarResourceId"
+                            ],
+                            "parameters": {
+                                "calendarResourceId": {
+                                    "description": "The unique ID of the calendar resource to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "customer": {
+                                    "description": "The unique ID for the customer's Google account. As an account administrator, you can also use the my_customer alias to represent your account's customer ID.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "customer/{customer}/resources/calendars/{calendarResourceId}",
+                            "response": {
+                                "$ref": "CalendarResource"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+                                "https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly"
+                            ]
+                        },
+                        "insert": {
+                            "description": "Inserts a calendar resource.",
+                            "httpMethod": "POST",
+                            "id": "directory.resources.calendars.insert",
+                            "parameterOrder": [
+                                "customer"
+                            ],
+                            "parameters": {
+                                "customer": {
+                                    "description": "The unique ID for the customer's Google account. As an account administrator, you can also use the my_customer alias to represent your account's customer ID.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "customer/{customer}/resources/calendars",
+                            "request": {
+                                "$ref": "CalendarResource"
+                            },
+                            "response": {
+                                "$ref": "CalendarResource"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/admin.directory.resource.calendar"
+                            ]
+                        },
+                        "list": {
+                            "description": "Retrieves a list of calendar resources for an account.",
+                            "httpMethod": "GET",
+                            "id": "directory.resources.calendars.list",
+                            "parameterOrder": [
+                                "customer"
+                            ],
+                            "parameters": {
+                                "customer": {
+                                    "description": "The unique ID for the customer's Google account. As an account administrator, you can also use the my_customer alias to represent your account's customer ID.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "maxResults": {
+                                    "description": "Maximum number of results to return.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "maximum": "500",
+                                    "minimum": "1",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "Token to specify the next page in the list.",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "customer/{customer}/resources/calendars",
+                            "response": {
+                                "$ref": "CalendarResources"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+                                "https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly"
+                            ]
+                        },
+                        "patch": {
+                            "description": "Updates a calendar resource. This method supports patch semantics.",
+                            "httpMethod": "PATCH",
+                            "id": "directory.resources.calendars.patch",
+                            "parameterOrder": [
+                                "customer",
+                                "calendarResourceId"
+                            ],
+                            "parameters": {
+                                "calendarResourceId": {
+                                    "description": "The unique ID of the calendar resource to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "customer": {
+                                    "description": "The unique ID for the customer's Google account. As an account administrator, you can also use the my_customer alias to represent your account's customer ID.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "customer/{customer}/resources/calendars/{calendarResourceId}",
+                            "request": {
+                                "$ref": "CalendarResource"
+                            },
+                            "response": {
+                                "$ref": "CalendarResource"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/admin.directory.resource.calendar"
+                            ]
+                        },
+                        "update": {
+                            "description": "Updates a calendar resource.",
+                            "httpMethod": "PUT",
+                            "id": "directory.resources.calendars.update",
+                            "parameterOrder": [
+                                "customer",
+                                "calendarResourceId"
+                            ],
+                            "parameters": {
+                                "calendarResourceId": {
+                                    "description": "The unique ID of the calendar resource to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "customer": {
+                                    "description": "The unique ID for the customer's Google account. As an account administrator, you can also use the my_customer alias to represent your account's customer ID.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "customer/{customer}/resources/calendars/{calendarResourceId}",
+                            "request": {
+                                "$ref": "CalendarResource"
+                            },
+                            "response": {
+                                "$ref": "CalendarResource"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/admin.directory.resource.calendar"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "roleAssignments": {
             "methods": {
                 "delete": {
@@ -3192,7 +3393,7 @@
             }
         }
     },
-    "revision": "20151005",
+    "revision": "20151208",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -3302,6 +3503,79 @@
                 "kind": {
                     "default": "admin#directory#aspList",
                     "description": "The type of the API resource. This is always admin#directory#aspList.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CalendarResource": {
+            "description": "JSON template for Calendar Resource object in Directory API.",
+            "id": "CalendarResource",
+            "properties": {
+                "etags": {
+                    "description": "ETag of the resource.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "admin#directory#resources#calendars#CalendarResource",
+                    "description": "The type of the resource. For calendar resources, the value is admin#directory#resources#calendars#CalendarResource.",
+                    "type": "string"
+                },
+                "resourceDescription": {
+                    "description": "The brief description of the calendar resource.",
+                    "type": "string"
+                },
+                "resourceEmail": {
+                    "description": "The read-only email ID for the calendar resource. Generated as part of creating a new calendar resource.",
+                    "type": "string"
+                },
+                "resourceId": {
+                    "annotations": {
+                        "required": [
+                            "directory.resources.calendars.insert"
+                        ]
+                    },
+                    "description": "The unique ID for the calendar resource.",
+                    "type": "string"
+                },
+                "resourceName": {
+                    "annotations": {
+                        "required": [
+                            "directory.resources.calendars.insert"
+                        ]
+                    },
+                    "description": "The name of the calendar resource. For example, Training Room 1A",
+                    "type": "string"
+                },
+                "resourceType": {
+                    "description": "The type of the calendar resource. Used for grouping resources in the calendar user interface.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CalendarResources": {
+            "description": "JSON template for Calendar Resource List Response object in Directory API.",
+            "id": "CalendarResources",
+            "properties": {
+                "etag": {
+                    "description": "ETag of the resource.",
+                    "type": "string"
+                },
+                "items": {
+                    "description": "The CalendarResources in this page of results.",
+                    "items": {
+                        "$ref": "CalendarResource"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "admin#directory#resources#calendars#calendarResourcesList",
+                    "description": "Identifies this as a collection of CalendarResources. This is always admin#directory#resources#calendars#calendarResourcesList.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results.",
                     "type": "string"
                 }
             },

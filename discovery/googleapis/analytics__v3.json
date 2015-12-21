@@ -29,7 +29,7 @@
     "description": "View and manage your Google Analytics data",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/analytics/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/fvFbWC4d-F2dNIv25oDe8GZrlTA\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/GqVUlUu85RUe9UX8p8cBrKyfzEc\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/analytics-16.png",
         "x32": "https://www.google.com/images/icons/product/analytics-32.png"
@@ -2504,6 +2504,47 @@
                 },
                 "unsampledReports": {
                     "methods": {
+                        "delete": {
+                            "description": "Deletes an unsampled report.",
+                            "httpMethod": "DELETE",
+                            "id": "analytics.management.unsampledReports.delete",
+                            "parameterOrder": [
+                                "accountId",
+                                "webPropertyId",
+                                "profileId",
+                                "unsampledReportId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID to delete the unsampled report for.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "profileId": {
+                                    "description": "View (Profile) ID to delete the unsampled report for.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "unsampledReportId": {
+                                    "description": "ID of the unsampled report to be deleted.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "webPropertyId": {
+                                    "description": "Web property ID to delete the unsampled reports for.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}",
+                            "scopes": [
+                                "https://www.googleapis.com/auth/analytics.edit"
+                            ]
+                        },
                         "get": {
                             "description": "Returns a single unsampled report.",
                             "httpMethod": "GET",
@@ -3465,7 +3506,7 @@
             }
         }
     },
-    "revision": "20151030",
+    "revision": "20151215",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -5617,6 +5658,10 @@
                 "accountId": {
                     "description": "Account ID to which this view (profile) belongs.",
                     "type": "string"
+                },
+                "botFilteringEnabled": {
+                    "description": "Indicates whether bot filtering is enabled for this view (profile).",
+                    "type": "boolean"
                 },
                 "childLink": {
                     "description": "Child link for this view (profile). Points to the list of goals for this view (profile).",

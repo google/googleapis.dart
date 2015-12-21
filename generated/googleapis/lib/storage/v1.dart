@@ -3599,6 +3599,39 @@ class ComposeRequest {
   }
 }
 
+/**
+ * Metadata of customer-supplied encryption key, if the object is encrypted by
+ * such a key.
+ */
+class ObjectCustomerEncryption {
+  /** The encryption algorithm. */
+  core.String encryptionAlgorithm;
+  /** SHA256 hash value of the encryption key. */
+  core.String keySha256;
+
+  ObjectCustomerEncryption();
+
+  ObjectCustomerEncryption.fromJson(core.Map _json) {
+    if (_json.containsKey("encryptionAlgorithm")) {
+      encryptionAlgorithm = _json["encryptionAlgorithm"];
+    }
+    if (_json.containsKey("keySha256")) {
+      keySha256 = _json["keySha256"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (encryptionAlgorithm != null) {
+      _json["encryptionAlgorithm"] = encryptionAlgorithm;
+    }
+    if (keySha256 != null) {
+      _json["keySha256"] = keySha256;
+    }
+    return _json;
+  }
+}
+
 /** The owner of the object. This will always be the uploader of the object. */
 class ObjectOwner {
   /** The entity, in the form user-userId. */
@@ -3656,6 +3689,11 @@ class Object {
    * checksum, see Hashes and ETags: Best Practices.
    */
   core.String crc32c;
+  /**
+   * Metadata of customer-supplied encryption key, if the object is encrypted by
+   * such a key.
+   */
+  ObjectCustomerEncryption customerEncryption;
   /** HTTP 1.1 Entity tag for the object. */
   core.String etag;
   /** The content generation of this object. Used for object versioning. */
@@ -3731,6 +3769,9 @@ class Object {
     }
     if (_json.containsKey("crc32c")) {
       crc32c = _json["crc32c"];
+    }
+    if (_json.containsKey("customerEncryption")) {
+      customerEncryption = new ObjectCustomerEncryption.fromJson(_json["customerEncryption"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -3810,6 +3851,9 @@ class Object {
     }
     if (crc32c != null) {
       _json["crc32c"] = crc32c;
+    }
+    if (customerEncryption != null) {
+      _json["customerEncryption"] = (customerEncryption).toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;

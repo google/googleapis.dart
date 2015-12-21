@@ -3338,6 +3338,60 @@ class ManagementUnsampledReportsResourceApi {
       _requester = client;
 
   /**
+   * Deletes an unsampled report.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID to delete the unsampled report for.
+   *
+   * [webPropertyId] - Web property ID to delete the unsampled reports for.
+   *
+   * [profileId] - View (Profile) ID to delete the unsampled report for.
+   *
+   * [unsampledReportId] - ID of the unsampled report to be deleted.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String accountId, core.String webPropertyId, core.String profileId, core.String unsampledReportId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (unsampledReportId == null) {
+      throw new core.ArgumentError("Parameter unsampledReportId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/unsampledReports/' + commons.Escaper.ecapeVariable('$unsampledReportId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
    * Returns a single unsampled report.
    *
    * Request parameters:
@@ -9334,6 +9388,8 @@ class ProfilePermissions {
 class Profile {
   /** Account ID to which this view (profile) belongs. */
   core.String accountId;
+  /** Indicates whether bot filtering is enabled for this view (profile). */
+  core.bool botFilteringEnabled;
   /**
    * Child link for this view (profile). Points to the list of goals for this
    * view (profile).
@@ -9417,6 +9473,9 @@ class Profile {
     if (_json.containsKey("accountId")) {
       accountId = _json["accountId"];
     }
+    if (_json.containsKey("botFilteringEnabled")) {
+      botFilteringEnabled = _json["botFilteringEnabled"];
+    }
     if (_json.containsKey("childLink")) {
       childLink = new ProfileChildLink.fromJson(_json["childLink"]);
     }
@@ -9492,6 +9551,9 @@ class Profile {
     var _json = new core.Map();
     if (accountId != null) {
       _json["accountId"] = accountId;
+    }
+    if (botFilteringEnabled != null) {
+      _json["botFilteringEnabled"] = botFilteringEnabled;
     }
     if (childLink != null) {
       _json["childLink"] = (childLink).toJson();

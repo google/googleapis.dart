@@ -26,7 +26,7 @@
     "description": "Lets you store and retrieve potentially-large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/kd44f5gR58wTqVM1UZZwOV5woLw\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Hf-EtLarACfEXYImrh-Yo5xflfE\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -112,7 +112,6 @@
                     },
                     "path": "b/{bucket}/acl/{entity}",
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -169,7 +168,6 @@
                         "$ref": "BucketAccessControl"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -193,7 +191,6 @@
                         "$ref": "BucketAccessControls"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -227,7 +224,6 @@
                         "$ref": "BucketAccessControl"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -261,7 +257,6 @@
                         "$ref": "BucketAccessControl"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 }
@@ -728,7 +723,6 @@
                     },
                     "path": "b/{bucket}/defaultObjectAcl/{entity}",
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -759,7 +753,6 @@
                         "$ref": "ObjectAccessControl"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -786,7 +779,6 @@
                         "$ref": "ObjectAccessControl"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -822,7 +814,6 @@
                         "$ref": "ObjectAccessControls"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -856,7 +847,6 @@
                         "$ref": "ObjectAccessControl"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -890,7 +880,6 @@
                         "$ref": "ObjectAccessControl"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 }
@@ -935,7 +924,6 @@
                     },
                     "path": "b/{bucket}/o/{object}/acl/{entity}",
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -979,7 +967,6 @@
                         "$ref": "ObjectAccessControl"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -1019,7 +1006,6 @@
                         "$ref": "ObjectAccessControl"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -1056,7 +1042,6 @@
                         "$ref": "ObjectAccessControls"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -1103,7 +1088,6 @@
                         "$ref": "ObjectAccessControl"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
@@ -1150,7 +1134,6 @@
                         "$ref": "ObjectAccessControl"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 }
@@ -2105,7 +2088,7 @@
             }
         }
     },
-    "revision": "20151113",
+    "revision": "20151214",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -2601,6 +2584,20 @@
                 "crc32c": {
                     "description": "CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.",
                     "type": "string"
+                },
+                "customerEncryption": {
+                    "description": "Metadata of customer-supplied encryption key, if the object is encrypted by such a key.",
+                    "properties": {
+                        "encryptionAlgorithm": {
+                            "description": "The encryption algorithm.",
+                            "type": "string"
+                        },
+                        "keySha256": {
+                            "description": "SHA256 hash value of the encryption key.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
                 },
                 "etag": {
                     "description": "HTTP 1.1 Entity tag for the object.",

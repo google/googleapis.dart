@@ -138,7 +138,7 @@ Official API documentation: https://developers.google.com/analytics/
 
 Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android for Work users.
 
-Official API documentation: https://developers.google.com/play/enterprise
+Official API documentation: https://developers.google.com/android/work/play/emm-api
 
 #### ![Logo](https://www.google.com/images/icons/product/android-16.png) Google Play Developer API - androidpublisher v2
 
@@ -214,7 +214,7 @@ Official API documentation:
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Trace API - cloudtrace v1
 
-The Google Cloud Trace API provides services for reading and writing runtime trace data for Cloud applications.
+The Cloud Trace API allows you to send traces to and retrieve traces from Google Cloud Trace.
 
 Official API documentation: https://cloud.google.com/tools/cloud-trace
 
@@ -253,6 +253,12 @@ Official API documentation: https://developers.google.com/coordinate/
 Lets you search over a website or collection of websites
 
 Official API documentation: https://developers.google.com/custom-search/v1/using_rest
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1
+
+An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
+
+Official API documentation: https://cloud.google.com/dataproc/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Deployment Manager API - deploymentmanager v2
 
@@ -320,6 +326,12 @@ The API to interact with Drive.
 
 Official API documentation: https://developers.google.com/drive/
 
+#### ![Logo](https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png) Drive API - drive v3
+
+The API to interact with Drive.
+
+Official API documentation: https://developers.google.com/drive/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Fitness - fitness v1
 
 Google Fit API
@@ -364,7 +376,7 @@ Official API documentation: https://developers.google.com/games/services
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1
 
-An API to store, process, explore, and share DNA sequence reads, reference-based alignments, and variant calls.
+An API to store, process, explore, and share genomic data. It supports reference-based alignements, genetic variants, and reference genomes. This API provides an implementation of the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.
 
 Official API documentation: 
 
@@ -391,6 +403,12 @@ Official API documentation: https://developers.google.com/google-apps/groups-set
 Help the third party sites to implement federated login.
 
 Official API documentation: https://developers.google.com/identity-toolkit/v3/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Knowledge Graph Search API - kgsearch v1
+
+Knowledge Graph Search API allows developers to search the Google Knowledge Graph for entities.
+
+Official API documentation: https://developers.google.com/knowledge-graph/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Enterprise License Manager API - licensing v1
 

@@ -17,7 +17,7 @@
     "description": "Google Dataflow API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataflow",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/hMB41_exBfvRK17F0bgZTJOBMCA\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/B_lC0u1-Wt6LmKd-AbOZOQZx8Jc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -109,6 +109,35 @@
     "protocol": "rest",
     "resources": {
         "projects": {
+            "methods": {
+                "workerMessages": {
+                    "description": "Send a worker_message to the service.",
+                    "httpMethod": "POST",
+                    "id": "dataflow.projects.workerMessages",
+                    "parameterOrder": [
+                        "projectId"
+                    ],
+                    "parameters": {
+                        "projectId": {
+                            "description": "The project to send the WorkerMessages to.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1b3/projects/{projectId}/WorkerMessages",
+                    "request": {
+                        "$ref": "SendWorkerMessagesRequest"
+                    },
+                    "response": {
+                        "$ref": "SendWorkerMessagesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/userinfo.email"
+                    ]
+                }
+            },
             "resources": {
                 "jobs": {
                     "methods": {
@@ -458,7 +487,7 @@
             }
         }
     },
-    "revision": "20151118",
+    "revision": "20151127",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
         "Job": {
@@ -687,7 +716,7 @@
                     "type": "string"
                 },
                 "zone": {
-                    "description": "Zone to run the worker pools in (e.g. \"us-central1-b\"). If empty or unspecified, the service will attempt to choose a reasonable default.",
+                    "description": "Zone to run the worker pools in (e.g. \"us-central1-a\"). If empty or unspecified, the service will attempt to choose a reasonable default.",
                     "type": "string"
                 },
                 "taskrunnerSettings": {
@@ -1162,9 +1191,9 @@
                     },
                     "type": "array"
                 },
-                "progress": {
-                    "$ref": "ApproximateProgress",
-                    "description": "The WorkItem's approximate progress."
+                "reportedProgress": {
+                    "$ref": "ApproximateReportedProgress",
+                    "description": "The worker's progress through this WorkItem."
                 },
                 "stopPosition": {
                     "$ref": "Position",
@@ -1181,6 +1210,10 @@
                 "sourceFork": {
                     "$ref": "SourceFork",
                     "description": "DEPRECATED in favor of dynamic_source_split."
+                },
+                "progress": {
+                    "$ref": "ApproximateProgress",
+                    "description": "DEPRECATED in favor of reported_progress."
                 }
             },
             "type": "object"
@@ -1212,22 +1245,18 @@
             },
             "type": "object"
         },
-        "ApproximateProgress": {
+        "ApproximateReportedProgress": {
             "description": "A progress measurement of a WorkItem by a worker.",
-            "id": "ApproximateProgress",
+            "id": "ApproximateReportedProgress",
             "properties": {
                 "position": {
                     "$ref": "Position",
                     "description": "A Position within the work to represent a progress."
                 },
-                "percentComplete": {
-                    "description": "Completion as percentage of the work, from 0.0 (beginning, nothing complete), to 1.0 (end of the work range, entire WorkItem complete).",
-                    "format": "float",
+                "fractionConsumed": {
+                    "description": "Completion as fraction of the input consumed, from 0.0 (beginning, nothing consumed), to 1.0 (end of the input, entire input consumed).",
+                    "format": "double",
                     "type": "number"
-                },
-                "remainingTime": {
-                    "description": "Completion as an estimated time remaining.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -1479,6 +1508,26 @@
             },
             "type": "object"
         },
+        "ApproximateProgress": {
+            "description": "Obsolete in favor of ApproximateReportedProgress and ApproximateSplitRequest.",
+            "id": "ApproximateProgress",
+            "properties": {
+                "position": {
+                    "$ref": "Position",
+                    "description": "Obsolete."
+                },
+                "percentComplete": {
+                    "description": "Obsolete.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "remainingTime": {
+                    "description": "Obsolete.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ReportWorkItemStatusResponse": {
             "description": "Response from a request to report the status of WorkItems.",
             "id": "ReportWorkItemStatusResponse",
@@ -1497,8 +1546,8 @@
             "description": "The Dataflow service's idea of the current state of a WorkItem being processed by a worker.",
             "id": "WorkItemServiceState",
             "properties": {
-                "suggestedStopPoint": {
-                    "$ref": "ApproximateProgress",
+                "splitRequest": {
+                    "$ref": "ApproximateSplitRequest",
                     "description": "The progress point in the WorkItem where the Dataflow service suggests that the worker truncate the task."
                 },
                 "leaseExpireTime": {
@@ -1525,6 +1574,26 @@
                 "suggestedStopPosition": {
                     "$ref": "Position",
                     "description": "Obsolete, always empty."
+                },
+                "suggestedStopPoint": {
+                    "$ref": "ApproximateProgress",
+                    "description": "DEPRECATED in favor of split_request."
+                }
+            },
+            "type": "object"
+        },
+        "ApproximateSplitRequest": {
+            "description": "A suggestion by the service to the worker to dynamically split the WorkItem.",
+            "id": "ApproximateSplitRequest",
+            "properties": {
+                "position": {
+                    "$ref": "Position",
+                    "description": "A Position at which to split the work item."
+                },
+                "fractionConsumed": {
+                    "description": "A fraction at which to split the work item, from 0.0 (beginning of the input) to 1.0 (end of the input).",
+                    "format": "double",
+                    "type": "number"
                 }
             },
             "type": "object"
@@ -2363,6 +2432,97 @@
                 },
                 "dataDisk": {
                     "description": "The name of the data disk where data for this range is stored. This name is local to the Google Cloud Platform project and uniquely identifies the disk within that project, for example \"myproject-1014-104817-4c2-harness-0-disk-1\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SendWorkerMessagesRequest": {
+            "description": "A request for sending worker messages to the service.",
+            "id": "SendWorkerMessagesRequest",
+            "properties": {
+                "workerMessages": {
+                    "description": "The WorkerMessages to send.",
+                    "items": {
+                        "$ref": "WorkerMessage"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "WorkerMessage": {
+            "description": "WorkerMessage provides information to the backend about a worker.",
+            "id": "WorkerMessage",
+            "properties": {
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels are used to group WorkerMessages. For example, a worker_message about a particular container might have the labels: { \"JOB_ID\": \"2015-04-22\", \"WORKER_ID\": \"wordcount-vm-2015…\" \"CONTAINER_TYPE\": \"worker\", \"CONTAINER_ID\": \"ac1234def\"} Label tags typically correspond to Label enum values. However, for ease of development other strings can be used as tags. LABEL_UNSPECIFIED should not be used here.",
+                    "type": "object"
+                },
+                "time": {
+                    "description": "The timestamp of the worker_message.",
+                    "type": "string"
+                },
+                "workerHealthReport": {
+                    "$ref": "WorkerHealthReport",
+                    "description": "The health of a worker."
+                }
+            },
+            "type": "object"
+        },
+        "WorkerHealthReport": {
+            "description": "WorkerHealthReport contains information about the health of a worker. The VM should be identified by the labels attached to the WorkerMessage that this health ping belongs to.",
+            "id": "WorkerHealthReport",
+            "properties": {
+                "vmIsHealthy": {
+                    "description": "Whether the VM is healthy.",
+                    "type": "boolean"
+                },
+                "vmStartupTime": {
+                    "description": "The time the VM was booted.",
+                    "type": "string"
+                },
+                "reportInterval": {
+                    "description": "The interval at which the worker is sending health reports. The default value of 0 should be interpreted as the field is not being explicitly set by the worker.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SendWorkerMessagesResponse": {
+            "description": "The response to the worker messages.",
+            "id": "SendWorkerMessagesResponse",
+            "properties": {
+                "workerMessageResponses": {
+                    "description": "The servers response to the worker messages.",
+                    "items": {
+                        "$ref": "WorkerMessageResponse"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "WorkerMessageResponse": {
+            "description": "A worker_message response allows the server to pass information to the sender.",
+            "id": "WorkerMessageResponse",
+            "properties": {
+                "workerHealthReportResponse": {
+                    "$ref": "WorkerHealthReportResponse",
+                    "description": "The service's response to a worker's health report."
+                }
+            },
+            "type": "object"
+        },
+        "WorkerHealthReportResponse": {
+            "description": "WorkerHealthReportResponse contains information returned to the worker in response to a health ping.",
+            "id": "WorkerHealthReportResponse",
+            "properties": {
+                "reportInterval": {
+                    "description": "A positive value indicates the worker should change its reporting interval to the specified value. The default value of zero means no change in report rate is requested by the server.",
                     "type": "string"
                 }
             },

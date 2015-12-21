@@ -2998,6 +2998,8 @@ class VolumesRecommendedResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
+   * [targetIds] - List of target ids used for experiments or user segments
+   *
    * Completes with a [Volumes].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3006,7 +3008,7 @@ class VolumesRecommendedResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Volumes> list({core.String locale, core.String maxAllowedMaturityRating, core.String source}) {
+  async.Future<Volumes> list({core.String locale, core.String maxAllowedMaturityRating, core.String source, core.List<core.String> targetIds}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3022,6 +3024,9 @@ class VolumesRecommendedResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if (targetIds != null) {
+      _queryParams["targetIds"] = targetIds;
     }
 
     _url = 'volumes/recommended';

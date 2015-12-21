@@ -17,7 +17,7 @@ const core.String USER_AGENT = 'dart-api-client cloudresourcemanager/v1beta1';
 
 /**
  * The Google Cloud Resource Manager API provides methods for creating, reading,
- * and updating of project metadata.
+ * and updating project metadata.
  */
 class CloudresourcemanagerApi {
   /** View and manage your data across Google Cloud Platform services */
@@ -44,7 +44,8 @@ class OrganizationsResourceApi {
       _requester = client;
 
   /**
-   * Fetches an Organization resource by id.
+   * Fetches an Organization resource identified by the specified
+   * `organization_id`.
    *
    * Request parameters:
    *
@@ -83,8 +84,8 @@ class OrganizationsResourceApi {
   }
 
   /**
-   * Gets the access control policy for a Organization resource. May be empty if
-   * no such policy or resource exists.
+   * Gets the access control policy for an Organization resource. May be empty
+   * if no such policy or resource exists.
    *
    * [request] - The metadata request object.
    *
@@ -94,7 +95,7 @@ class OrganizationsResourceApi {
    * `resource` is usually specified as a path, such as,
    * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * documentation for the respective GetIamPolicy rpc.
+   * `getIamPolicy` documentation.
    *
    * Completes with a [Policy].
    *
@@ -132,7 +133,9 @@ class OrganizationsResourceApi {
   }
 
   /**
-   * Query Organization resources.
+   * Lists Organization resources that are visible to the user and satisfy the
+   * specified filter. This method returns Organizations in an unspecified
+   * order. New Organizations do not necessarily appear at the end of the list.
    *
    * Request parameters:
    *
@@ -140,10 +143,10 @@ class OrganizationsResourceApi {
    * This field is optional.
    *
    * [pageToken] - A pagination token returned from a previous call to
-   * ListOrganizations that indicates from where listing should continue. This
+   * `ListOrganizations` that indicates from where listing should continue. This
    * field is optional.
    *
-   * [filter] - An optional query string used to filter the Organizations to be
+   * [filter] - An optional query string used to filter the Organizations to
    * return in the response. Filter rules are case-insensitive. Organizations
    * may be filtered by `owner.directoryCustomerId` or by `domain`, where the
    * domain is a Google for Work domain, for example: |Filter|Description|
@@ -191,7 +194,7 @@ class OrganizationsResourceApi {
   }
 
   /**
-   * Sets the access control policy on a Organization resource. Replaces any
+   * Sets the access control policy on an Organization resource. Replaces any
    * existing policy.
    *
    * [request] - The metadata request object.
@@ -202,7 +205,7 @@ class OrganizationsResourceApi {
    * `resource` is usually specified as a path, such as,
    * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * documentation for the respective SetIamPolicy rpc.
+   * `setIamPolicy` documentation.
    *
    * Completes with a [Policy].
    *
@@ -250,7 +253,7 @@ class OrganizationsResourceApi {
    * requested. `resource` is usually specified as a path, such as,
    * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * documentation for the respective TestIamPermissions rpc.
+   * `testIamPermissions` documentation. rpc.
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -288,7 +291,8 @@ class OrganizationsResourceApi {
   }
 
   /**
-   * Updates an Organization resource.
+   * Updates an Organization resource identified by the specified
+   * `organization_id`.
    *
    * [request] - The metadata request object.
    *
@@ -343,10 +347,10 @@ class ProjectsResourceApi {
       _requester = client;
 
   /**
-   * Creates a project resource. Initially, the project resource is owned by its
+   * Creates a Project resource. Initially, the Project resource is owned by its
    * creator exclusively. The creator can later grant permission to others to
-   * read or update the project. Several APIs are activated automatically for
-   * the project, including Google Cloud Storage.
+   * read or update the Project. Several APIs are activated automatically for
+   * the Project, including Google Cloud Storage.
    *
    * [request] - The metadata request object.
    *
@@ -385,22 +389,22 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Marks the project identified by the specified `project_id` (for example,
-   * `my-project-123`) for deletion. This method will only affect the project if
-   * the following criteria are met: + The project does not have a billing
-   * account associated with it. + The project has a lifecycle state of ACTIVE.
-   * This method changes the project's lifecycle state from ACTIVE to
+   * Marks the Project identified by the specified `project_id` (for example,
+   * `my-project-123`) for deletion. This method will only affect the Project if
+   * the following criteria are met: + The Project does not have a billing
+   * account associated with it. + The Project has a lifecycle state of ACTIVE.
+   * This method changes the Project's lifecycle state from ACTIVE to
    * DELETE_REQUESTED. The deletion starts at an unspecified time, at which
    * point the lifecycle state changes to DELETE_IN_PROGRESS. Until the deletion
    * completes, you can check the lifecycle state checked by retrieving the
-   * project with GetProject, and the project remains visible to ListProjects.
+   * Project with GetProject, and the Project remains visible to ListProjects.
    * However, you cannot update the project. After the deletion completes, the
-   * project is not retrievable by the GetProject and ListProjects methods. The
-   * caller must have modify permissions for this project.
+   * Project is not retrievable by the GetProject and ListProjects methods. The
+   * caller must have modify permissions for this Project.
    *
    * Request parameters:
    *
-   * [projectId] - The project ID (for example, `foo-bar-123`). Required.
+   * [projectId] - The Project ID (for example, `foo-bar-123`). Required.
    *
    * Completes with a [Empty].
    *
@@ -435,13 +439,13 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Retrieves the project identified by the specified `project_id` (for
+   * Retrieves the Project identified by the specified `project_id` (for
    * example, `my-project-123`). The caller must have read permissions for this
-   * project.
+   * Project.
    *
    * Request parameters:
    *
-   * [projectId] - The project ID (for example, `my-project-123`). Required.
+   * [projectId] - The Project ID (for example, `my-project-123`). Required.
    *
    * Completes with a [Project].
    *
@@ -476,7 +480,8 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Returns the IAM access control policy for specified project.
+   * Returns the IAM access control policy for the specified Project. Permission
+   * is denied if the policy or the resource does not exist.
    *
    * [request] - The metadata request object.
    *
@@ -486,7 +491,7 @@ class ProjectsResourceApi {
    * `resource` is usually specified as a path, such as,
    * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * documentation for the respective GetIamPolicy rpc.
+   * `getIamPolicy` documentation.
    *
    * Completes with a [Policy].
    *
@@ -524,17 +529,17 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Lists projects that are visible to the user and satisfy the specified
-   * filter. This method returns projects in an unspecified order. New projects
+   * Lists Projects that are visible to the user and satisfy the specified
+   * filter. This method returns Projects in an unspecified order. New Projects
    * do not necessarily appear at the end of the list.
    *
    * Request parameters:
    *
    * [pageToken] - A pagination token returned from a previous call to
-   * ListProject that indicates from where listing should continue. Optional.
+   * ListProjects that indicates from where listing should continue. Optional.
    *
    * [pageSize] - The maximum number of Projects to return in the response. The
-   * server can return fewer projects than requested. If unspecified, server
+   * server can return fewer Projects than requested. If unspecified, server
    * picks an appropriate default. Optional.
    *
    * [filter] - An expression for filtering the results of the request. Filter
@@ -587,9 +592,19 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Sets the IAM access control policy for the specified project. We do not
-   * currently support 'domain:' prefixed members in a Binding of a Policy.
-   * Calling this method requires enabling the App Engine Admin API.
+   * Sets the IAM access control policy for the specified Project. Replaces any
+   * existing policy. The following constraints apply when using
+   * `setIamPolicy()`: + Project currently supports only `user:{emailid}` and
+   * `serviceAccount:{emailid}` members in a `Binding` of a `Policy`. + To be
+   * added as an `owner`, a user must be invited via Cloud Platform console and
+   * must accept the invitation. + Members cannot be added to more than one role
+   * in the same policy. + There must be at least one owner who has accepted the
+   * Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to
+   * to remove the last ToS-accepted owner from the policy will fail. + Calling
+   * this method requires enabling the App Engine Admin API. Note: Removing
+   * service accounts from policies or changing their roles can render services
+   * completely inoperable. It is important to understand how the service
+   * account is being used before removing or updating its roles.
    *
    * [request] - The metadata request object.
    *
@@ -599,7 +614,7 @@ class ProjectsResourceApi {
    * `resource` is usually specified as a path, such as,
    * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * documentation for the respective SetIamPolicy rpc.
+   * `setIamPolicy` documentation.
    *
    * Completes with a [Policy].
    *
@@ -637,8 +652,7 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Tests the specified permissions against the IAM access control policy for
-   * the specified project.
+   * Returns permissions that a caller has on the specified Project.
    *
    * [request] - The metadata request object.
    *
@@ -648,7 +662,7 @@ class ProjectsResourceApi {
    * requested. `resource` is usually specified as a path, such as,
    * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * documentation for the respective TestIamPermissions rpc.
+   * `testIamPermissions` documentation. rpc.
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -686,11 +700,11 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Restores the project identified by the specified `project_id` (for example,
-   * `my-project-123`). You can only use this method for a project that has a
+   * Restores the Project identified by the specified `project_id` (for example,
+   * `my-project-123`). You can only use this method for a Project that has a
    * lifecycle state of DELETE_REQUESTED. After deletion starts, as indicated by
-   * a lifecycle state of DELETE_IN_PROGRESS, the project cannot be restored.
-   * The caller must have modify permissions for this project.
+   * a lifecycle state of DELETE_IN_PROGRESS, the Project cannot be restored.
+   * The caller must have modify permissions for this Project.
    *
    * Request parameters:
    *
@@ -729,9 +743,9 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Updates the attributes of the project identified by the specified
+   * Updates the attributes of the Project identified by the specified
    * `project_id` (for example, `my-project-123`). The caller must have modify
-   * permissions for this project.
+   * permissions for this Project.
    *
    * [request] - The metadata request object.
    *
@@ -782,12 +796,12 @@ class ProjectsResourceApi {
 class Binding {
   /**
    * Specifies the identities requesting access for a Cloud Platform resource.
-   * `members` can have the following formats: * `allUsers`: A special
-   * identifier that represents anyone who is on the internet; with or without a
-   * Google account. * `allAuthenticatedUsers`: A special identifier that
-   * represents anyone who is authenticated with a Google account or a service
-   * account. * `user:{emailid}`: An email address that represents a specific
-   * Google account. For example, `alice@gmail.com` or `joe@example.com`. *
+   * `members` can have the following values: * `allUsers`: A special identifier
+   * that represents anyone who is on the internet; with or without a Google
+   * account. * `allAuthenticatedUsers`: A special identifier that represents
+   * anyone who is authenticated with a Google account or a service account. *
+   * `user:{emailid}`: An email address that represents a specific Google
+   * account. For example, `alice@gmail.com` or `joe@example.com`. *
    * `serviceAccount:{emailid}`: An email address that represents a service
    * account. For example, `my-other-app@appspot.gserviceaccount.com`. *
    * `group:{emailid}`: An email address that represents a Google group. For
@@ -859,7 +873,7 @@ class GetIamPolicyRequest {
   }
 }
 
-/** The response returned from the ListOrganizations method. */
+/** The response returned from the `ListOrganizations` method. */
 class ListOrganizationsResponse {
   /**
    * A pagination token to be used to retrieve the next page of results. If the
@@ -914,7 +928,7 @@ class ListProjectsResponse {
    */
   core.String nextPageToken;
   /**
-   * The list of projects that matched the list filter. This list can be
+   * The list of Projects that matched the list filter. This list can be
    * paginated.
    */
   core.List<Project> projects;
@@ -964,8 +978,8 @@ class Organization {
    */
   core.String organizationId;
   /**
-   * The owner of this Organization. The owner should be specified upon
-   * creation. Once set, it cannot be changed. This field is required.
+   * The owner of this Organization. The owner should be specified on creation.
+   * Once set, it cannot be changed. This field is required.
    */
   OrganizationOwner owner;
 
@@ -1006,8 +1020,8 @@ class Organization {
 
 /**
  * The entity that owns an Organization. The lifetime of the Organization and
- * all of its descendants are bound to the OrganizationOwner. If the
- * OrganizationOwner is deleted, the Organization and all its descendants will
+ * all of its descendants are bound to the `OrganizationOwner`. If the
+ * `OrganizationOwner` is deleted, the Organization and all its descendants will
  * be deleted.
  */
 class OrganizationOwner {
@@ -1052,12 +1066,15 @@ class Policy {
    */
   core.List<Binding> bindings;
   /**
-   * The etag is used for optimistic concurrency control as a way to help
-   * prevent simultaneous updates of a policy from overwriting each other. It is
-   * strongly suggested that systems make use of the etag in the
+   * `etag` is used for optimistic concurrency control as a way to help prevent
+   * simultaneous updates of a policy from overwriting each other. It is
+   * strongly suggested that systems make use of the `etag` in the
    * read-modify-write cycle to perform policy updates in order to avoid race
-   * conditions. If no etag is provided in the call to SetIamPolicy, then the
-   * existing policy is overwritten blindly.
+   * conditions: An `etag` is returned in the response to `getIamPolicy`, and
+   * systems are expected to put that etag in the request to `setIamPolicy` to
+   * ensure that their change will be applied to the same version of the policy.
+   * If no `etag` is provided in the call to `setIamPolicy`, then the existing
+   * policy is overwritten blindly.
    */
   core.String etag;
   core.List<core.int> get etagAsBytes {
@@ -1067,11 +1084,7 @@ class Policy {
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-  /**
-   * Version of the `Policy`. The default version is 0. 0 =
-   * resourcemanager_projects only support legacy roles. 1 = supports non-legacy
-   * roles 2 = supports AuditConfig
-   */
+  /** Version of the `Policy`. The default version is 0. */
   core.int version;
 
   Policy();
@@ -1111,7 +1124,7 @@ class Project {
   /** Creation time. Read-only. */
   core.String createTime;
   /**
-   * The labels associated with this project. Label keys must be between 1 and
+   * The labels associated with this Project. Label keys must be between 1 and
    * 63 characters long and must conform to the following regular expression:
    * \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63
    * characters long and must conform to the regular expression
@@ -1122,7 +1135,7 @@ class Project {
    */
   core.Map<core.String, core.String> labels;
   /**
-   * The project lifecycle state. Read-only.
+   * The Project lifecycle state. Read-only.
    * Possible string values are:
    * - "LIFECYCLE_STATE_UNSPECIFIED" : A LIFECYCLE_STATE_UNSPECIFIED.
    * - "ACTIVE" : A ACTIVE.
@@ -1131,7 +1144,7 @@ class Project {
    */
   core.String lifecycleState;
   /**
-   * The user-assigned name of the project. It must be 4 to 30 characters.
+   * The user-assigned name of the Project. It must be 4 to 30 characters.
    * Allowed characters are: lowercase and uppercase letters, numbers, hyphen,
    * single-quote, double-quote, space, and exclamation point. Example: My
    * Project Read-write.
@@ -1143,7 +1156,7 @@ class Project {
    */
   ResourceId parent;
   /**
-   * The unique, user-assigned ID of the project. It must be 6 to 30 lowercase
+   * The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase
    * letters, digits, or hyphens. It must start with a letter. Trailing hyphens
    * are prohibited. Example: tokyo-rain-123 Read-only after creation.
    */
@@ -1208,10 +1221,10 @@ class Project {
 }
 
 /**
- * A container to reference an id for any resource type. A 'resource' in Google
+ * A container to reference an id for any resource type. A `resource` in Google
  * Cloud Platform is a generic term for something you (a developer) may want to
  * interact with through one of our API's. Some examples are an AppEngine app, a
- * Compute Engine instance, Cloud SQL database, ...
+ * Compute Engine instance, a Cloud SQL database, and so on.
  */
 class ResourceId {
   /**

@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.20.0
+    version: 0.21.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -38,6 +38,7 @@ packages:
     - content:v2sandbox
     - coordinate:v1  # https://google-developers.appspot.com/coordinate/
     - customsearch:v1  # https://developers.google.com/custom-search/
+    - dataproc:v1 # https://cloud.google.com/dataproc/
     - deploymentmanager:v2
     - dfareporting:v1.3  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.0  # https://developers.google.com/doubleclick-advertisers/reporting/
@@ -49,6 +50,7 @@ packages:
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
     - doubleclicksearch:v2  # https://developers.google.com/doubleclick-search/
     - drive:v2  # https://developers.google.com/drive/v2/reference/
+    - drive:v3  # https://developers.google.com/drive/v3/reference/
     - fitness:v1  # https://developers.google.com/fitness/
     - freebase:v1  # https://developers.google.com/freebase/
     - fusiontables:v1  # https://developers.google.com/fusiontables/
@@ -56,11 +58,12 @@ packages:
     - gamesConfiguration:v1configuration  # https://developers.google.com/games/services/publishing/api/
     - gamesManagement:v1management  # https://developers.google.com/games/services/management/api/
     - games:v1  # https://developers.google.com/games/services/
-    - genomics:v1
+    - genomics:v1 # https://cloud.google.com/genomics/
     - gmail:v1  # https://developers.google.com/gmail/
     - groupsmigration:v1  # https://developers.google.com/admin-sdk/groups-migration/
     - groupssettings:v1  # https://developers.google.com/admin-sdk/groups-settings/
     - identitytoolkit:v3  # https://developers.google.com/identity-toolkit/
+    - kgsearch:v1  # https://developers.google.com/knowledge-graph/
     - licensing:v1  # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
     - mapsengine:v1  # https://developers.google.com/maps-engine/
     - mirror:v1  # https://developers.google.com/glass/develop/mirror/
@@ -91,7 +94,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.22.0
+    version: 0.23.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -105,11 +108,11 @@ packages:
     - clouduseraccounts:beta # https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
     - datastore:v1beta2  # https://developers.google.com/datastore/
+    - dataproc:v1beta1 # https://cloud.google.com/dataproc/
     - deploymentmanager:v2beta1  # https://cloud.google.com/deployment-manager/
     - deploymentmanager:v2beta2  # https://cloud.google.com/deployment-manager/
-    - dns:v1beta1  # https://developers.google.com/cloud-dns/
     - genomics:v1beta2  # https://developers.google.com/genomics/
-    - logging:v1beta3 # https://cloud.google.com/appengine/articles/logging
+    - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging
     - manager:v1beta2  # https://developers.google.com/deployment-manager/
     - proximitybeacon:v1beta1  # https://developers.google.com/beacons/proximity/guides
     - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)
@@ -134,6 +137,7 @@ skipped_apis:
 - clouduseraccounts:vm_alpha  # Leave out alpha versions for now
 - clouduseraccounts:vm_beta # seems to be the same API as "beta"
 - datastore:v1beta1  # v1beta2 included
+- dataproc:v1alpha1 # v1beta1 included
 - dfareporting:v1.1  # v1.3 included
 - dfareporting:v1.2  # v1.3 included
 - dfareporting:v1  # v1.3 included

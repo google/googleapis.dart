@@ -35,6 +35,8 @@ class AndroidenterpriseApi {
   InstallsResourceApi get installs => new InstallsResourceApi(_requester);
   PermissionsResourceApi get permissions => new PermissionsResourceApi(_requester);
   ProductsResourceApi get products => new ProductsResourceApi(_requester);
+  StorelayoutclustersResourceApi get storelayoutclusters => new StorelayoutclustersResourceApi(_requester);
+  StorelayoutpagesResourceApi get storelayoutpages => new StorelayoutpagesResourceApi(_requester);
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
   AndroidenterpriseApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "androidenterprise/v1/"}) :
@@ -934,6 +936,45 @@ class EnterprisesResourceApi {
   }
 
   /**
+   * Returns the store layout resource.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * Completes with a [StoreLayout].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StoreLayout> getStoreLayout(core.String enterpriseId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StoreLayout.fromJson(data));
+  }
+
+  /**
    * Establishes the binding between the MDM and an enterprise. This is now
    * deprecated; use enroll instead.
    *
@@ -1102,6 +1143,50 @@ class EnterprisesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new EnterpriseAccount.fromJson(data));
+  }
+
+  /**
+   * Sets the store layout resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * Completes with a [StoreLayout].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StoreLayout> setStoreLayout(StoreLayout request, core.String enterpriseId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StoreLayout.fromJson(data));
   }
 
   /**
@@ -2234,6 +2319,592 @@ class ProductsResourceApi {
 }
 
 
+class StorelayoutclustersResourceApi {
+  final commons.ApiRequester _requester;
+
+  StorelayoutclustersResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a cluster.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [pageId] - The ID of the page.
+   *
+   * [clusterId] - The ID of the cluster.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String enterpriseId, core.String pageId, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (pageId == null) {
+      throw new core.ArgumentError("Parameter pageId is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout/pages/' + commons.Escaper.ecapeVariable('$pageId') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Retrieves details of a cluster.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [pageId] - The ID of the page.
+   *
+   * [clusterId] - The ID of the cluster.
+   *
+   * Completes with a [StoreCluster].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StoreCluster> get(core.String enterpriseId, core.String pageId, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (pageId == null) {
+      throw new core.ArgumentError("Parameter pageId is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout/pages/' + commons.Escaper.ecapeVariable('$pageId') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StoreCluster.fromJson(data));
+  }
+
+  /**
+   * Inserts a new cluster in a page.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [pageId] - The ID of the page.
+   *
+   * Completes with a [StoreCluster].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StoreCluster> insert(StoreCluster request, core.String enterpriseId, core.String pageId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (pageId == null) {
+      throw new core.ArgumentError("Parameter pageId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout/pages/' + commons.Escaper.ecapeVariable('$pageId') + '/clusters';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StoreCluster.fromJson(data));
+  }
+
+  /**
+   * Retrieves the details of all clusters on the specified page.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [pageId] - The ID of the page.
+   *
+   * Completes with a [StoreLayoutClustersListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StoreLayoutClustersListResponse> list(core.String enterpriseId, core.String pageId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (pageId == null) {
+      throw new core.ArgumentError("Parameter pageId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout/pages/' + commons.Escaper.ecapeVariable('$pageId') + '/clusters';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StoreLayoutClustersListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates a cluster. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [pageId] - The ID of the page.
+   *
+   * [clusterId] - The ID of the cluster.
+   *
+   * Completes with a [StoreCluster].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StoreCluster> patch(StoreCluster request, core.String enterpriseId, core.String pageId, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (pageId == null) {
+      throw new core.ArgumentError("Parameter pageId is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout/pages/' + commons.Escaper.ecapeVariable('$pageId') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StoreCluster.fromJson(data));
+  }
+
+  /**
+   * Updates a cluster.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [pageId] - The ID of the page.
+   *
+   * [clusterId] - The ID of the cluster.
+   *
+   * Completes with a [StoreCluster].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StoreCluster> update(StoreCluster request, core.String enterpriseId, core.String pageId, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (pageId == null) {
+      throw new core.ArgumentError("Parameter pageId is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout/pages/' + commons.Escaper.ecapeVariable('$pageId') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StoreCluster.fromJson(data));
+  }
+
+}
+
+
+class StorelayoutpagesResourceApi {
+  final commons.ApiRequester _requester;
+
+  StorelayoutpagesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a store page.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [pageId] - The ID of the page.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String enterpriseId, core.String pageId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (pageId == null) {
+      throw new core.ArgumentError("Parameter pageId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout/pages/' + commons.Escaper.ecapeVariable('$pageId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Retrieves details of a store page.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [pageId] - The ID of the page.
+   *
+   * Completes with a [StorePage].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StorePage> get(core.String enterpriseId, core.String pageId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (pageId == null) {
+      throw new core.ArgumentError("Parameter pageId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout/pages/' + commons.Escaper.ecapeVariable('$pageId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StorePage.fromJson(data));
+  }
+
+  /**
+   * Inserts a new store page.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * Completes with a [StorePage].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StorePage> insert(StorePage request, core.String enterpriseId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout/pages';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StorePage.fromJson(data));
+  }
+
+  /**
+   * Retrieves the details of all pages in the store.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * Completes with a [StoreLayoutPagesListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StoreLayoutPagesListResponse> list(core.String enterpriseId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout/pages';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StoreLayoutPagesListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates the content of a store page. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [pageId] - The ID of the page.
+   *
+   * Completes with a [StorePage].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StorePage> patch(StorePage request, core.String enterpriseId, core.String pageId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (pageId == null) {
+      throw new core.ArgumentError("Parameter pageId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout/pages/' + commons.Escaper.ecapeVariable('$pageId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StorePage.fromJson(data));
+  }
+
+  /**
+   * Updates the content of a store page.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [pageId] - The ID of the page.
+   *
+   * Completes with a [StorePage].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StorePage> update(StorePage request, core.String enterpriseId, core.String pageId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (pageId == null) {
+      throw new core.ArgumentError("Parameter pageId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/storeLayout/pages/' + commons.Escaper.ecapeVariable('$pageId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StorePage.fromJson(data));
+  }
+
+}
+
+
 class UsersResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2375,7 +3046,7 @@ class UsersResourceApi {
   }
 
   /**
-   * Looks up a user by email address.
+   * Looks up a user by email address. This only works for Google managed users.
    *
    * Request parameters:
    *
@@ -3636,6 +4307,36 @@ class InstallsListResponse {
   }
 }
 
+/** A localized string with its locale. */
+class LocalizedText {
+  /** The BCP47 tag for a locale. (e.g. "en-US", "de"). */
+  core.String locale;
+  /** The text localized in the associated locale. */
+  core.String text;
+
+  LocalizedText();
+
+  LocalizedText.fromJson(core.Map _json) {
+    if (_json.containsKey("locale")) {
+      locale = _json["locale"];
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (locale != null) {
+      _json["locale"] = locale;
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
 /**
  * A permission represents some extra capability, to be granted to an Android
  * app, which requires explicit consent. An enterprise admin must consent to
@@ -3997,6 +4698,262 @@ class ProductsGenerateApprovalUrlResponse {
 }
 
 /**
+ * Definition of a Google Play for Work store cluster, a list of products
+ * displayed as part of a store page.
+ */
+class StoreCluster {
+  /**
+   * Unique ID of this cluster. Assigned by the server. Immutable once assigned.
+   */
+  core.String id;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#storeCluster".
+   */
+  core.String kind;
+  /**
+   * Ordered list of localized strings giving the name of this page. The text
+   * displayed is the one that best matches the user locale, or the first entry
+   * if there is no good match. There needs to be at least one entry.
+   */
+  core.List<LocalizedText> name;
+  /**
+   * String (US-ASCII only) used to determine order of this cluster within the
+   * parent page's elements. Page elements are sorted in lexicographic order of
+   * this field. Duplicated values are allowed, but ordering between elements
+   * with duplicate order is undefined.
+   *
+   * The value of this field is never visible to a user, it is used solely for
+   * the purpose of defining an ordering. Maximum length is 20 characters.
+   */
+  core.String orderInPage;
+  /**
+   * List of products in the order they are displayed in the cluster. There
+   * should not be duplicates within a cluster.
+   */
+  core.List<core.String> productId;
+
+  StoreCluster();
+
+  StoreCluster.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"].map((value) => new LocalizedText.fromJson(value)).toList();
+    }
+    if (_json.containsKey("orderInPage")) {
+      orderInPage = _json["orderInPage"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name.map((value) => (value).toJson()).toList();
+    }
+    if (orderInPage != null) {
+      _json["orderInPage"] = orderInPage;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    return _json;
+  }
+}
+
+/**
+ * General setting for the Google Play for Work store layout, currently only
+ * specifying the page to display the first time the store is opened.
+ */
+class StoreLayout {
+  /**
+   * The ID of the store page to be used as the homepage. The homepage will be
+   * used as the first page shown in the Google Play for Work store.
+   *
+   * If there is no homepage set, an empty store is shown. The homepage can be
+   * unset (by not specifying it) to empty the store.
+   *
+   * If there exists at least one page, this field must be set to the ID of a
+   * valid page.
+   */
+  core.String homepageId;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#storeLayout".
+   */
+  core.String kind;
+
+  StoreLayout();
+
+  StoreLayout.fromJson(core.Map _json) {
+    if (_json.containsKey("homepageId")) {
+      homepageId = _json["homepageId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (homepageId != null) {
+      _json["homepageId"] = homepageId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/** The store page resources for the enterprise. */
+class StoreLayoutClustersListResponse {
+  /** A store cluster of an enterprise. */
+  core.List<StoreCluster> cluster;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#storeLayoutClustersListResponse".
+   */
+  core.String kind;
+
+  StoreLayoutClustersListResponse();
+
+  StoreLayoutClustersListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("cluster")) {
+      cluster = _json["cluster"].map((value) => new StoreCluster.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cluster != null) {
+      _json["cluster"] = cluster.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/** The store page resources for the enterprise. */
+class StoreLayoutPagesListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#storeLayoutPagesListResponse".
+   */
+  core.String kind;
+  /** A store page of an enterprise. */
+  core.List<StorePage> page;
+
+  StoreLayoutPagesListResponse();
+
+  StoreLayoutPagesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("page")) {
+      page = _json["page"].map((value) => new StorePage.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (page != null) {
+      _json["page"] = page.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Definition of a Google Play for Work store page, made of a localized name and
+ * links to other pages. A page also contains clusters defined as a
+ * subcollection.
+ */
+class StorePage {
+  /**
+   * Unique ID of this page. Assigned by the server. Immutable once assigned.
+   */
+  core.String id;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#storePage".
+   */
+  core.String kind;
+  /**
+   * Ordered list of pages a user should be able to reach from this page. The
+   * pages must exist, must not be this page, and once a link is created the
+   * page linked to cannot be deleted until all links to it are removed. It is
+   * recommended that the basic pages are created first, before adding the links
+   * between pages.
+   *
+   * No attempt is made to verify that all pages are reachable from the
+   * homepage.
+   */
+  core.List<core.String> link;
+  /**
+   * Ordered list of localized strings giving the name of this page. The text
+   * displayed is the one that best matches the user locale, or the first entry
+   * if there is no good match. There needs to be at least one entry.
+   */
+  core.List<LocalizedText> name;
+
+  StorePage();
+
+  StorePage.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("link")) {
+      link = _json["link"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"].map((value) => new LocalizedText.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (link != null) {
+      _json["link"] = link;
+    }
+    if (name != null) {
+      _json["name"] = name.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
  * A user resource represents an individual user within the enterprise's domain.
  *
  * Note that each user is associated with a Google account based on the user's
@@ -4016,7 +4973,10 @@ class User {
    * "androidenterprise#user".
    */
   core.String kind;
-  /** The user's primary email, e.g. "jsmith@example.com". */
+  /**
+   * The user's primary email, e.g. "jsmith@example.com". Will always be set for
+   * Google managed users and not set for EMM managed users.
+   */
   core.String primaryEmail;
 
   User();

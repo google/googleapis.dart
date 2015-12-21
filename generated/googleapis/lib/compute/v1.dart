@@ -96,24 +96,39 @@ class AddressesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [AddressAggregatedList].
    *
@@ -330,24 +345,39 @@ class AddressesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [AddressList].
    *
@@ -407,30 +437,45 @@ class AutoscalersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [AutoscalerAggregatedList].
    *
@@ -478,7 +523,7 @@ class AutoscalersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -531,7 +576,7 @@ class AutoscalersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -587,7 +632,7 @@ class AutoscalersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -638,7 +683,7 @@ class AutoscalersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -647,24 +692,39 @@ class AutoscalersResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [AutoscalerList].
    *
@@ -718,7 +778,7 @@ class AutoscalersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -778,7 +838,7 @@ class AutoscalersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -843,7 +903,7 @@ class BackendServicesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -890,7 +950,7 @@ class BackendServicesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -993,7 +1053,7 @@ class BackendServicesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -1038,30 +1098,45 @@ class BackendServicesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [BackendServiceList].
    *
@@ -1112,7 +1187,7 @@ class BackendServicesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -1164,7 +1239,7 @@ class BackendServicesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -1229,24 +1304,39 @@ class DiskTypesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [DiskTypeAggregatedList].
    *
@@ -1357,24 +1447,39 @@ class DiskTypesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [DiskTypeList].
    *
@@ -1430,7 +1535,7 @@ class DisksResourceApi {
       _requester = client;
 
   /**
-   * Retrieves the list of disks grouped by scope.
+   * Retrieves the list of persistent disks grouped by scope.
    *
    * Request parameters:
    *
@@ -1440,24 +1545,39 @@ class DisksResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [DiskAggregatedList].
    *
@@ -1501,7 +1621,7 @@ class DisksResourceApi {
   }
 
   /**
-   * Creates a snapshot of this disk.
+   * Creates a snapshot of a specified persistent disk.
    *
    * [request] - The metadata request object.
    *
@@ -1739,24 +1859,39 @@ class DisksResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [DiskList].
    *
@@ -1964,24 +2099,39 @@ class FirewallsResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [FirewallList].
    *
@@ -2144,30 +2294,45 @@ class ForwardingRulesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [ForwardingRuleAggregatedList].
    *
@@ -2215,7 +2380,7 @@ class ForwardingRulesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2268,7 +2433,7 @@ class ForwardingRulesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2324,7 +2489,7 @@ class ForwardingRulesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2375,7 +2540,7 @@ class ForwardingRulesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2384,24 +2549,39 @@ class ForwardingRulesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [ForwardingRuleList].
    *
@@ -2448,14 +2628,14 @@ class ForwardingRulesResourceApi {
   }
 
   /**
-   * Changes target url for forwarding rule. The new target should be of the
+   * Changes target URL for forwarding rule. The new target should be of the
    * same type as the old target.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2668,24 +2848,39 @@ class GlobalAddressesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [AddressList].
    *
@@ -2742,7 +2937,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2789,7 +2984,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2839,7 +3034,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2884,30 +3079,45 @@ class GlobalForwardingRulesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [ForwardingRuleList].
    *
@@ -2951,14 +3161,14 @@ class GlobalForwardingRulesResourceApi {
   }
 
   /**
-   * Changes target url for forwarding rule. The new target should be of the
+   * Changes target URL for forwarding rule. The new target should be of the
    * same type as the old target.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3024,24 +3234,39 @@ class GlobalOperationsResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [OperationAggregatedList].
    *
@@ -3190,24 +3415,39 @@ class GlobalOperationsResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [OperationList].
    *
@@ -3264,7 +3504,7 @@ class HttpHealthChecksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3311,7 +3551,7 @@ class HttpHealthChecksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3361,7 +3601,7 @@ class HttpHealthChecksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3406,30 +3646,45 @@ class HttpHealthChecksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [HttpHealthCheckList].
    *
@@ -3480,7 +3735,7 @@ class HttpHealthChecksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3533,7 +3788,7 @@ class HttpHealthChecksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3592,7 +3847,7 @@ class HttpsHealthChecksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3639,7 +3894,7 @@ class HttpsHealthChecksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3689,7 +3944,7 @@ class HttpsHealthChecksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3734,30 +3989,45 @@ class HttpsHealthChecksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [HttpsHealthCheckList].
    *
@@ -3808,7 +4078,7 @@ class HttpsHealthChecksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3861,7 +4131,7 @@ class HttpsHealthChecksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4128,24 +4398,39 @@ class ImagesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [ImageList].
    *
@@ -4211,7 +4496,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4265,30 +4550,45 @@ class InstanceGroupManagersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [InstanceGroupManagerAggregatedList].
    *
@@ -4337,7 +4637,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4396,7 +4696,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4450,7 +4750,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4508,7 +4808,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4559,7 +4859,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4567,24 +4867,39 @@ class InstanceGroupManagersResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [InstanceGroupManagerList].
    *
@@ -4639,7 +4954,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4697,7 +5012,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4756,7 +5071,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4819,7 +5134,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4880,7 +5195,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4946,7 +5261,7 @@ class InstanceGroupsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5001,30 +5316,45 @@ class InstanceGroupsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [InstanceGroupAggregatedList].
    *
@@ -5073,7 +5403,7 @@ class InstanceGroupsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5124,7 +5454,7 @@ class InstanceGroupsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5178,7 +5508,7 @@ class InstanceGroupsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5228,7 +5558,7 @@ class InstanceGroupsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5236,24 +5566,39 @@ class InstanceGroupsResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [InstanceGroupList].
    *
@@ -5306,7 +5651,7 @@ class InstanceGroupsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5317,24 +5662,39 @@ class InstanceGroupsResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [InstanceGroupsListInstances].
    *
@@ -5394,7 +5754,7 @@ class InstanceGroupsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5451,7 +5811,7 @@ class InstanceGroupsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5515,7 +5875,7 @@ class InstanceTemplatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5562,7 +5922,7 @@ class InstanceTemplatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5612,7 +5972,7 @@ class InstanceTemplatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5657,30 +6017,45 @@ class InstanceTemplatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [InstanceTemplateList].
    *
@@ -5808,24 +6183,39 @@ class InstancesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [InstanceAggregatedList].
    *
@@ -5927,8 +6317,8 @@ class InstancesResourceApi {
   }
 
   /**
-   * Deletes the specified Instance resource. For more information, see Shutting
-   * down an instance.
+   * Deletes the specified Instance resource. For more information, see Stopping
+   * or Deleting an Instance.
    *
    * Request parameters:
    *
@@ -6285,24 +6675,39 @@ class InstancesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [InstanceList].
    *
@@ -6831,24 +7236,39 @@ class MachineTypesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [MachineTypeAggregatedList].
    *
@@ -6959,24 +7379,39 @@ class MachineTypesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [MachineTypeList].
    *
@@ -7183,24 +7618,39 @@ class NetworksResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [NetworkList].
    *
@@ -7611,24 +8061,39 @@ class RegionOperationsResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [OperationList].
    *
@@ -7741,24 +8206,39 @@ class RegionsResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [RegionList].
    *
@@ -7815,7 +8295,7 @@ class RoutesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -7862,7 +8342,7 @@ class RoutesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -7912,7 +8392,7 @@ class RoutesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -7956,30 +8436,45 @@ class RoutesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [RouteList].
    *
@@ -8042,7 +8537,7 @@ class SnapshotsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8089,7 +8584,7 @@ class SnapshotsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8137,30 +8632,45 @@ class SnapshotsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [SnapshotList].
    *
@@ -8217,7 +8727,7 @@ class SslCertificatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8264,7 +8774,7 @@ class SslCertificatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8314,7 +8824,7 @@ class SslCertificatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8359,30 +8869,45 @@ class SslCertificatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [SslCertificateList].
    *
@@ -8439,7 +8964,7 @@ class TargetHttpProxiesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8486,7 +9011,7 @@ class TargetHttpProxiesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8536,7 +9061,7 @@ class TargetHttpProxiesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8581,30 +9106,45 @@ class TargetHttpProxiesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [TargetHttpProxyList].
    *
@@ -8654,7 +9194,7 @@ class TargetHttpProxiesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8714,7 +9254,7 @@ class TargetHttpsProxiesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8761,7 +9301,7 @@ class TargetHttpsProxiesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8811,7 +9351,7 @@ class TargetHttpsProxiesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8856,30 +9396,45 @@ class TargetHttpsProxiesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [TargetHttpsProxyList].
    *
@@ -8929,7 +9484,7 @@ class TargetHttpsProxiesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -8982,7 +9537,7 @@ class TargetHttpsProxiesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -9042,30 +9597,45 @@ class TargetInstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [TargetInstanceAggregatedList].
    *
@@ -9113,7 +9683,7 @@ class TargetInstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -9166,7 +9736,7 @@ class TargetInstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -9222,7 +9792,7 @@ class TargetInstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -9273,7 +9843,7 @@ class TargetInstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -9282,24 +9852,39 @@ class TargetInstancesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [TargetInstanceList].
    *
@@ -9414,7 +9999,7 @@ class TargetPoolsResourceApi {
   }
 
   /**
-   * Adds instance url to targetPool.
+   * Adds instance URL to targetPool.
    *
    * [request] - The metadata request object.
    *
@@ -9477,30 +10062,45 @@ class TargetPoolsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [TargetPoolAggregatedList].
    *
@@ -9548,7 +10148,7 @@ class TargetPoolsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -9601,7 +10201,7 @@ class TargetPoolsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -9717,7 +10317,7 @@ class TargetPoolsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -9768,7 +10368,7 @@ class TargetPoolsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -9777,24 +10377,39 @@ class TargetPoolsResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [TargetPoolList].
    *
@@ -9965,7 +10580,7 @@ class TargetPoolsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -10042,24 +10657,39 @@ class TargetVpnGatewaysResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [TargetVpnGatewayAggregatedList].
    *
@@ -10276,24 +10906,39 @@ class TargetVpnGatewaysResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [TargetVpnGatewayList].
    *
@@ -10353,7 +10998,7 @@ class UrlMapsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -10400,7 +11045,7 @@ class UrlMapsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -10450,7 +11095,7 @@ class UrlMapsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -10494,30 +11139,45 @@ class UrlMapsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [UrlMapList].
    *
@@ -10568,7 +11228,7 @@ class UrlMapsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -10620,7 +11280,7 @@ class UrlMapsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -10674,7 +11334,7 @@ class UrlMapsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -10739,24 +11399,39 @@ class VpnTunnelsResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [VpnTunnelAggregatedList].
    *
@@ -10973,24 +11648,39 @@ class VpnTunnelsResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [VpnTunnelList].
    *
@@ -11166,24 +11856,39 @@ class ZoneOperationsResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [OperationList].
    *
@@ -11296,24 +12001,39 @@ class ZonesResourceApi {
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
-   * FIELD_NAME COMPARISON_STRING LITERAL_STRING.
+   * field_name comparison_string literal_string.
    *
-   * The FIELD_NAME is the name of the field you want to compare. Only atomic
-   * field types are supported (string, number, boolean). The COMPARISON_STRING
-   * must be either eq (equals) or ne (not equals). The LITERAL_STRING is the
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
    * string value to filter to. The literal value must be valid for the type of
-   * field (string, number, boolean). For string fields, the literal value is
-   * interpreted as a regular expression using RE2 syntax. The literal value
-   * must match the entire field.
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
    *
    * For example, filter=name ne example-instance.
    *
-   * [maxResults] - Maximum count of results to be returned.
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
-   * [pageToken] - Specifies a page token to use. Use this parameter if you want
-   * to list the next page of results. Set pageToken to the nextPageToken
-   * returned by a previous list request.
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
    *
    * Completes with a [ZoneList].
    *
@@ -11426,12 +12146,13 @@ class Address {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -11551,7 +12272,13 @@ class AddressAggregatedList {
    * aggregated lists of addresses.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -11600,7 +12327,8 @@ class AddressAggregatedList {
 /** Contains a list of address resources. */
 class AddressList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A list of Address resources. */
@@ -11610,7 +12338,13 @@ class AddressList {
    * addresses.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
@@ -11657,7 +12391,15 @@ class AddressList {
 }
 
 class AddressesScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -11691,7 +12433,8 @@ class AddressesScopedListWarningData {
  */
 class AddressesScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -11709,9 +12452,13 @@ class AddressesScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<AddressesScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   AddressesScopedListWarning();
@@ -12019,12 +12766,13 @@ class Autoscaler {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** Type of the resource. */
@@ -12116,14 +12864,21 @@ class Autoscaler {
 
 class AutoscalerAggregatedList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** A map of scoped autoscaler lists. */
   core.Map<core.String, AutoscalersScopedList> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -12172,14 +12927,21 @@ class AutoscalerAggregatedList {
 /** Contains a list of persistent autoscaler resources. */
 class AutoscalerList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** A list of Autoscaler resources. */
   core.List<Autoscaler> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -12226,7 +12988,15 @@ class AutoscalerList {
 }
 
 class AutoscalersScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -12260,7 +13030,8 @@ class AutoscalersScopedListWarningData {
  */
 class AutoscalersScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -12278,9 +13049,13 @@ class AutoscalersScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<AutoscalersScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   AutoscalersScopedListWarning();
@@ -12553,8 +13328,8 @@ class Backend {
    */
   core.double capacityScaler;
   /**
-   * An optional textual description of the resource. Provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
@@ -12650,8 +13425,8 @@ class BackendService {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource. Provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
@@ -12675,7 +13450,8 @@ class BackendService {
    */
   core.List<core.String> healthChecks;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -12841,7 +13617,8 @@ class BackendServiceGroupHealth {
 /** Contains a list of BackendService resources. */
 class BackendServiceList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** A list of BackendService resources. */
@@ -12851,7 +13628,13 @@ class BackendServiceList {
    * of backend services.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -12979,12 +13762,13 @@ class Disk {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] Type of the resource. Always compute#disk for disks. */
@@ -13216,7 +14000,8 @@ class Disk {
 
 class DiskAggregatedList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A map of scoped disk lists. */
@@ -13226,7 +14011,13 @@ class DiskAggregatedList {
    * aggregated lists of persistent disks.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -13275,7 +14066,8 @@ class DiskAggregatedList {
 /** A list of Disk resources. */
 class DiskList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A list of persistent disks. */
@@ -13284,7 +14076,13 @@ class DiskList {
    * [Output Only] Type of resource. Always compute#diskList for lists of disks.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -13380,10 +14178,11 @@ class DiskType {
   core.String defaultDiskSizeGb;
   /** [Output Only] The deprecation status associated with this disk type. */
   DeprecationStatus deprecated;
-  /** [Output Only] An optional textual description of the resource. */
+  /** [Output Only] An optional description of this resource. */
   core.String description;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -13475,14 +14274,21 @@ class DiskType {
 
 class DiskTypeAggregatedList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A map of scoped disk type lists. */
   core.Map<core.String, DiskTypesScopedList> items;
   /** [Output Only] Type of resource. Always compute#diskTypeAggregatedList. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -13531,7 +14337,8 @@ class DiskTypeAggregatedList {
 /** Contains a list of disk type resources. */
 class DiskTypeList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A list of Disk Type resources. */
@@ -13540,7 +14347,13 @@ class DiskTypeList {
    * [Output Only] Type of resource. Always compute#diskTypeList for disk types.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -13587,7 +14400,15 @@ class DiskTypeList {
 }
 
 class DiskTypesScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -13621,7 +14442,8 @@ class DiskTypesScopedListWarningData {
  */
 class DiskTypesScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -13639,9 +14461,13 @@ class DiskTypesScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<DiskTypesScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   DiskTypesScopedListWarning();
@@ -13706,7 +14532,15 @@ class DiskTypesScopedList {
 }
 
 class DisksScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -13740,7 +14574,8 @@ class DisksScopedListWarningData {
  */
 class DisksScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -13758,9 +14593,13 @@ class DisksScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<DisksScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   DisksScopedListWarning();
@@ -13874,12 +14713,13 @@ class Firewall {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -14018,7 +14858,8 @@ class Firewall {
 /** Contains a list of Firewall resources. */
 class FirewallList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A list of Firewall resources. */
@@ -14028,7 +14869,13 @@ class FirewallList {
    * firewalls.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -14102,15 +14949,19 @@ class ForwardingRule {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
-  /** [Output Only] Type of the resource. Always compute#forwardingRule. */
+  /**
+   * [Output Only] Type of the resource. Always compute#forwardingRule for
+   * Forwarding Rule resources.
+   */
   core.String kind;
   /**
    * Name of the resource; provided by the client when the resource is created.
@@ -14223,14 +15074,21 @@ class ForwardingRule {
 
 class ForwardingRuleAggregatedList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** A map of scoped forwarding rule lists. */
   core.Map<core.String, ForwardingRulesScopedList> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -14284,7 +15142,13 @@ class ForwardingRuleList {
   core.List<ForwardingRule> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -14331,7 +15195,15 @@ class ForwardingRuleList {
 }
 
 class ForwardingRulesScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -14365,7 +15237,8 @@ class ForwardingRulesScopedListWarningData {
  */
 class ForwardingRulesScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -14383,9 +15256,13 @@ class ForwardingRulesScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<ForwardingRulesScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   ForwardingRulesScopedListWarning();
@@ -14524,7 +15401,10 @@ class HealthStatus {
  * PathMatcher to select the BackendService.
  */
 class HostRule {
-  /** An optional textual description. */
+  /**
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
+   */
   core.String description;
   /**
    * The list of host patterns to match. They must be valid hostnames, except *
@@ -14580,8 +15460,8 @@ class HttpHealthCheck {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
@@ -14596,7 +15476,8 @@ class HttpHealthCheck {
    */
   core.String host;
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** Type of the resource. */
@@ -14734,7 +15615,13 @@ class HttpHealthCheckList {
   core.List<HttpHealthCheck> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -14793,8 +15680,8 @@ class HttpsHealthCheck {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
@@ -14809,7 +15696,8 @@ class HttpsHealthCheck {
    */
   core.String host;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** Type of the resource. */
@@ -14947,7 +15835,13 @@ class HttpsHealthCheckList {
   core.List<HttpsHealthCheck> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -15054,14 +15948,15 @@ class Image {
   /** The deprecation status associated with this image. */
   DeprecationStatus deprecated;
   /**
-   * Textual description of the resource; provided by the client when the
-   * resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /** Size of the image when restored onto a persistent disk (in GB). */
   core.String diskSizeGb;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] Type of the resource. Always compute#image for images. */
@@ -15222,14 +16117,21 @@ class Image {
 /** Contains a list of Image resources. */
 class ImageList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A list of Image resources. */
   core.List<Image> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -15299,7 +16201,8 @@ class Instance {
    */
   core.List<AttachedDisk> disks;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] Unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -15307,11 +16210,25 @@ class Instance {
    */
   core.String kind;
   /**
-   * Full or partial URL of the machine type resource to use for this instance.
-   * This is provided by the client when the instance is created. For example,
-   * the following is a valid partial url:
+   * Full or partial URL of the machine type resource to use for this instance,
+   * in the format: zones/zone/machineTypes/ machine-type. This is provided by
+   * the client when the instance is created. For example, the following is a
+   * valid partial url to a predefined machine type:
    *
-   * zones/zone/machineTypes/machine-type
+   * zones/us-central1-f/machineTypes/n1-standard-1
+   *
+   * To create a custom machine type, provide a URL to a machine type in the
+   * following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ...
+   * 24, etc), and MEMORY is the total memory for this instance. Memory must be
+   * a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is
+   * 5120 MB):
+   *
+   * zones/zone/machineTypes/custom-CPUS-MEMORY
+   *
+   * For example: zones/us-central1-f/machineTypes/custom-4-5120
+   *
+   * For a full list of restrictions, read the Specifications for custom machine
+   * types.
    */
   core.String machineType;
   /**
@@ -15494,7 +16411,8 @@ class Instance {
 
 class InstanceAggregatedList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A map of scoped instance lists. */
@@ -15556,7 +16474,10 @@ class InstanceGroup {
    * text format.
    */
   core.String creationTimestamp;
-  /** An optional text description for the instance group. */
+  /**
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
+   */
   core.String description;
   /**
    * [Output Only] The fingerprint of the named ports. The system uses this
@@ -15703,7 +16624,11 @@ class InstanceGroupAggregatedList {
    */
   core.String kind;
   /**
-   * [Output Only] A token that is used to continue a truncated list request.
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
    */
   core.String nextPageToken;
   /**
@@ -15768,7 +16693,11 @@ class InstanceGroupList {
    */
   core.String kind;
   /**
-   * [Output Only] A token that is used to continue a truncated list request.
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
    */
   core.String nextPageToken;
   /**
@@ -15841,7 +16770,10 @@ class InstanceGroupManager {
    * this managed instance group that are scheduled for each of those actions.
    */
   InstanceGroupManagerActionsSummary currentActions;
-  /** An optional text description for the managed instance group. */
+  /**
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
+   */
   core.String description;
   /**
    * [Output Only] The fingerprint of the target pools information. You can use
@@ -16115,7 +17047,11 @@ class InstanceGroupManagerAggregatedList {
    */
   core.String kind;
   /**
-   * [Output Only] A token that is used to continue a truncated list request.
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
    */
   core.String nextPageToken;
   /**
@@ -16180,7 +17116,11 @@ class InstanceGroupManagerList {
    */
   core.String kind;
   /**
-   * [Output Only] A token that is used to continue a truncated list request.
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
    */
   core.String nextPageToken;
   /**
@@ -16321,7 +17261,15 @@ class InstanceGroupManagersRecreateInstancesRequest {
 }
 
 class InstanceGroupManagersScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -16355,7 +17303,8 @@ class InstanceGroupManagersScopedListWarningData {
  */
 class InstanceGroupManagersScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -16373,9 +17322,13 @@ class InstanceGroupManagersScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<InstanceGroupManagersScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   InstanceGroupManagersScopedListWarning();
@@ -16552,7 +17505,11 @@ class InstanceGroupsListInstances {
    */
   core.String kind;
   /**
-   * [Output Only] A token that is used to continue a truncated list request.
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
    */
   core.String nextPageToken;
   /**
@@ -16652,7 +17609,15 @@ class InstanceGroupsRemoveInstancesRequest {
 }
 
 class InstanceGroupsScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -16686,7 +17651,8 @@ class InstanceGroupsScopedListWarningData {
  */
 class InstanceGroupsScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -16704,9 +17670,13 @@ class InstanceGroupsScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<InstanceGroupsScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   InstanceGroupsScopedListWarning();
@@ -16818,7 +17788,8 @@ class InstanceGroupsSetNamedPortsRequest {
 /** Contains a list of instance resources. */
 class InstanceList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A list of Instance resources. */
@@ -17061,7 +18032,10 @@ class InstanceTemplate {
    * text format.
    */
   core.String creationTimestamp;
-  /** An optional text description for the instance template. */
+  /**
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
+   */
   core.String description;
   /**
    * [Output Only] A unique identifier for this instance template. The server
@@ -17159,7 +18133,11 @@ class InstanceTemplateList {
    */
   core.String kind;
   /**
-   * [Output Only] A token that is used to continue a truncated list request.
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
    */
   core.String nextPageToken;
   /**
@@ -17258,7 +18236,15 @@ class InstanceWithNamedPorts {
 }
 
 class InstancesScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -17292,7 +18278,8 @@ class InstancesScopedListWarningData {
  */
 class InstancesScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -17310,9 +18297,13 @@ class InstancesScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<InstancesScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   InstancesScopedListWarning();
@@ -17379,8 +18370,8 @@ class InstancesScopedList {
 /** A license resource. */
 class License {
   /**
-   * If true, the customer will be charged license fee for running software that
-   * contains this license on an instance.
+   * [Output Only] If true, the customer will be charged license fee for running
+   * software that contains this license on an instance.
    */
   core.bool chargesUseFee;
   /** [Output Only] Type of resource. Always compute#license for licenses. */
@@ -17459,10 +18450,14 @@ class MachineType {
   DeprecationStatus deprecated;
   /** [Output Only] An optional textual description of the resource. */
   core.String description;
-  /** [Output Only] The tumber of CPUs exposed to the instance. */
+  /**
+   * [Output Only] The number of virtual CPUs that are available to the
+   * instance.
+   */
   core.int guestCpus;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -17470,7 +18465,10 @@ class MachineType {
    * any relevant values.
    */
   core.int imageSpaceGb;
-  /** Type of the resource. */
+  /**
+   * [Output Only] The type of the resource. Always compute#machineType for
+   * machine types.
+   */
   core.String kind;
   /** [Output Only] Maximum persistent disks allowed. */
   core.int maximumPersistentDisks;
@@ -17590,7 +18588,8 @@ class MachineType {
 
 class MachineTypeAggregatedList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A map of scoped machine type lists. */
@@ -17600,7 +18599,13 @@ class MachineTypeAggregatedList {
    * for aggregated lists of machine types.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -17649,7 +18654,8 @@ class MachineTypeAggregatedList {
 /** Contains a list of Machine Type resources. */
 class MachineTypeList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A list of Machine Type resources. */
@@ -17659,7 +18665,13 @@ class MachineTypeList {
    * machine types.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -17706,7 +18718,15 @@ class MachineTypeList {
 }
 
 class MachineTypesScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -17740,7 +18760,8 @@ class MachineTypesScopedListWarningData {
  */
 class MachineTypesScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -17758,9 +18779,13 @@ class MachineTypesScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<MachineTypesScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   MachineTypesScopedListWarning();
@@ -18153,8 +19178,8 @@ class Network {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource. Provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
@@ -18164,7 +19189,8 @@ class Network {
    */
   core.String gatewayIPv4;
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -18315,7 +19341,8 @@ class NetworkInterface {
 /** Contains a list of Network resources. */
 class NetworkList {
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A list of Network resources. */
@@ -18325,7 +19352,13 @@ class NetworkList {
    * networks.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource . */
   core.String selfLink;
@@ -18440,7 +19473,15 @@ class OperationError {
 }
 
 class OperationWarningsData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -18470,7 +19511,8 @@ class OperationWarningsData {
 
 class OperationWarnings {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -18488,9 +19530,13 @@ class OperationWarnings {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<OperationWarningsData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   OperationWarnings();
@@ -18524,16 +19570,17 @@ class OperationWarnings {
 
 /** An Operation resource, used to manage asynchronous API requests. */
 class Operation {
-  /**
-   * [Output Only] An optional identifier specified by the client when the
-   * mutation was initiated. Must be unique for all Operation resources in the
-   * project.
-   */
+  /** [Output Only] A unique client ID generated by the server. */
   core.String clientOperationId;
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * [Output Only] The time that this operation was completed. This is in
+   * [Output Only] A textual description of the operation, which is set when the
+   * operation is created.
+   */
+  core.String description;
+  /**
+   * [Output Only] The time that this operation was completed. This value is in
    * RFC3339 text format.
    */
   core.String endTime;
@@ -18549,15 +19596,17 @@ class Operation {
   core.String httpErrorMessage;
   /**
    * [Output Only] If the operation fails, this field contains the HTTP error
-   * message that was returned, such as 404.
+   * message that was returned. For example, a 404 means the resource was not
+   * found.
    */
   core.int httpErrorStatusCode;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
-   * [Output Only] The time that this operation was requested. This is in
+   * [Output Only] The time that this operation was requested. This value is in
    * RFC3339 text format.
    */
   core.String insertTime;
@@ -18569,8 +19618,8 @@ class Operation {
   /** [Output Only] Name of the resource. */
   core.String name;
   /**
-   * [Output Only] Type of the operation, such as insert,
-   * compute.instanceGroups.update, or compute.instanceGroups.delete.
+   * [Output Only] The type of operation, which can be insert, update, or
+   * delete.
    */
   core.String operationType;
   /**
@@ -18590,12 +19639,12 @@ class Operation {
   core.String selfLink;
   /**
    * [Output Only] The time that this operation was started by the server. This
-   * is in RFC3339 text format.
+   * value is in RFC3339 text format.
    */
   core.String startTime;
   /**
-   * [Output Only] Status of the operation. Can be one of the following:
-   * PENDING, RUNNING, or DONE.
+   * [Output Only] The status of the operation, which can be one of the
+   * following: PENDING, RUNNING, or DONE.
    * Possible string values are:
    * - "DONE"
    * - "PENDING"
@@ -18608,11 +19657,11 @@ class Operation {
    */
   core.String statusMessage;
   /**
-   * [Output Only] Unique target ID which identifies a particular incarnation of
-   * the target.
+   * [Output Only] The unique target ID, which identifies a specific incarnation
+   * of the target resource.
    */
   core.String targetId;
-  /** [Output Only] URL of the resource the operation is mutating. */
+  /** [Output Only] The URL of the resource that the operation is modifying. */
   core.String targetLink;
   /**
    * [Output Only] User who requested the operation, for example:
@@ -18635,6 +19684,9 @@ class Operation {
     }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
@@ -18706,6 +19758,9 @@ class Operation {
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
+    if (description != null) {
+      _json["description"] = description;
+    }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -18772,7 +19827,8 @@ class Operation {
 
 class OperationAggregatedList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A map of scoped operation lists. */
@@ -18782,7 +19838,13 @@ class OperationAggregatedList {
    * aggregated lists of operations.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -18831,7 +19893,8 @@ class OperationAggregatedList {
 /** Contains a list of Operation resources. */
 class OperationList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] The Operation resources. */
@@ -18841,7 +19904,13 @@ class OperationList {
    * resource.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncate. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -18888,7 +19957,15 @@ class OperationList {
 }
 
 class OperationsScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -18922,7 +19999,8 @@ class OperationsScopedListWarningData {
  */
 class OperationsScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -18940,9 +20018,13 @@ class OperationsScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<OperationsScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   OperationsScopedListWarning();
@@ -19012,8 +20094,15 @@ class OperationsScopedList {
  * service will be used.
  */
 class PathMatcher {
+  /**
+   * The URL to the BackendService resource. This will be used if none of the
+   * pathRules defined by this PathMatcher is met by the URL's path portion.
+   */
   core.String defaultService;
-  /** An optional textual description of the resource. */
+  /**
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
+   */
   core.String description;
   /** The name to which this PathMatcher is referred by the HostRule. */
   core.String name;
@@ -19110,14 +20199,19 @@ class Project {
   /** Restricted features enabled for use on this project. */
   core.List<core.String> enabledFeatures;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server. This is not the project ID, and is just a unique ID
+   * used by Compute Engine to identify resources.
    */
   core.String id;
   /**
    * [Output Only] Type of the resource. Always compute#project for projects.
    */
   core.String kind;
-  /** Name of the resource. */
+  /**
+   * The project ID. For example: my-example-project. Use the project ID to make
+   * requests to Compute Engine.
+   */
   core.String name;
   /** [Output Only] Quotas assigned to this project. */
   core.List<Quota> quotas;
@@ -19275,7 +20369,8 @@ class Region {
   /** [Output Only] Textual description of the resource. */
   core.String description;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server .
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] Type of the resource. Always compute#region for regions. */
@@ -19373,7 +20468,8 @@ class Region {
 /** Contains a list of region resources. */
 class RegionList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A list of Region resources. */
@@ -19383,7 +20479,13 @@ class RegionList {
    * regions.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -19453,7 +20555,15 @@ class ResourceGroupReference {
 }
 
 class RouteWarningsData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -19483,7 +20593,8 @@ class RouteWarningsData {
 
 class RouteWarnings {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -19501,9 +20612,13 @@ class RouteWarnings {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<RouteWarningsData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   RouteWarnings();
@@ -19554,14 +20669,15 @@ class Route {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource. Provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /** The destination range of outgoing packets that this route applies to. */
   core.String destRange;
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -19734,7 +20850,13 @@ class RouteList {
   core.List<Route> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -19907,14 +21029,15 @@ class Snapshot {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /** [Output Only] Size of the snapshot, specified in GB. */
   core.String diskSizeGb;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -20061,14 +21184,21 @@ class Snapshot {
 /** Contains a list of Snapshot resources. */
 class SnapshotList {
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** A list of Snapshot resources. */
   core.List<Snapshot> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -20129,12 +21259,13 @@ class SslCertificate {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource. Provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -20229,7 +21360,13 @@ class SslCertificateList {
   core.List<SslCertificate> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -20328,17 +21465,18 @@ class TargetHttpProxy {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
-   * [Output Only] Type of resource. Always compute#operation for Operation
-   * resources.
+   * [Output Only] Type of resource. Always compute#targetHttpProxy for target
+   * HTTP proxies.
    */
   core.String kind;
   /**
@@ -20415,7 +21553,8 @@ class TargetHttpProxy {
 /** A list of TargetHttpProxy resources. */
 class TargetHttpProxyList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** A list of TargetHttpProxy resources. */
@@ -20425,7 +21564,13 @@ class TargetHttpProxyList {
    * HTTP proxies.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -20500,15 +21645,19 @@ class TargetHttpsProxy {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource. Provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#targetHttpsProxy for
+   * target HTTPS proxies.
+   */
   core.String kind;
   /**
    * Name of the resource. Provided by the client when the resource is created.
@@ -20595,14 +21744,21 @@ class TargetHttpsProxy {
 /** Contains a list of TargetHttpsProxy resources. */
 class TargetHttpsProxyList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** A list of TargetHttpsProxy resources. */
   core.List<TargetHttpsProxy> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -20656,17 +21812,21 @@ class TargetInstance {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** The URL to the instance that terminates the relevant traffic. */
   core.String instance;
-  /** Type of the resource. */
+  /**
+   * [Output Only] The type of the resource. Always compute#targetInstance for
+   * target instances.
+   */
   core.String kind;
   /**
    * Name of the resource. Provided by the client when the resource is created.
@@ -20764,7 +21924,13 @@ class TargetInstanceAggregatedList {
   core.Map<core.String, TargetInstancesScopedList> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -20813,14 +21979,21 @@ class TargetInstanceAggregatedList {
 /** Contains a list of TargetInstance resources. */
 class TargetInstanceList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** A list of TargetInstance resources. */
   core.List<TargetInstance> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -20867,7 +22040,15 @@ class TargetInstanceList {
 }
 
 class TargetInstancesScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -20901,7 +22082,8 @@ class TargetInstancesScopedListWarningData {
  */
 class TargetInstancesScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -20919,9 +22101,13 @@ class TargetInstancesScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<TargetInstancesScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   TargetInstancesScopedListWarning();
@@ -21010,8 +22196,8 @@ class TargetPool {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
@@ -21038,7 +22224,8 @@ class TargetPool {
    */
   core.List<core.String> healthChecks;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -21046,7 +22233,10 @@ class TargetPool {
    * They must live in zones contained in the same region as this pool.
    */
   core.List<core.String> instances;
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#targetPool for target
+   * pools.
+   */
   core.String kind;
   /**
    * Name of the resource. Provided by the client when the resource is created.
@@ -21170,7 +22360,13 @@ class TargetPoolAggregatedList {
   core.Map<core.String, TargetPoolsScopedList> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -21254,7 +22450,13 @@ class TargetPoolList {
   core.List<TargetPool> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -21385,7 +22587,15 @@ class TargetPoolsRemoveInstanceRequest {
 }
 
 class TargetPoolsScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -21419,7 +22629,8 @@ class TargetPoolsScopedListWarningData {
  */
 class TargetPoolsScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -21437,9 +22648,13 @@ class TargetPoolsScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<TargetPoolsScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   TargetPoolsScopedListWarning();
@@ -21527,8 +22742,8 @@ class TargetVpnGateway {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource. Provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
@@ -21538,7 +22753,8 @@ class TargetVpnGateway {
    */
   core.List<core.String> forwardingRules;
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -21659,7 +22875,8 @@ class TargetVpnGateway {
 
 class TargetVpnGatewayAggregatedList {
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** A map of scoped target vpn gateway lists. */
@@ -21669,7 +22886,13 @@ class TargetVpnGatewayAggregatedList {
    * VPN gateways.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
@@ -21718,7 +22941,8 @@ class TargetVpnGatewayAggregatedList {
 /** Contains a list of TargetVpnGateway resources. */
 class TargetVpnGatewayList {
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A list of TargetVpnGateway resources. */
@@ -21728,7 +22952,13 @@ class TargetVpnGatewayList {
    * VPN gateways.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
@@ -21775,7 +23005,15 @@ class TargetVpnGatewayList {
 }
 
 class TargetVpnGatewaysScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -21809,7 +23047,8 @@ class TargetVpnGatewaysScopedListWarningData {
  */
 class TargetVpnGatewaysScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -21827,9 +23066,13 @@ class TargetVpnGatewaysScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<TargetVpnGatewaysScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   TargetVpnGatewaysScopedListWarning();
@@ -21945,8 +23188,8 @@ class UrlMap {
   /** The URL of the BackendService resource if none of the hostRules match. */
   core.String defaultService;
   /**
-   * An optional textual description of the resource. Provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
@@ -21965,9 +23208,14 @@ class UrlMap {
   }
   /** The list of HostRules to use against the URL. */
   core.List<HostRule> hostRules;
-  /** [Output Only] Unique identifier for the resource. Set by the server. */
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
   core.String id;
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#urlMaps for url maps.
+   */
   core.String kind;
   /**
    * Name of the resource. Provided by the client when the resource is created.
@@ -22074,7 +23322,13 @@ class UrlMapList {
   core.List<UrlMap> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -22325,14 +23579,15 @@ class VpnTunnel {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource. Provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /** [Output Only] Detailed status message for the VPN tunnel. */
   core.String detailedStatus;
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /**
@@ -22486,7 +23741,8 @@ class VpnTunnel {
 
 class VpnTunnelAggregatedList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A map of scoped vpn tunnel lists. */
@@ -22495,7 +23751,13 @@ class VpnTunnelAggregatedList {
    * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -22544,7 +23806,8 @@ class VpnTunnelAggregatedList {
 /** Contains a list of VpnTunnel resources. */
 class VpnTunnelList {
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
   /** [Output Only] A list of VpnTunnel resources. */
@@ -22553,7 +23816,13 @@ class VpnTunnelList {
    * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
@@ -22600,7 +23869,15 @@ class VpnTunnelList {
 }
 
 class VpnTunnelsScopedListWarningData {
-  /** [Output Only] A key for the warning data. */
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
@@ -22634,7 +23911,8 @@ class VpnTunnelsScopedListWarningData {
  */
 class VpnTunnelsScopedListWarning {
   /**
-   * [Output Only] The warning type identifier for this warning.
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -22652,9 +23930,13 @@ class VpnTunnelsScopedListWarning {
    * - "UNREACHABLE"
    */
   core.String code;
-  /** [Output Only] Metadata for this warning in key: value format. */
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
   core.List<VpnTunnelsScopedListWarningData> data;
-  /** [Output Only] Optional human-readable details for this warning. */
+  /** [Output Only] A human-readable description of the warning code. */
   core.String message;
 
   VpnTunnelsScopedListWarning();
@@ -22776,10 +24058,11 @@ class Zone {
   /** [Output Only] Textual description of the resource. */
   core.String description;
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
    */
   core.String id;
-  /** [Output Only] Type of the resource. Always kind#zone for zones. */
+  /** [Output Only] Type of the resource. Always compute#zone for zones. */
   core.String kind;
   /**
    * [Output Only] Any scheduled maintenance windows for this zone. When the
@@ -22882,7 +24165,13 @@ class ZoneList {
   core.List<Zone> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;

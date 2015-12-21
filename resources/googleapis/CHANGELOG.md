@@ -1,3 +1,25 @@
+## 0.21.0
+
+* [api-new] dataproc:v1
+* [api-new] drive:v3
+* [api-new] kgsearch:v1
+* [api] adexchangebuyer:v1_4: schema changes
+* [api] admin:directory_v1: new resources
+* [api] analytics:v3: new method/resource
+* [api] androidenterprise:v1: new resources
+* [api] books:v1: method changes
+* [api] clouddebugger:v2: method/schema changes
+* [api] content:v2: resource changes
+* [api] content:v2sandbox: resource changes
+* [api] deploymentmanager:v2: resource changes
+* [api] games:v1: new method/resource
+* [api] storage:v1: schema changes
+* [api] youtubeanalytics:v1: method changes
+* [api] youtube:v3: new resources
+* [api-breaking] cloudtrace:v1: resource removal
+* [api-breaking] genomics:v1: method removal
+* [api-breaking] plus:v1: resource removal
+
 ## 0.20.0
 
 * [api-breaking] content:v2: renaming schema, api and schema changes

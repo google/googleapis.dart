@@ -16,8 +16,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client genomics/v1';
 
 /**
- * An API to store, process, explore, and share DNA sequence reads,
- * reference-based alignments, and variant calls.
+ * An API to store, process, explore, and share genomic data. It supports
+ * reference-based alignements, genetic variants, and reference genomes. This
+ * API provides an implementation of the Global Alliance for Genomics and Health
+ * (GA4GH) v0.5.1 API as well as several extensions.
  */
 class GenomicsApi {
   /** View and manage your data in Google BigQuery */
@@ -412,11 +414,11 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Gets the access control policy for the dataset. For the definitions of
-   * datasets and other genomics resources, see [Fundamentals of Google
+   * Gets the access control policy for the dataset. This is empty if the policy
+   * or resource does not exist. See Getting a Policy for more information. For
+   * the definitions of datasets and other genomics resources, see [Fundamentals
+   * of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-   * Is empty if the policy or the resource does not exist. See Getting a Policy
-   * for more information.
    *
    * [request] - The metadata request object.
    *
@@ -470,7 +472,7 @@ class DatasetsResourceApi {
    *
    * [projectId] - Required. The project to list datasets for.
    *
-   * [pageSize] - The maximum number of results returned by this request. If
+   * [pageSize] - The maximum number of results to return in a single page. If
    * unspecified, defaults to 50. The maximum value is 1024.
    *
    * [pageToken] - The continuation token, which is used to page through large
@@ -620,11 +622,10 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Returns permissions that a caller has on the specified resource. For the
-   * definitions of datasets and other genomics resources, see [Fundamentals of
-   * Google
+   * Returns permissions that a caller has on the specified resource. See
+   * Testing Permissions for more information. For the definitions of datasets
+   * and other genomics resources, see [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-   * See Testing Permissions for more information.
    *
    * [request] - The metadata request object.
    *
@@ -767,47 +768,6 @@ class OperationsResourceApi {
 
     var _response = _requester.request(_url,
                                        "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
-  }
-
-  /**
-   * This method is not implemented. To cancel an operation, please use
-   * Operations.CancelOperation.
-   *
-   * Request parameters:
-   *
-   * [name] - The name of the operation resource to be deleted.
-   * Value must have pattern "^operations/.*$".
-   *
-   * Completes with a [Empty].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Empty> delete(core.String name) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url,
-                                       "DELETE",
                                        body: _body,
                                        queryParams: _queryParams,
                                        uploadOptions: _uploadOptions,
@@ -987,7 +947,8 @@ class ReadgroupsetsResourceApi {
    *
    * Request parameters:
    *
-   * [readGroupSetId] - Required. The ID of the read group set to export.
+   * [readGroupSetId] - Required. The ID of the read group set to export. The
+   * caller must have READ access to this read group set.
    *
    * Completes with a [Operation].
    *
@@ -1129,10 +1090,9 @@ class ReadgroupsetsResourceApi {
    * must have WRITE permissions to the dataset associated with this read group
    * set.
    *
-   * [updateMask] - An optional mask specifying which fields to update. At this
-   * time, mutable fields are referenceSetId and name. Acceptable values are
-   * "referenceSetId" and "name". If unspecified, all mutable fields will be
-   * updated.
+   * [updateMask] - An optional mask specifying which fields to update.
+   * Supported fields: * name. * referenceSetId. Leaving `updateMask` unset is
+   * equivalent to specifying all mutable fields.
    *
    * Completes with a [ReadGroupSet].
    *
@@ -1337,9 +1297,12 @@ class ReadsResourceApi {
    * returns all reads whose alignment to the reference genome overlap the
    * range. A query which specifies only read group set IDs yields all reads in
    * those read group sets, including unmapped reads. All reads returned
-   * (including reads on subsequent pages) are ordered by genomic coordinate
-   * (reference sequence & position). Reads with equivalent genomic coordinates
-   * are returned in a deterministic order. Implements
+   * (including reads on subsequent pages) are ordered by genomic coordinate (by
+   * reference sequence, then position). Reads with equivalent genomic
+   * coordinates are returned in an unspecified order. This order is consistent,
+   * such that two queries for the same content (regardless of page size) yield
+   * reads in the same order across their respective streams of paginated
+   * responses. Implements
    * [GlobalAllianceApi.searchReads](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/readmethods.avdl#L85).
    *
    * [request] - The metadata request object.
@@ -1376,6 +1339,46 @@ class ReadsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new SearchReadsResponse.fromJson(data));
+  }
+
+  /**
+   * Returns a stream of all the reads matching the search request, ordered by
+   * reference name, position, and ID.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [StreamReadsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StreamReadsResponse> stream(StreamReadsRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/reads:stream';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StreamReadsResponse.fromJson(data));
   }
 
 }
@@ -1505,8 +1508,9 @@ class ReferencesBasesResourceApi {
    * result sets. To get the next page of results, set this parameter to the
    * value of `nextPageToken` from the previous response.
    *
-   * [pageSize] - Specifies the maximum number of bases to return in a single
-   * page.
+   * [pageSize] - The maximum number of bases to return in a single page. If
+   * unspecified, defaults to 200Kbp (kilo base pairs). The maximum value is
+   * 10Mbp (mega base pairs).
    *
    * Completes with a [ListBasesResponse].
    *
@@ -1610,7 +1614,7 @@ class ReferencesetsResourceApi {
    * of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    * Implements
-   * [GlobalAllianceApi.searchReferenceSets](http://ga4gh.org/documentation/api/v0.5.1/ga4gh_api.html#/schema/org.ga4gh.searchReferenceSets).
+   * [GlobalAllianceApi.searchReferenceSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L71)
    *
    * [request] - The metadata request object.
    *
@@ -1931,6 +1935,46 @@ class VariantsResourceApi {
     return _response.then((data) => new SearchVariantsResponse.fromJson(data));
   }
 
+  /**
+   * Returns a stream of all the variants matching the search request, ordered
+   * by reference name, position, and ID.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [StreamVariantsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StreamVariantsResponse> stream(StreamVariantsRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/variants:stream';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StreamVariantsResponse.fromJson(data));
+  }
+
 }
 
 
@@ -2220,12 +2264,12 @@ class VariantsetsResourceApi {
 class Binding {
   /**
    * Specifies the identities requesting access for a Cloud Platform resource.
-   * `members` can have the following formats: * `allUsers`: A special
-   * identifier that represents anyone who is on the internet; with or without a
-   * Google account. * `allAuthenticatedUsers`: A special identifier that
-   * represents anyone who is authenticated with a Google account or a service
-   * account. * `user:{emailid}`: An email address that represents a specific
-   * Google account. For example, `alice@gmail.com` or `joe@example.com`. *
+   * `members` can have the following values: * `allUsers`: A special identifier
+   * that represents anyone who is on the internet; with or without a Google
+   * account. * `allAuthenticatedUsers`: A special identifier that represents
+   * anyone who is authenticated with a Google account or a service account. *
+   * `user:{emailid}`: An email address that represents a specific Google
+   * account. For example, `alice@gmail.com` or `joe@example.com`. *
    * `serviceAccount:{emailid}`: An email address that represents a service
    * account. For example, `my-other-app@appspot.gserviceaccount.com`. *
    * `group:{emailid}`: An email address that represents a Google group. For
@@ -2519,17 +2563,18 @@ class Empty {
 class Experiment {
   /**
    * The instrument model used as part of this experiment. This maps to
-   * sequencing technology in BAM.
+   * sequencing technology in the SAM spec.
    */
   core.String instrumentModel;
   /**
-   * The library used as part of this experiment. Note: This is not an actual ID
-   * within this repository, but rather an identifier for a library which may be
-   * meaningful to some external system.
+   * A client-supplied library identifier; a library is a collection of DNA
+   * fragments which have been prepared for sequencing from a sample. This field
+   * is important for quality control as error or bias can be introduced during
+   * sample preparation.
    */
   core.String libraryId;
   /**
-   * The platform unit used as part of this experiment e.g.
+   * The platform unit used as part of this experiment, for example
    * flowcell-barcode.lane for Illumina or slide for SOLiD. Corresponds to the
    * @RG PU field in the SAM spec.
    */
@@ -2582,6 +2627,7 @@ class ExportReadGroupSetRequest {
   core.String exportUri;
   /**
    * Required. The Google Developers Console project ID that owns this export.
+   * The caller must have WRITE access to this project.
    */
   core.String projectId;
   /**
@@ -2861,7 +2907,7 @@ class ImportVariantsRequest {
 
 /** The variant data import response. */
 class ImportVariantsResponse {
-  /** IDs of the call sets that were created. */
+  /** IDs of the call sets created during the import. */
   core.List<core.String> callSetIds;
 
   ImportVariantsResponse();
@@ -2893,7 +2939,8 @@ class LinearAlignment {
   core.List<CigarUnit> cigar;
   /**
    * The mapping quality of this alignment. Represents how likely the read maps
-   * to this position as opposed to other locations.
+   * to this position as opposed to other locations. Specifically, this is -10
+   * log10 Pr(mapping position is wrong), rounded to the nearest integer.
    */
   core.int mappingQuality;
   /** The position of this alignment. */
@@ -3266,15 +3313,15 @@ class Policy {
    */
   core.List<Binding> bindings;
   /**
-   * The etag is used for optimistic concurrency control as a way to help
-   * prevent simultaneous updates of a policy from overwriting each other. It is
-   * strongly suggested that systems make use of the etag in the
+   * `etag` is used for optimistic concurrency control as a way to help prevent
+   * simultaneous updates of a policy from overwriting each other. It is
+   * strongly suggested that systems make use of the `etag` in the
    * read-modify-write cycle to perform policy updates in order to avoid race
-   * conditions: Etags are returned in the response to GetIamPolicy, and systems
-   * are expected to put that etag in the request to SetIamPolicy to ensure that
-   * their change will be applied to the same version of the policy. If no etag
-   * is provided in the call to SetIamPolicy, then the existing policy is
-   * overwritten blindly.
+   * conditions: An `etag` is returned in the response to `getIamPolicy`, and
+   * systems are expected to put that etag in the request to `setIamPolicy` to
+   * ensure that their change will be applied to the same version of the policy.
+   * If no `etag` is provided in the call to `setIamPolicy`, then the existing
+   * policy is overwritten blindly.
    */
   core.String etag;
   core.List<core.int> get etagAsBytes {
@@ -3284,11 +3331,7 @@ class Policy {
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-  /**
-   * Version of the `Policy`. The default version is 0. 0 =
-   * resourcemanager_projects only support legacy roles. 1 = supports non-legacy
-   * roles 2 = supports AuditConfig
-   */
+  /** Version of the `Policy`. The default version is 0. */
   core.int version;
 
   Policy();
@@ -3376,7 +3419,10 @@ class Program {
    * `prevProgramId` to define an ordering between programs.
    */
   core.String id;
-  /** The name of the program. */
+  /**
+   * The display name of the program. This is typically the colloquial name of
+   * the tool used, for example 'bwa' or 'picard'.
+   */
   core.String name;
   /** The ID of the program run before this one. */
   core.String prevProgramId;
@@ -3470,12 +3516,26 @@ class Range {
  * read group and exactly one read group set. For more genomics resource
  * definitions, see [Fundamentals of Google
  * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
- * ### Generating a reference-aligned sequence string When interacting with
- * mapped reads, it's often useful to produce a string representing the local
- * alignment of the read to reference. The following pseudocode demonstrates one
- * way of doing this: out = "" offset = 0 for c in read.alignment.cigar { switch
- * c.operation { case "ALIGNMENT_MATCH", "SEQUENCE_MATCH", "SEQUENCE_MISMATCH":
- * out += read.alignedSequence[offset:offset+c.operationLength] offset +=
+ * ### Reverse-stranded reads Mapped reads (reads having a non-null `alignment`)
+ * can be aligned to either the forward or the reverse strand of their
+ * associated reference. Strandedness of a mapped read is encoded by
+ * `alignment.position.reverseStrand`. If we consider the reference to be a
+ * forward-stranded coordinate space of `[0, reference.length)` with `0` as the
+ * left-most position and `reference.length` as the right-most position, reads
+ * are always aligned left to right. That is, `alignment.position.position`
+ * always refers to the left-most reference coordinate and `alignment.cigar`
+ * describes the alignment of this read to the reference from left to right. All
+ * per-base fields such as `alignedSequence` and `alignedQuality` share this
+ * same left-to-right orientation; this is true of reads which are aligned to
+ * either strand. For reverse-stranded reads, this means that `alignedSequence`
+ * is the reverse complement of the bases that were originally reported by the
+ * sequencing machine. ### Generating a reference-aligned sequence string When
+ * interacting with mapped reads, it's often useful to produce a string
+ * representing the local alignment of the read to reference. The following
+ * pseudocode demonstrates one way of doing this: out = "" offset = 0 for c in
+ * read.alignment.cigar { switch c.operation { case "ALIGNMENT_MATCH",
+ * "SEQUENCE_MATCH", "SEQUENCE_MISMATCH": out +=
+ * read.alignedSequence[offset:offset+c.operationLength] offset +=
  * c.operationLength break case "CLIP_SOFT", "INSERT": offset +=
  * c.operationLength break case "PAD": out += repeat("*", c.operationLength)
  * break case "DELETE": out += repeat("-", c.operationLength) break case "SKIP":
@@ -3490,31 +3550,35 @@ class Range {
  */
 class Read {
   /**
-   * The quality of the read sequence contained in this alignment record.
+   * The quality of the read sequence contained in this alignment record
+   * (equivalent to QUAL in SAM). `alignedSequence` and `alignedQuality` may be
+   * shorter than the full read sequence and quality. This will occur if the
+   * alignment is part of a chimeric alignment, or if the read was trimmed. When
+   * this occurs, the CIGAR for this read will begin/end with a hard clip
+   * operator that will indicate the length of the excised sequence.
+   */
+  core.List<core.int> alignedQuality;
+  /**
+   * The bases of the read sequence contained in this alignment record,
+   * **without CIGAR operations applied** (equivalent to SEQ in SAM).
    * `alignedSequence` and `alignedQuality` may be shorter than the full read
    * sequence and quality. This will occur if the alignment is part of a
    * chimeric alignment, or if the read was trimmed. When this occurs, the CIGAR
    * for this read will begin/end with a hard clip operator that will indicate
    * the length of the excised sequence.
    */
-  core.List<core.int> alignedQuality;
-  /**
-   * The bases of the read sequence contained in this alignment record, *without
-   * CIGAR operations applied*. `alignedSequence` and `alignedQuality` may be
-   * shorter than the full read sequence and quality. This will occur if the
-   * alignment is part of a chimeric alignment, or if the read was trimmed. When
-   * this occurs, the CIGAR for this read will begin/end with a hard clip
-   * operator that will indicate the length of the excised sequence.
-   */
   core.String alignedSequence;
   /**
-   * The linear alignment for this alignment record. This field will be null if
-   * the read is unmapped.
+   * The linear alignment for this alignment record. This field is null for
+   * unmapped reads.
    */
   LinearAlignment alignment;
-  /** The fragment is a PCR or optical duplicate (SAM flag 0x400) */
+  /** The fragment is a PCR or optical duplicate (SAM flag 0x400). */
   core.bool duplicateFragment;
-  /** SAM flag 0x200 */
+  /**
+   * Whether this read did not pass filters, such as platform or vendor quality
+   * controls (SAM flag 0x200).
+   */
   core.bool failedVendorQualityChecks;
   /** The observed length of the fragment, equivalent to TLEN in SAM. */
   core.int fragmentLength;
@@ -3542,17 +3606,18 @@ class Read {
   core.int numberReads;
   /**
    * The orientation and the distance between reads from the fragment are
-   * consistent with the sequencing protocol (SAM flag 0x2)
+   * consistent with the sequencing protocol (SAM flag 0x2).
    */
   core.bool properPlacement;
   /**
-   * The ID of the read group this read belongs to. (Every read must belong to
-   * exactly one read group.)
+   * The ID of the read group this read belongs to. A read belongs to exactly
+   * one read group. This is a server-generated ID which is distinct from SAM's
+   * RG tag (for that value, see ReadGroup.name).
    */
   core.String readGroupId;
   /**
-   * The ID of the read group set this read belongs to. (Every read must belong
-   * to exactly one read group set.)
+   * The ID of the read group set this read belongs to. A read belongs to
+   * exactly one read group set.
    */
   core.String readGroupSetId;
   /**
@@ -3700,7 +3765,7 @@ class Read {
  * A read group is all the data that's processed the same way by the sequencer.
  */
 class ReadGroup {
-  /** The ID of the dataset this read group belongs to. */
+  /** The dataset to which this read group belongs. */
   core.String datasetId;
   /** A free-form text description of this read group. */
   core.String description;
@@ -3708,8 +3773,8 @@ class ReadGroup {
   Experiment experiment;
   /**
    * The server-generated read group ID, unique for all read groups. Note: This
-   * is different than the `@RG ID` field in the SAM spec. For that value, see
-   * the `name` field.
+   * is different than the @RG ID field in the SAM spec. For that value, see
+   * name.
    */
   core.String id;
   /**
@@ -3735,16 +3800,9 @@ class ReadGroup {
    * only the first read group in a returned set will have this field populated.
    */
   core.List<Program> programs;
-  /**
-   * The reference set the reads in this read group are aligned to. Required if
-   * there are any read alignments.
-   */
+  /** The reference set the reads in this read group are aligned to. */
   core.String referenceSetId;
-  /**
-   * The sample this read group's data was generated from. Note: This is not an
-   * actual ID within this repository, but rather an identifier for a sample
-   * which may be meaningful to some external system.
-   */
+  /** A client-supplied sample identifier for the reads in this read group. */
   core.String sampleId;
 
   ReadGroup();
@@ -3828,7 +3886,7 @@ class ReadGroup {
  * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
  */
 class ReadGroupSet {
-  /** The dataset ID. */
+  /** The dataset to which this read group set belongs. */
   core.String datasetId;
   /**
    * The filename of the original source file for this read group set, if any.
@@ -3855,7 +3913,9 @@ class ReadGroupSet {
    * group set.
    */
   core.List<ReadGroup> readGroups;
-  /** The reference set the reads in this read group set are aligned to. */
+  /**
+   * The reference set to which the reads in this read group set are aligned.
+   */
   core.String referenceSetId;
 
   ReadGroupSet();
@@ -3933,8 +3993,7 @@ class Reference {
   /** The name of this reference, for example `22`. */
   core.String name;
   /**
-   * ID from http://www.ncbi.nlm.nih.gov/taxonomy (e.g. 9606->human) if not
-   * specified by the containing reference set.
+   * ID from http://www.ncbi.nlm.nih.gov/taxonomy. For example, 9606 for human.
    */
   core.int ncbiTaxonId;
   /**
@@ -3943,8 +4002,8 @@ class Reference {
    */
   core.List<core.String> sourceAccessions;
   /**
-   * The URI from which the sequence was obtained. Specifies a FASTA format
-   * file/string with one name, sequence pair.
+   * The URI from which the sequence was obtained. Typically specifies a FASTA
+   * format file.
    */
   core.String sourceUri;
 
@@ -4006,7 +4065,7 @@ class Reference {
  * in a particular reference.
  */
 class ReferenceBound {
-  /** The reference the bound is associate with. */
+  /** The name of the reference associated with this ReferenceBound. */
   core.String referenceName;
   /**
    * An upper bound (inclusive) on the starting coordinate of any variant in the
@@ -4064,11 +4123,11 @@ class ReferenceSet {
    */
   core.String md5checksum;
   /**
-   * ID from http://www.ncbi.nlm.nih.gov/taxonomy (e.g. 9606->human) indicating
-   * the species which this assembly is intended to model. Note that contained
-   * references may specify a different `ncbiTaxonId`, as assemblies may contain
-   * reference sequences which do not belong to the modeled species, e.g. EBV in
-   * a human reference genome.
+   * ID from http://www.ncbi.nlm.nih.gov/taxonomy (for example, 9606 for human)
+   * indicating the species which this reference set is intended to model. Note
+   * that contained references may specify a different `ncbiTaxonId`, as
+   * assemblies may contain reference sequences which do not belong to the
+   * modeled species, for example EBV in a human reference genome.
    */
   core.int ncbiTaxonId;
   /**
@@ -4151,8 +4210,8 @@ class SearchCallSetsRequest {
    */
   core.String name;
   /**
-   * The maximum number of call sets to return. If unspecified, defaults to
-   * 1000.
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 1024.
    */
   core.int pageSize;
   /**
@@ -4249,8 +4308,8 @@ class SearchReadGroupSetsRequest {
    */
   core.String name;
   /**
-   * Specifies number of results to return in a single page. If unspecified, it
-   * will default to 256. The maximum value is 1024.
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 256. The maximum value is 1024.
    */
   core.int pageSize;
   /**
@@ -4337,8 +4396,8 @@ class SearchReadsRequest {
    */
   core.String end;
   /**
-   * Specifies number of results to return in a single page. If unspecified, it
-   * will default to 256. The maximum value is 2048.
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 256. The maximum value is 2048.
    */
   core.int pageSize;
   /**
@@ -4362,7 +4421,8 @@ class SearchReadsRequest {
   core.List<core.String> readGroupSetIds;
   /**
    * The reference sequence name, for example `chr1`, `1`, or `chrX`. If set to
-   * *, only unmapped reads are returned.
+   * `*`, only unmapped reads are returned. If unspecified, all reads (mapped
+   * and unmapped) are returned.
    */
   core.String referenceName;
   /**
@@ -4465,11 +4525,9 @@ class SearchReadsResponse {
 
 class SearchReferenceSetsRequest {
   /**
-   * If present, return references for which the accession matches any of these
-   * strings. Best to give a version number, for example `GCF_000001405.26`. If
-   * only the main accession number is given then all records with that main
-   * accession will be returned, whichever version. Note that different versions
-   * will have different sequences.
+   * If present, return reference sets for which a prefix of any of
+   * sourceAccessions match any of these strings. Accession numbers typically
+   * have a main number and a version, for example `NC_000001.11`.
    */
   core.List<core.String> accessions;
   /**
@@ -4478,11 +4536,14 @@ class SearchReferenceSetsRequest {
    */
   core.String assemblyId;
   /**
-   * If present, return references for which the `md5checksum` matches. See
-   * `ReferenceSet.md5checksum` for details.
+   * If present, return reference sets for which the md5checksum matches
+   * exactly.
    */
   core.List<core.String> md5checksums;
-  /** Specifies the maximum number of results to return in a single page. */
+  /**
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 1024. The maximum value is 4096.
+   */
   core.int pageSize;
   /**
    * The continuation token, which is used to page through large result sets. To
@@ -4567,19 +4628,19 @@ class SearchReferenceSetsResponse {
 
 class SearchReferencesRequest {
   /**
-   * If present, return references for which the accession matches this string.
-   * Best to give a version number, for example `GCF_000001405.26`. If only the
-   * main accession number is given then all records with that main accession
-   * will be returned, whichever version. Note that different versions will have
-   * different sequences.
+   * If present, return references for which a prefix of any of sourceAccessions
+   * match any of these strings. Accession numbers typically have a main number
+   * and a version, for example `GCF_000001405.26`.
    */
   core.List<core.String> accessions;
   /**
-   * If present, return references for which the `md5checksum` matches. See
-   * `Reference.md5checksum` for construction details.
+   * If present, return references for which the md5checksum matches exactly.
    */
   core.List<core.String> md5checksums;
-  /** Specifies the maximum number of results to return in a single page. */
+  /**
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 1024. The maximum value is 4096.
+   */
   core.int pageSize;
   /**
    * The continuation token, which is used to page through large result sets. To
@@ -4671,7 +4732,10 @@ class SearchVariantSetsRequest {
    * belong to this dataset will be returned.
    */
   core.List<core.String> datasetIds;
-  /** The maximum number of variant sets to return in a request. */
+  /**
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 1024.
+   */
   core.int pageSize;
   /**
    * The continuation token, which is used to page through large result sets. To
@@ -4758,13 +4822,15 @@ class SearchVariantsRequest {
    */
   core.String end;
   /**
-   * The maximum number of calls to return. However, at least one variant will
-   * always be returned, even if it has more calls than this limit. If
-   * unspecified, defaults to 5000.
+   * The maximum number of calls to return in a single page. Note that this
+   * limit may be exceeded; at least one variant is always returned per page,
+   * even if it has more calls than this limit. If unspecified, defaults to
+   * 5000. The maximum value is 10000.
    */
   core.int maxCalls;
   /**
-   * The maximum number of variants to return. If unspecified, defaults to 5000.
+   * The maximum number of variants to return in a single page. If unspecified,
+   * defaults to 5000. The maximum value is 10000.
    */
   core.int pageSize;
   /**
@@ -4991,6 +5057,186 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/** The stream reads request. */
+class StreamReadsRequest {
+  /**
+   * The end position of the range on the reference, 0-based exclusive. If
+   * specified, `referenceName` must also be specified.
+   */
+  core.String end;
+  /**
+   * The Google Developers Console project ID or number which will be billed for
+   * this access. The caller must have WRITE access to this project. Required.
+   */
+  core.String projectId;
+  /** The ID of the read group set from which to stream reads. */
+  core.String readGroupSetId;
+  /**
+   * The reference sequence name, for example `chr1`, `1`, or `chrX`. If set to
+   * *, only unmapped reads are returned.
+   */
+  core.String referenceName;
+  /**
+   * The start position of the range on the reference, 0-based inclusive. If
+   * specified, `referenceName` must also be specified.
+   */
+  core.String start;
+
+  StreamReadsRequest();
+
+  StreamReadsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("readGroupSetId")) {
+      readGroupSetId = _json["readGroupSetId"];
+    }
+    if (_json.containsKey("referenceName")) {
+      referenceName = _json["referenceName"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (readGroupSetId != null) {
+      _json["readGroupSetId"] = readGroupSetId;
+    }
+    if (referenceName != null) {
+      _json["referenceName"] = referenceName;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
+    return _json;
+  }
+}
+
+class StreamReadsResponse {
+  core.List<Read> alignments;
+
+  StreamReadsResponse();
+
+  StreamReadsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("alignments")) {
+      alignments = _json["alignments"].map((value) => new Read.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (alignments != null) {
+      _json["alignments"] = alignments.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** The stream variants request. */
+class StreamVariantsRequest {
+  /**
+   * Only return variant calls which belong to call sets with these IDs. Leaving
+   * this blank returns all variant calls.
+   */
+  core.List<core.String> callSetIds;
+  /**
+   * The end of the window (0-based, exclusive) for which overlapping variants
+   * should be returned.
+   */
+  core.String end;
+  /**
+   * The Google Developers Console project ID or number which will be billed for
+   * this access. The caller must have WRITE access to this project. Required.
+   */
+  core.String projectId;
+  /** Required. Only return variants in this reference sequence. */
+  core.String referenceName;
+  /**
+   * The beginning of the window (0-based, inclusive) for which overlapping
+   * variants should be returned.
+   */
+  core.String start;
+  /** The variant set ID from which to stream variants. */
+  core.String variantSetId;
+
+  StreamVariantsRequest();
+
+  StreamVariantsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("callSetIds")) {
+      callSetIds = _json["callSetIds"];
+    }
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("referenceName")) {
+      referenceName = _json["referenceName"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+    if (_json.containsKey("variantSetId")) {
+      variantSetId = _json["variantSetId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (callSetIds != null) {
+      _json["callSetIds"] = callSetIds;
+    }
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (referenceName != null) {
+      _json["referenceName"] = referenceName;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
+    if (variantSetId != null) {
+      _json["variantSetId"] = variantSetId;
+    }
+    return _json;
+  }
+}
+
+class StreamVariantsResponse {
+  core.List<Variant> variants;
+
+  StreamVariantsResponse();
+
+  StreamVariantsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("variants")) {
+      variants = _json["variants"].map((value) => new Variant.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (variants != null) {
+      _json["variants"] = variants.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -5330,6 +5576,18 @@ class VariantSet {
    * associated coordinate upper bounds for each one.
    */
   core.List<ReferenceBound> referenceBounds;
+  /**
+   * The reference set to which the variant set is mapped. The reference set
+   * describes the alignment provenance of the variant set, while the
+   * `referenceBounds` describe the shape of the actual variant data. The
+   * reference set's reference names are a superset of those found in the
+   * `referenceBounds`. For example, given a variant set that is mapped to the
+   * GRCh38 reference set and contains a single variant on reference 'X',
+   * `referenceBounds` would contain only an entry for 'X', while the associated
+   * reference set enumerates all possible references: '1', '2', 'X', 'Y', 'MT',
+   * etc.
+   */
+  core.String referenceSetId;
 
   VariantSet();
 
@@ -5346,6 +5604,9 @@ class VariantSet {
     if (_json.containsKey("referenceBounds")) {
       referenceBounds = _json["referenceBounds"].map((value) => new ReferenceBound.fromJson(value)).toList();
     }
+    if (_json.containsKey("referenceSetId")) {
+      referenceSetId = _json["referenceSetId"];
+    }
   }
 
   core.Map toJson() {
@@ -5361,6 +5622,9 @@ class VariantSet {
     }
     if (referenceBounds != null) {
       _json["referenceBounds"] = referenceBounds.map((value) => (value).toJson()).toList();
+    }
+    if (referenceSetId != null) {
+      _json["referenceSetId"] = referenceSetId;
     }
     return _json;
   }

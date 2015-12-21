@@ -15,7 +15,7 @@
     "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/AHR2eM5ICQoKie-925fvc57J2m0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/RIyGUuci620MgVanBsNgFU0lsdc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -618,7 +618,7 @@
             }
         }
     },
-    "revision": "20151112",
+    "revision": "20151211",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Error": {
@@ -1293,6 +1293,10 @@
         "OrdersCancelLineItemRequest": {
             "id": "OrdersCancelLineItemRequest",
             "properties": {
+                "amount": {
+                    "$ref": "Price",
+                    "description": "Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The amount must not be larger than the net amount left on the order."
+                },
                 "lineItemId": {
                     "description": "The ID of the line item to cancel.",
                     "type": "string"
@@ -1480,6 +1484,10 @@
         "OrdersCustomBatchRequestEntryCancelLineItem": {
             "id": "OrdersCustomBatchRequestEntryCancelLineItem",
             "properties": {
+                "amount": {
+                    "$ref": "Price",
+                    "description": "Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The amount must not be larger than the net amount left on the order."
+                },
                 "lineItemId": {
                     "description": "The ID of the line item to cancel.",
                     "type": "string"

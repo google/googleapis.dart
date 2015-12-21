@@ -88,7 +88,7 @@ Official API documentation: https://cloud.google.com/monitoring/v2beta2/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Resource Manager API - cloudresourcemanager v1beta1
 
-The Google Cloud Resource Manager API provides methods for creating, reading, and updating of project metadata.
+The Google Cloud Resource Manager API provides methods for creating, reading, and updating project metadata.
 
 Official API documentation: https://cloud.google.com/resource-manager
 
@@ -103,6 +103,12 @@ Official API documentation: https://cloud.google.com/compute/docs/access/user-ac
 Google Dataflow API.
 
 Official API documentation: https://cloud.google.com/dataflow
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1beta1
+
+An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
+
+Official API documentation: https://cloud.google.com/dataproc/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Datastore API - datastore v1beta2
 
@@ -122,19 +128,13 @@ The Deployment Manager API allows users to declaratively configure, deploy and r
 
 Official API documentation: https://developers.google.com/deployment-manager/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud DNS API - dns v1beta1
-
-The Google Cloud DNS API provides services for configuring and serving authoritative DNS records.
-
-Official API documentation: https://developers.google.com/cloud-dns
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1beta2
 
 Provides access to Genomics data.
 
 Official API documentation: https://developers.google.com/genomics/v1beta2/reference
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v1beta3
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v2beta1
 
 The Google Cloud Logging API lets you write log entries and manage your logs, log sinks and logs-based metrics.
 

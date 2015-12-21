@@ -457,6 +457,55 @@ class CreativesResourceApi {
       _requester = client;
 
   /**
+   * Add a deal id association for the creative.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The id for the account that will serve this creative.
+   *
+   * [buyerCreativeId] - The buyer-specific id for this creative.
+   *
+   * [dealId] - The id of the deal id to associate with this creative.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future addDeal(core.int accountId, core.String buyerCreativeId, core.String dealId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (buyerCreativeId == null) {
+      throw new core.ArgumentError("Parameter buyerCreativeId is required.");
+    }
+    if (dealId == null) {
+      throw new core.ArgumentError("Parameter dealId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'creatives/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$buyerCreativeId') + '/addDeal/' + commons.Escaper.ecapeVariable('$dealId');
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
    * Gets the status for a single creative. A creative will be available 30-40
    * minutes after submission.
    *
@@ -552,16 +601,15 @@ class CreativesResourceApi {
    * [buyerCreativeId] - When specified, only creatives for the given buyer
    * creative ids are returned.
    *
-   * [dealsStatusFilter] - When specified, only creatives having the given
-   * direct deals status are returned.
+   * [dealsStatusFilter] - When specified, only creatives having the given deals
+   * status are returned.
    * Possible string values are:
-   * - "approved" : Creatives which have been approved for serving on direct
-   * deals.
+   * - "approved" : Creatives which have been approved for serving on deals.
    * - "conditionally_approved" : Creatives which have been conditionally
-   * approved for serving on direct deals.
+   * approved for serving on deals.
    * - "disapproved" : Creatives which have been disapproved for serving on
-   * direct deals.
-   * - "not_checked" : Creatives whose direct deals status is not yet checked.
+   * deals.
+   * - "not_checked" : Creatives whose deals status is not yet checked.
    *
    * [maxResults] - Maximum number of entries returned on one result page. If
    * not set, the default is 100. Optional.
@@ -627,6 +675,55 @@ class CreativesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new CreativesList.fromJson(data));
+  }
+
+  /**
+   * Remove a deal id associated with the creative.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The id for the account that will serve this creative.
+   *
+   * [buyerCreativeId] - The buyer-specific id for this creative.
+   *
+   * [dealId] - The id of the deal id to disassociate with this creative.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future removeDeal(core.int accountId, core.String buyerCreativeId, core.String dealId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (buyerCreativeId == null) {
+      throw new core.ArgumentError("Parameter buyerCreativeId is required.");
+    }
+    if (dealId == null) {
+      throw new core.ArgumentError("Parameter dealId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'creatives/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$buyerCreativeId') + '/removeDeal/' + commons.Escaper.ecapeVariable('$dealId');
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
   }
 
 }
@@ -3105,12 +3202,16 @@ class DeleteOrderDealsResponse {
 }
 
 class DeliveryControl {
+  core.String creativeBlockingLevel;
   core.String deliveryRateType;
   core.List<DeliveryControlFrequencyCap> frequencyCaps;
 
   DeliveryControl();
 
   DeliveryControl.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeBlockingLevel")) {
+      creativeBlockingLevel = _json["creativeBlockingLevel"];
+    }
     if (_json.containsKey("deliveryRateType")) {
       deliveryRateType = _json["deliveryRateType"];
     }
@@ -3121,6 +3222,9 @@ class DeliveryControl {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (creativeBlockingLevel != null) {
+      _json["creativeBlockingLevel"] = creativeBlockingLevel;
+    }
     if (deliveryRateType != null) {
       _json["deliveryRateType"] = deliveryRateType;
     }
@@ -3339,6 +3443,8 @@ class MarketplaceDeal {
   PrivateData buyerPrivateData;
   /** The time (ms since epoch) of the deal creation. (readonly) */
   core.String creationTimeMs;
+  /** Specifies the creative pre-approval policy (buyer-readonly) */
+  core.String creativePreApprovalPolicy;
   /** A unique deal=id for the deal (readonly). */
   core.String dealId;
   /**
@@ -3406,6 +3512,9 @@ class MarketplaceDeal {
     if (_json.containsKey("creationTimeMs")) {
       creationTimeMs = _json["creationTimeMs"];
     }
+    if (_json.containsKey("creativePreApprovalPolicy")) {
+      creativePreApprovalPolicy = _json["creativePreApprovalPolicy"];
+    }
     if (_json.containsKey("dealId")) {
       dealId = _json["dealId"];
     }
@@ -3466,6 +3575,9 @@ class MarketplaceDeal {
     }
     if (creationTimeMs != null) {
       _json["creationTimeMs"] = creationTimeMs;
+    }
+    if (creativePreApprovalPolicy != null) {
+      _json["creativePreApprovalPolicy"] = creativePreApprovalPolicy;
     }
     if (dealId != null) {
       _json["dealId"] = dealId;
@@ -3726,6 +3838,10 @@ class MarketplaceOffer {
    */
   core.bool hasCreatorSignedOff;
   /**
+   * What exchange will provide this inventory (readonly, except on create).
+   */
+  core.String inventorySource;
+  /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "adexchangebuyer#marketplaceOffer".
    */
@@ -3779,6 +3895,9 @@ class MarketplaceOffer {
     }
     if (_json.containsKey("hasCreatorSignedOff")) {
       hasCreatorSignedOff = _json["hasCreatorSignedOff"];
+    }
+    if (_json.containsKey("inventorySource")) {
+      inventorySource = _json["inventorySource"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3834,6 +3953,9 @@ class MarketplaceOffer {
     }
     if (hasCreatorSignedOff != null) {
       _json["hasCreatorSignedOff"] = hasCreatorSignedOff;
+    }
+    if (inventorySource != null) {
+      _json["inventorySource"] = inventorySource;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3906,6 +4028,10 @@ class MarketplaceOrder {
    * finalized by the seller. (buyer-readonly)
    */
   core.bool hasSellerSignedOff;
+  /**
+   * What exchange will provide this inventory (readonly, except on create).
+   */
+  core.String inventorySource;
   /** True if the order is being renegotiated (readonly). */
   core.bool isRenegotiating;
   /**
@@ -3962,6 +4088,9 @@ class MarketplaceOrder {
     }
     if (_json.containsKey("hasSellerSignedOff")) {
       hasSellerSignedOff = _json["hasSellerSignedOff"];
+    }
+    if (_json.containsKey("inventorySource")) {
+      inventorySource = _json["inventorySource"];
     }
     if (_json.containsKey("isRenegotiating")) {
       isRenegotiating = _json["isRenegotiating"];
@@ -4026,6 +4155,9 @@ class MarketplaceOrder {
     }
     if (hasSellerSignedOff != null) {
       _json["hasSellerSignedOff"] = hasSellerSignedOff;
+    }
+    if (inventorySource != null) {
+      _json["inventorySource"] = inventorySource;
     }
     if (isRenegotiating != null) {
       _json["isRenegotiating"] = isRenegotiating;
@@ -4432,6 +4564,52 @@ class PretargetingConfigPlacements {
   }
 }
 
+class PretargetingConfigVideoPlayerSizes {
+  /**
+   * The type of aspect ratio. Leave this field blank to match all aspect
+   * ratios.
+   */
+  core.String aspectRatio;
+  /**
+   * The minimum player height in pixels. Leave this field blank to match any
+   * player height.
+   */
+  core.String minHeight;
+  /**
+   * The minimum player width in pixels. Leave this field blank to match any
+   * player width.
+   */
+  core.String minWidth;
+
+  PretargetingConfigVideoPlayerSizes();
+
+  PretargetingConfigVideoPlayerSizes.fromJson(core.Map _json) {
+    if (_json.containsKey("aspectRatio")) {
+      aspectRatio = _json["aspectRatio"];
+    }
+    if (_json.containsKey("minHeight")) {
+      minHeight = _json["minHeight"];
+    }
+    if (_json.containsKey("minWidth")) {
+      minWidth = _json["minWidth"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (aspectRatio != null) {
+      _json["aspectRatio"] = aspectRatio;
+    }
+    if (minHeight != null) {
+      _json["minHeight"] = minHeight;
+    }
+    if (minWidth != null) {
+      _json["minWidth"] = minWidth;
+    }
+    return _json;
+  }
+}
+
 class PretargetingConfig {
   /**
    * The id for billing purposes, provided for reference. Leave this field blank
@@ -4518,6 +4696,10 @@ class PretargetingConfig {
   core.List<core.String> vendorTypes;
   /** Requests containing any of these vertical ids will match. */
   core.List<core.String> verticals;
+  /**
+   * Video requests satisfying any of these player size constraints will match.
+   */
+  core.List<PretargetingConfigVideoPlayerSizes> videoPlayerSizes;
 
   PretargetingConfig();
 
@@ -4591,6 +4773,9 @@ class PretargetingConfig {
     if (_json.containsKey("verticals")) {
       verticals = _json["verticals"];
     }
+    if (_json.containsKey("videoPlayerSizes")) {
+      videoPlayerSizes = _json["videoPlayerSizes"].map((value) => new PretargetingConfigVideoPlayerSizes.fromJson(value)).toList();
+    }
   }
 
   core.Map toJson() {
@@ -4663,6 +4848,9 @@ class PretargetingConfig {
     }
     if (verticals != null) {
       _json["verticals"] = verticals;
+    }
+    if (videoPlayerSizes != null) {
+      _json["videoPlayerSizes"] = videoPlayerSizes.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

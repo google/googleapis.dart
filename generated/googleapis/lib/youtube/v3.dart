@@ -50,14 +50,19 @@ class YoutubeApi {
   ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
   CommentThreadsResourceApi get commentThreads => new CommentThreadsResourceApi(_requester);
   CommentsResourceApi get comments => new CommentsResourceApi(_requester);
+  FanFundingEventsResourceApi get fanFundingEvents => new FanFundingEventsResourceApi(_requester);
   GuideCategoriesResourceApi get guideCategories => new GuideCategoriesResourceApi(_requester);
   I18nLanguagesResourceApi get i18nLanguages => new I18nLanguagesResourceApi(_requester);
   I18nRegionsResourceApi get i18nRegions => new I18nRegionsResourceApi(_requester);
   LiveBroadcastsResourceApi get liveBroadcasts => new LiveBroadcastsResourceApi(_requester);
+  LiveChatBansResourceApi get liveChatBans => new LiveChatBansResourceApi(_requester);
+  LiveChatMessagesResourceApi get liveChatMessages => new LiveChatMessagesResourceApi(_requester);
+  LiveChatModeratorsResourceApi get liveChatModerators => new LiveChatModeratorsResourceApi(_requester);
   LiveStreamsResourceApi get liveStreams => new LiveStreamsResourceApi(_requester);
   PlaylistItemsResourceApi get playlistItems => new PlaylistItemsResourceApi(_requester);
   PlaylistsResourceApi get playlists => new PlaylistsResourceApi(_requester);
   SearchResourceApi get search => new SearchResourceApi(_requester);
+  SponsorsResourceApi get sponsors => new SponsorsResourceApi(_requester);
   SubscriptionsResourceApi get subscriptions => new SubscriptionsResourceApi(_requester);
   ThumbnailsResourceApi get thumbnails => new ThumbnailsResourceApi(_requester);
   VideoAbuseReportReasonsResourceApi get videoAbuseReportReasons => new VideoAbuseReportReasonsResourceApi(_requester);
@@ -1894,6 +1899,83 @@ class CommentsResourceApi {
 }
 
 
+class FanFundingEventsResourceApi {
+  final commons.ApiRequester _requester;
+
+  FanFundingEventsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Lists fan funding events for a channel.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter specifies the fanFundingEvent resource parts
+   * that the API response will include. Supported values are id and snippet.
+   *
+   * [hl] - The hl parameter instructs the API to retrieve localized resource
+   * metadata for a specific application language that the YouTube website
+   * supports. The parameter value must be a language code included in the list
+   * returned by the i18nLanguages.list method.
+   *
+   * If localized resource details are available in that language, the
+   * resource's snippet.localized object will contain the localized values.
+   * However, if localized details are not available, the snippet.localized
+   * object will contain resource details in the resource's default language.
+   *
+   * [maxResults] - The maxResults parameter specifies the maximum number of
+   * items that should be returned in the result set.
+   * Value must be between "0" and "50".
+   *
+   * [pageToken] - The pageToken parameter identifies a specific page in the
+   * result set that should be returned. In an API response, the nextPageToken
+   * and prevPageToken properties identify other pages that could be retrieved.
+   *
+   * Completes with a [FanFundingEventListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<FanFundingEventListResponse> list(core.String part, {core.String hl, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'fanFundingEvents';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FanFundingEventListResponse.fromJson(data));
+  }
+
+}
+
+
 class GuideCategoriesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2489,6 +2571,14 @@ class LiveBroadcastsResourceApi {
    * - "completed" : Return broadcasts that have already ended.
    * - "upcoming" : Return broadcasts that have not yet started.
    *
+   * [broadcastType] - The broadcastType parameter filters the API response to
+   * only include broadcasts with the specified type. This is only compatible
+   * with the mine filter for now.
+   * Possible string values are:
+   * - "all" : Return all broadcasts.
+   * - "event" : Return only scheduled event broadcasts.
+   * - "persistent" : Return only persistent broadcasts.
+   *
    * [id] - The id parameter specifies a comma-separated list of YouTube
    * broadcast IDs that identify the broadcasts being retrieved. In a
    * liveBroadcast resource, the id property specifies the broadcast's ID.
@@ -2546,7 +2636,7 @@ class LiveBroadcastsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LiveBroadcastListResponse> list(core.String part, {core.String broadcastStatus, core.String id, core.int maxResults, core.bool mine, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.String pageToken}) {
+  async.Future<LiveBroadcastListResponse> list(core.String part, {core.String broadcastStatus, core.String broadcastType, core.String id, core.int maxResults, core.bool mine, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2560,6 +2650,9 @@ class LiveBroadcastsResourceApi {
     _queryParams["part"] = [part];
     if (broadcastStatus != null) {
       _queryParams["broadcastStatus"] = [broadcastStatus];
+    }
+    if (broadcastType != null) {
+      _queryParams["broadcastType"] = [broadcastType];
     }
     if (id != null) {
       _queryParams["id"] = [id];
@@ -2801,6 +2894,444 @@ class LiveBroadcastsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new LiveBroadcast.fromJson(data));
+  }
+
+}
+
+
+class LiveChatBansResourceApi {
+  final commons.ApiRequester _requester;
+
+  LiveChatBansResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Removes a chat ban.
+   *
+   * Request parameters:
+   *
+   * [id] - The id parameter identifies the chat ban to remove. The value
+   * uniquely identifies both the ban and the chat.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+    _downloadOptions = null;
+
+    _url = 'liveChat/bans';
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Adds a new ban to the chat.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter serves two purposes in this operation. It
+   * identifies the properties that the write operation will set as well as the
+   * properties that the API response returns. Set the parameter value to
+   * snippet.
+   *
+   * Completes with a [LiveChatBan].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LiveChatBan> insert(LiveChatBan request, core.String part) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+
+    _url = 'liveChat/bans';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LiveChatBan.fromJson(data));
+  }
+
+}
+
+
+class LiveChatMessagesResourceApi {
+  final commons.ApiRequester _requester;
+
+  LiveChatMessagesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a chat message.
+   *
+   * Request parameters:
+   *
+   * [id] - The id parameter specifies the YouTube chat message ID of the
+   * resource that is being deleted.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+    _downloadOptions = null;
+
+    _url = 'liveChat/messages';
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Adds a message to a live chat.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter serves two purposes. It identifies the
+   * properties that the write operation will set as well as the properties that
+   * the API response will include. Set the parameter value to snippet.
+   *
+   * Completes with a [LiveChatMessage].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LiveChatMessage> insert(LiveChatMessage request, core.String part) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+
+    _url = 'liveChat/messages';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LiveChatMessage.fromJson(data));
+  }
+
+  /**
+   * Lists live chat messages for a specific chat.
+   *
+   * Request parameters:
+   *
+   * [liveChatId] - The liveChatId parameter specifies the ID of the chat whose
+   * messages will be returned.
+   *
+   * [part] - The part parameter specifies the liveChatComment resource parts
+   * that the API response will include. Supported values are id and snippet.
+   *
+   * [hl] - The hl parameter instructs the API to retrieve localized resource
+   * metadata for a specific application language that the YouTube website
+   * supports. The parameter value must be a language code included in the list
+   * returned by the i18nLanguages.list method.
+   *
+   * If localized resource details are available in that language, the
+   * resource's snippet.localized object will contain the localized values.
+   * However, if localized details are not available, the snippet.localized
+   * object will contain resource details in the resource's default language.
+   *
+   * [maxResults] - The maxResults parameter specifies the maximum number of
+   * messages that should be returned in the result set.
+   * Value must be between "200" and "2000".
+   *
+   * [pageToken] - The pageToken parameter identifies a specific page in the
+   * result set that should be returned. In an API response, the nextPageToken
+   * property identify other pages that could be retrieved.
+   *
+   * [profileImageSize] - The profileImageSize parameter specifies the size of
+   * the user profile pictures that should be returned in the result set.
+   * Default: 88.
+   * Value must be between "16" and "720".
+   *
+   * Completes with a [LiveChatMessageListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LiveChatMessageListResponse> list(core.String liveChatId, core.String part, {core.String hl, core.int maxResults, core.String pageToken, core.int profileImageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (liveChatId == null) {
+      throw new core.ArgumentError("Parameter liveChatId is required.");
+    }
+    _queryParams["liveChatId"] = [liveChatId];
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (profileImageSize != null) {
+      _queryParams["profileImageSize"] = ["${profileImageSize}"];
+    }
+
+    _url = 'liveChat/messages';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LiveChatMessageListResponse.fromJson(data));
+  }
+
+}
+
+
+class LiveChatModeratorsResourceApi {
+  final commons.ApiRequester _requester;
+
+  LiveChatModeratorsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Removes a chat moderator.
+   *
+   * Request parameters:
+   *
+   * [id] - The id parameter identifies the chat moderator to remove. The value
+   * uniquely identifies both the moderator and the chat.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+    _downloadOptions = null;
+
+    _url = 'liveChat/moderators';
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Adds a new moderator for the chat.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter serves two purposes in this operation. It
+   * identifies the properties that the write operation will set as well as the
+   * properties that the API response returns. Set the parameter value to
+   * snippet.
+   *
+   * Completes with a [LiveChatModerator].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LiveChatModerator> insert(LiveChatModerator request, core.String part) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+
+    _url = 'liveChat/moderators';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LiveChatModerator.fromJson(data));
+  }
+
+  /**
+   * Lists moderators for a live chat.
+   *
+   * Request parameters:
+   *
+   * [liveChatId] - The liveChatId parameter specifies the YouTube live chat for
+   * which the API should return moderators.
+   *
+   * [part] - The part parameter specifies the liveChatModerator resource parts
+   * that the API response will include. Supported values are id and snippet.
+   *
+   * [maxResults] - The maxResults parameter specifies the maximum number of
+   * items that should be returned in the result set.
+   * Value must be between "0" and "50".
+   *
+   * [pageToken] - The pageToken parameter identifies a specific page in the
+   * result set that should be returned. In an API response, the nextPageToken
+   * and prevPageToken properties identify other pages that could be retrieved.
+   *
+   * Completes with a [LiveChatModeratorListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LiveChatModeratorListResponse> list(core.String liveChatId, core.String part, {core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (liveChatId == null) {
+      throw new core.ArgumentError("Parameter liveChatId is required.");
+    }
+    _queryParams["liveChatId"] = [liveChatId];
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'liveChat/moderators';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LiveChatModeratorListResponse.fromJson(data));
   }
 
 }
@@ -4189,6 +4720,78 @@ class SearchResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new SearchListResponse.fromJson(data));
+  }
+
+}
+
+
+class SponsorsResourceApi {
+  final commons.ApiRequester _requester;
+
+  SponsorsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Lists sponsors for a channel.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter specifies the sponsor resource parts that the
+   * API response will include. Supported values are id and snippet.
+   *
+   * [filter] - The filter parameter specifies which channel sponsors to return.
+   * Possible string values are:
+   * - "all" : Return all sponsors, from newest to oldest.
+   * - "newest" : Return the most recent sponsors, from newest to oldest.
+   *
+   * [maxResults] - The maxResults parameter specifies the maximum number of
+   * items that should be returned in the result set.
+   * Value must be between "0" and "50".
+   *
+   * [pageToken] - The pageToken parameter identifies a specific page in the
+   * result set that should be returned. In an API response, the nextPageToken
+   * and prevPageToken properties identify other pages that could be retrieved.
+   *
+   * Completes with a [SponsorListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SponsorListResponse> list(core.String part, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'sponsors';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SponsorListResponse.fromJson(data));
   }
 
 }
@@ -7271,6 +7874,51 @@ class ChannelLocalization {
   }
 }
 
+class ChannelProfileDetails {
+  /** The YouTube channel ID. */
+  core.String channelId;
+  /** The channel's URL. */
+  core.String channelUrl;
+  /** The channel's display name. */
+  core.String displayName;
+  /** The channels's avatar URL. */
+  core.String profileImageUrl;
+
+  ChannelProfileDetails();
+
+  ChannelProfileDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("channelId")) {
+      channelId = _json["channelId"];
+    }
+    if (_json.containsKey("channelUrl")) {
+      channelUrl = _json["channelUrl"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("profileImageUrl")) {
+      profileImageUrl = _json["profileImageUrl"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (channelId != null) {
+      _json["channelId"] = channelId;
+    }
+    if (channelUrl != null) {
+      _json["channelUrl"] = channelUrl;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (profileImageUrl != null) {
+      _json["profileImageUrl"] = profileImageUrl;
+    }
+    return _json;
+  }
+}
+
 class ChannelSection {
   /**
    * The contentDetails object contains details about the channel section
@@ -9692,6 +10340,222 @@ class ContentRating {
   }
 }
 
+/**
+ * A fanFundingEvent resource represents a fan funding event on a YouTube
+ * channel. Fan funding events occur when a user gives one-time monetary support
+ * to the channel owner.
+ */
+class FanFundingEvent {
+  /** Etag of this resource. */
+  core.String etag;
+  /**
+   * The ID that YouTube assigns to uniquely identify the fan funding event.
+   */
+  core.String id;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#fanFundingEvent".
+   */
+  core.String kind;
+  /** The snippet object contains basic details about the fan funding event. */
+  FanFundingEventSnippet snippet;
+
+  FanFundingEvent();
+
+  FanFundingEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new FanFundingEventSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+class FanFundingEventListResponse {
+  /** Etag of this resource. */
+  core.String etag;
+  /** Serialized EventId of the request which produced this response. */
+  core.String eventId;
+  /** A list of fan funding events that match the request criteria. */
+  core.List<FanFundingEvent> items;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#fanFundingEventListResponse".
+   */
+  core.String kind;
+  /**
+   * The token that can be used as the value of the pageToken parameter to
+   * retrieve the next page in the result set.
+   */
+  core.String nextPageToken;
+  PageInfo pageInfo;
+  TokenPagination tokenPagination;
+  /** The visitorId identifies the visitor. */
+  core.String visitorId;
+
+  FanFundingEventListResponse();
+
+  FanFundingEventListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new FanFundingEvent.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
+    }
+    return _json;
+  }
+}
+
+class FanFundingEventSnippet {
+  /**
+   * The amount of funding in micros of fund_currency. e.g., 1 is represented
+   */
+  core.String amountMicros;
+  /** Channel id where the funding event occurred. */
+  core.String channelId;
+  /** The text contents of the comment left by the user. */
+  core.String commentText;
+  /**
+   * The date and time when the funding occurred. The value is specified in ISO
+   * 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+   */
+  core.DateTime createdAt;
+  /** The currency in which the fund was made. ISO 4217. */
+  core.String currency;
+  /**
+   * A rendered string that displays the fund amount and currency (e.g.,
+   * "$1.00"). The string is rendered for the given language.
+   */
+  core.String displayString;
+  /**
+   * Details about the supporter. Only filled if the event was made public by
+   * the user.
+   */
+  ChannelProfileDetails supporterDetails;
+
+  FanFundingEventSnippet();
+
+  FanFundingEventSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("amountMicros")) {
+      amountMicros = _json["amountMicros"];
+    }
+    if (_json.containsKey("channelId")) {
+      channelId = _json["channelId"];
+    }
+    if (_json.containsKey("commentText")) {
+      commentText = _json["commentText"];
+    }
+    if (_json.containsKey("createdAt")) {
+      createdAt = core.DateTime.parse(_json["createdAt"]);
+    }
+    if (_json.containsKey("currency")) {
+      currency = _json["currency"];
+    }
+    if (_json.containsKey("displayString")) {
+      displayString = _json["displayString"];
+    }
+    if (_json.containsKey("supporterDetails")) {
+      supporterDetails = new ChannelProfileDetails.fromJson(_json["supporterDetails"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (amountMicros != null) {
+      _json["amountMicros"] = amountMicros;
+    }
+    if (channelId != null) {
+      _json["channelId"] = channelId;
+    }
+    if (commentText != null) {
+      _json["commentText"] = commentText;
+    }
+    if (createdAt != null) {
+      _json["createdAt"] = (createdAt).toIso8601String();
+    }
+    if (currency != null) {
+      _json["currency"] = currency;
+    }
+    if (displayString != null) {
+      _json["displayString"] = displayString;
+    }
+    if (supporterDetails != null) {
+      _json["supporterDetails"] = (supporterDetails).toJson();
+    }
+    return _json;
+  }
+}
+
 /** Geographical coordinates of a point, in WGS84. */
 class GeoPoint {
   /** Altitude above the reference ellipsoid, in meters. */
@@ -10798,9 +11662,19 @@ class LiveBroadcastContentDetails {
   /** This value uniquely identifies the live stream bound to the broadcast. */
   core.String boundStreamId;
   /**
-   * This setting indicates whether closed captioning is enabled for this
-   * broadcast. The ingestion URL of the closed captions is returned through the
-   * liveStreams API.
+   *
+   * Possible string values are:
+   * - "closedCaptionsDisabled"
+   * - "closedCaptionsEmbedded"
+   * - "closedCaptionsHttpPost"
+   */
+  core.String closedCaptionsType;
+  /**
+   * This setting indicates whether HTTP POST closed captioning is enabled for
+   * this broadcast. The ingestion URL of the closed captions is returned
+   * through the liveStreams API. This is mutually exclusive with using the
+   * closed_captions_type property, and is equivalent to setting
+   * closed_captions_type to CLOSED_CAPTIONS_HTTP_POST.
    */
   core.bool enableClosedCaptions;
   /**
@@ -10864,6 +11738,9 @@ class LiveBroadcastContentDetails {
     if (_json.containsKey("boundStreamId")) {
       boundStreamId = _json["boundStreamId"];
     }
+    if (_json.containsKey("closedCaptionsType")) {
+      closedCaptionsType = _json["closedCaptionsType"];
+    }
     if (_json.containsKey("enableClosedCaptions")) {
       enableClosedCaptions = _json["enableClosedCaptions"];
     }
@@ -10894,6 +11771,9 @@ class LiveBroadcastContentDetails {
     var _json = new core.Map();
     if (boundStreamId != null) {
       _json["boundStreamId"] = boundStreamId;
+    }
+    if (closedCaptionsType != null) {
+      _json["closedCaptionsType"] = closedCaptionsType;
     }
     if (enableClosedCaptions != null) {
       _json["enableClosedCaptions"] = enableClosedCaptions;
@@ -11365,6 +12245,692 @@ class LiveBroadcastTopicSnippet {
     }
     if (releaseDate != null) {
       _json["releaseDate"] = releaseDate;
+    }
+    return _json;
+  }
+}
+
+/** A liveChatBan resource represents a ban for a YouTube live chat. */
+class LiveChatBan {
+  /** Etag of this resource. */
+  core.String etag;
+  /** The ID that YouTube assigns to uniquely identify the ban. */
+  core.String id;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#liveChatBan".
+   */
+  core.String kind;
+  /** The snippet object contains basic details about the ban. */
+  LiveChatBanSnippet snippet;
+
+  LiveChatBan();
+
+  LiveChatBan.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new LiveChatBanSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+class LiveChatBanSnippet {
+  /** The duration of a ban, only filled if the ban has type TEMPORARY. */
+  core.String banDurationSeconds;
+  ChannelProfileDetails bannedUserDetails;
+  /** The chat this ban is pertinent to. */
+  core.String liveChatId;
+  /**
+   * The type of ban.
+   * Possible string values are:
+   * - "permanent"
+   * - "temporary"
+   */
+  core.String type;
+
+  LiveChatBanSnippet();
+
+  LiveChatBanSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("banDurationSeconds")) {
+      banDurationSeconds = _json["banDurationSeconds"];
+    }
+    if (_json.containsKey("bannedUserDetails")) {
+      bannedUserDetails = new ChannelProfileDetails.fromJson(_json["bannedUserDetails"]);
+    }
+    if (_json.containsKey("liveChatId")) {
+      liveChatId = _json["liveChatId"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (banDurationSeconds != null) {
+      _json["banDurationSeconds"] = banDurationSeconds;
+    }
+    if (bannedUserDetails != null) {
+      _json["bannedUserDetails"] = (bannedUserDetails).toJson();
+    }
+    if (liveChatId != null) {
+      _json["liveChatId"] = liveChatId;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class LiveChatFanFundingEventDetails {
+  /**
+   * A rendered string that displays the fund amount and currency to the user.
+   */
+  core.String amountDisplayString;
+  /** The amount of the fund. */
+  core.String amountMicros;
+  /** The currency in which the fund was made. */
+  core.String currency;
+  /** The comment added by the user to this fan funding event. */
+  core.String userComment;
+
+  LiveChatFanFundingEventDetails();
+
+  LiveChatFanFundingEventDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("amountDisplayString")) {
+      amountDisplayString = _json["amountDisplayString"];
+    }
+    if (_json.containsKey("amountMicros")) {
+      amountMicros = _json["amountMicros"];
+    }
+    if (_json.containsKey("currency")) {
+      currency = _json["currency"];
+    }
+    if (_json.containsKey("userComment")) {
+      userComment = _json["userComment"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (amountDisplayString != null) {
+      _json["amountDisplayString"] = amountDisplayString;
+    }
+    if (amountMicros != null) {
+      _json["amountMicros"] = amountMicros;
+    }
+    if (currency != null) {
+      _json["currency"] = currency;
+    }
+    if (userComment != null) {
+      _json["userComment"] = userComment;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A liveChatMessage resource represents a chat message in a YouTube Live Chat.
+ */
+class LiveChatMessage {
+  /**
+   * The authorDetails object contains basic details about the user that posted
+   * this message.
+   */
+  LiveChatMessageAuthorDetails authorDetails;
+  /** Etag of this resource. */
+  core.String etag;
+  /** The ID that YouTube assigns to uniquely identify the message. */
+  core.String id;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#liveChatMessage".
+   */
+  core.String kind;
+  /** The snippet object contains basic details about the message. */
+  LiveChatMessageSnippet snippet;
+
+  LiveChatMessage();
+
+  LiveChatMessage.fromJson(core.Map _json) {
+    if (_json.containsKey("authorDetails")) {
+      authorDetails = new LiveChatMessageAuthorDetails.fromJson(_json["authorDetails"]);
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new LiveChatMessageSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (authorDetails != null) {
+      _json["authorDetails"] = (authorDetails).toJson();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+class LiveChatMessageAuthorDetails {
+  /** The YouTube channel ID. */
+  core.String channelId;
+  /** The channel's URL. */
+  core.String channelUrl;
+  /** The channel's display name. */
+  core.String displayName;
+  /** Whether the author is a moderator of the live chat. */
+  core.bool isChatModerator;
+  /** Whether the author is the owner of the live chat. */
+  core.bool isChatOwner;
+  /** Whether the author is a sponsor of the live chat. */
+  core.bool isChatSponsor;
+  /** Whether the author's identity has been verified by YouTube. */
+  core.bool isVerified;
+  /** The channels's avatar URL. */
+  core.String profileImageUrl;
+
+  LiveChatMessageAuthorDetails();
+
+  LiveChatMessageAuthorDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("channelId")) {
+      channelId = _json["channelId"];
+    }
+    if (_json.containsKey("channelUrl")) {
+      channelUrl = _json["channelUrl"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("isChatModerator")) {
+      isChatModerator = _json["isChatModerator"];
+    }
+    if (_json.containsKey("isChatOwner")) {
+      isChatOwner = _json["isChatOwner"];
+    }
+    if (_json.containsKey("isChatSponsor")) {
+      isChatSponsor = _json["isChatSponsor"];
+    }
+    if (_json.containsKey("isVerified")) {
+      isVerified = _json["isVerified"];
+    }
+    if (_json.containsKey("profileImageUrl")) {
+      profileImageUrl = _json["profileImageUrl"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (channelId != null) {
+      _json["channelId"] = channelId;
+    }
+    if (channelUrl != null) {
+      _json["channelUrl"] = channelUrl;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (isChatModerator != null) {
+      _json["isChatModerator"] = isChatModerator;
+    }
+    if (isChatOwner != null) {
+      _json["isChatOwner"] = isChatOwner;
+    }
+    if (isChatSponsor != null) {
+      _json["isChatSponsor"] = isChatSponsor;
+    }
+    if (isVerified != null) {
+      _json["isVerified"] = isVerified;
+    }
+    if (profileImageUrl != null) {
+      _json["profileImageUrl"] = profileImageUrl;
+    }
+    return _json;
+  }
+}
+
+class LiveChatMessageListResponse {
+  /** Etag of this resource. */
+  core.String etag;
+  /** Serialized EventId of the request which produced this response. */
+  core.String eventId;
+  /** A list of live chat messages. */
+  core.List<LiveChatMessage> items;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#liveChatMessageListResponse".
+   */
+  core.String kind;
+  /**
+   * The token that can be used as the value of the pageToken parameter to
+   * retrieve the next page in the result set.
+   */
+  core.String nextPageToken;
+  /**
+   * The date and time when the underlying stream went offline. The value is
+   * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+   */
+  core.DateTime offlineAt;
+  PageInfo pageInfo;
+  /** The amount of time the client should wait before polling again. */
+  core.int pollingIntervalMillis;
+  TokenPagination tokenPagination;
+  /** The visitorId identifies the visitor. */
+  core.String visitorId;
+
+  LiveChatMessageListResponse();
+
+  LiveChatMessageListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new LiveChatMessage.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("offlineAt")) {
+      offlineAt = core.DateTime.parse(_json["offlineAt"]);
+    }
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("pollingIntervalMillis")) {
+      pollingIntervalMillis = _json["pollingIntervalMillis"];
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (offlineAt != null) {
+      _json["offlineAt"] = (offlineAt).toIso8601String();
+    }
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (pollingIntervalMillis != null) {
+      _json["pollingIntervalMillis"] = pollingIntervalMillis;
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
+    }
+    return _json;
+  }
+}
+
+class LiveChatMessageSnippet {
+  /**
+   * The ID of the user that authored this message, this field is not always
+   * filled. textMessageEvent - the user that wrote the message fanFundingEvent
+   * - the user that funded the broadcast newSponsorEvent - the user that just
+   * became a sponsor
+   */
+  core.String authorChannelId;
+  /**
+   * Contains a string that can be displayed to the user. If this field is not
+   * present the message is silent, at the moment only messages of type
+   * TOMBSTONE and CHAT_ENDED_EVENT are silent.
+   */
+  core.String displayMessage;
+  /**
+   * Details about the funding event, this is only set if the type is
+   * 'fanFundingEvent'.
+   */
+  LiveChatFanFundingEventDetails fanFundingEventDetails;
+  /**
+   * Whether the message has display content that should be displayed to users.
+   */
+  core.bool hasDisplayContent;
+  core.String liveChatId;
+  /**
+   * The date and time when the message was orignally published. The value is
+   * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+   */
+  core.DateTime publishedAt;
+  /**
+   * Details about the text message, this is only set if the type is
+   * 'textMessageEvent'.
+   */
+  LiveChatTextMessageDetails textMessageDetails;
+  /**
+   * The type of message, this will always be present, it determines the
+   * contents of the message as well as which fields will be present.
+   * Possible string values are:
+   * - "chatEndedEvent"
+   * - "fanFundingEvent"
+   * - "newSponsorEvent"
+   * - "sponsorOnlyModeEndedEvent"
+   * - "sponsorOnlyModeStartedEvent"
+   * - "textMessageEvent"
+   * - "tombstone"
+   */
+  core.String type;
+
+  LiveChatMessageSnippet();
+
+  LiveChatMessageSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("authorChannelId")) {
+      authorChannelId = _json["authorChannelId"];
+    }
+    if (_json.containsKey("displayMessage")) {
+      displayMessage = _json["displayMessage"];
+    }
+    if (_json.containsKey("fanFundingEventDetails")) {
+      fanFundingEventDetails = new LiveChatFanFundingEventDetails.fromJson(_json["fanFundingEventDetails"]);
+    }
+    if (_json.containsKey("hasDisplayContent")) {
+      hasDisplayContent = _json["hasDisplayContent"];
+    }
+    if (_json.containsKey("liveChatId")) {
+      liveChatId = _json["liveChatId"];
+    }
+    if (_json.containsKey("publishedAt")) {
+      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+    }
+    if (_json.containsKey("textMessageDetails")) {
+      textMessageDetails = new LiveChatTextMessageDetails.fromJson(_json["textMessageDetails"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (authorChannelId != null) {
+      _json["authorChannelId"] = authorChannelId;
+    }
+    if (displayMessage != null) {
+      _json["displayMessage"] = displayMessage;
+    }
+    if (fanFundingEventDetails != null) {
+      _json["fanFundingEventDetails"] = (fanFundingEventDetails).toJson();
+    }
+    if (hasDisplayContent != null) {
+      _json["hasDisplayContent"] = hasDisplayContent;
+    }
+    if (liveChatId != null) {
+      _json["liveChatId"] = liveChatId;
+    }
+    if (publishedAt != null) {
+      _json["publishedAt"] = (publishedAt).toIso8601String();
+    }
+    if (textMessageDetails != null) {
+      _json["textMessageDetails"] = (textMessageDetails).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A liveChatModerator resource represents a moderator for a YouTube live chat.
+ * A chat moderator has the ability to ban/unban users from a chat, remove
+ * message, etc.
+ */
+class LiveChatModerator {
+  /** Etag of this resource. */
+  core.String etag;
+  /** The ID that YouTube assigns to uniquely identify the moderator. */
+  core.String id;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#liveChatModerator".
+   */
+  core.String kind;
+  /** The snippet object contains basic details about the moderator. */
+  LiveChatModeratorSnippet snippet;
+
+  LiveChatModerator();
+
+  LiveChatModerator.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new LiveChatModeratorSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+class LiveChatModeratorListResponse {
+  /** Etag of this resource. */
+  core.String etag;
+  /** Serialized EventId of the request which produced this response. */
+  core.String eventId;
+  /** A list of moderators that match the request criteria. */
+  core.List<LiveChatModerator> items;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#liveChatModeratorListResponse".
+   */
+  core.String kind;
+  /**
+   * The token that can be used as the value of the pageToken parameter to
+   * retrieve the next page in the result set.
+   */
+  core.String nextPageToken;
+  PageInfo pageInfo;
+  /**
+   * The token that can be used as the value of the pageToken parameter to
+   * retrieve the previous page in the result set.
+   */
+  core.String prevPageToken;
+  TokenPagination tokenPagination;
+  /** The visitorId identifies the visitor. */
+  core.String visitorId;
+
+  LiveChatModeratorListResponse();
+
+  LiveChatModeratorListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new LiveChatModerator.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("prevPageToken")) {
+      prevPageToken = _json["prevPageToken"];
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (prevPageToken != null) {
+      _json["prevPageToken"] = prevPageToken;
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
+    }
+    return _json;
+  }
+}
+
+class LiveChatModeratorSnippet {
+  /** The ID of the live chat this moderator can act on. */
+  core.String liveChatId;
+  /** Details about the moderator. */
+  ChannelProfileDetails moderatorDetails;
+
+  LiveChatModeratorSnippet();
+
+  LiveChatModeratorSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("liveChatId")) {
+      liveChatId = _json["liveChatId"];
+    }
+    if (_json.containsKey("moderatorDetails")) {
+      moderatorDetails = new ChannelProfileDetails.fromJson(_json["moderatorDetails"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (liveChatId != null) {
+      _json["liveChatId"] = liveChatId;
+    }
+    if (moderatorDetails != null) {
+      _json["moderatorDetails"] = (moderatorDetails).toJson();
+    }
+    return _json;
+  }
+}
+
+class LiveChatTextMessageDetails {
+  /** The user's message. */
+  core.String messageText;
+
+  LiveChatTextMessageDetails();
+
+  LiveChatTextMessageDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("messageText")) {
+      messageText = _json["messageText"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (messageText != null) {
+      _json["messageText"] = messageText;
     }
     return _json;
   }
@@ -13209,6 +14775,180 @@ class SearchResultSnippet {
     }
     if (title != null) {
       _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A sponsor resource represents a sponsor for a YouTube channel. A sponsor
+ * provides recurring monetary support to a creator and receives special
+ * benefits.
+ */
+class Sponsor {
+  /** Etag of this resource. */
+  core.String etag;
+  /** The ID that YouTube assigns to uniquely identify the sponsor. */
+  core.String id;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#sponsor".
+   */
+  core.String kind;
+  /** The snippet object contains basic details about the sponsor. */
+  SponsorSnippet snippet;
+
+  Sponsor();
+
+  Sponsor.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new SponsorSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+class SponsorListResponse {
+  /** Etag of this resource. */
+  core.String etag;
+  /** Serialized EventId of the request which produced this response. */
+  core.String eventId;
+  /** A list of sponsors that match the request criteria. */
+  core.List<Sponsor> items;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#sponsorListResponse".
+   */
+  core.String kind;
+  /**
+   * The token that can be used as the value of the pageToken parameter to
+   * retrieve the next page in the result set.
+   */
+  core.String nextPageToken;
+  PageInfo pageInfo;
+  TokenPagination tokenPagination;
+  /** The visitorId identifies the visitor. */
+  core.String visitorId;
+
+  SponsorListResponse();
+
+  SponsorListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Sponsor.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
+    }
+    return _json;
+  }
+}
+
+class SponsorSnippet {
+  /** The id of the channel being sponsored. */
+  core.String channelId;
+  /** Details about the sponsor. */
+  ChannelProfileDetails sponsorDetails;
+  /**
+   * The date and time when the user became a sponsor. The value is specified in
+   * ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+   */
+  core.DateTime sponsorSince;
+
+  SponsorSnippet();
+
+  SponsorSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("channelId")) {
+      channelId = _json["channelId"];
+    }
+    if (_json.containsKey("sponsorDetails")) {
+      sponsorDetails = new ChannelProfileDetails.fromJson(_json["sponsorDetails"]);
+    }
+    if (_json.containsKey("sponsorSince")) {
+      sponsorSince = core.DateTime.parse(_json["sponsorSince"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (channelId != null) {
+      _json["channelId"] = channelId;
+    }
+    if (sponsorDetails != null) {
+      _json["sponsorDetails"] = (sponsorDetails).toJson();
+    }
+    if (sponsorSince != null) {
+      _json["sponsorSince"] = (sponsorSince).toIso8601String();
     }
     return _json;
   }

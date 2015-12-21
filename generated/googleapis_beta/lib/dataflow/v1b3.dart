@@ -39,6 +39,51 @@ class ProjectsResourceApi {
 
   ProjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Send a worker_message to the service.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The project to send the WorkerMessages to.
+   *
+   * Completes with a [SendWorkerMessagesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SendWorkerMessagesResponse> workerMessages(SendWorkerMessagesRequest request, core.String projectId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/WorkerMessages';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SendWorkerMessagesResponse.fromJson(data));
+  }
+
 }
 
 
@@ -525,16 +570,15 @@ class ProjectsJobsWorkItemsResourceApi {
 
 
 
-/** A progress measurement of a WorkItem by a worker. */
+/**
+ * Obsolete in favor of ApproximateReportedProgress and ApproximateSplitRequest.
+ */
 class ApproximateProgress {
-  /**
-   * Completion as percentage of the work, from 0.0 (beginning, nothing
-   * complete), to 1.0 (end of the work range, entire WorkItem complete).
-   */
+  /** Obsolete. */
   core.double percentComplete;
-  /** A Position within the work to represent a progress. */
+  /** Obsolete. */
   Position position;
-  /** Completion as an estimated time remaining. */
+  /** Obsolete. */
   core.String remainingTime;
 
   ApproximateProgress();
@@ -561,6 +605,74 @@ class ApproximateProgress {
     }
     if (remainingTime != null) {
       _json["remainingTime"] = remainingTime;
+    }
+    return _json;
+  }
+}
+
+/** A progress measurement of a WorkItem by a worker. */
+class ApproximateReportedProgress {
+  /**
+   * Completion as fraction of the input consumed, from 0.0 (beginning, nothing
+   * consumed), to 1.0 (end of the input, entire input consumed).
+   */
+  core.double fractionConsumed;
+  /** A Position within the work to represent a progress. */
+  Position position;
+
+  ApproximateReportedProgress();
+
+  ApproximateReportedProgress.fromJson(core.Map _json) {
+    if (_json.containsKey("fractionConsumed")) {
+      fractionConsumed = _json["fractionConsumed"];
+    }
+    if (_json.containsKey("position")) {
+      position = new Position.fromJson(_json["position"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fractionConsumed != null) {
+      _json["fractionConsumed"] = fractionConsumed;
+    }
+    if (position != null) {
+      _json["position"] = (position).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * A suggestion by the service to the worker to dynamically split the WorkItem.
+ */
+class ApproximateSplitRequest {
+  /**
+   * A fraction at which to split the work item, from 0.0 (beginning of the
+   * input) to 1.0 (end of the input).
+   */
+  core.double fractionConsumed;
+  /** A Position at which to split the work item. */
+  Position position;
+
+  ApproximateSplitRequest();
+
+  ApproximateSplitRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fractionConsumed")) {
+      fractionConsumed = _json["fractionConsumed"];
+    }
+    if (_json.containsKey("position")) {
+      position = new Position.fromJson(_json["position"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fractionConsumed != null) {
+      _json["fractionConsumed"] = fractionConsumed;
+    }
+    if (position != null) {
+      _json["position"] = (position).toJson();
     }
     return _json;
   }
@@ -2519,6 +2631,50 @@ class ReportWorkItemStatusResponse {
   }
 }
 
+/** A request for sending worker messages to the service. */
+class SendWorkerMessagesRequest {
+  /** The WorkerMessages to send. */
+  core.List<WorkerMessage> workerMessages;
+
+  SendWorkerMessagesRequest();
+
+  SendWorkerMessagesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("workerMessages")) {
+      workerMessages = _json["workerMessages"].map((value) => new WorkerMessage.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (workerMessages != null) {
+      _json["workerMessages"] = workerMessages.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** The response to the worker messages. */
+class SendWorkerMessagesResponse {
+  /** The servers response to the worker messages. */
+  core.List<WorkerMessageResponse> workerMessageResponses;
+
+  SendWorkerMessagesResponse();
+
+  SendWorkerMessagesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("workerMessageResponses")) {
+      workerMessageResponses = _json["workerMessageResponses"].map((value) => new WorkerMessageResponse.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (workerMessageResponses != null) {
+      _json["workerMessageResponses"] = workerMessageResponses.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** Describes a particular function to invoke. */
 class SeqMapTask {
   /** Information about each of the inputs. */
@@ -4008,6 +4164,8 @@ class WorkItemServiceState {
    * The progress point in the WorkItem where the Dataflow service suggests that
    * the worker truncate the task.
    */
+  ApproximateSplitRequest splitRequest;
+  /** DEPRECATED in favor of split_request. */
   ApproximateProgress suggestedStopPoint;
   /** Obsolete, always empty. */
   Position suggestedStopPosition;
@@ -4026,6 +4184,9 @@ class WorkItemServiceState {
     }
     if (_json.containsKey("reportStatusInterval")) {
       reportStatusInterval = _json["reportStatusInterval"];
+    }
+    if (_json.containsKey("splitRequest")) {
+      splitRequest = new ApproximateSplitRequest.fromJson(_json["splitRequest"]);
     }
     if (_json.containsKey("suggestedStopPoint")) {
       suggestedStopPoint = new ApproximateProgress.fromJson(_json["suggestedStopPoint"]);
@@ -4048,6 +4209,9 @@ class WorkItemServiceState {
     }
     if (reportStatusInterval != null) {
       _json["reportStatusInterval"] = reportStatusInterval;
+    }
+    if (splitRequest != null) {
+      _json["splitRequest"] = (splitRequest).toJson();
     }
     if (suggestedStopPoint != null) {
       _json["suggestedStopPoint"] = (suggestedStopPoint).toJson();
@@ -4072,7 +4236,7 @@ class WorkItemStatus {
   core.List<Status> errors;
   /** Worker output metrics (counters) for this WorkItem. */
   core.List<MetricUpdate> metricUpdates;
-  /** The WorkItem's approximate progress. */
+  /** DEPRECATED in favor of reported_progress. */
   ApproximateProgress progress;
   /**
    * The report index. When a WorkItem is leased, the lease will contain an
@@ -4087,6 +4251,8 @@ class WorkItemStatus {
    * the service.
    */
   core.String reportIndex;
+  /** The worker's progress through this WorkItem. */
+  ApproximateReportedProgress reportedProgress;
   /** Amount of time the worker requests for its lease. */
   core.String requestedLeaseDuration;
   /** DEPRECATED in favor of dynamic_source_split. */
@@ -4146,6 +4312,9 @@ class WorkItemStatus {
     if (_json.containsKey("reportIndex")) {
       reportIndex = _json["reportIndex"];
     }
+    if (_json.containsKey("reportedProgress")) {
+      reportedProgress = new ApproximateReportedProgress.fromJson(_json["reportedProgress"]);
+    }
     if (_json.containsKey("requestedLeaseDuration")) {
       requestedLeaseDuration = _json["requestedLeaseDuration"];
     }
@@ -4183,6 +4352,9 @@ class WorkItemStatus {
     if (reportIndex != null) {
       _json["reportIndex"] = reportIndex;
     }
+    if (reportedProgress != null) {
+      _json["reportedProgress"] = (reportedProgress).toJson();
+    }
     if (requestedLeaseDuration != null) {
       _json["requestedLeaseDuration"] = requestedLeaseDuration;
     }
@@ -4197,6 +4369,151 @@ class WorkItemStatus {
     }
     if (workItemId != null) {
       _json["workItemId"] = workItemId;
+    }
+    return _json;
+  }
+}
+
+/**
+ * WorkerHealthReport contains information about the health of a worker. The VM
+ * should be identified by the labels attached to the WorkerMessage that this
+ * health ping belongs to.
+ */
+class WorkerHealthReport {
+  /**
+   * The interval at which the worker is sending health reports. The default
+   * value of 0 should be interpreted as the field is not being explicitly set
+   * by the worker.
+   */
+  core.String reportInterval;
+  /** Whether the VM is healthy. */
+  core.bool vmIsHealthy;
+  /** The time the VM was booted. */
+  core.String vmStartupTime;
+
+  WorkerHealthReport();
+
+  WorkerHealthReport.fromJson(core.Map _json) {
+    if (_json.containsKey("reportInterval")) {
+      reportInterval = _json["reportInterval"];
+    }
+    if (_json.containsKey("vmIsHealthy")) {
+      vmIsHealthy = _json["vmIsHealthy"];
+    }
+    if (_json.containsKey("vmStartupTime")) {
+      vmStartupTime = _json["vmStartupTime"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (reportInterval != null) {
+      _json["reportInterval"] = reportInterval;
+    }
+    if (vmIsHealthy != null) {
+      _json["vmIsHealthy"] = vmIsHealthy;
+    }
+    if (vmStartupTime != null) {
+      _json["vmStartupTime"] = vmStartupTime;
+    }
+    return _json;
+  }
+}
+
+/**
+ * WorkerHealthReportResponse contains information returned to the worker in
+ * response to a health ping.
+ */
+class WorkerHealthReportResponse {
+  /**
+   * A positive value indicates the worker should change its reporting interval
+   * to the specified value. The default value of zero means no change in report
+   * rate is requested by the server.
+   */
+  core.String reportInterval;
+
+  WorkerHealthReportResponse();
+
+  WorkerHealthReportResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("reportInterval")) {
+      reportInterval = _json["reportInterval"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (reportInterval != null) {
+      _json["reportInterval"] = reportInterval;
+    }
+    return _json;
+  }
+}
+
+/** WorkerMessage provides information to the backend about a worker. */
+class WorkerMessage {
+  /**
+   * Labels are used to group WorkerMessages. For example, a worker_message
+   * about a particular container might have the labels: { "JOB_ID":
+   * "2015-04-22", "WORKER_ID": "wordcount-vm-2015…" "CONTAINER_TYPE": "worker",
+   * "CONTAINER_ID": "ac1234def"} Label tags typically correspond to Label enum
+   * values. However, for ease of development other strings can be used as tags.
+   * LABEL_UNSPECIFIED should not be used here.
+   */
+  core.Map<core.String, core.String> labels;
+  /** The timestamp of the worker_message. */
+  core.String time;
+  /** The health of a worker. */
+  WorkerHealthReport workerHealthReport;
+
+  WorkerMessage();
+
+  WorkerMessage.fromJson(core.Map _json) {
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
+    if (_json.containsKey("time")) {
+      time = _json["time"];
+    }
+    if (_json.containsKey("workerHealthReport")) {
+      workerHealthReport = new WorkerHealthReport.fromJson(_json["workerHealthReport"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (time != null) {
+      _json["time"] = time;
+    }
+    if (workerHealthReport != null) {
+      _json["workerHealthReport"] = (workerHealthReport).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * A worker_message response allows the server to pass information to the
+ * sender.
+ */
+class WorkerMessageResponse {
+  /** The service's response to a worker's health report. */
+  WorkerHealthReportResponse workerHealthReportResponse;
+
+  WorkerMessageResponse();
+
+  WorkerMessageResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("workerHealthReportResponse")) {
+      workerHealthReportResponse = new WorkerHealthReportResponse.fromJson(_json["workerHealthReportResponse"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (workerHealthReportResponse != null) {
+      _json["workerHealthReportResponse"] = (workerHealthReportResponse).toJson();
     }
     return _json;
   }
@@ -4298,7 +4615,7 @@ class WorkerPool {
    */
   core.String teardownPolicy;
   /**
-   * Zone to run the worker pools in (e.g. "us-central1-b"). If empty or
+   * Zone to run the worker pools in (e.g. "us-central1-a"). If empty or
    * unspecified, the service will attempt to choose a reasonable default.
    */
   core.String zone;

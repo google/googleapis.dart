@@ -4632,7 +4632,7 @@ class CommentContext {
   }
 }
 
-/** A JSON representation of a comment on a file in Google Drive. */
+/** A comment on a file in Google Drive. */
 class Comment {
   /**
    * A region of the document represented as a JSON string. See anchor
@@ -4782,7 +4782,7 @@ class Comment {
   }
 }
 
-/** A JSON representation of a list of comments on a file in Google Drive. */
+/** A list of comments on a file in Google Drive. */
 class CommentList {
   /** List of comments. */
   core.List<Comment> items;
@@ -4836,7 +4836,7 @@ class CommentList {
   }
 }
 
-/** A JSON representation of a reply to a comment on a file in Google Drive. */
+/** A comment on a file in Google Drive. */
 class CommentReply {
   /** The user who wrote this reply. */
   User author;
@@ -4936,10 +4936,7 @@ class CommentReply {
   }
 }
 
-/**
- * A JSON representation of a list of replies to a comment on a file in Google
- * Drive.
- */
+/** A list of replies to a comment on a file in Google Drive. */
 class CommentReplyList {
   /** List of reply. */
   core.List<CommentReply> items;
@@ -6740,7 +6737,7 @@ class UserPicture {
   }
 }
 
-/** The JSON template for a user. */
+/** Information about a Drive user. */
 class User {
   /** A plain text displayable name for this user. */
   core.String displayName;

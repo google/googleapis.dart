@@ -51,14 +51,14 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed340() {
+buildUnnamed2000() {
   var o = new core.List<api.AppRestrictionsSchemaRestriction>();
   o.add(buildAppRestrictionsSchemaRestriction());
   o.add(buildAppRestrictionsSchemaRestriction());
   return o;
 }
 
-checkUnnamed340(core.List<api.AppRestrictionsSchemaRestriction> o) {
+checkUnnamed2000(core.List<api.AppRestrictionsSchemaRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppRestrictionsSchemaRestriction(o[0]);
   checkAppRestrictionsSchemaRestriction(o[1]);
@@ -70,7 +70,7 @@ buildAppRestrictionsSchema() {
   buildCounterAppRestrictionsSchema++;
   if (buildCounterAppRestrictionsSchema < 3) {
     o.kind = "foo";
-    o.restrictions = buildUnnamed340();
+    o.restrictions = buildUnnamed2000();
   }
   buildCounterAppRestrictionsSchema--;
   return o;
@@ -80,32 +80,32 @@ checkAppRestrictionsSchema(api.AppRestrictionsSchema o) {
   buildCounterAppRestrictionsSchema++;
   if (buildCounterAppRestrictionsSchema < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed340(o.restrictions);
+    checkUnnamed2000(o.restrictions);
   }
   buildCounterAppRestrictionsSchema--;
 }
 
-buildUnnamed341() {
+buildUnnamed2001() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed341(core.List<core.String> o) {
+checkUnnamed2001(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed342() {
+buildUnnamed2002() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed342(core.List<core.String> o) {
+checkUnnamed2002(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -118,8 +118,8 @@ buildAppRestrictionsSchemaRestriction() {
   if (buildCounterAppRestrictionsSchemaRestriction < 3) {
     o.defaultValue = buildAppRestrictionsSchemaRestrictionRestrictionValue();
     o.description = "foo";
-    o.entry = buildUnnamed341();
-    o.entryValue = buildUnnamed342();
+    o.entry = buildUnnamed2001();
+    o.entryValue = buildUnnamed2002();
     o.key = "foo";
     o.restrictionType = "foo";
     o.title = "foo";
@@ -133,8 +133,8 @@ checkAppRestrictionsSchemaRestriction(api.AppRestrictionsSchemaRestriction o) {
   if (buildCounterAppRestrictionsSchemaRestriction < 3) {
     checkAppRestrictionsSchemaRestrictionRestrictionValue(o.defaultValue);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed341(o.entry);
-    checkUnnamed342(o.entryValue);
+    checkUnnamed2001(o.entry);
+    checkUnnamed2002(o.entryValue);
     unittest.expect(o.key, unittest.equals('foo'));
     unittest.expect(o.restrictionType, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -142,14 +142,14 @@ checkAppRestrictionsSchemaRestriction(api.AppRestrictionsSchemaRestriction o) {
   buildCounterAppRestrictionsSchemaRestriction--;
 }
 
-buildUnnamed343() {
+buildUnnamed2003() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed343(core.List<core.String> o) {
+checkUnnamed2003(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -163,7 +163,7 @@ buildAppRestrictionsSchemaRestrictionRestrictionValue() {
     o.type = "foo";
     o.valueBool = true;
     o.valueInteger = 42;
-    o.valueMultiselect = buildUnnamed343();
+    o.valueMultiselect = buildUnnamed2003();
     o.valueString = "foo";
   }
   buildCounterAppRestrictionsSchemaRestrictionRestrictionValue--;
@@ -176,7 +176,7 @@ checkAppRestrictionsSchemaRestrictionRestrictionValue(api.AppRestrictionsSchemaR
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.valueBool, unittest.isTrue);
     unittest.expect(o.valueInteger, unittest.equals(42));
-    checkUnnamed343(o.valueMultiselect);
+    checkUnnamed2003(o.valueMultiselect);
     unittest.expect(o.valueString, unittest.equals('foo'));
   }
   buildCounterAppRestrictionsSchemaRestrictionRestrictionValue--;
@@ -224,14 +224,14 @@ checkApprovalUrlInfo(api.ApprovalUrlInfo o) {
   buildCounterApprovalUrlInfo--;
 }
 
-buildUnnamed344() {
+buildUnnamed2004() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed344(core.List<core.String> o) {
+checkUnnamed2004(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -245,7 +245,7 @@ buildCollection() {
     o.collectionId = "foo";
     o.kind = "foo";
     o.name = "foo";
-    o.productId = buildUnnamed344();
+    o.productId = buildUnnamed2004();
     o.visibility = "foo";
   }
   buildCounterCollection--;
@@ -258,20 +258,20 @@ checkCollection(api.Collection o) {
     unittest.expect(o.collectionId, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed344(o.productId);
+    checkUnnamed2004(o.productId);
     unittest.expect(o.visibility, unittest.equals('foo'));
   }
   buildCounterCollection--;
 }
 
-buildUnnamed345() {
+buildUnnamed2005() {
   var o = new core.List<api.User>();
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-checkUnnamed345(core.List<api.User> o) {
+checkUnnamed2005(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -283,7 +283,7 @@ buildCollectionViewersListResponse() {
   buildCounterCollectionViewersListResponse++;
   if (buildCounterCollectionViewersListResponse < 3) {
     o.kind = "foo";
-    o.user = buildUnnamed345();
+    o.user = buildUnnamed2005();
   }
   buildCounterCollectionViewersListResponse--;
   return o;
@@ -293,19 +293,19 @@ checkCollectionViewersListResponse(api.CollectionViewersListResponse o) {
   buildCounterCollectionViewersListResponse++;
   if (buildCounterCollectionViewersListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed345(o.user);
+    checkUnnamed2005(o.user);
   }
   buildCounterCollectionViewersListResponse--;
 }
 
-buildUnnamed346() {
+buildUnnamed2006() {
   var o = new core.List<api.Collection>();
   o.add(buildCollection());
   o.add(buildCollection());
   return o;
 }
 
-checkUnnamed346(core.List<api.Collection> o) {
+checkUnnamed2006(core.List<api.Collection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCollection(o[0]);
   checkCollection(o[1]);
@@ -316,7 +316,7 @@ buildCollectionsListResponse() {
   var o = new api.CollectionsListResponse();
   buildCounterCollectionsListResponse++;
   if (buildCounterCollectionsListResponse < 3) {
-    o.collection = buildUnnamed346();
+    o.collection = buildUnnamed2006();
     o.kind = "foo";
   }
   buildCounterCollectionsListResponse--;
@@ -326,7 +326,7 @@ buildCollectionsListResponse() {
 checkCollectionsListResponse(api.CollectionsListResponse o) {
   buildCounterCollectionsListResponse++;
   if (buildCounterCollectionsListResponse < 3) {
-    checkUnnamed346(o.collection);
+    checkUnnamed2006(o.collection);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterCollectionsListResponse--;
@@ -376,14 +376,14 @@ checkDeviceState(api.DeviceState o) {
   buildCounterDeviceState--;
 }
 
-buildUnnamed347() {
+buildUnnamed2007() {
   var o = new core.List<api.Device>();
   o.add(buildDevice());
   o.add(buildDevice());
   return o;
 }
 
-checkUnnamed347(core.List<api.Device> o) {
+checkUnnamed2007(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDevice(o[0]);
   checkDevice(o[1]);
@@ -394,7 +394,7 @@ buildDevicesListResponse() {
   var o = new api.DevicesListResponse();
   buildCounterDevicesListResponse++;
   if (buildCounterDevicesListResponse < 3) {
-    o.device = buildUnnamed347();
+    o.device = buildUnnamed2007();
     o.kind = "foo";
   }
   buildCounterDevicesListResponse--;
@@ -404,7 +404,7 @@ buildDevicesListResponse() {
 checkDevicesListResponse(api.DevicesListResponse o) {
   buildCounterDevicesListResponse++;
   if (buildCounterDevicesListResponse < 3) {
-    checkUnnamed347(o.device);
+    checkUnnamed2007(o.device);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterDevicesListResponse--;
@@ -456,14 +456,14 @@ checkEnterpriseAccount(api.EnterpriseAccount o) {
   buildCounterEnterpriseAccount--;
 }
 
-buildUnnamed348() {
+buildUnnamed2008() {
   var o = new core.List<api.Enterprise>();
   o.add(buildEnterprise());
   o.add(buildEnterprise());
   return o;
 }
 
-checkUnnamed348(core.List<api.Enterprise> o) {
+checkUnnamed2008(core.List<api.Enterprise> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterprise(o[0]);
   checkEnterprise(o[1]);
@@ -474,7 +474,7 @@ buildEnterprisesListResponse() {
   var o = new api.EnterprisesListResponse();
   buildCounterEnterprisesListResponse++;
   if (buildCounterEnterprisesListResponse < 3) {
-    o.enterprise = buildUnnamed348();
+    o.enterprise = buildUnnamed2008();
     o.kind = "foo";
   }
   buildCounterEnterprisesListResponse--;
@@ -484,7 +484,7 @@ buildEnterprisesListResponse() {
 checkEnterprisesListResponse(api.EnterprisesListResponse o) {
   buildCounterEnterprisesListResponse++;
   if (buildCounterEnterprisesListResponse < 3) {
-    checkUnnamed348(o.enterprise);
+    checkUnnamed2008(o.enterprise);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterEnterprisesListResponse--;
@@ -534,14 +534,14 @@ checkEntitlement(api.Entitlement o) {
   buildCounterEntitlement--;
 }
 
-buildUnnamed349() {
+buildUnnamed2009() {
   var o = new core.List<api.Entitlement>();
   o.add(buildEntitlement());
   o.add(buildEntitlement());
   return o;
 }
 
-checkUnnamed349(core.List<api.Entitlement> o) {
+checkUnnamed2009(core.List<api.Entitlement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntitlement(o[0]);
   checkEntitlement(o[1]);
@@ -552,7 +552,7 @@ buildEntitlementsListResponse() {
   var o = new api.EntitlementsListResponse();
   buildCounterEntitlementsListResponse++;
   if (buildCounterEntitlementsListResponse < 3) {
-    o.entitlement = buildUnnamed349();
+    o.entitlement = buildUnnamed2009();
     o.kind = "foo";
   }
   buildCounterEntitlementsListResponse--;
@@ -562,7 +562,7 @@ buildEntitlementsListResponse() {
 checkEntitlementsListResponse(api.EntitlementsListResponse o) {
   buildCounterEntitlementsListResponse++;
   if (buildCounterEntitlementsListResponse < 3) {
-    checkUnnamed349(o.entitlement);
+    checkUnnamed2009(o.entitlement);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterEntitlementsListResponse--;
@@ -597,14 +597,14 @@ checkGroupLicense(api.GroupLicense o) {
   buildCounterGroupLicense--;
 }
 
-buildUnnamed350() {
+buildUnnamed2010() {
   var o = new core.List<api.User>();
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-checkUnnamed350(core.List<api.User> o) {
+checkUnnamed2010(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -616,7 +616,7 @@ buildGroupLicenseUsersListResponse() {
   buildCounterGroupLicenseUsersListResponse++;
   if (buildCounterGroupLicenseUsersListResponse < 3) {
     o.kind = "foo";
-    o.user = buildUnnamed350();
+    o.user = buildUnnamed2010();
   }
   buildCounterGroupLicenseUsersListResponse--;
   return o;
@@ -626,19 +626,19 @@ checkGroupLicenseUsersListResponse(api.GroupLicenseUsersListResponse o) {
   buildCounterGroupLicenseUsersListResponse++;
   if (buildCounterGroupLicenseUsersListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed350(o.user);
+    checkUnnamed2010(o.user);
   }
   buildCounterGroupLicenseUsersListResponse--;
 }
 
-buildUnnamed351() {
+buildUnnamed2011() {
   var o = new core.List<api.GroupLicense>();
   o.add(buildGroupLicense());
   o.add(buildGroupLicense());
   return o;
 }
 
-checkUnnamed351(core.List<api.GroupLicense> o) {
+checkUnnamed2011(core.List<api.GroupLicense> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupLicense(o[0]);
   checkGroupLicense(o[1]);
@@ -649,7 +649,7 @@ buildGroupLicensesListResponse() {
   var o = new api.GroupLicensesListResponse();
   buildCounterGroupLicensesListResponse++;
   if (buildCounterGroupLicensesListResponse < 3) {
-    o.groupLicense = buildUnnamed351();
+    o.groupLicense = buildUnnamed2011();
     o.kind = "foo";
   }
   buildCounterGroupLicensesListResponse--;
@@ -659,7 +659,7 @@ buildGroupLicensesListResponse() {
 checkGroupLicensesListResponse(api.GroupLicensesListResponse o) {
   buildCounterGroupLicensesListResponse++;
   if (buildCounterGroupLicensesListResponse < 3) {
-    checkUnnamed351(o.groupLicense);
+    checkUnnamed2011(o.groupLicense);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterGroupLicensesListResponse--;
@@ -690,14 +690,14 @@ checkInstall(api.Install o) {
   buildCounterInstall--;
 }
 
-buildUnnamed352() {
+buildUnnamed2012() {
   var o = new core.List<api.Install>();
   o.add(buildInstall());
   o.add(buildInstall());
   return o;
 }
 
-checkUnnamed352(core.List<api.Install> o) {
+checkUnnamed2012(core.List<api.Install> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstall(o[0]);
   checkInstall(o[1]);
@@ -708,7 +708,7 @@ buildInstallsListResponse() {
   var o = new api.InstallsListResponse();
   buildCounterInstallsListResponse++;
   if (buildCounterInstallsListResponse < 3) {
-    o.install = buildUnnamed352();
+    o.install = buildUnnamed2012();
     o.kind = "foo";
   }
   buildCounterInstallsListResponse--;
@@ -718,10 +718,31 @@ buildInstallsListResponse() {
 checkInstallsListResponse(api.InstallsListResponse o) {
   buildCounterInstallsListResponse++;
   if (buildCounterInstallsListResponse < 3) {
-    checkUnnamed352(o.install);
+    checkUnnamed2012(o.install);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterInstallsListResponse--;
+}
+
+core.int buildCounterLocalizedText = 0;
+buildLocalizedText() {
+  var o = new api.LocalizedText();
+  buildCounterLocalizedText++;
+  if (buildCounterLocalizedText < 3) {
+    o.locale = "foo";
+    o.text = "foo";
+  }
+  buildCounterLocalizedText--;
+  return o;
+}
+
+checkLocalizedText(api.LocalizedText o) {
+  buildCounterLocalizedText++;
+  if (buildCounterLocalizedText < 3) {
+    unittest.expect(o.locale, unittest.equals('foo'));
+    unittest.expect(o.text, unittest.equals('foo'));
+  }
+  buildCounterLocalizedText--;
 }
 
 core.int buildCounterPermission = 0;
@@ -749,14 +770,14 @@ checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-buildUnnamed353() {
+buildUnnamed2013() {
   var o = new core.List<api.AppVersion>();
   o.add(buildAppVersion());
   o.add(buildAppVersion());
   return o;
 }
 
-checkUnnamed353(core.List<api.AppVersion> o) {
+checkUnnamed2013(core.List<api.AppVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppVersion(o[0]);
   checkAppVersion(o[1]);
@@ -767,7 +788,7 @@ buildProduct() {
   var o = new api.Product();
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
-    o.appVersion = buildUnnamed353();
+    o.appVersion = buildUnnamed2013();
     o.authorName = "foo";
     o.detailsUrl = "foo";
     o.distributionChannel = "foo";
@@ -785,7 +806,7 @@ buildProduct() {
 checkProduct(api.Product o) {
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
-    checkUnnamed353(o.appVersion);
+    checkUnnamed2013(o.appVersion);
     unittest.expect(o.authorName, unittest.equals('foo'));
     unittest.expect(o.detailsUrl, unittest.equals('foo'));
     unittest.expect(o.distributionChannel, unittest.equals('foo'));
@@ -820,14 +841,14 @@ checkProductPermission(api.ProductPermission o) {
   buildCounterProductPermission--;
 }
 
-buildUnnamed354() {
+buildUnnamed2014() {
   var o = new core.List<api.ProductPermission>();
   o.add(buildProductPermission());
   o.add(buildProductPermission());
   return o;
 }
 
-checkUnnamed354(core.List<api.ProductPermission> o) {
+checkUnnamed2014(core.List<api.ProductPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductPermission(o[0]);
   checkProductPermission(o[1]);
@@ -839,7 +860,7 @@ buildProductPermissions() {
   buildCounterProductPermissions++;
   if (buildCounterProductPermissions < 3) {
     o.kind = "foo";
-    o.permission = buildUnnamed354();
+    o.permission = buildUnnamed2014();
     o.productId = "foo";
   }
   buildCounterProductPermissions--;
@@ -850,20 +871,20 @@ checkProductPermissions(api.ProductPermissions o) {
   buildCounterProductPermissions++;
   if (buildCounterProductPermissions < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed354(o.permission);
+    checkUnnamed2014(o.permission);
     unittest.expect(o.productId, unittest.equals('foo'));
   }
   buildCounterProductPermissions--;
 }
 
-buildUnnamed355() {
+buildUnnamed2015() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed355(core.List<core.String> o) {
+checkUnnamed2015(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -875,7 +896,7 @@ buildProductSet() {
   buildCounterProductSet++;
   if (buildCounterProductSet < 3) {
     o.kind = "foo";
-    o.productId = buildUnnamed355();
+    o.productId = buildUnnamed2015();
   }
   buildCounterProductSet--;
   return o;
@@ -885,7 +906,7 @@ checkProductSet(api.ProductSet o) {
   buildCounterProductSet++;
   if (buildCounterProductSet < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed355(o.productId);
+    checkUnnamed2015(o.productId);
   }
   buildCounterProductSet--;
 }
@@ -926,6 +947,199 @@ checkProductsGenerateApprovalUrlResponse(api.ProductsGenerateApprovalUrlResponse
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterProductsGenerateApprovalUrlResponse--;
+}
+
+buildUnnamed2016() {
+  var o = new core.List<api.LocalizedText>();
+  o.add(buildLocalizedText());
+  o.add(buildLocalizedText());
+  return o;
+}
+
+checkUnnamed2016(core.List<api.LocalizedText> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLocalizedText(o[0]);
+  checkLocalizedText(o[1]);
+}
+
+buildUnnamed2017() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed2017(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterStoreCluster = 0;
+buildStoreCluster() {
+  var o = new api.StoreCluster();
+  buildCounterStoreCluster++;
+  if (buildCounterStoreCluster < 3) {
+    o.id = "foo";
+    o.kind = "foo";
+    o.name = buildUnnamed2016();
+    o.orderInPage = "foo";
+    o.productId = buildUnnamed2017();
+  }
+  buildCounterStoreCluster--;
+  return o;
+}
+
+checkStoreCluster(api.StoreCluster o) {
+  buildCounterStoreCluster++;
+  if (buildCounterStoreCluster < 3) {
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed2016(o.name);
+    unittest.expect(o.orderInPage, unittest.equals('foo'));
+    checkUnnamed2017(o.productId);
+  }
+  buildCounterStoreCluster--;
+}
+
+core.int buildCounterStoreLayout = 0;
+buildStoreLayout() {
+  var o = new api.StoreLayout();
+  buildCounterStoreLayout++;
+  if (buildCounterStoreLayout < 3) {
+    o.homepageId = "foo";
+    o.kind = "foo";
+  }
+  buildCounterStoreLayout--;
+  return o;
+}
+
+checkStoreLayout(api.StoreLayout o) {
+  buildCounterStoreLayout++;
+  if (buildCounterStoreLayout < 3) {
+    unittest.expect(o.homepageId, unittest.equals('foo'));
+    unittest.expect(o.kind, unittest.equals('foo'));
+  }
+  buildCounterStoreLayout--;
+}
+
+buildUnnamed2018() {
+  var o = new core.List<api.StoreCluster>();
+  o.add(buildStoreCluster());
+  o.add(buildStoreCluster());
+  return o;
+}
+
+checkUnnamed2018(core.List<api.StoreCluster> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkStoreCluster(o[0]);
+  checkStoreCluster(o[1]);
+}
+
+core.int buildCounterStoreLayoutClustersListResponse = 0;
+buildStoreLayoutClustersListResponse() {
+  var o = new api.StoreLayoutClustersListResponse();
+  buildCounterStoreLayoutClustersListResponse++;
+  if (buildCounterStoreLayoutClustersListResponse < 3) {
+    o.cluster = buildUnnamed2018();
+    o.kind = "foo";
+  }
+  buildCounterStoreLayoutClustersListResponse--;
+  return o;
+}
+
+checkStoreLayoutClustersListResponse(api.StoreLayoutClustersListResponse o) {
+  buildCounterStoreLayoutClustersListResponse++;
+  if (buildCounterStoreLayoutClustersListResponse < 3) {
+    checkUnnamed2018(o.cluster);
+    unittest.expect(o.kind, unittest.equals('foo'));
+  }
+  buildCounterStoreLayoutClustersListResponse--;
+}
+
+buildUnnamed2019() {
+  var o = new core.List<api.StorePage>();
+  o.add(buildStorePage());
+  o.add(buildStorePage());
+  return o;
+}
+
+checkUnnamed2019(core.List<api.StorePage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkStorePage(o[0]);
+  checkStorePage(o[1]);
+}
+
+core.int buildCounterStoreLayoutPagesListResponse = 0;
+buildStoreLayoutPagesListResponse() {
+  var o = new api.StoreLayoutPagesListResponse();
+  buildCounterStoreLayoutPagesListResponse++;
+  if (buildCounterStoreLayoutPagesListResponse < 3) {
+    o.kind = "foo";
+    o.page = buildUnnamed2019();
+  }
+  buildCounterStoreLayoutPagesListResponse--;
+  return o;
+}
+
+checkStoreLayoutPagesListResponse(api.StoreLayoutPagesListResponse o) {
+  buildCounterStoreLayoutPagesListResponse++;
+  if (buildCounterStoreLayoutPagesListResponse < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed2019(o.page);
+  }
+  buildCounterStoreLayoutPagesListResponse--;
+}
+
+buildUnnamed2020() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed2020(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed2021() {
+  var o = new core.List<api.LocalizedText>();
+  o.add(buildLocalizedText());
+  o.add(buildLocalizedText());
+  return o;
+}
+
+checkUnnamed2021(core.List<api.LocalizedText> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLocalizedText(o[0]);
+  checkLocalizedText(o[1]);
+}
+
+core.int buildCounterStorePage = 0;
+buildStorePage() {
+  var o = new api.StorePage();
+  buildCounterStorePage++;
+  if (buildCounterStorePage < 3) {
+    o.id = "foo";
+    o.kind = "foo";
+    o.link = buildUnnamed2020();
+    o.name = buildUnnamed2021();
+  }
+  buildCounterStorePage--;
+  return o;
+}
+
+checkStorePage(api.StorePage o) {
+  buildCounterStorePage++;
+  if (buildCounterStorePage < 3) {
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed2020(o.link);
+    checkUnnamed2021(o.name);
+  }
+  buildCounterStorePage--;
 }
 
 core.int buildCounterUser = 0;
@@ -974,14 +1188,14 @@ checkUserToken(api.UserToken o) {
   buildCounterUserToken--;
 }
 
-buildUnnamed356() {
+buildUnnamed2022() {
   var o = new core.List<api.User>();
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-checkUnnamed356(core.List<api.User> o) {
+checkUnnamed2022(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -993,7 +1207,7 @@ buildUsersListResponse() {
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
     o.kind = "foo";
-    o.user = buildUnnamed356();
+    o.user = buildUnnamed2022();
   }
   buildCounterUsersListResponse--;
   return o;
@@ -1003,7 +1217,7 @@ checkUsersListResponse(api.UsersListResponse o) {
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed356(o.user);
+    checkUnnamed2022(o.user);
   }
   buildCounterUsersListResponse--;
 }
@@ -1208,6 +1422,15 @@ main() {
   });
 
 
+  unittest.group("obj-schema-LocalizedText", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildLocalizedText();
+      var od = new api.LocalizedText.fromJson(o.toJson());
+      checkLocalizedText(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Permission", () {
     unittest.test("to-json--from-json", () {
       var o = buildPermission();
@@ -1267,6 +1490,51 @@ main() {
       var o = buildProductsGenerateApprovalUrlResponse();
       var od = new api.ProductsGenerateApprovalUrlResponse.fromJson(o.toJson());
       checkProductsGenerateApprovalUrlResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-StoreCluster", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildStoreCluster();
+      var od = new api.StoreCluster.fromJson(o.toJson());
+      checkStoreCluster(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-StoreLayout", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildStoreLayout();
+      var od = new api.StoreLayout.fromJson(o.toJson());
+      checkStoreLayout(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-StoreLayoutClustersListResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildStoreLayoutClustersListResponse();
+      var od = new api.StoreLayoutClustersListResponse.fromJson(o.toJson());
+      checkStoreLayoutClustersListResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-StoreLayoutPagesListResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildStoreLayoutPagesListResponse();
+      var od = new api.StoreLayoutPagesListResponse.fromJson(o.toJson());
+      checkStoreLayoutPagesListResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-StorePage", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildStorePage();
+      var od = new api.StorePage.fromJson(o.toJson());
+      checkStorePage(od);
     });
   });
 
@@ -2397,6 +2665,59 @@ main() {
       })));
     });
 
+    unittest.test("method--getStoreLayout", () {
+
+      var mock = new HttpServerMock();
+      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      var arg_enterpriseId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/storeLayout"));
+        pathOffset += 12;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStoreLayout());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getStoreLayout(arg_enterpriseId).then(unittest.expectAsync(((api.StoreLayout response) {
+        checkStoreLayout(response);
+      })));
+    });
+
     unittest.test("method--insert", () {
 
       var mock = new HttpServerMock();
@@ -2602,6 +2923,63 @@ main() {
       }), true);
       res.setAccount(arg_request, arg_enterpriseId).then(unittest.expectAsync(((api.EnterpriseAccount response) {
         checkEnterpriseAccount(response);
+      })));
+    });
+
+    unittest.test("method--setStoreLayout", () {
+
+      var mock = new HttpServerMock();
+      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      var arg_request = buildStoreLayout();
+      var arg_enterpriseId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.StoreLayout.fromJson(json);
+        checkStoreLayout(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/storeLayout"));
+        pathOffset += 12;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStoreLayout());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.setStoreLayout(arg_request, arg_enterpriseId).then(unittest.expectAsync(((api.StoreLayout response) {
+        checkStoreLayout(response);
       })));
     });
 
@@ -3971,6 +4349,750 @@ main() {
       }), true);
       res.updatePermissions(arg_request, arg_enterpriseId, arg_productId).then(unittest.expectAsync(((api.ProductPermissions response) {
         checkProductPermissions(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-StorelayoutclustersResourceApi", () {
+    unittest.test("method--delete", () {
+
+      var mock = new HttpServerMock();
+      api.StorelayoutclustersResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutclusters;
+      var arg_enterpriseId = "foo";
+      var arg_pageId = "foo";
+      var arg_clusterId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout/pages/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        pathOffset += 19;
+        index = path.indexOf("/clusters/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_pageId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/clusters/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_clusterId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.delete(arg_enterpriseId, arg_pageId, arg_clusterId).then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.StorelayoutclustersResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutclusters;
+      var arg_enterpriseId = "foo";
+      var arg_pageId = "foo";
+      var arg_clusterId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout/pages/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        pathOffset += 19;
+        index = path.indexOf("/clusters/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_pageId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/clusters/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_clusterId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStoreCluster());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_enterpriseId, arg_pageId, arg_clusterId).then(unittest.expectAsync(((api.StoreCluster response) {
+        checkStoreCluster(response);
+      })));
+    });
+
+    unittest.test("method--insert", () {
+
+      var mock = new HttpServerMock();
+      api.StorelayoutclustersResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutclusters;
+      var arg_request = buildStoreCluster();
+      var arg_enterpriseId = "foo";
+      var arg_pageId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.StoreCluster.fromJson(json);
+        checkStoreCluster(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout/pages/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        pathOffset += 19;
+        index = path.indexOf("/clusters", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_pageId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/clusters"));
+        pathOffset += 9;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStoreCluster());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.insert(arg_request, arg_enterpriseId, arg_pageId).then(unittest.expectAsync(((api.StoreCluster response) {
+        checkStoreCluster(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new HttpServerMock();
+      api.StorelayoutclustersResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutclusters;
+      var arg_enterpriseId = "foo";
+      var arg_pageId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout/pages/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        pathOffset += 19;
+        index = path.indexOf("/clusters", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_pageId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/clusters"));
+        pathOffset += 9;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStoreLayoutClustersListResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_enterpriseId, arg_pageId).then(unittest.expectAsync(((api.StoreLayoutClustersListResponse response) {
+        checkStoreLayoutClustersListResponse(response);
+      })));
+    });
+
+    unittest.test("method--patch", () {
+
+      var mock = new HttpServerMock();
+      api.StorelayoutclustersResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutclusters;
+      var arg_request = buildStoreCluster();
+      var arg_enterpriseId = "foo";
+      var arg_pageId = "foo";
+      var arg_clusterId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.StoreCluster.fromJson(json);
+        checkStoreCluster(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout/pages/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        pathOffset += 19;
+        index = path.indexOf("/clusters/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_pageId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/clusters/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_clusterId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStoreCluster());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.patch(arg_request, arg_enterpriseId, arg_pageId, arg_clusterId).then(unittest.expectAsync(((api.StoreCluster response) {
+        checkStoreCluster(response);
+      })));
+    });
+
+    unittest.test("method--update", () {
+
+      var mock = new HttpServerMock();
+      api.StorelayoutclustersResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutclusters;
+      var arg_request = buildStoreCluster();
+      var arg_enterpriseId = "foo";
+      var arg_pageId = "foo";
+      var arg_clusterId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.StoreCluster.fromJson(json);
+        checkStoreCluster(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout/pages/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        pathOffset += 19;
+        index = path.indexOf("/clusters/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_pageId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/clusters/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_clusterId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStoreCluster());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.update(arg_request, arg_enterpriseId, arg_pageId, arg_clusterId).then(unittest.expectAsync(((api.StoreCluster response) {
+        checkStoreCluster(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-StorelayoutpagesResourceApi", () {
+    unittest.test("method--delete", () {
+
+      var mock = new HttpServerMock();
+      api.StorelayoutpagesResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutpages;
+      var arg_enterpriseId = "foo";
+      var arg_pageId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout/pages/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        pathOffset += 19;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_pageId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.delete(arg_enterpriseId, arg_pageId).then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.StorelayoutpagesResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutpages;
+      var arg_enterpriseId = "foo";
+      var arg_pageId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout/pages/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        pathOffset += 19;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_pageId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStorePage());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_enterpriseId, arg_pageId).then(unittest.expectAsync(((api.StorePage response) {
+        checkStorePage(response);
+      })));
+    });
+
+    unittest.test("method--insert", () {
+
+      var mock = new HttpServerMock();
+      api.StorelayoutpagesResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutpages;
+      var arg_request = buildStorePage();
+      var arg_enterpriseId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.StorePage.fromJson(json);
+        checkStorePage(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout/pages", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/storeLayout/pages"));
+        pathOffset += 18;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStorePage());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.insert(arg_request, arg_enterpriseId).then(unittest.expectAsync(((api.StorePage response) {
+        checkStorePage(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new HttpServerMock();
+      api.StorelayoutpagesResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutpages;
+      var arg_enterpriseId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout/pages", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/storeLayout/pages"));
+        pathOffset += 18;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStoreLayoutPagesListResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_enterpriseId).then(unittest.expectAsync(((api.StoreLayoutPagesListResponse response) {
+        checkStoreLayoutPagesListResponse(response);
+      })));
+    });
+
+    unittest.test("method--patch", () {
+
+      var mock = new HttpServerMock();
+      api.StorelayoutpagesResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutpages;
+      var arg_request = buildStorePage();
+      var arg_enterpriseId = "foo";
+      var arg_pageId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.StorePage.fromJson(json);
+        checkStorePage(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout/pages/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        pathOffset += 19;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_pageId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStorePage());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.patch(arg_request, arg_enterpriseId, arg_pageId).then(unittest.expectAsync(((api.StorePage response) {
+        checkStorePage(response);
+      })));
+    });
+
+    unittest.test("method--update", () {
+
+      var mock = new HttpServerMock();
+      api.StorelayoutpagesResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutpages;
+      var arg_request = buildStorePage();
+      var arg_enterpriseId = "foo";
+      var arg_pageId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.StorePage.fromJson(json);
+        checkStorePage(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        pathOffset += 12;
+        index = path.indexOf("/storeLayout/pages/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        pathOffset += 19;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_pageId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStorePage());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.update(arg_request, arg_enterpriseId, arg_pageId).then(unittest.expectAsync(((api.StorePage response) {
+        checkStorePage(response);
       })));
     });
 

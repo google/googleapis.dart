@@ -479,6 +479,10 @@ class GroupsResourceApi {
    * account that the user authenticates with must be linked to the specified
    * YouTube content owner.
    *
+   * [pageToken] - The pageToken parameter identifies a specific page in the
+   * result set that should be returned. In an API response, the nextPageToken
+   * property identifies the next page that can be retrieved.
+   *
    * Completes with a [GroupListResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -487,7 +491,7 @@ class GroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GroupListResponse> list({core.String id, core.bool mine, core.String onBehalfOfContentOwner}) {
+  async.Future<GroupListResponse> list({core.String id, core.bool mine, core.String onBehalfOfContentOwner, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -503,6 +507,9 @@ class GroupsResourceApi {
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'groups';
@@ -1213,6 +1220,7 @@ class GroupListResponse {
   core.String etag;
   core.List<Group> items;
   core.String kind;
+  core.String nextPageToken;
 
   GroupListResponse();
 
@@ -1226,6 +1234,9 @@ class GroupListResponse {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
   }
 
   core.Map toJson() {
@@ -1238,6 +1249,9 @@ class GroupListResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }

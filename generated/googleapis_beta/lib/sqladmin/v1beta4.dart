@@ -2432,6 +2432,37 @@ class DatabaseFlags {
   }
 }
 
+/**
+ * The name and status of the failover replica. Only applies to Second
+ * Generation instances.
+ */
+class DatabaseInstanceFailoverReplica {
+  core.bool available;
+  core.String name;
+
+  DatabaseInstanceFailoverReplica();
+
+  DatabaseInstanceFailoverReplica.fromJson(core.Map _json) {
+    if (_json.containsKey("available")) {
+      available = _json["available"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (available != null) {
+      _json["available"] = available;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
 /** A Cloud SQL instance resource. */
 class DatabaseInstance {
   /** The current disk usage of the instance in bytes. */
@@ -2444,6 +2475,11 @@ class DatabaseInstance {
   core.String databaseVersion;
   /** HTTP 1.1 Entity tag for the resource. */
   core.String etag;
+  /**
+   * The name and status of the failover replica. Only applies to Second
+   * Generation instances.
+   */
+  DatabaseInstanceFailoverReplica failoverReplica;
   /**
    * The instance type. This can be one of the following.
    * CLOUD_SQL_INSTANCE: A Cloud SQL instance that is not replicating from a
@@ -2519,6 +2555,9 @@ class DatabaseInstance {
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
+    if (_json.containsKey("failoverReplica")) {
+      failoverReplica = new DatabaseInstanceFailoverReplica.fromJson(_json["failoverReplica"]);
+    }
     if (_json.containsKey("instanceType")) {
       instanceType = _json["instanceType"];
     }
@@ -2582,6 +2621,9 @@ class DatabaseInstance {
     }
     if (etag != null) {
       _json["etag"] = etag;
+    }
+    if (failoverReplica != null) {
+      _json["failoverReplica"] = (failoverReplica).toJson();
     }
     if (instanceType != null) {
       _json["instanceType"] = instanceType;
@@ -2854,6 +2896,11 @@ class Flag {
    */
   core.String name;
   /**
+   * Indicates whether changing this flag will trigger a database restart. Only
+   * applicable to Second Generation instances.
+   */
+  core.bool requiresRestart;
+  /**
    * The type of the flag. Flags are typed to being BOOLEAN, STRING, INTEGER or
    * NONE. NONE is used for flags which do not take a value, such as
    * skip_grant_tables.
@@ -2881,6 +2928,9 @@ class Flag {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("requiresRestart")) {
+      requiresRestart = _json["requiresRestart"];
+    }
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
@@ -2905,6 +2955,9 @@ class Flag {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (requiresRestart != null) {
+      _json["requiresRestart"] = requiresRestart;
     }
     if (type != null) {
       _json["type"] = type;
@@ -3902,6 +3955,11 @@ class Settings {
    * The data disk size minimum is 10GB.
    */
   core.String dataDiskSizeGb;
+  /**
+   * The type of data disk. Only supported for 2nd Generation instances. The
+   * default type is SSD.
+   */
+  core.String dataDiskType;
   /** The database flags passed to the instance at startup. */
   core.List<DatabaseFlags> databaseFlags;
   /**
@@ -3967,6 +4025,9 @@ class Settings {
     if (_json.containsKey("dataDiskSizeGb")) {
       dataDiskSizeGb = _json["dataDiskSizeGb"];
     }
+    if (_json.containsKey("dataDiskType")) {
+      dataDiskType = _json["dataDiskType"];
+    }
     if (_json.containsKey("databaseFlags")) {
       databaseFlags = _json["databaseFlags"].map((value) => new DatabaseFlags.fromJson(value)).toList();
     }
@@ -4015,6 +4076,9 @@ class Settings {
     }
     if (dataDiskSizeGb != null) {
       _json["dataDiskSizeGb"] = dataDiskSizeGb;
+    }
+    if (dataDiskType != null) {
+      _json["dataDiskType"] = dataDiskType;
     }
     if (databaseFlags != null) {
       _json["databaseFlags"] = databaseFlags.map((value) => (value).toJson()).toList();

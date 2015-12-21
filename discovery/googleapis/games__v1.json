@@ -21,7 +21,7 @@
     "description": "The API for Google Play Game Services.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/nro2yIO3HiNR8lJRajInedIRmBA\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/XUFFi6RHQZMlFGea_R2MaiH-ueo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -365,6 +365,30 @@
                     "httpMethod": "POST",
                     "id": "games.applications.played",
                     "path": "applications/played",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/games",
+                        "https://www.googleapis.com/auth/plus.login"
+                    ]
+                },
+                "verify": {
+                    "description": "Verifies the auth token provided with this request is for the application with the specified ID, and returns the ID of the player it was granted for.",
+                    "httpMethod": "GET",
+                    "id": "games.applications.verify",
+                    "parameterOrder": [
+                        "applicationId"
+                    ],
+                    "parameters": {
+                        "applicationId": {
+                            "description": "The application ID from the Google Play developer console.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "applications/{applicationId}/verify",
+                    "response": {
+                        "$ref": "ApplicationVerifyResponse"
+                    },
                     "scopes": [
                         "https://www.googleapis.com/auth/games",
                         "https://www.googleapis.com/auth/plus.login"
@@ -1909,7 +1933,7 @@
             }
         }
     },
-    "revision": "20151119",
+    "revision": "20151215",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {
@@ -2309,6 +2333,22 @@
                 },
                 "secondary": {
                     "description": "The secondary category.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ApplicationVerifyResponse": {
+            "description": "This is a JSON template for a third party application verification response resource.",
+            "id": "ApplicationVerifyResponse",
+            "properties": {
+                "kind": {
+                    "default": "games#applicationVerifyResponse",
+                    "description": "Uniquely identifies the type of this resource. Value is always the fixed string games#applicationVerifyResponse.",
+                    "type": "string"
+                },
+                "player_id": {
+                    "description": "The ID of the player that was issued the auth token used in this request.",
                     "type": "string"
                 }
             },

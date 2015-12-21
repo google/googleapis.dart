@@ -18,7 +18,7 @@
     "description": "The Google Maps Engine API allows developers to store and query geospatial vector and raster data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/maps-engine/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/v-eOcb_2yOgozMnj3_3VkSFffEI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/50QZnzvl1UoK3a3EVhecLH4Rxuo\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/maps_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/maps_engine-32.png"
@@ -2796,7 +2796,7 @@
             }
         }
     },
-    "revision": "20150629",
+    "revision": "20151202",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AcquisitionTime": {

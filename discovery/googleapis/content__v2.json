@@ -15,7 +15,7 @@
     "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Zoyc_j6Vu1NAqmp6O8dTzIXnNIE\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/kOAnA9e-BsAB37sr1x6cT3rxlkc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1936,7 +1936,7 @@
             }
         }
     },
-    "revision": "20151112",
+    "revision": "20151211",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -3002,7 +3002,7 @@
                             "content.datafeeds.insert"
                         ]
                     },
-                    "description": "The two-letter ISO 639-1 language of the items in the feed.",
+                    "description": "The two-letter ISO 639-1 language of the items in the feed. Must be a valid language for targetCountry.",
                     "type": "string"
                 },
                 "contentType": {
@@ -4310,6 +4310,10 @@
         "OrdersCancelLineItemRequest": {
             "id": "OrdersCancelLineItemRequest",
             "properties": {
+                "amount": {
+                    "$ref": "Price",
+                    "description": "Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The amount must not be larger than the net amount left on the order."
+                },
                 "lineItemId": {
                     "description": "The ID of the line item to cancel.",
                     "type": "string"
@@ -4497,6 +4501,10 @@
         "OrdersCustomBatchRequestEntryCancelLineItem": {
             "id": "OrdersCustomBatchRequestEntryCancelLineItem",
             "properties": {
+                "amount": {
+                    "$ref": "Price",
+                    "description": "Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The amount must not be larger than the net amount left on the order."
+                },
                 "lineItemId": {
                     "description": "The ID of the line item to cancel.",
                     "type": "string"

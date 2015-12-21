@@ -513,6 +513,47 @@ class ApplicationsResourceApi {
     return _response.then((data) => null);
   }
 
+  /**
+   * Verifies the auth token provided with this request is for the application
+   * with the specified ID, and returns the ID of the player it was granted for.
+   *
+   * Request parameters:
+   *
+   * [applicationId] - The application ID from the Google Play developer
+   * console.
+   *
+   * Completes with a [ApplicationVerifyResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ApplicationVerifyResponse> verify(core.String applicationId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (applicationId == null) {
+      throw new core.ArgumentError("Parameter applicationId is required.");
+    }
+
+    _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId') + '/verify';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ApplicationVerifyResponse.fromJson(data));
+  }
+
 }
 
 
@@ -3721,6 +3762,44 @@ class ApplicationCategory {
     }
     if (secondary != null) {
       _json["secondary"] = secondary;
+    }
+    return _json;
+  }
+}
+
+/**
+ * This is a JSON template for a third party application verification response
+ * resource.
+ */
+class ApplicationVerifyResponse {
+  /**
+   * Uniquely identifies the type of this resource. Value is always the fixed
+   * string games#applicationVerifyResponse.
+   */
+  core.String kind;
+  /**
+   * The ID of the player that was issued the auth token used in this request.
+   */
+  core.String playerId;
+
+  ApplicationVerifyResponse();
+
+  ApplicationVerifyResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("player_id")) {
+      playerId = _json["player_id"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (playerId != null) {
+      _json["player_id"] = playerId;
     }
     return _json;
   }

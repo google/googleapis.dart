@@ -62,6 +62,12 @@ class AnnotationSetsResourceApi {
    * Creates a new annotation set. Caller must have WRITE permission for the
    * associated dataset.
    *
+   * The following fields must be provided when creating an annotation set:
+   * - datasetId
+   * - referenceSetId
+   * All other fields may be optionally specified, unless documented as being
+   * server-generated (for example, the id field).
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -226,9 +232,11 @@ class AnnotationSetsResourceApi {
   }
 
   /**
-   * Searches for annotation sets that match the given criteria. Results are
-   * returned in a deterministic order. Caller must have READ permission for the
-   * queried datasets.
+   * Searches for annotation sets that match the given criteria. Annotation sets
+   * are returned in an unspecified order. This order is consistent, such that
+   * two queries for the same content (regardless of page size) yield annotation
+   * sets in the same order across their respective streams of paginated
+   * responses. Caller must have READ permission for the queried datasets.
    *
    * [request] - The metadata request object.
    *
@@ -334,6 +342,10 @@ class AnnotationsResourceApi {
    * corresponding batch entry in the response; the remaining well formed
    * annotations will be created normally.
    *
+   *
+   * For details on the requirements for each individual annotation resource,
+   * see annotations.create.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -373,6 +385,19 @@ class AnnotationsResourceApi {
   /**
    * Creates a new annotation. Caller must have WRITE permission for the
    * associated annotation set.
+   *
+   *
+   * The following fields must be provided when creating an annotation:
+   * - annotationSetId
+   * - position.referenceName or  position.referenceId  Transcripts
+   * For annotations of type TRANSCRIPT, the following fields of
+   * annotation.transcript must be provided:
+   * - exons.start
+   * - exons.end
+   * All other fields may be optionally specified, unless documented as being
+   * server-generated (for example, the id field). The annotated range must be
+   * no longer than 100Mbp (mega base pairs). See the annotation resource for
+   * additional restrictions on each field.
    *
    * [request] - The metadata request object.
    *
@@ -416,7 +441,7 @@ class AnnotationsResourceApi {
    *
    * Request parameters:
    *
-   * [annotationId] - The ID of the annotation set to be deleted.
+   * [annotationId] - The ID of the annotation to be deleted.
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -456,7 +481,7 @@ class AnnotationsResourceApi {
    *
    * Request parameters:
    *
-   * [annotationId] - The ID of the annotation set to be retrieved.
+   * [annotationId] - The ID of the annotation to be retrieved.
    *
    * Completes with a [Annotation].
    *
@@ -500,7 +525,7 @@ class AnnotationsResourceApi {
    *
    * Request parameters:
    *
-   * [annotationId] - The ID of the annotation set to be updated.
+   * [annotationId] - The ID of the annotation to be updated.
    *
    * Completes with a [Annotation].
    *
@@ -538,9 +563,12 @@ class AnnotationsResourceApi {
   }
 
   /**
-   * Searches for annotations that match the given criteria. Results are
-   * returned ordered by start position. Annotations that have matching start
-   * positions are ordered deterministically. Caller must have READ permission
+   * Searches for annotations that match the given criteria. Results are ordered
+   * by genomic coordinate (by reference sequence, then position). Annotations
+   * with equivalent genomic coordinates are returned in an unspecified order.
+   * This order is consistent, such that two queries for the same content
+   * (regardless of page size) yield annotations in the same order across their
+   * respective streams of paginated responses. Caller must have READ permission
    * for the queried annotation sets.
    *
    * [request] - The metadata request object.
@@ -588,7 +616,7 @@ class AnnotationsResourceApi {
    *
    * Request parameters:
    *
-   * [annotationId] - The ID of the annotation set to be updated.
+   * [annotationId] - The ID of the annotation to be updated.
    *
    * Completes with a [Annotation].
    *
@@ -1011,8 +1039,8 @@ class DatasetsResourceApi {
    *
    * Request parameters:
    *
-   * [pageSize] - The maximum number of results returned by this request. If
-   * unspecified, defaults to 50.
+   * [pageSize] - The maximum number of results to return in a single page. If
+   * unspecified, defaults to 50. The maximum value is 1024.
    *
    * [pageToken] - The continuation token, which is used to page through large
    * result sets. To get the next page of results, set this parameter to the
@@ -1382,88 +1410,6 @@ class ReadgroupsetsResourceApi {
 
   ReadgroupsetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
-
-  /**
-   * Aligns read data from existing read group sets or files from Google Cloud
-   * Storage. See the  alignment and variant calling documentation for more
-   * details.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [AlignReadGroupSetsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<AlignReadGroupSetsResponse> align(AlignReadGroupSetsRequest request) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-
-    _url = 'readgroupsets/align';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new AlignReadGroupSetsResponse.fromJson(data));
-  }
-
-  /**
-   * Calls variants on read data from existing read group sets or files from
-   * Google Cloud Storage. See the  alignment and variant calling documentation
-   * for more details.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [CallReadGroupSetsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CallReadGroupSetsResponse> call(CallReadGroupSetsRequest request) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-
-    _url = 'readgroupsets/call';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new CallReadGroupSetsResponse.fromJson(data));
-  }
 
   /**
    * Deletes a read group set.
@@ -1889,8 +1835,11 @@ class ReadsResourceApi {
    * sets, including unmapped reads.
    *
    * All reads returned (including reads on subsequent pages) are ordered by
-   * genomic coordinate (reference sequence & position). Reads with equivalent
-   * genomic coordinates are returned in a deterministic order.
+   * genomic coordinate (by reference sequence, then position). Reads with
+   * equivalent genomic coordinates are returned in an unspecified order. This
+   * order is consistent, such that two queries for the same content (regardless
+   * of page size) yield reads in the same order across their respective streams
+   * of paginated responses.
    *
    * Implements GlobalAllianceApi.searchReads.
    *
@@ -2044,8 +1993,9 @@ class ReferencesBasesResourceApi {
    * [end] - The end position (0-based, exclusive) of this query. Defaults to
    * the length of this reference.
    *
-   * [pageSize] - Specifies the maximum number of bases to return in a single
-   * page.
+   * [pageSize] - The maximum number of bases to return in a single page. If
+   * unspecified, defaults to 200Kbp (kilo base pairs). The maximum value is
+   * 10Mbp (mega base pairs).
    *
    * [pageToken] - The continuation token, which is used to page through large
    * result sets. To get the next page of results, set this parameter to the
@@ -2816,117 +2766,17 @@ class VariantsetsResourceApi {
 
 
 
-/** The read group set align request. */
-class AlignReadGroupSetsRequest {
-  /**
-   * The BAM source files for alignment. Exactly one of readGroupSetId,
-   * bamSourceUris, interleavedFastqSource or pairedFastqSource must be
-   * provided. The caller must have READ permissions for these files.
-   */
-  core.List<core.String> bamSourceUris;
-  /**
-   * Required. The ID of the dataset the newly aligned read group sets will
-   * belong to. The caller must have WRITE permissions to this dataset.
-   */
-  core.String datasetId;
-  /**
-   * The interleaved FASTQ source files for alignment, where both members of
-   * each pair of reads are found on consecutive records within the same FASTQ
-   * file. Exactly one of readGroupSetId, bamSourceUris, interleavedFastqSource
-   * or pairedFastqSource must be provided.
-   */
-  InterleavedFastqSource interleavedFastqSource;
-  /**
-   * The paired end FASTQ source files for alignment, where each member of a
-   * pair of reads are found in separate files. Exactly one of readGroupSetId,
-   * bamSourceUris, interleavedFastqSource or pairedFastqSource must be
-   * provided.
-   */
-  PairedFastqSource pairedFastqSource;
-  /**
-   * The ID of the read group set which will be aligned. A new read group set
-   * will be generated to hold the aligned data, the originals will not be
-   * modified. The caller must have READ permissions for this read group set.
-   * Exactly one of readGroupSetId, bamSourceUris, interleavedFastqSource or
-   * pairedFastqSource must be provided.
-   */
-  core.String readGroupSetId;
-
-  AlignReadGroupSetsRequest();
-
-  AlignReadGroupSetsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("bamSourceUris")) {
-      bamSourceUris = _json["bamSourceUris"];
-    }
-    if (_json.containsKey("datasetId")) {
-      datasetId = _json["datasetId"];
-    }
-    if (_json.containsKey("interleavedFastqSource")) {
-      interleavedFastqSource = new InterleavedFastqSource.fromJson(_json["interleavedFastqSource"]);
-    }
-    if (_json.containsKey("pairedFastqSource")) {
-      pairedFastqSource = new PairedFastqSource.fromJson(_json["pairedFastqSource"]);
-    }
-    if (_json.containsKey("readGroupSetId")) {
-      readGroupSetId = _json["readGroupSetId"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (bamSourceUris != null) {
-      _json["bamSourceUris"] = bamSourceUris;
-    }
-    if (datasetId != null) {
-      _json["datasetId"] = datasetId;
-    }
-    if (interleavedFastqSource != null) {
-      _json["interleavedFastqSource"] = (interleavedFastqSource).toJson();
-    }
-    if (pairedFastqSource != null) {
-      _json["pairedFastqSource"] = (pairedFastqSource).toJson();
-    }
-    if (readGroupSetId != null) {
-      _json["readGroupSetId"] = readGroupSetId;
-    }
-    return _json;
-  }
-}
-
-/** The read group set align response. */
-class AlignReadGroupSetsResponse {
-  /** A job ID that can be used to get status information. */
-  core.String jobId;
-
-  AlignReadGroupSetsResponse();
-
-  AlignReadGroupSetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("jobId")) {
-      jobId = _json["jobId"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (jobId != null) {
-      _json["jobId"] = jobId;
-    }
-    return _json;
-  }
-}
-
 /**
  * An annotation describes a region of reference genome. The value of an
  * annotation may be one of several canonical types, supplemented by arbitrary
- * info tags. A variant annotation is represented by one or more of these
- * canonical types. An annotation is not inherently associated with a specific
- * sample or individual (though a client could choose to use annotations in this
- * way). Example canonical annotation types are 'Gene' and 'Variant'.
+ * info tags. An annotation is not inherently associated with a specific sample
+ * or individual (though a client could choose to use annotations in this way).
+ * Example canonical annotation types are GENE and VARIANT.
  */
 class Annotation {
-  /** The ID of the containing annotation set. */
+  /** The annotation set to which this annotation belongs. */
   core.String annotationSetId;
-  /** The generated unique ID for this annotation. */
+  /** The server-generated annotation ID, unique across all annotations. */
   core.String id;
   /** A string which maps to an array of values. */
   core.Map<core.String, core.List<core.String>> info;
@@ -3024,9 +2874,11 @@ class Annotation {
  * genes from refseq', and 'all variant annotations from ClinVar'.
  */
 class AnnotationSet {
-  /** The ID of the containing dataset. */
+  /** The dataset to which this annotation set belongs. */
   core.String datasetId;
-  /** The generated unique ID for this annotation set. */
+  /**
+   * The server-generated annotation set ID, unique across all annotation sets.
+   */
   core.String id;
   /** A string which maps to an array of values. */
   core.Map<core.String, core.List<core.String>> info;
@@ -3295,77 +3147,6 @@ class Call {
     }
     if (phaseset != null) {
       _json["phaseset"] = phaseset;
-    }
-    return _json;
-  }
-}
-
-/** The read group set call request. */
-class CallReadGroupSetsRequest {
-  /**
-   * Required. The ID of the dataset the called variants will belong to. The
-   * caller must have WRITE permissions to this dataset.
-   */
-  core.String datasetId;
-  /**
-   * The IDs of the read group sets which will be called. The caller must have
-   * READ permissions for these read group sets. One of readGroupSetId or
-   * sourceUris must be provided.
-   */
-  core.String readGroupSetId;
-  /**
-   * A list of URIs pointing at BAM files in Google Cloud Storage which will be
-   * called. FASTQ files are not allowed. The caller must have READ permissions
-   * for these files. One of readGroupSetId or sourceUris must be provided.
-   */
-  core.List<core.String> sourceUris;
-
-  CallReadGroupSetsRequest();
-
-  CallReadGroupSetsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("datasetId")) {
-      datasetId = _json["datasetId"];
-    }
-    if (_json.containsKey("readGroupSetId")) {
-      readGroupSetId = _json["readGroupSetId"];
-    }
-    if (_json.containsKey("sourceUris")) {
-      sourceUris = _json["sourceUris"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (datasetId != null) {
-      _json["datasetId"] = datasetId;
-    }
-    if (readGroupSetId != null) {
-      _json["readGroupSetId"] = readGroupSetId;
-    }
-    if (sourceUris != null) {
-      _json["sourceUris"] = sourceUris;
-    }
-    return _json;
-  }
-}
-
-/** The read group set call response. */
-class CallReadGroupSetsResponse {
-  /** A job ID that can be used to get status information. */
-  core.String jobId;
-
-  CallReadGroupSetsResponse();
-
-  CallReadGroupSetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("jobId")) {
-      jobId = _json["jobId"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (jobId != null) {
-      _json["jobId"] = jobId;
     }
     return _json;
   }
@@ -3700,10 +3481,13 @@ class ExportReadGroupSetsRequest {
   core.String exportUri;
   /**
    * Required. The Google Developers Console project number that owns this
-   * export.
+   * export. The caller must have WRITE access to this project.
    */
   core.String projectNumber;
-  /** Required. The IDs of the read group sets to export. */
+  /**
+   * Required. The IDs of the read group sets to export. The caller must have
+   * READ access to these read group sets.
+   */
   core.List<core.String> readGroupSetIds;
   /**
    * The reference names to export. If this is not specified, all reference
@@ -3891,65 +3675,6 @@ class ExternalId {
   }
 }
 
-class FastqMetadata {
-  /** Optionally specifies the library name for alignment from FASTQ. */
-  core.String libraryName;
-  /**
-   * Optionally specifies the platform name for alignment from FASTQ. For
-   * example: CAPILLARY, LS454, ILLUMINA, SOLID, HELICOS, IONTORRENT, PACBIO.
-   */
-  core.String platformName;
-  /**
-   * Optionally specifies the platform unit for alignment from FASTQ. For
-   * example: flowcell-barcode.lane for Illumina or slide for SOLID.
-   */
-  core.String platformUnit;
-  /** Optionally specifies the read group name for alignment from FASTQ. */
-  core.String readGroupName;
-  /** Optionally specifies the sample name for alignment from FASTQ. */
-  core.String sampleName;
-
-  FastqMetadata();
-
-  FastqMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("libraryName")) {
-      libraryName = _json["libraryName"];
-    }
-    if (_json.containsKey("platformName")) {
-      platformName = _json["platformName"];
-    }
-    if (_json.containsKey("platformUnit")) {
-      platformUnit = _json["platformUnit"];
-    }
-    if (_json.containsKey("readGroupName")) {
-      readGroupName = _json["readGroupName"];
-    }
-    if (_json.containsKey("sampleName")) {
-      sampleName = _json["sampleName"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (libraryName != null) {
-      _json["libraryName"] = libraryName;
-    }
-    if (platformName != null) {
-      _json["platformName"] = platformName;
-    }
-    if (platformUnit != null) {
-      _json["platformUnit"] = platformUnit;
-    }
-    if (readGroupName != null) {
-      _json["readGroupName"] = readGroupName;
-    }
-    if (sampleName != null) {
-      _json["sampleName"] = sampleName;
-    }
-    return _json;
-  }
-}
-
 /** The read group set import request. */
 class ImportReadGroupSetsRequest {
   /**
@@ -4131,43 +3856,6 @@ class Int32Value {
     var _json = new core.Map();
     if (value != null) {
       _json["value"] = value;
-    }
-    return _json;
-  }
-}
-
-/** Describes an interleaved FASTQ file source for alignment. */
-class InterleavedFastqSource {
-  /**
-   * Optionally specifies the metadata to be associated with the final aligned
-   * read group set.
-   */
-  FastqMetadata metadata;
-  /**
-   * A list of URIs pointing at interleaved FASTQ files in Google Cloud Storage
-   * which will be aligned. The caller must have READ permissions for these
-   * files.
-   */
-  core.List<core.String> sourceUris;
-
-  InterleavedFastqSource();
-
-  InterleavedFastqSource.fromJson(core.Map _json) {
-    if (_json.containsKey("metadata")) {
-      metadata = new FastqMetadata.fromJson(_json["metadata"]);
-    }
-    if (_json.containsKey("sourceUris")) {
-      sourceUris = _json["sourceUris"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
-    }
-    if (sourceUris != null) {
-      _json["sourceUris"] = sourceUris;
     }
     return _json;
   }
@@ -4375,6 +4063,9 @@ class LinearAlignment {
   /**
    * The mapping quality of this alignment. Represents how likely the read maps
    * to this position as opposed to other locations.
+   *
+   * Specifically, this is -10 log10 Pr(mapping position is wrong), rounded to
+   * the nearest integer.
    */
   core.int mappingQuality;
   /** The position of this alignment. */
@@ -4650,61 +4341,6 @@ class Metadata {
   }
 }
 
-/** Describes a paired-end FASTQ file source for alignment. */
-class PairedFastqSource {
-  /**
-   * A list of URIs pointing at paired end FASTQ files in Google Cloud Storage
-   * which will be aligned. The first of each paired file should be specified
-   * here, in an order that matches the second of each paired file specified in
-   * secondSourceUris. For example: firstSourceUris: [file1_1.fq, file2_1.fq],
-   * secondSourceUris: [file1_2.fq, file2_2.fq]. The caller must have READ
-   * permissions for these files.
-   */
-  core.List<core.String> firstSourceUris;
-  /**
-   * Optionally specifies the metadata to be associated with the final aligned
-   * read group set.
-   */
-  FastqMetadata metadata;
-  /**
-   * A list of URIs pointing at paired end FASTQ files in Google Cloud Storage
-   * which will be aligned. The second of each paired file should be specified
-   * here, in an order that matches the first of each paired file specified in
-   * firstSourceUris. For example: firstSourceUris: [file1_1.fq, file2_1.fq],
-   * secondSourceUris: [file1_2.fq, file2_2.fq]. The caller must have READ
-   * permissions for these files.
-   */
-  core.List<core.String> secondSourceUris;
-
-  PairedFastqSource();
-
-  PairedFastqSource.fromJson(core.Map _json) {
-    if (_json.containsKey("firstSourceUris")) {
-      firstSourceUris = _json["firstSourceUris"];
-    }
-    if (_json.containsKey("metadata")) {
-      metadata = new FastqMetadata.fromJson(_json["metadata"]);
-    }
-    if (_json.containsKey("secondSourceUris")) {
-      secondSourceUris = _json["secondSourceUris"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (firstSourceUris != null) {
-      _json["firstSourceUris"] = firstSourceUris;
-    }
-    if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
-    }
-    if (secondSourceUris != null) {
-      _json["secondSourceUris"] = secondSourceUris;
-    }
-    return _json;
-  }
-}
-
 /**
  * An abstraction for referring to a genomic position, in relation to some
  * already known reference. For now, represents a genomic position as a
@@ -4950,30 +4586,33 @@ class RangePosition {
 class Read {
   /**
    * The quality of the read sequence contained in this alignment record.
-   * alignedSequence and alignedQuality may be shorter than the full read
-   * sequence and quality. This will occur if the alignment is part of a
-   * chimeric alignment, or if the read was trimmed. When this occurs, the CIGAR
-   * for this read will begin/end with a hard clip operator that will indicate
-   * the length of the excised sequence.
+   * (equivalent to QUAL in SAM). alignedSequence and alignedQuality may be
+   * shorter than the full read sequence and quality. This will occur if the
+   * alignment is part of a chimeric alignment, or if the read was trimmed. When
+   * this occurs, the CIGAR for this read will begin/end with a hard clip
+   * operator that will indicate the length of the excised sequence.
    */
   core.List<core.int> alignedQuality;
   /**
    * The bases of the read sequence contained in this alignment record, without
-   * CIGAR operations applied. alignedSequence and alignedQuality may be shorter
-   * than the full read sequence and quality. This will occur if the alignment
-   * is part of a chimeric alignment, or if the read was trimmed. When this
-   * occurs, the CIGAR for this read will begin/end with a hard clip operator
-   * that will indicate the length of the excised sequence.
+   * CIGAR operations applied (equivalent to SEQ in SAM). alignedSequence and
+   * alignedQuality may be shorter than the full read sequence and quality. This
+   * will occur if the alignment is part of a chimeric alignment, or if the read
+   * was trimmed. When this occurs, the CIGAR for this read will begin/end with
+   * a hard clip operator that will indicate the length of the excised sequence.
    */
   core.String alignedSequence;
   /**
-   * The linear alignment for this alignment record. This field will be unset if
-   * the read is unmapped.
+   * The linear alignment for this alignment record. This field is null for
+   * unmapped reads.
    */
   LinearAlignment alignment;
-  /** The fragment is a PCR or optical duplicate (SAM flag 0x400) */
+  /** The fragment is a PCR or optical duplicate (SAM flag 0x400). */
   core.bool duplicateFragment;
-  /** SAM flag 0x200 */
+  /**
+   * Whether this read did not pass filters, such as platform or vendor quality
+   * controls (SAM flag 0x200).
+   */
   core.bool failedVendorQualityChecks;
   /** The observed length of the fragment, equivalent to TLEN in SAM. */
   core.int fragmentLength;
@@ -4997,17 +4636,17 @@ class Read {
   core.int numberReads;
   /**
    * The orientation and the distance between reads from the fragment are
-   * consistent with the sequencing protocol (SAM flag 0x2)
+   * consistent with the sequencing protocol (SAM flag 0x2).
    */
   core.bool properPlacement;
   /**
-   * The ID of the read group this read belongs to. (Every read must belong to
-   * exactly one read group.)
+   * The ID of the read group this read belongs to. A read belongs to exactly
+   * one read group. This is a server-generated ID (not SAM's RG tag).
    */
   core.String readGroupId;
   /**
-   * The ID of the read group set this read belongs to. (Every read must belong
-   * to exactly one read group set.)
+   * The ID of the read group set this read belongs to. A read belongs to
+   * exactly one read group set.
    */
   core.String readGroupSetId;
   /**
@@ -5183,10 +4822,7 @@ class ReadGroup {
    * only the first read group in a returned set will have this field populated.
    */
   core.List<ReadGroupProgram> programs;
-  /**
-   * The reference set the reads in this read group are aligned to. Required if
-   * there are any read alignments.
-   */
+  /** The reference set to which the reads in this read group are aligned. */
   core.String referenceSetId;
   /**
    * The sample this read group's data was generated from. Note: This is not an
@@ -5329,7 +4965,10 @@ class ReadGroupProgram {
    * prevProgramId to define an ordering between programs.
    */
   core.String id;
-  /** The name of the program. */
+  /**
+   * The display name of the program. This is typically the colloquial name of
+   * the tool used, for example 'bwa' or 'picard'.
+   */
   core.String name;
   /** The ID of the program run before this one. */
   core.String prevProgramId;
@@ -5483,8 +5122,7 @@ class Reference {
   /** The name of this reference, for example 22. */
   core.String name;
   /**
-   * ID from http://www.ncbi.nlm.nih.gov/taxonomy (e.g. 9606->human) if not
-   * specified by the containing reference set.
+   * ID from http://www.ncbi.nlm.nih.gov/taxonomy. For example, 9606 for human.
    */
   core.int ncbiTaxonId;
   /**
@@ -5493,8 +5131,8 @@ class Reference {
    */
   core.List<core.String> sourceAccessions;
   /**
-   * The URI from which the sequence was obtained. Specifies a FASTA format
-   * file/string with one name, sequence pair.
+   * The URI from which the sequence was obtained. Typically specifies a FASTA
+   * format file.
    */
   core.String sourceURI;
 
@@ -5556,7 +5194,7 @@ class Reference {
  * in a particular reference.
  */
 class ReferenceBound {
-  /** The reference the bound is associate with. */
+  /** The name of the reference associated with this ReferenceBound. */
   core.String referenceName;
   /**
    * An upper bound (inclusive) on the starting coordinate of any variant in the
@@ -5610,11 +5248,11 @@ class ReferenceSet {
    */
   core.String md5checksum;
   /**
-   * ID from http://www.ncbi.nlm.nih.gov/taxonomy (e.g. 9606->human) indicating
-   * the species which this assembly is intended to model. Note that contained
-   * references may specify a different ncbiTaxonId, as assemblies may contain
-   * reference sequences which do not belong to the modeled species, e.g. EBV in
-   * a human reference genome.
+   * ID from http://www.ncbi.nlm.nih.gov/taxonomy (for example, 9606 for human)
+   * indicating the species which this reference set is intended to model. Note
+   * that contained references may specify a different ncbiTaxonId, as
+   * assemblies may contain reference sequences which do not belong to the
+   * modeled species, for example EBV in a human reference genome.
    */
   core.int ncbiTaxonId;
   /**
@@ -5701,8 +5339,8 @@ class SearchAnnotationSetsRequest {
    */
   core.String name;
   /**
-   * Specifies number of results to return in a single page. If unspecified, it
-   * will default to 128. The maximum value is 1024.
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 128. The maximum value is 1024.
    */
   core.int pageSize;
   /**
@@ -5810,8 +5448,8 @@ class SearchAnnotationsRequest {
    */
   core.List<core.String> annotationSetIds;
   /**
-   * Specifies number of results to return in a single page. If unspecified, it
-   * will default to 256. The maximum value is 2048.
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 256. The maximum value is 2048.
    */
   core.int pageSize;
   /**
@@ -5901,8 +5539,8 @@ class SearchCallSetsRequest {
    */
   core.String name;
   /**
-   * The maximum number of call sets to return. If unspecified, defaults to
-   * 1000.
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 1024.
    */
   core.int pageSize;
   /**
@@ -5999,8 +5637,8 @@ class SearchJobsRequest {
    */
   core.String createdBefore;
   /**
-   * Specifies the number of results to return in a single page. Defaults to
-   * 128. The maximum value is 256.
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 128. The maximum value is 256.
    */
   core.int pageSize;
   /**
@@ -6111,8 +5749,8 @@ class SearchReadGroupSetsRequest {
    */
   core.String name;
   /**
-   * Specifies number of results to return in a single page. If unspecified, it
-   * will default to 256. The maximum value is 1024.
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 256. The maximum value is 1024.
    */
   core.int pageSize;
   /**
@@ -6199,8 +5837,8 @@ class SearchReadsRequest {
    */
   core.String end;
   /**
-   * Specifies number of results to return in a single page. If unspecified, it
-   * will default to 256. The maximum value is 2048.
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 256. The maximum value is 2048.
    */
   core.int pageSize;
   /**
@@ -6224,7 +5862,8 @@ class SearchReadsRequest {
   core.List<core.String> readGroupSetIds;
   /**
    * The reference sequence name, for example chr1, 1, or chrX. If set to *,
-   * only unmapped reads are returned.
+   * only unmapped reads are returned. If unspecified, all reads (mapped and
+   * unmapped) returned.
    */
   core.String referenceName;
   /**
@@ -6344,7 +5983,10 @@ class SearchReferenceSetsRequest {
    * ReferenceSet.md5checksum for details.
    */
   core.List<core.String> md5checksums;
-  /** Specifies the maximum number of results to return in a single page. */
+  /**
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 1024. The maximum value is 4096.
+   */
   core.int pageSize;
   /**
    * The continuation token, which is used to page through large result sets. To
@@ -6441,7 +6083,10 @@ class SearchReferencesRequest {
    * Reference.md5checksum for construction details.
    */
   core.List<core.String> md5checksums;
-  /** Specifies the maximum number of results to return in a single page. */
+  /**
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 1024. The maximum value is 4096.
+   */
   core.int pageSize;
   /**
    * The continuation token, which is used to page through large result sets. To
@@ -6533,7 +6178,10 @@ class SearchVariantSetsRequest {
    * belong to this dataset will be returned.
    */
   core.List<core.String> datasetIds;
-  /** The maximum number of variant sets to return in a request. */
+  /**
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 1024.
+   */
   core.int pageSize;
   /**
    * The continuation token, which is used to page through large result sets. To
@@ -6620,13 +6268,15 @@ class SearchVariantsRequest {
    */
   core.String end;
   /**
-   * The maximum number of calls to return. However, at least one variant will
-   * always be returned, even if it has more calls than this limit. If
-   * unspecified, defaults to 5000.
+   * The maximum number of calls to return in a single page. Note that this
+   * limit may be exceeded; at least one variant is always returned per page,
+   * even if it has more calls than this limit. If unspecified, defaults to
+   * 5000. The maximum value is 10000.
    */
   core.int maxCalls;
   /**
-   * The maximum number of variants to return. If unspecified, defaults to 5000.
+   * The maximum number of variants to return in a single page. If unspecified,
+   * defaults to 5000. The maximum value is 10000.
    */
   core.int pageSize;
   /**
@@ -7249,6 +6899,19 @@ class VariantSet {
    * associated coordinate upper bounds for each one.
    */
   core.List<ReferenceBound> referenceBounds;
+  /**
+   * The reference set to which the variant set is mapped. The reference set
+   * describes the alignment provenance of the variant set, while the
+   * referenceBounds describe the shape of the actual variant data. The
+   * reference set's reference names are a superset of those found in the
+   * referenceBounds.
+   *
+   * For example, given a variant set that is mapped to the GRCh38 reference set
+   * and contains a single variant on reference 'X', referenceBounds would
+   * contain only an entry for 'X', while the associated reference set
+   * enumerates all possible references: '1', '2', 'X', 'Y', 'MT', etc.
+   */
+  core.String referenceSetId;
 
   VariantSet();
 
@@ -7265,6 +6928,9 @@ class VariantSet {
     if (_json.containsKey("referenceBounds")) {
       referenceBounds = _json["referenceBounds"].map((value) => new ReferenceBound.fromJson(value)).toList();
     }
+    if (_json.containsKey("referenceSetId")) {
+      referenceSetId = _json["referenceSetId"];
+    }
   }
 
   core.Map toJson() {
@@ -7280,6 +6946,9 @@ class VariantSet {
     }
     if (referenceBounds != null) {
       _json["referenceBounds"] = referenceBounds.map((value) => (value).toJson()).toList();
+    }
+    if (referenceSetId != null) {
+      _json["referenceSetId"] = referenceSetId;
     }
     return _json;
   }

@@ -70,6 +70,12 @@ class AdminApi {
   /** View organization units on your domain */
   static const AdminDirectoryOrgunitReadonlyScope = "https://www.googleapis.com/auth/admin.directory.orgunit.readonly";
 
+  /** View and manage the provisioning of calendar resources on your domain */
+  static const AdminDirectoryResourceCalendarScope = "https://www.googleapis.com/auth/admin.directory.resource.calendar";
+
+  /** View calendar resources on your domain */
+  static const AdminDirectoryResourceCalendarReadonlyScope = "https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly";
+
   /** Manage delegated admin roles for your domain */
   static const AdminDirectoryRolemanagementScope = "https://www.googleapis.com/auth/admin.directory.rolemanagement";
 
@@ -112,6 +118,7 @@ class AdminApi {
   NotificationsResourceApi get notifications => new NotificationsResourceApi(_requester);
   OrgunitsResourceApi get orgunits => new OrgunitsResourceApi(_requester);
   PrivilegesResourceApi get privileges => new PrivilegesResourceApi(_requester);
+  ResourcesResourceApi get resources => new ResourcesResourceApi(_requester);
   RoleAssignmentsResourceApi get roleAssignments => new RoleAssignmentsResourceApi(_requester);
   RolesResourceApi get roles => new RolesResourceApi(_requester);
   SchemasResourceApi get schemas => new SchemasResourceApi(_requester);
@@ -2628,6 +2635,317 @@ class PrivilegesResourceApi {
 }
 
 
+class ResourcesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ResourcesCalendarsResourceApi get calendars => new ResourcesCalendarsResourceApi(_requester);
+
+  ResourcesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+}
+
+
+class ResourcesCalendarsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ResourcesCalendarsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a calendar resource.
+   *
+   * Request parameters:
+   *
+   * [customer] - The unique ID for the customer's Google account. As an account
+   * administrator, you can also use the my_customer alias to represent your
+   * account's customer ID.
+   *
+   * [calendarResourceId] - The unique ID of the calendar resource to delete.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String customer, core.String calendarResourceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (calendarResourceId == null) {
+      throw new core.ArgumentError("Parameter calendarResourceId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/resources/calendars/' + commons.Escaper.ecapeVariable('$calendarResourceId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Retrieves a calendar resource.
+   *
+   * Request parameters:
+   *
+   * [customer] - The unique ID for the customer's Google account. As an account
+   * administrator, you can also use the my_customer alias to represent your
+   * account's customer ID.
+   *
+   * [calendarResourceId] - The unique ID of the calendar resource to retrieve.
+   *
+   * Completes with a [CalendarResource].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<CalendarResource> get(core.String customer, core.String calendarResourceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (calendarResourceId == null) {
+      throw new core.ArgumentError("Parameter calendarResourceId is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/resources/calendars/' + commons.Escaper.ecapeVariable('$calendarResourceId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CalendarResource.fromJson(data));
+  }
+
+  /**
+   * Inserts a calendar resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customer] - The unique ID for the customer's Google account. As an account
+   * administrator, you can also use the my_customer alias to represent your
+   * account's customer ID.
+   *
+   * Completes with a [CalendarResource].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<CalendarResource> insert(CalendarResource request, core.String customer) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/resources/calendars';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CalendarResource.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of calendar resources for an account.
+   *
+   * Request parameters:
+   *
+   * [customer] - The unique ID for the customer's Google account. As an account
+   * administrator, you can also use the my_customer alias to represent your
+   * account's customer ID.
+   *
+   * [maxResults] - Maximum number of results to return.
+   * Value must be between "1" and "500".
+   *
+   * [pageToken] - Token to specify the next page in the list.
+   *
+   * Completes with a [CalendarResources].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<CalendarResources> list(core.String customer, {core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/resources/calendars';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CalendarResources.fromJson(data));
+  }
+
+  /**
+   * Updates a calendar resource. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customer] - The unique ID for the customer's Google account. As an account
+   * administrator, you can also use the my_customer alias to represent your
+   * account's customer ID.
+   *
+   * [calendarResourceId] - The unique ID of the calendar resource to update.
+   *
+   * Completes with a [CalendarResource].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<CalendarResource> patch(CalendarResource request, core.String customer, core.String calendarResourceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (calendarResourceId == null) {
+      throw new core.ArgumentError("Parameter calendarResourceId is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/resources/calendars/' + commons.Escaper.ecapeVariable('$calendarResourceId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CalendarResource.fromJson(data));
+  }
+
+  /**
+   * Updates a calendar resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customer] - The unique ID for the customer's Google account. As an account
+   * administrator, you can also use the my_customer alias to represent your
+   * account's customer ID.
+   *
+   * [calendarResourceId] - The unique ID of the calendar resource to update.
+   *
+   * Completes with a [CalendarResource].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<CalendarResource> update(CalendarResource request, core.String customer, core.String calendarResourceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customer == null) {
+      throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (calendarResourceId == null) {
+      throw new core.ArgumentError("Parameter calendarResourceId is required.");
+    }
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/resources/calendars/' + commons.Escaper.ecapeVariable('$calendarResourceId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CalendarResource.fromJson(data));
+  }
+
+}
+
+
 class RoleAssignmentsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -4823,6 +5141,139 @@ class Asps {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/** JSON template for Calendar Resource object in Directory API. */
+class CalendarResource {
+  /** ETag of the resource. */
+  core.String etags;
+  /**
+   * The type of the resource. For calendar resources, the value is
+   * admin#directory#resources#calendars#CalendarResource.
+   */
+  core.String kind;
+  /** The brief description of the calendar resource. */
+  core.String resourceDescription;
+  /**
+   * The read-only email ID for the calendar resource. Generated as part of
+   * creating a new calendar resource.
+   */
+  core.String resourceEmail;
+  /** The unique ID for the calendar resource. */
+  core.String resourceId;
+  /** The name of the calendar resource. For example, Training Room 1A */
+  core.String resourceName;
+  /**
+   * The type of the calendar resource. Used for grouping resources in the
+   * calendar user interface.
+   */
+  core.String resourceType;
+
+  CalendarResource();
+
+  CalendarResource.fromJson(core.Map _json) {
+    if (_json.containsKey("etags")) {
+      etags = _json["etags"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("resourceDescription")) {
+      resourceDescription = _json["resourceDescription"];
+    }
+    if (_json.containsKey("resourceEmail")) {
+      resourceEmail = _json["resourceEmail"];
+    }
+    if (_json.containsKey("resourceId")) {
+      resourceId = _json["resourceId"];
+    }
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+    if (_json.containsKey("resourceType")) {
+      resourceType = _json["resourceType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etags != null) {
+      _json["etags"] = etags;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (resourceDescription != null) {
+      _json["resourceDescription"] = resourceDescription;
+    }
+    if (resourceEmail != null) {
+      _json["resourceEmail"] = resourceEmail;
+    }
+    if (resourceId != null) {
+      _json["resourceId"] = resourceId;
+    }
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    if (resourceType != null) {
+      _json["resourceType"] = resourceType;
+    }
+    return _json;
+  }
+}
+
+/**
+ * JSON template for Calendar Resource List Response object in Directory API.
+ */
+class CalendarResources {
+  /** ETag of the resource. */
+  core.String etag;
+  /** The CalendarResources in this page of results. */
+  core.List<CalendarResource> items;
+  /**
+   * Identifies this as a collection of CalendarResources. This is always
+   * admin#directory#resources#calendars#calendarResourcesList.
+   */
+  core.String kind;
+  /**
+   * The continuation token, used to page through large result sets. Provide
+   * this value in a subsequent request to return the next page of results.
+   */
+  core.String nextPageToken;
+
+  CalendarResources();
+
+  CalendarResources.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new CalendarResource.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }

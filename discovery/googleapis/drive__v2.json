@@ -38,7 +38,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/zkepvVwrx1sUcPuHETNsuPBqMdw\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/xocIkhWvgJ9bRAc-sUSWcWz1WYM\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -2604,7 +2604,7 @@
             }
         }
     },
-    "revision": "20151112",
+    "revision": "20151210",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -3187,7 +3187,7 @@
             "type": "object"
         },
         "Comment": {
-            "description": "A JSON representation of a comment on a file in Google Drive.",
+            "description": "A comment on a file in Google Drive.",
             "id": "Comment",
             "properties": {
                 "anchor": {
@@ -3276,7 +3276,7 @@
             "type": "object"
         },
         "CommentList": {
-            "description": "A JSON representation of a list of comments on a file in Google Drive.",
+            "description": "A list of comments on a file in Google Drive.",
             "id": "CommentList",
             "properties": {
                 "items": {
@@ -3307,7 +3307,7 @@
             "type": "object"
         },
         "CommentReply": {
-            "description": "A JSON representation of a reply to a comment on a file in Google Drive.",
+            "description": "A comment on a file in Google Drive.",
             "id": "CommentReply",
             "properties": {
                 "author": {
@@ -3358,7 +3358,7 @@
             "type": "object"
         },
         "CommentReplyList": {
-            "description": "A JSON representation of a list of replies to a comment on a file in Google Drive.",
+            "description": "A list of replies to a comment on a file in Google Drive.",
             "id": "CommentReplyList",
             "properties": {
                 "items": {
@@ -4233,7 +4233,7 @@
             "type": "object"
         },
         "User": {
-            "description": "The JSON template for a user.",
+            "description": "Information about a Drive user.",
             "id": "User",
             "properties": {
                 "displayName": {
