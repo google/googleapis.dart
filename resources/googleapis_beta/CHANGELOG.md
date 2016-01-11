@@ -1,3 +1,7 @@
+## 0.23.1
+
+* [api] dataflow:v1b3: schema changes
+
 ## 0.23.0
 
 * [api-new] dataproc:v1beta1

@@ -1751,14 +1751,14 @@ class Operation {
   /**
    * [Output Only] An optional progress indicator that ranges from 0 to 100.
    * There is no requirement that this be linear or support any granularity of
-   * operations. This should not be used to guess at when the operation will be
+   * operations. This should not be used to guess when the operation will be
    * complete. This number should monotonically increase as the operation
    * progresses.
    */
   core.int progress;
   /**
-   * [Output Only] URL of the region where the operation resides. Only
-   * applicable for regional resources.
+   * [Output Only] URL of the region where the operation resides. Only available
+   * when performing regional operations.
    */
   core.String region;
   /** [Output Only] Server-defined URL for the resource. */
@@ -1795,7 +1795,10 @@ class Operation {
    * operation, this field will be populated.
    */
   core.List<OperationWarnings> warnings;
-  /** [Output Only] URL of the zone where the operation resides. */
+  /**
+   * [Output Only] URL of the zone where the operation resides. Only available
+   * when performing per-zone operations.
+   */
   core.String zone;
 
   Operation();

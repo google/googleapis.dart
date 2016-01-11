@@ -2585,7 +2585,7 @@ class PropertiesResourceApi {
   }
 
   /**
-   * Adds a property to a file.
+   * Adds a property to a file, or updates it if it already exists.
    *
    * [request] - The metadata request object.
    *
@@ -2668,7 +2668,8 @@ class PropertiesResourceApi {
   }
 
   /**
-   * Updates a property. This method supports patch semantics.
+   * Updates a property, or adds it if it doesn't exist. This method supports
+   * patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -2722,7 +2723,7 @@ class PropertiesResourceApi {
   }
 
   /**
-   * Updates a property.
+   * Updates a property, or adds it if it doesn't exist.
    *
    * [request] - The metadata request object.
    *

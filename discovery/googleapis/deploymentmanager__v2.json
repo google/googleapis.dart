@@ -24,7 +24,7 @@
     "description": "The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/deployment-manager/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/uJG2LJ8WGlGKvF3yaXM9u0LS3U4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/llc4Nk8xSs1ppmllTYlQMb5B8Zo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -780,7 +780,7 @@
             }
         }
     },
-    "revision": "20151207",
+    "revision": "20151213",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ConfigFile": {
@@ -1047,12 +1047,12 @@
                     "type": "string"
                 },
                 "progress": {
-                    "description": "[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess at when the operation will be complete. This number should monotonically increase as the operation progresses.",
+                    "description": "[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "region": {
-                    "description": "[Output Only] URL of the region where the operation resides. Only applicable for regional resources.",
+                    "description": "[Output Only] URL of the region where the operation resides. Only available when performing regional operations.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -1119,7 +1119,7 @@
                     "type": "array"
                 },
                 "zone": {
-                    "description": "[Output Only] URL of the zone where the operation resides.",
+                    "description": "[Output Only] URL of the zone where the operation resides. Only available when performing per-zone operations.",
                     "type": "string"
                 }
             },

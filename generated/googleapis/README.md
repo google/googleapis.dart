@@ -554,9 +554,9 @@ The Google Fonts Developer API.
 
 Official API documentation: https://developers.google.com/fonts/docs/developer_api
 
-#### ![Logo](https://www.google.com/images/icons/product/webmaster_tools-16.png) Webmaster Tools API - webmasters v3
+#### ![Logo](https://www.google.com/images/icons/product/webmaster_tools-16.png) Search Console API - webmasters v3
 
-Lets you view Google Webmaster Tools data for your verified sites.
+Lets you view Google Search Console data for your verified sites.
 
 Official API documentation: https://developers.google.com/webmaster-tools/
 

@@ -1,3 +1,8 @@
+## 0.22.0
+
+* [api] youtube:v3: schema changes
+* [api-breaking] bigquery:v2: resource removal
+
 ## 0.21.0
 
 * [api-new] dataproc:v1

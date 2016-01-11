@@ -376,9 +376,9 @@ class JobsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Project ID of the job to cancel
+   * [projectId] - [Required] Project ID of the job to cancel
    *
-   * [jobId] - Job ID of the job to cancel
+   * [jobId] - [Required] Job ID of the job to cancel
    *
    * Completes with a [JobCancelResponse].
    *
@@ -422,9 +422,9 @@ class JobsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Project ID of the requested job
+   * [projectId] - [Required] Project ID of the requested job
    *
-   * [jobId] - Job ID of the requested job
+   * [jobId] - [Required] Job ID of the requested job
    *
    * Completes with a [Job].
    *
@@ -466,9 +466,9 @@ class JobsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Project ID of the query job
+   * [projectId] - [Required] Project ID of the query job
    *
-   * [jobId] - Job ID of the query job
+   * [jobId] - [Required] Job ID of the query job
    *
    * [maxResults] - Maximum number of results to read
    *
@@ -2248,8 +2248,6 @@ class JobConfiguration {
   core.bool dryRun;
   /** [Pick one] Configures an extract job. */
   JobConfigurationExtract extract;
-  /** [Pick one] Configures a link job. */
-  JobConfigurationLink link;
   /** [Pick one] Configures a load job. */
   JobConfigurationLoad load;
   /** [Pick one] Configures a query job. */
@@ -2266,9 +2264,6 @@ class JobConfiguration {
     }
     if (_json.containsKey("extract")) {
       extract = new JobConfigurationExtract.fromJson(_json["extract"]);
-    }
-    if (_json.containsKey("link")) {
-      link = new JobConfigurationLink.fromJson(_json["link"]);
     }
     if (_json.containsKey("load")) {
       load = new JobConfigurationLoad.fromJson(_json["load"]);
@@ -2288,9 +2283,6 @@ class JobConfiguration {
     }
     if (extract != null) {
       _json["extract"] = (extract).toJson();
-    }
-    if (link != null) {
-      _json["link"] = (link).toJson();
     }
     if (load != null) {
       _json["load"] = (load).toJson();
@@ -2391,68 +2383,6 @@ class JobConfigurationExtract {
   }
 }
 
-class JobConfigurationLink {
-  /**
-   * [Optional] Specifies whether the job is allowed to create new tables. The
-   * following values are supported: CREATE_IF_NEEDED: If the table does not
-   * exist, BigQuery creates the table. CREATE_NEVER: The table must already
-   * exist. If it does not, a 'notFound' error is returned in the job result.
-   * The default value is CREATE_IF_NEEDED. Creation, truncation and append
-   * actions occur as one atomic update upon job completion.
-   */
-  core.String createDisposition;
-  /** [Required] The destination table of the link job. */
-  TableReference destinationTable;
-  /** [Required] URI of source table to link. */
-  core.List<core.String> sourceUri;
-  /**
-   * [Optional] Specifies the action that occurs if the destination table
-   * already exists. The following values are supported: WRITE_TRUNCATE: If the
-   * table already exists, BigQuery overwrites the table data. WRITE_APPEND: If
-   * the table already exists, BigQuery appends the data to the table.
-   * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate'
-   * error is returned in the job result. The default value is WRITE_EMPTY. Each
-   * action is atomic and only occurs if BigQuery is able to complete the job
-   * successfully. Creation, truncation and append actions occur as one atomic
-   * update upon job completion.
-   */
-  core.String writeDisposition;
-
-  JobConfigurationLink();
-
-  JobConfigurationLink.fromJson(core.Map _json) {
-    if (_json.containsKey("createDisposition")) {
-      createDisposition = _json["createDisposition"];
-    }
-    if (_json.containsKey("destinationTable")) {
-      destinationTable = new TableReference.fromJson(_json["destinationTable"]);
-    }
-    if (_json.containsKey("sourceUri")) {
-      sourceUri = _json["sourceUri"];
-    }
-    if (_json.containsKey("writeDisposition")) {
-      writeDisposition = _json["writeDisposition"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (createDisposition != null) {
-      _json["createDisposition"] = createDisposition;
-    }
-    if (destinationTable != null) {
-      _json["destinationTable"] = (destinationTable).toJson();
-    }
-    if (sourceUri != null) {
-      _json["sourceUri"] = sourceUri;
-    }
-    if (writeDisposition != null) {
-      _json["writeDisposition"] = writeDisposition;
-    }
-    return _json;
-  }
-}
-
 class JobConfigurationLoad {
   /**
    * [Optional] Accept rows that are missing trailing optional columns. The
@@ -2486,11 +2416,13 @@ class JobConfigurationLoad {
    */
   core.String encoding;
   /**
-   * [Optional] The separator for fields in a CSV file. BigQuery converts the
-   * string to ISO-8859-1 encoding, and then uses the first byte of the encoded
-   * string to split the data in its raw, binary state. BigQuery also supports
-   * the escape sequence "\t" to specify a tab separator. The default value is a
-   * comma (',').
+   * [Optional] The separator for fields in a CSV file. The separator can be any
+   * ISO-8859-1 single-byte character. To use a character in the range 128-255,
+   * you must encode the character as UTF8. BigQuery converts the string to
+   * ISO-8859-1 encoding, and then uses the first byte of the encoded string to
+   * split the data in its raw, binary state. BigQuery also supports the escape
+   * sequence "\t" to specify a tab separator. The default value is a comma
+   * (',').
    */
   core.String fieldDelimiter;
   /**
@@ -2531,8 +2463,8 @@ class JobConfigurationLoad {
   core.String quote;
   /**
    * [Optional] The schema for the destination table. The schema can be omitted
-   * if the destination table already exists or if the schema can be inferred
-   * from the loaded data.
+   * if the destination table already exists, or if you're loading data from
+   * Google Cloud Datastore.
    */
   TableSchema schema;
   /**
@@ -2718,6 +2650,12 @@ class JobConfigurationQuery {
    * false.
    */
   core.bool flattenResults;
+  /**
+   * [Optional] Limits the billing tier for this job. Queries that have resource
+   * usage beyond this tier will fail (without incurring a charge). If
+   * unspecified, this will be set to your project default.
+   */
+  core.int maximumBillingTier;
   /** [Deprecated] This property is deprecated. */
   core.bool preserveNulls;
   /**
@@ -2777,6 +2715,9 @@ class JobConfigurationQuery {
     if (_json.containsKey("flattenResults")) {
       flattenResults = _json["flattenResults"];
     }
+    if (_json.containsKey("maximumBillingTier")) {
+      maximumBillingTier = _json["maximumBillingTier"];
+    }
     if (_json.containsKey("preserveNulls")) {
       preserveNulls = _json["preserveNulls"];
     }
@@ -2816,6 +2757,9 @@ class JobConfigurationQuery {
     }
     if (flattenResults != null) {
       _json["flattenResults"] = flattenResults;
+    }
+    if (maximumBillingTier != null) {
+      _json["maximumBillingTier"] = maximumBillingTier;
     }
     if (preserveNulls != null) {
       _json["preserveNulls"] = preserveNulls;
@@ -3847,7 +3791,8 @@ class Table {
   /**
    * [Output-only] Describes the table type. The following values are supported:
    * TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL
-   * query. The default value is TABLE.
+   * query. EXTERNAL: A table that references data stored in an external storage
+   * system, such as Google Cloud Storage. The default value is TABLE.
    */
   core.String type;
   /** [Optional] The view definition. */
@@ -4051,10 +3996,12 @@ class TableDataInsertAllRequest {
    */
   core.bool skipInvalidRows;
   /**
-   * [Experimental] If specified, treats the destination table as a base
-   * template, and inserts the rows into an instance table named "". BigQuery
-   * will manage creation of the instance table, using the schema of the base
-   * template table.
+   * [Optional] If specified, treats the destination table as a base template,
+   * and inserts the rows into an instance table named
+   * "{destination}{templateSuffix}". BigQuery will manage creation of the
+   * instance table, using the schema of the base template table. See
+   * https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables
+   * for considerations when working with templates tables.
    */
   core.String templateSuffix;
 

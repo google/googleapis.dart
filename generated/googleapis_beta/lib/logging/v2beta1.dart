@@ -53,9 +53,9 @@ class EntriesResourceApi {
       _requester = client;
 
   /**
-   * Lists log entries. Use this method to examine log entries from Cloud
-   * Logging. See [Exporting Logs](/logging/docs/export) for other ways to copy
-   * log entries out of Cloud Logging.
+   * Lists log entries. Use this method to retrieve log entries from Cloud
+   * Logging. For ways to export log entries, see [Exporting
+   * Logs](/logging/docs/export).
    *
    * [request] - The metadata request object.
    *
@@ -149,7 +149,7 @@ class MonitoredResourceDescriptorsResourceApi {
    *
    * [pageSize] - Optional. The maximum number of results to return from this
    * request. Fewer results might be returned. You must check for the
-   * 'nextPageToken` result to determine if additional results are available,
+   * `nextPageToken` result to determine if additional results are available,
    * which you can retrieve by passing the `nextPageToken` value in the
    * `pageToken` parameter to the next request.
    *
@@ -399,8 +399,8 @@ class ProjectsMetricsResourceApi {
    *
    * Request parameters:
    *
-   * [projectName] - Required. The resource name for the project whose metrics
-   * are wanted. Example: `"projects/my-project-id"`.
+   * [projectName] - Required. The resource name of the project containing the
+   * metrics. Example: `"projects/my-project-id"`.
    * Value must have pattern "^projects/[^/]*$".
    *
    * [pageToken] - Optional. If the `pageToken` request parameter is supplied,
@@ -411,7 +411,7 @@ class ProjectsMetricsResourceApi {
    *
    * [pageSize] - Optional. The maximum number of results to return from this
    * request. Fewer results might be returned. You must check for the
-   * 'nextPageToken` result to determine if additional results are available,
+   * `nextPageToken` result to determine if additional results are available,
    * which you can retrieve by passing the `nextPageToken` value in the
    * `pageToken` parameter to the next request.
    *
@@ -644,7 +644,7 @@ class ProjectsSinksResourceApi {
    *
    * Request parameters:
    *
-   * [projectName] - Required. The resource name of the project owning the
+   * [projectName] - Required. The resource name of the project containing the
    * sinks. Example: `"projects/my-logging-project"`, `"projects/01234567890"`.
    * Value must have pattern "^projects/[^/]*$".
    *
@@ -656,7 +656,7 @@ class ProjectsSinksResourceApi {
    *
    * [pageSize] - Optional. The maximum number of results to return from this
    * request. Fewer results might be returned. You must check for the
-   * 'nextPageToken` result to determine if additional results are available,
+   * `nextPageToken` result to determine if additional results are available,
    * which you can retrieve by passing the `nextPageToken` value in the
    * `pageToken` parameter to the next request.
    *
@@ -778,7 +778,7 @@ class HttpRequest {
    */
   core.bool cacheHit;
   /**
-   * The referer(sic) URL of the request, as defined in [HTTP/1.1 Header Field
+   * The referer URL of the request, as defined in [HTTP/1.1 Header Field
    * Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
    */
   core.String referer;
@@ -816,7 +816,7 @@ class HttpRequest {
   core.String userAgent;
   /**
    * Whether or not the response was validated with the origin server before
-   * being served from cache. This field is only meaningful if cache_hit is
+   * being served from cache. This field is only meaningful if `cache_hit` is
    * True.
    */
   core.bool validatedWithOriginServer;
@@ -956,7 +956,7 @@ class ListLogEntriesRequest {
   core.String orderBy;
   /**
    * Optional. The maximum number of results to return from this request. Fewer
-   * results might be returned. You must check for the 'nextPageToken` result to
+   * results might be returned. You must check for the `nextPageToken` result to
    * determine if additional results are available, which you can retrieve by
    * passing the `nextPageToken` value in the `pageToken` parameter to the next
    * request.
@@ -1331,7 +1331,7 @@ class LogEntryOperation {
    */
   core.bool last;
   /**
-   * Required. A arbitrary producer identifier. The combination of `id` and
+   * Required. An arbitrary producer identifier. The combination of `id` and
    * `producer` must be globally unique. Examples for `producer`:
    * `"MyDivision.MyBigCompany.com"`, "github.com/MyProject/MyApplication"`.
    */
@@ -1374,10 +1374,10 @@ class LogEntryOperation {
 
 /** Application log line emitted while processing a request. */
 class LogLine {
-  /** App provided log message. */
+  /** App-provided log message. */
   core.String logMessage;
   /**
-   * Severity of log.
+   * Severity of this log entry.
    * Possible string values are:
    * - "DEFAULT" : A DEFAULT.
    * - "DEBUG" : A DEBUG.
@@ -1390,9 +1390,9 @@ class LogLine {
    * - "EMERGENCY" : A EMERGENCY.
    */
   core.String severity;
-  /** Line of code that generated this log message. */
+  /** Where in the source code this log message was written. */
   SourceLocation sourceLocation;
-  /** Time when log entry was made. May be inaccurate. */
+  /** Approximate time when this log entry was made. */
   core.String time;
 
   LogLine();
@@ -1650,30 +1650,31 @@ class MonitoredResourceDescriptor {
   }
 }
 
-/** Complete log information about a single request to an application. */
+/**
+ * Complete log information about a single HTTP request to an App Engine
+ * application.
+ */
 class RequestLog {
-  /** App Engine release version string. */
+  /** App Engine release version. */
   core.String appEngineRelease;
-  /** Identifies the application that handled this request. */
+  /** Application that handled this request. */
   core.String appId;
   /** An indication of the relative cost of serving this request. */
   core.double cost;
-  /** Time at which request was known to end processing. */
+  /** Time when the request finished. */
   core.String endTime;
-  /**
-   * If true, represents a finished request. Otherwise, the request is active.
-   */
+  /** Whether this request is finished or active. */
   core.bool finished;
-  /** The Internet host and port number of the resource being requested. */
+  /** Internet host and port number of the resource being requested. */
   core.String host;
-  /** HTTP version of request. */
+  /** HTTP version of request. Example: `"HTTP/1.1"`. */
   core.String httpVersion;
-  /** An opaque identifier for the instance that handled the request. */
+  /** An identifier for the instance that handled the request. */
   core.String instanceId;
   /**
-   * If the instance that processed this request was individually addressable
-   * (i.e. belongs to a manually scaled module), this is the 0 based index of
-   * the instance, otherwise this value is -1.
+   * If the instance processing this request belongs to a manually scaled
+   * module, then this is the 0-based index of the instance. Otherwise, this
+   * value is -1.
    */
   core.int instanceIndex;
   /** Origin IP address. */
@@ -1681,43 +1682,41 @@ class RequestLog {
   /** Latency of the request. */
   core.String latency;
   /**
-   * List of log lines emitted by the application while serving this request, if
-   * requested.
+   * A list of log lines emitted by the application while serving this request.
    */
   core.List<LogLine> line;
   /** Number of CPU megacycles used to process request. */
   core.String megaCycles;
-  /** Request method, such as `GET`, `HEAD`, `PUT`, `POST`, or `DELETE`. */
+  /**
+   * Request method. Example: `"GET"`, `"HEAD"`, `"PUT"`, `"POST"`, `"DELETE"`.
+   */
   core.String method;
-  /** Identifies the module of the application that handled this request. */
+  /** Module of the application that handled this request. */
   core.String moduleId;
   /**
-   * A string that identifies a logged-in user who made this request, or empty
-   * if the user is not logged in. Most likely, this is the part of the user's
-   * email before the '@' sign. The field value is the same for different
-   * requests from the same user, but different users may have a similar name.
-   * This information is also available to the application via Users API. This
-   * field will be populated starting with App Engine 1.9.21.
+   * The logged-in user who made the request. Most likely, this is the part of
+   * the user's email before the `@` sign. The field value is the same for
+   * different requests from the same user, but different users can have similar
+   * names. This information is also available to the application via the App
+   * Engine Users API. This field will be populated starting with App Engine
+   * 1.9.21.
    */
   core.String nickname;
-  /**
-   * Time this request spent in the pending request queue, if it was pending at
-   * all.
-   */
+  /** Time this request spent in the pending request queue. */
   core.String pendingTime;
   /** Referrer URL of request. */
   core.String referrer;
   /**
-   * Globally unique identifier for a request, based on request start time.
-   * Request IDs for requests which started later will compare greater as
-   * strings than those for requests which started earlier.
+   * Globally unique identifier for a request, which is based on the request
+   * start time. Request IDs for requests which started later will compare
+   * greater as strings than those for requests which started earlier.
    */
   core.String requestId;
   /**
    * Contains the path and query portion of the URL that was requested. For
    * example, if the URL was "http://example.com/app?name=val", the resource
-   * would be "/app?name=val". Any trailing fragment (separated by a '#'
-   * character) will not be included.
+   * would be "/app?name=val". The fragment identifier, which is identified by
+   * the `#` character, is not included.
    */
   core.String resource;
   /** Size in bytes sent back to client by request. */
@@ -1728,27 +1727,23 @@ class RequestLog {
    * distributed among multiple repositories.
    */
   core.List<SourceReference> sourceReference;
-  /** Time at which request was known to have begun processing. */
+  /** Time when the request started. */
   core.String startTime;
-  /** Response status of request. */
+  /** HTTP response status code. Example: 200, 404. */
   core.int status;
-  /** Task name of the request (for an offline request). */
+  /** Task name of the request, in the case of an offline request. */
   core.String taskName;
-  /** Queue name of the request (for an offline request). */
+  /** Queue name of the request, in the case of an offline request. */
   core.String taskQueueName;
-  /** Cloud Trace identifier of the trace for this request. */
+  /** Cloud Trace identifier for this request. */
   core.String traceId;
-  /**
-   * File or class within URL mapping used for request. Useful for tracking down
-   * the source code which was responsible for managing request. Especially for
-   * multiply mapped handlers.
-   */
+  /** File or class that handled the request. */
   core.String urlMapEntry;
-  /** User agent used for making request. */
+  /** User agent that made the request. */
   core.String userAgent;
   /** Version of the application that handled this request. */
   core.String versionId;
-  /** Was this request a loading request for this instance? */
+  /** Whether this was a loading request for the instance. */
   core.bool wasLoadingRequest;
 
   RequestLog();
@@ -1948,19 +1943,20 @@ class RequestLog {
   }
 }
 
-/** Specifies a location in a source file. */
+/** Specifies a location in a source code file. */
 class SourceLocation {
   /**
-   * Source file name. May or may not be a fully qualified name, depending on
-   * the runtime environment.
+   * Source file name. Depending on the runtime environment, this might be a
+   * simple name or a fully-qualified name.
    */
   core.String file;
   /**
    * Human-readable name of the function or method being invoked, with optional
-   * context such as the class or package name, for use in contexts such as the
-   * logs viewer where file:line number is less meaningful. This may vary by
-   * language, for example: in Java: qual.if.ied.Class.method in Go:
-   * dir/package.func in Python: function ...
+   * context such as the class or package name. This information is used in
+   * contexts such as the logs viewer, where a file and line number are less
+   * meaningful. The format can vary by language. For example:
+   * `qual.if.ied.Class.method` (Java), `dir/package.func` (Go), `function`
+   * (Python).
    */
   core.String functionName;
   /** Line within the source file. */
@@ -2006,7 +2002,7 @@ class SourceReference {
    */
   core.String repository;
   /**
-   * The canonical (and persistent) identifier of the deployed revision. Example
+   * The canonical and persistent identifier of the deployed revision. Example
    * (git): "0035781c50ec7aa23385dc841529ce8a4b70db1b"
    */
   core.String revisionId;
@@ -2044,7 +2040,7 @@ class WriteLogEntriesRequest {
   /**
    * Optional. User-defined `key:value` items that are added to the `labels`
    * field of each log entry in `entries`, except when a log entry specifies its
-   * own 'key:value' item with the same key. Example: `{ "size": "large",
+   * own `key:value` item with the same key. Example: `{ "size": "large",
    * "color":"red" }`
    */
   core.Map<core.String, core.String> labels;

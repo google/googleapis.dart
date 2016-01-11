@@ -16814,6 +16814,15 @@ class VideoListResponse {
 /** Details about the live streaming metadata. */
 class VideoLiveStreamingDetails {
   /**
+   * The ID of the currently active live chat attached to this video. This field
+   * is filled only if the video is a currently live broadcast that has live
+   * chat. Once the broadcast transitions to complete this field will be removed
+   * and the live chat closed down. For persistent broadcasts that live chat id
+   * will no longer be tied to this video but rather to the new video being
+   * displayed at the persistent page.
+   */
+  core.String activeLiveChatId;
+  /**
    * The time that the broadcast actually ended. The value is specified in ISO
    * 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. This value will not be available
    * until the broadcast is over.
@@ -16850,6 +16859,9 @@ class VideoLiveStreamingDetails {
   VideoLiveStreamingDetails();
 
   VideoLiveStreamingDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("activeLiveChatId")) {
+      activeLiveChatId = _json["activeLiveChatId"];
+    }
     if (_json.containsKey("actualEndTime")) {
       actualEndTime = core.DateTime.parse(_json["actualEndTime"]);
     }
@@ -16869,6 +16881,9 @@ class VideoLiveStreamingDetails {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (activeLiveChatId != null) {
+      _json["activeLiveChatId"] = activeLiveChatId;
+    }
     if (actualEndTime != null) {
       _json["actualEndTime"] = (actualEndTime).toIso8601String();
     }

@@ -14,10 +14,10 @@
     "basePath": "/webmasters/v3/",
     "baseUrl": "https://www.googleapis.com/webmasters/v3/",
     "batchPath": "batch",
-    "description": "Lets you view Google Webmaster Tools data for your verified sites.",
+    "description": "Lets you view Google Search Console data for your verified sites.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/webmaster-tools/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/7TyaeniToMAAPVYC9dRmCQ0J2v8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/g5Rm2y52IL4WkXbQgxJG82q8rSI\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/webmaster_tools-16.png",
         "x32": "https://www.google.com/images/icons/product/webmaster_tools-32.png"
@@ -597,7 +597,7 @@
             }
         }
     },
-    "revision": "20151102",
+    "revision": "20151229",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ApiDataRow": {
@@ -951,6 +951,6 @@
         }
     },
     "servicePath": "webmasters/v3/",
-    "title": "Webmaster Tools API",
+    "title": "Search Console API",
     "version": "v3"
 }

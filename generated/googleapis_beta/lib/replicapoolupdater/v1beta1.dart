@@ -949,7 +949,7 @@ class Operation {
   core.int progress;
   /** [Output Only] URL of the region where the operation resides. */
   core.String region;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] The fully qualified URL for the resource. */
   core.String selfLink;
   /**
    * [Output Only] The time that this operation was started by the server. This
@@ -1130,13 +1130,13 @@ class OperationList {
   /** [Output Only] The Operation resources. */
   core.List<Operation> items;
   /**
-   * [Output Only] Type of resource. Always replicapoolupdater#operations for
-   * Operations resource.
+   * [Output Only] Type of resource. Always replicapoolupdater#operationList for
+   * OperationList resources.
    */
   core.String kind;
   /** [Output Only] A token used to continue a truncate. */
   core.String nextPageToken;
-  /** [Output Only] Server-defined URL for this resource. */
+  /** [Output Only] The fully qualified URL for the resource. */
   core.String selfLink;
 
   OperationList();

@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client webmasters/v3';
 
-/** Lets you view Google Webmaster Tools data for your verified sites. */
+/** Lets you view Google Search Console data for your verified sites. */
 class WebmastersApi {
   /** View and manage Search Console data for your verified sites */
   static const WebmastersScope = "https://www.googleapis.com/auth/webmasters";

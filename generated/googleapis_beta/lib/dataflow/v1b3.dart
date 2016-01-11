@@ -2348,6 +2348,8 @@ class PartialGroupByKeyInstruction {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> inputElementCodec;
+  /** Zero or more side inputs. */
+  core.List<SideInputInfo> sideInputs;
   /**
    * The value combining function to invoke.
    *
@@ -2365,6 +2367,9 @@ class PartialGroupByKeyInstruction {
     if (_json.containsKey("inputElementCodec")) {
       inputElementCodec = _json["inputElementCodec"];
     }
+    if (_json.containsKey("sideInputs")) {
+      sideInputs = _json["sideInputs"].map((value) => new SideInputInfo.fromJson(value)).toList();
+    }
     if (_json.containsKey("valueCombiningFn")) {
       valueCombiningFn = _json["valueCombiningFn"];
     }
@@ -2377,6 +2382,9 @@ class PartialGroupByKeyInstruction {
     }
     if (inputElementCodec != null) {
       _json["inputElementCodec"] = inputElementCodec;
+    }
+    if (sideInputs != null) {
+      _json["sideInputs"] = sideInputs.map((value) => (value).toJson()).toList();
     }
     if (valueCombiningFn != null) {
       _json["valueCombiningFn"] = valueCombiningFn;
@@ -3973,6 +3981,8 @@ class TopologyConfig {
   core.List<ComputationTopology> computations;
   /** The disks assigned to a streaming Dataflow job. */
   core.List<DataDiskAssignment> dataDiskAssignments;
+  /** The size (in bits) of keys that will be assigned to source messages. */
+  core.int forwardingKeyBits;
   /** Maps user stage names to stable computation names. */
   core.Map<core.String, core.String> userStageToComputationNameMap;
 
@@ -3984,6 +3994,9 @@ class TopologyConfig {
     }
     if (_json.containsKey("dataDiskAssignments")) {
       dataDiskAssignments = _json["dataDiskAssignments"].map((value) => new DataDiskAssignment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("forwardingKeyBits")) {
+      forwardingKeyBits = _json["forwardingKeyBits"];
     }
     if (_json.containsKey("userStageToComputationNameMap")) {
       userStageToComputationNameMap = _json["userStageToComputationNameMap"];
@@ -3997,6 +4010,9 @@ class TopologyConfig {
     }
     if (dataDiskAssignments != null) {
       _json["dataDiskAssignments"] = dataDiskAssignments.map((value) => (value).toJson()).toList();
+    }
+    if (forwardingKeyBits != null) {
+      _json["forwardingKeyBits"] = forwardingKeyBits;
     }
     if (userStageToComputationNameMap != null) {
       _json["userStageToComputationNameMap"] = userStageToComputationNameMap;
@@ -4381,6 +4397,16 @@ class WorkItemStatus {
  */
 class WorkerHealthReport {
   /**
+   * The pods running on the worker. See:
+   * http://kubernetes.io/v1.1/docs/api-reference/v1/definitions.html#_v1_pod
+   * This field is used by the worker to send the status of the indvidual
+   * containers running on each worker.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.List<core.Map<core.String, core.Object>> pods;
+  /**
    * The interval at which the worker is sending health reports. The default
    * value of 0 should be interpreted as the field is not being explicitly set
    * by the worker.
@@ -4394,6 +4420,9 @@ class WorkerHealthReport {
   WorkerHealthReport();
 
   WorkerHealthReport.fromJson(core.Map _json) {
+    if (_json.containsKey("pods")) {
+      pods = _json["pods"];
+    }
     if (_json.containsKey("reportInterval")) {
       reportInterval = _json["reportInterval"];
     }
@@ -4407,6 +4436,9 @@ class WorkerHealthReport {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (pods != null) {
+      _json["pods"] = pods;
+    }
     if (reportInterval != null) {
       _json["reportInterval"] = reportInterval;
     }
@@ -4464,6 +4496,8 @@ class WorkerMessage {
   core.String time;
   /** The health of a worker. */
   WorkerHealthReport workerHealthReport;
+  /** A worker message code. */
+  WorkerMessageCode workerMessageCode;
 
   WorkerMessage();
 
@@ -4477,6 +4511,9 @@ class WorkerMessage {
     if (_json.containsKey("workerHealthReport")) {
       workerHealthReport = new WorkerHealthReport.fromJson(_json["workerHealthReport"]);
     }
+    if (_json.containsKey("workerMessageCode")) {
+      workerMessageCode = new WorkerMessageCode.fromJson(_json["workerMessageCode"]);
+    }
   }
 
   core.Map toJson() {
@@ -4489,6 +4526,68 @@ class WorkerMessage {
     }
     if (workerHealthReport != null) {
       _json["workerHealthReport"] = (workerHealthReport).toJson();
+    }
+    if (workerMessageCode != null) {
+      _json["workerMessageCode"] = (workerMessageCode).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * A message code is used to report status and error messages to the service.
+ * The message codes are intended to be machine readable. The service will take
+ * care of translating these into user understandable messages if necessary.
+ * Example use cases: 1. Worker processes reporting successful startup. 2.
+ * Worker processes reporting specific errors (e.g. package staging failure).
+ */
+class WorkerMessageCode {
+  /**
+   * The code is a string intended for consumption by a machine that identifies
+   * the type of message being sent. Examples: 1. "HARNESS_STARTED" might be
+   * used to indicate the worker harness has started. 2. "GCS_DOWNLOAD_ERROR"
+   * might be used to indicate an error downloading a GCS file as part of the
+   * boot process of one of the worker containers. This is a string and not an
+   * enum to make it easy to add new codes without waiting for an API change.
+   */
+  core.String code;
+  /**
+   * Parameters contains specific information about the code. This is a struct
+   * to allow parameters of different types. Examples: 1. For a
+   * "HARNESS_STARTED" message parameters might provide the name of the worker
+   * and additional data like timing information. 2. For a "GCS_DOWNLOAD_ERROR"
+   * parameters might contain fields listing the GCS objects being downloaded
+   * and fields containing errors. In general complex data structures should be
+   * avoided. If a worker needs to send a specific and complicated data
+   * structure then please consider defining a new proto and adding it to the
+   * data oneof in WorkerMessageResponse. Conventions: Parameters should only be
+   * used for information that isn't typically passed as a label. hostname and
+   * other worker identifiers should almost always be passed as labels since
+   * they will be included on most messages.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.Object> parameters;
+
+  WorkerMessageCode();
+
+  WorkerMessageCode.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("parameters")) {
+      parameters = _json["parameters"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (parameters != null) {
+      _json["parameters"] = parameters;
     }
     return _json;
   }

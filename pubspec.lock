@@ -13,10 +13,6 @@ packages:
     description: collection
     source: hosted
     version: "1.2.0"
-  convert:
-    description: convert
-    source: hosted
-    version: "1.0.1"
   crypto:
     description: crypto
     source: hosted
@@ -28,11 +24,11 @@ packages:
   http:
     description: http
     source: hosted
-    version: "0.11.3+2"
+    version: "0.11.3+3"
   http_parser:
     description: http_parser
     source: hosted
-    version: "1.1.0"
+    version: "2.0.0"
   path:
     description: path
     source: hosted
@@ -49,11 +45,7 @@ packages:
     description: string_scanner
     source: hosted
     version: "0.1.4"
-  typed_data:
-    description: typed_data
-    source: hosted
-    version: "1.1.1"
   yaml:
     description: yaml
     source: hosted
-    version: "2.1.7"
+    version: "2.1.3"

@@ -26,7 +26,7 @@
     "description": "An API to store, process, explore, and share genomic data. It supports reference-based alignements, genetic variants, and reference genomes. This API provides an implementation of the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
     "discoveryVersion": "v1",
     "documentationLink": "",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/bqDBBb6vJk3jPgyMA1t8Azm6BoQ\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/mhBaKN3REF2ssb8U8kL-4LNrC-0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1270,7 +1270,7 @@
             }
         }
     },
-    "revision": "20151216",
+    "revision": "20160106",
     "rootUrl": "https://genomics.googleapis.com/",
     "schemas": {
         "ListDatasetsResponse": {

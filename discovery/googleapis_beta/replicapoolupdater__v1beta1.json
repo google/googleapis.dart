@@ -23,7 +23,7 @@
     "description": "The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/a9_NhKO1DW_f-K-sZ0-h8ToME8I\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/cN5Jn3vD0yxbhTVxORmW5Ig63JA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -527,7 +527,7 @@
             }
         }
     },
-    "revision": "20150904",
+    "revision": "20160107",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InstanceUpdate": {
@@ -677,7 +677,7 @@
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "[Output Only] Server defined URL for the resource.",
+                    "description": "[Output Only] The fully qualified URL for the resource.",
                     "type": "string"
                 },
                 "startTime": {
@@ -761,7 +761,7 @@
                 },
                 "kind": {
                     "default": "replicapoolupdater#operationList",
-                    "description": "[Output Only] Type of resource. Always replicapoolupdater#operations for Operations resource.",
+                    "description": "[Output Only] Type of resource. Always replicapoolupdater#operationList for OperationList resources.",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -769,7 +769,7 @@
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "[Output Only] Server-defined URL for this resource.",
+                    "description": "[Output Only] The fully qualified URL for the resource.",
                     "type": "string"
                 }
             },

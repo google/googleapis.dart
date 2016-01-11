@@ -17,7 +17,7 @@
     "description": "Google Dataflow API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataflow",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/B_lC0u1-Wt6LmKd-AbOZOQZx8Jc\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/pdss05SnljaLiKLzp8lAQh6dn78\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -487,7 +487,7 @@
             }
         }
     },
-    "revision": "20151127",
+    "revision": "20160104",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
         "Job": {
@@ -1941,6 +1941,13 @@
                     },
                     "description": "The value combining function to invoke.",
                     "type": "object"
+                },
+                "sideInputs": {
+                    "description": "Zero or more side inputs.",
+                    "items": {
+                        "$ref": "SideInputInfo"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -2099,6 +2106,11 @@
                     },
                     "description": "Maps user stage names to stable computation names.",
                     "type": "object"
+                },
+                "forwardingKeyBits": {
+                    "description": "The size (in bits) of keys that will be assigned to source messages.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -2469,6 +2481,10 @@
                 "workerHealthReport": {
                     "$ref": "WorkerHealthReport",
                     "description": "The health of a worker."
+                },
+                "workerMessageCode": {
+                    "$ref": "WorkerMessageCode",
+                    "description": "A worker message code."
                 }
             },
             "type": "object"
@@ -2488,6 +2504,36 @@
                 "reportInterval": {
                     "description": "The interval at which the worker is sending health reports. The default value of 0 should be interpreted as the field is not being explicitly set by the worker.",
                     "type": "string"
+                },
+                "pods": {
+                    "description": "The pods running on the worker. See: http://kubernetes.io/v1.1/docs/api-reference/v1/definitions.html#_v1_pod This field is used by the worker to send the status of the indvidual containers running on each worker.",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "WorkerMessageCode": {
+            "description": "A message code is used to report status and error messages to the service. The message codes are intended to be machine readable. The service will take care of translating these into user understandable messages if necessary. Example use cases: 1. Worker processes reporting successful startup. 2. Worker processes reporting specific errors (e.g. package staging failure).",
+            "id": "WorkerMessageCode",
+            "properties": {
+                "code": {
+                    "description": "The code is a string intended for consumption by a machine that identifies the type of message being sent. Examples: 1. \"HARNESS_STARTED\" might be used to indicate the worker harness has started. 2. \"GCS_DOWNLOAD_ERROR\" might be used to indicate an error downloading a GCS file as part of the boot process of one of the worker containers. This is a string and not an enum to make it easy to add new codes without waiting for an API change.",
+                    "type": "string"
+                },
+                "parameters": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Parameters contains specific information about the code. This is a struct to allow parameters of different types. Examples: 1. For a \"HARNESS_STARTED\" message parameters might provide the name of the worker and additional data like timing information. 2. For a \"GCS_DOWNLOAD_ERROR\" parameters might contain fields listing the GCS objects being downloaded and fields containing errors. In general complex data structures should be avoided. If a worker needs to send a specific and complicated data structure then please consider defining a new proto and adding it to the data oneof in WorkerMessageResponse. Conventions: Parameters should only be used for information that isn't typically passed as a label. hostname and other worker identifiers should almost always be passed as labels since they will be included on most messages.",
+                    "type": "object"
                 }
             },
             "type": "object"

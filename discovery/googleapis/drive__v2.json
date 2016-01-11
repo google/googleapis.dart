@@ -38,7 +38,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/xocIkhWvgJ9bRAc-sUSWcWz1WYM\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/fKMbe2SrHaXxYf-uUNHbWFry5hs\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1963,7 +1963,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Adds a property to a file.",
+                    "description": "Adds a property to a file, or updates it if it already exists.",
                     "httpMethod": "POST",
                     "id": "drive.properties.insert",
                     "parameterOrder": [
@@ -2021,7 +2021,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates a property. This method supports patch semantics.",
+                    "description": "Updates a property, or adds it if it doesn't exist. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "drive.properties.patch",
                     "parameterOrder": [
@@ -2063,7 +2063,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates a property.",
+                    "description": "Updates a property, or adds it if it doesn't exist.",
                     "httpMethod": "PUT",
                     "id": "drive.properties.update",
                     "parameterOrder": [
@@ -2604,7 +2604,7 @@
             }
         }
     },
-    "revision": "20151210",
+    "revision": "20151230",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {

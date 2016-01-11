@@ -18,7 +18,7 @@
     "description": "Admin Data Transfer API lets you transfer user data from one user to another.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/data-transfer/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/fIZK26KtD09fXt5m9JygrSOR194\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/BNuyD_NaVAV3W_hswlv4FqnMld8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -115,7 +115,7 @@
                         },
                         "maxResults": {
                             "description": "Maximum number of results to return. Default is 100.",
-                            "format": "uint32",
+                            "format": "int32",
                             "location": "query",
                             "maximum": "500",
                             "minimum": "1",
@@ -230,7 +230,7 @@
             }
         }
     },
-    "revision": "20150917",
+    "revision": "20151124",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Application": {
