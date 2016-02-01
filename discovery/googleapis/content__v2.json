@@ -15,7 +15,7 @@
     "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/kOAnA9e-BsAB37sr1x6cT3rxlkc\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/WzxFI4GBYGkZGJCfKJi51ODdQOI\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1936,7 +1936,7 @@
             }
         }
     },
-    "revision": "20151211",
+    "revision": "20160115",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -3091,7 +3091,7 @@
                     "type": "string"
                 },
                 "hour": {
-                    "description": "The hour of the day the feed file should be fetched (0-24).",
+                    "description": "The hour of the day the feed file should be fetched (0-23).",
                     "format": "uint32",
                     "type": "integer"
                 },

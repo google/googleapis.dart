@@ -9157,7 +9157,7 @@ class CommentThreadSnippet {
 
 /**
  * Ratings schemes. The country-specific ratings are mostly for movies and
- * shows. NEXT_ID: 66
+ * shows. NEXT_ID: 67
  */
 class ContentRating {
   /**
@@ -9411,6 +9411,21 @@ class ContentRating {
   core.String djctqRating;
   /** Reasons that explain why the video received its DJCQT (Brazil) rating. */
   core.List<core.String> djctqRatingReasons;
+  /**
+   * Rating system in Turkey - Evaluation and Classification Board of the
+   * Ministry of Culture and Tourism
+   * Possible string values are:
+   * - "ecbmct13a"
+   * - "ecbmct13plus"
+   * - "ecbmct15a"
+   * - "ecbmct15plus"
+   * - "ecbmct18plus"
+   * - "ecbmct7a"
+   * - "ecbmct7plus"
+   * - "ecbmctG"
+   * - "ecbmctUnrated"
+   */
+  core.String ecbmctRating;
   /**
    * The video's rating in Estonia.
    * Possible string values are:
@@ -10005,6 +10020,9 @@ class ContentRating {
     if (_json.containsKey("djctqRatingReasons")) {
       djctqRatingReasons = _json["djctqRatingReasons"];
     }
+    if (_json.containsKey("ecbmctRating")) {
+      ecbmctRating = _json["ecbmctRating"];
+    }
     if (_json.containsKey("eefilmRating")) {
       eefilmRating = _json["eefilmRating"];
     }
@@ -10203,6 +10221,9 @@ class ContentRating {
     }
     if (djctqRatingReasons != null) {
       _json["djctqRatingReasons"] = djctqRatingReasons;
+    }
+    if (ecbmctRating != null) {
+      _json["ecbmctRating"] = ecbmctRating;
     }
     if (eefilmRating != null) {
       _json["eefilmRating"] = eefilmRating;
@@ -15477,11 +15498,6 @@ class Video {
    * including the length of the video and its aspect ratio.
    */
   VideoContentDetails contentDetails;
-  /**
-   * The conversionPings object encapsulates information about url pings that
-   * need to be respected by the App in different video contexts.
-   */
-  VideoConversionPings conversionPings;
   /** Etag of this resource. */
   core.String etag;
   /**
@@ -15572,9 +15588,6 @@ class Video {
     if (_json.containsKey("contentDetails")) {
       contentDetails = new VideoContentDetails.fromJson(_json["contentDetails"]);
     }
-    if (_json.containsKey("conversionPings")) {
-      conversionPings = new VideoConversionPings.fromJson(_json["conversionPings"]);
-    }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
@@ -15632,9 +15645,6 @@ class Video {
     }
     if (contentDetails != null) {
       _json["contentDetails"] = (contentDetails).toJson();
-    }
-    if (conversionPings != null) {
-      _json["conversionPings"] = (conversionPings).toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -16309,75 +16319,6 @@ class VideoContentDetailsRegionRestriction {
     }
     if (blocked != null) {
       _json["blocked"] = blocked;
-    }
-    return _json;
-  }
-}
-
-class VideoConversionPing {
-  /**
-   * Defines the context of the ping.
-   * Possible string values are:
-   * - "comment"
-   * - "dislike"
-   * - "like"
-   * - "share"
-   */
-  core.String context;
-  /**
-   * The url (without the schema) that the app shall send the ping to. It's at
-   * caller's descretion to decide which schema to use (http vs https) Example
-   * of a returned url: //googleads.g.doubleclick.net/pagead/
-   * viewthroughconversion/962985656/?data=path%3DtHe_path%3Btype%3D
-   * like%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA%3Bytvid%3DUrIaJUvIQDg&labe=default
-   * The caller must append biscotti authentication (ms param in case of mobile,
-   * for example) to this ping.
-   */
-  core.String conversionUrl;
-
-  VideoConversionPing();
-
-  VideoConversionPing.fromJson(core.Map _json) {
-    if (_json.containsKey("context")) {
-      context = _json["context"];
-    }
-    if (_json.containsKey("conversionUrl")) {
-      conversionUrl = _json["conversionUrl"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (context != null) {
-      _json["context"] = context;
-    }
-    if (conversionUrl != null) {
-      _json["conversionUrl"] = conversionUrl;
-    }
-    return _json;
-  }
-}
-
-class VideoConversionPings {
-  /**
-   * Pings that the app shall fire for a video (authenticated by biscotti
-   * cookie). Each ping has a context, in which the app must fire the ping, and
-   * a url identifying the ping.
-   */
-  core.List<VideoConversionPing> pings;
-
-  VideoConversionPings();
-
-  VideoConversionPings.fromJson(core.Map _json) {
-    if (_json.containsKey("pings")) {
-      pings = _json["pings"].map((value) => new VideoConversionPing.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (pings != null) {
-      _json["pings"] = pings.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

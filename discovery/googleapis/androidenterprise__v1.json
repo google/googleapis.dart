@@ -15,7 +15,7 @@
     "description": "Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android for Work users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android/work/play/emm-api",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Is5ylelsw5UqvuGXXB6cSzQKB_A\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/4xdfCsFKqY63nj0AgziCWDL1CtA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2140,7 +2140,7 @@
             }
         }
     },
-    "revision": "20151215",
+    "revision": "20160106",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AppRestrictionsSchema": {
@@ -2708,6 +2708,10 @@
                 },
                 "productId": {
                     "description": "A string of the form app:<package name>. For example, app:com.google.android.gm represents the Gmail app.",
+                    "type": "string"
+                },
+                "productPricing": {
+                    "description": "Whether this product is free, free with in-app purchases, or paid.",
                     "type": "string"
                 },
                 "requiresContainerApp": {

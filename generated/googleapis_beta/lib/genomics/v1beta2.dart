@@ -1543,7 +1543,7 @@ class ReadgroupsetsResourceApi {
    * - Comments (@CO) in the input file header are not imported
    * - Original order of reference headers is not preserved
    * - Any reverse stranded unmapped reads will be reverse complemented, and
-   * their qualities (and "BQ" tag, if any) will be reversed
+   * their qualities (also the "BQ" and "OQ" tags, if any) will be reversed
    * - Unmapped reads will be stripped of positional information (referenceName
    * and position)
    *

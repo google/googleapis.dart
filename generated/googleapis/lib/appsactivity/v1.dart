@@ -609,7 +609,10 @@ class Target {
 class User {
   /** The displayable name of the user. */
   core.String name;
-  /** The profile photo of the user. */
+  /**
+   * The profile photo of the user. Not present if the user has no profile
+   * photo.
+   */
   Photo photo;
 
   User();

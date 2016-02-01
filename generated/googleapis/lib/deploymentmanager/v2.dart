@@ -284,7 +284,8 @@ class DeploymentsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances whose name is not equal to
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -298,10 +299,10 @@ class DeploymentsResourceApi {
    * expressions are treated as AND expressions meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -376,14 +377,14 @@ class DeploymentsResourceApi {
    *
    * [preview] - If set to true, updates the deployment and creates and updates
    * the "shell" resources but does not actually alter or instantiate these
-   * resources. This allows you to preview what your deployment looks like. You
-   * can use this intent to preview how an update would affect your deployment.
-   * You must provide a target.config with a configuration if this is set to
-   * true. After previewing a deployment, you can deploy your resources by
-   * making a request with the update() or you can cancelPreview() to remove the
-   * preview altogether. Note that the deployment will still exist after you
-   * cancel the preview and you must separately delete this deployment if you
-   * want to remove it.
+   * resources. This allows you to preview what your deployment will look like.
+   * You can use this intent to preview how an update would affect your
+   * deployment. You must provide a target.config with a configuration if this
+   * is set to true. After previewing a deployment, you can deploy your
+   * resources by making a request with the update() or you can cancelPreview()
+   * to remove the preview altogether. Note that the deployment will still exist
+   * after you cancel the preview and you must separately delete this deployment
+   * if you want to remove it.
    *
    * Completes with a [Operation].
    *
@@ -512,14 +513,14 @@ class DeploymentsResourceApi {
    *
    * [preview] - If set to true, updates the deployment and creates and updates
    * the "shell" resources but does not actually alter or instantiate these
-   * resources. This allows you to preview what your deployment looks like. You
-   * can use this intent to preview how an update would affect your deployment.
-   * You must provide a target.config with a configuration if this is set to
-   * true. After previewing a deployment, you can deploy your resources by
-   * making a request with the update() or you can cancelPreview() to remove the
-   * preview altogether. Note that the deployment will still exist after you
-   * cancel the preview and you must separately delete this deployment if you
-   * want to remove it.
+   * resources. This allows you to preview what your deployment will look like.
+   * You can use this intent to preview how an update would affect your
+   * deployment. You must provide a target.config with a configuration if this
+   * is set to true. After previewing a deployment, you can deploy your
+   * resources by making a request with the update() or you can cancelPreview()
+   * to remove the preview altogether. Note that the deployment will still exist
+   * after you cancel the preview and you must separately delete this deployment
+   * if you want to remove it.
    *
    * Completes with a [Operation].
    *
@@ -654,7 +655,8 @@ class ManifestsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances whose name is not equal to
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -668,10 +670,10 @@ class ManifestsResourceApi {
    * expressions are treated as AND expressions meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -798,7 +800,8 @@ class OperationsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances whose name is not equal to
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -812,10 +815,10 @@ class OperationsResourceApi {
    * expressions are treated as AND expressions meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -948,7 +951,8 @@ class ResourcesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances whose name is not equal to
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -962,10 +966,10 @@ class ResourcesResourceApi {
    * expressions are treated as AND expressions meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -1046,7 +1050,8 @@ class TypesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances whose name is not equal to
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -1060,10 +1065,10 @@ class TypesResourceApi {
    * expressions are treated as AND expressions meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -1298,7 +1303,7 @@ class DeploymentsCancelPreviewRequest {
    *
    * The fingerprint is initially generated by Deployment Manager and changes
    * after every request to modify a deployment. To get the latest fingerprint
-   * value, perform a get() request to a deployment.
+   * value, perform a get() request on the deployment.
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
@@ -1370,7 +1375,7 @@ class DeploymentsStopRequest {
    *
    * The fingerprint is initially generated by Deployment Manager and changes
    * after every request to modify a deployment. To get the latest fingerprint
-   * value, perform a get() request to a deployment.
+   * value, perform a get() request on the deployment.
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
@@ -1696,7 +1701,7 @@ class OperationWarnings {
 
 /** An Operation resource, used to manage asynchronous API requests. */
 class Operation {
-  /** [Output Only] A unique client ID generated by the server. */
+  /** [Output Only] Reserved for future use. */
   core.String clientOperationId;
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
@@ -1722,8 +1727,8 @@ class Operation {
   core.String httpErrorMessage;
   /**
    * [Output Only] If the operation fails, this field contains the HTTP error
-   * message that was returned. For example, a 404 means the resource was not
-   * found.
+   * status code that was returned. For example, a 404 means the resource was
+   * not found.
    */
   core.int httpErrorStatusCode;
   /**
@@ -1744,8 +1749,8 @@ class Operation {
   /** [Output Only] Name of the resource. */
   core.String name;
   /**
-   * [Output Only] The type of operation, which can be insert, update, or
-   * delete.
+   * [Output Only] The type of operation, such as insert, update, or delete, and
+   * so on.
    */
   core.String operationType;
   /**
@@ -1757,8 +1762,8 @@ class Operation {
    */
   core.int progress;
   /**
-   * [Output Only] URL of the region where the operation resides. Only available
-   * when performing regional operations.
+   * [Output Only] The URL of the region where the operation resides. Only
+   * available when performing regional operations.
    */
   core.String region;
   /** [Output Only] Server-defined URL for the resource. */
@@ -1783,7 +1788,7 @@ class Operation {
    * of the target resource.
    */
   core.String targetId;
-  /** [Output Only] The URL of the resource that the operation is modifying. */
+  /** [Output Only] The URL of the resource that the operation modifies. */
   core.String targetLink;
   /**
    * [Output Only] User who requested the operation, for example:
@@ -1796,8 +1801,8 @@ class Operation {
    */
   core.List<OperationWarnings> warnings;
   /**
-   * [Output Only] URL of the zone where the operation resides. Only available
-   * when performing per-zone operations.
+   * [Output Only] The URL of the zone where the operation resides. Only
+   * available when performing per-zone operations.
    */
   core.String zone;
 

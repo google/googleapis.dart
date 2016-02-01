@@ -41,7 +41,7 @@
     "description": "The Google+ API enables developers to build on top of the Google+ platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/+/domains/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/iXLwI6OW49fR1XFFnA1dNbJLf6o\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/2S1MuNBMW16Wngcj6eFXJ-vpYKs\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/gplus-16.png",
         "x32": "http://www.google.com/images/icons/product/gplus-32.png"
@@ -852,7 +852,7 @@
             }
         }
     },
-    "revision": "20160106",
+    "revision": "20160127",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {

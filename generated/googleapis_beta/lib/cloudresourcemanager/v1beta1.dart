@@ -91,9 +91,9 @@ class OrganizationsResourceApi {
    *
    * Request parameters:
    *
-   * [resource] - REQUIRED: The resource for which policy is being requested.
-   * `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * requested. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
    * `getIamPolicy` documentation.
    *
@@ -201,9 +201,9 @@ class OrganizationsResourceApi {
    *
    * Request parameters:
    *
-   * [resource] - REQUIRED: The resource for which policy is being specified.
-   * `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * specified. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
    * `setIamPolicy` documentation.
    *
@@ -249,11 +249,11 @@ class OrganizationsResourceApi {
    *
    * Request parameters:
    *
-   * [resource] - REQUIRED: The resource for which policy detail is being
-   * requested. `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * [resource] - REQUIRED: The resource for which the policy detail is being
+   * requested. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * `testIamPermissions` documentation. rpc.
+   * `testIamPermissions` documentation.
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -487,9 +487,9 @@ class ProjectsResourceApi {
    *
    * Request parameters:
    *
-   * [resource] - REQUIRED: The resource for which policy is being requested.
-   * `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * requested. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
    * `getIamPolicy` documentation.
    *
@@ -610,9 +610,9 @@ class ProjectsResourceApi {
    *
    * Request parameters:
    *
-   * [resource] - REQUIRED: The resource for which policy is being specified.
-   * `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * specified. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
    * `setIamPolicy` documentation.
    *
@@ -658,11 +658,11 @@ class ProjectsResourceApi {
    *
    * Request parameters:
    *
-   * [resource] - REQUIRED: The resource for which policy detail is being
-   * requested. `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * [resource] - REQUIRED: The resource for which the policy detail is being
+   * requested. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * `testIamPermissions` documentation. rpc.
+   * `testIamPermissions` documentation.
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -1291,7 +1291,8 @@ class SetIamPolicyRequest {
 class TestIamPermissionsRequest {
   /**
    * The set of permissions to check for the `resource`. Permissions with
-   * wildcards (such as '*' or 'storage.*') are not allowed.
+   * wildcards (such as '*' or 'storage.*') are not allowed. For more
+   * information see IAM Overview.
    */
   core.List<core.String> permissions;
 

@@ -4439,6 +4439,8 @@ class Product {
    * app:com.google.android.gm represents the Gmail app.
    */
   core.String productId;
+  /** Whether this product is free, free with in-app purchases, or paid. */
+  core.String productPricing;
   /**
    * Whether this app can only be installed on devices using the Android for
    * Work container app.
@@ -4476,6 +4478,9 @@ class Product {
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
     }
+    if (_json.containsKey("productPricing")) {
+      productPricing = _json["productPricing"];
+    }
     if (_json.containsKey("requiresContainerApp")) {
       requiresContainerApp = _json["requiresContainerApp"];
     }
@@ -4509,6 +4514,9 @@ class Product {
     }
     if (productId != null) {
       _json["productId"] = productId;
+    }
+    if (productPricing != null) {
+      _json["productPricing"] = productPricing;
     }
     if (requiresContainerApp != null) {
       _json["requiresContainerApp"] = requiresContainerApp;

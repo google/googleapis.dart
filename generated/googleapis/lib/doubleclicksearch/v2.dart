@@ -735,7 +735,11 @@ class Conversion {
   core.String productLanguage;
   /** The quantity of this conversion, in millis. */
   core.String quantityMillis;
-  /** The revenue amount of this TRANSACTION conversion, in micros. */
+  /**
+   * The revenue amount of this TRANSACTION conversion, in micros (value
+   * multiplied by 1000, no decimal). For example, to specify a revenue value of
+   * "10" enter "10000" in your request.
+   */
   core.String revenueMicros;
   /**
    * The numeric segmentation identifier (for example, DoubleClick Search

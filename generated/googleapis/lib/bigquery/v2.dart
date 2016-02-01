@@ -2666,7 +2666,7 @@ class JobConfigurationQuery {
   /** [Required] BigQuery SQL query to execute. */
   core.String query;
   /**
-   * [Experimental] If querying an external data source outside of BigQuery,
+   * [Optional] If querying an external data source outside of BigQuery,
    * describes the data format, location and other properties of the data
    * source. By defining these properties, the data source can then be queried
    * as if it were a standard BigQuery table.
@@ -3745,8 +3745,8 @@ class Table {
    */
   core.String expirationTime;
   /**
-   * [Experimental] Describes the data format, location, and other properties of
-   * a table stored outside of BigQuery. By defining these properties, the data
+   * [Optional] Describes the data format, location, and other properties of a
+   * table stored outside of BigQuery. By defining these properties, the data
    * source can then be queried as if it were a standard BigQuery table.
    */
   ExternalDataConfiguration externalDataConfiguration;

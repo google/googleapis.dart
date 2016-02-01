@@ -104,12 +104,6 @@ The Admin SDK Directory API lets you view and manage enterprise resources such a
 
 Official API documentation: https://developers.google.com/admin-sdk/directory/
 
-#### ![Logo](https://www.google.com/images/icons/product/googlemail-16.png) Email Migration API v2 - admin email_migration_v2
-
-Email Migration API lets you migrate emails of users to Google backends.
-
-Official API documentation: https://developers.google.com/admin-sdk/email-migration/v2/
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Admin Reports API - admin reports_v1
 
 Allows the administrators of Google Apps customers to fetch reports about the usage, collaboration, security and risk for their users.
@@ -376,7 +370,7 @@ Official API documentation: https://developers.google.com/games/services
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1
 
-An API to store, process, explore, and share genomic data. It supports reference-based alignements, genetic variants, and reference genomes. This API provides an implementation of the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.
+An API to store, process, explore, and share genomic data. It supports reference-based alignments, genetic variants, and reference genomes. This API provides an implementation of the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.
 
 Official API documentation: 
 

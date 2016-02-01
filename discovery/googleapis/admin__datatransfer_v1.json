@@ -18,7 +18,7 @@
     "description": "Admin Data Transfer API lets you transfer user data from one user to another.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/data-transfer/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/BNuyD_NaVAV3W_hswlv4FqnMld8\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/kTLBRgj0_CSR6L-Vtk7U0tv9JLw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

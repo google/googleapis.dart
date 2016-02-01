@@ -29,7 +29,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/nyxAZHxFLt8oJVpLaKjE9TIYD_A\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/c55dTQvv4NWDkglZO3_PlmckRzg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -89,7 +89,7 @@
         "addresses": {
             "methods": {
                 "aggregatedList": {
-                    "description": "Retrieves the list of addresses grouped by scope.",
+                    "description": "Retrieves an aggregated list of addresses.",
                     "httpMethod": "GET",
                     "id": "compute.addresses.aggregatedList",
                     "parameterOrder": [
@@ -253,7 +253,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of address resources contained within the specified region.",
+                    "description": "Retrieves a list of address resources contained within the specified region.",
                     "httpMethod": "GET",
                     "id": "compute.addresses.list",
                     "parameterOrder": [
@@ -310,7 +310,7 @@
         "autoscalers": {
             "methods": {
                 "aggregatedList": {
-                    "description": "Retrieves the list of autoscalers grouped by scope.",
+                    "description": "Retrieves an aggregated list of autoscalers.",
                     "httpMethod": "GET",
                     "id": "compute.autoscalers.aggregatedList",
                     "parameterOrder": [
@@ -474,7 +474,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of autoscaler resources contained within the specified zone.",
+                    "description": "Retrieves a list of autoscaler resources contained within the specified zone.",
                     "httpMethod": "GET",
                     "id": "compute.autoscalers.list",
                     "parameterOrder": [
@@ -720,7 +720,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Creates a BackendService resource in the specified project using the data included in the request.",
+                    "description": "Creates a BackendService resource in the specified project using the data included in the request. There are several restrictions and guidelines to keep in mind when creating a backend service. Read  Restrictions and Guidelines for more information.",
                     "httpMethod": "POST",
                     "id": "compute.backendServices.insert",
                     "parameterOrder": [
@@ -793,7 +793,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Update the entire content of the BackendService resource. This method supports patch semantics.",
+                    "description": "Updates the entire content of the BackendService resource. There are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more information. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "compute.backendServices.patch",
                     "parameterOrder": [
@@ -829,7 +829,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Update the entire content of the BackendService resource.",
+                    "description": "Updates the entire content of the BackendService resource. There are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more information.",
                     "httpMethod": "PUT",
                     "id": "compute.backendServices.update",
                     "parameterOrder": [
@@ -869,7 +869,7 @@
         "diskTypes": {
             "methods": {
                 "aggregatedList": {
-                    "description": "Retrieves the list of disk type resources grouped by scope.",
+                    "description": "Retrieves an aggregated list of disk type resources.",
                     "httpMethod": "GET",
                     "id": "compute.diskTypes.aggregatedList",
                     "parameterOrder": [
@@ -956,7 +956,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of disk type resources available to the specified project.",
+                    "description": "Retrieves a list of disk type resources available to the specified project.",
                     "httpMethod": "GET",
                     "id": "compute.diskTypes.list",
                     "parameterOrder": [
@@ -1013,7 +1013,7 @@
         "disks": {
             "methods": {
                 "aggregatedList": {
-                    "description": "Retrieves the list of persistent disks grouped by scope.",
+                    "description": "Retrieves an aggregated list of persistent disks.",
                     "httpMethod": "GET",
                     "id": "compute.disks.aggregatedList",
                     "parameterOrder": [
@@ -1226,7 +1226,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of persistent disks contained within the specified zone.",
+                    "description": "Retrieves a list of persistent disks contained within the specified zone.",
                     "httpMethod": "GET",
                     "id": "compute.disks.list",
                     "parameterOrder": [
@@ -1499,7 +1499,7 @@
         "forwardingRules": {
             "methods": {
                 "aggregatedList": {
-                    "description": "Retrieves the list of forwarding rules grouped by scope.",
+                    "description": "Retrieves an aggregated list of forwarding rules.",
                     "httpMethod": "GET",
                     "id": "compute.forwardingRules.aggregatedList",
                     "parameterOrder": [
@@ -1663,7 +1663,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of ForwardingRule resources available to the specified project and region.",
+                    "description": "Retrieves a list of ForwardingRule resources available to the specified project and region.",
                     "httpMethod": "GET",
                     "id": "compute.forwardingRules.list",
                     "parameterOrder": [
@@ -1859,7 +1859,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of global address resources.",
+                    "description": "Retrieves a list of global address resources.",
                     "httpMethod": "GET",
                     "id": "compute.globalAddresses.list",
                     "parameterOrder": [
@@ -2003,7 +2003,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of ForwardingRule resources available to the specified project.",
+                    "description": "Retrieves a list of ForwardingRule resources available to the specified project.",
                     "httpMethod": "GET",
                     "id": "compute.globalForwardingRules.list",
                     "parameterOrder": [
@@ -2088,7 +2088,7 @@
         "globalOperations": {
             "methods": {
                 "aggregatedList": {
-                    "description": "Retrieves the list of all operations grouped by scope.",
+                    "description": "Retrieves an aggregated list of all operations.",
                     "httpMethod": "GET",
                     "id": "compute.globalOperations.aggregatedList",
                     "parameterOrder": [
@@ -2197,7 +2197,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of Operation resources contained within the specified project.",
+                    "description": "Retrieves a list of Operation resources contained within the specified project.",
                     "httpMethod": "GET",
                     "id": "compute.globalOperations.list",
                     "parameterOrder": [
@@ -2948,7 +2948,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Deletes the specified managed instance group and all of the instances in that group.",
+                    "description": "Deletes the specified managed instance group and all of the instances in that group. Note that the instance group must not belong to a backend service. Read  Deleting an instance group for more information.",
                     "httpMethod": "DELETE",
                     "id": "compute.instanceGroupManagers.delete",
                     "parameterOrder": [
@@ -3373,7 +3373,7 @@
         "instanceGroups": {
             "methods": {
                 "addInstances": {
-                    "description": "Adds a list of instances to the specified instance group. All of the instances in the instance group must be in the same network/subnetwork.",
+                    "description": "Adds a list of instances to the specified instance group. Read  Adding instances for more information.",
                     "httpMethod": "POST",
                     "id": "compute.instanceGroups.addInstances",
                     "parameterOrder": [
@@ -3460,7 +3460,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Deletes the specified instance group. The instances in the group are not deleted.",
+                    "description": "Deletes the specified instance group. The instances in the group are not deleted. Note that instance group must not belong to a backend service. Read  Deleting an instance group for more information.",
                     "httpMethod": "DELETE",
                     "id": "compute.instanceGroups.delete",
                     "parameterOrder": [
@@ -3843,7 +3843,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Creates an instance template in the specified project using the data that is included in the request.",
+                    "description": "Creates an instance template in the specified project using the data that is included in the request. If you are creating a new template to update an existing instance group, your new instance template must use the same network or, if applicable, the same subnetwork as the original template.",
                     "httpMethod": "POST",
                     "id": "compute.instanceTemplates.insert",
                     "parameterOrder": [
@@ -4483,6 +4483,50 @@
                         "https://www.googleapis.com/auth/compute"
                     ]
                 },
+                "setMachineType": {
+                    "description": "Changes the machine type for a stopped instance to the machine type specified in the request.",
+                    "httpMethod": "POST",
+                    "id": "compute.instances.setMachineType",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "description": "Name of the instance scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The name of the zone for this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instances/{instance}/setMachineType",
+                    "request": {
+                        "$ref": "InstancesSetMachineTypeRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
                 "setMetadata": {
                     "description": "Sets metadata for the specified instance to the data included in the request.",
                     "httpMethod": "POST",
@@ -4616,7 +4660,7 @@
                     ]
                 },
                 "start": {
-                    "description": "This method starts an instance that was stopped using the using the instances().stop method. For more information, see Restart an instance.",
+                    "description": "Starts an instance that was stopped using the using the instances().stop method. For more information, see Restart an instance.",
                     "httpMethod": "POST",
                     "id": "compute.instances.start",
                     "parameterOrder": [
@@ -4657,7 +4701,7 @@
                     ]
                 },
                 "stop": {
-                    "description": "This method stops a running instance, shutting it down cleanly, and allows you to restart the instance at a later time. Stopped instances do not incur per-minute, virtual machine usage charges while they are stopped, but any resources that the virtual machine is using, such as persistent disks and static IP addresses,will continue to be charged until they are deleted. For more information, see Stopping an instance.",
+                    "description": "Stops a running instance, shutting it down cleanly, and allows you to restart the instance at a later time. Stopped instances do not incur per-minute, virtual machine usage charges while they are stopped, but any resources that the virtual machine is using, such as persistent disks and static IP addresses, will continue to be charged until they are deleted. For more information, see Stopping an instance.",
                     "httpMethod": "POST",
                     "id": "compute.instances.stop",
                     "parameterOrder": [
@@ -4740,7 +4784,7 @@
         "machineTypes": {
             "methods": {
                 "aggregatedList": {
-                    "description": "Retrieves the list of machine type resources grouped by scope.",
+                    "description": "Retrieves an aggregated list of machine type resources.",
                     "httpMethod": "GET",
                     "id": "compute.machineTypes.aggregatedList",
                     "parameterOrder": [
@@ -4827,7 +4871,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of machine type resources available to the specified project.",
+                    "description": "Retrieves a list of machine type resources available to the specified project.",
                     "httpMethod": "GET",
                     "id": "compute.machineTypes.list",
                     "parameterOrder": [
@@ -5235,7 +5279,7 @@
                             "type": "string"
                         },
                         "region": {
-                            "description": "Name of the zone scoping this request.",
+                            "description": "Name of the region scoping this request.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -5253,7 +5297,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of Operation resources contained within the specified region.",
+                    "description": "Retrieves a list of Operation resources contained within the specified region.",
                     "httpMethod": "GET",
                     "id": "compute.regionOperations.list",
                     "parameterOrder": [
@@ -5794,6 +5838,227 @@
                 }
             }
         },
+        "subnetworks": {
+            "methods": {
+                "aggregatedList": {
+                    "description": "Retrieves an aggregated list of subnetworks.",
+                    "httpMethod": "GET",
+                    "id": "compute.subnetworks.aggregatedList",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: field_name comparison_string literal_string.\n\nThe field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.\n\nCompute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. In particular, use filtering on nested fields to take advantage of instance labels to organize and filter results based on label values.\n\nThe Beta API also supports filtering on multiple expressions by providing each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions meaning that resources must match all expressions to pass the filters.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "The maximum number of results per page that Compute Engine should return. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/aggregated/subnetworks",
+                    "response": {
+                        "$ref": "SubnetworkAggregatedList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "delete": {
+                    "description": "Deletes the specified subnetwork.",
+                    "httpMethod": "DELETE",
+                    "id": "compute.subnetworks.delete",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "subnetwork"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "description": "Name of the region scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "subnetwork": {
+                            "description": "Name of the Subnetwork resource to delete.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/subnetworks/{subnetwork}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "get": {
+                    "description": "Returns the specified subnetwork.",
+                    "httpMethod": "GET",
+                    "id": "compute.subnetworks.get",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "subnetwork"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "description": "Name of the region scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "subnetwork": {
+                            "description": "Name of the Subnetwork resource to return.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/subnetworks/{subnetwork}",
+                    "response": {
+                        "$ref": "Subnetwork"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "insert": {
+                    "description": "Creates a subnetwork in the specified project using the data included in the request.",
+                    "httpMethod": "POST",
+                    "id": "compute.subnetworks.insert",
+                    "parameterOrder": [
+                        "project",
+                        "region"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "description": "Name of the region scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/subnetworks",
+                    "request": {
+                        "$ref": "Subnetwork"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "list": {
+                    "description": "Retrieves a list of subnetworks available to the specified project.",
+                    "httpMethod": "GET",
+                    "id": "compute.subnetworks.list",
+                    "parameterOrder": [
+                        "project",
+                        "region"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: field_name comparison_string literal_string.\n\nThe field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, filter=name ne example-instance.\n\nCompute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. In particular, use filtering on nested fields to take advantage of instance labels to organize and filter results based on label values.\n\nThe Beta API also supports filtering on multiple expressions by providing each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions meaning that resources must match all expressions to pass the filters.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "The maximum number of results per page that Compute Engine should return. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "description": "Name of the region scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/subnetworks",
+                    "response": {
+                        "$ref": "SubnetworkList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                }
+            }
+        },
         "targetHttpProxies": {
             "methods": {
                 "delete": {
@@ -6193,7 +6458,7 @@
         "targetInstances": {
             "methods": {
                 "aggregatedList": {
-                    "description": "Retrieves the list of target instances grouped by scope.",
+                    "description": "Retrieves an aggregated list of target instances.",
                     "httpMethod": "GET",
                     "id": "compute.targetInstances.aggregatedList",
                     "parameterOrder": [
@@ -6357,7 +6622,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of TargetInstance resources available to the specified project and zone.",
+                    "description": "Retrieves a list of TargetInstance resources available to the specified project and zone.",
                     "httpMethod": "GET",
                     "id": "compute.targetInstances.list",
                     "parameterOrder": [
@@ -6500,7 +6765,7 @@
                     ]
                 },
                 "aggregatedList": {
-                    "description": "Retrieves the list of target pools grouped by scope.",
+                    "description": "Retrieves an aggregated list of target pools.",
                     "httpMethod": "GET",
                     "id": "compute.targetPools.aggregatedList",
                     "parameterOrder": [
@@ -6628,7 +6893,7 @@
                     ]
                 },
                 "getHealth": {
-                    "description": "Gets the most recent health check results for each IP for the given instance that is referenced by given TargetPool.",
+                    "description": "Gets the most recent health check results for each IP for the given instance that is referenced by the given TargetPool.",
                     "httpMethod": "POST",
                     "id": "compute.targetPools.getHealth",
                     "parameterOrder": [
@@ -6708,7 +6973,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of TargetPool resources available to the specified project and region.",
+                    "description": "Retrieves a list of TargetPool resources available to the specified project and region.",
                     "httpMethod": "GET",
                     "id": "compute.targetPools.list",
                     "parameterOrder": [
@@ -6901,7 +7166,7 @@
         "targetVpnGateways": {
             "methods": {
                 "aggregatedList": {
-                    "description": "Retrieves the list of target VPN gateways grouped by scope.",
+                    "description": "Retrieves an aggregated list of target VPN gateways .",
                     "httpMethod": "GET",
                     "id": "compute.targetVpnGateways.aggregatedList",
                     "parameterOrder": [
@@ -7065,7 +7330,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of TargetVpnGateway resources available to the specified project and region.",
+                    "description": "Retrieves a list of TargetVpnGateway resources available to the specified project and region.",
                     "httpMethod": "GET",
                     "id": "compute.targetVpnGateways.list",
                     "parameterOrder": [
@@ -7262,7 +7527,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Update the entire content of the UrlMap resource. This method supports patch semantics.",
+                    "description": "Updates the entire content of the UrlMap resource. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "compute.urlMaps.patch",
                     "parameterOrder": [
@@ -7298,7 +7563,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Update the entire content of the UrlMap resource.",
+                    "description": "Updates the entire content of the UrlMap resource.",
                     "httpMethod": "PUT",
                     "id": "compute.urlMaps.update",
                     "parameterOrder": [
@@ -7334,7 +7599,7 @@
                     ]
                 },
                 "validate": {
-                    "description": "Run static validation for the UrlMap. In particular, the tests of the provided UrlMap will be run. Calling this method does NOT create the UrlMap.",
+                    "description": "Runs static validation for the UrlMap. In particular, the tests of the provided UrlMap will be run. Calling this method does NOT create the UrlMap.",
                     "httpMethod": "POST",
                     "id": "compute.urlMaps.validate",
                     "parameterOrder": [
@@ -7374,7 +7639,7 @@
         "vpnTunnels": {
             "methods": {
                 "aggregatedList": {
-                    "description": "Retrieves the list of VPN tunnels grouped by scope.",
+                    "description": "Retrieves an aggregated list of VPN tunnels.",
                     "httpMethod": "GET",
                     "id": "compute.vpnTunnels.aggregatedList",
                     "parameterOrder": [
@@ -7538,7 +7803,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of VpnTunnel resources contained in the specified project and region.",
+                    "description": "Retrieves a list of VpnTunnel resources contained in the specified project and region.",
                     "httpMethod": "GET",
                     "id": "compute.vpnTunnels.list",
                     "parameterOrder": [
@@ -7675,7 +7940,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of Operation resources contained within the specified zone.",
+                    "description": "Retrieves a list of Operation resources contained within the specified zone.",
                     "httpMethod": "GET",
                     "id": "compute.zoneOperations.list",
                     "parameterOrder": [
@@ -7813,7 +8078,7 @@
             }
         }
     },
-    "revision": "20151208",
+    "revision": "20160120",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -8469,12 +8734,12 @@
                     "type": "string"
                 },
                 "maxRate": {
-                    "description": "The max RPS of the group. Can be used with either balancing mode, but required if RATE mode. For RATE mode, either maxRate or maxRatePerInstance must be set.",
+                    "description": "The max requests per second (RPS) of the group. Can be used with either balancing mode, but required if RATE mode. For RATE mode, either maxRate or maxRatePerInstance must be set.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "maxRatePerInstance": {
-                    "description": "The max RPS that a single backed instance can handle. This is used to calculate the capacity of the group. Can be used in either balancing mode. For RATE mode, either maxRate or maxRatePerInstance must be set.",
+                    "description": "The max requests per second (RPS) that a single backed instance can handle. This is used to calculate the capacity of the group. Can be used in either balancing mode. For RATE mode, either maxRate or maxRatePerInstance must be set.",
                     "format": "float",
                     "type": "number"
                 },
@@ -8487,7 +8752,7 @@
             "type": "object"
         },
         "BackendService": {
-            "description": "A BackendService resource. This resource defines a group of backend virtual machines together with their serving capacity.",
+            "description": "A BackendService resource. This resource defines a group of backend virtual machines and their serving capacity.",
             "id": "BackendService",
             "properties": {
                 "backends": {
@@ -8533,7 +8798,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "description": "Deprecated in favor of port name. The TCP port to connect on the backend. The default value is 80.",
+                    "description": "Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -8557,7 +8822,7 @@
                     "type": "string"
                 },
                 "timeoutSec": {
-                    "description": "How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds.",
+                    "description": "How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is [1, 86400].",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -9154,7 +9419,7 @@
                     "type": "string"
                 },
                 "network": {
-                    "description": "URL of the network resource for this firewall rule. This field is required for creating an instance but optional when creating a firewall rule. If not specified when creating a firewall rule, the default network is used:\nglobal/networks/default\nIf you choose to specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs:  \n- https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network \n- projects/myproject/global/networks/my-network \n- global/networks/default",
+                    "description": "URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used:\nglobal/networks/default\nIf you choose to specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs:  \n- https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network \n- projects/myproject/global/networks/my-network \n- global/networks/default",
                     "type": "string"
                 },
                 "selfLink": {
@@ -9278,7 +9543,7 @@
                     "type": "string"
                 },
                 "target": {
-                    "description": "The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in the same region as the forwarding rule. For global forwarding rules, this target must be a global TargetHttpProxy or TargetHttpsProxy resource.",
+                    "description": "The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in the same region as the forwarding rule. For global forwarding rules, this target must be a global TargetHttpProxy or TargetHttpsProxy resource. The forwarded traffic must be of a type appropriate to the target object. For example, TargetHttpProxy requires HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.",
                     "type": "string"
                 }
             },
@@ -9851,7 +10116,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "An optional textual description of the resource; provided by the client when the resource is created.",
+                    "description": "An optional description of this resource. Provide this property when you create the resource.",
                     "type": "string"
                 },
                 "disks": {
@@ -9862,7 +10127,7 @@
                     "type": "array"
                 },
                 "id": {
-                    "description": "[Output Only] Unique identifier for the resource. This identifier is defined by the server.",
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
                     "format": "uint64",
                     "type": "string"
                 },
@@ -9885,7 +10150,7 @@
                     "description": "The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys."
                 },
                 "name": {
-                    "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+                    "description": "The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "type": "string"
                 },
                 "networkInterfaces": {
@@ -9900,7 +10165,7 @@
                     "description": "Scheduling options for this instance."
                 },
                 "selfLink": {
-                    "description": "[Output Only] Server defined URL for this resource.",
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 },
                 "serviceAccounts": {
@@ -9970,11 +10235,11 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "[Output Only] A token used to continue a truncated list request.",
+                    "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "[Output Only] Server defined URL for this resource.",
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -10035,6 +10300,10 @@
                     "description": "[Output Only] The total number of instances in the instance group.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "subnetwork": {
+                    "description": "[Output Only] The URL of the subnetwork to which all instances in the instance group belong.",
+                    "type": "string"
                 },
                 "zone": {
                     "description": "[Output Only] The URL of the zone where the instance group is located.",
@@ -10213,7 +10482,7 @@
                     "type": "integer"
                 },
                 "creating": {
-                    "description": "[Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created.",
+                    "description": "[Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create one of these instances, it tries again until it creates the instance successfully.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -10652,11 +10921,11 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "[Output Only] A token used to continue a truncated list request.",
+                    "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "[Output Only] Server defined URL for this resource.",
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -10934,6 +11203,16 @@
             },
             "type": "object"
         },
+        "InstancesSetMachineTypeRequest": {
+            "id": "InstancesSetMachineTypeRequest",
+            "properties": {
+                "machineType": {
+                    "description": "Full or partial URL of the machine type resource. See Machine Types for a full list of machine types. For example: zones/us-central1-f/machineTypes/n1-standard-1",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "License": {
             "description": "A license resource.",
             "id": "License",
@@ -11187,7 +11466,7 @@
             "id": "ManagedInstance",
             "properties": {
                 "currentAction": {
-                    "description": "[Output Only] The current action that the managed instance group has scheduled for the instance. Possible values: \n- NONE The instance is running, and the managed instance group does not have any scheduled actions for this instance. \n- CREATING The managed instance group is creating this instance. \n- RECREATING The managed instance group is recreating this instance. \n- DELETING The managed instance group is permanently deleting this instance. \n- ABANDONING The managed instance group is abandoning this instance. The instance will be removed from the instance group and from any target pools that are associated with this group. \n- RESTARTING The managed instance group is restarting the instance. \n- REFRESHING The managed instance group is applying configuration changes to the instance without stopping it. For example, the group can update the target pool list for an instance without stopping that instance.",
+                    "description": "[Output Only] The current action that the managed instance group has scheduled for the instance. Possible values: \n- NONE The instance is running, and the managed instance group does not have any scheduled actions for this instance. \n- CREATING The managed instance group is creating this instance. If the group fails to create this instance, it will try again until it is successful. \n- CREATING_WITHOUT_RETRIES The managed instance group is attempting to create this instance only once. If the group fails to create this instance, it does not try again and the group's target_size value is decreased. \n- RECREATING The managed instance group is recreating this instance. \n- DELETING The managed instance group is permanently deleting this instance. \n- ABANDONING The managed instance group is abandoning this instance. The instance will be removed from the instance group and from any target pools that are associated with this group. \n- RESTARTING The managed instance group is restarting the instance. \n- REFRESHING The managed instance group is applying configuration changes to the instance without stopping it. For example, the group can update the target pool list for an instance without stopping that instance.",
                     "enum": [
                         "ABANDONING",
                         "CREATING",
@@ -11353,6 +11632,10 @@
                     "pattern": "[0-9]{1,3}(?:\\.[0-9]{1,3}){3}/[0-9]{1,2}",
                     "type": "string"
                 },
+                "autoCreateSubnetworks": {
+                    "description": "When set to true, the network is created in \"auto subnet mode\". When set to false, the network is in \"custom subnet mode\".\n\nIn \"auto subnet mode\", a newly created network is assigned the default CIDR of 10.128.0.0/9 and it automatically creates one subnetwork per region.",
+                    "type": "boolean"
+                },
                 "creationTimestamp": {
                     "description": "[Output Only] Creation timestamp in RFC3339 text format.",
                     "type": "string"
@@ -11389,6 +11672,13 @@
                 "selfLink": {
                     "description": "[Output Only] Server-defined URL for the resource.",
                     "type": "string"
+                },
+                "subnetworks": {
+                    "description": "[Output Only] Server-defined fully-qualified URLs for all subnetworks in this network.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -11419,6 +11709,10 @@
                 },
                 "networkIP": {
                     "description": "[Output Only] An optional IPV4 internal network address assigned to the instance for this network interface.",
+                    "type": "string"
+                },
+                "subnetwork": {
+                    "description": "The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not provide this property. If the network is in auto subnet mode, providing the subnetwork is optional. If the network is in custom subnet mode, then this field should be specified. If you specify this property, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs:  \n- https://www.googleapis.com/compute/v1/projects/project/zones/zone/subnetworks/subnetwork \n- zones/zone/subnetworks/subnetwork",
                     "type": "string"
                 }
             },
@@ -11507,7 +11801,7 @@
                     "type": "string"
                 },
                 "httpErrorStatusCode": {
-                    "description": "[Output Only] If the operation fails, this field contains the HTTP error message that was returned. For example, a 404 means the resource was not found.",
+                    "description": "[Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a 404 means the resource was not found.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -11534,12 +11828,12 @@
                     "type": "string"
                 },
                 "progress": {
-                    "description": "[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess at when the operation will be complete. This number should monotonically increase as the operation progresses.",
+                    "description": "[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "region": {
-                    "description": "[Output Only] URL of the region where the operation resides. Only applicable for regional resources.",
+                    "description": "[Output Only] URL of the region where the operation resides. Only available when performing regional operations.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -11648,7 +11942,7 @@
                     "type": "array"
                 },
                 "zone": {
-                    "description": "[Output Only] URL of the zone where the operation resides.",
+                    "description": "[Output Only] URL of the zone where the operation resides. Only available when performing per-zone operations.",
                     "type": "string"
                 }
             },
@@ -11797,7 +12091,7 @@
             "id": "PathMatcher",
             "properties": {
                 "defaultService": {
-                    "description": "The URL to the BackendService resource. This will be used if none of the pathRules defined by this PathMatcher is met by the URL's path portion.",
+                    "description": "The full or partial URL to the BackendService resource. This will be used if none of the pathRules defined by this PathMatcher is matched by the URL's path portion. For example, the following are all valid URLs to a BackendService resource:  \n- https://www.googleapis.com/compute/v1/projects/project/global/backendServices/backendService \n- compute/v1/projects/project/global/backendServices/backendService \n- global/backendServices/backendService",
                     "type": "string"
                 },
                 "description": {
@@ -11886,7 +12180,7 @@
                 },
                 "usageExportLocation": {
                     "$ref": "UsageExportLocation",
-                    "description": "The location in Cloud Storage and naming method of the daily usage report."
+                    "description": "The naming prefix for daily usage reports and the Google Cloud Storage bucket where they are stored."
                 }
             },
             "type": "object"
@@ -11903,6 +12197,7 @@
                 "metric": {
                     "description": "[Output Only] Name of the quota metric.",
                     "enum": [
+                        "AUTOSCALERS",
                         "BACKEND_SERVICES",
                         "CPUS",
                         "DISKS_TOTAL_GB",
@@ -11922,6 +12217,7 @@
                         "SSD_TOTAL_GB",
                         "SSL_CERTIFICATES",
                         "STATIC_ADDRESSES",
+                        "SUBNETWORKS",
                         "TARGET_HTTPS_PROXIES",
                         "TARGET_HTTP_PROXIES",
                         "TARGET_INSTANCES",
@@ -11931,6 +12227,8 @@
                         "VPN_TUNNELS"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -12073,7 +12371,7 @@
             "type": "object"
         },
         "Route": {
-            "description": "The route resource. A Route is a rule that specifies how certain packets should be handled by the virtual network. Routes are associated with instances by tag and the set of Routes for a particular instance is called its routing table. For each packet leaving a instance, the system searches that instance's routing table for a single best matching Route. Routes match packets by destination IP address, preferring smaller or more specific ranges over larger ones. If there is a tie, the system selects the Route with the smallest priority value. If there is still a tie, it uses the layer three and four packet headers to select just one of the remaining matching Routes. The packet is then forwarded as specified by the nextHop field of the winning Route -- either to another instance destination, a instance gateway or a Google Compute Engien-operated gateway. Packets that do not match any Route in the sending instance's routing table are dropped.",
+            "description": "The route resource. A Route is a rule that specifies how certain packets should be handled by the virtual network. Routes are associated with instances by tags and the set of Routes for a particular instance is called its routing table. For each packet leaving a instance, the system searches that instance's routing table for a single best matching Route. Routes match packets by destination IP address, preferring smaller or more specific ranges over larger ones. If there is a tie, the system selects the Route with the smallest priority value. If there is still a tie, it uses the layer three and four packet headers to select just one of the remaining matching Routes. The packet is then forwarded as specified by the nextHop field of the winning Route -- either to another instance destination, a instance gateway or a Google Compute Engien-operated gateway. Packets that do not match any Route in the sending instance's routing table are dropped.",
             "id": "Route",
             "properties": {
                 "creationTimestamp": {
@@ -12123,11 +12421,11 @@
                     "type": "string"
                 },
                 "nextHopGateway": {
-                    "description": "The URL to a gateway that should handle matching packets. Currently, this is only the internet gateway:  projects/<project-id>/global/gateways/default-internet-gateway",
+                    "description": "The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/<project-id>/global/gateways/default-internet-gateway",
                     "type": "string"
                 },
                 "nextHopInstance": {
-                    "description": "The fully-qualified URL to an instance that should handle matching packets. For example:\nhttps://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/",
+                    "description": "The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:\nhttps://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/",
                     "type": "string"
                 },
                 "nextHopIp": {
@@ -12148,7 +12446,7 @@
                             "compute.routes.insert"
                         ]
                     },
-                    "description": "Breaks ties between Routes of equal specificity. Routes with smaller values win when tied with routes with larger values. Default value is 1000. A valid range is between 0 and 65535.",
+                    "description": "The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In the case of two routes with equal prefix length, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.",
                     "format": "uint32",
                     "type": "integer"
                 },
@@ -12246,7 +12544,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "A list of Route resources.",
+                    "description": "[Output Only] A list of Route resources.",
                     "items": {
                         "$ref": "Route"
                     },
@@ -12309,7 +12607,7 @@
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "[Output Only] Server defined URL for the resource.",
+                    "description": "[Output Only] Server-defined URL for the resource.",
                     "type": "string"
                 }
             },
@@ -12377,7 +12675,7 @@
                     "type": "string"
                 },
                 "sourceDisk": {
-                    "description": "The source disk used to create this snapshot.",
+                    "description": "[Output Only] The source disk used to create this snapshot.",
                     "type": "string"
                 },
                 "sourceDiskId": {
@@ -12431,7 +12729,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "A list of Snapshot resources.",
+                    "description": "[Output Only] A list of Snapshot resources.",
                     "items": {
                         "$ref": "Snapshot"
                     },
@@ -12454,7 +12752,7 @@
             "type": "object"
         },
         "SslCertificate": {
-            "description": "An SslCertificate resource. This resource provides a mechanism to upload an SSL key and certificate to global HTTPS loadbalancer to serve secure connections.",
+            "description": "An SslCertificate resource. This resource provides a mechanism to upload an SSL key and certificate to the load balancer to serve secure connections from the user.",
             "id": "SslCertificate",
             "properties": {
                 "certificate": {
@@ -12522,6 +12820,194 @@
                 "selfLink": {
                     "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Subnetwork": {
+            "description": "A Subnetwork resource.",
+            "id": "Subnetwork",
+            "properties": {
+                "creationTimestamp": {
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An optional description of this resource. Provide this property when you create the resource.",
+                    "type": "string"
+                },
+                "gatewayAddress": {
+                    "description": "[Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "ipCidrRange": {
+                    "description": "The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#subnetwork",
+                    "description": "[Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "network": {
+                    "description": "The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. Only networks that are in the distributed mode can have subnetworks.",
+                    "type": "string"
+                },
+                "region": {
+                    "description": "[Output Only] URL of the region where the Subnetwork resides.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for the resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SubnetworkAggregatedList": {
+            "id": "SubnetworkAggregatedList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+                    "type": "string"
+                },
+                "items": {
+                    "additionalProperties": {
+                        "$ref": "SubnetworksScopedList",
+                        "description": "Name of the scope containing this set of Subnetworks."
+                    },
+                    "description": "[Output] A map of scoped Subnetwork lists.",
+                    "type": "object"
+                },
+                "kind": {
+                    "default": "compute#subnetworkAggregatedList",
+                    "description": "[Output Only] Type of resource. Always compute#subnetworkAggregatedList for aggregated lists of subnetworks.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for this resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SubnetworkList": {
+            "description": "Contains a list of Subnetwork resources.",
+            "id": "SubnetworkList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+                    "type": "string"
+                },
+                "items": {
+                    "description": "The Subnetwork resources.",
+                    "items": {
+                        "$ref": "Subnetwork"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#subnetworkList",
+                    "description": "[Output Only] Type of resource. Always compute#subnetworkList for lists of subnetworks.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for this resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SubnetworksScopedList": {
+            "id": "SubnetworksScopedList",
+            "properties": {
+                "subnetworks": {
+                    "description": "List of subnetworks contained in this scope.",
+                    "items": {
+                        "$ref": "Subnetwork"
+                    },
+                    "type": "array"
+                },
+                "warning": {
+                    "description": "An informational warning that appears when the list of addresses is empty.",
+                    "properties": {
+                        "code": {
+                            "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+                            "enum": [
+                                "DEPRECATED_RESOURCE_USED",
+                                "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "INJECTED_KERNELS_DEPRECATED",
+                                "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                                "NEXT_HOP_CANNOT_IP_FORWARD",
+                                "NEXT_HOP_INSTANCE_NOT_FOUND",
+                                "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                                "NEXT_HOP_NOT_RUNNING",
+                                "NOT_CRITICAL_ERROR",
+                                "NO_RESULTS_ON_PAGE",
+                                "REQUIRED_TOS_AGREEMENT",
+                                "RESOURCE_NOT_DELETED",
+                                "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                                "UNREACHABLE"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "type": "string"
+                        },
+                        "data": {
+                            "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource, and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "[Output Only] A warning data value corresponding to the key.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "message": {
+                            "description": "[Output Only] A human-readable description of the warning code.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -12659,7 +13145,7 @@
                     "type": "string"
                 },
                 "sslCertificates": {
-                    "description": "URLs to SslCertificate resources that are used to authenticate connections to Backends. Currently exactly one SSL certificate must be specified.",
+                    "description": "URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. Currently exactly one SSL certificate must be specified.",
                     "items": {
                         "type": "string"
                     },
@@ -13599,7 +14085,7 @@
             "id": "UsageExportLocation",
             "properties": {
                 "bucketName": {
-                    "description": "The name of an existing bucket in Cloud Storage where the usage report object is stored. The Google Service Account is granted write access to this bucket. This is just the bucket name, with no gs:// or https://storage.googleapis.com/ in front of it.",
+                    "description": "The name of an existing bucket in Cloud Storage where the usage report object is stored. The Google Service Account is granted write access to this bucket. This can either be the bucket name by itself, such as example-bucket, or the bucket name with gs:// or https://storage.googleapis.com/ in front of it, such as gs://example-bucket.",
                     "type": "string"
                 },
                 "reportNamePrefix": {
@@ -13639,6 +14125,13 @@
                     "description": "[Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.",
                     "type": "string"
                 },
+                "localTrafficSelector": {
+                    "description": "Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "name": {
                     "annotations": {
                         "required": [
@@ -13662,7 +14155,7 @@
                     "type": "string"
                 },
                 "sharedSecret": {
-                    "description": "Shared secret used to set the secure session between the GCE VPN gateway and the peer VPN gateway.",
+                    "description": "Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.",
                     "type": "string"
                 },
                 "sharedSecretHash": {

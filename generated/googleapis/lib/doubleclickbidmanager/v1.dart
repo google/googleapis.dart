@@ -22,6 +22,7 @@ class DoubleclickbidmanagerApi {
   LineitemsResourceApi get lineitems => new LineitemsResourceApi(_requester);
   QueriesResourceApi get queries => new QueriesResourceApi(_requester);
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
+  RubiconResourceApi get rubicon => new RubiconResourceApi(_requester);
 
   DoubleclickbidmanagerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "doubleclickbidmanager/v1/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -367,6 +368,54 @@ class ReportsResourceApi {
 }
 
 
+class RubiconResourceApi {
+  final commons.ApiRequester _requester;
+
+  RubiconResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Update proposal upon actions of Rubicon publisher.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future notifyproposalchange(NotifyProposalChangeRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _downloadOptions = null;
+
+    _url = 'rubicon/notifyproposalchange';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+}
+
+
 
 /** Request to fetch stored line items. */
 class DownloadLineItemsRequest {
@@ -486,6 +535,7 @@ class FilterPair {
    * - "FILTER_DATA_PROVIDER"
    * - "FILTER_DATE"
    * - "FILTER_DAY_OF_WEEK"
+   * - "FILTER_DFP_ORDER_ID"
    * - "FILTER_DMA"
    * - "FILTER_EXCHANGE_ID"
    * - "FILTER_FLOODLIGHT_PIXEL_ID"
@@ -523,7 +573,14 @@ class FilterPair {
    * - "FILTER_SITE_LANGUAGE"
    * - "FILTER_TARGETED_USER_LIST"
    * - "FILTER_TIME_OF_DAY"
+   * - "FILTER_TRUEVIEW_AD_GROUP_AD_ID"
+   * - "FILTER_TRUEVIEW_AD_GROUP_ID"
+   * - "FILTER_TRUEVIEW_AGE"
    * - "FILTER_TRUEVIEW_CONVERSION_TYPE"
+   * - "FILTER_TRUEVIEW_GENDER"
+   * - "FILTER_TRUEVIEW_INTEREST"
+   * - "FILTER_TRUEVIEW_PARENTAL_STATUS"
+   * - "FILTER_TRUEVIEW_REMARKETING_LIST"
    * - "FILTER_UNKNOWN"
    * - "FILTER_USER_LIST"
    * - "FILTER_USER_LIST_FIRST_PARTY"
@@ -638,6 +695,114 @@ class ListReportsResponse {
   }
 }
 
+/** Publisher comment from Rubicon. */
+class Note {
+  /** Note id. */
+  core.String id;
+  /** Message from publisher. */
+  core.String message;
+  /** Equals "publisher" for notification from Rubicon. */
+  core.String source;
+  /** Time when the note was added, e.g. "2015-12-16T17:25:35.000-08:00". */
+  core.String timestamp;
+  /** Publisher user name. */
+  core.String username;
+
+  Note();
+
+  Note.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+    if (_json.containsKey("source")) {
+      source = _json["source"];
+    }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+    if (_json.containsKey("username")) {
+      username = _json["username"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    if (source != null) {
+      _json["source"] = source;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
+    }
+    if (username != null) {
+      _json["username"] = username;
+    }
+    return _json;
+  }
+}
+
+/** NotifyProposalChange request. */
+class NotifyProposalChangeRequest {
+  /** Action taken by publisher. One of: Accept, Decline, Append */
+  core.String action;
+  /** URL to access proposal detail. */
+  core.String href;
+  /** Below are contents of notification from Rubicon. Proposal id. */
+  core.String id;
+  /** Notes from publisher */
+  core.List<Note> notes;
+  /** Deal token, available when proposal is accepted by publisher. */
+  core.String token;
+
+  NotifyProposalChangeRequest();
+
+  NotifyProposalChangeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("action")) {
+      action = _json["action"];
+    }
+    if (_json.containsKey("href")) {
+      href = _json["href"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("notes")) {
+      notes = _json["notes"].map((value) => new Note.fromJson(value)).toList();
+    }
+    if (_json.containsKey("token")) {
+      token = _json["token"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (action != null) {
+      _json["action"] = action;
+    }
+    if (href != null) {
+      _json["href"] = href;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (notes != null) {
+      _json["notes"] = notes.map((value) => (value).toJson()).toList();
+    }
+    if (token != null) {
+      _json["token"] = token;
+    }
+    return _json;
+  }
+}
+
 /** Parameters of a query or report. */
 class Parameters {
   /** Filters used to match traffic data in your report. */
@@ -670,6 +835,9 @@ class Parameters {
    * - "TYPE_NIELSEN_SITE"
    * - "TYPE_ORDER_ID"
    * - "TYPE_PAGE_CATEGORY"
+   * - "TYPE_PETRA_NIELSEN_AUDIENCE_PROFILE"
+   * - "TYPE_PETRA_NIELSEN_DAILY_REACH_BUILD"
+   * - "TYPE_PETRA_NIELSEN_ONLINE_GLOBAL_MARKET"
    * - "TYPE_PIXEL_LOAD"
    * - "TYPE_REACH_AND_FREQUENCY"
    * - "TYPE_THIRD_PARTY_DATA_PROVIDER"

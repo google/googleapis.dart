@@ -89,14 +89,14 @@ checkMedia(api.Media o) {
   buildCounterMedia--;
 }
 
-buildUnnamed857() {
+buildUnnamed616() {
   var o = new core.List<api.OperationStatus>();
   o.add(buildOperationStatus());
   o.add(buildOperationStatus());
   return o;
 }
 
-checkUnnamed857(core.List<api.OperationStatus> o) {
+checkUnnamed616(core.List<api.OperationStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationStatus(o[0]);
   checkOperationStatus(o[1]);
@@ -116,7 +116,7 @@ buildOperationMetadata() {
     o.startTime = "foo";
     o.state = "foo";
     o.status = buildOperationStatus();
-    o.statusHistory = buildUnnamed857();
+    o.statusHistory = buildUnnamed616();
   }
   buildCounterOperationMetadata--;
   return o;
@@ -134,7 +134,7 @@ checkOperationMetadata(api.OperationMetadata o) {
     unittest.expect(o.startTime, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
     checkOperationStatus(o.status);
-    checkUnnamed857(o.statusHistory);
+    checkUnnamed616(o.statusHistory);
   }
   buildCounterOperationMetadata--;
 }

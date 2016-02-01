@@ -1110,6 +1110,9 @@ class MyconfigResourceApi {
    *
    * [features] - List of features supported by the client, i.e., 'RENTALS'
    *
+   * [includeNonComicsSeries] - Set to true to include non-comics series.
+   * Defaults to false.
+   *
    * [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
    * en_US.
    *
@@ -1125,7 +1128,7 @@ class MyconfigResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Volumes> syncVolumeLicenses(core.String source, core.String nonce, core.String cpksver, {core.List<core.String> features, core.String locale, core.bool showPreorders, core.List<core.String> volumeIds}) {
+  async.Future<Volumes> syncVolumeLicenses(core.String source, core.String nonce, core.String cpksver, {core.List<core.String> features, core.bool includeNonComicsSeries, core.String locale, core.bool showPreorders, core.List<core.String> volumeIds}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1147,6 +1150,9 @@ class MyconfigResourceApi {
     _queryParams["cpksver"] = [cpksver];
     if (features != null) {
       _queryParams["features"] = features;
+    }
+    if (includeNonComicsSeries != null) {
+      _queryParams["includeNonComicsSeries"] = ["${includeNonComicsSeries}"];
     }
     if (locale != null) {
       _queryParams["locale"] = [locale];
@@ -2073,6 +2079,8 @@ class NotificationResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
+   * [targetIds] - List of target ids used for experiments or user segments
+   *
    * Completes with a [Notification].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2081,7 +2089,7 @@ class NotificationResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Notification> get(core.String notificationId, {core.String locale, core.String source}) {
+  async.Future<Notification> get(core.String notificationId, {core.String locale, core.String source, core.List<core.String> targetIds}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2098,6 +2106,9 @@ class NotificationResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if (targetIds != null) {
+      _queryParams["targetIds"] = targetIds;
     }
 
     _url = 'notification/get';
@@ -2252,6 +2263,8 @@ class PersonalizedstreamResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
+   * [targetIds] - List of target ids used for experiments or user segments
+   *
    * Completes with a [Discoveryclusters].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2260,7 +2273,7 @@ class PersonalizedstreamResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Discoveryclusters> get({core.String locale, core.String maxAllowedMaturityRating, core.String source}) {
+  async.Future<Discoveryclusters> get({core.String locale, core.String maxAllowedMaturityRating, core.String source, core.List<core.String> targetIds}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2276,6 +2289,9 @@ class PersonalizedstreamResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if (targetIds != null) {
+      _queryParams["targetIds"] = targetIds;
     }
 
     _url = 'personalizedstream/get';
@@ -2636,6 +2652,9 @@ class VolumesResourceApi {
    *
    * [country] - ISO-3166-1 code to override the IP-based location.
    *
+   * [includeNonComicsSeries] - Set to true to include non-comics series.
+   * Defaults to false.
+   *
    * [partner] - Brand results for partner ID.
    *
    * [projection] - Restrict information returned to a set of selected fields.
@@ -2655,7 +2674,7 @@ class VolumesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Volume> get(core.String volumeId, {core.String country, core.String partner, core.String projection, core.String source, core.bool userLibraryConsistentRead}) {
+  async.Future<Volume> get(core.String volumeId, {core.String country, core.bool includeNonComicsSeries, core.String partner, core.String projection, core.String source, core.bool userLibraryConsistentRead}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2668,6 +2687,9 @@ class VolumesResourceApi {
     }
     if (country != null) {
       _queryParams["country"] = [country];
+    }
+    if (includeNonComicsSeries != null) {
+      _queryParams["includeNonComicsSeries"] = ["${includeNonComicsSeries}"];
     }
     if (partner != null) {
       _queryParams["partner"] = [partner];
@@ -5560,10 +5582,12 @@ class Metadata {
 
 class Notification {
   core.String body;
+  core.bool dontShowNotification;
   core.String iconUrl;
   /** Resource type. */
   core.String kind;
   core.String notificationType;
+  core.String pcampaignId;
   core.bool showNotificationSettingsAction;
   core.String targetUrl;
   core.String title;
@@ -5574,6 +5598,9 @@ class Notification {
     if (_json.containsKey("body")) {
       body = _json["body"];
     }
+    if (_json.containsKey("dont_show_notification")) {
+      dontShowNotification = _json["dont_show_notification"];
+    }
     if (_json.containsKey("iconUrl")) {
       iconUrl = _json["iconUrl"];
     }
@@ -5582,6 +5609,9 @@ class Notification {
     }
     if (_json.containsKey("notification_type")) {
       notificationType = _json["notification_type"];
+    }
+    if (_json.containsKey("pcampaign_id")) {
+      pcampaignId = _json["pcampaign_id"];
     }
     if (_json.containsKey("show_notification_settings_action")) {
       showNotificationSettingsAction = _json["show_notification_settings_action"];
@@ -5599,6 +5629,9 @@ class Notification {
     if (body != null) {
       _json["body"] = body;
     }
+    if (dontShowNotification != null) {
+      _json["dont_show_notification"] = dontShowNotification;
+    }
     if (iconUrl != null) {
       _json["iconUrl"] = iconUrl;
     }
@@ -5607,6 +5640,9 @@ class Notification {
     }
     if (notificationType != null) {
       _json["notification_type"] = notificationType;
+    }
+    if (pcampaignId != null) {
+      _json["pcampaign_id"] = pcampaignId;
     }
     if (showNotificationSettingsAction != null) {
       _json["show_notification_settings_action"] = showNotificationSettingsAction;
@@ -6024,6 +6060,7 @@ class SeriesSeries {
   core.String bannerImageUrl;
   core.String imageUrl;
   core.String seriesId;
+  core.String seriesType;
   core.String title;
 
   SeriesSeries();
@@ -6037,6 +6074,9 @@ class SeriesSeries {
     }
     if (_json.containsKey("seriesId")) {
       seriesId = _json["seriesId"];
+    }
+    if (_json.containsKey("seriesType")) {
+      seriesType = _json["seriesType"];
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -6053,6 +6093,9 @@ class SeriesSeries {
     }
     if (seriesId != null) {
       _json["seriesId"] = seriesId;
+    }
+    if (seriesType != null) {
+      _json["seriesType"] = seriesType;
     }
     if (title != null) {
       _json["title"] = title;
@@ -6961,12 +7004,28 @@ class VolumeUserInfoUserUploadedVolumeInfo {
  * read or whether they purchased this book)
  */
 class VolumeUserInfo {
+  /**
+   * Timestamp when this volume was acquired by the user. (RFC 3339 UTC
+   * date-time format) Acquiring includes purchase, user upload, receiving
+   * family sharing, etc.
+   */
+  core.DateTime acquiredTime;
   /** How this volume was acquired. */
   core.int acquisitionType;
   /** Copy/Paste accounting information. */
   VolumeUserInfoCopy copy;
   /** Whether this volume is purchased, sample, pd download etc. */
   core.int entitlementType;
+  /** Whether or not the user shared this volume with the family. */
+  core.bool isFamilySharedFromUser;
+  /** Whether or not the user received this volume through family sharing. */
+  core.bool isFamilySharedToUser;
+  /**
+   * Whether or not this volume can be shared with the family by the user. This
+   * includes sharing eligibility of both the volume and the user. If the value
+   * is true, the user can initiate a family sharing action.
+   */
+  core.bool isFamilySharingAllowed;
   /** Whether or not this volume is currently in "my books." */
   core.bool isInMyBooks;
   /**
@@ -7003,6 +7062,9 @@ class VolumeUserInfo {
   VolumeUserInfo();
 
   VolumeUserInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("acquiredTime")) {
+      acquiredTime = core.DateTime.parse(_json["acquiredTime"]);
+    }
     if (_json.containsKey("acquisitionType")) {
       acquisitionType = _json["acquisitionType"];
     }
@@ -7011,6 +7073,15 @@ class VolumeUserInfo {
     }
     if (_json.containsKey("entitlementType")) {
       entitlementType = _json["entitlementType"];
+    }
+    if (_json.containsKey("isFamilySharedFromUser")) {
+      isFamilySharedFromUser = _json["isFamilySharedFromUser"];
+    }
+    if (_json.containsKey("isFamilySharedToUser")) {
+      isFamilySharedToUser = _json["isFamilySharedToUser"];
+    }
+    if (_json.containsKey("isFamilySharingAllowed")) {
+      isFamilySharingAllowed = _json["isFamilySharingAllowed"];
     }
     if (_json.containsKey("isInMyBooks")) {
       isInMyBooks = _json["isInMyBooks"];
@@ -7046,6 +7117,9 @@ class VolumeUserInfo {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (acquiredTime != null) {
+      _json["acquiredTime"] = (acquiredTime).toIso8601String();
+    }
     if (acquisitionType != null) {
       _json["acquisitionType"] = acquisitionType;
     }
@@ -7054,6 +7128,15 @@ class VolumeUserInfo {
     }
     if (entitlementType != null) {
       _json["entitlementType"] = entitlementType;
+    }
+    if (isFamilySharedFromUser != null) {
+      _json["isFamilySharedFromUser"] = isFamilySharedFromUser;
+    }
+    if (isFamilySharedToUser != null) {
+      _json["isFamilySharedToUser"] = isFamilySharedToUser;
+    }
+    if (isFamilySharingAllowed != null) {
+      _json["isFamilySharingAllowed"] = isFamilySharingAllowed;
     }
     if (isInMyBooks != null) {
       _json["isInMyBooks"] = isInMyBooks;

@@ -24,7 +24,7 @@
     "description": "API for the Google Cloud User Accounts service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/access/user-accounts/api/latest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/D519M8l2K6nc5aW0Rrh50t4ZQRE\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/DPLw2T3kPt3Bo--G1FdqA_FfDM4\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"

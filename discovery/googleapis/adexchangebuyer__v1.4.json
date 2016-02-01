@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/8py9qKhxb4LYQLK5oJhQXM10qCw\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/EdmLlIWDPOXUaIR9PyM0JrTn9Ls\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -511,21 +511,21 @@
         "marketplacedeals": {
             "methods": {
                 "delete": {
-                    "description": "Delete the specified deals from the order",
+                    "description": "Delete the specified deals from the proposal",
                     "httpMethod": "POST",
                     "id": "adexchangebuyer.marketplacedeals.delete",
                     "parameterOrder": [
-                        "orderId"
+                        "proposalId"
                     ],
                     "parameters": {
-                        "orderId": {
-                            "description": "The orderId to delete deals from.",
+                        "proposalId": {
+                            "description": "The proposalId to delete deals from.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "marketplaceOrders/{orderId}/deals/delete",
+                    "path": "proposals/{proposalId}/deals/delete",
                     "request": {
                         "$ref": "DeleteOrderDealsRequest"
                     },
@@ -537,21 +537,21 @@
                     ]
                 },
                 "insert": {
-                    "description": "Add new deals for the specified order",
+                    "description": "Add new deals for the specified proposal",
                     "httpMethod": "POST",
                     "id": "adexchangebuyer.marketplacedeals.insert",
                     "parameterOrder": [
-                        "orderId"
+                        "proposalId"
                     ],
                     "parameters": {
-                        "orderId": {
-                            "description": "OrderId for which deals need to be added.",
+                        "proposalId": {
+                            "description": "proposalId for which deals need to be added.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "marketplaceOrders/{orderId}/deals/insert",
+                    "path": "proposals/{proposalId}/deals/insert",
                     "request": {
                         "$ref": "AddOrderDealsRequest"
                     },
@@ -563,21 +563,21 @@
                     ]
                 },
                 "list": {
-                    "description": "List all the deals for a given order",
+                    "description": "List all the deals for a given proposal",
                     "httpMethod": "GET",
                     "id": "adexchangebuyer.marketplacedeals.list",
                     "parameterOrder": [
-                        "orderId"
+                        "proposalId"
                     ],
                     "parameters": {
-                        "orderId": {
-                            "description": "The orderId to get deals for.",
+                        "proposalId": {
+                            "description": "The proposalId to get deals for.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "marketplaceOrders/{orderId}/deals",
+                    "path": "proposals/{proposalId}/deals",
                     "response": {
                         "$ref": "GetOrderDealsResponse"
                     },
@@ -586,21 +586,21 @@
                     ]
                 },
                 "update": {
-                    "description": "Replaces all the deals in the order with the passed in deals",
+                    "description": "Replaces all the deals in the proposal with the passed in deals",
                     "httpMethod": "POST",
                     "id": "adexchangebuyer.marketplacedeals.update",
                     "parameterOrder": [
-                        "orderId"
+                        "proposalId"
                     ],
                     "parameters": {
-                        "orderId": {
-                            "description": "The orderId to edit deals on.",
+                        "proposalId": {
+                            "description": "The proposalId to edit deals on.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "marketplaceOrders/{orderId}/deals/update",
+                    "path": "proposals/{proposalId}/deals/update",
                     "request": {
                         "$ref": "EditAllOrderDealsRequest"
                     },
@@ -616,21 +616,21 @@
         "marketplacenotes": {
             "methods": {
                 "insert": {
-                    "description": "Add notes to the order",
+                    "description": "Add notes to the proposal",
                     "httpMethod": "POST",
                     "id": "adexchangebuyer.marketplacenotes.insert",
                     "parameterOrder": [
-                        "orderId"
+                        "proposalId"
                     ],
                     "parameters": {
-                        "orderId": {
-                            "description": "The orderId to add notes for.",
+                        "proposalId": {
+                            "description": "The proposalId to add notes for.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "marketplaceOrders/{orderId}/notes/insert",
+                    "path": "proposals/{proposalId}/notes/insert",
                     "request": {
                         "$ref": "AddOrderNotesRequest"
                     },
@@ -642,240 +642,23 @@
                     ]
                 },
                 "list": {
-                    "description": "Get all the notes associated with an order",
+                    "description": "Get all the notes associated with a proposal",
                     "httpMethod": "GET",
                     "id": "adexchangebuyer.marketplacenotes.list",
                     "parameterOrder": [
-                        "orderId"
+                        "proposalId"
                     ],
                     "parameters": {
-                        "orderId": {
-                            "description": "The orderId to get notes for.",
+                        "proposalId": {
+                            "description": "The proposalId to get notes for.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "marketplaceOrders/{orderId}/notes",
+                    "path": "proposals/{proposalId}/notes",
                     "response": {
                         "$ref": "GetOrderNotesResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/adexchange.buyer"
-                    ]
-                }
-            }
-        },
-        "marketplaceoffers": {
-            "methods": {
-                "get": {
-                    "description": "Gets the requested negotiation.",
-                    "httpMethod": "GET",
-                    "id": "adexchangebuyer.marketplaceoffers.get",
-                    "parameterOrder": [
-                        "offerId"
-                    ],
-                    "parameters": {
-                        "offerId": {
-                            "description": "The offerId for the offer to get the head revision for.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "marketplaceOffers/{offerId}",
-                    "response": {
-                        "$ref": "MarketplaceOffer"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/adexchange.buyer"
-                    ]
-                },
-                "search": {
-                    "description": "Gets the requested negotiation.",
-                    "httpMethod": "GET",
-                    "id": "adexchangebuyer.marketplaceoffers.search",
-                    "parameters": {
-                        "pqlQuery": {
-                            "description": "The pql query used to query for offers.",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "marketplaceOffers/search",
-                    "response": {
-                        "$ref": "GetOffersResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/adexchange.buyer"
-                    ]
-                }
-            }
-        },
-        "marketplaceorders": {
-            "methods": {
-                "get": {
-                    "description": "Get an order given its id",
-                    "httpMethod": "GET",
-                    "id": "adexchangebuyer.marketplaceorders.get",
-                    "parameterOrder": [
-                        "orderId"
-                    ],
-                    "parameters": {
-                        "orderId": {
-                            "description": "Id of the order to retrieve.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "marketplaceOrders/{orderId}",
-                    "response": {
-                        "$ref": "MarketplaceOrder"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/adexchange.buyer"
-                    ]
-                },
-                "insert": {
-                    "description": "Create the given list of orders",
-                    "httpMethod": "POST",
-                    "id": "adexchangebuyer.marketplaceorders.insert",
-                    "path": "marketplaceOrders/insert",
-                    "request": {
-                        "$ref": "CreateOrdersRequest"
-                    },
-                    "response": {
-                        "$ref": "CreateOrdersResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/adexchange.buyer"
-                    ]
-                },
-                "patch": {
-                    "description": "Update the given order. This method supports patch semantics.",
-                    "httpMethod": "PATCH",
-                    "id": "adexchangebuyer.marketplaceorders.patch",
-                    "parameterOrder": [
-                        "orderId",
-                        "revisionNumber",
-                        "updateAction"
-                    ],
-                    "parameters": {
-                        "orderId": {
-                            "description": "The order id to update.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "revisionNumber": {
-                            "description": "The last known revision number to update. If the head revision in the marketplace database has since changed, an error will be thrown. The caller should then fetch the lastest order at head revision and retry the update at that revision.",
-                            "format": "int64",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "updateAction": {
-                            "description": "The proposed action to take on the order.",
-                            "enum": [
-                                "accept",
-                                "cancel",
-                                "propose",
-                                "unknownAction",
-                                "updateFinalized"
-                            ],
-                            "enumDescriptions": [
-                                "",
-                                "",
-                                "",
-                                "",
-                                ""
-                            ],
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "marketplaceOrders/{orderId}/{revisionNumber}/{updateAction}",
-                    "request": {
-                        "$ref": "MarketplaceOrder"
-                    },
-                    "response": {
-                        "$ref": "MarketplaceOrder"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/adexchange.buyer"
-                    ]
-                },
-                "search": {
-                    "description": "Search for orders using pql query",
-                    "httpMethod": "GET",
-                    "id": "adexchangebuyer.marketplaceorders.search",
-                    "parameters": {
-                        "pqlQuery": {
-                            "description": "Query string to retrieve specific orders.",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "marketplaceOrders/search",
-                    "response": {
-                        "$ref": "GetOrdersResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/adexchange.buyer"
-                    ]
-                },
-                "update": {
-                    "description": "Update the given order",
-                    "httpMethod": "PUT",
-                    "id": "adexchangebuyer.marketplaceorders.update",
-                    "parameterOrder": [
-                        "orderId",
-                        "revisionNumber",
-                        "updateAction"
-                    ],
-                    "parameters": {
-                        "orderId": {
-                            "description": "The order id to update.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "revisionNumber": {
-                            "description": "The last known revision number to update. If the head revision in the marketplace database has since changed, an error will be thrown. The caller should then fetch the lastest order at head revision and retry the update at that revision.",
-                            "format": "int64",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "updateAction": {
-                            "description": "The proposed action to take on the order.",
-                            "enum": [
-                                "accept",
-                                "cancel",
-                                "propose",
-                                "unknownAction",
-                                "updateFinalized"
-                            ],
-                            "enumDescriptions": [
-                                "",
-                                "",
-                                "",
-                                "",
-                                ""
-                            ],
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "marketplaceOrders/{orderId}/{revisionNumber}/{updateAction}",
-                    "request": {
-                        "$ref": "MarketplaceOrder"
-                    },
-                    "response": {
-                        "$ref": "MarketplaceOrder"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/adexchange.buyer"
@@ -1123,9 +906,226 @@
                     ]
                 }
             }
+        },
+        "products": {
+            "methods": {
+                "get": {
+                    "description": "Gets the requested product by id.",
+                    "httpMethod": "GET",
+                    "id": "adexchangebuyer.products.get",
+                    "parameterOrder": [
+                        "productId"
+                    ],
+                    "parameters": {
+                        "productId": {
+                            "description": "The id for the product to get the head revision for.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "products/{productId}",
+                    "response": {
+                        "$ref": "Product"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                },
+                "search": {
+                    "description": "Gets the requested product.",
+                    "httpMethod": "GET",
+                    "id": "adexchangebuyer.products.search",
+                    "parameters": {
+                        "pqlQuery": {
+                            "description": "The pql query used to query for products.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "products/search",
+                    "response": {
+                        "$ref": "GetOffersResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                }
+            }
+        },
+        "proposals": {
+            "methods": {
+                "get": {
+                    "description": "Get a proposal given its id",
+                    "httpMethod": "GET",
+                    "id": "adexchangebuyer.proposals.get",
+                    "parameterOrder": [
+                        "proposalId"
+                    ],
+                    "parameters": {
+                        "proposalId": {
+                            "description": "Id of the proposal to retrieve.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "proposals/{proposalId}",
+                    "response": {
+                        "$ref": "Proposal"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                },
+                "insert": {
+                    "description": "Create the given list of proposals",
+                    "httpMethod": "POST",
+                    "id": "adexchangebuyer.proposals.insert",
+                    "path": "proposals/insert",
+                    "request": {
+                        "$ref": "CreateOrdersRequest"
+                    },
+                    "response": {
+                        "$ref": "CreateOrdersResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                },
+                "patch": {
+                    "description": "Update the given proposal. This method supports patch semantics.",
+                    "httpMethod": "PATCH",
+                    "id": "adexchangebuyer.proposals.patch",
+                    "parameterOrder": [
+                        "proposalId",
+                        "revisionNumber",
+                        "updateAction"
+                    ],
+                    "parameters": {
+                        "proposalId": {
+                            "description": "The proposal id to update.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "revisionNumber": {
+                            "description": "The last known revision number to update. If the head revision in the marketplace database has since changed, an error will be thrown. The caller should then fetch the latest proposal at head revision and retry the update at that revision.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "updateAction": {
+                            "description": "The proposed action to take on the proposal.",
+                            "enum": [
+                                "accept",
+                                "cancel",
+                                "propose",
+                                "unknownAction",
+                                "updateFinalized"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "proposals/{proposalId}/{revisionNumber}/{updateAction}",
+                    "request": {
+                        "$ref": "Proposal"
+                    },
+                    "response": {
+                        "$ref": "Proposal"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                },
+                "search": {
+                    "description": "Search for proposals using pql query",
+                    "httpMethod": "GET",
+                    "id": "adexchangebuyer.proposals.search",
+                    "parameters": {
+                        "pqlQuery": {
+                            "description": "Query string to retrieve specific proposals.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "proposals/search",
+                    "response": {
+                        "$ref": "GetOrdersResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                },
+                "update": {
+                    "description": "Update the given proposal",
+                    "httpMethod": "PUT",
+                    "id": "adexchangebuyer.proposals.update",
+                    "parameterOrder": [
+                        "proposalId",
+                        "revisionNumber",
+                        "updateAction"
+                    ],
+                    "parameters": {
+                        "proposalId": {
+                            "description": "The proposal id to update.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "revisionNumber": {
+                            "description": "The last known revision number to update. If the head revision in the marketplace database has since changed, an error will be thrown. The caller should then fetch the latest proposal at head revision and retry the update at that revision.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "updateAction": {
+                            "description": "The proposed action to take on the proposal.",
+                            "enum": [
+                                "accept",
+                                "cancel",
+                                "propose",
+                                "unknownAction",
+                                "updateFinalized"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "proposals/{proposalId}/{revisionNumber}/{updateAction}",
+                    "request": {
+                        "$ref": "Proposal"
+                    },
+                    "response": {
+                        "$ref": "Proposal"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                }
+            }
         }
     },
-    "revision": "20151209",
+    "revision": "20160118",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1219,13 +1219,13 @@
                     },
                     "type": "array"
                 },
-                "orderRevisionNumber": {
-                    "description": "The last known order revision number.",
+                "proposalRevisionNumber": {
+                    "description": "The last known proposal revision number.",
                     "format": "int64",
                     "type": "string"
                 },
                 "updateAction": {
-                    "description": "Indicates an optional action to take on the order",
+                    "description": "Indicates an optional action to take on the proposal",
                     "type": "string"
                 }
             },
@@ -1235,14 +1235,14 @@
             "id": "AddOrderDealsResponse",
             "properties": {
                 "deals": {
-                    "description": "List of deals added (in the same order as passed in the request)",
+                    "description": "List of deals added (in the same proposal as passed in the request)",
                     "items": {
                         "$ref": "MarketplaceDeal"
                     },
                     "type": "array"
                 },
-                "orderRevisionNumber": {
-                    "description": "The updated revision number for the order.",
+                "proposalRevisionNumber": {
+                    "description": "The updated revision number for the proposal.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -1383,10 +1383,10 @@
         "CreateOrdersRequest": {
             "id": "CreateOrdersRequest",
             "properties": {
-                "orders": {
-                    "description": "The list of orders to create.",
+                "proposals": {
+                    "description": "The list of proposals to create.",
                     "items": {
-                        "$ref": "MarketplaceOrder"
+                        "$ref": "Proposal"
                     },
                     "type": "array"
                 },
@@ -1399,10 +1399,10 @@
         "CreateOrdersResponse": {
             "id": "CreateOrdersResponse",
             "properties": {
-                "orders": {
-                    "description": "The list of orders successfully created.",
+                "proposals": {
+                    "description": "The list of proposals successfully created.",
                     "items": {
-                        "$ref": "MarketplaceOrder"
+                        "$ref": "Proposal"
                     },
                     "type": "array"
                 }
@@ -1854,7 +1854,7 @@
                     "type": "string"
                 },
                 "guaranteedLooks": {
-                    "description": "Count of guaranteed looks. Required for deal, optional for offer.",
+                    "description": "Count of guaranteed looks. Required for deal, optional for product.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -1895,14 +1895,14 @@
             "id": "DeleteOrderDealsRequest",
             "properties": {
                 "dealIds": {
-                    "description": "List of deals to delete for a given order",
+                    "description": "List of deals to delete for a given proposal",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
-                "orderRevisionNumber": {
-                    "description": "The last known order revision number.",
+                "proposalRevisionNumber": {
+                    "description": "The last known proposal revision number.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -1916,14 +1916,14 @@
             "id": "DeleteOrderDealsResponse",
             "properties": {
                 "deals": {
-                    "description": "List of deals deleted (in the same order as passed in the request)",
+                    "description": "List of deals deleted (in the same proposal as passed in the request)",
                     "items": {
                         "$ref": "MarketplaceDeal"
                     },
                     "type": "array"
                 },
-                "orderRevisionNumber": {
-                    "description": "The updated revision number for the order.",
+                "proposalRevisionNumber": {
+                    "description": "The updated revision number for the proposal.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -1969,23 +1969,23 @@
             "id": "EditAllOrderDealsRequest",
             "properties": {
                 "deals": {
-                    "description": "List of deals to edit. Service may perform 3 different operations based on comparison of deals in this list vs deals already persisted in database: 1. Add new deal to order If a deal in this list does not exist in the order, the service will create a new deal and add it to the order. Validation will follow AddOrderDealsRequest. 2. Update existing deal in the order If a deal in this list already exist in the order, the service will update that existing deal to this new deal in the request. Validation will follow UpdateOrderDealsRequest. 3. Delete deals from the order (just need the id) If a existing deal in the order is not present in this list, the service will delete that deal from the order. Validation will follow DeleteOrderDealsRequest.",
+                    "description": "List of deals to edit. Service may perform 3 different operations based on comparison of deals in this list vs deals already persisted in database: 1. Add new deal to proposal If a deal in this list does not exist in the proposal, the service will create a new deal and add it to the proposal. Validation will follow AddOrderDealsRequest. 2. Update existing deal in the proposal If a deal in this list already exist in the proposal, the service will update that existing deal to this new deal in the request. Validation will follow UpdateOrderDealsRequest. 3. Delete deals from the proposal (just need the id) If a existing deal in the proposal is not present in this list, the service will delete that deal from the proposal. Validation will follow DeleteOrderDealsRequest.",
                     "items": {
                         "$ref": "MarketplaceDeal"
                     },
                     "type": "array"
                 },
-                "order": {
-                    "$ref": "MarketplaceOrder",
-                    "description": "If specified, also updates the order in the batch transaction. This is useful when the order and the deals need to be updated in one transaction."
+                "proposal": {
+                    "$ref": "Proposal",
+                    "description": "If specified, also updates the proposal in the batch transaction. This is useful when the proposal and the deals need to be updated in one transaction."
                 },
-                "orderRevisionNumber": {
-                    "description": "The last known revision number for the order.",
+                "proposalRevisionNumber": {
+                    "description": "The last known revision number for the proposal.",
                     "format": "int64",
                     "type": "string"
                 },
                 "updateAction": {
-                    "description": "Indicates an optional action to take on the order",
+                    "description": "Indicates an optional action to take on the proposal",
                     "type": "string"
                 }
             },
@@ -1995,7 +1995,7 @@
             "id": "EditAllOrderDealsResponse",
             "properties": {
                 "deals": {
-                    "description": "List of all deals in the order after edit.",
+                    "description": "List of all deals in the proposal after edit.",
                     "items": {
                         "$ref": "MarketplaceDeal"
                     },
@@ -2007,10 +2007,10 @@
         "GetOffersResponse": {
             "id": "GetOffersResponse",
             "properties": {
-                "offers": {
-                    "description": "The returned list of offers.",
+                "products": {
+                    "description": "The returned list of products.",
                     "items": {
-                        "$ref": "MarketplaceOffer"
+                        "$ref": "Product"
                     },
                     "type": "array"
                 }
@@ -2021,7 +2021,7 @@
             "id": "GetOrderDealsResponse",
             "properties": {
                 "deals": {
-                    "description": "List of deals for the order",
+                    "description": "List of deals for the proposal",
                     "items": {
                         "$ref": "MarketplaceDeal"
                     },
@@ -2046,10 +2046,10 @@
         "GetOrdersResponse": {
             "id": "GetOrdersResponse",
             "properties": {
-                "orders": {
-                    "description": "The list of matching orders.",
+                "proposals": {
+                    "description": "The list of matching proposals.",
                     "items": {
-                        "$ref": "MarketplaceOrder"
+                        "$ref": "Proposal"
                     },
                     "type": "array"
                 }
@@ -2057,7 +2057,7 @@
             "type": "object"
         },
         "MarketplaceDeal": {
-            "description": "An order can contain multiple deals. A deal contains the terms and targeting information that is used for serving.",
+            "description": "A proposal can contain multiple deals. A deal contains the terms and targeting information that is used for serving.",
             "id": "MarketplaceDeal",
             "properties": {
                 "buyerPrivateData": {
@@ -2113,16 +2113,16 @@
                     "description": "The name of the deal. (updatable)",
                     "type": "string"
                 },
-                "offerId": {
-                    "description": "The offer-id from which this deal was created. (readonly, except on create)",
+                "productId": {
+                    "description": "The product-id from which this deal was created. (readonly, except on create)",
                     "type": "string"
                 },
-                "offerRevisionNumber": {
-                    "description": "The revision number of the offer that the deal was created from (readonly, except on create)",
+                "productRevisionNumber": {
+                    "description": "The revision number of the product that the deal was created from (readonly, except on create)",
                     "format": "int64",
                     "type": "string"
                 },
-                "orderId": {
+                "proposalId": {
                     "type": "string"
                 },
                 "sellerContacts": {
@@ -2191,7 +2191,7 @@
             "type": "object"
         },
         "MarketplaceNote": {
-            "description": "An order is associated with a bunch of notes which may optionally be associated with a deal and/or revision number.",
+            "description": "A proposal is associated with a bunch of notes which may optionally be associated with a deal and/or revision number.",
             "id": "MarketplaceNote",
             "properties": {
                 "creatorRole": {
@@ -2215,12 +2215,12 @@
                     "description": "The unique id for the note. (readonly)",
                     "type": "string"
                 },
-                "orderId": {
-                    "description": "The order_id that a note is attached to. (readonly)",
+                "proposalId": {
+                    "description": "The proposalId that a note is attached to. (readonly)",
                     "type": "string"
                 },
-                "orderRevisionNumber": {
-                    "description": "If the note is associated with an order revision number, then store that here. (readonly, except on create)",
+                "proposalRevisionNumber": {
+                    "description": "If the note is associated with a proposal revision number, then store that here. (readonly, except on create)",
                     "format": "int64",
                     "type": "string"
                 },
@@ -2228,201 +2228,6 @@
                     "description": "The timestamp (ms since epoch) that this note was created. (readonly)",
                     "format": "int64",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "MarketplaceOffer": {
-            "description": "An offer is segment of inventory that a seller wishes to sell. It is associated with certain terms and targeting information which helps buyer know more about the inventory. Each field in an order can have one of the following setting:\n\n(readonly) - It is an error to try and set this field. (buyer-readonly) - Only the seller can set this field. (seller-readonly) - Only the buyer can set this field. (updatable) - The field is updatable at all times by either buyer or the seller.",
-            "id": "MarketplaceOffer",
-            "properties": {
-                "creationTimeMs": {
-                    "description": "Creation time in ms. since epoch (readonly)",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "creatorContacts": {
-                    "description": "Optional contact information for the creator of this offer. (buyer-readonly)",
-                    "items": {
-                        "$ref": "ContactInformation"
-                    },
-                    "type": "array"
-                },
-                "flightEndTimeMs": {
-                    "description": "The proposed end time for the deal (ms since epoch) (buyer-readonly)",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "flightStartTimeMs": {
-                    "description": "Inventory availability dates. (times are in ms since epoch) The granularity is generally in the order of seconds. (buyer-readonly)",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "hasCreatorSignedOff": {
-                    "description": "If the creator has already signed off on the offer, then the buyer can finalize the deal by accepting the offer as is. When copying to an order, if any of the terms are changed, then auto_finalize is automatically set to false.",
-                    "type": "boolean"
-                },
-                "inventorySource": {
-                    "description": "What exchange will provide this inventory (readonly, except on create).",
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "adexchangebuyer#marketplaceOffer",
-                    "description": "Identifies what kind of resource this is. Value: the fixed string \"adexchangebuyer#marketplaceOffer\".",
-                    "type": "string"
-                },
-                "labels": {
-                    "description": "Optional List of labels for the offer (optional, buyer-readonly).",
-                    "items": {
-                        "$ref": "MarketplaceLabel"
-                    },
-                    "type": "array"
-                },
-                "lastUpdateTimeMs": {
-                    "description": "Time of last update in ms. since epoch (readonly)",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "The name for this offer as set by the seller. (buyer-readonly)",
-                    "type": "string"
-                },
-                "offerId": {
-                    "description": "The unique id for the offer (readonly)",
-                    "type": "string"
-                },
-                "revisionNumber": {
-                    "description": "The revision number of the offer. (readonly)",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "seller": {
-                    "$ref": "Seller",
-                    "description": "Information about the seller that created this offer (readonly, except on create)"
-                },
-                "sharedTargetings": {
-                    "description": "Targeting that is shared between the buyer and the seller. Each targeting criteria has a specified key and for each key there is a list of inclusion value or exclusion values. (buyer-readonly)",
-                    "items": {
-                        "$ref": "SharedTargeting"
-                    },
-                    "type": "array"
-                },
-                "state": {
-                    "description": "The state of the offer. (buyer-readonly)",
-                    "type": "string"
-                },
-                "syndicationProduct": {
-                    "description": "The syndication product associated with the deal. (readonly, except on create)",
-                    "type": "string"
-                },
-                "terms": {
-                    "$ref": "DealTerms",
-                    "description": "The negotiable terms of the deal (buyer-readonly)"
-                },
-                "webPropertyCode": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "MarketplaceOrder": {
-            "description": "Represents an order in the marketplace. An order is the unit of negotiation between a seller and a buyer and contains deals which are served. Each field in an order can have one of the following setting:\n\n(readonly) - It is an error to try and set this field. (buyer-readonly) - Only the seller can set this field. (seller-readonly) - Only the buyer can set this field. (updatable) - The field is updatable at all times by either buyer or the seller.",
-            "id": "MarketplaceOrder",
-            "properties": {
-                "billedBuyer": {
-                    "$ref": "Buyer",
-                    "description": "Reference to the buyer that will get billed for this order. (readonly)"
-                },
-                "buyer": {
-                    "$ref": "Buyer",
-                    "description": "Reference to the buyer on the order. (readonly, except on create)"
-                },
-                "buyerContacts": {
-                    "description": "Optional contact information fort the buyer. (seller-readonly)",
-                    "items": {
-                        "$ref": "ContactInformation"
-                    },
-                    "type": "array"
-                },
-                "buyerPrivateData": {
-                    "$ref": "PrivateData",
-                    "description": "Private data for buyer. (hidden from seller)."
-                },
-                "hasBuyerSignedOff": {
-                    "description": "When an order is in an accepted state, indicates whether the buyer has signed off Once both sides have signed off on a deal, the order can be finalized by the seller. (seller-readonly)",
-                    "type": "boolean"
-                },
-                "hasSellerSignedOff": {
-                    "description": "When an order is in an accepted state, indicates whether the buyer has signed off Once both sides have signed off on a deal, the order can be finalized by the seller. (buyer-readonly)",
-                    "type": "boolean"
-                },
-                "inventorySource": {
-                    "description": "What exchange will provide this inventory (readonly, except on create).",
-                    "type": "string"
-                },
-                "isRenegotiating": {
-                    "description": "True if the order is being renegotiated (readonly).",
-                    "type": "boolean"
-                },
-                "isSetupComplete": {
-                    "description": "True, if the buyside inventory setup is complete for this order. (readonly)",
-                    "type": "boolean"
-                },
-                "kind": {
-                    "default": "adexchangebuyer#marketplaceOrder",
-                    "description": "Identifies what kind of resource this is. Value: the fixed string \"adexchangebuyer#marketplaceOrder\".",
-                    "type": "string"
-                },
-                "labels": {
-                    "description": "List of labels associated with the order. (readonly)",
-                    "items": {
-                        "$ref": "MarketplaceLabel"
-                    },
-                    "type": "array"
-                },
-                "lastUpdaterOrCommentorRole": {
-                    "description": "The role of the last user that either updated the order or left a comment. (readonly)",
-                    "type": "string"
-                },
-                "lastUpdaterRole": {
-                    "type": "string"
-                },
-                "name": {
-                    "description": "The name for the order (updatable)",
-                    "type": "string"
-                },
-                "orderId": {
-                    "description": "The unique id of the order. (readonly).",
-                    "type": "string"
-                },
-                "orderState": {
-                    "description": "The current state of the order. (readonly)",
-                    "type": "string"
-                },
-                "originatorRole": {
-                    "description": "Indicates whether the buyer/seller created the offer.(readonly)",
-                    "type": "string"
-                },
-                "revisionNumber": {
-                    "description": "The revision number for the order (readonly).",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "revisionTimeMs": {
-                    "description": "The time (ms since epoch) when the order was last revised (readonly).",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "seller": {
-                    "$ref": "Seller",
-                    "description": "Reference to the seller on the order. (readonly, except on create)"
-                },
-                "sellerContacts": {
-                    "description": "Optional contact information for the seller (buyer-readonly).",
-                    "items": {
-                        "$ref": "ContactInformation"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -2823,14 +2628,14 @@
                     "type": "string"
                 },
                 "pricingType": {
-                    "description": "The pricing type for the deal/offer.",
+                    "description": "The pricing type for the deal/product.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "PricePerBuyer": {
-            "description": "Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in an offer can become [0,1] deals. To check if there is a PricePerBuyer for a particular buyer or buyer/advertiser pair, we look for the most specific matching rule - we first look for a rule matching the buyer and advertiser, next a rule with the buyer but an empty advertiser list, and otherwise look for a matching rule where no buyer is set.",
+            "description": "Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in an product can become [0,1] deals. To check if there is a PricePerBuyer for a particular buyer or buyer/advertiser pair, we look for the most specific matching rule - we first look for a rule matching the buyer and advertiser, next a rule with the buyer but an empty advertiser list, and otherwise look for a matching rule where no buyer is set.",
             "id": "PricePerBuyer",
             "properties": {
                 "buyer": {
@@ -2857,11 +2662,206 @@
             },
             "type": "object"
         },
+        "Product": {
+            "description": "A product is segment of inventory that a seller wishes to sell. It is associated with certain terms and targeting information which helps buyer know more about the inventory. Each field in a product can have one of the following setting:\n\n(readonly) - It is an error to try and set this field. (buyer-readonly) - Only the seller can set this field. (seller-readonly) - Only the buyer can set this field. (updatable) - The field is updatable at all times by either buyer or the seller.",
+            "id": "Product",
+            "properties": {
+                "creationTimeMs": {
+                    "description": "Creation time in ms. since epoch (readonly)",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "creatorContacts": {
+                    "description": "Optional contact information for the creator of this product. (buyer-readonly)",
+                    "items": {
+                        "$ref": "ContactInformation"
+                    },
+                    "type": "array"
+                },
+                "flightEndTimeMs": {
+                    "description": "The proposed end time for the deal (ms since epoch) (buyer-readonly)",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "flightStartTimeMs": {
+                    "description": "Inventory availability dates. (times are in ms since epoch) The granularity is generally in the order of seconds. (buyer-readonly)",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "hasCreatorSignedOff": {
+                    "description": "If the creator has already signed off on the product, then the buyer can finalize the deal by accepting the product as is. When copying to a proposal, if any of the terms are changed, then auto_finalize is automatically set to false.",
+                    "type": "boolean"
+                },
+                "inventorySource": {
+                    "description": "What exchange will provide this inventory (readonly, except on create).",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "adexchangebuyer#product",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"adexchangebuyer#product\".",
+                    "type": "string"
+                },
+                "labels": {
+                    "description": "Optional List of labels for the product (optional, buyer-readonly).",
+                    "items": {
+                        "$ref": "MarketplaceLabel"
+                    },
+                    "type": "array"
+                },
+                "lastUpdateTimeMs": {
+                    "description": "Time of last update in ms. since epoch (readonly)",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name for this product as set by the seller. (buyer-readonly)",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The unique id for the product (readonly)",
+                    "type": "string"
+                },
+                "revisionNumber": {
+                    "description": "The revision number of the product. (readonly)",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "seller": {
+                    "$ref": "Seller",
+                    "description": "Information about the seller that created this product (readonly, except on create)"
+                },
+                "sharedTargetings": {
+                    "description": "Targeting that is shared between the buyer and the seller. Each targeting criteria has a specified key and for each key there is a list of inclusion value or exclusion values. (buyer-readonly)",
+                    "items": {
+                        "$ref": "SharedTargeting"
+                    },
+                    "type": "array"
+                },
+                "state": {
+                    "description": "The state of the product. (buyer-readonly)",
+                    "type": "string"
+                },
+                "syndicationProduct": {
+                    "description": "The syndication product associated with the deal. (readonly, except on create)",
+                    "type": "string"
+                },
+                "terms": {
+                    "$ref": "DealTerms",
+                    "description": "The negotiable terms of the deal (buyer-readonly)"
+                },
+                "webPropertyCode": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Proposal": {
+            "description": "Represents a proposal in the marketplace. A proposal is the unit of negotiation between a seller and a buyer and contains deals which are served. Each field in a proposal can have one of the following setting:\n\n(readonly) - It is an error to try and set this field. (buyer-readonly) - Only the seller can set this field. (seller-readonly) - Only the buyer can set this field. (updatable) - The field is updatable at all times by either buyer or the seller.",
+            "id": "Proposal",
+            "properties": {
+                "billedBuyer": {
+                    "$ref": "Buyer",
+                    "description": "Reference to the buyer that will get billed for this proposal. (readonly)"
+                },
+                "buyer": {
+                    "$ref": "Buyer",
+                    "description": "Reference to the buyer on the proposal. (readonly, except on create)"
+                },
+                "buyerContacts": {
+                    "description": "Optional contact information fort the buyer. (seller-readonly)",
+                    "items": {
+                        "$ref": "ContactInformation"
+                    },
+                    "type": "array"
+                },
+                "buyerPrivateData": {
+                    "$ref": "PrivateData",
+                    "description": "Private data for buyer. (hidden from seller)."
+                },
+                "hasBuyerSignedOff": {
+                    "description": "When an proposal is in an accepted state, indicates whether the buyer has signed off Once both sides have signed off on a deal, the proposal can be finalized by the seller. (seller-readonly)",
+                    "type": "boolean"
+                },
+                "hasSellerSignedOff": {
+                    "description": "When an proposal is in an accepted state, indicates whether the buyer has signed off Once both sides have signed off on a deal, the proposal can be finalized by the seller. (buyer-readonly)",
+                    "type": "boolean"
+                },
+                "inventorySource": {
+                    "description": "What exchange will provide this inventory (readonly, except on create).",
+                    "type": "string"
+                },
+                "isRenegotiating": {
+                    "description": "True if the proposal is being renegotiated (readonly).",
+                    "type": "boolean"
+                },
+                "isSetupComplete": {
+                    "description": "True, if the buyside inventory setup is complete for this proposal. (readonly)",
+                    "type": "boolean"
+                },
+                "kind": {
+                    "default": "adexchangebuyer#proposal",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"adexchangebuyer#proposal\".",
+                    "type": "string"
+                },
+                "labels": {
+                    "description": "List of labels associated with the proposal. (readonly)",
+                    "items": {
+                        "$ref": "MarketplaceLabel"
+                    },
+                    "type": "array"
+                },
+                "lastUpdaterOrCommentorRole": {
+                    "description": "The role of the last user that either updated the proposal or left a comment. (readonly)",
+                    "type": "string"
+                },
+                "lastUpdaterRole": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name for the proposal (updatable)",
+                    "type": "string"
+                },
+                "originatorRole": {
+                    "description": "Indicates whether the buyer/seller created the proposal.(readonly)",
+                    "type": "string"
+                },
+                "proposalId": {
+                    "description": "The unique id of the proposal. (readonly).",
+                    "type": "string"
+                },
+                "proposalState": {
+                    "description": "The current state of the proposal. (readonly)",
+                    "type": "string"
+                },
+                "revisionNumber": {
+                    "description": "The revision number for the proposal (readonly).",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "revisionTimeMs": {
+                    "description": "The time (ms since epoch) when the proposal was last revised (readonly).",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "seller": {
+                    "$ref": "Seller",
+                    "description": "Reference to the seller on the proposal. (readonly, except on create)"
+                },
+                "sellerContacts": {
+                    "description": "Optional contact information for the seller (buyer-readonly).",
+                    "items": {
+                        "$ref": "ContactInformation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Seller": {
             "id": "Seller",
             "properties": {
                 "accountId": {
-                    "description": "The unique id for the seller. The seller fills in this field. The seller account id is then available to buyer in the offer.",
+                    "description": "The unique id for the seller. The seller fills in this field. The seller account id is then available to buyer in the product.",
                     "type": "string"
                 },
                 "subAccountId": {

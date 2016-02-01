@@ -15,7 +15,7 @@
     "description": "Gives AdSense Hosts access to report generation, ad code generation, and publisher management capabilities.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/adsense/host/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/24Kc7A0JBovFzHhzTsk4XIuRMUU\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/FWvOzkk0xhVUakvwkVWWrRazM7U\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/adsense-16.png",
         "x32": "https://www.google.com/images/icons/product/adsense-32.png"
@@ -645,8 +645,8 @@
                             "enumDescriptions": [
                                 "AdSense For Content",
                                 "AdSense For Games",
-                                "AdSense For Mobile Content",
-                                "AdSense For Search",
+                                "AdSense For Mobile Content - deprecated",
+                                "AdSense For Search - deprecated",
                                 "AdSense For Video"
                             ],
                             "location": "query",
@@ -1072,7 +1072,7 @@
             }
         }
     },
-    "revision": "20151206",
+    "revision": "20160127",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1251,7 +1251,7 @@
                     "type": "string"
                 },
                 "contentAdsSettings": {
-                    "description": "Settings specific to content ads (AFC) and highend mobile content ads (AFMC).",
+                    "description": "Settings specific to content ads (AFC) and highend mobile content ads (AFMC - deprecated).",
                     "properties": {
                         "backupOption": {
                             "description": "The backup option to be used in instances where no ad is available.",
@@ -1296,7 +1296,7 @@
                     "type": "string"
                 },
                 "mobileContentAdsSettings": {
-                    "description": "Settings specific to WAP mobile content ads (AFMC).",
+                    "description": "Settings specific to WAP mobile content ads (AFMC - deprecated).",
                     "properties": {
                         "markupLanguage": {
                             "description": "The markup language to use for this ad unit.",
@@ -1371,7 +1371,7 @@
                     "type": "string"
                 },
                 "productCodes": {
-                    "description": "The products to associate with the user. Options: AFC, AFF, AFS, AFMC",
+                    "description": "The products to associate with the user. Options: AFC, AFG, AFV, AFS (deprecated), AFMC (deprecated)",
                     "items": {
                         "type": "string"
                     },

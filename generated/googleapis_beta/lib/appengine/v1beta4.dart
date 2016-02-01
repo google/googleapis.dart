@@ -51,8 +51,9 @@ class AppsResourceApi {
    *
    * [ensureResourcesExist] - Certain resources associated with an application
    * are created on-demand. Controls whether these resources should be created
-   * when performing the `GET` operation. If specified and any resources cloud
-   * not be created, the request will fail with an error code.
+   * when performing the `GET` operation. If specified and any resources could
+   * not be created, the request will fail with an error code. Additionally,
+   * this parameter can cause the request to take longer to complete.
    *
    * Completes with a [Application].
    *
@@ -759,6 +760,11 @@ class Application {
    */
   core.String codeBucket;
   /**
+   * A Google Cloud Storage bucket which can be used by the application to store
+   * content. @OutputOnly
+   */
+  core.String defaultBucket;
+  /**
    * HTTP path dispatch rules for requests to the app that do not explicitly
    * target a module or version. The rules are order-dependent.
    */
@@ -787,6 +793,9 @@ class Application {
     if (_json.containsKey("codeBucket")) {
       codeBucket = _json["codeBucket"];
     }
+    if (_json.containsKey("defaultBucket")) {
+      defaultBucket = _json["defaultBucket"];
+    }
     if (_json.containsKey("dispatchRules")) {
       dispatchRules = _json["dispatchRules"].map((value) => new UrlDispatchRule.fromJson(value)).toList();
     }
@@ -805,6 +814,9 @@ class Application {
     var _json = new core.Map();
     if (codeBucket != null) {
       _json["codeBucket"] = codeBucket;
+    }
+    if (defaultBucket != null) {
+      _json["defaultBucket"] = defaultBucket;
     }
     if (dispatchRules != null) {
       _json["dispatchRules"] = dispatchRules.map((value) => (value).toJson()).toList();
@@ -1766,6 +1778,69 @@ class OperationMetadata {
     }
     if (operationType != null) {
       _json["operationType"] = operationType;
+    }
+    if (target != null) {
+      _json["target"] = target;
+    }
+    if (user != null) {
+      _json["user"] = user;
+    }
+    return _json;
+  }
+}
+
+/** Metadata for the given google.longrunning.Operation. */
+class OperationMetadataV1Beta5 {
+  /**
+   * Timestamp that this operation was completed. (Not present if the operation
+   * is still in progress.) @OutputOnly
+   */
+  core.String endTime;
+  /** Timestamp that this operation was received. @OutputOnly */
+  core.String insertTime;
+  /**
+   * API method name that initiated the operation. Example:
+   * "google.appengine.v1beta5.Version.CreateVersion". @OutputOnly
+   */
+  core.String method;
+  /**
+   * Resource that this operation is acting on. Example:
+   * "apps/myapp/services/default". @OutputOnly
+   */
+  core.String target;
+  /** The user who requested this operation. @OutputOnly */
+  core.String user;
+
+  OperationMetadataV1Beta5();
+
+  OperationMetadataV1Beta5.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("insertTime")) {
+      insertTime = _json["insertTime"];
+    }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
+    if (_json.containsKey("target")) {
+      target = _json["target"];
+    }
+    if (_json.containsKey("user")) {
+      user = _json["user"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (insertTime != null) {
+      _json["insertTime"] = insertTime;
+    }
+    if (method != null) {
+      _json["method"] = method;
     }
     if (target != null) {
       _json["target"] = target;

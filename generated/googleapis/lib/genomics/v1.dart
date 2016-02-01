@@ -17,8 +17,8 @@ const core.String USER_AGENT = 'dart-api-client genomics/v1';
 
 /**
  * An API to store, process, explore, and share genomic data. It supports
- * reference-based alignements, genetic variants, and reference genomes. This
- * API provides an implementation of the Global Alliance for Genomics and Health
+ * reference-based alignments, genetic variants, and reference genomes. This API
+ * provides an implementation of the Global Alliance for Genomics and Health
  * (GA4GH) v0.5.1 API as well as several extensions.
  */
 class GenomicsApi {
@@ -1036,9 +1036,9 @@ class ReadgroupsetsResourceApi {
    * converted to strings - tag types are not preserved - Comments (`@CO`) in
    * the input file header will not be preserved - Original header order of
    * references (`@SQ`) will not be preserved - Any reverse stranded unmapped
-   * reads will be reverse complemented, and their qualities (and "BQ" tag, if
-   * any) will be reversed - Unmapped reads will be stripped of positional
-   * information (reference name and position)
+   * reads will be reverse complemented, and their qualities (also the "BQ" and
+   * "OQ" tags, if any) will be reversed - Unmapped reads will be stripped of
+   * positional information (reference name and position)
    *
    * [request] - The metadata request object.
    *

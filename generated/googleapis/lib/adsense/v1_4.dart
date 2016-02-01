@@ -2799,7 +2799,8 @@ class AdUnitContentAdsSettingsBackupOption {
 }
 
 /**
- * Settings specific to content ads (AFC) and highend mobile content ads (AFMC).
+ * Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
+ * deprecated).
  */
 class AdUnitContentAdsSettings {
   /** The backup option to be used in instances where no ad is available. */
@@ -2838,7 +2839,7 @@ class AdUnitContentAdsSettings {
   }
 }
 
-/** Settings specific to feed ads (AFF). */
+/** Settings specific to feed ads (AFF) - deprecated. */
 class AdUnitFeedAdsSettings {
   /** The position of the ads relative to the feed entries. */
   core.String adPosition;
@@ -2887,7 +2888,7 @@ class AdUnitFeedAdsSettings {
   }
 }
 
-/** Settings specific to WAP mobile content ads (AFMC). */
+/** Settings specific to WAP mobile content ads (AFMC) - deprecated. */
 class AdUnitMobileContentAdsSettings {
   /** The markup language to use for this ad unit. */
   core.String markupLanguage;
@@ -2939,13 +2940,13 @@ class AdUnit {
    */
   core.String code;
   /**
-   * Settings specific to content ads (AFC) and highend mobile content ads
-   * (AFMC).
+   * Settings specific to content ads (AFC) and highend mobile content ads (AFMC
+   * - deprecated).
    */
   AdUnitContentAdsSettings contentAdsSettings;
   /** Custom style information specific to this ad unit. */
   AdStyle customStyle;
-  /** Settings specific to feed ads (AFF). */
+  /** Settings specific to feed ads (AFF) - deprecated. */
   AdUnitFeedAdsSettings feedAdsSettings;
   /**
    * Unique identifier of this ad unit. This should be considered an opaque
@@ -2954,7 +2955,7 @@ class AdUnit {
   core.String id;
   /** Kind of resource this is, in this case adsense#adUnit. */
   core.String kind;
-  /** Settings specific to WAP mobile content ads (AFMC). */
+  /** Settings specific to WAP mobile content ads (AFMC) - deprecated. */
   AdUnitMobileContentAdsSettings mobileContentAdsSettings;
   /** Name of this ad unit. */
   core.String name;
@@ -3343,10 +3344,11 @@ class CustomChannelTargetingInfo {
   core.String description;
   /**
    * The locations in which ads appear. (Only valid for content and mobile
-   * content ads). Acceptable values for content ads are: TOP_LEFT, TOP_CENTER,
-   * TOP_RIGHT, MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT,
-   * BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable values for
-   * mobile content ads are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS.
+   * content ads (deprecated)). Acceptable values for content ads are: TOP_LEFT,
+   * TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT,
+   * BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable
+   * values for mobile content ads (deprecated) are: TOP, MIDDLE, BOTTOM,
+   * MULTIPLE_LOCATIONS.
    */
   core.String location;
   /** The language of the sites ads will be displayed on. */

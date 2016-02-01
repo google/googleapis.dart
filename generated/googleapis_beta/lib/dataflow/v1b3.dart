@@ -613,31 +613,70 @@ class ApproximateProgress {
 /** A progress measurement of a WorkItem by a worker. */
 class ApproximateReportedProgress {
   /**
+   * Total amount of parallelism in the portion of input of this work item that
+   * has already been consumed. In the first two examples above (see
+   * remaining_parallelism), the value should be 30 or 3 respectively. The sum
+   * of remaining_parallelism and consumed_parallelism should equal the total
+   * amount of parallelism in this work item. If specified, must be finite.
+   */
+  ReportedParallelism consumedParallelism;
+  /**
    * Completion as fraction of the input consumed, from 0.0 (beginning, nothing
    * consumed), to 1.0 (end of the input, entire input consumed).
    */
   core.double fractionConsumed;
   /** A Position within the work to represent a progress. */
   Position position;
+  /**
+   * Total amount of parallelism in the input of this WorkItem that has not been
+   * consumed yet (i.e. can be delegated to a new WorkItem via dynamic
+   * splitting). "Amount of parallelism" refers to how many non-empty parts of
+   * the input can be read in parallel. This does not necessarily equal number
+   * of records. An input that can be read in parallel down to the individual
+   * records is called "perfectly splittable". An example of non-perfectly
+   * parallelizable input is a block-compressed file format where a block of
+   * records has to be read as a whole, but different blocks can be read in
+   * parallel. Examples: * If we have read 30 records out of 50 in a perfectly
+   * splittable 50-record input, this value should be 20. * If we are reading
+   * through block 3 in a block-compressed file consisting of 5 blocks, this
+   * value should be 2 (since blocks 4 and 5 can be processed in parallel by new
+   * work items via dynamic splitting). * If we are reading through the last
+   * block in a block-compressed file, or reading or processing the last record
+   * in a perfectly splittable input, this value should be 0, because the
+   * remainder of the work item cannot be further split.
+   */
+  ReportedParallelism remainingParallelism;
 
   ApproximateReportedProgress();
 
   ApproximateReportedProgress.fromJson(core.Map _json) {
+    if (_json.containsKey("consumedParallelism")) {
+      consumedParallelism = new ReportedParallelism.fromJson(_json["consumedParallelism"]);
+    }
     if (_json.containsKey("fractionConsumed")) {
       fractionConsumed = _json["fractionConsumed"];
     }
     if (_json.containsKey("position")) {
       position = new Position.fromJson(_json["position"]);
     }
+    if (_json.containsKey("remainingParallelism")) {
+      remainingParallelism = new ReportedParallelism.fromJson(_json["remainingParallelism"]);
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (consumedParallelism != null) {
+      _json["consumedParallelism"] = (consumedParallelism).toJson();
+    }
     if (fractionConsumed != null) {
       _json["fractionConsumed"] = fractionConsumed;
     }
     if (position != null) {
       _json["position"] = (position).toJson();
+    }
+    if (remainingParallelism != null) {
+      _json["remainingParallelism"] = (remainingParallelism).toJson();
     }
     return _json;
   }
@@ -1282,6 +1321,8 @@ class Job {
    * - "JOB_STATE_FAILED" : A JOB_STATE_FAILED.
    * - "JOB_STATE_CANCELLED" : A JOB_STATE_CANCELLED.
    * - "JOB_STATE_UPDATED" : A JOB_STATE_UPDATED.
+   * - "JOB_STATE_DRAINING" : A JOB_STATE_DRAINING.
+   * - "JOB_STATE_DRAINED" : A JOB_STATE_DRAINED.
    */
   core.String currentState;
   /** The timestamp associated with the current state. */
@@ -1331,6 +1372,8 @@ class Job {
    * - "JOB_STATE_FAILED" : A JOB_STATE_FAILED.
    * - "JOB_STATE_CANCELLED" : A JOB_STATE_CANCELLED.
    * - "JOB_STATE_UPDATED" : A JOB_STATE_UPDATED.
+   * - "JOB_STATE_DRAINING" : A JOB_STATE_DRAINING.
+   * - "JOB_STATE_DRAINED" : A JOB_STATE_DRAINED.
    */
   core.String requestedState;
   /** The top-level steps that constitute the entire job. */
@@ -2634,6 +2677,45 @@ class ReportWorkItemStatusResponse {
     var _json = new core.Map();
     if (workItemServiceStates != null) {
       _json["workItemServiceStates"] = workItemServiceStates.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Represents the level of parallelism in a WorkItem's input, reported by the
+ * worker.
+ */
+class ReportedParallelism {
+  /**
+   * Specifies whether the parallelism is infinite. If true, "value" is ignored.
+   * Infinite parallelism means the service will assume that the work item can
+   * always be split into more non-empty work items by dynamic splitting. This
+   * is a work-around for lack of support for infinity by the current JSON-based
+   * Java RPC stack.
+   */
+  core.bool isInfinite;
+  /** Specifies the level of parallelism in case it is finite. */
+  core.double value;
+
+  ReportedParallelism();
+
+  ReportedParallelism.fromJson(core.Map _json) {
+    if (_json.containsKey("isInfinite")) {
+      isInfinite = _json["isInfinite"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (isInfinite != null) {
+      _json["isInfinite"] = isInfinite;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
@@ -4714,8 +4796,8 @@ class WorkerPool {
    */
   core.String teardownPolicy;
   /**
-   * Zone to run the worker pools in (e.g. "us-central1-a"). If empty or
-   * unspecified, the service will attempt to choose a reasonable default.
+   * Zone to run the worker pools in. If empty or unspecified, the service will
+   * attempt to choose a reasonable default.
    */
   core.String zone;
 

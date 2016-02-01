@@ -14,7 +14,7 @@
     "description": "Report and modify your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/doubleclick-search/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/RuUVQODlINsKweCbm8nBjYOeKSc\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/tz9B7o1oSSLio8p-JXbxaU2en84\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -430,7 +430,7 @@
             }
         }
     },
-    "revision": "20151230",
+    "revision": "20160120",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Availability": {
@@ -627,7 +627,7 @@
                     "type": "string"
                 },
                 "revenueMicros": {
-                    "description": "The revenue amount of this TRANSACTION conversion, in micros.",
+                    "description": "The revenue amount of this TRANSACTION conversion, in micros (value multiplied by 1000, no decimal). For example, to specify a revenue value of \"10\" enter \"10000\" in your request.",
                     "format": "int64",
                     "type": "string"
                 },

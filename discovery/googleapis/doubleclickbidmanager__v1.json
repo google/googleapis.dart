@@ -6,7 +6,7 @@
     "description": "API for viewing and managing your reports in DoubleClick Bid Manager.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/bid-manager/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/mAPHdimW0pvTGXzTTcUsJfk40xQ\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/KspyYaNMMXkE18eGep174M1_JMc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -203,9 +203,22 @@
                     }
                 }
             }
+        },
+        "rubicon": {
+            "methods": {
+                "notifyproposalchange": {
+                    "description": "Update proposal upon actions of Rubicon publisher.",
+                    "httpMethod": "POST",
+                    "id": "doubleclickbidmanager.rubicon.notifyproposalchange",
+                    "path": "rubicon/notifyproposalchange",
+                    "request": {
+                        "$ref": "NotifyProposalChangeRequest"
+                    }
+                }
+            }
         }
     },
-    "revision": "20150925",
+    "revision": "20160120",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "DownloadLineItemsRequest": {
@@ -300,6 +313,7 @@
                         "FILTER_DATA_PROVIDER",
                         "FILTER_DATE",
                         "FILTER_DAY_OF_WEEK",
+                        "FILTER_DFP_ORDER_ID",
                         "FILTER_DMA",
                         "FILTER_EXCHANGE_ID",
                         "FILTER_FLOODLIGHT_PIXEL_ID",
@@ -337,7 +351,14 @@
                         "FILTER_SITE_LANGUAGE",
                         "FILTER_TARGETED_USER_LIST",
                         "FILTER_TIME_OF_DAY",
+                        "FILTER_TRUEVIEW_AD_GROUP_AD_ID",
+                        "FILTER_TRUEVIEW_AD_GROUP_ID",
+                        "FILTER_TRUEVIEW_AGE",
                         "FILTER_TRUEVIEW_CONVERSION_TYPE",
+                        "FILTER_TRUEVIEW_GENDER",
+                        "FILTER_TRUEVIEW_INTEREST",
+                        "FILTER_TRUEVIEW_PARENTAL_STATUS",
+                        "FILTER_TRUEVIEW_REMARKETING_LIST",
                         "FILTER_UNKNOWN",
                         "FILTER_USER_LIST",
                         "FILTER_USER_LIST_FIRST_PARTY",
@@ -360,6 +381,14 @@
                         "FILTER_ZIP_CODE"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -489,6 +518,65 @@
             },
             "type": "object"
         },
+        "Note": {
+            "description": "Publisher comment from Rubicon.",
+            "id": "Note",
+            "properties": {
+                "id": {
+                    "description": "Note id.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Message from publisher.",
+                    "type": "string"
+                },
+                "source": {
+                    "description": "Equals \"publisher\" for notification from Rubicon.",
+                    "type": "string"
+                },
+                "timestamp": {
+                    "description": "Time when the note was added, e.g. \"2015-12-16T17:25:35.000-08:00\".",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "Publisher user name.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "NotifyProposalChangeRequest": {
+            "description": "NotifyProposalChange request.",
+            "id": "NotifyProposalChangeRequest",
+            "properties": {
+                "action": {
+                    "description": "Action taken by publisher. One of: Accept, Decline, Append",
+                    "type": "string"
+                },
+                "href": {
+                    "description": "URL to access proposal detail.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Below are contents of notification from Rubicon. Proposal id.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "notes": {
+                    "description": "Notes from publisher",
+                    "items": {
+                        "$ref": "Note"
+                    },
+                    "type": "array"
+                },
+                "token": {
+                    "description": "Deal token, available when proposal is accepted by publisher.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Parameters": {
             "description": "Parameters of a query or report.",
             "id": "Parameters",
@@ -527,6 +615,7 @@
                             "FILTER_DATA_PROVIDER",
                             "FILTER_DATE",
                             "FILTER_DAY_OF_WEEK",
+                            "FILTER_DFP_ORDER_ID",
                             "FILTER_DMA",
                             "FILTER_EXCHANGE_ID",
                             "FILTER_FLOODLIGHT_PIXEL_ID",
@@ -564,7 +653,14 @@
                             "FILTER_SITE_LANGUAGE",
                             "FILTER_TARGETED_USER_LIST",
                             "FILTER_TIME_OF_DAY",
+                            "FILTER_TRUEVIEW_AD_GROUP_AD_ID",
+                            "FILTER_TRUEVIEW_AD_GROUP_ID",
+                            "FILTER_TRUEVIEW_AGE",
                             "FILTER_TRUEVIEW_CONVERSION_TYPE",
+                            "FILTER_TRUEVIEW_GENDER",
+                            "FILTER_TRUEVIEW_INTEREST",
+                            "FILTER_TRUEVIEW_PARENTAL_STATUS",
+                            "FILTER_TRUEVIEW_REMARKETING_LIST",
                             "FILTER_UNKNOWN",
                             "FILTER_USER_LIST",
                             "FILTER_USER_LIST_FIRST_PARTY",
@@ -587,6 +683,14 @@
                             "FILTER_ZIP_CODE"
                         ],
                         "enumDescriptions": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
                             "",
                             "",
                             "",
@@ -1254,6 +1358,9 @@
                         "TYPE_NIELSEN_SITE",
                         "TYPE_ORDER_ID",
                         "TYPE_PAGE_CATEGORY",
+                        "TYPE_PETRA_NIELSEN_AUDIENCE_PROFILE",
+                        "TYPE_PETRA_NIELSEN_DAILY_REACH_BUILD",
+                        "TYPE_PETRA_NIELSEN_ONLINE_GLOBAL_MARKET",
                         "TYPE_PIXEL_LOAD",
                         "TYPE_REACH_AND_FREQUENCY",
                         "TYPE_THIRD_PARTY_DATA_PROVIDER",
@@ -1263,6 +1370,9 @@
                         "TYPE_YOUTUBE_VERTICAL"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
+                        "",
                         "",
                         "",
                         "",

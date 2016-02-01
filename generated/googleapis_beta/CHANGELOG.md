@@ -1,3 +1,8 @@
+## 0.23.2
+
+* [api] appengine:v1beta4: schema changes
+* [api] dataflow:v1b3: new schemas
+
 ## 0.23.1
 
 * [api] dataflow:v1b3: schema changes

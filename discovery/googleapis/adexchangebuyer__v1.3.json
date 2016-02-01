@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/SR27dQaw2to_QMH-Dj-4XnJ3W9E\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/rEz2HiDx2Fu1wTpH2EJgUXCR4Qk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20151209",
+    "revision": "20160118",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

@@ -8,13 +8,13 @@
             }
         }
     },
-    "basePath": "/",
+    "basePath": "",
     "baseUrl": "https://appengine.googleapis.com/",
     "batchPath": "batch",
     "description": "The Google App Engine Admin API enables developers to provision and manage their App Engine applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/appengine/docs/admin-api/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/_N6P2yp_iYSGpgtP_LUuoaI39to\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/q1k107w8H1_Vpbv_soyd95U2Uhs\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -122,7 +122,7 @@
                             "type": "string"
                         },
                         "ensureResourcesExist": {
-                            "description": "Certain resources associated with an application are created on-demand. Controls whether these resources should be created when performing the `GET` operation. If specified and any resources cloud not be created, the request will fail with an error code.",
+                            "description": "Certain resources associated with an application are created on-demand. Controls whether these resources should be created when performing the `GET` operation. If specified and any resources could not be created, the request will fail with an error code. Additionally, this parameter can cause the request to take longer to complete.",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -526,7 +526,7 @@
             }
         }
     },
-    "revision": "20151123",
+    "revision": "20160121",
     "rootUrl": "https://appengine.googleapis.com/",
     "schemas": {
         "Application": {
@@ -554,6 +554,10 @@
                 },
                 "codeBucket": {
                     "description": "A Google Cloud Storage bucket which can be used for storing files associated with an application. This bucket is associated with the application and can be used by the gcloud deployment commands. @OutputOnly",
+                    "type": "string"
+                },
+                "defaultBucket": {
+                    "description": "A Google Cloud Storage bucket which can be used by the application to store content. @OutputOnly",
                     "type": "string"
                 }
             },
@@ -1494,6 +1498,33 @@
                 },
                 "method": {
                     "description": "API method name that initiated the operation. Example: \"google.appengine.v1beta4.Version.CreateVersion\". @OutputOnly",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OperationMetadataV1Beta5": {
+            "description": "Metadata for the given google.longrunning.Operation.",
+            "id": "OperationMetadataV1Beta5",
+            "properties": {
+                "method": {
+                    "description": "API method name that initiated the operation. Example: \"google.appengine.v1beta5.Version.CreateVersion\". @OutputOnly",
+                    "type": "string"
+                },
+                "insertTime": {
+                    "description": "Timestamp that this operation was received. @OutputOnly",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Timestamp that this operation was completed. (Not present if the operation is still in progress.) @OutputOnly",
+                    "type": "string"
+                },
+                "user": {
+                    "description": "The user who requested this operation. @OutputOnly",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "Resource that this operation is acting on. Example: \"apps/myapp/services/default\". @OutputOnly",
                     "type": "string"
                 }
             },

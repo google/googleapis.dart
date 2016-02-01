@@ -32,10 +32,10 @@ class AdexchangebuyerApi {
   CreativesResourceApi get creatives => new CreativesResourceApi(_requester);
   MarketplacedealsResourceApi get marketplacedeals => new MarketplacedealsResourceApi(_requester);
   MarketplacenotesResourceApi get marketplacenotes => new MarketplacenotesResourceApi(_requester);
-  MarketplaceoffersResourceApi get marketplaceoffers => new MarketplaceoffersResourceApi(_requester);
-  MarketplaceordersResourceApi get marketplaceorders => new MarketplaceordersResourceApi(_requester);
   PerformanceReportResourceApi get performanceReport => new PerformanceReportResourceApi(_requester);
   PretargetingConfigResourceApi get pretargetingConfig => new PretargetingConfigResourceApi(_requester);
+  ProductsResourceApi get products => new ProductsResourceApi(_requester);
+  ProposalsResourceApi get proposals => new ProposalsResourceApi(_requester);
 
   AdexchangebuyerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "adexchangebuyer/v1.4/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -736,13 +736,13 @@ class MarketplacedealsResourceApi {
       _requester = client;
 
   /**
-   * Delete the specified deals from the order
+   * Delete the specified deals from the proposal
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [orderId] - The orderId to delete deals from.
+   * [proposalId] - The proposalId to delete deals from.
    *
    * Completes with a [DeleteOrderDealsResponse].
    *
@@ -752,7 +752,7 @@ class MarketplacedealsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<DeleteOrderDealsResponse> delete(DeleteOrderDealsRequest request, core.String orderId) {
+  async.Future<DeleteOrderDealsResponse> delete(DeleteOrderDealsRequest request, core.String proposalId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -763,11 +763,11 @@ class MarketplacedealsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
     }
 
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/deals/delete';
+    _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/deals/delete';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -780,13 +780,13 @@ class MarketplacedealsResourceApi {
   }
 
   /**
-   * Add new deals for the specified order
+   * Add new deals for the specified proposal
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [orderId] - OrderId for which deals need to be added.
+   * [proposalId] - proposalId for which deals need to be added.
    *
    * Completes with a [AddOrderDealsResponse].
    *
@@ -796,7 +796,7 @@ class MarketplacedealsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AddOrderDealsResponse> insert(AddOrderDealsRequest request, core.String orderId) {
+  async.Future<AddOrderDealsResponse> insert(AddOrderDealsRequest request, core.String proposalId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -807,11 +807,11 @@ class MarketplacedealsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
     }
 
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/deals/insert';
+    _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/deals/insert';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -824,11 +824,11 @@ class MarketplacedealsResourceApi {
   }
 
   /**
-   * List all the deals for a given order
+   * List all the deals for a given proposal
    *
    * Request parameters:
    *
-   * [orderId] - The orderId to get deals for.
+   * [proposalId] - The proposalId to get deals for.
    *
    * Completes with a [GetOrderDealsResponse].
    *
@@ -838,7 +838,7 @@ class MarketplacedealsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GetOrderDealsResponse> list(core.String orderId) {
+  async.Future<GetOrderDealsResponse> list(core.String proposalId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -846,11 +846,11 @@ class MarketplacedealsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
     }
 
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/deals';
+    _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/deals';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -863,13 +863,13 @@ class MarketplacedealsResourceApi {
   }
 
   /**
-   * Replaces all the deals in the order with the passed in deals
+   * Replaces all the deals in the proposal with the passed in deals
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [orderId] - The orderId to edit deals on.
+   * [proposalId] - The proposalId to edit deals on.
    *
    * Completes with a [EditAllOrderDealsResponse].
    *
@@ -879,7 +879,7 @@ class MarketplacedealsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<EditAllOrderDealsResponse> update(EditAllOrderDealsRequest request, core.String orderId) {
+  async.Future<EditAllOrderDealsResponse> update(EditAllOrderDealsRequest request, core.String proposalId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -890,11 +890,11 @@ class MarketplacedealsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
     }
 
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/deals/update';
+    _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/deals/update';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -916,13 +916,13 @@ class MarketplacenotesResourceApi {
       _requester = client;
 
   /**
-   * Add notes to the order
+   * Add notes to the proposal
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [orderId] - The orderId to add notes for.
+   * [proposalId] - The proposalId to add notes for.
    *
    * Completes with a [AddOrderNotesResponse].
    *
@@ -932,7 +932,7 @@ class MarketplacenotesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AddOrderNotesResponse> insert(AddOrderNotesRequest request, core.String orderId) {
+  async.Future<AddOrderNotesResponse> insert(AddOrderNotesRequest request, core.String proposalId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -943,11 +943,11 @@ class MarketplacenotesResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
     }
 
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/notes/insert';
+    _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/notes/insert';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -960,11 +960,11 @@ class MarketplacenotesResourceApi {
   }
 
   /**
-   * Get all the notes associated with an order
+   * Get all the notes associated with a proposal
    *
    * Request parameters:
    *
-   * [orderId] - The orderId to get notes for.
+   * [proposalId] - The proposalId to get notes for.
    *
    * Completes with a [GetOrderNotesResponse].
    *
@@ -974,7 +974,7 @@ class MarketplacenotesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GetOrderNotesResponse> list(core.String orderId) {
+  async.Future<GetOrderNotesResponse> list(core.String proposalId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -982,11 +982,11 @@ class MarketplacenotesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
     }
 
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/notes';
+    _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/notes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -996,345 +996,6 @@ class MarketplacenotesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new GetOrderNotesResponse.fromJson(data));
-  }
-
-}
-
-
-class MarketplaceoffersResourceApi {
-  final commons.ApiRequester _requester;
-
-  MarketplaceoffersResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Gets the requested negotiation.
-   *
-   * Request parameters:
-   *
-   * [offerId] - The offerId for the offer to get the head revision for.
-   *
-   * Completes with a [MarketplaceOffer].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<MarketplaceOffer> get(core.String offerId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (offerId == null) {
-      throw new core.ArgumentError("Parameter offerId is required.");
-    }
-
-    _url = 'marketplaceOffers/' + commons.Escaper.ecapeVariable('$offerId');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new MarketplaceOffer.fromJson(data));
-  }
-
-  /**
-   * Gets the requested negotiation.
-   *
-   * Request parameters:
-   *
-   * [pqlQuery] - The pql query used to query for offers.
-   *
-   * Completes with a [GetOffersResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<GetOffersResponse> search({core.String pqlQuery}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (pqlQuery != null) {
-      _queryParams["pqlQuery"] = [pqlQuery];
-    }
-
-    _url = 'marketplaceOffers/search';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new GetOffersResponse.fromJson(data));
-  }
-
-}
-
-
-class MarketplaceordersResourceApi {
-  final commons.ApiRequester _requester;
-
-  MarketplaceordersResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Get an order given its id
-   *
-   * Request parameters:
-   *
-   * [orderId] - Id of the order to retrieve.
-   *
-   * Completes with a [MarketplaceOrder].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<MarketplaceOrder> get(core.String orderId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
-    }
-
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new MarketplaceOrder.fromJson(data));
-  }
-
-  /**
-   * Create the given list of orders
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [CreateOrdersResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CreateOrdersResponse> insert(CreateOrdersRequest request) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-
-    _url = 'marketplaceOrders/insert';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreateOrdersResponse.fromJson(data));
-  }
-
-  /**
-   * Update the given order. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [orderId] - The order id to update.
-   *
-   * [revisionNumber] - The last known revision number to update. If the head
-   * revision in the marketplace database has since changed, an error will be
-   * thrown. The caller should then fetch the lastest order at head revision and
-   * retry the update at that revision.
-   *
-   * [updateAction] - The proposed action to take on the order.
-   * Possible string values are:
-   * - "accept"
-   * - "cancel"
-   * - "propose"
-   * - "unknownAction"
-   * - "updateFinalized"
-   *
-   * Completes with a [MarketplaceOrder].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<MarketplaceOrder> patch(MarketplaceOrder request, core.String orderId, core.String revisionNumber, core.String updateAction) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
-    }
-    if (revisionNumber == null) {
-      throw new core.ArgumentError("Parameter revisionNumber is required.");
-    }
-    if (updateAction == null) {
-      throw new core.ArgumentError("Parameter updateAction is required.");
-    }
-
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/' + commons.Escaper.ecapeVariable('$revisionNumber') + '/' + commons.Escaper.ecapeVariable('$updateAction');
-
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new MarketplaceOrder.fromJson(data));
-  }
-
-  /**
-   * Search for orders using pql query
-   *
-   * Request parameters:
-   *
-   * [pqlQuery] - Query string to retrieve specific orders.
-   *
-   * Completes with a [GetOrdersResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<GetOrdersResponse> search({core.String pqlQuery}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (pqlQuery != null) {
-      _queryParams["pqlQuery"] = [pqlQuery];
-    }
-
-    _url = 'marketplaceOrders/search';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new GetOrdersResponse.fromJson(data));
-  }
-
-  /**
-   * Update the given order
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [orderId] - The order id to update.
-   *
-   * [revisionNumber] - The last known revision number to update. If the head
-   * revision in the marketplace database has since changed, an error will be
-   * thrown. The caller should then fetch the lastest order at head revision and
-   * retry the update at that revision.
-   *
-   * [updateAction] - The proposed action to take on the order.
-   * Possible string values are:
-   * - "accept"
-   * - "cancel"
-   * - "propose"
-   * - "unknownAction"
-   * - "updateFinalized"
-   *
-   * Completes with a [MarketplaceOrder].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<MarketplaceOrder> update(MarketplaceOrder request, core.String orderId, core.String revisionNumber, core.String updateAction) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
-    }
-    if (revisionNumber == null) {
-      throw new core.ArgumentError("Parameter revisionNumber is required.");
-    }
-    if (updateAction == null) {
-      throw new core.ArgumentError("Parameter updateAction is required.");
-    }
-
-    _url = 'marketplaceOrders/' + commons.Escaper.ecapeVariable('$orderId') + '/' + commons.Escaper.ecapeVariable('$revisionNumber') + '/' + commons.Escaper.ecapeVariable('$updateAction');
-
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new MarketplaceOrder.fromJson(data));
   }
 
 }
@@ -1696,6 +1357,345 @@ class PretargetingConfigResourceApi {
 }
 
 
+class ProductsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProductsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets the requested product by id.
+   *
+   * Request parameters:
+   *
+   * [productId] - The id for the product to get the head revision for.
+   *
+   * Completes with a [Product].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Product> get(core.String productId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (productId == null) {
+      throw new core.ArgumentError("Parameter productId is required.");
+    }
+
+    _url = 'products/' + commons.Escaper.ecapeVariable('$productId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Product.fromJson(data));
+  }
+
+  /**
+   * Gets the requested product.
+   *
+   * Request parameters:
+   *
+   * [pqlQuery] - The pql query used to query for products.
+   *
+   * Completes with a [GetOffersResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GetOffersResponse> search({core.String pqlQuery}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (pqlQuery != null) {
+      _queryParams["pqlQuery"] = [pqlQuery];
+    }
+
+    _url = 'products/search';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GetOffersResponse.fromJson(data));
+  }
+
+}
+
+
+class ProposalsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProposalsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Get a proposal given its id
+   *
+   * Request parameters:
+   *
+   * [proposalId] - Id of the proposal to retrieve.
+   *
+   * Completes with a [Proposal].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Proposal> get(core.String proposalId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+
+    _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Proposal.fromJson(data));
+  }
+
+  /**
+   * Create the given list of proposals
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [CreateOrdersResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<CreateOrdersResponse> insert(CreateOrdersRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'proposals/insert';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreateOrdersResponse.fromJson(data));
+  }
+
+  /**
+   * Update the given proposal. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [proposalId] - The proposal id to update.
+   *
+   * [revisionNumber] - The last known revision number to update. If the head
+   * revision in the marketplace database has since changed, an error will be
+   * thrown. The caller should then fetch the latest proposal at head revision
+   * and retry the update at that revision.
+   *
+   * [updateAction] - The proposed action to take on the proposal.
+   * Possible string values are:
+   * - "accept"
+   * - "cancel"
+   * - "propose"
+   * - "unknownAction"
+   * - "updateFinalized"
+   *
+   * Completes with a [Proposal].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Proposal> patch(Proposal request, core.String proposalId, core.String revisionNumber, core.String updateAction) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+    if (revisionNumber == null) {
+      throw new core.ArgumentError("Parameter revisionNumber is required.");
+    }
+    if (updateAction == null) {
+      throw new core.ArgumentError("Parameter updateAction is required.");
+    }
+
+    _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/' + commons.Escaper.ecapeVariable('$revisionNumber') + '/' + commons.Escaper.ecapeVariable('$updateAction');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Proposal.fromJson(data));
+  }
+
+  /**
+   * Search for proposals using pql query
+   *
+   * Request parameters:
+   *
+   * [pqlQuery] - Query string to retrieve specific proposals.
+   *
+   * Completes with a [GetOrdersResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GetOrdersResponse> search({core.String pqlQuery}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (pqlQuery != null) {
+      _queryParams["pqlQuery"] = [pqlQuery];
+    }
+
+    _url = 'proposals/search';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GetOrdersResponse.fromJson(data));
+  }
+
+  /**
+   * Update the given proposal
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [proposalId] - The proposal id to update.
+   *
+   * [revisionNumber] - The last known revision number to update. If the head
+   * revision in the marketplace database has since changed, an error will be
+   * thrown. The caller should then fetch the latest proposal at head revision
+   * and retry the update at that revision.
+   *
+   * [updateAction] - The proposed action to take on the proposal.
+   * Possible string values are:
+   * - "accept"
+   * - "cancel"
+   * - "propose"
+   * - "unknownAction"
+   * - "updateFinalized"
+   *
+   * Completes with a [Proposal].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Proposal> update(Proposal request, core.String proposalId, core.String revisionNumber, core.String updateAction) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+    if (revisionNumber == null) {
+      throw new core.ArgumentError("Parameter revisionNumber is required.");
+    }
+    if (updateAction == null) {
+      throw new core.ArgumentError("Parameter updateAction is required.");
+    }
+
+    _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/' + commons.Escaper.ecapeVariable('$revisionNumber') + '/' + commons.Escaper.ecapeVariable('$updateAction');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Proposal.fromJson(data));
+  }
+
+}
+
+
 
 class AccountBidderLocation {
   /** The maximum queries per second the Ad Exchange will send. */
@@ -1869,9 +1869,9 @@ class AccountsList {
 class AddOrderDealsRequest {
   /** The list of deals to add */
   core.List<MarketplaceDeal> deals;
-  /** The last known order revision number. */
-  core.String orderRevisionNumber;
-  /** Indicates an optional action to take on the order */
+  /** The last known proposal revision number. */
+  core.String proposalRevisionNumber;
+  /** Indicates an optional action to take on the proposal */
   core.String updateAction;
 
   AddOrderDealsRequest();
@@ -1880,8 +1880,8 @@ class AddOrderDealsRequest {
     if (_json.containsKey("deals")) {
       deals = _json["deals"].map((value) => new MarketplaceDeal.fromJson(value)).toList();
     }
-    if (_json.containsKey("orderRevisionNumber")) {
-      orderRevisionNumber = _json["orderRevisionNumber"];
+    if (_json.containsKey("proposalRevisionNumber")) {
+      proposalRevisionNumber = _json["proposalRevisionNumber"];
     }
     if (_json.containsKey("updateAction")) {
       updateAction = _json["updateAction"];
@@ -1893,8 +1893,8 @@ class AddOrderDealsRequest {
     if (deals != null) {
       _json["deals"] = deals.map((value) => (value).toJson()).toList();
     }
-    if (orderRevisionNumber != null) {
-      _json["orderRevisionNumber"] = orderRevisionNumber;
+    if (proposalRevisionNumber != null) {
+      _json["proposalRevisionNumber"] = proposalRevisionNumber;
     }
     if (updateAction != null) {
       _json["updateAction"] = updateAction;
@@ -1904,10 +1904,10 @@ class AddOrderDealsRequest {
 }
 
 class AddOrderDealsResponse {
-  /** List of deals added (in the same order as passed in the request) */
+  /** List of deals added (in the same proposal as passed in the request) */
   core.List<MarketplaceDeal> deals;
-  /** The updated revision number for the order. */
-  core.String orderRevisionNumber;
+  /** The updated revision number for the proposal. */
+  core.String proposalRevisionNumber;
 
   AddOrderDealsResponse();
 
@@ -1915,8 +1915,8 @@ class AddOrderDealsResponse {
     if (_json.containsKey("deals")) {
       deals = _json["deals"].map((value) => new MarketplaceDeal.fromJson(value)).toList();
     }
-    if (_json.containsKey("orderRevisionNumber")) {
-      orderRevisionNumber = _json["orderRevisionNumber"];
+    if (_json.containsKey("proposalRevisionNumber")) {
+      proposalRevisionNumber = _json["proposalRevisionNumber"];
     }
   }
 
@@ -1925,8 +1925,8 @@ class AddOrderDealsResponse {
     if (deals != null) {
       _json["deals"] = deals.map((value) => (value).toJson()).toList();
     }
-    if (orderRevisionNumber != null) {
-      _json["orderRevisionNumber"] = orderRevisionNumber;
+    if (proposalRevisionNumber != null) {
+      _json["proposalRevisionNumber"] = proposalRevisionNumber;
     }
     return _json;
   }
@@ -2175,15 +2175,15 @@ class ContactInformation {
 }
 
 class CreateOrdersRequest {
-  /** The list of orders to create. */
-  core.List<MarketplaceOrder> orders;
+  /** The list of proposals to create. */
+  core.List<Proposal> proposals;
   core.String webPropertyCode;
 
   CreateOrdersRequest();
 
   CreateOrdersRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("orders")) {
-      orders = _json["orders"].map((value) => new MarketplaceOrder.fromJson(value)).toList();
+    if (_json.containsKey("proposals")) {
+      proposals = _json["proposals"].map((value) => new Proposal.fromJson(value)).toList();
     }
     if (_json.containsKey("webPropertyCode")) {
       webPropertyCode = _json["webPropertyCode"];
@@ -2192,8 +2192,8 @@ class CreateOrdersRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (orders != null) {
-      _json["orders"] = orders.map((value) => (value).toJson()).toList();
+    if (proposals != null) {
+      _json["proposals"] = proposals.map((value) => (value).toJson()).toList();
     }
     if (webPropertyCode != null) {
       _json["webPropertyCode"] = webPropertyCode;
@@ -2203,21 +2203,21 @@ class CreateOrdersRequest {
 }
 
 class CreateOrdersResponse {
-  /** The list of orders successfully created. */
-  core.List<MarketplaceOrder> orders;
+  /** The list of proposals successfully created. */
+  core.List<Proposal> proposals;
 
   CreateOrdersResponse();
 
   CreateOrdersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("orders")) {
-      orders = _json["orders"].map((value) => new MarketplaceOrder.fromJson(value)).toList();
+    if (_json.containsKey("proposals")) {
+      proposals = _json["proposals"].map((value) => new Proposal.fromJson(value)).toList();
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (orders != null) {
-      _json["orders"] = orders.map((value) => (value).toJson()).toList();
+    if (proposals != null) {
+      _json["proposals"] = proposals.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -3054,7 +3054,7 @@ class DealTermsGuaranteedFixedPriceTerms {
    * guaranteed looks that the buyer is guaranteeing to buy.
    */
   core.String guaranteedImpressions;
-  /** Count of guaranteed looks. Required for deal, optional for offer. */
+  /** Count of guaranteed looks. Required for deal, optional for product. */
   core.String guaranteedLooks;
 
   DealTermsGuaranteedFixedPriceTerms();
@@ -3137,10 +3137,10 @@ class DealTermsNonGuaranteedFixedPriceTerms {
 }
 
 class DeleteOrderDealsRequest {
-  /** List of deals to delete for a given order */
+  /** List of deals to delete for a given proposal */
   core.List<core.String> dealIds;
-  /** The last known order revision number. */
-  core.String orderRevisionNumber;
+  /** The last known proposal revision number. */
+  core.String proposalRevisionNumber;
   core.String updateAction;
 
   DeleteOrderDealsRequest();
@@ -3149,8 +3149,8 @@ class DeleteOrderDealsRequest {
     if (_json.containsKey("dealIds")) {
       dealIds = _json["dealIds"];
     }
-    if (_json.containsKey("orderRevisionNumber")) {
-      orderRevisionNumber = _json["orderRevisionNumber"];
+    if (_json.containsKey("proposalRevisionNumber")) {
+      proposalRevisionNumber = _json["proposalRevisionNumber"];
     }
     if (_json.containsKey("updateAction")) {
       updateAction = _json["updateAction"];
@@ -3162,8 +3162,8 @@ class DeleteOrderDealsRequest {
     if (dealIds != null) {
       _json["dealIds"] = dealIds;
     }
-    if (orderRevisionNumber != null) {
-      _json["orderRevisionNumber"] = orderRevisionNumber;
+    if (proposalRevisionNumber != null) {
+      _json["proposalRevisionNumber"] = proposalRevisionNumber;
     }
     if (updateAction != null) {
       _json["updateAction"] = updateAction;
@@ -3173,10 +3173,10 @@ class DeleteOrderDealsRequest {
 }
 
 class DeleteOrderDealsResponse {
-  /** List of deals deleted (in the same order as passed in the request) */
+  /** List of deals deleted (in the same proposal as passed in the request) */
   core.List<MarketplaceDeal> deals;
-  /** The updated revision number for the order. */
-  core.String orderRevisionNumber;
+  /** The updated revision number for the proposal. */
+  core.String proposalRevisionNumber;
 
   DeleteOrderDealsResponse();
 
@@ -3184,8 +3184,8 @@ class DeleteOrderDealsResponse {
     if (_json.containsKey("deals")) {
       deals = _json["deals"].map((value) => new MarketplaceDeal.fromJson(value)).toList();
     }
-    if (_json.containsKey("orderRevisionNumber")) {
-      orderRevisionNumber = _json["orderRevisionNumber"];
+    if (_json.containsKey("proposalRevisionNumber")) {
+      proposalRevisionNumber = _json["proposalRevisionNumber"];
     }
   }
 
@@ -3194,8 +3194,8 @@ class DeleteOrderDealsResponse {
     if (deals != null) {
       _json["deals"] = deals.map((value) => (value).toJson()).toList();
     }
-    if (orderRevisionNumber != null) {
-      _json["orderRevisionNumber"] = orderRevisionNumber;
+    if (proposalRevisionNumber != null) {
+      _json["proposalRevisionNumber"] = proposalRevisionNumber;
     }
     return _json;
   }
@@ -3273,25 +3273,26 @@ class EditAllOrderDealsRequest {
   /**
    * List of deals to edit. Service may perform 3 different operations based on
    * comparison of deals in this list vs deals already persisted in database: 1.
-   * Add new deal to order If a deal in this list does not exist in the order,
-   * the service will create a new deal and add it to the order. Validation will
-   * follow AddOrderDealsRequest. 2. Update existing deal in the order If a deal
-   * in this list already exist in the order, the service will update that
-   * existing deal to this new deal in the request. Validation will follow
-   * UpdateOrderDealsRequest. 3. Delete deals from the order (just need the id)
-   * If a existing deal in the order is not present in this list, the service
-   * will delete that deal from the order. Validation will follow
-   * DeleteOrderDealsRequest.
+   * Add new deal to proposal If a deal in this list does not exist in the
+   * proposal, the service will create a new deal and add it to the proposal.
+   * Validation will follow AddOrderDealsRequest. 2. Update existing deal in the
+   * proposal If a deal in this list already exist in the proposal, the service
+   * will update that existing deal to this new deal in the request. Validation
+   * will follow UpdateOrderDealsRequest. 3. Delete deals from the proposal
+   * (just need the id) If a existing deal in the proposal is not present in
+   * this list, the service will delete that deal from the proposal. Validation
+   * will follow DeleteOrderDealsRequest.
    */
   core.List<MarketplaceDeal> deals;
   /**
-   * If specified, also updates the order in the batch transaction. This is
-   * useful when the order and the deals need to be updated in one transaction.
+   * If specified, also updates the proposal in the batch transaction. This is
+   * useful when the proposal and the deals need to be updated in one
+   * transaction.
    */
-  MarketplaceOrder order;
-  /** The last known revision number for the order. */
-  core.String orderRevisionNumber;
-  /** Indicates an optional action to take on the order */
+  Proposal proposal;
+  /** The last known revision number for the proposal. */
+  core.String proposalRevisionNumber;
+  /** Indicates an optional action to take on the proposal */
   core.String updateAction;
 
   EditAllOrderDealsRequest();
@@ -3300,11 +3301,11 @@ class EditAllOrderDealsRequest {
     if (_json.containsKey("deals")) {
       deals = _json["deals"].map((value) => new MarketplaceDeal.fromJson(value)).toList();
     }
-    if (_json.containsKey("order")) {
-      order = new MarketplaceOrder.fromJson(_json["order"]);
+    if (_json.containsKey("proposal")) {
+      proposal = new Proposal.fromJson(_json["proposal"]);
     }
-    if (_json.containsKey("orderRevisionNumber")) {
-      orderRevisionNumber = _json["orderRevisionNumber"];
+    if (_json.containsKey("proposalRevisionNumber")) {
+      proposalRevisionNumber = _json["proposalRevisionNumber"];
     }
     if (_json.containsKey("updateAction")) {
       updateAction = _json["updateAction"];
@@ -3316,11 +3317,11 @@ class EditAllOrderDealsRequest {
     if (deals != null) {
       _json["deals"] = deals.map((value) => (value).toJson()).toList();
     }
-    if (order != null) {
-      _json["order"] = (order).toJson();
+    if (proposal != null) {
+      _json["proposal"] = (proposal).toJson();
     }
-    if (orderRevisionNumber != null) {
-      _json["orderRevisionNumber"] = orderRevisionNumber;
+    if (proposalRevisionNumber != null) {
+      _json["proposalRevisionNumber"] = proposalRevisionNumber;
     }
     if (updateAction != null) {
       _json["updateAction"] = updateAction;
@@ -3330,7 +3331,7 @@ class EditAllOrderDealsRequest {
 }
 
 class EditAllOrderDealsResponse {
-  /** List of all deals in the order after edit. */
+  /** List of all deals in the proposal after edit. */
   core.List<MarketplaceDeal> deals;
 
   EditAllOrderDealsResponse();
@@ -3351,28 +3352,28 @@ class EditAllOrderDealsResponse {
 }
 
 class GetOffersResponse {
-  /** The returned list of offers. */
-  core.List<MarketplaceOffer> offers;
+  /** The returned list of products. */
+  core.List<Product> products;
 
   GetOffersResponse();
 
   GetOffersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("offers")) {
-      offers = _json["offers"].map((value) => new MarketplaceOffer.fromJson(value)).toList();
+    if (_json.containsKey("products")) {
+      products = _json["products"].map((value) => new Product.fromJson(value)).toList();
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (offers != null) {
-      _json["offers"] = offers.map((value) => (value).toJson()).toList();
+    if (products != null) {
+      _json["products"] = products.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
 class GetOrderDealsResponse {
-  /** List of deals for the order */
+  /** List of deals for the proposal */
   core.List<MarketplaceDeal> deals;
 
   GetOrderDealsResponse();
@@ -3414,29 +3415,29 @@ class GetOrderNotesResponse {
 }
 
 class GetOrdersResponse {
-  /** The list of matching orders. */
-  core.List<MarketplaceOrder> orders;
+  /** The list of matching proposals. */
+  core.List<Proposal> proposals;
 
   GetOrdersResponse();
 
   GetOrdersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("orders")) {
-      orders = _json["orders"].map((value) => new MarketplaceOrder.fromJson(value)).toList();
+    if (_json.containsKey("proposals")) {
+      proposals = _json["proposals"].map((value) => new Proposal.fromJson(value)).toList();
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (orders != null) {
-      _json["orders"] = orders.map((value) => (value).toJson()).toList();
+    if (proposals != null) {
+      _json["proposals"] = proposals.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
 /**
- * An order can contain multiple deals. A deal contains the terms and targeting
- * information that is used for serving.
+ * A proposal can contain multiple deals. A deal contains the terms and
+ * targeting information that is used for serving.
  */
 class MarketplaceDeal {
   /** Buyer private data (hidden from seller). */
@@ -3481,15 +3482,16 @@ class MarketplaceDeal {
   /** The name of the deal. (updatable) */
   core.String name;
   /**
-   * The offer-id from which this deal was created. (readonly, except on create)
+   * The product-id from which this deal was created. (readonly, except on
+   * create)
    */
-  core.String offerId;
+  core.String productId;
   /**
-   * The revision number of the offer that the deal was created from (readonly,
-   * except on create)
+   * The revision number of the product that the deal was created from
+   * (readonly, except on create)
    */
-  core.String offerRevisionNumber;
-  core.String orderId;
+  core.String productRevisionNumber;
+  core.String proposalId;
   /** Optional Seller contact information for the deal (buyer-readonly) */
   core.List<ContactInformation> sellerContacts;
   /** The shared targeting visible to buyers and sellers. (updatable) */
@@ -3542,14 +3544,14 @@ class MarketplaceDeal {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
-    if (_json.containsKey("offerId")) {
-      offerId = _json["offerId"];
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
     }
-    if (_json.containsKey("offerRevisionNumber")) {
-      offerRevisionNumber = _json["offerRevisionNumber"];
+    if (_json.containsKey("productRevisionNumber")) {
+      productRevisionNumber = _json["productRevisionNumber"];
     }
-    if (_json.containsKey("orderId")) {
-      orderId = _json["orderId"];
+    if (_json.containsKey("proposalId")) {
+      proposalId = _json["proposalId"];
     }
     if (_json.containsKey("sellerContacts")) {
       sellerContacts = _json["sellerContacts"].map((value) => new ContactInformation.fromJson(value)).toList();
@@ -3606,14 +3608,14 @@ class MarketplaceDeal {
     if (name != null) {
       _json["name"] = name;
     }
-    if (offerId != null) {
-      _json["offerId"] = offerId;
+    if (productId != null) {
+      _json["productId"] = productId;
     }
-    if (offerRevisionNumber != null) {
-      _json["offerRevisionNumber"] = offerRevisionNumber;
+    if (productRevisionNumber != null) {
+      _json["productRevisionNumber"] = productRevisionNumber;
     }
-    if (orderId != null) {
-      _json["orderId"] = orderId;
+    if (proposalId != null) {
+      _json["proposalId"] = proposalId;
     }
     if (sellerContacts != null) {
       _json["sellerContacts"] = sellerContacts.map((value) => (value).toJson()).toList();
@@ -3715,7 +3717,7 @@ class MarketplaceLabel {
 }
 
 /**
- * An order is associated with a bunch of notes which may optionally be
+ * A proposal is associated with a bunch of notes which may optionally be
  * associated with a deal and/or revision number.
  */
 class MarketplaceNote {
@@ -3735,13 +3737,13 @@ class MarketplaceNote {
   core.String note;
   /** The unique id for the note. (readonly) */
   core.String noteId;
-  /** The order_id that a note is attached to. (readonly) */
-  core.String orderId;
+  /** The proposalId that a note is attached to. (readonly) */
+  core.String proposalId;
   /**
-   * If the note is associated with an order revision number, then store that
+   * If the note is associated with a proposal revision number, then store that
    * here. (readonly, except on create)
    */
-  core.String orderRevisionNumber;
+  core.String proposalRevisionNumber;
   /** The timestamp (ms since epoch) that this note was created. (readonly) */
   core.String timestampMs;
 
@@ -3763,11 +3765,11 @@ class MarketplaceNote {
     if (_json.containsKey("noteId")) {
       noteId = _json["noteId"];
     }
-    if (_json.containsKey("orderId")) {
-      orderId = _json["orderId"];
+    if (_json.containsKey("proposalId")) {
+      proposalId = _json["proposalId"];
     }
-    if (_json.containsKey("orderRevisionNumber")) {
-      orderRevisionNumber = _json["orderRevisionNumber"];
+    if (_json.containsKey("proposalRevisionNumber")) {
+      proposalRevisionNumber = _json["proposalRevisionNumber"];
     }
     if (_json.containsKey("timestampMs")) {
       timestampMs = _json["timestampMs"];
@@ -3791,415 +3793,14 @@ class MarketplaceNote {
     if (noteId != null) {
       _json["noteId"] = noteId;
     }
-    if (orderId != null) {
-      _json["orderId"] = orderId;
+    if (proposalId != null) {
+      _json["proposalId"] = proposalId;
     }
-    if (orderRevisionNumber != null) {
-      _json["orderRevisionNumber"] = orderRevisionNumber;
+    if (proposalRevisionNumber != null) {
+      _json["proposalRevisionNumber"] = proposalRevisionNumber;
     }
     if (timestampMs != null) {
       _json["timestampMs"] = timestampMs;
-    }
-    return _json;
-  }
-}
-
-/**
- * An offer is segment of inventory that a seller wishes to sell. It is
- * associated with certain terms and targeting information which helps buyer
- * know more about the inventory. Each field in an order can have one of the
- * following setting:
- *
- * (readonly) - It is an error to try and set this field. (buyer-readonly) -
- * Only the seller can set this field. (seller-readonly) - Only the buyer can
- * set this field. (updatable) - The field is updatable at all times by either
- * buyer or the seller.
- */
-class MarketplaceOffer {
-  /** Creation time in ms. since epoch (readonly) */
-  core.String creationTimeMs;
-  /**
-   * Optional contact information for the creator of this offer.
-   * (buyer-readonly)
-   */
-  core.List<ContactInformation> creatorContacts;
-  /** The proposed end time for the deal (ms since epoch) (buyer-readonly) */
-  core.String flightEndTimeMs;
-  /**
-   * Inventory availability dates. (times are in ms since epoch) The granularity
-   * is generally in the order of seconds. (buyer-readonly)
-   */
-  core.String flightStartTimeMs;
-  /**
-   * If the creator has already signed off on the offer, then the buyer can
-   * finalize the deal by accepting the offer as is. When copying to an order,
-   * if any of the terms are changed, then auto_finalize is automatically set to
-   * false.
-   */
-  core.bool hasCreatorSignedOff;
-  /**
-   * What exchange will provide this inventory (readonly, except on create).
-   */
-  core.String inventorySource;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "adexchangebuyer#marketplaceOffer".
-   */
-  core.String kind;
-  /** Optional List of labels for the offer (optional, buyer-readonly). */
-  core.List<MarketplaceLabel> labels;
-  /** Time of last update in ms. since epoch (readonly) */
-  core.String lastUpdateTimeMs;
-  /** The name for this offer as set by the seller. (buyer-readonly) */
-  core.String name;
-  /** The unique id for the offer (readonly) */
-  core.String offerId;
-  /** The revision number of the offer. (readonly) */
-  core.String revisionNumber;
-  /**
-   * Information about the seller that created this offer (readonly, except on
-   * create)
-   */
-  Seller seller;
-  /**
-   * Targeting that is shared between the buyer and the seller. Each targeting
-   * criteria has a specified key and for each key there is a list of inclusion
-   * value or exclusion values. (buyer-readonly)
-   */
-  core.List<SharedTargeting> sharedTargetings;
-  /** The state of the offer. (buyer-readonly) */
-  core.String state;
-  /**
-   * The syndication product associated with the deal. (readonly, except on
-   * create)
-   */
-  core.String syndicationProduct;
-  /** The negotiable terms of the deal (buyer-readonly) */
-  DealTerms terms;
-  core.String webPropertyCode;
-
-  MarketplaceOffer();
-
-  MarketplaceOffer.fromJson(core.Map _json) {
-    if (_json.containsKey("creationTimeMs")) {
-      creationTimeMs = _json["creationTimeMs"];
-    }
-    if (_json.containsKey("creatorContacts")) {
-      creatorContacts = _json["creatorContacts"].map((value) => new ContactInformation.fromJson(value)).toList();
-    }
-    if (_json.containsKey("flightEndTimeMs")) {
-      flightEndTimeMs = _json["flightEndTimeMs"];
-    }
-    if (_json.containsKey("flightStartTimeMs")) {
-      flightStartTimeMs = _json["flightStartTimeMs"];
-    }
-    if (_json.containsKey("hasCreatorSignedOff")) {
-      hasCreatorSignedOff = _json["hasCreatorSignedOff"];
-    }
-    if (_json.containsKey("inventorySource")) {
-      inventorySource = _json["inventorySource"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("labels")) {
-      labels = _json["labels"].map((value) => new MarketplaceLabel.fromJson(value)).toList();
-    }
-    if (_json.containsKey("lastUpdateTimeMs")) {
-      lastUpdateTimeMs = _json["lastUpdateTimeMs"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("offerId")) {
-      offerId = _json["offerId"];
-    }
-    if (_json.containsKey("revisionNumber")) {
-      revisionNumber = _json["revisionNumber"];
-    }
-    if (_json.containsKey("seller")) {
-      seller = new Seller.fromJson(_json["seller"]);
-    }
-    if (_json.containsKey("sharedTargetings")) {
-      sharedTargetings = _json["sharedTargetings"].map((value) => new SharedTargeting.fromJson(value)).toList();
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-    if (_json.containsKey("syndicationProduct")) {
-      syndicationProduct = _json["syndicationProduct"];
-    }
-    if (_json.containsKey("terms")) {
-      terms = new DealTerms.fromJson(_json["terms"]);
-    }
-    if (_json.containsKey("webPropertyCode")) {
-      webPropertyCode = _json["webPropertyCode"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (creationTimeMs != null) {
-      _json["creationTimeMs"] = creationTimeMs;
-    }
-    if (creatorContacts != null) {
-      _json["creatorContacts"] = creatorContacts.map((value) => (value).toJson()).toList();
-    }
-    if (flightEndTimeMs != null) {
-      _json["flightEndTimeMs"] = flightEndTimeMs;
-    }
-    if (flightStartTimeMs != null) {
-      _json["flightStartTimeMs"] = flightStartTimeMs;
-    }
-    if (hasCreatorSignedOff != null) {
-      _json["hasCreatorSignedOff"] = hasCreatorSignedOff;
-    }
-    if (inventorySource != null) {
-      _json["inventorySource"] = inventorySource;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (labels != null) {
-      _json["labels"] = labels.map((value) => (value).toJson()).toList();
-    }
-    if (lastUpdateTimeMs != null) {
-      _json["lastUpdateTimeMs"] = lastUpdateTimeMs;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (offerId != null) {
-      _json["offerId"] = offerId;
-    }
-    if (revisionNumber != null) {
-      _json["revisionNumber"] = revisionNumber;
-    }
-    if (seller != null) {
-      _json["seller"] = (seller).toJson();
-    }
-    if (sharedTargetings != null) {
-      _json["sharedTargetings"] = sharedTargetings.map((value) => (value).toJson()).toList();
-    }
-    if (state != null) {
-      _json["state"] = state;
-    }
-    if (syndicationProduct != null) {
-      _json["syndicationProduct"] = syndicationProduct;
-    }
-    if (terms != null) {
-      _json["terms"] = (terms).toJson();
-    }
-    if (webPropertyCode != null) {
-      _json["webPropertyCode"] = webPropertyCode;
-    }
-    return _json;
-  }
-}
-
-/**
- * Represents an order in the marketplace. An order is the unit of negotiation
- * between a seller and a buyer and contains deals which are served. Each field
- * in an order can have one of the following setting:
- *
- * (readonly) - It is an error to try and set this field. (buyer-readonly) -
- * Only the seller can set this field. (seller-readonly) - Only the buyer can
- * set this field. (updatable) - The field is updatable at all times by either
- * buyer or the seller.
- */
-class MarketplaceOrder {
-  /** Reference to the buyer that will get billed for this order. (readonly) */
-  Buyer billedBuyer;
-  /** Reference to the buyer on the order. (readonly, except on create) */
-  Buyer buyer;
-  /** Optional contact information fort the buyer. (seller-readonly) */
-  core.List<ContactInformation> buyerContacts;
-  /** Private data for buyer. (hidden from seller). */
-  PrivateData buyerPrivateData;
-  /**
-   * When an order is in an accepted state, indicates whether the buyer has
-   * signed off Once both sides have signed off on a deal, the order can be
-   * finalized by the seller. (seller-readonly)
-   */
-  core.bool hasBuyerSignedOff;
-  /**
-   * When an order is in an accepted state, indicates whether the buyer has
-   * signed off Once both sides have signed off on a deal, the order can be
-   * finalized by the seller. (buyer-readonly)
-   */
-  core.bool hasSellerSignedOff;
-  /**
-   * What exchange will provide this inventory (readonly, except on create).
-   */
-  core.String inventorySource;
-  /** True if the order is being renegotiated (readonly). */
-  core.bool isRenegotiating;
-  /**
-   * True, if the buyside inventory setup is complete for this order. (readonly)
-   */
-  core.bool isSetupComplete;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "adexchangebuyer#marketplaceOrder".
-   */
-  core.String kind;
-  /** List of labels associated with the order. (readonly) */
-  core.List<MarketplaceLabel> labels;
-  /**
-   * The role of the last user that either updated the order or left a comment.
-   * (readonly)
-   */
-  core.String lastUpdaterOrCommentorRole;
-  core.String lastUpdaterRole;
-  /** The name for the order (updatable) */
-  core.String name;
-  /** The unique id of the order. (readonly). */
-  core.String orderId;
-  /** The current state of the order. (readonly) */
-  core.String orderState;
-  /** Indicates whether the buyer/seller created the offer.(readonly) */
-  core.String originatorRole;
-  /** The revision number for the order (readonly). */
-  core.String revisionNumber;
-  /** The time (ms since epoch) when the order was last revised (readonly). */
-  core.String revisionTimeMs;
-  /** Reference to the seller on the order. (readonly, except on create) */
-  Seller seller;
-  /** Optional contact information for the seller (buyer-readonly). */
-  core.List<ContactInformation> sellerContacts;
-
-  MarketplaceOrder();
-
-  MarketplaceOrder.fromJson(core.Map _json) {
-    if (_json.containsKey("billedBuyer")) {
-      billedBuyer = new Buyer.fromJson(_json["billedBuyer"]);
-    }
-    if (_json.containsKey("buyer")) {
-      buyer = new Buyer.fromJson(_json["buyer"]);
-    }
-    if (_json.containsKey("buyerContacts")) {
-      buyerContacts = _json["buyerContacts"].map((value) => new ContactInformation.fromJson(value)).toList();
-    }
-    if (_json.containsKey("buyerPrivateData")) {
-      buyerPrivateData = new PrivateData.fromJson(_json["buyerPrivateData"]);
-    }
-    if (_json.containsKey("hasBuyerSignedOff")) {
-      hasBuyerSignedOff = _json["hasBuyerSignedOff"];
-    }
-    if (_json.containsKey("hasSellerSignedOff")) {
-      hasSellerSignedOff = _json["hasSellerSignedOff"];
-    }
-    if (_json.containsKey("inventorySource")) {
-      inventorySource = _json["inventorySource"];
-    }
-    if (_json.containsKey("isRenegotiating")) {
-      isRenegotiating = _json["isRenegotiating"];
-    }
-    if (_json.containsKey("isSetupComplete")) {
-      isSetupComplete = _json["isSetupComplete"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("labels")) {
-      labels = _json["labels"].map((value) => new MarketplaceLabel.fromJson(value)).toList();
-    }
-    if (_json.containsKey("lastUpdaterOrCommentorRole")) {
-      lastUpdaterOrCommentorRole = _json["lastUpdaterOrCommentorRole"];
-    }
-    if (_json.containsKey("lastUpdaterRole")) {
-      lastUpdaterRole = _json["lastUpdaterRole"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("orderId")) {
-      orderId = _json["orderId"];
-    }
-    if (_json.containsKey("orderState")) {
-      orderState = _json["orderState"];
-    }
-    if (_json.containsKey("originatorRole")) {
-      originatorRole = _json["originatorRole"];
-    }
-    if (_json.containsKey("revisionNumber")) {
-      revisionNumber = _json["revisionNumber"];
-    }
-    if (_json.containsKey("revisionTimeMs")) {
-      revisionTimeMs = _json["revisionTimeMs"];
-    }
-    if (_json.containsKey("seller")) {
-      seller = new Seller.fromJson(_json["seller"]);
-    }
-    if (_json.containsKey("sellerContacts")) {
-      sellerContacts = _json["sellerContacts"].map((value) => new ContactInformation.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (billedBuyer != null) {
-      _json["billedBuyer"] = (billedBuyer).toJson();
-    }
-    if (buyer != null) {
-      _json["buyer"] = (buyer).toJson();
-    }
-    if (buyerContacts != null) {
-      _json["buyerContacts"] = buyerContacts.map((value) => (value).toJson()).toList();
-    }
-    if (buyerPrivateData != null) {
-      _json["buyerPrivateData"] = (buyerPrivateData).toJson();
-    }
-    if (hasBuyerSignedOff != null) {
-      _json["hasBuyerSignedOff"] = hasBuyerSignedOff;
-    }
-    if (hasSellerSignedOff != null) {
-      _json["hasSellerSignedOff"] = hasSellerSignedOff;
-    }
-    if (inventorySource != null) {
-      _json["inventorySource"] = inventorySource;
-    }
-    if (isRenegotiating != null) {
-      _json["isRenegotiating"] = isRenegotiating;
-    }
-    if (isSetupComplete != null) {
-      _json["isSetupComplete"] = isSetupComplete;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (labels != null) {
-      _json["labels"] = labels.map((value) => (value).toJson()).toList();
-    }
-    if (lastUpdaterOrCommentorRole != null) {
-      _json["lastUpdaterOrCommentorRole"] = lastUpdaterOrCommentorRole;
-    }
-    if (lastUpdaterRole != null) {
-      _json["lastUpdaterRole"] = lastUpdaterRole;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (orderId != null) {
-      _json["orderId"] = orderId;
-    }
-    if (orderState != null) {
-      _json["orderState"] = orderState;
-    }
-    if (originatorRole != null) {
-      _json["originatorRole"] = originatorRole;
-    }
-    if (revisionNumber != null) {
-      _json["revisionNumber"] = revisionNumber;
-    }
-    if (revisionTimeMs != null) {
-      _json["revisionTimeMs"] = revisionTimeMs;
-    }
-    if (seller != null) {
-      _json["seller"] = (seller).toJson();
-    }
-    if (sellerContacts != null) {
-      _json["sellerContacts"] = sellerContacts.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -4890,7 +4491,7 @@ class Price {
   core.double amountMicros;
   /** The currency code for the price. */
   core.String currencyCode;
-  /** The pricing type for the deal/offer. */
+  /** The pricing type for the deal/product. */
   core.String pricingType;
 
   Price();
@@ -4924,7 +4525,7 @@ class Price {
 
 /**
  * Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in
- * an offer can become [0,1] deals. To check if there is a PricePerBuyer for a
+ * an product can become [0,1] deals. To check if there is a PricePerBuyer for a
  * particular buyer or buyer/advertiser pair, we look for the most specific
  * matching rule - we first look for a rule matching the buyer and advertiser,
  * next a rule with the buyer but an empty advertiser list, and otherwise look
@@ -4997,10 +4598,416 @@ class PrivateData {
   }
 }
 
+/**
+ * A product is segment of inventory that a seller wishes to sell. It is
+ * associated with certain terms and targeting information which helps buyer
+ * know more about the inventory. Each field in a product can have one of the
+ * following setting:
+ *
+ * (readonly) - It is an error to try and set this field. (buyer-readonly) -
+ * Only the seller can set this field. (seller-readonly) - Only the buyer can
+ * set this field. (updatable) - The field is updatable at all times by either
+ * buyer or the seller.
+ */
+class Product {
+  /** Creation time in ms. since epoch (readonly) */
+  core.String creationTimeMs;
+  /**
+   * Optional contact information for the creator of this product.
+   * (buyer-readonly)
+   */
+  core.List<ContactInformation> creatorContacts;
+  /** The proposed end time for the deal (ms since epoch) (buyer-readonly) */
+  core.String flightEndTimeMs;
+  /**
+   * Inventory availability dates. (times are in ms since epoch) The granularity
+   * is generally in the order of seconds. (buyer-readonly)
+   */
+  core.String flightStartTimeMs;
+  /**
+   * If the creator has already signed off on the product, then the buyer can
+   * finalize the deal by accepting the product as is. When copying to a
+   * proposal, if any of the terms are changed, then auto_finalize is
+   * automatically set to false.
+   */
+  core.bool hasCreatorSignedOff;
+  /**
+   * What exchange will provide this inventory (readonly, except on create).
+   */
+  core.String inventorySource;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "adexchangebuyer#product".
+   */
+  core.String kind;
+  /** Optional List of labels for the product (optional, buyer-readonly). */
+  core.List<MarketplaceLabel> labels;
+  /** Time of last update in ms. since epoch (readonly) */
+  core.String lastUpdateTimeMs;
+  /** The name for this product as set by the seller. (buyer-readonly) */
+  core.String name;
+  /** The unique id for the product (readonly) */
+  core.String productId;
+  /** The revision number of the product. (readonly) */
+  core.String revisionNumber;
+  /**
+   * Information about the seller that created this product (readonly, except on
+   * create)
+   */
+  Seller seller;
+  /**
+   * Targeting that is shared between the buyer and the seller. Each targeting
+   * criteria has a specified key and for each key there is a list of inclusion
+   * value or exclusion values. (buyer-readonly)
+   */
+  core.List<SharedTargeting> sharedTargetings;
+  /** The state of the product. (buyer-readonly) */
+  core.String state;
+  /**
+   * The syndication product associated with the deal. (readonly, except on
+   * create)
+   */
+  core.String syndicationProduct;
+  /** The negotiable terms of the deal (buyer-readonly) */
+  DealTerms terms;
+  core.String webPropertyCode;
+
+  Product();
+
+  Product.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimeMs")) {
+      creationTimeMs = _json["creationTimeMs"];
+    }
+    if (_json.containsKey("creatorContacts")) {
+      creatorContacts = _json["creatorContacts"].map((value) => new ContactInformation.fromJson(value)).toList();
+    }
+    if (_json.containsKey("flightEndTimeMs")) {
+      flightEndTimeMs = _json["flightEndTimeMs"];
+    }
+    if (_json.containsKey("flightStartTimeMs")) {
+      flightStartTimeMs = _json["flightStartTimeMs"];
+    }
+    if (_json.containsKey("hasCreatorSignedOff")) {
+      hasCreatorSignedOff = _json["hasCreatorSignedOff"];
+    }
+    if (_json.containsKey("inventorySource")) {
+      inventorySource = _json["inventorySource"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"].map((value) => new MarketplaceLabel.fromJson(value)).toList();
+    }
+    if (_json.containsKey("lastUpdateTimeMs")) {
+      lastUpdateTimeMs = _json["lastUpdateTimeMs"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("revisionNumber")) {
+      revisionNumber = _json["revisionNumber"];
+    }
+    if (_json.containsKey("seller")) {
+      seller = new Seller.fromJson(_json["seller"]);
+    }
+    if (_json.containsKey("sharedTargetings")) {
+      sharedTargetings = _json["sharedTargetings"].map((value) => new SharedTargeting.fromJson(value)).toList();
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("syndicationProduct")) {
+      syndicationProduct = _json["syndicationProduct"];
+    }
+    if (_json.containsKey("terms")) {
+      terms = new DealTerms.fromJson(_json["terms"]);
+    }
+    if (_json.containsKey("webPropertyCode")) {
+      webPropertyCode = _json["webPropertyCode"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTimeMs != null) {
+      _json["creationTimeMs"] = creationTimeMs;
+    }
+    if (creatorContacts != null) {
+      _json["creatorContacts"] = creatorContacts.map((value) => (value).toJson()).toList();
+    }
+    if (flightEndTimeMs != null) {
+      _json["flightEndTimeMs"] = flightEndTimeMs;
+    }
+    if (flightStartTimeMs != null) {
+      _json["flightStartTimeMs"] = flightStartTimeMs;
+    }
+    if (hasCreatorSignedOff != null) {
+      _json["hasCreatorSignedOff"] = hasCreatorSignedOff;
+    }
+    if (inventorySource != null) {
+      _json["inventorySource"] = inventorySource;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (labels != null) {
+      _json["labels"] = labels.map((value) => (value).toJson()).toList();
+    }
+    if (lastUpdateTimeMs != null) {
+      _json["lastUpdateTimeMs"] = lastUpdateTimeMs;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (revisionNumber != null) {
+      _json["revisionNumber"] = revisionNumber;
+    }
+    if (seller != null) {
+      _json["seller"] = (seller).toJson();
+    }
+    if (sharedTargetings != null) {
+      _json["sharedTargetings"] = sharedTargetings.map((value) => (value).toJson()).toList();
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (syndicationProduct != null) {
+      _json["syndicationProduct"] = syndicationProduct;
+    }
+    if (terms != null) {
+      _json["terms"] = (terms).toJson();
+    }
+    if (webPropertyCode != null) {
+      _json["webPropertyCode"] = webPropertyCode;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Represents a proposal in the marketplace. A proposal is the unit of
+ * negotiation between a seller and a buyer and contains deals which are served.
+ * Each field in a proposal can have one of the following setting:
+ *
+ * (readonly) - It is an error to try and set this field. (buyer-readonly) -
+ * Only the seller can set this field. (seller-readonly) - Only the buyer can
+ * set this field. (updatable) - The field is updatable at all times by either
+ * buyer or the seller.
+ */
+class Proposal {
+  /**
+   * Reference to the buyer that will get billed for this proposal. (readonly)
+   */
+  Buyer billedBuyer;
+  /** Reference to the buyer on the proposal. (readonly, except on create) */
+  Buyer buyer;
+  /** Optional contact information fort the buyer. (seller-readonly) */
+  core.List<ContactInformation> buyerContacts;
+  /** Private data for buyer. (hidden from seller). */
+  PrivateData buyerPrivateData;
+  /**
+   * When an proposal is in an accepted state, indicates whether the buyer has
+   * signed off Once both sides have signed off on a deal, the proposal can be
+   * finalized by the seller. (seller-readonly)
+   */
+  core.bool hasBuyerSignedOff;
+  /**
+   * When an proposal is in an accepted state, indicates whether the buyer has
+   * signed off Once both sides have signed off on a deal, the proposal can be
+   * finalized by the seller. (buyer-readonly)
+   */
+  core.bool hasSellerSignedOff;
+  /**
+   * What exchange will provide this inventory (readonly, except on create).
+   */
+  core.String inventorySource;
+  /** True if the proposal is being renegotiated (readonly). */
+  core.bool isRenegotiating;
+  /**
+   * True, if the buyside inventory setup is complete for this proposal.
+   * (readonly)
+   */
+  core.bool isSetupComplete;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "adexchangebuyer#proposal".
+   */
+  core.String kind;
+  /** List of labels associated with the proposal. (readonly) */
+  core.List<MarketplaceLabel> labels;
+  /**
+   * The role of the last user that either updated the proposal or left a
+   * comment. (readonly)
+   */
+  core.String lastUpdaterOrCommentorRole;
+  core.String lastUpdaterRole;
+  /** The name for the proposal (updatable) */
+  core.String name;
+  /** Indicates whether the buyer/seller created the proposal.(readonly) */
+  core.String originatorRole;
+  /** The unique id of the proposal. (readonly). */
+  core.String proposalId;
+  /** The current state of the proposal. (readonly) */
+  core.String proposalState;
+  /** The revision number for the proposal (readonly). */
+  core.String revisionNumber;
+  /**
+   * The time (ms since epoch) when the proposal was last revised (readonly).
+   */
+  core.String revisionTimeMs;
+  /** Reference to the seller on the proposal. (readonly, except on create) */
+  Seller seller;
+  /** Optional contact information for the seller (buyer-readonly). */
+  core.List<ContactInformation> sellerContacts;
+
+  Proposal();
+
+  Proposal.fromJson(core.Map _json) {
+    if (_json.containsKey("billedBuyer")) {
+      billedBuyer = new Buyer.fromJson(_json["billedBuyer"]);
+    }
+    if (_json.containsKey("buyer")) {
+      buyer = new Buyer.fromJson(_json["buyer"]);
+    }
+    if (_json.containsKey("buyerContacts")) {
+      buyerContacts = _json["buyerContacts"].map((value) => new ContactInformation.fromJson(value)).toList();
+    }
+    if (_json.containsKey("buyerPrivateData")) {
+      buyerPrivateData = new PrivateData.fromJson(_json["buyerPrivateData"]);
+    }
+    if (_json.containsKey("hasBuyerSignedOff")) {
+      hasBuyerSignedOff = _json["hasBuyerSignedOff"];
+    }
+    if (_json.containsKey("hasSellerSignedOff")) {
+      hasSellerSignedOff = _json["hasSellerSignedOff"];
+    }
+    if (_json.containsKey("inventorySource")) {
+      inventorySource = _json["inventorySource"];
+    }
+    if (_json.containsKey("isRenegotiating")) {
+      isRenegotiating = _json["isRenegotiating"];
+    }
+    if (_json.containsKey("isSetupComplete")) {
+      isSetupComplete = _json["isSetupComplete"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"].map((value) => new MarketplaceLabel.fromJson(value)).toList();
+    }
+    if (_json.containsKey("lastUpdaterOrCommentorRole")) {
+      lastUpdaterOrCommentorRole = _json["lastUpdaterOrCommentorRole"];
+    }
+    if (_json.containsKey("lastUpdaterRole")) {
+      lastUpdaterRole = _json["lastUpdaterRole"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("originatorRole")) {
+      originatorRole = _json["originatorRole"];
+    }
+    if (_json.containsKey("proposalId")) {
+      proposalId = _json["proposalId"];
+    }
+    if (_json.containsKey("proposalState")) {
+      proposalState = _json["proposalState"];
+    }
+    if (_json.containsKey("revisionNumber")) {
+      revisionNumber = _json["revisionNumber"];
+    }
+    if (_json.containsKey("revisionTimeMs")) {
+      revisionTimeMs = _json["revisionTimeMs"];
+    }
+    if (_json.containsKey("seller")) {
+      seller = new Seller.fromJson(_json["seller"]);
+    }
+    if (_json.containsKey("sellerContacts")) {
+      sellerContacts = _json["sellerContacts"].map((value) => new ContactInformation.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (billedBuyer != null) {
+      _json["billedBuyer"] = (billedBuyer).toJson();
+    }
+    if (buyer != null) {
+      _json["buyer"] = (buyer).toJson();
+    }
+    if (buyerContacts != null) {
+      _json["buyerContacts"] = buyerContacts.map((value) => (value).toJson()).toList();
+    }
+    if (buyerPrivateData != null) {
+      _json["buyerPrivateData"] = (buyerPrivateData).toJson();
+    }
+    if (hasBuyerSignedOff != null) {
+      _json["hasBuyerSignedOff"] = hasBuyerSignedOff;
+    }
+    if (hasSellerSignedOff != null) {
+      _json["hasSellerSignedOff"] = hasSellerSignedOff;
+    }
+    if (inventorySource != null) {
+      _json["inventorySource"] = inventorySource;
+    }
+    if (isRenegotiating != null) {
+      _json["isRenegotiating"] = isRenegotiating;
+    }
+    if (isSetupComplete != null) {
+      _json["isSetupComplete"] = isSetupComplete;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (labels != null) {
+      _json["labels"] = labels.map((value) => (value).toJson()).toList();
+    }
+    if (lastUpdaterOrCommentorRole != null) {
+      _json["lastUpdaterOrCommentorRole"] = lastUpdaterOrCommentorRole;
+    }
+    if (lastUpdaterRole != null) {
+      _json["lastUpdaterRole"] = lastUpdaterRole;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (originatorRole != null) {
+      _json["originatorRole"] = originatorRole;
+    }
+    if (proposalId != null) {
+      _json["proposalId"] = proposalId;
+    }
+    if (proposalState != null) {
+      _json["proposalState"] = proposalState;
+    }
+    if (revisionNumber != null) {
+      _json["revisionNumber"] = revisionNumber;
+    }
+    if (revisionTimeMs != null) {
+      _json["revisionTimeMs"] = revisionTimeMs;
+    }
+    if (seller != null) {
+      _json["seller"] = (seller).toJson();
+    }
+    if (sellerContacts != null) {
+      _json["sellerContacts"] = sellerContacts.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class Seller {
   /**
    * The unique id for the seller. The seller fills in this field. The seller
-   * account id is then available to buyer in the offer.
+   * account id is then available to buyer in the product.
    */
   core.String accountId;
   /** Optional sub-account id for the seller. */

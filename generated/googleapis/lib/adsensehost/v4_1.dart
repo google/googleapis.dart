@@ -1881,7 +1881,8 @@ class AdUnitContentAdsSettingsBackupOption {
 }
 
 /**
- * Settings specific to content ads (AFC) and highend mobile content ads (AFMC).
+ * Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
+ * deprecated).
  */
 class AdUnitContentAdsSettings {
   /** The backup option to be used in instances where no ad is available. */
@@ -1924,7 +1925,7 @@ class AdUnitContentAdsSettings {
   }
 }
 
-/** Settings specific to WAP mobile content ads (AFMC). */
+/** Settings specific to WAP mobile content ads (AFMC - deprecated). */
 class AdUnitMobileContentAdsSettings {
   /** The markup language to use for this ad unit. */
   core.String markupLanguage;
@@ -1976,8 +1977,8 @@ class AdUnit {
    */
   core.String code;
   /**
-   * Settings specific to content ads (AFC) and highend mobile content ads
-   * (AFMC).
+   * Settings specific to content ads (AFC) and highend mobile content ads (AFMC
+   * - deprecated).
    */
   AdUnitContentAdsSettings contentAdsSettings;
   /** Custom style information specific to this ad unit. */
@@ -1989,7 +1990,7 @@ class AdUnit {
   core.String id;
   /** Kind of resource this is, in this case adsensehost#adUnit. */
   core.String kind;
-  /** Settings specific to WAP mobile content ads (AFMC). */
+  /** Settings specific to WAP mobile content ads (AFMC - deprecated). */
   AdUnitMobileContentAdsSettings mobileContentAdsSettings;
   /** Name of this ad unit. */
   core.String name;
@@ -2123,7 +2124,10 @@ class AssociationSession {
   core.String id;
   /** Kind of resource this is, in this case adsensehost#associationSession. */
   core.String kind;
-  /** The products to associate with the user. Options: AFC, AFF, AFS, AFMC */
+  /**
+   * The products to associate with the user. Options: AFC, AFG, AFV, AFS
+   * (deprecated), AFMC (deprecated)
+   */
   core.List<core.String> productCodes;
   /**
    * Redirect URL of this association session. Used to redirect users into the

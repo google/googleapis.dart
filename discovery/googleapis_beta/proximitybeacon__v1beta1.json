@@ -1,11 +1,11 @@
 {
-    "basePath": "/",
+    "basePath": "",
     "baseUrl": "https://proximitybeacon.googleapis.com/",
     "batchPath": "batch",
     "description": "This API provides services to register, manage, index, and search beacons.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/beacons/proximity/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/qiwkKULZKsE5qLcb8g90X8kbnl8\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/yXdK3yTv0tZKHHrFGHjFzQPnyUw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

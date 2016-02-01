@@ -11,13 +11,13 @@
             }
         }
     },
-    "basePath": "/",
+    "basePath": "",
     "baseUrl": "https://pubsub.googleapis.com/",
     "batchPath": "batch",
     "description": "Provides reliable, many-to-many, asynchronous messaging between applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/pubsub/docs",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/apqnj1s_GwIIwaxnEefq3LUZFoo\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/e81N9_-NKWD4yW0CepJ6w9tAxdg\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

@@ -11,14 +11,14 @@
             }
         }
     },
-    "basePath": "/",
+    "basePath": "",
     "baseUrl": "https://youtubereporting.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "YouTube Reporting",
     "description": "An API to schedule reporting jobs and download the resulting bulk data reports about YouTube channels, videos etc. in the form of CSV files.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/reporting/v1/reports/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/RGkzhqSB3FajvpNvflV8YsVuejw\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/q7HuPi4zz1Oz_O1187etqiN47V4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

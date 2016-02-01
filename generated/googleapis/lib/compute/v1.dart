@@ -64,6 +64,7 @@ class ComputeApi {
   RoutesResourceApi get routes => new RoutesResourceApi(_requester);
   SnapshotsResourceApi get snapshots => new SnapshotsResourceApi(_requester);
   SslCertificatesResourceApi get sslCertificates => new SslCertificatesResourceApi(_requester);
+  SubnetworksResourceApi get subnetworks => new SubnetworksResourceApi(_requester);
   TargetHttpProxiesResourceApi get targetHttpProxies => new TargetHttpProxiesResourceApi(_requester);
   TargetHttpsProxiesResourceApi get targetHttpsProxies => new TargetHttpsProxiesResourceApi(_requester);
   TargetInstancesResourceApi get targetInstances => new TargetInstancesResourceApi(_requester);
@@ -86,7 +87,7 @@ class AddressesResourceApi {
       _requester = client;
 
   /**
-   * Retrieves the list of addresses grouped by scope.
+   * Retrieves an aggregated list of addresses.
    *
    * Request parameters:
    *
@@ -331,7 +332,7 @@ class AddressesResourceApi {
   }
 
   /**
-   * Retrieves the list of address resources contained within the specified
+   * Retrieves a list of address resources contained within the specified
    * region.
    *
    * Request parameters:
@@ -433,7 +434,7 @@ class AutoscalersResourceApi {
       _requester = client;
 
   /**
-   * Retrieves the list of autoscalers grouped by scope.
+   * Retrieves an aggregated list of autoscalers.
    *
    * Request parameters:
    *
@@ -678,7 +679,7 @@ class AutoscalersResourceApi {
   }
 
   /**
-   * Retrieves the list of autoscaler resources contained within the specified
+   * Retrieves a list of autoscaler resources contained within the specified
    * zone.
    *
    * Request parameters:
@@ -1047,7 +1048,9 @@ class BackendServicesResourceApi {
 
   /**
    * Creates a BackendService resource in the specified project using the data
-   * included in the request.
+   * included in the request. There are several restrictions and guidelines to
+   * keep in mind when creating a backend service. Read  Restrictions and
+   * Guidelines for more information.
    *
    * [request] - The metadata request object.
    *
@@ -1180,8 +1183,10 @@ class BackendServicesResourceApi {
   }
 
   /**
-   * Update the entire content of the BackendService resource. This method
-   * supports patch semantics.
+   * Updates the entire content of the BackendService resource. There are
+   * several restrictions and guidelines to keep in mind when updating a backend
+   * service. Read  Restrictions and Guidelines for more information. This
+   * method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -1233,7 +1238,9 @@ class BackendServicesResourceApi {
   }
 
   /**
-   * Update the entire content of the BackendService resource.
+   * Updates the entire content of the BackendService resource. There are
+   * several restrictions and guidelines to keep in mind when updating a backend
+   * service. Read  Restrictions and Guidelines for more information.
    *
    * [request] - The metadata request object.
    *
@@ -1294,7 +1301,7 @@ class DiskTypesResourceApi {
       _requester = client;
 
   /**
-   * Retrieves the list of disk type resources grouped by scope.
+   * Retrieves an aggregated list of disk type resources.
    *
    * Request parameters:
    *
@@ -1433,8 +1440,7 @@ class DiskTypesResourceApi {
   }
 
   /**
-   * Retrieves the list of disk type resources available to the specified
-   * project.
+   * Retrieves a list of disk type resources available to the specified project.
    *
    * Request parameters:
    *
@@ -1535,7 +1541,7 @@ class DisksResourceApi {
       _requester = client;
 
   /**
-   * Retrieves the list of persistent disks grouped by scope.
+   * Retrieves an aggregated list of persistent disks.
    *
    * Request parameters:
    *
@@ -1846,7 +1852,7 @@ class DisksResourceApi {
   }
 
   /**
-   * Retrieves the list of persistent disks contained within the specified zone.
+   * Retrieves a list of persistent disks contained within the specified zone.
    *
    * Request parameters:
    *
@@ -2290,7 +2296,7 @@ class ForwardingRulesResourceApi {
       _requester = client;
 
   /**
-   * Retrieves the list of forwarding rules grouped by scope.
+   * Retrieves an aggregated list of forwarding rules.
    *
    * Request parameters:
    *
@@ -2535,7 +2541,7 @@ class ForwardingRulesResourceApi {
   }
 
   /**
-   * Retrieves the list of ForwardingRule resources available to the specified
+   * Retrieves a list of ForwardingRule resources available to the specified
    * project and region.
    *
    * Request parameters:
@@ -2838,7 +2844,7 @@ class GlobalAddressesResourceApi {
   }
 
   /**
-   * Retrieves the list of global address resources.
+   * Retrieves a list of global address resources.
    *
    * Request parameters:
    *
@@ -3074,7 +3080,7 @@ class GlobalForwardingRulesResourceApi {
   }
 
   /**
-   * Retrieves the list of ForwardingRule resources available to the specified
+   * Retrieves a list of ForwardingRule resources available to the specified
    * project.
    *
    * Request parameters:
@@ -3224,7 +3230,7 @@ class GlobalOperationsResourceApi {
       _requester = client;
 
   /**
-   * Retrieves the list of all operations grouped by scope.
+   * Retrieves an aggregated list of all operations.
    *
    * Request parameters:
    *
@@ -3404,7 +3410,7 @@ class GlobalOperationsResourceApi {
   }
 
   /**
-   * Retrieves the list of Operation resources contained within the specified
+   * Retrieves a list of Operation resources contained within the specified
    * project.
    *
    * Request parameters:
@@ -4633,7 +4639,8 @@ class InstanceGroupManagersResourceApi {
 
   /**
    * Deletes the specified managed instance group and all of the instances in
-   * that group.
+   * that group. Note that the instance group must not belong to a backend
+   * service. Read  Deleting an instance group for more information.
    *
    * Request parameters:
    *
@@ -5254,8 +5261,8 @@ class InstanceGroupsResourceApi {
       _requester = client;
 
   /**
-   * Adds a list of instances to the specified instance group. All of the
-   * instances in the instance group must be in the same network/subnetwork.
+   * Adds a list of instances to the specified instance group. Read  Adding
+   * instances for more information.
    *
    * [request] - The metadata request object.
    *
@@ -5399,7 +5406,8 @@ class InstanceGroupsResourceApi {
 
   /**
    * Deletes the specified instance group. The instances in the group are not
-   * deleted.
+   * deleted. Note that instance group must not belong to a backend service.
+   * Read  Deleting an instance group for more information.
    *
    * Request parameters:
    *
@@ -5966,7 +5974,9 @@ class InstanceTemplatesResourceApi {
 
   /**
    * Creates an instance template in the specified project using the data that
-   * is included in the request.
+   * is included in the request. If you are creating a new template to update an
+   * existing instance group, your new instance template must use the same
+   * network or, if applicable, the same subnetwork as the original template.
    *
    * [request] - The metadata request object.
    *
@@ -6874,6 +6884,65 @@ class InstancesResourceApi {
   }
 
   /**
+   * Changes the machine type for a stopped instance to the machine type
+   * specified in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The name of the zone for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [instance] - Name of the instance scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setMachineType(InstancesSetMachineTypeRequest request, core.String project, core.String zone, core.String instance) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setMachineType';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
    * Sets metadata for the specified instance to the data included in the
    * request.
    *
@@ -7049,8 +7118,8 @@ class InstancesResourceApi {
   }
 
   /**
-   * This method starts an instance that was stopped using the using the
-   * instances().stop method. For more information, see Restart an instance.
+   * Starts an instance that was stopped using the using the instances().stop
+   * method. For more information, see Restart an instance.
    *
    * Request parameters:
    *
@@ -7103,12 +7172,12 @@ class InstancesResourceApi {
   }
 
   /**
-   * This method stops a running instance, shutting it down cleanly, and allows
-   * you to restart the instance at a later time. Stopped instances do not incur
+   * Stops a running instance, shutting it down cleanly, and allows you to
+   * restart the instance at a later time. Stopped instances do not incur
    * per-minute, virtual machine usage charges while they are stopped, but any
    * resources that the virtual machine is using, such as persistent disks and
-   * static IP addresses,will continue to be charged until they are deleted. For
-   * more information, see Stopping an instance.
+   * static IP addresses, will continue to be charged until they are deleted.
+   * For more information, see Stopping an instance.
    *
    * Request parameters:
    *
@@ -7226,7 +7295,7 @@ class MachineTypesResourceApi {
       _requester = client;
 
   /**
-   * Retrieves the list of machine type resources grouped by scope.
+   * Retrieves an aggregated list of machine type resources.
    *
    * Request parameters:
    *
@@ -7365,7 +7434,7 @@ class MachineTypesResourceApi {
   }
 
   /**
-   * Retrieves the list of machine type resources available to the specified
+   * Retrieves a list of machine type resources available to the specified
    * project.
    *
    * Request parameters:
@@ -8002,7 +8071,7 @@ class RegionOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - Name of the zone scoping this request.
+   * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [operation] - Name of the Operations resource to return.
@@ -8047,7 +8116,7 @@ class RegionOperationsResourceApi {
   }
 
   /**
-   * Retrieves the list of Operation resources contained within the specified
+   * Retrieves a list of Operation resources contained within the specified
    * region.
    *
    * Request parameters:
@@ -8953,6 +9022,352 @@ class SslCertificatesResourceApi {
 }
 
 
+class SubnetworksResourceApi {
+  final commons.ApiRequester _requester;
+
+  SubnetworksResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves an aggregated list of subnetworks.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
+   *
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [SubnetworkAggregatedList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SubnetworkAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/subnetworks';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SubnetworkAggregatedList.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified subnetwork.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [subnetwork] - Name of the Subnetwork resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String region, core.String subnetwork) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (subnetwork == null) {
+      throw new core.ArgumentError("Parameter subnetwork is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/subnetworks/' + commons.Escaper.ecapeVariable('$subnetwork');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified subnetwork.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [subnetwork] - Name of the Subnetwork resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Subnetwork].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Subnetwork> get(core.String project, core.String region, core.String subnetwork) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (subnetwork == null) {
+      throw new core.ArgumentError("Parameter subnetwork is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/subnetworks/' + commons.Escaper.ecapeVariable('$subnetwork');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Subnetwork.fromJson(data));
+  }
+
+  /**
+   * Creates a subnetwork in the specified project using the data included in
+   * the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(Subnetwork request, core.String project, core.String region) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/subnetworks';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of subnetworks available to the specified project.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, filter=name ne example-instance.
+   *
+   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+   * also filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. In particular,
+   * use filtering on nested fields to take advantage of instance labels to
+   * organize and filter results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that Compute Engine
+   * should return. If the number of available results is larger than
+   * maxResults, Compute Engine returns a nextPageToken that can be used to get
+   * the next page of results in subsequent list requests.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [SubnetworkList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SubnetworkList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/subnetworks';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SubnetworkList.fromJson(data));
+  }
+
+}
+
+
 class TargetHttpProxiesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -9593,7 +10008,7 @@ class TargetInstancesResourceApi {
       _requester = client;
 
   /**
-   * Retrieves the list of target instances grouped by scope.
+   * Retrieves an aggregated list of target instances.
    *
    * Request parameters:
    *
@@ -9838,7 +10253,7 @@ class TargetInstancesResourceApi {
   }
 
   /**
-   * Retrieves the list of TargetInstance resources available to the specified
+   * Retrieves a list of TargetInstance resources available to the specified
    * project and zone.
    *
    * Request parameters:
@@ -10058,7 +10473,7 @@ class TargetPoolsResourceApi {
   }
 
   /**
-   * Retrieves the list of target pools grouped by scope.
+   * Retrieves an aggregated list of target pools.
    *
    * Request parameters:
    *
@@ -10251,7 +10666,7 @@ class TargetPoolsResourceApi {
 
   /**
    * Gets the most recent health check results for each IP for the given
-   * instance that is referenced by given TargetPool.
+   * instance that is referenced by the given TargetPool.
    *
    * [request] - The metadata request object.
    *
@@ -10363,8 +10778,8 @@ class TargetPoolsResourceApi {
   }
 
   /**
-   * Retrieves the list of TargetPool resources available to the specified
-   * project and region.
+   * Retrieves a list of TargetPool resources available to the specified project
+   * and region.
    *
    * Request parameters:
    *
@@ -10647,7 +11062,7 @@ class TargetVpnGatewaysResourceApi {
       _requester = client;
 
   /**
-   * Retrieves the list of target VPN gateways grouped by scope.
+   * Retrieves an aggregated list of target VPN gateways .
    *
    * Request parameters:
    *
@@ -10892,7 +11307,7 @@ class TargetVpnGatewaysResourceApi {
   }
 
   /**
-   * Retrieves the list of TargetVpnGateway resources available to the specified
+   * Retrieves a list of TargetVpnGateway resources available to the specified
    * project and region.
    *
    * Request parameters:
@@ -11221,7 +11636,7 @@ class UrlMapsResourceApi {
   }
 
   /**
-   * Update the entire content of the UrlMap resource. This method supports
+   * Updates the entire content of the UrlMap resource. This method supports
    * patch semantics.
    *
    * [request] - The metadata request object.
@@ -11274,7 +11689,7 @@ class UrlMapsResourceApi {
   }
 
   /**
-   * Update the entire content of the UrlMap resource.
+   * Updates the entire content of the UrlMap resource.
    *
    * [request] - The metadata request object.
    *
@@ -11326,7 +11741,7 @@ class UrlMapsResourceApi {
   }
 
   /**
-   * Run static validation for the UrlMap. In particular, the tests of the
+   * Runs static validation for the UrlMap. In particular, the tests of the
    * provided UrlMap will be run. Calling this method does NOT create the
    * UrlMap.
    *
@@ -11389,7 +11804,7 @@ class VpnTunnelsResourceApi {
       _requester = client;
 
   /**
-   * Retrieves the list of VPN tunnels grouped by scope.
+   * Retrieves an aggregated list of VPN tunnels.
    *
    * Request parameters:
    *
@@ -11634,8 +12049,8 @@ class VpnTunnelsResourceApi {
   }
 
   /**
-   * Retrieves the list of VpnTunnel resources contained in the specified
-   * project and region.
+   * Retrieves a list of VpnTunnel resources contained in the specified project
+   * and region.
    *
    * Request parameters:
    *
@@ -11842,7 +12257,7 @@ class ZoneOperationsResourceApi {
   }
 
   /**
-   * Retrieves the list of Operation resources contained within the specified
+   * Retrieves a list of Operation resources contained within the specified
    * zone.
    *
    * Request parameters:
@@ -13344,15 +13759,16 @@ class Backend {
    */
   core.String group;
   /**
-   * The max RPS of the group. Can be used with either balancing mode, but
-   * required if RATE mode. For RATE mode, either maxRate or maxRatePerInstance
-   * must be set.
+   * The max requests per second (RPS) of the group. Can be used with either
+   * balancing mode, but required if RATE mode. For RATE mode, either maxRate or
+   * maxRatePerInstance must be set.
    */
   core.int maxRate;
   /**
-   * The max RPS that a single backed instance can handle. This is used to
-   * calculate the capacity of the group. Can be used in either balancing mode.
-   * For RATE mode, either maxRate or maxRatePerInstance must be set.
+   * The max requests per second (RPS) that a single backed instance can handle.
+   * This is used to calculate the capacity of the group. Can be used in either
+   * balancing mode. For RATE mode, either maxRate or maxRatePerInstance must be
+   * set.
    */
   core.double maxRatePerInstance;
   /**
@@ -13417,7 +13833,7 @@ class Backend {
 
 /**
  * A BackendService resource. This resource defines a group of backend virtual
- * machines together with their serving capacity.
+ * machines and their serving capacity.
  */
 class BackendService {
   /** The list of backends that serve this BackendService. */
@@ -13470,7 +13886,7 @@ class BackendService {
    */
   core.String name;
   /**
-   * Deprecated in favor of port name. The TCP port to connect on the backend.
+   * Deprecated in favor of portName. The TCP port to connect on the backend.
    * The default value is 80.
    */
   core.int port;
@@ -13490,7 +13906,7 @@ class BackendService {
   core.String selfLink;
   /**
    * How many seconds to wait for the backend before considering it a failed
-   * request. Default is 30 seconds.
+   * request. Default is 30 seconds. Valid range is [1, 86400].
    */
   core.int timeoutSec;
 
@@ -14738,9 +15154,8 @@ class Firewall {
    */
   core.String name;
   /**
-   * URL of the network resource for this firewall rule. This field is required
-   * for creating an instance but optional when creating a firewall rule. If not
-   * specified when creating a firewall rule, the default network is used:
+   * URL of the network resource for this firewall rule. If not specified when
+   * creating a firewall rule, the default network is used:
    * global/networks/default
    * If you choose to specify this property, you can specify the network as a
    * full or partial URL. For example, the following are all valid URLs:
@@ -14991,7 +15406,9 @@ class ForwardingRule {
    * The URL of the target resource to receive the matched traffic. For regional
    * forwarding rules, this target must live in the same region as the
    * forwarding rule. For global forwarding rules, this target must be a global
-   * TargetHttpProxy or TargetHttpsProxy resource.
+   * TargetHttpProxy or TargetHttpsProxy resource. The forwarded traffic must be
+   * of a type appropriate to the target object. For example, TargetHttpProxy
+   * requires HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.
    */
   core.String target;
 
@@ -16191,8 +16608,8 @@ class Instance {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
-   * An optional textual description of the resource; provided by the client
-   * when the resource is created.
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
    */
   core.String description;
   /**
@@ -16201,7 +16618,7 @@ class Instance {
    */
   core.List<AttachedDisk> disks;
   /**
-   * [Output Only] Unique identifier for the resource. This identifier is
+   * [Output Only] The unique identifier for the resource. This identifier is
    * defined by the server.
    */
   core.String id;
@@ -16237,13 +16654,13 @@ class Instance {
    */
   Metadata metadata;
   /**
-   * Name of the resource; provided by the client when the resource is created.
-   * The name must be 1-63 characters long, and comply with RFC1035.
-   * Specifically, the name must be 1-63 characters long and match the regular
-   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-   * be a lowercase letter, and all following characters must be a dash,
-   * lowercase letter, or digit, except the last character, which cannot be a
-   * dash.
+   * The name of the resource, provided by the client when initially creating
+   * the resource. The resource name must be 1-63 characters long, and comply
+   * with RFC1035. Specifically, the name must be 1-63 characters long and match
+   * the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first
+   * character must be a lowercase letter, and all following characters must be
+   * a dash, lowercase letter, or digit, except the last character, which cannot
+   * be a dash.
    */
   core.String name;
   /**
@@ -16254,7 +16671,7 @@ class Instance {
   core.List<NetworkInterface> networkInterfaces;
   /** Scheduling options for this instance. */
   Scheduling scheduling;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
   /**
    * A list of service accounts, with their specified scopes, authorized for
@@ -16422,9 +16839,15 @@ class InstanceAggregatedList {
    * aggregated lists of Instance resources.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   InstanceAggregatedList();
@@ -16529,6 +16952,11 @@ class InstanceGroup {
   core.String selfLink;
   /** [Output Only] The total number of instances in the instance group. */
   core.int size;
+  /**
+   * [Output Only] The URL of the subnetwork to which all instances in the
+   * instance group belong.
+   */
+  core.String subnetwork;
   /** [Output Only] The URL of the zone where the instance group is located. */
   core.String zone;
 
@@ -16564,6 +16992,9 @@ class InstanceGroup {
     }
     if (_json.containsKey("size")) {
       size = _json["size"];
+    }
+    if (_json.containsKey("subnetwork")) {
+      subnetwork = _json["subnetwork"];
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -16601,6 +17032,9 @@ class InstanceGroup {
     }
     if (size != null) {
       _json["size"] = size;
+    }
+    if (subnetwork != null) {
+      _json["subnetwork"] = subnetwork;
     }
     if (zone != null) {
       _json["zone"] = zone;
@@ -16946,7 +17380,9 @@ class InstanceGroupManagerActionsSummary {
   core.int abandoning;
   /**
    * [Output Only] The number of instances in the managed instance group that
-   * are scheduled to be created or are currently being created.
+   * are scheduled to be created or are currently being created. If the group
+   * fails to create one of these instances, it tries again until it creates the
+   * instance successfully.
    */
   core.int creating;
   /**
@@ -17799,9 +18235,15 @@ class InstanceList {
    * Instance resources.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
-  /** [Output Only] Server defined URL for this resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   InstanceList();
@@ -18367,6 +18809,31 @@ class InstancesScopedList {
   }
 }
 
+class InstancesSetMachineTypeRequest {
+  /**
+   * Full or partial URL of the machine type resource. See Machine Types for a
+   * full list of machine types. For example:
+   * zones/us-central1-f/machineTypes/n1-standard-1
+   */
+  core.String machineType;
+
+  InstancesSetMachineTypeRequest();
+
+  InstancesSetMachineTypeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("machineType")) {
+      machineType = _json["machineType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (machineType != null) {
+      _json["machineType"] = machineType;
+    }
+    return _json;
+  }
+}
+
 /** A license resource. */
 class License {
   /**
@@ -18855,7 +19322,12 @@ class ManagedInstance {
    * scheduled for the instance. Possible values:
    * - NONE The instance is running, and the managed instance group does not
    * have any scheduled actions for this instance.
-   * - CREATING The managed instance group is creating this instance.
+   * - CREATING The managed instance group is creating this instance. If the
+   * group fails to create this instance, it will try again until it is
+   * successful.
+   * - CREATING_WITHOUT_RETRIES The managed instance group is attempting to
+   * create this instance only once. If the group fails to create this instance,
+   * it does not try again and the group's target_size value is decreased.
    * - RECREATING The managed instance group is recreating this instance.
    * - DELETING The managed instance group is permanently deleting this
    * instance.
@@ -19175,6 +19647,14 @@ class Network {
    * client when the network is created.
    */
   core.String IPv4Range;
+  /**
+   * When set to true, the network is created in "auto subnet mode". When set to
+   * false, the network is in "custom subnet mode".
+   *
+   * In "auto subnet mode", a newly created network is assigned the default CIDR
+   * of 10.128.0.0/9 and it automatically creates one subnetwork per region.
+   */
+  core.bool autoCreateSubnetworks;
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
@@ -19209,12 +19689,20 @@ class Network {
   core.String name;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
+  /**
+   * [Output Only] Server-defined fully-qualified URLs for all subnetworks in
+   * this network.
+   */
+  core.List<core.String> subnetworks;
 
   Network();
 
   Network.fromJson(core.Map _json) {
     if (_json.containsKey("IPv4Range")) {
       IPv4Range = _json["IPv4Range"];
+    }
+    if (_json.containsKey("autoCreateSubnetworks")) {
+      autoCreateSubnetworks = _json["autoCreateSubnetworks"];
     }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
@@ -19237,12 +19725,18 @@ class Network {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("subnetworks")) {
+      subnetworks = _json["subnetworks"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (IPv4Range != null) {
       _json["IPv4Range"] = IPv4Range;
+    }
+    if (autoCreateSubnetworks != null) {
+      _json["autoCreateSubnetworks"] = autoCreateSubnetworks;
     }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
@@ -19264,6 +19758,9 @@ class Network {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (subnetworks != null) {
+      _json["subnetworks"] = subnetworks;
     }
     return _json;
   }
@@ -19302,6 +19799,18 @@ class NetworkInterface {
    * instance for this network interface.
    */
   core.String networkIP;
+  /**
+   * The URL of the Subnetwork resource for this instance. If the network
+   * resource is in legacy mode, do not provide this property. If the network is
+   * in auto subnet mode, providing the subnetwork is optional. If the network
+   * is in custom subnet mode, then this field should be specified. If you
+   * specify this property, you can specify the subnetwork as a full or partial
+   * URL. For example, the following are all valid URLs:
+   * -
+   * https://www.googleapis.com/compute/v1/projects/project/zones/zone/subnetworks/subnetwork
+   * - zones/zone/subnetworks/subnetwork
+   */
+  core.String subnetwork;
 
   NetworkInterface();
 
@@ -19318,6 +19827,9 @@ class NetworkInterface {
     if (_json.containsKey("networkIP")) {
       networkIP = _json["networkIP"];
     }
+    if (_json.containsKey("subnetwork")) {
+      subnetwork = _json["subnetwork"];
+    }
   }
 
   core.Map toJson() {
@@ -19333,6 +19845,9 @@ class NetworkInterface {
     }
     if (networkIP != null) {
       _json["networkIP"] = networkIP;
+    }
+    if (subnetwork != null) {
+      _json["subnetwork"] = subnetwork;
     }
     return _json;
   }
@@ -19596,8 +20111,8 @@ class Operation {
   core.String httpErrorMessage;
   /**
    * [Output Only] If the operation fails, this field contains the HTTP error
-   * message that was returned. For example, a 404 means the resource was not
-   * found.
+   * status code that was returned. For example, a 404 means the resource was
+   * not found.
    */
   core.int httpErrorStatusCode;
   /**
@@ -19625,14 +20140,14 @@ class Operation {
   /**
    * [Output Only] An optional progress indicator that ranges from 0 to 100.
    * There is no requirement that this be linear or support any granularity of
-   * operations. This should not be used to guess at when the operation will be
+   * operations. This should not be used to guess when the operation will be
    * complete. This number should monotonically increase as the operation
    * progresses.
    */
   core.int progress;
   /**
-   * [Output Only] URL of the region where the operation resides. Only
-   * applicable for regional resources.
+   * [Output Only] URL of the region where the operation resides. Only available
+   * when performing regional operations.
    */
   core.String region;
   /** [Output Only] Server-defined URL for the resource. */
@@ -19673,7 +20188,10 @@ class Operation {
    * operation, this field will be populated.
    */
   core.List<OperationWarnings> warnings;
-  /** [Output Only] URL of the zone where the operation resides. */
+  /**
+   * [Output Only] URL of the zone where the operation resides. Only available
+   * when performing per-zone operations.
+   */
   core.String zone;
 
   Operation();
@@ -20095,8 +20613,14 @@ class OperationsScopedList {
  */
 class PathMatcher {
   /**
-   * The URL to the BackendService resource. This will be used if none of the
-   * pathRules defined by this PathMatcher is met by the URL's path portion.
+   * The full or partial URL to the BackendService resource. This will be used
+   * if none of the pathRules defined by this PathMatcher is matched by the
+   * URL's path portion. For example, the following are all valid URLs to a
+   * BackendService resource:
+   * -
+   * https://www.googleapis.com/compute/v1/projects/project/global/backendServices/backendService
+   * - compute/v1/projects/project/global/backendServices/backendService
+   * - global/backendServices/backendService
    */
   core.String defaultService;
   /**
@@ -20218,7 +20742,8 @@ class Project {
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
-   * The location in Cloud Storage and naming method of the daily usage report.
+   * The naming prefix for daily usage reports and the Google Cloud Storage
+   * bucket where they are stored.
    */
   UsageExportLocation usageExportLocation;
 
@@ -20300,6 +20825,7 @@ class Quota {
   /**
    * [Output Only] Name of the quota metric.
    * Possible string values are:
+   * - "AUTOSCALERS"
    * - "BACKEND_SERVICES"
    * - "CPUS"
    * - "DISKS_TOTAL_GB"
@@ -20319,6 +20845,7 @@ class Quota {
    * - "SSD_TOTAL_GB"
    * - "SSL_CERTIFICATES"
    * - "STATIC_ADDRESSES"
+   * - "SUBNETWORKS"
    * - "TARGET_HTTPS_PROXIES"
    * - "TARGET_HTTP_PROXIES"
    * - "TARGET_INSTANCES"
@@ -20653,7 +21180,7 @@ class RouteWarnings {
 /**
  * The route resource. A Route is a rule that specifies how certain packets
  * should be handled by the virtual network. Routes are associated with
- * instances by tag and the set of Routes for a particular instance is called
+ * instances by tags and the set of Routes for a particular instance is called
  * its routing table. For each packet leaving a instance, the system searches
  * that instance's routing table for a single best matching Route. Routes match
  * packets by destination IP address, preferring smaller or more specific ranges
@@ -20698,14 +21225,14 @@ class Route {
   /** Fully-qualified URL of the network that this route applies to. */
   core.String network;
   /**
-   * The URL to a gateway that should handle matching packets. Currently, this
-   * is only the internet gateway:
+   * The URL to a gateway that should handle matching packets. You can only
+   * specify the internet gateway using a full or partial valid URL:
    * projects/<project-id>/global/gateways/default-internet-gateway
    */
   core.String nextHopGateway;
   /**
-   * The fully-qualified URL to an instance that should handle matching packets.
-   * For example:
+   * The URL to an instance that should handle matching packets. You can specify
+   * this as a full or partial URL. For example:
    * https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
    */
   core.String nextHopInstance;
@@ -20718,9 +21245,10 @@ class Route {
   /** The URL to a VpnTunnel that should handle matching packets. */
   core.String nextHopVpnTunnel;
   /**
-   * Breaks ties between Routes of equal specificity. Routes with smaller values
-   * win when tied with routes with larger values. Default value is 1000. A
-   * valid range is between 0 and 65535.
+   * The priority of this route. Priority is used to break ties in cases where
+   * there is more than one matching route of equal prefix length. In the case
+   * of two routes with equal prefix length, the one with the lowest-numbered
+   * priority value wins. Default value is 1000. Valid range is 0 through 65535.
    */
   core.int priority;
   /** [Output Only] Server-defined fully-qualified URL for this resource. */
@@ -20846,7 +21374,7 @@ class RouteList {
    * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
-  /** A list of Route resources. */
+  /** [Output Only] A list of Route resources. */
   core.List<Route> items;
   /** Type of resource. */
   core.String kind;
@@ -20962,7 +21490,7 @@ class SerialPortOutput {
    * serial port output.
    */
   core.String kind;
-  /** [Output Only] Server defined URL for the resource. */
+  /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
 
   SerialPortOutput();
@@ -21059,7 +21587,7 @@ class Snapshot {
   core.String name;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
-  /** The source disk used to create this snapshot. */
+  /** [Output Only] The source disk used to create this snapshot. */
   core.String sourceDisk;
   /**
    * [Output Only] The ID value of the disk used to create this snapshot. This
@@ -21188,7 +21716,7 @@ class SnapshotList {
    * defined by the server.
    */
   core.String id;
-  /** A list of Snapshot resources. */
+  /** [Output Only] A list of Snapshot resources. */
   core.List<Snapshot> items;
   /** Type of resource. */
   core.String kind;
@@ -21246,8 +21774,8 @@ class SnapshotList {
 
 /**
  * An SslCertificate resource. This resource provides a mechanism to upload an
- * SSL key and certificate to global HTTPS loadbalancer to serve secure
- * connections.
+ * SSL key and certificate to the load balancer to serve secure connections from
+ * the user.
  */
 class SslCertificate {
   /**
@@ -21407,6 +21935,389 @@ class SslCertificateList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** A Subnetwork resource. */
+class Subnetwork {
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  core.String creationTimestamp;
+  /**
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
+   */
+  core.String description;
+  /**
+   * [Output Only] The gateway address for default routes to reach destination
+   * addresses outside this subnetwork.
+   */
+  core.String gatewayAddress;
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /**
+   * The range of internal addresses that are owned by this subnetwork. Provide
+   * this property when you create the subnetwork. For example, 10.0.0.0/8 or
+   * 192.168.0.0/16. Ranges must be unique and non-overlapping within a network.
+   */
+  core.String ipCidrRange;
+  /**
+   * [Output Only] Type of the resource. Always compute#subnetwork for
+   * Subnetwork resources.
+   */
+  core.String kind;
+  /**
+   * The name of the resource, provided by the client when initially creating
+   * the resource. The name must be 1-63 characters long, and comply with
+   * RFC1035. Specifically, the name must be 1-63 characters long and match the
+   * regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first
+   * character must be a lowercase letter, and all following characters must be
+   * a dash, lowercase letter, or digit, except the last character, which cannot
+   * be a dash.
+   */
+  core.String name;
+  /**
+   * The URL of the network to which this subnetwork belongs, provided by the
+   * client when initially creating the subnetwork. Only networks that are in
+   * the distributed mode can have subnetworks.
+   */
+  core.String network;
+  /** [Output Only] URL of the region where the Subnetwork resides. */
+  core.String region;
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+
+  Subnetwork();
+
+  Subnetwork.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("gatewayAddress")) {
+      gatewayAddress = _json["gatewayAddress"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("ipCidrRange")) {
+      ipCidrRange = _json["ipCidrRange"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (gatewayAddress != null) {
+      _json["gatewayAddress"] = gatewayAddress;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (ipCidrRange != null) {
+      _json["ipCidrRange"] = ipCidrRange;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (network != null) {
+      _json["network"] = network;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class SubnetworkAggregatedList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** [Output] A map of scoped Subnetwork lists. */
+  core.Map<core.String, SubnetworksScopedList> items;
+  /**
+   * [Output Only] Type of resource. Always compute#subnetworkAggregatedList for
+   * aggregated lists of subnetworks.
+   */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  SubnetworkAggregatedList();
+
+  SubnetworkAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap(_json["items"], (item) => new SubnetworksScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of Subnetwork resources. */
+class SubnetworkList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** The Subnetwork resources. */
+  core.List<Subnetwork> items;
+  /**
+   * [Output Only] Type of resource. Always compute#subnetworkList for lists of
+   * subnetworks.
+   */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  SubnetworkList();
+
+  SubnetworkList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Subnetwork.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class SubnetworksScopedListWarningData {
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource, and a suggested replacement, or a warning about
+   * invalid network settings (for example, if an instance attempts to perform
+   * IP forwarding but is not enabled for IP forwarding).
+   */
+  core.String key;
+  /** [Output Only] A warning data value corresponding to the key. */
+  core.String value;
+
+  SubnetworksScopedListWarningData();
+
+  SubnetworksScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/**
+ * An informational warning that appears when the list of addresses is empty.
+ */
+class SubnetworksScopedListWarning {
+  /**
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
+   * Possible string values are:
+   * - "DEPRECATED_RESOURCE_USED"
+   * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "INJECTED_KERNELS_DEPRECATED"
+   * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+   * - "NEXT_HOP_CANNOT_IP_FORWARD"
+   * - "NEXT_HOP_INSTANCE_NOT_FOUND"
+   * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+   * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
+   * - "NO_RESULTS_ON_PAGE"
+   * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+   * - "UNREACHABLE"
+   */
+  core.String code;
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
+  core.List<SubnetworksScopedListWarningData> data;
+  /** [Output Only] A human-readable description of the warning code. */
+  core.String message;
+
+  SubnetworksScopedListWarning();
+
+  SubnetworksScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"].map((value) => new SubnetworksScopedListWarningData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class SubnetworksScopedList {
+  /** List of subnetworks contained in this scope. */
+  core.List<Subnetwork> subnetworks;
+  /**
+   * An informational warning that appears when the list of addresses is empty.
+   */
+  SubnetworksScopedListWarning warning;
+
+  SubnetworksScopedList();
+
+  SubnetworksScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("subnetworks")) {
+      subnetworks = _json["subnetworks"].map((value) => new Subnetwork.fromJson(value)).toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new SubnetworksScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (subnetworks != null) {
+      _json["subnetworks"] = subnetworks.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -21673,7 +22584,8 @@ class TargetHttpsProxy {
   core.String selfLink;
   /**
    * URLs to SslCertificate resources that are used to authenticate connections
-   * to Backends. Currently exactly one SSL certificate must be specified.
+   * between users and the load balancer. Currently exactly one SSL certificate
+   * must be specified.
    */
   core.List<core.String> sslCertificates;
   /**
@@ -23539,8 +24451,10 @@ class UsageExportLocation {
   /**
    * The name of an existing bucket in Cloud Storage where the usage report
    * object is stored. The Google Service Account is granted write access to
-   * this bucket. This is just the bucket name, with no gs:// or
-   * https://storage.googleapis.com/ in front of it.
+   * this bucket. This can either be the bucket name by itself, such as
+   * example-bucket, or the bucket name with gs:// or
+   * https://storage.googleapis.com/ in front of it, such as
+   * gs://example-bucket.
    */
   core.String bucketName;
   /**
@@ -23600,6 +24514,12 @@ class VpnTunnel {
    */
   core.String kind;
   /**
+   * Local traffic selector to use when establishing the VPN tunnel with peer
+   * VPN gateway. The value should be a CIDR formatted string, for example:
+   * 192.168.0.0/16. The ranges should be disjoint.
+   */
+  core.List<core.String> localTrafficSelector;
+  /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    * Specifically, the name must be 1-63 characters long and match the regular
@@ -23616,7 +24536,7 @@ class VpnTunnel {
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
-   * Shared secret used to set the secure session between the GCE VPN gateway
+   * Shared secret used to set the secure session between the Cloud VPN gateway
    * and the peer VPN gateway.
    */
   core.String sharedSecret;
@@ -23665,6 +24585,9 @@ class VpnTunnel {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("localTrafficSelector")) {
+      localTrafficSelector = _json["localTrafficSelector"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -23710,6 +24633,9 @@ class VpnTunnel {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (localTrafficSelector != null) {
+      _json["localTrafficSelector"] = localTrafficSelector;
     }
     if (name != null) {
       _json["name"] = name;

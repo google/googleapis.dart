@@ -21,7 +21,7 @@
     "description": "The API for Google Play Game Services.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/m1G6fpU4odFFORhUPamw5RBL3l0\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/dadzq60iAtGqkBsDw6XsI82tB8k\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -671,12 +671,14 @@
                             "enum": [
                                 "connected",
                                 "playedWith",
-                                "played_with"
+                                "played_with",
+                                "visible"
                             ],
                             "enumDescriptions": [
                                 "Retrieve a list of players that are also playing this game in reverse chronological order.",
                                 "(DEPRECATED: please use played_with!) Retrieve a list of players you have played a multiplayer game (realtime or turn-based) with recently.",
-                                "Retrieve a list of players you have played a multiplayer game (realtime or turn-based) with recently."
+                                "Retrieve a list of players you have played a multiplayer game (realtime or turn-based) with recently.",
+                                "Retrieve a list of players in the user's social graph that are visible to this game."
                             ],
                             "location": "path",
                             "required": true,
@@ -1933,7 +1935,7 @@
             }
         }
     },
-    "revision": "20160106",
+    "revision": "20160126",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {
@@ -3238,6 +3240,10 @@
                         }
                     },
                     "type": "object"
+                },
+                "originalPlayerId": {
+                    "description": "The player ID that was used for this player the first time they signed into the game in question. This is only populated for calls to player.get for the requesting player, only if the player ID has subsequently changed, and only to clients that support remapping player IDs.",
+                    "type": "string"
                 },
                 "playerId": {
                     "description": "The ID of the player.",

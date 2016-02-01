@@ -4882,7 +4882,7 @@ class DatafeedFetchSchedule {
    * four protocols.
    */
   core.String fetchUrl;
-  /** The hour of the day the feed file should be fetched (0-24). */
+  /** The hour of the day the feed file should be fetched (0-23). */
   core.int hour;
   /** An optional password for fetch_url. */
   core.String password;

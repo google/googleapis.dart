@@ -1,11 +1,11 @@
 {
-    "basePath": "/",
+    "basePath": "",
     "baseUrl": "https://partners.googleapis.com/",
     "batchPath": "batch",
     "description": "Lets advertisers search certified companies and create contact leads with them, and also audits the usage of clients.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/partners/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Stn48qQKN4zxjxtjQryNX8fVudk\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/IsLtDjyeCcVcrLheR4Lh75k5EO4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

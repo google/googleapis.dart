@@ -26,7 +26,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/OBiisZPl2wjmRgTqlrmgKgKRS3M\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/l-JZ2zxsTgnudDIWYa_zcN3dEbw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -845,7 +845,7 @@
                     ]
                 },
                 "import": {
-                    "description": "Creates read group sets by asynchronously importing the provided information. The caller must have WRITE permissions to the dataset.\n\nNotes on BAM import:  \n- Tags will be converted to strings - tag types are not preserved\n- Comments (@CO) in the input file header are not imported\n- Original order of reference headers is not preserved\n- Any reverse stranded unmapped reads will be reverse complemented, and their qualities (and \"BQ\" tag, if any) will be reversed\n- Unmapped reads will be stripped of positional information (referenceName and position)",
+                    "description": "Creates read group sets by asynchronously importing the provided information. The caller must have WRITE permissions to the dataset.\n\nNotes on BAM import:  \n- Tags will be converted to strings - tag types are not preserved\n- Comments (@CO) in the input file header are not imported\n- Original order of reference headers is not preserved\n- Any reverse stranded unmapped reads will be reverse complemented, and their qualities (also the \"BQ\" and \"OQ\" tags, if any) will be reversed\n- Unmapped reads will be stripped of positional information (referenceName and position)",
                     "httpMethod": "POST",
                     "id": "genomics.readgroupsets.import",
                     "path": "readgroupsets/import",
@@ -1494,7 +1494,7 @@
             }
         }
     },
-    "revision": "20160106",
+    "revision": "20160127",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {

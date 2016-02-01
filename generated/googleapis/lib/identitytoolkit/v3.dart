@@ -410,6 +410,45 @@ class RelyingpartyResourceApi {
   }
 
   /**
+   * Sign out user.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [IdentitytoolkitRelyingpartySignOutUserResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<IdentitytoolkitRelyingpartySignOutUserResponse> signOutUser(IdentitytoolkitRelyingpartySignOutUserRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'signOutUser';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(data));
+  }
+
+  /**
    * Batch upload existing user accounts.
    *
    * [request] - The metadata request object.
@@ -488,6 +527,45 @@ class RelyingpartyResourceApi {
   }
 
   /**
+   * Verifies the developer asserted ID token.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [VerifyCustomTokenResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<VerifyCustomTokenResponse> verifyCustomToken(IdentitytoolkitRelyingpartyVerifyCustomTokenRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'verifyCustomToken';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new VerifyCustomTokenResponse.fromJson(data));
+  }
+
+  /**
    * Verifies the user entered password.
    *
    * [request] - The metadata request object.
@@ -532,6 +610,8 @@ class RelyingpartyResourceApi {
 
 /** Response of creating the IDP authentication URL. */
 class CreateAuthUriResponse {
+  /** all providers the user has once used to do federated login */
+  core.List<core.String> allProviders;
   /** The URI used by the IDP to authenticate the user. */
   core.String authUri;
   /** True if captcha is required. */
@@ -552,6 +632,9 @@ class CreateAuthUriResponse {
   CreateAuthUriResponse();
 
   CreateAuthUriResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("allProviders")) {
+      allProviders = _json["allProviders"];
+    }
     if (_json.containsKey("authUri")) {
       authUri = _json["authUri"];
     }
@@ -577,6 +660,9 @@ class CreateAuthUriResponse {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (allProviders != null) {
+      _json["allProviders"] = allProviders;
+    }
     if (authUri != null) {
       _json["authUri"] = authUri;
     }
@@ -891,12 +977,20 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
 
 /** Request to delete account. */
 class IdentitytoolkitRelyingpartyDeleteAccountRequest {
+  /**
+   * GCP project number of the requesting delegated app. Currently only intended
+   * for Firebase V1 migration.
+   */
+  core.String delegatedProjectNumber;
   /** The local ID of the user. */
   core.String localId;
 
   IdentitytoolkitRelyingpartyDeleteAccountRequest();
 
   IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("delegatedProjectNumber")) {
+      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    }
     if (_json.containsKey("localId")) {
       localId = _json["localId"];
     }
@@ -904,6 +998,9 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (delegatedProjectNumber != null) {
+      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+    }
     if (localId != null) {
       _json["localId"] = localId;
     }
@@ -913,6 +1010,11 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
 
 /** Request to download user account in batch. */
 class IdentitytoolkitRelyingpartyDownloadAccountRequest {
+  /**
+   * GCP project number of the requesting delegated app. Currently only intended
+   * for Firebase V1 migration.
+   */
+  core.String delegatedProjectNumber;
   /** The max number of results to return in the response. */
   core.int maxResults;
   /**
@@ -924,6 +1026,9 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
   IdentitytoolkitRelyingpartyDownloadAccountRequest();
 
   IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("delegatedProjectNumber")) {
+      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    }
     if (_json.containsKey("maxResults")) {
       maxResults = _json["maxResults"];
     }
@@ -934,6 +1039,9 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (delegatedProjectNumber != null) {
+      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+    }
     if (maxResults != null) {
       _json["maxResults"] = maxResults;
     }
@@ -1117,6 +1225,11 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   core.String captchaChallenge;
   /** Response to the captcha. */
   core.String captchaResponse;
+  /**
+   * GCP project number of the requesting delegated app. Currently only intended
+   * for Firebase V1 migration.
+   */
+  core.String delegatedProjectNumber;
   /** Whether to disable the user. */
   core.bool disableUser;
   /** The name of the user. */
@@ -1127,6 +1240,8 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   core.bool emailVerified;
   /** The GITKit token of the authenticated user. */
   core.String idToken;
+  /** Instance id token of the app. */
+  core.String instanceId;
   /** The local ID of the user. */
   core.String localId;
   /** The out-of-band code of the change email request. */
@@ -1149,6 +1264,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     if (_json.containsKey("captchaResponse")) {
       captchaResponse = _json["captchaResponse"];
     }
+    if (_json.containsKey("delegatedProjectNumber")) {
+      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    }
     if (_json.containsKey("disableUser")) {
       disableUser = _json["disableUser"];
     }
@@ -1163,6 +1281,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
     if (_json.containsKey("idToken")) {
       idToken = _json["idToken"];
+    }
+    if (_json.containsKey("instanceId")) {
+      instanceId = _json["instanceId"];
     }
     if (_json.containsKey("localId")) {
       localId = _json["localId"];
@@ -1192,6 +1313,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     if (captchaResponse != null) {
       _json["captchaResponse"] = captchaResponse;
     }
+    if (delegatedProjectNumber != null) {
+      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+    }
     if (disableUser != null) {
       _json["disableUser"] = disableUser;
     }
@@ -1206,6 +1330,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
     if (idToken != null) {
       _json["idToken"] = idToken;
+    }
+    if (instanceId != null) {
+      _json["instanceId"] = instanceId;
     }
     if (localId != null) {
       _json["localId"] = localId;
@@ -1229,8 +1356,65 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   }
 }
 
+/** Request to sign out user. */
+class IdentitytoolkitRelyingpartySignOutUserRequest {
+  /** Instance id token of the app. */
+  core.String instanceId;
+  /** The local ID of the user. */
+  core.String localId;
+
+  IdentitytoolkitRelyingpartySignOutUserRequest();
+
+  IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instanceId")) {
+      instanceId = _json["instanceId"];
+    }
+    if (_json.containsKey("localId")) {
+      localId = _json["localId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instanceId != null) {
+      _json["instanceId"] = instanceId;
+    }
+    if (localId != null) {
+      _json["localId"] = localId;
+    }
+    return _json;
+  }
+}
+
+/** Response of signing out user. */
+class IdentitytoolkitRelyingpartySignOutUserResponse {
+  /** The local ID of the user. */
+  core.String localId;
+
+  IdentitytoolkitRelyingpartySignOutUserResponse();
+
+  IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("localId")) {
+      localId = _json["localId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (localId != null) {
+      _json["localId"] = localId;
+    }
+    return _json;
+  }
+}
+
 /** Request to upload user account in batch. */
 class IdentitytoolkitRelyingpartyUploadAccountRequest {
+  /**
+   * GCP project number of the requesting delegated app. Currently only intended
+   * for Firebase V1 migration.
+   */
+  core.String delegatedProjectNumber;
   /** The password hash algorithm. */
   core.String hashAlgorithm;
   /** Memory cost for hash calculation. Used by scrypt similar algorithms. */
@@ -1261,6 +1445,9 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   IdentitytoolkitRelyingpartyUploadAccountRequest();
 
   IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("delegatedProjectNumber")) {
+      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    }
     if (_json.containsKey("hashAlgorithm")) {
       hashAlgorithm = _json["hashAlgorithm"];
     }
@@ -1283,6 +1470,9 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (delegatedProjectNumber != null) {
+      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+    }
     if (hashAlgorithm != null) {
       _json["hashAlgorithm"] = hashAlgorithm;
     }
@@ -1308,6 +1498,13 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
 /** Request to verify the IDP assertion. */
 class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   /**
+   * GCP project number of the requesting delegated app. Currently only intended
+   * for Firebase V1 migration.
+   */
+  core.String delegatedProjectNumber;
+  /** Instance id token of the app. */
+  core.String instanceId;
+  /**
    * The GITKit token for the non-trusted IDP pending to be confirmed by the
    * user.
    */
@@ -1329,6 +1526,12 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   IdentitytoolkitRelyingpartyVerifyAssertionRequest();
 
   IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("delegatedProjectNumber")) {
+      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    }
+    if (_json.containsKey("instanceId")) {
+      instanceId = _json["instanceId"];
+    }
     if (_json.containsKey("pendingIdToken")) {
       pendingIdToken = _json["pendingIdToken"];
     }
@@ -1348,6 +1551,12 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (delegatedProjectNumber != null) {
+      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+    }
+    if (instanceId != null) {
+      _json["instanceId"] = instanceId;
+    }
     if (pendingIdToken != null) {
       _json["pendingIdToken"] = pendingIdToken;
     }
@@ -1367,14 +1576,51 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   }
 }
 
+/** Request to verify a custom token */
+class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
+  /** Instance id token of the app. */
+  core.String instanceId;
+  /** The custom token to verify */
+  core.String token;
+
+  IdentitytoolkitRelyingpartyVerifyCustomTokenRequest();
+
+  IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instanceId")) {
+      instanceId = _json["instanceId"];
+    }
+    if (_json.containsKey("token")) {
+      token = _json["token"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instanceId != null) {
+      _json["instanceId"] = instanceId;
+    }
+    if (token != null) {
+      _json["token"] = token;
+    }
+    return _json;
+  }
+}
+
 /** Request to verify the password. */
 class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
   /** The captcha challenge. */
   core.String captchaChallenge;
   /** Response to the captcha. */
   core.String captchaResponse;
+  /**
+   * GCP project number of the requesting delegated app. Currently only intended
+   * for Firebase V1 migration.
+   */
+  core.String delegatedProjectNumber;
   /** The email of the user. */
   core.String email;
+  /** Instance id token of the app. */
+  core.String instanceId;
   /** The password inputed by the user. */
   core.String password;
   /**
@@ -1392,8 +1638,14 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     if (_json.containsKey("captchaResponse")) {
       captchaResponse = _json["captchaResponse"];
     }
+    if (_json.containsKey("delegatedProjectNumber")) {
+      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    }
     if (_json.containsKey("email")) {
       email = _json["email"];
+    }
+    if (_json.containsKey("instanceId")) {
+      instanceId = _json["instanceId"];
     }
     if (_json.containsKey("password")) {
       password = _json["password"];
@@ -1411,8 +1663,14 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     if (captchaResponse != null) {
       _json["captchaResponse"] = captchaResponse;
     }
+    if (delegatedProjectNumber != null) {
+      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+    }
     if (email != null) {
       _json["email"] = email;
+    }
+    if (instanceId != null) {
+      _json["instanceId"] = instanceId;
     }
     if (password != null) {
       _json["password"] = password;
@@ -2208,6 +2466,36 @@ class VerifyAssertionResponse {
     }
     if (verifiedProvider != null) {
       _json["verifiedProvider"] = verifiedProvider;
+    }
+    return _json;
+  }
+}
+
+/** Response from verifying a custom token */
+class VerifyCustomTokenResponse {
+  /** The GITKit token for authenticated user. */
+  core.String idToken;
+  /** The fixed string "identitytoolkit#VerifyCustomTokenResponse". */
+  core.String kind;
+
+  VerifyCustomTokenResponse();
+
+  VerifyCustomTokenResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("idToken")) {
+      idToken = _json["idToken"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (idToken != null) {
+      _json["idToken"] = idToken;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }

@@ -1620,6 +1620,13 @@ class Player {
    * For some players, these fields may not be present.
    */
   PlayerName name;
+  /**
+   * The player ID that was used for this player the first time they signed into
+   * the game in question. This is only populated for calls to player.get for
+   * the requesting player, only if the player ID has subsequently changed, and
+   * only to clients that support remapping player IDs.
+   */
+  core.String originalPlayerId;
   /** The ID of the player. */
   core.String playerId;
   /** The player's title rewarded for their game activities. */
@@ -1651,6 +1658,9 @@ class Player {
     }
     if (_json.containsKey("name")) {
       name = new PlayerName.fromJson(_json["name"]);
+    }
+    if (_json.containsKey("originalPlayerId")) {
+      originalPlayerId = _json["originalPlayerId"];
     }
     if (_json.containsKey("playerId")) {
       playerId = _json["playerId"];
@@ -1685,6 +1695,9 @@ class Player {
     }
     if (name != null) {
       _json["name"] = (name).toJson();
+    }
+    if (originalPlayerId != null) {
+      _json["originalPlayerId"] = originalPlayerId;
     }
     if (playerId != null) {
       _json["playerId"] = playerId;

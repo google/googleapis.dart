@@ -30,7 +30,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/rAeglxtdeyhwqqUXexq32kOU_zQ\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/f6mRIQ8wrr0OUFAXPVNFOEqXrFQ\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -3457,7 +3457,7 @@
             }
         }
     },
-    "revision": "20160106",
+    "revision": "20160111",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -5109,7 +5109,7 @@
             "type": "object"
         },
         "ContentRating": {
-            "description": "Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 66",
+            "description": "Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 67",
             "id": "ContentRating",
             "properties": {
                 "acbRating": {
@@ -5572,6 +5572,32 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "ecbmctRating": {
+                    "description": "Rating system in Turkey - Evaluation and Classification Board of the Ministry of Culture and Tourism",
+                    "enum": [
+                        "ecbmct13a",
+                        "ecbmct13plus",
+                        "ecbmct15a",
+                        "ecbmct15plus",
+                        "ecbmct18plus",
+                        "ecbmct7a",
+                        "ecbmct7plus",
+                        "ecbmctG",
+                        "ecbmctUnrated"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 },
                 "eefilmRating": {
                     "description": "The video's rating in Estonia.",
@@ -9121,10 +9147,6 @@
                     "$ref": "VideoContentDetails",
                     "description": "The contentDetails object contains information about the video content, including the length of the video and its aspect ratio."
                 },
-                "conversionPings": {
-                    "$ref": "VideoConversionPings",
-                    "description": "The conversionPings object encapsulates information about url pings that need to be respected by the App in different video contexts."
-                },
                 "etag": {
                     "description": "Etag of this resource.",
                     "type": "string"
@@ -9501,45 +9523,6 @@
                     "description": "A list of region codes that identify countries where the video is blocked. If this property is present and a country is not listed in its value, then the video is viewable in that country. If this property is present and contains an empty list, the video is viewable in all countries.",
                     "items": {
                         "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "VideoConversionPing": {
-            "id": "VideoConversionPing",
-            "properties": {
-                "context": {
-                    "description": "Defines the context of the ping.",
-                    "enum": [
-                        "comment",
-                        "dislike",
-                        "like",
-                        "share"
-                    ],
-                    "enumDescriptions": [
-                        "",
-                        "",
-                        "",
-                        ""
-                    ],
-                    "type": "string"
-                },
-                "conversionUrl": {
-                    "description": "The url (without the schema) that the app shall send the ping to. It's at caller's descretion to decide which schema to use (http vs https) Example of a returned url: //googleads.g.doubleclick.net/pagead/ viewthroughconversion/962985656/?data=path%3DtHe_path%3Btype%3D like%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA%3Bytvid%3DUrIaJUvIQDg&labe=default The caller must append biscotti authentication (ms param in case of mobile, for example) to this ping.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "VideoConversionPings": {
-            "id": "VideoConversionPings",
-            "properties": {
-                "pings": {
-                    "description": "Pings that the app shall fire for a video (authenticated by biscotti cookie). Each ping has a context, in which the app must fire the ping, and a url identifying the ping.",
-                    "items": {
-                        "$ref": "VideoConversionPing"
                     },
                     "type": "array"
                 }

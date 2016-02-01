@@ -3763,7 +3763,8 @@ class InAppProduct {
   core.String status;
   /**
    * Subscription period, specified in ISO 8601 format. Acceptable values are
-   * "P1W" (one week), "P1M" (one month) and "P1Y" (one year).
+   * "P1W" (one week), "P1M" (one month), "P3M" (three months), "P6M" (six
+   * months), and "P1Y" (one year).
    */
   core.String subscriptionPeriod;
   /**
@@ -4388,9 +4389,50 @@ class ProductPurchase {
   }
 }
 
+class Prorate {
+  /**
+   * Default price cannot be zero and must be less than the full subscription
+   * price. Default price is always in the developer's Checkout merchant
+   * currency. Targeted countries have their prices set automatically based on
+   * the default_price.
+   */
+  Price defaultPrice;
+  /** Defines the first day on which the price takes effect. */
+  MonthDay start;
+
+  Prorate();
+
+  Prorate.fromJson(core.Map _json) {
+    if (_json.containsKey("defaultPrice")) {
+      defaultPrice = new Price.fromJson(_json["defaultPrice"]);
+    }
+    if (_json.containsKey("start")) {
+      start = new MonthDay.fromJson(_json["start"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (defaultPrice != null) {
+      _json["defaultPrice"] = (defaultPrice).toJson();
+    }
+    if (start != null) {
+      _json["start"] = (start).toJson();
+    }
+    return _json;
+  }
+}
+
 class Season {
   /** Inclusive end date of the recurrence period. */
   MonthDay end;
+  /**
+   * Optionally present list of prorations for the season. Each proration is a
+   * one-off discounted entry into a subscription. Each proration contains the
+   * first date on which the discount is available and the new pricing
+   * information.
+   */
+  core.List<Prorate> prorations;
   /** Inclusive start date of the recurrence period. */
   MonthDay start;
 
@@ -4399,6 +4441,9 @@ class Season {
   Season.fromJson(core.Map _json) {
     if (_json.containsKey("end")) {
       end = new MonthDay.fromJson(_json["end"]);
+    }
+    if (_json.containsKey("prorations")) {
+      prorations = _json["prorations"].map((value) => new Prorate.fromJson(value)).toList();
     }
     if (_json.containsKey("start")) {
       start = new MonthDay.fromJson(_json["start"]);
@@ -4409,6 +4454,9 @@ class Season {
     var _json = new core.Map();
     if (end != null) {
       _json["end"] = (end).toJson();
+    }
+    if (prorations != null) {
+      _json["prorations"] = prorations.map((value) => (value).toJson()).toList();
     }
     if (start != null) {
       _json["start"] = (start).toJson();

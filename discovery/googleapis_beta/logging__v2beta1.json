@@ -20,13 +20,13 @@
             }
         }
     },
-    "basePath": "/",
+    "basePath": "",
     "baseUrl": "https://logging.googleapis.com/",
     "batchPath": "batch",
     "description": "The Google Cloud Logging API lets you write log entries and manage your logs, log sinks and logs-based metrics.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/logging/docs/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/HC6cV45pVNq_awYIVZcAdR0rM0I\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/wmRq-yRsUWybxv4zTNUlygH9dXc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

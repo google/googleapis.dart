@@ -20,13 +20,13 @@
             }
         }
     },
-    "basePath": "/",
+    "basePath": "",
     "baseUrl": "https://genomics.googleapis.com/",
     "batchPath": "batch",
-    "description": "An API to store, process, explore, and share genomic data. It supports reference-based alignements, genetic variants, and reference genomes. This API provides an implementation of the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
+    "description": "An API to store, process, explore, and share genomic data. It supports reference-based alignments, genetic variants, and reference genomes. This API provides an implementation of the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
     "discoveryVersion": "v1",
     "documentationLink": "",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/mhBaKN3REF2ssb8U8kL-4LNrC-0\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/dKN-qLgalAAFQaYkGpbmBfZPnMw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -462,7 +462,7 @@
         "readgroupsets": {
             "methods": {
                 "import": {
-                    "description": "Creates read group sets by asynchronously importing the provided information. For the definitions of read group sets and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics) The caller must have WRITE permissions to the dataset. ## Notes on [BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) import - Tags will be converted to strings - tag types are not preserved - Comments (`@CO`) in the input file header will not be preserved - Original header order of references (`@SQ`) will not be preserved - Any reverse stranded unmapped reads will be reverse complemented, and their qualities (and \"BQ\" tag, if any) will be reversed - Unmapped reads will be stripped of positional information (reference name and position)",
+                    "description": "Creates read group sets by asynchronously importing the provided information. For the definitions of read group sets and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics) The caller must have WRITE permissions to the dataset. ## Notes on [BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) import - Tags will be converted to strings - tag types are not preserved - Comments (`@CO`) in the input file header will not be preserved - Original header order of references (`@SQ`) will not be preserved - Any reverse stranded unmapped reads will be reverse complemented, and their qualities (also the \"BQ\" and \"OQ\" tags, if any) will be reversed - Unmapped reads will be stripped of positional information (reference name and position)",
                     "httpMethod": "POST",
                     "id": "genomics.readgroupsets.import",
                     "path": "v1/readgroupsets:import",
@@ -1270,7 +1270,7 @@
             }
         }
     },
-    "revision": "20160106",
+    "revision": "20160124",
     "rootUrl": "https://genomics.googleapis.com/",
     "schemas": {
         "ListDatasetsResponse": {

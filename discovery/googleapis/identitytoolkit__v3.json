@@ -6,7 +6,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/e32oSFoZ2KakZjHNn-XHFVe6R6o\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/xPOEaVu3pXCyFCLJNoRrVds6kh4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -176,6 +176,18 @@
                         "$ref": "SetAccountInfoResponse"
                     }
                 },
+                "signOutUser": {
+                    "description": "Sign out user.",
+                    "httpMethod": "POST",
+                    "id": "identitytoolkit.relyingparty.signOutUser",
+                    "path": "signOutUser",
+                    "request": {
+                        "$ref": "IdentitytoolkitRelyingpartySignOutUserRequest"
+                    },
+                    "response": {
+                        "$ref": "IdentitytoolkitRelyingpartySignOutUserResponse"
+                    }
+                },
                 "uploadAccount": {
                     "description": "Batch upload existing user accounts.",
                     "httpMethod": "POST",
@@ -200,6 +212,18 @@
                         "$ref": "VerifyAssertionResponse"
                     }
                 },
+                "verifyCustomToken": {
+                    "description": "Verifies the developer asserted ID token.",
+                    "httpMethod": "POST",
+                    "id": "identitytoolkit.relyingparty.verifyCustomToken",
+                    "path": "verifyCustomToken",
+                    "request": {
+                        "$ref": "IdentitytoolkitRelyingpartyVerifyCustomTokenRequest"
+                    },
+                    "response": {
+                        "$ref": "VerifyCustomTokenResponse"
+                    }
+                },
                 "verifyPassword": {
                     "description": "Verifies the user entered password.",
                     "httpMethod": "POST",
@@ -215,13 +239,20 @@
             }
         }
     },
-    "revision": "20151109",
+    "revision": "20160125",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
             "description": "Response of creating the IDP authentication URL.",
             "id": "CreateAuthUriResponse",
             "properties": {
+                "allProviders": {
+                    "description": "all providers the user has once used to do federated login",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "authUri": {
                     "description": "The URI used by the IDP to authenticate the user.",
                     "type": "string"
@@ -399,6 +430,11 @@
             "description": "Request to delete account.",
             "id": "IdentitytoolkitRelyingpartyDeleteAccountRequest",
             "properties": {
+                "delegatedProjectNumber": {
+                    "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "localId": {
                     "description": "The local ID of the user.",
                     "type": "string"
@@ -410,6 +446,11 @@
             "description": "Request to download user account in batch.",
             "id": "IdentitytoolkitRelyingpartyDownloadAccountRequest",
             "properties": {
+                "delegatedProjectNumber": {
+                    "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "maxResults": {
                     "description": "The max number of results to return in the response.",
                     "format": "uint32",
@@ -516,6 +557,11 @@
                     "description": "Response to the captcha.",
                     "type": "string"
                 },
+                "delegatedProjectNumber": {
+                    "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "disableUser": {
                     "description": "Whether to disable the user.",
                     "type": "boolean"
@@ -534,6 +580,10 @@
                 },
                 "idToken": {
                     "description": "The GITKit token of the authenticated user.",
+                    "type": "string"
+                },
+                "instanceId": {
+                    "description": "Instance id token of the app.",
                     "type": "string"
                 },
                 "localId": {
@@ -567,10 +617,41 @@
             },
             "type": "object"
         },
+        "IdentitytoolkitRelyingpartySignOutUserRequest": {
+            "description": "Request to sign out user.",
+            "id": "IdentitytoolkitRelyingpartySignOutUserRequest",
+            "properties": {
+                "instanceId": {
+                    "description": "Instance id token of the app.",
+                    "type": "string"
+                },
+                "localId": {
+                    "description": "The local ID of the user.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IdentitytoolkitRelyingpartySignOutUserResponse": {
+            "description": "Response of signing out user.",
+            "id": "IdentitytoolkitRelyingpartySignOutUserResponse",
+            "properties": {
+                "localId": {
+                    "description": "The local ID of the user.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "IdentitytoolkitRelyingpartyUploadAccountRequest": {
             "description": "Request to upload user account in batch.",
             "id": "IdentitytoolkitRelyingpartyUploadAccountRequest",
             "properties": {
+                "delegatedProjectNumber": {
+                    "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "hashAlgorithm": {
                     "description": "The password hash algorithm.",
                     "type": "string"
@@ -609,6 +690,15 @@
             "description": "Request to verify the IDP assertion.",
             "id": "IdentitytoolkitRelyingpartyVerifyAssertionRequest",
             "properties": {
+                "delegatedProjectNumber": {
+                    "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "instanceId": {
+                    "description": "Instance id token of the app.",
+                    "type": "string"
+                },
                 "pendingIdToken": {
                     "description": "The GITKit token for the non-trusted IDP pending to be confirmed by the user.",
                     "type": "string"
@@ -632,6 +722,21 @@
             },
             "type": "object"
         },
+        "IdentitytoolkitRelyingpartyVerifyCustomTokenRequest": {
+            "description": "Request to verify a custom token",
+            "id": "IdentitytoolkitRelyingpartyVerifyCustomTokenRequest",
+            "properties": {
+                "instanceId": {
+                    "description": "Instance id token of the app.",
+                    "type": "string"
+                },
+                "token": {
+                    "description": "The custom token to verify",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "IdentitytoolkitRelyingpartyVerifyPasswordRequest": {
             "description": "Request to verify the password.",
             "id": "IdentitytoolkitRelyingpartyVerifyPasswordRequest",
@@ -644,8 +749,17 @@
                     "description": "Response to the captcha.",
                     "type": "string"
                 },
+                "delegatedProjectNumber": {
+                    "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "email": {
                     "description": "The email of the user.",
+                    "type": "string"
+                },
+                "instanceId": {
+                    "description": "Instance id token of the app.",
                     "type": "string"
                 },
                 "password": {
@@ -1031,6 +1145,22 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "VerifyCustomTokenResponse": {
+            "description": "Response from verifying a custom token",
+            "id": "VerifyCustomTokenResponse",
+            "properties": {
+                "idToken": {
+                    "description": "The GITKit token for authenticated user.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "identitytoolkit#VerifyCustomTokenResponse",
+                    "description": "The fixed string \"identitytoolkit#VerifyCustomTokenResponse\".",
+                    "type": "string"
                 }
             },
             "type": "object"
