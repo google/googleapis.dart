@@ -533,6 +533,66 @@ class AppsModulesVersionsResourceApi {
     return _response.then((data) => new ListVersionsResponse.fromJson(data));
   }
 
+  /**
+   * Updates an existing version. Note: UNIMPLEMENTED.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource to update. For example:
+   * "apps/myapp/modules/default/versions/1".
+   *
+   * [modulesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [versionsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [mask] - Standard field mask for the set of fields to be updated.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(Version request, core.String appsId, core.String modulesId, core.String versionsId, {core.String mask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (modulesId == null) {
+      throw new core.ArgumentError("Parameter modulesId is required.");
+    }
+    if (versionsId == null) {
+      throw new core.ArgumentError("Parameter versionsId is required.");
+    }
+    if (mask != null) {
+      _queryParams["mask"] = [mask];
+    }
+
+    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
 }
 
 
@@ -754,6 +814,12 @@ class ApiEndpointHandler {
  */
 class Application {
   /**
+   * If set, only users from the specified Google Apps authentication domain may
+   * access the application. If not set, any Google Account may access the
+   * application.
+   */
+  core.String authDomain;
+  /**
    * A Google Cloud Storage bucket which can be used for storing files
    * associated with an application. This bucket is associated with the
    * application and can be used by the gcloud deployment commands. @OutputOnly
@@ -764,14 +830,19 @@ class Application {
    * content. @OutputOnly
    */
   core.String defaultBucket;
+  /** Determines the cookie expiration policy for the application. */
+  core.String defaultCookieExpiration;
+  /**
+   * The hostname used to reach the application, as resolved by App Engine.
+   * @OutputOnly
+   */
+  core.String defaultHostname;
   /**
    * HTTP path dispatch rules for requests to the app that do not explicitly
    * target a module or version. The rules are order-dependent.
    */
   core.List<UrlDispatchRule> dispatchRules;
-  /**
-   * The relative name/path of the application. Example: "myapp". @OutputOnly
-   */
+  /** The relative name/path of the application. Example: "myapp". */
   core.String id;
   /**
    * The location from which the application will be run. Choices are
@@ -790,11 +861,20 @@ class Application {
   Application();
 
   Application.fromJson(core.Map _json) {
+    if (_json.containsKey("authDomain")) {
+      authDomain = _json["authDomain"];
+    }
     if (_json.containsKey("codeBucket")) {
       codeBucket = _json["codeBucket"];
     }
     if (_json.containsKey("defaultBucket")) {
       defaultBucket = _json["defaultBucket"];
+    }
+    if (_json.containsKey("defaultCookieExpiration")) {
+      defaultCookieExpiration = _json["defaultCookieExpiration"];
+    }
+    if (_json.containsKey("defaultHostname")) {
+      defaultHostname = _json["defaultHostname"];
     }
     if (_json.containsKey("dispatchRules")) {
       dispatchRules = _json["dispatchRules"].map((value) => new UrlDispatchRule.fromJson(value)).toList();
@@ -812,11 +892,20 @@ class Application {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (authDomain != null) {
+      _json["authDomain"] = authDomain;
+    }
     if (codeBucket != null) {
       _json["codeBucket"] = codeBucket;
     }
     if (defaultBucket != null) {
       _json["defaultBucket"] = defaultBucket;
+    }
+    if (defaultCookieExpiration != null) {
+      _json["defaultCookieExpiration"] = defaultCookieExpiration;
+    }
+    if (defaultHostname != null) {
+      _json["defaultHostname"] = defaultHostname;
     }
     if (dispatchRules != null) {
       _json["dispatchRules"] = dispatchRules.map((value) => (value).toJson()).toList();

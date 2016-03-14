@@ -284,7 +284,7 @@ class DeploymentsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, to filter for instances whose name is not equal to
+   * For example, to filter for instances that do not have a name of
    * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
@@ -296,7 +296,7 @@ class DeploymentsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
    * [maxResults] - The maximum number of results per page that should be
@@ -655,7 +655,7 @@ class ManifestsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, to filter for instances whose name is not equal to
+   * For example, to filter for instances that do not have a name of
    * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
@@ -667,7 +667,7 @@ class ManifestsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
    * [maxResults] - The maximum number of results per page that should be
@@ -800,7 +800,7 @@ class OperationsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, to filter for instances whose name is not equal to
+   * For example, to filter for instances that do not have a name of
    * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
@@ -812,7 +812,7 @@ class OperationsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
    * [maxResults] - The maximum number of results per page that should be
@@ -951,7 +951,7 @@ class ResourcesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, to filter for instances whose name is not equal to
+   * For example, to filter for instances that do not have a name of
    * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
@@ -963,7 +963,7 @@ class ResourcesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
    * [maxResults] - The maximum number of results per page that should be
@@ -1050,7 +1050,7 @@ class TypesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, to filter for instances whose name is not equal to
+   * For example, to filter for instances that do not have a name of
    * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
@@ -1062,7 +1062,7 @@ class TypesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
    * [maxResults] - The maximum number of results per page that should be
@@ -1173,6 +1173,15 @@ class Deployment {
    */
   core.String insertTime;
   /**
+   * Map of labels; provided by the client when the resource is created or
+   * updated. Specifically: Label keys must be between 1 and 63 characters long
+   * and must conform to the following regular expression:
+   * [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters
+   * long and must conform to the regular expression
+   * ([a-z]([-a-z0-9]*[a-z0-9])?)?
+   */
+  core.List<DeploymentLabelEntry> labels;
+  /**
    * [Output Only] URL of the manifest representing the last manifest that was
    * successfully deployed.
    */
@@ -1218,6 +1227,9 @@ class Deployment {
     if (_json.containsKey("insertTime")) {
       insertTime = _json["insertTime"];
     }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"].map((value) => new DeploymentLabelEntry.fromJson(value)).toList();
+    }
     if (_json.containsKey("manifest")) {
       manifest = _json["manifest"];
     }
@@ -1249,6 +1261,9 @@ class Deployment {
     if (insertTime != null) {
       _json["insertTime"] = insertTime;
     }
+    if (labels != null) {
+      _json["labels"] = labels.map((value) => (value).toJson()).toList();
+    }
     if (manifest != null) {
       _json["manifest"] = manifest;
     }
@@ -1268,7 +1283,43 @@ class Deployment {
   }
 }
 
+class DeploymentLabelEntry {
+  core.String key;
+  core.String value;
+
+  DeploymentLabelEntry();
+
+  DeploymentLabelEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 class DeploymentUpdate {
+  /**
+   * [Output Only] Map of labels; provided by the client when the resource is
+   * created or updated. Specifically: Label keys must be between 1 and 63
+   * characters long and must conform to the following regular expression:
+   * [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters
+   * long and must conform to the regular expression
+   * ([a-z]([-a-z0-9]*[a-z0-9])?)?
+   */
+  core.List<DeploymentUpdateLabelEntry> labels;
   /**
    * [Output Only] URL of the manifest representing the update configuration of
    * this deployment.
@@ -1278,6 +1329,9 @@ class DeploymentUpdate {
   DeploymentUpdate();
 
   DeploymentUpdate.fromJson(core.Map _json) {
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"].map((value) => new DeploymentUpdateLabelEntry.fromJson(value)).toList();
+    }
     if (_json.containsKey("manifest")) {
       manifest = _json["manifest"];
     }
@@ -1285,8 +1339,38 @@ class DeploymentUpdate {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (labels != null) {
+      _json["labels"] = labels.map((value) => (value).toJson()).toList();
+    }
     if (manifest != null) {
       _json["manifest"] = manifest;
+    }
+    return _json;
+  }
+}
+
+class DeploymentUpdateLabelEntry {
+  core.String key;
+  core.String value;
+
+  DeploymentUpdateLabelEntry();
+
+  DeploymentUpdateLabelEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
@@ -1554,7 +1638,7 @@ class OperationErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
   /**
-   * [Output Only] Indicates the field in the request which caused the error.
+   * [Output Only] Indicates the field in the request that caused the error.
    * This property is optional.
    */
   core.String location;
@@ -1624,9 +1708,9 @@ class OperationWarningsData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -1742,7 +1826,7 @@ class Operation {
    */
   core.String insertTime;
   /**
-   * [Output Only] Type of the resource. Always compute#operation for Operation
+   * [Output Only] Type of the resource. Always compute#operation for operation
    * resources.
    */
   core.String kind;
@@ -1994,9 +2078,9 @@ class ResourceWarningsData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -2202,7 +2286,7 @@ class ResourceUpdateErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
   /**
-   * [Output Only] Indicates the field in the request which caused the error.
+   * [Output Only] Indicates the field in the request that caused the error.
    * This property is optional.
    */
   core.String location;
@@ -2272,9 +2356,9 @@ class ResourceUpdateWarningsData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */

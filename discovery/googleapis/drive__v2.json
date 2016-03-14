@@ -38,7 +38,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/xj17OdsD26zYiecunhsD3S_RWA0\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/0hYcJ5XBuBZeTLqo6WNhl_6SW0A\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -852,6 +852,36 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/drive"
                     ]
+                },
+                "export": {
+                    "description": "Exports a Google Doc to the requested MIME type and returns the exported content.",
+                    "httpMethod": "GET",
+                    "id": "drive.files.export",
+                    "parameterOrder": [
+                        "fileId",
+                        "mimeType"
+                    ],
+                    "parameters": {
+                        "fileId": {
+                            "description": "The ID of the file.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "mimeType": {
+                            "description": "The MIME type of the format requested for this export.",
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "files/{fileId}/export",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.readonly"
+                    ],
+                    "supportsMediaDownload": true
                 },
                 "generateIds": {
                     "description": "Generates a set of file IDs which can be provided in insert requests.",
@@ -2604,7 +2634,7 @@
             }
         }
     },
-    "revision": "20160126",
+    "revision": "20160303",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -3402,6 +3432,10 @@
                 },
                 "canComment": {
                     "description": "Whether the current user can comment on the file.",
+                    "type": "boolean"
+                },
+                "canReadRevisions": {
+                    "description": "Whether the current user has read access to the Revisions resource of the file.",
                     "type": "boolean"
                 },
                 "copyable": {

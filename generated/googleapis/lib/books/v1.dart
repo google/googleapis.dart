@@ -2079,8 +2079,6 @@ class NotificationResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
-   * [targetIds] - List of target ids used for experiments or user segments
-   *
    * Completes with a [Notification].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2089,7 +2087,7 @@ class NotificationResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Notification> get(core.String notificationId, {core.String locale, core.String source, core.List<core.String> targetIds}) {
+  async.Future<Notification> get(core.String notificationId, {core.String locale, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2106,9 +2104,6 @@ class NotificationResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
-    }
-    if (targetIds != null) {
-      _queryParams["targetIds"] = targetIds;
     }
 
     _url = 'notification/get';
@@ -2263,8 +2258,6 @@ class PersonalizedstreamResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
-   * [targetIds] - List of target ids used for experiments or user segments
-   *
    * Completes with a [Discoveryclusters].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2273,7 +2266,7 @@ class PersonalizedstreamResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Discoveryclusters> get({core.String locale, core.String maxAllowedMaturityRating, core.String source, core.List<core.String> targetIds}) {
+  async.Future<Discoveryclusters> get({core.String locale, core.String maxAllowedMaturityRating, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2289,9 +2282,6 @@ class PersonalizedstreamResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
-    }
-    if (targetIds != null) {
-      _queryParams["targetIds"] = targetIds;
     }
 
     _url = 'personalizedstream/get';
@@ -2933,6 +2923,8 @@ class VolumesMybooksResourceApi {
    *
    * [acquireMethod] - How the book was aquired
    *
+   * [country] - ISO-3166-1 code to override the IP-based location.
+   *
    * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex:'en_US'. Used
    * for generating recommendations.
    *
@@ -2955,7 +2947,7 @@ class VolumesMybooksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Volumes> list({core.List<core.String> acquireMethod, core.String locale, core.int maxResults, core.List<core.String> processingState, core.String source, core.int startIndex}) {
+  async.Future<Volumes> list({core.List<core.String> acquireMethod, core.String country, core.String locale, core.int maxResults, core.List<core.String> processingState, core.String source, core.int startIndex}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2965,6 +2957,9 @@ class VolumesMybooksResourceApi {
 
     if (acquireMethod != null) {
       _queryParams["acquireMethod"] = acquireMethod;
+    }
+    if (country != null) {
+      _queryParams["country"] = [country];
     }
     if (locale != null) {
       _queryParams["locale"] = [locale];
@@ -3020,8 +3015,6 @@ class VolumesRecommendedResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
-   * [targetIds] - List of target ids used for experiments or user segments
-   *
    * Completes with a [Volumes].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3030,7 +3023,7 @@ class VolumesRecommendedResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Volumes> list({core.String locale, core.String maxAllowedMaturityRating, core.String source, core.List<core.String> targetIds}) {
+  async.Future<Volumes> list({core.String locale, core.String maxAllowedMaturityRating, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3046,9 +3039,6 @@ class VolumesRecommendedResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
-    }
-    if (targetIds != null) {
-      _queryParams["targetIds"] = targetIds;
     }
 
     _url = 'volumes/recommended';
@@ -5588,6 +5578,7 @@ class Notification {
   core.String kind;
   core.String notificationType;
   core.String pcampaignId;
+  core.String reason;
   core.bool showNotificationSettingsAction;
   core.String targetUrl;
   core.String title;
@@ -5612,6 +5603,9 @@ class Notification {
     }
     if (_json.containsKey("pcampaign_id")) {
       pcampaignId = _json["pcampaign_id"];
+    }
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
     }
     if (_json.containsKey("show_notification_settings_action")) {
       showNotificationSettingsAction = _json["show_notification_settings_action"];
@@ -5643,6 +5637,9 @@ class Notification {
     }
     if (pcampaignId != null) {
       _json["pcampaign_id"] = pcampaignId;
+    }
+    if (reason != null) {
+      _json["reason"] = reason;
     }
     if (showNotificationSettingsAction != null) {
       _json["show_notification_settings_action"] = showNotificationSettingsAction;

@@ -22,7 +22,7 @@ class GamesManagementApi {
    */
   static const GamesScope = "https://www.googleapis.com/auth/games";
 
-  /** Know your basic profile info and list of people in your circles. */
+  /** Know the list of people in your circles, your age range, and language */
   static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
 
 

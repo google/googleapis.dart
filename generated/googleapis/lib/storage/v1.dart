@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client storage/v1';
 
-/** Lets you store and retrieve potentially-large, immutable data objects. */
+/** Stores and retrieves potentially large, immutable data objects. */
 class StorageApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";

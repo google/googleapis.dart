@@ -6,7 +6,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/xPOEaVu3pXCyFCLJNoRrVds6kh4\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Vhnx4zZ8SuEciaFfePvjr4AMNX0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -129,6 +129,18 @@
                     "description": "Get project configuration.",
                     "httpMethod": "GET",
                     "id": "identitytoolkit.relyingparty.getProjectConfig",
+                    "parameters": {
+                        "delegatedProjectNumber": {
+                            "description": "Delegated GCP project number of the request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "projectNumber": {
+                            "description": "GCP project number of the request.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
                     "path": "getProjectConfig",
                     "response": {
                         "$ref": "IdentitytoolkitRelyingpartyGetProjectConfigResponse"
@@ -176,6 +188,18 @@
                         "$ref": "SetAccountInfoResponse"
                     }
                 },
+                "setProjectConfig": {
+                    "description": "Set project configuration.",
+                    "httpMethod": "POST",
+                    "id": "identitytoolkit.relyingparty.setProjectConfig",
+                    "path": "setProjectConfig",
+                    "request": {
+                        "$ref": "IdentitytoolkitRelyingpartySetProjectConfigRequest"
+                    },
+                    "response": {
+                        "$ref": "IdentitytoolkitRelyingpartySetProjectConfigResponse"
+                    }
+                },
                 "signOutUser": {
                     "description": "Sign out user.",
                     "httpMethod": "POST",
@@ -186,6 +210,18 @@
                     },
                     "response": {
                         "$ref": "IdentitytoolkitRelyingpartySignOutUserResponse"
+                    }
+                },
+                "signupNewUser": {
+                    "description": "Signup new user.",
+                    "httpMethod": "POST",
+                    "id": "identitytoolkit.relyingparty.signupNewUser",
+                    "path": "signupNewUser",
+                    "request": {
+                        "$ref": "IdentitytoolkitRelyingpartySignupNewUserRequest"
+                    },
+                    "response": {
+                        "$ref": "SignupNewUserResponse"
                     }
                 },
                 "uploadAccount": {
@@ -239,7 +275,7 @@
             }
         }
     },
-    "revision": "20160125",
+    "revision": "20160304",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -316,6 +352,37 @@
                         "$ref": "UserInfo"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "EmailTemplate": {
+            "description": "Template for an email template.",
+            "id": "EmailTemplate",
+            "properties": {
+                "body": {
+                    "description": "Email body.",
+                    "type": "string"
+                },
+                "format": {
+                    "description": "Email body format.",
+                    "type": "string"
+                },
+                "from": {
+                    "description": "From address of the email.",
+                    "type": "string"
+                },
+                "fromDisplayName": {
+                    "description": "From display name.",
+                    "type": "string"
+                },
+                "replyTo": {
+                    "description": "Reply-to address.",
+                    "type": "string"
+                },
+                "subject": {
+                    "description": "Subject of the email.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -435,6 +502,10 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "idToken": {
+                    "description": "The GITKit token or STS id token of the authenticated user.",
+                    "type": "string"
+                },
                 "localId": {
                     "description": "The local ID of the user.",
                     "type": "string"
@@ -467,6 +538,11 @@
             "description": "Request to get the account information.",
             "id": "IdentitytoolkitRelyingpartyGetAccountInfoRequest",
             "properties": {
+                "delegatedProjectNumber": {
+                    "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "email": {
                     "description": "The list of emails of the users to inquiry.",
                     "items": {
@@ -500,6 +576,17 @@
                     "description": "Browser API key, needed when making http request to Apiary.",
                     "type": "string"
                 },
+                "authorizedDomains": {
+                    "description": "Authorized domains.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "changeEmailTemplate": {
+                    "$ref": "EmailTemplate",
+                    "description": "Change email template."
+                },
                 "idpConfig": {
                     "description": "OAuth2 provider configuration.",
                     "items": {
@@ -510,6 +597,18 @@
                 "projectId": {
                     "description": "Project ID of the relying party.",
                     "type": "string"
+                },
+                "resetPasswordTemplate": {
+                    "$ref": "EmailTemplate",
+                    "description": "Reset password email template."
+                },
+                "useEmailSending": {
+                    "description": "Whether to use email sending provided by Firebear.",
+                    "type": "boolean"
+                },
+                "verifyEmailTemplate": {
+                    "$ref": "EmailTemplate",
+                    "description": "Verify email template."
                 }
             },
             "type": "object"
@@ -562,6 +661,20 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "deleteAttribute": {
+                    "description": "The attributes users request to delete.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "deleteProvider": {
+                    "description": "The IDPs the user request to delete.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "disableUser": {
                     "description": "Whether to disable the user.",
                     "type": "boolean"
@@ -598,12 +711,20 @@
                     "description": "The new password of the user.",
                     "type": "string"
                 },
+                "photoUrl": {
+                    "description": "The photo url of the user.",
+                    "type": "string"
+                },
                 "provider": {
                     "description": "The associated IDPs of the user.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "returnSecureToken": {
+                    "description": "Whether return sts id token and refresh token instead of gitkit token.",
+                    "type": "boolean"
                 },
                 "upgradeToFederatedLogin": {
                     "description": "Mark the user to upgrade to federated login.",
@@ -612,6 +733,60 @@
                 "validSince": {
                     "description": "Timestamp in seconds for valid login token.",
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IdentitytoolkitRelyingpartySetProjectConfigRequest": {
+            "description": "Request to set the project configuration.",
+            "id": "IdentitytoolkitRelyingpartySetProjectConfigRequest",
+            "properties": {
+                "allowPasswordUser": {
+                    "description": "Whether to allow password user sign in or sign up.",
+                    "type": "boolean"
+                },
+                "apiKey": {
+                    "description": "Browser API key, needed when making http request to Apiary.",
+                    "type": "string"
+                },
+                "changeEmailTemplate": {
+                    "$ref": "EmailTemplate",
+                    "description": "Change email template."
+                },
+                "delegatedProjectNumber": {
+                    "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "idpConfig": {
+                    "description": "Oauth2 provider configuration.",
+                    "items": {
+                        "$ref": "IdpConfig"
+                    },
+                    "type": "array"
+                },
+                "resetPasswordTemplate": {
+                    "$ref": "EmailTemplate",
+                    "description": "Reset password email template."
+                },
+                "useEmailSending": {
+                    "description": "Whether to use email sending provided by Firebear.",
+                    "type": "boolean"
+                },
+                "verifyEmailTemplate": {
+                    "$ref": "EmailTemplate",
+                    "description": "Verify email template."
+                }
+            },
+            "type": "object"
+        },
+        "IdentitytoolkitRelyingpartySetProjectConfigResponse": {
+            "description": "Response of setting the project configuration.",
+            "id": "IdentitytoolkitRelyingpartySetProjectConfigResponse",
+            "properties": {
+                "projectId": {
+                    "description": "Project ID of the relying party.",
                     "type": "string"
                 }
             },
@@ -639,6 +814,45 @@
                 "localId": {
                     "description": "The local ID of the user.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IdentitytoolkitRelyingpartySignupNewUserRequest": {
+            "description": "Request to signup new user, create anonymous user or anonymous user reauth.",
+            "id": "IdentitytoolkitRelyingpartySignupNewUserRequest",
+            "properties": {
+                "captchaChallenge": {
+                    "description": "The captcha challenge.",
+                    "type": "string"
+                },
+                "captchaResponse": {
+                    "description": "Response to the captcha.",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "The name of the user.",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "The email of the user.",
+                    "type": "string"
+                },
+                "idToken": {
+                    "description": "The GITKit token of the authenticated user.",
+                    "type": "string"
+                },
+                "instanceId": {
+                    "description": "Instance id token of the app.",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "The new password of the user.",
+                    "type": "string"
+                },
+                "returnSecureToken": {
+                    "description": "Whether return sts id token and refresh token instead of gitkit token.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -695,6 +909,10 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "idToken": {
+                    "description": "The GITKit token of the authenticated user.",
+                    "type": "string"
+                },
                 "instanceId": {
                     "description": "Instance id token of the app.",
                     "type": "string"
@@ -715,6 +933,10 @@
                     "description": "Whether to return refresh tokens.",
                     "type": "boolean"
                 },
+                "returnSecureToken": {
+                    "description": "Whether return sts id token and refresh token instead of gitkit token.",
+                    "type": "boolean"
+                },
                 "sessionId": {
                     "description": "Session ID, which should match the one in previous createAuthUri request.",
                     "type": "string"
@@ -729,6 +951,10 @@
                 "instanceId": {
                     "description": "Instance id token of the app.",
                     "type": "string"
+                },
+                "returnSecureToken": {
+                    "description": "Whether return sts id token and refresh token instead of gitkit token.",
+                    "type": "boolean"
                 },
                 "token": {
                     "description": "The custom token to verify",
@@ -758,6 +984,10 @@
                     "description": "The email of the user.",
                     "type": "string"
                 },
+                "idToken": {
+                    "description": "The GITKit token of the authenticated user.",
+                    "type": "string"
+                },
                 "instanceId": {
                     "description": "Instance id token of the app.",
                     "type": "string"
@@ -769,6 +999,10 @@
                 "pendingIdToken": {
                     "description": "The GITKit token for the non-trusted IDP, which is to be confirmed by the user.",
                     "type": "string"
+                },
+                "returnSecureToken": {
+                    "description": "Whether return sts id token and refresh token instead of gitkit token.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -865,6 +1099,11 @@
                     "description": "The email of the user.",
                     "type": "string"
                 },
+                "expiresIn": {
+                    "description": "If idToken is STS id token, then this field will be expiration time of STS id token in seconds.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "idToken": {
                     "description": "The Gitkit id token to login the newly sign up user.",
                     "type": "string"
@@ -876,6 +1115,10 @@
                 },
                 "newEmail": {
                     "description": "The new email the user attempts to change to.",
+                    "type": "string"
+                },
+                "photoUrl": {
+                    "description": "The photo url of the user.",
                     "type": "string"
                 },
                 "providerUserInfo": {
@@ -898,6 +1141,47 @@
                         "type": "object"
                     },
                     "type": "array"
+                },
+                "refreshToken": {
+                    "description": "If idToken is STS id token, then this field will be refresh token.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SignupNewUserResponse": {
+            "description": "Response of signing up new user, creating anonymous user or anonymous user reauth.",
+            "id": "SignupNewUserResponse",
+            "properties": {
+                "displayName": {
+                    "description": "The name of the user.",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "The email of the user.",
+                    "type": "string"
+                },
+                "expiresIn": {
+                    "description": "If idToken is STS id token, then this field will be expiration time of STS id token in seconds.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "idToken": {
+                    "description": "The Gitkit id token to login the newly sign up user.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "identitytoolkit#SignupNewUserResponse",
+                    "description": "The fixed string \"identitytoolkit#SignupNewUserResponse\".",
+                    "type": "string"
+                },
+                "localId": {
+                    "description": "The RP local ID of the user.",
+                    "type": "string"
+                },
+                "refreshToken": {
+                    "description": "If idToken is STS id token, then this field will be refresh token.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -978,6 +1262,10 @@
                                 "description": "The user's display name at the IDP.",
                                 "type": "string"
                             },
+                            "email": {
+                                "description": "User's email at IDP.",
+                                "type": "string"
+                            },
                             "federatedId": {
                                 "description": "User's identifier at IDP.",
                                 "type": "string"
@@ -988,6 +1276,10 @@
                             },
                             "providerId": {
                                 "description": "The IdP ID. For white listed IdPs it's a short domain name, e.g., google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP identifier.",
+                                "type": "string"
+                            },
+                            "rawId": {
+                                "description": "User's raw identifier directly returned from IDP.",
                                 "type": "string"
                             }
                         },
@@ -1052,6 +1344,11 @@
                 "emailVerified": {
                     "description": "The value is true if the IDP is also the email provider. It means the user owns the email.",
                     "type": "boolean"
+                },
+                "expiresIn": {
+                    "description": "If idToken is STS id token, then this field will be expiration time of STS id token in seconds.",
+                    "format": "int64",
+                    "type": "string"
                 },
                 "federatedId": {
                     "description": "The unique ID identifies the IdP account.",
@@ -1123,6 +1420,10 @@
                     "description": "The scope for the OpenID OAuth extension.",
                     "type": "string"
                 },
+                "oauthTokenSecret": {
+                    "description": "The OAuth1 access token secret.",
+                    "type": "string"
+                },
                 "originalEmail": {
                     "description": "The original email stored in the mapping storage. It's returned when the federated ID is associated to a different email.",
                     "type": "string"
@@ -1133,6 +1434,10 @@
                 },
                 "providerId": {
                     "description": "The IdP ID. For white listed IdPs it's a short domain name e.g. google.com, aol.com, live.net and yahoo.com. If the \"providerId\" param is set to OpenID OP identifer other than the whilte listed IdPs the OP identifier is returned. If the \"identifier\" param is federated ID in the createAuthUri request. The domain part of the federated ID is returned.",
+                    "type": "string"
+                },
+                "refreshToken": {
+                    "description": "If idToken is STS id token, then this field will be refresh token.",
                     "type": "string"
                 },
                 "timeZone": {
@@ -1153,6 +1458,11 @@
             "description": "Response from verifying a custom token",
             "id": "VerifyCustomTokenResponse",
             "properties": {
+                "expiresIn": {
+                    "description": "If idToken is STS id token, then this field will be expiration time of STS id token in seconds.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "idToken": {
                     "description": "The GITKit token for authenticated user.",
                     "type": "string"
@@ -1160,6 +1470,10 @@
                 "kind": {
                     "default": "identitytoolkit#VerifyCustomTokenResponse",
                     "description": "The fixed string \"identitytoolkit#VerifyCustomTokenResponse\".",
+                    "type": "string"
+                },
+                "refreshToken": {
+                    "description": "If idToken is STS id token, then this field will be refresh token.",
                     "type": "string"
                 }
             },
@@ -1175,6 +1489,11 @@
                 },
                 "email": {
                     "description": "The email returned by the IdP. NOTE: The federated login user may not own the email.",
+                    "type": "string"
+                },
+                "expiresIn": {
+                    "description": "If idToken is STS id token, then this field will be expiration time of STS id token in seconds.",
+                    "format": "int64",
                     "type": "string"
                 },
                 "idToken": {
@@ -1205,6 +1524,10 @@
                 },
                 "photoUrl": {
                     "description": "The URI of the user's photo at IdP",
+                    "type": "string"
+                },
+                "refreshToken": {
+                    "description": "If idToken is STS id token, then this field will be refresh token.",
                     "type": "string"
                 },
                 "registered": {

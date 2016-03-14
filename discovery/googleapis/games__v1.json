@@ -9,7 +9,7 @@
                     "description": "Share your Google+ profile information and view and manage your game activity"
                 },
                 "https://www.googleapis.com/auth/plus.login": {
-                    "description": "Know your basic profile info and list of people in your circles."
+                    "description": "Know the list of people in your circles, your age range, and language"
                 }
             }
         }
@@ -21,7 +21,7 @@
     "description": "The API for Google Play Game Services.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/dadzq60iAtGqkBsDw6XsI82tB8k\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/lPnD-E3rEJMKwYh9r_wAysihPdo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1221,11 +1221,13 @@
                             "description": "The collection of scores you're requesting.",
                             "enum": [
                                 "PUBLIC",
-                                "SOCIAL"
+                                "SOCIAL",
+                                "SOCIAL_1P"
                             ],
                             "enumDescriptions": [
                                 "List all scores in the public leaderboard.",
-                                "List only social scores."
+                                "List only social scores.",
+                                "List only social scores, not respecting the fACL."
                             ],
                             "location": "path",
                             "required": true,
@@ -1295,11 +1297,13 @@
                             "description": "The collection of scores you're requesting.",
                             "enum": [
                                 "PUBLIC",
-                                "SOCIAL"
+                                "SOCIAL",
+                                "SOCIAL_1P"
                             ],
                             "enumDescriptions": [
                                 "List all scores in the public leaderboard.",
-                                "List only social scores."
+                                "List only social scores.",
+                                "List only social scores, not respecting the fACL."
                             ],
                             "location": "path",
                             "required": true,
@@ -1935,7 +1939,7 @@
             }
         }
     },
-    "revision": "20160126",
+    "revision": "20160309",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {
@@ -2038,7 +2042,7 @@
                     "type": "string"
                 },
                 "newlyUnlocked": {
-                    "description": "Whether the the current steps for the achievement has reached the number of steps required to unlock.",
+                    "description": "Whether the current steps for the achievement has reached the number of steps required to unlock.",
                     "type": "boolean"
                 }
             },
@@ -2344,6 +2348,10 @@
             "description": "This is a JSON template for a third party application verification response resource.",
             "id": "ApplicationVerifyResponse",
             "properties": {
+                "alternate_player_id": {
+                    "description": "An alternate ID that was once used for the player that was issued the auth token used in this request. (This field is not normally populated.)",
+                    "type": "string"
+                },
                 "kind": {
                     "default": "games#applicationVerifyResponse",
                     "description": "Uniquely identifies the type of this resource. Value is always the fixed string games#applicationVerifyResponse.",

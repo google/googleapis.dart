@@ -17,7 +17,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client gmail/v1';
 
-/** The Gmail REST API. */
+/** Access Gmail mailboxes including sending user email. */
 class GmailApi {
   /** View and manage your mail */
   static const MailGoogleComScope = "https://mail.google.com/";
@@ -365,6 +365,8 @@ class UsersDraftsResourceApi {
    * [userId] - The user's email address. The special value me can be used to
    * indicate the authenticated user.
    *
+   * [includeSpamTrash] - Include drafts from SPAM and TRASH in the results.
+   *
    * [maxResults] - Maximum number of drafts to return.
    *
    * [pageToken] - Page token to retrieve a specific page of results in the
@@ -378,7 +380,7 @@ class UsersDraftsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDraftsResponse> list(core.String userId, {core.int maxResults, core.String pageToken}) {
+  async.Future<ListDraftsResponse> list(core.String userId, {core.bool includeSpamTrash, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -388,6 +390,9 @@ class UsersDraftsResourceApi {
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (includeSpamTrash != null) {
+      _queryParams["includeSpamTrash"] = ["${includeSpamTrash}"];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -910,6 +915,52 @@ class UsersMessagesResourceApi {
 
   UsersMessagesResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Deletes many messages by message ID. Provides no guarantees that messages
+   * were not already deleted or even existed at all.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [userId] - The user's email address. The special value me can be used to
+   * indicate the authenticated user.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future batchDelete(BatchDeleteMessagesRequest request, core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/messages/batchDelete';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
 
   /**
    * Immediately and permanently deletes the specified message. This operation
@@ -1841,6 +1892,27 @@ class UsersThreadsResourceApi {
 }
 
 
+
+class BatchDeleteMessagesRequest {
+  /** The IDs of the messages to delete. */
+  core.List<core.String> ids;
+
+  BatchDeleteMessagesRequest();
+
+  BatchDeleteMessagesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("ids")) {
+      ids = _json["ids"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (ids != null) {
+      _json["ids"] = ids;
+    }
+    return _json;
+  }
+}
 
 /** A draft email in the user's mailbox. */
 class Draft {

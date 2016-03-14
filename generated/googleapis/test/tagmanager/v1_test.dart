@@ -76,14 +76,14 @@ checkAccount(api.Account o) {
   buildCounterAccount--;
 }
 
-buildUnnamed1498() {
+buildUnnamed1803() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1498(core.List<core.String> o) {
+checkUnnamed1803(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -94,7 +94,7 @@ buildAccountAccess() {
   var o = new api.AccountAccess();
   buildCounterAccountAccess++;
   if (buildCounterAccountAccess < 3) {
-    o.permission = buildUnnamed1498();
+    o.permission = buildUnnamed1803();
   }
   buildCounterAccountAccess--;
   return o;
@@ -103,19 +103,19 @@ buildAccountAccess() {
 checkAccountAccess(api.AccountAccess o) {
   buildCounterAccountAccess++;
   if (buildCounterAccountAccess < 3) {
-    checkUnnamed1498(o.permission);
+    checkUnnamed1803(o.permission);
   }
   buildCounterAccountAccess--;
 }
 
-buildUnnamed1499() {
+buildUnnamed1804() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed1499(core.List<api.Parameter> o) {
+checkUnnamed1804(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -126,7 +126,7 @@ buildCondition() {
   var o = new api.Condition();
   buildCounterCondition++;
   if (buildCounterCondition < 3) {
-    o.parameter = buildUnnamed1499();
+    o.parameter = buildUnnamed1804();
     o.type = "foo";
   }
   buildCounterCondition--;
@@ -136,46 +136,46 @@ buildCondition() {
 checkCondition(api.Condition o) {
   buildCounterCondition++;
   if (buildCounterCondition < 3) {
-    checkUnnamed1499(o.parameter);
+    checkUnnamed1804(o.parameter);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterCondition--;
 }
 
-buildUnnamed1500() {
+buildUnnamed1805() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1500(core.List<core.String> o) {
+checkUnnamed1805(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1501() {
+buildUnnamed1806() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1501(core.List<core.String> o) {
+checkUnnamed1806(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1502() {
+buildUnnamed1807() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1502(core.List<core.String> o) {
+checkUnnamed1807(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -188,15 +188,15 @@ buildContainer() {
   if (buildCounterContainer < 3) {
     o.accountId = "foo";
     o.containerId = "foo";
-    o.domainName = buildUnnamed1500();
-    o.enabledBuiltInVariable = buildUnnamed1501();
+    o.domainName = buildUnnamed1805();
+    o.enabledBuiltInVariable = buildUnnamed1806();
     o.fingerprint = "foo";
     o.name = "foo";
     o.notes = "foo";
     o.publicId = "foo";
     o.timeZoneCountryId = "foo";
     o.timeZoneId = "foo";
-    o.usageContext = buildUnnamed1502();
+    o.usageContext = buildUnnamed1807();
   }
   buildCounterContainer--;
   return o;
@@ -207,27 +207,27 @@ checkContainer(api.Container o) {
   if (buildCounterContainer < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkUnnamed1500(o.domainName);
-    checkUnnamed1501(o.enabledBuiltInVariable);
+    checkUnnamed1805(o.domainName);
+    checkUnnamed1806(o.enabledBuiltInVariable);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
     unittest.expect(o.publicId, unittest.equals('foo'));
     unittest.expect(o.timeZoneCountryId, unittest.equals('foo'));
     unittest.expect(o.timeZoneId, unittest.equals('foo'));
-    checkUnnamed1502(o.usageContext);
+    checkUnnamed1807(o.usageContext);
   }
   buildCounterContainer--;
 }
 
-buildUnnamed1503() {
+buildUnnamed1808() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1503(core.List<core.String> o) {
+checkUnnamed1808(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -239,7 +239,7 @@ buildContainerAccess() {
   buildCounterContainerAccess++;
   if (buildCounterContainerAccess < 3) {
     o.containerId = "foo";
-    o.permission = buildUnnamed1503();
+    o.permission = buildUnnamed1808();
   }
   buildCounterContainerAccess--;
   return o;
@@ -249,84 +249,84 @@ checkContainerAccess(api.ContainerAccess o) {
   buildCounterContainerAccess++;
   if (buildCounterContainerAccess < 3) {
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkUnnamed1503(o.permission);
+    checkUnnamed1808(o.permission);
   }
   buildCounterContainerAccess--;
 }
 
-buildUnnamed1504() {
+buildUnnamed1809() {
   var o = new core.List<api.Folder>();
   o.add(buildFolder());
   o.add(buildFolder());
   return o;
 }
 
-checkUnnamed1504(core.List<api.Folder> o) {
+checkUnnamed1809(core.List<api.Folder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFolder(o[0]);
   checkFolder(o[1]);
 }
 
-buildUnnamed1505() {
+buildUnnamed1810() {
   var o = new core.List<api.Macro>();
   o.add(buildMacro());
   o.add(buildMacro());
   return o;
 }
 
-checkUnnamed1505(core.List<api.Macro> o) {
+checkUnnamed1810(core.List<api.Macro> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMacro(o[0]);
   checkMacro(o[1]);
 }
 
-buildUnnamed1506() {
+buildUnnamed1811() {
   var o = new core.List<api.Rule>();
   o.add(buildRule());
   o.add(buildRule());
   return o;
 }
 
-checkUnnamed1506(core.List<api.Rule> o) {
+checkUnnamed1811(core.List<api.Rule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRule(o[0]);
   checkRule(o[1]);
 }
 
-buildUnnamed1507() {
+buildUnnamed1812() {
   var o = new core.List<api.Tag>();
   o.add(buildTag());
   o.add(buildTag());
   return o;
 }
 
-checkUnnamed1507(core.List<api.Tag> o) {
+checkUnnamed1812(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
 }
 
-buildUnnamed1508() {
+buildUnnamed1813() {
   var o = new core.List<api.Trigger>();
   o.add(buildTrigger());
   o.add(buildTrigger());
   return o;
 }
 
-checkUnnamed1508(core.List<api.Trigger> o) {
+checkUnnamed1813(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrigger(o[0]);
   checkTrigger(o[1]);
 }
 
-buildUnnamed1509() {
+buildUnnamed1814() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed1509(core.List<api.Variable> o) {
+checkUnnamed1814(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -343,14 +343,14 @@ buildContainerVersion() {
     o.containerVersionId = "foo";
     o.deleted = true;
     o.fingerprint = "foo";
-    o.folder = buildUnnamed1504();
-    o.macro = buildUnnamed1505();
+    o.folder = buildUnnamed1809();
+    o.macro = buildUnnamed1810();
     o.name = "foo";
     o.notes = "foo";
-    o.rule = buildUnnamed1506();
-    o.tag = buildUnnamed1507();
-    o.trigger = buildUnnamed1508();
-    o.variable = buildUnnamed1509();
+    o.rule = buildUnnamed1811();
+    o.tag = buildUnnamed1812();
+    o.trigger = buildUnnamed1813();
+    o.variable = buildUnnamed1814();
   }
   buildCounterContainerVersion--;
   return o;
@@ -365,14 +365,14 @@ checkContainerVersion(api.ContainerVersion o) {
     unittest.expect(o.containerVersionId, unittest.equals('foo'));
     unittest.expect(o.deleted, unittest.isTrue);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
-    checkUnnamed1504(o.folder);
-    checkUnnamed1505(o.macro);
+    checkUnnamed1809(o.folder);
+    checkUnnamed1810(o.macro);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkUnnamed1506(o.rule);
-    checkUnnamed1507(o.tag);
-    checkUnnamed1508(o.trigger);
-    checkUnnamed1509(o.variable);
+    checkUnnamed1811(o.rule);
+    checkUnnamed1812(o.tag);
+    checkUnnamed1813(o.trigger);
+    checkUnnamed1814(o.variable);
   }
   buildCounterContainerVersion--;
 }
@@ -458,6 +458,47 @@ checkCreateContainerVersionResponse(api.CreateContainerVersionResponse o) {
   buildCounterCreateContainerVersionResponse--;
 }
 
+core.int buildCounterEnvironment = 0;
+buildEnvironment() {
+  var o = new api.Environment();
+  buildCounterEnvironment++;
+  if (buildCounterEnvironment < 3) {
+    o.accountId = "foo";
+    o.authorizationCode = "foo";
+    o.authorizationTimestampMs = "foo";
+    o.containerId = "foo";
+    o.containerVersionId = "foo";
+    o.description = "foo";
+    o.enableDebug = true;
+    o.environmentId = "foo";
+    o.fingerprint = "foo";
+    o.name = "foo";
+    o.type = "foo";
+    o.url = "foo";
+  }
+  buildCounterEnvironment--;
+  return o;
+}
+
+checkEnvironment(api.Environment o) {
+  buildCounterEnvironment++;
+  if (buildCounterEnvironment < 3) {
+    unittest.expect(o.accountId, unittest.equals('foo'));
+    unittest.expect(o.authorizationCode, unittest.equals('foo'));
+    unittest.expect(o.authorizationTimestampMs, unittest.equals('foo'));
+    unittest.expect(o.containerId, unittest.equals('foo'));
+    unittest.expect(o.containerVersionId, unittest.equals('foo'));
+    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.enableDebug, unittest.isTrue);
+    unittest.expect(o.environmentId, unittest.equals('foo'));
+    unittest.expect(o.fingerprint, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(o.url, unittest.equals('foo'));
+  }
+  buildCounterEnvironment--;
+}
+
 core.int buildCounterFolder = 0;
 buildFolder() {
   var o = new api.Folder();
@@ -485,40 +526,40 @@ checkFolder(api.Folder o) {
   buildCounterFolder--;
 }
 
-buildUnnamed1510() {
+buildUnnamed1815() {
   var o = new core.List<api.Tag>();
   o.add(buildTag());
   o.add(buildTag());
   return o;
 }
 
-checkUnnamed1510(core.List<api.Tag> o) {
+checkUnnamed1815(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
 }
 
-buildUnnamed1511() {
+buildUnnamed1816() {
   var o = new core.List<api.Trigger>();
   o.add(buildTrigger());
   o.add(buildTrigger());
   return o;
 }
 
-checkUnnamed1511(core.List<api.Trigger> o) {
+checkUnnamed1816(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrigger(o[0]);
   checkTrigger(o[1]);
 }
 
-buildUnnamed1512() {
+buildUnnamed1817() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed1512(core.List<api.Variable> o) {
+checkUnnamed1817(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -529,9 +570,9 @@ buildFolderEntities() {
   var o = new api.FolderEntities();
   buildCounterFolderEntities++;
   if (buildCounterFolderEntities < 3) {
-    o.tag = buildUnnamed1510();
-    o.trigger = buildUnnamed1511();
-    o.variable = buildUnnamed1512();
+    o.tag = buildUnnamed1815();
+    o.trigger = buildUnnamed1816();
+    o.variable = buildUnnamed1817();
   }
   buildCounterFolderEntities--;
   return o;
@@ -540,21 +581,21 @@ buildFolderEntities() {
 checkFolderEntities(api.FolderEntities o) {
   buildCounterFolderEntities++;
   if (buildCounterFolderEntities < 3) {
-    checkUnnamed1510(o.tag);
-    checkUnnamed1511(o.trigger);
-    checkUnnamed1512(o.variable);
+    checkUnnamed1815(o.tag);
+    checkUnnamed1816(o.trigger);
+    checkUnnamed1817(o.variable);
   }
   buildCounterFolderEntities--;
 }
 
-buildUnnamed1513() {
+buildUnnamed1818() {
   var o = new core.List<api.UserAccess>();
   o.add(buildUserAccess());
   o.add(buildUserAccess());
   return o;
 }
 
-checkUnnamed1513(core.List<api.UserAccess> o) {
+checkUnnamed1818(core.List<api.UserAccess> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserAccess(o[0]);
   checkUserAccess(o[1]);
@@ -565,7 +606,7 @@ buildListAccountUsersResponse() {
   var o = new api.ListAccountUsersResponse();
   buildCounterListAccountUsersResponse++;
   if (buildCounterListAccountUsersResponse < 3) {
-    o.userAccess = buildUnnamed1513();
+    o.userAccess = buildUnnamed1818();
   }
   buildCounterListAccountUsersResponse--;
   return o;
@@ -574,19 +615,19 @@ buildListAccountUsersResponse() {
 checkListAccountUsersResponse(api.ListAccountUsersResponse o) {
   buildCounterListAccountUsersResponse++;
   if (buildCounterListAccountUsersResponse < 3) {
-    checkUnnamed1513(o.userAccess);
+    checkUnnamed1818(o.userAccess);
   }
   buildCounterListAccountUsersResponse--;
 }
 
-buildUnnamed1514() {
+buildUnnamed1819() {
   var o = new core.List<api.Account>();
   o.add(buildAccount());
   o.add(buildAccount());
   return o;
 }
 
-checkUnnamed1514(core.List<api.Account> o) {
+checkUnnamed1819(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccount(o[0]);
   checkAccount(o[1]);
@@ -597,7 +638,7 @@ buildListAccountsResponse() {
   var o = new api.ListAccountsResponse();
   buildCounterListAccountsResponse++;
   if (buildCounterListAccountsResponse < 3) {
-    o.accounts = buildUnnamed1514();
+    o.accounts = buildUnnamed1819();
   }
   buildCounterListAccountsResponse--;
   return o;
@@ -606,32 +647,32 @@ buildListAccountsResponse() {
 checkListAccountsResponse(api.ListAccountsResponse o) {
   buildCounterListAccountsResponse++;
   if (buildCounterListAccountsResponse < 3) {
-    checkUnnamed1514(o.accounts);
+    checkUnnamed1819(o.accounts);
   }
   buildCounterListAccountsResponse--;
 }
 
-buildUnnamed1515() {
+buildUnnamed1820() {
   var o = new core.List<api.ContainerVersion>();
   o.add(buildContainerVersion());
   o.add(buildContainerVersion());
   return o;
 }
 
-checkUnnamed1515(core.List<api.ContainerVersion> o) {
+checkUnnamed1820(core.List<api.ContainerVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerVersion(o[0]);
   checkContainerVersion(o[1]);
 }
 
-buildUnnamed1516() {
+buildUnnamed1821() {
   var o = new core.List<api.ContainerVersionHeader>();
   o.add(buildContainerVersionHeader());
   o.add(buildContainerVersionHeader());
   return o;
 }
 
-checkUnnamed1516(core.List<api.ContainerVersionHeader> o) {
+checkUnnamed1821(core.List<api.ContainerVersionHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerVersionHeader(o[0]);
   checkContainerVersionHeader(o[1]);
@@ -642,8 +683,8 @@ buildListContainerVersionsResponse() {
   var o = new api.ListContainerVersionsResponse();
   buildCounterListContainerVersionsResponse++;
   if (buildCounterListContainerVersionsResponse < 3) {
-    o.containerVersion = buildUnnamed1515();
-    o.containerVersionHeader = buildUnnamed1516();
+    o.containerVersion = buildUnnamed1820();
+    o.containerVersionHeader = buildUnnamed1821();
   }
   buildCounterListContainerVersionsResponse--;
   return o;
@@ -652,20 +693,20 @@ buildListContainerVersionsResponse() {
 checkListContainerVersionsResponse(api.ListContainerVersionsResponse o) {
   buildCounterListContainerVersionsResponse++;
   if (buildCounterListContainerVersionsResponse < 3) {
-    checkUnnamed1515(o.containerVersion);
-    checkUnnamed1516(o.containerVersionHeader);
+    checkUnnamed1820(o.containerVersion);
+    checkUnnamed1821(o.containerVersionHeader);
   }
   buildCounterListContainerVersionsResponse--;
 }
 
-buildUnnamed1517() {
+buildUnnamed1822() {
   var o = new core.List<api.Container>();
   o.add(buildContainer());
   o.add(buildContainer());
   return o;
 }
 
-checkUnnamed1517(core.List<api.Container> o) {
+checkUnnamed1822(core.List<api.Container> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainer(o[0]);
   checkContainer(o[1]);
@@ -676,7 +717,7 @@ buildListContainersResponse() {
   var o = new api.ListContainersResponse();
   buildCounterListContainersResponse++;
   if (buildCounterListContainersResponse < 3) {
-    o.containers = buildUnnamed1517();
+    o.containers = buildUnnamed1822();
   }
   buildCounterListContainersResponse--;
   return o;
@@ -685,19 +726,51 @@ buildListContainersResponse() {
 checkListContainersResponse(api.ListContainersResponse o) {
   buildCounterListContainersResponse++;
   if (buildCounterListContainersResponse < 3) {
-    checkUnnamed1517(o.containers);
+    checkUnnamed1822(o.containers);
   }
   buildCounterListContainersResponse--;
 }
 
-buildUnnamed1518() {
+buildUnnamed1823() {
+  var o = new core.List<api.Environment>();
+  o.add(buildEnvironment());
+  o.add(buildEnvironment());
+  return o;
+}
+
+checkUnnamed1823(core.List<api.Environment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkEnvironment(o[0]);
+  checkEnvironment(o[1]);
+}
+
+core.int buildCounterListEnvironmentsResponse = 0;
+buildListEnvironmentsResponse() {
+  var o = new api.ListEnvironmentsResponse();
+  buildCounterListEnvironmentsResponse++;
+  if (buildCounterListEnvironmentsResponse < 3) {
+    o.environments = buildUnnamed1823();
+  }
+  buildCounterListEnvironmentsResponse--;
+  return o;
+}
+
+checkListEnvironmentsResponse(api.ListEnvironmentsResponse o) {
+  buildCounterListEnvironmentsResponse++;
+  if (buildCounterListEnvironmentsResponse < 3) {
+    checkUnnamed1823(o.environments);
+  }
+  buildCounterListEnvironmentsResponse--;
+}
+
+buildUnnamed1824() {
   var o = new core.List<api.Folder>();
   o.add(buildFolder());
   o.add(buildFolder());
   return o;
 }
 
-checkUnnamed1518(core.List<api.Folder> o) {
+checkUnnamed1824(core.List<api.Folder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFolder(o[0]);
   checkFolder(o[1]);
@@ -708,7 +781,7 @@ buildListFoldersResponse() {
   var o = new api.ListFoldersResponse();
   buildCounterListFoldersResponse++;
   if (buildCounterListFoldersResponse < 3) {
-    o.folders = buildUnnamed1518();
+    o.folders = buildUnnamed1824();
   }
   buildCounterListFoldersResponse--;
   return o;
@@ -717,19 +790,19 @@ buildListFoldersResponse() {
 checkListFoldersResponse(api.ListFoldersResponse o) {
   buildCounterListFoldersResponse++;
   if (buildCounterListFoldersResponse < 3) {
-    checkUnnamed1518(o.folders);
+    checkUnnamed1824(o.folders);
   }
   buildCounterListFoldersResponse--;
 }
 
-buildUnnamed1519() {
+buildUnnamed1825() {
   var o = new core.List<api.Tag>();
   o.add(buildTag());
   o.add(buildTag());
   return o;
 }
 
-checkUnnamed1519(core.List<api.Tag> o) {
+checkUnnamed1825(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
@@ -740,7 +813,7 @@ buildListTagsResponse() {
   var o = new api.ListTagsResponse();
   buildCounterListTagsResponse++;
   if (buildCounterListTagsResponse < 3) {
-    o.tags = buildUnnamed1519();
+    o.tags = buildUnnamed1825();
   }
   buildCounterListTagsResponse--;
   return o;
@@ -749,19 +822,19 @@ buildListTagsResponse() {
 checkListTagsResponse(api.ListTagsResponse o) {
   buildCounterListTagsResponse++;
   if (buildCounterListTagsResponse < 3) {
-    checkUnnamed1519(o.tags);
+    checkUnnamed1825(o.tags);
   }
   buildCounterListTagsResponse--;
 }
 
-buildUnnamed1520() {
+buildUnnamed1826() {
   var o = new core.List<api.Trigger>();
   o.add(buildTrigger());
   o.add(buildTrigger());
   return o;
 }
 
-checkUnnamed1520(core.List<api.Trigger> o) {
+checkUnnamed1826(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrigger(o[0]);
   checkTrigger(o[1]);
@@ -772,7 +845,7 @@ buildListTriggersResponse() {
   var o = new api.ListTriggersResponse();
   buildCounterListTriggersResponse++;
   if (buildCounterListTriggersResponse < 3) {
-    o.triggers = buildUnnamed1520();
+    o.triggers = buildUnnamed1826();
   }
   buildCounterListTriggersResponse--;
   return o;
@@ -781,19 +854,19 @@ buildListTriggersResponse() {
 checkListTriggersResponse(api.ListTriggersResponse o) {
   buildCounterListTriggersResponse++;
   if (buildCounterListTriggersResponse < 3) {
-    checkUnnamed1520(o.triggers);
+    checkUnnamed1826(o.triggers);
   }
   buildCounterListTriggersResponse--;
 }
 
-buildUnnamed1521() {
+buildUnnamed1827() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed1521(core.List<api.Variable> o) {
+checkUnnamed1827(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -804,7 +877,7 @@ buildListVariablesResponse() {
   var o = new api.ListVariablesResponse();
   buildCounterListVariablesResponse++;
   if (buildCounterListVariablesResponse < 3) {
-    o.variables = buildUnnamed1521();
+    o.variables = buildUnnamed1827();
   }
   buildCounterListVariablesResponse--;
   return o;
@@ -813,45 +886,45 @@ buildListVariablesResponse() {
 checkListVariablesResponse(api.ListVariablesResponse o) {
   buildCounterListVariablesResponse++;
   if (buildCounterListVariablesResponse < 3) {
-    checkUnnamed1521(o.variables);
+    checkUnnamed1827(o.variables);
   }
   buildCounterListVariablesResponse--;
 }
 
-buildUnnamed1522() {
+buildUnnamed1828() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1522(core.List<core.String> o) {
+checkUnnamed1828(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1523() {
+buildUnnamed1829() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1523(core.List<core.String> o) {
+checkUnnamed1829(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1524() {
+buildUnnamed1830() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed1524(core.List<api.Parameter> o) {
+checkUnnamed1830(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -864,13 +937,13 @@ buildMacro() {
   if (buildCounterMacro < 3) {
     o.accountId = "foo";
     o.containerId = "foo";
-    o.disablingRuleId = buildUnnamed1522();
-    o.enablingRuleId = buildUnnamed1523();
+    o.disablingRuleId = buildUnnamed1828();
+    o.enablingRuleId = buildUnnamed1829();
     o.fingerprint = "foo";
     o.macroId = "foo";
     o.name = "foo";
     o.notes = "foo";
-    o.parameter = buildUnnamed1524();
+    o.parameter = buildUnnamed1830();
     o.parentFolderId = "foo";
     o.scheduleEndMs = "foo";
     o.scheduleStartMs = "foo";
@@ -885,13 +958,13 @@ checkMacro(api.Macro o) {
   if (buildCounterMacro < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkUnnamed1522(o.disablingRuleId);
-    checkUnnamed1523(o.enablingRuleId);
+    checkUnnamed1828(o.disablingRuleId);
+    checkUnnamed1829(o.enablingRuleId);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.macroId, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkUnnamed1524(o.parameter);
+    checkUnnamed1830(o.parameter);
     unittest.expect(o.parentFolderId, unittest.equals('foo'));
     unittest.expect(o.scheduleEndMs, unittest.equals('foo'));
     unittest.expect(o.scheduleStartMs, unittest.equals('foo'));
@@ -900,27 +973,27 @@ checkMacro(api.Macro o) {
   buildCounterMacro--;
 }
 
-buildUnnamed1525() {
+buildUnnamed1831() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed1525(core.List<api.Parameter> o) {
+checkUnnamed1831(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
 }
 
-buildUnnamed1526() {
+buildUnnamed1832() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed1526(core.List<api.Parameter> o) {
+checkUnnamed1832(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -932,8 +1005,8 @@ buildParameter() {
   buildCounterParameter++;
   if (buildCounterParameter < 3) {
     o.key = "foo";
-    o.list = buildUnnamed1525();
-    o.map = buildUnnamed1526();
+    o.list = buildUnnamed1831();
+    o.map = buildUnnamed1832();
     o.type = "foo";
     o.value = "foo";
   }
@@ -945,8 +1018,8 @@ checkParameter(api.Parameter o) {
   buildCounterParameter++;
   if (buildCounterParameter < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
-    checkUnnamed1525(o.list);
-    checkUnnamed1526(o.map);
+    checkUnnamed1831(o.list);
+    checkUnnamed1832(o.map);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
@@ -974,14 +1047,14 @@ checkPublishContainerVersionResponse(api.PublishContainerVersionResponse o) {
   buildCounterPublishContainerVersionResponse--;
 }
 
-buildUnnamed1527() {
+buildUnnamed1833() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed1527(core.List<api.Condition> o) {
+checkUnnamed1833(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
@@ -993,7 +1066,7 @@ buildRule() {
   buildCounterRule++;
   if (buildCounterRule < 3) {
     o.accountId = "foo";
-    o.condition = buildUnnamed1527();
+    o.condition = buildUnnamed1833();
     o.containerId = "foo";
     o.fingerprint = "foo";
     o.name = "foo";
@@ -1008,7 +1081,7 @@ checkRule(api.Rule o) {
   buildCounterRule++;
   if (buildCounterRule < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkUnnamed1527(o.condition);
+    checkUnnamed1833(o.condition);
     unittest.expect(o.containerId, unittest.equals('foo'));
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1039,92 +1112,92 @@ checkSetupTag(api.SetupTag o) {
   buildCounterSetupTag--;
 }
 
-buildUnnamed1528() {
+buildUnnamed1834() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1528(core.List<core.String> o) {
+checkUnnamed1834(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1529() {
+buildUnnamed1835() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1529(core.List<core.String> o) {
+checkUnnamed1835(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1530() {
+buildUnnamed1836() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1530(core.List<core.String> o) {
+checkUnnamed1836(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1531() {
+buildUnnamed1837() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1531(core.List<core.String> o) {
+checkUnnamed1837(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1532() {
+buildUnnamed1838() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed1532(core.List<api.Parameter> o) {
+checkUnnamed1838(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
 }
 
-buildUnnamed1533() {
+buildUnnamed1839() {
   var o = new core.List<api.SetupTag>();
   o.add(buildSetupTag());
   o.add(buildSetupTag());
   return o;
 }
 
-checkUnnamed1533(core.List<api.SetupTag> o) {
+checkUnnamed1839(core.List<api.SetupTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSetupTag(o[0]);
   checkSetupTag(o[1]);
 }
 
-buildUnnamed1534() {
+buildUnnamed1840() {
   var o = new core.List<api.TeardownTag>();
   o.add(buildTeardownTag());
   o.add(buildTeardownTag());
   return o;
 }
 
-checkUnnamed1534(core.List<api.TeardownTag> o) {
+checkUnnamed1840(core.List<api.TeardownTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeardownTag(o[0]);
   checkTeardownTag(o[1]);
@@ -1136,24 +1209,24 @@ buildTag() {
   buildCounterTag++;
   if (buildCounterTag < 3) {
     o.accountId = "foo";
-    o.blockingRuleId = buildUnnamed1528();
-    o.blockingTriggerId = buildUnnamed1529();
+    o.blockingRuleId = buildUnnamed1834();
+    o.blockingTriggerId = buildUnnamed1835();
     o.containerId = "foo";
     o.fingerprint = "foo";
-    o.firingRuleId = buildUnnamed1530();
-    o.firingTriggerId = buildUnnamed1531();
+    o.firingRuleId = buildUnnamed1836();
+    o.firingTriggerId = buildUnnamed1837();
     o.liveOnly = true;
     o.name = "foo";
     o.notes = "foo";
-    o.parameter = buildUnnamed1532();
+    o.parameter = buildUnnamed1838();
     o.parentFolderId = "foo";
     o.priority = buildParameter();
     o.scheduleEndMs = "foo";
     o.scheduleStartMs = "foo";
-    o.setupTag = buildUnnamed1533();
+    o.setupTag = buildUnnamed1839();
     o.tagFiringOption = "foo";
     o.tagId = "foo";
-    o.teardownTag = buildUnnamed1534();
+    o.teardownTag = buildUnnamed1840();
     o.type = "foo";
   }
   buildCounterTag--;
@@ -1164,24 +1237,24 @@ checkTag(api.Tag o) {
   buildCounterTag++;
   if (buildCounterTag < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkUnnamed1528(o.blockingRuleId);
-    checkUnnamed1529(o.blockingTriggerId);
+    checkUnnamed1834(o.blockingRuleId);
+    checkUnnamed1835(o.blockingTriggerId);
     unittest.expect(o.containerId, unittest.equals('foo'));
     unittest.expect(o.fingerprint, unittest.equals('foo'));
-    checkUnnamed1530(o.firingRuleId);
-    checkUnnamed1531(o.firingTriggerId);
+    checkUnnamed1836(o.firingRuleId);
+    checkUnnamed1837(o.firingTriggerId);
     unittest.expect(o.liveOnly, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkUnnamed1532(o.parameter);
+    checkUnnamed1838(o.parameter);
     unittest.expect(o.parentFolderId, unittest.equals('foo'));
     checkParameter(o.priority);
     unittest.expect(o.scheduleEndMs, unittest.equals('foo'));
     unittest.expect(o.scheduleStartMs, unittest.equals('foo'));
-    checkUnnamed1533(o.setupTag);
+    checkUnnamed1839(o.setupTag);
     unittest.expect(o.tagFiringOption, unittest.equals('foo'));
     unittest.expect(o.tagId, unittest.equals('foo'));
-    checkUnnamed1534(o.teardownTag);
+    checkUnnamed1840(o.teardownTag);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterTag--;
@@ -1208,40 +1281,40 @@ checkTeardownTag(api.TeardownTag o) {
   buildCounterTeardownTag--;
 }
 
-buildUnnamed1535() {
+buildUnnamed1841() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed1535(core.List<api.Condition> o) {
+checkUnnamed1841(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-buildUnnamed1536() {
+buildUnnamed1842() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed1536(core.List<api.Condition> o) {
+checkUnnamed1842(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-buildUnnamed1537() {
+buildUnnamed1843() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed1537(core.List<api.Condition> o) {
+checkUnnamed1843(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
@@ -1253,13 +1326,13 @@ buildTrigger() {
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
     o.accountId = "foo";
-    o.autoEventFilter = buildUnnamed1535();
+    o.autoEventFilter = buildUnnamed1841();
     o.checkValidation = buildParameter();
     o.containerId = "foo";
-    o.customEventFilter = buildUnnamed1536();
+    o.customEventFilter = buildUnnamed1842();
     o.enableAllVideos = buildParameter();
     o.eventName = buildParameter();
-    o.filter = buildUnnamed1537();
+    o.filter = buildUnnamed1843();
     o.fingerprint = "foo";
     o.interval = buildParameter();
     o.limit = buildParameter();
@@ -1280,13 +1353,13 @@ checkTrigger(api.Trigger o) {
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkUnnamed1535(o.autoEventFilter);
+    checkUnnamed1841(o.autoEventFilter);
     checkParameter(o.checkValidation);
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkUnnamed1536(o.customEventFilter);
+    checkUnnamed1842(o.customEventFilter);
     checkParameter(o.enableAllVideos);
     checkParameter(o.eventName);
-    checkUnnamed1537(o.filter);
+    checkUnnamed1843(o.filter);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     checkParameter(o.interval);
     checkParameter(o.limit);
@@ -1302,14 +1375,14 @@ checkTrigger(api.Trigger o) {
   buildCounterTrigger--;
 }
 
-buildUnnamed1538() {
+buildUnnamed1844() {
   var o = new core.List<api.ContainerAccess>();
   o.add(buildContainerAccess());
   o.add(buildContainerAccess());
   return o;
 }
 
-checkUnnamed1538(core.List<api.ContainerAccess> o) {
+checkUnnamed1844(core.List<api.ContainerAccess> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerAccess(o[0]);
   checkContainerAccess(o[1]);
@@ -1322,7 +1395,7 @@ buildUserAccess() {
   if (buildCounterUserAccess < 3) {
     o.accountAccess = buildAccountAccess();
     o.accountId = "foo";
-    o.containerAccess = buildUnnamed1538();
+    o.containerAccess = buildUnnamed1844();
     o.emailAddress = "foo";
     o.permissionId = "foo";
   }
@@ -1335,47 +1408,47 @@ checkUserAccess(api.UserAccess o) {
   if (buildCounterUserAccess < 3) {
     checkAccountAccess(o.accountAccess);
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkUnnamed1538(o.containerAccess);
+    checkUnnamed1844(o.containerAccess);
     unittest.expect(o.emailAddress, unittest.equals('foo'));
     unittest.expect(o.permissionId, unittest.equals('foo'));
   }
   buildCounterUserAccess--;
 }
 
-buildUnnamed1539() {
+buildUnnamed1845() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1539(core.List<core.String> o) {
+checkUnnamed1845(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1540() {
+buildUnnamed1846() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1540(core.List<core.String> o) {
+checkUnnamed1846(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1541() {
+buildUnnamed1847() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed1541(core.List<api.Parameter> o) {
+checkUnnamed1847(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -1388,12 +1461,12 @@ buildVariable() {
   if (buildCounterVariable < 3) {
     o.accountId = "foo";
     o.containerId = "foo";
-    o.disablingTriggerId = buildUnnamed1539();
-    o.enablingTriggerId = buildUnnamed1540();
+    o.disablingTriggerId = buildUnnamed1845();
+    o.enablingTriggerId = buildUnnamed1846();
     o.fingerprint = "foo";
     o.name = "foo";
     o.notes = "foo";
-    o.parameter = buildUnnamed1541();
+    o.parameter = buildUnnamed1847();
     o.parentFolderId = "foo";
     o.scheduleEndMs = "foo";
     o.scheduleStartMs = "foo";
@@ -1409,12 +1482,12 @@ checkVariable(api.Variable o) {
   if (buildCounterVariable < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkUnnamed1539(o.disablingTriggerId);
-    checkUnnamed1540(o.enablingTriggerId);
+    checkUnnamed1845(o.disablingTriggerId);
+    checkUnnamed1846(o.enablingTriggerId);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkUnnamed1541(o.parameter);
+    checkUnnamed1847(o.parameter);
     unittest.expect(o.parentFolderId, unittest.equals('foo'));
     unittest.expect(o.scheduleEndMs, unittest.equals('foo'));
     unittest.expect(o.scheduleStartMs, unittest.equals('foo'));
@@ -1424,40 +1497,40 @@ checkVariable(api.Variable o) {
   buildCounterVariable--;
 }
 
-buildUnnamed1542() {
+buildUnnamed1848() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1542(core.List<core.String> o) {
+checkUnnamed1848(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1543() {
+buildUnnamed1849() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1543(core.List<core.String> o) {
+checkUnnamed1849(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1544() {
+buildUnnamed1850() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1544(core.List<core.String> o) {
+checkUnnamed1850(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1546,6 +1619,15 @@ main() {
   });
 
 
+  unittest.group("obj-schema-Environment", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildEnvironment();
+      var od = new api.Environment.fromJson(o.toJson());
+      checkEnvironment(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Folder", () {
     unittest.test("to-json--from-json", () {
       var o = buildFolder();
@@ -1596,6 +1678,15 @@ main() {
       var o = buildListContainersResponse();
       var od = new api.ListContainersResponse.fromJson(o.toJson());
       checkListContainersResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ListEnvironmentsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListEnvironmentsResponse();
+      var od = new api.ListEnvironmentsResponse.fromJson(o.toJson());
+      checkListEnvironmentsResponse(od);
     });
   });
 
@@ -2168,6 +2259,406 @@ main() {
   });
 
 
+  unittest.group("resource-AccountsContainersEnvironmentsResourceApi", () {
+    unittest.test("method--create", () {
+
+      var mock = new HttpServerMock();
+      api.AccountsContainersEnvironmentsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.environments;
+      var arg_request = buildEnvironment();
+      var arg_accountId = "foo";
+      var arg_containerId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.Environment.fromJson(json);
+        checkEnvironment(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("tagmanager/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
+        pathOffset += 9;
+        index = path.indexOf("/containers/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/containers/"));
+        pathOffset += 12;
+        index = path.indexOf("/environments", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/environments"));
+        pathOffset += 13;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildEnvironment());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.create(arg_request, arg_accountId, arg_containerId).then(unittest.expectAsync(((api.Environment response) {
+        checkEnvironment(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+
+      var mock = new HttpServerMock();
+      api.AccountsContainersEnvironmentsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.environments;
+      var arg_accountId = "foo";
+      var arg_containerId = "foo";
+      var arg_environmentId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("tagmanager/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
+        pathOffset += 9;
+        index = path.indexOf("/containers/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/containers/"));
+        pathOffset += 12;
+        index = path.indexOf("/environments/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/environments/"));
+        pathOffset += 14;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_environmentId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.delete(arg_accountId, arg_containerId, arg_environmentId).then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.AccountsContainersEnvironmentsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.environments;
+      var arg_accountId = "foo";
+      var arg_containerId = "foo";
+      var arg_environmentId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("tagmanager/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
+        pathOffset += 9;
+        index = path.indexOf("/containers/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/containers/"));
+        pathOffset += 12;
+        index = path.indexOf("/environments/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/environments/"));
+        pathOffset += 14;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_environmentId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildEnvironment());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_accountId, arg_containerId, arg_environmentId).then(unittest.expectAsync(((api.Environment response) {
+        checkEnvironment(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new HttpServerMock();
+      api.AccountsContainersEnvironmentsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.environments;
+      var arg_accountId = "foo";
+      var arg_containerId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("tagmanager/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
+        pathOffset += 9;
+        index = path.indexOf("/containers/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/containers/"));
+        pathOffset += 12;
+        index = path.indexOf("/environments", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/environments"));
+        pathOffset += 13;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildListEnvironmentsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_accountId, arg_containerId).then(unittest.expectAsync(((api.ListEnvironmentsResponse response) {
+        checkListEnvironmentsResponse(response);
+      })));
+    });
+
+    unittest.test("method--patch", () {
+
+      var mock = new HttpServerMock();
+      api.AccountsContainersEnvironmentsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.environments;
+      var arg_request = buildEnvironment();
+      var arg_accountId = "foo";
+      var arg_containerId = "foo";
+      var arg_environmentId = "foo";
+      var arg_fingerprint = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.Environment.fromJson(json);
+        checkEnvironment(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("tagmanager/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
+        pathOffset += 9;
+        index = path.indexOf("/containers/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/containers/"));
+        pathOffset += 12;
+        index = path.indexOf("/environments/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/environments/"));
+        pathOffset += 14;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_environmentId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fingerprint"].first, unittest.equals(arg_fingerprint));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildEnvironment());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.patch(arg_request, arg_accountId, arg_containerId, arg_environmentId, fingerprint: arg_fingerprint).then(unittest.expectAsync(((api.Environment response) {
+        checkEnvironment(response);
+      })));
+    });
+
+    unittest.test("method--update", () {
+
+      var mock = new HttpServerMock();
+      api.AccountsContainersEnvironmentsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.environments;
+      var arg_request = buildEnvironment();
+      var arg_accountId = "foo";
+      var arg_containerId = "foo";
+      var arg_environmentId = "foo";
+      var arg_fingerprint = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.Environment.fromJson(json);
+        checkEnvironment(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("tagmanager/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
+        pathOffset += 9;
+        index = path.indexOf("/containers/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/containers/"));
+        pathOffset += 12;
+        index = path.indexOf("/environments/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/environments/"));
+        pathOffset += 14;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_environmentId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fingerprint"].first, unittest.equals(arg_fingerprint));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildEnvironment());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.update(arg_request, arg_accountId, arg_containerId, arg_environmentId, fingerprint: arg_fingerprint).then(unittest.expectAsync(((api.Environment response) {
+        checkEnvironment(response);
+      })));
+    });
+
+  });
+
+
   unittest.group("resource-AccountsContainersFoldersResourceApi", () {
     unittest.test("method--create", () {
 
@@ -2575,13 +3066,17 @@ main() {
 
       var mock = new HttpServerMock();
       api.AccountsContainersMoveFoldersResourceApi res = new api.TagmanagerApi(mock).accounts.containers.moveFolders;
+      var arg_request = buildFolder();
       var arg_accountId = "foo";
       var arg_containerId = "foo";
       var arg_folderId = "foo";
-      var arg_tagId = buildUnnamed1542();
-      var arg_triggerId = buildUnnamed1543();
-      var arg_variableId = buildUnnamed1544();
+      var arg_tagId = buildUnnamed1848();
+      var arg_triggerId = buildUnnamed1849();
+      var arg_variableId = buildUnnamed1850();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.Folder.fromJson(json);
+        checkFolder(obj);
+
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2637,7 +3132,80 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_accountId, arg_containerId, arg_folderId, tagId: arg_tagId, triggerId: arg_triggerId, variableId: arg_variableId).then(unittest.expectAsync((_) {}));
+      res.update(arg_request, arg_accountId, arg_containerId, arg_folderId, tagId: arg_tagId, triggerId: arg_triggerId, variableId: arg_variableId).then(unittest.expectAsync((_) {}));
+    });
+
+  });
+
+
+  unittest.group("resource-AccountsContainersReauthorizeEnvironmentsResourceApi", () {
+    unittest.test("method--update", () {
+
+      var mock = new HttpServerMock();
+      api.AccountsContainersReauthorizeEnvironmentsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.reauthorizeEnvironments;
+      var arg_request = buildEnvironment();
+      var arg_accountId = "foo";
+      var arg_containerId = "foo";
+      var arg_environmentId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.Environment.fromJson(json);
+        checkEnvironment(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("tagmanager/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
+        pathOffset += 9;
+        index = path.indexOf("/containers/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/containers/"));
+        pathOffset += 12;
+        index = path.indexOf("/reauthorize_environments/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_containerId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/reauthorize_environments/"));
+        pathOffset += 26;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_environmentId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildEnvironment());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.update(arg_request, arg_accountId, arg_containerId, arg_environmentId).then(unittest.expectAsync(((api.Environment response) {
+        checkEnvironment(response);
+      })));
     });
 
   });

@@ -236,14 +236,14 @@ checkSubscriptionPlan(api.SubscriptionPlan o) {
   buildCounterSubscriptionPlan--;
 }
 
-buildUnnamed2646() {
+buildUnnamed2968() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2646(core.List<core.String> o) {
+checkUnnamed2968(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -298,6 +298,7 @@ buildSubscription() {
   if (buildCounterSubscription < 3) {
     o.billingMethod = "foo";
     o.creationTime = "foo";
+    o.customerDomain = "foo";
     o.customerId = "foo";
     o.kind = "foo";
     o.plan = buildSubscriptionPlan();
@@ -308,7 +309,7 @@ buildSubscription() {
     o.skuId = "foo";
     o.status = "foo";
     o.subscriptionId = "foo";
-    o.suspensionReasons = buildUnnamed2646();
+    o.suspensionReasons = buildUnnamed2968();
     o.transferInfo = buildSubscriptionTransferInfo();
     o.trialSettings = buildSubscriptionTrialSettings();
   }
@@ -321,6 +322,7 @@ checkSubscription(api.Subscription o) {
   if (buildCounterSubscription < 3) {
     unittest.expect(o.billingMethod, unittest.equals('foo'));
     unittest.expect(o.creationTime, unittest.equals('foo'));
+    unittest.expect(o.customerDomain, unittest.equals('foo'));
     unittest.expect(o.customerId, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkSubscriptionPlan(o.plan);
@@ -331,21 +333,21 @@ checkSubscription(api.Subscription o) {
     unittest.expect(o.skuId, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.subscriptionId, unittest.equals('foo'));
-    checkUnnamed2646(o.suspensionReasons);
+    checkUnnamed2968(o.suspensionReasons);
     checkSubscriptionTransferInfo(o.transferInfo);
     checkSubscriptionTrialSettings(o.trialSettings);
   }
   buildCounterSubscription--;
 }
 
-buildUnnamed2647() {
+buildUnnamed2969() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed2647(core.List<api.Subscription> o) {
+checkUnnamed2969(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -358,7 +360,7 @@ buildSubscriptions() {
   if (buildCounterSubscriptions < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.subscriptions = buildUnnamed2647();
+    o.subscriptions = buildUnnamed2969();
   }
   buildCounterSubscriptions--;
   return o;
@@ -369,7 +371,7 @@ checkSubscriptions(api.Subscriptions o) {
   if (buildCounterSubscriptions < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2647(o.subscriptions);
+    checkUnnamed2969(o.subscriptions);
   }
   buildCounterSubscriptions--;
 }

@@ -17,8 +17,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client youtubereporting/v1';
 
 /**
- * An API to schedule reporting jobs and download the resulting bulk data
- * reports about YouTube channels, videos etc. in the form of CSV files.
+ * Schedules reporting jobs and downloads the resulting bulk data reports about
+ * YouTube channels, videos, etc. in the form of CSV files.
  */
 class YoutubereportingApi {
   /**
@@ -385,7 +385,7 @@ class MediaResourceApi {
    * Request parameters:
    *
    * [resourceName] - Name of the media that is being downloaded. See
-   * [][ByteStream.ReadRequest.resource_name].
+   * ByteStream.ReadRequest.resource_name.
    * Value must have pattern "^.*$".
    *
    * [downloadOptions] - Options for downloading. A download can be either a
@@ -529,10 +529,7 @@ class Job {
   core.String createTime;
   /** The server-generated ID of the job (max. 40 characters). */
   core.String id;
-  /**
-   * The name of the job (max. 100 characters). TODO(lanthaler) Clarify what
-   * this will actually be used for
-   */
+  /** The name of the job (max. 100 characters). */
   core.String name;
   /**
    * The type of reports this job creates. Corresponds to the ID of a

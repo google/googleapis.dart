@@ -11,10 +11,10 @@
     "basePath": "/doubleclicksearch/v2/",
     "baseUrl": "https://www.googleapis.com/doubleclicksearch/v2/",
     "batchPath": "batch",
-    "description": "Report and modify your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
+    "description": "Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/doubleclick-search/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/tz9B7o1oSSLio8p-JXbxaU2en84\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/fZsPJo85UoWuzkqYF2Sn0RYAm-s\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -430,7 +430,7 @@
             }
         }
     },
-    "revision": "20160120",
+    "revision": "20160302",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Availability": {

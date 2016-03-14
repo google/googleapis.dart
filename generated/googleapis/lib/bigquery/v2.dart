@@ -8,6 +8,7 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1221,6 +1222,223 @@ class TablesResourceApi {
 
 
 
+class BigtableColumn {
+  /**
+   * [Optional] The encoding of the values when the type is not STRING.
+   * Acceptable encoding values are: TEXT - indicates values are alphanumeric
+   * text strings. BINARY - indicates values are encoded using HBase
+   * Bytes.toBytes family of functions. 'encoding' can also be set at the column
+   * family level. However, the setting at this level takes precedence if
+   * 'encoding' is set at both levels.
+   */
+  core.String encoding;
+  /**
+   * [Optional] If the qualifier is not a valid BigQuery field identifier i.e.
+   * does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided
+   * as the column field name and is used as field name in queries.
+   */
+  core.String fieldName;
+  /**
+   * [Optional] If this is set, only the latest version of value in this column
+   * are exposed. 'onlyReadLatest' can also be set at the column family level.
+   * However, the setting at this level takes precedence if 'onlyReadLatest' is
+   * set at both levels.
+   */
+  core.bool onlyReadLatest;
+  /**
+   * [Required] Qualifier of the column. Columns in the parent column family
+   * that has this exact qualifier are exposed as . field. If the qualifier is
+   * valid UTF-8 string, it can be specified in the qualifier_string field.
+   * Otherwise, a base-64 encoded value must be set to qualifier_encoded. The
+   * column field name is the same as the column qualifier. However, if the
+   * qualifier is not a valid BigQuery field identifier i.e. does not match
+   * [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as field_name.
+   */
+  core.String qualifierEncoded;
+  core.List<core.int> get qualifierEncodedAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(qualifierEncoded);
+  }
+
+  void set qualifierEncodedAsBytes(core.List<core.int> _bytes) {
+    qualifierEncoded = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+  core.String qualifierString;
+  /**
+   * [Optional] The type to convert the value in cells of this column. The
+   * values are expected to be encoded using HBase Bytes.toBytes function when
+   * using the BINARY encoding value. Following BigQuery types are allowed
+   * (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Defaut type is BYTES.
+   * 'type' can also be set at the column family level. However, the setting at
+   * this level takes precedence if 'type' is set at both levels.
+   */
+  core.String type;
+
+  BigtableColumn();
+
+  BigtableColumn.fromJson(core.Map _json) {
+    if (_json.containsKey("encoding")) {
+      encoding = _json["encoding"];
+    }
+    if (_json.containsKey("fieldName")) {
+      fieldName = _json["fieldName"];
+    }
+    if (_json.containsKey("onlyReadLatest")) {
+      onlyReadLatest = _json["onlyReadLatest"];
+    }
+    if (_json.containsKey("qualifierEncoded")) {
+      qualifierEncoded = _json["qualifierEncoded"];
+    }
+    if (_json.containsKey("qualifierString")) {
+      qualifierString = _json["qualifierString"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (encoding != null) {
+      _json["encoding"] = encoding;
+    }
+    if (fieldName != null) {
+      _json["fieldName"] = fieldName;
+    }
+    if (onlyReadLatest != null) {
+      _json["onlyReadLatest"] = onlyReadLatest;
+    }
+    if (qualifierEncoded != null) {
+      _json["qualifierEncoded"] = qualifierEncoded;
+    }
+    if (qualifierString != null) {
+      _json["qualifierString"] = qualifierString;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class BigtableColumnFamily {
+  /**
+   * [Optional] Lists of columns that should be exposed as individual fields as
+   * opposed to a list of (column name, value) pairs. All columns whose
+   * qualifier matches a qualifier in this list can be accessed as .. Other
+   * columns can be accessed as a list through .Column field.
+   */
+  core.List<BigtableColumn> columns;
+  /**
+   * [Optional] The encoding of the values when the type is not STRING.
+   * Acceptable encoding values are: TEXT - indicates values are alphanumeric
+   * text strings. BINARY - indicates values are encoded using HBase
+   * Bytes.toBytes family of functions. This can be overridden for a specific
+   * column by listing that column in 'columns' and specifying an encoding for
+   * it.
+   */
+  core.String encoding;
+  /** Identifier of the column family. */
+  core.String familyId;
+  /**
+   * [Optional] If this is set only the latest version of value are exposed for
+   * all columns in this column family. This can be overridden for a specific
+   * column by listing that column in 'columns' and specifying a different
+   * setting for that column.
+   */
+  core.bool onlyReadLatest;
+  /**
+   * [Optional] The type to convert the value in cells of this column family.
+   * The values are expected to be encoded using HBase Bytes.toBytes function
+   * when using the BINARY encoding value. Following BigQuery types are allowed
+   * (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Defaut type is BYTES.
+   * This can be overridden for a specific column by listing that column in
+   * 'columns' and specifying a type for it.
+   */
+  core.String type;
+
+  BigtableColumnFamily();
+
+  BigtableColumnFamily.fromJson(core.Map _json) {
+    if (_json.containsKey("columns")) {
+      columns = _json["columns"].map((value) => new BigtableColumn.fromJson(value)).toList();
+    }
+    if (_json.containsKey("encoding")) {
+      encoding = _json["encoding"];
+    }
+    if (_json.containsKey("familyId")) {
+      familyId = _json["familyId"];
+    }
+    if (_json.containsKey("onlyReadLatest")) {
+      onlyReadLatest = _json["onlyReadLatest"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (columns != null) {
+      _json["columns"] = columns.map((value) => (value).toJson()).toList();
+    }
+    if (encoding != null) {
+      _json["encoding"] = encoding;
+    }
+    if (familyId != null) {
+      _json["familyId"] = familyId;
+    }
+    if (onlyReadLatest != null) {
+      _json["onlyReadLatest"] = onlyReadLatest;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class BigtableOptions {
+  /**
+   * [Optional] List of column families to expose in the table schema along with
+   * their types. This list restricts the column families that can be referenced
+   * in queries and specifies their value types. You can use this list to do
+   * type conversions - see the 'type' field for more details. If you leave this
+   * list empty, all column families are present in the table schema and their
+   * values are read as BYTES. During a query only the column families
+   * referenced in that query are read from Bigtable.
+   */
+  core.List<BigtableColumnFamily> columnFamilies;
+  /**
+   * [Optional] If field is true, then the column families that are not
+   * specified in columnFamilies list are not exposed in the table schema.
+   * Otherwise, they are read with BYTES type values. The default value is
+   * false.
+   */
+  core.bool ignoreUnspecifiedColumnFamilies;
+
+  BigtableOptions();
+
+  BigtableOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("columnFamilies")) {
+      columnFamilies = _json["columnFamilies"].map((value) => new BigtableColumnFamily.fromJson(value)).toList();
+    }
+    if (_json.containsKey("ignoreUnspecifiedColumnFamilies")) {
+      ignoreUnspecifiedColumnFamilies = _json["ignoreUnspecifiedColumnFamilies"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (columnFamilies != null) {
+      _json["columnFamilies"] = columnFamilies.map((value) => (value).toJson()).toList();
+    }
+    if (ignoreUnspecifiedColumnFamilies != null) {
+      _json["ignoreUnspecifiedColumnFamilies"] = ignoreUnspecifiedColumnFamilies;
+    }
+    return _json;
+  }
+}
+
 class CsvOptions {
   /**
    * [Optional] Indicates if BigQuery should accept rows that are missing
@@ -1888,9 +2106,16 @@ class ExplainQueryStep {
 
 class ExternalDataConfiguration {
   /**
+   * [Experimental] Try to detect schema and format options automatically. Any
+   * option specified explicitly will be honored.
+   */
+  core.bool autodetect;
+  /** [Optional] Additional options if sourceFormat is set to BIGTABLE. */
+  BigtableOptions bigtableOptions;
+  /**
    * [Optional] The compression type of the data source. Possible values include
    * GZIP and NONE. The default value is NONE. This setting is ignored for
-   * Google Cloud Datastore backups.
+   * Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
    */
   core.String compression;
   /** Additional properties to set if sourceFormat is set to CSV. */
@@ -1902,8 +2127,9 @@ class ExternalDataConfiguration {
    * are too many bad records, an invalid error is returned in the job result.
    * The default value is false. The sourceFormat property determines what
    * BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values
-   * that don't match any column names Google Cloud Datastore backups: This
-   * setting is ignored.
+   * that don't match any column names Google Cloud Bigtable: This setting is
+   * ignored. Google Cloud Datastore backups: This setting is ignored. Avro:
+   * This setting is ignored.
    */
   core.bool ignoreUnknownValues;
   /**
@@ -1911,34 +2137,47 @@ class ExternalDataConfiguration {
    * reading data. If the number of bad records exceeds this value, an invalid
    * error is returned in the job result. The default value is 0, which requires
    * that all records are valid. This setting is ignored for Google Cloud
-   * Datastore backups.
+   * Bigtable, Google Cloud Datastore backups and Avro formats.
    */
   core.int maxBadRecords;
   /**
    * [Optional] The schema for the data. Schema is required for CSV and JSON
-   * formats. Schema is disallowed for Google Cloud Datastore backups.
+   * formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore
+   * backups, and Avro formats.
    */
   TableSchema schema;
   /**
    * [Required] The data format. For CSV files, specify "CSV". For
-   * newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Google Cloud
-   * Datastore backups, specify "DATASTORE_BACKUP".
+   * newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files,
+   * specify "AVRO". For Google Cloud Datastore backups, specify
+   * "DATASTORE_BACKUP". [Experimental] For Google Cloud Bigtable, specify
+   * "BIGTABLE". Please note that reading from Google Cloud Bigtable is
+   * experimental and has to be enabled for your project. Please contact Google
+   * Cloud Support to enable this for your project.
    */
   core.String sourceFormat;
   /**
-   * [Required] The fully-qualified URIs that point to your data in Google Cloud
-   * Storage. Each URI can contain one '*' wildcard character and it must come
-   * after the 'bucket' name. Size limits related to load jobs apply to external
-   * data sources, plus an additional limit of 10 GB maximum size across all
-   * URIs. For Google Cloud Datastore backups, exactly one URI can be specified,
-   * and it must end with '.backup_info'. Also, the '*' wildcard character is
-   * not allowed.
+   * [Required] The fully-qualified URIs that point to your data in Google
+   * Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard
+   * character and it must come after the 'bucket' name. Size limits related to
+   * load jobs apply to external data sources, plus an additional limit of 10 GB
+   * maximum size across all URIs. For Google Cloud Bigtable URIs: Exactly one
+   * URI can be specified and it has be a fully specified and valid HTTPS URL
+   * for a Google Cloud Bigtable table. For Google Cloud Datastore backups,
+   * exactly one URI can be specified, and it must end with '.backup_info'.
+   * Also, the '*' wildcard character is not allowed.
    */
   core.List<core.String> sourceUris;
 
   ExternalDataConfiguration();
 
   ExternalDataConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("autodetect")) {
+      autodetect = _json["autodetect"];
+    }
+    if (_json.containsKey("bigtableOptions")) {
+      bigtableOptions = new BigtableOptions.fromJson(_json["bigtableOptions"]);
+    }
     if (_json.containsKey("compression")) {
       compression = _json["compression"];
     }
@@ -1964,6 +2203,12 @@ class ExternalDataConfiguration {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (autodetect != null) {
+      _json["autodetect"] = autodetect;
+    }
+    if (bigtableOptions != null) {
+      _json["bigtableOptions"] = (bigtableOptions).toJson();
+    }
     if (compression != null) {
       _json["compression"] = compression;
     }
@@ -2673,6 +2918,15 @@ class JobConfigurationQuery {
    */
   core.Map<core.String, ExternalDataConfiguration> tableDefinitions;
   /**
+   * [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for
+   * this query. The default value is true. If set to false, the query will use
+   * BigQuery's updated SQL dialect with improved standards compliance. When
+   * using BigQuery's updated SQL, the values of allowLargeResults and
+   * flattenResults are ignored. Queries with useLegacySql set to false will be
+   * run as if allowLargeResults is true and flattenResults is false.
+   */
+  core.bool useLegacySql;
+  /**
    * [Optional] Whether to look for the result in the query cache. The query
    * cache is a best-effort cache that will be flushed whenever tables in the
    * query are modified. Moreover, the query cache is only available when a
@@ -2730,6 +2984,9 @@ class JobConfigurationQuery {
     if (_json.containsKey("tableDefinitions")) {
       tableDefinitions = commons.mapMap(_json["tableDefinitions"], (item) => new ExternalDataConfiguration.fromJson(item));
     }
+    if (_json.containsKey("useLegacySql")) {
+      useLegacySql = _json["useLegacySql"];
+    }
     if (_json.containsKey("useQueryCache")) {
       useQueryCache = _json["useQueryCache"];
     }
@@ -2772,6 +3029,9 @@ class JobConfigurationQuery {
     }
     if (tableDefinitions != null) {
       _json["tableDefinitions"] = commons.mapMap(tableDefinitions, (item) => (item).toJson());
+    }
+    if (useLegacySql != null) {
+      _json["useLegacySql"] = useLegacySql;
     }
     if (useQueryCache != null) {
       _json["useQueryCache"] = useQueryCache;
@@ -3119,6 +3379,11 @@ class JobStatistics2 {
    * list of stages.
    */
   core.List<ExplainQueryStage> queryPlan;
+  /**
+   * [Output-only, Experimental] Referenced tables for the job. Queries that
+   * reference more than 50 tables will not have a complete list.
+   */
+  core.List<TableReference> referencedTables;
   /** [Output-only] Total bytes billed for the job. */
   core.String totalBytesBilled;
   /** [Output-only] Total bytes processed for the job. */
@@ -3135,6 +3400,9 @@ class JobStatistics2 {
     }
     if (_json.containsKey("queryPlan")) {
       queryPlan = _json["queryPlan"].map((value) => new ExplainQueryStage.fromJson(value)).toList();
+    }
+    if (_json.containsKey("referencedTables")) {
+      referencedTables = _json["referencedTables"].map((value) => new TableReference.fromJson(value)).toList();
     }
     if (_json.containsKey("totalBytesBilled")) {
       totalBytesBilled = _json["totalBytesBilled"];
@@ -3154,6 +3422,9 @@ class JobStatistics2 {
     }
     if (queryPlan != null) {
       _json["queryPlan"] = queryPlan.map((value) => (value).toJson()).toList();
+    }
+    if (referencedTables != null) {
+      _json["referencedTables"] = referencedTables.map((value) => (value).toJson()).toList();
     }
     if (totalBytesBilled != null) {
       _json["totalBytesBilled"] = totalBytesBilled;
@@ -3495,6 +3766,15 @@ class QueryRequest {
    */
   core.int timeoutMs;
   /**
+   * [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for
+   * this query. The default value is true. If set to false, the query will use
+   * BigQuery's updated SQL dialect with improved standards compliance. When
+   * using BigQuery's updated SQL, the values of allowLargeResults and
+   * flattenResults are ignored. Queries with useLegacySql set to false will be
+   * run as if allowLargeResults is true and flattenResults is false.
+   */
+  core.bool useLegacySql;
+  /**
    * [Optional] Whether to look for the result in the query cache. The query
    * cache is a best-effort cache that will be flushed whenever tables in the
    * query are modified. The default value is true.
@@ -3525,6 +3805,9 @@ class QueryRequest {
     if (_json.containsKey("timeoutMs")) {
       timeoutMs = _json["timeoutMs"];
     }
+    if (_json.containsKey("useLegacySql")) {
+      useLegacySql = _json["useLegacySql"];
+    }
     if (_json.containsKey("useQueryCache")) {
       useQueryCache = _json["useQueryCache"];
     }
@@ -3552,6 +3835,9 @@ class QueryRequest {
     }
     if (timeoutMs != null) {
       _json["timeoutMs"] = timeoutMs;
+    }
+    if (useLegacySql != null) {
+      _json["useLegacySql"] = useLegacySql;
     }
     if (useQueryCache != null) {
       _json["useQueryCache"] = useQueryCache;
@@ -3996,8 +4282,8 @@ class TableDataInsertAllRequest {
    */
   core.bool skipInvalidRows;
   /**
-   * [Optional] If specified, treats the destination table as a base template,
-   * and inserts the rows into an instance table named
+   * [Experimental] If specified, treats the destination table as a base
+   * template, and inserts the rows into an instance table named
    * "{destination}{templateSuffix}". BigQuery will manage creation of the
    * instance table, using the schema of the base template table. See
    * https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables

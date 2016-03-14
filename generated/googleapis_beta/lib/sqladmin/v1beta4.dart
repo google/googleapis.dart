@@ -210,8 +210,7 @@ class DatabasesResourceApi {
       _requester = client;
 
   /**
-   * Deletes a resource containing information about a database inside a Cloud
-   * SQL instance.
+   * Deletes a database from a Cloud SQL instance.
    *
    * Request parameters:
    *
@@ -567,7 +566,8 @@ class InstancesResourceApi {
       _requester = client;
 
   /**
-   * Creates a Cloud SQL instance as a clone of the source instance.
+   * Creates a Cloud SQL instance as a clone of the source instance. The API is
+   * not ready for Second Generation instances yet.
    *
    * [request] - The metadata request object.
    *
@@ -2433,11 +2433,17 @@ class DatabaseFlags {
 }
 
 /**
- * The name and status of the failover replica. Only applies to Second
- * Generation instances.
+ * The name and status of the failover replica. This property is applicable only
+ * to Second Generation instances.
  */
 class DatabaseInstanceFailoverReplica {
+  /**
+   * The availability status of the failover replica. A false status indicates
+   * that the failover replica is out of sync. The master can only failover to
+   * the falover replica when the status is true.
+   */
   core.bool available;
+  /** The name of the failover replica. */
   core.String name;
 
   DatabaseInstanceFailoverReplica();
@@ -2465,19 +2471,33 @@ class DatabaseInstanceFailoverReplica {
 
 /** A Cloud SQL instance resource. */
 class DatabaseInstance {
-  /** The current disk usage of the instance in bytes. */
+  /**
+   * FIRST_GEN: Basic Cloud SQL instance that runs in a Google-managed
+   * container.
+   * SECOND_GEN: A newer Cloud SQL backend that runs in a Compute Engine VM.
+   * EXTERNAL: A MySQL server that is not managed by Google.
+   */
+  core.String backendType;
+  /**
+   * The current disk usage of the instance in bytes. This property has been
+   * deprecated. Users should use the
+   * "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud
+   * Monitoring API instead. Please see
+   * https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ
+   * for details.
+   */
   core.String currentDiskSize;
   /**
    * The database engine type and version. Can be MYSQL_5_5 or MYSQL_5_6.
-   * Defaults to MYSQL_5_5. The databaseVersion can not be changed after
+   * Defaults to MYSQL_5_6. The databaseVersion can not be changed after
    * instance creation.
    */
   core.String databaseVersion;
   /** HTTP 1.1 Entity tag for the resource. */
   core.String etag;
   /**
-   * The name and status of the failover replica. Only applies to Second
-   * Generation instances.
+   * The name and status of the failover replica. This property is applicable
+   * only to Second Generation instances.
    */
   DatabaseInstanceFailoverReplica failoverReplica;
   /**
@@ -2490,7 +2510,10 @@ class DatabaseInstance {
   core.String instanceType;
   /** The assigned IP addresses for the instance. */
   core.List<IpMapping> ipAddresses;
-  /** The IPv6 address assigned to the instance. */
+  /**
+   * The IPv6 address assigned to the instance. This property is applicable only
+   * to First Generation instances.
+   */
   core.String ipv6Address;
   /** This is always sql#instance. */
   core.String kind;
@@ -2510,9 +2533,11 @@ class DatabaseInstance {
    */
   core.String project;
   /**
-   * The geographical region. Can be us-central, asia-east1 or europe-west1.
-   * Defaults to us-central. The region can not be changed after instance
-   * creation.
+   * The geographical region. Can be us-central (FIRST_GEN instances only),
+   * us-central1 (SECOND_GEN instances only), asia-east1 or europe-west1.
+   * Defaults to us-central or us-central1 depending on the instance type (First
+   * Generation or Second Generation). The region can not be changed after
+   * instance creation.
    */
   core.String region;
   /**
@@ -2526,7 +2551,10 @@ class DatabaseInstance {
   core.String selfLink;
   /** SSL configuration. */
   SslCert serverCaCert;
-  /** The service account email address assigned to the instance. */
+  /**
+   * The service account email address assigned to the instance. This property
+   * is applicable only to Second Generation instances.
+   */
   core.String serviceAccountEmailAddress;
   /** The user settings. */
   Settings settings;
@@ -2542,10 +2570,15 @@ class DatabaseInstance {
    * UNKNOWN_STATE: The state of the instance is unknown.
    */
   core.String state;
+  /** If the instance state is SUSPENDED, the reason for the suspension. */
+  core.List<core.String> suspensionReason;
 
   DatabaseInstance();
 
   DatabaseInstance.fromJson(core.Map _json) {
+    if (_json.containsKey("backendType")) {
+      backendType = _json["backendType"];
+    }
     if (_json.containsKey("currentDiskSize")) {
       currentDiskSize = _json["currentDiskSize"];
     }
@@ -2609,10 +2642,16 @@ class DatabaseInstance {
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
+    if (_json.containsKey("suspensionReason")) {
+      suspensionReason = _json["suspensionReason"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (backendType != null) {
+      _json["backendType"] = backendType;
+    }
     if (currentDiskSize != null) {
       _json["currentDiskSize"] = currentDiskSize;
     }
@@ -2675,6 +2714,9 @@ class DatabaseInstance {
     }
     if (state != null) {
       _json["state"] = state;
+    }
+    if (suspensionReason != null) {
+      _json["suspensionReason"] = suspensionReason;
     }
     return _json;
   }
@@ -3938,26 +3980,32 @@ class Settings {
    * RUNNABLE. This can be one of the following.
    * ALWAYS: The instance should always be active.
    * NEVER: The instance should never be activated.
-   * ON_DEMAND: The instance is activated upon receiving requests.
+   * ON_DEMAND: The instance is activated upon receiving requests; only
+   * applicable to First Generation instances.
    */
   core.String activationPolicy;
-  /** The App Engine app IDs that can access this instance. */
+  /**
+   * The App Engine app IDs that can access this instance. This property is only
+   * applicable to First Generation instances.
+   */
   core.List<core.String> authorizedGaeApplications;
   /** The daily backup configuration for the instance. */
   BackupConfiguration backupConfiguration;
   /**
    * Configuration specific to read replica instances. Indicates whether
-   * database flags for crash-safe replication are enabled.
+   * database flags for crash-safe replication are enabled. This property is
+   * only applicable to First Generation instances.
    */
   core.bool crashSafeReplicationEnabled;
   /**
-   * The size of data disk, in GB. Only supported for 2nd Generation instances.
-   * The data disk size minimum is 10GB.
+   * The size of data disk, in GB. The data disk size minimum is 10GB. This
+   * property is only applicable to Second Generation instances.
    */
   core.String dataDiskSizeGb;
   /**
-   * The type of data disk. Only supported for 2nd Generation instances. The
-   * default type is SSD.
+   * The type of data disk. Only supported for Second Generation instances. The
+   * default type is PD_SSD. This property is only applicable to Second
+   * Generation instances.
    */
   core.String dataDiskType;
   /** The database flags passed to the instance at startup. */
@@ -3970,6 +4018,7 @@ class Settings {
   /**
    * The settings for IP Management. This allows to enable or disable the
    * instance IP and manage which external networks can connect to the instance.
+   * The IPv4 address cannot be disabled for Second Generation instances.
    */
   IpConfiguration ipConfiguration;
   /** This is always sql#settings. */
@@ -3977,21 +4026,25 @@ class Settings {
   /**
    * The location preference settings. This allows the instance to be located as
    * near as possible to either an App Engine app or GCE zone for better
-   * performance.
+   * performance. App Engine co-location is only applicable to First Generation
+   * instances.
    */
   LocationPreference locationPreference;
   /**
    * The maintenance window for this instance. This specifies when the instance
-   * may be restarted for maintenance purposes.
+   * may be restarted for maintenance purposes. This property is only applicable
+   * to Second Generation instances.
    */
   MaintenanceWindow maintenanceWindow;
   /**
    * The pricing plan for this instance. This can be either PER_USE or PACKAGE.
+   * Only PER_USE is supported for Second Generation instances.
    */
   core.String pricingPlan;
   /**
    * The type of replication this instance uses. This can be either ASYNCHRONOUS
-   * or SYNCHRONOUS.
+   * or SYNCHRONOUS. This property is only applicable to First Generation
+   * instances.
    */
   core.String replicationType;
   /**
@@ -4459,7 +4512,7 @@ class User {
   /**
    * The host name from which the user can connect. For insert operations, host
    * defaults to an empty string. For update operations, host is specified as
-   * part of the request URL. The host name is not mutable with this API.
+   * part of the request URL. The host name cannot be updated after insertion.
    */
   core.String host;
   /**

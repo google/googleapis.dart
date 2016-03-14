@@ -14,10 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client qpxExpress/v1';
 
-/**
- * Lets you find the least expensive flights between an origin and a
- * destination.
- */
+/** Finds the least expensive flights between an origin and a destination. */
 class QpxExpressApi {
 
   final commons.ApiRequester _requester;

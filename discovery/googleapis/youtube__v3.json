@@ -30,7 +30,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/f6mRIQ8wrr0OUFAXPVNFOEqXrFQ\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/emwdUwZj4z8Lfj39vjO3dsDdRpA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -1780,7 +1780,7 @@
                             "type": "string"
                         },
                         "maxResults": {
-                            "default": "200",
+                            "default": "500",
                             "description": "The maxResults parameter specifies the maximum number of messages that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
@@ -3457,7 +3457,7 @@
             }
         }
     },
-    "revision": "20160111",
+    "revision": "20160222",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -4342,15 +4342,6 @@
             },
             "type": "object"
         },
-        "ChannelId": {
-            "id": "ChannelId",
-            "properties": {
-                "value": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "ChannelListResponse": {
             "id": "ChannelListResponse",
             "properties": {
@@ -4711,11 +4702,15 @@
             "type": "object"
         },
         "ChannelSnippet": {
-            "description": "Basic details about a channel, including title, description and thumbnails.",
+            "description": "Basic details about a channel, including title, description and thumbnails. Next available id: 15.",
             "id": "ChannelSnippet",
             "properties": {
                 "country": {
                     "description": "The country of the channel.",
+                    "type": "string"
+                },
+                "customUrl": {
+                    "description": "The custom url of the channel.",
                     "type": "string"
                 },
                 "defaultLanguage": {
@@ -4901,8 +4896,8 @@
             "id": "CommentSnippet",
             "properties": {
                 "authorChannelId": {
-                    "$ref": "ChannelId",
-                    "description": "The id of the author's YouTube channel, if any."
+                    "description": "The id of the author's YouTube channel, if any.",
+                    "type": "any"
                 },
                 "authorChannelUrl": {
                     "description": "Link to the author's YouTube channel, if any.",
@@ -5730,6 +5725,7 @@
                 "fpbRating": {
                     "description": "The video's rating from South Africa's Film and Publication Board.",
                     "enum": [
+                        "fpb10",
                         "fpb1012Pg",
                         "fpb13",
                         "fpb16",
@@ -5742,6 +5738,7 @@
                         "fpbXx"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -8720,6 +8717,9 @@
                     "description": "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set.",
                     "type": "string"
                 },
+                "regionCode": {
+                    "type": "string"
+                },
                 "tokenPagination": {
                     "$ref": "TokenPagination"
                 },
@@ -10147,6 +10147,7 @@
                         "copyright",
                         "duplicate",
                         "inappropriate",
+                        "legal",
                         "length",
                         "termsOfUse",
                         "trademark",
@@ -10154,6 +10155,7 @@
                         "uploaderAccountSuspended"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",

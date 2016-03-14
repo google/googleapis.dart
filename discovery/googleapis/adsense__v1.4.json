@@ -15,10 +15,10 @@
     "baseUrl": "https://www.googleapis.com/adsense/v1.4/",
     "batchPath": "batch",
     "canonicalName": "AdSense",
-    "description": "Gives AdSense publishers access to their inventory and the ability to generate reports",
+    "description": "Accesses AdSense publishers' inventory and generates performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/adsense/management/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/yTXIRiKTgAsrnL4fOEOUAV3bDbY\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/4IHbGj-5dUkffqfCrP-Qf8vHnLY\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/adsense-16.png",
         "x32": "https://www.google.com/images/icons/product/adsense-32.png"
@@ -1624,7 +1624,7 @@
             }
         }
     },
-    "revision": "20160127",
+    "revision": "20160309",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1697,10 +1697,6 @@
                 "arcOptIn": {
                     "description": "Whether this ad client is opted in to ARC.",
                     "type": "boolean"
-                },
-                "arcReviewMode": {
-                    "description": "ARC review mode this ad client is in. Empty if the client is not opted in to ARC. Possible values: POST_REVIEW, AUTOMATIC_PRE_REVIEW.",
-                    "type": "string"
                 },
                 "id": {
                     "description": "Unique identifier of this ad client.",

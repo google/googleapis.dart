@@ -2,13 +2,13 @@
     "basePath": "/webfonts/v1/",
     "baseUrl": "https://www.googleapis.com/webfonts/v1/",
     "batchPath": "batch",
-    "description": "The Google Fonts Developer API.",
+    "description": "Accesses the metadata for all families served by Google Fonts, providing a list of families currently available (including available styles and a list of supported script subsets).",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fonts/docs/developer_api",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/7CX45lHrekGHtXfo8oTzp_aszgg\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Knx7w96lfDrwO6_VUi53vC5n2dE\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/feature/font_api-16.png",
-        "x32": "http://www.google.com/images/icons/feature/font_api-32.gif"
+        "x16": "https://www.google.com/images/icons/feature/font_api-16.png",
+        "x32": "https://www.google.com/images/icons/feature/font_api-32.gif"
     },
     "id": "webfonts:v1",
     "kind": "discovery#restDescription",
@@ -97,7 +97,7 @@
             }
         }
     },
-    "revision": "20140210",
+    "revision": "20160302",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Webfont": {

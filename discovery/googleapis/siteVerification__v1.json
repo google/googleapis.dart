@@ -14,10 +14,10 @@
     "basePath": "/siteVerification/v1/",
     "baseUrl": "https://www.googleapis.com/siteVerification/v1/",
     "batchPath": "batch",
-    "description": "Lets you programatically verify ownership of websites or domains with Google.",
+    "description": "Verifies ownership of websites or domains with Google.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/site-verification/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/1vTYvQHrYJnWnVmofN4gOMXqjH0\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/7Wh2BL46-ycQBGZrIfJ_r7nrkOo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -229,7 +229,7 @@
             }
         }
     },
-    "revision": "20151007",
+    "revision": "20160228",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "SiteVerificationWebResourceGettokenRequest": {

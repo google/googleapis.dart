@@ -6,7 +6,7 @@
     "description": "API for viewing and managing your reports in DoubleClick Bid Manager.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/bid-manager/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/KspyYaNMMXkE18eGep174M1_JMc\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/KhQlHpyUs8rKakqcULR3lepd_Vc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -218,7 +218,7 @@
             }
         }
     },
-    "revision": "20160120",
+    "revision": "20160225",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "DownloadLineItemsRequest": {
@@ -1356,6 +1356,7 @@
                         "TYPE_NIELSEN_DAILY_REACH_BUILD",
                         "TYPE_NIELSEN_ONLINE_GLOBAL_MARKET",
                         "TYPE_NIELSEN_SITE",
+                        "TYPE_NOT_SUPPORTED",
                         "TYPE_ORDER_ID",
                         "TYPE_PAGE_CATEGORY",
                         "TYPE_PETRA_NIELSEN_AUDIENCE_PROFILE",
@@ -1370,6 +1371,7 @@
                         "TYPE_YOUTUBE_VERTICAL"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",

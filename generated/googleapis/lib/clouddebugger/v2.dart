@@ -15,7 +15,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client clouddebugger/v2';
 
 /**
- * Lets you examine the stack and variables of your running application without
+ * Examines the call stack and variables of a running application without
  * stopping or slowing it down.
  */
 class ClouddebuggerApi {
@@ -261,6 +261,9 @@ class DebuggerDebuggeesResourceApi {
    * [includeInactive] - When set to `true`, the result includes all debuggees.
    * Otherwise, the result includes only debuggees that are active.
    *
+   * [clientVersion] - The client version making the call. Following:
+   * `domain/type/version` (e.g., `google.com/intellij/v1`).
+   *
    * Completes with a [ListDebuggeesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -269,7 +272,7 @@ class DebuggerDebuggeesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDebuggeesResponse> list({core.String project, core.bool includeInactive}) {
+  async.Future<ListDebuggeesResponse> list({core.String project, core.bool includeInactive, core.String clientVersion}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -282,6 +285,9 @@ class DebuggerDebuggeesResourceApi {
     }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
 
     _url = 'v2/debugger/debuggees';
@@ -314,6 +320,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    *
    * [breakpointId] - ID of the breakpoint to delete.
    *
+   * [clientVersion] - The client version making the call. Following:
+   * `domain/type/version` (e.g., `google.com/intellij/v1`).
+   *
    * Completes with a [Empty].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -322,7 +331,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Empty> delete(core.String debuggeeId, core.String breakpointId) {
+  async.Future<Empty> delete(core.String debuggeeId, core.String breakpointId, {core.String clientVersion}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -335,6 +344,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     }
     if (breakpointId == null) {
       throw new core.ArgumentError("Parameter breakpointId is required.");
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
 
     _url = 'v2/debugger/debuggees/' + commons.Escaper.ecapeVariable('$debuggeeId') + '/breakpoints/' + commons.Escaper.ecapeVariable('$breakpointId');
@@ -358,6 +370,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    *
    * [breakpointId] - ID of the breakpoint to get.
    *
+   * [clientVersion] - The client version making the call. Following:
+   * `domain/type/version` (e.g., `google.com/intellij/v1`).
+   *
    * Completes with a [GetBreakpointResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -366,7 +381,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GetBreakpointResponse> get(core.String debuggeeId, core.String breakpointId) {
+  async.Future<GetBreakpointResponse> get(core.String debuggeeId, core.String breakpointId, {core.String clientVersion}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -379,6 +394,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     }
     if (breakpointId == null) {
       throw new core.ArgumentError("Parameter breakpointId is required.");
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
 
     _url = 'v2/debugger/debuggees/' + commons.Escaper.ecapeVariable('$debuggeeId') + '/breakpoints/' + commons.Escaper.ecapeVariable('$breakpointId');
@@ -423,6 +441,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which should
    * be called again with the same `wait_token`.
    *
+   * [clientVersion] - The client version making the call. Following:
+   * `domain/type/version` (e.g., `google.com/intellij/v1`).
+   *
    * Completes with a [ListBreakpointsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -431,7 +452,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBreakpointsResponse> list(core.String debuggeeId, {core.bool includeAllUsers, core.bool includeInactive, core.String action_value, core.bool stripResults, core.String waitToken}) {
+  async.Future<ListBreakpointsResponse> list(core.String debuggeeId, {core.bool includeAllUsers, core.bool includeInactive, core.String action_value, core.bool stripResults, core.String waitToken, core.String clientVersion}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -457,6 +478,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     if (waitToken != null) {
       _queryParams["waitToken"] = [waitToken];
     }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
+    }
 
     _url = 'v2/debugger/debuggees/' + commons.Escaper.ecapeVariable('$debuggeeId') + '/breakpoints';
 
@@ -479,6 +503,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    *
    * [debuggeeId] - ID of the debuggee where the breakpoint is to be set.
    *
+   * [clientVersion] - The client version making the call. Following:
+   * `domain/type/version` (e.g., `google.com/intellij/v1`).
+   *
    * Completes with a [SetBreakpointResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -487,7 +514,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SetBreakpointResponse> set(Breakpoint request, core.String debuggeeId) {
+  async.Future<SetBreakpointResponse> set(Breakpoint request, core.String debuggeeId, {core.String clientVersion}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -500,6 +527,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     }
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
 
     _url = 'v2/debugger/debuggees/' + commons.Escaper.ecapeVariable('$debuggeeId') + '/breakpoints/set';
@@ -601,6 +631,11 @@ class Breakpoint {
    * will not change from here on.
    */
   core.bool isFinalState;
+  /**
+   * A set of custom breakpoint properties, populated by the agent, to be
+   * displayed to the user.
+   */
+  core.Map<core.String, core.String> labels;
   /** Breakpoint source location. */
   SourceLocation location;
   /**
@@ -643,8 +678,8 @@ class Breakpoint {
    * The stack frame variables then would hold only a reference to it. The
    * variable `var_table_index` field is an index into this repeated field. The
    * stored objects are nameless and get their name from the referencing
-   * variable. The effective variable is a merge of the referencing veariable
-   * and the referenced variable.
+   * variable. The effective variable is a merge of the referencing variable and
+   * the referenced variable.
    */
   core.List<Variable> variableTable;
 
@@ -674,6 +709,9 @@ class Breakpoint {
     }
     if (_json.containsKey("isFinalState")) {
       isFinalState = _json["isFinalState"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
     }
     if (_json.containsKey("location")) {
       location = new SourceLocation.fromJson(_json["location"]);
@@ -723,6 +761,9 @@ class Breakpoint {
     }
     if (isFinalState != null) {
       _json["isFinalState"] = isFinalState;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (location != null) {
       _json["location"] = (location).toJson();

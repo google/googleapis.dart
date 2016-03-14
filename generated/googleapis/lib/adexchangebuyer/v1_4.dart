@@ -36,6 +36,7 @@ class AdexchangebuyerApi {
   PretargetingConfigResourceApi get pretargetingConfig => new PretargetingConfigResourceApi(_requester);
   ProductsResourceApi get products => new ProductsResourceApi(_requester);
   ProposalsResourceApi get proposals => new ProposalsResourceApi(_requester);
+  PubprofilesResourceApi get pubprofiles => new PubprofilesResourceApi(_requester);
 
   AdexchangebuyerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "adexchangebuyer/v1.4/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -1631,6 +1632,45 @@ class ProposalsResourceApi {
   }
 
   /**
+   * Update the given proposal to indicate that setup has been completed.
+   *
+   * Request parameters:
+   *
+   * [proposalId] - The proposal id for which the setup is complete
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future setupcomplete(core.String proposalId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/setupcomplete';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
    * Update the given proposal
    *
    * [request] - The metadata request object.
@@ -1696,8 +1736,67 @@ class ProposalsResourceApi {
 }
 
 
+class PubprofilesResourceApi {
+  final commons.ApiRequester _requester;
+
+  PubprofilesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets the requested publisher profile(s) by publisher accountId.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The accountId of the publisher to get profiles for.
+   *
+   * Completes with a [GetPublisherProfilesByAccountIdResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GetPublisherProfilesByAccountIdResponse> list(core.int accountId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+
+    _url = 'publisher/' + commons.Escaper.ecapeVariable('$accountId') + '/profiles';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GetPublisherProfilesByAccountIdResponse.fromJson(data));
+  }
+
+}
+
+
 
 class AccountBidderLocation {
+  /**
+   * The protocol that the bidder endpoint is using. By default, OpenRTB
+   * protocols use JSON, except PROTOCOL_OPENRTB_PROTOBUF.
+   * PROTOCOL_OPENRTB_PROTOBUF uses protobuf encoding over the latest OpenRTB
+   * protocol version, which is 2.3 right now. Allowed values:
+   * - PROTOCOL_ADX
+   * - PROTOCOL_OPENRTB_2_2
+   * - PROTOCOL_OPENRTB_2_3
+   * - PROTOCOL_OPENRTB_PROTOBUF
+   */
+  core.String bidProtocol;
   /** The maximum queries per second the Ad Exchange will send. */
   core.int maximumQps;
   /**
@@ -1716,6 +1815,9 @@ class AccountBidderLocation {
   AccountBidderLocation();
 
   AccountBidderLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("bidProtocol")) {
+      bidProtocol = _json["bidProtocol"];
+    }
     if (_json.containsKey("maximumQps")) {
       maximumQps = _json["maximumQps"];
     }
@@ -1729,6 +1831,9 @@ class AccountBidderLocation {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (bidProtocol != null) {
+      _json["bidProtocol"] = bidProtocol;
+    }
     if (maximumQps != null) {
       _json["maximumQps"] = maximumQps;
     }
@@ -2971,6 +3076,61 @@ class CreativesList {
   }
 }
 
+class DealServingMetadata {
+  /**
+   * Tracks which parties (if any) have paused a deal. (readonly, except via
+   * PauseResumeOrderDeals action)
+   */
+  DealServingMetadataDealPauseStatus dealPauseStatus;
+
+  DealServingMetadata();
+
+  DealServingMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("dealPauseStatus")) {
+      dealPauseStatus = new DealServingMetadataDealPauseStatus.fromJson(_json["dealPauseStatus"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dealPauseStatus != null) {
+      _json["dealPauseStatus"] = (dealPauseStatus).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Tracks which parties (if any) have paused a deal. The deal is considered
+ * paused if has_buyer_paused || has_seller_paused.
+ */
+class DealServingMetadataDealPauseStatus {
+  core.bool hasBuyerPaused;
+  core.bool hasSellerPaused;
+
+  DealServingMetadataDealPauseStatus();
+
+  DealServingMetadataDealPauseStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("hasBuyerPaused")) {
+      hasBuyerPaused = _json["hasBuyerPaused"];
+    }
+    if (_json.containsKey("hasSellerPaused")) {
+      hasSellerPaused = _json["hasSellerPaused"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (hasBuyerPaused != null) {
+      _json["hasBuyerPaused"] = hasBuyerPaused;
+    }
+    if (hasSellerPaused != null) {
+      _json["hasSellerPaused"] = hasSellerPaused;
+    }
+    return _json;
+  }
+}
+
 class DealTerms {
   /** Visibilty of the URL in bid requests. */
   core.String brandingType;
@@ -3087,16 +3247,19 @@ class DealTermsGuaranteedFixedPriceTerms {
 }
 
 class DealTermsNonGuaranteedAuctionTerms {
-  /** Id of the corresponding private auction. */
-  core.String privateAuctionId;
+  /**
+   * True if open auction buyers are allowed to compete with invited buyers in
+   * this private auction (buyer-readonly).
+   */
+  core.bool autoOptimizePrivateAuction;
   /** Reserve price for the specified buyer. */
   core.List<PricePerBuyer> reservePricePerBuyers;
 
   DealTermsNonGuaranteedAuctionTerms();
 
   DealTermsNonGuaranteedAuctionTerms.fromJson(core.Map _json) {
-    if (_json.containsKey("privateAuctionId")) {
-      privateAuctionId = _json["privateAuctionId"];
+    if (_json.containsKey("autoOptimizePrivateAuction")) {
+      autoOptimizePrivateAuction = _json["autoOptimizePrivateAuction"];
     }
     if (_json.containsKey("reservePricePerBuyers")) {
       reservePricePerBuyers = _json["reservePricePerBuyers"].map((value) => new PricePerBuyer.fromJson(value)).toList();
@@ -3105,8 +3268,8 @@ class DealTermsNonGuaranteedAuctionTerms {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (privateAuctionId != null) {
-      _json["privateAuctionId"] = privateAuctionId;
+    if (autoOptimizePrivateAuction != null) {
+      _json["autoOptimizePrivateAuction"] = autoOptimizePrivateAuction;
     }
     if (reservePricePerBuyers != null) {
       _json["reservePricePerBuyers"] = reservePricePerBuyers.map((value) => (value).toJson()).toList();
@@ -3333,6 +3496,8 @@ class EditAllOrderDealsRequest {
 class EditAllOrderDealsResponse {
   /** List of all deals in the proposal after edit. */
   core.List<MarketplaceDeal> deals;
+  /** The latest revision number after the update has been applied. */
+  core.String orderRevisionNumber;
 
   EditAllOrderDealsResponse();
 
@@ -3340,12 +3505,18 @@ class EditAllOrderDealsResponse {
     if (_json.containsKey("deals")) {
       deals = _json["deals"].map((value) => new MarketplaceDeal.fromJson(value)).toList();
     }
+    if (_json.containsKey("orderRevisionNumber")) {
+      orderRevisionNumber = _json["orderRevisionNumber"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (deals != null) {
       _json["deals"] = deals.map((value) => (value).toJson()).toList();
+    }
+    if (orderRevisionNumber != null) {
+      _json["orderRevisionNumber"] = orderRevisionNumber;
     }
     return _json;
   }
@@ -3435,6 +3606,27 @@ class GetOrdersResponse {
   }
 }
 
+class GetPublisherProfilesByAccountIdResponse {
+  /** Profiles for the requested publisher */
+  core.List<PublisherProfileApiProto> profiles;
+
+  GetPublisherProfilesByAccountIdResponse();
+
+  GetPublisherProfilesByAccountIdResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("profiles")) {
+      profiles = _json["profiles"].map((value) => new PublisherProfileApiProto.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (profiles != null) {
+      _json["profiles"] = profiles.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /**
  * A proposal can contain multiple deals. A deal contains the terms and
  * targeting information that is used for serving.
@@ -3446,8 +3638,17 @@ class MarketplaceDeal {
   core.String creationTimeMs;
   /** Specifies the creative pre-approval policy (buyer-readonly) */
   core.String creativePreApprovalPolicy;
+  /**
+   * Specifies whether the creative is safeFrame compatible (buyer-readonly)
+   */
+  core.String creativeSafeFrameCompatibility;
   /** A unique deal=id for the deal (readonly). */
   core.String dealId;
+  /**
+   * Metadata about the serving status of this deal (readonly, writes via custom
+   * actions)
+   */
+  DealServingMetadata dealServingMetadata;
   /**
    * The set of fields around delivery control that are interesting for a buyer
    * to see but are non-negotiable. These are set by the publisher. This message
@@ -3491,10 +3692,19 @@ class MarketplaceDeal {
    * (readonly, except on create)
    */
   core.String productRevisionNumber;
+  /**
+   * Specifies the creative source for programmatic deals, PUBLISHER means
+   * creative is provided by seller and ADVERTISR means creative is provided by
+   * buyer. (buyer-readonly)
+   */
+  core.String programmaticCreativeSource;
   core.String proposalId;
   /** Optional Seller contact information for the deal (buyer-readonly) */
   core.List<ContactInformation> sellerContacts;
-  /** The shared targeting visible to buyers and sellers. (updatable) */
+  /**
+   * The shared targeting visible to buyers and sellers. Each shared targeting
+   * entity is AND'd together. (updatable)
+   */
   core.List<SharedTargeting> sharedTargetings;
   /**
    * The syndication product associated with the deal. (readonly, except on
@@ -3517,8 +3727,14 @@ class MarketplaceDeal {
     if (_json.containsKey("creativePreApprovalPolicy")) {
       creativePreApprovalPolicy = _json["creativePreApprovalPolicy"];
     }
+    if (_json.containsKey("creativeSafeFrameCompatibility")) {
+      creativeSafeFrameCompatibility = _json["creativeSafeFrameCompatibility"];
+    }
     if (_json.containsKey("dealId")) {
       dealId = _json["dealId"];
+    }
+    if (_json.containsKey("dealServingMetadata")) {
+      dealServingMetadata = new DealServingMetadata.fromJson(_json["dealServingMetadata"]);
     }
     if (_json.containsKey("deliveryControl")) {
       deliveryControl = new DeliveryControl.fromJson(_json["deliveryControl"]);
@@ -3549,6 +3765,9 @@ class MarketplaceDeal {
     }
     if (_json.containsKey("productRevisionNumber")) {
       productRevisionNumber = _json["productRevisionNumber"];
+    }
+    if (_json.containsKey("programmaticCreativeSource")) {
+      programmaticCreativeSource = _json["programmaticCreativeSource"];
     }
     if (_json.containsKey("proposalId")) {
       proposalId = _json["proposalId"];
@@ -3581,8 +3800,14 @@ class MarketplaceDeal {
     if (creativePreApprovalPolicy != null) {
       _json["creativePreApprovalPolicy"] = creativePreApprovalPolicy;
     }
+    if (creativeSafeFrameCompatibility != null) {
+      _json["creativeSafeFrameCompatibility"] = creativeSafeFrameCompatibility;
+    }
     if (dealId != null) {
       _json["dealId"] = dealId;
+    }
+    if (dealServingMetadata != null) {
+      _json["dealServingMetadata"] = (dealServingMetadata).toJson();
     }
     if (deliveryControl != null) {
       _json["deliveryControl"] = (deliveryControl).toJson();
@@ -3613,6 +3838,9 @@ class MarketplaceDeal {
     }
     if (productRevisionNumber != null) {
       _json["productRevisionNumber"] = productRevisionNumber;
+    }
+    if (programmaticCreativeSource != null) {
+      _json["programmaticCreativeSource"] = programmaticCreativeSource;
     }
     if (proposalId != null) {
       _json["proposalId"] = proposalId;
@@ -4617,6 +4845,13 @@ class Product {
    * (buyer-readonly)
    */
   core.List<ContactInformation> creatorContacts;
+  /**
+   * The set of fields around delivery control that are interesting for a buyer
+   * to see but are non-negotiable. These are set by the publisher. This message
+   * is assigned an id of 100 since some day we would want to model this as a
+   * protobuf extension.
+   */
+  DeliveryControl deliveryControl;
   /** The proposed end time for the deal (ms since epoch) (buyer-readonly) */
   core.String flightEndTimeMs;
   /**
@@ -4644,8 +4879,12 @@ class Product {
   core.List<MarketplaceLabel> labels;
   /** Time of last update in ms. since epoch (readonly) */
   core.String lastUpdateTimeMs;
+  /** Optional legacy offer id if this offer is a preferred deal offer. */
+  core.String legacyOfferId;
   /** The name for this product as set by the seller. (buyer-readonly) */
   core.String name;
+  /** Optional private auction id if this offer is a private auction offer. */
+  core.String privateAuctionId;
   /** The unique id for the product (readonly) */
   core.String productId;
   /** The revision number of the product. (readonly) */
@@ -4681,6 +4920,9 @@ class Product {
     if (_json.containsKey("creatorContacts")) {
       creatorContacts = _json["creatorContacts"].map((value) => new ContactInformation.fromJson(value)).toList();
     }
+    if (_json.containsKey("deliveryControl")) {
+      deliveryControl = new DeliveryControl.fromJson(_json["deliveryControl"]);
+    }
     if (_json.containsKey("flightEndTimeMs")) {
       flightEndTimeMs = _json["flightEndTimeMs"];
     }
@@ -4702,8 +4944,14 @@ class Product {
     if (_json.containsKey("lastUpdateTimeMs")) {
       lastUpdateTimeMs = _json["lastUpdateTimeMs"];
     }
+    if (_json.containsKey("legacyOfferId")) {
+      legacyOfferId = _json["legacyOfferId"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("privateAuctionId")) {
+      privateAuctionId = _json["privateAuctionId"];
     }
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
@@ -4739,6 +4987,9 @@ class Product {
     if (creatorContacts != null) {
       _json["creatorContacts"] = creatorContacts.map((value) => (value).toJson()).toList();
     }
+    if (deliveryControl != null) {
+      _json["deliveryControl"] = (deliveryControl).toJson();
+    }
     if (flightEndTimeMs != null) {
       _json["flightEndTimeMs"] = flightEndTimeMs;
     }
@@ -4760,8 +5011,14 @@ class Product {
     if (lastUpdateTimeMs != null) {
       _json["lastUpdateTimeMs"] = lastUpdateTimeMs;
     }
+    if (legacyOfferId != null) {
+      _json["legacyOfferId"] = legacyOfferId;
+    }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (privateAuctionId != null) {
+      _json["privateAuctionId"] = privateAuctionId;
     }
     if (productId != null) {
       _json["productId"] = productId;
@@ -4832,7 +5089,7 @@ class Proposal {
   core.bool isRenegotiating;
   /**
    * True, if the buyside inventory setup is complete for this proposal.
-   * (readonly)
+   * (readonly, except via OrderSetupCompleted action)
    */
   core.bool isSetupComplete;
   /**
@@ -4850,8 +5107,14 @@ class Proposal {
   core.String lastUpdaterRole;
   /** The name for the proposal (updatable) */
   core.String name;
+  /** Optional negotiation id if this proposal is a preferred deal proposal. */
+  core.String negotiationId;
   /** Indicates whether the buyer/seller created the proposal.(readonly) */
   core.String originatorRole;
+  /**
+   * Optional private auction id if this proposal is a private auction proposal.
+   */
+  core.String privateAuctionId;
   /** The unique id of the proposal. (readonly). */
   core.String proposalId;
   /** The current state of the proposal. (readonly) */
@@ -4912,8 +5175,14 @@ class Proposal {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("negotiationId")) {
+      negotiationId = _json["negotiationId"];
+    }
     if (_json.containsKey("originatorRole")) {
       originatorRole = _json["originatorRole"];
+    }
+    if (_json.containsKey("privateAuctionId")) {
+      privateAuctionId = _json["privateAuctionId"];
     }
     if (_json.containsKey("proposalId")) {
       proposalId = _json["proposalId"];
@@ -4979,8 +5248,14 @@ class Proposal {
     if (name != null) {
       _json["name"] = name;
     }
+    if (negotiationId != null) {
+      _json["negotiationId"] = negotiationId;
+    }
     if (originatorRole != null) {
       _json["originatorRole"] = originatorRole;
+    }
+    if (privateAuctionId != null) {
+      _json["privateAuctionId"] = privateAuctionId;
     }
     if (proposalId != null) {
       _json["proposalId"] = proposalId;
@@ -4999,6 +5274,131 @@ class Proposal {
     }
     if (sellerContacts != null) {
       _json["sellerContacts"] = sellerContacts.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class PublisherProfileApiProto {
+  /** A pitch statement for the buyer */
+  core.String buyerPitchStatement;
+  /** Link to publisher's Google+ page. */
+  core.String googlePlusLink;
+  /**
+   * True, if this is the parent profile, which represents all domains owned by
+   * the publisher.
+   */
+  core.bool isParent;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "adexchangebuyer#publisherProfileApiProto".
+   */
+  core.String kind;
+  /** The url to the logo for the publisher. */
+  core.String logoUrl;
+  /** The url for additional marketing and sales materials. */
+  core.String mediaKitLink;
+  core.String name;
+  /** Publisher provided overview. */
+  core.String overview;
+  /** Unique id for the publisher profile */
+  core.int profileId;
+  /**
+   * The list of domains represented in this publisher profile. Empty if this is
+   * a parent profile.
+   */
+  core.List<core.String> publisherDomains;
+  /** Link to publisher rate card */
+  core.String rateCardInfoLink;
+  /** Link for a sample content page. */
+  core.String samplePageLink;
+  /** Publisher provided key metrics and rankings. */
+  core.List<core.String> topHeadlines;
+
+  PublisherProfileApiProto();
+
+  PublisherProfileApiProto.fromJson(core.Map _json) {
+    if (_json.containsKey("buyerPitchStatement")) {
+      buyerPitchStatement = _json["buyerPitchStatement"];
+    }
+    if (_json.containsKey("googlePlusLink")) {
+      googlePlusLink = _json["googlePlusLink"];
+    }
+    if (_json.containsKey("isParent")) {
+      isParent = _json["isParent"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("logoUrl")) {
+      logoUrl = _json["logoUrl"];
+    }
+    if (_json.containsKey("mediaKitLink")) {
+      mediaKitLink = _json["mediaKitLink"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("overview")) {
+      overview = _json["overview"];
+    }
+    if (_json.containsKey("profileId")) {
+      profileId = _json["profileId"];
+    }
+    if (_json.containsKey("publisherDomains")) {
+      publisherDomains = _json["publisherDomains"];
+    }
+    if (_json.containsKey("rateCardInfoLink")) {
+      rateCardInfoLink = _json["rateCardInfoLink"];
+    }
+    if (_json.containsKey("samplePageLink")) {
+      samplePageLink = _json["samplePageLink"];
+    }
+    if (_json.containsKey("topHeadlines")) {
+      topHeadlines = _json["topHeadlines"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (buyerPitchStatement != null) {
+      _json["buyerPitchStatement"] = buyerPitchStatement;
+    }
+    if (googlePlusLink != null) {
+      _json["googlePlusLink"] = googlePlusLink;
+    }
+    if (isParent != null) {
+      _json["isParent"] = isParent;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (logoUrl != null) {
+      _json["logoUrl"] = logoUrl;
+    }
+    if (mediaKitLink != null) {
+      _json["mediaKitLink"] = mediaKitLink;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (overview != null) {
+      _json["overview"] = overview;
+    }
+    if (profileId != null) {
+      _json["profileId"] = profileId;
+    }
+    if (publisherDomains != null) {
+      _json["publisherDomains"] = publisherDomains;
+    }
+    if (rateCardInfoLink != null) {
+      _json["rateCardInfoLink"] = rateCardInfoLink;
+    }
+    if (samplePageLink != null) {
+      _json["samplePageLink"] = samplePageLink;
+    }
+    if (topHeadlines != null) {
+      _json["topHeadlines"] = topHeadlines;
     }
     return _json;
   }
@@ -5037,9 +5437,14 @@ class Seller {
 }
 
 class SharedTargeting {
-  /** The list of values to exclude from targeting. */
+  /**
+   * The list of values to exclude from targeting. Each value is AND'd together.
+   */
   core.List<TargetingValue> exclusions;
-  /** The list of value to include as part of the targeting. */
+  /**
+   * The list of value to include as part of the targeting. Each value is OR'd
+   * together.
+   */
   core.List<TargetingValue> inclusions;
   /** The key representing the shared targeting criterion. */
   core.String key;

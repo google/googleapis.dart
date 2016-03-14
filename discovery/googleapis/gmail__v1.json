@@ -29,10 +29,10 @@
     "basePath": "/gmail/v1/users/",
     "baseUrl": "https://www.googleapis.com/gmail/v1/users/",
     "batchPath": "batch",
-    "description": "The Gmail REST API.",
+    "description": "Access Gmail mailboxes including sending user email.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/1eGVJtSLrCxEfcwj3vC77SuvvyE\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/3Io2oI-2iITlzBY_35iTEBYwT0E\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
@@ -310,6 +310,12 @@
                                 "userId"
                             ],
                             "parameters": {
+                                "includeSpamTrash": {
+                                    "default": "false",
+                                    "description": "Include drafts from SPAM and TRASH in the results.",
+                                    "location": "query",
+                                    "type": "boolean"
+                                },
                                 "maxResults": {
                                     "default": "100",
                                     "description": "Maximum number of drafts to return.",
@@ -693,6 +699,30 @@
                 },
                 "messages": {
                     "methods": {
+                        "batchDelete": {
+                            "description": "Deletes many messages by message ID. Provides no guarantees that messages were not already deleted or even existed at all.",
+                            "httpMethod": "POST",
+                            "id": "gmail.users.messages.batchDelete",
+                            "parameterOrder": [
+                                "userId"
+                            ],
+                            "parameters": {
+                                "userId": {
+                                    "default": "me",
+                                    "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "{userId}/messages/batchDelete",
+                            "request": {
+                                "$ref": "BatchDeleteMessagesRequest"
+                            },
+                            "scopes": [
+                                "https://mail.google.com/"
+                            ]
+                        },
                         "delete": {
                             "description": "Immediately and permanently deletes the specified message. This operation cannot be undone. Prefer messages.trash instead.",
                             "httpMethod": "DELETE",
@@ -1415,9 +1445,22 @@
             }
         }
     },
-    "revision": "20151214",
+    "revision": "20160301",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
+        "BatchDeleteMessagesRequest": {
+            "id": "BatchDeleteMessagesRequest",
+            "properties": {
+                "ids": {
+                    "description": "The IDs of the messages to delete.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Draft": {
             "description": "A draft email in the user's mailbox.",
             "id": "Draft",

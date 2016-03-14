@@ -20,10 +20,10 @@
     "basePath": "/replicapoolupdater/v1beta1/projects/",
     "baseUrl": "https://www.googleapis.com/replicapoolupdater/v1beta1/projects/",
     "batchPath": "batch",
-    "description": "The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.",
+    "description": "Updates groups of Compute Engine instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/9r2Awa7hyJ-O6xj5Zgxp82y_u1k\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Qa39yJM3yH1r8biVjTDz07Q6Imo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -527,7 +527,7 @@
             }
         }
     },
-    "revision": "20160107",
+    "revision": "20160229",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InstanceUpdate": {

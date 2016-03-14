@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client cloudlatencytest/v2';
 
-/** A Test API to report latency data. */
+/** Reports latency data. */
 class CloudlatencytestApi {
   /** View monitoring data for all of your Google Cloud and API projects */
   static const MonitoringReadonlyScope = "https://www.googleapis.com/auth/monitoring.readonly";

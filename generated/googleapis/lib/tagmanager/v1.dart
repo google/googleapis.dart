@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client tagmanager/v1';
 
-/** API for accessing Tag Manager accounts and containers. */
+/** Accesses Tag Manager accounts and containers. */
 class TagmanagerApi {
   /** Delete your Google Tag Manager containers */
   static const TagmanagerDeleteContainersScope = "https://www.googleapis.com/auth/tagmanager.delete.containers";
@@ -185,8 +185,10 @@ class AccountsResourceApi {
 class AccountsContainersResourceApi {
   final commons.ApiRequester _requester;
 
+  AccountsContainersEnvironmentsResourceApi get environments => new AccountsContainersEnvironmentsResourceApi(_requester);
   AccountsContainersFoldersResourceApi get folders => new AccountsContainersFoldersResourceApi(_requester);
   AccountsContainersMoveFoldersResourceApi get moveFolders => new AccountsContainersMoveFoldersResourceApi(_requester);
+  AccountsContainersReauthorizeEnvironmentsResourceApi get reauthorizeEnvironments => new AccountsContainersReauthorizeEnvironmentsResourceApi(_requester);
   AccountsContainersTagsResourceApi get tags => new AccountsContainersTagsResourceApi(_requester);
   AccountsContainersTriggersResourceApi get triggers => new AccountsContainersTriggersResourceApi(_requester);
   AccountsContainersVariablesResourceApi get variables => new AccountsContainersVariablesResourceApi(_requester);
@@ -419,6 +421,326 @@ class AccountsContainersResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Container.fromJson(data));
+  }
+
+}
+
+
+class AccountsContainersEnvironmentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsContainersEnvironmentsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a GTM Environment.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * Completes with a [Environment].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Environment> create(Environment request, core.String accountId, core.String containerId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/environments';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Environment.fromJson(data));
+  }
+
+  /**
+   * Deletes a GTM Environment.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * [environmentId] - The GTM Environment ID.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String accountId, core.String containerId, core.String environmentId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if (environmentId == null) {
+      throw new core.ArgumentError("Parameter environmentId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/environments/' + commons.Escaper.ecapeVariable('$environmentId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets a GTM Environment.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * [environmentId] - The GTM Environment ID.
+   *
+   * Completes with a [Environment].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Environment> get(core.String accountId, core.String containerId, core.String environmentId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if (environmentId == null) {
+      throw new core.ArgumentError("Parameter environmentId is required.");
+    }
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/environments/' + commons.Escaper.ecapeVariable('$environmentId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Environment.fromJson(data));
+  }
+
+  /**
+   * Lists all GTM Environments of a GTM Container.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * Completes with a [ListEnvironmentsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListEnvironmentsResponse> list(core.String accountId, core.String containerId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/environments';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListEnvironmentsResponse.fromJson(data));
+  }
+
+  /**
+   * Updates a GTM Environment. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * [environmentId] - The GTM Environment ID.
+   *
+   * [fingerprint] - When provided, this fingerprint must match the fingerprint
+   * of the environment in storage.
+   *
+   * Completes with a [Environment].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Environment> patch(Environment request, core.String accountId, core.String containerId, core.String environmentId, {core.String fingerprint}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if (environmentId == null) {
+      throw new core.ArgumentError("Parameter environmentId is required.");
+    }
+    if (fingerprint != null) {
+      _queryParams["fingerprint"] = [fingerprint];
+    }
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/environments/' + commons.Escaper.ecapeVariable('$environmentId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Environment.fromJson(data));
+  }
+
+  /**
+   * Updates a GTM Environment.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * [environmentId] - The GTM Environment ID.
+   *
+   * [fingerprint] - When provided, this fingerprint must match the fingerprint
+   * of the environment in storage.
+   *
+   * Completes with a [Environment].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Environment> update(Environment request, core.String accountId, core.String containerId, core.String environmentId, {core.String fingerprint}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if (environmentId == null) {
+      throw new core.ArgumentError("Parameter environmentId is required.");
+    }
+    if (fingerprint != null) {
+      _queryParams["fingerprint"] = [fingerprint];
+    }
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/environments/' + commons.Escaper.ecapeVariable('$environmentId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Environment.fromJson(data));
   }
 
 }
@@ -753,6 +1075,8 @@ class AccountsContainersMoveFoldersResourceApi {
   /**
    * Moves entities to a GTM Folder.
    *
+   * [request] - The metadata request object.
+   *
    * Request parameters:
    *
    * [accountId] - The GTM Account ID.
@@ -773,7 +1097,7 @@ class AccountsContainersMoveFoldersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future update(core.String accountId, core.String containerId, core.String folderId, {core.List<core.String> tagId, core.List<core.String> triggerId, core.List<core.String> variableId}) {
+  async.Future update(Folder request, core.String accountId, core.String containerId, core.String folderId, {core.List<core.String> tagId, core.List<core.String> triggerId, core.List<core.String> variableId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -781,6 +1105,9 @@ class AccountsContainersMoveFoldersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
@@ -812,6 +1139,69 @@ class AccountsContainersMoveFoldersResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
+  }
+
+}
+
+
+class AccountsContainersReauthorizeEnvironmentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsContainersReauthorizeEnvironmentsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Re-generates the authorization code for a GTM Environment.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The GTM Account ID.
+   *
+   * [containerId] - The GTM Container ID.
+   *
+   * [environmentId] - The GTM Environment ID.
+   *
+   * Completes with a [Environment].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Environment> update(Environment request, core.String accountId, core.String containerId, core.String environmentId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (containerId == null) {
+      throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if (environmentId == null) {
+      throw new core.ArgumentError("Parameter environmentId is required.");
+    }
+
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/reauthorize_environments/' + commons.Escaper.ecapeVariable('$environmentId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Environment.fromJson(data));
   }
 
 }
@@ -2831,6 +3221,135 @@ class CreateContainerVersionResponse {
   }
 }
 
+/**
+ * Represents a Google Tag Manager Environment. Note that a user can create,
+ * delete and update environments of type USER, but can only update the
+ * enable_debug and url fields of environments of other types.
+ */
+class Environment {
+  /** GTM Account ID. */
+  core.String accountId;
+  /** The environment authorization code. */
+  core.String authorizationCode;
+  /** The last update time-stamp for the authorization code. */
+  core.String authorizationTimestampMs;
+  /** GTM Container ID. */
+  core.String containerId;
+  core.String containerVersionId;
+  /**
+   * The environment description. Can be set or changed only on USER type
+   * environments.
+   */
+  core.String description;
+  /** Whether or not to enable debug by default on for the environment. */
+  core.bool enableDebug;
+  /** GTM Environment ID uniquely identifies the GTM Environment. */
+  core.String environmentId;
+  /**
+   * The fingerprint of the GTM environment as computed at storage time. This
+   * value is recomputed whenever the environment is modified.
+   */
+  core.String fingerprint;
+  /**
+   * The environment display name. Can be set or changed only on USER type
+   * environments.
+   */
+  core.String name;
+  /**
+   * The type of this environment.
+   * Possible string values are:
+   * - "draft"
+   * - "latest"
+   * - "live"
+   * - "user"
+   */
+  core.String type;
+  /** Default preview page url for the environment. */
+  core.String url;
+
+  Environment();
+
+  Environment.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("authorizationCode")) {
+      authorizationCode = _json["authorizationCode"];
+    }
+    if (_json.containsKey("authorizationTimestampMs")) {
+      authorizationTimestampMs = _json["authorizationTimestampMs"];
+    }
+    if (_json.containsKey("containerId")) {
+      containerId = _json["containerId"];
+    }
+    if (_json.containsKey("containerVersionId")) {
+      containerVersionId = _json["containerVersionId"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("enableDebug")) {
+      enableDebug = _json["enableDebug"];
+    }
+    if (_json.containsKey("environmentId")) {
+      environmentId = _json["environmentId"];
+    }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (authorizationCode != null) {
+      _json["authorizationCode"] = authorizationCode;
+    }
+    if (authorizationTimestampMs != null) {
+      _json["authorizationTimestampMs"] = authorizationTimestampMs;
+    }
+    if (containerId != null) {
+      _json["containerId"] = containerId;
+    }
+    if (containerVersionId != null) {
+      _json["containerVersionId"] = containerVersionId;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (enableDebug != null) {
+      _json["enableDebug"] = enableDebug;
+    }
+    if (environmentId != null) {
+      _json["environmentId"] = environmentId;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
 /** Represents a Google Tag Manager Folder. */
 class Folder {
   /** GTM Account ID. */
@@ -3017,6 +3536,28 @@ class ListContainersResponse {
     var _json = new core.Map();
     if (containers != null) {
       _json["containers"] = containers.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** List Environments Response. */
+class ListEnvironmentsResponse {
+  /** All Environments of a GTM Container. */
+  core.List<Environment> environments;
+
+  ListEnvironmentsResponse();
+
+  ListEnvironmentsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("environments")) {
+      environments = _json["environments"].map((value) => new Environment.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (environments != null) {
+      _json["environments"] = environments.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

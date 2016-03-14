@@ -17,7 +17,7 @@
     "description": "Google Dataflow API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataflow",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/z_qEBVG4geak7DrKYhi9NJcxQa4\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/6VZTtaR6IvNSRMngfuFqoyS-PQg\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -487,7 +487,7 @@
             }
         }
     },
-    "revision": "20160123",
+    "revision": "20160309",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
         "Job": {
@@ -759,6 +759,14 @@
                 },
                 "network": {
                     "description": "Network to which VMs will be assigned. If empty or unspecified, the service will use the network \"default\".",
+                    "type": "string"
+                },
+                "subnetwork": {
+                    "description": "Subnetwork to which VMs will be assigned, if desired. Expected to be of the form \"zones/ZONE/subnetworks/SUBNETWORK\".",
+                    "type": "string"
+                },
+                "workerHarnessContainerImage": {
+                    "description": "Docker container image that executes Dataflow worker harness, residing in Google Container Registry. Required.",
                     "type": "string"
                 }
             },
@@ -2106,6 +2114,10 @@
                 "streamingComputationTopology": {
                     "$ref": "TopologyConfig",
                     "description": "The global topology of the streaming Dataflow job."
+                },
+                "drain": {
+                    "description": "The user has requested drain.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

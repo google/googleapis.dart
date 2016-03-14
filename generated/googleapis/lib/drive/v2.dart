@@ -1162,6 +1162,61 @@ class FilesResourceApi {
   }
 
   /**
+   * Exports a Google Doc to the requested MIME type and returns the exported
+   * content.
+   *
+   * Request parameters:
+   *
+   * [fileId] - The ID of the file.
+   *
+   * [mimeType] - The MIME type of the format requested for this export.
+   *
+   * [downloadOptions] - Options for downloading. A download can be either a
+   * Metadata (default) or Media download. Partial Media downloads are possible
+   * as well.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future export(core.String fileId, core.String mimeType, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (fileId == null) {
+      throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if (mimeType == null) {
+      throw new core.ArgumentError("Parameter mimeType is required.");
+    }
+    _queryParams["mimeType"] = [mimeType];
+
+    _downloadOptions = downloadOptions;
+
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/export';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    if (_downloadOptions == null ||
+        _downloadOptions == commons.DownloadOptions.Metadata) {
+      return _response.then((data) => null);
+    } else {
+      return _response;
+    }
+  }
+
+  /**
    * Generates a set of file IDs which can be provided in insert requests.
    *
    * Request parameters:
@@ -5391,6 +5446,11 @@ class File {
   core.bool appDataContents;
   /** Whether the current user can comment on the file. */
   core.bool canComment;
+  /**
+   * Whether the current user has read access to the Revisions resource of the
+   * file.
+   */
+  core.bool canReadRevisions;
   /** Whether the file can be copied by the current user. */
   core.bool copyable;
   /** Create time for this file (formatted RFC 3339 timestamp). */
@@ -5599,6 +5659,9 @@ class File {
     if (_json.containsKey("canComment")) {
       canComment = _json["canComment"];
     }
+    if (_json.containsKey("canReadRevisions")) {
+      canReadRevisions = _json["canReadRevisions"];
+    }
     if (_json.containsKey("copyable")) {
       copyable = _json["copyable"];
     }
@@ -5770,6 +5833,9 @@ class File {
     }
     if (canComment != null) {
       _json["canComment"] = canComment;
+    }
+    if (canReadRevisions != null) {
+      _json["canReadRevisions"] = canReadRevisions;
     }
     if (copyable != null) {
       _json["copyable"] = copyable;

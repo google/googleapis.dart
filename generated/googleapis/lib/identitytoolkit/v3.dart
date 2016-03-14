@@ -234,6 +234,10 @@ class RelyingpartyResourceApi {
    *
    * Request parameters:
    *
+   * [delegatedProjectNumber] - Delegated GCP project number of the request.
+   *
+   * [projectNumber] - GCP project number of the request.
+   *
    * Completes with a [IdentitytoolkitRelyingpartyGetProjectConfigResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -242,7 +246,7 @@ class RelyingpartyResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<IdentitytoolkitRelyingpartyGetProjectConfigResponse> getProjectConfig() {
+  async.Future<IdentitytoolkitRelyingpartyGetProjectConfigResponse> getProjectConfig({core.String delegatedProjectNumber, core.String projectNumber}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -250,6 +254,12 @@ class RelyingpartyResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (delegatedProjectNumber != null) {
+      _queryParams["delegatedProjectNumber"] = [delegatedProjectNumber];
+    }
+    if (projectNumber != null) {
+      _queryParams["projectNumber"] = [projectNumber];
+    }
 
     _url = 'getProjectConfig';
 
@@ -410,6 +420,45 @@ class RelyingpartyResourceApi {
   }
 
   /**
+   * Set project configuration.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [IdentitytoolkitRelyingpartySetProjectConfigResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<IdentitytoolkitRelyingpartySetProjectConfigResponse> setProjectConfig(IdentitytoolkitRelyingpartySetProjectConfigRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'setProjectConfig';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(data));
+  }
+
+  /**
    * Sign out user.
    *
    * [request] - The metadata request object.
@@ -446,6 +495,45 @@ class RelyingpartyResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(data));
+  }
+
+  /**
+   * Signup new user.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [SignupNewUserResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SignupNewUserResponse> signupNewUser(IdentitytoolkitRelyingpartySignupNewUserRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'signupNewUser';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SignupNewUserResponse.fromJson(data));
   }
 
   /**
@@ -751,6 +839,68 @@ class DownloadAccountResponse {
   }
 }
 
+/** Template for an email template. */
+class EmailTemplate {
+  /** Email body. */
+  core.String body;
+  /** Email body format. */
+  core.String format;
+  /** From address of the email. */
+  core.String from;
+  /** From display name. */
+  core.String fromDisplayName;
+  /** Reply-to address. */
+  core.String replyTo;
+  /** Subject of the email. */
+  core.String subject;
+
+  EmailTemplate();
+
+  EmailTemplate.fromJson(core.Map _json) {
+    if (_json.containsKey("body")) {
+      body = _json["body"];
+    }
+    if (_json.containsKey("format")) {
+      format = _json["format"];
+    }
+    if (_json.containsKey("from")) {
+      from = _json["from"];
+    }
+    if (_json.containsKey("fromDisplayName")) {
+      fromDisplayName = _json["fromDisplayName"];
+    }
+    if (_json.containsKey("replyTo")) {
+      replyTo = _json["replyTo"];
+    }
+    if (_json.containsKey("subject")) {
+      subject = _json["subject"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (body != null) {
+      _json["body"] = body;
+    }
+    if (format != null) {
+      _json["format"] = format;
+    }
+    if (from != null) {
+      _json["from"] = from;
+    }
+    if (fromDisplayName != null) {
+      _json["fromDisplayName"] = fromDisplayName;
+    }
+    if (replyTo != null) {
+      _json["replyTo"] = replyTo;
+    }
+    if (subject != null) {
+      _json["subject"] = subject;
+    }
+    return _json;
+  }
+}
+
 /** Response of getting account information. */
 class GetAccountInfoResponse {
   /** The fixed string "identitytoolkit#GetAccountInfoResponse". */
@@ -982,6 +1132,8 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
    * for Firebase V1 migration.
    */
   core.String delegatedProjectNumber;
+  /** The GITKit token or STS id token of the authenticated user. */
+  core.String idToken;
   /** The local ID of the user. */
   core.String localId;
 
@@ -990,6 +1142,9 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
   IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(core.Map _json) {
     if (_json.containsKey("delegatedProjectNumber")) {
       delegatedProjectNumber = _json["delegatedProjectNumber"];
+    }
+    if (_json.containsKey("idToken")) {
+      idToken = _json["idToken"];
     }
     if (_json.containsKey("localId")) {
       localId = _json["localId"];
@@ -1000,6 +1155,9 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
     var _json = new core.Map();
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
+    }
+    if (idToken != null) {
+      _json["idToken"] = idToken;
     }
     if (localId != null) {
       _json["localId"] = localId;
@@ -1054,6 +1212,11 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
 
 /** Request to get the account information. */
 class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
+  /**
+   * GCP project number of the requesting delegated app. Currently only intended
+   * for Firebase V1 migration.
+   */
+  core.String delegatedProjectNumber;
   /** The list of emails of the users to inquiry. */
   core.List<core.String> email;
   /** The GITKit token of the authenticated user. */
@@ -1064,6 +1227,9 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
   IdentitytoolkitRelyingpartyGetAccountInfoRequest();
 
   IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("delegatedProjectNumber")) {
+      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    }
     if (_json.containsKey("email")) {
       email = _json["email"];
     }
@@ -1077,6 +1243,9 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (delegatedProjectNumber != null) {
+      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+    }
     if (email != null) {
       _json["email"] = email;
     }
@@ -1096,10 +1265,20 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
   core.bool allowPasswordUser;
   /** Browser API key, needed when making http request to Apiary. */
   core.String apiKey;
+  /** Authorized domains. */
+  core.List<core.String> authorizedDomains;
+  /** Change email template. */
+  EmailTemplate changeEmailTemplate;
   /** OAuth2 provider configuration. */
   core.List<IdpConfig> idpConfig;
   /** Project ID of the relying party. */
   core.String projectId;
+  /** Reset password email template. */
+  EmailTemplate resetPasswordTemplate;
+  /** Whether to use email sending provided by Firebear. */
+  core.bool useEmailSending;
+  /** Verify email template. */
+  EmailTemplate verifyEmailTemplate;
 
   IdentitytoolkitRelyingpartyGetProjectConfigResponse();
 
@@ -1110,11 +1289,26 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     if (_json.containsKey("apiKey")) {
       apiKey = _json["apiKey"];
     }
+    if (_json.containsKey("authorizedDomains")) {
+      authorizedDomains = _json["authorizedDomains"];
+    }
+    if (_json.containsKey("changeEmailTemplate")) {
+      changeEmailTemplate = new EmailTemplate.fromJson(_json["changeEmailTemplate"]);
+    }
     if (_json.containsKey("idpConfig")) {
       idpConfig = _json["idpConfig"].map((value) => new IdpConfig.fromJson(value)).toList();
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
+    }
+    if (_json.containsKey("resetPasswordTemplate")) {
+      resetPasswordTemplate = new EmailTemplate.fromJson(_json["resetPasswordTemplate"]);
+    }
+    if (_json.containsKey("useEmailSending")) {
+      useEmailSending = _json["useEmailSending"];
+    }
+    if (_json.containsKey("verifyEmailTemplate")) {
+      verifyEmailTemplate = new EmailTemplate.fromJson(_json["verifyEmailTemplate"]);
     }
   }
 
@@ -1126,11 +1320,26 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     if (apiKey != null) {
       _json["apiKey"] = apiKey;
     }
+    if (authorizedDomains != null) {
+      _json["authorizedDomains"] = authorizedDomains;
+    }
+    if (changeEmailTemplate != null) {
+      _json["changeEmailTemplate"] = (changeEmailTemplate).toJson();
+    }
     if (idpConfig != null) {
       _json["idpConfig"] = idpConfig.map((value) => (value).toJson()).toList();
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
+    }
+    if (resetPasswordTemplate != null) {
+      _json["resetPasswordTemplate"] = (resetPasswordTemplate).toJson();
+    }
+    if (useEmailSending != null) {
+      _json["useEmailSending"] = useEmailSending;
+    }
+    if (verifyEmailTemplate != null) {
+      _json["verifyEmailTemplate"] = (verifyEmailTemplate).toJson();
     }
     return _json;
   }
@@ -1230,6 +1439,10 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
    * for Firebase V1 migration.
    */
   core.String delegatedProjectNumber;
+  /** The attributes users request to delete. */
+  core.List<core.String> deleteAttribute;
+  /** The IDPs the user request to delete. */
+  core.List<core.String> deleteProvider;
   /** Whether to disable the user. */
   core.bool disableUser;
   /** The name of the user. */
@@ -1248,8 +1461,12 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   core.String oobCode;
   /** The new password of the user. */
   core.String password;
+  /** The photo url of the user. */
+  core.String photoUrl;
   /** The associated IDPs of the user. */
   core.List<core.String> provider;
+  /** Whether return sts id token and refresh token instead of gitkit token. */
+  core.bool returnSecureToken;
   /** Mark the user to upgrade to federated login. */
   core.bool upgradeToFederatedLogin;
   /** Timestamp in seconds for valid login token. */
@@ -1266,6 +1483,12 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
     if (_json.containsKey("delegatedProjectNumber")) {
       delegatedProjectNumber = _json["delegatedProjectNumber"];
+    }
+    if (_json.containsKey("deleteAttribute")) {
+      deleteAttribute = _json["deleteAttribute"];
+    }
+    if (_json.containsKey("deleteProvider")) {
+      deleteProvider = _json["deleteProvider"];
     }
     if (_json.containsKey("disableUser")) {
       disableUser = _json["disableUser"];
@@ -1294,8 +1517,14 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     if (_json.containsKey("password")) {
       password = _json["password"];
     }
+    if (_json.containsKey("photoUrl")) {
+      photoUrl = _json["photoUrl"];
+    }
     if (_json.containsKey("provider")) {
       provider = _json["provider"];
+    }
+    if (_json.containsKey("returnSecureToken")) {
+      returnSecureToken = _json["returnSecureToken"];
     }
     if (_json.containsKey("upgradeToFederatedLogin")) {
       upgradeToFederatedLogin = _json["upgradeToFederatedLogin"];
@@ -1315,6 +1544,12 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
+    }
+    if (deleteAttribute != null) {
+      _json["deleteAttribute"] = deleteAttribute;
+    }
+    if (deleteProvider != null) {
+      _json["deleteProvider"] = deleteProvider;
     }
     if (disableUser != null) {
       _json["disableUser"] = disableUser;
@@ -1343,14 +1578,123 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     if (password != null) {
       _json["password"] = password;
     }
+    if (photoUrl != null) {
+      _json["photoUrl"] = photoUrl;
+    }
     if (provider != null) {
       _json["provider"] = provider;
+    }
+    if (returnSecureToken != null) {
+      _json["returnSecureToken"] = returnSecureToken;
     }
     if (upgradeToFederatedLogin != null) {
       _json["upgradeToFederatedLogin"] = upgradeToFederatedLogin;
     }
     if (validSince != null) {
       _json["validSince"] = validSince;
+    }
+    return _json;
+  }
+}
+
+/** Request to set the project configuration. */
+class IdentitytoolkitRelyingpartySetProjectConfigRequest {
+  /** Whether to allow password user sign in or sign up. */
+  core.bool allowPasswordUser;
+  /** Browser API key, needed when making http request to Apiary. */
+  core.String apiKey;
+  /** Change email template. */
+  EmailTemplate changeEmailTemplate;
+  /**
+   * GCP project number of the requesting delegated app. Currently only intended
+   * for Firebase V1 migration.
+   */
+  core.String delegatedProjectNumber;
+  /** Oauth2 provider configuration. */
+  core.List<IdpConfig> idpConfig;
+  /** Reset password email template. */
+  EmailTemplate resetPasswordTemplate;
+  /** Whether to use email sending provided by Firebear. */
+  core.bool useEmailSending;
+  /** Verify email template. */
+  EmailTemplate verifyEmailTemplate;
+
+  IdentitytoolkitRelyingpartySetProjectConfigRequest();
+
+  IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("allowPasswordUser")) {
+      allowPasswordUser = _json["allowPasswordUser"];
+    }
+    if (_json.containsKey("apiKey")) {
+      apiKey = _json["apiKey"];
+    }
+    if (_json.containsKey("changeEmailTemplate")) {
+      changeEmailTemplate = new EmailTemplate.fromJson(_json["changeEmailTemplate"]);
+    }
+    if (_json.containsKey("delegatedProjectNumber")) {
+      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    }
+    if (_json.containsKey("idpConfig")) {
+      idpConfig = _json["idpConfig"].map((value) => new IdpConfig.fromJson(value)).toList();
+    }
+    if (_json.containsKey("resetPasswordTemplate")) {
+      resetPasswordTemplate = new EmailTemplate.fromJson(_json["resetPasswordTemplate"]);
+    }
+    if (_json.containsKey("useEmailSending")) {
+      useEmailSending = _json["useEmailSending"];
+    }
+    if (_json.containsKey("verifyEmailTemplate")) {
+      verifyEmailTemplate = new EmailTemplate.fromJson(_json["verifyEmailTemplate"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (allowPasswordUser != null) {
+      _json["allowPasswordUser"] = allowPasswordUser;
+    }
+    if (apiKey != null) {
+      _json["apiKey"] = apiKey;
+    }
+    if (changeEmailTemplate != null) {
+      _json["changeEmailTemplate"] = (changeEmailTemplate).toJson();
+    }
+    if (delegatedProjectNumber != null) {
+      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+    }
+    if (idpConfig != null) {
+      _json["idpConfig"] = idpConfig.map((value) => (value).toJson()).toList();
+    }
+    if (resetPasswordTemplate != null) {
+      _json["resetPasswordTemplate"] = (resetPasswordTemplate).toJson();
+    }
+    if (useEmailSending != null) {
+      _json["useEmailSending"] = useEmailSending;
+    }
+    if (verifyEmailTemplate != null) {
+      _json["verifyEmailTemplate"] = (verifyEmailTemplate).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Response of setting the project configuration. */
+class IdentitytoolkitRelyingpartySetProjectConfigResponse {
+  /** Project ID of the relying party. */
+  core.String projectId;
+
+  IdentitytoolkitRelyingpartySetProjectConfigResponse();
+
+  IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (projectId != null) {
+      _json["projectId"] = projectId;
     }
     return _json;
   }
@@ -1403,6 +1747,86 @@ class IdentitytoolkitRelyingpartySignOutUserResponse {
     var _json = new core.Map();
     if (localId != null) {
       _json["localId"] = localId;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Request to signup new user, create anonymous user or anonymous user reauth.
+ */
+class IdentitytoolkitRelyingpartySignupNewUserRequest {
+  /** The captcha challenge. */
+  core.String captchaChallenge;
+  /** Response to the captcha. */
+  core.String captchaResponse;
+  /** The name of the user. */
+  core.String displayName;
+  /** The email of the user. */
+  core.String email;
+  /** The GITKit token of the authenticated user. */
+  core.String idToken;
+  /** Instance id token of the app. */
+  core.String instanceId;
+  /** The new password of the user. */
+  core.String password;
+  /** Whether return sts id token and refresh token instead of gitkit token. */
+  core.bool returnSecureToken;
+
+  IdentitytoolkitRelyingpartySignupNewUserRequest();
+
+  IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("captchaChallenge")) {
+      captchaChallenge = _json["captchaChallenge"];
+    }
+    if (_json.containsKey("captchaResponse")) {
+      captchaResponse = _json["captchaResponse"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("idToken")) {
+      idToken = _json["idToken"];
+    }
+    if (_json.containsKey("instanceId")) {
+      instanceId = _json["instanceId"];
+    }
+    if (_json.containsKey("password")) {
+      password = _json["password"];
+    }
+    if (_json.containsKey("returnSecureToken")) {
+      returnSecureToken = _json["returnSecureToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (captchaChallenge != null) {
+      _json["captchaChallenge"] = captchaChallenge;
+    }
+    if (captchaResponse != null) {
+      _json["captchaResponse"] = captchaResponse;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (idToken != null) {
+      _json["idToken"] = idToken;
+    }
+    if (instanceId != null) {
+      _json["instanceId"] = instanceId;
+    }
+    if (password != null) {
+      _json["password"] = password;
+    }
+    if (returnSecureToken != null) {
+      _json["returnSecureToken"] = returnSecureToken;
     }
     return _json;
   }
@@ -1502,6 +1926,8 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
    * for Firebase V1 migration.
    */
   core.String delegatedProjectNumber;
+  /** The GITKit token of the authenticated user. */
+  core.String idToken;
   /** Instance id token of the app. */
   core.String instanceId;
   /**
@@ -1518,6 +1944,8 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   core.String requestUri;
   /** Whether to return refresh tokens. */
   core.bool returnRefreshToken;
+  /** Whether return sts id token and refresh token instead of gitkit token. */
+  core.bool returnSecureToken;
   /**
    * Session ID, which should match the one in previous createAuthUri request.
    */
@@ -1528,6 +1956,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(core.Map _json) {
     if (_json.containsKey("delegatedProjectNumber")) {
       delegatedProjectNumber = _json["delegatedProjectNumber"];
+    }
+    if (_json.containsKey("idToken")) {
+      idToken = _json["idToken"];
     }
     if (_json.containsKey("instanceId")) {
       instanceId = _json["instanceId"];
@@ -1544,6 +1975,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     if (_json.containsKey("returnRefreshToken")) {
       returnRefreshToken = _json["returnRefreshToken"];
     }
+    if (_json.containsKey("returnSecureToken")) {
+      returnSecureToken = _json["returnSecureToken"];
+    }
     if (_json.containsKey("sessionId")) {
       sessionId = _json["sessionId"];
     }
@@ -1553,6 +1987,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     var _json = new core.Map();
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
+    }
+    if (idToken != null) {
+      _json["idToken"] = idToken;
     }
     if (instanceId != null) {
       _json["instanceId"] = instanceId;
@@ -1569,6 +2006,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     if (returnRefreshToken != null) {
       _json["returnRefreshToken"] = returnRefreshToken;
     }
+    if (returnSecureToken != null) {
+      _json["returnSecureToken"] = returnSecureToken;
+    }
     if (sessionId != null) {
       _json["sessionId"] = sessionId;
     }
@@ -1580,6 +2020,8 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
 class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
   /** Instance id token of the app. */
   core.String instanceId;
+  /** Whether return sts id token and refresh token instead of gitkit token. */
+  core.bool returnSecureToken;
   /** The custom token to verify */
   core.String token;
 
@@ -1588,6 +2030,9 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
   IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(core.Map _json) {
     if (_json.containsKey("instanceId")) {
       instanceId = _json["instanceId"];
+    }
+    if (_json.containsKey("returnSecureToken")) {
+      returnSecureToken = _json["returnSecureToken"];
     }
     if (_json.containsKey("token")) {
       token = _json["token"];
@@ -1598,6 +2043,9 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
     var _json = new core.Map();
     if (instanceId != null) {
       _json["instanceId"] = instanceId;
+    }
+    if (returnSecureToken != null) {
+      _json["returnSecureToken"] = returnSecureToken;
     }
     if (token != null) {
       _json["token"] = token;
@@ -1619,6 +2067,8 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
   core.String delegatedProjectNumber;
   /** The email of the user. */
   core.String email;
+  /** The GITKit token of the authenticated user. */
+  core.String idToken;
   /** Instance id token of the app. */
   core.String instanceId;
   /** The password inputed by the user. */
@@ -1628,6 +2078,8 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
    * user.
    */
   core.String pendingIdToken;
+  /** Whether return sts id token and refresh token instead of gitkit token. */
+  core.bool returnSecureToken;
 
   IdentitytoolkitRelyingpartyVerifyPasswordRequest();
 
@@ -1644,6 +2096,9 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     if (_json.containsKey("email")) {
       email = _json["email"];
     }
+    if (_json.containsKey("idToken")) {
+      idToken = _json["idToken"];
+    }
     if (_json.containsKey("instanceId")) {
       instanceId = _json["instanceId"];
     }
@@ -1652,6 +2107,9 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     }
     if (_json.containsKey("pendingIdToken")) {
       pendingIdToken = _json["pendingIdToken"];
+    }
+    if (_json.containsKey("returnSecureToken")) {
+      returnSecureToken = _json["returnSecureToken"];
     }
   }
 
@@ -1669,6 +2127,9 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     if (email != null) {
       _json["email"] = email;
     }
+    if (idToken != null) {
+      _json["idToken"] = idToken;
+    }
     if (instanceId != null) {
       _json["instanceId"] = instanceId;
     }
@@ -1677,6 +2138,9 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     }
     if (pendingIdToken != null) {
       _json["pendingIdToken"] = pendingIdToken;
+    }
+    if (returnSecureToken != null) {
+      _json["returnSecureToken"] = returnSecureToken;
     }
     return _json;
   }
@@ -1889,14 +2353,23 @@ class SetAccountInfoResponse {
   core.String displayName;
   /** The email of the user. */
   core.String email;
+  /**
+   * If idToken is STS id token, then this field will be expiration time of STS
+   * id token in seconds.
+   */
+  core.String expiresIn;
   /** The Gitkit id token to login the newly sign up user. */
   core.String idToken;
   /** The fixed string "identitytoolkit#SetAccountInfoResponse". */
   core.String kind;
   /** The new email the user attempts to change to. */
   core.String newEmail;
+  /** The photo url of the user. */
+  core.String photoUrl;
   /** The user's profiles at the associated IdPs. */
   core.List<SetAccountInfoResponseProviderUserInfo> providerUserInfo;
+  /** If idToken is STS id token, then this field will be refresh token. */
+  core.String refreshToken;
 
   SetAccountInfoResponse();
 
@@ -1907,6 +2380,9 @@ class SetAccountInfoResponse {
     if (_json.containsKey("email")) {
       email = _json["email"];
     }
+    if (_json.containsKey("expiresIn")) {
+      expiresIn = _json["expiresIn"];
+    }
     if (_json.containsKey("idToken")) {
       idToken = _json["idToken"];
     }
@@ -1916,8 +2392,14 @@ class SetAccountInfoResponse {
     if (_json.containsKey("newEmail")) {
       newEmail = _json["newEmail"];
     }
+    if (_json.containsKey("photoUrl")) {
+      photoUrl = _json["photoUrl"];
+    }
     if (_json.containsKey("providerUserInfo")) {
       providerUserInfo = _json["providerUserInfo"].map((value) => new SetAccountInfoResponseProviderUserInfo.fromJson(value)).toList();
+    }
+    if (_json.containsKey("refreshToken")) {
+      refreshToken = _json["refreshToken"];
     }
   }
 
@@ -1929,6 +2411,9 @@ class SetAccountInfoResponse {
     if (email != null) {
       _json["email"] = email;
     }
+    if (expiresIn != null) {
+      _json["expiresIn"] = expiresIn;
+    }
     if (idToken != null) {
       _json["idToken"] = idToken;
     }
@@ -1938,8 +2423,90 @@ class SetAccountInfoResponse {
     if (newEmail != null) {
       _json["newEmail"] = newEmail;
     }
+    if (photoUrl != null) {
+      _json["photoUrl"] = photoUrl;
+    }
     if (providerUserInfo != null) {
       _json["providerUserInfo"] = providerUserInfo.map((value) => (value).toJson()).toList();
+    }
+    if (refreshToken != null) {
+      _json["refreshToken"] = refreshToken;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response of signing up new user, creating anonymous user or anonymous user
+ * reauth.
+ */
+class SignupNewUserResponse {
+  /** The name of the user. */
+  core.String displayName;
+  /** The email of the user. */
+  core.String email;
+  /**
+   * If idToken is STS id token, then this field will be expiration time of STS
+   * id token in seconds.
+   */
+  core.String expiresIn;
+  /** The Gitkit id token to login the newly sign up user. */
+  core.String idToken;
+  /** The fixed string "identitytoolkit#SignupNewUserResponse". */
+  core.String kind;
+  /** The RP local ID of the user. */
+  core.String localId;
+  /** If idToken is STS id token, then this field will be refresh token. */
+  core.String refreshToken;
+
+  SignupNewUserResponse();
+
+  SignupNewUserResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("expiresIn")) {
+      expiresIn = _json["expiresIn"];
+    }
+    if (_json.containsKey("idToken")) {
+      idToken = _json["idToken"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("localId")) {
+      localId = _json["localId"];
+    }
+    if (_json.containsKey("refreshToken")) {
+      refreshToken = _json["refreshToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (expiresIn != null) {
+      _json["expiresIn"] = expiresIn;
+    }
+    if (idToken != null) {
+      _json["idToken"] = idToken;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (localId != null) {
+      _json["localId"] = localId;
+    }
+    if (refreshToken != null) {
+      _json["refreshToken"] = refreshToken;
     }
     return _json;
   }
@@ -2007,6 +2574,8 @@ class UploadAccountResponse {
 class UserInfoProviderUserInfo {
   /** The user's display name at the IDP. */
   core.String displayName;
+  /** User's email at IDP. */
+  core.String email;
   /** User's identifier at IDP. */
   core.String federatedId;
   /** The user's photo url at the IDP. */
@@ -2017,12 +2586,17 @@ class UserInfoProviderUserInfo {
    * OP identifier.
    */
   core.String providerId;
+  /** User's raw identifier directly returned from IDP. */
+  core.String rawId;
 
   UserInfoProviderUserInfo();
 
   UserInfoProviderUserInfo.fromJson(core.Map _json) {
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
+    }
+    if (_json.containsKey("email")) {
+      email = _json["email"];
     }
     if (_json.containsKey("federatedId")) {
       federatedId = _json["federatedId"];
@@ -2033,12 +2607,18 @@ class UserInfoProviderUserInfo {
     if (_json.containsKey("providerId")) {
       providerId = _json["providerId"];
     }
+    if (_json.containsKey("rawId")) {
+      rawId = _json["rawId"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (displayName != null) {
       _json["displayName"] = displayName;
+    }
+    if (email != null) {
+      _json["email"] = email;
     }
     if (federatedId != null) {
       _json["federatedId"] = federatedId;
@@ -2048,6 +2628,9 @@ class UserInfoProviderUserInfo {
     }
     if (providerId != null) {
       _json["providerId"] = providerId;
+    }
+    if (rawId != null) {
+      _json["rawId"] = rawId;
     }
     return _json;
   }
@@ -2206,6 +2789,11 @@ class VerifyAssertionResponse {
    * owns the email.
    */
   core.bool emailVerified;
+  /**
+   * If idToken is STS id token, then this field will be expiration time of STS
+   * id token in seconds.
+   */
+  core.String expiresIn;
   /** The unique ID identifies the IdP account. */
   core.String federatedId;
   /** The first name of the user. */
@@ -2252,6 +2840,8 @@ class VerifyAssertionResponse {
   core.String oauthRequestToken;
   /** The scope for the OpenID OAuth extension. */
   core.String oauthScope;
+  /** The OAuth1 access token secret. */
+  core.String oauthTokenSecret;
   /**
    * The original email stored in the mapping storage. It's returned when the
    * federated ID is associated to a different email.
@@ -2267,6 +2857,8 @@ class VerifyAssertionResponse {
    * request. The domain part of the federated ID is returned.
    */
   core.String providerId;
+  /** If idToken is STS id token, then this field will be refresh token. */
+  core.String refreshToken;
   /** The timezone of the user. */
   core.String timeZone;
   /**
@@ -2303,6 +2895,9 @@ class VerifyAssertionResponse {
     }
     if (_json.containsKey("emailVerified")) {
       emailVerified = _json["emailVerified"];
+    }
+    if (_json.containsKey("expiresIn")) {
+      expiresIn = _json["expiresIn"];
     }
     if (_json.containsKey("federatedId")) {
       federatedId = _json["federatedId"];
@@ -2355,6 +2950,9 @@ class VerifyAssertionResponse {
     if (_json.containsKey("oauthScope")) {
       oauthScope = _json["oauthScope"];
     }
+    if (_json.containsKey("oauthTokenSecret")) {
+      oauthTokenSecret = _json["oauthTokenSecret"];
+    }
     if (_json.containsKey("originalEmail")) {
       originalEmail = _json["originalEmail"];
     }
@@ -2363,6 +2961,9 @@ class VerifyAssertionResponse {
     }
     if (_json.containsKey("providerId")) {
       providerId = _json["providerId"];
+    }
+    if (_json.containsKey("refreshToken")) {
+      refreshToken = _json["refreshToken"];
     }
     if (_json.containsKey("timeZone")) {
       timeZone = _json["timeZone"];
@@ -2400,6 +3001,9 @@ class VerifyAssertionResponse {
     }
     if (emailVerified != null) {
       _json["emailVerified"] = emailVerified;
+    }
+    if (expiresIn != null) {
+      _json["expiresIn"] = expiresIn;
     }
     if (federatedId != null) {
       _json["federatedId"] = federatedId;
@@ -2452,6 +3056,9 @@ class VerifyAssertionResponse {
     if (oauthScope != null) {
       _json["oauthScope"] = oauthScope;
     }
+    if (oauthTokenSecret != null) {
+      _json["oauthTokenSecret"] = oauthTokenSecret;
+    }
     if (originalEmail != null) {
       _json["originalEmail"] = originalEmail;
     }
@@ -2460,6 +3067,9 @@ class VerifyAssertionResponse {
     }
     if (providerId != null) {
       _json["providerId"] = providerId;
+    }
+    if (refreshToken != null) {
+      _json["refreshToken"] = refreshToken;
     }
     if (timeZone != null) {
       _json["timeZone"] = timeZone;
@@ -2473,29 +3083,48 @@ class VerifyAssertionResponse {
 
 /** Response from verifying a custom token */
 class VerifyCustomTokenResponse {
+  /**
+   * If idToken is STS id token, then this field will be expiration time of STS
+   * id token in seconds.
+   */
+  core.String expiresIn;
   /** The GITKit token for authenticated user. */
   core.String idToken;
   /** The fixed string "identitytoolkit#VerifyCustomTokenResponse". */
   core.String kind;
+  /** If idToken is STS id token, then this field will be refresh token. */
+  core.String refreshToken;
 
   VerifyCustomTokenResponse();
 
   VerifyCustomTokenResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("expiresIn")) {
+      expiresIn = _json["expiresIn"];
+    }
     if (_json.containsKey("idToken")) {
       idToken = _json["idToken"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("refreshToken")) {
+      refreshToken = _json["refreshToken"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (expiresIn != null) {
+      _json["expiresIn"] = expiresIn;
+    }
     if (idToken != null) {
       _json["idToken"] = idToken;
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (refreshToken != null) {
+      _json["refreshToken"] = refreshToken;
     }
     return _json;
   }
@@ -2510,6 +3139,11 @@ class VerifyPasswordResponse {
    * the email.
    */
   core.String email;
+  /**
+   * If idToken is STS id token, then this field will be expiration time of STS
+   * id token in seconds.
+   */
+  core.String expiresIn;
   /** The GITKit token for authenticated user. */
   core.String idToken;
   /** The fixed string "identitytoolkit#VerifyPasswordResponse". */
@@ -2527,6 +3161,8 @@ class VerifyPasswordResponse {
   core.int oauthExpireIn;
   /** The URI of the user's photo at IdP */
   core.String photoUrl;
+  /** If idToken is STS id token, then this field will be refresh token. */
+  core.String refreshToken;
   /** Whether the email is registered. */
   core.bool registered;
 
@@ -2538,6 +3174,9 @@ class VerifyPasswordResponse {
     }
     if (_json.containsKey("email")) {
       email = _json["email"];
+    }
+    if (_json.containsKey("expiresIn")) {
+      expiresIn = _json["expiresIn"];
     }
     if (_json.containsKey("idToken")) {
       idToken = _json["idToken"];
@@ -2560,6 +3199,9 @@ class VerifyPasswordResponse {
     if (_json.containsKey("photoUrl")) {
       photoUrl = _json["photoUrl"];
     }
+    if (_json.containsKey("refreshToken")) {
+      refreshToken = _json["refreshToken"];
+    }
     if (_json.containsKey("registered")) {
       registered = _json["registered"];
     }
@@ -2572,6 +3214,9 @@ class VerifyPasswordResponse {
     }
     if (email != null) {
       _json["email"] = email;
+    }
+    if (expiresIn != null) {
+      _json["expiresIn"] = expiresIn;
     }
     if (idToken != null) {
       _json["idToken"] = idToken;
@@ -2593,6 +3238,9 @@ class VerifyPasswordResponse {
     }
     if (photoUrl != null) {
       _json["photoUrl"] = photoUrl;
+    }
+    if (refreshToken != null) {
+      _json["refreshToken"] = refreshToken;
     }
     if (registered != null) {
       _json["registered"] = registered;

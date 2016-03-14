@@ -11,10 +11,10 @@
     "basePath": "/v2/statscollection/",
     "baseUrl": "https://cloudlatencytest-pa.googleapis.com/v2/statscollection/",
     "batchPath": "batch",
-    "description": "A Test API to report latency data.",
+    "description": "Reports latency data.",
     "discoveryVersion": "v1",
     "documentationLink": "",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/PW6HfcHDC5AsDXJubg0JwdKPyYo\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/FL1d8nurnHWuubBo0LSBB6ZSNaM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -106,7 +106,7 @@
             }
         }
     },
-    "revision": "20150508",
+    "revision": "20160309",
     "rootUrl": "https://cloudlatencytest-pa.googleapis.com/",
     "schemas": {
         "AggregatedStats": {

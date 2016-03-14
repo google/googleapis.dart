@@ -16,7 +16,7 @@ const core.String USER_AGENT = 'dart-api-client oauth2/v2';
 
 /** Lets you access OAuth2 protocol related APIs. */
 class Oauth2Api {
-  /** Know your basic profile info and list of people in your circles. */
+  /** Know the list of people in your circles, your age range, and language */
   static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
 
   /** Know who you are on Google */

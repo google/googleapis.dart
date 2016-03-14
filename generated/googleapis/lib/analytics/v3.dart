@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client analytics/v3';
 
-/** View and manage your Google Analytics data */
+/** Views and manages your Google Analytics data. */
 class AnalyticsApi {
   /** View and manage your Google Analytics data */
   static const AnalyticsScope = "https://www.googleapis.com/auth/analytics";
@@ -2213,7 +2213,7 @@ class ManagementGoalsResourceApi {
   }
 
   /**
-   * Updates an existing view (profile). This method supports patch semantics.
+   * Updates an existing goal. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -2272,7 +2272,7 @@ class ManagementGoalsResourceApi {
   }
 
   /**
-   * Updates an existing view (profile).
+   * Updates an existing goal.
    *
    * [request] - The metadata request object.
    *
@@ -3010,13 +3010,13 @@ class ManagementProfilesResourceApi {
    *
    * Request parameters:
    *
-   * [accountId] - Account ID to retrieve the goal for.
+   * [accountId] - Account ID to retrieve the view (profile) for.
    * Value must have pattern "[0-9]+".
    *
-   * [webPropertyId] - Web property ID to retrieve the goal for.
+   * [webPropertyId] - Web property ID to retrieve the view (profile) for.
    * Value must have pattern "UA-[0-9]+-[0-9]+".
    *
-   * [profileId] - View (Profile) ID to retrieve the goal for.
+   * [profileId] - View (Profile) ID to retrieve the view (profile) for.
    * Value must have pattern "[0-9]+".
    *
    * Completes with a [Profile].
@@ -4802,6 +4802,8 @@ class Account {
   AccountPermissions permissions;
   /** Link for this account. */
   core.String selfLink;
+  /** Indicates whether this account is starred or not. */
+  core.bool starred;
   /** Time the account was last modified. */
   core.DateTime updated;
 
@@ -4828,6 +4830,9 @@ class Account {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("starred")) {
+      starred = _json["starred"];
     }
     if (_json.containsKey("updated")) {
       updated = core.DateTime.parse(_json["updated"]);
@@ -4856,6 +4861,9 @@ class Account {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (starred != null) {
+      _json["starred"] = starred;
     }
     if (updated != null) {
       _json["updated"] = (updated).toIso8601String();
@@ -5014,6 +5022,8 @@ class AccountSummary {
   core.String kind;
   /** Account name. */
   core.String name;
+  /** Indicates whether this account is starred or not. */
+  core.bool starred;
   /** List of web properties under this account. */
   core.List<WebPropertySummary> webProperties;
 
@@ -5028,6 +5038,9 @@ class AccountSummary {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("starred")) {
+      starred = _json["starred"];
     }
     if (_json.containsKey("webProperties")) {
       webProperties = _json["webProperties"].map((value) => new WebPropertySummary.fromJson(value)).toList();
@@ -5044,6 +5057,9 @@ class AccountSummary {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (starred != null) {
+      _json["starred"] = starred;
     }
     if (webProperties != null) {
       _json["webProperties"] = webProperties.map((value) => (value).toJson()).toList();
@@ -9440,6 +9456,8 @@ class Profile {
   core.String siteSearchCategoryParameters;
   /** The site search query parameters for this view (profile). */
   core.String siteSearchQueryParameters;
+  /** Indicates whether this view (profile) is starred or not. */
+  core.bool starred;
   /**
    * Whether or not Analytics will strip search category parameters from the
    * URLs in your reports.
@@ -9524,6 +9542,9 @@ class Profile {
     if (_json.containsKey("siteSearchQueryParameters")) {
       siteSearchQueryParameters = _json["siteSearchQueryParameters"];
     }
+    if (_json.containsKey("starred")) {
+      starred = _json["starred"];
+    }
     if (_json.containsKey("stripSiteSearchCategoryParameters")) {
       stripSiteSearchCategoryParameters = _json["stripSiteSearchCategoryParameters"];
     }
@@ -9602,6 +9623,9 @@ class Profile {
     }
     if (siteSearchQueryParameters != null) {
       _json["siteSearchQueryParameters"] = siteSearchQueryParameters;
+    }
+    if (starred != null) {
+      _json["starred"] = starred;
     }
     if (stripSiteSearchCategoryParameters != null) {
       _json["stripSiteSearchCategoryParameters"] = stripSiteSearchCategoryParameters;
@@ -9879,6 +9903,8 @@ class ProfileSummary {
   core.String kind;
   /** View (profile) name. */
   core.String name;
+  /** Indicates whether this view (profile) is starred or not. */
+  core.bool starred;
   /** View (Profile) type. Supported types: WEB or APP. */
   core.String type;
 
@@ -9893,6 +9919,9 @@ class ProfileSummary {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("starred")) {
+      starred = _json["starred"];
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -9909,6 +9938,9 @@ class ProfileSummary {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (starred != null) {
+      _json["starred"] = starred;
     }
     if (type != null) {
       _json["type"] = type;
@@ -11045,6 +11077,8 @@ class WebPropertySummary {
   core.String name;
   /** List of profiles under this web property. */
   core.List<ProfileSummary> profiles;
+  /** Indicates whether this web property is starred or not. */
+  core.bool starred;
   /** Website url for this web property. */
   core.String websiteUrl;
 
@@ -11068,6 +11102,9 @@ class WebPropertySummary {
     }
     if (_json.containsKey("profiles")) {
       profiles = _json["profiles"].map((value) => new ProfileSummary.fromJson(value)).toList();
+    }
+    if (_json.containsKey("starred")) {
+      starred = _json["starred"];
     }
     if (_json.containsKey("websiteUrl")) {
       websiteUrl = _json["websiteUrl"];
@@ -11093,6 +11130,9 @@ class WebPropertySummary {
     }
     if (profiles != null) {
       _json["profiles"] = profiles.map((value) => (value).toJson()).toList();
+    }
+    if (starred != null) {
+      _json["starred"] = starred;
     }
     if (websiteUrl != null) {
       _json["websiteUrl"] = websiteUrl;
@@ -11322,6 +11362,8 @@ class Webproperty {
   core.int profileCount;
   /** Link for this web property. */
   core.String selfLink;
+  /** Indicates whether this web property is starred or not. */
+  core.bool starred;
   /** Time this web property was last modified. */
   core.DateTime updated;
   /** Website url for this web property. */
@@ -11371,6 +11413,9 @@ class Webproperty {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("starred")) {
+      starred = _json["starred"];
     }
     if (_json.containsKey("updated")) {
       updated = core.DateTime.parse(_json["updated"]);
@@ -11423,6 +11468,9 @@ class Webproperty {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (starred != null) {
+      _json["starred"] = starred;
     }
     if (updated != null) {
       _json["updated"] = (updated).toIso8601String();

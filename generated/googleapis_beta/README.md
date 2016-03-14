@@ -74,6 +74,12 @@ The Google App Engine Admin API enables developers to provision and manage their
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1beta5
+
+The Google App Engine Admin API enables developers to provision and manage their App Engine applications.
+
+Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Autoscaler API - autoscaler v1beta2
 
 The Google Compute Engine Autoscaler API provides autoscaling for groups of Cloud VMs.
@@ -82,7 +88,7 @@ Official API documentation: http://developers.google.com/compute/docs/autoscaler
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Monitoring API - cloudmonitoring v2beta2
 
-API for accessing Google Cloud and API monitoring data.
+Accesses Google Cloud Monitoring data.
 
 Official API documentation: https://cloud.google.com/monitoring/v2beta2/
 
@@ -94,7 +100,7 @@ Official API documentation: https://cloud.google.com/resource-manager
 
 #### ![Logo](https://www.google.com/images/icons/product/compute_engine-16.png) Cloud User Accounts API - clouduseraccounts beta
 
-API for the Google Cloud User Accounts service.
+Creates and manages users and groups for accessing Google Compute Engine virtual machines.
 
 Official API documentation: https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
 
@@ -166,7 +172,7 @@ Official API documentation: https://developers.google.com/compute/docs/instance-
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Instance Group Updater API - replicapoolupdater v1beta1
 
-The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.
+Updates groups of Compute Engine instances.
 
 Official API documentation: https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service
 
@@ -199,4 +205,10 @@ Official API documentation: https://cloud.google.com/sql/docs/reference/latest
 Lets you access a Google App Engine Pull Task Queue over REST.
 
 Official API documentation: https://developers.google.com/appengine/docs/python/taskqueue/rest
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Tool Results API - toolresults v1beta3
+
+Read and publish results from Cloud Test Lab.
+
+Official API documentation: https://developers.google.com/cloud-test-lab/
 

@@ -14,9 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client admin/datatransfer_v1';
 
-/**
- * Admin Data Transfer API lets you transfer user data from one user to another.
- */
+/** Transfers user data from one user to another. */
 class AdminApi {
   /** View and manage data transfers between users in your organization */
   static const AdminDatatransferScope = "https://www.googleapis.com/auth/admin.datatransfer";

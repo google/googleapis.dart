@@ -94,7 +94,7 @@ Official API documentation: https://developers.google.com/ad-exchange/seller-res
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Admin Data Transfer API - admin datatransfer_v1
 
-Admin Data Transfer API lets you transfer user data from one user to another.
+Transfers user data from one user to another.
 
 Official API documentation: https://developers.google.com/admin-sdk/data-transfer/
 
@@ -112,19 +112,19 @@ Official API documentation: https://developers.google.com/admin-sdk/reports/
 
 #### ![Logo](https://www.google.com/images/icons/product/adsense-16.png) AdSense Management API - adsense v1.4
 
-Gives AdSense publishers access to their inventory and the ability to generate reports
+Accesses AdSense publishers' inventory and generates performance reports.
 
 Official API documentation: https://developers.google.com/adsense/management/
 
 #### ![Logo](https://www.google.com/images/icons/product/adsense-16.png) AdSense Host API - adsensehost v4.1
 
-Gives AdSense Hosts access to report generation, ad code generation, and publisher management capabilities.
+Generates performance reports, generates ad codes, and provides publisher management capabilities for AdSense Hosts.
 
 Official API documentation: https://developers.google.com/adsense/host/
 
 #### ![Logo](https://www.google.com/images/icons/product/analytics-16.png) Google Analytics API - analytics v3
 
-View and manage your Google Analytics data
+Views and manages your Google Analytics data.
 
 Official API documentation: https://developers.google.com/analytics/
 
@@ -196,15 +196,21 @@ Official API documentation: https://cloud.google.com/billing/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Debugger API - clouddebugger v2
 
-Lets you examine the stack and variables of your running application without stopping or slowing it down.
+Examines the call stack and variables of a running application without stopping or slowing it down.
 
 Official API documentation: https://cloud.google.com/tools/cloud-debugger
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Network Performance Monitoring API - cloudlatencytest v2
 
-A Test API to report latency data.
+Reports latency data.
 
 Official API documentation: 
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Resource Manager API - cloudresourcemanager v1
+
+The Google Cloud Resource Manager API provides methods for creating, reading, and updating project metadata.
+
+Official API documentation: https://cloud.google.com/resource-manager
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Trace API - cloudtrace v1
 
@@ -226,13 +232,13 @@ Official API documentation: https://cloud.google.com/container-engine/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Content API for Shopping - content v2
 
-Manage product items, inventory, and Merchant Center accounts for Google Shopping.
+Manages product items, inventory, and Merchant Center accounts for Google Shopping.
 
 Official API documentation: https://developers.google.com/shopping-content
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Content API for Shopping - content v2sandbox
 
-Manage product items, inventory, and Merchant Center accounts for Google Shopping.
+Manages product items, inventory, and Merchant Center accounts for Google Shopping.
 
 Official API documentation: https://developers.google.com/shopping-content
 
@@ -290,6 +296,12 @@ Manage your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.4
+
+Manage your DoubleClick Campaign Manager ad campaigns and reports.
+
+Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
+
 #### ![Logo](http://www.google.com/images/icons/feature/filing_cabinet_search-g16.png) APIs Discovery Service - discovery v1
 
 Lets you discover information about other Google APIs, such as what APIs are available, the resource and method details for each API.
@@ -310,7 +322,7 @@ Official API documentation: https://developers.google.com/bid-manager/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) DoubleClick Search API - doubleclicksearch v2
 
-Report and modify your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).
+Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).
 
 Official API documentation: https://developers.google.com/doubleclick-search/
 
@@ -370,13 +382,13 @@ Official API documentation: https://developers.google.com/games/services
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1
 
-An API to store, process, explore, and share genomic data. It supports reference-based alignments, genetic variants, and reference genomes. This API provides an implementation of the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.
+Stores, processes, explores and shares genomic data. This API implements the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.
 
 Official API documentation: 
 
 #### ![Logo](https://www.google.com/images/icons/product/googlemail-16.png) Gmail API - gmail v1
 
-The Gmail REST API.
+Access Gmail mailboxes including sending user email.
 
 Official API documentation: https://developers.google.com/gmail/api/
 
@@ -391,6 +403,12 @@ Official API documentation: https://developers.google.com/google-apps/groups-mig
 Lets you manage permission levels and related settings of a group.
 
 Official API documentation: https://developers.google.com/google-apps/groups-settings/get_started
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Identity and Access Management API - iam v1
+
+Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls.
+
+Official API documentation: https://cloud.google.com/iam/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Identity Toolkit API - identitytoolkit v3
 
@@ -410,12 +428,6 @@ Licensing API to view and manage license for your domain.
 
 Official API documentation: https://developers.google.com/google-apps/licensing/
 
-#### ![Logo](https://www.google.com/images/icons/product/maps_engine-16.png) Google Maps Engine API - mapsengine v1
-
-The Google Maps Engine API allows developers to store and query geospatial vector and raster data.
-
-Official API documentation: https://developers.google.com/maps-engine/
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Mirror API - mirror v1
 
 API for interacting with Glass users via the timeline.
@@ -430,13 +442,13 @@ Official API documentation: https://developers.google.com/accounts/docs/OAuth2
 
 #### ![Logo](https://www.google.com/images/icons/product/pagespeed-16.png) PageSpeed Insights API - pagespeedonline v1
 
-Lets you analyze the performance of a web page and get tailored suggestions to make that page faster.
+Analyzes the performance of a web page and provides tailored suggestions to make that page faster.
 
 Official API documentation: https://developers.google.com/speed/docs/insights/v1/getting_started
 
 #### ![Logo](https://www.google.com/images/icons/product/pagespeed-16.png) PageSpeed Insights API - pagespeedonline v2
 
-Lets you analyze the performance of a web page and get tailored suggestions to make that page faster.
+Analyzes the performance of a web page and provides tailored suggestions to make that page faster.
 
 Official API documentation: https://developers.google.com/speed/docs/insights/v2/getting-started
 
@@ -445,6 +457,12 @@ Official API documentation: https://developers.google.com/speed/docs/insights/v2
 Lets advertisers search certified companies and create contact leads with them, and also audits the usage of clients.
 
 Official API documentation: https://developers.google.com/partners/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google People API - people v1
+
+The Google People API service gives access to information about profiles and contacts.
+
+Official API documentation: https://developers.google.com/people/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Play Movies Partner API - playmoviespartner v1
 
@@ -478,19 +496,19 @@ Official API documentation: https://cloud.google.com/pubsub/docs
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) QPX Express API - qpxExpress v1
 
-Lets you find the least expensive flights between an origin and a destination.
+Finds the least expensive flights between an origin and a destination.
 
 Official API documentation: http://developers.google.com/qpx-express
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Enterprise Apps Reseller API - reseller v1
 
-Lets you create and manage your customers and their subscriptions.
+Creates and manages your customers and their subscriptions.
 
 Official API documentation: https://developers.google.com/google-apps/reseller/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Enterprise Apps Reseller API - reseller v1sandbox
 
-Lets you create and manage your customers and their subscriptions.
+Creates and manages your customers and their subscriptions.
 
 Official API documentation: https://developers.google.com/google-apps/reseller/
 
@@ -502,13 +520,13 @@ Official API documentation: https://developers.google.com/apps-script/execution/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Site Verification API - siteVerification v1
 
-Lets you programatically verify ownership of websites or domains with Google.
+Verifies ownership of websites or domains with Google.
 
 Official API documentation: https://developers.google.com/site-verification/
 
 #### ![Logo](https://www.google.com/images/icons/product/cloud_storage-16.png) Cloud Storage JSON API - storage v1
 
-Lets you store and retrieve potentially-large, immutable data objects.
+Stores and retrieves potentially large, immutable data objects.
 
 Official API documentation: https://developers.google.com/storage/docs/json_api/
 
@@ -520,7 +538,7 @@ Official API documentation: https://cloud.google.com/storage/transfer
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Tag Manager API - tagmanager v1
 
-API for accessing Tag Manager accounts and containers.
+Accesses Tag Manager accounts and containers.
 
 Official API documentation: https://developers.google.com/tag-manager/api/v1/
 
@@ -542,9 +560,9 @@ Lets you create, inspect, and manage goo.gl short URLs
 
 Official API documentation: https://developers.google.com/url-shortener/v1/getting_started
 
-#### ![Logo](http://www.google.com/images/icons/feature/font_api-16.png) Google Fonts Developer API - webfonts v1
+#### ![Logo](https://www.google.com/images/icons/feature/font_api-16.png) Google Fonts Developer API - webfonts v1
 
-The Google Fonts Developer API.
+Accesses the metadata for all families served by Google Fonts, providing a list of families currently available (including available styles and a list of supported script subsets).
 
 Official API documentation: https://developers.google.com/fonts/docs/developer_api
 
@@ -562,13 +580,13 @@ Official API documentation: https://developers.google.com/youtube/v3
 
 #### ![Logo](https://www.google.com/images/icons/product/youtube-16.png) YouTube Analytics API - youtubeAnalytics v1
 
-Retrieve your YouTube Analytics reports.
+Retrieves your YouTube Analytics reports.
 
 Official API documentation: http://developers.google.com/youtube/analytics/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) YouTube Reporting API - youtubereporting v1
 
-An API to schedule reporting jobs and download the resulting bulk data reports about YouTube channels, videos etc. in the form of CSV files.
+Schedules reporting jobs and downloads the resulting bulk data reports about YouTube channels, videos, etc. in the form of CSV files.
 
 Official API documentation: https://developers.google.com/youtube/reporting/v1/reports/
 

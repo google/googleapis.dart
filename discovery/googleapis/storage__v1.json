@@ -23,10 +23,10 @@
     "basePath": "/storage/v1/",
     "baseUrl": "https://www.googleapis.com/storage/v1/",
     "batchPath": "batch",
-    "description": "Lets you store and retrieve potentially-large, immutable data objects.",
+    "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/iW6lW-fzl_pGlxeRN7h4J2G0OTQ\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/KVPQfwGxQTBtH0g1kuij0C9i4uc\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -2106,7 +2106,7 @@
             }
         }
     },
-    "revision": "20151229",
+    "revision": "20160304",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -2590,12 +2590,6 @@
                     "type": "string"
                 },
                 "contentType": {
-                    "annotations": {
-                        "required": [
-                            "storage.objects.insert",
-                            "storage.objects.update"
-                        ]
-                    },
                     "description": "Content-Type of the object data.",
                     "type": "string"
                 },

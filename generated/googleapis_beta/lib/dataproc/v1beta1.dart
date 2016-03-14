@@ -7,6 +7,7 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -439,6 +440,51 @@ class ProjectsClustersResourceApi {
   }
 
   /**
+   * Gets the access control policy for a `resource`. Returns an empty policy if
+   * the resource exists and does not have a policy set.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * requested. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
+   * specified in this value is resource specific and is specified in the
+   * `getIamPolicy` documentation.
+   * Value must have pattern "^projects/[^/] * / clusters/[^/]*$".
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> getIamPolicy(core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
    * Lists all clusters in a project.
    *
    * Request parameters:
@@ -548,6 +594,105 @@ class ProjectsClustersResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Sets the access control policy on the specified resource. Replaces any
+   * existing policy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * specified. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
+   * specified in this value is resource specific and is specified in the
+   * `setIamPolicy` documentation.
+   * Value must have pattern "^projects/[^/] * / clusters/[^/]*$".
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> setIamPolicy(SetIamPolicyRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
+   * Returns permissions that a caller has on the specified resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy detail is being
+   * requested. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
+   * specified in this value is resource specific and is specified in the
+   * `testIamPermissions` documentation.
+   * Value must have pattern "^projects/[^/] * / clusters/[^/]*$".
+   *
+   * Completes with a [TestIamPermissionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TestIamPermissionsResponse> testIamPermissions(TestIamPermissionsRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
 
 }
@@ -704,6 +849,51 @@ class ProjectsJobsResourceApi {
   }
 
   /**
+   * Gets the access control policy for a `resource`. Returns an empty policy if
+   * the resource exists and does not have a policy set.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * requested. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
+   * specified in this value is resource specific and is specified in the
+   * `getIamPolicy` documentation.
+   * Value must have pattern "^projects/[^/] * / jobs/[^/]*$".
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> getIamPolicy(core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
    * Lists jobs in a project.
    *
    * Request parameters:
@@ -771,6 +961,56 @@ class ProjectsJobsResourceApi {
   }
 
   /**
+   * Sets the access control policy on the specified resource. Replaces any
+   * existing policy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * specified. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
+   * specified in this value is resource specific and is specified in the
+   * `setIamPolicy` documentation.
+   * Value must have pattern "^projects/[^/] * / jobs/[^/]*$".
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> setIamPolicy(SetIamPolicyRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
    * Submits a job to a cluster.
    *
    * [request] - The metadata request object.
@@ -815,9 +1055,105 @@ class ProjectsJobsResourceApi {
     return _response.then((data) => new Job.fromJson(data));
   }
 
+  /**
+   * Returns permissions that a caller has on the specified resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy detail is being
+   * requested. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
+   * specified in this value is resource specific and is specified in the
+   * `testIamPermissions` documentation.
+   * Value must have pattern "^projects/[^/] * / jobs/[^/]*$".
+   *
+   * Completes with a [TestIamPermissionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TestIamPermissionsResponse> testIamPermissions(TestIamPermissionsRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestIamPermissionsResponse.fromJson(data));
+  }
+
 }
 
 
+
+/** Associates `members` with a `role`. */
+class Binding {
+  /**
+   * Specifies the identities requesting access for a Cloud Platform resource.
+   * `members` can have the following values: * `allUsers`: A special identifier
+   * that represents anyone who is on the internet; with or without a Google
+   * account. * `allAuthenticatedUsers`: A special identifier that represents
+   * anyone who is authenticated with a Google account or a service account. *
+   * `user:{emailid}`: An email address that represents a specific Google
+   * account. For example, `alice@gmail.com` or `joe@example.com`. *
+   * `serviceAccount:{emailid}`: An email address that represents a service
+   * account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+   * `group:{emailid}`: An email address that represents a Google group. For
+   * example, `admins@example.com`. * `domain:{domain}`: A Google Apps domain
+   * name that represents all the users of that domain. For example,
+   * `google.com` or `example.com`.
+   */
+  core.List<core.String> members;
+  /**
+   * Role that is assigned to `members`. For example, `roles/viewer`,
+   * `roles/editor`, or `roles/owner`. Required
+   */
+  core.String role;
+
+  Binding();
+
+  Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("members")) {
+      members = _json["members"];
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (members != null) {
+      _json["members"] = members;
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
+    return _json;
+  }
+}
 
 /** A request to cancel a job. */
 class CancelJobRequest {
@@ -1020,6 +1356,121 @@ class ClusterConfiguration {
   }
 }
 
+/** Metadata describing the operation. */
+class ClusterOperationMetadata {
+  /** Name of the cluster for the operation. */
+  core.String clusterName;
+  /** Cluster UUId for the operation. */
+  core.String clusterUuid;
+  /** [Output-only] Short description of operation. */
+  core.String description;
+  /** [Output-only] The operation type. */
+  core.String operationType;
+  /** [Output-only] Current operation status. */
+  ClusterOperationStatus status;
+  /** [Output-only] The previous operation status. */
+  core.List<ClusterOperationStatus> statusHistory;
+
+  ClusterOperationMetadata();
+
+  ClusterOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterName")) {
+      clusterName = _json["clusterName"];
+    }
+    if (_json.containsKey("clusterUuid")) {
+      clusterUuid = _json["clusterUuid"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
+    }
+    if (_json.containsKey("status")) {
+      status = new ClusterOperationStatus.fromJson(_json["status"]);
+    }
+    if (_json.containsKey("statusHistory")) {
+      statusHistory = _json["statusHistory"].map((value) => new ClusterOperationStatus.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (clusterName != null) {
+      _json["clusterName"] = clusterName;
+    }
+    if (clusterUuid != null) {
+      _json["clusterUuid"] = clusterUuid;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
+    }
+    if (statusHistory != null) {
+      _json["statusHistory"] = statusHistory.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** The status of the operation. */
+class ClusterOperationStatus {
+  /** A message containing any operation metadata details. */
+  core.String details;
+  /** A message containing the detailed operation state. */
+  core.String innerState;
+  /**
+   * A message containing the operation state.
+   * Possible string values are:
+   * - "UNKNOWN" : A UNKNOWN.
+   * - "PENDING" : A PENDING.
+   * - "RUNNING" : A RUNNING.
+   * - "DONE" : A DONE.
+   */
+  core.String state;
+  /** The time this state was entered. */
+  core.String stateStartTime;
+
+  ClusterOperationStatus();
+
+  ClusterOperationStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("details")) {
+      details = _json["details"];
+    }
+    if (_json.containsKey("innerState")) {
+      innerState = _json["innerState"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("stateStartTime")) {
+      stateStartTime = _json["stateStartTime"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (details != null) {
+      _json["details"] = details;
+    }
+    if (innerState != null) {
+      _json["innerState"] = innerState;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (stateStartTime != null) {
+      _json["stateStartTime"] = stateStartTime;
+    }
+    return _json;
+  }
+}
+
 /** The status of a cluster and its instances. */
 class ClusterStatus {
   /** Optional details of cluster's state. */
@@ -1106,6 +1557,31 @@ class DiagnoseClusterRequest {
   }
 }
 
+/** The location of diagnostic output. */
+class DiagnoseClusterResults {
+  /**
+   * [Output-only] The Google Cloud Storage URI of the diagnostic output. This
+   * is a plain text file with a summary of collected diagnostics.
+   */
+  core.String outputUri;
+
+  DiagnoseClusterResults();
+
+  DiagnoseClusterResults.fromJson(core.Map _json) {
+    if (_json.containsKey("outputUri")) {
+      outputUri = _json["outputUri"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (outputUri != null) {
+      _json["outputUri"] = outputUri;
+    }
+    return _json;
+  }
+}
+
 /** Specifies the configuration of disk options for a group of VM instances. */
 class DiskConfiguration {
   /** [Optional] Size in GB of the boot disk (default is 500GB). */
@@ -1167,11 +1643,16 @@ class Empty {
  * instances, applicable to all instances in the cluster.
  */
 class GceClusterConfiguration {
+  /** The Google Compute Engine metadata entries to add to all instances. */
+  core.Map<core.String, core.String> metadata;
   /**
    * The Google Compute Engine network to be used for machine communications.
-   * Inbound SSH connections are necessary to complete cluster configuration.
+   * Cannot be specified with subnetwork_uri. If neither network_uri nor
+   * subnetwork_uri is specified, the "default" network of the project is used,
+   * if it exists. Cannot be a "Custom Subnet Network" (see
+   * https://cloud.google.com/compute/docs/subnetworks for more information).
    * Example:
-   * `compute.googleapis.com/projects/[project_id]/zones/us-east1-a/default`.
+   * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default`.
    */
   core.String networkUri;
   /**
@@ -1188,20 +1669,37 @@ class GceClusterConfiguration {
    */
   core.List<core.String> serviceAccountScopes;
   /**
+   * The Google Compute Engine subnetwork to be used for machine communications.
+   * Cannot be specified with network_uri. Example:
+   * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0`.
+   */
+  core.String subnetworkUri;
+  /** The Google Compute Engine tags to add to all instances. */
+  core.List<core.String> tags;
+  /**
    * [Required] The zone where the Google Compute Engine cluster will be
    * located. Example:
-   * `compute.googleapis.com/projects/[project_id]/zones/us-east1-a`.
+   * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]`.
    */
   core.String zoneUri;
 
   GceClusterConfiguration();
 
   GceClusterConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("metadata")) {
+      metadata = _json["metadata"];
+    }
     if (_json.containsKey("networkUri")) {
       networkUri = _json["networkUri"];
     }
     if (_json.containsKey("serviceAccountScopes")) {
       serviceAccountScopes = _json["serviceAccountScopes"];
+    }
+    if (_json.containsKey("subnetworkUri")) {
+      subnetworkUri = _json["subnetworkUri"];
+    }
+    if (_json.containsKey("tags")) {
+      tags = _json["tags"];
     }
     if (_json.containsKey("zoneUri")) {
       zoneUri = _json["zoneUri"];
@@ -1210,11 +1708,20 @@ class GceClusterConfiguration {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
     if (networkUri != null) {
       _json["networkUri"] = networkUri;
     }
     if (serviceAccountScopes != null) {
       _json["serviceAccountScopes"] = serviceAccountScopes;
+    }
+    if (subnetworkUri != null) {
+      _json["subnetworkUri"] = subnetworkUri;
+    }
+    if (tags != null) {
+      _json["tags"] = tags;
     }
     if (zoneUri != null) {
       _json["zoneUri"] = zoneUri;
@@ -1415,8 +1922,7 @@ class InstanceGroupConfiguration {
   DiskConfiguration diskConfiguration;
   /**
    * [Output-only] The Google Compute Engine image resource used for cluster
-   * instances. Inferred from `SoftwareConfiguration.image_version`. Example:
-   * `compute.googleapis.com/projects/debian-cloud/global/images/backports-debian-7-wheezy-v20140904`.
+   * instances. Inferred from `SoftwareConfiguration.image_version`.
    */
   core.String imageUri;
   /**
@@ -1429,7 +1935,7 @@ class InstanceGroupConfiguration {
   core.bool isPreemptible;
   /**
    * The Google Compute Engine machine type used for cluster instances. Example:
-   * `compute.googleapis.com/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2`.
+   * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2`.
    */
   core.String machineTypeUri;
   /**
@@ -2006,8 +2512,8 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
   /**
    * The server-assigned name, which is only unique within the same service that
-   * originally returns it. If you use the default HTTP mapping above, the
-   * `name` should have the format of `operations/some/unique/name`.
+   * originally returns it. If you use the default HTTP mapping, the `name`
+   * should have the format of `operations/some/unique/name`.
    */
   core.String name;
   /**
@@ -2071,6 +2577,8 @@ class OperationMetadata {
   core.String clusterName;
   /** Cluster UUId for the operation. */
   core.String clusterUuid;
+  /** [Output-only] Short description of operation. */
+  core.String description;
   /** A message containing any operation metadata details. */
   core.String details;
   /** The time that the operation completed. */
@@ -2079,6 +2587,8 @@ class OperationMetadata {
   core.String innerState;
   /** The time that the operation was requested. */
   core.String insertTime;
+  /** [Output-only] The operation type. */
+  core.String operationType;
   /** The time that the operation was started by the server. */
   core.String startTime;
   /**
@@ -2104,6 +2614,9 @@ class OperationMetadata {
     if (_json.containsKey("clusterUuid")) {
       clusterUuid = _json["clusterUuid"];
     }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
     if (_json.containsKey("details")) {
       details = _json["details"];
     }
@@ -2115,6 +2628,9 @@ class OperationMetadata {
     }
     if (_json.containsKey("insertTime")) {
       insertTime = _json["insertTime"];
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -2138,6 +2654,9 @@ class OperationMetadata {
     if (clusterUuid != null) {
       _json["clusterUuid"] = clusterUuid;
     }
+    if (description != null) {
+      _json["description"] = description;
+    }
     if (details != null) {
       _json["details"] = details;
     }
@@ -2149,6 +2668,9 @@ class OperationMetadata {
     }
     if (insertTime != null) {
       _json["insertTime"] = insertTime;
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -2304,6 +2826,77 @@ class PigJob {
   }
 }
 
+/**
+ * Defines an Identity and Access Management (IAM) policy. It is used to specify
+ * access control policies for Cloud Platform resources. A `Policy` consists of
+ * a list of `bindings`. A `Binding` binds a list of `members` to a `role`,
+ * where the members can be user accounts, Google groups, Google domains, and
+ * service accounts. A `role` is a named list of permissions defined by IAM.
+ * **Example** { "bindings": [ { "role": "roles/owner", "members": [
+ * "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+ * "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role":
+ * "roles/viewer", "members": ["user:sean@example.com"] } ] } For a description
+ * of IAM and its features, see the [IAM developer's
+ * guide](https://cloud.google.com/iam).
+ */
+class Policy {
+  /**
+   * Associates a list of `members` to a `role`. Multiple `bindings` must not be
+   * specified for the same `role`. `bindings` with no members will result in an
+   * error.
+   */
+  core.List<Binding> bindings;
+  /**
+   * `etag` is used for optimistic concurrency control as a way to help prevent
+   * simultaneous updates of a policy from overwriting each other. It is
+   * strongly suggested that systems make use of the `etag` in the
+   * read-modify-write cycle to perform policy updates in order to avoid race
+   * conditions: An `etag` is returned in the response to `getIamPolicy`, and
+   * systems are expected to put that etag in the request to `setIamPolicy` to
+   * ensure that their change will be applied to the same version of the policy.
+   * If no `etag` is provided in the call to `setIamPolicy`, then the existing
+   * policy is overwritten blindly.
+   */
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+  /** Version of the `Policy`. The default version is 0. */
+  core.int version;
+
+  Policy();
+
+  Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("bindings")) {
+      bindings = _json["bindings"].map((value) => new Binding.fromJson(value)).toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bindings != null) {
+      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
 /** A Cloud Dataproc job for running PySpark applications on YARN. */
 class PySparkJob {
   /**
@@ -2434,6 +3027,32 @@ class QueryList {
   }
 }
 
+/** Request message for `SetIamPolicy` method. */
+class SetIamPolicyRequest {
+  /**
+   * REQUIRED: The complete policy to be applied to the `resource`. The size of
+   * the policy is limited to a few 10s of KB. An empty policy is a valid policy
+   * but certain Cloud Platform services (such as Projects) might reject them.
+   */
+  Policy policy;
+
+  SetIamPolicyRequest();
+
+  SetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("policy")) {
+      policy = new Policy.fromJson(_json["policy"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
+    }
+    return _json;
+  }
+}
+
 /**
  * Specifies the selection and configuration of software inside the cluster.
  */
@@ -2444,6 +3063,15 @@ class SoftwareConfiguration {
    * latest version (see [Cloud Dataproc Versioning](/dataproc/versioning)).
    */
   core.String imageVersion;
+  /**
+   * [Optional] The properties to set on daemon configuration files. Property
+   * keys are specified in "prefix:property" format, such as
+   * "core:fs.defaultFS". The following are supported prefixes and their
+   * mappings: core - core-site.xml hdfs - hdfs-site.xml mapred -
+   * mapred-site.xml yarn - yarn-site.xml hive - hive-site.xml pig -
+   * pig.properties spark - spark-defaults.conf
+   */
+  core.Map<core.String, core.String> properties;
 
   SoftwareConfiguration();
 
@@ -2451,12 +3079,18 @@ class SoftwareConfiguration {
     if (_json.containsKey("imageVersion")) {
       imageVersion = _json["imageVersion"];
     }
+    if (_json.containsKey("properties")) {
+      properties = _json["properties"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (imageVersion != null) {
       _json["imageVersion"] = imageVersion;
+    }
+    if (properties != null) {
+      _json["properties"] = properties;
     }
     return _json;
   }
@@ -2733,6 +3367,57 @@ class SubmitJobRequest {
     var _json = new core.Map();
     if (job != null) {
       _json["job"] = (job).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Request message for `TestIamPermissions` method. */
+class TestIamPermissionsRequest {
+  /**
+   * The set of permissions to check for the `resource`. Permissions with
+   * wildcards (such as '*' or 'storage.*') are not allowed. For more
+   * information see IAM Overview.
+   */
+  core.List<core.String> permissions;
+
+  TestIamPermissionsRequest();
+
+  TestIamPermissionsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
+/** Response message for `TestIamPermissions` method. */
+class TestIamPermissionsResponse {
+  /**
+   * A subset of `TestPermissionsRequest.permissions` that the caller is
+   * allowed.
+   */
+  core.List<core.String> permissions;
+
+  TestIamPermissionsResponse();
+
+  TestIamPermissionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
     }
     return _json;
   }

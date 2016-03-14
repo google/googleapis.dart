@@ -502,6 +502,7 @@ buildApplicationVerifyResponse() {
   var o = new api.ApplicationVerifyResponse();
   buildCounterApplicationVerifyResponse++;
   if (buildCounterApplicationVerifyResponse < 3) {
+    o.alternatePlayerId = "foo";
     o.kind = "foo";
     o.playerId = "foo";
   }
@@ -512,6 +513,7 @@ buildApplicationVerifyResponse() {
 checkApplicationVerifyResponse(api.ApplicationVerifyResponse o) {
   buildCounterApplicationVerifyResponse++;
   if (buildCounterApplicationVerifyResponse < 3) {
+    unittest.expect(o.alternatePlayerId, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.playerId, unittest.equals('foo'));
   }

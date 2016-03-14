@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client youtubeAnalytics/v1';
 
-/** Retrieve your YouTube Analytics reports. */
+/** Retrieves your YouTube Analytics reports. */
 class YoutubeAnalyticsApi {
   /** Manage your YouTube account */
   static const YoutubeScope = "https://www.googleapis.com/auth/youtube";

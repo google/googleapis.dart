@@ -3,10 +3,10 @@
     "baseUrl": "https://www.googleapis.com/qpxExpress/v1/trips/",
     "batchPath": "batch",
     "canonicalName": "QPX Express",
-    "description": "Lets you find the least expensive flights between an origin and a destination.",
+    "description": "Finds the least expensive flights between an origin and a destination.",
     "discoveryVersion": "v1",
     "documentationLink": "http://developers.google.com/qpx-express",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/O-Owr0QHQ33wTflOcm7DRKIFEQM\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/mP0X0J9scme9uxhB3oYtWrSUhT0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -80,7 +80,7 @@
             }
         }
     },
-    "revision": "20140321",
+    "revision": "20160307",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AircraftData": {

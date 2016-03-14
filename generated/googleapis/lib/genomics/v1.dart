@@ -16,10 +16,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client genomics/v1';
 
 /**
- * An API to store, process, explore, and share genomic data. It supports
- * reference-based alignments, genetic variants, and reference genomes. This API
- * provides an implementation of the Global Alliance for Genomics and Health
- * (GA4GH) v0.5.1 API as well as several extensions.
+ * Stores, processes, explores and shares genomic data. This API implements the
+ * Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several
+ * extensions.
  */
 class GenomicsApi {
   /** View and manage your data in Google BigQuery */
@@ -1838,6 +1837,52 @@ class VariantsResourceApi {
   }
 
   /**
+   * Merges the given variants with existing variants. For the definitions of
+   * variants and other genomics resources, see [Fundamentals of Google
+   * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   * Each variant will be merged with an existing variant that matches its
+   * reference sequence, start, end, reference bases, and alternative bases. If
+   * no such variant exists, a new one will be created. When variants are
+   * merged, the call information from the new variant is added to the existing
+   * variant, and other fields (such as key/value pairs) are discarded.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> merge(MergeVariantsRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/variants:merge';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
    * Updates a variant. For the definitions of variants and other genomics
    * resources, see [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
@@ -2029,9 +2074,9 @@ class VariantsetsResourceApi {
   }
 
   /**
-   * Deletes the contents of a variant set. The variant set object is not
-   * deleted. For the definitions of variant sets and other genomics resources,
-   * see [Fundamentals of Google
+   * Deletes a variant set including all variants, call sets, and calls within.
+   * This is not reversible. For the definitions of variant sets and other
+   * genomics resources, see [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
@@ -3135,6 +3180,35 @@ class ListOperationsResponse {
   }
 }
 
+class MergeVariantsRequest {
+  /** The destination variant set. */
+  core.String variantSetId;
+  /** The variants to be merged with existing variants. */
+  core.List<Variant> variants;
+
+  MergeVariantsRequest();
+
+  MergeVariantsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("variantSetId")) {
+      variantSetId = _json["variantSetId"];
+    }
+    if (_json.containsKey("variants")) {
+      variants = _json["variants"].map((value) => new Variant.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (variantSetId != null) {
+      _json["variantSetId"] = variantSetId;
+    }
+    if (variants != null) {
+      _json["variants"] = variants.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /**
  * This resource represents a long-running operation that is the result of a
  * network API call.
@@ -3300,7 +3374,7 @@ class OperationMetadata {
  * service accounts. A `role` is a named list of permissions defined by IAM.
  * **Example** { "bindings": [ { "role": "roles/owner", "members": [
  * "user:mike@example.com", "group:admins@example.com", "domain:google.com",
- * "serviceAccount:my-other-app@appspot.gserviceaccount.com"] }, { "role":
+ * "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role":
  * "roles/viewer", "members": ["user:sean@example.com"] } ] } For a description
  * of IAM and its features, see the [IAM developer's
  * guide](https://cloud.google.com/iam).
@@ -4065,7 +4139,7 @@ class Reference {
  * in a particular reference.
  */
 class ReferenceBound {
-  /** The name of the reference associated with this ReferenceBound. */
+  /** The name of the reference associated with this reference bound. */
   core.String referenceName;
   /**
    * An upper bound (inclusive) on the starting coordinate of any variant in the
@@ -4823,9 +4897,9 @@ class SearchVariantsRequest {
   core.String end;
   /**
    * The maximum number of calls to return in a single page. Note that this
-   * limit may be exceeded; at least one variant is always returned per page,
-   * even if it has more calls than this limit. If unspecified, defaults to
-   * 5000. The maximum value is 10000.
+   * limit may be exceeded in the event that a matching variant contains more
+   * calls than the requested maximum. If unspecified, defaults to 5000. The
+   * maximum value is 10000.
    */
   core.int maxCalls;
   /**
@@ -5082,10 +5156,32 @@ class StreamReadsRequest {
    */
   core.String referenceName;
   /**
+   * Restricts results to a shard containing approximately `1/totalShards` of
+   * the normal response payload for this query. Results from a sharded request
+   * are disjoint from those returned by all queries which differ only in their
+   * shard parameter. A shard may yield 0 results; this is especially likely for
+   * large values of `totalShards`. Valid values are `[0, totalShards)`.
+   */
+  core.int shard;
+  /**
    * The start position of the range on the reference, 0-based inclusive. If
    * specified, `referenceName` must also be specified.
    */
   core.String start;
+  /**
+   * Specifying `totalShards` causes a disjoint subset of the normal response
+   * payload to be returned for each query with a unique `shard` parameter
+   * specified. A best effort is made to yield equally sized shards. Sharding
+   * can be used to distribute processing amongst workers, where each worker is
+   * assigned a unique `shard` number and all workers specify the same
+   * `totalShards` number. The union of reads returned for all sharded queries
+   * `[0, totalShards)` is equal to those returned by a single unsharded query.
+   * Queries for different values of `totalShards` with common divisors will
+   * share shard boundaries. For example, streaming `shard` 2 of 5 `totalShards`
+   * yields the same results as streaming `shard`s 4 and 5 of 10 `totalShards`.
+   * This property can be leveraged for adaptive retries.
+   */
+  core.int totalShards;
 
   StreamReadsRequest();
 
@@ -5102,8 +5198,14 @@ class StreamReadsRequest {
     if (_json.containsKey("referenceName")) {
       referenceName = _json["referenceName"];
     }
+    if (_json.containsKey("shard")) {
+      shard = _json["shard"];
+    }
     if (_json.containsKey("start")) {
       start = _json["start"];
+    }
+    if (_json.containsKey("totalShards")) {
+      totalShards = _json["totalShards"];
     }
   }
 
@@ -5121,8 +5223,14 @@ class StreamReadsRequest {
     if (referenceName != null) {
       _json["referenceName"] = referenceName;
     }
+    if (shard != null) {
+      _json["shard"] = shard;
+    }
     if (start != null) {
       _json["start"] = start;
+    }
+    if (totalShards != null) {
+      _json["totalShards"] = totalShards;
     }
     return _json;
   }

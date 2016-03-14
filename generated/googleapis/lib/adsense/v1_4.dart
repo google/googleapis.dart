@@ -17,8 +17,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client adsense/v1.4';
 
 /**
- * Gives AdSense publishers access to their inventory and the ability to
- * generate reports
+ * Accesses AdSense publishers' inventory and generates performance reports.
  */
 class AdsenseApi {
   /** View and manage your AdSense data */
@@ -2482,11 +2481,6 @@ class Accounts {
 class AdClient {
   /** Whether this ad client is opted in to ARC. */
   core.bool arcOptIn;
-  /**
-   * ARC review mode this ad client is in. Empty if the client is not opted in
-   * to ARC. Possible values: POST_REVIEW, AUTOMATIC_PRE_REVIEW.
-   */
-  core.String arcReviewMode;
   /** Unique identifier of this ad client. */
   core.String id;
   /** Kind of resource this is, in this case adsense#adClient. */
@@ -2504,9 +2498,6 @@ class AdClient {
   AdClient.fromJson(core.Map _json) {
     if (_json.containsKey("arcOptIn")) {
       arcOptIn = _json["arcOptIn"];
-    }
-    if (_json.containsKey("arcReviewMode")) {
-      arcReviewMode = _json["arcReviewMode"];
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -2526,9 +2517,6 @@ class AdClient {
     var _json = new core.Map();
     if (arcOptIn != null) {
       _json["arcOptIn"] = arcOptIn;
-    }
-    if (arcReviewMode != null) {
-      _json["arcReviewMode"] = arcReviewMode;
     }
     if (id != null) {
       _json["id"] = id;

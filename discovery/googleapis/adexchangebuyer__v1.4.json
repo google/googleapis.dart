@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/EdmLlIWDPOXUaIR9PyM0JrTn9Ls\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/vcHwFj9oUgGXFm1JrBjoH-LeGlY\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -1067,6 +1067,26 @@
                         "https://www.googleapis.com/auth/adexchange.buyer"
                     ]
                 },
+                "setupcomplete": {
+                    "description": "Update the given proposal to indicate that setup has been completed.",
+                    "httpMethod": "POST",
+                    "id": "adexchangebuyer.proposals.setupcomplete",
+                    "parameterOrder": [
+                        "proposalId"
+                    ],
+                    "parameters": {
+                        "proposalId": {
+                            "description": "The proposal id for which the setup is complete",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "proposals/{proposalId}/setupcomplete",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                },
                 "update": {
                     "description": "Update the given proposal",
                     "httpMethod": "PUT",
@@ -1123,9 +1143,37 @@
                     ]
                 }
             }
+        },
+        "pubprofiles": {
+            "methods": {
+                "list": {
+                    "description": "Gets the requested publisher profile(s) by publisher accountId.",
+                    "httpMethod": "GET",
+                    "id": "adexchangebuyer.pubprofiles.list",
+                    "parameterOrder": [
+                        "accountId"
+                    ],
+                    "parameters": {
+                        "accountId": {
+                            "description": "The accountId of the publisher to get profiles for.",
+                            "format": "int32",
+                            "location": "path",
+                            "required": true,
+                            "type": "integer"
+                        }
+                    },
+                    "path": "publisher/{accountId}/profiles",
+                    "response": {
+                        "$ref": "GetPublisherProfilesByAccountIdResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                }
+            }
         }
     },
-    "revision": "20160118",
+    "revision": "20160229",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1136,6 +1184,10 @@
                     "description": "Your bidder locations that have distinct URLs.",
                     "items": {
                         "properties": {
+                            "bidProtocol": {
+                                "description": "The protocol that the bidder endpoint is using. By default, OpenRTB protocols use JSON, except PROTOCOL_OPENRTB_PROTOBUF. PROTOCOL_OPENRTB_PROTOBUF uses protobuf encoding over the latest OpenRTB protocol version, which is 2.3 right now. Allowed values:  \n- PROTOCOL_ADX \n- PROTOCOL_OPENRTB_2_2 \n- PROTOCOL_OPENRTB_2_3 \n- PROTOCOL_OPENRTB_PROTOBUF",
+                                "type": "string"
+                            },
                             "maximumQps": {
                                 "description": "The maximum queries per second the Ad Exchange will send.",
                                 "format": "int32",
@@ -1803,6 +1855,29 @@
             },
             "type": "object"
         },
+        "DealServingMetadata": {
+            "id": "DealServingMetadata",
+            "properties": {
+                "dealPauseStatus": {
+                    "$ref": "DealServingMetadataDealPauseStatus",
+                    "description": "Tracks which parties (if any) have paused a deal. (readonly, except via PauseResumeOrderDeals action)"
+                }
+            },
+            "type": "object"
+        },
+        "DealServingMetadataDealPauseStatus": {
+            "description": "Tracks which parties (if any) have paused a deal. The deal is considered paused if has_buyer_paused || has_seller_paused.",
+            "id": "DealServingMetadataDealPauseStatus",
+            "properties": {
+                "hasBuyerPaused": {
+                    "type": "boolean"
+                },
+                "hasSellerPaused": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "DealTerms": {
             "id": "DealTerms",
             "properties": {
@@ -1864,9 +1939,9 @@
         "DealTermsNonGuaranteedAuctionTerms": {
             "id": "DealTermsNonGuaranteedAuctionTerms",
             "properties": {
-                "privateAuctionId": {
-                    "description": "Id of the corresponding private auction.",
-                    "type": "string"
+                "autoOptimizePrivateAuction": {
+                    "description": "True if open auction buyers are allowed to compete with invited buyers in this private auction (buyer-readonly).",
+                    "type": "boolean"
                 },
                 "reservePricePerBuyers": {
                     "description": "Reserve price for the specified buyer.",
@@ -2000,6 +2075,11 @@
                         "$ref": "MarketplaceDeal"
                     },
                     "type": "array"
+                },
+                "orderRevisionNumber": {
+                    "description": "The latest revision number after the update has been applied.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2056,6 +2136,19 @@
             },
             "type": "object"
         },
+        "GetPublisherProfilesByAccountIdResponse": {
+            "id": "GetPublisherProfilesByAccountIdResponse",
+            "properties": {
+                "profiles": {
+                    "description": "Profiles for the requested publisher",
+                    "items": {
+                        "$ref": "PublisherProfileApiProto"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "MarketplaceDeal": {
             "description": "A proposal can contain multiple deals. A deal contains the terms and targeting information that is used for serving.",
             "id": "MarketplaceDeal",
@@ -2073,9 +2166,17 @@
                     "description": "Specifies the creative pre-approval policy (buyer-readonly)",
                     "type": "string"
                 },
+                "creativeSafeFrameCompatibility": {
+                    "description": "Specifies whether the creative is safeFrame compatible (buyer-readonly)",
+                    "type": "string"
+                },
                 "dealId": {
                     "description": "A unique deal=id for the deal (readonly).",
                     "type": "string"
+                },
+                "dealServingMetadata": {
+                    "$ref": "DealServingMetadata",
+                    "description": "Metadata about the serving status of this deal (readonly, writes via custom actions)"
                 },
                 "deliveryControl": {
                     "$ref": "DeliveryControl",
@@ -2122,6 +2223,10 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "programmaticCreativeSource": {
+                    "description": "Specifies the creative source for programmatic deals, PUBLISHER means creative is provided by seller and ADVERTISR means creative is provided by buyer. (buyer-readonly)",
+                    "type": "string"
+                },
                 "proposalId": {
                     "type": "string"
                 },
@@ -2133,7 +2238,7 @@
                     "type": "array"
                 },
                 "sharedTargetings": {
-                    "description": "The shared targeting visible to buyers and sellers. (updatable)",
+                    "description": "The shared targeting visible to buyers and sellers. Each shared targeting entity is AND'd together. (updatable)",
                     "items": {
                         "$ref": "SharedTargeting"
                     },
@@ -2678,6 +2783,10 @@
                     },
                     "type": "array"
                 },
+                "deliveryControl": {
+                    "$ref": "DeliveryControl",
+                    "description": "The set of fields around delivery control that are interesting for a buyer to see but are non-negotiable. These are set by the publisher. This message is assigned an id of 100 since some day we would want to model this as a protobuf extension."
+                },
                 "flightEndTimeMs": {
                     "description": "The proposed end time for the deal (ms since epoch) (buyer-readonly)",
                     "format": "int64",
@@ -2713,8 +2822,16 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "legacyOfferId": {
+                    "description": "Optional legacy offer id if this offer is a preferred deal offer.",
+                    "type": "string"
+                },
                 "name": {
                     "description": "The name for this product as set by the seller. (buyer-readonly)",
+                    "type": "string"
+                },
+                "privateAuctionId": {
+                    "description": "Optional private auction id if this offer is a private auction offer.",
                     "type": "string"
                 },
                 "productId": {
@@ -2795,7 +2912,7 @@
                     "type": "boolean"
                 },
                 "isSetupComplete": {
-                    "description": "True, if the buyside inventory setup is complete for this proposal. (readonly)",
+                    "description": "True, if the buyside inventory setup is complete for this proposal. (readonly, except via OrderSetupCompleted action)",
                     "type": "boolean"
                 },
                 "kind": {
@@ -2821,8 +2938,16 @@
                     "description": "The name for the proposal (updatable)",
                     "type": "string"
                 },
+                "negotiationId": {
+                    "description": "Optional negotiation id if this proposal is a preferred deal proposal.",
+                    "type": "string"
+                },
                 "originatorRole": {
                     "description": "Indicates whether the buyer/seller created the proposal.(readonly)",
+                    "type": "string"
+                },
+                "privateAuctionId": {
+                    "description": "Optional private auction id if this proposal is a private auction proposal.",
                     "type": "string"
                 },
                 "proposalId": {
@@ -2857,6 +2982,71 @@
             },
             "type": "object"
         },
+        "PublisherProfileApiProto": {
+            "id": "PublisherProfileApiProto",
+            "properties": {
+                "buyerPitchStatement": {
+                    "description": "A pitch statement for the buyer",
+                    "type": "string"
+                },
+                "googlePlusLink": {
+                    "description": "Link to publisher's Google+ page.",
+                    "type": "string"
+                },
+                "isParent": {
+                    "description": "True, if this is the parent profile, which represents all domains owned by the publisher.",
+                    "type": "boolean"
+                },
+                "kind": {
+                    "default": "adexchangebuyer#publisherProfileApiProto",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"adexchangebuyer#publisherProfileApiProto\".",
+                    "type": "string"
+                },
+                "logoUrl": {
+                    "description": "The url to the logo for the publisher.",
+                    "type": "string"
+                },
+                "mediaKitLink": {
+                    "description": "The url for additional marketing and sales materials.",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "overview": {
+                    "description": "Publisher provided overview.",
+                    "type": "string"
+                },
+                "profileId": {
+                    "description": "Unique id for the publisher profile",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "publisherDomains": {
+                    "description": "The list of domains represented in this publisher profile. Empty if this is a parent profile.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "rateCardInfoLink": {
+                    "description": "Link to publisher rate card",
+                    "type": "string"
+                },
+                "samplePageLink": {
+                    "description": "Link for a sample content page.",
+                    "type": "string"
+                },
+                "topHeadlines": {
+                    "description": "Publisher provided key metrics and rankings.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Seller": {
             "id": "Seller",
             "properties": {
@@ -2875,14 +3065,14 @@
             "id": "SharedTargeting",
             "properties": {
                 "exclusions": {
-                    "description": "The list of values to exclude from targeting.",
+                    "description": "The list of values to exclude from targeting. Each value is AND'd together.",
                     "items": {
                         "$ref": "TargetingValue"
                     },
                     "type": "array"
                 },
                 "inclusions": {
-                    "description": "The list of value to include as part of the targeting.",
+                    "description": "The list of value to include as part of the targeting. Each value is OR'd together.",
                     "items": {
                         "$ref": "TargetingValue"
                     },

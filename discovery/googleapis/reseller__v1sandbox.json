@@ -14,10 +14,10 @@
     "basePath": "/apps/reseller/v1sandbox/",
     "baseUrl": "https://www.googleapis.com/apps/reseller/v1sandbox/",
     "batchPath": "batch",
-    "description": "Lets you create and manage your customers and their subscriptions.",
+    "description": "Creates and manages your customers and their subscriptions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/reseller/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Ag4zMYdufSwB5RSGx6O4s86wiiE\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/rNXDiDXba8J64ExFCSbGk-pyXMA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -109,7 +109,7 @@
                     "id": "reseller.customers.insert",
                     "parameters": {
                         "customerAuthToken": {
-                            "description": "An auth token needed for inserting a customer for which domain already exists. Can be generated at https://www.google.com/a/cpanel//TransferToken. Optional.",
+                            "description": "An auth token needed for inserting a customer for which domain already exists. Can be generated at https://admin.google.com/TransferToken. Optional.",
                             "location": "query",
                             "type": "string"
                         }
@@ -524,7 +524,7 @@
             }
         }
     },
-    "revision": "20151110",
+    "revision": "20160229",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Address": {
@@ -693,6 +693,10 @@
                 "creationTime": {
                     "description": "Creation time of this subscription in milliseconds since Unix epoch.",
                     "format": "int64",
+                    "type": "string"
+                },
+                "customerDomain": {
+                    "description": "Primary domain name of the customer",
                     "type": "string"
                 },
                 "customerId": {

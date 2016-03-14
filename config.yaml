@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.23.0
+    version: 0.24.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -32,6 +32,7 @@ packages:
     - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
     - cloudlatencytest:v2
     - cloudtrace:v1 # https://cloud.google.com/cloud-trace/
+    - cloudresourcemanager:v1  # https://cloud.google.com/resource-manager/
     - compute:v1  # https://developers.google.com/compute/
     - container:v1
     - content:v2  # https://developers.google.com/shopping-content/
@@ -45,6 +46,7 @@ packages:
     - dfareporting:v2.1  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.2  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.3  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dfareporting:v2.4  # https://developers.google.com/doubleclick-advertisers/reporting/
     - discovery:v1  # https://developers.google.com/discovery/
     - dns:v1  # https://cloud.google.com/dns/api/v1/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
@@ -63,14 +65,15 @@ packages:
     - groupsmigration:v1  # https://developers.google.com/admin-sdk/groups-migration/
     - groupssettings:v1  # https://developers.google.com/admin-sdk/groups-settings/
     - identitytoolkit:v3  # https://developers.google.com/identity-toolkit/
+    - iam:v1 # https://cloud.google.com/iam/
     - kgsearch:v1  # https://developers.google.com/knowledge-graph/
     - licensing:v1  # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
-    - mapsengine:v1  # https://developers.google.com/maps-engine/
     - mirror:v1  # https://developers.google.com/glass/develop/mirror/
     - oauth2:v2  # https://developers.google.com/accounts/docs/OAuth2UserAgent
     - pagespeedonline:v1  # https://developers.google.com/speed/docs/insights/about
     - pagespeedonline:v2  # https://developers.google.com/speed/docs/insights/about
     - partners:v2  # https://developers.google.com/partners/
+    - people:v1 # https://developers.google.com/people/
     - playmoviespartner:v1
     - plusDomains:v1  # https://developers.google.com/+/domains/
     - plus:v1  # https://developers.google.com/+/api/
@@ -94,7 +97,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.23.2
+    version: 0.24.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -102,6 +105,7 @@ packages:
     changelog: resources/googleapis_beta/CHANGELOG.md
     apis:
     - appengine:v1beta4
+    - appengine:v1beta5
     - autoscaler:v1beta2  # https://developers.google.com/compute/docs/autoscaler/ (Limited Preview)
     - cloudmonitoring:v2beta2  # https://developers.google.com/cloud-monitoring/
     - cloudresourcemanager:v1beta1
@@ -123,6 +127,7 @@ packages:
     - sqladmin:v1beta3  # https://developers.google.com/cloud-sql/docs/admin-api/
     - sqladmin:v1beta4  # https://developers.google.com/cloud-sql/docs/admin-api/
     - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries
+    - toolresults:v1beta3  # https://developers.google.com/cloud-test-lab/
 
 skipped_apis:
 - adexchangebuyer:v1.2  # v1.3 included
@@ -136,6 +141,8 @@ skipped_apis:
 - clouduseraccounts:alpha  # Leave out alpha versions for now
 - clouduseraccounts:vm_alpha  # Leave out alpha versions for now
 - clouduseraccounts:vm_beta # seems to be the same API as "beta"
+- compute:beta # v1 included
+- iam:v1alpha1 # v1 included
 - datastore:v1beta1  # v1beta2 included
 - dataproc:v1alpha1 # v1beta1 included
 - dfareporting:v1.1  # v1.3 included
@@ -143,6 +150,7 @@ skipped_apis:
 - dfareporting:v1  # v1.3 included
 - drive:v1  # v2 included
 - gan:v1beta1  # Deprecated as of April 16, 2013, https://developers.google.com/affiliate-network/
+- genomics:v1alpha2 # v1 included
 - mapsengine:exp2  # v1 included
 - oauth2:v1  # v2 included
 - prediction:v1.2  # v1.6 included

@@ -51,14 +51,14 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3052() {
+buildUnnamed3398() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3052(core.List<core.String> o) {
+checkUnnamed3398(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,7 +69,7 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.members = buildUnnamed3052();
+    o.members = buildUnnamed3398();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -79,7 +79,7 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkUnnamed3052(o.members);
+    checkUnnamed3398(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -119,14 +119,14 @@ checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest--;
 }
 
-buildUnnamed3053() {
+buildUnnamed3399() {
   var o = new core.List<api.Organization>();
   o.add(buildOrganization());
   o.add(buildOrganization());
   return o;
 }
 
-checkUnnamed3053(core.List<api.Organization> o) {
+checkUnnamed3399(core.List<api.Organization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrganization(o[0]);
   checkOrganization(o[1]);
@@ -138,7 +138,7 @@ buildListOrganizationsResponse() {
   buildCounterListOrganizationsResponse++;
   if (buildCounterListOrganizationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.organizations = buildUnnamed3053();
+    o.organizations = buildUnnamed3399();
   }
   buildCounterListOrganizationsResponse--;
   return o;
@@ -148,19 +148,19 @@ checkListOrganizationsResponse(api.ListOrganizationsResponse o) {
   buildCounterListOrganizationsResponse++;
   if (buildCounterListOrganizationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3053(o.organizations);
+    checkUnnamed3399(o.organizations);
   }
   buildCounterListOrganizationsResponse--;
 }
 
-buildUnnamed3054() {
+buildUnnamed3400() {
   var o = new core.List<api.Project>();
   o.add(buildProject());
   o.add(buildProject());
   return o;
 }
 
-checkUnnamed3054(core.List<api.Project> o) {
+checkUnnamed3400(core.List<api.Project> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProject(o[0]);
   checkProject(o[1]);
@@ -172,7 +172,7 @@ buildListProjectsResponse() {
   buildCounterListProjectsResponse++;
   if (buildCounterListProjectsResponse < 3) {
     o.nextPageToken = "foo";
-    o.projects = buildUnnamed3054();
+    o.projects = buildUnnamed3400();
   }
   buildCounterListProjectsResponse--;
   return o;
@@ -182,7 +182,7 @@ checkListProjectsResponse(api.ListProjectsResponse o) {
   buildCounterListProjectsResponse++;
   if (buildCounterListProjectsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3054(o.projects);
+    checkUnnamed3400(o.projects);
   }
   buildCounterListProjectsResponse--;
 }
@@ -231,14 +231,14 @@ checkOrganizationOwner(api.OrganizationOwner o) {
   buildCounterOrganizationOwner--;
 }
 
-buildUnnamed3055() {
+buildUnnamed3401() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed3055(core.List<api.Binding> o) {
+checkUnnamed3401(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -249,7 +249,7 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed3055();
+    o.bindings = buildUnnamed3401();
     o.etag = "foo";
     o.version = 42;
   }
@@ -260,21 +260,21 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed3055(o.bindings);
+    checkUnnamed3401(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterPolicy--;
 }
 
-buildUnnamed3056() {
+buildUnnamed3402() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3056(core.Map<core.String, core.String> o) {
+checkUnnamed3402(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -286,7 +286,7 @@ buildProject() {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     o.createTime = "foo";
-    o.labels = buildUnnamed3056();
+    o.labels = buildUnnamed3402();
     o.lifecycleState = "foo";
     o.name = "foo";
     o.parent = buildResourceId();
@@ -301,7 +301,7 @@ checkProject(api.Project o) {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUnnamed3056(o.labels);
+    checkUnnamed3402(o.labels);
     unittest.expect(o.lifecycleState, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkResourceId(o.parent);
@@ -351,14 +351,14 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed3057() {
+buildUnnamed3403() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3057(core.List<core.String> o) {
+checkUnnamed3403(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -369,7 +369,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed3057();
+    o.permissions = buildUnnamed3403();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -378,19 +378,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed3057(o.permissions);
+    checkUnnamed3403(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed3058() {
+buildUnnamed3404() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3058(core.List<core.String> o) {
+checkUnnamed3404(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -401,7 +401,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed3058();
+    o.permissions = buildUnnamed3404();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -410,9 +410,26 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed3058(o.permissions);
+    checkUnnamed3404(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
+}
+
+core.int buildCounterUndeleteProjectRequest = 0;
+buildUndeleteProjectRequest() {
+  var o = new api.UndeleteProjectRequest();
+  buildCounterUndeleteProjectRequest++;
+  if (buildCounterUndeleteProjectRequest < 3) {
+  }
+  buildCounterUndeleteProjectRequest--;
+  return o;
+}
+
+checkUndeleteProjectRequest(api.UndeleteProjectRequest o) {
+  buildCounterUndeleteProjectRequest++;
+  if (buildCounterUndeleteProjectRequest < 3) {
+  }
+  buildCounterUndeleteProjectRequest--;
 }
 
 
@@ -530,6 +547,15 @@ main() {
       var o = buildTestIamPermissionsResponse();
       var od = new api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-UndeleteProjectRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildUndeleteProjectRequest();
+      var od = new api.UndeleteProjectRequest.fromJson(o.toJson());
+      checkUndeleteProjectRequest(od);
     });
   });
 
@@ -1210,8 +1236,12 @@ main() {
 
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
+      var arg_request = buildUndeleteProjectRequest();
       var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.UndeleteProjectRequest.fromJson(json);
+        checkUndeleteProjectRequest(obj);
+
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1252,7 +1282,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.undelete(arg_projectId).then(unittest.expectAsync(((api.Empty response) {
+      res.undelete(arg_request, arg_projectId).then(unittest.expectAsync(((api.Empty response) {
         checkEmpty(response);
       })));
     });

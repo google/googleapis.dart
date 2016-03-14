@@ -18,8 +18,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client doubleclicksearch/v2';
 
 /**
- * Report and modify your advertising data in DoubleClick Search (for example,
- * campaigns, ad groups, keywords, and conversions).
+ * Reports and modifies your advertising data in DoubleClick Search (for
+ * example, campaigns, ad groups, keywords, and conversions).
  */
 class DoubleclicksearchApi {
   /** View and manage your advertising data in DoubleClick Search */

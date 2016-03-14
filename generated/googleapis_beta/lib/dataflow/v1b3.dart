@@ -3763,6 +3763,8 @@ class StreamingComputationTask {
 
 /** A task which initializes part of a streaming Dataflow job. */
 class StreamingSetupTask {
+  /** The user has requested drain. */
+  core.bool drain;
   /**
    * The TCP port on which the worker should listen for messages from other
    * streaming computation workers.
@@ -3779,6 +3781,9 @@ class StreamingSetupTask {
   StreamingSetupTask();
 
   StreamingSetupTask.fromJson(core.Map _json) {
+    if (_json.containsKey("drain")) {
+      drain = _json["drain"];
+    }
     if (_json.containsKey("receiveWorkPort")) {
       receiveWorkPort = _json["receiveWorkPort"];
     }
@@ -3792,6 +3797,9 @@ class StreamingSetupTask {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (drain != null) {
+      _json["drain"] = drain;
+    }
     if (receiveWorkPort != null) {
       _json["receiveWorkPort"] = receiveWorkPort;
     }
@@ -4772,6 +4780,11 @@ class WorkerPool {
    */
   core.Map<core.String, core.Object> poolArgs;
   /**
+   * Subnetwork to which VMs will be assigned, if desired. Expected to be of the
+   * form "zones/ZONE/subnetworks/SUBNETWORK".
+   */
+  core.String subnetwork;
+  /**
    * Settings passed through to Google Compute Engine workers when using the
    * standard Dataflow task runner. Users should ignore this field.
    */
@@ -4795,6 +4808,11 @@ class WorkerPool {
    * - "TEARDOWN_NEVER" : A TEARDOWN_NEVER.
    */
   core.String teardownPolicy;
+  /**
+   * Docker container image that executes Dataflow worker harness, residing in
+   * Google Container Registry. Required.
+   */
+  core.String workerHarnessContainerImage;
   /**
    * Zone to run the worker pools in. If empty or unspecified, the service will
    * attempt to choose a reasonable default.
@@ -4846,11 +4864,17 @@ class WorkerPool {
     if (_json.containsKey("poolArgs")) {
       poolArgs = _json["poolArgs"];
     }
+    if (_json.containsKey("subnetwork")) {
+      subnetwork = _json["subnetwork"];
+    }
     if (_json.containsKey("taskrunnerSettings")) {
       taskrunnerSettings = new TaskRunnerSettings.fromJson(_json["taskrunnerSettings"]);
     }
     if (_json.containsKey("teardownPolicy")) {
       teardownPolicy = _json["teardownPolicy"];
+    }
+    if (_json.containsKey("workerHarnessContainerImage")) {
+      workerHarnessContainerImage = _json["workerHarnessContainerImage"];
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -4901,11 +4925,17 @@ class WorkerPool {
     if (poolArgs != null) {
       _json["poolArgs"] = poolArgs;
     }
+    if (subnetwork != null) {
+      _json["subnetwork"] = subnetwork;
+    }
     if (taskrunnerSettings != null) {
       _json["taskrunnerSettings"] = (taskrunnerSettings).toJson();
     }
     if (teardownPolicy != null) {
       _json["teardownPolicy"] = teardownPolicy;
+    }
+    if (workerHarnessContainerImage != null) {
+      _json["workerHarnessContainerImage"] = workerHarnessContainerImage;
     }
     if (zone != null) {
       _json["zone"] = zone;

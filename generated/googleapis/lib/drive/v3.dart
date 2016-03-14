@@ -829,7 +829,8 @@ class FilesResourceApi {
   }
 
   /**
-   * Exports a Google Doc to the requested MIME type.
+   * Exports a Google Doc to the requested MIME type and returns the exported
+   * content.
    *
    * Request parameters:
    *
@@ -2542,6 +2543,11 @@ class FileCapabilities {
   /** Whether the user can edit the file's content. */
   core.bool canEdit;
   /**
+   * Whether the current user has read access to the Revisions resource of the
+   * file.
+   */
+  core.bool canReadRevisions;
+  /**
    * Whether the user can modify the file's permissions and sharing settings.
    */
   core.bool canShare;
@@ -2558,6 +2564,9 @@ class FileCapabilities {
     if (_json.containsKey("canEdit")) {
       canEdit = _json["canEdit"];
     }
+    if (_json.containsKey("canReadRevisions")) {
+      canReadRevisions = _json["canReadRevisions"];
+    }
     if (_json.containsKey("canShare")) {
       canShare = _json["canShare"];
     }
@@ -2573,6 +2582,9 @@ class FileCapabilities {
     }
     if (canEdit != null) {
       _json["canEdit"] = canEdit;
+    }
+    if (canReadRevisions != null) {
+      _json["canReadRevisions"] = canReadRevisions;
     }
     if (canShare != null) {
       _json["canShare"] = canShare;

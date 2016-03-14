@@ -51,14 +51,14 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1834() {
+buildUnnamed2146() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1834(core.List<core.String> o) {
+checkUnnamed2146(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -77,7 +77,7 @@ buildCluster() {
     o.endpoint = "foo";
     o.initialClusterVersion = "foo";
     o.initialNodeCount = 42;
-    o.instanceGroupUrls = buildUnnamed1834();
+    o.instanceGroupUrls = buildUnnamed2146();
     o.loggingService = "foo";
     o.masterAuth = buildMasterAuth();
     o.monitoringService = "foo";
@@ -106,7 +106,7 @@ checkCluster(api.Cluster o) {
     unittest.expect(o.endpoint, unittest.equals('foo'));
     unittest.expect(o.initialClusterVersion, unittest.equals('foo'));
     unittest.expect(o.initialNodeCount, unittest.equals(42));
-    checkUnnamed1834(o.instanceGroupUrls);
+    checkUnnamed2146(o.instanceGroupUrls);
     unittest.expect(o.loggingService, unittest.equals('foo'));
     checkMasterAuth(o.masterAuth);
     unittest.expect(o.monitoringService, unittest.equals('foo'));
@@ -161,14 +161,14 @@ checkCreateClusterRequest(api.CreateClusterRequest o) {
   buildCounterCreateClusterRequest--;
 }
 
-buildUnnamed1835() {
+buildUnnamed2147() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1835(core.List<api.Cluster> o) {
+checkUnnamed2147(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -179,7 +179,7 @@ buildListClustersResponse() {
   var o = new api.ListClustersResponse();
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    o.clusters = buildUnnamed1835();
+    o.clusters = buildUnnamed2147();
   }
   buildCounterListClustersResponse--;
   return o;
@@ -188,19 +188,19 @@ buildListClustersResponse() {
 checkListClustersResponse(api.ListClustersResponse o) {
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    checkUnnamed1835(o.clusters);
+    checkUnnamed2147(o.clusters);
   }
   buildCounterListClustersResponse--;
 }
 
-buildUnnamed1836() {
+buildUnnamed2148() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1836(core.List<api.Operation> o) {
+checkUnnamed2148(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -211,7 +211,7 @@ buildListOperationsResponse() {
   var o = new api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.operations = buildUnnamed1836();
+    o.operations = buildUnnamed2148();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -220,7 +220,7 @@ buildListOperationsResponse() {
 checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    checkUnnamed1836(o.operations);
+    checkUnnamed2148(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
@@ -252,14 +252,14 @@ checkMasterAuth(api.MasterAuth o) {
   buildCounterMasterAuth--;
 }
 
-buildUnnamed1837() {
+buildUnnamed2149() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1837(core.List<core.String> o) {
+checkUnnamed2149(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -272,7 +272,7 @@ buildNodeConfig() {
   if (buildCounterNodeConfig < 3) {
     o.diskSizeGb = 42;
     o.machineType = "foo";
-    o.oauthScopes = buildUnnamed1837();
+    o.oauthScopes = buildUnnamed2149();
   }
   buildCounterNodeConfig--;
   return o;
@@ -283,7 +283,7 @@ checkNodeConfig(api.NodeConfig o) {
   if (buildCounterNodeConfig < 3) {
     unittest.expect(o.diskSizeGb, unittest.equals(42));
     unittest.expect(o.machineType, unittest.equals('foo'));
-    checkUnnamed1837(o.oauthScopes);
+    checkUnnamed2149(o.oauthScopes);
   }
   buildCounterNodeConfig--;
 }
@@ -319,14 +319,14 @@ checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-buildUnnamed1838() {
+buildUnnamed2150() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1838(core.List<core.String> o) {
+checkUnnamed2150(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -338,7 +338,7 @@ buildServerConfig() {
   buildCounterServerConfig++;
   if (buildCounterServerConfig < 3) {
     o.defaultClusterVersion = "foo";
-    o.validNodeVersions = buildUnnamed1838();
+    o.validNodeVersions = buildUnnamed2150();
   }
   buildCounterServerConfig--;
   return o;
@@ -348,7 +348,7 @@ checkServerConfig(api.ServerConfig o) {
   buildCounterServerConfig++;
   if (buildCounterServerConfig < 3) {
     unittest.expect(o.defaultClusterVersion, unittest.equals('foo'));
-    checkUnnamed1838(o.validNodeVersions);
+    checkUnnamed2150(o.validNodeVersions);
   }
   buildCounterServerConfig--;
 }

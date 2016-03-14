@@ -811,7 +811,7 @@ class EnterprisesResourceApi {
       _requester = client;
 
   /**
-   * Deletes the binding between the MDM and enterprise. This is now deprecated;
+   * Deletes the binding between the EMM and enterprise. This is now deprecated;
    * use this to unenroll customers that were previously enrolled with the
    * 'insert' call, then enroll them again with the 'enroll' call.
    *
@@ -852,13 +852,13 @@ class EnterprisesResourceApi {
   }
 
   /**
-   * Enrolls an enterprise with the calling MDM.
+   * Enrolls an enterprise with the calling EMM.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [token] - The token provided by the enterprise to register the MDM.
+   * [token] - The token provided by the enterprise to register the EMM.
    *
    * Completes with a [Enterprise].
    *
@@ -975,14 +975,14 @@ class EnterprisesResourceApi {
   }
 
   /**
-   * Establishes the binding between the MDM and an enterprise. This is now
+   * Establishes the binding between the EMM and an enterprise. This is now
    * deprecated; use enroll instead.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [token] - The token provided by the enterprise to register the MDM.
+   * [token] - The token provided by the enterprise to register the EMM.
    *
    * Completes with a [Enterprise].
    *
@@ -1061,7 +1061,7 @@ class EnterprisesResourceApi {
   }
 
   /**
-   * Sends a test push notification to validate the MDM integration with the
+   * Sends a test push notification to validate the EMM integration with the
    * Google Cloud Pub/Sub service for this enterprise.
    *
    * Request parameters:
@@ -1190,7 +1190,7 @@ class EnterprisesResourceApi {
   }
 
   /**
-   * Unenrolls an enterprise from the calling MDM.
+   * Unenrolls an enterprise from the calling EMM.
    *
    * Request parameters:
    *
@@ -2267,8 +2267,13 @@ class ProductsResourceApi {
   }
 
   /**
-   * Updates the set of Android app permissions for this app that have been
-   * accepted by the enterprise.
+   * This method has been deprecated. To programmatically approve applications,
+   * you must use the iframe mechanism via the  generateApprovalUrl and  approve
+   * methods of the Products resource. For more information, see the  Play EMM
+   * API usage requirements.
+   *
+   * The updatePermissions method (deprecated) updates the set of Android app
+   * permissions for this app that have been accepted by the enterprise.
    *
    * [request] - The metadata request object.
    *
@@ -2916,6 +2921,8 @@ class UsersResourceApi {
    * work account in the Android Setup Wizard. Revokes any previously generated
    * token.
    *
+   * This call only works with Google managed accounts.
+   *
    * Request parameters:
    *
    * [enterpriseId] - The ID of the enterprise.
@@ -3046,7 +3053,7 @@ class UsersResourceApi {
   }
 
   /**
-   * Looks up a user by email address. This only works for Google managed users.
+   * Looks up a user by their primary email address.
    *
    * Request parameters:
    *
@@ -3592,7 +3599,7 @@ class CollectionsListResponse {
 }
 
 /**
- * A device resource represents a mobile device managed by the MDM and belonging
+ * A device resource represents a mobile device managed by the EMM and belonging
  * to a specific enterprise user.
  *
  * This collection cannot be modified via the API; it is automatically populated
@@ -3610,10 +3617,10 @@ class Device {
    */
   core.String kind;
   /**
-   * The mechanism by which this device is managed by the MDM. "managedDevice"
-   * means that the MDM's app is a device owner. "managedProfile" means that the
-   * MDM's app is the profile owner (and there is a separate personal profile
-   * which is not managed). "containerApp" means that the MDM's app is managing
+   * The mechanism by which this device is managed by the EMM. "managedDevice"
+   * means that the EMM's app is a device owner. "managedProfile" means that the
+   * EMM's app is the profile owner (and there is a separate personal profile
+   * which is not managed). "containerApp" means that the EMM's app is managing
    * the Android for Work container app on the device.
    */
   core.String managementType;
@@ -3723,24 +3730,24 @@ class DevicesListResponse {
 
 /**
  * An enterprise resource represents a binding between an organisation and their
- * MDM.
+ * EMM.
  *
  * To create an enterprise, an admin of the enterprise must first go through a
  * Play for Work sign-up flow. At the end of this the admin will be presented
  * with a token (a short opaque alphanumeric string). They must then present
- * this to the MDM, who then supplies it to the enroll method. Until this is
- * done the MDM will not have any access to the enterprise.
+ * this to the EMM, who then supplies it to the enroll method. Until this is
+ * done the EMM will not have any access to the enterprise.
  *
- * After calling enroll the MDM should call setAccount to specify the service
+ * After calling enroll the EMM should call setAccount to specify the service
  * account that will be allowed to act on behalf of the enterprise, which will
  * be required for access to the enterprise's data through this API. Only one
  * call of setAccount is allowed for a given enterprise; the only way to change
  * the account later is to unenroll the enterprise and enroll it again
  * (obtaining a new token).
  *
- * The MDM can unenroll an enterprise in order to sever the binding between
+ * The EMM can unenroll an enterprise in order to sever the binding between
  * them. Re-enrolling an enterprise is possible, but requires a new token to be
- * retrieved. Enterprises.unenroll requires the MDM's credentials (as enroll
+ * retrieved. Enterprises.unenroll requires the EMM's credentials (as enroll
  * does), not the enterprise's. Enterprises.unenroll can only be used for
  * enterprises that were previously enrolled with the enroll call. Any
  * enterprises that were enrolled using the (deprecated) Enterprises.insert call
@@ -3909,7 +3916,7 @@ class EnterprisesSendTestPushNotificationResponse {
  * It should always be true that a user has an app installed on one of their
  * devices only if they have an entitlement to it. So if an entitlement is
  * deleted, the app will be uninstalled from all devices. Similarly if the user
- * installs an app (and is permitted to do so), or the MDM triggers an install
+ * installs an app (and is permitted to do so), or the EMM triggers an install
  * of the app, an entitlement to that app is automatically created. If this is
  * impossible - e.g. the enterprise has not purchased sufficient licenses - then
  * installation fails.
@@ -4344,7 +4351,7 @@ class LocalizedText {
  * can be created.
  *
  * The permissions collection is read-only. The information provided for each
- * permission (localized name and description) is intended to be used in the MDM
+ * permission (localized name and description) is intended to be used in the EMM
  * user interface when obtaining consent from the enterprise.
  */
 class Permission {
@@ -4406,7 +4413,7 @@ class Permission {
  *
  * The information provided for each product (localized name, icon, link to the
  * full Google Play details page) is intended to allow a basic representation of
- * the product within an MDM user interface.
+ * the product within an EMM user interface.
  */
 class Product {
   /**
@@ -4966,9 +4973,9 @@ class StorePage {
  *
  * Note that each user is associated with a Google account based on the user's
  * corporate email address (which must be in one of the enterprise's domains).
- * As part of installing an MDM app to manage a device the Google account must
- * be provisioned to the device, and so the user resource must be created before
- * that. This can be done using the Google Admin SDK Directory API.
+ * As part of installing the EMM's DPC app to manage a device the Google account
+ * must be provisioned to the device, and so the user resource must be created
+ * before that. This can be done using the Google Admin SDK Directory API.
  *
  * The ID for a user is an opaque string. It can be retrieved using the list
  * method queried by the user's primary email address.
@@ -5019,7 +5026,7 @@ class User {
 /**
  * A UserToken is used by a user when setting up a managed device or profile
  * with their work account on a device. When the user enters their email address
- * and token (activation code) the appropriate MDM app can be automatically
+ * and token (activation code) the appropriate EMM app can be automatically
  * downloaded.
  */
 class UserToken {

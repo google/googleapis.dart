@@ -107,7 +107,8 @@ class AddressesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -118,13 +119,13 @@ class AddressesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -181,7 +182,7 @@ class AddressesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - The name of the region for this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [address] - Name of the address resource to delete.
@@ -234,7 +235,7 @@ class AddressesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - The name of the region for this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [address] - Name of the address resource to return.
@@ -290,7 +291,7 @@ class AddressesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - The name of the region for this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -332,8 +333,7 @@ class AddressesResourceApi {
   }
 
   /**
-   * Retrieves a list of address resources contained within the specified
-   * region.
+   * Retrieves a list of addresses contained within the specified region.
    *
    * Request parameters:
    *
@@ -341,7 +341,7 @@ class AddressesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - The name of the region for this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
@@ -356,7 +356,8 @@ class AddressesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -367,13 +368,13 @@ class AddressesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -454,7 +455,8 @@ class AutoscalersResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -465,13 +467,13 @@ class AutoscalersResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -520,7 +522,7 @@ class AutoscalersResourceApi {
   }
 
   /**
-   * Deletes the specified autoscaler resource.
+   * Deletes the specified autoscaler.
    *
    * Request parameters:
    *
@@ -528,10 +530,10 @@ class AutoscalersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [autoscaler] - Name of the persistent autoscaler resource to delete.
+   * [autoscaler] - Name of the autoscaler to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -573,7 +575,8 @@ class AutoscalersResourceApi {
   }
 
   /**
-   * Returns the specified autoscaler resource.
+   * Returns the specified autoscaler resource. Get a list of available
+   * autoscalers by making a list() request.
    *
    * Request parameters:
    *
@@ -581,10 +584,10 @@ class AutoscalersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [autoscaler] - Name of the persistent autoscaler resource to return.
+   * [autoscaler] - Name of the autoscaler to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Autoscaler].
@@ -626,8 +629,8 @@ class AutoscalersResourceApi {
   }
 
   /**
-   * Creates an autoscaler resource in the specified project using the data
-   * included in the request.
+   * Creates an autoscaler in the specified project using the data included in
+   * the request.
    *
    * [request] - The metadata request object.
    *
@@ -637,7 +640,7 @@ class AutoscalersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -679,8 +682,7 @@ class AutoscalersResourceApi {
   }
 
   /**
-   * Retrieves a list of autoscaler resources contained within the specified
-   * zone.
+   * Retrieves a list of autoscalers contained within the specified zone.
    *
    * Request parameters:
    *
@@ -688,7 +690,7 @@ class AutoscalersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
@@ -703,7 +705,8 @@ class AutoscalersResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -714,13 +717,13 @@ class AutoscalersResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -772,8 +775,8 @@ class AutoscalersResourceApi {
   }
 
   /**
-   * Updates an autoscaler resource in the specified project using the data
-   * included in the request. This method supports patch semantics.
+   * Updates an autoscaler in the specified project using the data included in
+   * the request. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -783,10 +786,10 @@ class AutoscalersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [autoscaler] - Name of the autoscaler resource to update.
+   * [autoscaler] - Name of the autoscaler to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -832,8 +835,8 @@ class AutoscalersResourceApi {
   }
 
   /**
-   * Updates an autoscaler resource in the specified project using the data
-   * included in the request.
+   * Updates an autoscaler in the specified project using the data included in
+   * the request.
    *
    * [request] - The metadata request object.
    *
@@ -843,10 +846,10 @@ class AutoscalersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [autoscaler] - Name of the autoscaler resource to update.
+   * [autoscaler] - Name of the autoscaler to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -947,7 +950,8 @@ class BackendServicesResourceApi {
   }
 
   /**
-   * Returns the specified BackendService resource.
+   * Returns the specified BackendService resource. Get a list of available
+   * backend services by making a list() request.
    *
    * Request parameters:
    *
@@ -1117,7 +1121,8 @@ class BackendServicesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -1128,13 +1133,13 @@ class BackendServicesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -1301,7 +1306,7 @@ class DiskTypesResourceApi {
       _requester = client;
 
   /**
-   * Retrieves an aggregated list of disk type resources.
+   * Retrieves an aggregated list of disk types.
    *
    * Request parameters:
    *
@@ -1321,7 +1326,8 @@ class DiskTypesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -1332,13 +1338,13 @@ class DiskTypesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -1387,7 +1393,8 @@ class DiskTypesResourceApi {
   }
 
   /**
-   * Returns the specified disk type resource.
+   * Returns the specified disk type. Get a list of available disk types by
+   * making a list() request.
    *
    * Request parameters:
    *
@@ -1398,7 +1405,7 @@ class DiskTypesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [diskType] - Name of the disk type resource to return.
+   * [diskType] - Name of the disk type to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [DiskType].
@@ -1440,7 +1447,7 @@ class DiskTypesResourceApi {
   }
 
   /**
-   * Retrieves a list of disk type resources available to the specified project.
+   * Retrieves a list of disk types available to the specified project.
    *
    * Request parameters:
    *
@@ -1463,7 +1470,8 @@ class DiskTypesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -1474,13 +1482,13 @@ class DiskTypesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -1561,7 +1569,8 @@ class DisksResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -1572,13 +1581,13 @@ class DisksResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -1741,7 +1750,8 @@ class DisksResourceApi {
   }
 
   /**
-   * Returns a specified persistent disk.
+   * Returns a specified persistent disk. Get a list of available persistent
+   * disks by making a list() request.
    *
    * Request parameters:
    *
@@ -1794,8 +1804,11 @@ class DisksResourceApi {
   }
 
   /**
-   * Creates a persistent disk in the specified project using the data included
-   * in the request.
+   * Creates a persistent disk in the specified project using the data in the
+   * request. You can create a disk with a sourceImage, a sourceSnapshot, or
+   * create an empty 200 GB data disk by omitting all properties. You can also
+   * create a disk that is larger than the default size by specifying the sizeGb
+   * property.
    *
    * [request] - The metadata request object.
    *
@@ -1875,7 +1888,8 @@ class DisksResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -1886,13 +1900,13 @@ class DisksResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -1953,7 +1967,7 @@ class FirewallsResourceApi {
       _requester = client;
 
   /**
-   * Deletes the specified firewall resource.
+   * Deletes the specified firewall.
    *
    * Request parameters:
    *
@@ -1961,7 +1975,7 @@ class FirewallsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [firewall] - Name of the firewall resource to delete.
+   * [firewall] - Name of the firewall rule to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -2000,7 +2014,7 @@ class FirewallsResourceApi {
   }
 
   /**
-   * Returns the specified firewall resource.
+   * Returns the specified firewall.
    *
    * Request parameters:
    *
@@ -2008,7 +2022,7 @@ class FirewallsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [firewall] - Name of the firewall resource to return.
+   * [firewall] - Name of the firewall rule to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Firewall].
@@ -2047,8 +2061,8 @@ class FirewallsResourceApi {
   }
 
   /**
-   * Creates a firewall resource in the specified project using the data
-   * included in the request.
+   * Creates a firewall rule in the specified project using the data included in
+   * the request.
    *
    * [request] - The metadata request object.
    *
@@ -2094,8 +2108,7 @@ class FirewallsResourceApi {
   }
 
   /**
-   * Retrieves the list of firewall resources available to the specified
-   * project.
+   * Retrieves the list of firewall rules available to the specified project.
    *
    * Request parameters:
    *
@@ -2115,7 +2128,8 @@ class FirewallsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -2126,13 +2140,13 @@ class FirewallsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -2181,8 +2195,8 @@ class FirewallsResourceApi {
   }
 
   /**
-   * Updates the specified firewall resource with the data included in the
-   * request. This method supports patch semantics.
+   * Updates the specified firewall rule with the data included in the request.
+   * This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -2192,7 +2206,7 @@ class FirewallsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [firewall] - Name of the firewall resource to update.
+   * [firewall] - Name of the firewall rule to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -2234,8 +2248,7 @@ class FirewallsResourceApi {
   }
 
   /**
-   * Updates the specified firewall resource with the data included in the
-   * request.
+   * Updates the specified firewall rule with the data included in the request.
    *
    * [request] - The metadata request object.
    *
@@ -2245,7 +2258,7 @@ class FirewallsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [firewall] - Name of the firewall resource to update.
+   * [firewall] - Name of the firewall rule to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -2316,7 +2329,8 @@ class ForwardingRulesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -2327,13 +2341,13 @@ class ForwardingRulesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -2565,7 +2579,8 @@ class ForwardingRulesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -2576,13 +2591,13 @@ class ForwardingRulesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -2750,7 +2765,8 @@ class GlobalAddressesResourceApi {
   }
 
   /**
-   * Returns the specified address resource.
+   * Returns the specified address resource. Get a list of available addresses
+   * by making a list() request.
    *
    * Request parameters:
    *
@@ -2844,7 +2860,7 @@ class GlobalAddressesResourceApi {
   }
 
   /**
-   * Retrieves a list of global address resources.
+   * Retrieves a list of global addresses.
    *
    * Request parameters:
    *
@@ -2864,7 +2880,8 @@ class GlobalAddressesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -2875,13 +2892,13 @@ class GlobalAddressesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -2986,7 +3003,8 @@ class GlobalForwardingRulesResourceApi {
   }
 
   /**
-   * Returns the specified ForwardingRule resource.
+   * Returns the specified ForwardingRule resource. Get a list of available
+   * forwarding rules by making a list() request.
    *
    * Request parameters:
    *
@@ -3101,7 +3119,8 @@ class GlobalForwardingRulesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -3112,13 +3131,13 @@ class GlobalForwardingRulesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -3250,7 +3269,8 @@ class GlobalOperationsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -3261,13 +3281,13 @@ class GlobalOperationsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -3363,7 +3383,8 @@ class GlobalOperationsResourceApi {
   }
 
   /**
-   * Retrieves the specified Operations resource.
+   * Retrieves the specified Operations resource. Get a list of operations by
+   * making a list() request.
    *
    * Request parameters:
    *
@@ -3431,7 +3452,8 @@ class GlobalOperationsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -3442,13 +3464,13 @@ class GlobalOperationsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -3553,7 +3575,8 @@ class HttpHealthChecksResourceApi {
   }
 
   /**
-   * Returns the specified HttpHealthCheck resource.
+   * Returns the specified HttpHealthCheck resource. Get a list of available
+   * HTTP health checks by making a list() request.
    *
    * Request parameters:
    *
@@ -3668,7 +3691,8 @@ class HttpHealthChecksResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -3679,13 +3703,13 @@ class HttpHealthChecksResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -3896,7 +3920,8 @@ class HttpsHealthChecksResourceApi {
   }
 
   /**
-   * Returns the specified HttpsHealthCheck resource.
+   * Returns the specified HttpsHealthCheck resource. Get a list of available
+   * HTTPS health checks by making a list() request.
    *
    * Request parameters:
    *
@@ -4011,7 +4036,8 @@ class HttpsHealthChecksResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -4022,13 +4048,13 @@ class HttpsHealthChecksResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -4192,7 +4218,7 @@ class ImagesResourceApi {
       _requester = client;
 
   /**
-   * Deletes the specified image resource.
+   * Deletes the specified image.
    *
    * Request parameters:
    *
@@ -4293,7 +4319,8 @@ class ImagesResourceApi {
   }
 
   /**
-   * Returns the specified image resource.
+   * Returns the specified image. Get a list of available images by making a
+   * list() request.
    *
    * Request parameters:
    *
@@ -4340,8 +4367,8 @@ class ImagesResourceApi {
   }
 
   /**
-   * Creates an image resource in the specified project using the data included
-   * in the request.
+   * Creates an image in the specified project using the data included in the
+   * request.
    *
    * [request] - The metadata request object.
    *
@@ -4414,7 +4441,8 @@ class ImagesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -4425,13 +4453,13 @@ class ImagesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -4572,7 +4600,8 @@ class InstanceGroupManagersResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -4583,13 +4612,13 @@ class InstanceGroupManagersResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -4753,7 +4782,8 @@ class InstanceGroupManagersResourceApi {
   }
 
   /**
-   * Returns all of the details about the specified managed instance group.
+   * Returns all of the details about the specified managed instance group. Get
+   * a list of available managed instance groups by making a list() request.
    *
    * Request parameters:
    *
@@ -4884,7 +4914,8 @@ class InstanceGroupManagersResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -4895,13 +4926,13 @@ class InstanceGroupManagersResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -5261,8 +5292,9 @@ class InstanceGroupsResourceApi {
       _requester = client;
 
   /**
-   * Adds a list of instances to the specified instance group. Read  Adding
-   * instances for more information.
+   * Adds a list of instances to the specified instance group. All of the
+   * instances in the instance group must be in the same network/subnetwork.
+   * Read  Adding instances for more information.
    *
    * [request] - The metadata request object.
    *
@@ -5339,7 +5371,8 @@ class InstanceGroupsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -5350,13 +5383,13 @@ class InstanceGroupsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -5458,7 +5491,8 @@ class InstanceGroupsResourceApi {
   }
 
   /**
-   * Returns the specified instance group resource.
+   * Returns the specified instance group. Get a list of available instance
+   * groups by making a list() request.
    *
    * Request parameters:
    *
@@ -5584,7 +5618,8 @@ class InstanceGroupsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -5595,13 +5630,13 @@ class InstanceGroupsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -5680,7 +5715,8 @@ class InstanceGroupsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -5691,13 +5727,13 @@ class InstanceGroupsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -5879,7 +5915,10 @@ class InstanceTemplatesResourceApi {
       _requester = client;
 
   /**
-   * Deletes the specified instance template.
+   * Deletes the specified instance template. If you delete an instance template
+   * that is being referenced from another instance group, the instance group
+   * will not be able to create or recreate virtual machine instances. Deleting
+   * an instance template is permanent and cannot be undone.
    *
    * Request parameters:
    *
@@ -5926,7 +5965,8 @@ class InstanceTemplatesResourceApi {
   }
 
   /**
-   * Returns the specified instance template resource.
+   * Returns the specified instance template. Get a list of available instance
+   * templates by making a list() request.
    *
    * Request parameters:
    *
@@ -6043,7 +6083,8 @@ class InstanceTemplatesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -6054,13 +6095,13 @@ class InstanceTemplatesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -6183,7 +6224,7 @@ class InstancesResourceApi {
   }
 
   /**
-   * Retrieves aggregated list of instance resources.
+   * Retrieves aggregated list of instances.
    *
    * Request parameters:
    *
@@ -6203,7 +6244,8 @@ class InstancesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -6214,13 +6256,13 @@ class InstancesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -6282,7 +6324,7 @@ class InstancesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [instance] - Instance name.
+   * [instance] - The instance name for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -6506,7 +6548,8 @@ class InstancesResourceApi {
   }
 
   /**
-   * Returns the specified instance resource.
+   * Returns the specified Instance resource. Get a list of available instances
+   * by making a list() request.
    *
    * Request parameters:
    *
@@ -6671,8 +6714,7 @@ class InstancesResourceApi {
   }
 
   /**
-   * Retrieves the list of instance resources contained within the specified
-   * zone.
+   * Retrieves the list of instances contained within the specified zone.
    *
    * Request parameters:
    *
@@ -6695,7 +6737,8 @@ class InstancesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -6706,13 +6749,13 @@ class InstancesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -7239,7 +7282,8 @@ class LicensesResourceApi {
       _requester = client;
 
   /**
-   * Returns the specified license resource.
+   * Returns the specified License resource. Get a list of available licenses by
+   * making a list() request.
    *
    * Request parameters:
    *
@@ -7247,7 +7291,7 @@ class LicensesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [license] - Name of the license resource to return.
+   * [license] - Name of the License resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [License].
@@ -7295,7 +7339,7 @@ class MachineTypesResourceApi {
       _requester = client;
 
   /**
-   * Retrieves an aggregated list of machine type resources.
+   * Retrieves an aggregated list of machine types.
    *
    * Request parameters:
    *
@@ -7315,7 +7359,8 @@ class MachineTypesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -7326,13 +7371,13 @@ class MachineTypesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -7381,7 +7426,8 @@ class MachineTypesResourceApi {
   }
 
   /**
-   * Returns the specified machine type resource.
+   * Returns the specified machine type. Get a list of available machine types
+   * by making a list() request.
    *
    * Request parameters:
    *
@@ -7392,7 +7438,7 @@ class MachineTypesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [machineType] - Name of the machine type resource to return.
+   * [machineType] - Name of the machine type to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [MachineType].
@@ -7434,8 +7480,7 @@ class MachineTypesResourceApi {
   }
 
   /**
-   * Retrieves a list of machine type resources available to the specified
-   * project.
+   * Retrieves a list of machine types available to the specified project.
    *
    * Request parameters:
    *
@@ -7458,7 +7503,8 @@ class MachineTypesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -7469,13 +7515,13 @@ class MachineTypesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -7536,7 +7582,7 @@ class NetworksResourceApi {
       _requester = client;
 
   /**
-   * Deletes the specified network resource.
+   * Deletes the specified network.
    *
    * Request parameters:
    *
@@ -7544,7 +7590,7 @@ class NetworksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [network] - Name of the network resource to delete.
+   * [network] - Name of the network to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -7583,7 +7629,8 @@ class NetworksResourceApi {
   }
 
   /**
-   * Returns the specified network resource.
+   * Returns the specified network. Get a list of available networks by making a
+   * list() request.
    *
    * Request parameters:
    *
@@ -7591,7 +7638,7 @@ class NetworksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [network] - Name of the network resource to return.
+   * [network] - Name of the network to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Network].
@@ -7630,8 +7677,8 @@ class NetworksResourceApi {
   }
 
   /**
-   * Creates a network resource in the specified project using the data included
-   * in the request.
+   * Creates a network in the specified project using the data included in the
+   * request.
    *
    * [request] - The metadata request object.
    *
@@ -7677,7 +7724,7 @@ class NetworksResourceApi {
   }
 
   /**
-   * Retrieves the list of network resources available to the specified project.
+   * Retrieves the list of networks available to the specified project.
    *
    * Request parameters:
    *
@@ -7697,7 +7744,8 @@ class NetworksResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -7708,13 +7756,13 @@ class NetworksResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -7772,7 +7820,7 @@ class ProjectsResourceApi {
       _requester = client;
 
   /**
-   * Returns the specified project resource.
+   * Returns the specified Project resource.
    *
    * Request parameters:
    *
@@ -8018,7 +8066,7 @@ class RegionOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - Name of the region scoping this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [operation] - Name of the Operations resource to delete.
@@ -8071,7 +8119,7 @@ class RegionOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - Name of the region scoping this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [operation] - Name of the Operations resource to return.
@@ -8125,7 +8173,7 @@ class RegionOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - Name of the region scoping this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
@@ -8140,7 +8188,8 @@ class RegionOperationsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -8151,13 +8200,13 @@ class RegionOperationsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -8218,7 +8267,8 @@ class RegionsResourceApi {
       _requester = client;
 
   /**
-   * Returns the specified region resource.
+   * Returns the specified Region resource. Get a list of available regions by
+   * making a list() request.
    *
    * Request parameters:
    *
@@ -8285,7 +8335,8 @@ class RegionsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -8296,13 +8347,13 @@ class RegionsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -8360,7 +8411,7 @@ class RoutesResourceApi {
       _requester = client;
 
   /**
-   * Deletes the specified route resource.
+   * Deletes the specified Route resource.
    *
    * Request parameters:
    *
@@ -8368,7 +8419,7 @@ class RoutesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [route] - Name of the route resource to delete.
+   * [route] - Name of the Route resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -8407,7 +8458,8 @@ class RoutesResourceApi {
   }
 
   /**
-   * Returns the specified route resource.
+   * Returns the specified Route resource. Get a list of available routes by
+   * making a list() request.
    *
    * Request parameters:
    *
@@ -8415,7 +8467,7 @@ class RoutesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [route] - Name of the route resource to return.
+   * [route] - Name of the Route resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Route].
@@ -8454,7 +8506,7 @@ class RoutesResourceApi {
   }
 
   /**
-   * Creates a route resource in the specified project using the data included
+   * Creates a Route resource in the specified project using the data included
    * in the request.
    *
    * [request] - The metadata request object.
@@ -8501,7 +8553,7 @@ class RoutesResourceApi {
   }
 
   /**
-   * Retrieves the list of route resources available to the specified project.
+   * Retrieves the list of Route resources available to the specified project.
    *
    * Request parameters:
    *
@@ -8521,7 +8573,8 @@ class RoutesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -8532,13 +8585,13 @@ class RoutesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -8649,7 +8702,8 @@ class SnapshotsResourceApi {
   }
 
   /**
-   * Returns the specified Snapshot resource.
+   * Returns the specified Snapshot resource. Get a list of available snapshots
+   * by making a list() request.
    *
    * Request parameters:
    *
@@ -8717,7 +8771,8 @@ class SnapshotsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -8728,13 +8783,13 @@ class SnapshotsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -8839,7 +8894,8 @@ class SslCertificatesResourceApi {
   }
 
   /**
-   * Returns the specified SslCertificate resource.
+   * Returns the specified SslCertificate resource. Get a list of available SSL
+   * certificates by making a list() request.
    *
    * Request parameters:
    *
@@ -8954,7 +9010,8 @@ class SslCertificatesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -8965,13 +9022,13 @@ class SslCertificatesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -9049,7 +9106,8 @@ class SubnetworksResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -9060,13 +9118,13 @@ class SubnetworksResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -9168,7 +9226,8 @@ class SubnetworksResourceApi {
   }
 
   /**
-   * Returns the specified subnetwork.
+   * Returns the specified subnetwork. Get a list of available subnetworks by
+   * making a list() request.
    *
    * Request parameters:
    *
@@ -9297,7 +9356,8 @@ class SubnetworksResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -9308,13 +9368,13 @@ class SubnetworksResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -9422,7 +9482,8 @@ class TargetHttpProxiesResourceApi {
   }
 
   /**
-   * Returns the specified TargetHttpProxy resource.
+   * Returns the specified TargetHttpProxy resource. Get a list of available
+   * target HTTP proxies by making a list() request.
    *
    * Request parameters:
    *
@@ -9537,7 +9598,8 @@ class TargetHttpProxiesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -9548,13 +9610,13 @@ class TargetHttpProxiesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -9613,8 +9675,7 @@ class TargetHttpProxiesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [targetHttpProxy] - Name of the TargetHttpProxy resource whose URL map is
-   * to be set.
+   * [targetHttpProxy] - Name of the TargetHttpProxy to set a URL map for.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -9712,7 +9773,8 @@ class TargetHttpsProxiesResourceApi {
   }
 
   /**
-   * Returns the specified TargetHttpsProxy resource.
+   * Returns the specified TargetHttpsProxy resource. Get a list of available
+   * target HTTPS proxies by making a list() request.
    *
    * Request parameters:
    *
@@ -9827,7 +9889,8 @@ class TargetHttpsProxiesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -9838,13 +9901,13 @@ class TargetHttpsProxiesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -9903,8 +9966,8 @@ class TargetHttpsProxiesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [targetHttpsProxy] - Name of the TargetHttpsProxy resource whose
-   * SSLCertificate is to be set.
+   * [targetHttpsProxy] - Name of the TargetHttpsProxy resource to set an
+   * SslCertificates resource for.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -10028,7 +10091,8 @@ class TargetInstancesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -10039,13 +10103,13 @@ class TargetInstancesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -10147,7 +10211,8 @@ class TargetInstancesResourceApi {
   }
 
   /**
-   * Returns the specified TargetInstance resource.
+   * Returns the specified TargetInstance resource. Get a list of available
+   * target instances by making a list() request.
    *
    * Request parameters:
    *
@@ -10277,7 +10342,8 @@ class TargetInstancesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -10288,13 +10354,13 @@ class TargetInstancesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -10355,21 +10421,20 @@ class TargetPoolsResourceApi {
       _requester = client;
 
   /**
-   * Adds health check URL to targetPool.
+   * Adds health check URLs to a target pool.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - null
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [targetPool] - Name of the TargetPool resource to which health_check_url is
-   * to be added.
+   * [targetPool] - Name of the target pool to add a health check to.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -10414,21 +10479,20 @@ class TargetPoolsResourceApi {
   }
 
   /**
-   * Adds instance URL to targetPool.
+   * Adds an instance to a target pool.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - null
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [targetPool] - Name of the TargetPool resource to which instance_url is to
-   * be added.
+   * [targetPool] - Name of the TargetPool resource to add instances to.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -10493,7 +10557,8 @@ class TargetPoolsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -10504,13 +10569,13 @@ class TargetPoolsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -10559,7 +10624,7 @@ class TargetPoolsResourceApi {
   }
 
   /**
-   * Deletes the specified TargetPool resource.
+   * Deletes the specified target pool.
    *
    * Request parameters:
    *
@@ -10612,7 +10677,8 @@ class TargetPoolsResourceApi {
   }
 
   /**
-   * Returns the specified TargetPool resource.
+   * Returns the specified target pool. Get a list of available target pools by
+   * making a list() request.
    *
    * Request parameters:
    *
@@ -10665,14 +10731,14 @@ class TargetPoolsResourceApi {
   }
 
   /**
-   * Gets the most recent health check results for each IP for the given
-   * instance that is referenced by the given TargetPool.
+   * Gets the most recent health check results for each IP for the instance that
+   * is referenced by the given target pool.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - null
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -10725,8 +10791,8 @@ class TargetPoolsResourceApi {
   }
 
   /**
-   * Creates a TargetPool resource in the specified project and region using the
-   * data included in the request.
+   * Creates a target pool in the specified project and region using the data
+   * included in the request.
    *
    * [request] - The metadata request object.
    *
@@ -10778,8 +10844,8 @@ class TargetPoolsResourceApi {
   }
 
   /**
-   * Retrieves a list of TargetPool resources available to the specified project
-   * and region.
+   * Retrieves a list of target pools available to the specified project and
+   * region.
    *
    * Request parameters:
    *
@@ -10802,7 +10868,8 @@ class TargetPoolsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -10813,13 +10880,13 @@ class TargetPoolsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -10871,21 +10938,20 @@ class TargetPoolsResourceApi {
   }
 
   /**
-   * Removes health check URL from targetPool.
+   * Removes health check URL from a target pool.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - null
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - Name of the region scoping this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [targetPool] - Name of the TargetPool resource to which health_check_url is
-   * to be removed.
+   * [targetPool] - Name of the target pool to remove health checks from.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -10930,21 +10996,20 @@ class TargetPoolsResourceApi {
   }
 
   /**
-   * Removes instance URL from targetPool.
+   * Removes instance URL from a target pool.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - null
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [targetPool] - Name of the TargetPool resource to which instance_url is to
-   * be removed.
+   * [targetPool] - Name of the TargetPool resource to remove instances from.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -10989,7 +11054,7 @@ class TargetPoolsResourceApi {
   }
 
   /**
-   * Changes backup pool configurations.
+   * Changes a backup target pool's configurations.
    *
    * [request] - The metadata request object.
    *
@@ -11002,11 +11067,10 @@ class TargetPoolsResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [targetPool] - Name of the TargetPool resource for which the backup is to
-   * be set.
+   * [targetPool] - Name of the TargetPool resource to set a backup pool for.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [failoverRatio] - New failoverRatio value for the containing target pool.
+   * [failoverRatio] - New failoverRatio value for the target pool.
    *
    * Completes with a [Operation].
    *
@@ -11062,7 +11126,7 @@ class TargetVpnGatewaysResourceApi {
       _requester = client;
 
   /**
-   * Retrieves an aggregated list of target VPN gateways .
+   * Retrieves an aggregated list of target VPN gateways.
    *
    * Request parameters:
    *
@@ -11082,7 +11146,8 @@ class TargetVpnGatewaysResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -11093,13 +11158,13 @@ class TargetVpnGatewaysResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -11148,7 +11213,7 @@ class TargetVpnGatewaysResourceApi {
   }
 
   /**
-   * Deletes the specified TargetVpnGateway resource.
+   * Deletes the specified target VPN gateway.
    *
    * Request parameters:
    *
@@ -11156,10 +11221,10 @@ class TargetVpnGatewaysResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - The name of the region for this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [targetVpnGateway] - Name of the TargetVpnGateway resource to delete.
+   * [targetVpnGateway] - Name of the target VPN gateway to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -11201,7 +11266,8 @@ class TargetVpnGatewaysResourceApi {
   }
 
   /**
-   * Returns the specified TargetVpnGateway resource.
+   * Returns the specified target VPN gateway. Get a list of available target
+   * VPN gateways by making a list() request.
    *
    * Request parameters:
    *
@@ -11209,10 +11275,10 @@ class TargetVpnGatewaysResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - The name of the region for this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [targetVpnGateway] - Name of the TargetVpnGateway resource to return.
+   * [targetVpnGateway] - Name of the target VPN gateway to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [TargetVpnGateway].
@@ -11254,8 +11320,8 @@ class TargetVpnGatewaysResourceApi {
   }
 
   /**
-   * Creates a TargetVpnGateway resource in the specified project and region
-   * using the data included in the request.
+   * Creates a target VPN gateway in the specified project and region using the
+   * data included in the request.
    *
    * [request] - The metadata request object.
    *
@@ -11265,7 +11331,7 @@ class TargetVpnGatewaysResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - The name of the region for this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -11307,8 +11373,8 @@ class TargetVpnGatewaysResourceApi {
   }
 
   /**
-   * Retrieves a list of TargetVpnGateway resources available to the specified
-   * project and region.
+   * Retrieves a list of target VPN gateways available to the specified project
+   * and region.
    *
    * Request parameters:
    *
@@ -11316,7 +11382,7 @@ class TargetVpnGatewaysResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - The name of the region for this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
@@ -11331,7 +11397,8 @@ class TargetVpnGatewaysResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -11342,13 +11409,13 @@ class TargetVpnGatewaysResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -11456,7 +11523,8 @@ class UrlMapsResourceApi {
   }
 
   /**
-   * Returns the specified UrlMap resource.
+   * Returns the specified UrlMap resource. Get a list of available URL maps by
+   * making a list() request.
    *
    * Request parameters:
    *
@@ -11570,7 +11638,8 @@ class UrlMapsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -11581,13 +11650,13 @@ class UrlMapsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -11824,7 +11893,8 @@ class VpnTunnelsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -11835,13 +11905,13 @@ class VpnTunnelsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -11898,7 +11968,7 @@ class VpnTunnelsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - The name of the region for this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [vpnTunnel] - Name of the VpnTunnel resource to delete.
@@ -11943,7 +12013,8 @@ class VpnTunnelsResourceApi {
   }
 
   /**
-   * Returns the specified VpnTunnel resource.
+   * Returns the specified VpnTunnel resource. Get a list of available VPN
+   * tunnels by making a list() request.
    *
    * Request parameters:
    *
@@ -11951,7 +12022,7 @@ class VpnTunnelsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - The name of the region for this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [vpnTunnel] - Name of the VpnTunnel resource to return.
@@ -12007,7 +12078,7 @@ class VpnTunnelsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - The name of the region for this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -12058,7 +12129,7 @@ class VpnTunnelsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - The name of the region for this request.
+   * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
@@ -12073,7 +12144,8 @@ class VpnTunnelsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -12084,13 +12156,13 @@ class VpnTunnelsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -12159,7 +12231,7 @@ class ZoneOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [operation] - Name of the Operations resource to delete.
@@ -12212,7 +12284,7 @@ class ZoneOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [operation] - Name of the Operations resource to return.
@@ -12266,7 +12338,7 @@ class ZoneOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - Name of the zone for request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
@@ -12281,7 +12353,8 @@ class ZoneOperationsResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -12292,13 +12365,13 @@ class ZoneOperationsResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -12359,7 +12432,8 @@ class ZonesResourceApi {
       _requester = client;
 
   /**
-   * Returns the specified zone resource.
+   * Returns the specified Zone resource. Get a list of available zones by
+   * making a list() request.
    *
    * Request parameters:
    *
@@ -12406,7 +12480,7 @@ class ZonesResourceApi {
   }
 
   /**
-   * Retrieves the list of zone resources available to the specified project.
+   * Retrieves the list of Zone resources available to the specified project.
    *
    * Request parameters:
    *
@@ -12426,7 +12500,8 @@ class ZonesResourceApi {
    * the literal value is interpreted as a regular expression using RE2 syntax.
    * The literal value must match the entire field.
    *
-   * For example, filter=name ne example-instance.
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
    *
    * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
    * also filter on nested fields. For example, you could filter on instances
@@ -12437,13 +12512,13 @@ class ZonesResourceApi {
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
    * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-   * expressions are treated as AND expressions meaning that resources must
+   * expressions are treated as AND expressions, meaning that resources must
    * match all expressions to pass the filters.
    *
-   * [maxResults] - The maximum number of results per page that Compute Engine
-   * should return. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests.
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
@@ -12575,7 +12650,7 @@ class Address {
    */
   core.String kind;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    * Specifically, the name must be 1-63 characters long and match the regular
    * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
@@ -12739,14 +12814,14 @@ class AddressAggregatedList {
   }
 }
 
-/** Contains a list of address resources. */
+/** Contains a list of addresses. */
 class AddressList {
   /**
    * [Output Only] The unique identifier for the resource. This identifier is
    * defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of Address resources. */
+  /** [Output Only] A list of addresses. */
   core.List<Address> items;
   /**
    * [Output Only] Type of resource. Always compute#addressList for lists of
@@ -12811,9 +12886,9 @@ class AddressesScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -12851,6 +12926,7 @@ class AddressesScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -12977,9 +13053,11 @@ class AttachedDisk {
    */
   AttachedDiskInitializeParams initializeParams;
   /**
-   * Specifies the disk interface to use for attaching this disk, either SCSI or
-   * NVME. The default is SCSI. For performance characteristics of SCSI over
-   * NVMe, see Local SSD performance.
+   * Specifies the disk interface to use for attaching this disk, which is
+   * either SCSI or NVME. The default is SCSI. Persistent disks must always use
+   * SCSI and the request will fail if you attempt to attach a persistent disk
+   * in any other format than SCSI. Local SSDs can use either NVME or SCSI. For
+   * performance characteristics of SCSI over NVMe, see Local SSD performance.
    * Possible string values are:
    * - "NVME"
    * - "SCSI"
@@ -13175,8 +13253,21 @@ class AttachedDiskInitializeParams {
   }
 }
 
+/**
+ * Represents an Autoscaler resource. Autoscalers allow you to automatically
+ * scale virtual machine instances in managed instance groups according to an
+ * autoscaling policy that you define. For more information, read Autoscaling
+ * Groups of Instances.
+ */
 class Autoscaler {
-  /** Autoscaling configuration. */
+  /**
+   * The configuration parameters for the autoscaling algorithm. You can define
+   * one or more of the policies for an autoscaler: cpuUtilization,
+   * customMetricUtilizations, and loadBalancingUtilization.
+   *
+   * If none of these are specified, the default will be to autoscale based on
+   * cpuUtilization to 0.8 or 80%.
+   */
   AutoscalingPolicy autoscalingPolicy;
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
@@ -13190,7 +13281,10 @@ class Autoscaler {
    * defined by the server.
    */
   core.String id;
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#autoscaler for
+   * autoscalers.
+   */
   core.String kind;
   /**
    * Name of the resource. Provided by the client when the resource is created.
@@ -13204,10 +13298,7 @@ class Autoscaler {
   core.String name;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
-  /**
-   * URL of Instance Group Manager or Replica Pool which will be controlled by
-   * Autoscaler.
-   */
+  /** URL of the managed instance group that this autoscaler will scale. */
   core.String target;
   /** [Output Only] URL of the zone where the instance group resides. */
   core.String zone;
@@ -13285,7 +13376,10 @@ class AutoscalerAggregatedList {
   core.String id;
   /** A map of scoped autoscaler lists. */
   core.Map<core.String, AutoscalersScopedList> items;
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#autoscalerAggregatedList for
+   * aggregated lists of autoscalers.
+   */
   core.String kind;
   /**
    * [Output Only] This token allows you to get the next page of results for
@@ -13339,7 +13433,7 @@ class AutoscalerAggregatedList {
   }
 }
 
-/** Contains a list of persistent autoscaler resources. */
+/** Contains a list of Autoscaler resources. */
 class AutoscalerList {
   /**
    * [Output Only] The unique identifier for the resource. This identifier is
@@ -13348,7 +13442,10 @@ class AutoscalerList {
   core.String id;
   /** A list of Autoscaler resources. */
   core.List<Autoscaler> items;
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#autoscalerList for lists of
+   * autoscalers.
+   */
   core.String kind;
   /**
    * [Output Only] This token allows you to get the next page of results for
@@ -13408,9 +13505,9 @@ class AutoscalersScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -13440,14 +13537,15 @@ class AutoscalersScopedListWarningData {
 }
 
 /**
- * Informational warning which replaces the list of autoscalers when the list is
- * empty.
+ * [Output Only] Informational warning which replaces the list of autoscalers
+ * when the list is empty.
  */
 class AutoscalersScopedListWarning {
   /**
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -13503,11 +13601,11 @@ class AutoscalersScopedListWarning {
 }
 
 class AutoscalersScopedList {
-  /** List of autoscalers contained in this scope. */
+  /** [Output Only] List of autoscalers contained in this scope. */
   core.List<Autoscaler> autoscalers;
   /**
-   * Informational warning which replaces the list of autoscalers when the list
-   * is empty.
+   * [Output Only] Informational warning which replaces the list of autoscalers
+   * when the list is empty.
    */
   AutoscalersScopedListWarning warning;
 
@@ -13537,34 +13635,36 @@ class AutoscalersScopedList {
 /** Cloud Autoscaler policy. */
 class AutoscalingPolicy {
   /**
-   * The number of seconds that the Autoscaler should wait between two
-   * succeeding changes to the number of virtual machines. You should define an
-   * interval that is at least as long as the initialization time of a virtual
-   * machine and the time it may take for replica pool to create the virtual
-   * machine. The default is 60 seconds.
+   * The number of seconds that the autoscaler should wait before it starts
+   * collecting information from a new instance. This prevents the autoscaler
+   * from collecting information when the instance is initializing, during which
+   * the collected usage would not be reliable. The default time autoscaler
+   * waits is 60 seconds.
+   *
+   * Virtual machine initialization times might vary because of numerous
+   * factors. We recommend that you test how long an instance may take to
+   * initialize. To do this, create an instance and time the startup process.
    */
   core.int coolDownPeriodSec;
   /**
-   * TODO(jbartosik): Add support for scaling based on muliple utilization
-   * metrics (take max recommendation). Exactly one utilization policy should be
-   * provided. Configuration parameters of CPU based autoscaling policy.
+   * Defines the CPU utilization policy that allows the autoscaler to scale
+   * based on the average CPU utilization of a managed instance group.
    */
   AutoscalingPolicyCpuUtilization cpuUtilization;
-  /** Configuration parameters of autoscaling based on custom metric. */
+  /** Configuration parameters of autoscaling based on a custom metric. */
   core.List<AutoscalingPolicyCustomMetricUtilization> customMetricUtilizations;
   /** Configuration parameters of autoscaling based on load balancer. */
   AutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization;
   /**
-   * The maximum number of replicas that the Autoscaler can scale up to. This
-   * field is required for config to be effective. Maximum number of replicas
-   * should be not lower than minimal number of replicas. Absolute limit for
-   * this value is defined in Autoscaler backend.
+   * The maximum number of instances that the autoscaler can scale up to. This
+   * is required when creating or updating an autoscaler. The maximum number of
+   * replicas should not be lower than minimal number of replicas.
    */
   core.int maxNumReplicas;
   /**
-   * The minimum number of replicas that the Autoscaler can scale down to. Can't
-   * be less than 0. If not provided Autoscaler will choose default value
-   * depending on maximal number of replicas.
+   * The minimum number of replicas that the autoscaler can scale down to. This
+   * cannot be less than 0. If not provided, autoscaler will choose a default
+   * value depending on maximum number of instances allowed.
    */
   core.int minNumReplicas;
 
@@ -13618,10 +13718,17 @@ class AutoscalingPolicy {
 /** CPU utilization policy. */
 class AutoscalingPolicyCpuUtilization {
   /**
-   * The target utilization that the Autoscaler should maintain. It is
-   * represented as a fraction of used cores. For example: 6 cores used in
-   * 8-core VM are represented here as 0.75. Must be a float value between (0,
-   * 1]. If not defined, the default is 0.8.
+   * The target CPU utilization that the autoscaler should maintain. Must be a
+   * float value in the range (0, 1]. If not specified, the default is 0.8.
+   *
+   * If the CPU level is below the target utilization, the autoscaler scales
+   * down the number of instances until it reaches the minimum number of
+   * instances you specified or until the average CPU of your instances reaches
+   * the target utilization.
+   *
+   * If the average CPU is above the target utilization, the autoscaler scales
+   * up until it reaches the maximum number of instances you specified or until
+   * the average utilization reaches the target utilization.
    */
   core.double utilizationTarget;
 
@@ -13645,20 +13752,31 @@ class AutoscalingPolicyCpuUtilization {
 /** Custom utilization metric policy. */
 class AutoscalingPolicyCustomMetricUtilization {
   /**
-   * Identifier of the metric. It should be a Cloud Monitoring metric. The
-   * metric can not have negative values. The metric should be an utilization
-   * metric (increasing number of VMs handling requests x times should reduce
-   * average value of the metric roughly x times). For example you could use:
-   * compute.googleapis.com/instance/network/received_bytes_count.
+   * The identifier of the Cloud Monitoring metric. The metric cannot have
+   * negative values and should be a utilization metric, which means that the
+   * number of virtual machines handling requests should increase or decrease
+   * proportionally to the metric. The metric must also have a label of
+   * compute.googleapis.com/resource_id with the value of the instance's unique
+   * ID, although this alone does not guarantee that the metric is valid.
+   *
+   * For example, the following is a valid metric:
+   * compute.googleapis.com/instance/network/received_bytes_count
+   *
+   *
+   * The following is not a valid metric because it does not increase or
+   * decrease based on usage:
+   * compute.googleapis.com/instance/cpu/reserved_cores
    */
   core.String metric;
   /**
-   * Target value of the metric which Autoscaler should maintain. Must be a
+   * Target value of the metric which autoscaler should maintain. Must be a
    * positive value.
    */
   core.double utilizationTarget;
   /**
-   * Defines type in which utilization_target is expressed.
+   * Defines how target utilization value is expressed for a Cloud Monitoring
+   * metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not
+   * specified, the default is GAUGE.
    * Possible string values are:
    * - "DELTA_PER_MINUTE"
    * - "DELTA_PER_SECOND"
@@ -13695,15 +13813,12 @@ class AutoscalingPolicyCustomMetricUtilization {
   }
 }
 
-/** Load balancing utilization policy. */
+/** Configuration parameters of autoscaling based on load balancing. */
 class AutoscalingPolicyLoadBalancingUtilization {
   /**
-   * Fraction of backend capacity utilization (set in HTTP load balancing
-   * configuration) that Autoscaler should maintain. Must be a positive float
-   * value. If not defined, the default is 0.8. For example if your
-   * maxRatePerInstance capacity (in HTTP Load Balancing configuration) is set
-   * at 10 and you would like to keep number of instances such that each
-   * instance receives 7 QPS on average, set this to 0.7.
+   * Fraction of backend capacity utilization (set in HTTP(s) load balancing
+   * configuration) that autoscaler should maintain. Must be a positive float
+   * value. If not defined, the default is 0.8.
    */
   core.double utilizationTarget;
 
@@ -13727,8 +13842,9 @@ class AutoscalingPolicyLoadBalancingUtilization {
 /** Message containing information of one individual backend. */
 class Backend {
   /**
-   * Specifies the balancing mode for this backend. The default is UTILIZATION
-   * but available values are UTILIZATION and RATE.
+   * Specifies the balancing mode for this backend. For global HTTP(S) load
+   * balancing, the default is UTILIZATION. Valid values are UTILIZATION and
+   * RATE.
    * Possible string values are:
    * - "RATE"
    * - "UTILIZATION"
@@ -13760,15 +13876,15 @@ class Backend {
   core.String group;
   /**
    * The max requests per second (RPS) of the group. Can be used with either
-   * balancing mode, but required if RATE mode. For RATE mode, either maxRate or
-   * maxRatePerInstance must be set.
+   * RATE or UTILIZATION balancing modes, but required if RATE mode. For RATE
+   * mode, either maxRate or maxRatePerInstance must be set.
    */
   core.int maxRate;
   /**
-   * The max requests per second (RPS) that a single backed instance can handle.
-   * This is used to calculate the capacity of the group. Can be used in either
-   * balancing mode. For RATE mode, either maxRate or maxRatePerInstance must be
-   * set.
+   * The max requests per second (RPS) that a single backend instance can
+   * handle.This is used to calculate the capacity of the group. Can be used in
+   * either balancing mode. For RATE mode, either maxRate or maxRatePerInstance
+   * must be set.
    */
   core.double maxRatePerInstance;
   /**
@@ -13891,12 +14007,14 @@ class BackendService {
    */
   core.int port;
   /**
-   * Name of backend port. The same name should appear in the resource views
+   * Name of backend port. The same name should appear in the instance groups
    * referenced by this service. Required.
    */
   core.String portName;
   /**
+   * The protocol this BackendService uses to communicate with backends.
    *
+   * Possible values are HTTP, HTTPS, HTTP2, TCP and SSL.
    * Possible string values are:
    * - "HTTP"
    * - "HTTPS"
@@ -13906,7 +14024,7 @@ class BackendService {
   core.String selfLink;
   /**
    * How many seconds to wait for the backend before considering it a failed
-   * request. Default is 30 seconds. Valid range is [1, 86400].
+   * request. Default is 30 seconds.
    */
   core.int timeoutSec;
 
@@ -14193,10 +14311,10 @@ class Disk {
   core.String lastAttachTimestamp;
   /** [Output Only] Last detach timestamp in RFC3339 text format. */
   core.String lastDetachTimestamp;
-  /** Any applicable publicly visible licenses. */
+  /** [Output Only] Any applicable publicly visible licenses. */
   core.List<core.String> licenses;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    * Specifically, the name must be 1-63 characters long and match the regular
    * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
@@ -14238,14 +14356,25 @@ class Disk {
    *
    * where vYYYYMMDD is the image version. The fully-qualified URL will also
    * work in both cases.
+   *
+   * You can also specify the latest image for a private image family by
+   * replacing the image name suffix with family/family-name. For example:
+   *
+   * global/images/family/my-private-family
+   *
+   * Or you can specify an image family from a publicly-available project. For
+   * example, to use the latest Debian 7 from the debian-cloud project, make
+   * sure to include the project in the URL:
+   *
+   * projects/debian-cloud/global/images/family/debian-7
    */
   core.String sourceImage;
   /**
-   * The ID value of the image used to create this disk. This value identifies
-   * the exact image that was used to create this persistent disk. For example,
-   * if you created the persistent disk from an image that was later deleted and
-   * recreated under the same name, the source image ID would identify the exact
-   * version of the image that was used.
+   * [Output Only] The ID value of the image used to create this disk. This
+   * value identifies the exact image that was used to create this persistent
+   * disk. For example, if you created the persistent disk from an image that
+   * was later deleted and recreated under the same name, the source image ID
+   * would identify the exact version of the image that was used.
    */
   core.String sourceImageId;
   /**
@@ -14278,11 +14407,11 @@ class Disk {
   core.String status;
   /**
    * URL of the disk type resource describing which disk type to use to create
-   * the disk; provided by the client when the disk is created.
+   * the disk. Provide this when creating the disk.
    */
   core.String type;
   /**
-   * Links to the users of the disk (attached instances) in form:
+   * [Output Only] Links to the users of the disk (attached instances) in form:
    * project/zones/zone/instances/instance
    */
   core.List<core.String> users;
@@ -14546,7 +14675,7 @@ class DiskList {
 
 class DiskMoveRequest {
   /**
-   * The URL of the destination zone to move the disk to. This can be a full or
+   * The URL of the destination zone to move the disk. This can be a full or
    * partial URL. For example, the following are all valid URLs to a zone:
    * - https://www.googleapis.com/compute/v1/projects/project/zones/zone
    * - projects/project/zones/zone
@@ -14586,7 +14715,7 @@ class DiskMoveRequest {
   }
 }
 
-/** A disk type resource. */
+/** A DiskType resource. */
 class DiskType {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
@@ -14750,7 +14879,7 @@ class DiskTypeAggregatedList {
   }
 }
 
-/** Contains a list of disk type resources. */
+/** Contains a list of disk types. */
 class DiskTypeList {
   /**
    * [Output Only] The unique identifier for the resource. This identifier is
@@ -14821,9 +14950,9 @@ class DiskTypesScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -14861,6 +14990,7 @@ class DiskTypesScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -14953,9 +15083,9 @@ class DisksScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -14993,6 +15123,7 @@ class DisksScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -15082,7 +15213,7 @@ class DisksScopedList {
 class FirewallAllowed {
   /**
    * The IP protocol that is allowed for this rule. The protocol type is
-   * required when creating a firewall. This value can either be one of the
+   * required when creating a firewall rule. This value can either be one of the
    * following well known protocol strings (tcp, udp, icmp, esp, ah, sctp), or
    * the IP protocol number.
    */
@@ -15119,7 +15250,7 @@ class FirewallAllowed {
   }
 }
 
-/** A Firewall resource. */
+/** Represents a Firewall resource. */
 class Firewall {
   /**
    * The list of rules specified by this firewall. Each rule specifies a
@@ -15270,7 +15401,7 @@ class Firewall {
   }
 }
 
-/** Contains a list of Firewall resources. */
+/** Contains a list of firewalls. */
 class FirewallList {
   /**
    * [Output Only] The unique identifier for the resource. This identifier is
@@ -15497,7 +15628,10 @@ class ForwardingRuleAggregatedList {
   core.String id;
   /** A map of scoped forwarding rule lists. */
   core.Map<core.String, ForwardingRulesScopedList> items;
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#forwardingRuleAggregatedList
+   * for lists of forwarding rules.
+   */
   core.String kind;
   /**
    * [Output Only] This token allows you to get the next page of results for
@@ -15617,9 +15751,9 @@ class ForwardingRulesScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -15657,6 +15791,7 @@ class ForwardingRulesScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -15743,6 +15878,14 @@ class ForwardingRulesScopedList {
   }
 }
 
+/**
+ * A full or valid partial URL to a health check. For example, the following are
+ * valid URLs:
+ * -
+ * https://www.googleapis.com/compute/beta/projects/project-id/global/httpHealthChecks/health-check
+ * - projects/project-id/global/httpHealthChecks/health-check
+ * - global/httpHealthChecks/health-check
+ */
 class HealthCheckReference {
   core.String healthCheck;
 
@@ -15897,7 +16040,10 @@ class HttpHealthCheck {
    * defined by the server.
    */
   core.String id;
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP
+   * health checks.
+   */
   core.String kind;
   /**
    * Name of the resource. Provided by the client when the resource is created.
@@ -15915,8 +16061,7 @@ class HttpHealthCheck {
    */
   core.int port;
   /**
-   * The request path of the HTTP health check request. The default value is
-   * "/".
+   * The request path of the HTTP health check request. The default value is /.
    */
   core.String requestPath;
   /** [Output Only] Server-defined URL for the resource. */
@@ -16531,7 +16676,7 @@ class Image {
   }
 }
 
-/** Contains a list of Image resources. */
+/** Contains a list of images. */
 class ImageList {
   /**
    * [Output Only] The unique identifier for the resource. This identifier is
@@ -16628,7 +16773,7 @@ class Instance {
   core.String kind;
   /**
    * Full or partial URL of the machine type resource to use for this instance,
-   * in the format: zones/zone/machineTypes/ machine-type. This is provided by
+   * in the format: zones/zone/machineTypes/machine-type. This is provided by
    * the client when the instance is created. For example, the following is a
    * valid partial url to a predefined machine type:
    *
@@ -16698,7 +16843,7 @@ class Instance {
   /** [Output Only] An optional, human-readable explanation of the status. */
   core.String statusMessage;
   /**
-   * A list of tags to appy to this instance. Tags are used to identify valid
+   * A list of tags to apply to this instance. Tags are used to identify valid
    * sources or targets for network firewalls and are specified by the client
    * during instance creation. The tags can be later modified by the setTags
    * method. Each tag within the list must comply with RFC1035.
@@ -16941,8 +17086,7 @@ class InstanceGroup {
    */
   core.List<NamedPort> namedPorts;
   /**
-   * [Output Only] The URL of the network to which all instances in the instance
-   * group belong.
+   * The URL of the network to which all instances in the instance group belong.
    */
   core.String network;
   /**
@@ -16953,8 +17097,8 @@ class InstanceGroup {
   /** [Output Only] The total number of instances in the instance group. */
   core.int size;
   /**
-   * [Output Only] The URL of the subnetwork to which all instances in the
-   * instance group belong.
+   * The URL of the subnetwork to which all instances in the instance group
+   * belong.
    */
   core.String subnetwork;
   /** [Output Only] The URL of the zone where the instance group is located. */
@@ -17181,11 +17325,6 @@ class InstanceGroupList {
   }
 }
 
-/**
- * InstanceGroupManagers
- *
- * Next available tag: 20
- */
 class InstanceGroupManager {
   /**
    * The base instance name to use for instances in this group. The value must
@@ -17702,9 +17841,9 @@ class InstanceGroupManagersScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -17742,6 +17881,7 @@ class InstanceGroupManagersScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -18050,9 +18190,9 @@ class InstanceGroupsScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -18090,6 +18230,7 @@ class InstanceGroupsScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -18221,14 +18362,14 @@ class InstanceGroupsSetNamedPortsRequest {
   }
 }
 
-/** Contains a list of instance resources. */
+/** Contains a list of instances. */
 class InstanceList {
   /**
    * [Output Only] The unique identifier for the resource. This identifier is
    * defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of Instance resources. */
+  /** [Output Only] A list of instances. */
   core.List<Instance> items;
   /**
    * [Output Only] Type of resource. Always compute#instanceList for lists of
@@ -18289,8 +18430,8 @@ class InstanceList {
 
 class InstanceMoveRequest {
   /**
-   * The URL of the destination zone to move the instance to. This can be a full
-   * or partial URL. For example, the following are all valid URLs to a zone:
+   * The URL of the destination zone to move the instance. This can be a full or
+   * partial URL. For example, the following are all valid URLs to a zone:
    * - https://www.googleapis.com/compute/v1/projects/project/zones/zone
    * - projects/project/zones/zone
    * - zones/zone
@@ -18683,9 +18824,9 @@ class InstancesScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -18723,6 +18864,7 @@ class InstancesScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -19118,7 +19260,7 @@ class MachineTypeAggregatedList {
   }
 }
 
-/** Contains a list of Machine Type resources. */
+/** Contains a list of machine types. */
 class MachineTypeList {
   /**
    * [Output Only] The unique identifier for the resource. This identifier is
@@ -19190,9 +19332,9 @@ class MachineTypesScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -19230,6 +19372,7 @@ class MachineTypesScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -19423,7 +19566,7 @@ class ManagedInstanceLastAttemptErrorsErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
   /**
-   * [Output Only] Indicates the field in the request which caused the error.
+   * [Output Only] Indicates the field in the request that caused the error.
    * This property is optional.
    */
   core.String location;
@@ -19639,7 +19782,10 @@ class NamedPort {
   }
 }
 
-/** A network resource. */
+/**
+ * Represents a Network resource. Read Networks and Firewalls for more
+ * information.
+ */
 class Network {
   /**
    * The range of internal addresses that are legal on this network. This range
@@ -19853,7 +19999,7 @@ class NetworkInterface {
   }
 }
 
-/** Contains a list of Network resources. */
+/** Contains a list of networks. */
 class NetworkList {
   /**
    * [Output Only] The unique identifier for the resource. This identifier is
@@ -19923,7 +20069,7 @@ class OperationErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
   /**
-   * [Output Only] Indicates the field in the request which caused the error.
+   * [Output Only] Indicates the field in the request that caused the error.
    * This property is optional.
    */
   core.String location;
@@ -19993,9 +20139,9 @@ class OperationWarningsData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -20029,6 +20175,7 @@ class OperationWarnings {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -20085,7 +20232,7 @@ class OperationWarnings {
 
 /** An Operation resource, used to manage asynchronous API requests. */
 class Operation {
-  /** [Output Only] A unique client ID generated by the server. */
+  /** [Output Only] Reserved for future use. */
   core.String clientOperationId;
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
@@ -20126,15 +20273,15 @@ class Operation {
    */
   core.String insertTime;
   /**
-   * [Output Only] Type of the resource. Always compute#operation for Operation
+   * [Output Only] Type of the resource. Always compute#operation for operation
    * resources.
    */
   core.String kind;
   /** [Output Only] Name of the resource. */
   core.String name;
   /**
-   * [Output Only] The type of operation, which can be insert, update, or
-   * delete.
+   * [Output Only] The type of operation, such as insert, update, or delete, and
+   * so on.
    */
   core.String operationType;
   /**
@@ -20146,8 +20293,8 @@ class Operation {
    */
   core.int progress;
   /**
-   * [Output Only] URL of the region where the operation resides. Only available
-   * when performing regional operations.
+   * [Output Only] The URL of the region where the operation resides. Only
+   * available when performing regional operations.
    */
   core.String region;
   /** [Output Only] Server-defined URL for the resource. */
@@ -20176,7 +20323,7 @@ class Operation {
    * of the target resource.
    */
   core.String targetId;
-  /** [Output Only] The URL of the resource that the operation is modifying. */
+  /** [Output Only] The URL of the resource that the operation modifies. */
   core.String targetLink;
   /**
    * [Output Only] User who requested the operation, for example:
@@ -20189,8 +20336,8 @@ class Operation {
    */
   core.List<OperationWarnings> warnings;
   /**
-   * [Output Only] URL of the zone where the operation resides. Only available
-   * when performing per-zone operations.
+   * [Output Only] The URL of the zone where the operation resides. Only
+   * available when performing per-zone operations.
    */
   core.String zone;
 
@@ -20415,7 +20562,7 @@ class OperationList {
    * defined by the server.
    */
   core.String id;
-  /** [Output Only] The Operation resources. */
+  /** [Output Only] A list of Operation resources. */
   core.List<Operation> items;
   /**
    * [Output Only] Type of resource. Always compute#operations for Operations
@@ -20480,9 +20627,9 @@ class OperationsScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -20520,6 +20667,7 @@ class OperationsScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -20707,7 +20855,7 @@ class PathRule {
 }
 
 /**
- * A Project resource. Projects can only be created in the Google Developers
+ * A Project resource. Projects can only be created in the Google Cloud Platform
  * Console. Unless marked otherwise, values can only be modified in the console.
  */
 class Project {
@@ -21087,9 +21235,9 @@ class RouteWarningsData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -21123,6 +21271,7 @@ class RouteWarnings {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -21178,19 +21327,22 @@ class RouteWarnings {
 }
 
 /**
- * The route resource. A Route is a rule that specifies how certain packets
- * should be handled by the virtual network. Routes are associated with
- * instances by tags and the set of Routes for a particular instance is called
- * its routing table. For each packet leaving a instance, the system searches
- * that instance's routing table for a single best matching Route. Routes match
- * packets by destination IP address, preferring smaller or more specific ranges
- * over larger ones. If there is a tie, the system selects the Route with the
+ * Represents a Route resource. A route specifies how certain packets should be
+ * handled by the network. Routes are associated with instances by tags and the
+ * set of routes for a particular instance is called its routing table.
+ *
+ * For each packet leaving a instance, the system searches that instance's
+ * routing table for a single best matching route. Routes match packets by
+ * destination IP address, preferring smaller or more specific ranges over
+ * larger ones. If there is a tie, the system selects the route with the
  * smallest priority value. If there is still a tie, it uses the layer three and
- * four packet headers to select just one of the remaining matching Routes. The
+ * four packet headers to select just one of the remaining matching routes. The
  * packet is then forwarded as specified by the nextHop field of the winning
- * Route -- either to another instance destination, a instance gateway or a
- * Google Compute Engien-operated gateway. Packets that do not match any Route
- * in the sending instance's routing table are dropped.
+ * route - either to another instance destination, a instance gateway or a
+ * Google Compute Engine-operated gateway.
+ *
+ * Packets that do not match any route in the sending instance's routing table
+ * are dropped.
  */
 class Route {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
@@ -21213,7 +21365,7 @@ class Route {
    */
   core.String kind;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    * Specifically, the name must be 1-63 characters long and match the regular
    * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
@@ -21368,7 +21520,7 @@ class Route {
   }
 }
 
-/** Contains a list of route resources. */
+/** Contains a list of Route resources. */
 class RouteList {
   /**
    * [Output Only] Unique identifier for the resource. Defined by the server.
@@ -21443,7 +21595,7 @@ class Scheduling {
    * Defines the maintenance behavior for this instance. For standard instances,
    * the default behavior is MIGRATE. For preemptible instances, the default and
    * only possible behavior is TERMINATE. For more information, see Setting
-   * maintenance behavior.
+   * Instance Scheduling Options.
    * Possible string values are:
    * - "MIGRATE"
    * - "TERMINATE"
@@ -21573,7 +21725,11 @@ class Snapshot {
    * resources.
    */
   core.String kind;
-  /** Public visible licenses. */
+  /**
+   * [Output Only] A list of public visible licenses that apply to this
+   * snapshot. This can be because the original image had licenses attached
+   * (such as a Windows image).
+   */
   core.List<core.String> licenses;
   /**
    * Name of the resource; provided by the client when the resource is created.
@@ -21596,7 +21752,8 @@ class Snapshot {
    */
   core.String sourceDiskId;
   /**
-   * [Output Only] The status of the snapshot.
+   * [Output Only] The status of the snapshot. This can be CREATING, DELETING,
+   * FAILED, READY, or UPLOADING.
    * Possible string values are:
    * - "CREATING"
    * - "DELETING"
@@ -21613,7 +21770,9 @@ class Snapshot {
   core.String storageBytes;
   /**
    * [Output Only] An indicator whether storageBytes is in a stable state or it
-   * is being adjusted as a result of shared storage reallocation.
+   * is being adjusted as a result of shared storage reallocation. This status
+   * can either be UPDATING, meaning the size of the snapshot is being updated,
+   * or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
    * Possible string values are:
    * - "UPDATING"
    * - "UP_TO_DATE"
@@ -22199,9 +22358,9 @@ class SubnetworksScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -22238,6 +22397,7 @@ class SubnetworksScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -22391,7 +22551,7 @@ class TargetHttpProxy {
    */
   core.String kind;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    * Specifically, the name must be 1-63 characters long and match the regular
    * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
@@ -22471,7 +22631,7 @@ class TargetHttpProxyList {
   /** A list of TargetHttpProxy resources. */
   core.List<TargetHttpProxy> items;
   /**
-   * Type of resource. Always compute#targetHttpProxyList for lists of Target
+   * Type of resource. Always compute#targetHttpProxyList for lists of target
    * HTTP proxies.
    */
   core.String kind;
@@ -22529,8 +22689,8 @@ class TargetHttpProxyList {
 
 class TargetHttpsProxiesSetSslCertificatesRequest {
   /**
-   * New set of URLs to SslCertificate resources to associate with this
-   * TargetHttpProxy. Currently exactly one ssl certificate must be specified.
+   * New set of SslCertificate resources to associate with this TargetHttpsProxy
+   * resource. Currently exactly one SslCertificate resource must be specified.
    */
   core.List<core.String> sslCertificates;
 
@@ -22566,8 +22726,8 @@ class TargetHttpsProxy {
    */
   core.String id;
   /**
-   * [Output Only] Type of the resource. Always compute#targetHttpsProxy for
-   * target HTTPS proxies.
+   * [Output Only] Type of resource. Always compute#targetHttpsProxy for target
+   * HTTPS proxies.
    */
   core.String kind;
   /**
@@ -22584,13 +22744,17 @@ class TargetHttpsProxy {
   core.String selfLink;
   /**
    * URLs to SslCertificate resources that are used to authenticate connections
-   * between users and the load balancer. Currently exactly one SSL certificate
+   * between users and the load balancer. Currently, exactly one SSL certificate
    * must be specified.
    */
   core.List<core.String> sslCertificates;
   /**
-   * URL to the UrlMap resource that defines the mapping from URL to the
-   * BackendService.
+   * A fully-qualified or valid partial URL to the UrlMap resource that defines
+   * the mapping from URL to the BackendService. For example, the following are
+   * all valid URLs for specifying a URL map:
+   * - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map
+   * - projects/project/global/urlMaps/url-map
+   * - global/urlMaps/url-map
    */
   core.String urlMap;
 
@@ -22662,7 +22826,10 @@ class TargetHttpsProxyList {
   core.String id;
   /** A list of TargetHttpsProxy resources. */
   core.List<TargetHttpsProxy> items;
-  /** Type of resource. */
+  /**
+   * Type of resource. Always compute#targetHttpsProxyList for lists of target
+   * HTTPS proxies.
+   */
   core.String kind;
   /**
    * [Output Only] This token allows you to get the next page of results for
@@ -22733,7 +22900,16 @@ class TargetInstance {
    * defined by the server.
    */
   core.String id;
-  /** The URL to the instance that terminates the relevant traffic. */
+  /**
+   * A URL to the virtual machine instance that handles traffic for this target
+   * instance. When creating a target instance, you can provide the
+   * fully-qualified URL or a valid partial URL to the desired virtual machine.
+   * For example, the following are all valid URLs:
+   * -
+   * https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
+   * - projects/project/zones/zone/instances/instance
+   * - zones/zone/instances/instance
+   */
   core.String instance;
   /**
    * [Output Only] The type of the resource. Always compute#targetInstance for
@@ -22957,9 +23133,9 @@ class TargetInstancesScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -22997,6 +23173,7 @@ class TargetInstancesScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -23085,7 +23262,7 @@ class TargetInstancesScopedList {
 
 /**
  * A TargetPool resource. This resource defines a pool of instances, associated
- * HttpHealthCheck resources, and the fallback TargetPool.
+ * HttpHealthCheck resources, and the fallback target pool.
  */
 class TargetPool {
   /**
@@ -23141,7 +23318,7 @@ class TargetPool {
    */
   core.String id;
   /**
-   * A list of resource URLs to the member virtual machines serving this pool.
+   * A list of resource URLs to the virtual machine instances serving this pool.
    * They must live in zones contained in the same region as this pool.
    */
   core.List<core.String> instances;
@@ -23268,9 +23445,12 @@ class TargetPoolAggregatedList {
    * [Output Only] Unique identifier for the resource. Defined by the server.
    */
   core.String id;
-  /** A map of scoped target pool lists. */
+  /** [Output Only] A map of scoped target pool lists. */
   core.Map<core.String, TargetPoolsScopedList> items;
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#targetPoolAggregatedList for
+   * aggregated lists of target pools.
+   */
   core.String kind;
   /**
    * [Output Only] This token allows you to get the next page of results for
@@ -23326,7 +23506,10 @@ class TargetPoolAggregatedList {
 
 class TargetPoolInstanceHealth {
   core.List<HealthStatus> healthStatus;
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#targetPoolInstanceHealth
+   * when checking the health of an instance.
+   */
   core.String kind;
 
   TargetPoolInstanceHealth();
@@ -23360,7 +23543,10 @@ class TargetPoolList {
   core.String id;
   /** A list of TargetPool resources. */
   core.List<TargetPool> items;
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#targetPoolList for lists of
+   * target pools.
+   */
   core.String kind;
   /**
    * [Output Only] This token allows you to get the next page of results for
@@ -23415,7 +23601,7 @@ class TargetPoolList {
 }
 
 class TargetPoolsAddHealthCheckRequest {
-  /** Health check URLs to be added to targetPool. */
+  /** A list of HttpHealthCheck resources to add to the target pool. */
   core.List<HealthCheckReference> healthChecks;
 
   TargetPoolsAddHealthCheckRequest();
@@ -23436,7 +23622,14 @@ class TargetPoolsAddHealthCheckRequest {
 }
 
 class TargetPoolsAddInstanceRequest {
-  /** URLs of the instances to be added to targetPool. */
+  /**
+   * A full or partial URL to an instance to add to this target pool. This can
+   * be a full or partial URL. For example, the following are valid URLs:
+   * -
+   * https://www.googleapis.com/compute/v1/projects/project-id/zones/zone/instances/instance-name
+   * - projects/project-id/zones/zone/instances/instance-name
+   * - zones/zone/instances/instance-name
+   */
   core.List<InstanceReference> instances;
 
   TargetPoolsAddInstanceRequest();
@@ -23457,7 +23650,14 @@ class TargetPoolsAddInstanceRequest {
 }
 
 class TargetPoolsRemoveHealthCheckRequest {
-  /** Health check URLs to be removed from targetPool. */
+  /**
+   * Health check URL to be removed. This can be a full or valid partial URL.
+   * For example, the following are valid URLs:
+   * -
+   * https://www.googleapis.com/compute/beta/projects/project/global/httpHealthChecks/health-check
+   * - projects/project/global/httpHealthChecks/health-check
+   * - global/httpHealthChecks/health-check
+   */
   core.List<HealthCheckReference> healthChecks;
 
   TargetPoolsRemoveHealthCheckRequest();
@@ -23478,7 +23678,7 @@ class TargetPoolsRemoveHealthCheckRequest {
 }
 
 class TargetPoolsRemoveInstanceRequest {
-  /** URLs of the instances to be removed from targetPool. */
+  /** URLs of the instances to be removed from target pool. */
   core.List<InstanceReference> instances;
 
   TargetPoolsRemoveInstanceRequest();
@@ -23504,9 +23704,9 @@ class TargetPoolsScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -23544,6 +23744,7 @@ class TargetPoolsScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -23650,6 +23851,7 @@ class TargetReference {
   }
 }
 
+/** Represents a Target VPN gateway resource. */
 class TargetVpnGateway {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
@@ -23675,7 +23877,7 @@ class TargetVpnGateway {
    */
   core.String kind;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    * Specifically, the name must be 1-63 characters long and match the regular
    * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
@@ -23704,7 +23906,7 @@ class TargetVpnGateway {
   core.String status;
   /**
    * [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created
-   * using compute.vpntunnels.insert and associated to a VPN gateway.
+   * using compute.vpntunnels.insert method and associated to a VPN gateway.
    */
   core.List<core.String> tunnels;
 
@@ -23922,9 +24124,9 @@ class TargetVpnGatewaysScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -23962,6 +24164,7 @@ class TargetVpnGatewaysScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"
@@ -24520,7 +24723,7 @@ class VpnTunnel {
    */
   core.List<core.String> localTrafficSelector;
   /**
-   * Name of the resource; provided by the client when the resource is created.
+   * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    * Specifically, the name must be 1-63 characters long and match the regular
    * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
@@ -24545,6 +24748,7 @@ class VpnTunnel {
   /**
    * [Output Only] The status of the VPN tunnel.
    * Possible string values are:
+   * - "ALLOCATING_RESOURCES"
    * - "AUTHORIZATION_ERROR"
    * - "DEPROVISIONING"
    * - "ESTABLISHED"
@@ -24559,8 +24763,8 @@ class VpnTunnel {
    */
   core.String status;
   /**
-   * URL of the VPN gateway to which this VPN tunnel is associated. Provided by
-   * the client when the VPN tunnel is created.
+   * URL of the VPN gateway with which this VPN tunnel is associated. Provided
+   * by the client when the VPN tunnel is created.
    */
   core.String targetVpnGateway;
 
@@ -24800,9 +25004,9 @@ class VpnTunnelsScopedListWarningData {
    * returned. For example, for warnings where there are no results in a list
    * request for a particular zone, this key might be scope and the key value
    * might be the zone name. Other examples might be a key indicating a
-   * deprecated resource, and a suggested replacement, or a warning about
-   * invalid network settings (for example, if an instance attempts to perform
-   * IP forwarding but is not enabled for IP forwarding).
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
    */
   core.String key;
   /** [Output Only] A warning data value corresponding to the key. */
@@ -24840,6 +25044,7 @@ class VpnTunnelsScopedListWarning {
    * [Output Only] A warning code, if applicable. For example, Compute Engine
    * returns NO_RESULTS_ON_PAGE if there are no results in the response.
    * Possible string values are:
+   * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
    * - "INJECTED_KERNELS_DEPRECATED"

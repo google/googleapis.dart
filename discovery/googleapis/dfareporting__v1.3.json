@@ -14,7 +14,7 @@
     "description": "Lets you create, run and download reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/doubleclick-advertisers/reporting/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/SzRZyeuU72AQNfR1pZCO9RUBOuo\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/thm1dQ41ieuipIFO1JuNS4--IpY\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -705,7 +705,7 @@
             }
         }
     },
-    "revision": "20151109",
+    "revision": "20160128",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Activities": {

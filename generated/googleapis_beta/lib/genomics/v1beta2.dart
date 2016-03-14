@@ -2403,8 +2403,8 @@ class VariantsetsResourceApi {
   }
 
   /**
-   * Deletes the contents of a variant set. The variant set object is not
-   * deleted.
+   * Deletes a variant set including all variants, call sets, and calls within.
+   * This is not reversible.
    *
    * Request parameters:
    *
@@ -2532,7 +2532,7 @@ class VariantsetsResourceApi {
    *
    * The variants for import will be merged with any existing data and each
    * other according to the behavior of mergeVariants. In particular, this means
-   * for merged VCF variants that have conflicting INFO fields, some data will
+   * for merged VCF variants that have conflicting info fields, some data will
    * be arbitrarily discarded. As a special case, for single-sample VCF files,
    * QUAL and FILTER fields will be moved to the call level; these are sometimes
    * interpreted in a call-specific context. Imported VCF headers are appended
@@ -3761,7 +3761,7 @@ class ImportReadGroupSetsResponse {
 class ImportVariantsRequest {
   /**
    * The format of the variant data being imported. If unspecified, defaults to
-   * to "VCF".
+   * "VCF".
    * Possible string values are:
    * - "COMPLETE_GENOMICS"
    * - "VCF"
@@ -5194,7 +5194,7 @@ class Reference {
  * in a particular reference.
  */
 class ReferenceBound {
-  /** The name of the reference associated with this ReferenceBound. */
+  /** The name of the reference associated with this reference bound. */
   core.String referenceName;
   /**
    * An upper bound (inclusive) on the starting coordinate of any variant in the
@@ -6269,9 +6269,9 @@ class SearchVariantsRequest {
   core.String end;
   /**
    * The maximum number of calls to return in a single page. Note that this
-   * limit may be exceeded; at least one variant is always returned per page,
-   * even if it has more calls than this limit. If unspecified, defaults to
-   * 5000. The maximum value is 10000.
+   * limit may be exceeded in the event that a matching variant contains more
+   * calls than the requested maximum. If unspecified, defaults to 5000. The
+   * maximum value is 10000.
    */
   core.int maxCalls;
   /**

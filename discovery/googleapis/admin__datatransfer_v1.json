@@ -15,10 +15,10 @@
     "baseUrl": "https://www.googleapis.com/admin/datatransfer/v1/",
     "batchPath": "batch",
     "canonicalName": "DataTransfer",
-    "description": "Admin Data Transfer API lets you transfer user data from one user to another.",
+    "description": "Transfers user data from one user to another.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/data-transfer/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/kTLBRgj0_CSR6L-Vtk7U0tv9JLw\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/YLr8KxlFkw8ar-xZYzcCGhmF9B0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -230,7 +230,7 @@
             }
         }
     },
-    "revision": "20151124",
+    "revision": "20160223",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Application": {

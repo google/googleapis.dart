@@ -26,7 +26,7 @@ class GamesApi {
    */
   static const GamesScope = "https://www.googleapis.com/auth/games";
 
-  /** Know your basic profile info and list of people in your circles. */
+  /** Know the list of people in your circles, your age range, and language */
   static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
 
 
@@ -1882,6 +1882,7 @@ class ScoresResourceApi {
    * Possible string values are:
    * - "PUBLIC" : List all scores in the public leaderboard.
    * - "SOCIAL" : List only social scores.
+   * - "SOCIAL_1P" : List only social scores, not respecting the fACL.
    *
    * [timeSpan] - The time span for the scores and ranks you're requesting.
    * Possible string values are:
@@ -1958,6 +1959,7 @@ class ScoresResourceApi {
    * Possible string values are:
    * - "PUBLIC" : List all scores in the public leaderboard.
    * - "SOCIAL" : List only social scores.
+   * - "SOCIAL_1P" : List only social scores, not respecting the fACL.
    *
    * [timeSpan] - The time span for the scores and ranks you're requesting.
    * Possible string values are:
@@ -3134,7 +3136,7 @@ class AchievementIncrementResponse {
    */
   core.String kind;
   /**
-   * Whether the the current steps for the achievement has reached the number of
+   * Whether the current steps for the achievement has reached the number of
    * steps required to unlock.
    */
   core.bool newlyUnlocked;
@@ -3775,6 +3777,11 @@ class ApplicationCategory {
  */
 class ApplicationVerifyResponse {
   /**
+   * An alternate ID that was once used for the player that was issued the auth
+   * token used in this request. (This field is not normally populated.)
+   */
+  core.String alternatePlayerId;
+  /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string games#applicationVerifyResponse.
    */
@@ -3787,6 +3794,9 @@ class ApplicationVerifyResponse {
   ApplicationVerifyResponse();
 
   ApplicationVerifyResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("alternate_player_id")) {
+      alternatePlayerId = _json["alternate_player_id"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -3797,6 +3807,9 @@ class ApplicationVerifyResponse {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (alternatePlayerId != null) {
+      _json["alternate_player_id"] = alternatePlayerId;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }

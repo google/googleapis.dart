@@ -565,8 +565,8 @@ class Change {
    */
   core.String kind;
   /**
-   * The time that this operation was started by the server. This is in RFC3339
-   * text format.
+   * The time that this operation was started by the server (output only). This
+   * is in RFC3339 text format.
    */
   core.String startTime;
   /**

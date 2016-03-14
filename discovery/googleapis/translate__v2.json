@@ -5,7 +5,7 @@
     "description": "Lets you translate text from one language to another",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/translate/v2/using_rest",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Y41IPHxKqibvoyf5Er8zc-4DHtg\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/5diaINFMRdfdVpea1Q3SR6qOOW4\"",
     "features": [
         "dataWrapper"
     ],
@@ -167,7 +167,7 @@
             }
         }
     },
-    "revision": "20141123",
+    "revision": "20160217",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "DetectionsListResponse": {

@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client reseller/v1';
 
-/** Lets you create and manage your customers and their subscriptions. */
+/** Creates and manages your customers and their subscriptions. */
 class ResellerApi {
   /** Manage users on your domain */
   static const AppsOrderScope = "https://www.googleapis.com/auth/apps.order";
@@ -87,7 +87,7 @@ class CustomersResourceApi {
    *
    * [customerAuthToken] - An auth token needed for inserting a customer for
    * which domain already exists. Can be generated at
-   * https://www.google.com/a/cpanel//TransferToken. Optional.
+   * https://admin.google.com/TransferToken. Optional.
    *
    * Completes with a [Customer].
    *
@@ -1169,6 +1169,8 @@ class Subscription {
   core.String billingMethod;
   /** Creation time of this subscription in milliseconds since Unix epoch. */
   core.String creationTime;
+  /** Primary domain name of the customer */
+  core.String customerDomain;
   /** The id of the customer to whom the subscription belongs. */
   core.String customerId;
   /** Identifies the resource as a Subscription. */
@@ -1218,6 +1220,9 @@ class Subscription {
     if (_json.containsKey("creationTime")) {
       creationTime = _json["creationTime"];
     }
+    if (_json.containsKey("customerDomain")) {
+      customerDomain = _json["customerDomain"];
+    }
     if (_json.containsKey("customerId")) {
       customerId = _json["customerId"];
     }
@@ -1266,6 +1271,9 @@ class Subscription {
     }
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
+    }
+    if (customerDomain != null) {
+      _json["customerDomain"] = customerDomain;
     }
     if (customerId != null) {
       _json["customerId"] = customerId;

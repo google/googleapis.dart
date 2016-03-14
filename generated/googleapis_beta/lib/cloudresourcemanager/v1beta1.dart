@@ -706,6 +706,8 @@ class ProjectsResourceApi {
    * a lifecycle state of DELETE_IN_PROGRESS, the Project cannot be restored.
    * The caller must have modify permissions for this Project.
    *
+   * [request] - The metadata request object.
+   *
    * Request parameters:
    *
    * [projectId] - The project ID (for example, `foo-bar-123`). Required.
@@ -718,7 +720,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Empty> undelete(core.String projectId) {
+  async.Future<Empty> undelete(UndeleteProjectRequest request, core.String projectId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -726,6 +728,9 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
@@ -1053,7 +1058,7 @@ class OrganizationOwner {
  * service accounts. A `role` is a named list of permissions defined by IAM.
  * **Example** { "bindings": [ { "role": "roles/owner", "members": [
  * "user:mike@example.com", "group:admins@example.com", "domain:google.com",
- * "serviceAccount:my-other-app@appspot.gserviceaccount.com"] }, { "role":
+ * "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role":
  * "roles/viewer", "members": ["user:sean@example.com"] } ] } For a description
  * of IAM and its features, see the [IAM developer's
  * guide](https://cloud.google.com/iam).
@@ -1334,6 +1339,20 @@ class TestIamPermissionsResponse {
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
+    return _json;
+  }
+}
+
+/** The request sent to the UndeleteProject method. */
+class UndeleteProjectRequest {
+
+  UndeleteProjectRequest();
+
+  UndeleteProjectRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
     return _json;
   }
 }

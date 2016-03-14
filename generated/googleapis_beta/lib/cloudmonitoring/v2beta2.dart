@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client cloudmonitoring/v2beta2';
 
-/** API for accessing Google Cloud and API monitoring data. */
+/** Accesses Google Cloud Monitoring data. */
 class CloudmonitoringApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";

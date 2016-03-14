@@ -16,8 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client pagespeedonline/v2';
 
 /**
- * Lets you analyze the performance of a web page and get tailored suggestions
- * to make that page faster.
+ * Analyzes the performance of a web page and provides tailored suggestions to
+ * make that page faster.
  */
 class PagespeedonlineApi {
 

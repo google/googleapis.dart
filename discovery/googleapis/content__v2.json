@@ -12,10 +12,10 @@
     "baseUrl": "https://www.googleapis.com/content/v2/",
     "batchPath": "batch",
     "canonicalName": "Shopping Content",
-    "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
+    "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/WzxFI4GBYGkZGJCfKJi51ODdQOI\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/YGOQd0tLCfNDIe7OT94IG7yPk3g\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1397,9 +1397,13 @@
                             "description": "The name of the template to retrieve.",
                             "enum": [
                                 "template1",
+                                "template1a",
+                                "template1b",
                                 "template2"
                             ],
                             "enumDescriptions": [
+                                "",
+                                "",
                                 "",
                                 ""
                             ],
@@ -1936,7 +1940,7 @@
             }
         }
     },
-    "revision": "20160115",
+    "revision": "20160303",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -3095,6 +3099,11 @@
                     "format": "uint32",
                     "type": "integer"
                 },
+                "minuteOfHour": {
+                    "description": "The minute of the hour the feed file should be fetched (0-59). Read-only.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
                 "password": {
                     "description": "An optional password for fetch_url.",
                     "type": "string"
@@ -3735,6 +3744,13 @@
                     "description": "The date when the order was placed, in ISO 8601 format.",
                     "type": "string"
                 },
+                "promotions": {
+                    "description": "The details of the merchant provided promotions applied to the order. More details about the program are  here.",
+                    "items": {
+                        "$ref": "OrderPromotion"
+                    },
+                    "type": "array"
+                },
                 "refunds": {
                     "description": "Refunds for the order.",
                     "items": {
@@ -4161,6 +4177,71 @@
                 },
                 "type": {
                     "description": "The type of instrument (VISA, Mastercard, etc).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrderPromotion": {
+            "id": "OrderPromotion",
+            "properties": {
+                "benefits": {
+                    "items": {
+                        "$ref": "OrderPromotionBenefit"
+                    },
+                    "type": "array"
+                },
+                "effectiveDates": {
+                    "description": "The date and time frame when the promotion is active and ready for validation review. Note that the promotion live time may be delayed for a few hours due to the validation review.\nStart date and end date are separated by a forward slash (/). The start date is specified by the format (YYYY-MM-DD), followed by the letter ?T?, the time of the day when the sale starts (in Greenwich Mean Time, GMT), followed by an expression of the time zone for the sale. The end date is in the same format.",
+                    "type": "string"
+                },
+                "genericRedemptionCode": {
+                    "description": "Optional. The text code that corresponds to the promotion when applied on the retailer?s website.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The unique ID of the promotion.",
+                    "type": "string"
+                },
+                "longTitle": {
+                    "description": "The full title of the promotion.",
+                    "type": "string"
+                },
+                "productApplicability": {
+                    "description": "Whether the promotion is applicable to all products or only specific products.",
+                    "type": "string"
+                },
+                "redemptionChannel": {
+                    "description": "Indicates that the promotion is valid online.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrderPromotionBenefit": {
+            "id": "OrderPromotionBenefit",
+            "properties": {
+                "discount": {
+                    "$ref": "Price",
+                    "description": "The discount in the order price when the promotion is applied."
+                },
+                "offerIds": {
+                    "description": "The OfferId(s) that were purchased in this order and map to this specific benefit of the promotion.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "subType": {
+                    "description": "Further describes the benefit of the promotion. Note that we will expand on this enumeration as we support new promotion sub-types.",
+                    "type": "string"
+                },
+                "taxImpact": {
+                    "$ref": "Price",
+                    "description": "The impact on tax when the promotion is applied."
+                },
+                "type": {
+                    "description": "Describes whether the promotion applies to products (e.g. 20% off) or to shipping (e.g. Free Shipping).",
                     "type": "string"
                 }
             },
@@ -5164,6 +5245,13 @@
                     "description": "Your category of the item (formatted as in product feeds specification).",
                     "type": "string"
                 },
+                "promotionIds": {
+                    "description": "The unique ID of a promotion.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "salePrice": {
                     "$ref": "Price",
                     "description": "Advertised sale price of the item."
@@ -5815,6 +5903,13 @@
                     },
                     "description": "Identifier of one of the predefined delivery addresses for the delivery.",
                     "type": "string"
+                },
+                "promotions": {
+                    "description": "The details of the merchant provided promotions applied to the order. More details about the program are  here.",
+                    "items": {
+                        "$ref": "OrderPromotion"
+                    },
+                    "type": "array"
                 },
                 "shippingCost": {
                     "$ref": "Price",

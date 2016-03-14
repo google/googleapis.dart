@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/plus.login": {
-                    "description": "Know your basic profile info and list of people in your circles."
+                    "description": "Know the list of people in your circles, your age range, and language"
                 },
                 "https://www.googleapis.com/auth/plus.me": {
                     "description": "Know who you are on Google"
@@ -23,7 +23,7 @@
     "description": "The Google+ API enables developers to build on top of the Google+ platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/+/api/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/YXB_V5C4Fkqp2K2OwxvEljJTMb4\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Dfv4RLFyxk49LKrP8ZLRa5aXWSw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/gplus-16.png",
         "x32": "http://www.google.com/images/icons/product/gplus-32.png"
@@ -491,7 +491,7 @@
             }
         }
     },
-    "revision": "20160127",
+    "revision": "20160309",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {

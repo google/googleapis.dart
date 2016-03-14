@@ -2495,6 +2495,7 @@ class ChangeLogsResourceApi {
    * - "OBJECT_MEDIA_ORDER"
    * - "OBJECT_PLACEMENT"
    * - "OBJECT_PLACEMENT_STRATEGY"
+   * - "OBJECT_PLAYSTORE_LINK"
    * - "OBJECT_PROVIDED_LIST_CLIENT"
    * - "OBJECT_RATE_CARD"
    * - "OBJECT_REMARKETING_LIST"
@@ -11444,6 +11445,14 @@ class Account {
    * - "37" for PLN
    * - "39" for INR
    * - "40" for THB
+   * - "41" for IDR
+   * - "42" for CZK
+   * - "43" for RON
+   * - "44" for HUF
+   * - "45" for RUB
+   * - "46" for AED
+   * - "47" for BGN
+   * - "48" for HRK
    */
   core.String currencyId;
   /** Default placement dimensions for this account. */
@@ -14560,6 +14569,7 @@ class Creative {
    * Possible string values are:
    * - "ARTWORK_TYPE_FLASH"
    * - "ARTWORK_TYPE_HTML5"
+   * - "ARTWORK_TYPE_IMAGE"
    * - "ARTWORK_TYPE_MIXED"
    */
   core.String artworkType;
@@ -15308,6 +15318,7 @@ class CreativeAsset {
    * Possible string values are:
    * - "ARTWORK_TYPE_FLASH"
    * - "ARTWORK_TYPE_HTML5"
+   * - "ARTWORK_TYPE_IMAGE"
    * - "ARTWORK_TYPE_MIXED"
    */
   core.String artworkType;
@@ -16180,6 +16191,7 @@ class CreativeCustomEvent {
    * Possible string values are:
    * - "ARTWORK_TYPE_FLASH"
    * - "ARTWORK_TYPE_HTML5"
+   * - "ARTWORK_TYPE_IMAGE"
    * - "ARTWORK_TYPE_MIXED"
    */
   core.String artworkType;
@@ -16730,6 +16742,7 @@ class CreativeOptimizationConfiguration {
    * - "POST_CLICK"
    * - "POST_CLICK_AND_IMPRESSION"
    * - "POST_IMPRESSION"
+   * - "VIDEO_COMPLETION"
    */
   core.String optimizationModel;
 
@@ -17637,6 +17650,14 @@ class DirectorySite {
    * - "37" for PLN
    * - "39" for INR
    * - "40" for THB
+   * - "41" for IDR
+   * - "42" for CZK
+   * - "43" for RON
+   * - "44" for HUF
+   * - "45" for RUB
+   * - "46" for AED
+   * - "47" for BGN
+   * - "48" for HRK
    */
   core.String currencyId;
   /** Description of this directory site. */
@@ -23653,11 +23674,17 @@ class RemarketingList {
   /**
    * Product from which this remarketing list was originated.
    * Possible string values are:
+   * - "REMARKETING_LIST_SOURCE_ADX"
    * - "REMARKETING_LIST_SOURCE_DBM"
    * - "REMARKETING_LIST_SOURCE_DFA"
+   * - "REMARKETING_LIST_SOURCE_DFP"
    * - "REMARKETING_LIST_SOURCE_DMP"
    * - "REMARKETING_LIST_SOURCE_GA"
+   * - "REMARKETING_LIST_SOURCE_GPLUS"
    * - "REMARKETING_LIST_SOURCE_OTHER"
+   * - "REMARKETING_LIST_SOURCE_PLAY_STORE"
+   * - "REMARKETING_LIST_SOURCE_XFP"
+   * - "REMARKETING_LIST_SOURCE_YOUTUBE"
    */
   core.String listSource;
   /**
@@ -25792,11 +25819,17 @@ class TargetableRemarketingList {
   /**
    * Product from which this targetable remarketing list was originated.
    * Possible string values are:
+   * - "REMARKETING_LIST_SOURCE_ADX"
    * - "REMARKETING_LIST_SOURCE_DBM"
    * - "REMARKETING_LIST_SOURCE_DFA"
+   * - "REMARKETING_LIST_SOURCE_DFP"
    * - "REMARKETING_LIST_SOURCE_DMP"
    * - "REMARKETING_LIST_SOURCE_GA"
+   * - "REMARKETING_LIST_SOURCE_GPLUS"
    * - "REMARKETING_LIST_SOURCE_OTHER"
+   * - "REMARKETING_LIST_SOURCE_PLAY_STORE"
+   * - "REMARKETING_LIST_SOURCE_XFP"
+   * - "REMARKETING_LIST_SOURCE_YOUTUBE"
    */
   core.String listSource;
   /**
@@ -26077,7 +26110,9 @@ class ThirdPartyTrackingUrl {
    * - "VIDEO_MIDPOINT"
    * - "VIDEO_MUTE"
    * - "VIDEO_PAUSE"
+   * - "VIDEO_PROGRESS"
    * - "VIDEO_REWIND"
+   * - "VIDEO_SKIP"
    * - "VIDEO_START"
    * - "VIDEO_STOP"
    * - "VIDEO_THIRD_QUARTILE"

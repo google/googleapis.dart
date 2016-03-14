@@ -15,7 +15,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client content/v2';
 
 /**
- * Manage product items, inventory, and Merchant Center accounts for Google
+ * Manages product items, inventory, and Merchant Center accounts for Google
  * Shopping.
  */
 class ContentApi {
@@ -2080,6 +2080,8 @@ class OrdersResourceApi {
    * [templateName] - The name of the template to retrieve.
    * Possible string values are:
    * - "template1"
+   * - "template1a"
+   * - "template1b"
    * - "template2"
    *
    * Completes with a [OrdersGetTestOrderTemplateResponse].
@@ -4884,6 +4886,10 @@ class DatafeedFetchSchedule {
   core.String fetchUrl;
   /** The hour of the day the feed file should be fetched (0-23). */
   core.int hour;
+  /**
+   * The minute of the hour the feed file should be fetched (0-59). Read-only.
+   */
+  core.int minuteOfHour;
   /** An optional password for fetch_url. */
   core.String password;
   /**
@@ -4906,6 +4912,9 @@ class DatafeedFetchSchedule {
     }
     if (_json.containsKey("hour")) {
       hour = _json["hour"];
+    }
+    if (_json.containsKey("minuteOfHour")) {
+      minuteOfHour = _json["minuteOfHour"];
     }
     if (_json.containsKey("password")) {
       password = _json["password"];
@@ -4931,6 +4940,9 @@ class DatafeedFetchSchedule {
     }
     if (hour != null) {
       _json["hour"] = hour;
+    }
+    if (minuteOfHour != null) {
+      _json["minuteOfHour"] = minuteOfHour;
     }
     if (password != null) {
       _json["password"] = password;
@@ -6074,6 +6086,11 @@ class Order {
   core.String paymentStatus;
   /** The date when the order was placed, in ISO 8601 format. */
   core.String placedDate;
+  /**
+   * The details of the merchant provided promotions applied to the order. More
+   * details about the program are  here.
+   */
+  core.List<OrderPromotion> promotions;
   /** Refunds for the order. */
   core.List<OrderRefund> refunds;
   /** Shipments of the order. */
@@ -6125,6 +6142,9 @@ class Order {
     }
     if (_json.containsKey("placedDate")) {
       placedDate = _json["placedDate"];
+    }
+    if (_json.containsKey("promotions")) {
+      promotions = _json["promotions"].map((value) => new OrderPromotion.fromJson(value)).toList();
     }
     if (_json.containsKey("refunds")) {
       refunds = _json["refunds"].map((value) => new OrderRefund.fromJson(value)).toList();
@@ -6183,6 +6203,9 @@ class Order {
     }
     if (placedDate != null) {
       _json["placedDate"] = placedDate;
+    }
+    if (promotions != null) {
+      _json["promotions"] = promotions.map((value) => (value).toJson()).toList();
     }
     if (refunds != null) {
       _json["refunds"] = refunds.map((value) => (value).toJson()).toList();
@@ -6887,6 +6910,151 @@ class OrderPaymentMethod {
     }
     if (phoneNumber != null) {
       _json["phoneNumber"] = phoneNumber;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class OrderPromotion {
+  core.List<OrderPromotionBenefit> benefits;
+  /**
+   * The date and time frame when the promotion is active and ready for
+   * validation review. Note that the promotion live time may be delayed for a
+   * few hours due to the validation review.
+   * Start date and end date are separated by a forward slash (/). The start
+   * date is specified by the format (YYYY-MM-DD), followed by the letter ?T?,
+   * the time of the day when the sale starts (in Greenwich Mean Time, GMT),
+   * followed by an expression of the time zone for the sale. The end date is in
+   * the same format.
+   */
+  core.String effectiveDates;
+  /**
+   * Optional. The text code that corresponds to the promotion when applied on
+   * the retailer?s website.
+   */
+  core.String genericRedemptionCode;
+  /** The unique ID of the promotion. */
+  core.String id;
+  /** The full title of the promotion. */
+  core.String longTitle;
+  /**
+   * Whether the promotion is applicable to all products or only specific
+   * products.
+   */
+  core.String productApplicability;
+  /** Indicates that the promotion is valid online. */
+  core.String redemptionChannel;
+
+  OrderPromotion();
+
+  OrderPromotion.fromJson(core.Map _json) {
+    if (_json.containsKey("benefits")) {
+      benefits = _json["benefits"].map((value) => new OrderPromotionBenefit.fromJson(value)).toList();
+    }
+    if (_json.containsKey("effectiveDates")) {
+      effectiveDates = _json["effectiveDates"];
+    }
+    if (_json.containsKey("genericRedemptionCode")) {
+      genericRedemptionCode = _json["genericRedemptionCode"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("longTitle")) {
+      longTitle = _json["longTitle"];
+    }
+    if (_json.containsKey("productApplicability")) {
+      productApplicability = _json["productApplicability"];
+    }
+    if (_json.containsKey("redemptionChannel")) {
+      redemptionChannel = _json["redemptionChannel"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (benefits != null) {
+      _json["benefits"] = benefits.map((value) => (value).toJson()).toList();
+    }
+    if (effectiveDates != null) {
+      _json["effectiveDates"] = effectiveDates;
+    }
+    if (genericRedemptionCode != null) {
+      _json["genericRedemptionCode"] = genericRedemptionCode;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (longTitle != null) {
+      _json["longTitle"] = longTitle;
+    }
+    if (productApplicability != null) {
+      _json["productApplicability"] = productApplicability;
+    }
+    if (redemptionChannel != null) {
+      _json["redemptionChannel"] = redemptionChannel;
+    }
+    return _json;
+  }
+}
+
+class OrderPromotionBenefit {
+  /** The discount in the order price when the promotion is applied. */
+  Price discount;
+  /**
+   * The OfferId(s) that were purchased in this order and map to this specific
+   * benefit of the promotion.
+   */
+  core.List<core.String> offerIds;
+  /**
+   * Further describes the benefit of the promotion. Note that we will expand on
+   * this enumeration as we support new promotion sub-types.
+   */
+  core.String subType;
+  /** The impact on tax when the promotion is applied. */
+  Price taxImpact;
+  /**
+   * Describes whether the promotion applies to products (e.g. 20% off) or to
+   * shipping (e.g. Free Shipping).
+   */
+  core.String type;
+
+  OrderPromotionBenefit();
+
+  OrderPromotionBenefit.fromJson(core.Map _json) {
+    if (_json.containsKey("discount")) {
+      discount = new Price.fromJson(_json["discount"]);
+    }
+    if (_json.containsKey("offerIds")) {
+      offerIds = _json["offerIds"];
+    }
+    if (_json.containsKey("subType")) {
+      subType = _json["subType"];
+    }
+    if (_json.containsKey("taxImpact")) {
+      taxImpact = new Price.fromJson(_json["taxImpact"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (discount != null) {
+      _json["discount"] = (discount).toJson();
+    }
+    if (offerIds != null) {
+      _json["offerIds"] = offerIds;
+    }
+    if (subType != null) {
+      _json["subType"] = subType;
+    }
+    if (taxImpact != null) {
+      _json["taxImpact"] = (taxImpact).toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -8583,6 +8751,8 @@ class Product {
    * Your category of the item (formatted as in product feeds specification).
    */
   core.String productType;
+  /** The unique ID of a promotion. */
+  core.List<core.String> promotionIds;
   /** Advertised sale price of the item. */
   Price salePrice;
   /**
@@ -8783,6 +8953,9 @@ class Product {
     }
     if (_json.containsKey("productType")) {
       productType = _json["productType"];
+    }
+    if (_json.containsKey("promotionIds")) {
+      promotionIds = _json["promotionIds"];
     }
     if (_json.containsKey("salePrice")) {
       salePrice = new Price.fromJson(_json["salePrice"]);
@@ -8997,6 +9170,9 @@ class Product {
     }
     if (productType != null) {
       _json["productType"] = productType;
+    }
+    if (promotionIds != null) {
+      _json["promotionIds"] = promotionIds;
     }
     if (salePrice != null) {
       _json["salePrice"] = (salePrice).toJson();
@@ -10101,6 +10277,11 @@ class TestOrder {
    * Identifier of one of the predefined delivery addresses for the delivery.
    */
   core.String predefinedDeliveryAddress;
+  /**
+   * The details of the merchant provided promotions applied to the order. More
+   * details about the program are  here.
+   */
+  core.List<OrderPromotion> promotions;
   /** The total cost of shipping for all items. */
   Price shippingCost;
   /** The tax for the total shipping cost. */
@@ -10125,6 +10306,9 @@ class TestOrder {
     }
     if (_json.containsKey("predefinedDeliveryAddress")) {
       predefinedDeliveryAddress = _json["predefinedDeliveryAddress"];
+    }
+    if (_json.containsKey("promotions")) {
+      promotions = _json["promotions"].map((value) => new OrderPromotion.fromJson(value)).toList();
     }
     if (_json.containsKey("shippingCost")) {
       shippingCost = new Price.fromJson(_json["shippingCost"]);
@@ -10153,6 +10337,9 @@ class TestOrder {
     }
     if (predefinedDeliveryAddress != null) {
       _json["predefinedDeliveryAddress"] = predefinedDeliveryAddress;
+    }
+    if (promotions != null) {
+      _json["promotions"] = promotions.map((value) => (value).toJson()).toList();
     }
     if (shippingCost != null) {
       _json["shippingCost"] = (shippingCost).toJson();

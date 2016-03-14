@@ -7732,26 +7732,6 @@ class ChannelConversionPings {
   }
 }
 
-class ChannelId {
-  core.String value;
-
-  ChannelId();
-
-  ChannelId.fromJson(core.Map _json) {
-    if (_json.containsKey("value")) {
-      value = _json["value"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (value != null) {
-      _json["value"] = value;
-    }
-    return _json;
-  }
-}
-
 class ChannelListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -8385,10 +8365,13 @@ class ChannelSettings {
 
 /**
  * Basic details about a channel, including title, description and thumbnails.
+ * Next available id: 15.
  */
 class ChannelSnippet {
   /** The country of the channel. */
   core.String country;
+  /** The custom url of the channel. */
+  core.String customUrl;
   /** The language of the channel's default title and description. */
   core.String defaultLanguage;
   /** The description of the channel. */
@@ -8415,6 +8398,9 @@ class ChannelSnippet {
     if (_json.containsKey("country")) {
       country = _json["country"];
     }
+    if (_json.containsKey("customUrl")) {
+      customUrl = _json["customUrl"];
+    }
     if (_json.containsKey("defaultLanguage")) {
       defaultLanguage = _json["defaultLanguage"];
     }
@@ -8439,6 +8425,9 @@ class ChannelSnippet {
     var _json = new core.Map();
     if (country != null) {
       _json["country"] = country;
+    }
+    if (customUrl != null) {
+      _json["customUrl"] = customUrl;
     }
     if (defaultLanguage != null) {
       _json["defaultLanguage"] = defaultLanguage;
@@ -8730,8 +8719,13 @@ class CommentListResponse {
 
 /** Basic details about a comment, such as its author and text. */
 class CommentSnippet {
-  /** The id of the author's YouTube channel, if any. */
-  ChannelId authorChannelId;
+  /**
+   * The id of the author's YouTube channel, if any.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object authorChannelId;
   /** Link to the author's YouTube channel, if any. */
   core.String authorChannelUrl;
   /** The name of the user who posted the comment. */
@@ -8803,7 +8797,7 @@ class CommentSnippet {
 
   CommentSnippet.fromJson(core.Map _json) {
     if (_json.containsKey("authorChannelId")) {
-      authorChannelId = new ChannelId.fromJson(_json["authorChannelId"]);
+      authorChannelId = _json["authorChannelId"];
     }
     if (_json.containsKey("authorChannelUrl")) {
       authorChannelUrl = _json["authorChannelUrl"];
@@ -8855,7 +8849,7 @@ class CommentSnippet {
   core.Map toJson() {
     var _json = new core.Map();
     if (authorChannelId != null) {
-      _json["authorChannelId"] = (authorChannelId).toJson();
+      _json["authorChannelId"] = authorChannelId;
     }
     if (authorChannelUrl != null) {
       _json["authorChannelUrl"] = authorChannelUrl;
@@ -9501,6 +9495,7 @@ class ContentRating {
   /**
    * The video's rating from South Africa's Film and Publication Board.
    * Possible string values are:
+   * - "fpb10"
    * - "fpb1012Pg"
    * - "fpb13"
    * - "fpb16"
@@ -14575,6 +14570,7 @@ class SearchListResponse {
    * retrieve the previous page in the result set.
    */
   core.String prevPageToken;
+  core.String regionCode;
   TokenPagination tokenPagination;
   /** The visitorId identifies the visitor. */
   core.String visitorId;
@@ -14602,6 +14598,9 @@ class SearchListResponse {
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
+    }
+    if (_json.containsKey("regionCode")) {
+      regionCode = _json["regionCode"];
     }
     if (_json.containsKey("tokenPagination")) {
       tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
@@ -14633,6 +14632,9 @@ class SearchListResponse {
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
+    }
+    if (regionCode != null) {
+      _json["regionCode"] = regionCode;
     }
     if (tokenPagination != null) {
       _json["tokenPagination"] = (tokenPagination).toJson();
@@ -17453,6 +17455,7 @@ class VideoStatus {
    * - "copyright"
    * - "duplicate"
    * - "inappropriate"
+   * - "legal"
    * - "length"
    * - "termsOfUse"
    * - "trademark"

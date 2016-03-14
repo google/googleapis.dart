@@ -14,9 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client siteVerification/v1';
 
-/**
- * Lets you programatically verify ownership of websites or domains with Google.
- */
+/** Verifies ownership of websites or domains with Google. */
 class SiteVerificationApi {
   /** Manage the list of sites and domains you control */
   static const SiteverificationScope = "https://www.googleapis.com/auth/siteverification";

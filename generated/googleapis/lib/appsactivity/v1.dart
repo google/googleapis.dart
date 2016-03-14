@@ -607,8 +607,19 @@ class Target {
 
 /** A representation of a user. */
 class User {
+  /**
+   * A boolean which indicates whether the specified User was deleted. If true,
+   * name, photo and permission_id will be omitted.
+   */
+  core.bool isDeleted;
   /** The displayable name of the user. */
   core.String name;
+  /**
+   * The permission ID associated with this user. Equivalent to the Drive API's
+   * permission ID for this user, returned as part of the Drive Permissions
+   * resource.
+   */
+  core.String permissionId;
   /**
    * The profile photo of the user. Not present if the user has no profile
    * photo.
@@ -618,8 +629,14 @@ class User {
   User();
 
   User.fromJson(core.Map _json) {
+    if (_json.containsKey("isDeleted")) {
+      isDeleted = _json["isDeleted"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("permissionId")) {
+      permissionId = _json["permissionId"];
     }
     if (_json.containsKey("photo")) {
       photo = new Photo.fromJson(_json["photo"]);
@@ -628,8 +645,14 @@ class User {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (isDeleted != null) {
+      _json["isDeleted"] = isDeleted;
+    }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (permissionId != null) {
+      _json["permissionId"] = permissionId;
     }
     if (photo != null) {
       _json["photo"] = (photo).toJson();

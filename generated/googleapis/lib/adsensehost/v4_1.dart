@@ -15,8 +15,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client adsensehost/v4.1';
 
 /**
- * Gives AdSense Hosts access to report generation, ad code generation, and
- * publisher management capabilities.
+ * Generates performance reports, generates ad codes, and provides publisher
+ * management capabilities for AdSense Hosts.
  */
 class AdsensehostApi {
   /** View and manage your AdSense host data and associated accounts */

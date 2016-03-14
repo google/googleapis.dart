@@ -35,7 +35,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/4v0wLphe5UXLJdQFE80Eas9uwIw\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/O9_NbpoVnW5GMGl7qWBIajcyrt8\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -598,7 +598,7 @@
                     ]
                 },
                 "export": {
-                    "description": "Exports a Google Doc to the requested MIME type.",
+                    "description": "Exports a Google Doc to the requested MIME type and returns the exported content.",
                     "httpMethod": "GET",
                     "id": "drive.files.export",
                     "parameterOrder": [
@@ -1406,7 +1406,7 @@
             }
         }
     },
-    "revision": "20160126",
+    "revision": "20160303",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -1728,6 +1728,10 @@
                         },
                         "canEdit": {
                             "description": "Whether the user can edit the file's content.",
+                            "type": "boolean"
+                        },
+                        "canReadRevisions": {
+                            "description": "Whether the current user has read access to the Revisions resource of the file.",
                             "type": "boolean"
                         },
                         "canShare": {
