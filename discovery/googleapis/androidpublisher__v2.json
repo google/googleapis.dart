@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/mQrWIJVnZ-o4oNXFGrclXicilbM\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/wwfdcfcbj_VTedNtsK-mpfGIz58\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2254,7 +2254,7 @@
             }
         }
     },
-    "revision": "20160221",
+    "revision": "20160324",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -2979,6 +2979,19 @@
                     "description": "Whether the subscription will automatically be renewed when it reaches its current expiry time.",
                     "type": "boolean"
                 },
+                "cancelReason": {
+                    "description": "The cancel reason of the subscription, if the subscription is not auto renewing. Possible values are:  \n- User cancelled the subscription \n- Subscription was cancelled by the system, for example because of a billing problem",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "countryCode": {
+                    "description": "ISO 3166-1 alpha-2 billing country/region code of the user at the time the subscription was granted.",
+                    "type": "string"
+                },
+                "developerPayload": {
+                    "description": "A developer-specified string that contains supplemental information about an order.",
+                    "type": "string"
+                },
                 "expiryTimeMillis": {
                     "description": "Time at which the subscription will expire, in milliseconds since Epoch.",
                     "format": "int64",
@@ -2987,6 +3000,20 @@
                 "kind": {
                     "default": "androidpublisher#subscriptionPurchase",
                     "description": "This kind represents a subscriptionPurchase object in the androidpublisher service.",
+                    "type": "string"
+                },
+                "paymentState": {
+                    "description": "The payment state of the subscription. Possible values are:  \n- Payment pending \n- Payment received",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "priceAmountMicros": {
+                    "description": "Price of the subscription, not including tax. Price is expressed in micro-units, where 1,000,000 micro-units equal one unit of the currency. For example, if the subscription price is €1.99, price_amount_micros is 1990000.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "priceCurrencyCode": {
+                    "description": "ISO 4217 currency code for the subscription price. For example, if the price is specified in British pounds sterling, price_currency_code is \"GBP\".",
                     "type": "string"
                 },
                 "startTimeMillis": {

@@ -14,10 +14,10 @@
     "basePath": "/webmasters/v3/",
     "baseUrl": "https://www.googleapis.com/webmasters/v3/",
     "batchPath": "batch",
-    "description": "Lets you view Google Search Console data for your verified sites.",
+    "description": "View Google Search Console data for your verified sites.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/webmaster-tools/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/ik6t4leMi4molj3h1DobZhP-feU\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/P1nSOVfcIgLwg7Nv_EHtJFN7Dbw\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/webmaster_tools-16.png",
         "x32": "https://www.google.com/images/icons/product/webmaster_tools-32.png"
@@ -318,6 +318,7 @@
                             "description": "The crawl error category. For example: serverError. If not specified, returns results for all categories.",
                             "enum": [
                                 "authPermissions",
+                                "flashContent",
                                 "manyToOneRedirect",
                                 "notFollowed",
                                 "notFound",
@@ -327,6 +328,7 @@
                                 "soft404"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -395,6 +397,7 @@
                             "description": "The crawl error category. For example: authPermissions",
                             "enum": [
                                 "authPermissions",
+                                "flashContent",
                                 "manyToOneRedirect",
                                 "notFollowed",
                                 "notFound",
@@ -404,6 +407,7 @@
                                 "soft404"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -469,6 +473,7 @@
                             "description": "The crawl error category. For example: authPermissions",
                             "enum": [
                                 "authPermissions",
+                                "flashContent",
                                 "manyToOneRedirect",
                                 "notFollowed",
                                 "notFound",
@@ -478,6 +483,7 @@
                                 "soft404"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -538,6 +544,7 @@
                             "description": "The crawl error category. For example: authPermissions",
                             "enum": [
                                 "authPermissions",
+                                "flashContent",
                                 "manyToOneRedirect",
                                 "notFollowed",
                                 "notFound",
@@ -547,6 +554,7 @@
                                 "soft404"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -597,7 +605,7 @@
             }
         }
     },
-    "revision": "20151229",
+    "revision": "20160317",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ApiDataRow": {
@@ -695,6 +703,11 @@
                 "startDate": {
                     "description": "[Required] Start date of the requested date range, in YYYY-MM-DD format, in PST time (UTC - 8:00). Must be less than or equal to the end date. This value is included in the range.",
                     "type": "string"
+                },
+                "startRow": {
+                    "description": "[Optional; Default is 0] Zero-based index of the first row in the response. Must be a non-negative number.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"

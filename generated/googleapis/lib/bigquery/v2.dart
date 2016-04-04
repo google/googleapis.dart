@@ -1634,7 +1634,7 @@ class Dataset {
   /** [Required] A reference that identifies the dataset. */
   DatasetReference datasetReference;
   /**
-   * [Experimental] The default lifetime of all tables in the dataset, in
+   * [Optional] The default lifetime of all tables in the dataset, in
    * milliseconds. The minimum value is 3600000 milliseconds (one hour). Once
    * this property is set, all newly-created tables in the dataset will have an
    * expirationTime property set to the creation time plus the value in this
@@ -2361,6 +2361,33 @@ class GetQueryResultsResponse {
   }
 }
 
+class IntervalPartitionConfiguration {
+  core.String expirationMs;
+  core.String type;
+
+  IntervalPartitionConfiguration();
+
+  IntervalPartitionConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("expirationMs")) {
+      expirationMs = _json["expirationMs"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (expirationMs != null) {
+      _json["expirationMs"] = expirationMs;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 class Job {
   /** [Required] Describes the job configuration. */
   JobConfiguration configuration;
@@ -2729,7 +2756,8 @@ class JobConfigurationLoad {
   /**
    * [Optional] The format of the data files. For CSV files, specify "CSV". For
    * datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON,
-   * specify "NEWLINE_DELIMITED_JSON". The default value is CSV.
+   * specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". The default
+   * value is CSV.
    */
   core.String sourceFormat;
   /**
@@ -4062,6 +4090,12 @@ class Table {
    * in the streaming buffer.
    */
   core.String numRows;
+  /**
+   * [Experimental] List of partition configurations for this table. Currently
+   * only one configuration can be specified and it can only be an interval
+   * partition with type daily.
+   */
+  core.List<TablePartitionConfiguration> partitionConfigurations;
   /** [Optional] Describes the schema of this table. */
   TableSchema schema;
   /** [Output-only] A URL that can be used to access this resource again. */
@@ -4123,6 +4157,9 @@ class Table {
     if (_json.containsKey("numRows")) {
       numRows = _json["numRows"];
     }
+    if (_json.containsKey("partitionConfigurations")) {
+      partitionConfigurations = _json["partitionConfigurations"].map((value) => new TablePartitionConfiguration.fromJson(value)).toList();
+    }
     if (_json.containsKey("schema")) {
       schema = new TableSchema.fromJson(_json["schema"]);
     }
@@ -4180,6 +4217,9 @@ class Table {
     }
     if (numRows != null) {
       _json["numRows"] = numRows;
+    }
+    if (partitionConfigurations != null) {
+      _json["partitionConfigurations"] = partitionConfigurations.map((value) => (value).toJson()).toList();
     }
     if (schema != null) {
       _json["schema"] = (schema).toJson();
@@ -4469,9 +4509,9 @@ class TableFieldSchema {
    */
   core.String name;
   /**
-   * [Required] The field data type. Possible values include STRING, INTEGER,
-   * FLOAT, BOOLEAN, TIMESTAMP or RECORD (where RECORD indicates that the field
-   * contains a nested schema).
+   * [Required] The field data type. Possible values include STRING, BYTES,
+   * INTEGER, FLOAT, BOOLEAN, TIMESTAMP or RECORD (where RECORD indicates that
+   * the field contains a nested schema).
    */
   core.String type;
 
@@ -4617,6 +4657,31 @@ class TableList {
     }
     if (totalItems != null) {
       _json["totalItems"] = totalItems;
+    }
+    return _json;
+  }
+}
+
+/**
+ * [Required] A partition configuration. Only one type of partition should be
+ * configured.
+ */
+class TablePartitionConfiguration {
+  /** [Pick one] Configures an interval partition. */
+  IntervalPartitionConfiguration interval;
+
+  TablePartitionConfiguration();
+
+  TablePartitionConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("interval")) {
+      interval = new IntervalPartitionConfiguration.fromJson(_json["interval"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (interval != null) {
+      _json["interval"] = (interval).toJson();
     }
     return _json;
   }

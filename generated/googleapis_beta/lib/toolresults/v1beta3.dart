@@ -1129,8 +1129,8 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
 
 
 /**
- * `Any` contains an arbitrary serialized message along with a URL that
- * describes the type of the serialized message.
+ * `Any` contains an arbitrary serialized protocol buffer message along with a
+ * URL that describes the type of the serialized message.
  *
  * Protobuf library provides support to pack/unpack Any values in the form of
  * utility functions or additional generated methods of the Any type.
@@ -1173,7 +1173,7 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
 class Any {
   /**
    * A URL/resource name whose content describes the type of the serialized
-   * message.
+   * protocol buffer message.
    *
    * For URLs which use the schema `http`, `https`, or no schema, the following
    * restrictions and interpretations apply:
@@ -1191,7 +1191,9 @@ class Any {
    * implementation specific semantics.
    */
   core.String typeUrl;
-  /** Must be valid serialized data of the above specified type. */
+  /**
+   * Must be a valid serialized protocol buffer of the above specified type.
+   */
   core.String value;
   core.List<core.int> get valueAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(value);
@@ -1298,7 +1300,7 @@ class Duration {
  * The maximum size of an execution message is 1 MiB.
  *
  * An Execution can be updated until its state is set to COMPLETE at which point
- * it becomes immutable. Next tag: 12
+ * it becomes immutable.
  */
 class Execution {
   /**
@@ -1499,7 +1501,7 @@ class FileReference {
  *
  * Note that the ordering only operates on one-dimension. If a repository has
  * multiple branches, it means that multiple histories will need to be used in
- * order to order Executions per branch. Next tag: 7
+ * order to order Executions per branch.
  */
 class History {
   /**
@@ -1554,11 +1556,7 @@ class History {
   }
 }
 
-/**
- * An image, with a link to the main image and a thumbnail.
- *
- * Next tag: 6
- */
+/** An image, with a link to the main image and a thumbnail. */
 class Image {
   /** An error explaining why the thumbnail could not be rendered. */
   Status error;
@@ -1634,7 +1632,6 @@ class InconclusiveDetail {
    * unclear whether the crash was related to the app under test.
    *
    * For example, OpenGL crashed, but it is unclear if the app is responsible.
-   * TODO(yinfu): Remove after all reference from TestService are deleted.
    */
   core.bool nativeCrash;
 
@@ -1667,7 +1664,6 @@ class InconclusiveDetail {
   }
 }
 
-/** Next tag: 3 */
 class ListExecutionsResponse {
   /**
    * Executions.
@@ -1744,11 +1740,7 @@ class ListHistoriesResponse {
   }
 }
 
-/**
- * A response containing the thumbnails in a step.
- *
- * Next tag: 3
- */
+/** A response containing the thumbnails in a step. */
 class ListStepThumbnailsResponse {
   /**
    * A continuation token to resume the query at the next item.
@@ -2026,6 +2018,32 @@ class SkippedDetail {
   }
 }
 
+/** A stacktrace. */
+class StackTrace {
+  /**
+   * The stack trace message.
+   *
+   * Required
+   */
+  core.String exception;
+
+  StackTrace();
+
+  StackTrace.fromJson(core.Map _json) {
+    if (_json.containsKey("exception")) {
+      exception = _json["exception"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (exception != null) {
+      _json["exception"] = exception;
+    }
+    return _json;
+  }
+}
+
 /**
  * The `Status` type defines a logical error model that is suitable for
  * different programming environments, including REST APIs and RPC APIs. It is
@@ -2142,8 +2160,6 @@ class Status {
  *
  * A Step can be updated until its state is set to COMPLETE at which points it
  * becomes immutable.
- *
- * Next tag: 20
  */
 class Step {
   /**
@@ -2536,6 +2552,17 @@ class TestCaseReference {
  */
 class TestExecutionStep {
   /**
+   * Issues observed during the test execution.
+   *
+   * For example, if the mobile app under test crashed during the test, the
+   * error message and the stack trace content can be recorded here to assist
+   * debugging.
+   *
+   * - In response: present if set by create or update - In create/update
+   * request: optional
+   */
+  core.List<TestIssue> testIssues;
+  /**
    * List of test suite overview contents. This could be parsed from xUnit XML
    * log by server, or uploaded directly by user. This references should only be
    * called when test suites are fully parsed or uploaded.
@@ -2565,6 +2592,9 @@ class TestExecutionStep {
   TestExecutionStep();
 
   TestExecutionStep.fromJson(core.Map _json) {
+    if (_json.containsKey("testIssues")) {
+      testIssues = _json["testIssues"].map((value) => new TestIssue.fromJson(value)).toList();
+    }
     if (_json.containsKey("testSuiteOverviews")) {
       testSuiteOverviews = _json["testSuiteOverviews"].map((value) => new TestSuiteOverview.fromJson(value)).toList();
     }
@@ -2578,6 +2608,9 @@ class TestExecutionStep {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (testIssues != null) {
+      _json["testIssues"] = testIssues.map((value) => (value).toJson()).toList();
+    }
     if (testSuiteOverviews != null) {
       _json["testSuiteOverviews"] = testSuiteOverviews.map((value) => (value).toJson()).toList();
     }
@@ -2591,6 +2624,40 @@ class TestExecutionStep {
   }
 }
 
+/** An abnormal event observed during the test execution. */
+class TestIssue {
+  /**
+   * A brief human-readable message describing the abnormal event.
+   *
+   * Required.
+   */
+  core.String errorMessage;
+  /** Optional. */
+  StackTrace stackTrace;
+
+  TestIssue();
+
+  TestIssue.fromJson(core.Map _json) {
+    if (_json.containsKey("errorMessage")) {
+      errorMessage = _json["errorMessage"];
+    }
+    if (_json.containsKey("stackTrace")) {
+      stackTrace = new StackTrace.fromJson(_json["stackTrace"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (errorMessage != null) {
+      _json["errorMessage"] = errorMessage;
+    }
+    if (stackTrace != null) {
+      _json["stackTrace"] = (stackTrace).toJson();
+    }
+    return _json;
+  }
+}
+
 /**
  * A summary of a test suite result either parsed from XML or uploaded directly
  * by a user.
@@ -2598,8 +2665,6 @@ class TestExecutionStep {
  * Note: the API related comments are for StepService only. This message is also
  * being used in ExecutionService in a read only mode for the corresponding
  * step.
- *
- * Next tag: 7
  */
 class TestSuiteOverview {
   /**
@@ -2722,11 +2787,7 @@ class TestTiming {
   }
 }
 
-/**
- * A single thumbnail, with its size and format.
- *
- * Next tag: 102
- */
+/** A single thumbnail, with its size and format. */
 class Thumbnail {
   /**
    * The thumbnail's content type, i.e. "image/png".
@@ -2885,7 +2946,7 @@ class Timestamp {
 
 /**
  * An execution of an arbitrary tool. It could be a test runner or a tool
- * copying artifacts or deploying code. Next tag: 7
+ * copying artifacts or deploying code.
  */
 class ToolExecution {
   /**

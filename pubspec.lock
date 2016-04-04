@@ -2,58 +2,99 @@
 # See http://pub.dartlang.org/doc/glossary.html#lockfile
 packages:
   args:
-    description: args
+    description:
+      name: args
+      url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.3+1"
+    version: "0.13.4"
   async:
-    description: async
+    description:
+      name: async
+      url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.0"
+    version: "1.9.0"
   charcode:
-    description: charcode
+    description:
+      name: charcode
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
   collection:
-    description: collection
+    description:
+      name: collection
+      url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.0"
+    version: "1.5.1"
+  convert:
+    description:
+      name: convert
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   crypto:
-    description: crypto
+    description:
+      name: crypto
+      url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.1"
+    version: "1.0.0"
   discoveryapis_generator:
-    description: discoveryapis_generator
+    description:
+      name: discoveryapis_generator
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "0.7.2"
   http:
-    description: http
+    description:
+      name: http
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "0.11.3+3"
   http_parser:
-    description: http_parser
+    description:
+      name: http_parser
+      url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "2.2.1"
   path:
-    description: path
+    description:
+      name: path
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.9"
   source_span:
-    description: source_span
+    description:
+      name: source_span
+      url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.2"
   stack_trace:
-    description: stack_trace
+    description:
+      name: stack_trace
+      url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.0"
+    version: "1.6.4"
   stream_channel:
-    description: stream_channel
+    description:
+      name: stream_channel
+      url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.1"
+    version: "1.3.1"
   string_scanner:
-    description: string_scanner
+    description:
+      name: string_scanner
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.4+1"
+  typed_data:
+    description:
+      name: typed_data
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.2"
   yaml:
-    description: yaml
+    description:
+      name: yaml
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.8"
+sdk: ">=1.14.0 <2.0.0"

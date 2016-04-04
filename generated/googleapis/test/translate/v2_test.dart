@@ -51,14 +51,14 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1014() {
+buildUnnamed2957() {
   var o = new core.List<api.DetectionsResource>();
   o.add(buildDetectionsResource());
   o.add(buildDetectionsResource());
   return o;
 }
 
-checkUnnamed1014(core.List<api.DetectionsResource> o) {
+checkUnnamed2957(core.List<api.DetectionsResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDetectionsResource(o[0]);
   checkDetectionsResource(o[1]);
@@ -69,7 +69,7 @@ buildDetectionsListResponse() {
   var o = new api.DetectionsListResponse();
   buildCounterDetectionsListResponse++;
   if (buildCounterDetectionsListResponse < 3) {
-    o.detections = buildUnnamed1014();
+    o.detections = buildUnnamed2957();
   }
   buildCounterDetectionsListResponse--;
   return o;
@@ -78,7 +78,7 @@ buildDetectionsListResponse() {
 checkDetectionsListResponse(api.DetectionsListResponse o) {
   buildCounterDetectionsListResponse++;
   if (buildCounterDetectionsListResponse < 3) {
-    checkUnnamed1014(o.detections);
+    checkUnnamed2957(o.detections);
   }
   buildCounterDetectionsListResponse--;
 }
@@ -119,14 +119,14 @@ checkDetectionsResource(api.DetectionsResource o) {
   checkDetectionsResourceElement(o[1]);
 }
 
-buildUnnamed1015() {
+buildUnnamed2958() {
   var o = new core.List<api.LanguagesResource>();
   o.add(buildLanguagesResource());
   o.add(buildLanguagesResource());
   return o;
 }
 
-checkUnnamed1015(core.List<api.LanguagesResource> o) {
+checkUnnamed2958(core.List<api.LanguagesResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLanguagesResource(o[0]);
   checkLanguagesResource(o[1]);
@@ -137,7 +137,7 @@ buildLanguagesListResponse() {
   var o = new api.LanguagesListResponse();
   buildCounterLanguagesListResponse++;
   if (buildCounterLanguagesListResponse < 3) {
-    o.languages = buildUnnamed1015();
+    o.languages = buildUnnamed2958();
   }
   buildCounterLanguagesListResponse--;
   return o;
@@ -146,7 +146,7 @@ buildLanguagesListResponse() {
 checkLanguagesListResponse(api.LanguagesListResponse o) {
   buildCounterLanguagesListResponse++;
   if (buildCounterLanguagesListResponse < 3) {
-    checkUnnamed1015(o.languages);
+    checkUnnamed2958(o.languages);
   }
   buildCounterLanguagesListResponse--;
 }
@@ -172,14 +172,14 @@ checkLanguagesResource(api.LanguagesResource o) {
   buildCounterLanguagesResource--;
 }
 
-buildUnnamed1016() {
+buildUnnamed2959() {
   var o = new core.List<api.TranslationsResource>();
   o.add(buildTranslationsResource());
   o.add(buildTranslationsResource());
   return o;
 }
 
-checkUnnamed1016(core.List<api.TranslationsResource> o) {
+checkUnnamed2959(core.List<api.TranslationsResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslationsResource(o[0]);
   checkTranslationsResource(o[1]);
@@ -190,7 +190,7 @@ buildTranslationsListResponse() {
   var o = new api.TranslationsListResponse();
   buildCounterTranslationsListResponse++;
   if (buildCounterTranslationsListResponse < 3) {
-    o.translations = buildUnnamed1016();
+    o.translations = buildUnnamed2959();
   }
   buildCounterTranslationsListResponse--;
   return o;
@@ -199,7 +199,7 @@ buildTranslationsListResponse() {
 checkTranslationsListResponse(api.TranslationsListResponse o) {
   buildCounterTranslationsListResponse++;
   if (buildCounterTranslationsListResponse < 3) {
-    checkUnnamed1016(o.translations);
+    checkUnnamed2959(o.translations);
   }
   buildCounterTranslationsListResponse--;
 }
@@ -225,40 +225,40 @@ checkTranslationsResource(api.TranslationsResource o) {
   buildCounterTranslationsResource--;
 }
 
-buildUnnamed1017() {
+buildUnnamed2960() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1017(core.List<core.String> o) {
+checkUnnamed2960(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1018() {
+buildUnnamed2961() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1018(core.List<core.String> o) {
+checkUnnamed2961(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1019() {
+buildUnnamed2962() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1019(core.List<core.String> o) {
+checkUnnamed2962(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -334,7 +334,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.DetectionsResourceApi res = new api.TranslateApi(mock).detections;
-      var arg_q = buildUnnamed1017();
+      var arg_q = buildUnnamed2960();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -436,9 +436,9 @@ main() {
 
       var mock = new HttpServerMock();
       api.TranslationsResourceApi res = new api.TranslateApi(mock).translations;
-      var arg_q = buildUnnamed1018();
+      var arg_q = buildUnnamed2961();
       var arg_target = "foo";
-      var arg_cid = buildUnnamed1019();
+      var arg_cid = buildUnnamed2962();
       var arg_format = "foo";
       var arg_source = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {

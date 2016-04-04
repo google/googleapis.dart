@@ -15,7 +15,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client datastore/v1beta2';
 
-/** API for accessing Google Cloud Datastore. */
+/** Stores and queries data in Google Cloud Datastore. */
 class DatastoreApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";

@@ -26,7 +26,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/K0urKFIju1s7Sdw5a9XX-KoLHWg\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/gx3VB88GA2SUp8vqJdEjYk7aw9o\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -529,7 +529,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Deletes a dataset.",
+                    "description": "Deletes a dataset and all of its contents (all read group sets, reference sets, variant sets, call sets, annotation sets, etc.) This is reversible (up to one week after the deletion) via the UndeleteDataset operation.",
                     "httpMethod": "DELETE",
                     "id": "genomics.datasets.delete",
                     "parameterOrder": [
@@ -1369,7 +1369,7 @@
                     ]
                 },
                 "importVariants": {
-                    "description": "Creates variant data by asynchronously importing the provided information.\n\nThe variants for import will be merged with any existing data and each other according to the behavior of mergeVariants. In particular, this means for merged VCF variants that have conflicting info fields, some data will be arbitrarily discarded. As a special case, for single-sample VCF files, QUAL and FILTER fields will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers are appended to the metadata already in a variant set.",
+                    "description": "Creates variant data by asynchronously importing the provided information.\n\nThe variants for import will be merged with any existing data and each other according to the behavior of mergeVariants. In particular, this means for merged VCF variants that have conflicting info fields, some data will be arbitrarily discarded unless otherwise specified in the InfoMergeConfig field of ImportVariantsRequest. As a special case, for single-sample VCF files, QUAL and FILTER fields will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers are appended to the metadata already in a variant set.",
                     "httpMethod": "POST",
                     "id": "genomics.variantsets.importVariants",
                     "parameterOrder": [
@@ -1397,7 +1397,7 @@
                     ]
                 },
                 "mergeVariants": {
-                    "description": "Merges the given variants with existing variants. Each variant will be merged with an existing variant that matches its reference sequence, start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created.\n\nWhen variants are merged, the call information from the new variant is added to the existing variant, and other fields (such as key/value pairs) are discarded.",
+                    "description": "Merges the given variants with existing variants. Each variant will be merged with an existing variant that matches its reference sequence, start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created.\n\nWhen variants are merged, the call information from the new variant is added to the existing variant. Variant info fields are merged as specified in the InfoMergeConfig field of the MergeVariantsRequest.",
                     "httpMethod": "POST",
                     "id": "genomics.variantsets.mergeVariants",
                     "parameterOrder": [
@@ -1494,7 +1494,7 @@
             }
         }
     },
-    "revision": "20160309",
+    "revision": "20160328",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -2401,7 +2401,7 @@
             "type": "object"
         },
         "QueryRange": {
-            "description": "A 0-based half-open genomic coordinate range for search requests.",
+            "description": "A 0-based half-open genomic coordinate range for search requests. reference_id or reference_name must be set.",
             "id": "QueryRange",
             "properties": {
                 "end": {
@@ -2410,11 +2410,11 @@
                     "type": "string"
                 },
                 "referenceId": {
-                    "description": "The ID of the reference to query. At most one of referenceId and referenceName should be specified.",
+                    "description": "The ID of the reference to query.",
                     "type": "string"
                 },
                 "referenceName": {
-                    "description": "The name of the reference to query, within the reference set associated with this query. At most one of referenceId and referenceName pshould be specified.",
+                    "description": "The name of the reference to query, within the reference set associated with this query.",
                     "type": "string"
                 },
                 "start": {

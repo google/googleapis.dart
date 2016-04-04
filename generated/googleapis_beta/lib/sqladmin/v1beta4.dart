@@ -14,7 +14,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client sqladmin/v1beta4';
 
-/** API for Cloud SQL database instance management. */
+/**
+ * Creates and configures Cloud SQL instances, which provide fully-managed MySQL
+ * databases.
+ */
 class SqladminApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -2488,9 +2491,10 @@ class DatabaseInstance {
    */
   core.String currentDiskSize;
   /**
-   * The database engine type and version. Can be MYSQL_5_5 or MYSQL_5_6.
-   * Defaults to MYSQL_5_6. The databaseVersion can not be changed after
-   * instance creation.
+   * The database engine type and version. The databaseVersion can not be
+   * changed after instance creation. Can be MYSQL_5_5, MYSQL_5_6 or MYSQL_5_7.
+   * Defaults to MYSQL_5_6. MYSQL_5_7 is applicable only to Second Generation
+   * instances.
    */
   core.String databaseVersion;
   /** HTTP 1.1 Entity tag for the resource. */
@@ -2923,7 +2927,7 @@ class Flag {
   core.List<core.String> allowedStringValues;
   /**
    * The database version this flag applies to. Can be MYSQL_5_5, MYSQL_5_6, or
-   * both.
+   * MYSQL_5_7. MYSQL_5_7 is applicable only to Second Generation instances.
    */
   core.List<core.String> appliesTo;
   /** This is always sql#flag. */

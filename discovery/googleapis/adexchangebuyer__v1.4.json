@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/vcHwFj9oUgGXFm1JrBjoH-LeGlY\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/8LJ6NH-SkmG6IW8fPAoQYMmK1DI\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -666,6 +666,33 @@
                 }
             }
         },
+        "marketplaceprivateauction": {
+            "methods": {
+                "updateproposal": {
+                    "description": "Update a given private auction proposal",
+                    "httpMethod": "POST",
+                    "id": "adexchangebuyer.marketplaceprivateauction.updateproposal",
+                    "parameterOrder": [
+                        "privateAuctionId"
+                    ],
+                    "parameters": {
+                        "privateAuctionId": {
+                            "description": "The private auction id to be updated.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "privateauction/{privateAuctionId}/updateproposal",
+                    "request": {
+                        "$ref": "UpdatePrivateAuctionProposalRequest"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                }
+            }
+        },
         "performanceReport": {
             "methods": {
                 "list": {
@@ -1173,7 +1200,7 @@
             }
         }
     },
-    "revision": "20160229",
+    "revision": "20160318",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -2838,6 +2865,10 @@
                     "description": "The unique id for the product (readonly)",
                     "type": "string"
                 },
+                "publisherProfileId": {
+                    "description": "Id of the publisher profile for a given seller. A (seller.account_id, publisher_profile_id) pair uniquely identifies a publisher profile. Buyers can call the PublisherProfiles::List endpoint to get a list of publisher profiles for a given seller.",
+                    "type": "string"
+                },
                 "revisionNumber": {
                     "description": "The revision number of the product. (readonly)",
                     "format": "int64",
@@ -2867,6 +2898,7 @@
                     "description": "The negotiable terms of the deal (buyer-readonly)"
                 },
                 "webPropertyCode": {
+                    "description": "The web property code for the seller. This field is meant to be copied over as is when creating deals.",
                     "type": "string"
                 }
             },
@@ -2985,6 +3017,10 @@
         "PublisherProfileApiProto": {
             "id": "PublisherProfileApiProto",
             "properties": {
+                "accountId": {
+                    "description": "The account id of the seller.",
+                    "type": "string"
+                },
                 "buyerPitchStatement": {
                     "description": "A pitch statement for the buyer",
                     "type": "string"
@@ -3018,7 +3054,7 @@
                     "type": "string"
                 },
                 "profileId": {
-                    "description": "Unique id for the publisher profile",
+                    "description": "The pair of (seller.account_id, profile_id) uniquely identifies a publisher profile for a given publisher.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -3181,6 +3217,29 @@
                     "description": "The width of the creative.",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "UpdatePrivateAuctionProposalRequest": {
+            "id": "UpdatePrivateAuctionProposalRequest",
+            "properties": {
+                "externalDealId": {
+                    "description": "The externalDealId of the deal to be updated.",
+                    "type": "string"
+                },
+                "note": {
+                    "$ref": "MarketplaceNote",
+                    "description": "Optional note to be added."
+                },
+                "proposalRevisionNumber": {
+                    "description": "The current revision number of the proposal to be updated.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "updateAction": {
+                    "description": "The proposed action on the private auction proposal.",
+                    "type": "string"
                 }
             },
             "type": "object"

@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/qdR5HEHJhhTboLmviMb9i6Ga2UY\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/KM1uW9aa1iyrzYehL6ORIqINM14\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20160229",
+    "revision": "20160318",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1223,6 +1223,11 @@
                 "allowsAlcohol": {
                     "description": "Whether the publisher for this deal is eligible for alcohol ads.",
                     "type": "boolean"
+                },
+                "buyerAccountId": {
+                    "description": "The account id that this deal was negotiated for. It is either the buyer or the client that this deal was negotiated on behalf of.",
+                    "format": "int64",
+                    "type": "string"
                 },
                 "currencyCode": {
                     "description": "The currency code that applies to the fixed_cpm value. If not set then assumed to be USD.",

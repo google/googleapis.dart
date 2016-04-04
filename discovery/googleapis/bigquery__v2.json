@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/eSPju3c2Pyt6CcnQAdTDIxZaY3k\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/9g2xXBM9B-0Yx9Ljtgkffd2LOxM\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -933,7 +933,7 @@
             }
         }
     },
-    "revision": "20160304",
+    "revision": "20160331",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BigtableColumn": {
@@ -1091,7 +1091,7 @@
                     "description": "[Required] A reference that identifies the dataset."
                 },
                 "defaultTableExpirationMs": {
-                    "description": "[Experimental] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.",
+                    "description": "[Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -1417,6 +1417,19 @@
             },
             "type": "object"
         },
+        "IntervalPartitionConfiguration": {
+            "id": "IntervalPartitionConfiguration",
+            "properties": {
+                "expirationMs": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Job": {
             "id": "Job",
             "properties": {
@@ -1606,7 +1619,7 @@
                     "type": "integer"
                 },
                 "sourceFormat": {
-                    "description": "[Optional] The format of the data files. For CSV files, specify \"CSV\". For datastore backups, specify \"DATASTORE_BACKUP\". For newline-delimited JSON, specify \"NEWLINE_DELIMITED_JSON\". The default value is CSV.",
+                    "description": "[Optional] The format of the data files. For CSV files, specify \"CSV\". For datastore backups, specify \"DATASTORE_BACKUP\". For newline-delimited JSON, specify \"NEWLINE_DELIMITED_JSON\". For Avro, specify \"AVRO\". The default value is CSV.",
                     "type": "string"
                 },
                 "sourceUris": {
@@ -2212,6 +2225,13 @@
                     "format": "uint64",
                     "type": "string"
                 },
+                "partitionConfigurations": {
+                    "description": "[Experimental] List of partition configurations for this table. Currently only one configuration can be specified and it can only be an interval partition with type daily.",
+                    "items": {
+                        "$ref": "TablePartitionConfiguration"
+                    },
+                    "type": "array"
+                },
                 "schema": {
                     "$ref": "TableSchema",
                     "description": "[Optional] Describes the schema of this table."
@@ -2374,7 +2394,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "[Required] The field data type. Possible values include STRING, INTEGER, FLOAT, BOOLEAN, TIMESTAMP or RECORD (where RECORD indicates that the field contains a nested schema).",
+                    "description": "[Required] The field data type. Possible values include STRING, BYTES, INTEGER, FLOAT, BOOLEAN, TIMESTAMP or RECORD (where RECORD indicates that the field contains a nested schema).",
                     "type": "string"
                 }
             },
@@ -2430,6 +2450,17 @@
                     "description": "The total number of tables in the dataset.",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "TablePartitionConfiguration": {
+            "description": "[Required] A partition configuration. Only one type of partition should be configured.",
+            "id": "TablePartitionConfiguration",
+            "properties": {
+                "interval": {
+                    "$ref": "IntervalPartitionConfiguration",
+                    "description": "[Pick one] Configures an interval partition."
                 }
             },
             "type": "object"

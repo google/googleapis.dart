@@ -14,7 +14,7 @@
     "description": "Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/doubleclick-search/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/fZsPJo85UoWuzkqYF2Sn0RYAm-s\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/ojNzVSzxMdjZAQwAsCInrD7w3oA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -430,7 +430,7 @@
             }
         }
     },
-    "revision": "20160302",
+    "revision": "20160323",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Availability": {
@@ -513,7 +513,7 @@
                     "type": "string"
                 },
                 "attributionModel": {
-                    "description": "This field is ignored.",
+                    "description": "Available to advertisers only after contacting DoubleClick Search customer support.",
                     "type": "string"
                 },
                 "campaignId": {
@@ -554,7 +554,7 @@
                     "type": "string"
                 },
                 "countMillis": {
-                    "description": "This field is ignored.",
+                    "description": "Available to advertisers only after contacting DoubleClick Search customer support.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -627,7 +627,7 @@
                     "type": "string"
                 },
                 "revenueMicros": {
-                    "description": "The revenue amount of this TRANSACTION conversion, in micros (value multiplied by 1000, no decimal). For example, to specify a revenue value of \"10\" enter \"10000\" in your request.",
+                    "description": "The revenue amount of this TRANSACTION conversion, in micros (value multiplied by 1000000, no decimal). For example, to specify a revenue value of \"10\" enter \"10000000\" (10 million) in your request.",
                     "format": "int64",
                     "type": "string"
                 },

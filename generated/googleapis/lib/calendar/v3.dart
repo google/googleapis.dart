@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client calendar/v3';
 
-/** Lets you manipulate events and other calendar data. */
+/** Manipulates events and other calendar data. */
 class CalendarApi {
   /** Manage your calendars */
   static const CalendarScope = "https://www.googleapis.com/auth/calendar";

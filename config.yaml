@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.24.0
+    version: 0.25.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -13,7 +13,6 @@ packages:
     - adexchangeseller:v2.0  # https://developers.google.com/ad-exchange/seller-rest/
     - admin:datatransfer_v1 # https://developers.google.com/admin-sdk/data-transfer/
     - admin:directory_v1  # https://developers.google.com/admin-sdk/directory/
-    - admin:email_migration_v2  #https://developers.google.com/admin-sdk/email-migration/
     - admin:reports_v1  # https://developers.google.com/admin-sdk/reports/
     - adsensehost:v4.1  # https://developers.google.com/adsense/host/
     - adsense:v1.4  # https://developers.google.com/adsense/management/
@@ -69,6 +68,7 @@ packages:
     - kgsearch:v1  # https://developers.google.com/knowledge-graph/
     - licensing:v1  # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
     - mirror:v1  # https://developers.google.com/glass/develop/mirror/
+    - monitoring:v3
     - oauth2:v2  # https://developers.google.com/accounts/docs/OAuth2UserAgent
     - pagespeedonline:v1  # https://developers.google.com/speed/docs/insights/about
     - pagespeedonline:v2  # https://developers.google.com/speed/docs/insights/about
@@ -97,7 +97,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.24.0
+    version: 0.25.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -113,8 +113,8 @@ packages:
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
     - datastore:v1beta2  # https://developers.google.com/datastore/
     - dataproc:v1beta1 # https://cloud.google.com/dataproc/
-    - deploymentmanager:v2beta1  # https://cloud.google.com/deployment-manager/
     - deploymentmanager:v2beta2  # https://cloud.google.com/deployment-manager/
+    - dfareporting:v2.5beta1  # https://developers.google.com/doubleclick-advertisers/reporting/
     - genomics:v1beta2  # https://developers.google.com/genomics/
     - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging
     - manager:v1beta2  # https://developers.google.com/deployment-manager/
@@ -151,7 +151,6 @@ skipped_apis:
 - drive:v1  # v2 included
 - gan:v1beta1  # Deprecated as of April 16, 2013, https://developers.google.com/affiliate-network/
 - genomics:v1alpha2 # v1 included
-- mapsengine:exp2  # v1 included
 - oauth2:v1  # v2 included
 - prediction:v1.2  # v1.6 included
 - prediction:v1.3  # v1.6 included
@@ -159,6 +158,7 @@ skipped_apis:
 - prediction:v1.5  # v1.6 included
 - pubsub:v1beta1a  # v1beta1, v1bets2 and v1 included
 - replicapool:v1beta1  # Deprecated
+- serviceregistry:alpha  # Don't include alpha APIs
 - spectrum:v1explorer  # Not included, https://developers.google.com/spectrum/
 - storage:v1beta1  # v1 included
 - storage:v1beta2  # v1 included

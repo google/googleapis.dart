@@ -70,13 +70,13 @@ package.
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1beta4
 
-The Google App Engine Admin API enables developers to provision and manage their App Engine applications.
+Provisions and manages App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1beta5
 
-The Google App Engine Admin API enables developers to provision and manage their App Engine applications.
+Provisions and manages App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
@@ -106,7 +106,7 @@ Official API documentation: https://cloud.google.com/compute/docs/access/user-ac
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Dataflow API - dataflow v1b3
 
-Google Dataflow API.
+Develops and executes data processing patterns like ETL, batch computation, and continuous computation.
 
 Official API documentation: https://cloud.google.com/dataflow
 
@@ -118,21 +118,21 @@ Official API documentation: https://cloud.google.com/dataproc/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Datastore API - datastore v1beta2
 
-API for accessing Google Cloud Datastore.
+Stores and queries data in Google Cloud Datastore.
 
 Official API documentation: https://developers.google.com/datastore/
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Deployment Manager API - deploymentmanager v2beta1
-
-The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
-
-Official API documentation: https://developers.google.com/deployment-manager/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Deployment Manager API - deploymentmanager v2beta2
 
 The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
 
 Official API documentation: https://developers.google.com/deployment-manager/
+
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.5beta1
+
+Manages your DoubleClick Campaign Manager ad campaigns and reports.
+
+Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1beta2
 
@@ -142,7 +142,7 @@ Official API documentation: https://developers.google.com/genomics/v1beta2/refer
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v2beta1
 
-The Google Cloud Logging API lets you write log entries and manage your logs, log sinks and logs-based metrics.
+Writes log entries and manages your logs, log sinks, and logs-based metrics.
 
 Official API documentation: https://cloud.google.com/logging/docs/
 
@@ -190,13 +190,13 @@ Official API documentation: https://developers.google.com/compute/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud SQL Administration API - sqladmin v1beta3
 
-API for Cloud SQL database instance management.
+Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.
 
 Official API documentation: https://cloud.google.com/sql/docs/reference/latest
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud SQL Administration API - sqladmin v1beta4
 
-API for Cloud SQL database instance management.
+Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.
 
 Official API documentation: https://cloud.google.com/sql/docs/reference/latest
 

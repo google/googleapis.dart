@@ -20,10 +20,10 @@
     "basePath": "/",
     "baseUrl": "https://www.googleapis.com/",
     "batchPath": "batch",
-    "description": "Lets you access OAuth2 protocol related APIs.",
+    "description": "Obtains end-user authorization grants for use with other Google APIs.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/accounts/docs/OAuth2",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/x_XzcmeoKnijhPh0Qy2TxVp6WB4\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/T5I7F3FwtX0A3wJvZkMKl41JRAU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -155,7 +155,7 @@
             }
         }
     },
-    "revision": "20160217",
+    "revision": "20160316",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Jwk": {

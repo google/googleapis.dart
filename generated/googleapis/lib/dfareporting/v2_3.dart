@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client dfareporting/v2.3';
 
-/** Manage your DoubleClick Campaign Manager ad campaigns and reports. */
+/** Manages your DoubleClick Campaign Manager ad campaigns and reports. */
 class DfareportingApi {
   /** View and manage DoubleClick for Advertisers reports */
   static const DfareportingScope = "https://www.googleapis.com/auth/dfareporting";
@@ -8248,7 +8248,7 @@ class PlacementsResourceApi {
    * [compatibilities] - Select only placements that are associated with these
    * compatibilities. WEB and WEB_INTERSTITIAL refer to rendering either on
    * desktop or on mobile devices for regular or interstitial ads respectively.
-   * APP and APP_INTERSTITIAL are for rendering in mobile apps.IN_STREAM_VIDEO
+   * APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO
    * refers to rendering in in-stream video ads developed with the VAST
    * standard.
    *
@@ -11972,6 +11972,7 @@ class AccountUserProfile {
    * Possible string values are:
    * - "INTERNAL_ADMINISTRATOR"
    * - "NORMAL_USER"
+   * - "READ_ONLY_SUPER_USER"
    * - "SUPER_USER"
    */
   core.String userAccessType;
@@ -21647,9 +21648,9 @@ class Placement {
   /**
    * Placement compatibility. WEB and WEB_INTERSTITIAL refer to rendering either
    * on desktop or on mobile devices for regular or interstitial ads,
-   * respectively. APP and APP_INTERSTITIAL are for rendering in mobile
-   * apps.IN_STREAM_VIDEO refers to rendering in in-stream video ads developed
-   * with the VAST standard. This field is required on insertion.
+   * respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps.
+   * IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with
+   * the VAST standard. This field is required on insertion.
    * Possible string values are:
    * - "APP"
    * - "APP_INTERSTITIAL"

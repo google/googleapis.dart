@@ -14,10 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client appengine/v1beta5';
 
-/**
- * The Google App Engine Admin API enables developers to provision and manage
- * their App Engine applications.
- */
+/** Provisions and manages App Engine applications. */
 class AppengineApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -662,7 +659,7 @@ class AppsServicesVersionsResourceApi {
    *
    * [mask] - Standard field mask for the set of fields to be updated.
    *
-   * Completes with a [Version].
+   * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -670,7 +667,7 @@ class AppsServicesVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Version> patch(Version request, core.String appsId, core.String servicesId, core.String versionsId, {core.String mask}) {
+  async.Future<Operation> patch(Version request, core.String appsId, core.String servicesId, core.String versionsId, {core.String mask}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -703,7 +700,7 @@ class AppsServicesVersionsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Version.fromJson(data));
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
 }
@@ -831,7 +828,9 @@ class Application {
    * content. @OutputOnly
    */
   core.String defaultBucket;
-  /** Determines the cookie expiration policy for the application. */
+  /**
+   * Determines the cookie expiration policy for the application. @OutputOnly
+   */
   core.String defaultCookieExpiration;
   /**
    * The hostname used to reach the application, as resolved by App Engine.
@@ -840,17 +839,17 @@ class Application {
   core.String defaultHostname;
   /**
    * HTTP path dispatch rules for requests to the app that do not explicitly
-   * target a service or version. The rules are order-dependent.
+   * target a service or version. The rules are order-dependent. @OutputOnly
    */
   core.List<UrlDispatchRule> dispatchRules;
   /** The relative name/path of the application. Example: "myapp". */
   core.String id;
   /**
-   * The location from which the application will be run. Choices are "us" for
-   * United States and "eu" for European Union. Application instances will run
-   * out of data centers in the chosen location and all of the application's End
-   * User Content will be stored at rest in the chosen location. The default is
-   * "us".
+   * The location from which the application will be run. Application instances
+   * will run out of data centers in the chosen location and all of the
+   * application's End User Content will be stored at rest. The default is
+   * "us-central". Choices are: "us-central" - Central US "europe-west" -
+   * Western Europe "us-east1" - Eastern US
    */
   core.String location;
   /**
@@ -1695,8 +1694,8 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
   /**
    * The server-assigned name, which is only unique within the same service that
-   * originally returns it. If you use the default HTTP mapping above, the
-   * `name` should have the format of `operations/some/unique/name`.
+   * originally returns it. If you use the default HTTP mapping, the `name`
+   * should have the format of `operations/some/unique/name`.
    */
   core.String name;
   /**

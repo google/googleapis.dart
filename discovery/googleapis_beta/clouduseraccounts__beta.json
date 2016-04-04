@@ -24,7 +24,7 @@
     "description": "Creates and manages users and groups for accessing Google Compute Engine virtual machines.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/access/user-accounts/api/latest/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/ArwdpEDWxk7RtOVu3u_AydEhsc0\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/-BiORd5nMN3AbHTR5Pi2H1JslEk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -778,7 +778,7 @@
             }
         }
     },
-    "revision": "20160301",
+    "revision": "20160316",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AuthorizedKeysView": {
@@ -1070,7 +1070,7 @@
                 },
                 "kind": {
                     "default": "clouduseraccounts#operation",
-                    "description": "[Output Only] Type of the resource. Always compute#operation for operation resources.",
+                    "description": "[Output Only] Type of the resource. Always compute#operation for Operation resources.",
                     "type": "string"
                 },
                 "name": {

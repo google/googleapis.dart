@@ -224,14 +224,19 @@ class Groups {
    */
   core.String spamModerationLevel;
   /**
-   * Permission to contact owner of the group via web UI. Possbile values are:
+   * Permissions to add members. Possible values are: ALL_MANAGERS_CAN_ADD
+   * ALL_MEMBERS_CAN_ADD NONE_CAN_ADD
+   */
+  core.String whoCanAdd;
+  /**
+   * Permission to contact owner of the group via web UI. Possible values are:
    * ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT
    * ALL_MANAGERS_CAN_CONTACT
    */
   core.String whoCanContactOwner;
   /**
-   * Permissions to invite members. Possbile values are: ALL_MEMBERS_CAN_INVITE
-   * ALL_MANAGERS_CAN_INVITE
+   * Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE
+   * ALL_MANAGERS_CAN_INVITE NONE_CAN_INVITE
    */
   core.String whoCanInvite;
   /**
@@ -241,7 +246,7 @@ class Groups {
   core.String whoCanJoin;
   /**
    * Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE
-   * ALL_MEMBERS_CAN_LEAVE
+   * ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE
    */
   core.String whoCanLeaveGroup;
   /**
@@ -251,12 +256,12 @@ class Groups {
    */
   core.String whoCanPostMessage;
   /**
-   * Permissions to view group. Possbile values are: ANYONE_CAN_VIEW
+   * Permissions to view group. Possible values are: ANYONE_CAN_VIEW
    * ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
    */
   core.String whoCanViewGroup;
   /**
-   * Permissions to view membership. Possbile values are: ALL_IN_DOMAIN_CAN_VIEW
+   * Permissions to view membership. Possible values are: ALL_IN_DOMAIN_CAN_VIEW
    * ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
    */
   core.String whoCanViewMembership;
@@ -326,6 +331,9 @@ class Groups {
     }
     if (_json.containsKey("spamModerationLevel")) {
       spamModerationLevel = _json["spamModerationLevel"];
+    }
+    if (_json.containsKey("whoCanAdd")) {
+      whoCanAdd = _json["whoCanAdd"];
     }
     if (_json.containsKey("whoCanContactOwner")) {
       whoCanContactOwner = _json["whoCanContactOwner"];
@@ -414,6 +422,9 @@ class Groups {
     }
     if (spamModerationLevel != null) {
       _json["spamModerationLevel"] = spamModerationLevel;
+    }
+    if (whoCanAdd != null) {
+      _json["whoCanAdd"] = whoCanAdd;
     }
     if (whoCanContactOwner != null) {
       _json["whoCanContactOwner"] = whoCanContactOwner;

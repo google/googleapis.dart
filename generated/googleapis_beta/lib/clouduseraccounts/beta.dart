@@ -1767,7 +1767,7 @@ class Operation {
    */
   core.String insertTime;
   /**
-   * [Output Only] Type of the resource. Always compute#operation for operation
+   * [Output Only] Type of the resource. Always compute#operation for Operation
    * resources.
    */
   core.String kind;

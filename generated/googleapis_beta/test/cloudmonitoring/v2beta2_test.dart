@@ -89,14 +89,14 @@ checkListMetricDescriptorsRequest(api.ListMetricDescriptorsRequest o) {
   buildCounterListMetricDescriptorsRequest--;
 }
 
-buildUnnamed3413() {
+buildUnnamed3105() {
   var o = new core.List<api.MetricDescriptor>();
   o.add(buildMetricDescriptor());
   o.add(buildMetricDescriptor());
   return o;
 }
 
-checkUnnamed3413(core.List<api.MetricDescriptor> o) {
+checkUnnamed3105(core.List<api.MetricDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricDescriptor(o[0]);
   checkMetricDescriptor(o[1]);
@@ -108,7 +108,7 @@ buildListMetricDescriptorsResponse() {
   buildCounterListMetricDescriptorsResponse++;
   if (buildCounterListMetricDescriptorsResponse < 3) {
     o.kind = "foo";
-    o.metrics = buildUnnamed3413();
+    o.metrics = buildUnnamed3105();
     o.nextPageToken = "foo";
   }
   buildCounterListMetricDescriptorsResponse--;
@@ -119,7 +119,7 @@ checkListMetricDescriptorsResponse(api.ListMetricDescriptorsResponse o) {
   buildCounterListMetricDescriptorsResponse++;
   if (buildCounterListMetricDescriptorsResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3413(o.metrics);
+    checkUnnamed3105(o.metrics);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListMetricDescriptorsResponse--;
@@ -144,14 +144,14 @@ checkListTimeseriesDescriptorsRequest(api.ListTimeseriesDescriptorsRequest o) {
   buildCounterListTimeseriesDescriptorsRequest--;
 }
 
-buildUnnamed3414() {
+buildUnnamed3106() {
   var o = new core.List<api.TimeseriesDescriptor>();
   o.add(buildTimeseriesDescriptor());
   o.add(buildTimeseriesDescriptor());
   return o;
 }
 
-checkUnnamed3414(core.List<api.TimeseriesDescriptor> o) {
+checkUnnamed3106(core.List<api.TimeseriesDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeseriesDescriptor(o[0]);
   checkTimeseriesDescriptor(o[1]);
@@ -165,7 +165,7 @@ buildListTimeseriesDescriptorsResponse() {
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.oldest = core.DateTime.parse("2002-02-27T14:01:02");
-    o.timeseries = buildUnnamed3414();
+    o.timeseries = buildUnnamed3106();
     o.youngest = core.DateTime.parse("2002-02-27T14:01:02");
   }
   buildCounterListTimeseriesDescriptorsResponse--;
@@ -178,7 +178,7 @@ checkListTimeseriesDescriptorsResponse(api.ListTimeseriesDescriptorsResponse o) 
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.oldest, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed3414(o.timeseries);
+    checkUnnamed3106(o.timeseries);
     unittest.expect(o.youngest, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
   }
   buildCounterListTimeseriesDescriptorsResponse--;
@@ -203,14 +203,14 @@ checkListTimeseriesRequest(api.ListTimeseriesRequest o) {
   buildCounterListTimeseriesRequest--;
 }
 
-buildUnnamed3415() {
+buildUnnamed3107() {
   var o = new core.List<api.Timeseries>();
   o.add(buildTimeseries());
   o.add(buildTimeseries());
   return o;
 }
 
-checkUnnamed3415(core.List<api.Timeseries> o) {
+checkUnnamed3107(core.List<api.Timeseries> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeseries(o[0]);
   checkTimeseries(o[1]);
@@ -224,7 +224,7 @@ buildListTimeseriesResponse() {
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.oldest = core.DateTime.parse("2002-02-27T14:01:02");
-    o.timeseries = buildUnnamed3415();
+    o.timeseries = buildUnnamed3107();
     o.youngest = core.DateTime.parse("2002-02-27T14:01:02");
   }
   buildCounterListTimeseriesResponse--;
@@ -237,20 +237,20 @@ checkListTimeseriesResponse(api.ListTimeseriesResponse o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.oldest, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed3415(o.timeseries);
+    checkUnnamed3107(o.timeseries);
     unittest.expect(o.youngest, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
   }
   buildCounterListTimeseriesResponse--;
 }
 
-buildUnnamed3416() {
+buildUnnamed3108() {
   var o = new core.List<api.MetricDescriptorLabelDescriptor>();
   o.add(buildMetricDescriptorLabelDescriptor());
   o.add(buildMetricDescriptorLabelDescriptor());
   return o;
 }
 
-checkUnnamed3416(core.List<api.MetricDescriptorLabelDescriptor> o) {
+checkUnnamed3108(core.List<api.MetricDescriptorLabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricDescriptorLabelDescriptor(o[0]);
   checkMetricDescriptorLabelDescriptor(o[1]);
@@ -262,7 +262,7 @@ buildMetricDescriptor() {
   buildCounterMetricDescriptor++;
   if (buildCounterMetricDescriptor < 3) {
     o.description = "foo";
-    o.labels = buildUnnamed3416();
+    o.labels = buildUnnamed3108();
     o.name = "foo";
     o.project = "foo";
     o.typeDescriptor = buildMetricDescriptorTypeDescriptor();
@@ -275,7 +275,7 @@ checkMetricDescriptor(api.MetricDescriptor o) {
   buildCounterMetricDescriptor++;
   if (buildCounterMetricDescriptor < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed3416(o.labels);
+    checkUnnamed3108(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.project, unittest.equals('foo'));
     checkMetricDescriptorTypeDescriptor(o.typeDescriptor);
@@ -356,14 +356,14 @@ checkPoint(api.Point o) {
   buildCounterPoint--;
 }
 
-buildUnnamed3417() {
+buildUnnamed3109() {
   var o = new core.List<api.PointDistributionBucket>();
   o.add(buildPointDistributionBucket());
   o.add(buildPointDistributionBucket());
   return o;
 }
 
-checkUnnamed3417(core.List<api.PointDistributionBucket> o) {
+checkUnnamed3109(core.List<api.PointDistributionBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPointDistributionBucket(o[0]);
   checkPointDistributionBucket(o[1]);
@@ -374,7 +374,7 @@ buildPointDistribution() {
   var o = new api.PointDistribution();
   buildCounterPointDistribution++;
   if (buildCounterPointDistribution < 3) {
-    o.buckets = buildUnnamed3417();
+    o.buckets = buildUnnamed3109();
     o.overflowBucket = buildPointDistributionOverflowBucket();
     o.underflowBucket = buildPointDistributionUnderflowBucket();
   }
@@ -385,7 +385,7 @@ buildPointDistribution() {
 checkPointDistribution(api.PointDistribution o) {
   buildCounterPointDistribution++;
   if (buildCounterPointDistribution < 3) {
-    checkUnnamed3417(o.buckets);
+    checkUnnamed3109(o.buckets);
     checkPointDistributionOverflowBucket(o.overflowBucket);
     checkPointDistributionUnderflowBucket(o.underflowBucket);
   }
@@ -457,14 +457,14 @@ checkPointDistributionUnderflowBucket(api.PointDistributionUnderflowBucket o) {
   buildCounterPointDistributionUnderflowBucket--;
 }
 
-buildUnnamed3418() {
+buildUnnamed3110() {
   var o = new core.List<api.Point>();
   o.add(buildPoint());
   o.add(buildPoint());
   return o;
 }
 
-checkUnnamed3418(core.List<api.Point> o) {
+checkUnnamed3110(core.List<api.Point> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPoint(o[0]);
   checkPoint(o[1]);
@@ -475,7 +475,7 @@ buildTimeseries() {
   var o = new api.Timeseries();
   buildCounterTimeseries++;
   if (buildCounterTimeseries < 3) {
-    o.points = buildUnnamed3418();
+    o.points = buildUnnamed3110();
     o.timeseriesDesc = buildTimeseriesDescriptor();
   }
   buildCounterTimeseries--;
@@ -485,20 +485,20 @@ buildTimeseries() {
 checkTimeseries(api.Timeseries o) {
   buildCounterTimeseries++;
   if (buildCounterTimeseries < 3) {
-    checkUnnamed3418(o.points);
+    checkUnnamed3110(o.points);
     checkTimeseriesDescriptor(o.timeseriesDesc);
   }
   buildCounterTimeseries--;
 }
 
-buildUnnamed3419() {
+buildUnnamed3111() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3419(core.Map<core.String, core.String> o) {
+checkUnnamed3111(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -509,7 +509,7 @@ buildTimeseriesDescriptor() {
   var o = new api.TimeseriesDescriptor();
   buildCounterTimeseriesDescriptor++;
   if (buildCounterTimeseriesDescriptor < 3) {
-    o.labels = buildUnnamed3419();
+    o.labels = buildUnnamed3111();
     o.metric = "foo";
     o.project = "foo";
   }
@@ -520,7 +520,7 @@ buildTimeseriesDescriptor() {
 checkTimeseriesDescriptor(api.TimeseriesDescriptor o) {
   buildCounterTimeseriesDescriptor++;
   if (buildCounterTimeseriesDescriptor < 3) {
-    checkUnnamed3419(o.labels);
+    checkUnnamed3111(o.labels);
     unittest.expect(o.metric, unittest.equals('foo'));
     unittest.expect(o.project, unittest.equals('foo'));
   }
@@ -569,27 +569,27 @@ checkTimeseriesPoint(api.TimeseriesPoint o) {
   buildCounterTimeseriesPoint--;
 }
 
-buildUnnamed3420() {
+buildUnnamed3112() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3420(core.Map<core.String, core.String> o) {
+checkUnnamed3112(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3421() {
+buildUnnamed3113() {
   var o = new core.List<api.TimeseriesPoint>();
   o.add(buildTimeseriesPoint());
   o.add(buildTimeseriesPoint());
   return o;
 }
 
-checkUnnamed3421(core.List<api.TimeseriesPoint> o) {
+checkUnnamed3113(core.List<api.TimeseriesPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeseriesPoint(o[0]);
   checkTimeseriesPoint(o[1]);
@@ -600,8 +600,8 @@ buildWriteTimeseriesRequest() {
   var o = new api.WriteTimeseriesRequest();
   buildCounterWriteTimeseriesRequest++;
   if (buildCounterWriteTimeseriesRequest < 3) {
-    o.commonLabels = buildUnnamed3420();
-    o.timeseries = buildUnnamed3421();
+    o.commonLabels = buildUnnamed3112();
+    o.timeseries = buildUnnamed3113();
   }
   buildCounterWriteTimeseriesRequest--;
   return o;
@@ -610,8 +610,8 @@ buildWriteTimeseriesRequest() {
 checkWriteTimeseriesRequest(api.WriteTimeseriesRequest o) {
   buildCounterWriteTimeseriesRequest++;
   if (buildCounterWriteTimeseriesRequest < 3) {
-    checkUnnamed3420(o.commonLabels);
-    checkUnnamed3421(o.timeseries);
+    checkUnnamed3112(o.commonLabels);
+    checkUnnamed3113(o.timeseries);
   }
   buildCounterWriteTimeseriesRequest--;
 }
@@ -635,27 +635,27 @@ checkWriteTimeseriesResponse(api.WriteTimeseriesResponse o) {
   buildCounterWriteTimeseriesResponse--;
 }
 
-buildUnnamed3422() {
+buildUnnamed3114() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3422(core.List<core.String> o) {
+checkUnnamed3114(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3423() {
+buildUnnamed3115() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3423(core.List<core.String> o) {
+checkUnnamed3115(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1008,7 +1008,7 @@ main() {
       var arg_youngest = "foo";
       var arg_aggregator = "foo";
       var arg_count = 42;
-      var arg_labels = buildUnnamed3422();
+      var arg_labels = buildUnnamed3114();
       var arg_oldest = "foo";
       var arg_pageToken = "foo";
       var arg_timespan = "foo";
@@ -1121,7 +1121,7 @@ main() {
       var arg_youngest = "foo";
       var arg_aggregator = "foo";
       var arg_count = 42;
-      var arg_labels = buildUnnamed3423();
+      var arg_labels = buildUnnamed3115();
       var arg_oldest = "foo";
       var arg_pageToken = "foo";
       var arg_timespan = "foo";

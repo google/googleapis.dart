@@ -14,7 +14,7 @@
     "description": "Lets you manage permission levels and related settings of a group.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/groups-settings/get_started",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/LB7tBnj-DijcSgrB8b68OQtvDh0\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Py5HOWHJ0CMbcB0y6Fw5QYwibOE\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -153,7 +153,7 @@
             }
         }
     },
-    "revision": "20140428",
+    "revision": "20160323",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Groups": {
@@ -246,12 +246,16 @@
                     "description": "Moderation level for messages detected as spam. Possible values are: ALLOW MODERATE SILENTLY_MODERATE REJECT",
                     "type": "string"
                 },
+                "whoCanAdd": {
+                    "description": "Permissions to add members. Possible values are: ALL_MANAGERS_CAN_ADD ALL_MEMBERS_CAN_ADD NONE_CAN_ADD",
+                    "type": "string"
+                },
                 "whoCanContactOwner": {
-                    "description": "Permission to contact owner of the group via web UI. Possbile values are: ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT ALL_MANAGERS_CAN_CONTACT",
+                    "description": "Permission to contact owner of the group via web UI. Possible values are: ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT ALL_MANAGERS_CAN_CONTACT",
                     "type": "string"
                 },
                 "whoCanInvite": {
-                    "description": "Permissions to invite members. Possbile values are: ALL_MEMBERS_CAN_INVITE ALL_MANAGERS_CAN_INVITE",
+                    "description": "Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE ALL_MANAGERS_CAN_INVITE NONE_CAN_INVITE",
                     "type": "string"
                 },
                 "whoCanJoin": {
@@ -259,7 +263,7 @@
                     "type": "string"
                 },
                 "whoCanLeaveGroup": {
-                    "description": "Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE ALL_MEMBERS_CAN_LEAVE",
+                    "description": "Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE",
                     "type": "string"
                 },
                 "whoCanPostMessage": {
@@ -267,11 +271,11 @@
                     "type": "string"
                 },
                 "whoCanViewGroup": {
-                    "description": "Permissions to view group. Possbile values are: ANYONE_CAN_VIEW ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW",
+                    "description": "Permissions to view group. Possible values are: ANYONE_CAN_VIEW ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW",
                     "type": "string"
                 },
                 "whoCanViewMembership": {
-                    "description": "Permissions to view membership. Possbile values are: ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW",
+                    "description": "Permissions to view membership. Possible values are: ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW",
                     "type": "string"
                 }
             },

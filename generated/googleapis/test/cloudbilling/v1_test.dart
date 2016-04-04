@@ -74,14 +74,14 @@ checkBillingAccount(api.BillingAccount o) {
   buildCounterBillingAccount--;
 }
 
-buildUnnamed19() {
+buildUnnamed572() {
   var o = new core.List<api.BillingAccount>();
   o.add(buildBillingAccount());
   o.add(buildBillingAccount());
   return o;
 }
 
-checkUnnamed19(core.List<api.BillingAccount> o) {
+checkUnnamed572(core.List<api.BillingAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBillingAccount(o[0]);
   checkBillingAccount(o[1]);
@@ -92,7 +92,7 @@ buildListBillingAccountsResponse() {
   var o = new api.ListBillingAccountsResponse();
   buildCounterListBillingAccountsResponse++;
   if (buildCounterListBillingAccountsResponse < 3) {
-    o.billingAccounts = buildUnnamed19();
+    o.billingAccounts = buildUnnamed572();
     o.nextPageToken = "foo";
   }
   buildCounterListBillingAccountsResponse--;
@@ -102,20 +102,20 @@ buildListBillingAccountsResponse() {
 checkListBillingAccountsResponse(api.ListBillingAccountsResponse o) {
   buildCounterListBillingAccountsResponse++;
   if (buildCounterListBillingAccountsResponse < 3) {
-    checkUnnamed19(o.billingAccounts);
+    checkUnnamed572(o.billingAccounts);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListBillingAccountsResponse--;
 }
 
-buildUnnamed20() {
+buildUnnamed573() {
   var o = new core.List<api.ProjectBillingInfo>();
   o.add(buildProjectBillingInfo());
   o.add(buildProjectBillingInfo());
   return o;
 }
 
-checkUnnamed20(core.List<api.ProjectBillingInfo> o) {
+checkUnnamed573(core.List<api.ProjectBillingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProjectBillingInfo(o[0]);
   checkProjectBillingInfo(o[1]);
@@ -127,7 +127,7 @@ buildListProjectBillingInfoResponse() {
   buildCounterListProjectBillingInfoResponse++;
   if (buildCounterListProjectBillingInfoResponse < 3) {
     o.nextPageToken = "foo";
-    o.projectBillingInfo = buildUnnamed20();
+    o.projectBillingInfo = buildUnnamed573();
   }
   buildCounterListProjectBillingInfoResponse--;
   return o;
@@ -137,7 +137,7 @@ checkListProjectBillingInfoResponse(api.ListProjectBillingInfoResponse o) {
   buildCounterListProjectBillingInfoResponse++;
   if (buildCounterListProjectBillingInfoResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed20(o.projectBillingInfo);
+    checkUnnamed573(o.projectBillingInfo);
   }
   buildCounterListProjectBillingInfoResponse--;
 }

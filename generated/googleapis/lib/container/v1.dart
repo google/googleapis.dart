@@ -15,8 +15,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client container/v1';
 
 /**
- * The Google Container Engine API is used for building and managing container
- * based applications, powered by the open source Kubernetes technology.
+ * Builds and manages clusters that run container-based applications, powered by
+ * open source Kubernetes technology.
  */
 class ContainerApi {
   /** View and manage your data across Google Cloud Platform services */
@@ -57,11 +57,10 @@ class ProjectsZonesResourceApi {
    * Request parameters:
    *
    * [projectId] - The Google Developers Console [project ID or project
-   * number](https://developers.google.com/console/help/new/#projectnumber).
+   * number](https://support.google.com/cloud/answer/6158840).
    *
    * [zone] - The name of the Google Compute Engine
-   * [zone](/compute/docs/zones#available) to return operations for, or "-" for
-   * all zones.
+   * [zone](/compute/docs/zones#available) to return operations for.
    *
    * Completes with a [ServerConfig].
    *
@@ -109,20 +108,20 @@ class ProjectsZonesClustersResourceApi {
 
   /**
    * Creates a cluster, consisting of the specified number and type of Google
-   * Compute Engine instances, plus a Kubernetes master endpoint. By default,
-   * the cluster is created in the project's [default
-   * network](/compute/docs/networking#networks_1). One firewall is added for
-   * the cluster. After cluster creation, the cluster creates routes for each
-   * node to allow the containers on that node to communicate with all other
-   * instances in the cluster. Finally, an entry is added to the project's
-   * global metadata indicating which CIDR range is being used by the cluster.
+   * Compute Engine instances. By default, the cluster is created in the
+   * project's [default network](/compute/docs/networks-and-firewalls#networks).
+   * One firewall is added for the cluster. After cluster creation, the cluster
+   * creates routes for each node to allow the containers on that node to
+   * communicate with all other instances in the cluster. Finally, an entry is
+   * added to the project's global metadata indicating which CIDR range is being
+   * used by the cluster.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [projectId] - The Google Developers Console [project ID or project
-   * number](https://developers.google.com/console/help/new/#projectnumber).
+   * number](https://support.google.com/cloud/answer/6158840).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
@@ -168,12 +167,14 @@ class ProjectsZonesClustersResourceApi {
   /**
    * Deletes the cluster, including the Kubernetes endpoint and all worker
    * nodes. Firewalls and routes that were configured during cluster creation
-   * are also deleted.
+   * are also deleted. Other Google Compute Engine resources that might be in
+   * use by the cluster (e.g. load balancer resources) will not be deleted if
+   * they weren't present at the initial create time.
    *
    * Request parameters:
    *
    * [projectId] - The Google Developers Console [project ID or project
-   * number](https://developers.google.com/console/help/new/#projectnumber).
+   * number](https://support.google.com/cloud/answer/6158840).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
@@ -219,12 +220,12 @@ class ProjectsZonesClustersResourceApi {
   }
 
   /**
-   * Gets a specific cluster.
+   * Gets the details of a specific cluster.
    *
    * Request parameters:
    *
    * [projectId] - The Google Developers Console [project ID or project
-   * number](https://developers.google.com/console/help/new/#projectnumber).
+   * number](https://support.google.com/cloud/answer/6158840).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
@@ -276,7 +277,7 @@ class ProjectsZonesClustersResourceApi {
    * Request parameters:
    *
    * [projectId] - The Google Developers Console [project ID or project
-   * number](https://developers.google.com/console/help/new/#projectnumber).
+   * number](https://support.google.com/cloud/answer/6158840).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides, or "-"
@@ -318,14 +319,14 @@ class ProjectsZonesClustersResourceApi {
   }
 
   /**
-   * Update settings of a specific cluster.
+   * Updates the settings of a specific cluster.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [projectId] - The Google Developers Console [project ID or project
-   * number](https://developers.google.com/console/help/new/#projectnumber).
+   * number](https://support.google.com/cloud/answer/6158840).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
@@ -388,7 +389,7 @@ class ProjectsZonesOperationsResourceApi {
    * Request parameters:
    *
    * [projectId] - The Google Developers Console [project ID or project
-   * number](https://developers.google.com/console/help/new/#projectnumber).
+   * number](https://support.google.com/cloud/answer/6158840).
    *
    * [zone] - The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
@@ -439,10 +440,10 @@ class ProjectsZonesOperationsResourceApi {
    * Request parameters:
    *
    * [projectId] - The Google Developers Console [project ID or project
-   * number](https://developers.google.com/console/help/new/#projectnumber).
+   * number](https://support.google.com/cloud/answer/6158840).
    *
    * [zone] - The name of the Google Compute Engine
-   * [zone](/compute/docs/zones#available) to return operations for, or "-" for
+   * [zone](/compute/docs/zones#available) to return operations for, or `-` for
    * all zones.
    *
    * Completes with a [ListOperationsResponse].
@@ -484,8 +485,50 @@ class ProjectsZonesOperationsResourceApi {
 
 
 
+/**
+ * Configuration for the addons that can be automatically spun up in the
+ * cluster, enabling additional functionality.
+ */
+class AddonsConfig {
+  /**
+   * Configuration for the horizontal pod autoscaling feature, which increases
+   * or decreases the number of replica pods a replication controller has based
+   * on the resource usage of the existing pods.
+   */
+  HorizontalPodAutoscaling horizontalPodAutoscaling;
+  /**
+   * Configuration for the HTTP (L7) load balancing controller addon, which
+   * makes it easy to set up HTTP load balancers for services in a cluster.
+   */
+  HttpLoadBalancing httpLoadBalancing;
+
+  AddonsConfig();
+
+  AddonsConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("horizontalPodAutoscaling")) {
+      horizontalPodAutoscaling = new HorizontalPodAutoscaling.fromJson(_json["horizontalPodAutoscaling"]);
+    }
+    if (_json.containsKey("httpLoadBalancing")) {
+      httpLoadBalancing = new HttpLoadBalancing.fromJson(_json["httpLoadBalancing"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (horizontalPodAutoscaling != null) {
+      _json["horizontalPodAutoscaling"] = (horizontalPodAutoscaling).toJson();
+    }
+    if (httpLoadBalancing != null) {
+      _json["httpLoadBalancing"] = (httpLoadBalancing).toJson();
+    }
+    return _json;
+  }
+}
+
 /** A Google Container Engine cluster. */
 class Cluster {
+  /** Configurations for the various addons available to run in the cluster. */
+  AddonsConfig addonsConfig;
   /**
    * The IP address range of the container pods in this cluster, in
    * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -500,32 +543,37 @@ class Cluster {
   core.String createTime;
   /** [Output only] The current software version of the master endpoint. */
   core.String currentMasterVersion;
+  /** [Output only] The number of nodes currently in the cluster. */
+  core.int currentNodeCount;
   /**
    * [Output only] The current version of the node software components. If they
-   * are currently at different versions because they're in the process of being
-   * upgraded, this reflects the minimum version of any of them.
+   * are currently at multiple versions because they're in the process of being
+   * upgraded, this reflects the minimum version of all nodes.
    */
   core.String currentNodeVersion;
   /** An optional description of this cluster. */
   core.String description;
   /**
-   * [Output only] The IP address of this cluster's Kubernetes master endpoint.
-   * The endpoint can be accessed from the internet at
+   * [Output only] The IP address of this cluster's master endpoint. The
+   * endpoint can be accessed from the internet at
    * `https://username:password@endpoint/`. See the `masterAuth` property of
    * this resource for username and password information.
    */
   core.String endpoint;
   /**
-   * [Output only] The software version of Kubernetes master and kubelets used
+   * [Output only] The software version of the master endpoint and kubelets used
    * in the cluster when it was first created. The version can be upgraded over
    * time.
    */
   core.String initialClusterVersion;
   /**
    * The number of nodes to create in this cluster. You must ensure that your
-   * Compute Engine [resource quota](/compute/docs/resource-quotas) is
-   * sufficient for this number of instances. You must also have available
-   * firewall and routes quota.
+   * Compute Engine resource quota is sufficient for this number of instances.
+   * You must also have available firewall and routes quota. For requests, this
+   * field should only be used in lieu of a "node_pool" object, since this
+   * configuration (along with the "node_config") will be used to create a
+   * "NodePool" object with an auto-generated name. Do not use this and a
+   * node_pool at the same time.
    */
   core.int initialNodeCount;
   /**
@@ -534,19 +582,20 @@ class Cluster {
    */
   core.List<core.String> instanceGroupUrls;
   /**
-   * The logging service that the cluster should write logs to. Currently
-   * available options: * "logging.googleapis.com" - the Google Cloud Logging
-   * service * "none" - no logs will be exported from the cluster * "" - default
-   * value; the default is "logging.googleapis.com"
+   * The logging service the cluster should use to write logs. Currently
+   * available options: * `logging.googleapis.com` - the Google Cloud Logging
+   * service. * `none` - no logs will be exported from the cluster. * if left as
+   * an empty string,`logging.googleapis.com` will be used.
    */
   core.String loggingService;
-  /** The authentication information for accessing the master. */
+  /** The authentication information for accessing the master endpoint. */
   MasterAuth masterAuth;
   /**
-   * The monitoring service that the cluster should write metrics to. Currently
-   * available options: * "monitoring.googleapis.com" - the Google Cloud
-   * Monitoring service * "none" - no metrics will be exported from the cluster
-   * * "" - default value; the default is "monitoring.googleapis.com"
+   * The monitoring service the cluster should use to write metrics. Currently
+   * available options: * `monitoring.googleapis.com` - the Google Cloud
+   * Monitoring service. * `none` - no metrics will be exported from the
+   * cluster. * if left as an empty string, `monitoring.googleapis.com` will be
+   * used.
    */
   core.String monitoringService;
   /**
@@ -558,19 +607,25 @@ class Cluster {
   core.String name;
   /**
    * The name of the Google Compute Engine
-   * [network](/compute/docs/networking#networks_1) to which the cluster is
-   * connected. If left unspecified, the "default" network will be used.
+   * [network](/compute/docs/networks-and-firewalls#networks) to which the
+   * cluster is connected. If left unspecified, the `default` network will be
+   * used.
    */
   core.String network;
   /**
-   * Parameters used in creating the cluster's nodes. See the descriptions of
-   * the child properties of `nodeConfig`. If unspecified, the defaults for all
-   * child properties are used.
+   * Parameters used in creating the cluster's nodes. See `nodeConfig` for the
+   * description of its properties. For requests, this field should only be used
+   * in lieu of a "node_pool" object, since this configuration (along with the
+   * "initial_node_count") will be used to create a "NodePool" object with an
+   * auto-generated name. Do not use this and a node_pool at the same time. For
+   * responses, this field will be populated with the node configuration of the
+   * first node pool. If unspecified, the defaults are used.
    */
   NodeConfig nodeConfig;
   /**
    * [Output only] The size of the address space on each node for hosting
-   * containers. This is provisioned from within the container_ipv4_cidr range.
+   * containers. This is provisioned from within the `container_ipv4_cidr`
+   * range.
    */
   core.int nodeIpv4CidrSize;
   /** [Output only] Server-defined URL for the resource. */
@@ -580,7 +635,7 @@ class Cluster {
    * cluster, in
    * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
    * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the
-   * last /16 from the container CIDR.
+   * last `/16` from the container CIDR.
    */
   core.String servicesIpv4Cidr;
   /**
@@ -600,6 +655,11 @@ class Cluster {
    */
   core.String statusMessage;
   /**
+   * The name of the Google Compute Engine
+   * [subnetwork](/compute/docs/subnetworks) to which the cluster is connected.
+   */
+  core.String subnetwork;
+  /**
    * [Output only] The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
    */
@@ -608,6 +668,9 @@ class Cluster {
   Cluster();
 
   Cluster.fromJson(core.Map _json) {
+    if (_json.containsKey("addonsConfig")) {
+      addonsConfig = new AddonsConfig.fromJson(_json["addonsConfig"]);
+    }
     if (_json.containsKey("clusterIpv4Cidr")) {
       clusterIpv4Cidr = _json["clusterIpv4Cidr"];
     }
@@ -616,6 +679,9 @@ class Cluster {
     }
     if (_json.containsKey("currentMasterVersion")) {
       currentMasterVersion = _json["currentMasterVersion"];
+    }
+    if (_json.containsKey("currentNodeCount")) {
+      currentNodeCount = _json["currentNodeCount"];
     }
     if (_json.containsKey("currentNodeVersion")) {
       currentNodeVersion = _json["currentNodeVersion"];
@@ -668,6 +734,9 @@ class Cluster {
     if (_json.containsKey("statusMessage")) {
       statusMessage = _json["statusMessage"];
     }
+    if (_json.containsKey("subnetwork")) {
+      subnetwork = _json["subnetwork"];
+    }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
     }
@@ -675,6 +744,9 @@ class Cluster {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (addonsConfig != null) {
+      _json["addonsConfig"] = (addonsConfig).toJson();
+    }
     if (clusterIpv4Cidr != null) {
       _json["clusterIpv4Cidr"] = clusterIpv4Cidr;
     }
@@ -683,6 +755,9 @@ class Cluster {
     }
     if (currentMasterVersion != null) {
       _json["currentMasterVersion"] = currentMasterVersion;
+    }
+    if (currentNodeCount != null) {
+      _json["currentNodeCount"] = currentNodeCount;
     }
     if (currentNodeVersion != null) {
       _json["currentNodeVersion"] = currentNodeVersion;
@@ -735,6 +810,9 @@ class Cluster {
     if (statusMessage != null) {
       _json["statusMessage"] = statusMessage;
     }
+    if (subnetwork != null) {
+      _json["subnetwork"] = subnetwork;
+    }
     if (zone != null) {
       _json["zone"] = zone;
     }
@@ -742,17 +820,43 @@ class Cluster {
   }
 }
 
-/** ClusterUpdate describes an update to the cluster. */
+/**
+ * ClusterUpdate describes an update to the cluster. Exactly one update can be
+ * applied to a cluster with each request, so at most one field can be provided.
+ */
 class ClusterUpdate {
+  /** Configurations for the various addons available to run in the cluster. */
+  AddonsConfig desiredAddonsConfig;
+  /**
+   * The Kubernetes version to change the master to. The only valid value is the
+   * latest supported version. Use "-" to have the server automatically select
+   * the latest version.
+   */
+  core.String desiredMasterVersion;
+  /**
+   * The monitoring service the cluster should use to write metrics. Currently
+   * available options: * "monitoring.googleapis.com" - the Google Cloud
+   * Monitoring service * "none" - no metrics will be exported from the cluster
+   */
+  core.String desiredMonitoringService;
   /**
    * The Kubernetes version to change the nodes to (typically an upgrade). Use
-   * "-" to upgrade to the latest version supported by the server.
+   * `-` to upgrade to the latest version supported by the server.
    */
   core.String desiredNodeVersion;
 
   ClusterUpdate();
 
   ClusterUpdate.fromJson(core.Map _json) {
+    if (_json.containsKey("desiredAddonsConfig")) {
+      desiredAddonsConfig = new AddonsConfig.fromJson(_json["desiredAddonsConfig"]);
+    }
+    if (_json.containsKey("desiredMasterVersion")) {
+      desiredMasterVersion = _json["desiredMasterVersion"];
+    }
+    if (_json.containsKey("desiredMonitoringService")) {
+      desiredMonitoringService = _json["desiredMonitoringService"];
+    }
     if (_json.containsKey("desiredNodeVersion")) {
       desiredNodeVersion = _json["desiredNodeVersion"];
     }
@@ -760,6 +864,15 @@ class ClusterUpdate {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (desiredAddonsConfig != null) {
+      _json["desiredAddonsConfig"] = (desiredAddonsConfig).toJson();
+    }
+    if (desiredMasterVersion != null) {
+      _json["desiredMasterVersion"] = desiredMasterVersion;
+    }
+    if (desiredMonitoringService != null) {
+      _json["desiredMonitoringService"] = desiredMonitoringService;
+    }
     if (desiredNodeVersion != null) {
       _json["desiredNodeVersion"] = desiredNodeVersion;
     }
@@ -792,6 +905,65 @@ class CreateClusterRequest {
   }
 }
 
+/**
+ * Configuration options for the horizontal pod autoscaling feature, which
+ * increases or decreases the number of replica pods a replication controller
+ * has based on the resource usage of the existing pods.
+ */
+class HorizontalPodAutoscaling {
+  /**
+   * Whether the Horizontal Pod Autoscaling feature is enabled in the cluster.
+   * When enabled, it ensures that a Heapster pod is running in the cluster,
+   * which is also used by the Cloud Monitoring service.
+   */
+  core.bool disabled;
+
+  HorizontalPodAutoscaling();
+
+  HorizontalPodAutoscaling.fromJson(core.Map _json) {
+    if (_json.containsKey("disabled")) {
+      disabled = _json["disabled"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (disabled != null) {
+      _json["disabled"] = disabled;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Configuration options for the HTTP (L7) load balancing controller addon,
+ * which makes it easy to set up HTTP load balancers for services in a cluster.
+ */
+class HttpLoadBalancing {
+  /**
+   * Whether the HTTP Load Balancing controller is enabled in the cluster. When
+   * enabled, it runs a small pod in the cluster that manages the load
+   * balancers.
+   */
+  core.bool disabled;
+
+  HttpLoadBalancing();
+
+  HttpLoadBalancing.fromJson(core.Map _json) {
+    if (_json.containsKey("disabled")) {
+      disabled = _json["disabled"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (disabled != null) {
+      _json["disabled"] = disabled;
+    }
+    return _json;
+  }
+}
+
 /** ListClustersResponse is the result of ListClustersRequest. */
 class ListClustersResponse {
   /**
@@ -799,12 +971,20 @@ class ListClustersResponse {
    * ones.
    */
   core.List<Cluster> clusters;
+  /**
+   * If any zones are listed here, the list of clusters returned may be missing
+   * those zones.
+   */
+  core.List<core.String> missingZones;
 
   ListClustersResponse();
 
   ListClustersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("clusters")) {
       clusters = _json["clusters"].map((value) => new Cluster.fromJson(value)).toList();
+    }
+    if (_json.containsKey("missingZones")) {
+      missingZones = _json["missingZones"];
     }
   }
 
@@ -813,18 +993,29 @@ class ListClustersResponse {
     if (clusters != null) {
       _json["clusters"] = clusters.map((value) => (value).toJson()).toList();
     }
+    if (missingZones != null) {
+      _json["missingZones"] = missingZones;
+    }
     return _json;
   }
 }
 
 /** ListOperationsResponse is the result of ListOperationsRequest. */
 class ListOperationsResponse {
+  /**
+   * If any zones are listed here, the list of operations returned may be
+   * missing the operations from those zones.
+   */
+  core.List<core.String> missingZones;
   /** A list of operations in the project in the specified zone. */
   core.List<Operation> operations;
 
   ListOperationsResponse();
 
   ListOperationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("missingZones")) {
+      missingZones = _json["missingZones"];
+    }
     if (_json.containsKey("operations")) {
       operations = _json["operations"].map((value) => new Operation.fromJson(value)).toList();
     }
@@ -832,6 +1023,9 @@ class ListOperationsResponse {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (missingZones != null) {
+      _json["missingZones"] = missingZones;
+    }
     if (operations != null) {
       _json["operations"] = operations.map((value) => (value).toJson()).toList();
     }
@@ -846,29 +1040,28 @@ class ListOperationsResponse {
  */
 class MasterAuth {
   /**
-   * [Output only] Base64 encoded public certificate used by clients to
+   * [Output only] Base64-encoded public certificate used by clients to
    * authenticate to the cluster endpoint.
    */
   core.String clientCertificate;
   /**
-   * [Output only] Base64 encoded private key used by clients to authenticate to
+   * [Output only] Base64-encoded private key used by clients to authenticate to
    * the cluster endpoint.
    */
   core.String clientKey;
   /**
-   * [Output only] Base64 encoded public certificate that is the root of trust
+   * [Output only] Base64-encoded public certificate that is the root of trust
    * for the cluster.
    */
   core.String clusterCaCertificate;
   /**
-   * The password to use for HTTP basic authentication when accessing the
-   * Kubernetes master endpoint. Because the master endpoint is open to the
-   * internet, you should create a strong password.
+   * The password to use for HTTP basic authentication to the master endpoint.
+   * Because the master endpoint is open to the Internet, you should create a
+   * strong password.
    */
   core.String password;
   /**
-   * The username to use for HTTP basic authentication when accessing the
-   * Kubernetes master endpoint.
+   * The username to use for HTTP basic authentication to the master endpoint.
    */
   core.String username;
 
@@ -913,7 +1106,7 @@ class MasterAuth {
   }
 }
 
-/** Per-node parameters. */
+/** Parameters that describe the nodes in a cluster. */
 class NodeConfig {
   /**
    * Size of the disk attached to each node, specified in GB. The smallest
@@ -927,13 +1120,29 @@ class NodeConfig {
    */
   core.String machineType;
   /**
+   * The metadata key/value pairs assigned to instances in the cluster. Keys
+   * must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes in
+   * length. These are reflected as part of a URL in the metadata server.
+   * Additionally, to avoid ambiguity, keys must not conflict with any other
+   * metadata keys for the project or be one of the four reserved keys:
+   * "instance-template", "kube-env", "startup-script", and "user-data" Values
+   * are free-form strings, and only have meaning as interpreted by the image
+   * running in the instance. The only restriction placed on them is that each
+   * value's size must be less than or equal to 32 KB. The total size of all
+   * keys and values must be less than 512 KB.
+   */
+  core.Map<core.String, core.String> metadata;
+  /**
    * The set of Google API scopes to be made available on all of the node VMs
    * under the "default" service account. The following scopes are recommended,
    * but not required, and by default are not included: *
    * `https://www.googleapis.com/auth/compute` is required for mounting
    * persistent storage on your nodes. *
    * `https://www.googleapis.com/auth/devstorage.read_only` is required for
-   * communicating with *gcr.io*. If unspecified, no scopes are added.
+   * communicating with **gcr.io** (the [Google Container
+   * Registry](/container-registry/)). If unspecified, no scopes are added,
+   * unless Cloud Logging or Cloud Monitoring are enabled, in which case their
+   * required scopes will be added.
    */
   core.List<core.String> oauthScopes;
 
@@ -945,6 +1154,9 @@ class NodeConfig {
     }
     if (_json.containsKey("machineType")) {
       machineType = _json["machineType"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = _json["metadata"];
     }
     if (_json.containsKey("oauthScopes")) {
       oauthScopes = _json["oauthScopes"];
@@ -959,6 +1171,9 @@ class NodeConfig {
     if (machineType != null) {
       _json["machineType"] = machineType;
     }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
     if (oauthScopes != null) {
       _json["oauthScopes"] = oauthScopes;
     }
@@ -966,8 +1181,13 @@ class NodeConfig {
   }
 }
 
-/** Defines the operation resource. All fields are output only. */
+/**
+ * This operation resource represents operations that may have happened or are
+ * happening on the cluster. All fields are output only.
+ */
 class Operation {
+  /** Detailed operation progress, if available. */
+  core.String detail;
   /** The server-assigned ID for the operation. */
   core.String name;
   /**
@@ -979,6 +1199,9 @@ class Operation {
    * - "UPGRADE_MASTER" : A UPGRADE_MASTER.
    * - "UPGRADE_NODES" : A UPGRADE_NODES.
    * - "REPAIR_CLUSTER" : A REPAIR_CLUSTER.
+   * - "UPDATE_CLUSTER" : A UPDATE_CLUSTER.
+   * - "CREATE_NODE_POOL" : A CREATE_NODE_POOL.
+   * - "DELETE_NODE_POOL" : A DELETE_NODE_POOL.
    */
   core.String operationType;
   /** Server-defined URL for the resource. */
@@ -1005,6 +1228,9 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
+    if (_json.containsKey("detail")) {
+      detail = _json["detail"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -1030,6 +1256,9 @@ class Operation {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (detail != null) {
+      _json["detail"] = detail;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -1055,9 +1284,9 @@ class Operation {
   }
 }
 
-/** Container Engine Server configuration. */
+/** Container Engine service configuration. */
 class ServerConfig {
-  /** What version this server deploys by default. */
+  /** Version of Kubernetes the service deploys by default. */
   core.String defaultClusterVersion;
   /** List of valid node upgrade target versions. */
   core.List<core.String> validNodeVersions;
@@ -1085,7 +1314,7 @@ class ServerConfig {
   }
 }
 
-/** UpdateClusterRequest updates a cluster. */
+/** UpdateClusterRequest updates the settings of a cluster. */
 class UpdateClusterRequest {
   /** A description of the update. */
   ClusterUpdate update;

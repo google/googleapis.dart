@@ -6,7 +6,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Vhnx4zZ8SuEciaFfePvjr4AMNX0\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Oi0KnpKPJva7LMe3W0nV9ypaEjo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -275,7 +275,7 @@
             }
         }
     },
-    "revision": "20160304",
+    "revision": "20160324",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -587,12 +587,20 @@
                     "$ref": "EmailTemplate",
                     "description": "Change email template."
                 },
+                "enableAnonymousUser": {
+                    "description": "Whether anonymous user is enabled.",
+                    "type": "boolean"
+                },
                 "idpConfig": {
                     "description": "OAuth2 provider configuration.",
                     "items": {
                         "$ref": "IdpConfig"
                     },
                     "type": "array"
+                },
+                "legacyResetPasswordTemplate": {
+                    "$ref": "EmailTemplate",
+                    "description": "Legacy reset password email template."
                 },
                 "projectId": {
                     "description": "Project ID of the relying party.",
@@ -759,12 +767,20 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "enableAnonymousUser": {
+                    "description": "Whether to enable anonymous user.",
+                    "type": "boolean"
+                },
                 "idpConfig": {
                     "description": "Oauth2 provider configuration.",
                     "items": {
                         "$ref": "IdpConfig"
                     },
                     "type": "array"
+                },
+                "legacyResetPasswordTemplate": {
+                    "$ref": "EmailTemplate",
+                    "description": "Legacy reset password email template."
                 },
                 "resetPasswordTemplate": {
                     "$ref": "EmailTemplate",
@@ -1026,6 +1042,10 @@
                 },
                 "provider": {
                     "description": "OAuth2 provider.",
+                    "type": "string"
+                },
+                "secret": {
+                    "description": "OAuth2 client secret.",
                     "type": "string"
                 }
             },

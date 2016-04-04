@@ -51,14 +51,35 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2146() {
+core.int buildCounterAddonsConfig = 0;
+buildAddonsConfig() {
+  var o = new api.AddonsConfig();
+  buildCounterAddonsConfig++;
+  if (buildCounterAddonsConfig < 3) {
+    o.horizontalPodAutoscaling = buildHorizontalPodAutoscaling();
+    o.httpLoadBalancing = buildHttpLoadBalancing();
+  }
+  buildCounterAddonsConfig--;
+  return o;
+}
+
+checkAddonsConfig(api.AddonsConfig o) {
+  buildCounterAddonsConfig++;
+  if (buildCounterAddonsConfig < 3) {
+    checkHorizontalPodAutoscaling(o.horizontalPodAutoscaling);
+    checkHttpLoadBalancing(o.httpLoadBalancing);
+  }
+  buildCounterAddonsConfig--;
+}
+
+buildUnnamed750() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2146(core.List<core.String> o) {
+checkUnnamed750(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,15 +90,17 @@ buildCluster() {
   var o = new api.Cluster();
   buildCounterCluster++;
   if (buildCounterCluster < 3) {
+    o.addonsConfig = buildAddonsConfig();
     o.clusterIpv4Cidr = "foo";
     o.createTime = "foo";
     o.currentMasterVersion = "foo";
+    o.currentNodeCount = 42;
     o.currentNodeVersion = "foo";
     o.description = "foo";
     o.endpoint = "foo";
     o.initialClusterVersion = "foo";
     o.initialNodeCount = 42;
-    o.instanceGroupUrls = buildUnnamed2146();
+    o.instanceGroupUrls = buildUnnamed750();
     o.loggingService = "foo";
     o.masterAuth = buildMasterAuth();
     o.monitoringService = "foo";
@@ -89,6 +112,7 @@ buildCluster() {
     o.servicesIpv4Cidr = "foo";
     o.status = "foo";
     o.statusMessage = "foo";
+    o.subnetwork = "foo";
     o.zone = "foo";
   }
   buildCounterCluster--;
@@ -98,15 +122,17 @@ buildCluster() {
 checkCluster(api.Cluster o) {
   buildCounterCluster++;
   if (buildCounterCluster < 3) {
+    checkAddonsConfig(o.addonsConfig);
     unittest.expect(o.clusterIpv4Cidr, unittest.equals('foo'));
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.currentMasterVersion, unittest.equals('foo'));
+    unittest.expect(o.currentNodeCount, unittest.equals(42));
     unittest.expect(o.currentNodeVersion, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.endpoint, unittest.equals('foo'));
     unittest.expect(o.initialClusterVersion, unittest.equals('foo'));
     unittest.expect(o.initialNodeCount, unittest.equals(42));
-    checkUnnamed2146(o.instanceGroupUrls);
+    checkUnnamed750(o.instanceGroupUrls);
     unittest.expect(o.loggingService, unittest.equals('foo'));
     checkMasterAuth(o.masterAuth);
     unittest.expect(o.monitoringService, unittest.equals('foo'));
@@ -118,6 +144,7 @@ checkCluster(api.Cluster o) {
     unittest.expect(o.servicesIpv4Cidr, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.statusMessage, unittest.equals('foo'));
+    unittest.expect(o.subnetwork, unittest.equals('foo'));
     unittest.expect(o.zone, unittest.equals('foo'));
   }
   buildCounterCluster--;
@@ -128,6 +155,9 @@ buildClusterUpdate() {
   var o = new api.ClusterUpdate();
   buildCounterClusterUpdate++;
   if (buildCounterClusterUpdate < 3) {
+    o.desiredAddonsConfig = buildAddonsConfig();
+    o.desiredMasterVersion = "foo";
+    o.desiredMonitoringService = "foo";
     o.desiredNodeVersion = "foo";
   }
   buildCounterClusterUpdate--;
@@ -137,6 +167,9 @@ buildClusterUpdate() {
 checkClusterUpdate(api.ClusterUpdate o) {
   buildCounterClusterUpdate++;
   if (buildCounterClusterUpdate < 3) {
+    checkAddonsConfig(o.desiredAddonsConfig);
+    unittest.expect(o.desiredMasterVersion, unittest.equals('foo'));
+    unittest.expect(o.desiredMonitoringService, unittest.equals('foo'));
     unittest.expect(o.desiredNodeVersion, unittest.equals('foo'));
   }
   buildCounterClusterUpdate--;
@@ -161,17 +194,68 @@ checkCreateClusterRequest(api.CreateClusterRequest o) {
   buildCounterCreateClusterRequest--;
 }
 
-buildUnnamed2147() {
+core.int buildCounterHorizontalPodAutoscaling = 0;
+buildHorizontalPodAutoscaling() {
+  var o = new api.HorizontalPodAutoscaling();
+  buildCounterHorizontalPodAutoscaling++;
+  if (buildCounterHorizontalPodAutoscaling < 3) {
+    o.disabled = true;
+  }
+  buildCounterHorizontalPodAutoscaling--;
+  return o;
+}
+
+checkHorizontalPodAutoscaling(api.HorizontalPodAutoscaling o) {
+  buildCounterHorizontalPodAutoscaling++;
+  if (buildCounterHorizontalPodAutoscaling < 3) {
+    unittest.expect(o.disabled, unittest.isTrue);
+  }
+  buildCounterHorizontalPodAutoscaling--;
+}
+
+core.int buildCounterHttpLoadBalancing = 0;
+buildHttpLoadBalancing() {
+  var o = new api.HttpLoadBalancing();
+  buildCounterHttpLoadBalancing++;
+  if (buildCounterHttpLoadBalancing < 3) {
+    o.disabled = true;
+  }
+  buildCounterHttpLoadBalancing--;
+  return o;
+}
+
+checkHttpLoadBalancing(api.HttpLoadBalancing o) {
+  buildCounterHttpLoadBalancing++;
+  if (buildCounterHttpLoadBalancing < 3) {
+    unittest.expect(o.disabled, unittest.isTrue);
+  }
+  buildCounterHttpLoadBalancing--;
+}
+
+buildUnnamed751() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed2147(core.List<api.Cluster> o) {
+checkUnnamed751(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
+}
+
+buildUnnamed752() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed752(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterListClustersResponse = 0;
@@ -179,7 +263,8 @@ buildListClustersResponse() {
   var o = new api.ListClustersResponse();
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    o.clusters = buildUnnamed2147();
+    o.clusters = buildUnnamed751();
+    o.missingZones = buildUnnamed752();
   }
   buildCounterListClustersResponse--;
   return o;
@@ -188,19 +273,33 @@ buildListClustersResponse() {
 checkListClustersResponse(api.ListClustersResponse o) {
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    checkUnnamed2147(o.clusters);
+    checkUnnamed751(o.clusters);
+    checkUnnamed752(o.missingZones);
   }
   buildCounterListClustersResponse--;
 }
 
-buildUnnamed2148() {
+buildUnnamed753() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed753(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed754() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed2148(core.List<api.Operation> o) {
+checkUnnamed754(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -211,7 +310,8 @@ buildListOperationsResponse() {
   var o = new api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.operations = buildUnnamed2148();
+    o.missingZones = buildUnnamed753();
+    o.operations = buildUnnamed754();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -220,7 +320,8 @@ buildListOperationsResponse() {
 checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    checkUnnamed2148(o.operations);
+    checkUnnamed753(o.missingZones);
+    checkUnnamed754(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
@@ -252,14 +353,27 @@ checkMasterAuth(api.MasterAuth o) {
   buildCounterMasterAuth--;
 }
 
-buildUnnamed2149() {
+buildUnnamed755() {
+  var o = new core.Map<core.String, core.String>();
+  o["x"] = "foo";
+  o["y"] = "foo";
+  return o;
+}
+
+checkUnnamed755(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o["x"], unittest.equals('foo'));
+  unittest.expect(o["y"], unittest.equals('foo'));
+}
+
+buildUnnamed756() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2149(core.List<core.String> o) {
+checkUnnamed756(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -272,7 +386,8 @@ buildNodeConfig() {
   if (buildCounterNodeConfig < 3) {
     o.diskSizeGb = 42;
     o.machineType = "foo";
-    o.oauthScopes = buildUnnamed2149();
+    o.metadata = buildUnnamed755();
+    o.oauthScopes = buildUnnamed756();
   }
   buildCounterNodeConfig--;
   return o;
@@ -283,7 +398,8 @@ checkNodeConfig(api.NodeConfig o) {
   if (buildCounterNodeConfig < 3) {
     unittest.expect(o.diskSizeGb, unittest.equals(42));
     unittest.expect(o.machineType, unittest.equals('foo'));
-    checkUnnamed2149(o.oauthScopes);
+    checkUnnamed755(o.metadata);
+    checkUnnamed756(o.oauthScopes);
   }
   buildCounterNodeConfig--;
 }
@@ -293,6 +409,7 @@ buildOperation() {
   var o = new api.Operation();
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
+    o.detail = "foo";
     o.name = "foo";
     o.operationType = "foo";
     o.selfLink = "foo";
@@ -308,6 +425,7 @@ buildOperation() {
 checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
+    unittest.expect(o.detail, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.operationType, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -319,14 +437,14 @@ checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-buildUnnamed2150() {
+buildUnnamed757() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2150(core.List<core.String> o) {
+checkUnnamed757(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -338,7 +456,7 @@ buildServerConfig() {
   buildCounterServerConfig++;
   if (buildCounterServerConfig < 3) {
     o.defaultClusterVersion = "foo";
-    o.validNodeVersions = buildUnnamed2150();
+    o.validNodeVersions = buildUnnamed757();
   }
   buildCounterServerConfig--;
   return o;
@@ -348,7 +466,7 @@ checkServerConfig(api.ServerConfig o) {
   buildCounterServerConfig++;
   if (buildCounterServerConfig < 3) {
     unittest.expect(o.defaultClusterVersion, unittest.equals('foo'));
-    checkUnnamed2150(o.validNodeVersions);
+    checkUnnamed757(o.validNodeVersions);
   }
   buildCounterServerConfig--;
 }
@@ -374,6 +492,15 @@ checkUpdateClusterRequest(api.UpdateClusterRequest o) {
 
 
 main() {
+  unittest.group("obj-schema-AddonsConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAddonsConfig();
+      var od = new api.AddonsConfig.fromJson(o.toJson());
+      checkAddonsConfig(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Cluster", () {
     unittest.test("to-json--from-json", () {
       var o = buildCluster();
@@ -397,6 +524,24 @@ main() {
       var o = buildCreateClusterRequest();
       var od = new api.CreateClusterRequest.fromJson(o.toJson());
       checkCreateClusterRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-HorizontalPodAutoscaling", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildHorizontalPodAutoscaling();
+      var od = new api.HorizontalPodAutoscaling.fromJson(o.toJson());
+      checkHorizontalPodAutoscaling(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-HttpLoadBalancing", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildHttpLoadBalancing();
+      var od = new api.HttpLoadBalancing.fromJson(o.toJson());
+      checkHttpLoadBalancing(od);
     });
   });
 

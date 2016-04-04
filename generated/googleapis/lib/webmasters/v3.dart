@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client webmasters/v3';
 
-/** Lets you view Google Search Console data for your verified sites. */
+/** View Google Search Console data for your verified sites. */
 class WebmastersApi {
   /** View and manage Search Console data for your verified sites */
   static const WebmastersScope = "https://www.googleapis.com/auth/webmasters";
@@ -472,6 +472,7 @@ class UrlcrawlerrorscountsResourceApi {
    * specified, returns results for all categories.
    * Possible string values are:
    * - "authPermissions"
+   * - "flashContent"
    * - "manyToOneRedirect"
    * - "notFollowed"
    * - "notFound"
@@ -555,6 +556,7 @@ class UrlcrawlerrorssamplesResourceApi {
    * [category] - The crawl error category. For example: authPermissions
    * Possible string values are:
    * - "authPermissions"
+   * - "flashContent"
    * - "manyToOneRedirect"
    * - "notFollowed"
    * - "notFound"
@@ -625,6 +627,7 @@ class UrlcrawlerrorssamplesResourceApi {
    * [category] - The crawl error category. For example: authPermissions
    * Possible string values are:
    * - "authPermissions"
+   * - "flashContent"
    * - "manyToOneRedirect"
    * - "notFollowed"
    * - "notFound"
@@ -697,6 +700,7 @@ class UrlcrawlerrorssamplesResourceApi {
    * [category] - The crawl error category. For example: authPermissions
    * Possible string values are:
    * - "authPermissions"
+   * - "flashContent"
    * - "manyToOneRedirect"
    * - "notFollowed"
    * - "notFound"
@@ -919,6 +923,11 @@ class SearchAnalyticsQueryRequest {
    * value is included in the range.
    */
   core.String startDate;
+  /**
+   * [Optional; Default is 0] Zero-based index of the first row in the response.
+   * Must be a non-negative number.
+   */
+  core.int startRow;
 
   SearchAnalyticsQueryRequest();
 
@@ -944,6 +953,9 @@ class SearchAnalyticsQueryRequest {
     if (_json.containsKey("startDate")) {
       startDate = _json["startDate"];
     }
+    if (_json.containsKey("startRow")) {
+      startRow = _json["startRow"];
+    }
   }
 
   core.Map toJson() {
@@ -968,6 +980,9 @@ class SearchAnalyticsQueryRequest {
     }
     if (startDate != null) {
       _json["startDate"] = startDate;
+    }
+    if (startRow != null) {
+      _json["startRow"] = startRow;
     }
     return _json;
   }

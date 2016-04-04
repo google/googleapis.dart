@@ -665,7 +665,10 @@ class Conversion {
   core.String advertiserId;
   /** DS agency ID. */
   core.String agencyId;
-  /** This field is ignored. */
+  /**
+   * Available to advertisers only after contacting DoubleClick Search customer
+   * support.
+   */
   core.String attributionModel;
   /** DS campaign ID. */
   core.String campaignId;
@@ -690,7 +693,10 @@ class Conversion {
   core.String conversionModifiedTimestamp;
   /** The time at which the conversion took place, in epoch millis UTC. */
   core.String conversionTimestamp;
-  /** This field is ignored. */
+  /**
+   * Available to advertisers only after contacting DoubleClick Search customer
+   * support.
+   */
   core.String countMillis;
   /** DS criterion (keyword) ID. */
   core.String criterionId;
@@ -737,8 +743,8 @@ class Conversion {
   core.String quantityMillis;
   /**
    * The revenue amount of this TRANSACTION conversion, in micros (value
-   * multiplied by 1000, no decimal). For example, to specify a revenue value of
-   * "10" enter "10000" in your request.
+   * multiplied by 1000000, no decimal). For example, to specify a revenue value
+   * of "10" enter "10000000" (10 million) in your request.
    */
   core.String revenueMicros;
   /**

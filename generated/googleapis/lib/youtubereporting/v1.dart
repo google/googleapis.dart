@@ -205,6 +205,10 @@ class JobsResourceApi {
    * ListReportTypesResponse.next_page_token returned in response to the
    * previous call to the `ListJobs` method.
    *
+   * [includeSystemManaged] - If set to true, also system-managed jobs will be
+   * returned; otherwise only user-created jobs will be returned. System-managed
+   * jobs can neither be modified nor deleted.
+   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -213,7 +217,7 @@ class JobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list({core.String onBehalfOfContentOwner, core.int pageSize, core.String pageToken}) {
+  async.Future<ListJobsResponse> list({core.String onBehalfOfContentOwner, core.int pageSize, core.String pageToken, core.bool includeSystemManaged}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -229,6 +233,9 @@ class JobsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (includeSystemManaged != null) {
+      _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
     }
 
     _url = 'v1/jobs';
@@ -325,6 +332,12 @@ class JobsReportsResourceApi {
    * [createdAfter] - If set, only reports created after the specified date/time
    * are returned.
    *
+   * [startTimeAtOrAfter] - If set, only reports whose start time is greater
+   * than or equal the specified date/time are returned.
+   *
+   * [startTimeBefore] - If set, only reports whose start time is smaller than
+   * the specified date/time are returned.
+   *
    * Completes with a [ListReportsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -333,7 +346,7 @@ class JobsReportsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListReportsResponse> list(core.String jobId, {core.String onBehalfOfContentOwner, core.int pageSize, core.String pageToken, core.String createdAfter}) {
+  async.Future<ListReportsResponse> list(core.String jobId, {core.String onBehalfOfContentOwner, core.int pageSize, core.String pageToken, core.String createdAfter, core.String startTimeAtOrAfter, core.String startTimeBefore}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -355,6 +368,12 @@ class JobsReportsResourceApi {
     }
     if (createdAfter != null) {
       _queryParams["createdAfter"] = [createdAfter];
+    }
+    if (startTimeAtOrAfter != null) {
+      _queryParams["startTimeAtOrAfter"] = [startTimeAtOrAfter];
+    }
+    if (startTimeBefore != null) {
+      _queryParams["startTimeBefore"] = [startTimeBefore];
     }
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/reports';
@@ -461,6 +480,10 @@ class ReportTypesResourceApi {
    * ListReportTypesResponse.next_page_token returned in response to the
    * previous call to the `ListReportTypes` method.
    *
+   * [includeSystemManaged] - If set to true, also system-managed report types
+   * will be returned; otherwise only the report types that can be used to
+   * create new reporting jobs will be returned.
+   *
    * Completes with a [ListReportTypesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -469,7 +492,7 @@ class ReportTypesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListReportTypesResponse> list({core.String onBehalfOfContentOwner, core.int pageSize, core.String pageToken}) {
+  async.Future<ListReportTypesResponse> list({core.String onBehalfOfContentOwner, core.int pageSize, core.String pageToken, core.bool includeSystemManaged}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -485,6 +508,9 @@ class ReportTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (includeSystemManaged != null) {
+      _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
     }
 
     _url = 'v1/reportTypes';
@@ -536,6 +562,11 @@ class Job {
    * ReportType.
    */
   core.String reportTypeId;
+  /**
+   * True if this a system-managed job that cannot be modified by the user;
+   * otherwise false.
+   */
+  core.bool systemManaged;
 
   Job();
 
@@ -552,6 +583,9 @@ class Job {
     if (_json.containsKey("reportTypeId")) {
       reportTypeId = _json["reportTypeId"];
     }
+    if (_json.containsKey("systemManaged")) {
+      systemManaged = _json["systemManaged"];
+    }
   }
 
   core.Map toJson() {
@@ -567,6 +601,9 @@ class Job {
     }
     if (reportTypeId != null) {
       _json["reportTypeId"] = reportTypeId;
+    }
+    if (systemManaged != null) {
+      _json["systemManaged"] = systemManaged;
     }
     return _json;
   }
@@ -775,6 +812,12 @@ class ReportType {
   core.String id;
   /** The name of the report type (max. 100 characters). */
   core.String name;
+  /**
+   * True if this a system-managed report type; otherwise false. Reporting jobs
+   * for system-managed report types are created automatically and can thus not
+   * be used in the `CreateJob` method.
+   */
+  core.bool systemManaged;
 
   ReportType();
 
@@ -785,6 +828,9 @@ class ReportType {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("systemManaged")) {
+      systemManaged = _json["systemManaged"];
+    }
   }
 
   core.Map toJson() {
@@ -794,6 +840,9 @@ class ReportType {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (systemManaged != null) {
+      _json["systemManaged"] = systemManaged;
     }
     return _json;
   }

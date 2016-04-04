@@ -14,7 +14,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client sqladmin/v1beta3';
 
-/** API for Cloud SQL database instance management. */
+/**
+ * Creates and configures Cloud SQL instances, which provide fully-managed MySQL
+ * databases.
+ */
 class SqladminApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";

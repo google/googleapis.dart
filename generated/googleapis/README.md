@@ -130,7 +130,7 @@ Official API documentation: https://developers.google.com/analytics/
 
 #### ![Logo](https://www.google.com/images/icons/product/android-16.png) Google Play EMM API - androidenterprise v1
 
-Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android for Work users.
+Manages the deployment of apps to Android for Work users.
 
 Official API documentation: https://developers.google.com/android/work/play/emm-api
 
@@ -172,7 +172,7 @@ Official API documentation: https://developers.google.com/books/docs/v1/getting_
 
 #### ![Logo](http://www.google.com/images/icons/product/calendar-16.png) Calendar API - calendar v3
 
-Lets you manipulate events and other calendar data.
+Manipulates events and other calendar data.
 
 Official API documentation: https://developers.google.com/google-apps/calendar/firstapp
 
@@ -226,7 +226,7 @@ Official API documentation: https://developers.google.com/compute/docs/reference
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Container Engine API - container v1
 
-The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.
+Builds and manages clusters that run container-based applications, powered by open source Kubernetes technology.
 
 Official API documentation: https://cloud.google.com/container-engine/
 
@@ -274,31 +274,31 @@ Official API documentation: https://developers.google.com/doubleclick-advertiser
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.0
 
-Manage your DoubleClick Campaign Manager ad campaigns and reports.
+Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.1
 
-Manage your DoubleClick Campaign Manager ad campaigns and reports.
+Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.2
 
-Manage your DoubleClick Campaign Manager ad campaigns and reports.
+Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.3
 
-Manage your DoubleClick Campaign Manager ad campaigns and reports.
+Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.4
 
-Manage your DoubleClick Campaign Manager ad campaigns and reports.
+Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
@@ -384,7 +384,7 @@ Official API documentation: https://developers.google.com/games/services
 
 Stores, processes, explores and shares genomic data. This API implements the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.
 
-Official API documentation: 
+Official API documentation: https://cloud.google.com/genomics/
 
 #### ![Logo](https://www.google.com/images/icons/product/googlemail-16.png) Gmail API - gmail v1
 
@@ -434,9 +434,15 @@ API for interacting with Glass users via the timeline.
 
 Official API documentation: https://developers.google.com/glass
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Monitoring API - monitoring v3
+
+The Google Monitoring API lets you manage your monitoring data and configurations.
+
+Official API documentation: https://cloud.google.com/monitoring/api/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google OAuth2 API - oauth2 v2
 
-Lets you access OAuth2 protocol related APIs.
+Obtains end-user authorization grants for use with other Google APIs.
 
 Official API documentation: https://developers.google.com/accounts/docs/OAuth2
 
@@ -568,7 +574,7 @@ Official API documentation: https://developers.google.com/fonts/docs/developer_a
 
 #### ![Logo](https://www.google.com/images/icons/product/webmaster_tools-16.png) Search Console API - webmasters v3
 
-Lets you view Google Search Console data for your verified sites.
+View Google Search Console data for your verified sites.
 
 Official API documentation: https://developers.google.com/webmaster-tools/
 

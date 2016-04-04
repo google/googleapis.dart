@@ -23,7 +23,7 @@
     "description": "The Google Cloud DNS API provides services for configuring and serving authoritative DNS records.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-dns",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/YvTvEjSR_sXxd8XvUihYx8e9Xjo\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/HxGEJa_pLOiBZuN-UORZOmZuoc4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -442,7 +442,7 @@
             }
         }
     },
-    "revision": "20160209",
+    "revision": "20160224",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Change": {

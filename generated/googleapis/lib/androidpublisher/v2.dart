@@ -4517,6 +4517,24 @@ class SubscriptionPurchase {
    */
   core.bool autoRenewing;
   /**
+   * The cancel reason of the subscription, if the subscription is not auto
+   * renewing. Possible values are:
+   * - User cancelled the subscription
+   * - Subscription was cancelled by the system, for example because of a
+   * billing problem
+   */
+  core.int cancelReason;
+  /**
+   * ISO 3166-1 alpha-2 billing country/region code of the user at the time the
+   * subscription was granted.
+   */
+  core.String countryCode;
+  /**
+   * A developer-specified string that contains supplemental information about
+   * an order.
+   */
+  core.String developerPayload;
+  /**
    * Time at which the subscription will expire, in milliseconds since Epoch.
    */
   core.String expiryTimeMillis;
@@ -4525,6 +4543,25 @@ class SubscriptionPurchase {
    * service.
    */
   core.String kind;
+  /**
+   * The payment state of the subscription. Possible values are:
+   * - Payment pending
+   * - Payment received
+   */
+  core.int paymentState;
+  /**
+   * Price of the subscription, not including tax. Price is expressed in
+   * micro-units, where 1,000,000 micro-units equal one unit of the currency.
+   * For example, if the subscription price is €1.99, price_amount_micros is
+   * 1990000.
+   */
+  core.String priceAmountMicros;
+  /**
+   * ISO 4217 currency code for the subscription price. For example, if the
+   * price is specified in British pounds sterling, price_currency_code is
+   * "GBP".
+   */
+  core.String priceCurrencyCode;
   /**
    * Time at which the subscription was granted, in milliseconds since Epoch.
    */
@@ -4536,11 +4573,29 @@ class SubscriptionPurchase {
     if (_json.containsKey("autoRenewing")) {
       autoRenewing = _json["autoRenewing"];
     }
+    if (_json.containsKey("cancelReason")) {
+      cancelReason = _json["cancelReason"];
+    }
+    if (_json.containsKey("countryCode")) {
+      countryCode = _json["countryCode"];
+    }
+    if (_json.containsKey("developerPayload")) {
+      developerPayload = _json["developerPayload"];
+    }
     if (_json.containsKey("expiryTimeMillis")) {
       expiryTimeMillis = _json["expiryTimeMillis"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("paymentState")) {
+      paymentState = _json["paymentState"];
+    }
+    if (_json.containsKey("priceAmountMicros")) {
+      priceAmountMicros = _json["priceAmountMicros"];
+    }
+    if (_json.containsKey("priceCurrencyCode")) {
+      priceCurrencyCode = _json["priceCurrencyCode"];
     }
     if (_json.containsKey("startTimeMillis")) {
       startTimeMillis = _json["startTimeMillis"];
@@ -4552,11 +4607,29 @@ class SubscriptionPurchase {
     if (autoRenewing != null) {
       _json["autoRenewing"] = autoRenewing;
     }
+    if (cancelReason != null) {
+      _json["cancelReason"] = cancelReason;
+    }
+    if (countryCode != null) {
+      _json["countryCode"] = countryCode;
+    }
+    if (developerPayload != null) {
+      _json["developerPayload"] = developerPayload;
+    }
     if (expiryTimeMillis != null) {
       _json["expiryTimeMillis"] = expiryTimeMillis;
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (paymentState != null) {
+      _json["paymentState"] = paymentState;
+    }
+    if (priceAmountMicros != null) {
+      _json["priceAmountMicros"] = priceAmountMicros;
+    }
+    if (priceCurrencyCode != null) {
+      _json["priceCurrencyCode"] = priceCurrencyCode;
     }
     if (startTimeMillis != null) {
       _json["startTimeMillis"] = startTimeMillis;

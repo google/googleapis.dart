@@ -18,7 +18,7 @@
     "description": "Schedules reporting jobs and downloads the resulting bulk data reports about YouTube channels, videos, etc. in the form of CSV files.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/reporting/v1/reports/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/gy50rt5mi9f3hPLBxQXMXQbu1CY\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/7J4iznCtmcD9toSKCYeTFY9hpTw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -161,6 +161,11 @@
                             "description": "A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListReportTypes` method.",
                             "location": "query",
                             "type": "string"
+                        },
+                        "includeSystemManaged": {
+                            "description": "If set to true, also system-managed report types will be returned; otherwise only the report types that can be used to create new reporting jobs will be returned.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "v1/reportTypes",
@@ -219,6 +224,11 @@
                             "description": "A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListJobs` method.",
                             "location": "query",
                             "type": "string"
+                        },
+                        "includeSystemManaged": {
+                            "description": "If set to true, also system-managed jobs will be returned; otherwise only user-created jobs will be returned. System-managed jobs can neither be modified nor deleted.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "v1/jobs",
@@ -326,6 +336,16 @@
                                     "description": "If set, only reports created after the specified date/time are returned.",
                                     "location": "query",
                                     "type": "string"
+                                },
+                                "startTimeAtOrAfter": {
+                                    "description": "If set, only reports whose start time is greater than or equal the specified date/time are returned.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "startTimeBefore": {
+                                    "description": "If set, only reports whose start time is smaller than the specified date/time are returned.",
+                                    "location": "query",
+                                    "type": "string"
                                 }
                             },
                             "path": "v1/jobs/{jobId}/reports",
@@ -378,7 +398,7 @@
             }
         }
     },
-    "revision": "20160301",
+    "revision": "20160315",
     "rootUrl": "https://youtubereporting.googleapis.com/",
     "schemas": {
         "Media": {
@@ -421,6 +441,10 @@
                 "name": {
                     "description": "The name of the report type (max. 100 characters).",
                     "type": "string"
+                },
+                "systemManaged": {
+                    "description": "True if this a system-managed report type; otherwise false. Reporting jobs for system-managed report types are created automatically and can thus not be used in the `CreateJob` method.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -444,6 +468,10 @@
                 "createTime": {
                     "description": "The creation date/time of the job.",
                     "type": "string"
+                },
+                "systemManaged": {
+                    "description": "True if this a system-managed job that cannot be modified by the user; otherwise false.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

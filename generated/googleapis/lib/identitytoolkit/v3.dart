@@ -1269,8 +1269,12 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
   core.List<core.String> authorizedDomains;
   /** Change email template. */
   EmailTemplate changeEmailTemplate;
+  /** Whether anonymous user is enabled. */
+  core.bool enableAnonymousUser;
   /** OAuth2 provider configuration. */
   core.List<IdpConfig> idpConfig;
+  /** Legacy reset password email template. */
+  EmailTemplate legacyResetPasswordTemplate;
   /** Project ID of the relying party. */
   core.String projectId;
   /** Reset password email template. */
@@ -1295,8 +1299,14 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     if (_json.containsKey("changeEmailTemplate")) {
       changeEmailTemplate = new EmailTemplate.fromJson(_json["changeEmailTemplate"]);
     }
+    if (_json.containsKey("enableAnonymousUser")) {
+      enableAnonymousUser = _json["enableAnonymousUser"];
+    }
     if (_json.containsKey("idpConfig")) {
       idpConfig = _json["idpConfig"].map((value) => new IdpConfig.fromJson(value)).toList();
+    }
+    if (_json.containsKey("legacyResetPasswordTemplate")) {
+      legacyResetPasswordTemplate = new EmailTemplate.fromJson(_json["legacyResetPasswordTemplate"]);
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
@@ -1326,8 +1336,14 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     if (changeEmailTemplate != null) {
       _json["changeEmailTemplate"] = (changeEmailTemplate).toJson();
     }
+    if (enableAnonymousUser != null) {
+      _json["enableAnonymousUser"] = enableAnonymousUser;
+    }
     if (idpConfig != null) {
       _json["idpConfig"] = idpConfig.map((value) => (value).toJson()).toList();
+    }
+    if (legacyResetPasswordTemplate != null) {
+      _json["legacyResetPasswordTemplate"] = (legacyResetPasswordTemplate).toJson();
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
@@ -1610,8 +1626,12 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
    * for Firebase V1 migration.
    */
   core.String delegatedProjectNumber;
+  /** Whether to enable anonymous user. */
+  core.bool enableAnonymousUser;
   /** Oauth2 provider configuration. */
   core.List<IdpConfig> idpConfig;
+  /** Legacy reset password email template. */
+  EmailTemplate legacyResetPasswordTemplate;
   /** Reset password email template. */
   EmailTemplate resetPasswordTemplate;
   /** Whether to use email sending provided by Firebear. */
@@ -1634,8 +1654,14 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
     if (_json.containsKey("delegatedProjectNumber")) {
       delegatedProjectNumber = _json["delegatedProjectNumber"];
     }
+    if (_json.containsKey("enableAnonymousUser")) {
+      enableAnonymousUser = _json["enableAnonymousUser"];
+    }
     if (_json.containsKey("idpConfig")) {
       idpConfig = _json["idpConfig"].map((value) => new IdpConfig.fromJson(value)).toList();
+    }
+    if (_json.containsKey("legacyResetPasswordTemplate")) {
+      legacyResetPasswordTemplate = new EmailTemplate.fromJson(_json["legacyResetPasswordTemplate"]);
     }
     if (_json.containsKey("resetPasswordTemplate")) {
       resetPasswordTemplate = new EmailTemplate.fromJson(_json["resetPasswordTemplate"]);
@@ -1662,8 +1688,14 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
     }
+    if (enableAnonymousUser != null) {
+      _json["enableAnonymousUser"] = enableAnonymousUser;
+    }
     if (idpConfig != null) {
       _json["idpConfig"] = idpConfig.map((value) => (value).toJson()).toList();
+    }
+    if (legacyResetPasswordTemplate != null) {
+      _json["legacyResetPasswordTemplate"] = (legacyResetPasswordTemplate).toJson();
     }
     if (resetPasswordTemplate != null) {
       _json["resetPasswordTemplate"] = (resetPasswordTemplate).toJson();
@@ -2159,6 +2191,8 @@ class IdpConfig {
   core.int experimentPercent;
   /** OAuth2 provider. */
   core.String provider;
+  /** OAuth2 client secret. */
+  core.String secret;
 
   IdpConfig();
 
@@ -2175,6 +2209,9 @@ class IdpConfig {
     if (_json.containsKey("provider")) {
       provider = _json["provider"];
     }
+    if (_json.containsKey("secret")) {
+      secret = _json["secret"];
+    }
   }
 
   core.Map toJson() {
@@ -2190,6 +2227,9 @@ class IdpConfig {
     }
     if (provider != null) {
       _json["provider"] = provider;
+    }
+    if (secret != null) {
+      _json["secret"] = secret;
     }
     return _json;
   }

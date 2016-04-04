@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client oauth2/v2';
 
-/** Lets you access OAuth2 protocol related APIs. */
+/** Obtains end-user authorization grants for use with other Google APIs. */
 class Oauth2Api {
   /** Know the list of people in your circles, your age range, and language */
   static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";

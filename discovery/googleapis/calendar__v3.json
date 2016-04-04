@@ -14,10 +14,10 @@
     "basePath": "/calendar/v3/",
     "baseUrl": "https://www.googleapis.com/calendar/v3/",
     "batchPath": "batch",
-    "description": "Lets you manipulate events and other calendar data.",
+    "description": "Manipulates events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/KrwEJrs1H5J6yPv66BCM9mKbKSM\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/-srysY-Zees5odsqXZqrxlGNqT8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -1555,7 +1555,7 @@
             }
         }
     },
-    "revision": "20160306",
+    "revision": "20160329",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {

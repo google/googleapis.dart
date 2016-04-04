@@ -51,40 +51,40 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1851() {
+buildUnnamed2968() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1851(core.Map<core.String, core.String> o) {
+checkUnnamed2968(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1852() {
+buildUnnamed2969() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1852(core.List<core.String> o) {
+checkUnnamed2969(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1853() {
+buildUnnamed2970() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1853(core.List<core.String> o) {
+checkUnnamed2970(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -97,11 +97,11 @@ buildWebfont() {
   if (buildCounterWebfont < 3) {
     o.category = "foo";
     o.family = "foo";
-    o.files = buildUnnamed1851();
+    o.files = buildUnnamed2968();
     o.kind = "foo";
     o.lastModified = core.DateTime.parse("2002-02-27T14:01:02Z");
-    o.subsets = buildUnnamed1852();
-    o.variants = buildUnnamed1853();
+    o.subsets = buildUnnamed2969();
+    o.variants = buildUnnamed2970();
     o.version = "foo";
   }
   buildCounterWebfont--;
@@ -113,24 +113,24 @@ checkWebfont(api.Webfont o) {
   if (buildCounterWebfont < 3) {
     unittest.expect(o.category, unittest.equals('foo'));
     unittest.expect(o.family, unittest.equals('foo'));
-    checkUnnamed1851(o.files);
+    checkUnnamed2968(o.files);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.lastModified, unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
-    checkUnnamed1852(o.subsets);
-    checkUnnamed1853(o.variants);
+    checkUnnamed2969(o.subsets);
+    checkUnnamed2970(o.variants);
     unittest.expect(o.version, unittest.equals('foo'));
   }
   buildCounterWebfont--;
 }
 
-buildUnnamed1854() {
+buildUnnamed2971() {
   var o = new core.List<api.Webfont>();
   o.add(buildWebfont());
   o.add(buildWebfont());
   return o;
 }
 
-checkUnnamed1854(core.List<api.Webfont> o) {
+checkUnnamed2971(core.List<api.Webfont> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebfont(o[0]);
   checkWebfont(o[1]);
@@ -141,7 +141,7 @@ buildWebfontList() {
   var o = new api.WebfontList();
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
-    o.items = buildUnnamed1854();
+    o.items = buildUnnamed2971();
     o.kind = "foo";
   }
   buildCounterWebfontList--;
@@ -151,7 +151,7 @@ buildWebfontList() {
 checkWebfontList(api.WebfontList o) {
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
-    checkUnnamed1854(o.items);
+    checkUnnamed2971(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterWebfontList--;

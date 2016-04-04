@@ -15,10 +15,10 @@
     "baseUrl": "https://www.googleapis.com/sql/v1beta3/",
     "batchPath": "batch",
     "canonicalName": "SQL Admin",
-    "description": "API for Cloud SQL database instance management.",
+    "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/aZQ0aXsmAhNDAeFcsfFvnGiC3G8\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/4TC4F7Xm6e7jG0NqseTCtK84pBM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -910,7 +910,7 @@
             }
         }
     },
-    "revision": "20160222",
+    "revision": "20160321",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BackupConfiguration": {

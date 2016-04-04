@@ -17,10 +17,10 @@
     "basePath": "/datastore/v1beta2/datasets/",
     "baseUrl": "https://www.googleapis.com/datastore/v1beta2/datasets/",
     "batchPath": "batch",
-    "description": "API for accessing Google Cloud Datastore.",
+    "description": "Stores and queries data in Google Cloud Datastore.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/datastore/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/KQuWIZOSktBy7VDkAXC6BX3U2II\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/xlRfXybj491s9T9Q90yjlG-attA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -252,7 +252,7 @@
             }
         }
     },
-    "revision": "20151008",
+    "revision": "20160314",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AllocateIdsRequest": {

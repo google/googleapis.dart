@@ -77,6 +77,7 @@ buildGroups() {
     o.sendMessageDenyNotification = "foo";
     o.showInGroupDirectory = "foo";
     o.spamModerationLevel = "foo";
+    o.whoCanAdd = "foo";
     o.whoCanContactOwner = "foo";
     o.whoCanInvite = "foo";
     o.whoCanJoin = "foo";
@@ -113,6 +114,7 @@ checkGroups(api.Groups o) {
     unittest.expect(o.sendMessageDenyNotification, unittest.equals('foo'));
     unittest.expect(o.showInGroupDirectory, unittest.equals('foo'));
     unittest.expect(o.spamModerationLevel, unittest.equals('foo'));
+    unittest.expect(o.whoCanAdd, unittest.equals('foo'));
     unittest.expect(o.whoCanContactOwner, unittest.equals('foo'));
     unittest.expect(o.whoCanInvite, unittest.equals('foo'));
     unittest.expect(o.whoCanJoin, unittest.equals('foo'));

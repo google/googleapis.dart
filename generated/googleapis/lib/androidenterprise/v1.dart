@@ -14,10 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client androidenterprise/v1';
 
-/**
- * Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android
- * for Work users.
- */
+/** Manages the deployment of apps to Android for Work users. */
 class AndroidenterpriseApi {
   /** Manage corporate Android devices */
   static const AndroidenterpriseScope = "https://www.googleapis.com/auth/androidenterprise";
@@ -1246,7 +1243,7 @@ class EntitlementsResourceApi {
    *
    * [userId] - The ID of the user.
    *
-   * [entitlementId] - The ID of the entitlement, e.g.
+   * [entitlementId] - The ID of the entitlement (a product ID), e.g.
    * "app:com.google.android.gm".
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1296,7 +1293,7 @@ class EntitlementsResourceApi {
    *
    * [userId] - The ID of the user.
    *
-   * [entitlementId] - The ID of the entitlement, e.g.
+   * [entitlementId] - The ID of the entitlement (a product ID), e.g.
    * "app:com.google.android.gm".
    *
    * Completes with a [Entitlement].
@@ -1393,7 +1390,7 @@ class EntitlementsResourceApi {
    *
    * [userId] - The ID of the user.
    *
-   * [entitlementId] - The ID of the entitlement, e.g.
+   * [entitlementId] - The ID of the entitlement (a product ID), e.g.
    * "app:com.google.android.gm".
    *
    * [install] - Set to true to also install the product on all the user's
@@ -1456,7 +1453,7 @@ class EntitlementsResourceApi {
    *
    * [userId] - The ID of the user.
    *
-   * [entitlementId] - The ID of the entitlement, e.g.
+   * [entitlementId] - The ID of the entitlement (a product ID), e.g.
    * "app:com.google.android.gm".
    *
    * [install] - Set to true to also install the product on all the user's
@@ -3729,7 +3726,7 @@ class DevicesListResponse {
 }
 
 /**
- * An enterprise resource represents a binding between an organisation and their
+ * An enterprise resource represents a binding between an organization and their
  * EMM.
  *
  * To create an enterprise, an admin of the enterprise must first go through a
@@ -4434,7 +4431,10 @@ class Product {
    * app (restricted to an enterprise) and is privately hosted.
    */
   core.String distributionChannel;
-  /** A link to an image that can be used as an icon for the product. */
+  /**
+   * A link to an image that can be used as an icon for the product. This image
+   * is suitable for use at up to 512px x 512px.
+   */
   core.String iconUrl;
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -4453,6 +4453,11 @@ class Product {
    * Work container app.
    */
   core.bool requiresContainerApp;
+  /**
+   * A link to a smaller image that can be used as an icon for the product. This
+   * image is suitable for use at up to 128px x 128px.
+   */
+  core.String smallIconUrl;
   /** The name of the product. */
   core.String title;
   /**
@@ -4491,6 +4496,9 @@ class Product {
     if (_json.containsKey("requiresContainerApp")) {
       requiresContainerApp = _json["requiresContainerApp"];
     }
+    if (_json.containsKey("smallIconUrl")) {
+      smallIconUrl = _json["smallIconUrl"];
+    }
     if (_json.containsKey("title")) {
       title = _json["title"];
     }
@@ -4527,6 +4535,9 @@ class Product {
     }
     if (requiresContainerApp != null) {
       _json["requiresContainerApp"] = requiresContainerApp;
+    }
+    if (smallIconUrl != null) {
+      _json["smallIconUrl"] = smallIconUrl;
     }
     if (title != null) {
       _json["title"] = title;
@@ -4988,10 +4999,7 @@ class User {
    * "androidenterprise#user".
    */
   core.String kind;
-  /**
-   * The user's primary email, e.g. "jsmith@example.com". Will always be set for
-   * Google managed users and not set for EMM managed users.
-   */
+  /** The user's primary email, e.g. "jsmith@example.com". */
   core.String primaryEmail;
 
   User();

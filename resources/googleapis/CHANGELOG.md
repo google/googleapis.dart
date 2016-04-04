@@ -1,33 +1,51 @@
+## 0.25.0
+
+* [api-new] monitoring:v3
+* [api] adexchangebuyer:v1_3: schema changes
+* [api] adexchangebuyer:v1_4: schema changes, new resources
+* [api] androidenterprise:v1: schema changes
+* [api] androidpublisher:v2: schema changes
+* [api] bigquery:v2: schema changes
+* [api] container:v1: schema changes
+* [api] genomics:v1: schema changes
+* [api] groupssettings:v1: schema changes
+* [api] idenditytoolkit:v3: schema changes
+* [api] reseller:v1: schema changes
+* [api] reseller:v1sandbox: schema changes
+* [api] webmasters:v3: schema changes
+* [api] youtubereporting:v1: method changes, schema changes
+* [api-breaking] compute:v1: schema removal/changes, new resource
+* [api-removal] admin:email_migration_v2
+
 ## 0.24.0
 
-[api-new] cloudresourcemanager:v1
-[api-new] dfareporting:v2.4
-[api-new] iam:v1
-[api-new] people:v1
-[api] adexchangebuyer:v1_3: schema changes
-[api] adexchangebuyer:v1_4: schema changes
-[api] analytics:v3: schema changes
-[api] appsactivity:v1: schema changes
-[api] bigquery:v2: schema changes
-[api] clouddebugger:v2: method changes
-[api] content:v2sandbox: schema changes
-[api] content:v2: schema changes
-[api] dataproc:v1: new resource
-[api] deploymentmanager: schema changes
-[api] drive:v2: schema changes
-[api] drive:v3: schema changes
-[api] games:v1: schema changes
-[api] genomics:v1: new schemas
-[api] gmail:v1: method changes
-[api] idenditytoolkit:v3: method/schema changes
-[api] reseller:v1sandbox: schema changes
-[api] reseller:v1: schema changes
-[api-breaking] adsense:v1_4: schema changes
-[api-breaking] books:v1: method changes
-[api-breaking] tagmanager:v1: method changes, new resources
-[api-breaking] youtube:v3: schema removal
-[api-removal] mapsengine:v1
-
+* [api-new] cloudresourcemanager:v1
+* [api-new] dfareporting:v2.4
+* [api-new] iam:v1
+* [api-new] people:v1
+* [api] adexchangebuyer:v1_3: schema changes
+* [api] adexchangebuyer:v1_4: schema changes
+* [api] analytics:v3: schema changes
+* [api] appsactivity:v1: schema changes
+* [api] bigquery:v2: schema changes
+* [api] clouddebugger:v2: method changes
+* [api] content:v2sandbox: schema changes
+* [api] content:v2: schema changes
+* [api] dataproc:v1: new resource
+* [api] deploymentmanager: schema changes
+* [api] drive:v2: schema changes
+* [api] drive:v3: schema changes
+* [api] games:v1: schema changes
+* [api] genomics:v1: new schemas
+* [api] gmail:v1: method changes
+* [api] idenditytoolkit:v3: method/schema changes
+* [api] reseller:v1sandbox: schema changes
+* [api] reseller:v1: schema changes
+* [api-breaking] adsense:v1_4: schema changes
+* [api-breaking] books:v1: method changes
+* [api-breaking] tagmanager:v1: method changes, new resources
+* [api-breaking] youtube:v3: schema removal
+* [api-removal] mapsengine:v1
 
 ## 0.23.0
 

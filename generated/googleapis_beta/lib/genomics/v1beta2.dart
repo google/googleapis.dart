@@ -957,7 +957,9 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Deletes a dataset.
+   * Deletes a dataset and all of its contents (all read group sets, reference
+   * sets, variant sets, call sets, annotation sets, etc.) This is reversible
+   * (up to one week after the deletion) via the UndeleteDataset operation.
    *
    * Request parameters:
    *
@@ -2533,10 +2535,11 @@ class VariantsetsResourceApi {
    * The variants for import will be merged with any existing data and each
    * other according to the behavior of mergeVariants. In particular, this means
    * for merged VCF variants that have conflicting info fields, some data will
-   * be arbitrarily discarded. As a special case, for single-sample VCF files,
-   * QUAL and FILTER fields will be moved to the call level; these are sometimes
-   * interpreted in a call-specific context. Imported VCF headers are appended
-   * to the metadata already in a variant set.
+   * be arbitrarily discarded unless otherwise specified in the InfoMergeConfig
+   * field of ImportVariantsRequest. As a special case, for single-sample VCF
+   * files, QUAL and FILTER fields will be moved to the call level; these are
+   * sometimes interpreted in a call-specific context. Imported VCF headers are
+   * appended to the metadata already in a variant set.
    *
    * [request] - The metadata request object.
    *
@@ -2587,8 +2590,8 @@ class VariantsetsResourceApi {
    * new one will be created.
    *
    * When variants are merged, the call information from the new variant is
-   * added to the existing variant, and other fields (such as key/value pairs)
-   * are discarded.
+   * added to the existing variant. Variant info fields are merged as specified
+   * in the InfoMergeConfig field of the MergeVariantsRequest.
    *
    * [request] - The metadata request object.
    *
@@ -4389,7 +4392,10 @@ class Position {
   }
 }
 
-/** A 0-based half-open genomic coordinate range for search requests. */
+/**
+ * A 0-based half-open genomic coordinate range for search requests.
+ * reference_id or reference_name must be set.
+ */
 class QueryRange {
   /**
    * The end position of the range on the reference, 0-based exclusive. If
@@ -4397,15 +4403,11 @@ class QueryRange {
    * 0, defaults to the length of the reference.
    */
   core.String end;
-  /**
-   * The ID of the reference to query. At most one of referenceId and
-   * referenceName should be specified.
-   */
+  /** The ID of the reference to query. */
   core.String referenceId;
   /**
    * The name of the reference to query, within the reference set associated
-   * with this query. At most one of referenceId and referenceName pshould be
-   * specified.
+   * with this query.
    */
   core.String referenceName;
   /**

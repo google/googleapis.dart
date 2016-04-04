@@ -1,15 +1,24 @@
+## 0.25.0
+
+* [api-new] dfareporting:v2.5beta1
+* [api] dataflow:v1b3: method changes, schema changes
+* [api] toolresults:v1beta3: schema changes
+* [api-breaking] appengine:v1beta5: method changes
+* [api-breaking] logging:v2beta1: schema changes
+* [api-removal] deploymentmanager:v2beta1
+
 ## 0.24.0
 
-[api-new] appengine:v1beta5
-[api-new] toolresults:v1beta3
-[api] clouduseraccounts:beta: schema changes
-[api] dataflow:v1b3: schema changes
-[api] dataproc:v1beta1: new methods
-[api] deploymentmanager:v2beta2 schema changes
-[api] sqladmin:v1beta3: schema changes
-[api] sqladmin:v1beta4: schema changes
-[api] sqladmin:v1beta4: schema changes
-[api-breaking] cloudresourcemanager:v1beta1: method changes
+* [api-new] appengine:v1beta5
+* [api-new] toolresults:v1beta3
+* [api] clouduseraccounts:beta: schema changes
+* [api] dataflow:v1b3: schema changes
+* [api] dataproc:v1beta1: new methods
+* [api] deploymentmanager:v2beta2 schema changes
+* [api] sqladmin:v1beta3: schema changes
+* [api] sqladmin:v1beta4: schema changes
+* [api] sqladmin:v1beta4: schema changes
+* [api-breaking] cloudresourcemanager:v1beta1: method changes
 
 ## 0.23.2
 

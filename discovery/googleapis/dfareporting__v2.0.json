@@ -14,10 +14,10 @@
     "basePath": "/dfareporting/v2.0/",
     "baseUrl": "https://www.googleapis.com/dfareporting/v2.0/",
     "batchPath": "batch",
-    "description": "Manage your DoubleClick Campaign Manager ad campaigns and reports.",
+    "description": "Manages your DoubleClick Campaign Manager ad campaigns and reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/doubleclick-advertisers/reporting/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/C6xyLXx3qLxKuqaI4d4FbymlsJc\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Fj2CLE28zbL5UgO7JzpcL_ITvzE\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -5899,7 +5899,7 @@
                             "type": "string"
                         },
                         "compatibilities": {
-                            "description": "Select only placements that are associated with these compatibilities. WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps.IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard.",
+                            "description": "Select only placements that are associated with these compatibilities. WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard.",
                             "enum": [
                                 "APP",
                                 "APP_INTERSTITIAL",
@@ -7602,7 +7602,7 @@
             }
         }
     },
-    "revision": "20160128",
+    "revision": "20160323",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -7957,9 +7957,11 @@
                     "enum": [
                         "INTERNAL_ADMINISTRATOR",
                         "NORMAL_USER",
+                        "READ_ONLY_SUPER_USER",
                         "SUPER_USER"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         ""
@@ -10292,9 +10294,11 @@
                             "NOT_SSL_COMPLIANT",
                             "ORPHANED_ASSET",
                             "PRIMARY_HTML_MISSING",
+                            "SVG_INVALID",
                             "ZIP_INVALID"
                         ],
                         "enumDescriptions": [
+                            "",
                             "",
                             "",
                             "",
@@ -12926,7 +12930,7 @@
                     "type": "string"
                 },
                 "compatibility": {
-                    "description": "Placement compatibility. WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps.IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. This field is required on insertion.",
+                    "description": "Placement compatibility. WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. This field is required on insertion.",
                     "enum": [
                         "APP",
                         "APP_INTERSTITIAL",

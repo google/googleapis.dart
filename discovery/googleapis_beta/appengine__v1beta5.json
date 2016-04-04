@@ -11,10 +11,10 @@
     "basePath": "",
     "baseUrl": "https://appengine.googleapis.com/",
     "batchPath": "batch",
-    "description": "The Google App Engine Admin API enables developers to provision and manage their App Engine applications.",
+    "description": "Provisions and manages App Engine applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/appengine/docs/admin-api/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/tL7xNjyj_kg_Ll9deL7DxZKPLUI\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/IvXIG_T4MYH64EZNcYKT8TBXdac\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -558,7 +558,7 @@
                                         "$ref": "Version"
                                     },
                                     "response": {
-                                        "$ref": "Version"
+                                        "$ref": "Operation"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -571,7 +571,7 @@
             }
         }
     },
-    "revision": "20160223",
+    "revision": "20160314",
     "rootUrl": "https://appengine.googleapis.com/",
     "schemas": {
         "Operation": {
@@ -579,7 +579,7 @@
             "id": "Operation",
             "properties": {
                 "name": {
-                    "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping above, the `name` should have the format of `operations/some/unique/name`.",
+                    "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should have the format of `operations/some/unique/name`.",
                     "type": "string"
                 },
                 "metadata": {
@@ -667,7 +667,7 @@
                     "type": "string"
                 },
                 "dispatchRules": {
-                    "description": "HTTP path dispatch rules for requests to the app that do not explicitly target a service or version. The rules are order-dependent.",
+                    "description": "HTTP path dispatch rules for requests to the app that do not explicitly target a service or version. The rules are order-dependent. @OutputOnly",
                     "items": {
                         "$ref": "UrlDispatchRule"
                     },
@@ -678,7 +678,7 @@
                     "type": "string"
                 },
                 "location": {
-                    "description": "The location from which the application will be run. Choices are \"us\" for United States and \"eu\" for European Union. Application instances will run out of data centers in the chosen location and all of the application's End User Content will be stored at rest in the chosen location. The default is \"us\".",
+                    "description": "The location from which the application will be run. Application instances will run out of data centers in the chosen location and all of the application's End User Content will be stored at rest. The default is \"us-central\". Choices are: \"us-central\" - Central US \"europe-west\" - Western Europe \"us-east1\" - Eastern US",
                     "type": "string"
                 },
                 "codeBucket": {
@@ -686,7 +686,7 @@
                     "type": "string"
                 },
                 "defaultCookieExpiration": {
-                    "description": "Determines the cookie expiration policy for the application.",
+                    "description": "Determines the cookie expiration policy for the application. @OutputOnly",
                     "type": "string"
                 },
                 "defaultHostname": {

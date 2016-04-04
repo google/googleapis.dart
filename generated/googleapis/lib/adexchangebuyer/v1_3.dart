@@ -2008,6 +2008,11 @@ class DirectDeal {
   /** Whether the publisher for this deal is eligible for alcohol ads. */
   core.bool allowsAlcohol;
   /**
+   * The account id that this deal was negotiated for. It is either the buyer or
+   * the client that this deal was negotiated on behalf of.
+   */
+  core.String buyerAccountId;
+  /**
    * The currency code that applies to the fixed_cpm value. If not set then
    * assumed to be USD.
    */
@@ -2066,6 +2071,9 @@ class DirectDeal {
     if (_json.containsKey("allowsAlcohol")) {
       allowsAlcohol = _json["allowsAlcohol"];
     }
+    if (_json.containsKey("buyerAccountId")) {
+      buyerAccountId = _json["buyerAccountId"];
+    }
     if (_json.containsKey("currencyCode")) {
       currencyCode = _json["currencyCode"];
     }
@@ -2111,6 +2119,9 @@ class DirectDeal {
     }
     if (allowsAlcohol != null) {
       _json["allowsAlcohol"] = allowsAlcohol;
+    }
+    if (buyerAccountId != null) {
+      _json["buyerAccountId"] = buyerAccountId;
     }
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;

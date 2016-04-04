@@ -14,10 +14,10 @@
     "basePath": "",
     "baseUrl": "https://dataflow.googleapis.com/",
     "batchPath": "batch",
-    "description": "Google Dataflow API.",
+    "description": "Develops and executes data processing patterns like ETL, batch computation, and continuous computation.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataflow",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/6VZTtaR6IvNSRMngfuFqoyS-PQg\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/-PCQObxeMXLhOncDOKreF3FN9IU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -272,6 +272,16 @@
                                     "required": true,
                                     "type": "string"
                                 },
+                                "filter": {
+                                    "description": "The kind of filter to use.",
+                                    "enum": [
+                                        "ALL",
+                                        "TERMINATED",
+                                        "ACTIVE"
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "view": {
                                     "description": "Level of information requested in response. Default is SUMMARY.",
                                     "enum": [
@@ -487,7 +497,7 @@
             }
         }
     },
-    "revision": "20160309",
+    "revision": "20160331",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
         "Job": {
@@ -768,6 +778,11 @@
                 "workerHarnessContainerImage": {
                     "description": "Docker container image that executes Dataflow worker harness, residing in Google Container Registry. Required.",
                     "type": "string"
+                },
+                "numThreadsPerWorker": {
+                    "description": "The number of threads per worker harness. If empty or unspecified, the service will choose a number of threads (according to the number of cores on the selected machine type for batch, or 1 by convention for streaming).",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -2149,6 +2164,11 @@
                 },
                 "forwardingKeyBits": {
                     "description": "The size (in bits) of keys that will be assigned to source messages.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "persistentStateVersion": {
+                    "description": "Version number for persistent state.",
                     "format": "int32",
                     "type": "integer"
                 }

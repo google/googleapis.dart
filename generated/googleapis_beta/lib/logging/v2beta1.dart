@@ -15,8 +15,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client logging/v2beta1';
 
 /**
- * The Google Cloud Logging API lets you write log entries and manage your logs,
- * log sinks and logs-based metrics.
+ * Writes log entries and manages your logs, log sinks, and logs-based metrics.
  */
 class LoggingApi {
   /** View and manage your data across Google Cloud Platform services */
@@ -148,15 +147,13 @@ class MonitoredResourceDescriptorsResourceApi {
    * Request parameters:
    *
    * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Fewer results might be returned. You must check for the
-   * `nextPageToken` result to determine if additional results are available,
-   * which you can retrieve by passing the `nextPageToken` value in the
-   * `pageToken` parameter to the next request.
+   * request. You must check for presence of `nextPageToken` to determine if
+   * additional results are available, which you can retrieve by passing the
+   * `nextPageToken` value as the `pageToken` parameter in the next request.
    *
-   * [pageToken] - Optional. If the `pageToken` request parameter is supplied,
-   * then the next page of results in the set are retrieved. The `pageToken`
-   * parameter must be set with the value of the `nextPageToken` result
-   * parameter from the previous request.
+   * [pageToken] - Optional. If the `pageToken` parameter is supplied, then the
+   * next page of results is retrieved. The `pageToken` parameter must be set to
+   * the value of the `nextPageToken` from the previous response.
    *
    * Completes with a [ListMonitoredResourceDescriptorsResponse].
    *
@@ -403,17 +400,15 @@ class ProjectsMetricsResourceApi {
    * metrics. Example: `"projects/my-project-id"`.
    * Value must have pattern "^projects/[^/]*$".
    *
-   * [pageToken] - Optional. If the `pageToken` request parameter is supplied,
-   * then the next page of results in the set are retrieved. The `pageToken`
-   * parameter must be set with the value of the `nextPageToken` result
-   * parameter from the previous request. The value of `projectName` must be the
-   * same as in the previous request.
+   * [pageToken] - Optional. If the `pageToken` parameter is supplied, then the
+   * next page of results is retrieved. The `pageToken` parameter must be set to
+   * the value of the `nextPageToken` from the previous response. The value of
+   * `projectName` must be the same as in the previous request.
    *
    * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Fewer results might be returned. You must check for the
-   * `nextPageToken` result to determine if additional results are available,
-   * which you can retrieve by passing the `nextPageToken` value in the
-   * `pageToken` parameter to the next request.
+   * request. You must check for presence of `nextPageToken` to determine if
+   * additional results are available, which you can retrieve by passing the
+   * `nextPageToken` value as the `pageToken` parameter in the next request.
    *
    * Completes with a [ListLogMetricsResponse].
    *
@@ -645,20 +640,18 @@ class ProjectsSinksResourceApi {
    * Request parameters:
    *
    * [projectName] - Required. The resource name of the project containing the
-   * sinks. Example: `"projects/my-logging-project"`, `"projects/01234567890"`.
+   * sinks. Example: `"projects/my-logging-project"`.
    * Value must have pattern "^projects/[^/]*$".
    *
-   * [pageToken] - Optional. If the `pageToken` request parameter is supplied,
-   * then the next page of results in the set are retrieved. The `pageToken`
-   * parameter must be set with the value of the `nextPageToken` result
-   * parameter from the previous request. The value of `projectName` must be the
-   * same as in the previous request.
+   * [pageToken] - Optional. If the `pageToken` parameter is supplied, then the
+   * next page of results is retrieved. The `pageToken` parameter must be set to
+   * the value of the `nextPageToken` from the previous response. The value of
+   * `projectName` must be the same as in the previous request.
    *
    * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Fewer results might be returned. You must check for the
-   * `nextPageToken` result to determine if additional results are available,
-   * which you can retrieve by passing the `nextPageToken` value in the
-   * `pageToken` parameter to the next request.
+   * request. You must check for presence of `nextPageToken` to determine if
+   * additional results are available, which you can retrieve by passing the
+   * `nextPageToken` value as the `pageToken` parameter in the next request.
    *
    * Completes with a [ListSinksResponse].
    *
@@ -773,10 +766,23 @@ class Empty {
 /** A common proto for logging HTTP requests. */
 class HttpRequest {
   /**
+   * The number of HTTP response bytes inserted into cache. Set only when a
+   * cache fill was attempted.
+   */
+  core.String cacheFillBytes;
+  /**
    * Whether or not an entity was served from cache (with or without
    * validation).
    */
   core.bool cacheHit;
+  /** Whether or not a cache lookup was attempted. */
+  core.bool cacheLookup;
+  /**
+   * Whether or not the response was validated with the origin server before
+   * being served from cache. This field is only meaningful if `cache_hit` is
+   * True.
+   */
+  core.bool cacheValidatedWithOriginServer;
   /**
    * The referer URL of the request, as defined in [HTTP/1.1 Header Field
    * Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
@@ -814,18 +820,21 @@ class HttpRequest {
    * 6.0; Windows 98; Q312461; .NET CLR 1.0.3705)"`.
    */
   core.String userAgent;
-  /**
-   * Whether or not the response was validated with the origin server before
-   * being served from cache. This field is only meaningful if `cache_hit` is
-   * True.
-   */
-  core.bool validatedWithOriginServer;
 
   HttpRequest();
 
   HttpRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("cacheFillBytes")) {
+      cacheFillBytes = _json["cacheFillBytes"];
+    }
     if (_json.containsKey("cacheHit")) {
       cacheHit = _json["cacheHit"];
+    }
+    if (_json.containsKey("cacheLookup")) {
+      cacheLookup = _json["cacheLookup"];
+    }
+    if (_json.containsKey("cacheValidatedWithOriginServer")) {
+      cacheValidatedWithOriginServer = _json["cacheValidatedWithOriginServer"];
     }
     if (_json.containsKey("referer")) {
       referer = _json["referer"];
@@ -851,15 +860,21 @@ class HttpRequest {
     if (_json.containsKey("userAgent")) {
       userAgent = _json["userAgent"];
     }
-    if (_json.containsKey("validatedWithOriginServer")) {
-      validatedWithOriginServer = _json["validatedWithOriginServer"];
-    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (cacheFillBytes != null) {
+      _json["cacheFillBytes"] = cacheFillBytes;
+    }
     if (cacheHit != null) {
       _json["cacheHit"] = cacheHit;
+    }
+    if (cacheLookup != null) {
+      _json["cacheLookup"] = cacheLookup;
+    }
+    if (cacheValidatedWithOriginServer != null) {
+      _json["cacheValidatedWithOriginServer"] = cacheValidatedWithOriginServer;
     }
     if (referer != null) {
       _json["referer"] = referer;
@@ -884,9 +899,6 @@ class HttpRequest {
     }
     if (userAgent != null) {
       _json["userAgent"] = userAgent;
-    }
-    if (validatedWithOriginServer != null) {
-      _json["validatedWithOriginServer"] = validatedWithOriginServer;
     }
     return _json;
   }
@@ -947,29 +959,33 @@ class ListLogEntriesRequest {
   core.String filter;
   /**
    * Optional. How the results should be sorted. Presently, the only permitted
-   * values are `"timestamp"` (default) and `"timestamp desc"`. The first option
-   * returns entries in order of increasing values of `LogEntry.timestamp`
-   * (oldest first), and the second option returns entries in order of
-   * decreasing timestamps (newest first). Entries with equal timestamps are
-   * returned in order of `LogEntry.insertId`.
+   * values are `"timestamp asc"` (default) and `"timestamp desc"`. The first
+   * option returns entries in order of increasing values of
+   * `LogEntry.timestamp` (oldest first), and the second option returns entries
+   * in order of decreasing timestamps (newest first). Entries with equal
+   * timestamps are returned in order of `LogEntry.insertId`.
    */
   core.String orderBy;
   /**
-   * Optional. The maximum number of results to return from this request. Fewer
-   * results might be returned. You must check for the `nextPageToken` result to
-   * determine if additional results are available, which you can retrieve by
-   * passing the `nextPageToken` value in the `pageToken` parameter to the next
-   * request.
+   * Optional. The maximum number of results to return from this request. You
+   * must check for presence of `nextPageToken` to determine if additional
+   * results are available, which you can retrieve by passing the
+   * `nextPageToken` value as the `pageToken` parameter in the next request.
    */
   core.int pageSize;
   /**
-   * Optional. If the `pageToken` request parameter is supplied, then the next
-   * page of results in the set are retrieved. The `pageToken` parameter must be
-   * set with the value of the `nextPageToken` result parameter from the
-   * previous request. The values of `projectIds`, `filter`, and `orderBy` must
-   * be the same as in the previous request.
+   * Optional. If the `pageToken` parameter is supplied, then the next page of
+   * results is retrieved. The `pageToken` parameter must be set to the value of
+   * the `nextPageToken` from the previous response. The values of `projectIds`,
+   * `filter`, and `orderBy` must be the same as in the previous request.
    */
   core.String pageToken;
+  /**
+   * Optional. If true, read access to all projects is not required and results
+   * will be returned for the subset of projects for which read access is
+   * permitted (empty subset is permitted).
+   */
+  core.bool partialSuccess;
   /**
    * Required. One or more project IDs or project numbers from which to retrieve
    * log entries. Examples of a project ID: `"my-project-1A"`, `"1234567890"`.
@@ -991,6 +1007,9 @@ class ListLogEntriesRequest {
     if (_json.containsKey("pageToken")) {
       pageToken = _json["pageToken"];
     }
+    if (_json.containsKey("partialSuccess")) {
+      partialSuccess = _json["partialSuccess"];
+    }
     if (_json.containsKey("projectIds")) {
       projectIds = _json["projectIds"];
     }
@@ -1010,6 +1029,9 @@ class ListLogEntriesRequest {
     if (pageToken != null) {
       _json["pageToken"] = pageToken;
     }
+    if (partialSuccess != null) {
+      _json["partialSuccess"] = partialSuccess;
+    }
     if (projectIds != null) {
       _json["projectIds"] = projectIds;
     }
@@ -1022,11 +1044,16 @@ class ListLogEntriesResponse {
   /** A list of log entries. */
   core.List<LogEntry> entries;
   /**
-   * If there are more results than were returned, then `nextPageToken` is given
-   * a value in the response. To get the next batch of results, call this method
+   * If there are more results than were returned, then `nextPageToken` is
+   * included in the response. To get the next set of results, call this method
    * again using the value of `nextPageToken` as `pageToken`.
    */
   core.String nextPageToken;
+  /**
+   * If partial_success is true, contains the project ids that had errors and
+   * the associated errors.
+   */
+  core.Map<core.String, Status> projectIdErrors;
 
   ListLogEntriesResponse();
 
@@ -1036,6 +1063,9 @@ class ListLogEntriesResponse {
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("projectIdErrors")) {
+      projectIdErrors = commons.mapMap(_json["projectIdErrors"], (item) => new Status.fromJson(item));
     }
   }
 
@@ -1047,6 +1077,9 @@ class ListLogEntriesResponse {
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
+    if (projectIdErrors != null) {
+      _json["projectIdErrors"] = commons.mapMap(projectIdErrors, (item) => (item).toJson());
+    }
     return _json;
   }
 }
@@ -1056,8 +1089,8 @@ class ListLogMetricsResponse {
   /** A list of logs-based metrics. */
   core.List<LogMetric> metrics;
   /**
-   * If there are more results than were returned, then `nextPageToken` is given
-   * a value in the response. To get the next batch of results, call this method
+   * If there are more results than were returned, then `nextPageToken` is
+   * included in the response. To get the next set of results, call this method
    * again using the value of `nextPageToken` as `pageToken`.
    */
   core.String nextPageToken;
@@ -1089,8 +1122,8 @@ class ListLogMetricsResponse {
 class ListMonitoredResourceDescriptorsResponse {
   /**
    * If there are more results than were returned, then `nextPageToken` is
-   * returned in the response. To get the next batch of results, call this
-   * method again using the value of `nextPageToken` as `pageToken`.
+   * included in the response. To get the next set of results, call this method
+   * again using the value of `nextPageToken` as `pageToken`.
    */
   core.String nextPageToken;
   /** A list of resource descriptors. */
@@ -1122,8 +1155,8 @@ class ListMonitoredResourceDescriptorsResponse {
 /** Result returned from `ListSinks`. */
 class ListSinksResponse {
   /**
-   * If there are more results than were returned, then `nextPageToken` is given
-   * a value in the response. To get the next batch of results, call this method
+   * If there are more results than were returned, then `nextPageToken` is
+   * included in the response. To get the next set of results, call this method
    * again using the value of `nextPageToken` as `pageToken`.
    */
   core.String nextPageToken;
@@ -1182,8 +1215,8 @@ class LogEntry {
   core.Map<core.String, core.String> labels;
   /**
    * Required. The resource name of the log to which this log entry belongs. The
-   * format of the name is `projects/<project-id>/logs/<log-id%gt;`. Examples:
-   * `"projects/my-projectid/logs/syslog"`,
+   * format of the name is `"projects/
+   * /logs/"`. Examples: `"projects/my-projectid/logs/syslog"`,
    * `"projects/1234567890/logs/library.googleapis.com%2Fbook_log"`. The log ID
    * part of resource name must be less than 512 characters long and can only
    * include the following characters: upper and lower case alphanumeric
@@ -1491,11 +1524,12 @@ class LogSink {
    */
   core.String destination;
   /**
-   * An [advanced logs filter](/logging/docs/view/advanced_filters) that defines
-   * the log entries to be exported. The filter must be consistent with the log
-   * entry format designed by the `outputVersionFormat` parameter, regardless of
-   * the format of the log entry that was originally written to Cloud Logging.
-   * Example: `"logName:syslog AND severity>=ERROR"`.
+   * An [advanced logs filter](/logging/docs/view/advanced_filters). Only log
+   * entries matching that filter are exported. The filter must be consistent
+   * with the log entry format specified by the `outputVersionFormat` parameter,
+   * regardless of the format of the log entry that was originally written to
+   * Cloud Logging. Example (V2 format):
+   * `"logName=projects/my-projectid/logs/syslog AND severity>=ERROR"`.
    */
   core.String filter;
   /**
@@ -1506,7 +1540,7 @@ class LogSink {
    */
   core.String name;
   /**
-   * The log entry version used when exporting log entries from this sink. This
+   * The log entry version to use for this sink's exported log entries. This
    * version does not have to correspond to the version of the log entry when it
    * was written to Cloud Logging.
    * Possible string values are:
@@ -1551,20 +1585,29 @@ class LogSink {
   }
 }
 
-/** A specific monitored resource or a group of monitored resources. */
+/**
+ * An object representing a resource that can be used for monitoring, logging,
+ * billing, or other purposes. Examples include virtual machine instances,
+ * databases, and storage devices such as disks. The `type` field identifies a
+ * MonitoredResourceDescriptor object that describes the resource's schema.
+ * Information in the `labels` field identifies the actual resource and its
+ * attributes according to the schema. For example, a particular Compute Engine
+ * VM instance could be represented by the following object, because the
+ * MonitoredResourceDescriptor for `"gce_instance"` has labels `"instance_id"`
+ * and `"zone"`: { "type": "gce_instance", "labels": { "instance_id":
+ * "my-instance", "zone": "us-central1-a" }}
+ */
 class MonitoredResource {
   /**
-   * Values for some or all of the labels listed in the associated monitored
-   * resource descriptor. For example, specify a specific Cloud SQL database by
-   * supplying values for both the `"database_id"` and `"zone"` labels. Specify
-   * the set of all Cloud SQL databases in a particular location by supplying a
-   * value for only the `"zone"` label.
+   * Required. Values for all of the labels listed in the associated monitored
+   * resource descriptor. For example, Cloud SQL databases use the labels
+   * `"database_id"` and `"zone"`.
    */
   core.Map<core.String, core.String> labels;
   /**
-   * The type of monitored resource. This field must match the value of the
-   * `type` field in a MonitoredResourceDescriptor object. For example,
-   * `"cloudsql_database"` represents Cloud SQL databases.
+   * Required. The monitored resource type. This field must match the `type`
+   * field of a MonitoredResourceDescriptor object. For example, the type of a
+   * Cloud SQL database is `"cloudsql_database"`.
    */
   core.String type;
 
@@ -1591,27 +1634,44 @@ class MonitoredResource {
   }
 }
 
-/** A description of a type of monitored resource. */
+/**
+ * An object that describes the schema of a MonitoredResource object using a
+ * type name and a set of labels. For example, the monitored resource descriptor
+ * for Google Compute Engine VM instances has a type of `"gce_instance"` and
+ * specifies the use of the labels `"instance_id"` and `"zone"` to identify
+ * particular VM instances. Different APIs can support different monitored
+ * resource types. APIs generally provide a `list` method that returns the
+ * monitored resource descriptors used by the API.
+ */
 class MonitoredResourceDescriptor {
   /**
-   * A detailed description of the monitored resource type, which is used in
-   * documentation.
+   * Optional. A detailed description of the monitored resource type that might
+   * be used in documentation.
    */
   core.String description;
   /**
-   * A concise name for the monitored resource type, which is displayed in user
-   * interfaces. For example, `"Cloud SQL Database"`.
+   * Optional. A concise name for the monitored resource type that might be
+   * displayed in user interfaces. For example, `"Google Cloud SQL Database"`.
    */
   core.String displayName;
   /**
-   * A set of labels that can be used to describe instances of this monitored
-   * resource type. For example, Cloud SQL databases can be labeled with their
-   * `"database_id"` and their `"zone"`.
+   * Required. A set of labels used to describe instances of this monitored
+   * resource type. For example, an individual Google Cloud SQL database is
+   * identified by values for the labels `"database_id"` and `"zone"`.
    */
   core.List<LabelDescriptor> labels;
   /**
-   * The monitored resource type. For example, the type `"cloudsql_database"`
-   * represents databases in Google Cloud SQL.
+   * Optional. The resource name of the monitored resource descriptor:
+   * `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type}
+   * is the value of the `type` field in this object and {project_id} is a
+   * project ID that provides API-specific context for accessing the type. APIs
+   * that do not use project information can use the resource name format
+   * `"monitoredResourceDescriptors/{type}"`.
+   */
+  core.String name;
+  /**
+   * Required. The monitored resource type. For example, the type
+   * `"cloudsql_database"` represents databases in Google Cloud SQL.
    */
   core.String type;
 
@@ -1626,6 +1686,9 @@ class MonitoredResourceDescriptor {
     }
     if (_json.containsKey("labels")) {
       labels = _json["labels"].map((value) => new LabelDescriptor.fromJson(value)).toList();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -1642,6 +1705,9 @@ class MonitoredResourceDescriptor {
     }
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     if (type != null) {
       _json["type"] = type;
@@ -1665,6 +1731,12 @@ class RequestLog {
   core.String endTime;
   /** Whether this request is finished or active. */
   core.bool finished;
+  /**
+   * Whether this is the first RequestLog entry for this request. If an active
+   * request has several RequestLog entries written to Cloud Logging, this field
+   * will be set for one of them.
+   */
+  core.bool first;
   /** Internet host and port number of the resource being requested. */
   core.String host;
   /** HTTP version of request. Example: `"HTTP/1.1"`. */
@@ -1764,6 +1836,9 @@ class RequestLog {
     if (_json.containsKey("finished")) {
       finished = _json["finished"];
     }
+    if (_json.containsKey("first")) {
+      first = _json["first"];
+    }
     if (_json.containsKey("host")) {
       host = _json["host"];
     }
@@ -1860,6 +1935,9 @@ class RequestLog {
     }
     if (finished != null) {
       _json["finished"] = finished;
+    }
+    if (first != null) {
+      _json["first"] = first;
     }
     if (host != null) {
       _json["host"] = host;
@@ -2030,6 +2108,88 @@ class SourceReference {
   }
 }
 
+/**
+ * The `Status` type defines a logical error model that is suitable for
+ * different programming environments, including REST APIs and RPC APIs. It is
+ * used by [gRPC](https://github.com/grpc). The error model is designed to be: -
+ * Simple to use and understand for most users - Flexible enough to meet
+ * unexpected needs # Overview The `Status` message contains three pieces of
+ * data: error code, error message, and error details. The error code should be
+ * an enum value of google.rpc.Code, but it may accept additional error codes if
+ * needed. The error message should be a developer-facing English message that
+ * helps developers *understand* and *resolve* the error. If a localized
+ * user-facing error message is needed, put the localized message in the error
+ * details or localize it in the client. The optional error details may contain
+ * arbitrary information about the error. There is a predefined set of error
+ * detail types in the package `google.rpc` which can be used for common error
+ * conditions. # Language mapping The `Status` message is the logical
+ * representation of the error model, but it is not necessarily the actual wire
+ * format. When the `Status` message is exposed in different client libraries
+ * and different wire protocols, it can be mapped differently. For example, it
+ * will likely be mapped to some exceptions in Java, but more likely mapped to
+ * some error codes in C. # Other uses The error model and the `Status` message
+ * can be used in a variety of environments, either with or without APIs, to
+ * provide a consistent developer experience across different environments.
+ * Example uses of this error model include: - Partial errors. If a service
+ * needs to return partial errors to the client, it may embed the `Status` in
+ * the normal response to indicate the partial errors. - Workflow errors. A
+ * typical workflow has multiple steps. Each step may have a `Status` message
+ * for error reporting purpose. - Batch operations. If a client uses batch
+ * request and batch response, the `Status` message should be used directly
+ * inside batch response, one for each error sub-response. - Asynchronous
+ * operations. If an API call embeds asynchronous operation results in its
+ * response, the status of those operations should be represented directly using
+ * the `Status` message. - Logging. If some API errors are stored in logs, the
+ * message `Status` could be used directly after any stripping needed for
+ * security/privacy reasons.
+ */
+class Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  core.int code;
+  /**
+   * A list of messages that carry the error details. There will be a common set
+   * of message types for APIs to use.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.List<core.Map<core.String, core.Object>> details;
+  /**
+   * A developer-facing error message, which should be in English. Any
+   * user-facing error message should be localized and sent in the
+   * google.rpc.Status.details field, or localized by the client.
+   */
+  core.String message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("details")) {
+      details = _json["details"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (details != null) {
+      _json["details"] = details;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /** The parameters to WriteLogEntries. */
 class WriteLogEntriesRequest {
   /**
@@ -2051,6 +2211,14 @@ class WriteLogEntriesRequest {
    */
   core.String logName;
   /**
+   * Optional. Whether valid entries should be written even if some other
+   * entries fail due to INVALID_ARGUMENT or PERMISSION_DENIED errors. If any
+   * entry is not written, the response status will be the error associated with
+   * one of the failed entries and include error details in the form of
+   * WriteLogEntriesPartialErrors.
+   */
+  core.bool partialSuccess;
+  /**
    * Optional. A default monitored resource for those log entries in `entries`
    * that do not specify their own `resource`.
    */
@@ -2068,6 +2236,9 @@ class WriteLogEntriesRequest {
     if (_json.containsKey("logName")) {
       logName = _json["logName"];
     }
+    if (_json.containsKey("partialSuccess")) {
+      partialSuccess = _json["partialSuccess"];
+    }
     if (_json.containsKey("resource")) {
       resource = new MonitoredResource.fromJson(_json["resource"]);
     }
@@ -2083,6 +2254,9 @@ class WriteLogEntriesRequest {
     }
     if (logName != null) {
       _json["logName"] = logName;
+    }
+    if (partialSuccess != null) {
+      _json["partialSuccess"] = partialSuccess;
     }
     if (resource != null) {
       _json["resource"] = (resource).toJson();

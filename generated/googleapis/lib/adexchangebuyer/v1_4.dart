@@ -32,6 +32,7 @@ class AdexchangebuyerApi {
   CreativesResourceApi get creatives => new CreativesResourceApi(_requester);
   MarketplacedealsResourceApi get marketplacedeals => new MarketplacedealsResourceApi(_requester);
   MarketplacenotesResourceApi get marketplacenotes => new MarketplacenotesResourceApi(_requester);
+  MarketplaceprivateauctionResourceApi get marketplaceprivateauction => new MarketplaceprivateauctionResourceApi(_requester);
   PerformanceReportResourceApi get performanceReport => new PerformanceReportResourceApi(_requester);
   PretargetingConfigResourceApi get pretargetingConfig => new PretargetingConfigResourceApi(_requester);
   ProductsResourceApi get products => new ProductsResourceApi(_requester);
@@ -997,6 +998,59 @@ class MarketplacenotesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new GetOrderNotesResponse.fromJson(data));
+  }
+
+}
+
+
+class MarketplaceprivateauctionResourceApi {
+  final commons.ApiRequester _requester;
+
+  MarketplaceprivateauctionResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Update a given private auction proposal
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [privateAuctionId] - The private auction id to be updated.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future updateproposal(UpdatePrivateAuctionProposalRequest request, core.String privateAuctionId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (privateAuctionId == null) {
+      throw new core.ArgumentError("Parameter privateAuctionId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'privateauction/' + commons.Escaper.ecapeVariable('$privateAuctionId') + '/updateproposal';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
   }
 
 }
@@ -4887,6 +4941,13 @@ class Product {
   core.String privateAuctionId;
   /** The unique id for the product (readonly) */
   core.String productId;
+  /**
+   * Id of the publisher profile for a given seller. A (seller.account_id,
+   * publisher_profile_id) pair uniquely identifies a publisher profile. Buyers
+   * can call the PublisherProfiles::List endpoint to get a list of publisher
+   * profiles for a given seller.
+   */
+  core.String publisherProfileId;
   /** The revision number of the product. (readonly) */
   core.String revisionNumber;
   /**
@@ -4909,6 +4970,10 @@ class Product {
   core.String syndicationProduct;
   /** The negotiable terms of the deal (buyer-readonly) */
   DealTerms terms;
+  /**
+   * The web property code for the seller. This field is meant to be copied over
+   * as is when creating deals.
+   */
   core.String webPropertyCode;
 
   Product();
@@ -4955,6 +5020,9 @@ class Product {
     }
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
+    }
+    if (_json.containsKey("publisherProfileId")) {
+      publisherProfileId = _json["publisherProfileId"];
     }
     if (_json.containsKey("revisionNumber")) {
       revisionNumber = _json["revisionNumber"];
@@ -5022,6 +5090,9 @@ class Product {
     }
     if (productId != null) {
       _json["productId"] = productId;
+    }
+    if (publisherProfileId != null) {
+      _json["publisherProfileId"] = publisherProfileId;
     }
     if (revisionNumber != null) {
       _json["revisionNumber"] = revisionNumber;
@@ -5280,6 +5351,8 @@ class Proposal {
 }
 
 class PublisherProfileApiProto {
+  /** The account id of the seller. */
+  core.String accountId;
   /** A pitch statement for the buyer */
   core.String buyerPitchStatement;
   /** Link to publisher's Google+ page. */
@@ -5301,7 +5374,10 @@ class PublisherProfileApiProto {
   core.String name;
   /** Publisher provided overview. */
   core.String overview;
-  /** Unique id for the publisher profile */
+  /**
+   * The pair of (seller.account_id, profile_id) uniquely identifies a publisher
+   * profile for a given publisher.
+   */
   core.int profileId;
   /**
    * The list of domains represented in this publisher profile. Empty if this is
@@ -5318,6 +5394,9 @@ class PublisherProfileApiProto {
   PublisherProfileApiProto();
 
   PublisherProfileApiProto.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
     if (_json.containsKey("buyerPitchStatement")) {
       buyerPitchStatement = _json["buyerPitchStatement"];
     }
@@ -5361,6 +5440,9 @@ class PublisherProfileApiProto {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
     if (buyerPitchStatement != null) {
       _json["buyerPitchStatement"] = buyerPitchStatement;
     }
@@ -5665,6 +5747,51 @@ class TargetingValueSize {
     }
     if (width != null) {
       _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+class UpdatePrivateAuctionProposalRequest {
+  /** The externalDealId of the deal to be updated. */
+  core.String externalDealId;
+  /** Optional note to be added. */
+  MarketplaceNote note;
+  /** The current revision number of the proposal to be updated. */
+  core.String proposalRevisionNumber;
+  /** The proposed action on the private auction proposal. */
+  core.String updateAction;
+
+  UpdatePrivateAuctionProposalRequest();
+
+  UpdatePrivateAuctionProposalRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("externalDealId")) {
+      externalDealId = _json["externalDealId"];
+    }
+    if (_json.containsKey("note")) {
+      note = new MarketplaceNote.fromJson(_json["note"]);
+    }
+    if (_json.containsKey("proposalRevisionNumber")) {
+      proposalRevisionNumber = _json["proposalRevisionNumber"];
+    }
+    if (_json.containsKey("updateAction")) {
+      updateAction = _json["updateAction"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (externalDealId != null) {
+      _json["externalDealId"] = externalDealId;
+    }
+    if (note != null) {
+      _json["note"] = (note).toJson();
+    }
+    if (proposalRevisionNumber != null) {
+      _json["proposalRevisionNumber"] = proposalRevisionNumber;
+    }
+    if (updateAction != null) {
+      _json["updateAction"] = updateAction;
     }
     return _json;
   }

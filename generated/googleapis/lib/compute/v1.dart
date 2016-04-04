@@ -1806,7 +1806,7 @@ class DisksResourceApi {
   /**
    * Creates a persistent disk in the specified project using the data in the
    * request. You can create a disk with a sourceImage, a sourceSnapshot, or
-   * create an empty 200 GB data disk by omitting all properties. You can also
+   * create an empty 500 GB data disk by omitting all properties. You can also
    * create a disk that is larger than the default size by specifying the sizeGb
    * property.
    *
@@ -1955,6 +1955,64 @@ class DisksResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new DiskList.fromJson(data));
+  }
+
+  /**
+   * Resizes the specified persistent disk.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The name of the zone for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [disk] - The name of the persistent disk.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> resize(DisksResizeRequest request, core.String project, core.String zone, core.String disk) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (disk == null) {
+      throw new core.ArgumentError("Parameter disk is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$disk') + '/resize';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
 }
@@ -13201,20 +13259,21 @@ class AttachedDiskInitializeParams {
    */
   core.String diskType;
   /**
-   * A source image used to create the disk. You can provide a private (custom)
-   * image, and Compute Engine will use the corresponding image from your
-   * project. For example:
+   * The source image used to create this disk.
+   *
+   * To create a disk with a private image, specify the image name in the
+   * following format:
    *
    * global/images/my-private-image
    *
-   * Or you can provide an image from a publicly-available project. For example,
-   * to use a Debian image from the debian-cloud project, make sure to include
-   * the project in the URL:
+   * To create a disk with a public image, specify the image name and the
+   * project that owns the image. For example, you can use a Debian image from
+   * the debian-cloud project:
    *
-   * projects/debian-cloud/global/images/debian-7-wheezy-vYYYYMMDD
+   * projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
    *
-   * where vYYYYMMDD is the image version. The fully-qualified URL will also
-   * work in both cases.
+   * The vYYYYMMDD value is the image version. The fully-qualified URL also
+   * works in both examples.
    */
   core.String sourceImage;
 
@@ -14020,6 +14079,11 @@ class BackendService {
    * - "HTTPS"
    */
   core.String protocol;
+  /**
+   * [Output Only] URL of the region where the regional backend service resides.
+   * This field is not applicable to global backend services.
+   */
+  core.String region;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
@@ -14064,6 +14128,9 @@ class BackendService {
     if (_json.containsKey("protocol")) {
       protocol = _json["protocol"];
     }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -14106,6 +14173,9 @@ class BackendService {
     }
     if (protocol != null) {
       _json["protocol"] = protocol;
+    }
+    if (region != null) {
+      _json["region"] = region;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -14338,35 +14408,29 @@ class Disk {
    */
   core.String sizeGb;
   /**
-   * The source image used to create this disk. If the source image is deleted
-   * from the system, this field will not be set, even if an image with the same
-   * name has been re-created.
+   * The source image used to create this disk. If the source image is deleted,
+   * this field will not be set.
    *
-   * When creating a disk, you can provide a private (custom) image using the
-   * following input, and Compute Engine will use the corresponding image from
-   * your project. For example:
+   * To create a disk with one of the public operating system images, specify
+   * the image by its family name. For example, specify family/debian-8 to use
+   * the latest Debian 8 image:
+   *
+   * projects/debian-cloud/global/images/family/debian-8
+   *
+   * Alternatively, use a specific version of a public operating system image:
+   *
+   * projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
+   *
+   * To create a disk with a private image that you created, specify the image
+   * name in the following format:
    *
    * global/images/my-private-image
    *
-   * Or you can provide an image from a publicly-available project. For example,
-   * to use a Debian image from the debian-cloud project, make sure to include
-   * the project in the URL:
-   *
-   * projects/debian-cloud/global/images/debian-7-wheezy-vYYYYMMDD
-   *
-   * where vYYYYMMDD is the image version. The fully-qualified URL will also
-   * work in both cases.
-   *
-   * You can also specify the latest image for a private image family by
-   * replacing the image name suffix with family/family-name. For example:
+   * You can also specify a private image by its image family, which returns the
+   * latest version of the image in that family. Replace the image name with
+   * family/family-name:
    *
    * global/images/family/my-private-family
-   *
-   * Or you can specify an image family from a publicly-available project. For
-   * example, to use the latest Debian 7 from the debian-cloud project, make
-   * sure to include the project in the URL:
-   *
-   * projects/debian-cloud/global/images/family/debian-7
    */
   core.String sourceImage;
   /**
@@ -15072,6 +15136,27 @@ class DiskTypesScopedList {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class DisksResizeRequest {
+  /** The new size of the persistent disk, which is specified in GB. */
+  core.String sizeGb;
+
+  DisksResizeRequest();
+
+  DisksResizeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("sizeGb")) {
+      sizeGb = _json["sizeGb"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (sizeGb != null) {
+      _json["sizeGb"] = sizeGb;
     }
     return _json;
   }
@@ -20273,7 +20358,7 @@ class Operation {
    */
   core.String insertTime;
   /**
-   * [Output Only] Type of the resource. Always compute#operation for operation
+   * [Output Only] Type of the resource. Always compute#operation for Operation
    * resources.
    */
   core.String kind;
@@ -25131,55 +25216,6 @@ class VpnTunnelsScopedList {
   }
 }
 
-class ZoneMaintenanceWindows {
-  /**
-   * [Output Only] Starting time of the maintenance window, in RFC3339 format.
-   */
-  core.String beginTime;
-  /** [Output Only] Textual description of the maintenance window. */
-  core.String description;
-  /**
-   * [Output Only] Ending time of the maintenance window, in RFC3339 format.
-   */
-  core.String endTime;
-  /** [Output Only] Name of the maintenance window. */
-  core.String name;
-
-  ZoneMaintenanceWindows();
-
-  ZoneMaintenanceWindows.fromJson(core.Map _json) {
-    if (_json.containsKey("beginTime")) {
-      beginTime = _json["beginTime"];
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (beginTime != null) {
-      _json["beginTime"] = beginTime;
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    return _json;
-  }
-}
-
 /** A Zone resource. */
 class Zone {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
@@ -25195,12 +25231,6 @@ class Zone {
   core.String id;
   /** [Output Only] Type of the resource. Always compute#zone for zones. */
   core.String kind;
-  /**
-   * [Output Only] Any scheduled maintenance windows for this zone. When the
-   * zone is in a maintenance window, all resources which reside in the zone
-   * will be unavailable. For more information, see Maintenance Windows
-   */
-  core.List<ZoneMaintenanceWindows> maintenanceWindows;
   /** [Output Only] Name of the resource. */
   core.String name;
   /** [Output Only] Full URL reference to the region which hosts the zone. */
@@ -25233,9 +25263,6 @@ class Zone {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
-    if (_json.containsKey("maintenanceWindows")) {
-      maintenanceWindows = _json["maintenanceWindows"].map((value) => new ZoneMaintenanceWindows.fromJson(value)).toList();
-    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -25266,9 +25293,6 @@ class Zone {
     }
     if (kind != null) {
       _json["kind"] = kind;
-    }
-    if (maintenanceWindows != null) {
-      _json["maintenanceWindows"] = maintenanceWindows.map((value) => (value).toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;

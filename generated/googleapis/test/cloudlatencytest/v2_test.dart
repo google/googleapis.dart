@@ -51,14 +51,14 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1629() {
+buildUnnamed590() {
   var o = new core.List<api.Stats>();
   o.add(buildStats());
   o.add(buildStats());
   return o;
 }
 
-checkUnnamed1629(core.List<api.Stats> o) {
+checkUnnamed590(core.List<api.Stats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStats(o[0]);
   checkStats(o[1]);
@@ -69,7 +69,7 @@ buildAggregatedStats() {
   var o = new api.AggregatedStats();
   buildCounterAggregatedStats++;
   if (buildCounterAggregatedStats < 3) {
-    o.stats = buildUnnamed1629();
+    o.stats = buildUnnamed590();
   }
   buildCounterAggregatedStats--;
   return o;
@@ -78,7 +78,7 @@ buildAggregatedStats() {
 checkAggregatedStats(api.AggregatedStats o) {
   buildCounterAggregatedStats++;
   if (buildCounterAggregatedStats < 3) {
-    checkUnnamed1629(o.stats);
+    checkUnnamed590(o.stats);
   }
   buildCounterAggregatedStats--;
 }
@@ -144,40 +144,40 @@ checkIntValue(api.IntValue o) {
   buildCounterIntValue--;
 }
 
-buildUnnamed1630() {
+buildUnnamed591() {
   var o = new core.List<api.DoubleValue>();
   o.add(buildDoubleValue());
   o.add(buildDoubleValue());
   return o;
 }
 
-checkUnnamed1630(core.List<api.DoubleValue> o) {
+checkUnnamed591(core.List<api.DoubleValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDoubleValue(o[0]);
   checkDoubleValue(o[1]);
 }
 
-buildUnnamed1631() {
+buildUnnamed592() {
   var o = new core.List<api.IntValue>();
   o.add(buildIntValue());
   o.add(buildIntValue());
   return o;
 }
 
-checkUnnamed1631(core.List<api.IntValue> o) {
+checkUnnamed592(core.List<api.IntValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIntValue(o[0]);
   checkIntValue(o[1]);
 }
 
-buildUnnamed1632() {
+buildUnnamed593() {
   var o = new core.List<api.StringValue>();
   o.add(buildStringValue());
   o.add(buildStringValue());
   return o;
 }
 
-checkUnnamed1632(core.List<api.StringValue> o) {
+checkUnnamed593(core.List<api.StringValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringValue(o[0]);
   checkStringValue(o[1]);
@@ -188,9 +188,9 @@ buildStats() {
   var o = new api.Stats();
   buildCounterStats++;
   if (buildCounterStats < 3) {
-    o.doubleValues = buildUnnamed1630();
-    o.intValues = buildUnnamed1631();
-    o.stringValues = buildUnnamed1632();
+    o.doubleValues = buildUnnamed591();
+    o.intValues = buildUnnamed592();
+    o.stringValues = buildUnnamed593();
     o.time = 42.0;
   }
   buildCounterStats--;
@@ -200,9 +200,9 @@ buildStats() {
 checkStats(api.Stats o) {
   buildCounterStats++;
   if (buildCounterStats < 3) {
-    checkUnnamed1630(o.doubleValues);
-    checkUnnamed1631(o.intValues);
-    checkUnnamed1632(o.stringValues);
+    checkUnnamed591(o.doubleValues);
+    checkUnnamed592(o.intValues);
+    checkUnnamed593(o.stringValues);
     unittest.expect(o.time, unittest.equals(42.0));
   }
   buildCounterStats--;

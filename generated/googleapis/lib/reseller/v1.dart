@@ -826,6 +826,11 @@ class Address {
 
 /** JSON template for the ChangePlan rpc request. */
 class ChangePlanRequest {
+  /**
+   * External name of the deal code applicable for the subscription. This field
+   * is optional. If missing, the deal price plan won't be used.
+   */
+  core.String dealCode;
   /** Identifies the resource as a subscription change plan request. */
   core.String kind;
   /** Name of the plan to change to. */
@@ -838,6 +843,9 @@ class ChangePlanRequest {
   ChangePlanRequest();
 
   ChangePlanRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("dealCode")) {
+      dealCode = _json["dealCode"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -854,6 +862,9 @@ class ChangePlanRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (dealCode != null) {
+      _json["dealCode"] = dealCode;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1173,6 +1184,11 @@ class Subscription {
   core.String customerDomain;
   /** The id of the customer to whom the subscription belongs. */
   core.String customerId;
+  /**
+   * External name of the deal, if this subscription was provisioned under one.
+   * Otherwise this field will be empty.
+   */
+  core.String dealCode;
   /** Identifies the resource as a Subscription. */
   core.String kind;
   /** Plan details of the subscription */
@@ -1192,17 +1208,18 @@ class Subscription {
   /** The id of the subscription. */
   core.String subscriptionId;
   /**
-   * field listing all current reasons the subscription is suspended. It is
-   * possible for a subscription to have multiple suspension reasons. A
-   * subscription's status is SUSPENDED until all pending suspensions are
-   * removed. Possible options include:
-   * - PENDING_TOS_ACCEPTANCE — The customer has not logged in and accepted the
+   * Read-only field containing an enumerable of all the current suspension
+   * reasons for a subscription. It is possible for a subscription to have many
+   * concurrent, overlapping suspension reasons. A subscription's STATUS is
+   * SUSPENDED until all pending suspensions are removed. Possible options
+   * include:
+   * - PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the
    * Google Apps Resold Terms of Services.
-   * - RENEWAL_WITH_TYPE_CANCEL — The customer's commitment ended and their
+   * - RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their
    * service was cancelled at the end of their term.
-   * - RESELLER_INITIATED — A manual suspension invoked by a Reseller.
-   * - TRIAL_ENDED — The customer's trial expired without a plan selected.
-   * - OTHER — The customer is suspended for an internal Google reason (e.g.
+   * - RESELLER_INITIATED - A manual suspension invoked by a Reseller.
+   * - TRIAL_ENDED - The customer's trial expired without a plan selected.
+   * - OTHER - The customer is suspended for an internal Google reason (e.g.
    * abuse or otherwise).
    */
   core.List<core.String> suspensionReasons;
@@ -1225,6 +1242,9 @@ class Subscription {
     }
     if (_json.containsKey("customerId")) {
       customerId = _json["customerId"];
+    }
+    if (_json.containsKey("dealCode")) {
+      dealCode = _json["dealCode"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1277,6 +1297,9 @@ class Subscription {
     }
     if (customerId != null) {
       _json["customerId"] = customerId;
+    }
+    if (dealCode != null) {
+      _json["dealCode"] = dealCode;
     }
     if (kind != null) {
       _json["kind"] = kind;

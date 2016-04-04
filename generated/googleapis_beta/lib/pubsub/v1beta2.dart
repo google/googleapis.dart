@@ -102,11 +102,11 @@ class ProjectsSubscriptionsResourceApi {
   }
 
   /**
-   * Creates a subscription to a given topic for a given subscriber. If the
-   * subscription already exists, returns `ALREADY_EXISTS`. If the corresponding
-   * topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in
-   * the request, the server will assign a random name for this subscription on
-   * the same project as the topic.
+   * Creates a subscription to a given topic. If the subscription already
+   * exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist,
+   * returns `NOT_FOUND`. If the name is not provided in the request, the server
+   * will assign a random name for this subscription on the same project as the
+   * topic.
    *
    * [request] - The metadata request object.
    *
@@ -240,16 +240,16 @@ class ProjectsSubscriptionsResourceApi {
   }
 
   /**
-   * Gets the access control policy for a `resource`. Is empty if the policy or
-   * the resource does not exist.
+   * Gets the access control policy for a `resource`. Returns an empty policy if
+   * the resource exists and does not have a policy set.
    *
    * Request parameters:
    *
-   * [resource] - REQUIRED: The resource for which policy is being requested.
-   * `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * requested. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * documentation for the respective GetIamPolicy rpc.
+   * `getIamPolicy` documentation.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [Policy].
@@ -489,11 +489,11 @@ class ProjectsSubscriptionsResourceApi {
    *
    * Request parameters:
    *
-   * [resource] - REQUIRED: The resource for which policy is being specified.
-   * `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * specified. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * documentation for the respective SetIamPolicy rpc.
+   * `setIamPolicy` documentation.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [Policy].
@@ -538,11 +538,11 @@ class ProjectsSubscriptionsResourceApi {
    *
    * Request parameters:
    *
-   * [resource] - REQUIRED: The resource for which policy detail is being
-   * requested. `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * [resource] - REQUIRED: The resource for which the policy detail is being
+   * requested. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * documentation for the respective TestIamPermissions rpc.
+   * `testIamPermissions` documentation.
    * Value must have pattern "^projects/[^/] * / subscriptions/[^/]*$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -726,16 +726,16 @@ class ProjectsTopicsResourceApi {
   }
 
   /**
-   * Gets the access control policy for a `resource`. Is empty if the policy or
-   * the resource does not exist.
+   * Gets the access control policy for a `resource`. Returns an empty policy if
+   * the resource exists and does not have a policy set.
    *
    * Request parameters:
    *
-   * [resource] - REQUIRED: The resource for which policy is being requested.
-   * `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * requested. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * documentation for the respective GetIamPolicy rpc.
+   * `getIamPolicy` documentation.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [Policy].
@@ -877,11 +877,11 @@ class ProjectsTopicsResourceApi {
    *
    * Request parameters:
    *
-   * [resource] - REQUIRED: The resource for which policy is being specified.
-   * `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * specified. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * documentation for the respective SetIamPolicy rpc.
+   * `setIamPolicy` documentation.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [Policy].
@@ -926,11 +926,11 @@ class ProjectsTopicsResourceApi {
    *
    * Request parameters:
    *
-   * [resource] - REQUIRED: The resource for which policy detail is being
-   * requested. `resource` is usually specified as a path, such as,
-   * `projects/{project}/zones/{zone}/disks/{disk}`. The format for the path
+   * [resource] - REQUIRED: The resource for which the policy detail is being
+   * requested. `resource` is usually specified as a path, such as `projects / *
+   * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
-   * documentation for the respective TestIamPermissions rpc.
+   * `testIamPermissions` documentation.
    * Value must have pattern "^projects/[^/] * / topics/[^/]*$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -1063,12 +1063,12 @@ class AcknowledgeRequest {
 class Binding {
   /**
    * Specifies the identities requesting access for a Cloud Platform resource.
-   * `members` can have the following formats: * `allUsers`: A special
-   * identifier that represents anyone who is on the internet; with or without a
-   * Google account. * `allAuthenticatedUsers`: A special identifier that
-   * represents anyone who is authenticated with a Google account or a service
-   * account. * `user:{emailid}`: An email address that represents a specific
-   * Google account. For example, `alice@gmail.com` or `joe@example.com`. *
+   * `members` can have the following values: * `allUsers`: A special identifier
+   * that represents anyone who is on the internet; with or without a Google
+   * account. * `allAuthenticatedUsers`: A special identifier that represents
+   * anyone who is authenticated with a Google account or a service account. *
+   * `user:{emailid}`: An email address that represents a specific Google
+   * account. For example, `alice@gmail.com` or `joe@example.com`. *
    * `serviceAccount:{emailid}`: An email address that represents a service
    * account. For example, `my-other-app@appspot.gserviceaccount.com`. *
    * `group:{emailid}`: An email address that represents a Google group. For
@@ -1309,7 +1309,7 @@ class ModifyPushConfigRequest {
  * service accounts. A `role` is a named list of permissions defined by IAM.
  * **Example** { "bindings": [ { "role": "roles/owner", "members": [
  * "user:mike@example.com", "group:admins@example.com", "domain:google.com",
- * "serviceAccount:my-other-app@appspot.gserviceaccount.com"] }, { "role":
+ * "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role":
  * "roles/viewer", "members": ["user:sean@example.com"] } ] } For a description
  * of IAM and its features, see the [IAM developer's
  * guide](https://cloud.google.com/iam).
@@ -1321,7 +1321,17 @@ class Policy {
    * error.
    */
   core.List<Binding> bindings;
-  /** Can be used to perform a read-modify-write. */
+  /**
+   * `etag` is used for optimistic concurrency control as a way to help prevent
+   * simultaneous updates of a policy from overwriting each other. It is
+   * strongly suggested that systems make use of the `etag` in the
+   * read-modify-write cycle to perform policy updates in order to avoid race
+   * conditions: An `etag` is returned in the response to `getIamPolicy`, and
+   * systems are expected to put that etag in the request to `setIamPolicy` to
+   * ensure that their change will be applied to the same version of the policy.
+   * If no `etag` is provided in the call to `setIamPolicy`, then the existing
+   * policy is overwritten blindly.
+   */
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return crypto.CryptoUtils.base64StringToBytes(etag);
@@ -1654,13 +1664,13 @@ class Subscription {
    * the subscriber should acknowledge the message. After message delivery but
    * before the ack deadline expires and before the message is acknowledged, it
    * is an outstanding message and will not be delivered again during that time
-   * (on a best-effort basis). For pull delivery this value is used as the
+   * (on a best-effort basis). For pull subscriptions, this value is used as the
    * initial value for the ack deadline. To override this value for a given
-   * message, call `ModifyAckDeadline` with the corresponding `ack_id`. For push
-   * delivery, this value is also used to set the request timeout for the call
-   * to the push endpoint. If the subscriber never acknowledges the message, the
-   * Pub/Sub system will eventually redeliver the message. If this parameter is
-   * not set, the default value of 10 seconds is used.
+   * message, call `ModifyAckDeadline` with the corresponding `ack_id` if using
+   * pull. For push delivery, this value is also used to set the request timeout
+   * for the call to the push endpoint. If the subscriber never acknowledges the
+   * message, the Pub/Sub system will eventually redeliver the message. If this
+   * parameter is not set, the default value of 10 seconds is used.
    */
   core.int ackDeadlineSeconds;
   /**
@@ -1724,7 +1734,8 @@ class Subscription {
 class TestIamPermissionsRequest {
   /**
    * The set of permissions to check for the `resource`. Permissions with
-   * wildcards (such as '*' or 'storage.*') are not allowed.
+   * wildcards (such as '*' or 'storage.*') are not allowed. For more
+   * information see IAM Overview.
    */
   core.List<core.String> permissions;
 

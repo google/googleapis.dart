@@ -14,7 +14,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client dataflow/v1b3';
 
-/** Google Dataflow API. */
+/**
+ * Develops and executes data processing patterns like ETL, batch computation,
+ * and continuous computation.
+ */
 class DataflowApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -264,6 +267,12 @@ class ProjectsJobsResourceApi {
    *
    * [projectId] - The project which owns the jobs.
    *
+   * [filter] - The kind of filter to use.
+   * Possible string values are:
+   * - "ALL" : A ALL.
+   * - "TERMINATED" : A TERMINATED.
+   * - "ACTIVE" : A ACTIVE.
+   *
    * [view] - Level of information requested in response. Default is SUMMARY.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
@@ -285,7 +294,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, {core.String view, core.int pageSize, core.String pageToken}) {
+  async.Future<ListJobsResponse> list(core.String projectId, {core.String filter, core.String view, core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -295,6 +304,9 @@ class ProjectsJobsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -4073,6 +4085,8 @@ class TopologyConfig {
   core.List<DataDiskAssignment> dataDiskAssignments;
   /** The size (in bits) of keys that will be assigned to source messages. */
   core.int forwardingKeyBits;
+  /** Version number for persistent state. */
+  core.int persistentStateVersion;
   /** Maps user stage names to stable computation names. */
   core.Map<core.String, core.String> userStageToComputationNameMap;
 
@@ -4087,6 +4101,9 @@ class TopologyConfig {
     }
     if (_json.containsKey("forwardingKeyBits")) {
       forwardingKeyBits = _json["forwardingKeyBits"];
+    }
+    if (_json.containsKey("persistentStateVersion")) {
+      persistentStateVersion = _json["persistentStateVersion"];
     }
     if (_json.containsKey("userStageToComputationNameMap")) {
       userStageToComputationNameMap = _json["userStageToComputationNameMap"];
@@ -4103,6 +4120,9 @@ class TopologyConfig {
     }
     if (forwardingKeyBits != null) {
       _json["forwardingKeyBits"] = forwardingKeyBits;
+    }
+    if (persistentStateVersion != null) {
+      _json["persistentStateVersion"] = persistentStateVersion;
     }
     if (userStageToComputationNameMap != null) {
       _json["userStageToComputationNameMap"] = userStageToComputationNameMap;
@@ -4760,6 +4780,12 @@ class WorkerPool {
    */
   core.String network;
   /**
+   * The number of threads per worker harness. If empty or unspecified, the
+   * service will choose a number of threads (according to the number of cores
+   * on the selected machine type for batch, or 1 by convention for streaming).
+   */
+  core.int numThreadsPerWorker;
+  /**
    * Number of Google Compute Engine workers in this pool needed to execute the
    * job. If zero or unspecified, the service will attempt to choose a
    * reasonable default.
@@ -4852,6 +4878,9 @@ class WorkerPool {
     if (_json.containsKey("network")) {
       network = _json["network"];
     }
+    if (_json.containsKey("numThreadsPerWorker")) {
+      numThreadsPerWorker = _json["numThreadsPerWorker"];
+    }
     if (_json.containsKey("numWorkers")) {
       numWorkers = _json["numWorkers"];
     }
@@ -4912,6 +4941,9 @@ class WorkerPool {
     }
     if (network != null) {
       _json["network"] = network;
+    }
+    if (numThreadsPerWorker != null) {
+      _json["numThreadsPerWorker"] = numThreadsPerWorker;
     }
     if (numWorkers != null) {
       _json["numWorkers"] = numWorkers;
