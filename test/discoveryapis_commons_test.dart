@@ -7,7 +7,6 @@ library discoveryapis_commons_test;
 import 'dart:async';
 import 'dart:convert' hide Base64Encoder;
 
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 import 'package:unittest/unittest.dart';
 
@@ -544,7 +543,7 @@ main() {
               '\r\n--314159265358979323846\r\n'
               'Content-Type: foobar\r\n'
               'Content-Transfer-Encoding: base64\r\n\r\n'
-              '${crypto.CryptoUtils.bytesToBase64(bytes)}'
+              '${BASE64.encode(bytes)}'
               '\r\n--314159265358979323846--';
 
           var expectations = [

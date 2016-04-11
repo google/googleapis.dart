@@ -8,7 +8,6 @@ import "dart:async";
 import "dart:convert";
 import "dart:collection" as collection;
 
-import "package:crypto/crypto.dart" as crypto;
 import "package:http/http.dart" as http;
 
 import 'requests.dart' as client_requests;
@@ -344,7 +343,7 @@ class Base64Encoder implements StreamTransformer<List<int>, String> {
 
       // Convert & Send bytes from buffer (if necessary).
       if (remainingBytes.length > 0) {
-        controller.add(crypto.CryptoUtils.bytesToBase64(remainingBytes));
+        controller.add(BASE64.encode(remainingBytes));
         remainingBytes.clear();
       }
 
@@ -354,10 +353,10 @@ class Base64Encoder implements StreamTransformer<List<int>, String> {
       // Convert & Send main bytes.
       if (start == 0 && end == bytes.length) {
         // Fast path if [bytes] are devisible by 3.
-        controller.add(crypto.CryptoUtils.bytesToBase64(bytes));
+        controller.add(BASE64.encode(bytes));
       } else {
         controller.add(
-            crypto.CryptoUtils.bytesToBase64(bytes.sublist(start, end)));
+            BASE64.encode(bytes.sublist(start, end)));
 
         // Buffer remaining bytes if necessary.
         if (end < bytes.length) {
@@ -372,7 +371,7 @@ class Base64Encoder implements StreamTransformer<List<int>, String> {
 
     void onDone() {
       if (remainingBytes.length > 0) {
-        controller.add(crypto.CryptoUtils.bytesToBase64(remainingBytes));
+        controller.add(BASE64.encode(remainingBytes));
         remainingBytes.clear();
       }
       controller.close();
