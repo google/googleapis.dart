@@ -1,3 +1,7 @@
+## 0.26.0
+
+* Remove crypto dependency and upgrade to dart sdk 1.13
+
 ## 0.25.0
 
 * [api-new] dfareporting:v2.5beta1
