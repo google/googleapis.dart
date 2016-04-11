@@ -1,9 +1,6 @@
-# Changelog
+## 0.1.3+1
 
-## 0.1.4
-
-- Remove crypto dependency and upgrade dart dependency to >=1.13 since
-  this dart version provides the Base64 codec.
+- Removed `pkg/crypto` dependency and upgrade Dart dependency to >=1.13.
 
 ## 0.1.3
 
