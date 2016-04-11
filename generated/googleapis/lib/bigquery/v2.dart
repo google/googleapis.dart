@@ -8,7 +8,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1256,11 +1255,11 @@ class BigtableColumn {
    */
   core.String qualifierEncoded;
   core.List<core.int> get qualifierEncodedAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(qualifierEncoded);
+    return convert.BASE64.decode(qualifierEncoded);
   }
 
   void set qualifierEncodedAsBytes(core.List<core.int> _bytes) {
-    qualifierEncoded = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    qualifierEncoded = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   core.String qualifierString;
   /**

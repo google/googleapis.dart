@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -14028,11 +14027,11 @@ class BackendService {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
@@ -17139,11 +17138,11 @@ class InstanceGroup {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * [Output Only] A unique identifier for this resource type. The server
@@ -17440,11 +17439,11 @@ class InstanceGroupManager {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * [Output Only] A unique identifier for this resource type. The server
@@ -18091,11 +18090,11 @@ class InstanceGroupManagersSetTargetPoolsRequest {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The list of target pool URLs that instances in this managed instance group
@@ -18415,11 +18414,11 @@ class InstanceGroupsSetNamedPortsRequest {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The list of named ports to set for this instance group. */
   core.List<NamedPort> namedPorts;
@@ -19789,11 +19788,11 @@ class Metadata {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Array of key/value pairs. The total size of all keys and values must be
@@ -22581,11 +22580,11 @@ class Tags {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * An array of tags. Each tag must be 1-63 characters long, and comply with
@@ -24400,11 +24399,11 @@ class UrlMap {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The list of HostRules to use against the URL. */
   core.List<HostRule> hostRules;

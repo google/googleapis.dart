@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -2419,11 +2418,11 @@ class Message {
    */
   core.String raw;
   core.List<core.int> get rawAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(raw);
+    return convert.BASE64.decode(raw);
   }
 
   void set rawAsBytes(core.List<core.int> _bytes) {
-    raw = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    raw = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Estimated size in bytes of the message. */
   core.int sizeEstimate;
@@ -2598,11 +2597,11 @@ class MessagePartBody {
    */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Total number of bytes in the body of the message part. */
   core.int size;

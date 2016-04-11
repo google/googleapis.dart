@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1096,11 +1095,11 @@ class Policy {
    */
   core.String etag;
   core.List<core.int> get etagAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(etag);
+    return convert.BASE64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
-    etag = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   core.List<Rule> rules;
   /** Version of the `Policy`. The default version is 0. */
@@ -1255,11 +1254,11 @@ class ServiceAccount {
   /** Used to perform a consistent read-modify-write. */
   core.String etag;
   core.List<core.int> get etagAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(etag);
+    return convert.BASE64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
-    etag = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The resource name of the service account in the format
@@ -1348,11 +1347,11 @@ class ServiceAccountKey {
   /** The key data. */
   core.String privateKeyData;
   core.List<core.int> get privateKeyDataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(privateKeyData);
+    return convert.BASE64.decode(privateKeyData);
   }
 
   void set privateKeyDataAsBytes(core.List<core.int> _bytes) {
-    privateKeyData = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    privateKeyData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The type of the private key.
@@ -1439,11 +1438,11 @@ class SignBlobRequest {
   /** The bytes to sign */
   core.String bytesToSign;
   core.List<core.int> get bytesToSignAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(bytesToSign);
+    return convert.BASE64.decode(bytesToSign);
   }
 
   void set bytesToSignAsBytes(core.List<core.int> _bytes) {
-    bytesToSign = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    bytesToSign = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   SignBlobRequest();
@@ -1470,11 +1469,11 @@ class SignBlobResponse {
   /** The signed blob. */
   core.String signature;
   core.List<core.int> get signatureAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(signature);
+    return convert.BASE64.decode(signature);
   }
 
   void set signatureAsBytes(core.List<core.int> _bytes) {
-    signature = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    signature = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   SignBlobResponse();

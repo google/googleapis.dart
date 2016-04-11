@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -3514,11 +3513,11 @@ class Annotationdata {
   /** Base64 encoded data for this annotation data. */
   core.String encodedData;
   core.List<core.int> get encodedDataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(encodedData);
+    return convert.BASE64.decode(encodedData);
   }
 
   void set encodedDataAsBytes(core.List<core.int> _bytes) {
-    encodedData = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    encodedData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Unique id for this annotation data. */
   core.String id;

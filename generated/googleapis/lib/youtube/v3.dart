@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -11347,11 +11346,11 @@ class IngestionInfo {
 class InvideoBranding {
   core.String imageBytes;
   core.List<core.int> get imageBytesAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(imageBytes);
+    return convert.BASE64.decode(imageBytes);
   }
 
   void set imageBytesAsBytes(core.List<core.int> _bytes) {
-    imageBytes = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    imageBytes = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   core.String imageUrl;
   InvideoPosition position;

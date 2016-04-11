@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -6493,11 +6492,11 @@ class PushTokenIdIos {
    */
   core.String apnsDeviceToken;
   core.List<core.int> get apnsDeviceTokenAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(apnsDeviceToken);
+    return convert.BASE64.decode(apnsDeviceToken);
   }
 
   void set apnsDeviceTokenAsBytes(core.List<core.int> _bytes) {
-    apnsDeviceToken = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    apnsDeviceToken = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Indicates whether this token should be used for the production or sandbox
@@ -6907,11 +6906,11 @@ class QuestMilestone {
    */
   core.String completionRewardData;
   core.List<core.int> get completionRewardDataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(completionRewardData);
+    return convert.BASE64.decode(completionRewardData);
   }
 
   void set completionRewardDataAsBytes(core.List<core.int> _bytes) {
-    completionRewardData = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    completionRewardData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The criteria of the milestone. */
   core.List<QuestCriterion> criteria;
@@ -8690,11 +8689,11 @@ class TurnBasedMatchData {
    */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * True if this match has data available but it wasn't returned in a list
@@ -8744,11 +8743,11 @@ class TurnBasedMatchDataRequest {
    */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed

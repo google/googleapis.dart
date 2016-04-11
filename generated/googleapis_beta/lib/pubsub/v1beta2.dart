@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1334,11 +1333,11 @@ class Policy {
    */
   core.String etag;
   core.List<core.int> get etagAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(etag);
+    return convert.BASE64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
-    etag = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Version of the `Policy`. The default version is 0. */
   core.int version;
@@ -1432,11 +1431,11 @@ class PubsubMessage {
    */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * ID of this message, assigned by the server when the message is published.
