@@ -11350,7 +11350,7 @@ class InvideoBranding {
   }
 
   void set imageBytesAsBytes(core.List<core.int> _bytes) {
-    imageBytes = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    imageBytes = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   core.String imageUrl;
   InvideoPosition position;

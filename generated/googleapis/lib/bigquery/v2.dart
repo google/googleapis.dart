@@ -1259,7 +1259,7 @@ class BigtableColumn {
   }
 
   void set qualifierEncodedAsBytes(core.List<core.int> _bytes) {
-    qualifierEncoded = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    qualifierEncoded = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   core.String qualifierString;
   /**

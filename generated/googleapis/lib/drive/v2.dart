@@ -5371,7 +5371,7 @@ class FileThumbnail {
   }
 
   void set imageAsBytes(core.List<core.int> _bytes) {
-    image = convert_1.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    image = convert_1.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /** The MIME type of the thumbnail. */
   core.String mimeType;

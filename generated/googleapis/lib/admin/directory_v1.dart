@@ -8724,7 +8724,7 @@ class UserPhoto {
   }
 
   void set photoDataAsBytes(core.List<core.int> _bytes) {
-    photoData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    photoData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /** Primary email of User (Read-only) */
   core.String primaryEmail;

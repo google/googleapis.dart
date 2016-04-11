@@ -604,7 +604,7 @@ class ResultScreenshot {
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /** Height of screenshot in pixels. */
   core.int height;

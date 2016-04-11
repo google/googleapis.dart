@@ -6496,7 +6496,7 @@ class PushTokenIdIos {
   }
 
   void set apnsDeviceTokenAsBytes(core.List<core.int> _bytes) {
-    apnsDeviceToken = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    apnsDeviceToken = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * Indicates whether this token should be used for the production or sandbox
@@ -6910,7 +6910,7 @@ class QuestMilestone {
   }
 
   void set completionRewardDataAsBytes(core.List<core.int> _bytes) {
-    completionRewardData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    completionRewardData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /** The criteria of the milestone. */
   core.List<QuestCriterion> criteria;
@@ -8693,7 +8693,7 @@ class TurnBasedMatchData {
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * True if this match has data available but it wasn't returned in a list
@@ -8747,7 +8747,7 @@ class TurnBasedMatchDataRequest {
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed

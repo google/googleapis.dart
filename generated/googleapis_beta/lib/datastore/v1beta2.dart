@@ -406,7 +406,7 @@ class BeginTransactionResponse {
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
 
   BeginTransactionResponse();
@@ -453,7 +453,7 @@ class CommitRequest {
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
 
   CommitRequest();
@@ -709,7 +709,7 @@ class GqlQueryArg {
   }
 
   void set cursorAsBytes(core.List<core.int> _bytes) {
-    cursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    cursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * Must match regex "[A-Za-z_$][A-Za-z_$0-9]*". Must not match regex "__.*__".
@@ -1100,7 +1100,7 @@ class Property {
   }
 
   void set blobValueAsBytes(core.List<core.int> _bytes) {
-    blobValue = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    blobValue = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /** A boolean value. */
   core.bool booleanValue;
@@ -1380,7 +1380,7 @@ class Query {
   }
 
   void set endCursorAsBytes(core.List<core.int> _bytes) {
-    endCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    endCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /** The filter to apply (optional). */
   Filter filter;
@@ -1417,7 +1417,7 @@ class Query {
   }
 
   void set startCursorAsBytes(core.List<core.int> _bytes) {
-    startCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    startCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
 
   Query();
@@ -1498,7 +1498,7 @@ class QueryResultBatch {
   }
 
   void set endCursorAsBytes(core.List<core.int> _bytes) {
-    endCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    endCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * The result type for every entity in entityResults. full for full entities,
@@ -1584,7 +1584,7 @@ class ReadOptions {
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
 
   ReadOptions();
@@ -1642,7 +1642,7 @@ class RollbackRequest {
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
 
   RollbackRequest();
@@ -1785,7 +1785,7 @@ class Value {
   }
 
   void set blobValueAsBytes(core.List<core.int> _bytes) {
-    blobValue = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    blobValue = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /** A boolean value. */
   core.bool booleanValue;

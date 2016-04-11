@@ -1099,7 +1099,7 @@ class Policy {
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
-    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   core.List<Rule> rules;
   /** Version of the `Policy`. The default version is 0. */
@@ -1258,7 +1258,7 @@ class ServiceAccount {
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
-    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * The resource name of the service account in the format
@@ -1351,7 +1351,7 @@ class ServiceAccountKey {
   }
 
   void set privateKeyDataAsBytes(core.List<core.int> _bytes) {
-    privateKeyData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    privateKeyData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * The type of the private key.
@@ -1442,7 +1442,7 @@ class SignBlobRequest {
   }
 
   void set bytesToSignAsBytes(core.List<core.int> _bytes) {
-    bytesToSign = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    bytesToSign = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
 
   SignBlobRequest();
@@ -1473,7 +1473,7 @@ class SignBlobResponse {
   }
 
   void set signatureAsBytes(core.List<core.int> _bytes) {
-    signature = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    signature = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
 
   SignBlobResponse();

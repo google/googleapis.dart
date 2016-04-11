@@ -1199,7 +1199,7 @@ class Any {
   }
 
   void set valueAsBytes(core.List<core.int> _bytes) {
-    value = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    value = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
 
   Any();
@@ -2809,7 +2809,7 @@ class Thumbnail {
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * The height of the thumbnail, in pixels.

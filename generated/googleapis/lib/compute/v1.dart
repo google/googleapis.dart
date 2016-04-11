@@ -14031,7 +14031,7 @@ class BackendService {
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
@@ -17142,7 +17142,7 @@ class InstanceGroup {
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * [Output Only] A unique identifier for this resource type. The server
@@ -17443,7 +17443,7 @@ class InstanceGroupManager {
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * [Output Only] A unique identifier for this resource type. The server
@@ -18094,7 +18094,7 @@ class InstanceGroupManagersSetTargetPoolsRequest {
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * The list of target pool URLs that instances in this managed instance group
@@ -18418,7 +18418,7 @@ class InstanceGroupsSetNamedPortsRequest {
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /** The list of named ports to set for this instance group. */
   core.List<NamedPort> namedPorts;
@@ -19792,7 +19792,7 @@ class Metadata {
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * Array of key/value pairs. The total size of all keys and values must be
@@ -22584,7 +22584,7 @@ class Tags {
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /**
    * An array of tags. Each tag must be 1-63 characters long, and comply with
@@ -24403,7 +24403,7 @@ class UrlMap {
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
   }
   /** The list of HostRules to use against the URL. */
   core.List<HostRule> hostRules;
