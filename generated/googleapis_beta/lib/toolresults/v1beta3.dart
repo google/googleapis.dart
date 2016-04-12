@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1196,11 +1195,11 @@ class Any {
    */
   core.String value;
   core.List<core.int> get valueAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(value);
+    return convert.BASE64.decode(value);
   }
 
   void set valueAsBytes(core.List<core.int> _bytes) {
-    value = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    value = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   Any();
@@ -2806,11 +2805,11 @@ class Thumbnail {
    */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The height of the thumbnail, in pixels.

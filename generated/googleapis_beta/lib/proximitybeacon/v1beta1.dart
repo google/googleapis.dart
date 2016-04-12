@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -792,11 +791,11 @@ class AdvertisedId {
    */
   core.String id;
   core.List<core.int> get idAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(id);
+    return convert.BASE64.decode(id);
   }
 
   void set idAsBytes(core.List<core.int> _bytes) {
-    id = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    id = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Specifies the identifier type. Required.
@@ -839,11 +838,11 @@ class AttachmentInfo {
   /** An opaque data container for client-provided data. */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Specifies what kind of attachment this is. Tells a client how to interpret
@@ -1020,11 +1019,11 @@ class BeaconAttachment {
    */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Specifies what kind of attachment this is. Tells a client how to interpret
@@ -1578,11 +1577,11 @@ class Observation {
    */
   core.String telemetry;
   core.List<core.int> get telemetryAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(telemetry);
+    return convert.BASE64.decode(telemetry);
   }
 
   void set telemetryAsBytes(core.List<core.int> _bytes) {
-    telemetry = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    telemetry = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Time when the beacon was observed. Being sourced from a mobile device, this

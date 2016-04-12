@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -2601,11 +2600,11 @@ class FileContentHintsThumbnail {
   /** The thumbnail data encoded with URL-safe Base64 (RFC 4648 section 5). */
   core.String image;
   core.List<core.int> get imageAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(image);
+    return convert.BASE64.decode(image);
   }
 
   void set imageAsBytes(core.List<core.int> _bytes) {
-    image = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    image = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The MIME type of the thumbnail. */
   core.String mimeType;

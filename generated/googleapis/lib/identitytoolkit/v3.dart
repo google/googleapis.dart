@@ -8,7 +8,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1880,20 +1879,20 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   /** The salt separator. */
   core.String saltSeparator;
   core.List<core.int> get saltSeparatorAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(saltSeparator);
+    return convert.BASE64.decode(saltSeparator);
   }
 
   void set saltSeparatorAsBytes(core.List<core.int> _bytes) {
-    saltSeparator = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    saltSeparator = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The key for to hash the password. */
   core.String signerKey;
   core.List<core.int> get signerKeyAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(signerKey);
+    return convert.BASE64.decode(signerKey);
   }
 
   void set signerKeyAsBytes(core.List<core.int> _bytes) {
-    signerKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    signerKey = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The account info to be stored. */
   core.List<UserInfo> users;
@@ -2691,11 +2690,11 @@ class UserInfo {
   /** The user's hashed password. */
   core.String passwordHash;
   core.List<core.int> get passwordHashAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(passwordHash);
+    return convert.BASE64.decode(passwordHash);
   }
 
   void set passwordHashAsBytes(core.List<core.int> _bytes) {
-    passwordHash = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    passwordHash = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The timestamp when the password was last updated. */
   core.double passwordUpdatedAt;
@@ -2706,11 +2705,11 @@ class UserInfo {
   /** The user's password salt. */
   core.String salt;
   core.List<core.int> get saltAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(salt);
+    return convert.BASE64.decode(salt);
   }
 
   void set saltAsBytes(core.List<core.int> _bytes) {
-    salt = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    salt = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Timestamp in seconds for valid login token. */
   core.String validSince;
