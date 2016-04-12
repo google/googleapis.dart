@@ -3517,7 +3517,7 @@ class Annotationdata {
   }
 
   void set encodedDataAsBytes(core.List<core.int> _bytes) {
-    encodedData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    encodedData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Unique id for this annotation data. */
   core.String id;

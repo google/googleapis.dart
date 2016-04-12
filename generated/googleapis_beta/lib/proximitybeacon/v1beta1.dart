@@ -795,7 +795,7 @@ class AdvertisedId {
   }
 
   void set idAsBytes(core.List<core.int> _bytes) {
-    id = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    id = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Specifies the identifier type. Required.
@@ -842,7 +842,7 @@ class AttachmentInfo {
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Specifies what kind of attachment this is. Tells a client how to interpret
@@ -1023,7 +1023,7 @@ class BeaconAttachment {
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Specifies what kind of attachment this is. Tells a client how to interpret
@@ -1581,7 +1581,7 @@ class Observation {
   }
 
   void set telemetryAsBytes(core.List<core.int> _bytes) {
-    telemetry = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    telemetry = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Time when the beacon was observed. Being sourced from a mobile device, this

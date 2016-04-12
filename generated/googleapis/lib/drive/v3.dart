@@ -2604,7 +2604,7 @@ class FileContentHintsThumbnail {
   }
 
   void set imageAsBytes(core.List<core.int> _bytes) {
-    image = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    image = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The MIME type of the thumbnail. */
   core.String mimeType;

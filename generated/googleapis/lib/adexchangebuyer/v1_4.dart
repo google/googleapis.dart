@@ -4853,7 +4853,7 @@ class PrivateData {
   }
 
   void set referencePayloadAsBytes(core.List<core.int> _bytes) {
-    referencePayload = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    referencePayload = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   PrivateData();

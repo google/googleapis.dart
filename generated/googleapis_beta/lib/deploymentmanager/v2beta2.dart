@@ -1007,7 +1007,7 @@ class Deployment {
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.

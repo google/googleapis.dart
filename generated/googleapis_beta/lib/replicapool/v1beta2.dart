@@ -813,7 +813,7 @@ class InstanceGroupManager {
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * [Output only] The full URL of the instance group created by the manager.
@@ -1111,7 +1111,7 @@ class InstanceGroupManagersSetTargetPoolsRequest {
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * A list of fully-qualified URLs to existing Target Pool resources. New

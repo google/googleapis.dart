@@ -2422,7 +2422,7 @@ class Message {
   }
 
   void set rawAsBytes(core.List<core.int> _bytes) {
-    raw = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    raw = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Estimated size in bytes of the message. */
   core.int sizeEstimate;
@@ -2601,7 +2601,7 @@ class MessagePartBody {
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Total number of bytes in the body of the message part. */
   core.int size;

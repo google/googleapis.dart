@@ -1883,7 +1883,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   }
 
   void set saltSeparatorAsBytes(core.List<core.int> _bytes) {
-    saltSeparator = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    saltSeparator = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The key for to hash the password. */
   core.String signerKey;
@@ -1892,7 +1892,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   }
 
   void set signerKeyAsBytes(core.List<core.int> _bytes) {
-    signerKey = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    signerKey = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The account info to be stored. */
   core.List<UserInfo> users;
@@ -2694,7 +2694,7 @@ class UserInfo {
   }
 
   void set passwordHashAsBytes(core.List<core.int> _bytes) {
-    passwordHash = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    passwordHash = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The timestamp when the password was last updated. */
   core.double passwordUpdatedAt;
@@ -2709,7 +2709,7 @@ class UserInfo {
   }
 
   void set saltAsBytes(core.List<core.int> _bytes) {
-    salt = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    salt = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Timestamp in seconds for valid login token. */
   core.String validSince;

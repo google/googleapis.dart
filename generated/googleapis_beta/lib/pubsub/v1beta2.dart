@@ -1337,7 +1337,7 @@ class Policy {
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
-    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Version of the `Policy`. The default version is 0. */
   core.int version;
@@ -1435,7 +1435,7 @@ class PubsubMessage {
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * ID of this message, assigned by the server when the message is published.

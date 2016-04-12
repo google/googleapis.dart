@@ -2862,7 +2862,7 @@ class Policy {
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
-    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-").replaceAll("=", "");
+    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Version of the `Policy`. The default version is 0. */
   core.int version;
