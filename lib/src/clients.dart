@@ -5,8 +5,8 @@
 library discoveryapis_commons.clients;
 
 import "dart:async";
-import "dart:convert";
 import "dart:collection" as collection;
+import "dart:convert";
 
 import "package:http/http.dart" as http;
 

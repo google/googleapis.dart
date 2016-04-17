@@ -7,11 +7,10 @@ library discoveryapis_commons_test;
 import 'dart:async';
 import 'dart:convert' hide Base64Encoder;
 
-import 'package:http/http.dart' as http;
-import 'package:test/test.dart';
-
 import 'package:_discoveryapis_commons/src/clients.dart';
 import 'package:_discoveryapis_commons/src/requests.dart';
+import 'package:http/http.dart' as http;
+import 'package:test/test.dart';
 
 const String USER_AGENT = 'google-api-dart-client test.client/0.1.0-dev';
 
