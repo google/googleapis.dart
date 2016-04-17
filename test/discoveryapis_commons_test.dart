@@ -8,10 +8,10 @@ import 'dart:async';
 import 'dart:convert' hide Base64Encoder;
 
 import 'package:http/http.dart' as http;
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 
-import '../lib/src/clients.dart';
-import '../lib/src/requests.dart';
+import 'package:_discoveryapis_commons/src/clients.dart';
+import 'package:_discoveryapis_commons/src/requests.dart';
 
 const String USER_AGENT =
   'google-api-dart-client test.client/0.1.0-dev';
