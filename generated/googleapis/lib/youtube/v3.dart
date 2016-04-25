@@ -17,7 +17,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client youtube/v3';
 
-/** Programmatic access to YouTube features. */
+/**
+ * Supports core YouTube features, such as uploading videos, creating and
+ * managing playlists, searching for content, and much more.
+ */
 class YoutubeApi {
   /** Manage your YouTube account */
   static const YoutubeScope = "https://www.googleapis.com/auth/youtube";
@@ -7173,6 +7176,13 @@ class CdnSettings {
   /** The format of the video stream that you are sending to Youtube. */
   core.String format;
   /**
+   * The frame rate of the inbound video data.
+   * Possible string values are:
+   * - "30fps"
+   * - "60fps"
+   */
+  core.String frameRate;
+  /**
    * The ingestionInfo object contains information that YouTube provides that
    * you need to transmit your RTMP or HTTP stream to YouTube.
    */
@@ -7184,6 +7194,17 @@ class CdnSettings {
    * - "rtmp"
    */
   core.String ingestionType;
+  /**
+   * The resolution of the inbound video data.
+   * Possible string values are:
+   * - "1080p"
+   * - "1440p"
+   * - "240p"
+   * - "360p"
+   * - "480p"
+   * - "720p"
+   */
+  core.String resolution;
 
   CdnSettings();
 
@@ -7191,11 +7212,17 @@ class CdnSettings {
     if (_json.containsKey("format")) {
       format = _json["format"];
     }
+    if (_json.containsKey("frameRate")) {
+      frameRate = _json["frameRate"];
+    }
     if (_json.containsKey("ingestionInfo")) {
       ingestionInfo = new IngestionInfo.fromJson(_json["ingestionInfo"]);
     }
     if (_json.containsKey("ingestionType")) {
       ingestionType = _json["ingestionType"];
+    }
+    if (_json.containsKey("resolution")) {
+      resolution = _json["resolution"];
     }
   }
 
@@ -7204,11 +7231,17 @@ class CdnSettings {
     if (format != null) {
       _json["format"] = format;
     }
+    if (frameRate != null) {
+      _json["frameRate"] = frameRate;
+    }
     if (ingestionInfo != null) {
       _json["ingestionInfo"] = (ingestionInfo).toJson();
     }
     if (ingestionType != null) {
       _json["ingestionType"] = ingestionType;
+    }
+    if (resolution != null) {
+      _json["resolution"] = resolution;
     }
     return _json;
   }
@@ -9290,6 +9323,7 @@ class ContentRating {
    * Espect´culos.
    * Possible string values are:
    * - "cceM12"
+   * - "cceM14"
    * - "cceM16"
    * - "cceM18"
    * - "cceM4"
@@ -9726,6 +9760,8 @@ class ContentRating {
    * - "moctwP"
    * - "moctwPg"
    * - "moctwR"
+   * - "moctwR12"
+   * - "moctwR15"
    * - "moctwUnrated"
    */
   core.String moctwRating;
@@ -11678,6 +11714,11 @@ class LiveBroadcastContentDetails {
   /** This value uniquely identifies the live stream bound to the broadcast. */
   core.String boundStreamId;
   /**
+   * The date and time that the live stream referenced by boundStreamId was last
+   * updated.
+   */
+  core.DateTime boundStreamLastUpdateTimeMs;
+  /**
    *
    * Possible string values are:
    * - "closedCaptionsDisabled"
@@ -11727,6 +11768,13 @@ class LiveBroadcastContentDetails {
    */
   MonitorStreamInfo monitorStream;
   /**
+   * The projection format of this broadcast. This defaults to rectangular.
+   * Possible string values are:
+   * - "360"
+   * - "rectangular"
+   */
+  core.String projection;
+  /**
    * Automatically start recording after the event goes live. The default value
    * for this property is true.
    *
@@ -11754,6 +11802,9 @@ class LiveBroadcastContentDetails {
     if (_json.containsKey("boundStreamId")) {
       boundStreamId = _json["boundStreamId"];
     }
+    if (_json.containsKey("boundStreamLastUpdateTimeMs")) {
+      boundStreamLastUpdateTimeMs = core.DateTime.parse(_json["boundStreamLastUpdateTimeMs"]);
+    }
     if (_json.containsKey("closedCaptionsType")) {
       closedCaptionsType = _json["closedCaptionsType"];
     }
@@ -11775,6 +11826,9 @@ class LiveBroadcastContentDetails {
     if (_json.containsKey("monitorStream")) {
       monitorStream = new MonitorStreamInfo.fromJson(_json["monitorStream"]);
     }
+    if (_json.containsKey("projection")) {
+      projection = _json["projection"];
+    }
     if (_json.containsKey("recordFromStart")) {
       recordFromStart = _json["recordFromStart"];
     }
@@ -11787,6 +11841,9 @@ class LiveBroadcastContentDetails {
     var _json = new core.Map();
     if (boundStreamId != null) {
       _json["boundStreamId"] = boundStreamId;
+    }
+    if (boundStreamLastUpdateTimeMs != null) {
+      _json["boundStreamLastUpdateTimeMs"] = (boundStreamLastUpdateTimeMs).toIso8601String();
     }
     if (closedCaptionsType != null) {
       _json["closedCaptionsType"] = closedCaptionsType;
@@ -11808,6 +11865,9 @@ class LiveBroadcastContentDetails {
     }
     if (monitorStream != null) {
       _json["monitorStream"] = (monitorStream).toJson();
+    }
+    if (projection != null) {
+      _json["projection"] = projection;
     }
     if (recordFromStart != null) {
       _json["recordFromStart"] = recordFromStart;
@@ -12550,6 +12610,26 @@ class LiveChatMessageAuthorDetails {
   }
 }
 
+class LiveChatMessageDeletedDetails {
+  core.String deletedMessageId;
+
+  LiveChatMessageDeletedDetails();
+
+  LiveChatMessageDeletedDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("deletedMessageId")) {
+      deletedMessageId = _json["deletedMessageId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (deletedMessageId != null) {
+      _json["deletedMessageId"] = deletedMessageId;
+    }
+    return _json;
+  }
+}
+
 class LiveChatMessageListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -12650,12 +12730,34 @@ class LiveChatMessageListResponse {
   }
 }
 
+class LiveChatMessageRetractedDetails {
+  core.String retractedMessageId;
+
+  LiveChatMessageRetractedDetails();
+
+  LiveChatMessageRetractedDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("retractedMessageId")) {
+      retractedMessageId = _json["retractedMessageId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (retractedMessageId != null) {
+      _json["retractedMessageId"] = retractedMessageId;
+    }
+    return _json;
+  }
+}
+
 class LiveChatMessageSnippet {
   /**
    * The ID of the user that authored this message, this field is not always
    * filled. textMessageEvent - the user that wrote the message fanFundingEvent
    * - the user that funded the broadcast newSponsorEvent - the user that just
-   * became a sponsor
+   * became a sponsor messageDeletedEvent - the moderator that took the action
+   * messageRetractedEvent - the author that retracted their message
+   * userBannedEvent - the moderator that took the action
    */
   core.String authorChannelId;
   /**
@@ -12674,6 +12776,8 @@ class LiveChatMessageSnippet {
    */
   core.bool hasDisplayContent;
   core.String liveChatId;
+  LiveChatMessageDeletedDetails messageDeletedDetails;
+  LiveChatMessageRetractedDetails messageRetractedDetails;
   /**
    * The date and time when the message was orignally published. The value is
    * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
@@ -12690,13 +12794,17 @@ class LiveChatMessageSnippet {
    * Possible string values are:
    * - "chatEndedEvent"
    * - "fanFundingEvent"
+   * - "messageDeletedEvent"
+   * - "messageRetractedEvent"
    * - "newSponsorEvent"
    * - "sponsorOnlyModeEndedEvent"
    * - "sponsorOnlyModeStartedEvent"
    * - "textMessageEvent"
    * - "tombstone"
+   * - "userBannedEvent"
    */
   core.String type;
+  LiveChatUserBannedMessageDetails userBannedDetails;
 
   LiveChatMessageSnippet();
 
@@ -12716,6 +12824,12 @@ class LiveChatMessageSnippet {
     if (_json.containsKey("liveChatId")) {
       liveChatId = _json["liveChatId"];
     }
+    if (_json.containsKey("messageDeletedDetails")) {
+      messageDeletedDetails = new LiveChatMessageDeletedDetails.fromJson(_json["messageDeletedDetails"]);
+    }
+    if (_json.containsKey("messageRetractedDetails")) {
+      messageRetractedDetails = new LiveChatMessageRetractedDetails.fromJson(_json["messageRetractedDetails"]);
+    }
     if (_json.containsKey("publishedAt")) {
       publishedAt = core.DateTime.parse(_json["publishedAt"]);
     }
@@ -12724,6 +12838,9 @@ class LiveChatMessageSnippet {
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
+    }
+    if (_json.containsKey("userBannedDetails")) {
+      userBannedDetails = new LiveChatUserBannedMessageDetails.fromJson(_json["userBannedDetails"]);
     }
   }
 
@@ -12744,6 +12861,12 @@ class LiveChatMessageSnippet {
     if (liveChatId != null) {
       _json["liveChatId"] = liveChatId;
     }
+    if (messageDeletedDetails != null) {
+      _json["messageDeletedDetails"] = (messageDeletedDetails).toJson();
+    }
+    if (messageRetractedDetails != null) {
+      _json["messageRetractedDetails"] = (messageRetractedDetails).toJson();
+    }
     if (publishedAt != null) {
       _json["publishedAt"] = (publishedAt).toIso8601String();
     }
@@ -12752,6 +12875,9 @@ class LiveChatMessageSnippet {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (userBannedDetails != null) {
+      _json["userBannedDetails"] = (userBannedDetails).toJson();
     }
     return _json;
   }
@@ -12947,6 +13073,51 @@ class LiveChatTextMessageDetails {
     var _json = new core.Map();
     if (messageText != null) {
       _json["messageText"] = messageText;
+    }
+    return _json;
+  }
+}
+
+class LiveChatUserBannedMessageDetails {
+  /**
+   * The duration of the ban. This property is only present if the banType is
+   * temporary.
+   */
+  core.String banDurationSeconds;
+  /**
+   * The type of ban.
+   * Possible string values are:
+   * - "permanent"
+   * - "temporary"
+   */
+  core.String banType;
+  /** The details of the user that was banned. */
+  ChannelProfileDetails bannedUserDetails;
+
+  LiveChatUserBannedMessageDetails();
+
+  LiveChatUserBannedMessageDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("banDurationSeconds")) {
+      banDurationSeconds = _json["banDurationSeconds"];
+    }
+    if (_json.containsKey("banType")) {
+      banType = _json["banType"];
+    }
+    if (_json.containsKey("bannedUserDetails")) {
+      bannedUserDetails = new ChannelProfileDetails.fromJson(_json["bannedUserDetails"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (banDurationSeconds != null) {
+      _json["banDurationSeconds"] = banDurationSeconds;
+    }
+    if (banType != null) {
+      _json["banType"] = banType;
+    }
+    if (bannedUserDetails != null) {
+      _json["bannedUserDetails"] = (bannedUserDetails).toJson();
     }
     return _json;
   }
@@ -17687,7 +17858,7 @@ class VideoTopicDetails {
   }
 }
 
-/** Branding properties for the watch. */
+/** Branding properties for the watch. All deprecated. */
 class WatchSettings {
   /** The text color for the video watch page's branded area. */
   core.String backgroundColor;

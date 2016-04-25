@@ -15,7 +15,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client toolresults/v1beta3';
 
-/** Read and publish results from Cloud Test Lab. */
+/** Reads and publishes results from Cloud Test Lab. */
 class ToolresultsApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -2547,8 +2547,7 @@ class TestCaseReference {
  * results by the service. Xml file paths are updated in order to append more
  * files, however they can't be deleted.
  *
- * Users can also add test results manually by using the test_result field. Next
- * tag: 7
+ * Users can also add test results manually by using the test_result field.
  */
 class TestExecutionStep {
   /**

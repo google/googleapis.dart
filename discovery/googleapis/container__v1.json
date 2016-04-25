@@ -14,7 +14,7 @@
     "description": "Builds and manages clusters that run container-based applications, powered by open source Kubernetes technology.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/container-engine/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/OU95LyfeHZcrBJDajlkYXi0P4Wo\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/cpP4K9eaLrLwMGtsdl5oXjxb8rw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -320,6 +320,177 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
+                            },
+                            "resources": {
+                                "nodePools": {
+                                    "methods": {
+                                        "list": {
+                                            "description": "Lists the node pools for a cluster.",
+                                            "httpMethod": "GET",
+                                            "id": "container.projects.zones.clusters.nodePools.list",
+                                            "parameterOrder": [
+                                                "projectId",
+                                                "zone",
+                                                "clusterId"
+                                            ],
+                                            "parameters": {
+                                                "projectId": {
+                                                    "description": "The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "zone": {
+                                                    "description": "The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "clusterId": {
+                                                    "description": "The name of the cluster.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools",
+                                            "response": {
+                                                "$ref": "ListNodePoolsResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "get": {
+                                            "description": "Retrieves the node pool requested.",
+                                            "httpMethod": "GET",
+                                            "id": "container.projects.zones.clusters.nodePools.get",
+                                            "parameterOrder": [
+                                                "projectId",
+                                                "zone",
+                                                "clusterId",
+                                                "nodePoolId"
+                                            ],
+                                            "parameters": {
+                                                "projectId": {
+                                                    "description": "The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "zone": {
+                                                    "description": "The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "clusterId": {
+                                                    "description": "The name of the cluster.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "nodePoolId": {
+                                                    "description": "The name of the node pool.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}",
+                                            "response": {
+                                                "$ref": "NodePool"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "create": {
+                                            "description": "Creates a node pool for a cluster.",
+                                            "httpMethod": "POST",
+                                            "id": "container.projects.zones.clusters.nodePools.create",
+                                            "parameterOrder": [
+                                                "projectId",
+                                                "zone",
+                                                "clusterId"
+                                            ],
+                                            "parameters": {
+                                                "projectId": {
+                                                    "description": "The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "zone": {
+                                                    "description": "The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "clusterId": {
+                                                    "description": "The name of the cluster.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools",
+                                            "request": {
+                                                "$ref": "CreateNodePoolRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "Operation"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "delete": {
+                                            "description": "Deletes a node pool from a cluster.",
+                                            "httpMethod": "DELETE",
+                                            "id": "container.projects.zones.clusters.nodePools.delete",
+                                            "parameterOrder": [
+                                                "projectId",
+                                                "zone",
+                                                "clusterId",
+                                                "nodePoolId"
+                                            ],
+                                            "parameters": {
+                                                "projectId": {
+                                                    "description": "The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "zone": {
+                                                    "description": "The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "clusterId": {
+                                                    "description": "The name of the cluster.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "nodePoolId": {
+                                                    "description": "The name of the node pool to delete.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}",
+                                            "response": {
+                                                "$ref": "Operation"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        }
+                                    }
+                                }
                             }
                         },
                         "operations": {
@@ -398,7 +569,7 @@
             }
         }
     },
-    "revision": "20160321",
+    "revision": "20160421",
     "rootUrl": "https://container.googleapis.com/",
     "schemas": {
         "ListClustersResponse": {
@@ -470,6 +641,20 @@
                 "subnetwork": {
                     "description": "The name of the Google Compute Engine [subnetwork](/compute/docs/subnetworks) to which the cluster is connected.",
                     "type": "string"
+                },
+                "nodePools": {
+                    "description": "The node pools associated with this cluster. When creating a new cluster, only a single node pool should be specified. This field should not be set if \"node_config\" or \"initial_node_count\" are specified.",
+                    "items": {
+                        "$ref": "NodePool"
+                    },
+                    "type": "array"
+                },
+                "locations": {
+                    "description": "The list of Google Compute Engine [locations](/compute/docs/zones#available) in which the cluster's nodes should be located.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "selfLink": {
                     "description": "[Output only] Server-defined URL for the resource.",
@@ -633,6 +818,58 @@
             },
             "type": "object"
         },
+        "NodePool": {
+            "description": "NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.",
+            "id": "NodePool",
+            "properties": {
+                "name": {
+                    "description": "The name of the node pool.",
+                    "type": "string"
+                },
+                "config": {
+                    "$ref": "NodeConfig",
+                    "description": "The node configuration of the pool."
+                },
+                "initialNodeCount": {
+                    "description": "The initial node count for the pool. You must ensure that your Compute Engine resource quota is sufficient for this number of instances. You must also have available firewall and routes quota.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "selfLink": {
+                    "description": "Server-defined URL for the resource.",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "The version of the Kubernetes of this node.",
+                    "type": "string"
+                },
+                "instanceGroupUrls": {
+                    "description": "[Output only] The resource URLs of [instance groups](/compute/docs/instance-groups/) associated with this node pool.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "description": "The status of the nodes in this pool instance.",
+                    "enum": [
+                        "STATUS_UNSPECIFIED",
+                        "PROVISIONING",
+                        "RUNNING",
+                        "RUNNING_WITH_ERROR",
+                        "RECONCILING",
+                        "STOPPING",
+                        "ERROR"
+                    ],
+                    "type": "string"
+                },
+                "statusMessage": {
+                    "description": "[Output only] Additional information about the current status of this node pool instance, if available.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "CreateClusterRequest": {
             "description": "CreateClusterRequest creates a cluster.",
             "id": "CreateClusterRequest",
@@ -727,6 +964,10 @@
                     "$ref": "AddonsConfig",
                     "description": "Configurations for the various addons available to run in the cluster."
                 },
+                "desiredNodePoolId": {
+                    "description": "The node pool to be upgraded. This field is mandatory if the \"desired_node_version\" or \"desired_image_family\" is specified and there is more than one node pool on the cluster.",
+                    "type": "string"
+                },
                 "desiredMasterVersion": {
                     "description": "The Kubernetes version to change the master to. The only valid value is the latest supported version. Use \"-\" to have the server automatically select the latest version.",
                     "type": "string"
@@ -769,6 +1010,42 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "defaultImageFamily": {
+                    "description": "Default image family.",
+                    "type": "string"
+                },
+                "validImageFamilies": {
+                    "description": "List of valid image families.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListNodePoolsResponse": {
+            "description": "ListNodePoolsResponse is the result of ListNodePoolsRequest.",
+            "id": "ListNodePoolsResponse",
+            "properties": {
+                "nodePools": {
+                    "description": "A list of node pools for a cluster.",
+                    "items": {
+                        "$ref": "NodePool"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CreateNodePoolRequest": {
+            "description": "CreateNodePoolRequest creates a node pool for a cluster.",
+            "id": "CreateNodePoolRequest",
+            "properties": {
+                "nodePool": {
+                    "$ref": "NodePool",
+                    "description": "The node pool to create."
                 }
             },
             "type": "object"

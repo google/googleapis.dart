@@ -2361,33 +2361,6 @@ class GetQueryResultsResponse {
   }
 }
 
-class IntervalPartitionConfiguration {
-  core.String expirationMs;
-  core.String type;
-
-  IntervalPartitionConfiguration();
-
-  IntervalPartitionConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("expirationMs")) {
-      expirationMs = _json["expirationMs"];
-    }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (expirationMs != null) {
-      _json["expirationMs"] = expirationMs;
-    }
-    if (type != null) {
-      _json["type"] = type;
-    }
-    return _json;
-  }
-}
-
 class Job {
   /** [Required] Describes the job configuration. */
   JobConfiguration configuration;
@@ -2948,10 +2921,11 @@ class JobConfigurationQuery {
   /**
    * [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for
    * this query. The default value is true. If set to false, the query will use
-   * BigQuery's updated SQL dialect with improved standards compliance. When
-   * using BigQuery's updated SQL, the values of allowLargeResults and
-   * flattenResults are ignored. Queries with useLegacySql set to false will be
-   * run as if allowLargeResults is true and flattenResults is false.
+   * BigQuery's updated SQL dialect with improved standards compliance:
+   * https://cloud.google.com/bigquery/sql-reference/ When using BigQuery's
+   * updated SQL, the values of allowLargeResults and flattenResults are
+   * ignored. Queries with useLegacySql set to false will be run as if
+   * allowLargeResults is true and flattenResults is false.
    */
   core.bool useLegacySql;
   /**
@@ -3412,6 +3386,11 @@ class JobStatistics2 {
    * reference more than 50 tables will not have a complete list.
    */
   core.List<TableReference> referencedTables;
+  /**
+   * [Output-only, Experimental] The schema of the results. Present only for
+   * successful dry run of non-legacy SQL queries.
+   */
+  TableSchema schema;
   /** [Output-only] Total bytes billed for the job. */
   core.String totalBytesBilled;
   /** [Output-only] Total bytes processed for the job. */
@@ -3431,6 +3410,9 @@ class JobStatistics2 {
     }
     if (_json.containsKey("referencedTables")) {
       referencedTables = _json["referencedTables"].map((value) => new TableReference.fromJson(value)).toList();
+    }
+    if (_json.containsKey("schema")) {
+      schema = new TableSchema.fromJson(_json["schema"]);
     }
     if (_json.containsKey("totalBytesBilled")) {
       totalBytesBilled = _json["totalBytesBilled"];
@@ -3453,6 +3435,9 @@ class JobStatistics2 {
     }
     if (referencedTables != null) {
       _json["referencedTables"] = referencedTables.map((value) => (value).toJson()).toList();
+    }
+    if (schema != null) {
+      _json["schema"] = (schema).toJson();
     }
     if (totalBytesBilled != null) {
       _json["totalBytesBilled"] = totalBytesBilled;
@@ -3796,10 +3781,11 @@ class QueryRequest {
   /**
    * [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for
    * this query. The default value is true. If set to false, the query will use
-   * BigQuery's updated SQL dialect with improved standards compliance. When
-   * using BigQuery's updated SQL, the values of allowLargeResults and
-   * flattenResults are ignored. Queries with useLegacySql set to false will be
-   * run as if allowLargeResults is true and flattenResults is false.
+   * BigQuery's updated SQL dialect with improved standards compliance:
+   * https://cloud.google.com/bigquery/sql-reference/ When using BigQuery's
+   * updated SQL, the values of allowLargeResults and flattenResults are
+   * ignored. Queries with useLegacySql set to false will be run as if
+   * allowLargeResults is true and flattenResults is false.
    */
   core.bool useLegacySql;
   /**
@@ -4090,12 +4076,6 @@ class Table {
    * in the streaming buffer.
    */
   core.String numRows;
-  /**
-   * [Experimental] List of partition configurations for this table. Currently
-   * only one configuration can be specified and it can only be an interval
-   * partition with type daily.
-   */
-  core.List<TablePartitionConfiguration> partitionConfigurations;
   /** [Optional] Describes the schema of this table. */
   TableSchema schema;
   /** [Output-only] A URL that can be used to access this resource again. */
@@ -4108,6 +4088,11 @@ class Table {
   Streamingbuffer streamingBuffer;
   /** [Required] Reference describing the ID of this table. */
   TableReference tableReference;
+  /**
+   * [Experimental] If specified, configures time-based partitioning for this
+   * table.
+   */
+  TimePartitioning timePartitioning;
   /**
    * [Output-only] Describes the table type. The following values are supported:
    * TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL
@@ -4157,9 +4142,6 @@ class Table {
     if (_json.containsKey("numRows")) {
       numRows = _json["numRows"];
     }
-    if (_json.containsKey("partitionConfigurations")) {
-      partitionConfigurations = _json["partitionConfigurations"].map((value) => new TablePartitionConfiguration.fromJson(value)).toList();
-    }
     if (_json.containsKey("schema")) {
       schema = new TableSchema.fromJson(_json["schema"]);
     }
@@ -4171,6 +4153,9 @@ class Table {
     }
     if (_json.containsKey("tableReference")) {
       tableReference = new TableReference.fromJson(_json["tableReference"]);
+    }
+    if (_json.containsKey("timePartitioning")) {
+      timePartitioning = new TimePartitioning.fromJson(_json["timePartitioning"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -4218,9 +4203,6 @@ class Table {
     if (numRows != null) {
       _json["numRows"] = numRows;
     }
-    if (partitionConfigurations != null) {
-      _json["partitionConfigurations"] = partitionConfigurations.map((value) => (value).toJson()).toList();
-    }
     if (schema != null) {
       _json["schema"] = (schema).toJson();
     }
@@ -4232,6 +4214,9 @@ class Table {
     }
     if (tableReference != null) {
       _json["tableReference"] = (tableReference).toJson();
+    }
+    if (timePartitioning != null) {
+      _json["timePartitioning"] = (timePartitioning).toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -4662,31 +4647,6 @@ class TableList {
   }
 }
 
-/**
- * [Required] A partition configuration. Only one type of partition should be
- * configured.
- */
-class TablePartitionConfiguration {
-  /** [Pick one] Configures an interval partition. */
-  IntervalPartitionConfiguration interval;
-
-  TablePartitionConfiguration();
-
-  TablePartitionConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey("interval")) {
-      interval = new IntervalPartitionConfiguration.fromJson(_json["interval"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (interval != null) {
-      _json["interval"] = (interval).toJson();
-    }
-    return _json;
-  }
-}
-
 class TableReference {
   /** [Required] The ID of the dataset containing this table. */
   core.String datasetId;
@@ -4768,6 +4728,41 @@ class TableSchema {
     var _json = new core.Map();
     if (fields != null) {
       _json["fields"] = fields.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class TimePartitioning {
+  /**
+   * [Optional] Number of milliseconds for which to keep the storage for a
+   * partition.
+   */
+  core.String expirationMs;
+  /**
+   * [Required] The only type supported is DAY, which will generate one
+   * partition per day based on data loading time.
+   */
+  core.String type;
+
+  TimePartitioning();
+
+  TimePartitioning.fromJson(core.Map _json) {
+    if (_json.containsKey("expirationMs")) {
+      expirationMs = _json["expirationMs"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (expirationMs != null) {
+      _json["expirationMs"] = expirationMs;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }

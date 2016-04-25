@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/KM1uW9aa1iyrzYehL6ORIqINM14\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/7OomBdgZ3z0QMRgoMqlMLp6fRlA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20160318",
+    "revision": "20160405",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1426,7 +1426,7 @@
             "type": "object"
         },
         "PerformanceReportList": {
-            "description": "The configuration data for an Ad Exchange performance report list. https://sites.google.com/a/google.com/adx-integration/Home/engineering/binary-releases/rtb-api-release https://cs.corp.google.com/#piper///depot/google3/contentads/adx/tools/rtb_api/adxrtb.py",
+            "description": "The configuration data for an Ad Exchange performance report list.",
             "id": "PerformanceReportList",
             "properties": {
                 "kind": {

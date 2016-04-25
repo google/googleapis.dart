@@ -122,12 +122,6 @@ Stores and queries data in Google Cloud Datastore.
 
 Official API documentation: https://developers.google.com/datastore/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Deployment Manager API - deploymentmanager v2beta2
-
-The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
-
-Official API documentation: https://developers.google.com/deployment-manager/
-
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.5beta1
 
 Manages your DoubleClick Campaign Manager ad campaigns and reports.
@@ -166,7 +160,7 @@ Official API documentation: https://cloud.google.com/pubsub/docs
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Instance Group Manager API - replicapool v1beta2
 
-The Google Compute Engine Instance Group Manager API provides groups of homogenous Compute Engine Instances.
+[Deprecated. Please use Instance Group Manager in Compute API] Provides groups of homogenous Compute Engine instances.
 
 Official API documentation: https://developers.google.com/compute/docs/instance-groups/manager/v1beta2
 
@@ -208,7 +202,7 @@ Official API documentation: https://developers.google.com/appengine/docs/python/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Tool Results API - toolresults v1beta3
 
-Read and publish results from Cloud Test Lab.
+Reads and publishes results from Cloud Test Lab.
 
 Official API documentation: https://developers.google.com/cloud-test-lab/
 

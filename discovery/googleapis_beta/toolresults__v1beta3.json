@@ -12,10 +12,10 @@
     "baseUrl": "https://www.googleapis.com/toolresults/v1beta3/projects/",
     "batchPath": "batch",
     "canonicalName": "Tool Results",
-    "description": "Read and publish results from Cloud Test Lab.",
+    "description": "Reads and publishes results from Cloud Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-test-lab/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/HC-xXq9hBNVWAxaWXBeaTXVuckg\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/cueCVchmDcWiAh-j0Y1sObtuvmw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20160329",
+    "revision": "20160421",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Any": {
@@ -1199,7 +1199,7 @@
             "type": "object"
         },
         "TestExecutionStep": {
-            "description": "A step that represents running tests.\n\nIt accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths are updated in order to append more files, however they can't be deleted.\n\nUsers can also add test results manually by using the test_result field. Next tag: 7",
+            "description": "A step that represents running tests.\n\nIt accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths are updated in order to append more files, however they can't be deleted.\n\nUsers can also add test results manually by using the test_result field.",
             "id": "TestExecutionStep",
             "properties": {
                 "testIssues": {

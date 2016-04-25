@@ -35,7 +35,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/vPJvJNlpyCVjvFtW3C5_g3xhP9I\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/9rYBf2faaJOoLxktcSIzTVEkJkE\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1406,7 +1406,7 @@
             }
         }
     },
-    "revision": "20160328",
+    "revision": "20160414",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -1919,6 +1919,10 @@
                         }
                     },
                     "type": "object"
+                },
+                "isAppAuthorized": {
+                    "description": "Whether the file was created or opened by the requesting app.",
+                    "type": "boolean"
                 },
                 "kind": {
                     "default": "drive#file",

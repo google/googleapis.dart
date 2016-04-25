@@ -411,7 +411,7 @@ class BucketsResourceApi {
    * [projection] - Set of properties to return. Defaults to noAcl.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit acl and defaultObjectAcl properties.
+   * - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
    *
    * Completes with a [Bucket].
    *
@@ -495,7 +495,7 @@ class BucketsResourceApi {
    * defaults to full.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit acl and defaultObjectAcl properties.
+   * - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
    *
    * Completes with a [Bucket].
    *
@@ -559,7 +559,7 @@ class BucketsResourceApi {
    * [projection] - Set of properties to return. Defaults to noAcl.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit acl and defaultObjectAcl properties.
+   * - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
    *
    * Completes with a [Buckets].
    *
@@ -653,7 +653,7 @@ class BucketsResourceApi {
    * [projection] - Set of properties to return. Defaults to full.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit acl and defaultObjectAcl properties.
+   * - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
    *
    * Completes with a [Bucket].
    *
@@ -752,7 +752,7 @@ class BucketsResourceApi {
    * [projection] - Set of properties to return. Defaults to full.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit acl and defaultObjectAcl properties.
+   * - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
    *
    * Completes with a [Bucket].
    *
@@ -1684,7 +1684,7 @@ class ObjectsResourceApi {
    * object resource specifies the acl property, when it defaults to full.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit the acl property.
+   * - "noAcl" : Omit the owner, acl property.
    *
    * [sourceGeneration] - If present, selects a specific revision of the source
    * object (as opposed to the latest version, the default).
@@ -1885,7 +1885,7 @@ class ObjectsResourceApi {
    * [projection] - Set of properties to return. Defaults to noAcl.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit the acl property.
+   * - "noAcl" : Omit the owner, acl property.
    *
    * [downloadOptions] - Options for downloading. A download can be either a
    * Metadata (default) or Media download. Partial Media downloads are possible
@@ -2006,7 +2006,7 @@ class ObjectsResourceApi {
    * object resource specifies the acl property, when it defaults to full.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit the acl property.
+   * - "noAcl" : Omit the owner, acl property.
    *
    * [uploadMedia] - The media to upload.
    *
@@ -2122,7 +2122,7 @@ class ObjectsResourceApi {
    * [projection] - Set of properties to return. Defaults to noAcl.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit the acl property.
+   * - "noAcl" : Omit the owner, acl property.
    *
    * [versions] - If true, lists all versions of an object as distinct results.
    * The default is false. For more information, see Object Versioning.
@@ -2221,7 +2221,7 @@ class ObjectsResourceApi {
    * [projection] - Set of properties to return. Defaults to full.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit the acl property.
+   * - "noAcl" : Omit the owner, acl property.
    *
    * Completes with a [Object].
    *
@@ -2355,7 +2355,7 @@ class ObjectsResourceApi {
    * object resource specifies the acl property, when it defaults to full.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit the acl property.
+   * - "noAcl" : Omit the owner, acl property.
    *
    * [rewriteToken] - Include this field (from the previous rewrite response) on
    * each rewrite request after the first one, until the rewrite response 'done'
@@ -2493,7 +2493,7 @@ class ObjectsResourceApi {
    * [projection] - Set of properties to return. Defaults to full.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit the acl property.
+   * - "noAcl" : Omit the owner, acl property.
    *
    * [downloadOptions] - Options for downloading. A download can be either a
    * Metadata (default) or Media download. Partial Media downloads are possible
@@ -2596,7 +2596,7 @@ class ObjectsResourceApi {
    * [projection] - Set of properties to return. Defaults to noAcl.
    * Possible string values are:
    * - "full" : Include all properties.
-   * - "noAcl" : Omit the acl property.
+   * - "noAcl" : Omit the owner, acl property.
    *
    * [versions] - If true, lists all versions of an object as distinct results.
    * The default is false. For more information, see Object Versioning.

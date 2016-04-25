@@ -5603,6 +5603,11 @@ class Player {
   core.String originalPlayerId;
   /** The ID of the player. */
   core.String playerId;
+  /**
+   * The player's profile settings. Controls whether or not the player's profile
+   * is visible to other players.
+   */
+  ProfileSettings profileSettings;
   /** The player's title rewarded for their game activities. */
   core.String title;
 
@@ -5638,6 +5643,9 @@ class Player {
     }
     if (_json.containsKey("playerId")) {
       playerId = _json["playerId"];
+    }
+    if (_json.containsKey("profileSettings")) {
+      profileSettings = new ProfileSettings.fromJson(_json["profileSettings"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -5675,6 +5683,9 @@ class Player {
     }
     if (playerId != null) {
       _json["playerId"] = playerId;
+    }
+    if (profileSettings != null) {
+      _json["profileSettings"] = (profileSettings).toJson();
     }
     if (title != null) {
       _json["title"] = title;
@@ -6423,6 +6434,42 @@ class PlayerScoreSubmissionList {
     }
     if (scores != null) {
       _json["scores"] = scores.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** This is a JSON template for profile settings */
+class ProfileSettings {
+  /**
+   * Uniquely identifies the type of this resource. Value is always the fixed
+   * string games#profileSettings.
+   */
+  core.String kind;
+  /**
+   * The player's current profile visibility. This field is visible to both 1P
+   * and 3P APIs.
+   */
+  core.bool profileVisible;
+
+  ProfileSettings();
+
+  ProfileSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("profileVisible")) {
+      profileVisible = _json["profileVisible"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (profileVisible != null) {
+      _json["profileVisible"] = profileVisible;
     }
     return _json;
   }

@@ -5522,6 +5522,8 @@ class File {
   FileImageMediaMetadata imageMediaMetadata;
   /** Indexable text attributes for the file (can only be written) */
   FileIndexableText indexableText;
+  /** Whether the file was created or opened by the requesting app. */
+  core.bool isAppAuthorized;
   /** The type of file. This is always drive#file. */
   core.String kind;
   /** A group of labels for the file. */
@@ -5717,6 +5719,9 @@ class File {
     if (_json.containsKey("indexableText")) {
       indexableText = new FileIndexableText.fromJson(_json["indexableText"]);
     }
+    if (_json.containsKey("isAppAuthorized")) {
+      isAppAuthorized = _json["isAppAuthorized"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -5891,6 +5896,9 @@ class File {
     }
     if (indexableText != null) {
       _json["indexableText"] = (indexableText).toJson();
+    }
+    if (isAppAuthorized != null) {
+      _json["isAppAuthorized"] = isAppAuthorized;
     }
     if (kind != null) {
       _json["kind"] = kind;

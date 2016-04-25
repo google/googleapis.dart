@@ -419,6 +419,8 @@ class AppsServicesResourceApi {
 class AppsServicesVersionsResourceApi {
   final commons.ApiRequester _requester;
 
+  AppsServicesVersionsInstancesResourceApi get instances => new AppsServicesVersionsInstancesResourceApi(_requester);
+
   AppsServicesVersionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
@@ -701,6 +703,75 @@ class AppsServicesVersionsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
+class AppsServicesVersionsInstancesResourceApi {
+  final commons.ApiRequester _requester;
+
+  AppsServicesVersionsInstancesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Lists the instances of a version.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource requested. For example:
+   * "apps/myapp/services/default/versions/v1".
+   *
+   * [servicesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [versionsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
+   *
+   * Completes with a [ListInstancesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListInstancesResponse> list(core.String appsId, core.String servicesId, core.String versionsId, {core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (servicesId == null) {
+      throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+    if (versionsId == null) {
+      throw new core.ArgumentError("Parameter versionsId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'v1beta5/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId') + '/instances';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListInstancesResponse.fromJson(data));
   }
 
 }
@@ -1428,6 +1499,166 @@ class HealthCheck {
   }
 }
 
+/**
+ * Instances are the computing units that App Engine uses to automatically scale
+ * an application.
+ */
+class Instance {
+  /** The App Engine release the instance is running on. @OutputOnly */
+  core.String appEngineRelease;
+  /**
+   * Availability of instance. @OutputOnly
+   * Possible string values are:
+   * - "UNSPECIFIED" : A UNSPECIFIED.
+   * - "RESIDENT" : A RESIDENT.
+   * - "DYNAMIC" : A DYNAMIC.
+   */
+  core.String availability;
+  /** Latency in milliseconds (averaged over the last minute). @OutputOnly */
+  core.int averageLatency;
+  /** Number of errors since the instance was started. @OutputOnly */
+  core.int errors;
+  /**
+   * The relative name/path of the instance within the version. Example:
+   * "instance-1" @OutputOnly
+   */
+  core.String id;
+  /** Memory usage (in bytes). @OutputOnly */
+  core.String memoryUsage;
+  /**
+   * The full path to the Instance resource in the API. Example:
+   * "apps/myapp/services/default/versions/v1/instances/instance-1" @OutputOnly
+   */
+  core.String name;
+  /** QPS for this instance (averaged over the last minute). @OutputOnly */
+  core.double qps;
+  /** Number of requests (since the clone was started). @OutputOnly */
+  core.int requests;
+  /** Time when instance was started. @OutputOnly */
+  core.String startTimestamp;
+  /** For VMEngines instances, the GCE VM ID of the instance. @OutputOnly */
+  core.String vmId;
+  /**
+   * For VMEngines instances, the name of GCE VM where the instance lives.
+   * @OutputOnly
+   */
+  core.String vmName;
+  /**
+   * For VMEngines instances, the status of GCE VM where the instance lives.
+   * @OutputOnly
+   */
+  core.String vmStatus;
+  /**
+   * For VMEngines instances, whether the instance has been unlocked.
+   * @OutputOnly
+   */
+  core.bool vmUnlocked;
+  /**
+   * For VMEngines instances, the zone where the GCE VM is located. @OutputOnly
+   */
+  core.String vmZoneName;
+
+  Instance();
+
+  Instance.fromJson(core.Map _json) {
+    if (_json.containsKey("appEngineRelease")) {
+      appEngineRelease = _json["appEngineRelease"];
+    }
+    if (_json.containsKey("availability")) {
+      availability = _json["availability"];
+    }
+    if (_json.containsKey("averageLatency")) {
+      averageLatency = _json["averageLatency"];
+    }
+    if (_json.containsKey("errors")) {
+      errors = _json["errors"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("memoryUsage")) {
+      memoryUsage = _json["memoryUsage"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("qps")) {
+      qps = _json["qps"];
+    }
+    if (_json.containsKey("requests")) {
+      requests = _json["requests"];
+    }
+    if (_json.containsKey("startTimestamp")) {
+      startTimestamp = _json["startTimestamp"];
+    }
+    if (_json.containsKey("vmId")) {
+      vmId = _json["vmId"];
+    }
+    if (_json.containsKey("vmName")) {
+      vmName = _json["vmName"];
+    }
+    if (_json.containsKey("vmStatus")) {
+      vmStatus = _json["vmStatus"];
+    }
+    if (_json.containsKey("vmUnlocked")) {
+      vmUnlocked = _json["vmUnlocked"];
+    }
+    if (_json.containsKey("vmZoneName")) {
+      vmZoneName = _json["vmZoneName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (appEngineRelease != null) {
+      _json["appEngineRelease"] = appEngineRelease;
+    }
+    if (availability != null) {
+      _json["availability"] = availability;
+    }
+    if (averageLatency != null) {
+      _json["averageLatency"] = averageLatency;
+    }
+    if (errors != null) {
+      _json["errors"] = errors;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (memoryUsage != null) {
+      _json["memoryUsage"] = memoryUsage;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (qps != null) {
+      _json["qps"] = qps;
+    }
+    if (requests != null) {
+      _json["requests"] = requests;
+    }
+    if (startTimestamp != null) {
+      _json["startTimestamp"] = startTimestamp;
+    }
+    if (vmId != null) {
+      _json["vmId"] = vmId;
+    }
+    if (vmName != null) {
+      _json["vmName"] = vmName;
+    }
+    if (vmStatus != null) {
+      _json["vmStatus"] = vmStatus;
+    }
+    if (vmUnlocked != null) {
+      _json["vmUnlocked"] = vmUnlocked;
+    }
+    if (vmZoneName != null) {
+      _json["vmZoneName"] = vmZoneName;
+    }
+    return _json;
+  }
+}
+
 /** A Python runtime third-party library required by the application. */
 class Library {
   /** The name of the library, e.g. "PIL" or "django". */
@@ -1453,6 +1684,36 @@ class Library {
     }
     if (version != null) {
       _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/** Response message for `Instances.ListInstances`. */
+class ListInstancesResponse {
+  /** The instances belonging to the requested version. */
+  core.List<Instance> instances;
+  /** Continuation token for fetching the next page of results. */
+  core.String nextPageToken;
+
+  ListInstancesResponse();
+
+  ListInstancesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("instances")) {
+      instances = _json["instances"].map((value) => new Instance.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instances != null) {
+      _json["instances"] = instances.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }

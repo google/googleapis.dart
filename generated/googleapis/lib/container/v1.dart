@@ -103,6 +103,8 @@ class ProjectsZonesResourceApi {
 class ProjectsZonesClustersResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsZonesClustersNodePoolsResourceApi get nodePools => new ProjectsZonesClustersNodePoolsResourceApi(_requester);
+
   ProjectsZonesClustersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
@@ -377,6 +379,234 @@ class ProjectsZonesClustersResourceApi {
 }
 
 
+class ProjectsZonesClustersNodePoolsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsZonesClustersNodePoolsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a node pool for a cluster.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster resides.
+   *
+   * [clusterId] - The name of the cluster.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> create(CreateNodePoolRequest request, core.String projectId, core.String zone, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/nodePools';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Deletes a node pool from a cluster.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster resides.
+   *
+   * [clusterId] - The name of the cluster.
+   *
+   * [nodePoolId] - The name of the node pool to delete.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String projectId, core.String zone, core.String clusterId, core.String nodePoolId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if (nodePoolId == null) {
+      throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/nodePools/' + commons.Escaper.ecapeVariable('$nodePoolId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the node pool requested.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster resides.
+   *
+   * [clusterId] - The name of the cluster.
+   *
+   * [nodePoolId] - The name of the node pool.
+   *
+   * Completes with a [NodePool].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<NodePool> get(core.String projectId, core.String zone, core.String clusterId, core.String nodePoolId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if (nodePoolId == null) {
+      throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/nodePools/' + commons.Escaper.ecapeVariable('$nodePoolId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new NodePool.fromJson(data));
+  }
+
+  /**
+   * Lists the node pools for a cluster.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster resides.
+   *
+   * [clusterId] - The name of the cluster.
+   *
+   * Completes with a [ListNodePoolsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListNodePoolsResponse> list(core.String projectId, core.String zone, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/nodePools';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListNodePoolsResponse.fromJson(data));
+  }
+
+}
+
+
 class ProjectsZonesOperationsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -582,6 +812,12 @@ class Cluster {
    */
   core.List<core.String> instanceGroupUrls;
   /**
+   * The list of Google Compute Engine
+   * [locations](/compute/docs/zones#available) in which the cluster's nodes
+   * should be located.
+   */
+  core.List<core.String> locations;
+  /**
    * The logging service the cluster should use to write logs. Currently
    * available options: * `logging.googleapis.com` - the Google Cloud Logging
    * service. * `none` - no logs will be exported from the cluster. * if left as
@@ -628,6 +864,12 @@ class Cluster {
    * range.
    */
   core.int nodeIpv4CidrSize;
+  /**
+   * The node pools associated with this cluster. When creating a new cluster,
+   * only a single node pool should be specified. This field should not be set
+   * if "node_config" or "initial_node_count" are specified.
+   */
+  core.List<NodePool> nodePools;
   /** [Output only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
@@ -701,6 +943,9 @@ class Cluster {
     if (_json.containsKey("instanceGroupUrls")) {
       instanceGroupUrls = _json["instanceGroupUrls"];
     }
+    if (_json.containsKey("locations")) {
+      locations = _json["locations"];
+    }
     if (_json.containsKey("loggingService")) {
       loggingService = _json["loggingService"];
     }
@@ -721,6 +966,9 @@ class Cluster {
     }
     if (_json.containsKey("nodeIpv4CidrSize")) {
       nodeIpv4CidrSize = _json["nodeIpv4CidrSize"];
+    }
+    if (_json.containsKey("nodePools")) {
+      nodePools = _json["nodePools"].map((value) => new NodePool.fromJson(value)).toList();
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -777,6 +1025,9 @@ class Cluster {
     if (instanceGroupUrls != null) {
       _json["instanceGroupUrls"] = instanceGroupUrls;
     }
+    if (locations != null) {
+      _json["locations"] = locations;
+    }
     if (loggingService != null) {
       _json["loggingService"] = loggingService;
     }
@@ -797,6 +1048,9 @@ class Cluster {
     }
     if (nodeIpv4CidrSize != null) {
       _json["nodeIpv4CidrSize"] = nodeIpv4CidrSize;
+    }
+    if (nodePools != null) {
+      _json["nodePools"] = nodePools.map((value) => (value).toJson()).toList();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -840,6 +1094,12 @@ class ClusterUpdate {
    */
   core.String desiredMonitoringService;
   /**
+   * The node pool to be upgraded. This field is mandatory if the
+   * "desired_node_version" or "desired_image_family" is specified and there is
+   * more than one node pool on the cluster.
+   */
+  core.String desiredNodePoolId;
+  /**
    * The Kubernetes version to change the nodes to (typically an upgrade). Use
    * `-` to upgrade to the latest version supported by the server.
    */
@@ -857,6 +1117,9 @@ class ClusterUpdate {
     if (_json.containsKey("desiredMonitoringService")) {
       desiredMonitoringService = _json["desiredMonitoringService"];
     }
+    if (_json.containsKey("desiredNodePoolId")) {
+      desiredNodePoolId = _json["desiredNodePoolId"];
+    }
     if (_json.containsKey("desiredNodeVersion")) {
       desiredNodeVersion = _json["desiredNodeVersion"];
     }
@@ -872,6 +1135,9 @@ class ClusterUpdate {
     }
     if (desiredMonitoringService != null) {
       _json["desiredMonitoringService"] = desiredMonitoringService;
+    }
+    if (desiredNodePoolId != null) {
+      _json["desiredNodePoolId"] = desiredNodePoolId;
     }
     if (desiredNodeVersion != null) {
       _json["desiredNodeVersion"] = desiredNodeVersion;
@@ -900,6 +1166,28 @@ class CreateClusterRequest {
     var _json = new core.Map();
     if (cluster != null) {
       _json["cluster"] = (cluster).toJson();
+    }
+    return _json;
+  }
+}
+
+/** CreateNodePoolRequest creates a node pool for a cluster. */
+class CreateNodePoolRequest {
+  /** The node pool to create. */
+  NodePool nodePool;
+
+  CreateNodePoolRequest();
+
+  CreateNodePoolRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("nodePool")) {
+      nodePool = new NodePool.fromJson(_json["nodePool"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nodePool != null) {
+      _json["nodePool"] = (nodePool).toJson();
     }
     return _json;
   }
@@ -995,6 +1283,28 @@ class ListClustersResponse {
     }
     if (missingZones != null) {
       _json["missingZones"] = missingZones;
+    }
+    return _json;
+  }
+}
+
+/** ListNodePoolsResponse is the result of ListNodePoolsRequest. */
+class ListNodePoolsResponse {
+  /** A list of node pools for a cluster. */
+  core.List<NodePool> nodePools;
+
+  ListNodePoolsResponse();
+
+  ListNodePoolsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nodePools")) {
+      nodePools = _json["nodePools"].map((value) => new NodePool.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nodePools != null) {
+      _json["nodePools"] = nodePools.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1182,6 +1492,111 @@ class NodeConfig {
 }
 
 /**
+ * NodePool contains the name and configuration for a cluster's node pool. Node
+ * pools are a set of nodes (i.e. VM's), with a common configuration and
+ * specification, under the control of the cluster master. They may have a set
+ * of Kubernetes labels applied to them, which may be used to reference them
+ * during pod scheduling. They may also be resized up or down, to accommodate
+ * the workload.
+ */
+class NodePool {
+  /** The node configuration of the pool. */
+  NodeConfig config;
+  /**
+   * The initial node count for the pool. You must ensure that your Compute
+   * Engine resource quota is sufficient for this number of instances. You must
+   * also have available firewall and routes quota.
+   */
+  core.int initialNodeCount;
+  /**
+   * [Output only] The resource URLs of [instance
+   * groups](/compute/docs/instance-groups/) associated with this node pool.
+   */
+  core.List<core.String> instanceGroupUrls;
+  /** The name of the node pool. */
+  core.String name;
+  /** Server-defined URL for the resource. */
+  core.String selfLink;
+  /**
+   * The status of the nodes in this pool instance.
+   * Possible string values are:
+   * - "STATUS_UNSPECIFIED" : A STATUS_UNSPECIFIED.
+   * - "PROVISIONING" : A PROVISIONING.
+   * - "RUNNING" : A RUNNING.
+   * - "RUNNING_WITH_ERROR" : A RUNNING_WITH_ERROR.
+   * - "RECONCILING" : A RECONCILING.
+   * - "STOPPING" : A STOPPING.
+   * - "ERROR" : A ERROR.
+   */
+  core.String status;
+  /**
+   * [Output only] Additional information about the current status of this node
+   * pool instance, if available.
+   */
+  core.String statusMessage;
+  /** The version of the Kubernetes of this node. */
+  core.String version;
+
+  NodePool();
+
+  NodePool.fromJson(core.Map _json) {
+    if (_json.containsKey("config")) {
+      config = new NodeConfig.fromJson(_json["config"]);
+    }
+    if (_json.containsKey("initialNodeCount")) {
+      initialNodeCount = _json["initialNodeCount"];
+    }
+    if (_json.containsKey("instanceGroupUrls")) {
+      instanceGroupUrls = _json["instanceGroupUrls"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("statusMessage")) {
+      statusMessage = _json["statusMessage"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (config != null) {
+      _json["config"] = (config).toJson();
+    }
+    if (initialNodeCount != null) {
+      _json["initialNodeCount"] = initialNodeCount;
+    }
+    if (instanceGroupUrls != null) {
+      _json["instanceGroupUrls"] = instanceGroupUrls;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (statusMessage != null) {
+      _json["statusMessage"] = statusMessage;
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/**
  * This operation resource represents operations that may have happened or are
  * happening on the cluster. All fields are output only.
  */
@@ -1288,6 +1703,10 @@ class Operation {
 class ServerConfig {
   /** Version of Kubernetes the service deploys by default. */
   core.String defaultClusterVersion;
+  /** Default image family. */
+  core.String defaultImageFamily;
+  /** List of valid image families. */
+  core.List<core.String> validImageFamilies;
   /** List of valid node upgrade target versions. */
   core.List<core.String> validNodeVersions;
 
@@ -1296,6 +1715,12 @@ class ServerConfig {
   ServerConfig.fromJson(core.Map _json) {
     if (_json.containsKey("defaultClusterVersion")) {
       defaultClusterVersion = _json["defaultClusterVersion"];
+    }
+    if (_json.containsKey("defaultImageFamily")) {
+      defaultImageFamily = _json["defaultImageFamily"];
+    }
+    if (_json.containsKey("validImageFamilies")) {
+      validImageFamilies = _json["validImageFamilies"];
     }
     if (_json.containsKey("validNodeVersions")) {
       validNodeVersions = _json["validNodeVersions"];
@@ -1306,6 +1731,12 @@ class ServerConfig {
     var _json = new core.Map();
     if (defaultClusterVersion != null) {
       _json["defaultClusterVersion"] = defaultClusterVersion;
+    }
+    if (defaultImageFamily != null) {
+      _json["defaultImageFamily"] = defaultImageFamily;
+    }
+    if (validImageFamilies != null) {
+      _json["validImageFamilies"] = validImageFamilies;
     }
     if (validNodeVersions != null) {
       _json["validNodeVersions"] = validNodeVersions;

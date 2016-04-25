@@ -2424,11 +2424,7 @@ class PerformanceReport {
   }
 }
 
-/**
- * The configuration data for an Ad Exchange performance report list.
- * https://sites.google.com/a/google.com/adx-integration/Home/engineering/binary-releases/rtb-api-release
- * https://cs.corp.google.com/#piper///depot/google3/contentads/adx/tools/rtb_api/adxrtb.py
- */
+/** The configuration data for an Ad Exchange performance report list. */
 class PerformanceReportList {
   /** Resource type. */
   core.String kind;

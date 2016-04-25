@@ -1,3 +1,9 @@
+## 0.26.0
+
+* [api] appengine:v1beta4: new resources
+* [api] appengine:v1beta5: new resources
+* [api-removal] deploymentmanager:v2beta2
+
 ## 0.25.0
 
 * [api-new] dfareporting:v2.5beta1

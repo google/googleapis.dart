@@ -16,8 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client deploymentmanager/v2';
 
 /**
- * The Deployment Manager API allows users to declaratively configure, deploy
- * and run complex solutions on the Google Cloud Platform.
+ * Declares, configures, and deploys complex solutions on Google Cloud Platform.
  */
 class DeploymentmanagerApi {
   /** View and manage your data across Google Cloud Platform services */
@@ -287,11 +286,11 @@ class DeploymentsResourceApi {
    * For example, to filter for instances that do not have a name of
    * example-instance, you would use filter=name ne example-instance.
    *
-   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
-   * also filter on nested fields. For example, you could filter on instances
-   * that have set the scheduling.automaticRestart field to true. In particular,
-   * use filtering on nested fields to take advantage of instance labels to
-   * organize and filter results based on label values.
+   * Compute Engine Beta API Only: When filtering in the Beta API, you can also
+   * filter on nested fields. For example, you could filter on instances that
+   * have set the scheduling.automaticRestart field to true. Use filtering on
+   * nested fields to take advantage of labels to organize and search for
+   * results based on label values.
    *
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
@@ -658,11 +657,11 @@ class ManifestsResourceApi {
    * For example, to filter for instances that do not have a name of
    * example-instance, you would use filter=name ne example-instance.
    *
-   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
-   * also filter on nested fields. For example, you could filter on instances
-   * that have set the scheduling.automaticRestart field to true. In particular,
-   * use filtering on nested fields to take advantage of instance labels to
-   * organize and filter results based on label values.
+   * Compute Engine Beta API Only: When filtering in the Beta API, you can also
+   * filter on nested fields. For example, you could filter on instances that
+   * have set the scheduling.automaticRestart field to true. Use filtering on
+   * nested fields to take advantage of labels to organize and search for
+   * results based on label values.
    *
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
@@ -803,11 +802,11 @@ class OperationsResourceApi {
    * For example, to filter for instances that do not have a name of
    * example-instance, you would use filter=name ne example-instance.
    *
-   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
-   * also filter on nested fields. For example, you could filter on instances
-   * that have set the scheduling.automaticRestart field to true. In particular,
-   * use filtering on nested fields to take advantage of instance labels to
-   * organize and filter results based on label values.
+   * Compute Engine Beta API Only: When filtering in the Beta API, you can also
+   * filter on nested fields. For example, you could filter on instances that
+   * have set the scheduling.automaticRestart field to true. Use filtering on
+   * nested fields to take advantage of labels to organize and search for
+   * results based on label values.
    *
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
@@ -954,11 +953,11 @@ class ResourcesResourceApi {
    * For example, to filter for instances that do not have a name of
    * example-instance, you would use filter=name ne example-instance.
    *
-   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
-   * also filter on nested fields. For example, you could filter on instances
-   * that have set the scheduling.automaticRestart field to true. In particular,
-   * use filtering on nested fields to take advantage of instance labels to
-   * organize and filter results based on label values.
+   * Compute Engine Beta API Only: When filtering in the Beta API, you can also
+   * filter on nested fields. For example, you could filter on instances that
+   * have set the scheduling.automaticRestart field to true. Use filtering on
+   * nested fields to take advantage of labels to organize and search for
+   * results based on label values.
    *
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
@@ -1053,11 +1052,11 @@ class TypesResourceApi {
    * For example, to filter for instances that do not have a name of
    * example-instance, you would use filter=name ne example-instance.
    *
-   * Compute Engine Beta API Only: If you use filtering in the Beta API, you can
-   * also filter on nested fields. For example, you could filter on instances
-   * that have set the scheduling.automaticRestart field to true. In particular,
-   * use filtering on nested fields to take advantage of instance labels to
-   * organize and filter results based on label values.
+   * Compute Engine Beta API Only: When filtering in the Beta API, you can also
+   * filter on nested fields. For example, you could filter on instances that
+   * have set the scheduling.automaticRestart field to true. Use filtering on
+   * nested fields to take advantage of labels to organize and search for
+   * results based on label values.
    *
    * The Beta API also supports filtering on multiple expressions by providing
    * each separate expression within parentheses. For example,
@@ -1201,6 +1200,8 @@ class Deployment {
    * running, on this deployment.
    */
   Operation operation;
+  /** [Output Only] Self link for the deployment. */
+  core.String selfLink;
   /**
    * [Input Only] The parameters that define your deployment, including the
    * deployment configuration and relevant templates.
@@ -1239,6 +1240,9 @@ class Deployment {
     if (_json.containsKey("operation")) {
       operation = new Operation.fromJson(_json["operation"]);
     }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
     if (_json.containsKey("target")) {
       target = new TargetConfiguration.fromJson(_json["target"]);
     }
@@ -1272,6 +1276,9 @@ class Deployment {
     }
     if (operation != null) {
       _json["operation"] = (operation).toJson();
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
     }
     if (target != null) {
       _json["target"] = (target).toJson();
@@ -1826,7 +1833,7 @@ class Operation {
    */
   core.String insertTime;
   /**
-   * [Output Only] Type of the resource. Always compute#operation for operation
+   * [Output Only] Type of the resource. Always compute#operation for Operation
    * resources.
    */
   core.String kind;

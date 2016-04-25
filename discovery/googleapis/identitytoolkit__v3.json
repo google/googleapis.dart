@@ -6,7 +6,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Oi0KnpKPJva7LMe3W0nV9ypaEjo\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/1jTcUxjnrXHKHJeGnVacLku5ypc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -275,7 +275,7 @@
             }
         }
     },
-    "revision": "20160324",
+    "revision": "20160420",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -758,6 +758,13 @@
                     "description": "Browser API key, needed when making http request to Apiary.",
                     "type": "string"
                 },
+                "authorizedDomains": {
+                    "description": "Authorized domains for widget redirect.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "changeEmailTemplate": {
                     "$ref": "EmailTemplate",
                     "description": "Change email template."
@@ -865,10 +872,6 @@
                 "password": {
                     "description": "The new password of the user.",
                     "type": "string"
-                },
-                "returnSecureToken": {
-                    "description": "Whether return sts id token and refresh token instead of gitkit token.",
-                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -1133,8 +1136,17 @@
                     "description": "The fixed string \"identitytoolkit#SetAccountInfoResponse\".",
                     "type": "string"
                 },
+                "localId": {
+                    "description": "The local ID of the user.",
+                    "type": "string"
+                },
                 "newEmail": {
                     "description": "The new email the user attempts to change to.",
+                    "type": "string"
+                },
+                "passwordHash": {
+                    "description": "The user's hashed password.",
+                    "format": "byte",
                     "type": "string"
                 },
                 "photoUrl": {
@@ -1147,6 +1159,10 @@
                         "properties": {
                             "displayName": {
                                 "description": "The user's display name at the IDP.",
+                                "type": "string"
+                            },
+                            "federatedId": {
+                                "description": "User's identifier at IDP.",
                                 "type": "string"
                             },
                             "photoUrl": {
@@ -1431,6 +1447,10 @@
                     "description": "The lifetime in seconds of the OAuth2 access token.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "oauthIdToken": {
+                    "description": "The OIDC id token.",
+                    "type": "string"
                 },
                 "oauthRequestToken": {
                     "description": "The user approved request token for the OpenID OAuth extension.",

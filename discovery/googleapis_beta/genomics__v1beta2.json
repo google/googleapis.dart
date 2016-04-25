@@ -26,7 +26,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/gx3VB88GA2SUp8vqJdEjYk7aw9o\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/jAz2-tZJMO4f0BRVUoQvpFSSuCY\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1303,7 +1303,7 @@
                     ],
                     "parameters": {
                         "variantSetId": {
-                            "description": "The ID of the variant set to be deleted.",
+                            "description": "The ID of the variant set to be deleted. Required.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1324,7 +1324,7 @@
                     ],
                     "parameters": {
                         "variantSetId": {
-                            "description": "Required. The ID of the variant set that contains variant data which should be exported. The caller must have READ access to this variant set.",
+                            "description": "The ID of the variant set that contains variant data which should be exported. Required. The caller must have READ access to this variant set.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1352,7 +1352,7 @@
                     ],
                     "parameters": {
                         "variantSetId": {
-                            "description": "Required. The ID of the variant set.",
+                            "description": "The ID of the variant set. Required.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1429,7 +1429,7 @@
                     ],
                     "parameters": {
                         "variantSetId": {
-                            "description": "The ID of the variant to be updated (must already exist).",
+                            "description": "The ID of the variant set to be updated (must already exist).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1473,7 +1473,7 @@
                     ],
                     "parameters": {
                         "variantSetId": {
-                            "description": "The ID of the variant to be updated (must already exist).",
+                            "description": "The ID of the variant set to be updated (must already exist).",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1494,7 +1494,7 @@
             }
         }
     },
-    "revision": "20160328",
+    "revision": "20160420",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -2309,7 +2309,6 @@
             "type": "object"
         },
         "MergeVariantsRequest": {
-            "description": "",
             "id": "MergeVariantsRequest",
             "properties": {
                 "variants": {
@@ -3153,7 +3152,6 @@
             "type": "object"
         },
         "SearchReferenceSetsRequest": {
-            "description": "",
             "id": "SearchReferenceSetsRequest",
             "properties": {
                 "accessions": {
@@ -3204,7 +3202,6 @@
             "type": "object"
         },
         "SearchReferencesRequest": {
-            "description": "",
             "id": "SearchReferencesRequest",
             "properties": {
                 "accessions": {
@@ -3339,7 +3336,7 @@
                     "type": "string"
                 },
                 "variantSetIds": {
-                    "description": "At most one variant set ID must be provided. Only variants from this variant set will be returned. If omitted, a call set id must be included in the request.",
+                    "description": "At most one variant set ID must be provided. Only variants from this variant set will be returned. If omitted, a call set id must be included in the request. Both this and call_set_ids may be set.",
                     "items": {
                         "type": "string"
                     },

@@ -14,7 +14,7 @@
     "description": "Provisions and manages App Engine applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/appengine/docs/admin-api/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/IvXIG_T4MYH64EZNcYKT8TBXdac\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/uGRAIMczbUMx-blIXv0SXiGStRQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -564,6 +564,60 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
+                            },
+                            "resources": {
+                                "instances": {
+                                    "methods": {
+                                        "list": {
+                                            "description": "Lists the instances of a version.",
+                                            "httpMethod": "GET",
+                                            "id": "appengine.apps.services.versions.instances.list",
+                                            "parameterOrder": [
+                                                "appsId",
+                                                "servicesId",
+                                                "versionsId"
+                                            ],
+                                            "parameters": {
+                                                "appsId": {
+                                                    "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/services/default/versions/v1\".",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "servicesId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "versionsId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "pageSize": {
+                                                    "description": "Maximum results to return per page.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "description": "Continuation token for fetching the next page of results.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances",
+                                            "response": {
+                                                "$ref": "ListInstancesResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -571,7 +625,7 @@
             }
         }
     },
-    "revision": "20160314",
+    "revision": "20160407",
     "rootUrl": "https://appengine.googleapis.com/",
     "schemas": {
         "Operation": {
@@ -1492,6 +1546,101 @@
                 "nextPageToken": {
                     "description": "Continuation token for fetching the next page of results.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListInstancesResponse": {
+            "description": "Response message for `Instances.ListInstances`.",
+            "id": "ListInstancesResponse",
+            "properties": {
+                "instances": {
+                    "description": "The instances belonging to the requested version.",
+                    "items": {
+                        "$ref": "Instance"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "Continuation token for fetching the next page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Instance": {
+            "description": "Instances are the computing units that App Engine uses to automatically scale an application.",
+            "id": "Instance",
+            "properties": {
+                "name": {
+                    "description": "The full path to the Instance resource in the API. Example: \"apps/myapp/services/default/versions/v1/instances/instance-1\" @OutputOnly",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The relative name/path of the instance within the version. Example: \"instance-1\" @OutputOnly",
+                    "type": "string"
+                },
+                "appEngineRelease": {
+                    "description": "The App Engine release the instance is running on. @OutputOnly",
+                    "type": "string"
+                },
+                "availability": {
+                    "description": "Availability of instance. @OutputOnly",
+                    "enum": [
+                        "UNSPECIFIED",
+                        "RESIDENT",
+                        "DYNAMIC"
+                    ],
+                    "type": "string"
+                },
+                "vmName": {
+                    "description": "For VMEngines instances, the name of GCE VM where the instance lives. @OutputOnly",
+                    "type": "string"
+                },
+                "vmZoneName": {
+                    "description": "For VMEngines instances, the zone where the GCE VM is located. @OutputOnly",
+                    "type": "string"
+                },
+                "vmId": {
+                    "description": "For VMEngines instances, the GCE VM ID of the instance. @OutputOnly",
+                    "type": "string"
+                },
+                "startTimestamp": {
+                    "description": "Time when instance was started. @OutputOnly",
+                    "type": "string"
+                },
+                "requests": {
+                    "description": "Number of requests (since the clone was started). @OutputOnly",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errors": {
+                    "description": "Number of errors since the instance was started. @OutputOnly",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "qps": {
+                    "description": "QPS for this instance (averaged over the last minute). @OutputOnly",
+                    "format": "float",
+                    "type": "number"
+                },
+                "averageLatency": {
+                    "description": "Latency in milliseconds (averaged over the last minute). @OutputOnly",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "memoryUsage": {
+                    "description": "Memory usage (in bytes). @OutputOnly",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "vmStatus": {
+                    "description": "For VMEngines instances, the status of GCE VM where the instance lives. @OutputOnly",
+                    "type": "string"
+                },
+                "vmUnlocked": {
+                    "description": "For VMEngines instances, whether the instance has been unlocked. @OutputOnly",
+                    "type": "boolean"
                 }
             },
             "type": "object"

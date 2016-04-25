@@ -18,7 +18,7 @@
     "description": "Schedules reporting jobs and downloads the resulting bulk data reports about YouTube channels, videos, etc. in the form of CSV files.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/reporting/v1/reports/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/7J4iznCtmcD9toSKCYeTFY9hpTw\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/PjLZQF4Yt7k9ikkM9nXH9v8qskY\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -398,7 +398,7 @@
             }
         }
     },
-    "revision": "20160315",
+    "revision": "20160419",
     "rootUrl": "https://youtubereporting.googleapis.com/",
     "schemas": {
         "Media": {

@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.25.0
+    version: 0.26.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -38,6 +38,7 @@ packages:
     - content:v2sandbox
     - coordinate:v1  # https://google-developers.appspot.com/coordinate/
     - customsearch:v1  # https://developers.google.com/custom-search/
+    - consumersurveys:v2  # https://developers.google.com/consumer-surveys/
     - dataproc:v1 # https://cloud.google.com/dataproc/
     - deploymentmanager:v2
     - dfareporting:v1.3  # https://developers.google.com/doubleclick-advertisers/reporting/
@@ -97,7 +98,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.25.0
+    version: 0.26.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -113,7 +114,6 @@ packages:
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
     - datastore:v1beta2  # https://developers.google.com/datastore/
     - dataproc:v1beta1 # https://cloud.google.com/dataproc/
-    - deploymentmanager:v2beta2  # https://cloud.google.com/deployment-manager/
     - dfareporting:v2.5beta1  # https://developers.google.com/doubleclick-advertisers/reporting/
     - genomics:v1beta2  # https://developers.google.com/genomics/
     - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging

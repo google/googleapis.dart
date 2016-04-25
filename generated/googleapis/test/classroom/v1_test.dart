@@ -172,14 +172,14 @@ checkInvitation(api.Invitation o) {
   buildCounterInvitation--;
 }
 
-buildUnnamed566() {
+buildUnnamed1031() {
   var o = new core.List<api.CourseAlias>();
   o.add(buildCourseAlias());
   o.add(buildCourseAlias());
   return o;
 }
 
-checkUnnamed566(core.List<api.CourseAlias> o) {
+checkUnnamed1031(core.List<api.CourseAlias> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseAlias(o[0]);
   checkCourseAlias(o[1]);
@@ -190,7 +190,7 @@ buildListCourseAliasesResponse() {
   var o = new api.ListCourseAliasesResponse();
   buildCounterListCourseAliasesResponse++;
   if (buildCounterListCourseAliasesResponse < 3) {
-    o.aliases = buildUnnamed566();
+    o.aliases = buildUnnamed1031();
     o.nextPageToken = "foo";
   }
   buildCounterListCourseAliasesResponse--;
@@ -200,20 +200,20 @@ buildListCourseAliasesResponse() {
 checkListCourseAliasesResponse(api.ListCourseAliasesResponse o) {
   buildCounterListCourseAliasesResponse++;
   if (buildCounterListCourseAliasesResponse < 3) {
-    checkUnnamed566(o.aliases);
+    checkUnnamed1031(o.aliases);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCourseAliasesResponse--;
 }
 
-buildUnnamed567() {
+buildUnnamed1032() {
   var o = new core.List<api.Course>();
   o.add(buildCourse());
   o.add(buildCourse());
   return o;
 }
 
-checkUnnamed567(core.List<api.Course> o) {
+checkUnnamed1032(core.List<api.Course> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourse(o[0]);
   checkCourse(o[1]);
@@ -224,7 +224,7 @@ buildListCoursesResponse() {
   var o = new api.ListCoursesResponse();
   buildCounterListCoursesResponse++;
   if (buildCounterListCoursesResponse < 3) {
-    o.courses = buildUnnamed567();
+    o.courses = buildUnnamed1032();
     o.nextPageToken = "foo";
   }
   buildCounterListCoursesResponse--;
@@ -234,20 +234,20 @@ buildListCoursesResponse() {
 checkListCoursesResponse(api.ListCoursesResponse o) {
   buildCounterListCoursesResponse++;
   if (buildCounterListCoursesResponse < 3) {
-    checkUnnamed567(o.courses);
+    checkUnnamed1032(o.courses);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCoursesResponse--;
 }
 
-buildUnnamed568() {
+buildUnnamed1033() {
   var o = new core.List<api.Invitation>();
   o.add(buildInvitation());
   o.add(buildInvitation());
   return o;
 }
 
-checkUnnamed568(core.List<api.Invitation> o) {
+checkUnnamed1033(core.List<api.Invitation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInvitation(o[0]);
   checkInvitation(o[1]);
@@ -258,7 +258,7 @@ buildListInvitationsResponse() {
   var o = new api.ListInvitationsResponse();
   buildCounterListInvitationsResponse++;
   if (buildCounterListInvitationsResponse < 3) {
-    o.invitations = buildUnnamed568();
+    o.invitations = buildUnnamed1033();
     o.nextPageToken = "foo";
   }
   buildCounterListInvitationsResponse--;
@@ -268,20 +268,20 @@ buildListInvitationsResponse() {
 checkListInvitationsResponse(api.ListInvitationsResponse o) {
   buildCounterListInvitationsResponse++;
   if (buildCounterListInvitationsResponse < 3) {
-    checkUnnamed568(o.invitations);
+    checkUnnamed1033(o.invitations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListInvitationsResponse--;
 }
 
-buildUnnamed569() {
+buildUnnamed1034() {
   var o = new core.List<api.Student>();
   o.add(buildStudent());
   o.add(buildStudent());
   return o;
 }
 
-checkUnnamed569(core.List<api.Student> o) {
+checkUnnamed1034(core.List<api.Student> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStudent(o[0]);
   checkStudent(o[1]);
@@ -293,7 +293,7 @@ buildListStudentsResponse() {
   buildCounterListStudentsResponse++;
   if (buildCounterListStudentsResponse < 3) {
     o.nextPageToken = "foo";
-    o.students = buildUnnamed569();
+    o.students = buildUnnamed1034();
   }
   buildCounterListStudentsResponse--;
   return o;
@@ -303,19 +303,19 @@ checkListStudentsResponse(api.ListStudentsResponse o) {
   buildCounterListStudentsResponse++;
   if (buildCounterListStudentsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed569(o.students);
+    checkUnnamed1034(o.students);
   }
   buildCounterListStudentsResponse--;
 }
 
-buildUnnamed570() {
+buildUnnamed1035() {
   var o = new core.List<api.Teacher>();
   o.add(buildTeacher());
   o.add(buildTeacher());
   return o;
 }
 
-checkUnnamed570(core.List<api.Teacher> o) {
+checkUnnamed1035(core.List<api.Teacher> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeacher(o[0]);
   checkTeacher(o[1]);
@@ -327,7 +327,7 @@ buildListTeachersResponse() {
   buildCounterListTeachersResponse++;
   if (buildCounterListTeachersResponse < 3) {
     o.nextPageToken = "foo";
-    o.teachers = buildUnnamed570();
+    o.teachers = buildUnnamed1035();
   }
   buildCounterListTeachersResponse--;
   return o;
@@ -337,7 +337,7 @@ checkListTeachersResponse(api.ListTeachersResponse o) {
   buildCounterListTeachersResponse++;
   if (buildCounterListTeachersResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed570(o.teachers);
+    checkUnnamed1035(o.teachers);
   }
   buildCounterListTeachersResponse--;
 }
@@ -411,14 +411,14 @@ checkTeacher(api.Teacher o) {
   buildCounterTeacher--;
 }
 
-buildUnnamed571() {
+buildUnnamed1036() {
   var o = new core.List<api.GlobalPermission>();
   o.add(buildGlobalPermission());
   o.add(buildGlobalPermission());
   return o;
 }
 
-checkUnnamed571(core.List<api.GlobalPermission> o) {
+checkUnnamed1036(core.List<api.GlobalPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlobalPermission(o[0]);
   checkGlobalPermission(o[1]);
@@ -432,7 +432,7 @@ buildUserProfile() {
     o.emailAddress = "foo";
     o.id = "foo";
     o.name = buildName();
-    o.permissions = buildUnnamed571();
+    o.permissions = buildUnnamed1036();
     o.photoUrl = "foo";
   }
   buildCounterUserProfile--;
@@ -445,7 +445,7 @@ checkUserProfile(api.UserProfile o) {
     unittest.expect(o.emailAddress, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     checkName(o.name);
-    checkUnnamed571(o.permissions);
+    checkUnnamed1036(o.permissions);
     unittest.expect(o.photoUrl, unittest.equals('foo'));
   }
   buildCounterUserProfile--;

@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/8LJ6NH-SkmG6IW8fPAoQYMmK1DI\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/9WukAPmA5ytP1PY2pa6ISyUv5a0\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -1200,7 +1200,7 @@
             }
         }
     },
-    "revision": "20160318",
+    "revision": "20160405",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1936,6 +1936,10 @@
                 "nonGuaranteedFixedPriceTerms": {
                     "$ref": "DealTermsNonGuaranteedFixedPriceTerms",
                     "description": "The terms for non-guaranteed fixed price deals."
+                },
+                "sellerTimeZone": {
+                    "description": "For deals with Cost Per Day billing, defines the timezone used to mark the boundaries of a day (buyer-readonly)",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2062,6 +2066,38 @@
                     "type": "integer"
                 },
                 "timeUnitType": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Dimension": {
+            "description": "This message carries publisher provided breakdown. E.g. {dimension_type: 'COUNTRY', [{dimension_value: {id: 1, name: 'US'}}, {dimension_value: {id: 2, name: 'UK'}}]}",
+            "id": "Dimension",
+            "properties": {
+                "dimensionType": {
+                    "type": "string"
+                },
+                "dimensionValues": {
+                    "items": {
+                        "$ref": "DimensionDimensionValue"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "DimensionDimensionValue": {
+            "description": "Value of the dimension.",
+            "id": "DimensionDimensionValue",
+            "properties": {
+                "id": {
+                    "description": "Id of the dimension.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "Name of the dimension mainly for debugging purposes.",
                     "type": "string"
                 }
             },
@@ -2489,7 +2525,7 @@
             "type": "object"
         },
         "PerformanceReportList": {
-            "description": "The configuration data for an Ad Exchange performance report list. https://sites.google.com/a/google.com/adx-integration/Home/engineering/binary-releases/rtb-api-release https://cs.corp.google.com/#piper///depot/google3/contentads/adx/tools/rtb_api/adxrtb.py",
+            "description": "The configuration data for an Ad Exchange performance report list.",
             "id": "PerformanceReportList",
             "properties": {
                 "kind": {
@@ -3021,8 +3057,20 @@
                     "description": "The account id of the seller.",
                     "type": "string"
                 },
+                "audience": {
+                    "description": "Publisher provided info on its audience.",
+                    "type": "string"
+                },
                 "buyerPitchStatement": {
                     "description": "A pitch statement for the buyer",
+                    "type": "string"
+                },
+                "directContact": {
+                    "$ref": "ContactInformation",
+                    "description": "Direct contact for the publisher profile."
+                },
+                "exchange": {
+                    "description": "Exchange where this publisher profile is from. E.g. AdX, Rubicon etc...",
                     "type": "string"
                 },
                 "googlePlusLink": {
@@ -3031,6 +3079,10 @@
                 },
                 "isParent": {
                     "description": "True, if this is the parent profile, which represents all domains owned by the publisher.",
+                    "type": "boolean"
+                },
+                "isPublished": {
+                    "description": "True, if this profile is published. Deprecated for state.",
                     "type": "boolean"
                 },
                 "kind": {
@@ -3058,12 +3110,24 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "programmaticContact": {
+                    "$ref": "ContactInformation",
+                    "description": "Programmatic contact for the publisher profile."
+                },
                 "publisherDomains": {
                     "description": "The list of domains represented in this publisher profile. Empty if this is a parent profile.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "publisherProfileId": {
+                    "description": "Unique Id for publisher profile.",
+                    "type": "string"
+                },
+                "publisherProvidedForecast": {
+                    "$ref": "PublisherProvidedForecast",
+                    "description": "Publisher provided forecasting information."
                 },
                 "rateCardInfoLink": {
                     "description": "Link to publisher rate card",
@@ -3073,12 +3137,44 @@
                     "description": "Link for a sample content page.",
                     "type": "string"
                 },
+                "seller": {
+                    "$ref": "Seller",
+                    "description": "Seller of the publisher profile."
+                },
+                "state": {
+                    "description": "State of the publisher profile.",
+                    "type": "string"
+                },
                 "topHeadlines": {
                     "description": "Publisher provided key metrics and rankings.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PublisherProvidedForecast": {
+            "description": "This message carries publisher provided forecasting information.",
+            "id": "PublisherProvidedForecast",
+            "properties": {
+                "dimensions": {
+                    "description": "Publisher provided dimensions. E.g. geo, sizes etc...",
+                    "items": {
+                        "$ref": "Dimension"
+                    },
+                    "type": "array"
+                },
+                "weeklyImpressions": {
+                    "description": "Publisher provided weekly impressions.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "weeklyUniques": {
+                    "description": "Publisher provided weekly uniques.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"

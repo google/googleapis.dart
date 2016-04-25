@@ -20,10 +20,10 @@
     "basePath": "/dns/v1/projects/",
     "baseUrl": "https://www.googleapis.com/dns/v1/projects/",
     "batchPath": "batch",
-    "description": "The Google Cloud DNS API provides services for configuring and serving authoritative DNS records.",
+    "description": "Configures and serves authoritative DNS records.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-dns",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/HxGEJa_pLOiBZuN-UORZOmZuoc4\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/ctEt-71wWAltEdgLnIcGLfJZeFE\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -442,7 +442,7 @@
             }
         }
     },
-    "revision": "20160224",
+    "revision": "20160413",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Change": {

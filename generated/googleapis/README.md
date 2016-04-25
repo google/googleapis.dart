@@ -220,9 +220,13 @@ Official API documentation: https://cloud.google.com/tools/cloud-trace
 
 #### ![Logo](https://www.google.com/images/icons/product/compute_engine-16.png) Compute Engine API - compute v1
 
-API for the Google Compute Engine service.
+Creates and runs virtual machines on Google Cloud Platform.
 
 Official API documentation: https://developers.google.com/compute/docs/reference/latest/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Consumer Surveys API - consumersurveys v2
+
+API for Google Consumer Surveys.
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Container Engine API - container v1
 
@@ -262,7 +266,7 @@ Official API documentation: https://cloud.google.com/dataproc/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Deployment Manager API - deploymentmanager v2
 
-The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
+Declares, configures, and deploys complex solutions on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/deployment-manager/
 
@@ -310,7 +314,7 @@ Official API documentation: https://developers.google.com/discovery/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud DNS API - dns v1
 
-The Google Cloud DNS API provides services for configuring and serving authoritative DNS records.
+Configures and serves authoritative DNS records.
 
 Official API documentation: https://developers.google.com/cloud-dns
 
@@ -580,7 +584,7 @@ Official API documentation: https://developers.google.com/webmaster-tools/
 
 #### ![Logo](https://www.google.com/images/icons/product/youtube-16.png) YouTube Data API - youtube v3
 
-Programmatic access to YouTube features.
+Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.
 
 Official API documentation: https://developers.google.com/youtube/v3
 

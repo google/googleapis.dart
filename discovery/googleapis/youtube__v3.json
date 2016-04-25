@@ -27,10 +27,10 @@
     "baseUrl": "https://www.googleapis.com/youtube/v3/",
     "batchPath": "batch",
     "canonicalName": "YouTube",
-    "description": "Programmatic access to YouTube features.",
+    "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/emwdUwZj4z8Lfj39vjO3dsDdRpA\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/qO__5ak6IoBfWVxUlSi-O_hU9fE\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -3457,7 +3457,7 @@
             }
         }
     },
-    "revision": "20160222",
+    "revision": "20160418",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -4089,6 +4089,18 @@
                     "description": "The format of the video stream that you are sending to Youtube.",
                     "type": "string"
                 },
+                "frameRate": {
+                    "description": "The frame rate of the inbound video data.",
+                    "enum": [
+                        "30fps",
+                        "60fps"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
                 "ingestionInfo": {
                     "$ref": "IngestionInfo",
                     "description": "The ingestionInfo object contains information that YouTube provides that you need to transmit your RTMP or HTTP stream to YouTube."
@@ -4106,6 +4118,26 @@
                         "rtmp"
                     ],
                     "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "resolution": {
+                    "description": "The resolution of the inbound video data.",
+                    "enum": [
+                        "1080p",
+                        "1440p",
+                        "240p",
+                        "360p",
+                        "480p",
+                        "720p"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
                         "",
                         ""
                     ],
@@ -5331,6 +5363,7 @@
                     "description": "The video's rating from Portugal's Comissão de Classificação de Espect´culos.",
                     "enum": [
                         "cceM12",
+                        "cceM14",
                         "cceM16",
                         "cceM18",
                         "cceM4",
@@ -5338,6 +5371,7 @@
                         "cceUnrated"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -6129,9 +6163,13 @@
                         "moctwP",
                         "moctwPg",
                         "moctwR",
+                        "moctwR12",
+                        "moctwR15",
                         "moctwUnrated"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -7159,6 +7197,11 @@
                     "description": "This value uniquely identifies the live stream bound to the broadcast.",
                     "type": "string"
                 },
+                "boundStreamLastUpdateTimeMs": {
+                    "description": "The date and time that the live stream referenced by boundStreamId was last updated.",
+                    "format": "date-time",
+                    "type": "string"
+                },
                 "closedCaptionsType": {
                     "enum": [
                         "closedCaptionsDisabled",
@@ -7210,6 +7253,18 @@
                 "monitorStream": {
                     "$ref": "MonitorStreamInfo",
                     "description": "The monitorStream object contains information about the monitor stream, which the broadcaster can use to review the event content before the broadcast stream is shown publicly."
+                },
+                "projection": {
+                    "description": "The projection format of this broadcast. This defaults to rectangular.",
+                    "enum": [
+                        "360",
+                        "rectangular"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 },
                 "recordFromStart": {
                     "annotations": {
@@ -7642,6 +7697,15 @@
             },
             "type": "object"
         },
+        "LiveChatMessageDeletedDetails": {
+            "id": "LiveChatMessageDeletedDetails",
+            "properties": {
+                "deletedMessageId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "LiveChatMessageListResponse": {
             "id": "LiveChatMessageListResponse",
             "properties": {
@@ -7692,11 +7756,20 @@
             },
             "type": "object"
         },
+        "LiveChatMessageRetractedDetails": {
+            "id": "LiveChatMessageRetractedDetails",
+            "properties": {
+                "retractedMessageId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "LiveChatMessageSnippet": {
             "id": "LiveChatMessageSnippet",
             "properties": {
                 "authorChannelId": {
-                    "description": "The ID of the user that authored this message, this field is not always filled. textMessageEvent - the user that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the user that just became a sponsor",
+                    "description": "The ID of the user that authored this message, this field is not always filled. textMessageEvent - the user that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the user that just became a sponsor messageDeletedEvent - the moderator that took the action messageRetractedEvent - the author that retracted their message userBannedEvent - the moderator that took the action",
                     "type": "string"
                 },
                 "displayMessage": {
@@ -7714,6 +7787,12 @@
                 "liveChatId": {
                     "type": "string"
                 },
+                "messageDeletedDetails": {
+                    "$ref": "LiveChatMessageDeletedDetails"
+                },
+                "messageRetractedDetails": {
+                    "$ref": "LiveChatMessageRetractedDetails"
+                },
                 "publishedAt": {
                     "description": "The date and time when the message was orignally published. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",
                     "format": "date-time",
@@ -7728,13 +7807,19 @@
                     "enum": [
                         "chatEndedEvent",
                         "fanFundingEvent",
+                        "messageDeletedEvent",
+                        "messageRetractedEvent",
                         "newSponsorEvent",
                         "sponsorOnlyModeEndedEvent",
                         "sponsorOnlyModeStartedEvent",
                         "textMessageEvent",
-                        "tombstone"
+                        "tombstone",
+                        "userBannedEvent"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -7744,6 +7829,9 @@
                         ""
                     ],
                     "type": "string"
+                },
+                "userBannedDetails": {
+                    "$ref": "LiveChatUserBannedMessageDetails"
                 }
             },
             "type": "object"
@@ -7836,6 +7924,33 @@
                 "messageText": {
                     "description": "The user's message.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LiveChatUserBannedMessageDetails": {
+            "id": "LiveChatUserBannedMessageDetails",
+            "properties": {
+                "banDurationSeconds": {
+                    "description": "The duration of the ban. This property is only present if the banType is temporary.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "banType": {
+                    "description": "The type of ban.",
+                    "enum": [
+                        "permanent",
+                        "temporary"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "bannedUserDetails": {
+                    "$ref": "ChannelProfileDetails",
+                    "description": "The details of the user that was banned."
                 }
             },
             "type": "object"
@@ -10325,7 +10440,7 @@
             "type": "object"
         },
         "WatchSettings": {
-            "description": "Branding properties for the watch.",
+            "description": "Branding properties for the watch. All deprecated.",
             "id": "WatchSettings",
             "properties": {
                 "backgroundColor": {

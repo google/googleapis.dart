@@ -14,10 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client dns/v1';
 
-/**
- * The Google Cloud DNS API provides services for configuring and serving
- * authoritative DNS records.
- */
+/** Configures and serves authoritative DNS records. */
 class DnsApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";

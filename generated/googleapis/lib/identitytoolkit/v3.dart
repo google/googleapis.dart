@@ -1619,6 +1619,8 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
   core.bool allowPasswordUser;
   /** Browser API key, needed when making http request to Apiary. */
   core.String apiKey;
+  /** Authorized domains for widget redirect. */
+  core.List<core.String> authorizedDomains;
   /** Change email template. */
   EmailTemplate changeEmailTemplate;
   /**
@@ -1647,6 +1649,9 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
     }
     if (_json.containsKey("apiKey")) {
       apiKey = _json["apiKey"];
+    }
+    if (_json.containsKey("authorizedDomains")) {
+      authorizedDomains = _json["authorizedDomains"];
     }
     if (_json.containsKey("changeEmailTemplate")) {
       changeEmailTemplate = new EmailTemplate.fromJson(_json["changeEmailTemplate"]);
@@ -1681,6 +1686,9 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
     }
     if (apiKey != null) {
       _json["apiKey"] = apiKey;
+    }
+    if (authorizedDomains != null) {
+      _json["authorizedDomains"] = authorizedDomains;
     }
     if (changeEmailTemplate != null) {
       _json["changeEmailTemplate"] = (changeEmailTemplate).toJson();
@@ -1802,8 +1810,6 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
   core.String instanceId;
   /** The new password of the user. */
   core.String password;
-  /** Whether return sts id token and refresh token instead of gitkit token. */
-  core.bool returnSecureToken;
 
   IdentitytoolkitRelyingpartySignupNewUserRequest();
 
@@ -1829,9 +1835,6 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     if (_json.containsKey("password")) {
       password = _json["password"];
     }
-    if (_json.containsKey("returnSecureToken")) {
-      returnSecureToken = _json["returnSecureToken"];
-    }
   }
 
   core.Map toJson() {
@@ -1856,9 +1859,6 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     }
     if (password != null) {
       _json["password"] = password;
-    }
-    if (returnSecureToken != null) {
-      _json["returnSecureToken"] = returnSecureToken;
     }
     return _json;
   }
@@ -2349,6 +2349,8 @@ class ResetPasswordResponse {
 class SetAccountInfoResponseProviderUserInfo {
   /** The user's display name at the IDP. */
   core.String displayName;
+  /** User's identifier at IDP. */
+  core.String federatedId;
   /** The user's photo url at the IDP. */
   core.String photoUrl;
   /**
@@ -2364,6 +2366,9 @@ class SetAccountInfoResponseProviderUserInfo {
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
+    if (_json.containsKey("federatedId")) {
+      federatedId = _json["federatedId"];
+    }
     if (_json.containsKey("photoUrl")) {
       photoUrl = _json["photoUrl"];
     }
@@ -2376,6 +2381,9 @@ class SetAccountInfoResponseProviderUserInfo {
     var _json = new core.Map();
     if (displayName != null) {
       _json["displayName"] = displayName;
+    }
+    if (federatedId != null) {
+      _json["federatedId"] = federatedId;
     }
     if (photoUrl != null) {
       _json["photoUrl"] = photoUrl;
@@ -2402,8 +2410,19 @@ class SetAccountInfoResponse {
   core.String idToken;
   /** The fixed string "identitytoolkit#SetAccountInfoResponse". */
   core.String kind;
+  /** The local ID of the user. */
+  core.String localId;
   /** The new email the user attempts to change to. */
   core.String newEmail;
+  /** The user's hashed password. */
+  core.String passwordHash;
+  core.List<core.int> get passwordHashAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(passwordHash);
+  }
+
+  void set passwordHashAsBytes(core.List<core.int> _bytes) {
+    passwordHash = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
   /** The photo url of the user. */
   core.String photoUrl;
   /** The user's profiles at the associated IdPs. */
@@ -2429,8 +2448,14 @@ class SetAccountInfoResponse {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("localId")) {
+      localId = _json["localId"];
+    }
     if (_json.containsKey("newEmail")) {
       newEmail = _json["newEmail"];
+    }
+    if (_json.containsKey("passwordHash")) {
+      passwordHash = _json["passwordHash"];
     }
     if (_json.containsKey("photoUrl")) {
       photoUrl = _json["photoUrl"];
@@ -2460,8 +2485,14 @@ class SetAccountInfoResponse {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (localId != null) {
+      _json["localId"] = localId;
+    }
     if (newEmail != null) {
       _json["newEmail"] = newEmail;
+    }
+    if (passwordHash != null) {
+      _json["passwordHash"] = passwordHash;
     }
     if (photoUrl != null) {
       _json["photoUrl"] = photoUrl;
@@ -2876,6 +2907,8 @@ class VerifyAssertionResponse {
   core.String oauthAuthorizationCode;
   /** The lifetime in seconds of the OAuth2 access token. */
   core.int oauthExpireIn;
+  /** The OIDC id token. */
+  core.String oauthIdToken;
   /** The user approved request token for the OpenID OAuth extension. */
   core.String oauthRequestToken;
   /** The scope for the OpenID OAuth extension. */
@@ -2984,6 +3017,9 @@ class VerifyAssertionResponse {
     if (_json.containsKey("oauthExpireIn")) {
       oauthExpireIn = _json["oauthExpireIn"];
     }
+    if (_json.containsKey("oauthIdToken")) {
+      oauthIdToken = _json["oauthIdToken"];
+    }
     if (_json.containsKey("oauthRequestToken")) {
       oauthRequestToken = _json["oauthRequestToken"];
     }
@@ -3089,6 +3125,9 @@ class VerifyAssertionResponse {
     }
     if (oauthExpireIn != null) {
       _json["oauthExpireIn"] = oauthExpireIn;
+    }
+    if (oauthIdToken != null) {
+      _json["oauthIdToken"] = oauthIdToken;
     }
     if (oauthRequestToken != null) {
       _json["oauthRequestToken"] = oauthRequestToken;

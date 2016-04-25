@@ -16,8 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client replicapool/v1beta2';
 
 /**
- * The Google Compute Engine Instance Group Manager API provides groups of
- * homogenous Compute Engine Instances.
+ * [Deprecated. Please use Instance Group Manager in Compute API] Provides
+ * groups of homogenous Compute Engine instances.
  */
 class ReplicapoolApi {
   /** View and manage your data across Google Cloud Platform services */

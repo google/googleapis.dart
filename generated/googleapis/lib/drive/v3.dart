@@ -2993,6 +2993,8 @@ class File {
   core.String id;
   /** Additional metadata about image media, if available. */
   FileImageMediaMetadata imageMediaMetadata;
+  /** Whether the file was created or opened by the requesting app. */
+  core.bool isAppAuthorized;
   /** This is always drive#file. */
   core.String kind;
   /** The last user to modify the file. */
@@ -3166,6 +3168,9 @@ class File {
     if (_json.containsKey("imageMediaMetadata")) {
       imageMediaMetadata = new FileImageMediaMetadata.fromJson(_json["imageMediaMetadata"]);
     }
+    if (_json.containsKey("isAppAuthorized")) {
+      isAppAuthorized = _json["isAppAuthorized"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -3298,6 +3303,9 @@ class File {
     }
     if (imageMediaMetadata != null) {
       _json["imageMediaMetadata"] = (imageMediaMetadata).toJson();
+    }
+    if (isAppAuthorized != null) {
+      _json["isAppAuthorized"] = isAppAuthorized;
     }
     if (kind != null) {
       _json["kind"] = kind;

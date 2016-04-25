@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/km_C-4xbZqg5N-iJaE6sHcYcjpI\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Wi5axMdjgKCnqJxaxfzKML8o57Y\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -338,7 +338,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit acl and defaultObjectAcl properties."
+                                "Omit owner, acl and defaultObjectAcl properties."
                             ],
                             "location": "query",
                             "type": "string"
@@ -418,7 +418,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit acl and defaultObjectAcl properties."
+                                "Omit owner, acl and defaultObjectAcl properties."
                             ],
                             "location": "query",
                             "type": "string"
@@ -476,7 +476,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit acl and defaultObjectAcl properties."
+                                "Omit owner, acl and defaultObjectAcl properties."
                             ],
                             "location": "query",
                             "type": "string"
@@ -568,7 +568,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit acl and defaultObjectAcl properties."
+                                "Omit owner, acl and defaultObjectAcl properties."
                             ],
                             "location": "query",
                             "type": "string"
@@ -583,8 +583,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/devstorage.full_control",
-                        "https://www.googleapis.com/auth/devstorage.read_write"
+                        "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
                 "update": {
@@ -661,7 +660,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit acl and defaultObjectAcl properties."
+                                "Omit owner, acl and defaultObjectAcl properties."
                             ],
                             "location": "query",
                             "type": "string"
@@ -676,8 +675,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/devstorage.full_control",
-                        "https://www.googleapis.com/auth/devstorage.read_write"
+                        "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 }
             }
@@ -1328,7 +1326,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit the acl property."
+                                "Omit the owner, acl property."
                             ],
                             "location": "query",
                             "type": "string"
@@ -1484,7 +1482,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit the acl property."
+                                "Omit the owner, acl property."
                             ],
                             "location": "query",
                             "type": "string"
@@ -1595,7 +1593,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit the acl property."
+                                "Omit the owner, acl property."
                             ],
                             "location": "query",
                             "type": "string"
@@ -1660,7 +1658,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit the acl property."
+                                "Omit the owner, acl property."
                             ],
                             "location": "query",
                             "type": "string"
@@ -1764,7 +1762,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit the acl property."
+                                "Omit the owner, acl property."
                             ],
                             "location": "query",
                             "type": "string"
@@ -1779,8 +1777,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/devstorage.full_control",
-                        "https://www.googleapis.com/auth/devstorage.read_write"
+                        "https://www.googleapis.com/auth/devstorage.full_control"
                     ]
                 },
                 "rewrite": {
@@ -1889,7 +1886,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit the acl property."
+                                "Omit the owner, acl property."
                             ],
                             "location": "query",
                             "type": "string"
@@ -2011,7 +2008,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit the acl property."
+                                "Omit the owner, acl property."
                             ],
                             "location": "query",
                             "type": "string"
@@ -2026,8 +2023,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/devstorage.full_control",
-                        "https://www.googleapis.com/auth/devstorage.read_write"
+                        "https://www.googleapis.com/auth/devstorage.full_control"
                     ],
                     "supportsMediaDownload": true
                 },
@@ -2075,7 +2071,7 @@
                             ],
                             "enumDescriptions": [
                                 "Include all properties.",
-                                "Omit the acl property."
+                                "Omit the owner, acl property."
                             ],
                             "location": "query",
                             "type": "string"
@@ -2106,7 +2102,7 @@
             }
         }
     },
-    "revision": "20160324",
+    "revision": "20160414",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {

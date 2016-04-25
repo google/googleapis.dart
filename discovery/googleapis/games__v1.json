@@ -21,7 +21,7 @@
     "description": "The API for Google Play Game Services.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/XeQRhvhInBOm-2QM_kb18SHjvsI\"",
+    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/vsfrTgYK_Rhu3zRExvUpbu7e630\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1939,7 +1939,7 @@
             }
         }
     },
-    "revision": "20160328",
+    "revision": "20160419",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {
@@ -3257,6 +3257,10 @@
                     "description": "The ID of the player.",
                     "type": "string"
                 },
+                "profileSettings": {
+                    "$ref": "ProfileSettings",
+                    "description": "The player's profile settings. Controls whether or not the player's profile is visible to other players."
+                },
                 "title": {
                     "description": "The player's title rewarded for their game activities.",
                     "type": "string"
@@ -3632,6 +3636,22 @@
                         "$ref": "ScoreSubmission"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ProfileSettings": {
+            "description": "This is a JSON template for profile settings",
+            "id": "ProfileSettings",
+            "properties": {
+                "kind": {
+                    "default": "games#profileSettings",
+                    "description": "Uniquely identifies the type of this resource. Value is always the fixed string games#profileSettings.",
+                    "type": "string"
+                },
+                "profileVisible": {
+                    "description": "The player's current profile visibility. This field is visible to both 1P and 3P APIs.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

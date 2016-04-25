@@ -3206,6 +3206,11 @@ class DealTerms {
   DealTermsNonGuaranteedAuctionTerms nonGuaranteedAuctionTerms;
   /** The terms for non-guaranteed fixed price deals. */
   DealTermsNonGuaranteedFixedPriceTerms nonGuaranteedFixedPriceTerms;
+  /**
+   * For deals with Cost Per Day billing, defines the timezone used to mark the
+   * boundaries of a day (buyer-readonly)
+   */
+  core.String sellerTimeZone;
 
   DealTerms();
 
@@ -3231,6 +3236,9 @@ class DealTerms {
     if (_json.containsKey("nonGuaranteedFixedPriceTerms")) {
       nonGuaranteedFixedPriceTerms = new DealTermsNonGuaranteedFixedPriceTerms.fromJson(_json["nonGuaranteedFixedPriceTerms"]);
     }
+    if (_json.containsKey("sellerTimeZone")) {
+      sellerTimeZone = _json["sellerTimeZone"];
+    }
   }
 
   core.Map toJson() {
@@ -3255,6 +3263,9 @@ class DealTerms {
     }
     if (nonGuaranteedFixedPriceTerms != null) {
       _json["nonGuaranteedFixedPriceTerms"] = (nonGuaranteedFixedPriceTerms).toJson();
+    }
+    if (sellerTimeZone != null) {
+      _json["sellerTimeZone"] = sellerTimeZone;
     }
     return _json;
   }
@@ -3481,6 +3492,68 @@ class DeliveryControlFrequencyCap {
     }
     if (timeUnitType != null) {
       _json["timeUnitType"] = timeUnitType;
+    }
+    return _json;
+  }
+}
+
+/**
+ * This message carries publisher provided breakdown. E.g. {dimension_type:
+ * 'COUNTRY', [{dimension_value: {id: 1, name: 'US'}}, {dimension_value: {id: 2,
+ * name: 'UK'}}]}
+ */
+class Dimension {
+  core.String dimensionType;
+  core.List<DimensionDimensionValue> dimensionValues;
+
+  Dimension();
+
+  Dimension.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensionType")) {
+      dimensionType = _json["dimensionType"];
+    }
+    if (_json.containsKey("dimensionValues")) {
+      dimensionValues = _json["dimensionValues"].map((value) => new DimensionDimensionValue.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dimensionType != null) {
+      _json["dimensionType"] = dimensionType;
+    }
+    if (dimensionValues != null) {
+      _json["dimensionValues"] = dimensionValues.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Value of the dimension. */
+class DimensionDimensionValue {
+  /** Id of the dimension. */
+  core.int id;
+  /** Name of the dimension mainly for debugging purposes. */
+  core.String name;
+
+  DimensionDimensionValue();
+
+  DimensionDimensionValue.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }
@@ -4318,11 +4391,7 @@ class PerformanceReport {
   }
 }
 
-/**
- * The configuration data for an Ad Exchange performance report list.
- * https://sites.google.com/a/google.com/adx-integration/Home/engineering/binary-releases/rtb-api-release
- * https://cs.corp.google.com/#piper///depot/google3/contentads/adx/tools/rtb_api/adxrtb.py
- */
+/** The configuration data for an Ad Exchange performance report list. */
 class PerformanceReportList {
   /** Resource type. */
   core.String kind;
@@ -5353,8 +5422,16 @@ class Proposal {
 class PublisherProfileApiProto {
   /** The account id of the seller. */
   core.String accountId;
+  /** Publisher provided info on its audience. */
+  core.String audience;
   /** A pitch statement for the buyer */
   core.String buyerPitchStatement;
+  /** Direct contact for the publisher profile. */
+  ContactInformation directContact;
+  /**
+   * Exchange where this publisher profile is from. E.g. AdX, Rubicon etc...
+   */
+  core.String exchange;
   /** Link to publisher's Google+ page. */
   core.String googlePlusLink;
   /**
@@ -5362,6 +5439,8 @@ class PublisherProfileApiProto {
    * the publisher.
    */
   core.bool isParent;
+  /** True, if this profile is published. Deprecated for state. */
+  core.bool isPublished;
   /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "adexchangebuyer#publisherProfileApiProto".
@@ -5379,15 +5458,25 @@ class PublisherProfileApiProto {
    * profile for a given publisher.
    */
   core.int profileId;
+  /** Programmatic contact for the publisher profile. */
+  ContactInformation programmaticContact;
   /**
    * The list of domains represented in this publisher profile. Empty if this is
    * a parent profile.
    */
   core.List<core.String> publisherDomains;
+  /** Unique Id for publisher profile. */
+  core.String publisherProfileId;
+  /** Publisher provided forecasting information. */
+  PublisherProvidedForecast publisherProvidedForecast;
   /** Link to publisher rate card */
   core.String rateCardInfoLink;
   /** Link for a sample content page. */
   core.String samplePageLink;
+  /** Seller of the publisher profile. */
+  Seller seller;
+  /** State of the publisher profile. */
+  core.String state;
   /** Publisher provided key metrics and rankings. */
   core.List<core.String> topHeadlines;
 
@@ -5397,14 +5486,26 @@ class PublisherProfileApiProto {
     if (_json.containsKey("accountId")) {
       accountId = _json["accountId"];
     }
+    if (_json.containsKey("audience")) {
+      audience = _json["audience"];
+    }
     if (_json.containsKey("buyerPitchStatement")) {
       buyerPitchStatement = _json["buyerPitchStatement"];
+    }
+    if (_json.containsKey("directContact")) {
+      directContact = new ContactInformation.fromJson(_json["directContact"]);
+    }
+    if (_json.containsKey("exchange")) {
+      exchange = _json["exchange"];
     }
     if (_json.containsKey("googlePlusLink")) {
       googlePlusLink = _json["googlePlusLink"];
     }
     if (_json.containsKey("isParent")) {
       isParent = _json["isParent"];
+    }
+    if (_json.containsKey("isPublished")) {
+      isPublished = _json["isPublished"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5424,14 +5525,29 @@ class PublisherProfileApiProto {
     if (_json.containsKey("profileId")) {
       profileId = _json["profileId"];
     }
+    if (_json.containsKey("programmaticContact")) {
+      programmaticContact = new ContactInformation.fromJson(_json["programmaticContact"]);
+    }
     if (_json.containsKey("publisherDomains")) {
       publisherDomains = _json["publisherDomains"];
+    }
+    if (_json.containsKey("publisherProfileId")) {
+      publisherProfileId = _json["publisherProfileId"];
+    }
+    if (_json.containsKey("publisherProvidedForecast")) {
+      publisherProvidedForecast = new PublisherProvidedForecast.fromJson(_json["publisherProvidedForecast"]);
     }
     if (_json.containsKey("rateCardInfoLink")) {
       rateCardInfoLink = _json["rateCardInfoLink"];
     }
     if (_json.containsKey("samplePageLink")) {
       samplePageLink = _json["samplePageLink"];
+    }
+    if (_json.containsKey("seller")) {
+      seller = new Seller.fromJson(_json["seller"]);
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
     }
     if (_json.containsKey("topHeadlines")) {
       topHeadlines = _json["topHeadlines"];
@@ -5443,14 +5559,26 @@ class PublisherProfileApiProto {
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
+    if (audience != null) {
+      _json["audience"] = audience;
+    }
     if (buyerPitchStatement != null) {
       _json["buyerPitchStatement"] = buyerPitchStatement;
+    }
+    if (directContact != null) {
+      _json["directContact"] = (directContact).toJson();
+    }
+    if (exchange != null) {
+      _json["exchange"] = exchange;
     }
     if (googlePlusLink != null) {
       _json["googlePlusLink"] = googlePlusLink;
     }
     if (isParent != null) {
       _json["isParent"] = isParent;
+    }
+    if (isPublished != null) {
+      _json["isPublished"] = isPublished;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5470,8 +5598,17 @@ class PublisherProfileApiProto {
     if (profileId != null) {
       _json["profileId"] = profileId;
     }
+    if (programmaticContact != null) {
+      _json["programmaticContact"] = (programmaticContact).toJson();
+    }
     if (publisherDomains != null) {
       _json["publisherDomains"] = publisherDomains;
+    }
+    if (publisherProfileId != null) {
+      _json["publisherProfileId"] = publisherProfileId;
+    }
+    if (publisherProvidedForecast != null) {
+      _json["publisherProvidedForecast"] = (publisherProvidedForecast).toJson();
     }
     if (rateCardInfoLink != null) {
       _json["rateCardInfoLink"] = rateCardInfoLink;
@@ -5479,8 +5616,52 @@ class PublisherProfileApiProto {
     if (samplePageLink != null) {
       _json["samplePageLink"] = samplePageLink;
     }
+    if (seller != null) {
+      _json["seller"] = (seller).toJson();
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
     if (topHeadlines != null) {
       _json["topHeadlines"] = topHeadlines;
+    }
+    return _json;
+  }
+}
+
+/** This message carries publisher provided forecasting information. */
+class PublisherProvidedForecast {
+  /** Publisher provided dimensions. E.g. geo, sizes etc... */
+  core.List<Dimension> dimensions;
+  /** Publisher provided weekly impressions. */
+  core.String weeklyImpressions;
+  /** Publisher provided weekly uniques. */
+  core.String weeklyUniques;
+
+  PublisherProvidedForecast();
+
+  PublisherProvidedForecast.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensions")) {
+      dimensions = _json["dimensions"].map((value) => new Dimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("weeklyImpressions")) {
+      weeklyImpressions = _json["weeklyImpressions"];
+    }
+    if (_json.containsKey("weeklyUniques")) {
+      weeklyUniques = _json["weeklyUniques"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dimensions != null) {
+      _json["dimensions"] = dimensions.map((value) => (value).toJson()).toList();
+    }
+    if (weeklyImpressions != null) {
+      _json["weeklyImpressions"] = weeklyImpressions;
+    }
+    if (weeklyUniques != null) {
+      _json["weeklyUniques"] = weeklyUniques;
     }
     return _json;
   }

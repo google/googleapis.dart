@@ -39,6 +39,8 @@ class GenomicsApi {
 
   final commons.ApiRequester _requester;
 
+  AnnotationsResourceApi get annotations => new AnnotationsResourceApi(_requester);
+  AnnotationsetsResourceApi get annotationsets => new AnnotationsetsResourceApi(_requester);
   CallsetsResourceApi get callsets => new CallsetsResourceApi(_requester);
   DatasetsResourceApi get datasets => new DatasetsResourceApi(_requester);
   OperationsResourceApi get operations => new OperationsResourceApi(_requester);
@@ -51,6 +53,513 @@ class GenomicsApi {
 
   GenomicsApi(http.Client client, {core.String rootUrl: "https://genomics.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+
+class AnnotationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AnnotationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates one or more new annotations atomically. All annotations must belong
+   * to the same annotation set. Caller must have WRITE permission for this
+   * annotation set. For optimal performance, batch positionally adjacent
+   * annotations together. If the request has a systemic issue, such as an
+   * attempt to write to an inaccessible annotation set, the entire RPC will
+   * fail accordingly. For lesser data issues, when possible an error will be
+   * isolated to the corresponding batch entry in the response; the remaining
+   * well formed annotations will be created normally. For details on the
+   * requirements for each individual annotation resource, see CreateAnnotation.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [BatchCreateAnnotationsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BatchCreateAnnotationsResponse> batchCreate(BatchCreateAnnotationsRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/annotations:batchCreate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BatchCreateAnnotationsResponse.fromJson(data));
+  }
+
+  /**
+   * Creates a new annotation. Caller must have WRITE permission for the
+   * associated annotation set. The following fields are required: *
+   * annotationSetId * referenceName or referenceId ### Transcripts For
+   * annotations of type TRANSCRIPT, the following fields of transcript must be
+   * provided: * exons.start * exons.end All other fields may be optionally
+   * specified, unless documented as being server-generated (for example, the
+   * `id` field). The annotated range must be no longer than 100Mbp (mega base
+   * pairs). See the Annotation resource for additional restrictions on each
+   * field.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [Annotation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Annotation> create(Annotation request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/annotations';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Annotation.fromJson(data));
+  }
+
+  /**
+   * Deletes an annotation. Caller must have WRITE permission for the associated
+   * annotation set.
+   *
+   * Request parameters:
+   *
+   * [annotationId] - The ID of the annotation to be deleted.
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String annotationId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (annotationId == null) {
+      throw new core.ArgumentError("Parameter annotationId is required.");
+    }
+
+    _url = 'v1/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * Gets an annotation. Caller must have READ permission for the associated
+   * annotation set.
+   *
+   * Request parameters:
+   *
+   * [annotationId] - The ID of the annotation to be retrieved.
+   *
+   * Completes with a [Annotation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Annotation> get(core.String annotationId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (annotationId == null) {
+      throw new core.ArgumentError("Parameter annotationId is required.");
+    }
+
+    _url = 'v1/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Annotation.fromJson(data));
+  }
+
+  /**
+   * Searches for annotations that match the given criteria. Results are ordered
+   * by genomic coordinate (by reference sequence, then position). Annotations
+   * with equivalent genomic coordinates are returned in an unspecified order.
+   * This order is consistent, such that two queries for the same content
+   * (regardless of page size) yield annotations in the same order across their
+   * respective streams of paginated responses. Caller must have READ permission
+   * for the queried annotation sets.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [SearchAnnotationsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SearchAnnotationsResponse> search(SearchAnnotationsRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/annotations/search';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SearchAnnotationsResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an annotation. Caller must have WRITE permission for the associated
+   * dataset.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [annotationId] - The ID of the annotation to be updated.
+   *
+   * [updateMask] - An optional mask specifying which fields to update. Mutable
+   * fields are name, variant, transcript, and info. If unspecified, all mutable
+   * fields will be updated.
+   *
+   * Completes with a [Annotation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Annotation> update(Annotation request, core.String annotationId, {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (annotationId == null) {
+      throw new core.ArgumentError("Parameter annotationId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Annotation.fromJson(data));
+  }
+
+}
+
+
+class AnnotationsetsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AnnotationsetsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a new annotation set. Caller must have WRITE permission for the
+   * associated dataset. The following fields are required: * datasetId *
+   * referenceSetId All other fields may be optionally specified, unless
+   * documented as being server-generated (for example, the `id` field).
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [AnnotationSet].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AnnotationSet> create(AnnotationSet request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/annotationsets';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AnnotationSet.fromJson(data));
+  }
+
+  /**
+   * Deletes an annotation set. Caller must have WRITE permission for the
+   * associated annotation set.
+   *
+   * Request parameters:
+   *
+   * [annotationSetId] - The ID of the annotation set to be deleted.
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String annotationSetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (annotationSetId == null) {
+      throw new core.ArgumentError("Parameter annotationSetId is required.");
+    }
+
+    _url = 'v1/annotationsets/' + commons.Escaper.ecapeVariable('$annotationSetId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * Gets an annotation set. Caller must have READ permission for the associated
+   * dataset.
+   *
+   * Request parameters:
+   *
+   * [annotationSetId] - The ID of the annotation set to be retrieved.
+   *
+   * Completes with a [AnnotationSet].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AnnotationSet> get(core.String annotationSetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (annotationSetId == null) {
+      throw new core.ArgumentError("Parameter annotationSetId is required.");
+    }
+
+    _url = 'v1/annotationsets/' + commons.Escaper.ecapeVariable('$annotationSetId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AnnotationSet.fromJson(data));
+  }
+
+  /**
+   * Searches for annotation sets that match the given criteria. Annotation sets
+   * are returned in an unspecified order. This order is consistent, such that
+   * two queries for the same content (regardless of page size) yield annotation
+   * sets in the same order across their respective streams of paginated
+   * responses. Caller must have READ permission for the queried datasets.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [SearchAnnotationSetsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SearchAnnotationSetsResponse> search(SearchAnnotationSetsRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/annotationsets/search';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SearchAnnotationSetsResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an annotation set. The update must respect all mutability
+   * restrictions and other invariants described on the annotation set resource.
+   * Caller must have WRITE permission for the associated dataset.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [annotationSetId] - The ID of the annotation set to be updated.
+   *
+   * [updateMask] - An optional mask specifying which fields to update. Mutable
+   * fields are name, source_uri, and info. If unspecified, all mutable fields
+   * will be updated.
+   *
+   * Completes with a [AnnotationSet].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AnnotationSet> update(AnnotationSet request, core.String annotationSetId, {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (annotationSetId == null) {
+      throw new core.ArgumentError("Parameter annotationSetId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/annotationsets/' + commons.Escaper.ecapeVariable('$annotationSetId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AnnotationSet.fromJson(data));
+  }
+
 }
 
 
@@ -1854,17 +2363,17 @@ class VariantsResourceApi {
    * trimmed for clarity { "variantSetId": "10473108253681171589",
    * "referenceName": "1", "start": "10582", "referenceBases": "G",
    * "alternateBases": [ "A" ], "calls": [ { "callSetId":
-   * "10473108253681171589-0", "callSetName": "EXISTINGCALLSET", "genotype": [
-   * 0, 1 ], } ] } // New variant with conflicting call information {
-   * "variantSetId": "10473108253681171589", "referenceName": "1", "start":
-   * "10582", "referenceBases": "G", "alternateBases": [ "A" ], "calls": [ {
-   * "callSetId": "10473108253681171589-0", "callSetName": "NEWCALLSET",
-   * "genotype": [ 1, 1 ], } ] } The resulting merged variant would overwrite
-   * the existing calls with those from the new variant: { "variantSetId":
+   * "10473108253681171589-0", "callSetName": "CALLSET0", "genotype": [ 0, 1 ],
+   * } ] } // New variant with conflicting call information { "variantSetId":
    * "10473108253681171589", "referenceName": "1", "start": "10582",
    * "referenceBases": "G", "alternateBases": [ "A" ], "calls": [ { "callSetId":
-   * "10473108253681171589-0", "callSetName": "NEWCALLSET", "genotype": [ 1, 1
-   * ], } ] } This may be the desired outcome, but it is up to the user to
+   * "10473108253681171589-0", "callSetName": "CALLSET0", "genotype": [ 1, 1 ],
+   * } ] } The resulting merged variant would overwrite the existing calls with
+   * those from the new variant: { "variantSetId": "10473108253681171589",
+   * "referenceName": "1", "start": "10582", "referenceBases": "G",
+   * "alternateBases": [ "A" ], "calls": [ { "callSetId":
+   * "10473108253681171589-0", "callSetName": "CALLSET0", "genotype": [ 1, 1 ],
+   * } ] } This may be the desired outcome, but it is up to the user to
    * determine if if that is indeed the case.
    *
    * [request] - The metadata request object.
@@ -2326,6 +2835,298 @@ class VariantsetsResourceApi {
 
 
 
+/**
+ * An annotation describes a region of reference genome. The value of an
+ * annotation may be one of several canonical types, supplemented by arbitrary
+ * info tags. An annotation is not inherently associated with a specific sample
+ * or individual (though a client could choose to use annotations in this way).
+ * Example canonical annotation types are `GENE` and `VARIANT`.
+ */
+class Annotation {
+  /** The annotation set to which this annotation belongs. */
+  core.String annotationSetId;
+  /** The end position of the range on the reference, 0-based exclusive. */
+  core.String end;
+  /** The server-generated annotation ID, unique across all annotations. */
+  core.String id;
+  /**
+   * A map of additional read alignment information. This must be of the form
+   * map (string key mapping to a list of string values).
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.List<core.Object>> info;
+  /** The display name of this annotation. */
+  core.String name;
+  /** The ID of the Google Genomics reference associated with this range. */
+  core.String referenceId;
+  /**
+   * The display name corresponding to the reference specified by `referenceId`,
+   * for example `chr1`, `1`, or `chrX`.
+   */
+  core.String referenceName;
+  /**
+   * Whether this range refers to the reverse strand, as opposed to the forward
+   * strand. Note that regardless of this field, the start/end position of the
+   * range always refer to the forward strand.
+   */
+  core.bool reverseStrand;
+  /** The start position of the range on the reference, 0-based inclusive. */
+  core.String start;
+  /**
+   * A transcript value represents the assertion that a particular region of the
+   * reference genome may be transcribed as RNA. An alternative splicing pattern
+   * would be represented as a separate transcript object. This field is only
+   * set for annotations of type `TRANSCRIPT`.
+   */
+  Transcript transcript;
+  /**
+   * The data type for this annotation. Must match the containing annotation
+   * set's type.
+   * Possible string values are:
+   * - "ANNOTATION_TYPE_UNSPECIFIED" : A ANNOTATION_TYPE_UNSPECIFIED.
+   * - "GENERIC" : A GENERIC.
+   * - "VARIANT" : A VARIANT.
+   * - "GENE" : A GENE.
+   * - "TRANSCRIPT" : A TRANSCRIPT.
+   */
+  core.String type;
+  /**
+   * A variant annotation, which describes the effect of a variant on the
+   * genome, the coding sequence, and/or higher level consequences at the
+   * organism level e.g. pathogenicity. This field is only set for annotations
+   * of type `VARIANT`.
+   */
+  VariantAnnotation variant;
+
+  Annotation();
+
+  Annotation.fromJson(core.Map _json) {
+    if (_json.containsKey("annotationSetId")) {
+      annotationSetId = _json["annotationSetId"];
+    }
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("info")) {
+      info = _json["info"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("referenceId")) {
+      referenceId = _json["referenceId"];
+    }
+    if (_json.containsKey("referenceName")) {
+      referenceName = _json["referenceName"];
+    }
+    if (_json.containsKey("reverseStrand")) {
+      reverseStrand = _json["reverseStrand"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+    if (_json.containsKey("transcript")) {
+      transcript = new Transcript.fromJson(_json["transcript"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("variant")) {
+      variant = new VariantAnnotation.fromJson(_json["variant"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (annotationSetId != null) {
+      _json["annotationSetId"] = annotationSetId;
+    }
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (info != null) {
+      _json["info"] = info;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (referenceId != null) {
+      _json["referenceId"] = referenceId;
+    }
+    if (referenceName != null) {
+      _json["referenceName"] = referenceName;
+    }
+    if (reverseStrand != null) {
+      _json["reverseStrand"] = reverseStrand;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
+    if (transcript != null) {
+      _json["transcript"] = (transcript).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (variant != null) {
+      _json["variant"] = (variant).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * An annotation set is a logical grouping of annotations that share consistent
+ * type information and provenance. Examples of annotation sets include 'all
+ * genes from refseq', and 'all variant annotations from ClinVar'.
+ */
+class AnnotationSet {
+  /** The dataset to which this annotation set belongs. */
+  core.String datasetId;
+  /**
+   * The server-generated annotation set ID, unique across all annotation sets.
+   */
+  core.String id;
+  /**
+   * A map of additional read alignment information. This must be of the form
+   * map (string key mapping to a list of string values).
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.List<core.Object>> info;
+  /** The display name for this annotation set. */
+  core.String name;
+  /**
+   * The ID of the reference set that defines the coordinate space for this
+   * set's annotations.
+   */
+  core.String referenceSetId;
+  /**
+   * The source URI describing the file from which this annotation set was
+   * generated, if any.
+   */
+  core.String sourceUri;
+  /**
+   * The type of annotations contained within this set.
+   * Possible string values are:
+   * - "ANNOTATION_TYPE_UNSPECIFIED" : A ANNOTATION_TYPE_UNSPECIFIED.
+   * - "GENERIC" : A GENERIC.
+   * - "VARIANT" : A VARIANT.
+   * - "GENE" : A GENE.
+   * - "TRANSCRIPT" : A TRANSCRIPT.
+   */
+  core.String type;
+
+  AnnotationSet();
+
+  AnnotationSet.fromJson(core.Map _json) {
+    if (_json.containsKey("datasetId")) {
+      datasetId = _json["datasetId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("info")) {
+      info = _json["info"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("referenceSetId")) {
+      referenceSetId = _json["referenceSetId"];
+    }
+    if (_json.containsKey("sourceUri")) {
+      sourceUri = _json["sourceUri"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (datasetId != null) {
+      _json["datasetId"] = datasetId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (info != null) {
+      _json["info"] = info;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (referenceSetId != null) {
+      _json["referenceSetId"] = referenceSetId;
+    }
+    if (sourceUri != null) {
+      _json["sourceUri"] = sourceUri;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class BatchCreateAnnotationsRequest {
+  /**
+   * The annotations to be created. At most 4096 can be specified in a single
+   * request.
+   */
+  core.List<Annotation> annotations;
+
+  BatchCreateAnnotationsRequest();
+
+  BatchCreateAnnotationsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("annotations")) {
+      annotations = _json["annotations"].map((value) => new Annotation.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (annotations != null) {
+      _json["annotations"] = annotations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class BatchCreateAnnotationsResponse {
+  /**
+   * The resulting per-annotation entries, ordered consistently with the
+   * original request.
+   */
+  core.List<Entry> entries;
+
+  BatchCreateAnnotationsResponse();
+
+  BatchCreateAnnotationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("entries")) {
+      entries = _json["entries"].map((value) => new Entry.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (entries != null) {
+      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** Associates `members` with a `role`. */
 class Binding {
   /**
@@ -2520,6 +3321,93 @@ class CigarUnit {
   }
 }
 
+class ClinicalCondition {
+  /**
+   * The MedGen concept id associated with this gene. Search for these IDs at
+   * http://www.ncbi.nlm.nih.gov/medgen/
+   */
+  core.String conceptId;
+  /** The set of external IDs for this condition. */
+  core.List<ExternalId> externalIds;
+  /** A set of names for the condition. */
+  core.List<core.String> names;
+  /**
+   * The OMIM id for this condition. Search for these IDs at http://omim.org/
+   */
+  core.String omimId;
+
+  ClinicalCondition();
+
+  ClinicalCondition.fromJson(core.Map _json) {
+    if (_json.containsKey("conceptId")) {
+      conceptId = _json["conceptId"];
+    }
+    if (_json.containsKey("externalIds")) {
+      externalIds = _json["externalIds"].map((value) => new ExternalId.fromJson(value)).toList();
+    }
+    if (_json.containsKey("names")) {
+      names = _json["names"];
+    }
+    if (_json.containsKey("omimId")) {
+      omimId = _json["omimId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (conceptId != null) {
+      _json["conceptId"] = conceptId;
+    }
+    if (externalIds != null) {
+      _json["externalIds"] = externalIds.map((value) => (value).toJson()).toList();
+    }
+    if (names != null) {
+      _json["names"] = names;
+    }
+    if (omimId != null) {
+      _json["omimId"] = omimId;
+    }
+    return _json;
+  }
+}
+
+class CodingSequence {
+  /**
+   * The end of the coding sequence on this annotation's reference sequence,
+   * 0-based exclusive. Note that this position is relative to the reference
+   * start, and *not* the containing annotation start.
+   */
+  core.String end;
+  /**
+   * The start of the coding sequence on this annotation's reference sequence,
+   * 0-based inclusive. Note that this position is relative to the reference
+   * start, and *not* the containing annotation start.
+   */
+  core.String start;
+
+  CodingSequence();
+
+  CodingSequence.fromJson(core.Map _json) {
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
+    return _json;
+  }
+}
+
 /**
  * A bucket over which read coverage has been precomputed. A bucket corresponds
  * to a specific range of the reference sequence.
@@ -2622,6 +3510,89 @@ class Empty {
 
   core.Map toJson() {
     var _json = new core.Map();
+    return _json;
+  }
+}
+
+class Entry {
+  /** The created annotation, if creation was successful. */
+  Annotation annotation;
+  /** The creation status. */
+  Status status;
+
+  Entry();
+
+  Entry.fromJson(core.Map _json) {
+    if (_json.containsKey("annotation")) {
+      annotation = new Annotation.fromJson(_json["annotation"]);
+    }
+    if (_json.containsKey("status")) {
+      status = new Status.fromJson(_json["status"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (annotation != null) {
+      _json["annotation"] = (annotation).toJson();
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
+    }
+    return _json;
+  }
+}
+
+class Exon {
+  /**
+   * The end position of the exon on this annotation's reference sequence,
+   * 0-based exclusive. Note that this is relative to the reference start, and
+   * *not* the containing annotation start.
+   */
+  core.String end;
+  /**
+   * The frame of this exon. Contains a value of 0, 1, or 2, which indicates the
+   * offset of the first coding base of the exon within the reading frame of the
+   * coding DNA sequence, if any. This field is dependent on the strandedness of
+   * this annotation (see Annotation.reverse_strand). For forward stranded
+   * annotations, this offset is relative to the exon.start. For reverse strand
+   * annotations, this offset is relative to the exon.end `- 1`. Unset if this
+   * exon does not intersect the coding sequence. Upon creation of a transcript,
+   * the frame must be populated for all or none of the coding exons.
+   */
+  core.int frame;
+  /**
+   * The start position of the exon on this annotation's reference sequence,
+   * 0-based inclusive. Note that this is relative to the reference start, and
+   * **not** the containing annotation start.
+   */
+  core.String start;
+
+  Exon();
+
+  Exon.fromJson(core.Map _json) {
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("frame")) {
+      frame = _json["frame"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (frame != null) {
+      _json["frame"] = frame;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
     return _json;
   }
 }
@@ -2799,6 +3770,35 @@ class ExportVariantSetRequest {
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
+    }
+    return _json;
+  }
+}
+
+class ExternalId {
+  /** The id used by the source of this data. */
+  core.String id;
+  /** The name of the source of this data. */
+  core.String sourceName;
+
+  ExternalId();
+
+  ExternalId.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("sourceName")) {
+      sourceName = _json["sourceName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (sourceName != null) {
+      _json["sourceName"] = sourceName;
     }
     return _json;
   }
@@ -3357,6 +4357,8 @@ class OperationEvent {
 class OperationMetadata {
   /** The time at which the job was submitted to the Genomics service. */
   core.String createTime;
+  /** The time at which the job stopped running. */
+  core.String endTime;
   /**
    * Optional event messages that were generated during the job's execution.
    * This also contains any warnings that were generated during import or
@@ -3381,6 +4383,9 @@ class OperationMetadata {
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
     if (_json.containsKey("events")) {
       events = _json["events"].map((value) => new OperationEvent.fromJson(value)).toList();
     }
@@ -3396,6 +4401,9 @@ class OperationMetadata {
     var _json = new core.Map();
     if (createTime != null) {
       _json["createTime"] = createTime;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
     }
     if (events != null) {
       _json["events"] = events.map((value) => (value).toJson()).toList();
@@ -4315,6 +5323,242 @@ class ReferenceSet {
     }
     if (sourceUri != null) {
       _json["sourceUri"] = sourceUri;
+    }
+    return _json;
+  }
+}
+
+class SearchAnnotationSetsRequest {
+  /**
+   * Required. The dataset IDs to search within. Caller must have `READ` access
+   * to these datasets.
+   */
+  core.List<core.String> datasetIds;
+  /**
+   * Only return annotations sets for which a substring of the name matches this
+   * string (case insensitive).
+   */
+  core.String name;
+  /**
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 128. The maximum value is 1024.
+   */
+  core.int pageSize;
+  /**
+   * The continuation token, which is used to page through large result sets. To
+   * get the next page of results, set this parameter to the value of
+   * `nextPageToken` from the previous response.
+   */
+  core.String pageToken;
+  /**
+   * If specified, only annotation sets associated with the given reference set
+   * are returned.
+   */
+  core.String referenceSetId;
+  /**
+   * If specified, only annotation sets that have any of these types are
+   * returned.
+   */
+  core.List<core.String> types;
+
+  SearchAnnotationSetsRequest();
+
+  SearchAnnotationSetsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("datasetIds")) {
+      datasetIds = _json["datasetIds"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("pageSize")) {
+      pageSize = _json["pageSize"];
+    }
+    if (_json.containsKey("pageToken")) {
+      pageToken = _json["pageToken"];
+    }
+    if (_json.containsKey("referenceSetId")) {
+      referenceSetId = _json["referenceSetId"];
+    }
+    if (_json.containsKey("types")) {
+      types = _json["types"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (datasetIds != null) {
+      _json["datasetIds"] = datasetIds;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (pageSize != null) {
+      _json["pageSize"] = pageSize;
+    }
+    if (pageToken != null) {
+      _json["pageToken"] = pageToken;
+    }
+    if (referenceSetId != null) {
+      _json["referenceSetId"] = referenceSetId;
+    }
+    if (types != null) {
+      _json["types"] = types;
+    }
+    return _json;
+  }
+}
+
+class SearchAnnotationSetsResponse {
+  /** The matching annotation sets. */
+  core.List<AnnotationSet> annotationSets;
+  /**
+   * The continuation token, which is used to page through large result sets.
+   * Provide this value in a subsequent request to return the next page of
+   * results. This field will be empty if there aren't any additional results.
+   */
+  core.String nextPageToken;
+
+  SearchAnnotationSetsResponse();
+
+  SearchAnnotationSetsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("annotationSets")) {
+      annotationSets = _json["annotationSets"].map((value) => new AnnotationSet.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (annotationSets != null) {
+      _json["annotationSets"] = annotationSets.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+class SearchAnnotationsRequest {
+  /**
+   * Required. The annotation sets to search within. The caller must have `READ`
+   * access to these annotation sets. All queried annotation sets must have the
+   * same type.
+   */
+  core.List<core.String> annotationSetIds;
+  /**
+   * The end position of the range on the reference, 0-based exclusive. If
+   * referenceId or referenceName must be specified, Defaults to the length of
+   * the reference.
+   */
+  core.String end;
+  /**
+   * The maximum number of results to return in a single page. If unspecified,
+   * defaults to 256. The maximum value is 2048.
+   */
+  core.int pageSize;
+  /**
+   * The continuation token, which is used to page through large result sets. To
+   * get the next page of results, set this parameter to the value of
+   * `nextPageToken` from the previous response.
+   */
+  core.String pageToken;
+  /** The ID of the reference to query. */
+  core.String referenceId;
+  /**
+   * The name of the reference to query, within the reference set associated
+   * with this query.
+   */
+  core.String referenceName;
+  /**
+   * The start position of the range on the reference, 0-based inclusive. If
+   * specified, referenceId or referenceName must be specified. Defaults to 0.
+   */
+  core.String start;
+
+  SearchAnnotationsRequest();
+
+  SearchAnnotationsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("annotationSetIds")) {
+      annotationSetIds = _json["annotationSetIds"];
+    }
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("pageSize")) {
+      pageSize = _json["pageSize"];
+    }
+    if (_json.containsKey("pageToken")) {
+      pageToken = _json["pageToken"];
+    }
+    if (_json.containsKey("referenceId")) {
+      referenceId = _json["referenceId"];
+    }
+    if (_json.containsKey("referenceName")) {
+      referenceName = _json["referenceName"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (annotationSetIds != null) {
+      _json["annotationSetIds"] = annotationSetIds;
+    }
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (pageSize != null) {
+      _json["pageSize"] = pageSize;
+    }
+    if (pageToken != null) {
+      _json["pageToken"] = pageToken;
+    }
+    if (referenceId != null) {
+      _json["referenceId"] = referenceId;
+    }
+    if (referenceName != null) {
+      _json["referenceName"] = referenceName;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
+    return _json;
+  }
+}
+
+class SearchAnnotationsResponse {
+  /** The matching annotations. */
+  core.List<Annotation> annotations;
+  /**
+   * The continuation token, which is used to page through large result sets.
+   * Provide this value in a subsequent request to return the next page of
+   * results. This field will be empty if there aren't any additional results.
+   */
+  core.String nextPageToken;
+
+  SearchAnnotationsResponse();
+
+  SearchAnnotationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("annotations")) {
+      annotations = _json["annotations"].map((value) => new Annotation.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (annotations != null) {
+      _json["annotations"] = annotations.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }
@@ -5448,6 +6692,69 @@ class TestIamPermissionsResponse {
   }
 }
 
+/**
+ * A transcript represents the assertion that a particular region of the
+ * reference genome may be transcribed as RNA.
+ */
+class Transcript {
+  /**
+   * The range of the coding sequence for this transcript, if any. To determine
+   * the exact ranges of coding sequence, intersect this range with those of the
+   * exons, if any. If there are any exons, the codingSequence must start and
+   * end within them. Note that in some cases, the reference genome will not
+   * exactly match the observed mRNA transcript e.g. due to variance in the
+   * source genome from reference. In these cases, exon.frame will not
+   * necessarily match the expected reference reading frame and coding exon
+   * reference bases cannot necessarily be concatenated to produce the original
+   * transcript mRNA.
+   */
+  CodingSequence codingSequence;
+  /**
+   * The exons that compose this transcript. This field should be unset for
+   * genomes where transcript splicing does not occur, for example prokaryotes.
+   * Introns are regions of the transcript that are not included in the spliced
+   * RNA product. Though not explicitly modeled here, intron ranges can be
+   * deduced; all regions of this transcript that are not exons are introns.
+   * Exonic sequences do not necessarily code for a translational product (amino
+   * acids). Only the regions of exons bounded by the codingSequence correspond
+   * to coding DNA sequence. Exons are ordered by start position and may not
+   * overlap.
+   */
+  core.List<Exon> exons;
+  /**
+   * The annotation ID of the gene from which this transcript is transcribed.
+   */
+  core.String geneId;
+
+  Transcript();
+
+  Transcript.fromJson(core.Map _json) {
+    if (_json.containsKey("codingSequence")) {
+      codingSequence = new CodingSequence.fromJson(_json["codingSequence"]);
+    }
+    if (_json.containsKey("exons")) {
+      exons = _json["exons"].map((value) => new Exon.fromJson(value)).toList();
+    }
+    if (_json.containsKey("geneId")) {
+      geneId = _json["geneId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (codingSequence != null) {
+      _json["codingSequence"] = (codingSequence).toJson();
+    }
+    if (exons != null) {
+      _json["exons"] = exons.map((value) => (value).toJson()).toList();
+    }
+    if (geneId != null) {
+      _json["geneId"] = geneId;
+    }
+    return _json;
+  }
+}
+
 class UndeleteDatasetRequest {
 
   UndeleteDatasetRequest();
@@ -5610,6 +6917,131 @@ class Variant {
     }
     if (variantSetId != null) {
       _json["variantSetId"] = variantSetId;
+    }
+    return _json;
+  }
+}
+
+class VariantAnnotation {
+  /**
+   * The alternate allele for this variant. If multiple alternate alleles exist
+   * at this location, create a separate variant for each one, as they may
+   * represent distinct conditions.
+   */
+  core.String alternateBases;
+  /**
+   * Describes the clinical significance of a variant. It is adapted from the
+   * ClinVar controlled vocabulary for clinical significance described at:
+   * http://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/
+   * Possible string values are:
+   * - "CLINICAL_SIGNIFICANCE_UNSPECIFIED" : A
+   * CLINICAL_SIGNIFICANCE_UNSPECIFIED.
+   * - "CLINICAL_SIGNIFICANCE_OTHER" : A CLINICAL_SIGNIFICANCE_OTHER.
+   * - "UNCERTAIN" : A UNCERTAIN.
+   * - "BENIGN" : A BENIGN.
+   * - "LIKELY_BENIGN" : A LIKELY_BENIGN.
+   * - "LIKELY_PATHOGENIC" : A LIKELY_PATHOGENIC.
+   * - "PATHOGENIC" : A PATHOGENIC.
+   * - "DRUG_RESPONSE" : A DRUG_RESPONSE.
+   * - "HISTOCOMPATIBILITY" : A HISTOCOMPATIBILITY.
+   * - "CONFERS_SENSITIVITY" : A CONFERS_SENSITIVITY.
+   * - "RISK_FACTOR" : A RISK_FACTOR.
+   * - "ASSOCIATION" : A ASSOCIATION.
+   * - "PROTECTIVE" : A PROTECTIVE.
+   * - "MULTIPLE_REPORTED" : A MULTIPLE_REPORTED.
+   */
+  core.String clinicalSignificance;
+  /**
+   * The set of conditions associated with this variant. A condition describes
+   * the way a variant influences human health.
+   */
+  core.List<ClinicalCondition> conditions;
+  /**
+   * Effect of the variant on the coding sequence.
+   * Possible string values are:
+   * - "EFFECT_UNSPECIFIED" : A EFFECT_UNSPECIFIED.
+   * - "EFFECT_OTHER" : A EFFECT_OTHER.
+   * - "FRAMESHIFT" : A FRAMESHIFT.
+   * - "FRAME_PRESERVING_INDEL" : A FRAME_PRESERVING_INDEL.
+   * - "SYNONYMOUS_SNP" : A SYNONYMOUS_SNP.
+   * - "NONSYNONYMOUS_SNP" : A NONSYNONYMOUS_SNP.
+   * - "STOP_GAIN" : A STOP_GAIN.
+   * - "STOP_LOSS" : A STOP_LOSS.
+   * - "SPLICE_SITE_DISRUPTION" : A SPLICE_SITE_DISRUPTION.
+   */
+  core.String effect;
+  /**
+   * Google annotation ID of the gene affected by this variant. This should be
+   * provided when the variant is created.
+   */
+  core.String geneId;
+  /**
+   * Google annotation IDs of the transcripts affected by this variant. These
+   * should be provided when the variant is created.
+   */
+  core.List<core.String> transcriptIds;
+  /**
+   * Type has been adapted from ClinVar's list of variant types.
+   * Possible string values are:
+   * - "TYPE_UNSPECIFIED" : A TYPE_UNSPECIFIED.
+   * - "TYPE_OTHER" : A TYPE_OTHER.
+   * - "INSERTION" : A INSERTION.
+   * - "DELETION" : A DELETION.
+   * - "SUBSTITUTION" : A SUBSTITUTION.
+   * - "SNP" : A SNP.
+   * - "STRUCTURAL" : A STRUCTURAL.
+   * - "CNV" : A CNV.
+   */
+  core.String type;
+
+  VariantAnnotation();
+
+  VariantAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("alternateBases")) {
+      alternateBases = _json["alternateBases"];
+    }
+    if (_json.containsKey("clinicalSignificance")) {
+      clinicalSignificance = _json["clinicalSignificance"];
+    }
+    if (_json.containsKey("conditions")) {
+      conditions = _json["conditions"].map((value) => new ClinicalCondition.fromJson(value)).toList();
+    }
+    if (_json.containsKey("effect")) {
+      effect = _json["effect"];
+    }
+    if (_json.containsKey("geneId")) {
+      geneId = _json["geneId"];
+    }
+    if (_json.containsKey("transcriptIds")) {
+      transcriptIds = _json["transcriptIds"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (alternateBases != null) {
+      _json["alternateBases"] = alternateBases;
+    }
+    if (clinicalSignificance != null) {
+      _json["clinicalSignificance"] = clinicalSignificance;
+    }
+    if (conditions != null) {
+      _json["conditions"] = conditions.map((value) => (value).toJson()).toList();
+    }
+    if (effect != null) {
+      _json["effect"] = effect;
+    }
+    if (geneId != null) {
+      _json["geneId"] = geneId;
+    }
+    if (transcriptIds != null) {
+      _json["transcriptIds"] = transcriptIds;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }

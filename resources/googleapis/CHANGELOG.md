@@ -1,3 +1,20 @@
+## 0.26.0
+
+* [api-new] consumersurveys:v2
+* [api] adexchangebuyer:v1_4: schema changes
+* [api] books:v2: schema/method changes
+* [api] compute:v1: schema/meethod changes
+* [api] container:v1: new resource, schema changes
+* [api] deploymentmanager:v2: schema changes
+* [api] drive:v2: schema changes
+* [api] drive:v3: schema changes
+* [api] gamesmanagement:v1management: schema changes
+* [api] games:v1: schema changes
+* [api] genomics:v1: new resources
+* [api] youtube:v3: schema changes
+* [api-breaking] idenditytoolkit:v3: schema changes
+* [api-breaking] bigquery:v2: schema changes
+
 ## 0.25.0
 
 * [api-new] monitoring:v3

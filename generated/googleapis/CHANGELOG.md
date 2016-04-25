@@ -1,7 +1,25 @@
+## 0.26.0
+
+* [api-new] consumersurveys:v2
+* [api] adexchangebuyer:v1_4: schema changes
+* [api] books:v2: schema/method changes
+* [api] compute:v1: schema/meethod changes
+* [api] container:v1: new resource, schema changes
+* [api] deploymentmanager:v2: schema changes
+* [api] drive:v2: schema changes
+* [api] drive:v3: schema changes
+* [api] gamesmanagement:v1management: schema changes
+* [api] games:v1: schema changes
+* [api] genomics:v1: new resources
+* [api] youtube:v3: schema changes
+* [api-breaking] idenditytoolkit:v3: schema changes
+* [api-breaking] bigquery:v2: schema changes
+
 ## 0.25.0
 
-* [api-new] monotoring:v3
-* [api] adexchangebuyer:v1_3: schema changes, new resources
+* [api-new] monitoring:v3
+* [api] adexchangebuyer:v1_3: schema changes
+* [api] adexchangebuyer:v1_4: schema changes, new resources
 * [api] androidenterprise:v1: schema changes
 * [api] androidpublisher:v2: schema changes
 * [api] bigquery:v2: schema changes
@@ -11,7 +29,7 @@
 * [api] idenditytoolkit:v3: schema changes
 * [api] reseller:v1: schema changes
 * [api] reseller:v1sandbox: schema changes
-* [apis] webmasters:v3: schema changes
+* [api] webmasters:v3: schema changes
 * [api] youtubereporting:v1: method changes, schema changes
 * [api-breaking] compute:v1: schema removal/changes, new resource
 * [api-removal] admin:email_migration_v2

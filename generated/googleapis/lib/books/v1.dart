@@ -5572,6 +5572,10 @@ class Metadata {
 
 class Notification {
   core.String body;
+  /** The list of crm experiment ids. */
+  core.List<core.String> crmExperimentIds;
+  core.String docId;
+  core.String docType;
   core.bool dontShowNotification;
   core.String iconUrl;
   /** Resource type. */
@@ -5588,6 +5592,15 @@ class Notification {
   Notification.fromJson(core.Map _json) {
     if (_json.containsKey("body")) {
       body = _json["body"];
+    }
+    if (_json.containsKey("crmExperimentIds")) {
+      crmExperimentIds = _json["crmExperimentIds"];
+    }
+    if (_json.containsKey("doc_id")) {
+      docId = _json["doc_id"];
+    }
+    if (_json.containsKey("doc_type")) {
+      docType = _json["doc_type"];
     }
     if (_json.containsKey("dont_show_notification")) {
       dontShowNotification = _json["dont_show_notification"];
@@ -5622,6 +5635,15 @@ class Notification {
     var _json = new core.Map();
     if (body != null) {
       _json["body"] = body;
+    }
+    if (crmExperimentIds != null) {
+      _json["crmExperimentIds"] = crmExperimentIds;
+    }
+    if (docId != null) {
+      _json["doc_id"] = docId;
+    }
+    if (docType != null) {
+      _json["doc_type"] = docType;
     }
     if (dontShowNotification != null) {
       _json["dont_show_notification"] = dontShowNotification;
@@ -6948,6 +6970,51 @@ class VolumeUserInfoCopy {
   }
 }
 
+/** Information on the ability to share with the family. */
+class VolumeUserInfoFamilySharing {
+  /** The role of the user in the family. */
+  core.String familyRole;
+  /**
+   * Whether or not this volume can be shared with the family by the user. This
+   * includes sharing eligibility of both the volume and the user. If the value
+   * is true, the user can initiate a family sharing action.
+   */
+  core.bool isSharingAllowed;
+  /**
+   * Whether or not sharing this volume is temporarily disabled due to issues
+   * with the Family Wallet.
+   */
+  core.bool isSharingDisabledByFop;
+
+  VolumeUserInfoFamilySharing();
+
+  VolumeUserInfoFamilySharing.fromJson(core.Map _json) {
+    if (_json.containsKey("familyRole")) {
+      familyRole = _json["familyRole"];
+    }
+    if (_json.containsKey("isSharingAllowed")) {
+      isSharingAllowed = _json["isSharingAllowed"];
+    }
+    if (_json.containsKey("isSharingDisabledByFop")) {
+      isSharingDisabledByFop = _json["isSharingDisabledByFop"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (familyRole != null) {
+      _json["familyRole"] = familyRole;
+    }
+    if (isSharingAllowed != null) {
+      _json["isSharingAllowed"] = isSharingAllowed;
+    }
+    if (isSharingDisabledByFop != null) {
+      _json["isSharingDisabledByFop"] = isSharingDisabledByFop;
+    }
+    return _json;
+  }
+}
+
 /** Period during this book is/was a valid rental. */
 class VolumeUserInfoRentalPeriod {
   core.String endUtcSec;
@@ -7013,16 +7080,16 @@ class VolumeUserInfo {
   VolumeUserInfoCopy copy;
   /** Whether this volume is purchased, sample, pd download etc. */
   core.int entitlementType;
+  /** Information on the ability to share with the family. */
+  VolumeUserInfoFamilySharing familySharing;
   /** Whether or not the user shared this volume with the family. */
   core.bool isFamilySharedFromUser;
   /** Whether or not the user received this volume through family sharing. */
   core.bool isFamilySharedToUser;
-  /**
-   * Whether or not this volume can be shared with the family by the user. This
-   * includes sharing eligibility of both the volume and the user. If the value
-   * is true, the user can initiate a family sharing action.
-   */
+  /** Deprecated: Replaced by familySharing. */
   core.bool isFamilySharingAllowed;
+  /** Deprecated: Replaced by familySharing. */
+  core.bool isFamilySharingDisabledByFop;
   /** Whether or not this volume is currently in "my books." */
   core.bool isInMyBooks;
   /**
@@ -7071,6 +7138,9 @@ class VolumeUserInfo {
     if (_json.containsKey("entitlementType")) {
       entitlementType = _json["entitlementType"];
     }
+    if (_json.containsKey("familySharing")) {
+      familySharing = new VolumeUserInfoFamilySharing.fromJson(_json["familySharing"]);
+    }
     if (_json.containsKey("isFamilySharedFromUser")) {
       isFamilySharedFromUser = _json["isFamilySharedFromUser"];
     }
@@ -7079,6 +7149,9 @@ class VolumeUserInfo {
     }
     if (_json.containsKey("isFamilySharingAllowed")) {
       isFamilySharingAllowed = _json["isFamilySharingAllowed"];
+    }
+    if (_json.containsKey("isFamilySharingDisabledByFop")) {
+      isFamilySharingDisabledByFop = _json["isFamilySharingDisabledByFop"];
     }
     if (_json.containsKey("isInMyBooks")) {
       isInMyBooks = _json["isInMyBooks"];
@@ -7126,6 +7199,9 @@ class VolumeUserInfo {
     if (entitlementType != null) {
       _json["entitlementType"] = entitlementType;
     }
+    if (familySharing != null) {
+      _json["familySharing"] = (familySharing).toJson();
+    }
     if (isFamilySharedFromUser != null) {
       _json["isFamilySharedFromUser"] = isFamilySharedFromUser;
     }
@@ -7134,6 +7210,9 @@ class VolumeUserInfo {
     }
     if (isFamilySharingAllowed != null) {
       _json["isFamilySharingAllowed"] = isFamilySharingAllowed;
+    }
+    if (isFamilySharingDisabledByFop != null) {
+      _json["isFamilySharingDisabledByFop"] = isFamilySharingDisabledByFop;
     }
     if (isInMyBooks != null) {
       _json["isInMyBooks"] = isInMyBooks;

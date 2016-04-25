@@ -2410,7 +2410,7 @@ class VariantsetsResourceApi {
    *
    * Request parameters:
    *
-   * [variantSetId] - The ID of the variant set to be deleted.
+   * [variantSetId] - The ID of the variant set to be deleted. Required.
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -2451,8 +2451,8 @@ class VariantsetsResourceApi {
    *
    * Request parameters:
    *
-   * [variantSetId] - Required. The ID of the variant set that contains variant
-   * data which should be exported. The caller must have READ access to this
+   * [variantSetId] - The ID of the variant set that contains variant data which
+   * should be exported. Required. The caller must have READ access to this
    * variant set.
    *
    * Completes with a [ExportVariantSetResponse].
@@ -2495,7 +2495,7 @@ class VariantsetsResourceApi {
    *
    * Request parameters:
    *
-   * [variantSetId] - Required. The ID of the variant set.
+   * [variantSetId] - The ID of the variant set. Required.
    *
    * Completes with a [VariantSet].
    *
@@ -2642,7 +2642,8 @@ class VariantsetsResourceApi {
    *
    * Request parameters:
    *
-   * [variantSetId] - The ID of the variant to be updated (must already exist).
+   * [variantSetId] - The ID of the variant set to be updated (must already
+   * exist).
    *
    * Completes with a [VariantSet].
    *
@@ -2728,7 +2729,8 @@ class VariantsetsResourceApi {
    *
    * Request parameters:
    *
-   * [variantSetId] - The ID of the variant to be updated (must already exist).
+   * [variantSetId] - The ID of the variant set to be updated (must already
+   * exist).
    *
    * Completes with a [VariantSet].
    *
@@ -6299,7 +6301,7 @@ class SearchVariantsRequest {
   /**
    * At most one variant set ID must be provided. Only variants from this
    * variant set will be returned. If omitted, a call set id must be included in
-   * the request.
+   * the request. Both this and call_set_ids may be set.
    */
   core.List<core.String> variantSetIds;
 
