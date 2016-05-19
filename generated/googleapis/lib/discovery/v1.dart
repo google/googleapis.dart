@@ -15,8 +15,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client discovery/v1';
 
 /**
- * Lets you discover information about other Google APIs, such as what APIs are
- * available, the resource and method details for each API.
+ * Provides information about other Google APIs, such as what APIs are
+ * available, the resource, and method details for each API.
  */
 class DiscoveryApi {
 

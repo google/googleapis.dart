@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/2jCRejD7TwMcZrBmt-AfB92UN1E\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/hqrMddPMFaU74nL8Pb566O2vUwc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1940,7 +1940,7 @@
             }
         }
     },
-    "revision": "20160331",
+    "revision": "20160419",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -3845,7 +3845,7 @@
                     "type": "integer"
                 },
                 "reason": {
-                    "description": "The reason for the cancellation.",
+                    "description": "The reason for the cancellation. Orders that are cancelled with a noIventory reason will lead to the removal of the product from POG until you make an update to that product. This will not affect your Shopping ads.",
                     "type": "string"
                 },
                 "reasonText": {
@@ -3863,7 +3863,7 @@
                     "type": "string"
                 },
                 "explicitMarketingPreference": {
-                    "description": "If set, this indicates the user had a choice to opt in or out of providing marketing rights to the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout flow.",
+                    "description": "If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout flow.",
                     "type": "boolean"
                 },
                 "fullName": {
@@ -5226,7 +5226,7 @@
                             "content.products.insert"
                         ]
                     },
-                    "description": "An identifier of the item.",
+                    "description": "An identifier of the item. Leading and trailing whitespaces are stripped and multiple whitespaces are replaced by a single whitespace upon submission. Only valid unicode characters are accepted. See the products feed specification for details.",
                     "type": "string"
                 },
                 "onlineOnly": {
@@ -5242,7 +5242,7 @@
                     "description": "Price of the item."
                 },
                 "productType": {
-                    "description": "Your category of the item (formatted as in product feeds specification).",
+                    "description": "Your category of the item (formatted as in products feed specification).",
                     "type": "string"
                 },
                 "promotionIds": {
@@ -5257,7 +5257,7 @@
                     "description": "Advertised sale price of the item."
                 },
                 "salePriceEffectiveDate": {
-                    "description": "Date range during which the item is on sale (see product feed specifications).",
+                    "description": "Date range during which the item is on sale (see products feed specification).",
                     "type": "string"
                 },
                 "sellOnGoogleQuantity": {
@@ -5954,7 +5954,7 @@
                     "type": "string"
                 },
                 "explicitMarketingPreference": {
-                    "description": "If set, this indicates the user had a choice to opt in or out of providing marketing rights to the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout flow. Optional.",
+                    "description": "If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout flow. Optional.",
                     "type": "boolean"
                 },
                 "fullName": {

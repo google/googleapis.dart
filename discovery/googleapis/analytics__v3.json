@@ -29,7 +29,7 @@
     "description": "Views and manages your Google Analytics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/analytics/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/y7JmUhB0GIMusVTZY-o1OGZ6DZQ\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/wgnqLrDHFTIXf02Do1_uLOloheU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/analytics-16.png",
         "x32": "https://www.google.com/images/icons/product/analytics-32.png"
@@ -3506,7 +3506,7 @@
             }
         }
     },
-    "revision": "20160308",
+    "revision": "20160401",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

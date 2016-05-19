@@ -17,7 +17,7 @@
     "description": "Provides reliable, many-to-many, asynchronous messaging between applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/pubsub/docs",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/liyzgLngirW3xU7Tt2Pd1AnSK1c\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/liyzgLngirW3xU7Tt2Pd1AnSK1c\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

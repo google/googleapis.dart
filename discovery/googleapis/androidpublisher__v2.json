@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/wwfdcfcbj_VTedNtsK-mpfGIz58\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/kcmli-0AhQgKCzcLiKZ8WixyuKk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2252,9 +2252,111 @@
                     }
                 }
             }
+        },
+        "reviews": {
+            "methods": {
+                "get": {
+                    "description": "Returns a single review.",
+                    "httpMethod": "GET",
+                    "id": "androidpublisher.reviews.get",
+                    "parameterOrder": [
+                        "packageName",
+                        "reviewId"
+                    ],
+                    "parameters": {
+                        "packageName": {
+                            "description": "Unique identifier for the Android app for which we want reviews; for example, \"com.spiffygame\".",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "reviewId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{packageName}/reviews/{reviewId}",
+                    "response": {
+                        "$ref": "Review"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/androidpublisher"
+                    ]
+                },
+                "list": {
+                    "description": "Returns a list of reviews.",
+                    "httpMethod": "GET",
+                    "id": "androidpublisher.reviews.list",
+                    "parameterOrder": [
+                        "packageName"
+                    ],
+                    "parameters": {
+                        "maxResults": {
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "packageName": {
+                            "description": "Unique identifier for the Android app for which we want reviews; for example, \"com.spiffygame\".",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "startIndex": {
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "token": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{packageName}/reviews",
+                    "response": {
+                        "$ref": "ReviewsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/androidpublisher"
+                    ]
+                },
+                "reply": {
+                    "description": "Reply to a single review, or update an existing reply.",
+                    "httpMethod": "POST",
+                    "id": "androidpublisher.reviews.reply",
+                    "parameterOrder": [
+                        "packageName",
+                        "reviewId"
+                    ],
+                    "parameters": {
+                        "packageName": {
+                            "description": "Unique identifier for the Android app for which we want reviews; for example, \"com.spiffygame\".",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "reviewId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{packageName}/reviews/{reviewId}:reply",
+                    "request": {
+                        "$ref": "ReviewsReplyRequest"
+                    },
+                    "response": {
+                        "$ref": "ReviewsReplyResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/androidpublisher"
+                    ]
+                }
+            }
         }
     },
-    "revision": "20160324",
+    "revision": "20160516",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -2383,6 +2485,34 @@
                 },
                 "id": {
                     "description": "The ID of the edit that can be used in subsequent API calls.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Comment": {
+            "id": "Comment",
+            "properties": {
+                "developerComment": {
+                    "$ref": "DeveloperComment",
+                    "description": "A comment from a developer."
+                },
+                "userComment": {
+                    "$ref": "UserComment",
+                    "description": "A comment from a user."
+                }
+            },
+            "type": "object"
+        },
+        "DeveloperComment": {
+            "id": "DeveloperComment",
+            "properties": {
+                "lastModified": {
+                    "$ref": "Timestamp",
+                    "description": "The last time at which this comment was updated."
+                },
+                "text": {
+                    "description": "The content of the comment, i.e. reply body.",
                     "type": "string"
                 }
             },
@@ -2933,6 +3063,78 @@
             },
             "type": "object"
         },
+        "Review": {
+            "id": "Review",
+            "properties": {
+                "authorName": {
+                    "description": "The name of the user who wrote the review.",
+                    "type": "string"
+                },
+                "comments": {
+                    "description": "A repeated field containing comments for the review.",
+                    "items": {
+                        "$ref": "Comment"
+                    },
+                    "type": "array"
+                },
+                "reviewId": {
+                    "description": "Unique identifier for this review.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReviewReplyResult": {
+            "id": "ReviewReplyResult",
+            "properties": {
+                "lastEdited": {
+                    "$ref": "Timestamp",
+                    "description": "The time at which the reply took effect."
+                },
+                "replyText": {
+                    "description": "The reply text that was applied.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReviewsListResponse": {
+            "id": "ReviewsListResponse",
+            "properties": {
+                "pageInfo": {
+                    "$ref": "PageInfo"
+                },
+                "reviews": {
+                    "items": {
+                        "$ref": "Review"
+                    },
+                    "type": "array"
+                },
+                "tokenPagination": {
+                    "$ref": "TokenPagination"
+                }
+            },
+            "type": "object"
+        },
+        "ReviewsReplyRequest": {
+            "id": "ReviewsReplyRequest",
+            "properties": {
+                "replyText": {
+                    "description": "The text to set as the reply. Replies of more than approximately 350 characters will be rejected. HTML tags will be stripped.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReviewsReplyResponse": {
+            "id": "ReviewsReplyResponse",
+            "properties": {
+                "result": {
+                    "$ref": "ReviewReplyResult"
+                }
+            },
+            "type": "object"
+        },
         "Season": {
             "id": "Season",
             "properties": {
@@ -3063,6 +3265,20 @@
             },
             "type": "object"
         },
+        "Timestamp": {
+            "id": "Timestamp",
+            "properties": {
+                "nanos": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "seconds": {
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "TokenPagination": {
             "id": "TokenPagination",
             "properties": {
@@ -3108,6 +3324,47 @@
                         "$ref": "Track"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "UserComment": {
+            "id": "UserComment",
+            "properties": {
+                "androidOsVersion": {
+                    "description": "Integer Android SDK version of the user's device at the time the review was written, e.g. 23 is Marshmallow. May be absent.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "appVersionCode": {
+                    "description": "Integer version code of the app as installed at the time the review was written. May be absent.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "appVersionName": {
+                    "description": "String version name of the app as installed at the time the review was written. May be absent.",
+                    "type": "string"
+                },
+                "device": {
+                    "description": "Codename for the reviewer's device, e.g. klte, flounder. May be absent.",
+                    "type": "string"
+                },
+                "lastModified": {
+                    "$ref": "Timestamp",
+                    "description": "The last time at which this comment was updated."
+                },
+                "reviewerLanguage": {
+                    "description": "Language code for the reviewer. This is taken from the device settings so is not guaranteed to match the language the review is written in. May be absent.",
+                    "type": "string"
+                },
+                "starRating": {
+                    "description": "The star rating associated with the review, from 1 to 5.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "text": {
+                    "description": "The content of the comment, i.e. review body. In some cases users have been able to write a review with separate title and body; in those cases the title and body are concatenated and separated by a tab character.",
+                    "type": "string"
                 }
             },
             "type": "object"

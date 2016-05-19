@@ -15,12 +15,20 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client cloudtrace/v1';
 
 /**
- * The Cloud Trace API allows you to send traces to and retrieve traces from
- * Google Cloud Trace.
+ * Send and retrieve trace data from Google Cloud Trace. Data is generated and
+ * available by default for all App Engine applications. Data from other
+ * applications can be written to Cloud Trace for display, reporting, and
+ * analysis.
  */
 class CloudtraceApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
+  /** Write Trace data for a project or application */
+  static const TraceAppendScope = "https://www.googleapis.com/auth/trace.append";
+
+  /** Read Trace data for a project or application */
+  static const TraceReadonlyScope = "https://www.googleapis.com/auth/trace.readonly";
 
 
   final commons.ApiRequester _requester;
@@ -41,11 +49,11 @@ class ProjectsResourceApi {
       _requester = client;
 
   /**
-   * Sends new traces to Cloud Trace or updates existing traces. If the ID of a
-   * trace that you send matches that of an existing trace, any fields in the
-   * existing trace and its spans are overwritten by the provided values, and
-   * any new fields provided are merged with the existing trace data. If the ID
-   * does not match, a new trace is created.
+   * Sends new traces to Stackdriver Trace or updates existing traces. If the ID
+   * of a trace that you send matches that of an existing trace, any fields in
+   * the existing trace and its spans are overwritten by the provided values,
+   * and any new fields provided are merged with the existing trace data. If the
+   * ID does not match, a new trace is created.
    *
    * [request] - The metadata request object.
    *
@@ -358,11 +366,11 @@ class TraceSpan {
   /** Collection of labels associated with the span. */
   core.Map<core.String, core.String> labels;
   /**
-   * Name of the trace. The trace name is sanitized and displayed in the Cloud
-   * Trace tool in the Google Developers Console. The name may be a method name
-   * or some other per-call site name. For the same executable and the same call
-   * point, a best practice is to use a consistent name, which makes it easier
-   * to correlate cross-trace spans.
+   * Name of the trace. The trace name is sanitized and displayed in the
+   * Stackdriver Trace tool in the {% dynamic print site_values.console_name %}.
+   * The name may be a method name or some other per-call site name. For the
+   * same executable and the same call point, a best practice is to use a
+   * consistent name, which makes it easier to correlate cross-trace spans.
    */
   core.String name;
   /** ID of the parent span, if any. Optional. */

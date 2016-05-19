@@ -51,12 +51,103 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
+core.int buildCounterAssignment = 0;
+buildAssignment() {
+  var o = new api.Assignment();
+  buildCounterAssignment++;
+  if (buildCounterAssignment < 3) {
+    o.studentWorkFolder = buildDriveFolder();
+  }
+  buildCounterAssignment--;
+  return o;
+}
+
+checkAssignment(api.Assignment o) {
+  buildCounterAssignment++;
+  if (buildCounterAssignment < 3) {
+    checkDriveFolder(o.studentWorkFolder);
+  }
+  buildCounterAssignment--;
+}
+
+buildUnnamed612() {
+  var o = new core.List<api.Attachment>();
+  o.add(buildAttachment());
+  o.add(buildAttachment());
+  return o;
+}
+
+checkUnnamed612(core.List<api.Attachment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAttachment(o[0]);
+  checkAttachment(o[1]);
+}
+
+core.int buildCounterAssignmentSubmission = 0;
+buildAssignmentSubmission() {
+  var o = new api.AssignmentSubmission();
+  buildCounterAssignmentSubmission++;
+  if (buildCounterAssignmentSubmission < 3) {
+    o.attachments = buildUnnamed612();
+  }
+  buildCounterAssignmentSubmission--;
+  return o;
+}
+
+checkAssignmentSubmission(api.AssignmentSubmission o) {
+  buildCounterAssignmentSubmission++;
+  if (buildCounterAssignmentSubmission < 3) {
+    checkUnnamed612(o.attachments);
+  }
+  buildCounterAssignmentSubmission--;
+}
+
+core.int buildCounterAttachment = 0;
+buildAttachment() {
+  var o = new api.Attachment();
+  buildCounterAttachment++;
+  if (buildCounterAttachment < 3) {
+    o.driveFile = buildDriveFile();
+    o.form = buildForm();
+    o.link = buildLink();
+    o.youTubeVideo = buildYouTubeVideo();
+  }
+  buildCounterAttachment--;
+  return o;
+}
+
+checkAttachment(api.Attachment o) {
+  buildCounterAttachment++;
+  if (buildCounterAttachment < 3) {
+    checkDriveFile(o.driveFile);
+    checkForm(o.form);
+    checkLink(o.link);
+    checkYouTubeVideo(o.youTubeVideo);
+  }
+  buildCounterAttachment--;
+}
+
+buildUnnamed613() {
+  var o = new core.List<api.CourseMaterialSet>();
+  o.add(buildCourseMaterialSet());
+  o.add(buildCourseMaterialSet());
+  return o;
+}
+
+checkUnnamed613(core.List<api.CourseMaterialSet> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCourseMaterialSet(o[0]);
+  checkCourseMaterialSet(o[1]);
+}
+
 core.int buildCounterCourse = 0;
 buildCourse() {
   var o = new api.Course();
   buildCounterCourse++;
   if (buildCounterCourse < 3) {
     o.alternateLink = "foo";
+    o.courseGroupEmail = "foo";
+    o.courseMaterialSets = buildUnnamed613();
     o.courseState = "foo";
     o.creationTime = "foo";
     o.description = "foo";
@@ -67,6 +158,8 @@ buildCourse() {
     o.ownerId = "foo";
     o.room = "foo";
     o.section = "foo";
+    o.teacherFolder = buildDriveFolder();
+    o.teacherGroupEmail = "foo";
     o.updateTime = "foo";
   }
   buildCounterCourse--;
@@ -77,6 +170,8 @@ checkCourse(api.Course o) {
   buildCounterCourse++;
   if (buildCounterCourse < 3) {
     unittest.expect(o.alternateLink, unittest.equals('foo'));
+    unittest.expect(o.courseGroupEmail, unittest.equals('foo'));
+    checkUnnamed613(o.courseMaterialSets);
     unittest.expect(o.courseState, unittest.equals('foo'));
     unittest.expect(o.creationTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
@@ -87,6 +182,8 @@ checkCourse(api.Course o) {
     unittest.expect(o.ownerId, unittest.equals('foo'));
     unittest.expect(o.room, unittest.equals('foo'));
     unittest.expect(o.section, unittest.equals('foo'));
+    checkDriveFolder(o.teacherFolder);
+    unittest.expect(o.teacherGroupEmail, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
   buildCounterCourse--;
@@ -111,6 +208,200 @@ checkCourseAlias(api.CourseAlias o) {
   buildCounterCourseAlias--;
 }
 
+core.int buildCounterCourseMaterial = 0;
+buildCourseMaterial() {
+  var o = new api.CourseMaterial();
+  buildCounterCourseMaterial++;
+  if (buildCounterCourseMaterial < 3) {
+    o.driveFile = buildDriveFile();
+    o.form = buildForm();
+    o.link = buildLink();
+    o.youTubeVideo = buildYouTubeVideo();
+  }
+  buildCounterCourseMaterial--;
+  return o;
+}
+
+checkCourseMaterial(api.CourseMaterial o) {
+  buildCounterCourseMaterial++;
+  if (buildCounterCourseMaterial < 3) {
+    checkDriveFile(o.driveFile);
+    checkForm(o.form);
+    checkLink(o.link);
+    checkYouTubeVideo(o.youTubeVideo);
+  }
+  buildCounterCourseMaterial--;
+}
+
+buildUnnamed614() {
+  var o = new core.List<api.CourseMaterial>();
+  o.add(buildCourseMaterial());
+  o.add(buildCourseMaterial());
+  return o;
+}
+
+checkUnnamed614(core.List<api.CourseMaterial> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCourseMaterial(o[0]);
+  checkCourseMaterial(o[1]);
+}
+
+core.int buildCounterCourseMaterialSet = 0;
+buildCourseMaterialSet() {
+  var o = new api.CourseMaterialSet();
+  buildCounterCourseMaterialSet++;
+  if (buildCounterCourseMaterialSet < 3) {
+    o.materials = buildUnnamed614();
+    o.title = "foo";
+  }
+  buildCounterCourseMaterialSet--;
+  return o;
+}
+
+checkCourseMaterialSet(api.CourseMaterialSet o) {
+  buildCounterCourseMaterialSet++;
+  if (buildCounterCourseMaterialSet < 3) {
+    checkUnnamed614(o.materials);
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterCourseMaterialSet--;
+}
+
+buildUnnamed615() {
+  var o = new core.List<api.Material>();
+  o.add(buildMaterial());
+  o.add(buildMaterial());
+  return o;
+}
+
+checkUnnamed615(core.List<api.Material> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMaterial(o[0]);
+  checkMaterial(o[1]);
+}
+
+core.int buildCounterCourseWork = 0;
+buildCourseWork() {
+  var o = new api.CourseWork();
+  buildCounterCourseWork++;
+  if (buildCounterCourseWork < 3) {
+    o.alternateLink = "foo";
+    o.assignment = buildAssignment();
+    o.associatedWithDeveloper = true;
+    o.courseId = "foo";
+    o.creationTime = "foo";
+    o.description = "foo";
+    o.dueDate = buildDate();
+    o.dueTime = buildTimeOfDay();
+    o.id = "foo";
+    o.materials = buildUnnamed615();
+    o.maxPoints = 42.0;
+    o.multipleChoiceQuestion = buildMultipleChoiceQuestion();
+    o.state = "foo";
+    o.submissionModificationMode = "foo";
+    o.title = "foo";
+    o.updateTime = "foo";
+    o.workType = "foo";
+  }
+  buildCounterCourseWork--;
+  return o;
+}
+
+checkCourseWork(api.CourseWork o) {
+  buildCounterCourseWork++;
+  if (buildCounterCourseWork < 3) {
+    unittest.expect(o.alternateLink, unittest.equals('foo'));
+    checkAssignment(o.assignment);
+    unittest.expect(o.associatedWithDeveloper, unittest.isTrue);
+    unittest.expect(o.courseId, unittest.equals('foo'));
+    unittest.expect(o.creationTime, unittest.equals('foo'));
+    unittest.expect(o.description, unittest.equals('foo'));
+    checkDate(o.dueDate);
+    checkTimeOfDay(o.dueTime);
+    unittest.expect(o.id, unittest.equals('foo'));
+    checkUnnamed615(o.materials);
+    unittest.expect(o.maxPoints, unittest.equals(42.0));
+    checkMultipleChoiceQuestion(o.multipleChoiceQuestion);
+    unittest.expect(o.state, unittest.equals('foo'));
+    unittest.expect(o.submissionModificationMode, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(o.workType, unittest.equals('foo'));
+  }
+  buildCounterCourseWork--;
+}
+
+core.int buildCounterDate = 0;
+buildDate() {
+  var o = new api.Date();
+  buildCounterDate++;
+  if (buildCounterDate < 3) {
+    o.day = 42;
+    o.month = 42;
+    o.year = 42;
+  }
+  buildCounterDate--;
+  return o;
+}
+
+checkDate(api.Date o) {
+  buildCounterDate++;
+  if (buildCounterDate < 3) {
+    unittest.expect(o.day, unittest.equals(42));
+    unittest.expect(o.month, unittest.equals(42));
+    unittest.expect(o.year, unittest.equals(42));
+  }
+  buildCounterDate--;
+}
+
+core.int buildCounterDriveFile = 0;
+buildDriveFile() {
+  var o = new api.DriveFile();
+  buildCounterDriveFile++;
+  if (buildCounterDriveFile < 3) {
+    o.alternateLink = "foo";
+    o.id = "foo";
+    o.thumbnailUrl = "foo";
+    o.title = "foo";
+  }
+  buildCounterDriveFile--;
+  return o;
+}
+
+checkDriveFile(api.DriveFile o) {
+  buildCounterDriveFile++;
+  if (buildCounterDriveFile < 3) {
+    unittest.expect(o.alternateLink, unittest.equals('foo'));
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.thumbnailUrl, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterDriveFile--;
+}
+
+core.int buildCounterDriveFolder = 0;
+buildDriveFolder() {
+  var o = new api.DriveFolder();
+  buildCounterDriveFolder++;
+  if (buildCounterDriveFolder < 3) {
+    o.alternateLink = "foo";
+    o.id = "foo";
+    o.title = "foo";
+  }
+  buildCounterDriveFolder--;
+  return o;
+}
+
+checkDriveFolder(api.DriveFolder o) {
+  buildCounterDriveFolder++;
+  if (buildCounterDriveFolder < 3) {
+    unittest.expect(o.alternateLink, unittest.equals('foo'));
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterDriveFolder--;
+}
+
 core.int buildCounterEmpty = 0;
 buildEmpty() {
   var o = new api.Empty();
@@ -126,6 +417,31 @@ checkEmpty(api.Empty o) {
   if (buildCounterEmpty < 3) {
   }
   buildCounterEmpty--;
+}
+
+core.int buildCounterForm = 0;
+buildForm() {
+  var o = new api.Form();
+  buildCounterForm++;
+  if (buildCounterForm < 3) {
+    o.formUrl = "foo";
+    o.responseUrl = "foo";
+    o.thumbnailUrl = "foo";
+    o.title = "foo";
+  }
+  buildCounterForm--;
+  return o;
+}
+
+checkForm(api.Form o) {
+  buildCounterForm++;
+  if (buildCounterForm < 3) {
+    unittest.expect(o.formUrl, unittest.equals('foo'));
+    unittest.expect(o.responseUrl, unittest.equals('foo'));
+    unittest.expect(o.thumbnailUrl, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterForm--;
 }
 
 core.int buildCounterGlobalPermission = 0;
@@ -172,14 +488,37 @@ checkInvitation(api.Invitation o) {
   buildCounterInvitation--;
 }
 
-buildUnnamed1031() {
+core.int buildCounterLink = 0;
+buildLink() {
+  var o = new api.Link();
+  buildCounterLink++;
+  if (buildCounterLink < 3) {
+    o.thumbnailUrl = "foo";
+    o.title = "foo";
+    o.url = "foo";
+  }
+  buildCounterLink--;
+  return o;
+}
+
+checkLink(api.Link o) {
+  buildCounterLink++;
+  if (buildCounterLink < 3) {
+    unittest.expect(o.thumbnailUrl, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(o.url, unittest.equals('foo'));
+  }
+  buildCounterLink--;
+}
+
+buildUnnamed616() {
   var o = new core.List<api.CourseAlias>();
   o.add(buildCourseAlias());
   o.add(buildCourseAlias());
   return o;
 }
 
-checkUnnamed1031(core.List<api.CourseAlias> o) {
+checkUnnamed616(core.List<api.CourseAlias> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseAlias(o[0]);
   checkCourseAlias(o[1]);
@@ -190,7 +529,7 @@ buildListCourseAliasesResponse() {
   var o = new api.ListCourseAliasesResponse();
   buildCounterListCourseAliasesResponse++;
   if (buildCounterListCourseAliasesResponse < 3) {
-    o.aliases = buildUnnamed1031();
+    o.aliases = buildUnnamed616();
     o.nextPageToken = "foo";
   }
   buildCounterListCourseAliasesResponse--;
@@ -200,20 +539,54 @@ buildListCourseAliasesResponse() {
 checkListCourseAliasesResponse(api.ListCourseAliasesResponse o) {
   buildCounterListCourseAliasesResponse++;
   if (buildCounterListCourseAliasesResponse < 3) {
-    checkUnnamed1031(o.aliases);
+    checkUnnamed616(o.aliases);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCourseAliasesResponse--;
 }
 
-buildUnnamed1032() {
+buildUnnamed617() {
+  var o = new core.List<api.CourseWork>();
+  o.add(buildCourseWork());
+  o.add(buildCourseWork());
+  return o;
+}
+
+checkUnnamed617(core.List<api.CourseWork> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCourseWork(o[0]);
+  checkCourseWork(o[1]);
+}
+
+core.int buildCounterListCourseWorkResponse = 0;
+buildListCourseWorkResponse() {
+  var o = new api.ListCourseWorkResponse();
+  buildCounterListCourseWorkResponse++;
+  if (buildCounterListCourseWorkResponse < 3) {
+    o.courseWork = buildUnnamed617();
+    o.nextPageToken = "foo";
+  }
+  buildCounterListCourseWorkResponse--;
+  return o;
+}
+
+checkListCourseWorkResponse(api.ListCourseWorkResponse o) {
+  buildCounterListCourseWorkResponse++;
+  if (buildCounterListCourseWorkResponse < 3) {
+    checkUnnamed617(o.courseWork);
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+  }
+  buildCounterListCourseWorkResponse--;
+}
+
+buildUnnamed618() {
   var o = new core.List<api.Course>();
   o.add(buildCourse());
   o.add(buildCourse());
   return o;
 }
 
-checkUnnamed1032(core.List<api.Course> o) {
+checkUnnamed618(core.List<api.Course> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourse(o[0]);
   checkCourse(o[1]);
@@ -224,7 +597,7 @@ buildListCoursesResponse() {
   var o = new api.ListCoursesResponse();
   buildCounterListCoursesResponse++;
   if (buildCounterListCoursesResponse < 3) {
-    o.courses = buildUnnamed1032();
+    o.courses = buildUnnamed618();
     o.nextPageToken = "foo";
   }
   buildCounterListCoursesResponse--;
@@ -234,20 +607,20 @@ buildListCoursesResponse() {
 checkListCoursesResponse(api.ListCoursesResponse o) {
   buildCounterListCoursesResponse++;
   if (buildCounterListCoursesResponse < 3) {
-    checkUnnamed1032(o.courses);
+    checkUnnamed618(o.courses);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCoursesResponse--;
 }
 
-buildUnnamed1033() {
+buildUnnamed619() {
   var o = new core.List<api.Invitation>();
   o.add(buildInvitation());
   o.add(buildInvitation());
   return o;
 }
 
-checkUnnamed1033(core.List<api.Invitation> o) {
+checkUnnamed619(core.List<api.Invitation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInvitation(o[0]);
   checkInvitation(o[1]);
@@ -258,7 +631,7 @@ buildListInvitationsResponse() {
   var o = new api.ListInvitationsResponse();
   buildCounterListInvitationsResponse++;
   if (buildCounterListInvitationsResponse < 3) {
-    o.invitations = buildUnnamed1033();
+    o.invitations = buildUnnamed619();
     o.nextPageToken = "foo";
   }
   buildCounterListInvitationsResponse--;
@@ -268,20 +641,54 @@ buildListInvitationsResponse() {
 checkListInvitationsResponse(api.ListInvitationsResponse o) {
   buildCounterListInvitationsResponse++;
   if (buildCounterListInvitationsResponse < 3) {
-    checkUnnamed1033(o.invitations);
+    checkUnnamed619(o.invitations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListInvitationsResponse--;
 }
 
-buildUnnamed1034() {
+buildUnnamed620() {
+  var o = new core.List<api.StudentSubmission>();
+  o.add(buildStudentSubmission());
+  o.add(buildStudentSubmission());
+  return o;
+}
+
+checkUnnamed620(core.List<api.StudentSubmission> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkStudentSubmission(o[0]);
+  checkStudentSubmission(o[1]);
+}
+
+core.int buildCounterListStudentSubmissionsResponse = 0;
+buildListStudentSubmissionsResponse() {
+  var o = new api.ListStudentSubmissionsResponse();
+  buildCounterListStudentSubmissionsResponse++;
+  if (buildCounterListStudentSubmissionsResponse < 3) {
+    o.nextPageToken = "foo";
+    o.studentSubmissions = buildUnnamed620();
+  }
+  buildCounterListStudentSubmissionsResponse--;
+  return o;
+}
+
+checkListStudentSubmissionsResponse(api.ListStudentSubmissionsResponse o) {
+  buildCounterListStudentSubmissionsResponse++;
+  if (buildCounterListStudentSubmissionsResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed620(o.studentSubmissions);
+  }
+  buildCounterListStudentSubmissionsResponse--;
+}
+
+buildUnnamed621() {
   var o = new core.List<api.Student>();
   o.add(buildStudent());
   o.add(buildStudent());
   return o;
 }
 
-checkUnnamed1034(core.List<api.Student> o) {
+checkUnnamed621(core.List<api.Student> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStudent(o[0]);
   checkStudent(o[1]);
@@ -293,7 +700,7 @@ buildListStudentsResponse() {
   buildCounterListStudentsResponse++;
   if (buildCounterListStudentsResponse < 3) {
     o.nextPageToken = "foo";
-    o.students = buildUnnamed1034();
+    o.students = buildUnnamed621();
   }
   buildCounterListStudentsResponse--;
   return o;
@@ -303,19 +710,19 @@ checkListStudentsResponse(api.ListStudentsResponse o) {
   buildCounterListStudentsResponse++;
   if (buildCounterListStudentsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1034(o.students);
+    checkUnnamed621(o.students);
   }
   buildCounterListStudentsResponse--;
 }
 
-buildUnnamed1035() {
+buildUnnamed622() {
   var o = new core.List<api.Teacher>();
   o.add(buildTeacher());
   o.add(buildTeacher());
   return o;
 }
 
-checkUnnamed1035(core.List<api.Teacher> o) {
+checkUnnamed622(core.List<api.Teacher> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeacher(o[0]);
   checkTeacher(o[1]);
@@ -327,7 +734,7 @@ buildListTeachersResponse() {
   buildCounterListTeachersResponse++;
   if (buildCounterListTeachersResponse < 3) {
     o.nextPageToken = "foo";
-    o.teachers = buildUnnamed1035();
+    o.teachers = buildUnnamed622();
   }
   buildCounterListTeachersResponse--;
   return o;
@@ -337,9 +744,117 @@ checkListTeachersResponse(api.ListTeachersResponse o) {
   buildCounterListTeachersResponse++;
   if (buildCounterListTeachersResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1035(o.teachers);
+    checkUnnamed622(o.teachers);
   }
   buildCounterListTeachersResponse--;
+}
+
+core.int buildCounterMaterial = 0;
+buildMaterial() {
+  var o = new api.Material();
+  buildCounterMaterial++;
+  if (buildCounterMaterial < 3) {
+    o.driveFile = buildSharedDriveFile();
+    o.form = buildForm();
+    o.link = buildLink();
+    o.youtubeVideo = buildYouTubeVideo();
+  }
+  buildCounterMaterial--;
+  return o;
+}
+
+checkMaterial(api.Material o) {
+  buildCounterMaterial++;
+  if (buildCounterMaterial < 3) {
+    checkSharedDriveFile(o.driveFile);
+    checkForm(o.form);
+    checkLink(o.link);
+    checkYouTubeVideo(o.youtubeVideo);
+  }
+  buildCounterMaterial--;
+}
+
+buildUnnamed623() {
+  var o = new core.List<api.Attachment>();
+  o.add(buildAttachment());
+  o.add(buildAttachment());
+  return o;
+}
+
+checkUnnamed623(core.List<api.Attachment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAttachment(o[0]);
+  checkAttachment(o[1]);
+}
+
+core.int buildCounterModifyAttachmentsRequest = 0;
+buildModifyAttachmentsRequest() {
+  var o = new api.ModifyAttachmentsRequest();
+  buildCounterModifyAttachmentsRequest++;
+  if (buildCounterModifyAttachmentsRequest < 3) {
+    o.addAttachments = buildUnnamed623();
+  }
+  buildCounterModifyAttachmentsRequest--;
+  return o;
+}
+
+checkModifyAttachmentsRequest(api.ModifyAttachmentsRequest o) {
+  buildCounterModifyAttachmentsRequest++;
+  if (buildCounterModifyAttachmentsRequest < 3) {
+    checkUnnamed623(o.addAttachments);
+  }
+  buildCounterModifyAttachmentsRequest--;
+}
+
+buildUnnamed624() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed624(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterMultipleChoiceQuestion = 0;
+buildMultipleChoiceQuestion() {
+  var o = new api.MultipleChoiceQuestion();
+  buildCounterMultipleChoiceQuestion++;
+  if (buildCounterMultipleChoiceQuestion < 3) {
+    o.choices = buildUnnamed624();
+  }
+  buildCounterMultipleChoiceQuestion--;
+  return o;
+}
+
+checkMultipleChoiceQuestion(api.MultipleChoiceQuestion o) {
+  buildCounterMultipleChoiceQuestion++;
+  if (buildCounterMultipleChoiceQuestion < 3) {
+    checkUnnamed624(o.choices);
+  }
+  buildCounterMultipleChoiceQuestion--;
+}
+
+core.int buildCounterMultipleChoiceSubmission = 0;
+buildMultipleChoiceSubmission() {
+  var o = new api.MultipleChoiceSubmission();
+  buildCounterMultipleChoiceSubmission++;
+  if (buildCounterMultipleChoiceSubmission < 3) {
+    o.answer = "foo";
+  }
+  buildCounterMultipleChoiceSubmission--;
+  return o;
+}
+
+checkMultipleChoiceSubmission(api.MultipleChoiceSubmission o) {
+  buildCounterMultipleChoiceSubmission++;
+  if (buildCounterMultipleChoiceSubmission < 3) {
+    unittest.expect(o.answer, unittest.equals('foo'));
+  }
+  buildCounterMultipleChoiceSubmission--;
 }
 
 core.int buildCounterName = 0;
@@ -365,6 +880,80 @@ checkName(api.Name o) {
   buildCounterName--;
 }
 
+core.int buildCounterReclaimStudentSubmissionRequest = 0;
+buildReclaimStudentSubmissionRequest() {
+  var o = new api.ReclaimStudentSubmissionRequest();
+  buildCounterReclaimStudentSubmissionRequest++;
+  if (buildCounterReclaimStudentSubmissionRequest < 3) {
+  }
+  buildCounterReclaimStudentSubmissionRequest--;
+  return o;
+}
+
+checkReclaimStudentSubmissionRequest(api.ReclaimStudentSubmissionRequest o) {
+  buildCounterReclaimStudentSubmissionRequest++;
+  if (buildCounterReclaimStudentSubmissionRequest < 3) {
+  }
+  buildCounterReclaimStudentSubmissionRequest--;
+}
+
+core.int buildCounterReturnStudentSubmissionRequest = 0;
+buildReturnStudentSubmissionRequest() {
+  var o = new api.ReturnStudentSubmissionRequest();
+  buildCounterReturnStudentSubmissionRequest++;
+  if (buildCounterReturnStudentSubmissionRequest < 3) {
+  }
+  buildCounterReturnStudentSubmissionRequest--;
+  return o;
+}
+
+checkReturnStudentSubmissionRequest(api.ReturnStudentSubmissionRequest o) {
+  buildCounterReturnStudentSubmissionRequest++;
+  if (buildCounterReturnStudentSubmissionRequest < 3) {
+  }
+  buildCounterReturnStudentSubmissionRequest--;
+}
+
+core.int buildCounterSharedDriveFile = 0;
+buildSharedDriveFile() {
+  var o = new api.SharedDriveFile();
+  buildCounterSharedDriveFile++;
+  if (buildCounterSharedDriveFile < 3) {
+    o.driveFile = buildDriveFile();
+    o.shareMode = "foo";
+  }
+  buildCounterSharedDriveFile--;
+  return o;
+}
+
+checkSharedDriveFile(api.SharedDriveFile o) {
+  buildCounterSharedDriveFile++;
+  if (buildCounterSharedDriveFile < 3) {
+    checkDriveFile(o.driveFile);
+    unittest.expect(o.shareMode, unittest.equals('foo'));
+  }
+  buildCounterSharedDriveFile--;
+}
+
+core.int buildCounterShortAnswerSubmission = 0;
+buildShortAnswerSubmission() {
+  var o = new api.ShortAnswerSubmission();
+  buildCounterShortAnswerSubmission++;
+  if (buildCounterShortAnswerSubmission < 3) {
+    o.answer = "foo";
+  }
+  buildCounterShortAnswerSubmission--;
+  return o;
+}
+
+checkShortAnswerSubmission(api.ShortAnswerSubmission o) {
+  buildCounterShortAnswerSubmission++;
+  if (buildCounterShortAnswerSubmission < 3) {
+    unittest.expect(o.answer, unittest.equals('foo'));
+  }
+  buildCounterShortAnswerSubmission--;
+}
+
 core.int buildCounterStudent = 0;
 buildStudent() {
   var o = new api.Student();
@@ -372,6 +961,7 @@ buildStudent() {
   if (buildCounterStudent < 3) {
     o.courseId = "foo";
     o.profile = buildUserProfile();
+    o.studentWorkFolder = buildDriveFolder();
     o.userId = "foo";
   }
   buildCounterStudent--;
@@ -383,9 +973,59 @@ checkStudent(api.Student o) {
   if (buildCounterStudent < 3) {
     unittest.expect(o.courseId, unittest.equals('foo'));
     checkUserProfile(o.profile);
+    checkDriveFolder(o.studentWorkFolder);
     unittest.expect(o.userId, unittest.equals('foo'));
   }
   buildCounterStudent--;
+}
+
+core.int buildCounterStudentSubmission = 0;
+buildStudentSubmission() {
+  var o = new api.StudentSubmission();
+  buildCounterStudentSubmission++;
+  if (buildCounterStudentSubmission < 3) {
+    o.alternateLink = "foo";
+    o.assignedGrade = 42.0;
+    o.assignmentSubmission = buildAssignmentSubmission();
+    o.associatedWithDeveloper = true;
+    o.courseId = "foo";
+    o.courseWorkId = "foo";
+    o.courseWorkType = "foo";
+    o.creationTime = "foo";
+    o.draftGrade = 42.0;
+    o.id = "foo";
+    o.late = true;
+    o.multipleChoiceSubmission = buildMultipleChoiceSubmission();
+    o.shortAnswerSubmission = buildShortAnswerSubmission();
+    o.state = "foo";
+    o.updateTime = "foo";
+    o.userId = "foo";
+  }
+  buildCounterStudentSubmission--;
+  return o;
+}
+
+checkStudentSubmission(api.StudentSubmission o) {
+  buildCounterStudentSubmission++;
+  if (buildCounterStudentSubmission < 3) {
+    unittest.expect(o.alternateLink, unittest.equals('foo'));
+    unittest.expect(o.assignedGrade, unittest.equals(42.0));
+    checkAssignmentSubmission(o.assignmentSubmission);
+    unittest.expect(o.associatedWithDeveloper, unittest.isTrue);
+    unittest.expect(o.courseId, unittest.equals('foo'));
+    unittest.expect(o.courseWorkId, unittest.equals('foo'));
+    unittest.expect(o.courseWorkType, unittest.equals('foo'));
+    unittest.expect(o.creationTime, unittest.equals('foo'));
+    unittest.expect(o.draftGrade, unittest.equals(42.0));
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.late, unittest.isTrue);
+    checkMultipleChoiceSubmission(o.multipleChoiceSubmission);
+    checkShortAnswerSubmission(o.shortAnswerSubmission);
+    unittest.expect(o.state, unittest.equals('foo'));
+    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(o.userId, unittest.equals('foo'));
+  }
+  buildCounterStudentSubmission--;
 }
 
 core.int buildCounterTeacher = 0;
@@ -411,14 +1051,56 @@ checkTeacher(api.Teacher o) {
   buildCounterTeacher--;
 }
 
-buildUnnamed1036() {
+core.int buildCounterTimeOfDay = 0;
+buildTimeOfDay() {
+  var o = new api.TimeOfDay();
+  buildCounterTimeOfDay++;
+  if (buildCounterTimeOfDay < 3) {
+    o.hours = 42;
+    o.minutes = 42;
+    o.nanos = 42;
+    o.seconds = 42;
+  }
+  buildCounterTimeOfDay--;
+  return o;
+}
+
+checkTimeOfDay(api.TimeOfDay o) {
+  buildCounterTimeOfDay++;
+  if (buildCounterTimeOfDay < 3) {
+    unittest.expect(o.hours, unittest.equals(42));
+    unittest.expect(o.minutes, unittest.equals(42));
+    unittest.expect(o.nanos, unittest.equals(42));
+    unittest.expect(o.seconds, unittest.equals(42));
+  }
+  buildCounterTimeOfDay--;
+}
+
+core.int buildCounterTurnInStudentSubmissionRequest = 0;
+buildTurnInStudentSubmissionRequest() {
+  var o = new api.TurnInStudentSubmissionRequest();
+  buildCounterTurnInStudentSubmissionRequest++;
+  if (buildCounterTurnInStudentSubmissionRequest < 3) {
+  }
+  buildCounterTurnInStudentSubmissionRequest--;
+  return o;
+}
+
+checkTurnInStudentSubmissionRequest(api.TurnInStudentSubmissionRequest o) {
+  buildCounterTurnInStudentSubmissionRequest++;
+  if (buildCounterTurnInStudentSubmissionRequest < 3) {
+  }
+  buildCounterTurnInStudentSubmissionRequest--;
+}
+
+buildUnnamed625() {
   var o = new core.List<api.GlobalPermission>();
   o.add(buildGlobalPermission());
   o.add(buildGlobalPermission());
   return o;
 }
 
-checkUnnamed1036(core.List<api.GlobalPermission> o) {
+checkUnnamed625(core.List<api.GlobalPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlobalPermission(o[0]);
   checkGlobalPermission(o[1]);
@@ -432,7 +1114,7 @@ buildUserProfile() {
     o.emailAddress = "foo";
     o.id = "foo";
     o.name = buildName();
-    o.permissions = buildUnnamed1036();
+    o.permissions = buildUnnamed625();
     o.photoUrl = "foo";
   }
   buildCounterUserProfile--;
@@ -445,14 +1127,92 @@ checkUserProfile(api.UserProfile o) {
     unittest.expect(o.emailAddress, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     checkName(o.name);
-    checkUnnamed1036(o.permissions);
+    checkUnnamed625(o.permissions);
     unittest.expect(o.photoUrl, unittest.equals('foo'));
   }
   buildCounterUserProfile--;
 }
 
+core.int buildCounterYouTubeVideo = 0;
+buildYouTubeVideo() {
+  var o = new api.YouTubeVideo();
+  buildCounterYouTubeVideo++;
+  if (buildCounterYouTubeVideo < 3) {
+    o.alternateLink = "foo";
+    o.id = "foo";
+    o.thumbnailUrl = "foo";
+    o.title = "foo";
+  }
+  buildCounterYouTubeVideo--;
+  return o;
+}
+
+checkYouTubeVideo(api.YouTubeVideo o) {
+  buildCounterYouTubeVideo++;
+  if (buildCounterYouTubeVideo < 3) {
+    unittest.expect(o.alternateLink, unittest.equals('foo'));
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.thumbnailUrl, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterYouTubeVideo--;
+}
+
+buildUnnamed626() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed626(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed627() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed627(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 
 main() {
+  unittest.group("obj-schema-Assignment", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAssignment();
+      var od = new api.Assignment.fromJson(o.toJson());
+      checkAssignment(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-AssignmentSubmission", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAssignmentSubmission();
+      var od = new api.AssignmentSubmission.fromJson(o.toJson());
+      checkAssignmentSubmission(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-Attachment", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAttachment();
+      var od = new api.Attachment.fromJson(o.toJson());
+      checkAttachment(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Course", () {
     unittest.test("to-json--from-json", () {
       var o = buildCourse();
@@ -471,11 +1231,74 @@ main() {
   });
 
 
+  unittest.group("obj-schema-CourseMaterial", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCourseMaterial();
+      var od = new api.CourseMaterial.fromJson(o.toJson());
+      checkCourseMaterial(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-CourseMaterialSet", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCourseMaterialSet();
+      var od = new api.CourseMaterialSet.fromJson(o.toJson());
+      checkCourseMaterialSet(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-CourseWork", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCourseWork();
+      var od = new api.CourseWork.fromJson(o.toJson());
+      checkCourseWork(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-Date", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDate();
+      var od = new api.Date.fromJson(o.toJson());
+      checkDate(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-DriveFile", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDriveFile();
+      var od = new api.DriveFile.fromJson(o.toJson());
+      checkDriveFile(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-DriveFolder", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDriveFolder();
+      var od = new api.DriveFolder.fromJson(o.toJson());
+      checkDriveFolder(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Empty", () {
     unittest.test("to-json--from-json", () {
       var o = buildEmpty();
       var od = new api.Empty.fromJson(o.toJson());
       checkEmpty(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-Form", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildForm();
+      var od = new api.Form.fromJson(o.toJson());
+      checkForm(od);
     });
   });
 
@@ -498,11 +1321,29 @@ main() {
   });
 
 
+  unittest.group("obj-schema-Link", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildLink();
+      var od = new api.Link.fromJson(o.toJson());
+      checkLink(od);
+    });
+  });
+
+
   unittest.group("obj-schema-ListCourseAliasesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListCourseAliasesResponse();
       var od = new api.ListCourseAliasesResponse.fromJson(o.toJson());
       checkListCourseAliasesResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ListCourseWorkResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListCourseWorkResponse();
+      var od = new api.ListCourseWorkResponse.fromJson(o.toJson());
+      checkListCourseWorkResponse(od);
     });
   });
 
@@ -525,6 +1366,15 @@ main() {
   });
 
 
+  unittest.group("obj-schema-ListStudentSubmissionsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListStudentSubmissionsResponse();
+      var od = new api.ListStudentSubmissionsResponse.fromJson(o.toJson());
+      checkListStudentSubmissionsResponse(od);
+    });
+  });
+
+
   unittest.group("obj-schema-ListStudentsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListStudentsResponse();
@@ -543,11 +1393,83 @@ main() {
   });
 
 
+  unittest.group("obj-schema-Material", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildMaterial();
+      var od = new api.Material.fromJson(o.toJson());
+      checkMaterial(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ModifyAttachmentsRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildModifyAttachmentsRequest();
+      var od = new api.ModifyAttachmentsRequest.fromJson(o.toJson());
+      checkModifyAttachmentsRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-MultipleChoiceQuestion", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildMultipleChoiceQuestion();
+      var od = new api.MultipleChoiceQuestion.fromJson(o.toJson());
+      checkMultipleChoiceQuestion(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-MultipleChoiceSubmission", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildMultipleChoiceSubmission();
+      var od = new api.MultipleChoiceSubmission.fromJson(o.toJson());
+      checkMultipleChoiceSubmission(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Name", () {
     unittest.test("to-json--from-json", () {
       var o = buildName();
       var od = new api.Name.fromJson(o.toJson());
       checkName(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ReclaimStudentSubmissionRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildReclaimStudentSubmissionRequest();
+      var od = new api.ReclaimStudentSubmissionRequest.fromJson(o.toJson());
+      checkReclaimStudentSubmissionRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ReturnStudentSubmissionRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildReturnStudentSubmissionRequest();
+      var od = new api.ReturnStudentSubmissionRequest.fromJson(o.toJson());
+      checkReturnStudentSubmissionRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-SharedDriveFile", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSharedDriveFile();
+      var od = new api.SharedDriveFile.fromJson(o.toJson());
+      checkSharedDriveFile(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ShortAnswerSubmission", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildShortAnswerSubmission();
+      var od = new api.ShortAnswerSubmission.fromJson(o.toJson());
+      checkShortAnswerSubmission(od);
     });
   });
 
@@ -561,6 +1483,15 @@ main() {
   });
 
 
+  unittest.group("obj-schema-StudentSubmission", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildStudentSubmission();
+      var od = new api.StudentSubmission.fromJson(o.toJson());
+      checkStudentSubmission(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Teacher", () {
     unittest.test("to-json--from-json", () {
       var o = buildTeacher();
@@ -570,11 +1501,38 @@ main() {
   });
 
 
+  unittest.group("obj-schema-TimeOfDay", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildTimeOfDay();
+      var od = new api.TimeOfDay.fromJson(o.toJson());
+      checkTimeOfDay(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-TurnInStudentSubmissionRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildTurnInStudentSubmissionRequest();
+      var od = new api.TurnInStudentSubmissionRequest.fromJson(o.toJson());
+      checkTurnInStudentSubmissionRequest(od);
+    });
+  });
+
+
   unittest.group("obj-schema-UserProfile", () {
     unittest.test("to-json--from-json", () {
       var o = buildUserProfile();
       var od = new api.UserProfile.fromJson(o.toJson());
       checkUserProfile(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-YouTubeVideo", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildYouTubeVideo();
+      var od = new api.YouTubeVideo.fromJson(o.toJson());
+      checkYouTubeVideo(od);
     });
   });
 
@@ -1042,6 +2000,668 @@ main() {
       }), true);
       res.list(arg_courseId, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListCourseAliasesResponse response) {
         checkListCourseAliasesResponse(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-CoursesCourseWorkResourceApi", () {
+    unittest.test("method--create", () {
+
+      var mock = new HttpServerMock();
+      api.CoursesCourseWorkResourceApi res = new api.ClassroomApi(mock).courses.courseWork;
+      var arg_request = buildCourseWork();
+      var arg_courseId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.CourseWork.fromJson(json);
+        checkCourseWork(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("v1/courses/"));
+        pathOffset += 11;
+        index = path.indexOf("/courseWork", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("/courseWork"));
+        pathOffset += 11;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildCourseWork());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.create(arg_request, arg_courseId).then(unittest.expectAsync(((api.CourseWork response) {
+        checkCourseWork(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.CoursesCourseWorkResourceApi res = new api.ClassroomApi(mock).courses.courseWork;
+      var arg_courseId = "foo";
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("v1/courses/"));
+        pathOffset += 11;
+        index = path.indexOf("/courseWork/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/courseWork/"));
+        pathOffset += 12;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildCourseWork());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_courseId, arg_id).then(unittest.expectAsync(((api.CourseWork response) {
+        checkCourseWork(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new HttpServerMock();
+      api.CoursesCourseWorkResourceApi res = new api.ClassroomApi(mock).courses.courseWork;
+      var arg_courseId = "foo";
+      var arg_courseWorkStates = buildUnnamed626();
+      var arg_orderBy = "foo";
+      var arg_pageSize = 42;
+      var arg_pageToken = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("v1/courses/"));
+        pathOffset += 11;
+        index = path.indexOf("/courseWork", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("/courseWork"));
+        pathOffset += 11;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["courseWorkStates"], unittest.equals(arg_courseWorkStates));
+        unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildListCourseWorkResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_courseId, courseWorkStates: arg_courseWorkStates, orderBy: arg_orderBy, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListCourseWorkResponse response) {
+        checkListCourseWorkResponse(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-CoursesCourseWorkStudentSubmissionsResourceApi", () {
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.CoursesCourseWorkStudentSubmissionsResourceApi res = new api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var arg_courseId = "foo";
+      var arg_courseWorkId = "foo";
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("v1/courses/"));
+        pathOffset += 11;
+        index = path.indexOf("/courseWork/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/courseWork/"));
+        pathOffset += 12;
+        index = path.indexOf("/studentSubmissions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseWorkId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/studentSubmissions/"));
+        pathOffset += 20;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStudentSubmission());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_courseId, arg_courseWorkId, arg_id).then(unittest.expectAsync(((api.StudentSubmission response) {
+        checkStudentSubmission(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new HttpServerMock();
+      api.CoursesCourseWorkStudentSubmissionsResourceApi res = new api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var arg_courseId = "foo";
+      var arg_courseWorkId = "foo";
+      var arg_userId = "foo";
+      var arg_states = buildUnnamed627();
+      var arg_late = "foo";
+      var arg_pageSize = 42;
+      var arg_pageToken = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("v1/courses/"));
+        pathOffset += 11;
+        index = path.indexOf("/courseWork/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/courseWork/"));
+        pathOffset += 12;
+        index = path.indexOf("/studentSubmissions", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseWorkId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/studentSubmissions"));
+        pathOffset += 19;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["userId"].first, unittest.equals(arg_userId));
+        unittest.expect(queryMap["states"], unittest.equals(arg_states));
+        unittest.expect(queryMap["late"].first, unittest.equals(arg_late));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildListStudentSubmissionsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_courseId, arg_courseWorkId, userId: arg_userId, states: arg_states, late: arg_late, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListStudentSubmissionsResponse response) {
+        checkListStudentSubmissionsResponse(response);
+      })));
+    });
+
+    unittest.test("method--modifyAttachments", () {
+
+      var mock = new HttpServerMock();
+      api.CoursesCourseWorkStudentSubmissionsResourceApi res = new api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var arg_request = buildModifyAttachmentsRequest();
+      var arg_courseId = "foo";
+      var arg_courseWorkId = "foo";
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.ModifyAttachmentsRequest.fromJson(json);
+        checkModifyAttachmentsRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("v1/courses/"));
+        pathOffset += 11;
+        index = path.indexOf("/courseWork/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/courseWork/"));
+        pathOffset += 12;
+        index = path.indexOf("/studentSubmissions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseWorkId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/studentSubmissions/"));
+        pathOffset += 20;
+        index = path.indexOf(":modifyAttachments", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals(":modifyAttachments"));
+        pathOffset += 18;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStudentSubmission());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.modifyAttachments(arg_request, arg_courseId, arg_courseWorkId, arg_id).then(unittest.expectAsync(((api.StudentSubmission response) {
+        checkStudentSubmission(response);
+      })));
+    });
+
+    unittest.test("method--patch", () {
+
+      var mock = new HttpServerMock();
+      api.CoursesCourseWorkStudentSubmissionsResourceApi res = new api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var arg_request = buildStudentSubmission();
+      var arg_courseId = "foo";
+      var arg_courseWorkId = "foo";
+      var arg_id = "foo";
+      var arg_updateMask = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.StudentSubmission.fromJson(json);
+        checkStudentSubmission(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("v1/courses/"));
+        pathOffset += 11;
+        index = path.indexOf("/courseWork/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/courseWork/"));
+        pathOffset += 12;
+        index = path.indexOf("/studentSubmissions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseWorkId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/studentSubmissions/"));
+        pathOffset += 20;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildStudentSubmission());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.patch(arg_request, arg_courseId, arg_courseWorkId, arg_id, updateMask: arg_updateMask).then(unittest.expectAsync(((api.StudentSubmission response) {
+        checkStudentSubmission(response);
+      })));
+    });
+
+    unittest.test("method--reclaim", () {
+
+      var mock = new HttpServerMock();
+      api.CoursesCourseWorkStudentSubmissionsResourceApi res = new api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var arg_request = buildReclaimStudentSubmissionRequest();
+      var arg_courseId = "foo";
+      var arg_courseWorkId = "foo";
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.ReclaimStudentSubmissionRequest.fromJson(json);
+        checkReclaimStudentSubmissionRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("v1/courses/"));
+        pathOffset += 11;
+        index = path.indexOf("/courseWork/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/courseWork/"));
+        pathOffset += 12;
+        index = path.indexOf("/studentSubmissions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseWorkId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/studentSubmissions/"));
+        pathOffset += 20;
+        index = path.indexOf(":reclaim", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals(":reclaim"));
+        pathOffset += 8;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.reclaim(arg_request, arg_courseId, arg_courseWorkId, arg_id).then(unittest.expectAsync(((api.Empty response) {
+        checkEmpty(response);
+      })));
+    });
+
+    unittest.test("method--return_", () {
+
+      var mock = new HttpServerMock();
+      api.CoursesCourseWorkStudentSubmissionsResourceApi res = new api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var arg_request = buildReturnStudentSubmissionRequest();
+      var arg_courseId = "foo";
+      var arg_courseWorkId = "foo";
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.ReturnStudentSubmissionRequest.fromJson(json);
+        checkReturnStudentSubmissionRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("v1/courses/"));
+        pathOffset += 11;
+        index = path.indexOf("/courseWork/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/courseWork/"));
+        pathOffset += 12;
+        index = path.indexOf("/studentSubmissions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseWorkId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/studentSubmissions/"));
+        pathOffset += 20;
+        index = path.indexOf(":return", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals(":return"));
+        pathOffset += 7;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.return_(arg_request, arg_courseId, arg_courseWorkId, arg_id).then(unittest.expectAsync(((api.Empty response) {
+        checkEmpty(response);
+      })));
+    });
+
+    unittest.test("method--turnIn", () {
+
+      var mock = new HttpServerMock();
+      api.CoursesCourseWorkStudentSubmissionsResourceApi res = new api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var arg_request = buildTurnInStudentSubmissionRequest();
+      var arg_courseId = "foo";
+      var arg_courseWorkId = "foo";
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.TurnInStudentSubmissionRequest.fromJson(json);
+        checkTurnInStudentSubmissionRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("v1/courses/"));
+        pathOffset += 11;
+        index = path.indexOf("/courseWork/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/courseWork/"));
+        pathOffset += 12;
+        index = path.indexOf("/studentSubmissions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_courseWorkId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/studentSubmissions/"));
+        pathOffset += 20;
+        index = path.indexOf(":turnIn", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals(":turnIn"));
+        pathOffset += 7;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.turnIn(arg_request, arg_courseId, arg_courseWorkId, arg_id).then(unittest.expectAsync(((api.Empty response) {
+        checkEmpty(response);
       })));
     });
 

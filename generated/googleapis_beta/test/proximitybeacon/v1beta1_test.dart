@@ -93,14 +93,14 @@ checkAttachmentInfo(api.AttachmentInfo o) {
   buildCounterAttachmentInfo--;
 }
 
-buildUnnamed3745() {
+buildUnnamed3586() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3745(core.Map<core.String, core.String> o) {
+checkUnnamed3586(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -114,11 +114,13 @@ buildBeacon() {
     o.advertisedId = buildAdvertisedId();
     o.beaconName = "foo";
     o.description = "foo";
+    o.ephemeralIdRegistration = buildEphemeralIdRegistration();
     o.expectedStability = "foo";
     o.indoorLevel = buildIndoorLevel();
     o.latLng = buildLatLng();
     o.placeId = "foo";
-    o.properties = buildUnnamed3745();
+    o.properties = buildUnnamed3586();
+    o.provisioningKey = "foo";
     o.status = "foo";
   }
   buildCounterBeacon--;
@@ -131,11 +133,13 @@ checkBeacon(api.Beacon o) {
     checkAdvertisedId(o.advertisedId);
     unittest.expect(o.beaconName, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
+    checkEphemeralIdRegistration(o.ephemeralIdRegistration);
     unittest.expect(o.expectedStability, unittest.equals('foo'));
     checkIndoorLevel(o.indoorLevel);
     checkLatLng(o.latLng);
     unittest.expect(o.placeId, unittest.equals('foo'));
-    checkUnnamed3745(o.properties);
+    checkUnnamed3586(o.properties);
+    unittest.expect(o.provisioningKey, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
   }
   buildCounterBeacon--;
@@ -164,14 +168,14 @@ checkBeaconAttachment(api.BeaconAttachment o) {
   buildCounterBeaconAttachment--;
 }
 
-buildUnnamed3746() {
+buildUnnamed3587() {
   var o = new core.List<api.AttachmentInfo>();
   o.add(buildAttachmentInfo());
   o.add(buildAttachmentInfo());
   return o;
 }
 
-checkUnnamed3746(core.List<api.AttachmentInfo> o) {
+checkUnnamed3587(core.List<api.AttachmentInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachmentInfo(o[0]);
   checkAttachmentInfo(o[1]);
@@ -183,9 +187,8 @@ buildBeaconInfo() {
   buildCounterBeaconInfo++;
   if (buildCounterBeaconInfo < 3) {
     o.advertisedId = buildAdvertisedId();
-    o.attachments = buildUnnamed3746();
+    o.attachments = buildUnnamed3587();
     o.beaconName = "foo";
-    o.description = "foo";
   }
   buildCounterBeaconInfo--;
   return o;
@@ -195,9 +198,8 @@ checkBeaconInfo(api.BeaconInfo o) {
   buildCounterBeaconInfo++;
   if (buildCounterBeaconInfo < 3) {
     checkAdvertisedId(o.advertisedId);
-    checkUnnamed3746(o.attachments);
+    checkUnnamed3587(o.attachments);
     unittest.expect(o.beaconName, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
   }
   buildCounterBeaconInfo--;
 }
@@ -244,14 +246,14 @@ checkDeleteAttachmentsResponse(api.DeleteAttachmentsResponse o) {
   buildCounterDeleteAttachmentsResponse--;
 }
 
-buildUnnamed3747() {
+buildUnnamed3588() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3747(core.List<core.String> o) {
+checkUnnamed3588(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -262,7 +264,7 @@ buildDiagnostics() {
   var o = new api.Diagnostics();
   buildCounterDiagnostics++;
   if (buildCounterDiagnostics < 3) {
-    o.alerts = buildUnnamed3747();
+    o.alerts = buildUnnamed3588();
     o.beaconName = "foo";
     o.estimatedLowBatteryDate = buildDate();
   }
@@ -273,7 +275,7 @@ buildDiagnostics() {
 checkDiagnostics(api.Diagnostics o) {
   buildCounterDiagnostics++;
   if (buildCounterDiagnostics < 3) {
-    checkUnnamed3747(o.alerts);
+    checkUnnamed3588(o.alerts);
     unittest.expect(o.beaconName, unittest.equals('foo'));
     checkDate(o.estimatedLowBatteryDate);
   }
@@ -297,27 +299,79 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed3748() {
+core.int buildCounterEphemeralIdRegistration = 0;
+buildEphemeralIdRegistration() {
+  var o = new api.EphemeralIdRegistration();
+  buildCounterEphemeralIdRegistration++;
+  if (buildCounterEphemeralIdRegistration < 3) {
+    o.beaconEcdhPublicKey = "foo";
+    o.beaconIdentityKey = "foo";
+    o.initialClockValue = "foo";
+    o.initialEid = "foo";
+    o.rotationPeriodExponent = 42;
+    o.serviceEcdhPublicKey = "foo";
+  }
+  buildCounterEphemeralIdRegistration--;
+  return o;
+}
+
+checkEphemeralIdRegistration(api.EphemeralIdRegistration o) {
+  buildCounterEphemeralIdRegistration++;
+  if (buildCounterEphemeralIdRegistration < 3) {
+    unittest.expect(o.beaconEcdhPublicKey, unittest.equals('foo'));
+    unittest.expect(o.beaconIdentityKey, unittest.equals('foo'));
+    unittest.expect(o.initialClockValue, unittest.equals('foo'));
+    unittest.expect(o.initialEid, unittest.equals('foo'));
+    unittest.expect(o.rotationPeriodExponent, unittest.equals(42));
+    unittest.expect(o.serviceEcdhPublicKey, unittest.equals('foo'));
+  }
+  buildCounterEphemeralIdRegistration--;
+}
+
+core.int buildCounterEphemeralIdRegistrationParams = 0;
+buildEphemeralIdRegistrationParams() {
+  var o = new api.EphemeralIdRegistrationParams();
+  buildCounterEphemeralIdRegistrationParams++;
+  if (buildCounterEphemeralIdRegistrationParams < 3) {
+    o.maxRotationPeriodExponent = 42;
+    o.minRotationPeriodExponent = 42;
+    o.serviceEcdhPublicKey = "foo";
+  }
+  buildCounterEphemeralIdRegistrationParams--;
+  return o;
+}
+
+checkEphemeralIdRegistrationParams(api.EphemeralIdRegistrationParams o) {
+  buildCounterEphemeralIdRegistrationParams++;
+  if (buildCounterEphemeralIdRegistrationParams < 3) {
+    unittest.expect(o.maxRotationPeriodExponent, unittest.equals(42));
+    unittest.expect(o.minRotationPeriodExponent, unittest.equals(42));
+    unittest.expect(o.serviceEcdhPublicKey, unittest.equals('foo'));
+  }
+  buildCounterEphemeralIdRegistrationParams--;
+}
+
+buildUnnamed3589() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3748(core.List<core.String> o) {
+checkUnnamed3589(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3749() {
+buildUnnamed3590() {
   var o = new core.List<api.Observation>();
   o.add(buildObservation());
   o.add(buildObservation());
   return o;
 }
 
-checkUnnamed3749(core.List<api.Observation> o) {
+checkUnnamed3590(core.List<api.Observation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObservation(o[0]);
   checkObservation(o[1]);
@@ -328,8 +382,8 @@ buildGetInfoForObservedBeaconsRequest() {
   var o = new api.GetInfoForObservedBeaconsRequest();
   buildCounterGetInfoForObservedBeaconsRequest++;
   if (buildCounterGetInfoForObservedBeaconsRequest < 3) {
-    o.namespacedTypes = buildUnnamed3748();
-    o.observations = buildUnnamed3749();
+    o.namespacedTypes = buildUnnamed3589();
+    o.observations = buildUnnamed3590();
   }
   buildCounterGetInfoForObservedBeaconsRequest--;
   return o;
@@ -338,20 +392,20 @@ buildGetInfoForObservedBeaconsRequest() {
 checkGetInfoForObservedBeaconsRequest(api.GetInfoForObservedBeaconsRequest o) {
   buildCounterGetInfoForObservedBeaconsRequest++;
   if (buildCounterGetInfoForObservedBeaconsRequest < 3) {
-    checkUnnamed3748(o.namespacedTypes);
-    checkUnnamed3749(o.observations);
+    checkUnnamed3589(o.namespacedTypes);
+    checkUnnamed3590(o.observations);
   }
   buildCounterGetInfoForObservedBeaconsRequest--;
 }
 
-buildUnnamed3750() {
+buildUnnamed3591() {
   var o = new core.List<api.BeaconInfo>();
   o.add(buildBeaconInfo());
   o.add(buildBeaconInfo());
   return o;
 }
 
-checkUnnamed3750(core.List<api.BeaconInfo> o) {
+checkUnnamed3591(core.List<api.BeaconInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBeaconInfo(o[0]);
   checkBeaconInfo(o[1]);
@@ -362,7 +416,7 @@ buildGetInfoForObservedBeaconsResponse() {
   var o = new api.GetInfoForObservedBeaconsResponse();
   buildCounterGetInfoForObservedBeaconsResponse++;
   if (buildCounterGetInfoForObservedBeaconsResponse < 3) {
-    o.beacons = buildUnnamed3750();
+    o.beacons = buildUnnamed3591();
   }
   buildCounterGetInfoForObservedBeaconsResponse--;
   return o;
@@ -371,7 +425,7 @@ buildGetInfoForObservedBeaconsResponse() {
 checkGetInfoForObservedBeaconsResponse(api.GetInfoForObservedBeaconsResponse o) {
   buildCounterGetInfoForObservedBeaconsResponse++;
   if (buildCounterGetInfoForObservedBeaconsResponse < 3) {
-    checkUnnamed3750(o.beacons);
+    checkUnnamed3591(o.beacons);
   }
   buildCounterGetInfoForObservedBeaconsResponse--;
 }
@@ -416,14 +470,14 @@ checkLatLng(api.LatLng o) {
   buildCounterLatLng--;
 }
 
-buildUnnamed3751() {
+buildUnnamed3592() {
   var o = new core.List<api.BeaconAttachment>();
   o.add(buildBeaconAttachment());
   o.add(buildBeaconAttachment());
   return o;
 }
 
-checkUnnamed3751(core.List<api.BeaconAttachment> o) {
+checkUnnamed3592(core.List<api.BeaconAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBeaconAttachment(o[0]);
   checkBeaconAttachment(o[1]);
@@ -434,7 +488,7 @@ buildListBeaconAttachmentsResponse() {
   var o = new api.ListBeaconAttachmentsResponse();
   buildCounterListBeaconAttachmentsResponse++;
   if (buildCounterListBeaconAttachmentsResponse < 3) {
-    o.attachments = buildUnnamed3751();
+    o.attachments = buildUnnamed3592();
   }
   buildCounterListBeaconAttachmentsResponse--;
   return o;
@@ -443,19 +497,19 @@ buildListBeaconAttachmentsResponse() {
 checkListBeaconAttachmentsResponse(api.ListBeaconAttachmentsResponse o) {
   buildCounterListBeaconAttachmentsResponse++;
   if (buildCounterListBeaconAttachmentsResponse < 3) {
-    checkUnnamed3751(o.attachments);
+    checkUnnamed3592(o.attachments);
   }
   buildCounterListBeaconAttachmentsResponse--;
 }
 
-buildUnnamed3752() {
+buildUnnamed3593() {
   var o = new core.List<api.Beacon>();
   o.add(buildBeacon());
   o.add(buildBeacon());
   return o;
 }
 
-checkUnnamed3752(core.List<api.Beacon> o) {
+checkUnnamed3593(core.List<api.Beacon> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBeacon(o[0]);
   checkBeacon(o[1]);
@@ -466,7 +520,7 @@ buildListBeaconsResponse() {
   var o = new api.ListBeaconsResponse();
   buildCounterListBeaconsResponse++;
   if (buildCounterListBeaconsResponse < 3) {
-    o.beacons = buildUnnamed3752();
+    o.beacons = buildUnnamed3593();
     o.nextPageToken = "foo";
     o.totalCount = "foo";
   }
@@ -477,21 +531,21 @@ buildListBeaconsResponse() {
 checkListBeaconsResponse(api.ListBeaconsResponse o) {
   buildCounterListBeaconsResponse++;
   if (buildCounterListBeaconsResponse < 3) {
-    checkUnnamed3752(o.beacons);
+    checkUnnamed3593(o.beacons);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalCount, unittest.equals('foo'));
   }
   buildCounterListBeaconsResponse--;
 }
 
-buildUnnamed3753() {
+buildUnnamed3594() {
   var o = new core.List<api.Diagnostics>();
   o.add(buildDiagnostics());
   o.add(buildDiagnostics());
   return o;
 }
 
-checkUnnamed3753(core.List<api.Diagnostics> o) {
+checkUnnamed3594(core.List<api.Diagnostics> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDiagnostics(o[0]);
   checkDiagnostics(o[1]);
@@ -502,7 +556,7 @@ buildListDiagnosticsResponse() {
   var o = new api.ListDiagnosticsResponse();
   buildCounterListDiagnosticsResponse++;
   if (buildCounterListDiagnosticsResponse < 3) {
-    o.diagnostics = buildUnnamed3753();
+    o.diagnostics = buildUnnamed3594();
     o.nextPageToken = "foo";
   }
   buildCounterListDiagnosticsResponse--;
@@ -512,20 +566,20 @@ buildListDiagnosticsResponse() {
 checkListDiagnosticsResponse(api.ListDiagnosticsResponse o) {
   buildCounterListDiagnosticsResponse++;
   if (buildCounterListDiagnosticsResponse < 3) {
-    checkUnnamed3753(o.diagnostics);
+    checkUnnamed3594(o.diagnostics);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDiagnosticsResponse--;
 }
 
-buildUnnamed3754() {
+buildUnnamed3595() {
   var o = new core.List<api.Namespace>();
   o.add(buildNamespace());
   o.add(buildNamespace());
   return o;
 }
 
-checkUnnamed3754(core.List<api.Namespace> o) {
+checkUnnamed3595(core.List<api.Namespace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamespace(o[0]);
   checkNamespace(o[1]);
@@ -536,7 +590,7 @@ buildListNamespacesResponse() {
   var o = new api.ListNamespacesResponse();
   buildCounterListNamespacesResponse++;
   if (buildCounterListNamespacesResponse < 3) {
-    o.namespaces = buildUnnamed3754();
+    o.namespaces = buildUnnamed3595();
   }
   buildCounterListNamespacesResponse--;
   return o;
@@ -545,7 +599,7 @@ buildListNamespacesResponse() {
 checkListNamespacesResponse(api.ListNamespacesResponse o) {
   buildCounterListNamespacesResponse++;
   if (buildCounterListNamespacesResponse < 3) {
-    checkUnnamed3754(o.namespaces);
+    checkUnnamed3595(o.namespaces);
   }
   buildCounterListNamespacesResponse--;
 }
@@ -673,6 +727,24 @@ main() {
       var o = buildEmpty();
       var od = new api.Empty.fromJson(o.toJson());
       checkEmpty(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-EphemeralIdRegistration", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildEphemeralIdRegistration();
+      var od = new api.EphemeralIdRegistration.fromJson(o.toJson());
+      checkEphemeralIdRegistration(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-EphemeralIdRegistrationParams", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildEphemeralIdRegistrationParams();
+      var od = new api.EphemeralIdRegistrationParams.fromJson(o.toJson());
+      checkEphemeralIdRegistrationParams(od);
     });
   });
 
@@ -824,6 +896,7 @@ main() {
       var mock = new HttpServerMock();
       api.BeaconsResourceApi res = new api.ProximitybeaconApi(mock).beacons;
       var arg_beaconName = "foo";
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -851,6 +924,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -859,7 +933,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.activate(arg_beaconName).then(unittest.expectAsync(((api.Empty response) {
+      res.activate(arg_beaconName, projectId: arg_projectId).then(unittest.expectAsync(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -869,6 +943,7 @@ main() {
       var mock = new HttpServerMock();
       api.BeaconsResourceApi res = new api.ProximitybeaconApi(mock).beacons;
       var arg_beaconName = "foo";
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -896,6 +971,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -904,7 +980,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.deactivate(arg_beaconName).then(unittest.expectAsync(((api.Empty response) {
+      res.deactivate(arg_beaconName, projectId: arg_projectId).then(unittest.expectAsync(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -914,6 +990,7 @@ main() {
       var mock = new HttpServerMock();
       api.BeaconsResourceApi res = new api.ProximitybeaconApi(mock).beacons;
       var arg_beaconName = "foo";
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -941,6 +1018,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -949,7 +1027,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.decommission(arg_beaconName).then(unittest.expectAsync(((api.Empty response) {
+      res.decommission(arg_beaconName, projectId: arg_projectId).then(unittest.expectAsync(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -959,6 +1037,7 @@ main() {
       var mock = new HttpServerMock();
       api.BeaconsResourceApi res = new api.ProximitybeaconApi(mock).beacons;
       var arg_beaconName = "foo";
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -986,6 +1065,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -994,7 +1074,7 @@ main() {
         var resp = convert.JSON.encode(buildBeacon());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_beaconName).then(unittest.expectAsync(((api.Beacon response) {
+      res.get(arg_beaconName, projectId: arg_projectId).then(unittest.expectAsync(((api.Beacon response) {
         checkBeacon(response);
       })));
     });
@@ -1006,6 +1086,7 @@ main() {
       var arg_q = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1035,6 +1116,7 @@ main() {
         unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -1043,7 +1125,7 @@ main() {
         var resp = convert.JSON.encode(buildListBeaconsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(q: arg_q, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListBeaconsResponse response) {
+      res.list(q: arg_q, pageToken: arg_pageToken, pageSize: arg_pageSize, projectId: arg_projectId).then(unittest.expectAsync(((api.ListBeaconsResponse response) {
         checkListBeaconsResponse(response);
       })));
     });
@@ -1053,6 +1135,7 @@ main() {
       var mock = new HttpServerMock();
       api.BeaconsResourceApi res = new api.ProximitybeaconApi(mock).beacons;
       var arg_request = buildBeacon();
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var obj = new api.Beacon.fromJson(json);
         checkBeacon(obj);
@@ -1082,6 +1165,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -1090,7 +1174,7 @@ main() {
         var resp = convert.JSON.encode(buildBeacon());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.register(arg_request).then(unittest.expectAsync(((api.Beacon response) {
+      res.register(arg_request, projectId: arg_projectId).then(unittest.expectAsync(((api.Beacon response) {
         checkBeacon(response);
       })));
     });
@@ -1101,6 +1185,7 @@ main() {
       api.BeaconsResourceApi res = new api.ProximitybeaconApi(mock).beacons;
       var arg_request = buildBeacon();
       var arg_beaconName = "foo";
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var obj = new api.Beacon.fromJson(json);
         checkBeacon(obj);
@@ -1131,6 +1216,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -1139,7 +1225,7 @@ main() {
         var resp = convert.JSON.encode(buildBeacon());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_beaconName).then(unittest.expectAsync(((api.Beacon response) {
+      res.update(arg_request, arg_beaconName, projectId: arg_projectId).then(unittest.expectAsync(((api.Beacon response) {
         checkBeacon(response);
       })));
     });
@@ -1154,6 +1240,7 @@ main() {
       api.BeaconsAttachmentsResourceApi res = new api.ProximitybeaconApi(mock).beacons.attachments;
       var arg_beaconName = "foo";
       var arg_namespacedType = "foo";
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1182,6 +1269,7 @@ main() {
           }
         }
         unittest.expect(queryMap["namespacedType"].first, unittest.equals(arg_namespacedType));
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -1190,7 +1278,7 @@ main() {
         var resp = convert.JSON.encode(buildDeleteAttachmentsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.batchDelete(arg_beaconName, namespacedType: arg_namespacedType).then(unittest.expectAsync(((api.DeleteAttachmentsResponse response) {
+      res.batchDelete(arg_beaconName, namespacedType: arg_namespacedType, projectId: arg_projectId).then(unittest.expectAsync(((api.DeleteAttachmentsResponse response) {
         checkDeleteAttachmentsResponse(response);
       })));
     });
@@ -1201,6 +1289,7 @@ main() {
       api.BeaconsAttachmentsResourceApi res = new api.ProximitybeaconApi(mock).beacons.attachments;
       var arg_request = buildBeaconAttachment();
       var arg_beaconName = "foo";
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var obj = new api.BeaconAttachment.fromJson(json);
         checkBeaconAttachment(obj);
@@ -1231,6 +1320,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -1239,7 +1329,7 @@ main() {
         var resp = convert.JSON.encode(buildBeaconAttachment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_beaconName).then(unittest.expectAsync(((api.BeaconAttachment response) {
+      res.create(arg_request, arg_beaconName, projectId: arg_projectId).then(unittest.expectAsync(((api.BeaconAttachment response) {
         checkBeaconAttachment(response);
       })));
     });
@@ -1249,6 +1339,7 @@ main() {
       var mock = new HttpServerMock();
       api.BeaconsAttachmentsResourceApi res = new api.ProximitybeaconApi(mock).beacons.attachments;
       var arg_attachmentName = "foo";
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1276,6 +1367,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -1284,7 +1376,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_attachmentName).then(unittest.expectAsync(((api.Empty response) {
+      res.delete(arg_attachmentName, projectId: arg_projectId).then(unittest.expectAsync(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -1295,6 +1387,7 @@ main() {
       api.BeaconsAttachmentsResourceApi res = new api.ProximitybeaconApi(mock).beacons.attachments;
       var arg_beaconName = "foo";
       var arg_namespacedType = "foo";
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1323,6 +1416,7 @@ main() {
           }
         }
         unittest.expect(queryMap["namespacedType"].first, unittest.equals(arg_namespacedType));
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -1331,7 +1425,7 @@ main() {
         var resp = convert.JSON.encode(buildListBeaconAttachmentsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_beaconName, namespacedType: arg_namespacedType).then(unittest.expectAsync(((api.ListBeaconAttachmentsResponse response) {
+      res.list(arg_beaconName, namespacedType: arg_namespacedType, projectId: arg_projectId).then(unittest.expectAsync(((api.ListBeaconAttachmentsResponse response) {
         checkListBeaconAttachmentsResponse(response);
       })));
     });
@@ -1348,6 +1442,7 @@ main() {
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
       var arg_alertFilter = "foo";
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1378,6 +1473,7 @@ main() {
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["alertFilter"].first, unittest.equals(arg_alertFilter));
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -1386,7 +1482,7 @@ main() {
         var resp = convert.JSON.encode(buildListDiagnosticsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_beaconName, pageSize: arg_pageSize, pageToken: arg_pageToken, alertFilter: arg_alertFilter).then(unittest.expectAsync(((api.ListDiagnosticsResponse response) {
+      res.list(arg_beaconName, pageSize: arg_pageSize, pageToken: arg_pageToken, alertFilter: arg_alertFilter, projectId: arg_projectId).then(unittest.expectAsync(((api.ListDiagnosticsResponse response) {
         checkListDiagnosticsResponse(response);
       })));
     });
@@ -1399,6 +1495,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.NamespacesResourceApi res = new api.ProximitybeaconApi(mock).namespaces;
+      var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1425,6 +1522,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
         var h = {
@@ -1433,8 +1531,106 @@ main() {
         var resp = convert.JSON.encode(buildListNamespacesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list().then(unittest.expectAsync(((api.ListNamespacesResponse response) {
+      res.list(projectId: arg_projectId).then(unittest.expectAsync(((api.ListNamespacesResponse response) {
         checkListNamespacesResponse(response);
+      })));
+    });
+
+    unittest.test("method--update", () {
+
+      var mock = new HttpServerMock();
+      api.NamespacesResourceApi res = new api.ProximitybeaconApi(mock).namespaces;
+      var arg_request = buildNamespace();
+      var arg_namespaceName = "foo";
+      var arg_projectId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.Namespace.fromJson(json);
+        checkNamespace(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildNamespace());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.update(arg_request, arg_namespaceName, projectId: arg_projectId).then(unittest.expectAsync(((api.Namespace response) {
+        checkNamespace(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-V1beta1ResourceApi", () {
+    unittest.test("method--getEidparams", () {
+
+      var mock = new HttpServerMock();
+      api.V1beta1ResourceApi res = new api.ProximitybeaconApi(mock).v1beta1;
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("v1beta1/eidparams"));
+        pathOffset += 17;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildEphemeralIdRegistrationParams());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getEidparams().then(unittest.expectAsync(((api.EphemeralIdRegistrationParams response) {
+        checkEphemeralIdRegistrationParams(response);
       })));
     });
 

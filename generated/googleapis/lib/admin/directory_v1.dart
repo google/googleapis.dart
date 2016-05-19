@@ -5000,8 +5000,13 @@ class Alias {
 
 /** JSON response template to list aliases in Directory API. */
 class Aliases {
-  /** List of alias objects. */
-  core.List<Alias> aliases;
+  /**
+   * List of alias objects.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.List<core.Object> aliases;
   /** ETag of the resource. */
   core.String etag;
   /** Kind of resource this is. */
@@ -5011,7 +5016,7 @@ class Aliases {
 
   Aliases.fromJson(core.Map _json) {
     if (_json.containsKey("aliases")) {
-      aliases = _json["aliases"].map((value) => new Alias.fromJson(value)).toList();
+      aliases = _json["aliases"];
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -5024,7 +5029,7 @@ class Aliases {
   core.Map toJson() {
     var _json = new core.Map();
     if (aliases != null) {
-      _json["aliases"] = aliases.map((value) => (value).toJson()).toList();
+      _json["aliases"] = aliases;
     }
     if (etag != null) {
       _json["etag"] = etag;

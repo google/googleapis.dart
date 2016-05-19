@@ -14,9 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client plus/v1';
 
-/**
- * The Google+ API enables developers to build on top of the Google+ platform.
- */
+/** Builds on top of the Google+ platform. */
 class PlusApi {
   /** Know the list of people in your circles, your age range, and language */
   static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";

@@ -15,10 +15,10 @@
     "baseUrl": "https://youtubereporting.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "YouTube Reporting",
-    "description": "Schedules reporting jobs and downloads the resulting bulk data reports about YouTube channels, videos, etc. in the form of CSV files.",
+    "description": "Schedules reporting jobs containing your YouTube Analytics data and downloads the resulting bulk data reports in the form of CSV files.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/reporting/v1/reports/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/PjLZQF4Yt7k9ikkM9nXH9v8qskY\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/rGt7cps_AzBks09MaEuVrcIRQ_o\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -120,7 +120,7 @@
                     ],
                     "parameters": {
                         "resourceName": {
-                            "description": "Name of the media that is being downloaded. See ByteStream.ReadRequest.resource_name.",
+                            "description": "Name of the media that is being downloaded. See ReadRequest.resource_name.",
                             "location": "path",
                             "pattern": "^.*$",
                             "required": true,
@@ -398,7 +398,7 @@
             }
         }
     },
-    "revision": "20160419",
+    "revision": "20160517",
     "rootUrl": "https://youtubereporting.googleapis.com/",
     "schemas": {
         "Media": {
@@ -442,6 +442,10 @@
                     "description": "The name of the report type (max. 100 characters).",
                     "type": "string"
                 },
+                "deprecateTime": {
+                    "description": "The date/time when this report type was/will be deprecated.",
+                    "type": "string"
+                },
                 "systemManaged": {
                     "description": "True if this a system-managed report type; otherwise false. Reporting jobs for system-managed report types are created automatically and can thus not be used in the `CreateJob` method.",
                     "type": "boolean"
@@ -467,6 +471,10 @@
                 },
                 "createTime": {
                     "description": "The creation date/time of the job.",
+                    "type": "string"
+                },
+                "expireTime": {
+                    "description": "The date/time when this job will expire/expired. After a job expired, no new reports are generated.",
                     "type": "string"
                 },
                 "systemManaged": {
@@ -527,6 +535,10 @@
                 },
                 "jobId": {
                     "description": "The ID of the job that created this report.",
+                    "type": "string"
+                },
+                "jobExpireTime": {
+                    "description": "The date/time when the job this report belongs to will expire/expired.",
                     "type": "string"
                 },
                 "startTime": {

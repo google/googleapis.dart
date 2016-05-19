@@ -28,6 +28,7 @@ class AndroidpublisherApi {
   EntitlementsResourceApi get entitlements => new EntitlementsResourceApi(_requester);
   InappproductsResourceApi get inappproducts => new InappproductsResourceApi(_requester);
   PurchasesResourceApi get purchases => new PurchasesResourceApi(_requester);
+  ReviewsResourceApi get reviews => new ReviewsResourceApi(_requester);
 
   AndroidpublisherApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "androidpublisher/v2/applications/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -3039,6 +3040,165 @@ class PurchasesSubscriptionsResourceApi {
 }
 
 
+class ReviewsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ReviewsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns a single review.
+   *
+   * Request parameters:
+   *
+   * [packageName] - Unique identifier for the Android app for which we want
+   * reviews; for example, "com.spiffygame".
+   *
+   * [reviewId] - null
+   *
+   * Completes with a [Review].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Review> get(core.String packageName, core.String reviewId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (reviewId == null) {
+      throw new core.ArgumentError("Parameter reviewId is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/reviews/' + commons.Escaper.ecapeVariable('$reviewId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Review.fromJson(data));
+  }
+
+  /**
+   * Returns a list of reviews.
+   *
+   * Request parameters:
+   *
+   * [packageName] - Unique identifier for the Android app for which we want
+   * reviews; for example, "com.spiffygame".
+   *
+   * [maxResults] - null
+   *
+   * [startIndex] - null
+   *
+   * [token] - null
+   *
+   * Completes with a [ReviewsListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ReviewsListResponse> list(core.String packageName, {core.int maxResults, core.int startIndex, core.String token}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if (token != null) {
+      _queryParams["token"] = [token];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/reviews';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ReviewsListResponse.fromJson(data));
+  }
+
+  /**
+   * Reply to a single review, or update an existing reply.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [packageName] - Unique identifier for the Android app for which we want
+   * reviews; for example, "com.spiffygame".
+   *
+   * [reviewId] - null
+   *
+   * Completes with a [ReviewsReplyResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ReviewsReplyResponse> reply(ReviewsReplyRequest request, core.String packageName, core.String reviewId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (reviewId == null) {
+      throw new core.ArgumentError("Parameter reviewId is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/reviews/' + commons.Escaper.ecapeVariable('$reviewId') + ':reply';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ReviewsReplyResponse.fromJson(data));
+  }
+
+}
+
+
 
 class Apk {
   /** Information about the binary payload of this APK. */
@@ -3303,6 +3463,64 @@ class AppEdit {
     }
     if (id != null) {
       _json["id"] = id;
+    }
+    return _json;
+  }
+}
+
+class Comment {
+  /** A comment from a developer. */
+  DeveloperComment developerComment;
+  /** A comment from a user. */
+  UserComment userComment;
+
+  Comment();
+
+  Comment.fromJson(core.Map _json) {
+    if (_json.containsKey("developerComment")) {
+      developerComment = new DeveloperComment.fromJson(_json["developerComment"]);
+    }
+    if (_json.containsKey("userComment")) {
+      userComment = new UserComment.fromJson(_json["userComment"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (developerComment != null) {
+      _json["developerComment"] = (developerComment).toJson();
+    }
+    if (userComment != null) {
+      _json["userComment"] = (userComment).toJson();
+    }
+    return _json;
+  }
+}
+
+class DeveloperComment {
+  /** The last time at which this comment was updated. */
+  Timestamp lastModified;
+  /** The content of the comment, i.e. reply body. */
+  core.String text;
+
+  DeveloperComment();
+
+  DeveloperComment.fromJson(core.Map _json) {
+    if (_json.containsKey("lastModified")) {
+      lastModified = new Timestamp.fromJson(_json["lastModified"]);
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (lastModified != null) {
+      _json["lastModified"] = (lastModified).toJson();
+    }
+    if (text != null) {
+      _json["text"] = text;
     }
     return _json;
   }
@@ -4423,6 +4641,150 @@ class Prorate {
   }
 }
 
+class Review {
+  /** The name of the user who wrote the review. */
+  core.String authorName;
+  /** A repeated field containing comments for the review. */
+  core.List<Comment> comments;
+  /** Unique identifier for this review. */
+  core.String reviewId;
+
+  Review();
+
+  Review.fromJson(core.Map _json) {
+    if (_json.containsKey("authorName")) {
+      authorName = _json["authorName"];
+    }
+    if (_json.containsKey("comments")) {
+      comments = _json["comments"].map((value) => new Comment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("reviewId")) {
+      reviewId = _json["reviewId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (authorName != null) {
+      _json["authorName"] = authorName;
+    }
+    if (comments != null) {
+      _json["comments"] = comments.map((value) => (value).toJson()).toList();
+    }
+    if (reviewId != null) {
+      _json["reviewId"] = reviewId;
+    }
+    return _json;
+  }
+}
+
+class ReviewReplyResult {
+  /** The time at which the reply took effect. */
+  Timestamp lastEdited;
+  /** The reply text that was applied. */
+  core.String replyText;
+
+  ReviewReplyResult();
+
+  ReviewReplyResult.fromJson(core.Map _json) {
+    if (_json.containsKey("lastEdited")) {
+      lastEdited = new Timestamp.fromJson(_json["lastEdited"]);
+    }
+    if (_json.containsKey("replyText")) {
+      replyText = _json["replyText"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (lastEdited != null) {
+      _json["lastEdited"] = (lastEdited).toJson();
+    }
+    if (replyText != null) {
+      _json["replyText"] = replyText;
+    }
+    return _json;
+  }
+}
+
+class ReviewsListResponse {
+  PageInfo pageInfo;
+  core.List<Review> reviews;
+  TokenPagination tokenPagination;
+
+  ReviewsListResponse();
+
+  ReviewsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("reviews")) {
+      reviews = _json["reviews"].map((value) => new Review.fromJson(value)).toList();
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (reviews != null) {
+      _json["reviews"] = reviews.map((value) => (value).toJson()).toList();
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    return _json;
+  }
+}
+
+class ReviewsReplyRequest {
+  /**
+   * The text to set as the reply. Replies of more than approximately 350
+   * characters will be rejected. HTML tags will be stripped.
+   */
+  core.String replyText;
+
+  ReviewsReplyRequest();
+
+  ReviewsReplyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("replyText")) {
+      replyText = _json["replyText"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (replyText != null) {
+      _json["replyText"] = replyText;
+    }
+    return _json;
+  }
+}
+
+class ReviewsReplyResponse {
+  ReviewReplyResult result;
+
+  ReviewsReplyResponse();
+
+  ReviewsReplyResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("result")) {
+      result = new ReviewReplyResult.fromJson(_json["result"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (result != null) {
+      _json["result"] = (result).toJson();
+    }
+    return _json;
+  }
+}
+
 class Season {
   /** Inclusive end date of the recurrence period. */
   MonthDay end;
@@ -4711,6 +5073,33 @@ class Testers {
   }
 }
 
+class Timestamp {
+  core.int nanos;
+  core.String seconds;
+
+  Timestamp();
+
+  Timestamp.fromJson(core.Map _json) {
+    if (_json.containsKey("nanos")) {
+      nanos = _json["nanos"];
+    }
+    if (_json.containsKey("seconds")) {
+      seconds = _json["seconds"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nanos != null) {
+      _json["nanos"] = nanos;
+    }
+    if (seconds != null) {
+      _json["seconds"] = seconds;
+    }
+    return _json;
+  }
+}
+
 class TokenPagination {
   core.String nextPageToken;
   core.String previousPageToken;
@@ -4798,6 +5187,102 @@ class TracksListResponse {
     }
     if (tracks != null) {
       _json["tracks"] = tracks.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class UserComment {
+  /**
+   * Integer Android SDK version of the user's device at the time the review was
+   * written, e.g. 23 is Marshmallow. May be absent.
+   */
+  core.int androidOsVersion;
+  /**
+   * Integer version code of the app as installed at the time the review was
+   * written. May be absent.
+   */
+  core.int appVersionCode;
+  /**
+   * String version name of the app as installed at the time the review was
+   * written. May be absent.
+   */
+  core.String appVersionName;
+  /**
+   * Codename for the reviewer's device, e.g. klte, flounder. May be absent.
+   */
+  core.String device;
+  /** The last time at which this comment was updated. */
+  Timestamp lastModified;
+  /**
+   * Language code for the reviewer. This is taken from the device settings so
+   * is not guaranteed to match the language the review is written in. May be
+   * absent.
+   */
+  core.String reviewerLanguage;
+  /** The star rating associated with the review, from 1 to 5. */
+  core.int starRating;
+  /**
+   * The content of the comment, i.e. review body. In some cases users have been
+   * able to write a review with separate title and body; in those cases the
+   * title and body are concatenated and separated by a tab character.
+   */
+  core.String text;
+
+  UserComment();
+
+  UserComment.fromJson(core.Map _json) {
+    if (_json.containsKey("androidOsVersion")) {
+      androidOsVersion = _json["androidOsVersion"];
+    }
+    if (_json.containsKey("appVersionCode")) {
+      appVersionCode = _json["appVersionCode"];
+    }
+    if (_json.containsKey("appVersionName")) {
+      appVersionName = _json["appVersionName"];
+    }
+    if (_json.containsKey("device")) {
+      device = _json["device"];
+    }
+    if (_json.containsKey("lastModified")) {
+      lastModified = new Timestamp.fromJson(_json["lastModified"]);
+    }
+    if (_json.containsKey("reviewerLanguage")) {
+      reviewerLanguage = _json["reviewerLanguage"];
+    }
+    if (_json.containsKey("starRating")) {
+      starRating = _json["starRating"];
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (androidOsVersion != null) {
+      _json["androidOsVersion"] = androidOsVersion;
+    }
+    if (appVersionCode != null) {
+      _json["appVersionCode"] = appVersionCode;
+    }
+    if (appVersionName != null) {
+      _json["appVersionName"] = appVersionName;
+    }
+    if (device != null) {
+      _json["device"] = device;
+    }
+    if (lastModified != null) {
+      _json["lastModified"] = (lastModified).toJson();
+    }
+    if (reviewerLanguage != null) {
+      _json["reviewerLanguage"] = reviewerLanguage;
+    }
+    if (starRating != null) {
+      _json["starRating"] = starRating;
+    }
+    if (text != null) {
+      _json["text"] = text;
     }
     return _json;
   }

@@ -26,7 +26,7 @@
     "description": "Stores, processes, explores and shares genomic data. This API implements the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/genomics/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/gQcJ-31QZ59p9hDE42NqcP-jWiA\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/nUP8gfH34Zgaw6K-Atd0SlS3vwE\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1400,7 +1400,7 @@
                             "type": "string"
                         },
                         "updateMask": {
-                            "description": "An optional mask specifying which fields to update. Supported fields: * metadata. Leaving `updateMask` unset is equivalent to specifying all mutable fields.",
+                            "description": "An optional mask specifying which fields to update. Supported fields: * metadata. * name. * description. Leaving `updateMask` unset is equivalent to specifying all mutable fields.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1538,7 +1538,7 @@
             }
         }
     },
-    "revision": "20160420",
+    "revision": "20160517",
     "rootUrl": "https://genomics.googleapis.com/",
     "schemas": {
         "AnnotationSet": {
@@ -3081,6 +3081,14 @@
                         "$ref": "VariantSetMetadata"
                     },
                     "type": "array"
+                },
+                "name": {
+                    "description": "User-specified, mutable name.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "A textual description of this variant set.",
+                    "type": "string"
                 }
             },
             "type": "object"

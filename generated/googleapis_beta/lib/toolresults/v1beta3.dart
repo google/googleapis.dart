@@ -1180,7 +1180,8 @@ class Any {
    *
    * * If no schema is provided, `https` is assumed. * The last segment of the
    * URL's path must represent the fully qualified name of the type (as in
-   * `path/google.protobuf.Duration`). * An HTTP GET on the URL must yield a
+   * `path/google.protobuf.Duration`). The name should be in a canonical form
+   * (e.g., leading "." is not accepted). * An HTTP GET on the URL must yield a
    * [google.protobuf.Type][] value in binary format, or produce an error. *
    * Applications are allowed to cache lookup results based on the URL, or have
    * them precompiled into a binary to avoid any lookup. Therefore, binary
@@ -1425,6 +1426,11 @@ class FailureDetail {
   core.bool otherNativeCrash;
   /** If the test overran some time limit, and that is why it failed. */
   core.bool timedOut;
+  /**
+   * If the robo was unable to crawl the app; perhaps because the app did not
+   * start.
+   */
+  core.bool unableToCrawl;
 
   FailureDetail();
 
@@ -1441,6 +1447,9 @@ class FailureDetail {
     if (_json.containsKey("timedOut")) {
       timedOut = _json["timedOut"];
     }
+    if (_json.containsKey("unableToCrawl")) {
+      unableToCrawl = _json["unableToCrawl"];
+    }
   }
 
   core.Map toJson() {
@@ -1456,6 +1465,9 @@ class FailureDetail {
     }
     if (timedOut != null) {
       _json["timedOut"] = timedOut;
+    }
+    if (unableToCrawl != null) {
+      _json["unableToCrawl"] = unableToCrawl;
     }
     return _json;
   }

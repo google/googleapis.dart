@@ -51,14 +51,33 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3708() {
+core.int buildCounterAncestor = 0;
+buildAncestor() {
+  var o = new api.Ancestor();
+  buildCounterAncestor++;
+  if (buildCounterAncestor < 3) {
+    o.resourceId = buildResourceId();
+  }
+  buildCounterAncestor--;
+  return o;
+}
+
+checkAncestor(api.Ancestor o) {
+  buildCounterAncestor++;
+  if (buildCounterAncestor < 3) {
+    checkResourceId(o.resourceId);
+  }
+  buildCounterAncestor--;
+}
+
+buildUnnamed3036() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3708(core.List<core.String> o) {
+checkUnnamed3036(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,7 +88,7 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.members = buildUnnamed3708();
+    o.members = buildUnnamed3036();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -79,7 +98,7 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkUnnamed3708(o.members);
+    checkUnnamed3036(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -102,6 +121,55 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterGetAncestryRequest = 0;
+buildGetAncestryRequest() {
+  var o = new api.GetAncestryRequest();
+  buildCounterGetAncestryRequest++;
+  if (buildCounterGetAncestryRequest < 3) {
+  }
+  buildCounterGetAncestryRequest--;
+  return o;
+}
+
+checkGetAncestryRequest(api.GetAncestryRequest o) {
+  buildCounterGetAncestryRequest++;
+  if (buildCounterGetAncestryRequest < 3) {
+  }
+  buildCounterGetAncestryRequest--;
+}
+
+buildUnnamed3037() {
+  var o = new core.List<api.Ancestor>();
+  o.add(buildAncestor());
+  o.add(buildAncestor());
+  return o;
+}
+
+checkUnnamed3037(core.List<api.Ancestor> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAncestor(o[0]);
+  checkAncestor(o[1]);
+}
+
+core.int buildCounterGetAncestryResponse = 0;
+buildGetAncestryResponse() {
+  var o = new api.GetAncestryResponse();
+  buildCounterGetAncestryResponse++;
+  if (buildCounterGetAncestryResponse < 3) {
+    o.ancestor = buildUnnamed3037();
+  }
+  buildCounterGetAncestryResponse--;
+  return o;
+}
+
+checkGetAncestryResponse(api.GetAncestryResponse o) {
+  buildCounterGetAncestryResponse++;
+  if (buildCounterGetAncestryResponse < 3) {
+    checkUnnamed3037(o.ancestor);
+  }
+  buildCounterGetAncestryResponse--;
+}
+
 core.int buildCounterGetIamPolicyRequest = 0;
 buildGetIamPolicyRequest() {
   var o = new api.GetIamPolicyRequest();
@@ -119,14 +187,14 @@ checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest--;
 }
 
-buildUnnamed3709() {
+buildUnnamed3038() {
   var o = new core.List<api.Organization>();
   o.add(buildOrganization());
   o.add(buildOrganization());
   return o;
 }
 
-checkUnnamed3709(core.List<api.Organization> o) {
+checkUnnamed3038(core.List<api.Organization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrganization(o[0]);
   checkOrganization(o[1]);
@@ -138,7 +206,7 @@ buildListOrganizationsResponse() {
   buildCounterListOrganizationsResponse++;
   if (buildCounterListOrganizationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.organizations = buildUnnamed3709();
+    o.organizations = buildUnnamed3038();
   }
   buildCounterListOrganizationsResponse--;
   return o;
@@ -148,19 +216,19 @@ checkListOrganizationsResponse(api.ListOrganizationsResponse o) {
   buildCounterListOrganizationsResponse++;
   if (buildCounterListOrganizationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3709(o.organizations);
+    checkUnnamed3038(o.organizations);
   }
   buildCounterListOrganizationsResponse--;
 }
 
-buildUnnamed3710() {
+buildUnnamed3039() {
   var o = new core.List<api.Project>();
   o.add(buildProject());
   o.add(buildProject());
   return o;
 }
 
-checkUnnamed3710(core.List<api.Project> o) {
+checkUnnamed3039(core.List<api.Project> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProject(o[0]);
   checkProject(o[1]);
@@ -172,7 +240,7 @@ buildListProjectsResponse() {
   buildCounterListProjectsResponse++;
   if (buildCounterListProjectsResponse < 3) {
     o.nextPageToken = "foo";
-    o.projects = buildUnnamed3710();
+    o.projects = buildUnnamed3039();
   }
   buildCounterListProjectsResponse--;
   return o;
@@ -182,7 +250,7 @@ checkListProjectsResponse(api.ListProjectsResponse o) {
   buildCounterListProjectsResponse++;
   if (buildCounterListProjectsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3710(o.projects);
+    checkUnnamed3039(o.projects);
   }
   buildCounterListProjectsResponse--;
 }
@@ -231,14 +299,14 @@ checkOrganizationOwner(api.OrganizationOwner o) {
   buildCounterOrganizationOwner--;
 }
 
-buildUnnamed3711() {
+buildUnnamed3040() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed3711(core.List<api.Binding> o) {
+checkUnnamed3040(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -249,7 +317,7 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed3711();
+    o.bindings = buildUnnamed3040();
     o.etag = "foo";
     o.version = 42;
   }
@@ -260,21 +328,21 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed3711(o.bindings);
+    checkUnnamed3040(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterPolicy--;
 }
 
-buildUnnamed3712() {
+buildUnnamed3041() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3712(core.Map<core.String, core.String> o) {
+checkUnnamed3041(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -286,7 +354,7 @@ buildProject() {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     o.createTime = "foo";
-    o.labels = buildUnnamed3712();
+    o.labels = buildUnnamed3041();
     o.lifecycleState = "foo";
     o.name = "foo";
     o.parent = buildResourceId();
@@ -301,7 +369,7 @@ checkProject(api.Project o) {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUnnamed3712(o.labels);
+    checkUnnamed3041(o.labels);
     unittest.expect(o.lifecycleState, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkResourceId(o.parent);
@@ -351,14 +419,14 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed3713() {
+buildUnnamed3042() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3713(core.List<core.String> o) {
+checkUnnamed3042(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -369,7 +437,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed3713();
+    o.permissions = buildUnnamed3042();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -378,19 +446,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed3713(o.permissions);
+    checkUnnamed3042(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed3714() {
+buildUnnamed3043() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3714(core.List<core.String> o) {
+checkUnnamed3043(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -401,7 +469,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed3714();
+    o.permissions = buildUnnamed3043();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -410,7 +478,7 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed3714(o.permissions);
+    checkUnnamed3043(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -434,6 +502,15 @@ checkUndeleteProjectRequest(api.UndeleteProjectRequest o) {
 
 
 main() {
+  unittest.group("obj-schema-Ancestor", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAncestor();
+      var od = new api.Ancestor.fromJson(o.toJson());
+      checkAncestor(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Binding", () {
     unittest.test("to-json--from-json", () {
       var o = buildBinding();
@@ -448,6 +525,24 @@ main() {
       var o = buildEmpty();
       var od = new api.Empty.fromJson(o.toJson());
       checkEmpty(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-GetAncestryRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGetAncestryRequest();
+      var od = new api.GetAncestryRequest.fromJson(o.toJson());
+      checkGetAncestryRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-GetAncestryResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGetAncestryResponse();
+      var od = new api.GetAncestryResponse.fromJson(o.toJson());
+      checkGetAncestryResponse(od);
     });
   });
 
@@ -1015,6 +1110,61 @@ main() {
       }), true);
       res.get(arg_projectId).then(unittest.expectAsync(((api.Project response) {
         checkProject(response);
+      })));
+    });
+
+    unittest.test("method--getAncestry", () {
+
+      var mock = new HttpServerMock();
+      api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
+      var arg_request = buildGetAncestryRequest();
+      var arg_projectId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.GetAncestryRequest.fromJson(json);
+        checkGetAncestryRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("v1beta1/projects/"));
+        pathOffset += 17;
+        index = path.indexOf(":getAncestry", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals(":getAncestry"));
+        pathOffset += 12;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildGetAncestryResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getAncestry(arg_request, arg_projectId).then(unittest.expectAsync(((api.GetAncestryResponse response) {
+        checkGetAncestryResponse(response);
       })));
     });
 

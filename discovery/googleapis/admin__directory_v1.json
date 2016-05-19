@@ -93,7 +93,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Bj5fQ_zHjihg0GNq6kcI72CKzds\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/rR5KtGkUMGICtJVpSsF4OCZZlC4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -3431,7 +3431,7 @@
                 "aliases": {
                     "description": "List of alias objects.",
                     "items": {
-                        "$ref": "Alias"
+                        "type": "any"
                     },
                     "type": "array"
                 },

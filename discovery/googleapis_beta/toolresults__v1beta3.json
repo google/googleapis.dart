@@ -15,7 +15,7 @@
     "description": "Reads and publishes results from Cloud Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-test-lab/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/cueCVchmDcWiAh-j0Y1sObtuvmw\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/RsF57fIuZD9HY9zPBz1xpPbx00w\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20160421",
+    "revision": "20160517",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Any": {
@@ -707,7 +707,7 @@
             "id": "Any",
             "properties": {
                 "typeUrl": {
-                    "description": "A URL/resource name whose content describes the type of the serialized protocol buffer message.\n\nFor URLs which use the schema `http`, `https`, or no schema, the following restrictions and interpretations apply:\n\n* If no schema is provided, `https` is assumed. * The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). * An HTTP GET on the URL must yield a [google.protobuf.Type][] value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.)\n\nSchemas other than `http`, `https` (or the empty schema) might be used with implementation specific semantics.",
+                    "description": "A URL/resource name whose content describes the type of the serialized protocol buffer message.\n\nFor URLs which use the schema `http`, `https`, or no schema, the following restrictions and interpretations apply:\n\n* If no schema is provided, `https` is assumed. * The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading \".\" is not accepted). * An HTTP GET on the URL must yield a [google.protobuf.Type][] value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.)\n\nSchemas other than `http`, `https` (or the empty schema) might be used with implementation specific semantics.",
                     "type": "string"
                 },
                 "value": {
@@ -795,6 +795,10 @@
                 },
                 "timedOut": {
                     "description": "If the test overran some time limit, and that is why it failed.",
+                    "type": "boolean"
+                },
+                "unableToCrawl": {
+                    "description": "If the robo was unable to crawl the app; perhaps because the app did not start.",
                     "type": "boolean"
                 }
             },

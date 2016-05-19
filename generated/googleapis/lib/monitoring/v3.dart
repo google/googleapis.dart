@@ -15,8 +15,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client monitoring/v3';
 
 /**
- * The Google Monitoring API lets you manage your monitoring data and
- * configurations.
+ * Manages your Stackdriver monitoring data and configurations. Projects must be
+ * associated with a Stackdriver account, except for the following methods:
+ * [monitoredResourceDescriptors.list](v3/projects.monitoredResourceDescriptors/list),
+ * [monitoredResourceDescriptors.get](v3/projects.monitoredResourceDescriptors/get),
+ * [metricDescriptors.list](v3/projects.metricDescriptors/list),
+ * [metricDescriptors.get](v3/projects.metricDescriptors/get), and
+ * [timeSeries.list](v3/projects.timeSeries/list).
  */
 class MonitoringApi {
   /** View and manage your data across Google Cloud Platform services */
@@ -429,10 +434,10 @@ class ProjectsGroupsMembersResourceApi {
    * example, to return only resources representing Compute Engine VM instances,
    * use this filter: resource.type = "gce_instance"
    *
-   * [interval_endTime] - (required) The end of the interval. The interval
+   * [interval_endTime] - Required. The end of the interval. The interval
    * includes this time.
    *
-   * [interval_startTime] - (optional) If omitted, the interval is a point in
+   * [interval_startTime] - If this value is omitted, the interval is a point in
    * time, `endTime`. If `startTime` is present, it must be earlier than (less
    * than) `endTime`. The interval begins after `startTime`—it does not include
    * `startTime`.
@@ -584,7 +589,8 @@ class ProjectsMetricDescriptorsResourceApi {
   }
 
   /**
-   * Gets a single metric descriptor.
+   * Gets a single metric descriptor. This method does not require a Stackdriver
+   * account.
    *
    * Request parameters:
    *
@@ -627,7 +633,8 @@ class ProjectsMetricDescriptorsResourceApi {
   }
 
   /**
-   * Lists metric descriptors that match a filter.
+   * Lists metric descriptors that match a filter. This method does not require
+   * a Stackdriver account.
    *
    * Request parameters:
    *
@@ -701,7 +708,8 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
       _requester = client;
 
   /**
-   * Gets a single monitored resource descriptor.
+   * Gets a single monitored resource descriptor. This method does not require a
+   * Stackdriver account.
    *
    * Request parameters:
    *
@@ -744,7 +752,8 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   }
 
   /**
-   * Lists monitored resource descriptors that match a filter.
+   * Lists monitored resource descriptors that match a filter. This method does
+   * not require a Stackdriver account.
    *
    * Request parameters:
    *
@@ -866,7 +875,8 @@ class ProjectsTimeSeriesResourceApi {
   }
 
   /**
-   * Lists time series that match a filter.
+   * Lists time series that match a filter. This method does not require a
+   * Stackdriver account.
    *
    * Request parameters:
    *
@@ -881,10 +891,10 @@ class ProjectsTimeSeriesResourceApi {
    * "compute.googleapis.com/instance/cpu/usage_time" AND
    * metric.label.instance_name = "my-instance-name"
    *
-   * [interval_endTime] - (required) The end of the interval. The interval
+   * [interval_endTime] - Required. The end of the interval. The interval
    * includes this time.
    *
-   * [interval_startTime] - (optional) If omitted, the interval is a point in
+   * [interval_startTime] - If this value is omitted, the interval is a point in
    * time, `endTime`. If `startTime` is present, it must be earlier than (less
    * than) `endTime`. The interval begins after `startTime`—it does not include
    * `startTime`.
@@ -2434,10 +2444,10 @@ class SourceContext {
  * `startTime` is omitted, the interval is the single point in time, `endTime`.
  */
 class TimeInterval {
-  /** (required) The end of the interval. The interval includes this time. */
+  /** Required. The end of the interval. The interval includes this time. */
   core.String endTime;
   /**
-   * (optional) If omitted, the interval is a point in time, `endTime`. If
+   * If this value is omitted, the interval is a point in time, `endTime`. If
    * `startTime` is present, it must be earlier than (less than) `endTime`. The
    * interval begins after `startTime`—it does not include `startTime`.
    */

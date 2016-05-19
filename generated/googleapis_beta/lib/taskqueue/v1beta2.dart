@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client taskqueue/v1beta2';
 
-/** Lets you access a Google App Engine Pull Task Queue over REST. */
+/** Accesses a Google App Engine Pull Task Queue over REST. */
 class TaskqueueApi {
   /** Manage your Tasks and Taskqueues */
   static const TaskqueueScope = "https://www.googleapis.com/auth/taskqueue";

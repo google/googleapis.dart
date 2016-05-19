@@ -14,10 +14,10 @@
     "basePath": "/taskqueue/v1beta2/projects/",
     "baseUrl": "https://www.googleapis.com/taskqueue/v1beta2/projects/",
     "batchPath": "batch",
-    "description": "Lets you access a Google App Engine Pull Task Queue over REST.",
+    "description": "Accesses a Google App Engine Pull Task Queue over REST.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/appengine/docs/python/taskqueue/rest",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/ZYZLjVjjgsEVx0SqYDULDA5kB2A\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/rBU1z2tHcOAAx8ktsJNBvusBoYw\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/app_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/app_engine-32.png"
@@ -408,7 +408,7 @@
             }
         }
     },
-    "revision": "20141111",
+    "revision": "20160428",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Task": {

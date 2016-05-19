@@ -23,7 +23,7 @@
     "description": "Updates groups of Compute Engine instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Qa39yJM3yH1r8biVjTDz07Q6Imo\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Qa39yJM3yH1r8biVjTDz07Q6Imo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

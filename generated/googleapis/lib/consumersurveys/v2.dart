@@ -17,7 +17,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client consumersurveys/v2';
 
-/** API for Google Consumer Surveys. */
+/**
+ * Creates and conducts surveys, lists the surveys that an authenticated user
+ * owns, and retrieves survey results and information about specified surveys.
+ */
 class ConsumersurveysApi {
   /** View and edit your surveys and results */
   static const ConsumersurveysScope = "https://www.googleapis.com/auth/consumersurveys";
@@ -244,6 +247,8 @@ class SurveysResourceApi {
   /**
    * Begins running a survey.
    *
+   * [request] - The metadata request object.
+   *
    * Request parameters:
    *
    * [resourceId] - null
@@ -256,7 +261,7 @@ class SurveysResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SurveysStartResponse> start(core.String resourceId) {
+  async.Future<SurveysStartResponse> start(SurveysStartRequest request, core.String resourceId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -264,6 +269,9 @@ class SurveysResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
     if (resourceId == null) {
       throw new core.ArgumentError("Parameter resourceId is required.");
     }
@@ -619,6 +627,12 @@ class SurveyAudience {
    * specification.
    */
   core.List<core.String> languages;
+  /**
+   * Key for predefined panel that causes survey to be sent to a predefined set
+   * of Opinion Rewards App users. PopulationSource must be set to
+   * ANDROID_APP_PANEL to use this field.
+   */
+  core.String mobileAppPanelId;
   /** Online population source where the respondents are sampled from. */
   core.String populationSource;
 
@@ -639,6 +653,9 @@ class SurveyAudience {
     }
     if (_json.containsKey("languages")) {
       languages = _json["languages"];
+    }
+    if (_json.containsKey("mobileAppPanelId")) {
+      mobileAppPanelId = _json["mobileAppPanelId"];
     }
     if (_json.containsKey("populationSource")) {
       populationSource = _json["populationSource"];
@@ -662,6 +679,9 @@ class SurveyAudience {
     if (languages != null) {
       _json["languages"] = languages;
     }
+    if (mobileAppPanelId != null) {
+      _json["mobileAppPanelId"] = mobileAppPanelId;
+    }
     if (populationSource != null) {
       _json["populationSource"] = populationSource;
     }
@@ -671,14 +691,48 @@ class SurveyAudience {
 
 /** Message defining the cost to run a given survey through API. */
 class SurveyCost {
+  /**
+   * Threshold to start a survey automically if the quoted prices is at most
+   * this value. When a survey has a Screener (threshold) question, it must go
+   * through an incidence pricing test to determine the final cost per response.
+   * Typically the API consumer would have to make a followup call to start the
+   * survey given the (previously not) known cost. If the survey has no
+   * threshold_answers, setting this property will return an error. This
+   * property allows API callers to indicate the max price per response they'd
+   * be willing to pay in advance of that test. If the price turns out to be
+   * lower than the specified autostart_max, the survey should begin immediately
+   * and the user will be charged at the rate determined by the Incidence
+   * pricing test. If the price turns out to be greater than the specified
+   * autostart_max the survey will not be started and the user will instead be
+   * notified what price was determined by the incidence test. At that point
+   * they must raise the value of this property to be greater than or equal to
+   * that cost before attempting to start the survey again. This will
+   * immediately start the survey as long the incidence test was run within the
+   * last 21 days.
+   */
+  core.String autostartMaxCostPerResponse;
+  /**
+   * Cost per survey response in nano units of the given currency. To get the
+   * total cost for a survey, multiply this value by wanted_response_count.
+   */
+  core.String costPerResponseNanos;
   /** Currency code that the cost is given in. */
   core.String currencyCode;
-  /** Cost of survey in nano units of the given currency. */
+  /**
+   * Cost of survey in nano units of the given currency. DEPRECATED in favor of
+   * cost_per_response_nanos
+   */
   core.String nanos;
 
   SurveyCost();
 
   SurveyCost.fromJson(core.Map _json) {
+    if (_json.containsKey("autostartMaxCostPerResponse")) {
+      autostartMaxCostPerResponse = _json["autostartMaxCostPerResponse"];
+    }
+    if (_json.containsKey("costPerResponseNanos")) {
+      costPerResponseNanos = _json["costPerResponseNanos"];
+    }
     if (_json.containsKey("currencyCode")) {
       currencyCode = _json["currencyCode"];
     }
@@ -689,6 +743,12 @@ class SurveyCost {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (autostartMaxCostPerResponse != null) {
+      _json["autostartMaxCostPerResponse"] = autostartMaxCostPerResponse;
+    }
+    if (costPerResponseNanos != null) {
+      _json["costPerResponseNanos"] = costPerResponseNanos;
+    }
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
     }
@@ -1014,6 +1074,30 @@ class SurveysListResponse {
     }
     if (tokenPagination != null) {
       _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    return _json;
+  }
+}
+
+class SurveysStartRequest {
+  /**
+   * Threshold to start a survey automically if the quoted prices is less than
+   * or equal to this value. See Survey.Cost for more details.
+   */
+  core.String autostartMaxCostPerResponse;
+
+  SurveysStartRequest();
+
+  SurveysStartRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("autostartMaxCostPerResponse")) {
+      autostartMaxCostPerResponse = _json["autostartMaxCostPerResponse"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (autostartMaxCostPerResponse != null) {
+      _json["autostartMaxCostPerResponse"] = autostartMaxCostPerResponse;
     }
     return _json;
   }

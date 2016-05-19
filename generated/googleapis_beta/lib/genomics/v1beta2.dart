@@ -2232,7 +2232,7 @@ class VariantsResourceApi {
    *
    * Request parameters:
    *
-   * [variantId] - The ID of the variant.
+   * [variantId] - Required.
    *
    * Completes with a [Variant].
    *
@@ -6894,10 +6894,14 @@ class VariantAnnotationCondition {
 class VariantSet {
   /** The dataset to which this variant set belongs. Immutable. */
   core.String datasetId;
+  /** A textual description of this variant set. */
+  core.String description;
   /** The Google-generated ID of the variant set. Immutable. */
   core.String id;
   /** The metadata associated with this variant set. */
   core.List<Metadata> metadata;
+  /** User-specified, mutable name. */
+  core.String name;
   /**
    * A list of all references used by the variants in a variant set with
    * associated coordinate upper bounds for each one.
@@ -6923,11 +6927,17 @@ class VariantSet {
     if (_json.containsKey("datasetId")) {
       datasetId = _json["datasetId"];
     }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("metadata")) {
       metadata = _json["metadata"].map((value) => new Metadata.fromJson(value)).toList();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
     }
     if (_json.containsKey("referenceBounds")) {
       referenceBounds = _json["referenceBounds"].map((value) => new ReferenceBound.fromJson(value)).toList();
@@ -6942,11 +6952,17 @@ class VariantSet {
     if (datasetId != null) {
       _json["datasetId"] = datasetId;
     }
+    if (description != null) {
+      _json["description"] = description;
+    }
     if (id != null) {
       _json["id"] = id;
     }
     if (metadata != null) {
       _json["metadata"] = metadata.map((value) => (value).toJson()).toList();
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     if (referenceBounds != null) {
       _json["referenceBounds"] = referenceBounds.map((value) => (value).toJson()).toList();

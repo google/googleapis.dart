@@ -14,7 +14,7 @@
     "description": "Retrieves Google Developers Console billing accounts and associates them with projects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/billing/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/M2VzqGfwqR0FviWkPggfCzE5zZU\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/M2VzqGfwqR0FviWkPggfCzE5zZU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

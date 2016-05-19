@@ -5,7 +5,7 @@
     "description": "Knowledge Graph Search API allows developers to search the Google Knowledge Graph for entities.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/knowledge-graph/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/MyGIPHuwU0Ku04gaZJZTvYYLLEQ\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/MyGIPHuwU0Ku04gaZJZTvYYLLEQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

@@ -10,164 +10,22 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
-    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
-    ByteRange;
+    ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client dataproc/v1';
 
-/**
- * An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
- */
+/** Manages Hadoop-based clusters and jobs on Google Cloud Platform. */
 class DataprocApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
-  /** Administrate log data for your projects */
-  static const LoggingAdminScope = "https://www.googleapis.com/auth/logging.admin";
-
-  /** View log data for your projects */
-  static const LoggingReadScope = "https://www.googleapis.com/auth/logging.read";
-
-  /** Submit log data for your projects */
-  static const LoggingWriteScope = "https://www.googleapis.com/auth/logging.write";
-
 
   final commons.ApiRequester _requester;
 
-  MediaResourceApi get media => new MediaResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   DataprocApi(http.Client client, {core.String rootUrl: "https://dataproc.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
-}
-
-
-class MediaResourceApi {
-  final commons.ApiRequester _requester;
-
-  MediaResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Method for media download. Download is supported on the URI
-   * `/v1/media/{+name}?alt=media`.
-   *
-   * Request parameters:
-   *
-   * [resourceName] - Name of the media that is being downloaded. See
-   * ByteStream.ReadRequest.resource_name.
-   * Value must have pattern "^.*$".
-   *
-   * [downloadOptions] - Options for downloading. A download can be either a
-   * Metadata (default) or Media download. Partial Media downloads are possible
-   * as well.
-   *
-   * Completes with a
-   *
-   * - [Media] for Metadata downloads (see [downloadOptions]).
-   *
-   * - [commons.Media] for Media downloads (see [downloadOptions]).
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future download(core.String resourceName, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
-    }
-
-    _downloadOptions = downloadOptions;
-
-    _url = 'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => new Media.fromJson(data));
-    } else {
-      return _response;
-    }
-  }
-
-  /**
-   * Method for media upload. Upload is supported on the URI
-   * `/upload/v1/media/{+name}`.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resourceName] - Name of the media that is being downloaded. See
-   * ByteStream.ReadRequest.resource_name.
-   * Value must have pattern "^.*$".
-   *
-   * [uploadMedia] - The media to upload.
-   *
-   * [uploadOptions] - Options for the media upload. Streaming Media without the
-   * length being known ahead of time is only supported via resumable uploads.
-   *
-   * Completes with a [Media].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Media> upload(Media request, core.String resourceName, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
-    }
-
-    _uploadMedia =  uploadMedia;
-    _uploadOptions =  uploadOptions;
-
-    if (_uploadMedia == null) {
-      _url = 'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
-    } else {
-      _url = '/upload/v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
-    }
-
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Media.fromJson(data));
-  }
-
 }
 
 
@@ -485,8 +343,14 @@ class ProjectsRegionsClustersResourceApi {
    * to 5, the update_mask parameter would be specified as
    * config.worker_config.num_instances, and the `PATCH` request body would
    * specify the new value, as follows: { "config":{ "workerConfig":{
+   * "numInstances":"5" } } } Similarly, to change the number of preemptible
+   * workers in a cluster to 5, the update_mask parameter would be
+   * config.secondary_worker_config.num_instances, and the `PATCH` request body
+   * would be set as follows: { "config":{ "secondaryWorkerConfig":{
    * "numInstances":"5" } } } Note: Currently,
-   * config.worker_config.num_instances is the only field that can be updated.
+   * config.worker_config.num_instances and
+   * config.secondary_worker_config.num_instances are the only fields that can
+   * be updated.
    *
    * Completes with a [Operation].
    *
@@ -1135,7 +999,7 @@ class ClusterConfig {
    */
   core.String configBucket;
   /**
-   * [Optional] The shared Google Compute Engine config settings for all
+   * [Required] The shared Google Compute Engine config settings for all
    * instances in a cluster.
    */
   GceClusterConfig gceClusterConfig;
@@ -2267,28 +2131,6 @@ class ManagedGroupConfig {
     }
     if (instanceTemplateName != null) {
       _json["instanceTemplateName"] = instanceTemplateName;
-    }
-    return _json;
-  }
-}
-
-/** Media resource. */
-class Media {
-  /** Name of the media resource. */
-  core.String resourceName;
-
-  Media();
-
-  Media.fromJson(core.Map _json) {
-    if (_json.containsKey("resourceName")) {
-      resourceName = _json["resourceName"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (resourceName != null) {
-      _json["resourceName"] = resourceName;
     }
     return _json;
   }

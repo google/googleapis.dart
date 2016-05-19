@@ -32,7 +32,7 @@
     "description": "Access Gmail mailboxes including sending user email.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/zPbxFrF5pjvpdJALHZzVyfTBzGU\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/zPbxFrF5pjvpdJALHZzVyfTBzGU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"

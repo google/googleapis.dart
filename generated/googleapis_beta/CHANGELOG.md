@@ -1,3 +1,22 @@
+## 0.27.0
+
+* [api-new] adexchangebuyer2:v2beta1
+* [api-new] clouderrorreporting:v1beta1
+* [api-new] datastore:v1beta3
+* [api-new] runtimeconfig:v1beta1
+* [api] cloudmonitoring:v2beta2: API new methods
+* [api] cloudresourcemanager:v1beta1: schema/resource changes
+* [api] dfareporting:v2.5beta1: Schema changes
+* [api] genomics:v1beta2: schema changes
+* [api] sqladmin:v1beta4: schema changes
+* [api] toolresults:v1beta3: schema changes
+* [api-breaking] autoscaler:v1beta2: schema/resource changes
+* [api-breaking] cloudresourcemanager:v1beta1: method changes
+* [api-breaking] dataproc:v1beta1: schema/resource changes
+* [api-breaking] proximitybeacon:v1beta1, schema/resource changes
+* [api-removal] reseller:v1sandbox
+* [api-removal] manager:v1beta2
+
 ## 0.26.0
 
 * [api] appengine:v1beta4: new resources

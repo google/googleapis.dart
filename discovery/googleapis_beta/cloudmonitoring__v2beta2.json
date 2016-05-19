@@ -18,7 +18,7 @@
     "description": "Accesses Google Cloud Monitoring data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/monitoring/v2beta2/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/R_VZCqLu6mtCoQp1ni4d5R8HPRM\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/R_VZCqLu6mtCoQp1ni4d5R8HPRM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

@@ -23,7 +23,7 @@
     "description": "Lets you access a cloud hosted machine learning service that makes it easy to build smart apps",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/prediction/docs/developer-guide",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/g4n_9H48adOnnjSWaZFL9Gx2Auc\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Rb8Il9CxYvuIPXx3em3nY6uZPfg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/feature/predictionapi-16.png",
         "x32": "https://www.google.com/images/icons/feature/predictionapi-32.png"
@@ -339,7 +339,7 @@
             }
         }
     },
-    "revision": "20151102",
+    "revision": "20160304",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Analyze": {
@@ -746,8 +746,7 @@
                 },
                 "outputValue": {
                     "description": "The estimated regression value (Regression models only).",
-                    "format": "double",
-                    "type": "number"
+                    "type": "string"
                 },
                 "selfLink": {
                     "description": "A URL to re-request this resource.",

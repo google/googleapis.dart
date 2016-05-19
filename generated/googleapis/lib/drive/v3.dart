@@ -17,7 +17,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client drive/v3';
 
-/** The API to interact with Drive. */
+/**
+ * Manages files in Drive including uploading, downloading, searching, detecting
+ * changes, and updating sharing permissions.
+ */
 class DriveApi {
   /** View and manage the files in your Google Drive */
   static const DriveScope = "https://www.googleapis.com/auth/drive";

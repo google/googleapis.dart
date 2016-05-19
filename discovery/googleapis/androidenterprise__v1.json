@@ -15,7 +15,7 @@
     "description": "Manages the deployment of apps to Android for Work users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android/work/play/emm-api",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/-WQimU26gan4p_bjSeZjSV_7_OY\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/i6DBUMt-cLevFkAtIek_BVKzCR0\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -1362,7 +1362,7 @@
         "products": {
             "methods": {
                 "approve": {
-                    "description": "Approves the specified product (and the relevant app permissions, if any).",
+                    "description": "Approves the specified product and the relevant app permissions, if any. The maximum number of products that you can approve per enterprise customer is 1,000.\n\nTo learn how to use Google Play for Work to design and create a store layout to display approved products to your users, see Store Layout Design.",
                     "httpMethod": "POST",
                     "id": "androidenterprise.products.approve",
                     "parameterOrder": [
@@ -1521,6 +1521,55 @@
                     "path": "enterprises/{enterpriseId}/products/{productId}/permissions",
                     "response": {
                         "$ref": "ProductPermissions"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/androidenterprise"
+                    ]
+                },
+                "list": {
+                    "description": "Finds approved products that match a query.",
+                    "httpMethod": "GET",
+                    "id": "androidenterprise.products.list",
+                    "parameterOrder": [
+                        "enterpriseId"
+                    ],
+                    "parameters": {
+                        "approved": {
+                            "description": "Specifies whether to search among all products (false) or among only products that have been approved (true). Only \"true\" is supported, and should be specified.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "enterpriseId": {
+                            "description": "The ID of the enterprise.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "language": {
+                            "description": "The BCP47 tag for the user's preferred language (e.g. \"en-US\", \"de\"). Results are returned in the language best matching the preferred language.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "description": "Specifies the maximum number of products that can be returned per request. If not specified, uses a default value of 100, which is also the maximum retrievable within a single response.",
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "query": {
+                            "description": "The search query as typed in the Google Play Store search box. If omitted, all approved apps will be returned (using the pagination parameters).",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "token": {
+                            "description": "A pagination token is contained in a requests response when there are more products. The token can be used in a subsequent request to obtain more products, and so forth. This parameter cannot be used in the initial request.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "enterprises/{enterpriseId}/products",
+                    "response": {
+                        "$ref": "ProductsListResponse"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
@@ -2140,7 +2189,7 @@
             }
         }
     },
-    "revision": "20160413",
+    "revision": "20160511",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AppRestrictionsSchema": {
@@ -2361,7 +2410,7 @@
                     "type": "string"
                 },
                 "managementType": {
-                    "description": "The mechanism by which this device is managed by the EMM. \"managedDevice\" means that the EMM's app is a device owner. \"managedProfile\" means that the EMM's app is the profile owner (and there is a separate personal profile which is not managed). \"containerApp\" means that the EMM's app is managing the Android for Work container app on the device.",
+                    "description": "The mechanism by which this device is managed by the EMM. \"managedDevice\" means that the EMM's app is a device owner. \"managedProfile\" means that the EMM's app is the profile owner (and there is a separate personal profile which is not managed). \"containerApp\" means that the EMM's app is managing the Android for Work container app on the device. ?unmanagedProfile? means that the EMM?s app is managing a managed user on an unmanaged device",
                     "type": "string"
                 }
             },
@@ -2650,6 +2699,24 @@
             },
             "type": "object"
         },
+        "PageInfo": {
+            "id": "PageInfo",
+            "properties": {
+                "resultPerPage": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "startIndex": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "totalResults": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "Permission": {
             "description": "A permission represents some extra capability, to be granted to an Android app, which requires explicit consent. An enterprise admin must consent to these permissions on behalf of their users before an entitlement for the app can be created.\n\nThe permissions collection is read-only. The information provided for each permission (localized name and description) is intended to be used in the EMM user interface when obtaining consent from the enterprise.",
             "id": "Permission",
@@ -2815,6 +2882,33 @@
             },
             "type": "object"
         },
+        "ProductsListResponse": {
+            "description": "The matching products.",
+            "id": "ProductsListResponse",
+            "properties": {
+                "kind": {
+                    "default": "androidenterprise#productsListResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#productsListResponse\".",
+                    "type": "string"
+                },
+                "pageInfo": {
+                    "$ref": "PageInfo",
+                    "description": "General pagination information."
+                },
+                "product": {
+                    "description": "Information about a product (e.g. an app) in the Google Play Store, for display to an enterprise admin.",
+                    "items": {
+                        "$ref": "Product"
+                    },
+                    "type": "array"
+                },
+                "tokenPagination": {
+                    "$ref": "TokenPagination",
+                    "description": "Pagination information for token pagination."
+                }
+            },
+            "type": "object"
+        },
         "StoreCluster": {
             "description": "Definition of a Google Play for Work store cluster, a list of products displayed as part of a store page.",
             "id": "StoreCluster",
@@ -2836,7 +2930,7 @@
                     "type": "array"
                 },
                 "orderInPage": {
-                    "description": "String (US-ASCII only) used to determine order of this cluster within the parent page's elements. Page elements are sorted in lexicographic order of this field. Duplicated values are allowed, but ordering between elements with duplicate order is undefined.\n\nThe value of this field is never visible to a user, it is used solely for the purpose of defining an ordering. Maximum length is 20 characters.",
+                    "description": "String (US-ASCII only) used to determine order of this cluster within the parent page's elements. Page elements are sorted in lexicographic order of this field. Duplicated values are allowed, but ordering between elements with duplicate order is undefined.\n\nThe value of this field is never visible to a user, it is used solely for the purpose of defining an ordering. Maximum length is 256 characters.",
                     "type": "string"
                 },
                 "productId": {
@@ -2929,6 +3023,18 @@
                         "$ref": "LocalizedText"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TokenPagination": {
+            "id": "TokenPagination",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "previousPageToken": {
+                    "type": "string"
                 }
             },
             "type": "object"

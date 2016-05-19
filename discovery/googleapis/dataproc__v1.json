@@ -4,15 +4,6 @@
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
-                },
-                "https://www.googleapis.com/auth/logging.admin": {
-                    "description": "Administrate log data for your projects"
-                },
-                "https://www.googleapis.com/auth/logging.read": {
-                    "description": "View log data for your projects"
-                },
-                "https://www.googleapis.com/auth/logging.write": {
-                    "description": "Submit log data for your projects"
                 }
             }
         }
@@ -20,10 +11,10 @@
     "basePath": "",
     "baseUrl": "https://dataproc.googleapis.com/",
     "batchPath": "batch",
-    "description": "An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.",
+    "description": "Manages Hadoop-based clusters and jobs on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataproc/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/SJDnrP-zMdgKOtIcX7eybyyfJxs\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/tFUpSbikiYUx1YQKdRQ2bGGumuA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -114,84 +105,6 @@
     },
     "protocol": "rest",
     "resources": {
-        "media": {
-            "methods": {
-                "upload": {
-                    "description": "Method for media upload. Upload is supported on the URI `/upload/v1/media/{+name}`.",
-                    "httpMethod": "POST",
-                    "id": "dataproc.media.upload",
-                    "mediaUpload": {
-                        "accept": [
-                            "*/*"
-                        ],
-                        "protocols": {
-                            "resumable": {
-                                "multipart": true,
-                                "path": "/resumable/upload/v1/media/{+resourceName}"
-                            },
-                            "simple": {
-                                "multipart": true,
-                                "path": "/upload/v1/media/{+resourceName}"
-                            }
-                        }
-                    },
-                    "parameterOrder": [
-                        "resourceName"
-                    ],
-                    "parameters": {
-                        "resourceName": {
-                            "description": "Name of the media that is being downloaded. See ByteStream.ReadRequest.resource_name.",
-                            "location": "path",
-                            "pattern": "^.*$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/media/{+resourceName}",
-                    "request": {
-                        "$ref": "Media"
-                    },
-                    "response": {
-                        "$ref": "Media"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/logging.admin",
-                        "https://www.googleapis.com/auth/logging.read",
-                        "https://www.googleapis.com/auth/logging.write"
-                    ],
-                    "supportsMediaUpload": true
-                },
-                "download": {
-                    "description": "Method for media download. Download is supported on the URI `/v1/media/{+name}?alt=media`.",
-                    "httpMethod": "GET",
-                    "id": "dataproc.media.download",
-                    "parameterOrder": [
-                        "resourceName"
-                    ],
-                    "parameters": {
-                        "resourceName": {
-                            "description": "Name of the media that is being downloaded. See ByteStream.ReadRequest.resource_name.",
-                            "location": "path",
-                            "pattern": "^.*$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/media/{+resourceName}",
-                    "response": {
-                        "$ref": "Media"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/logging.admin",
-                        "https://www.googleapis.com/auth/logging.read",
-                        "https://www.googleapis.com/auth/logging.write"
-                    ],
-                    "supportsMediaDownload": true
-                }
-            }
-        },
         "projects": {
             "resources": {
                 "regions": {
@@ -260,7 +173,7 @@
                                             "type": "string"
                                         },
                                         "updateMask": {
-                                            "description": "[Required] Specifies the path, relative to Cluster, of the field to update. For example, to change the number of workers in a cluster to 5, the update_mask parameter would be specified as config.worker_config.num_instances, and the `PATCH` request body would specify the new value, as follows: { \"config\":{ \"workerConfig\":{ \"numInstances\":\"5\" } } } Note: Currently, config.worker_config.num_instances is the only field that can be updated.",
+                                            "description": "[Required] Specifies the path, relative to Cluster, of the field to update. For example, to change the number of workers in a cluster to 5, the update_mask parameter would be specified as config.worker_config.num_instances, and the `PATCH` request body would specify the new value, as follows: { \"config\":{ \"workerConfig\":{ \"numInstances\":\"5\" } } } Similarly, to change the number of preemptible workers in a cluster to 5, the update_mask parameter would be config.secondary_worker_config.num_instances, and the `PATCH` request body would be set as follows: { \"config\":{ \"secondaryWorkerConfig\":{ \"numInstances\":\"5\" } } } Note: Currently, config.worker_config.num_instances and config.secondary_worker_config.num_instances are the only fields that can be updated.",
                                             "location": "query",
                                             "type": "string"
                                         }
@@ -761,20 +674,9 @@
             }
         }
     },
-    "revision": "20160219",
+    "revision": "20160503",
     "rootUrl": "https://dataproc.googleapis.com/",
     "schemas": {
-        "Media": {
-            "description": "Media resource.",
-            "id": "Media",
-            "properties": {
-                "resourceName": {
-                    "description": "Name of the media resource.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "Cluster": {
             "description": "Describes the identifying information, config, and status of a cluster of Google Compute Engine instances.",
             "id": "Cluster",
@@ -819,7 +721,7 @@
                 },
                 "gceClusterConfig": {
                     "$ref": "GceClusterConfig",
-                    "description": "[Optional] The shared Google Compute Engine config settings for all instances in a cluster."
+                    "description": "[Required] The shared Google Compute Engine config settings for all instances in a cluster."
                 },
                 "masterConfig": {
                     "$ref": "InstanceGroupConfig",

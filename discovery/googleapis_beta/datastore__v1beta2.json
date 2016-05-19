@@ -20,7 +20,7 @@
     "description": "Stores and queries data in Google Cloud Datastore.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/datastore/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/xlRfXybj491s9T9Q90yjlG-attA\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/xlRfXybj491s9T9Q90yjlG-attA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

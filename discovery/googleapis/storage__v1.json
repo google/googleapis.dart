@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Wi5axMdjgKCnqJxaxfzKML8o57Y\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/HunW8kZz70Rw8UgbEglfvbYNW8k\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -2102,7 +2102,7 @@
             }
         }
     },
-    "revision": "20160414",
+    "revision": "20160504",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -2586,7 +2586,7 @@
                     "type": "string"
                 },
                 "contentType": {
-                    "description": "Content-Type of the object data.",
+                    "description": "Content-Type of the object data. If contentType is not specified, object downloads will be served as application/octet-stream.",
                     "type": "string"
                 },
                 "crc32c": {

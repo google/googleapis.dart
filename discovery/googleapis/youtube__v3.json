@@ -30,7 +30,7 @@
     "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/qO__5ak6IoBfWVxUlSi-O_hU9fE\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/J2rsaoo4Ek_Q24c6MaTuljKwUGg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -3457,7 +3457,7 @@
             }
         }
     },
-    "revision": "20160418",
+    "revision": "20160509",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -9615,6 +9615,18 @@
                 "licensedContent": {
                     "description": "The value of is_license_content indicates whether the video is licensed content.",
                     "type": "boolean"
+                },
+                "projection": {
+                    "description": "Specifies the projection format of the video.",
+                    "enum": [
+                        "360",
+                        "rectangular"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 },
                 "regionRestriction": {
                     "$ref": "VideoContentDetailsRegionRestriction",

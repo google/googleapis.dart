@@ -15,16 +15,18 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client proximitybeacon/v1beta1';
 
-/**
- * This API provides services to register, manage, index, and search beacons.
- */
+/** Registers, manages, indexes, and searches beacons. */
 class ProximitybeaconApi {
+  /** View and modify your beacons */
+  static const UserlocationBeaconRegistryScope = "https://www.googleapis.com/auth/userlocation.beacon.registry";
+
 
   final commons.ApiRequester _requester;
 
   BeaconinfoResourceApi get beaconinfo => new BeaconinfoResourceApi(_requester);
   BeaconsResourceApi get beacons => new BeaconsResourceApi(_requester);
   NamespacesResourceApi get namespaces => new NamespacesResourceApi(_requester);
+  V1beta1ResourceApi get v1beta1 => new V1beta1ResourceApi(_requester);
 
   ProximitybeaconApi(http.Client client, {core.String rootUrl: "https://proximitybeacon.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -39,7 +41,9 @@ class BeaconinfoResourceApi {
 
   /**
    * Given one or more beacon observations, returns any beacon information and
-   * attachments accessible to your application.
+   * attachments accessible to your application. Authorize by using the [API
+   * key](https://developers.google.com/beacons/proximity/how-tos/authorizing#APIKey)
+   * for the application.
    *
    * [request] - The metadata request object.
    *
@@ -90,15 +94,27 @@ class BeaconsResourceApi {
       _requester = client;
 
   /**
-   * (Re)activates a beacon. A beacon that is active will return information and
+   * Activates a beacon. A beacon that is active will return information and
    * attachment data when queried via `beaconinfo.getforobserved`. Calling this
    * method on an already active beacon will do nothing (but will return a
-   * successful response code).
+   * successful response code). Authenticate using an [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **Is owner** or **Can edit** permissions in the Google
+   * Developers Console project.
    *
    * Request parameters:
    *
-   * [beaconName] - The beacon to activate. Required.
+   * [beaconName] - Beacon that should be activated. A beacon name has the
+   * format "beacons/N!beaconId" where the beaconId is the base16 ID broadcast
+   * by the beacon and N is a code for the beacon's type. Possible values are
+   * `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5` for
+   * AltBeacon. For Eddystone-EID beacons, you may use either the current EID or
+   * the beacon's "stable" UID. Required.
    * Value must have pattern "^beacons/[^/]*$".
+   *
+   * [projectId] - The project id of the beacon to activate. If the project id
+   * is not specified then the project making the request is used. The project
+   * id must match the project that owns the beacon. Optional.
    *
    * Completes with a [Empty].
    *
@@ -108,7 +124,7 @@ class BeaconsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Empty> activate(core.String beaconName) {
+  async.Future<Empty> activate(core.String beaconName, {core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -118,6 +134,9 @@ class BeaconsResourceApi {
 
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + ':activate';
@@ -137,11 +156,24 @@ class BeaconsResourceApi {
    * nor attachment data for the beacon when queried via
    * `beaconinfo.getforobserved`. Calling this method on an already inactive
    * beacon will do nothing (but will return a successful response code).
+   * Authenticate using an [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **Is owner** or **Can edit** permissions in the Google
+   * Developers Console project.
    *
    * Request parameters:
    *
-   * [beaconName] - The beacon name of this beacon.
+   * [beaconName] - Beacon that should be deactivated. A beacon name has the
+   * format "beacons/N!beaconId" where the beaconId is the base16 ID broadcast
+   * by the beacon and N is a code for the beacon's type. Possible values are
+   * `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5` for
+   * AltBeacon. For Eddystone-EID beacons, you may use either the current EID or
+   * the beacon's "stable" UID. Required.
    * Value must have pattern "^beacons/[^/]*$".
+   *
+   * [projectId] - The project id of the beacon to deactivate. If the project id
+   * is not specified then the project making the request is used. The project
+   * id must match the project that owns the beacon. Optional.
    *
    * Completes with a [Empty].
    *
@@ -151,7 +183,7 @@ class BeaconsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Empty> deactivate(core.String beaconName) {
+  async.Future<Empty> deactivate(core.String beaconName, {core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -161,6 +193,9 @@ class BeaconsResourceApi {
 
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + ':deactivate';
@@ -179,12 +214,24 @@ class BeaconsResourceApi {
    * Decommissions the specified beacon in the service. This beacon will no
    * longer be returned from `beaconinfo.getforobserved`. This operation is
    * permanent -- you will not be able to re-register a beacon with this ID
-   * again.
+   * again. Authenticate using an [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **Is owner** or **Can edit** permissions in the Google
+   * Developers Console project.
    *
    * Request parameters:
    *
-   * [beaconName] - Beacon that should be decommissioned. Required.
+   * [beaconName] - Beacon that should be decommissioned. A beacon name has the
+   * format "beacons/N!beaconId" where the beaconId is the base16 ID broadcast
+   * by the beacon and N is a code for the beacon's type. Possible values are
+   * `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5` for
+   * AltBeacon. For Eddystone-EID beacons, you may use either the current EID of
+   * the beacon's "stable" UID. Required.
    * Value must have pattern "^beacons/[^/]*$".
+   *
+   * [projectId] - The project id of the beacon to decommission. If the project
+   * id is not specified then the project making the request is used. The
+   * project id must match the project that owns the beacon. Optional.
    *
    * Completes with a [Empty].
    *
@@ -194,7 +241,7 @@ class BeaconsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Empty> decommission(core.String beaconName) {
+  async.Future<Empty> decommission(core.String beaconName, {core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -204,6 +251,9 @@ class BeaconsResourceApi {
 
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + ':decommission';
@@ -219,12 +269,30 @@ class BeaconsResourceApi {
   }
 
   /**
-   * Returns detailed information about the specified beacon.
+   * Returns detailed information about the specified beacon. Authenticate using
+   * an [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **viewer**, **Is owner** or **Can edit** permissions in
+   * the Google Developers Console project. Requests may supply an Eddystone-EID
+   * beacon name in the form: `beacons/4!beaconId` where the `beaconId` is the
+   * base16 ephemeral ID broadcast by the beacon. The returned `Beacon` object
+   * will contain the beacon's stable Eddystone-UID. Clients not authorized to
+   * resolve the beacon's ephemeral Eddystone-EID broadcast will receive an
+   * error.
    *
    * Request parameters:
    *
-   * [beaconName] - Beacon that is requested.
+   * [beaconName] - Resource name of this beacon. A beacon name has the format
+   * "beacons/N!beaconId" where the beaconId is the base16 ID broadcast by the
+   * beacon and N is a code for the beacon's type. Possible values are `3` for
+   * Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5` for
+   * AltBeacon. For Eddystone-EID beacons, you may use either the current EID or
+   * the beacon's "stable" UID. Required.
    * Value must have pattern "^beacons/[^/]*$".
+   *
+   * [projectId] - The project id of the beacon to request. If the project id is
+   * not specified then the project making the request is used. The project id
+   * must match the project that owns the beacon. Optional.
    *
    * Completes with a [Beacon].
    *
@@ -234,7 +302,7 @@ class BeaconsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Beacon> get(core.String beaconName) {
+  async.Future<Beacon> get(core.String beaconName, {core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -244,6 +312,9 @@ class BeaconsResourceApi {
 
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName');
@@ -261,7 +332,10 @@ class BeaconsResourceApi {
   /**
    * Searches the beacon registry for beacons that match the given search
    * criteria. Only those beacons that the client has permission to list will be
-   * returned.
+   * returned. Authenticate using an [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **viewer**, **Is owner** or **Can edit** permissions in
+   * the Google Developers Console project.
    *
    * Request parameters:
    *
@@ -292,7 +366,7 @@ class BeaconsResourceApi {
    * beacons whose registered location is within the given circle. When any of
    * these fields are given, all are required. Latitude and longitude must be
    * decimal degrees between -90.0 and 90.0 and between -180.0 and 180.0
-   * respectively. Radius must be an integer number of meters less than
+   * respectively. Radius must be an integer number of meters between 10 and
    * 1,000,000 (1000 km). * `property:"="` For example:
    * `property:"battery-type=CR2032"` Returns beacons which have a property of
    * the given name and value. Supports multiple filters which will be combined
@@ -315,6 +389,9 @@ class BeaconsResourceApi {
    * [pageSize] - The maximum number of records to return for this request, up
    * to a server-defined upper limit.
    *
+   * [projectId] - The project id to list beacons under. If not present then the
+   * project credential that made the request is used as the project. Optional.
+   *
    * Completes with a [ListBeaconsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -323,7 +400,7 @@ class BeaconsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBeaconsResponse> list({core.String q, core.String pageToken, core.int pageSize}) {
+  async.Future<ListBeaconsResponse> list({core.String q, core.String pageToken, core.int pageSize, core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -339,6 +416,9 @@ class BeaconsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/beacons';
@@ -356,10 +436,18 @@ class BeaconsResourceApi {
   /**
    * Registers a previously unregistered beacon given its `advertisedId`. These
    * IDs are unique within the system. An ID can be registered only once.
+   * Authenticate using an [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **Is owner** or **Can edit** permissions in the Google
+   * Developers Console project.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
+   *
+   * [projectId] - The project id of the project the beacon will be registered
+   * to. If the project id is not specified then the project making the request
+   * is used. Optional.
    *
    * Completes with a [Beacon].
    *
@@ -369,7 +457,7 @@ class BeaconsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Beacon> register(Beacon request) {
+  async.Future<Beacon> register(Beacon request, {core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -379,6 +467,9 @@ class BeaconsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/beacons:register';
@@ -399,7 +490,11 @@ class BeaconsResourceApi {
    * should follow the "read, modify, write" pattern to avoid inadvertently
    * destroying data. Changes to the beacon status via this method will be
    * silently ignored. To update beacon status, use the separate methods on this
-   * API for (de)activation and decommissioning.
+   * API for activation, deactivation, and decommissioning. Authenticate using
+   * an [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **Is owner** or **Can edit** permissions in the Google
+   * Developers Console project.
    *
    * [request] - The metadata request object.
    *
@@ -413,6 +508,10 @@ class BeaconsResourceApi {
    * for future operations.
    * Value must have pattern "^beacons/[^/]*$".
    *
+   * [projectId] - The project id of the beacon to update. If the project id is
+   * not specified then the project making the request is used. The project id
+   * must match the project that owns the beacon. Optional.
+   *
    * Completes with a [Beacon].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -421,7 +520,7 @@ class BeaconsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Beacon> update(Beacon request, core.String beaconName) {
+  async.Future<Beacon> update(Beacon request, core.String beaconName, {core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -434,6 +533,9 @@ class BeaconsResourceApi {
     }
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName');
@@ -462,16 +564,31 @@ class BeaconsAttachmentsResourceApi {
    * and cannot be undone. You can optionally specify `namespacedType` to choose
    * which attachments should be deleted. If you do not specify
    * `namespacedType`, all your attachments on the given beacon will be deleted.
-   * You also may explicitly specify `* / * ` to delete all.
+   * You also may explicitly specify `* / * ` to delete all. Authenticate using
+   * an [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **Is owner** or **Can edit** permissions in the Google
+   * Developers Console project.
    *
    * Request parameters:
    *
-   * [beaconName] - The beacon whose attachments are to be deleted. Required.
+   * [beaconName] - The beacon whose attachments should be deleted. A beacon
+   * name has the format "beacons/N!beaconId" where the beaconId is the base16
+   * ID broadcast by the beacon and N is a code for the beacon's type. Possible
+   * values are `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon,
+   * or `5` for AltBeacon. For Eddystone-EID beacons, you may use either the
+   * current EID or the beacon's "stable" UID. Required.
    * Value must have pattern "^beacons/[^/]*$".
    *
    * [namespacedType] - Specifies the namespace and type of attachments to
    * delete in `namespace/type` format. Accepts `* / * ` to specify "all types
    * in all namespaces". Optional.
+   *
+   * [projectId] - The project id to delete beacon attachments under. This field
+   * can be used when "*" is specified to mean all attachment namespaces.
+   * Projects may have multiple attachments with multiple namespaces. If "*" is
+   * specified and the projectId string is empty, then the project making the
+   * request is used. Optional.
    *
    * Completes with a [DeleteAttachmentsResponse].
    *
@@ -481,7 +598,7 @@ class BeaconsAttachmentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<DeleteAttachmentsResponse> batchDelete(core.String beaconName, {core.String namespacedType}) {
+  async.Future<DeleteAttachmentsResponse> batchDelete(core.String beaconName, {core.String namespacedType, core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -494,6 +611,9 @@ class BeaconsAttachmentsResourceApi {
     }
     if (namespacedType != null) {
       _queryParams["namespacedType"] = [namespacedType];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + '/attachments:batchDelete';
@@ -516,15 +636,27 @@ class BeaconsAttachmentsResourceApi {
    * parts, the namespace and the type. The namespace must be one of the values
    * returned by the `namespaces` endpoint, while the type can be a string of
    * any characters except for the forward slash (`/`) up to 100 characters in
-   * length. Attachment data can be up to 1024 bytes long.
+   * length. Attachment data can be up to 1024 bytes long. Authenticate using an
+   * [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **Is owner** or **Can edit** permissions in the Google
+   * Developers Console project.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [beaconName] - The beacon on which the attachment should be created.
-   * Required.
+   * [beaconName] - Beacon on which the attachment should be created. A beacon
+   * name has the format "beacons/N!beaconId" where the beaconId is the base16
+   * ID broadcast by the beacon and N is a code for the beacon's type. Possible
+   * values are `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon,
+   * or `5` for AltBeacon. For Eddystone-EID beacons, you may use either the
+   * current EID or the beacon's "stable" UID. Required.
    * Value must have pattern "^beacons/[^/]*$".
+   *
+   * [projectId] - The project id of the project the attachment will belong to.
+   * If the project id is not specified then the project making the request is
+   * used. Optional.
    *
    * Completes with a [BeaconAttachment].
    *
@@ -534,7 +666,7 @@ class BeaconsAttachmentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<BeaconAttachment> create(BeaconAttachment request, core.String beaconName) {
+  async.Future<BeaconAttachment> create(BeaconAttachment request, core.String beaconName, {core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -547,6 +679,9 @@ class BeaconsAttachmentsResourceApi {
     }
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + '/attachments';
@@ -566,14 +701,22 @@ class BeaconsAttachmentsResourceApi {
    * a unique attachment name (`attachmentName`) which is returned when you
    * fetch the attachment data via this API. You specify this with the delete
    * request to control which attachment is removed. This operation cannot be
-   * undone.
+   * undone. Authenticate using an [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **Is owner** or **Can edit** permissions in the Google
+   * Developers Console project.
    *
    * Request parameters:
    *
    * [attachmentName] - The attachment name (`attachmentName`) of the attachment
    * to remove. For example:
-   * `beacons/3!893737abc9/attachments/c5e937-af0-494-959-ec49d12738` Required.
+   * `beacons/3!893737abc9/attachments/c5e937-af0-494-959-ec49d12738`. For
+   * Eddystone-EID beacons, the beacon ID portion (`3!893737abc9`) may be the
+   * beacon's current EID, or its "stable" Eddystone-UID. Required.
    * Value must have pattern "^beacons/[^/] * / attachments/[^/]*$".
+   *
+   * [projectId] - The project id of the attachment to delete. If not provided,
+   * the project that is making the request is used. Optional.
    *
    * Completes with a [Empty].
    *
@@ -583,7 +726,7 @@ class BeaconsAttachmentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Empty> delete(core.String attachmentName) {
+  async.Future<Empty> delete(core.String attachmentName, {core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -593,6 +736,9 @@ class BeaconsAttachmentsResourceApi {
 
     if (attachmentName == null) {
       throw new core.ArgumentError("Parameter attachmentName is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$attachmentName');
@@ -612,16 +758,31 @@ class BeaconsAttachmentsResourceApi {
    * namespaced-type pattern. To control which namespaced types are returned,
    * you add the `namespacedType` query parameter to the request. You must
    * either use `* / * `, to return all attachments, or the namespace must be
-   * one of the ones returned from the `namespaces` endpoint.
+   * one of the ones returned from the `namespaces` endpoint. Authenticate using
+   * an [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **viewer**, **Is owner** or **Can edit** permissions in
+   * the Google Developers Console project.
    *
    * Request parameters:
    *
-   * [beaconName] - The beacon whose attachments are to be fetched. Required.
+   * [beaconName] - Beacon whose attachments should be fetched. A beacon name
+   * has the format "beacons/N!beaconId" where the beaconId is the base16 ID
+   * broadcast by the beacon and N is a code for the beacon's type. Possible
+   * values are `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon,
+   * or `5` for AltBeacon. For Eddystone-EID beacons, you may use either the
+   * current EID or the beacon's "stable" UID. Required.
    * Value must have pattern "^beacons/[^/]*$".
    *
    * [namespacedType] - Specifies the namespace and type of attachment to
    * include in response in namespace/type format. Accepts `* / * ` to specify
    * "all types in all namespaces".
+   *
+   * [projectId] - The project id to list beacon attachments under. This field
+   * can be used when "*" is specified to mean all attachment namespaces.
+   * Projects may have multiple attachments with multiple namespaces. If "*" is
+   * specified and the projectId string is empty, then the project making the
+   * request is used. Optional.
    *
    * Completes with a [ListBeaconAttachmentsResponse].
    *
@@ -631,7 +792,7 @@ class BeaconsAttachmentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName, {core.String namespacedType}) {
+  async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName, {core.String namespacedType, core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -644,6 +805,9 @@ class BeaconsAttachmentsResourceApi {
     }
     if (namespacedType != null) {
       _queryParams["namespacedType"] = [namespacedType];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + '/attachments';
@@ -670,7 +834,10 @@ class BeaconsDiagnosticsResourceApi {
   /**
    * List the diagnostics for a single beacon. You can also list diagnostics for
    * all the beacons owned by your Google Developers Console project by using
-   * the beacon name `beacons/-`.
+   * the beacon name `beacons/-`. Authenticate using an [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **viewer**, **Is owner** or **Can edit** permissions in
+   * the Google Developers Console project.
    *
    * Request parameters:
    *
@@ -691,6 +858,10 @@ class BeaconsDiagnosticsResourceApi {
    * - "WRONG_LOCATION" : A WRONG_LOCATION.
    * - "LOW_BATTERY" : A LOW_BATTERY.
    *
+   * [projectId] - Requests only diagnostic records for the given project id. If
+   * not set, then the project making the request will be used for looking up
+   * diagnostic records. Optional.
+   *
    * Completes with a [ListDiagnosticsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -699,7 +870,7 @@ class BeaconsDiagnosticsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDiagnosticsResponse> list(core.String beaconName, {core.int pageSize, core.String pageToken, core.String alertFilter}) {
+  async.Future<ListDiagnosticsResponse> list(core.String beaconName, {core.int pageSize, core.String pageToken, core.String alertFilter, core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -718,6 +889,9 @@ class BeaconsDiagnosticsResourceApi {
     }
     if (alertFilter != null) {
       _queryParams["alertFilter"] = [alertFilter];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + '/diagnostics';
@@ -744,9 +918,15 @@ class NamespacesResourceApi {
   /**
    * Lists all attachment namespaces owned by your Google Developers Console
    * project. Attachment data associated with a beacon must include a namespaced
-   * type, and the namespace must be owned by your project.
+   * type, and the namespace must be owned by your project. Authenticate using
+   * an [OAuth access
+   * token](https://developers.google.com/identity/protocols/OAuth2) from a
+   * signed-in user with **viewer**, **Is owner** or **Can edit** permissions in
+   * the Google Developers Console project.
    *
    * Request parameters:
+   *
+   * [projectId] - The project id to list namespaces under. Optional.
    *
    * Completes with a [ListNamespacesResponse].
    *
@@ -756,7 +936,7 @@ class NamespacesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListNamespacesResponse> list() {
+  async.Future<ListNamespacesResponse> list({core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -764,6 +944,9 @@ class NamespacesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
 
     _url = 'v1beta1/namespaces';
 
@@ -775,6 +958,109 @@ class NamespacesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListNamespacesResponse.fromJson(data));
+  }
+
+  /**
+   * Updates the information about the specified namespace. Only the namespace
+   * visibility can be updated.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [namespaceName] - Resource name of this namespace. Namespaces names have
+   * the format: namespaces/namespace.
+   * Value must have pattern "^namespaces/[^/]*$".
+   *
+   * [projectId] - The project id of the namespace to update. If the project id
+   * is not specified then the project making the request is used. The project
+   * id must match the project that owns the beacon. Optional.
+   *
+   * Completes with a [Namespace].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Namespace> update(Namespace request, core.String namespaceName, {core.String projectId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (namespaceName == null) {
+      throw new core.ArgumentError("Parameter namespaceName is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$namespaceName');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Namespace.fromJson(data));
+  }
+
+}
+
+
+class V1beta1ResourceApi {
+  final commons.ApiRequester _requester;
+
+  V1beta1ResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets the Proximity Beacon API's current public key and associated
+   * parameters used to initiate the Diffie-Hellman key exchange required to
+   * register a beacon that broadcasts the Eddystone-EID format. This key
+   * changes periodically; clients may cache it and re-use the same public key
+   * to provision and register multiple beacons. However, clients should be
+   * prepared to refresh this key when they encounter an error registering an
+   * Eddystone-EID beacon.
+   *
+   * Request parameters:
+   *
+   * Completes with a [EphemeralIdRegistrationParams].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<EphemeralIdRegistrationParams> getEidparams() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+
+    _url = 'v1beta1/eidparams';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new EphemeralIdRegistrationParams.fromJson(data));
   }
 
 }
@@ -805,6 +1091,7 @@ class AdvertisedId {
    * - "EDDYSTONE" : A EDDYSTONE.
    * - "IBEACON" : A IBEACON.
    * - "ALTBEACON" : A ALTBEACON.
+   * - "EDDYSTONE_EID" : A EDDYSTONE_EID.
    */
   core.String type;
 
@@ -880,7 +1167,10 @@ class Beacon {
   /**
    * The identifier of a beacon as advertised by it. This field must be
    * populated when registering. It may be empty when updating a beacon record
-   * because it is ignored in updates.
+   * because it is ignored in updates. When registering a beacon that broadcasts
+   * Eddystone-EID, this field should contain a "stable" Eddystone-UID that
+   * identifies the beacon and links it to its attachments. The stable
+   * Eddystone-UID is only used for administering the beacon.
    */
   AdvertisedId advertisedId;
   /**
@@ -897,6 +1187,14 @@ class Beacon {
    * characters. Optional.
    */
   core.String description;
+  /**
+   * Write-only registration parameters for beacons using Eddystone-EID
+   * (remotely resolved ephemeral ID) format. This information will not be
+   * populated in API responses. When submitting this data, the `advertised_id`
+   * field must contain an ID of type Eddystone-UID. Any other ID type will
+   * result in an error.
+   */
+  EphemeralIdRegistration ephemeralIdRegistration;
   /**
    * Expected location stability. This is set when the beacon is registered or
    * updated, not automatically detected in any way. Optional.
@@ -932,6 +1230,24 @@ class Beacon {
    */
   core.Map<core.String, core.String> properties;
   /**
+   * Some beacons may require a user to provide an authorization key before
+   * changing any of its configuration (e.g. broadcast frames, transmit power).
+   * This field provides a place to store and control access to that key. This
+   * field is populated in responses to `GET /v1beta1/beacons/3!beaconId` from
+   * users with write access to the given beacon. That is to say: If the user is
+   * authorized to write the beacon's confidential data in the service, the
+   * service considers them authorized to configure the beacon. Note that this
+   * key grants nothing on the service, only on the beacon itself.
+   */
+  core.String provisioningKey;
+  core.List<core.int> get provisioningKeyAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(provisioningKey);
+  }
+
+  void set provisioningKeyAsBytes(core.List<core.int> _bytes) {
+    provisioningKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+  /**
    * Current status of the beacon. Required.
    * Possible string values are:
    * - "STATUS_UNSPECIFIED" : A STATUS_UNSPECIFIED.
@@ -953,6 +1269,9 @@ class Beacon {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("ephemeralIdRegistration")) {
+      ephemeralIdRegistration = new EphemeralIdRegistration.fromJson(_json["ephemeralIdRegistration"]);
+    }
     if (_json.containsKey("expectedStability")) {
       expectedStability = _json["expectedStability"];
     }
@@ -967,6 +1286,9 @@ class Beacon {
     }
     if (_json.containsKey("properties")) {
       properties = _json["properties"];
+    }
+    if (_json.containsKey("provisioningKey")) {
+      provisioningKey = _json["provisioningKey"];
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
@@ -984,6 +1306,9 @@ class Beacon {
     if (description != null) {
       _json["description"] = description;
     }
+    if (ephemeralIdRegistration != null) {
+      _json["ephemeralIdRegistration"] = (ephemeralIdRegistration).toJson();
+    }
     if (expectedStability != null) {
       _json["expectedStability"] = expectedStability;
     }
@@ -998,6 +1323,9 @@ class Beacon {
     }
     if (properties != null) {
       _json["properties"] = properties;
+    }
+    if (provisioningKey != null) {
+      _json["provisioningKey"] = provisioningKey;
     }
     if (status != null) {
       _json["status"] = status;
@@ -1077,11 +1405,6 @@ class BeaconInfo {
   core.List<AttachmentInfo> attachments;
   /** The name under which the beacon is registered. */
   core.String beaconName;
-  /**
-   * Free text used to identify or describe the beacon in a registered
-   * establishment. For example: "entrance", "room 101", etc. May be empty.
-   */
-  core.String description;
 
   BeaconInfo();
 
@@ -1094,9 +1417,6 @@ class BeaconInfo {
     }
     if (_json.containsKey("beaconName")) {
       beaconName = _json["beaconName"];
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
     }
   }
 
@@ -1111,9 +1431,6 @@ class BeaconInfo {
     if (beaconName != null) {
       _json["beaconName"] = beaconName;
     }
-    if (description != null) {
-      _json["description"] = description;
-    }
     return _json;
   }
 }
@@ -1124,19 +1441,19 @@ class BeaconInfo {
  * relative to the Proleptic Gregorian Calendar. The day may be 0 to represent a
  * year and month where the day is not significant, e.g. credit card expiration
  * date. The year may be 0 to represent a month and day independent of year,
- * e.g. anniversary date. Related types are [google.type.TimeOfDay][] and
+ * e.g. anniversary date. Related types are google.type.TimeOfDay and
  * `google.protobuf.Timestamp`.
  */
 class Date {
   /**
    * Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-   * if specifying a year/month where the day is not sigificant.
+   * if specifying a year/month where the day is not significant.
    */
   core.int day;
-  /** Month of year of date. Must be from 1 to 12. */
+  /** Month of year. Must be from 1 to 12. */
   core.int month;
   /**
-   * Year of date. Must be from 1 to 9,999, or 0 if specifying a date without a
+   * Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
    * year.
    */
   core.int year;
@@ -1196,7 +1513,10 @@ class DeleteAttachmentsResponse {
 class Diagnostics {
   /** An unordered list of Alerts that the beacon has. */
   core.List<core.String> alerts;
-  /** Resource name of the beacon. */
+  /**
+   * Resource name of the beacon. For Eddystone-EID beacons, this may be the
+   * beacon's current EID, or the beacon's "stable" Eddystone-UID.
+   */
   core.String beaconName;
   /**
    * The date when the battery is expected to be low. If the value is missing
@@ -1250,6 +1570,207 @@ class Empty {
 
   core.Map toJson() {
     var _json = new core.Map();
+    return _json;
+  }
+}
+
+/**
+ * Write-only registration parameters for beacons using Eddystone-EID format.
+ * Two ways of securely registering an Eddystone-EID beacon with the service are
+ * supported: 1. Perform an ECDH key exchange via this API, including a previous
+ * call to `GET /v1beta1/eidparams`. In this case the fields
+ * `beacon_ecdh_public_key` and `service_ecdh_public_key` should be populated
+ * and `beacon_identity_key` should not be populated. This method ensures that
+ * only the two parties in the ECDH key exchange can compute the identity key,
+ * which becomes a secret between them. 2. Derive or obtain the beacon's
+ * identity key via other secure means (perhaps an ECDH key exchange between the
+ * beacon and a mobile device or any other secure method), and then submit the
+ * resulting identity key to the service. In this case `beacon_identity_key`
+ * field should be populated, and neither of `beacon_ecdh_public_key` nor
+ * `service_ecdh_public_key` fields should be. The security of this method
+ * depends on how securely the parties involved (in particular the bluetooth
+ * client) handle the identity key, and obviously on how securely the identity
+ * key was generated. See [the Eddystone
+ * specification](https://github.com/google/eddystone/tree/master/eddystone-eid)
+ * at GitHub.
+ */
+class EphemeralIdRegistration {
+  /**
+   * The beacon's public key used for the Elliptic curve Diffie-Hellman key
+   * exchange. When this field is populated, `service_ecdh_public_key` must also
+   * be populated, and `beacon_identity_key` must not be.
+   */
+  core.String beaconEcdhPublicKey;
+  core.List<core.int> get beaconEcdhPublicKeyAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(beaconEcdhPublicKey);
+  }
+
+  void set beaconEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
+    beaconEcdhPublicKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+  /**
+   * The private key of the beacon. If this field is populated,
+   * `beacon_ecdh_public_key` and `service_ecdh_public_key` must not be
+   * populated.
+   */
+  core.String beaconIdentityKey;
+  core.List<core.int> get beaconIdentityKeyAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(beaconIdentityKey);
+  }
+
+  void set beaconIdentityKeyAsBytes(core.List<core.int> _bytes) {
+    beaconIdentityKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+  /**
+   * The initial clock value of the beacon. The beacon's clock must have begun
+   * counting at this value immediately prior to transmitting this value to the
+   * resolving service. Significant delay in transmitting this value to the
+   * service risks registration or resolution failures. If a value is not
+   * provided, the default is zero.
+   */
+  core.String initialClockValue;
+  /**
+   * An initial ephemeral ID calculated using the clock value submitted as
+   * `initial_clock_value`, and the secret key generated by the Diffie-Hellman
+   * key exchange using `service_ecdh_public_key` and `service_ecdh_public_key`.
+   * This initial EID value will be used by the service to confirm that the key
+   * exchange process was successful.
+   */
+  core.String initialEid;
+  core.List<core.int> get initialEidAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(initialEid);
+  }
+
+  void set initialEidAsBytes(core.List<core.int> _bytes) {
+    initialEid = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+  /**
+   * Indicates the nominal period between each rotation of the beacon's
+   * ephemeral ID. "Nominal" because the beacon should randomize the actual
+   * interval. See [the spec at
+   * github](https://github.com/google/eddystone/tree/master/eddystone-eid) for
+   * details. This value corresponds to a power-of-two scaler on the beacon's
+   * clock: when the scaler value is K, the beacon will begin broadcasting a new
+   * ephemeral ID on average every 2^K seconds.
+   */
+  core.int rotationPeriodExponent;
+  /**
+   * The service's public key used for the Elliptic curve Diffie-Hellman key
+   * exchange. When this field is populated, `beacon_ecdh_public_key` must also
+   * be populated, and `beacon_identity_key` must not be.
+   */
+  core.String serviceEcdhPublicKey;
+  core.List<core.int> get serviceEcdhPublicKeyAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(serviceEcdhPublicKey);
+  }
+
+  void set serviceEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
+    serviceEcdhPublicKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+
+  EphemeralIdRegistration();
+
+  EphemeralIdRegistration.fromJson(core.Map _json) {
+    if (_json.containsKey("beaconEcdhPublicKey")) {
+      beaconEcdhPublicKey = _json["beaconEcdhPublicKey"];
+    }
+    if (_json.containsKey("beaconIdentityKey")) {
+      beaconIdentityKey = _json["beaconIdentityKey"];
+    }
+    if (_json.containsKey("initialClockValue")) {
+      initialClockValue = _json["initialClockValue"];
+    }
+    if (_json.containsKey("initialEid")) {
+      initialEid = _json["initialEid"];
+    }
+    if (_json.containsKey("rotationPeriodExponent")) {
+      rotationPeriodExponent = _json["rotationPeriodExponent"];
+    }
+    if (_json.containsKey("serviceEcdhPublicKey")) {
+      serviceEcdhPublicKey = _json["serviceEcdhPublicKey"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (beaconEcdhPublicKey != null) {
+      _json["beaconEcdhPublicKey"] = beaconEcdhPublicKey;
+    }
+    if (beaconIdentityKey != null) {
+      _json["beaconIdentityKey"] = beaconIdentityKey;
+    }
+    if (initialClockValue != null) {
+      _json["initialClockValue"] = initialClockValue;
+    }
+    if (initialEid != null) {
+      _json["initialEid"] = initialEid;
+    }
+    if (rotationPeriodExponent != null) {
+      _json["rotationPeriodExponent"] = rotationPeriodExponent;
+    }
+    if (serviceEcdhPublicKey != null) {
+      _json["serviceEcdhPublicKey"] = serviceEcdhPublicKey;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Information a client needs to provision and register beacons that broadcast
+ * Eddystone-EID format beacon IDs, using Elliptic curve Diffie-Hellman key
+ * exchange. See [the Eddystone
+ * specification](https://github.com/google/eddystone/tree/master/eddystone-eid)
+ * at GitHub.
+ */
+class EphemeralIdRegistrationParams {
+  /**
+   * Indicates the maximum rotation period supported by the service. See
+   * EddystoneEidRegistration.rotation_period_exponent
+   */
+  core.int maxRotationPeriodExponent;
+  /**
+   * Indicates the minimum rotation period supported by the service. See
+   * EddystoneEidRegistration.rotation_period_exponent
+   */
+  core.int minRotationPeriodExponent;
+  /**
+   * The beacon service's public key for use by a beacon to derive its Identity
+   * Key using Elliptic Curve Diffie-Hellman key exchange.
+   */
+  core.String serviceEcdhPublicKey;
+  core.List<core.int> get serviceEcdhPublicKeyAsBytes {
+    return crypto.CryptoUtils.base64StringToBytes(serviceEcdhPublicKey);
+  }
+
+  void set serviceEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
+    serviceEcdhPublicKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+  }
+
+  EphemeralIdRegistrationParams();
+
+  EphemeralIdRegistrationParams.fromJson(core.Map _json) {
+    if (_json.containsKey("maxRotationPeriodExponent")) {
+      maxRotationPeriodExponent = _json["maxRotationPeriodExponent"];
+    }
+    if (_json.containsKey("minRotationPeriodExponent")) {
+      minRotationPeriodExponent = _json["minRotationPeriodExponent"];
+    }
+    if (_json.containsKey("serviceEcdhPublicKey")) {
+      serviceEcdhPublicKey = _json["serviceEcdhPublicKey"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (maxRotationPeriodExponent != null) {
+      _json["maxRotationPeriodExponent"] = maxRotationPeriodExponent;
+    }
+    if (minRotationPeriodExponent != null) {
+      _json["minRotationPeriodExponent"] = minRotationPeriodExponent;
+    }
+    if (serviceEcdhPublicKey != null) {
+      _json["serviceEcdhPublicKey"] = serviceEcdhPublicKey;
+    }
     return _json;
   }
 }
@@ -1352,12 +1873,12 @@ class IndoorLevel {
  * of doubles representing degrees latitude and degrees longitude. Unless
  * specified otherwise, this must conform to the WGS84 standard. Values must be
  * within normalized ranges. Example of normalization code in Python: def
- * NormalizeLongitude(longitude): """Wrapsdecimal degrees longitude to [-180.0,
+ * NormalizeLongitude(longitude): """Wraps decimal degrees longitude to [-180.0,
  * 180.0].""" q, r = divmod(longitude, 360.0) if r > 180.0 or (r == 180.0 and q
  * <= -1.0): return r - 360.0 return r def NormalizeLatLng(latitude, longitude):
- * """Wraps decimal degrees latitude and longitude to [-180.0, 180.0] and
- * [-90.0, 90.0], respectively.""" r = latitude % 360.0 if r = 270.0: return r -
- * 360, NormalizeLongitude(longitude) else: return 180 - r,
+ * """Wraps decimal degrees latitude and longitude to [-90.0, 90.0] and [-180.0,
+ * 180.0], respectively.""" r = latitude % 360.0 if r = 270.0: return r - 360,
+ * NormalizeLongitude(longitude) else: return 180 - r,
  * NormalizeLongitude(longitude + 180.0) assert 180.0 ==
  * NormalizeLongitude(180.0) assert -180.0 == NormalizeLongitude(-180.0) assert
  * -179.0 == NormalizeLongitude(181.0) assert (0.0, 0.0) ==
@@ -1569,7 +2090,12 @@ class Namespace {
 
 /** Represents one beacon observed once. */
 class Observation {
-  /** The ID advertised by the beacon the client has encountered. Required. */
+  /**
+   * The ID advertised by the beacon the client has encountered. Clients may
+   * submit an Eddystone-EID `advertised_id`. If the client is not authorized to
+   * resolve the given Eddystone-EID, no data will be returned for that beacon.
+   * Required.
+   */
   AdvertisedId advertisedId;
   /**
    * The array of telemetry bytes received from the beacon. The server is
@@ -1584,10 +2110,7 @@ class Observation {
   void set telemetryAsBytes(core.List<core.int> _bytes) {
     telemetry = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
-  /**
-   * Time when the beacon was observed. Being sourced from a mobile device, this
-   * time may be suspect.
-   */
+  /** Time when the beacon was observed. */
   core.String timestampMs;
 
   Observation();

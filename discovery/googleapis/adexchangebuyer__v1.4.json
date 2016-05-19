@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/9WukAPmA5ytP1PY2pa6ISyUv5a0\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/002w-fCkY_zNzqAq_LEe_TgmEjM\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -570,8 +570,13 @@
                         "proposalId"
                     ],
                     "parameters": {
+                        "pqlQuery": {
+                            "description": "Query string to retrieve specific deals.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "proposalId": {
-                            "description": "The proposalId to get deals for.",
+                            "description": "The proposalId to get deals for. To search across proposals specify order_id = '-' as part of the URL.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1200,7 +1205,7 @@
             }
         }
     },
-    "revision": "20160405",
+    "revision": "20160509",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1470,6 +1475,7 @@
                     "type": "array"
                 },
                 "webPropertyCode": {
+                    "description": "Web property id of the seller creating these orders",
                     "type": "string"
                 }
             },
@@ -1505,6 +1511,10 @@
                     "description": "Account id.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "adChoicesDestinationUrl": {
+                    "description": "The link to the Ad Preferences page. This is only supported for native ads.",
+                    "type": "string"
                 },
                 "advertiserId": {
                     "description": "Detected advertiser id, if any. Read-only. This field should not be set in requests.",
@@ -1893,9 +1903,13 @@
             "type": "object"
         },
         "DealServingMetadataDealPauseStatus": {
-            "description": "Tracks which parties (if any) have paused a deal. The deal is considered paused if has_buyer_paused || has_seller_paused.",
+            "description": "Tracks which parties (if any) have paused a deal. The deal is considered paused if has_buyer_paused || has_seller_paused. Each of the has_buyer_paused or the has_seller_paused bits can be set independently.",
             "id": "DealServingMetadataDealPauseStatus",
             "properties": {
+                "firstPausedBy": {
+                    "description": "If the deal is paused, records which party paused the deal first.",
+                    "type": "string"
+                },
                 "hasBuyerPaused": {
                     "type": "boolean"
                 },
@@ -1947,6 +1961,10 @@
         "DealTermsGuaranteedFixedPriceTerms": {
             "id": "DealTermsGuaranteedFixedPriceTerms",
             "properties": {
+                "billingInfo": {
+                    "$ref": "DealTermsGuaranteedFixedPriceTermsBillingInfo",
+                    "description": "External billing info for this Deal. This field is relevant when external billing info such as price has a different currency code than DFP/AdX."
+                },
                 "fixedPrices": {
                     "description": "Fixed price for the specified buyer.",
                     "items": {
@@ -1963,6 +1981,26 @@
                     "description": "Count of guaranteed looks. Required for deal, optional for product.",
                     "format": "int64",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DealTermsGuaranteedFixedPriceTermsBillingInfo": {
+            "id": "DealTermsGuaranteedFixedPriceTermsBillingInfo",
+            "properties": {
+                "currencyConversionTimeMs": {
+                    "description": "The timestamp (in ms since epoch) when the original reservation price for the deal was first converted to DFP currency. This is used to convert the contracted price into advertiser's currency without discrepancy.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "originalContractedQuantity": {
+                    "description": "The original contracted quantity (# impressions) for this deal. To ensure delivery, sometimes publisher will book the deal with a impression buffer, however clients are billed using the original contracted quantity.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "Price",
+                    "description": "The original reservation price for the deal, if the currency code is different from the one used in negotiation."
                 }
             },
             "type": "object"
@@ -2013,6 +2051,7 @@
                     "type": "string"
                 },
                 "updateAction": {
+                    "description": "Indicates an optional action to take on the proposal",
                     "type": "string"
                 }
             },
@@ -2806,6 +2845,10 @@
             "description": "Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in an product can become [0,1] deals. To check if there is a PricePerBuyer for a particular buyer or buyer/advertiser pair, we look for the most specific matching rule - we first look for a rule matching the buyer and advertiser, next a rule with the buyer but an empty advertiser list, and otherwise look for a matching rule where no buyer is set.",
             "id": "PricePerBuyer",
             "properties": {
+                "auctionTier": {
+                    "description": "Optional access type for this buyer.",
+                    "type": "string"
+                },
                 "buyer": {
                     "$ref": "Buyer",
                     "description": "The buyer who will pay this price. If unset, all buyers can pay this price (if the advertisers match, and there's no more specific rule matching the buyer)."
@@ -2905,6 +2948,10 @@
                     "description": "Id of the publisher profile for a given seller. A (seller.account_id, publisher_profile_id) pair uniquely identifies a publisher profile. Buyers can call the PublisherProfiles::List endpoint to get a list of publisher profiles for a given seller.",
                     "type": "string"
                 },
+                "publisherProvidedForecast": {
+                    "$ref": "PublisherProvidedForecast",
+                    "description": "Publisher self-provided forecast information."
+                },
                 "revisionNumber": {
                     "description": "The revision number of the product. (readonly)",
                     "format": "int64",
@@ -2999,9 +3046,6 @@
                     "description": "The role of the last user that either updated the proposal or left a comment. (readonly)",
                     "type": "string"
                 },
-                "lastUpdaterRole": {
-                    "type": "string"
-                },
                 "name": {
                     "description": "The name for the proposal (updatable)",
                     "type": "string"
@@ -3066,8 +3110,8 @@
                     "type": "string"
                 },
                 "directContact": {
-                    "$ref": "ContactInformation",
-                    "description": "Direct contact for the publisher profile."
+                    "description": "Direct contact for the publisher profile.",
+                    "type": "string"
                 },
                 "exchange": {
                     "description": "Exchange where this publisher profile is from. E.g. AdX, Rubicon etc...",
@@ -3111,8 +3155,8 @@
                     "type": "integer"
                 },
                 "programmaticContact": {
-                    "$ref": "ContactInformation",
-                    "description": "Programmatic contact for the publisher profile."
+                    "description": "Programmatic contact for the publisher profile.",
+                    "type": "string"
                 },
                 "publisherDomains": {
                     "description": "The list of domains represented in this publisher profile. Empty if this is a parent profile.",

@@ -6323,7 +6323,11 @@ class OrderCancellation {
   core.String creationDate;
   /** The quantity that was canceled. */
   core.int quantity;
-  /** The reason for the cancellation. */
+  /**
+   * The reason for the cancellation. Orders that are cancelled with a
+   * noIventory reason will lead to the removal of the product from POG until
+   * you make an update to that product. This will not affect your Shopping ads.
+   */
   core.String reason;
   /** The explanation of the reason. */
   core.String reasonText;
@@ -6373,11 +6377,11 @@ class OrderCustomer {
   /** Email address of the customer. */
   core.String email;
   /**
-   * If set, this indicates the user had a choice to opt in or out of providing
-   * marketing rights to the merchant. If unset, this indicates the user has
-   * already made this choice in a previous purchase, and was thus not shown the
-   * marketing right opt in/out checkbox during the Purchases on Google checkout
-   * flow.
+   * If set, this indicates the user explicitly chose to opt in or out of
+   * providing marketing rights to the merchant. If unset, this indicates the
+   * user has already made this choice in a previous purchase, and was thus not
+   * shown the marketing right opt in/out checkbox during the Purchases on
+   * Google checkout flow.
    */
   core.bool explicitMarketingPreference;
   /** Full name of the customer. */
@@ -8739,7 +8743,12 @@ class Product {
   core.String mpn;
   /** The number of identical products in a merchant-defined multipack. */
   core.String multipack;
-  /** An identifier of the item. */
+  /**
+   * An identifier of the item. Leading and trailing whitespaces are stripped
+   * and multiple whitespaces are replaced by a single whitespace upon
+   * submission. Only valid unicode characters are accepted. See the products
+   * feed specification for details.
+   */
   core.String offerId;
   /** Whether an item is available for purchase only online. */
   core.bool onlineOnly;
@@ -8748,7 +8757,7 @@ class Product {
   /** Price of the item. */
   Price price;
   /**
-   * Your category of the item (formatted as in product feeds specification).
+   * Your category of the item (formatted as in products feed specification).
    */
   core.String productType;
   /** The unique ID of a promotion. */
@@ -8756,8 +8765,8 @@ class Product {
   /** Advertised sale price of the item. */
   Price salePrice;
   /**
-   * Date range during which the item is on sale (see product feed
-   * specifications).
+   * Date range during which the item is on sale (see products feed
+   * specification).
    */
   core.String salePriceEffectiveDate;
   /** The quantity of the product that is reserved for sell-on-google ads. */
@@ -10358,11 +10367,11 @@ class TestOrderCustomer {
   /** Email address of the customer. */
   core.String email;
   /**
-   * If set, this indicates the user had a choice to opt in or out of providing
-   * marketing rights to the merchant. If unset, this indicates the user has
-   * already made this choice in a previous purchase, and was thus not shown the
-   * marketing right opt in/out checkbox during the Purchases on Google checkout
-   * flow. Optional.
+   * If set, this indicates the user explicitly chose to opt in or out of
+   * providing marketing rights to the merchant. If unset, this indicates the
+   * user has already made this choice in a previous purchase, and was thus not
+   * shown the marketing right opt in/out checkbox during the Purchases on
+   * Google checkout flow. Optional.
    */
   core.bool explicitMarketingPreference;
   /** Full name of the customer. */

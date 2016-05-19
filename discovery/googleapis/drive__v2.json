@@ -35,10 +35,10 @@
     "basePath": "/drive/v2/",
     "baseUrl": "https://www.googleapis.com/drive/v2/",
     "batchPath": "batch",
-    "description": "The API to interact with Drive.",
+    "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/UNfUh45veAp7kkxITBS3Bc9xccw\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/U-tMitOEVkWDRWQuebp1LsAKVr0\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -2632,7 +2632,7 @@
             }
         }
     },
-    "revision": "20160414",
+    "revision": "20160506",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {

@@ -2010,7 +2010,12 @@ class ProductsResourceApi {
       _requester = client;
 
   /**
-   * Approves the specified product (and the relevant app permissions, if any).
+   * Approves the specified product and the relevant app permissions, if any.
+   * The maximum number of products that you can approve per enterprise customer
+   * is 1,000.
+   *
+   * To learn how to use Google Play for Work to design and create a store
+   * layout to display approved products to your users, see Store Layout Design.
    *
    * [request] - The metadata request object.
    *
@@ -2261,6 +2266,81 @@ class ProductsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ProductPermissions.fromJson(data));
+  }
+
+  /**
+   * Finds approved products that match a query.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [approved] - Specifies whether to search among all products (false) or
+   * among only products that have been approved (true). Only "true" is
+   * supported, and should be specified.
+   *
+   * [language] - The BCP47 tag for the user's preferred language (e.g. "en-US",
+   * "de"). Results are returned in the language best matching the preferred
+   * language.
+   *
+   * [maxResults] - Specifies the maximum number of products that can be
+   * returned per request. If not specified, uses a default value of 100, which
+   * is also the maximum retrievable within a single response.
+   *
+   * [query] - The search query as typed in the Google Play Store search box. If
+   * omitted, all approved apps will be returned (using the pagination
+   * parameters).
+   *
+   * [token] - A pagination token is contained in a requests response when
+   * there are more products. The token can be used in a subsequent request to
+   * obtain more products, and so forth. This parameter cannot be used in the
+   * initial request.
+   *
+   * Completes with a [ProductsListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ProductsListResponse> list(core.String enterpriseId, {core.bool approved, core.String language, core.int maxResults, core.String query, core.String token}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (approved != null) {
+      _queryParams["approved"] = ["${approved}"];
+    }
+    if (language != null) {
+      _queryParams["language"] = [language];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
+    }
+    if (token != null) {
+      _queryParams["token"] = [token];
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/products';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ProductsListResponse.fromJson(data));
   }
 
   /**
@@ -3618,7 +3698,8 @@ class Device {
    * means that the EMM's app is a device owner. "managedProfile" means that the
    * EMM's app is the profile owner (and there is a separate personal profile
    * which is not managed). "containerApp" means that the EMM's app is managing
-   * the Android for Work container app on the device.
+   * the Android for Work container app on the device. ?unmanagedProfile? means
+   * that the EMM?s app is managing a managed user on an unmanaged device
    */
   core.String managementType;
 
@@ -4341,6 +4422,40 @@ class LocalizedText {
   }
 }
 
+class PageInfo {
+  core.int resultPerPage;
+  core.int startIndex;
+  core.int totalResults;
+
+  PageInfo();
+
+  PageInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("resultPerPage")) {
+      resultPerPage = _json["resultPerPage"];
+    }
+    if (_json.containsKey("startIndex")) {
+      startIndex = _json["startIndex"];
+    }
+    if (_json.containsKey("totalResults")) {
+      totalResults = _json["totalResults"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (resultPerPage != null) {
+      _json["resultPerPage"] = resultPerPage;
+    }
+    if (startIndex != null) {
+      _json["startIndex"] = startIndex;
+    }
+    if (totalResults != null) {
+      _json["totalResults"] = totalResults;
+    }
+    return _json;
+  }
+}
+
 /**
  * A permission represents some extra capability, to be granted to an Android
  * app, which requires explicit consent. An enterprise admin must consent to
@@ -4723,6 +4838,58 @@ class ProductsGenerateApprovalUrlResponse {
   }
 }
 
+/** The matching products. */
+class ProductsListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#productsListResponse".
+   */
+  core.String kind;
+  /** General pagination information. */
+  PageInfo pageInfo;
+  /**
+   * Information about a product (e.g. an app) in the Google Play Store, for
+   * display to an enterprise admin.
+   */
+  core.List<Product> product;
+  /** Pagination information for token pagination. */
+  TokenPagination tokenPagination;
+
+  ProductsListResponse();
+
+  ProductsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("product")) {
+      product = _json["product"].map((value) => new Product.fromJson(value)).toList();
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (product != null) {
+      _json["product"] = product.map((value) => (value).toJson()).toList();
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    return _json;
+  }
+}
+
 /**
  * Definition of a Google Play for Work store cluster, a list of products
  * displayed as part of a store page.
@@ -4750,7 +4917,7 @@ class StoreCluster {
    * with duplicate order is undefined.
    *
    * The value of this field is never visible to a user, it is used solely for
-   * the purpose of defining an ordering. Maximum length is 20 characters.
+   * the purpose of defining an ordering. Maximum length is 256 characters.
    */
   core.String orderInPage;
   /**
@@ -4974,6 +5141,33 @@ class StorePage {
     }
     if (name != null) {
       _json["name"] = name.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class TokenPagination {
+  core.String nextPageToken;
+  core.String previousPageToken;
+
+  TokenPagination();
+
+  TokenPagination.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("previousPageToken")) {
+      previousPageToken = _json["previousPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (previousPageToken != null) {
+      _json["previousPageToken"] = previousPageToken;
     }
     return _json;
   }

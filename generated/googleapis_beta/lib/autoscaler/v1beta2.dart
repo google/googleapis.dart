@@ -550,16 +550,16 @@ class ZonesResourceApi {
   /**
    * Request parameters:
    *
-   * [project] - null
-   * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
-   *
    * [filter] - null
    *
    * [maxResults] - null
    * Value must be between "0" and "500".
    *
    * [pageToken] - null
+   *
+   * [project] - null
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [ZoneList].
    *
@@ -569,7 +569,7 @@ class ZonesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ZoneList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<ZoneList> list({core.String filter, core.int maxResults, core.String pageToken, core.String project}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -577,9 +577,6 @@ class ZonesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
@@ -589,8 +586,11 @@ class ZonesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (project != null) {
+      _queryParams["project"] = [project];
+    }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/zones';
+    _url = 'zones';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -739,10 +739,7 @@ class AutoscalingPolicy {
    * machine. The default is 60 seconds.
    */
   core.int coolDownPeriodSec;
-  /**
-   * Exactly one utilization policy should be provided. Configuration parameters
-   * of CPU based autoscaling policy.
-   */
+  /** Configuration parameters of CPU based autoscaling policy. */
   AutoscalingPolicyCpuUtilization cpuUtilization;
   /** Configuration parameters of autoscaling based on custom metric. */
   core.List<AutoscalingPolicyCustomMetricUtilization> customMetricUtilizations;
@@ -1069,6 +1066,7 @@ class OperationWarnings {
 class Operation {
   core.String clientOperationId;
   core.String creationTimestamp;
+  core.String description;
   core.String endTime;
   OperationError error;
   core.String httpErrorMessage;
@@ -1076,7 +1074,7 @@ class Operation {
   core.String id;
   core.String insertTime;
   /**
-   * [Output Only] Type of the resource. Always compute#Operation for Operation
+   * [Output Only] Type of the resource. Always compute#operation for Operation
    * resources.
    */
   core.String kind;
@@ -1102,6 +1100,9 @@ class Operation {
     }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
@@ -1172,6 +1173,9 @@ class Operation {
     }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
@@ -1289,58 +1293,15 @@ class OperationList {
   }
 }
 
-class ZoneMaintenanceWindows {
-  core.String beginTime;
-  core.String description;
-  core.String endTime;
-  core.String name;
-
-  ZoneMaintenanceWindows();
-
-  ZoneMaintenanceWindows.fromJson(core.Map _json) {
-    if (_json.containsKey("beginTime")) {
-      beginTime = _json["beginTime"];
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (beginTime != null) {
-      _json["beginTime"] = beginTime;
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    return _json;
-  }
-}
-
 class Zone {
   core.String creationTimestamp;
   DeprecationStatus deprecated;
   core.String description;
   core.String id;
-  /** [Output Only] Type of the resource. Always kind#zone for zones. */
+  /** [Output Only] Type of the resource. Always compute#zone for zones. */
   core.String kind;
-  core.List<ZoneMaintenanceWindows> maintenanceWindows;
   core.String name;
   core.String region;
-  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
   core.String status;
 
@@ -1361,9 +1322,6 @@ class Zone {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
-    }
-    if (_json.containsKey("maintenanceWindows")) {
-      maintenanceWindows = _json["maintenanceWindows"].map((value) => new ZoneMaintenanceWindows.fromJson(value)).toList();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1396,9 +1354,6 @@ class Zone {
     if (kind != null) {
       _json["kind"] = kind;
     }
-    if (maintenanceWindows != null) {
-      _json["maintenanceWindows"] = maintenanceWindows.map((value) => (value).toJson()).toList();
-    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -1421,7 +1376,7 @@ class ZoneList {
   /** Type of resource. */
   core.String kind;
   core.String nextPageToken;
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   ZoneList();

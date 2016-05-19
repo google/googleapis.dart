@@ -18,7 +18,7 @@
     "description": "Transfers user data from one user to another.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/data-transfer/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/YLr8KxlFkw8ar-xZYzcCGhmF9B0\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/YLr8KxlFkw8ar-xZYzcCGhmF9B0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

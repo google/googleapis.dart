@@ -18,7 +18,7 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/QBvZSnJ2Tk6w96gxgwGXIFQ4mzk\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/o_-sS2PEVGnMkQqyJ497hboiLWw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1410,7 +1410,7 @@
             }
         }
     },
-    "revision": "20160321",
+    "revision": "20160509",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -2413,12 +2413,12 @@
                     "type": "boolean"
                 },
                 "dataDiskSizeGb": {
-                    "description": "The size of data disk, in GB. The data disk size minimum is 10GB. This property is only applicable to Second Generation instances.",
+                    "description": "The size of data disk, in GB. The data disk size minimum is 10GB. Applies only to Second Generation instances.",
                     "format": "int64",
                     "type": "string"
                 },
                 "dataDiskType": {
-                    "description": "The type of data disk. Only supported for Second Generation instances. The default type is PD_SSD. This property is only applicable to Second Generation instances.",
+                    "description": "The type of data disk. Only supported for Second Generation instances. The default type is PD_SSD. Applies only to Second Generation instances.",
                     "type": "string"
                 },
                 "databaseFlags": {
@@ -2447,7 +2447,7 @@
                 },
                 "maintenanceWindow": {
                     "$ref": "MaintenanceWindow",
-                    "description": "The maintenance window for this instance. This specifies when the instance may be restarted for maintenance purposes. This property is only applicable to Second Generation instances."
+                    "description": "The maintenance window for this instance. This specifies when the instance may be restarted for maintenance purposes. Applies only to Second Generation instances."
                 },
                 "pricingPlan": {
                     "description": "The pricing plan for this instance. This can be either PER_USE or PACKAGE. Only PER_USE is supported for Second Generation instances.",
@@ -2466,6 +2466,10 @@
                     "description": "The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.",
                     "format": "int64",
                     "type": "string"
+                },
+                "storageAutoResize": {
+                    "description": "Configuration to increase storage size automatically. The default value is false. Applies only to Second Generation instances.",
+                    "type": "boolean"
                 },
                 "tier": {
                     "annotations": {
@@ -2569,12 +2573,16 @@
             "properties": {
                 "clientCert": {
                     "$ref": "SslCertDetail",
-                    "description": "The new client certificate and private key. The new certificate will not work until the instance is restarted."
+                    "description": "The new client certificate and private key. The new certificate will not work until the instance is restarted for First Generation instances."
                 },
                 "kind": {
                     "default": "sql#sslCertsInsert",
                     "description": "This is always sql#sslCertsInsert.",
                     "type": "string"
+                },
+                "operation": {
+                    "$ref": "Operation",
+                    "description": "The operation to track the ssl certs insert request."
                 },
                 "serverCaCert": {
                     "$ref": "SslCert",

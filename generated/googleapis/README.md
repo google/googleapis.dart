@@ -128,6 +128,12 @@ Views and manages your Google Analytics data.
 
 Official API documentation: https://developers.google.com/analytics/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Analytics Reporting API - analyticsreporting v4
+
+Accesses Analytics report data.
+
+Official API documentation: https://developers.google.com/analytics/devguides/reporting/core/v4/
+
 #### ![Logo](https://www.google.com/images/icons/product/android-16.png) Google Play EMM API - androidenterprise v1
 
 Manages the deployment of apps to Android for Work users.
@@ -184,7 +190,7 @@ Official API documentation: https://developers.google.com/civic-information
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Classroom API - classroom v1
 
-Google Classroom API
+Manages classes, rosters, and invitations in Google Classroom.
 
 Official API documentation: https://developers.google.com/classroom/
 
@@ -193,6 +199,12 @@ Official API documentation: https://developers.google.com/classroom/
 Retrieves Google Developers Console billing accounts and associates them with projects.
 
 Official API documentation: https://cloud.google.com/billing/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Container Builder API - cloudbuild v1
+
+Builds container images in the cloud.
+
+Official API documentation: https://cloud.google.com/container-builder/docs/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Debugger API - clouddebugger v2
 
@@ -214,7 +226,7 @@ Official API documentation: https://cloud.google.com/resource-manager
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Trace API - cloudtrace v1
 
-The Cloud Trace API allows you to send traces to and retrieve traces from Google Cloud Trace.
+Send and retrieve trace data from Google Cloud Trace. Data is generated and available by default for all App Engine applications. Data from other applications can be written to Cloud Trace for display, reporting, and analysis.
 
 Official API documentation: https://cloud.google.com/tools/cloud-trace
 
@@ -226,7 +238,7 @@ Official API documentation: https://developers.google.com/compute/docs/reference
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Consumer Surveys API - consumersurveys v2
 
-API for Google Consumer Surveys.
+Creates and conducts surveys, lists the surveys that an authenticated user owns, and retrieves survey results and information about specified surveys.
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Container Engine API - container v1
 
@@ -260,7 +272,7 @@ Official API documentation: https://developers.google.com/custom-search/v1/using
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1
 
-An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
+Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataproc/
 
@@ -269,24 +281,6 @@ Official API documentation: https://cloud.google.com/dataproc/
 Declares, configures, and deploys complex solutions on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/deployment-manager/
-
-#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DFA Reporting API - dfareporting v1.3
-
-Lets you create, run and download reports.
-
-Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
-
-#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.0
-
-Manages your DoubleClick Campaign Manager ad campaigns and reports.
-
-Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
-
-#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.1
-
-Manages your DoubleClick Campaign Manager ad campaigns and reports.
-
-Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.2
 
@@ -306,9 +300,15 @@ Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.5
+
+Manages your DoubleClick Campaign Manager ad campaigns and reports.
+
+Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
+
 #### ![Logo](http://www.google.com/images/icons/feature/filing_cabinet_search-g16.png) APIs Discovery Service - discovery v1
 
-Lets you discover information about other Google APIs, such as what APIs are available, the resource and method details for each API.
+Provides information about other Google APIs, such as what APIs are available, the resource, and method details for each API.
 
 Official API documentation: https://developers.google.com/discovery/
 
@@ -332,15 +332,22 @@ Official API documentation: https://developers.google.com/doubleclick-search/
 
 #### ![Logo](https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png) Drive API - drive v2
 
-The API to interact with Drive.
+Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.
 
 Official API documentation: https://developers.google.com/drive/
 
 #### ![Logo](https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png) Drive API - drive v3
 
-The API to interact with Drive.
+Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.
 
 Official API documentation: https://developers.google.com/drive/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Firebase Rules API - firebaserules v1
+
+Creates and manages rules that determine when a Firebase Rules-enabled service should permit a request.
+
+
+Official API documentation: https://firebase.google.com/docs/storage/security/start
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Fitness - fitness v1
 
@@ -440,7 +447,7 @@ Official API documentation: https://developers.google.com/glass
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Monitoring API - monitoring v3
 
-The Google Monitoring API lets you manage your monitoring data and configurations.
+Manages your Stackdriver monitoring data and configurations. Projects must be associated with a Stackdriver account, except for the following methods: [monitoredResourceDescriptors.list](v3/projects.monitoredResourceDescriptors/list), [monitoredResourceDescriptors.get](v3/projects.monitoredResourceDescriptors/get), [metricDescriptors.list](v3/projects.metricDescriptors/list), [metricDescriptors.get](v3/projects.metricDescriptors/get), and [timeSeries.list](v3/projects.timeSeries/list).
 
 Official API documentation: https://cloud.google.com/monitoring/api/
 
@@ -476,19 +483,19 @@ Official API documentation: https://developers.google.com/people/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Play Movies Partner API - playmoviespartner v1
 
-Lets Google Play Movies Partners get the delivery status of their titles.
+Gets the delivery status of titles for Google Play Movies Partners.
 
 Official API documentation: https://developers.google.com/playmoviespartner/
 
 #### ![Logo](http://www.google.com/images/icons/product/gplus-16.png) Google+ API - plus v1
 
-The Google+ API enables developers to build on top of the Google+ platform.
+Builds on top of the Google+ platform.
 
 Official API documentation: https://developers.google.com/+/api/
 
 #### ![Logo](http://www.google.com/images/icons/product/gplus-16.png) Google+ Domains API - plusDomains v1
 
-The Google+ API enables developers to build on top of the Google+ platform.
+Builds on top of the Google+ platform for Google Apps Domains.
 
 Official API documentation: https://developers.google.com/+/domains/
 
@@ -516,17 +523,23 @@ Creates and manages your customers and their subscriptions.
 
 Official API documentation: https://developers.google.com/google-apps/reseller/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Enterprise Apps Reseller API - reseller v1sandbox
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Safe Browsing APIs - safebrowsing v4
 
-Creates and manages your customers and their subscriptions.
+Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources.
 
-Official API documentation: https://developers.google.com/google-apps/reseller/
+Official API documentation: https://developers.google.com/safe-browsing/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Apps Script Execution API - script v1
 
-An API for executing Google Apps Script projects.
+Executes Google Apps Script projects.
 
-Official API documentation: https://developers.google.com/apps-script/execution/rest/v1/run
+Official API documentation: https://developers.google.com/apps-script/execution/rest/v1/scripts/run
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Sheets API - sheets v4
+
+An API for reading and modifying Google Sheets.
+
+Official API documentation: https://developers.google.com/sheets/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Site Verification API - siteVerification v1
 
@@ -570,6 +583,12 @@ Lets you create, inspect, and manage goo.gl short URLs
 
 Official API documentation: https://developers.google.com/url-shortener/v1/getting_started
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Vision API - vision v1
+
+Integrates Google Vision features, including image labeling, face, logo, and landmark detection, optical character recognition (OCR), and detection of explicit content, into applications.
+
+Official API documentation: https://cloud.google.com/vision/
+
 #### ![Logo](https://www.google.com/images/icons/feature/font_api-16.png) Google Fonts Developer API - webfonts v1
 
 Accesses the metadata for all families served by Google Fonts, providing a list of families currently available (including available styles and a list of supported script subsets).
@@ -590,13 +609,13 @@ Official API documentation: https://developers.google.com/youtube/v3
 
 #### ![Logo](https://www.google.com/images/icons/product/youtube-16.png) YouTube Analytics API - youtubeAnalytics v1
 
-Retrieves your YouTube Analytics reports.
+Retrieves your YouTube Analytics data.
 
 Official API documentation: http://developers.google.com/youtube/analytics/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) YouTube Reporting API - youtubereporting v1
 
-Schedules reporting jobs and downloads the resulting bulk data reports about YouTube channels, videos, etc. in the form of CSV files.
+Schedules reporting jobs containing your YouTube Analytics data and downloads the resulting bulk data reports in the form of CSV files.
 
 Official API documentation: https://developers.google.com/youtube/reporting/v1/reports/
 

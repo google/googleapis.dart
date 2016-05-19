@@ -17,8 +17,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client youtubereporting/v1';
 
 /**
- * Schedules reporting jobs and downloads the resulting bulk data reports about
- * YouTube channels, videos, etc. in the form of CSV files.
+ * Schedules reporting jobs containing your YouTube Analytics data and downloads
+ * the resulting bulk data reports in the form of CSV files.
  */
 class YoutubereportingApi {
   /**
@@ -404,7 +404,7 @@ class MediaResourceApi {
    * Request parameters:
    *
    * [resourceName] - Name of the media that is being downloaded. See
-   * ByteStream.ReadRequest.resource_name.
+   * ReadRequest.resource_name.
    * Value must have pattern "^.*$".
    *
    * [downloadOptions] - Options for downloading. A download can be either a
@@ -553,6 +553,11 @@ class Empty {
 class Job {
   /** The creation date/time of the job. */
   core.String createTime;
+  /**
+   * The date/time when this job will expire/expired. After a job expired, no
+   * new reports are generated.
+   */
+  core.String expireTime;
   /** The server-generated ID of the job (max. 40 characters). */
   core.String id;
   /** The name of the job (max. 100 characters). */
@@ -574,6 +579,9 @@ class Job {
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -592,6 +600,9 @@ class Job {
     var _json = new core.Map();
     if (createTime != null) {
       _json["createTime"] = createTime;
+    }
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
     }
     if (id != null) {
       _json["id"] = id;
@@ -751,6 +762,8 @@ class Report {
   core.String endTime;
   /** The server-generated ID of the report. */
   core.String id;
+  /** The date/time when the job this report belongs to will expire/expired. */
+  core.String jobExpireTime;
   /** The ID of the job that created this report. */
   core.String jobId;
   /**
@@ -774,6 +787,9 @@ class Report {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("jobExpireTime")) {
+      jobExpireTime = _json["jobExpireTime"];
+    }
     if (_json.containsKey("jobId")) {
       jobId = _json["jobId"];
     }
@@ -796,6 +812,9 @@ class Report {
     if (id != null) {
       _json["id"] = id;
     }
+    if (jobExpireTime != null) {
+      _json["jobExpireTime"] = jobExpireTime;
+    }
     if (jobId != null) {
       _json["jobId"] = jobId;
     }
@@ -808,6 +827,8 @@ class Report {
 
 /** A report type. */
 class ReportType {
+  /** The date/time when this report type was/will be deprecated. */
+  core.String deprecateTime;
   /** The ID of the report type (max. 100 characters). */
   core.String id;
   /** The name of the report type (max. 100 characters). */
@@ -822,6 +843,9 @@ class ReportType {
   ReportType();
 
   ReportType.fromJson(core.Map _json) {
+    if (_json.containsKey("deprecateTime")) {
+      deprecateTime = _json["deprecateTime"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -835,6 +859,9 @@ class ReportType {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (deprecateTime != null) {
+      _json["deprecateTime"] = deprecateTime;
+    }
     if (id != null) {
       _json["id"] = id;
     }

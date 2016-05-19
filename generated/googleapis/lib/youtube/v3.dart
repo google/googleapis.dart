@@ -16391,6 +16391,13 @@ class VideoContentDetails {
    */
   core.bool licensedContent;
   /**
+   * Specifies the projection format of the video.
+   * Possible string values are:
+   * - "360"
+   * - "rectangular"
+   */
+  core.String projection;
+  /**
    * The regionRestriction object contains information about the countries where
    * a video is (or is not) viewable. The object will contain either the
    * contentDetails.regionRestriction.allowed property or the
@@ -16422,6 +16429,9 @@ class VideoContentDetails {
     if (_json.containsKey("licensedContent")) {
       licensedContent = _json["licensedContent"];
     }
+    if (_json.containsKey("projection")) {
+      projection = _json["projection"];
+    }
     if (_json.containsKey("regionRestriction")) {
       regionRestriction = new VideoContentDetailsRegionRestriction.fromJson(_json["regionRestriction"]);
     }
@@ -16449,6 +16459,9 @@ class VideoContentDetails {
     }
     if (licensedContent != null) {
       _json["licensedContent"] = licensedContent;
+    }
+    if (projection != null) {
+      _json["projection"] = projection;
     }
     if (regionRestriction != null) {
       _json["regionRestriction"] = (regionRestriction).toJson();

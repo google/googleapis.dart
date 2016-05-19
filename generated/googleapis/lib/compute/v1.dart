@@ -15455,6 +15455,11 @@ class Firewall {
    * If both properties are set, an inbound connection is allowed if the range
    * matches the sourceRanges OR the tag of the source matches the sourceTags
    * property. The connection does not need to match both properties.
+   *
+   * Source tags cannot be used to allow access to an instance's external IP
+   * address. Because tags are associated with an instance, not an IP address,
+   * source tags can only be used to control traffic traveling from an instance
+   * inside the same network as the firewall.
    */
   core.List<core.String> sourceTags;
   /**
@@ -20093,9 +20098,9 @@ class NetworkInterface {
    */
   core.String network;
   /**
-   * An IPV4 internal network address to assign to the instance for this network
-   * interface. If not specified by user an unused internal IP is assigned by
-   * system.
+   * An IPv4 internal network address to assign to the instance for this network
+   * interface. If not specified by the user, an unused internal IP is assigned
+   * by the system.
    */
   core.String networkIP;
   /**
@@ -24501,7 +24506,7 @@ class UrlMap {
   core.String selfLink;
   /**
    * The list of expected URL mappings. Request to update this UrlMap will
-   * succeed only all of the test cases pass.
+   * succeed only if all of the test cases pass.
    */
   core.List<UrlMapTest> tests;
 

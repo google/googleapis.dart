@@ -1483,7 +1483,7 @@ class CsvOptions {
    * skip when reading the data. The default value is 0. This property is useful
    * if you have header rows in the file that should be skipped.
    */
-  core.int skipLeadingRows;
+  core.String skipLeadingRows;
 
   CsvOptions();
 
@@ -2120,6 +2120,8 @@ class ExternalDataConfiguration {
   core.String compression;
   /** Additional properties to set if sourceFormat is set to CSV. */
   CsvOptions csvOptions;
+  /** [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS. */
+  GoogleSheetsOptions googleSheetsOptions;
   /**
    * [Optional] Indicates if BigQuery should allow extra values that are not
    * represented in the table schema. If true, the extra values are ignored. If
@@ -2147,25 +2149,24 @@ class ExternalDataConfiguration {
    */
   TableSchema schema;
   /**
-   * [Required] The data format. For CSV files, specify "CSV". For
-   * newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files,
-   * specify "AVRO". For Google Cloud Datastore backups, specify
-   * "DATASTORE_BACKUP". [Experimental] For Google Cloud Bigtable, specify
-   * "BIGTABLE". Please note that reading from Google Cloud Bigtable is
-   * experimental and has to be enabled for your project. Please contact Google
-   * Cloud Support to enable this for your project.
+   * [Required] The data format. For CSV files, specify "CSV". For Google
+   * sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify
+   * "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud
+   * Datastore backups, specify "DATASTORE_BACKUP". [Experimental] For Google
+   * Cloud Bigtable, specify "BIGTABLE". Please note that reading from Google
+   * Cloud Bigtable is experimental and has to be enabled for your project.
+   * Please contact Google Cloud Support to enable this for your project.
    */
   core.String sourceFormat;
   /**
    * [Required] The fully-qualified URIs that point to your data in Google
    * Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard
    * character and it must come after the 'bucket' name. Size limits related to
-   * load jobs apply to external data sources, plus an additional limit of 10 GB
-   * maximum size across all URIs. For Google Cloud Bigtable URIs: Exactly one
-   * URI can be specified and it has be a fully specified and valid HTTPS URL
-   * for a Google Cloud Bigtable table. For Google Cloud Datastore backups,
-   * exactly one URI can be specified, and it must end with '.backup_info'.
-   * Also, the '*' wildcard character is not allowed.
+   * load jobs apply to external data sources. For Google Cloud Bigtable URIs:
+   * Exactly one URI can be specified and it has be a fully specified and valid
+   * HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore
+   * backups, exactly one URI can be specified, and it must end with
+   * '.backup_info'. Also, the '*' wildcard character is not allowed.
    */
   core.List<core.String> sourceUris;
 
@@ -2183,6 +2184,9 @@ class ExternalDataConfiguration {
     }
     if (_json.containsKey("csvOptions")) {
       csvOptions = new CsvOptions.fromJson(_json["csvOptions"]);
+    }
+    if (_json.containsKey("googleSheetsOptions")) {
+      googleSheetsOptions = new GoogleSheetsOptions.fromJson(_json["googleSheetsOptions"]);
     }
     if (_json.containsKey("ignoreUnknownValues")) {
       ignoreUnknownValues = _json["ignoreUnknownValues"];
@@ -2214,6 +2218,9 @@ class ExternalDataConfiguration {
     }
     if (csvOptions != null) {
       _json["csvOptions"] = (csvOptions).toJson();
+    }
+    if (googleSheetsOptions != null) {
+      _json["googleSheetsOptions"] = (googleSheetsOptions).toJson();
     }
     if (ignoreUnknownValues != null) {
       _json["ignoreUnknownValues"] = ignoreUnknownValues;
@@ -2356,6 +2363,39 @@ class GetQueryResultsResponse {
     }
     if (totalRows != null) {
       _json["totalRows"] = totalRows;
+    }
+    return _json;
+  }
+}
+
+class GoogleSheetsOptions {
+  /**
+   * [Optional] The number of rows at the top of a sheet that BigQuery will skip
+   * when reading the data. The default value is 0. This property is useful if
+   * you have header rows that should be skipped. When autodetect is on,
+   * behavior is the following: * skipLeadingRows unspecified - Autodetect tries
+   * to detect headers in the first row. If they are not detected, the row is
+   * read as data. Otherwise data is read starting from the second row. *
+   * skipLeadingRows is 0 - Instructs autodetect that there are no headers and
+   * data should be read starting from the first row. * skipLeadingRows = N > 0
+   * - Autodetect skips N-1 rows and tries to detect headers in row N. If
+   * headers are not detected, row N is just skipped. Otherwise row N is used to
+   * extract column names for the detected schema.
+   */
+  core.String skipLeadingRows;
+
+  GoogleSheetsOptions();
+
+  GoogleSheetsOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("skipLeadingRows")) {
+      skipLeadingRows = _json["skipLeadingRows"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (skipLeadingRows != null) {
+      _json["skipLeadingRows"] = skipLeadingRows;
     }
     return _json;
   }
@@ -2643,6 +2683,11 @@ class JobConfigurationLoad {
    */
   core.bool allowQuotedNewlines;
   /**
+   * [Experimental] Indicates if we should automatically infer the options and
+   * schema for CSV and JSON sources.
+   */
+  core.bool autodetect;
+  /**
    * [Optional] Specifies whether the job is allowed to create new tables. The
    * following values are supported: CREATE_IF_NEEDED: If the table does not
    * exist, BigQuery creates the table. CREATE_NEVER: The table must already
@@ -2761,6 +2806,9 @@ class JobConfigurationLoad {
     if (_json.containsKey("allowQuotedNewlines")) {
       allowQuotedNewlines = _json["allowQuotedNewlines"];
     }
+    if (_json.containsKey("autodetect")) {
+      autodetect = _json["autodetect"];
+    }
     if (_json.containsKey("createDisposition")) {
       createDisposition = _json["createDisposition"];
     }
@@ -2815,6 +2863,9 @@ class JobConfigurationLoad {
     }
     if (allowQuotedNewlines != null) {
       _json["allowQuotedNewlines"] = allowQuotedNewlines;
+    }
+    if (autodetect != null) {
+      _json["autodetect"] = autodetect;
     }
     if (createDisposition != null) {
       _json["createDisposition"] = createDisposition;
@@ -2921,11 +2972,10 @@ class JobConfigurationQuery {
   /**
    * [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for
    * this query. The default value is true. If set to false, the query will use
-   * BigQuery's updated SQL dialect with improved standards compliance:
-   * https://cloud.google.com/bigquery/sql-reference/ When using BigQuery's
-   * updated SQL, the values of allowLargeResults and flattenResults are
-   * ignored. Queries with useLegacySql set to false will be run as if
-   * allowLargeResults is true and flattenResults is false.
+   * BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+   * When useLegacySql is set to false, the values of allowLargeResults and
+   * flattenResults are ignored; query will be run as if allowLargeResults is
+   * true and flattenResults is false.
    */
   core.bool useLegacySql;
   /**
@@ -3781,11 +3831,10 @@ class QueryRequest {
   /**
    * [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for
    * this query. The default value is true. If set to false, the query will use
-   * BigQuery's updated SQL dialect with improved standards compliance:
-   * https://cloud.google.com/bigquery/sql-reference/ When using BigQuery's
-   * updated SQL, the values of allowLargeResults and flattenResults are
-   * ignored. Queries with useLegacySql set to false will be run as if
-   * allowLargeResults is true and flattenResults is false.
+   * BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+   * When useLegacySql is set to false, the values of allowLargeResults and
+   * flattenResults are ignored; query will be run as if allowLargeResults is
+   * true and flattenResults is false.
    */
   core.bool useLegacySql;
   /**
@@ -4072,6 +4121,11 @@ class Table {
    */
   core.String numBytes;
   /**
+   * [Output-only] The number of bytes in the table that are considered
+   * "long-term storage".
+   */
+  core.String numLongTermBytes;
+  /**
    * [Output-only] The number of rows of data in this table, excluding any data
    * in the streaming buffer.
    */
@@ -4139,6 +4193,9 @@ class Table {
     if (_json.containsKey("numBytes")) {
       numBytes = _json["numBytes"];
     }
+    if (_json.containsKey("numLongTermBytes")) {
+      numLongTermBytes = _json["numLongTermBytes"];
+    }
     if (_json.containsKey("numRows")) {
       numRows = _json["numRows"];
     }
@@ -4199,6 +4256,9 @@ class Table {
     }
     if (numBytes != null) {
       _json["numBytes"] = numBytes;
+    }
+    if (numLongTermBytes != null) {
+      _json["numLongTermBytes"] = numLongTermBytes;
     }
     if (numRows != null) {
       _json["numRows"] = numRows;

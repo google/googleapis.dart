@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.26.0
+    version: 0.27.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -17,6 +17,7 @@ packages:
     - adsensehost:v4.1  # https://developers.google.com/adsense/host/
     - adsense:v1.4  # https://developers.google.com/adsense/management/
     - analytics:v3  # https://developers.google.com/analytics/
+    - analyticsreporting:v4  # https://developers.google.com/analytics/devguides/reporting/core/v4/
     - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
     - androidpublisher:v2  # https://developers.google.com/android-publisher/
     - appsactivity:v1  # https://developers.google.com/google-apps/activity/
@@ -27,7 +28,8 @@ packages:
     - calendar:v3  # https://developers.google.com/google-apps/calendar/
     - civicinfo:v2  # https://developers.google.com/civic-information/
     - classroom:v1  # https://developers.google.com/classroom/
-    - cloudbilling:v1 # https://cloud.google.com/billing/
+    - cloudbilling:v1  # https://cloud.google.com/billing/
+    - cloudbuild:v1  # https://cloud.google.com/container-builder/docs/
     - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
     - cloudlatencytest:v2
     - cloudtrace:v1 # https://cloud.google.com/cloud-trace/
@@ -41,18 +43,17 @@ packages:
     - consumersurveys:v2  # https://developers.google.com/consumer-surveys/
     - dataproc:v1 # https://cloud.google.com/dataproc/
     - deploymentmanager:v2
-    - dfareporting:v1.3  # https://developers.google.com/doubleclick-advertisers/reporting/
-    - dfareporting:v2.0  # https://developers.google.com/doubleclick-advertisers/reporting/
-    - dfareporting:v2.1  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.2  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.3  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.4  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dfareporting:v2.5  # https://developers.google.com/doubleclick-advertisers/reporting/
     - discovery:v1  # https://developers.google.com/discovery/
     - dns:v1  # https://cloud.google.com/dns/api/v1/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
     - doubleclicksearch:v2  # https://developers.google.com/doubleclick-search/
     - drive:v2  # https://developers.google.com/drive/v2/reference/
     - drive:v3  # https://developers.google.com/drive/v3/reference/
+    - firebaserules:v1  # https://firebase.google.com/docs/storage/security/start
     - fitness:v1  # https://developers.google.com/fitness/
     - freebase:v1  # https://developers.google.com/freebase/
     - fusiontables:v1  # https://developers.google.com/fusiontables/
@@ -82,8 +83,9 @@ packages:
     - pubsub:v1  # https://cloud.google.com/pubsub/
     - qpxExpress:v1  # https://developers.google.com/qpx-express/
     - reseller:v1  # https://developers.google.com/admin-sdk/reseller/
-    - reseller:v1sandbox
+    - safebrowsing:v4  # https://developers.google.com/safe-browsing/
     - script:v1  # https://developers.google.com/apps-script/execution/rest/v1/run
+    - sheets:v4  # https://developers.google.com/sheets/reference/rest/
     - siteVerification:v1  # https://developers.google.com/site-verification/
     - storagetransfer:v1  # https://cloud.google.com/storage/transfer/
     - storage:v1  # https://developers.google.com/storage/
@@ -91,6 +93,7 @@ packages:
     - tasks:v1  # https://developers.google.com/google-apps/tasks/
     - translate:v2  # https://developers.google.com/translate/
     - urlshortener:v1  # https://developers.google.com/url-shortener/
+    - vision:v1  # https://cloud.google.com/vision/reference/rest/
     - webfonts:v1  # https://developers.google.com/fonts/docs/developer_api
     - webmasters:v3  # https://developers.google.com/webmaster-tools/
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
@@ -98,32 +101,35 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.26.0
+    version: 0.27.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis_beta/CHANGELOG.md
     apis:
+    - adexchangebuyer2:v2beta1  # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - appengine:v1beta4
     - appengine:v1beta5
     - autoscaler:v1beta2  # https://developers.google.com/compute/docs/autoscaler/ (Limited Preview)
+    - clouderrorreporting:v1beta1  # https://cloud.google.com/error-reporting/
     - cloudmonitoring:v2beta2  # https://developers.google.com/cloud-monitoring/
     - cloudresourcemanager:v1beta1
     - clouduseraccounts:beta # https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
     - datastore:v1beta2  # https://developers.google.com/datastore/
+    - datastore:v1beta3  # https://developers.google.com/datastore/
     - dataproc:v1beta1 # https://cloud.google.com/dataproc/
     - dfareporting:v2.5beta1  # https://developers.google.com/doubleclick-advertisers/reporting/
     - genomics:v1beta2  # https://developers.google.com/genomics/
     - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging
-    - manager:v1beta2  # https://developers.google.com/deployment-manager/
     - proximitybeacon:v1beta1  # https://developers.google.com/beacons/proximity/guides
     - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)
     - replicapoolupdater:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/manager/
     - replicapool:v1beta2  # https://cloud.google.com/compute/docs/instance-groups/manager/
     - resourceviews:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/ (Limited Preview)
     - resourceviews:v1beta2  # https://cloud.google.com/compute/docs/instance-groups/
+    - runtimeconfig:v1beta1  # https://cloud.google.com/deployment-manager/docs/
     - sqladmin:v1beta3  # https://developers.google.com/cloud-sql/docs/admin-api/
     - sqladmin:v1beta4  # https://developers.google.com/cloud-sql/docs/admin-api/
     - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries
@@ -141,15 +147,12 @@ skipped_apis:
 - clouduseraccounts:alpha  # Leave out alpha versions for now
 - clouduseraccounts:vm_alpha  # Leave out alpha versions for now
 - clouduseraccounts:vm_beta # seems to be the same API as "beta"
+- compute:alpha # v1 included
 - compute:beta # v1 included
 - iam:v1alpha1 # v1 included
 - datastore:v1beta1  # v1beta2 included
 - dataproc:v1alpha1 # v1beta1 included
-- dfareporting:v1.1  # v1.3 included
-- dfareporting:v1.2  # v1.3 included
-- dfareporting:v1  # v1.3 included
 - drive:v1  # v2 included
-- gan:v1beta1  # Deprecated as of April 16, 2013, https://developers.google.com/affiliate-network/
 - genomics:v1alpha2 # v1 included
 - oauth2:v1  # v2 included
 - prediction:v1.2  # v1.6 included

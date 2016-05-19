@@ -480,6 +480,52 @@ class ProjectsResourceApi {
   }
 
   /**
+   * Gets a list of ancestors in the resource hierarchy for the Project
+   * identified by the specified `project_id` (for example, `my-project-123`).
+   * The caller must have read permissions for this Project.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Project ID (for example, `my-project-123`). Required.
+   *
+   * Completes with a [GetAncestryResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GetAncestryResponse> getAncestry(GetAncestryRequest request, core.String projectId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+
+    _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + ':getAncestry';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GetAncestryResponse.fromJson(data));
+  }
+
+  /**
    * Returns the IAM access control policy for the specified Project. Permission
    * is denied if the policy or the resource does not exist.
    *
@@ -797,6 +843,28 @@ class ProjectsResourceApi {
 
 
 
+/** Identifying information for a single ancestor of a project. */
+class Ancestor {
+  /** Resource id of the ancestor. */
+  ResourceId resourceId;
+
+  Ancestor();
+
+  Ancestor.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceId")) {
+      resourceId = new ResourceId.fromJson(_json["resourceId"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (resourceId != null) {
+      _json["resourceId"] = (resourceId).toJson();
+    }
+    return _json;
+  }
+}
+
 /** Associates `members` with a `role`. */
 class Binding {
   /**
@@ -860,6 +928,46 @@ class Empty {
 
   core.Map toJson() {
     var _json = new core.Map();
+    return _json;
+  }
+}
+
+/** The request sent to the GetAncestry method. */
+class GetAncestryRequest {
+
+  GetAncestryRequest();
+
+  GetAncestryRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
+/** Response from the GetAncestry method. */
+class GetAncestryResponse {
+  /**
+   * Ancestors are ordered from bottom to top of the resource hierarchy. The
+   * first ancestor is the project itself, followed by the project's parent,
+   * etc.
+   */
+  core.List<Ancestor> ancestor;
+
+  GetAncestryResponse();
+
+  GetAncestryResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("ancestor")) {
+      ancestor = _json["ancestor"].map((value) => new Ancestor.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (ancestor != null) {
+      _json["ancestor"] = ancestor.map((value) => (value).toJson()).toList();
+    }
     return _json;
   }
 }

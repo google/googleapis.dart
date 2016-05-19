@@ -16,9 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client plusDomains/v1';
 
-/**
- * The Google+ API enables developers to build on top of the Google+ platform.
- */
+/** Builds on top of the Google+ platform for Google Apps Domains. */
 class PlusDomainsApi {
   /** View your circles and the people and pages in them */
   static const PlusCirclesReadScope = "https://www.googleapis.com/auth/plus.circles.read";

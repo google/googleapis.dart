@@ -68,6 +68,12 @@ void main() {
 The following is a list of APIs that are currently available inside this
 package.
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Ad Exchange Buyer API II - adexchangebuyer2 v2beta1
+
+Accesses the latest features for managing Ad Exchange accounts and Real-Time Bidding configurations.
+
+Official API documentation: https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1beta4
 
 Provisions and manages App Engine applications.
@@ -85,6 +91,13 @@ Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 The Google Compute Engine Autoscaler API provides autoscaling for groups of Cloud VMs.
 
 Official API documentation: http://developers.google.com/compute/docs/autoscaler
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Error Reporting API - clouderrorreporting v1beta1
+
+Stackdriver Error Reporting groups and counts similar errors from cloud services. The Stackdriver Error Reporting API provides read access to error groups and their associated errors.
+
+
+Official API documentation: https://cloud.google.com/error-reporting/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Monitoring API - cloudmonitoring v2beta2
 
@@ -112,7 +125,7 @@ Official API documentation: https://cloud.google.com/dataflow
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1beta1
 
-An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
+Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataproc/
 
@@ -121,6 +134,13 @@ Official API documentation: https://cloud.google.com/dataproc/
 Stores and queries data in Google Cloud Datastore.
 
 Official API documentation: https://developers.google.com/datastore/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Datastore API - datastore v1beta3
+
+Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.
+
+
+Official API documentation: https://cloud.google.com/datastore/
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.5beta1
 
@@ -140,15 +160,9 @@ Writes log entries and manages your logs, log sinks, and logs-based metrics.
 
 Official API documentation: https://cloud.google.com/logging/docs/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Deployment Manager API - manager v1beta2
-
-The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
-
-Official API documentation: https://developers.google.com/deployment-manager/
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Proximity Beacon API - proximitybeacon v1beta1
 
-This API provides services to register, manage, index, and search beacons.
+Registers, manages, indexes, and searches beacons.
 
 Official API documentation: https://developers.google.com/beacons/proximity/
 
@@ -182,6 +196,13 @@ The Resource View API allows users to create and manage logical sets of Google C
 
 Official API documentation: https://developers.google.com/compute/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud RuntimeConfig API - runtimeconfig v1beta1
+
+Provides capabilities for dynamic configuration and coordination for applications running on Google Cloud Platform.
+
+
+Official API documentation: https://cloud.google.com/deployment-manager/docs/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud SQL Administration API - sqladmin v1beta3
 
 Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.
@@ -196,7 +217,7 @@ Official API documentation: https://cloud.google.com/sql/docs/reference/latest
 
 #### ![Logo](https://www.google.com/images/icons/product/app_engine-16.png) TaskQueue API - taskqueue v1beta2
 
-Lets you access a Google App Engine Pull Task Queue over REST.
+Accesses a Google App Engine Pull Task Queue over REST.
 
 Official API documentation: https://developers.google.com/appengine/docs/python/taskqueue/rest
 

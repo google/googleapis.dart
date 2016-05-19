@@ -14,7 +14,7 @@
     "description": "Lets you create, inspect, and manage goo.gl short URLs",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/url-shortener/v1/getting_started",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/1HSXgVbkO3Z5Y9cbiE9dhFdbqxk\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/1HSXgVbkO3Z5Y9cbiE9dhFdbqxk\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

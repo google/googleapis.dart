@@ -29,6 +29,9 @@
                 "https://www.googleapis.com/auth/groups": {
                     "description": "View and manage your Google Groups"
                 },
+                "https://www.googleapis.com/auth/spreadsheets": {
+                    "description": "View and manage your spreadsheets in Google Drive"
+                },
                 "https://www.googleapis.com/auth/userinfo.email": {
                     "description": "View your email address"
                 }
@@ -38,10 +41,10 @@
     "basePath": "",
     "baseUrl": "https://script.googleapis.com/",
     "batchPath": "batch",
-    "description": "An API for executing Google Apps Script projects.",
+    "description": "Executes Google Apps Script projects.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/apps-script/execution/rest/v1/run",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/EU3C4gpLCUA7tQGVmbBda1n2_q0\"",
+    "documentationLink": "https://developers.google.com/apps-script/execution/rest/v1/scripts/run",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/cvYaayVw4IdFoA5o3qV9XjLT9HI\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -166,13 +169,14 @@
                         "https://www.googleapis.com/auth/forms",
                         "https://www.googleapis.com/auth/forms.currentonly",
                         "https://www.googleapis.com/auth/groups",
+                        "https://www.googleapis.com/auth/spreadsheets",
                         "https://www.googleapis.com/auth/userinfo.email"
                     ]
                 }
             }
         }
     },
-    "revision": "20150922",
+    "revision": "20160426",
     "rootUrl": "https://script.googleapis.com/",
     "schemas": {
         "ExecutionRequest": {

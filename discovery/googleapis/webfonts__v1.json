@@ -5,7 +5,7 @@
     "description": "Accesses the metadata for all families served by Google Fonts, providing a list of families currently available (including available styles and a list of supported script subsets).",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fonts/docs/developer_api",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Knx7w96lfDrwO6_VUi53vC5n2dE\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Knx7w96lfDrwO6_VUi53vC5n2dE\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/feature/font_api-16.png",
         "x32": "https://www.google.com/images/icons/feature/font_api-32.gif"

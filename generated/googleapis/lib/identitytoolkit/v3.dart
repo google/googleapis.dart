@@ -2050,6 +2050,11 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
 
 /** Request to verify a custom token */
 class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
+  /**
+   * GCP project number of the requesting delegated app. Currently only intended
+   * for Firebase V1 migration.
+   */
+  core.String delegatedProjectNumber;
   /** Instance id token of the app. */
   core.String instanceId;
   /** Whether return sts id token and refresh token instead of gitkit token. */
@@ -2060,6 +2065,9 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
   IdentitytoolkitRelyingpartyVerifyCustomTokenRequest();
 
   IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("delegatedProjectNumber")) {
+      delegatedProjectNumber = _json["delegatedProjectNumber"];
+    }
     if (_json.containsKey("instanceId")) {
       instanceId = _json["instanceId"];
     }
@@ -2073,6 +2081,9 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (delegatedProjectNumber != null) {
+      _json["delegatedProjectNumber"] = delegatedProjectNumber;
+    }
     if (instanceId != null) {
       _json["instanceId"] = instanceId;
     }

@@ -26,7 +26,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/jAz2-tZJMO4f0BRVUoQvpFSSuCY\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/TmiP6BAnYHo3rNwojSMFgNuZTs0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1214,7 +1214,7 @@
                     ],
                     "parameters": {
                         "variantId": {
-                            "description": "The ID of the variant.",
+                            "description": "Required.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1494,7 +1494,7 @@
             }
         }
     },
-    "revision": "20160420",
+    "revision": "20160516",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -3654,6 +3654,10 @@
                     "description": "The dataset to which this variant set belongs. Immutable.",
                     "type": "string"
                 },
+                "description": {
+                    "description": "A textual description of this variant set.",
+                    "type": "string"
+                },
                 "id": {
                     "description": "The Google-generated ID of the variant set. Immutable.",
                     "type": "string"
@@ -3664,6 +3668,10 @@
                         "$ref": "Metadata"
                     },
                     "type": "array"
+                },
+                "name": {
+                    "description": "User-specified, mutable name.",
+                    "type": "string"
                 },
                 "referenceBounds": {
                     "description": "A list of all references used by the variants in a variant set with associated coordinate upper bounds for each one.",

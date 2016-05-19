@@ -3681,7 +3681,10 @@ class Object {
   core.String contentEncoding;
   /** Content-Language of the object data. */
   core.String contentLanguage;
-  /** Content-Type of the object data. */
+  /**
+   * Content-Type of the object data. If contentType is not specified, object
+   * downloads will be served as application/octet-stream.
+   */
   core.String contentType;
   /**
    * CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64

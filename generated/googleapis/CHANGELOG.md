@@ -1,3 +1,31 @@
+## 0.27.0
+
+* [api-new] analyticsreporting:v4
+* [api-new] cloudbuild:v1
+* [api-new] dfareporting:v2.5
+* [api-new] firebaserules:v1
+* [api-new] safebrowsing:v4
+* [api-new] sheets:v4
+* [api-new] vision:v1
+* [api] androidenterprise:v1: schema changes
+* [api] androidpublisher:v2: schema/resource changes
+* [api] civicinfo:v2: scope changes
+* [api] cloudtrace:v1: scope changes
+* [api] consumersurveys:v2: schema changes
+* [api] genomics:v1: schema changes
+* [api] idenditytoolkit:v3: schema changes
+* [api] playmoviespartner:v1: schemas/resource changes
+* [api] youtube:v3: schema changes
+* [api-breaking] adexchangebuyer:v1_4: schema/resource changes
+* [api-breaking] admin:directory_v1: schema changes
+* [api-breaking] bigquery:v2: schema changes
+* [api-breaking] classroom:v1:  schema/resource changes
+* [api-breaking] dataproc:v1: schema/scope/resource changes
+* [api-removal] dfareporting:v1.3
+* [api-removal] dfareporting:v2.0
+* [api-removal] dfareporting:v2.1
+* [api-removal] reseller:v1sandbox
+
 ## 0.26.0
 
 * [api-new] consumersurveys:v2

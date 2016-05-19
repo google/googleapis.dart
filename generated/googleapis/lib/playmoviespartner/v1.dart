@@ -14,9 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client playmoviespartner/v1';
 
-/**
- * Lets Google Play Movies Partners get the delivery status of their titles.
- */
+/** Gets the delivery status of titles for Google Play Movies Partners. */
 class PlaymoviespartnerApi {
   /** View the digital assets you publish on Google Play Movies and TV */
   static const PlaymoviesPartnerReadonlyScope = "https://www.googleapis.com/auth/playmovies_partner.readonly";
@@ -35,6 +33,7 @@ class AccountsResourceApi {
   final commons.ApiRequester _requester;
 
   AccountsAvailsResourceApi get avails => new AccountsAvailsResourceApi(_requester);
+  AccountsComponentsResourceApi get components => new AccountsComponentsResourceApi(_requester);
   AccountsExperienceLocalesResourceApi get experienceLocales => new AccountsExperienceLocalesResourceApi(_requester);
   AccountsOrdersResourceApi get orders => new AccountsOrdersResourceApi(_requester);
   AccountsStoreInfosResourceApi get storeInfos => new AccountsStoreInfosResourceApi(_requester);
@@ -49,6 +48,51 @@ class AccountsAvailsResourceApi {
 
   AccountsAvailsResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Get an Avail given its avail group id and avail id.
+   *
+   * Request parameters:
+   *
+   * [accountId] - REQUIRED. See _General rules_ for more information about this
+   * field.
+   *
+   * [availId] - REQUIRED. Avail ID.
+   *
+   * Completes with a [Avail].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Avail> get(core.String accountId, core.String availId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (availId == null) {
+      throw new core.ArgumentError("Parameter availId is required.");
+    }
+
+    _url = 'v1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/avails/' + commons.Escaper.ecapeVariable('$availId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Avail.fromJson(data));
+  }
 
   /**
    * List Avails owned or managed by the partner. See _Authentication and
@@ -68,17 +112,23 @@ class AccountsAvailsResourceApi {
    *
    * [studioNames] - See _List methods rules_ for info about this field.
    *
-   * [title] - Filter Avails that match a case-insensitive substring of the
-   * default Title name.
+   * [title] - Filter that matches Avails with a `title_internal_alias`,
+   * `series_title_internal_alias`, `season_title_internal_alias`, or
+   * `episode_title_internal_alias` that contains the given case-insensitive
+   * title.
    *
    * [territories] - Filter Avails that match (case-insensitive) any of the
    * given country codes, using the "ISO 3166-1 alpha-2" format (examples: "US",
    * "us", "Us").
    *
    * [altId] - Filter Avails that match a case-insensitive, partner-specific
-   * custom id.
+   * custom id. NOTE: this field is deprecated and will be removed on V2;
+   * `alt_ids` should be used instead.
    *
    * [videoIds] - Filter Avails that match any of the given `video_id`s.
+   *
+   * [altIds] - Filter Avails that match (case-insensitive) any of the given
+   * partner-specific custom ids.
    *
    * Completes with a [ListAvailsResponse].
    *
@@ -88,7 +138,7 @@ class AccountsAvailsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListAvailsResponse> list(core.String accountId, {core.int pageSize, core.String pageToken, core.List<core.String> pphNames, core.List<core.String> studioNames, core.String title, core.List<core.String> territories, core.String altId, core.List<core.String> videoIds}) {
+  async.Future<ListAvailsResponse> list(core.String accountId, {core.int pageSize, core.String pageToken, core.List<core.String> pphNames, core.List<core.String> studioNames, core.String title, core.List<core.String> territories, core.String altId, core.List<core.String> videoIds, core.List<core.String> altIds}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -123,6 +173,9 @@ class AccountsAvailsResourceApi {
     if (videoIds != null) {
       _queryParams["videoIds"] = videoIds;
     }
+    if (altIds != null) {
+      _queryParams["altIds"] = altIds;
+    }
 
     _url = 'v1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/avails';
 
@@ -134,6 +187,199 @@ class AccountsAvailsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListAvailsResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsComponentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsComponentsTypeResourceApi get type => new AccountsComponentsTypeResourceApi(_requester);
+
+  AccountsComponentsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List Components owned or managed by the partner. See _Authentication and
+   * Authorization rules_ and _List methods rules_ for more information about
+   * this method.
+   *
+   * Request parameters:
+   *
+   * [accountId] - REQUIRED. See _General rules_ for more information about this
+   * field.
+   *
+   * [pageSize] - See _List methods rules_ for info about this field.
+   *
+   * [pageToken] - See _List methods rules_ for info about this field.
+   *
+   * [pphNames] - See _List methods rules_ for info about this field.
+   *
+   * [studioNames] - See _List methods rules_ for info about this field.
+   *
+   * [titleLevelEidr] - Filter Components that match a given title-level EIDR.
+   *
+   * [editLevelEidr] - Filter Components that match a given edit-level EIDR.
+   *
+   * [status] - Filter Components that match one of the given status.
+   *
+   * [customId] - Filter Components that match a case-insensitive
+   * partner-specific custom id.
+   *
+   * [inventoryId] - InventoryID available in Common Manifest.
+   *
+   * [presentationId] - PresentationID available in Common Manifest.
+   *
+   * [playableSequenceId] - PlayableSequenceID available in Common Manifest.
+   *
+   * [elId] - Experience ID, as defined by Google.
+   *
+   * [altCutId] - Filter Components that match a case-insensitive,
+   * partner-specific Alternative Cut ID.
+   *
+   * [filename] - Filter Components that match a case-insensitive substring of
+   * the physical name of the delivered file.
+   *
+   * Completes with a [ListComponentsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListComponentsResponse> list(core.String accountId, {core.int pageSize, core.String pageToken, core.List<core.String> pphNames, core.List<core.String> studioNames, core.String titleLevelEidr, core.String editLevelEidr, core.List<core.String> status, core.String customId, core.String inventoryId, core.String presentationId, core.String playableSequenceId, core.String elId, core.String altCutId, core.String filename}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pphNames != null) {
+      _queryParams["pphNames"] = pphNames;
+    }
+    if (studioNames != null) {
+      _queryParams["studioNames"] = studioNames;
+    }
+    if (titleLevelEidr != null) {
+      _queryParams["titleLevelEidr"] = [titleLevelEidr];
+    }
+    if (editLevelEidr != null) {
+      _queryParams["editLevelEidr"] = [editLevelEidr];
+    }
+    if (status != null) {
+      _queryParams["status"] = status;
+    }
+    if (customId != null) {
+      _queryParams["customId"] = [customId];
+    }
+    if (inventoryId != null) {
+      _queryParams["inventoryId"] = [inventoryId];
+    }
+    if (presentationId != null) {
+      _queryParams["presentationId"] = [presentationId];
+    }
+    if (playableSequenceId != null) {
+      _queryParams["playableSequenceId"] = [playableSequenceId];
+    }
+    if (elId != null) {
+      _queryParams["elId"] = [elId];
+    }
+    if (altCutId != null) {
+      _queryParams["altCutId"] = [altCutId];
+    }
+    if (filename != null) {
+      _queryParams["filename"] = [filename];
+    }
+
+    _url = 'v1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/components';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListComponentsResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsComponentsTypeResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsComponentsTypeResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Get a Component given its id.
+   *
+   * Request parameters:
+   *
+   * [accountId] - REQUIRED. See _General rules_ for more information about this
+   * field.
+   *
+   * [componentId] - REQUIRED. Component ID.
+   *
+   * [type] - REQUIRED. Component Type.
+   * Possible string values are:
+   * - "COMPONENT_TYPE_UNSPECIFIED" : A COMPONENT_TYPE_UNSPECIFIED.
+   * - "VIDEO" : A VIDEO.
+   * - "AUDIO_20" : A AUDIO_20.
+   * - "AUDIO_51" : A AUDIO_51.
+   * - "SUBTITLE" : A SUBTITLE.
+   * - "ARTWORK" : A ARTWORK.
+   * - "METADATA" : A METADATA.
+   *
+   * Completes with a [Component].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Component> get(core.String accountId, core.String componentId, core.String type) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (componentId == null) {
+      throw new core.ArgumentError("Parameter componentId is required.");
+    }
+    if (type == null) {
+      throw new core.ArgumentError("Parameter type is required.");
+    }
+
+    _url = 'v1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/components/' + commons.Escaper.ecapeVariable('$componentId') + '/type/' + commons.Escaper.ecapeVariable('$type');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Component.fromJson(data));
   }
 
 }
@@ -355,13 +601,15 @@ class AccountsOrdersResourceApi {
    *
    * [studioNames] - See _List methods rules_ for info about this field.
    *
-   * [name] - Filter Orders that match a title name (case-insensitive,
-   * sub-string match).
+   * [name] - Filter that matches Orders with a `name`, `show`, `season` or
+   * `episode` that contains the given case-insensitive name.
    *
    * [status] - Filter Orders that match one of the given status.
    *
    * [customId] - Filter Orders that match a case-insensitive, partner-specific
    * custom id.
+   *
+   * [videoIds] - Filter Orders that match any of the given `video_id`s.
    *
    * Completes with a [ListOrdersResponse].
    *
@@ -371,7 +619,7 @@ class AccountsOrdersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOrdersResponse> list(core.String accountId, {core.int pageSize, core.String pageToken, core.List<core.String> pphNames, core.List<core.String> studioNames, core.String name, core.List<core.String> status, core.String customId}) {
+  async.Future<ListOrdersResponse> list(core.String accountId, {core.int pageSize, core.String pageToken, core.List<core.String> pphNames, core.List<core.String> studioNames, core.String name, core.List<core.String> status, core.String customId, core.List<core.String> videoIds}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -402,6 +650,9 @@ class AccountsOrdersResourceApi {
     }
     if (customId != null) {
       _queryParams["customId"] = [customId];
+    }
+    if (videoIds != null) {
+      _queryParams["videoIds"] = videoIds;
     }
 
     _url = 'v1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/orders';
@@ -453,10 +704,14 @@ class AccountsStoreInfosResourceApi {
    * given country codes, using the "ISO 3166-1 alpha-2" format (examples: "US",
    * "us", "Us").
    *
-   * [name] - Filter StoreInfos that match a case-insensitive substring of the
-   * default name.
+   * [name] - Filter that matches StoreInfos with a `name` or `show_name` that
+   * contains the given case-insensitive name.
    *
    * [videoIds] - Filter StoreInfos that match any of the given `video_id`s.
+   *
+   * [mids] - Filter StoreInfos that match any of the given `mid`s.
+   *
+   * [seasonIds] - Filter StoreInfos that match any of the given `season_id`s.
    *
    * Completes with a [ListStoreInfosResponse].
    *
@@ -466,7 +721,7 @@ class AccountsStoreInfosResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListStoreInfosResponse> list(core.String accountId, {core.int pageSize, core.String pageToken, core.List<core.String> pphNames, core.List<core.String> studioNames, core.String videoId, core.List<core.String> countries, core.String name, core.List<core.String> videoIds}) {
+  async.Future<ListStoreInfosResponse> list(core.String accountId, {core.int pageSize, core.String pageToken, core.List<core.String> pphNames, core.List<core.String> studioNames, core.String videoId, core.List<core.String> countries, core.String name, core.List<core.String> videoIds, core.List<core.String> mids, core.List<core.String> seasonIds}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -500,6 +755,12 @@ class AccountsStoreInfosResourceApi {
     }
     if (videoIds != null) {
       _queryParams["videoIds"] = videoIds;
+    }
+    if (mids != null) {
+      _queryParams["mids"] = mids;
+    }
+    if (seasonIds != null) {
+      _queryParams["seasonIds"] = seasonIds;
     }
 
     _url = 'v1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/storeInfos';
@@ -593,6 +854,11 @@ class Avail {
    */
   core.String altId;
   /**
+   * ID internally generated by Google to uniquely identify an Avail. Not part
+   * of EMA Specs.
+   */
+  core.String availId;
+  /**
    * Communicating an exempt category as defined by FCC regulations. It is not
    * required for non-US Avails. Example: "1"
    */
@@ -650,6 +916,7 @@ class Avail {
    * - "EST" : A EST.
    * - "VOD" : A VOD.
    * - "SVOD" : A SVOD.
+   * - "POEST" : A POEST.
    */
   core.String licenseType;
   /**
@@ -758,6 +1025,7 @@ class Avail {
    * - "MOVIE" : A MOVIE.
    * - "SEASON" : A SEASON.
    * - "EPISODE" : A EPISODE.
+   * - "BUNDLE" : A BUNDLE.
    */
   core.String workType;
 
@@ -766,6 +1034,9 @@ class Avail {
   Avail.fromJson(core.Map _json) {
     if (_json.containsKey("altId")) {
       altId = _json["altId"];
+    }
+    if (_json.containsKey("availId")) {
+      availId = _json["availId"];
     }
     if (_json.containsKey("captionExemption")) {
       captionExemption = _json["captionExemption"];
@@ -867,6 +1138,9 @@ class Avail {
     if (altId != null) {
       _json["altId"] = altId;
     }
+    if (availId != null) {
+      _json["availId"] = availId;
+    }
     if (captionExemption != null) {
       _json["captionExemption"] = captionExemption;
     }
@@ -959,6 +1233,282 @@ class Avail {
     }
     if (workType != null) {
       _json["workType"] = workType;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A Component is an element (audio, video, subtitle, artwork, trailer, etc...)
+ * that is used in a set of ExperienceLocales. A Component is owned by a Studio
+ * and managed either by the Studio itself or by one Post-Production House. Each
+ * Component is identified by a `component_id` and its `type`.
+ */
+class Component {
+  /**
+   * List of Alternative Cut IDs, sometimes available in lieu of the main
+   * Edit-level EIDR IDs. This is not an EIDR ID, but a Partner-provided ID.
+   * Example: "206346_79838".
+   */
+  core.List<core.String> altCutIds;
+  /** Timestamp when the Component was approved. */
+  core.String approvedTime;
+  /**
+   * Detail about the type of the Component.
+   * Possible string values are:
+   * - "COMPONENT_DETAIL_TYPE_UNSPECIFIED" : A
+   * COMPONENT_DETAIL_TYPE_UNSPECIFIED.
+   * - "COMPONENT_DETAIL_TYPE_NORMAL" : A COMPONENT_DETAIL_TYPE_NORMAL.
+   * - "COMPONENT_DETAIL_TYPE_POSTER" : A COMPONENT_DETAIL_TYPE_POSTER.
+   * - "COMPONENT_DETAIL_TYPE_PRIMARY" : A COMPONENT_DETAIL_TYPE_PRIMARY.
+   * - "COMPONENT_DETAIL_TYPE_FORCED" : A COMPONENT_DETAIL_TYPE_FORCED.
+   * - "COMPONENT_DETAIL_TYPE_DUBBED" : A COMPONENT_DETAIL_TYPE_DUBBED.
+   * - "COMPONENT_DETAIL_TYPE_SDH" : A COMPONENT_DETAIL_TYPE_SDH.
+   */
+  core.String componentDetailType;
+  /**
+   * ID internally generated by Google to uniquely identify the Component.
+   * Example: 'wteyrc_647xc'
+   */
+  core.String componentId;
+  /**
+   * List of custom IDs (defined by the partner) linked to the ExperienceLocale
+   * using this Component. Example: "R86241"
+   */
+  core.List<core.String> customIds;
+  /**
+   * List of Edit-level EIDR IDs. Example: "10.5240/1489-49A2-3956-4B2D-FE16-6".
+   */
+  core.List<core.String> editLevelEidrs;
+  /**
+   * IDs internally generated by Google to uniquely identify the
+   * ExperienceLocales for which the Component is used. Example: 'KRZiVjY9h7t'
+   */
+  core.List<core.String> elIds;
+  /** File name of the Component when delivered. */
+  core.String filename;
+  /**
+   * Language of the component, using the "BCP 47" format. Examples: "en",
+   * "en-US", "es", "es-419".
+   */
+  core.String language;
+  /**
+   * Default Edit name, usually in the language of the country of origin.
+   * Example: "Googlers, The".
+   */
+  core.String name;
+  /**
+   * A simpler representation of the priority.
+   * Possible string values are:
+   * - "NORMALIZED_PRIORITY_UNSPECIFIED" : A NORMALIZED_PRIORITY_UNSPECIFIED.
+   * - "LOW_PRIORITY" : A LOW_PRIORITY.
+   * - "HIGH_PRIORITY" : A HIGH_PRIORITY.
+   */
+  core.String normalizedPriority;
+  /**
+   * Type of the playable unit for which the Component is intended.
+   * Possible string values are:
+   * - "PLAYABLE_UNIT_TYPE_UNSPECIFIED" : A PLAYABLE_UNIT_TYPE_UNSPECIFIED.
+   * - "PLAYABLE_UNIT_TYPE_FEATURE" : A PLAYABLE_UNIT_TYPE_FEATURE.
+   * - "PLAYABLE_UNIT_TYPE_TRAILER" : A PLAYABLE_UNIT_TYPE_TRAILER.
+   * - "PLAYBLE_UNIT_TYPE_BONUS_CONTENT" : A PLAYBLE_UNIT_TYPE_BONUS_CONTENT.
+   */
+  core.String playableUnitType;
+  /** Name of the post-production house that manages the Component. */
+  core.String pphName;
+  /**
+   * Component priority, as defined by Google. The higher the value, the higher
+   * the priority.
+   */
+  core.double priority;
+  /**
+   * Processing errors during XML file parsing. Example: 'Invalid input file'
+   */
+  core.List<core.String> processingErrors;
+  /** Timestamp when the Component was received. */
+  core.String receivedTime;
+  /** Notes explaining why a Component has been rejected. */
+  core.String rejectionNote;
+  /**
+   * High-level status of the Component.
+   * Possible string values are:
+   * - "STATUS_UNSPECIFIED" : A STATUS_UNSPECIFIED.
+   * - "STATUS_APPROVED" : A STATUS_APPROVED.
+   * - "STATUS_FAILED" : A STATUS_FAILED.
+   * - "STATUS_PROCESSING" : A STATUS_PROCESSING.
+   * - "STATUS_UNFULFILLED" : A STATUS_UNFULFILLED.
+   * - "STATUS_NOT_AVAILABLE" : A STATUS_NOT_AVAILABLE.
+   */
+  core.String status;
+  /**
+   * Detailed status of the Component
+   * Possible string values are:
+   * - "COMPONENT_STATUS_UNSPECIFIED" : A COMPONENT_STATUS_UNSPECIFIED.
+   * - "COMPONENT_STATUS_QC_APPROVED" : A COMPONENT_STATUS_QC_APPROVED.
+   * - "COMPONENT_STATUS_QC_REJECTION" : A COMPONENT_STATUS_QC_REJECTION.
+   * - "COMPONENT_STATUS_FILE_REJECTION" : A COMPONENT_STATUS_FILE_REJECTION.
+   * - "COMPONENT_STATUS_FILE_PROCESSING" : A COMPONENT_STATUS_FILE_PROCESSING.
+   * - "COMPONENT_STATUS_READY_FOR_QC" : A COMPONENT_STATUS_READY_FOR_QC.
+   */
+  core.String statusDetail;
+  /** Name of the studio that owns the Component. */
+  core.String studioName;
+  /**
+   * List of Title-level EIDR IDs. Example:
+   * "10.5240/1489-49A2-3956-4B2D-FE16-5".
+   */
+  core.List<core.String> titleLevelEidrs;
+  /**
+   * Type of the Component. Example: AUDIO_51
+   * Possible string values are:
+   * - "COMPONENT_TYPE_UNSPECIFIED" : A COMPONENT_TYPE_UNSPECIFIED.
+   * - "VIDEO" : A VIDEO.
+   * - "AUDIO_20" : A AUDIO_20.
+   * - "AUDIO_51" : A AUDIO_51.
+   * - "SUBTITLE" : A SUBTITLE.
+   * - "ARTWORK" : A ARTWORK.
+   * - "METADATA" : A METADATA.
+   */
+  core.String type;
+
+  Component();
+
+  Component.fromJson(core.Map _json) {
+    if (_json.containsKey("altCutIds")) {
+      altCutIds = _json["altCutIds"];
+    }
+    if (_json.containsKey("approvedTime")) {
+      approvedTime = _json["approvedTime"];
+    }
+    if (_json.containsKey("componentDetailType")) {
+      componentDetailType = _json["componentDetailType"];
+    }
+    if (_json.containsKey("componentId")) {
+      componentId = _json["componentId"];
+    }
+    if (_json.containsKey("customIds")) {
+      customIds = _json["customIds"];
+    }
+    if (_json.containsKey("editLevelEidrs")) {
+      editLevelEidrs = _json["editLevelEidrs"];
+    }
+    if (_json.containsKey("elIds")) {
+      elIds = _json["elIds"];
+    }
+    if (_json.containsKey("filename")) {
+      filename = _json["filename"];
+    }
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("normalizedPriority")) {
+      normalizedPriority = _json["normalizedPriority"];
+    }
+    if (_json.containsKey("playableUnitType")) {
+      playableUnitType = _json["playableUnitType"];
+    }
+    if (_json.containsKey("pphName")) {
+      pphName = _json["pphName"];
+    }
+    if (_json.containsKey("priority")) {
+      priority = _json["priority"];
+    }
+    if (_json.containsKey("processingErrors")) {
+      processingErrors = _json["processingErrors"];
+    }
+    if (_json.containsKey("receivedTime")) {
+      receivedTime = _json["receivedTime"];
+    }
+    if (_json.containsKey("rejectionNote")) {
+      rejectionNote = _json["rejectionNote"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("statusDetail")) {
+      statusDetail = _json["statusDetail"];
+    }
+    if (_json.containsKey("studioName")) {
+      studioName = _json["studioName"];
+    }
+    if (_json.containsKey("titleLevelEidrs")) {
+      titleLevelEidrs = _json["titleLevelEidrs"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (altCutIds != null) {
+      _json["altCutIds"] = altCutIds;
+    }
+    if (approvedTime != null) {
+      _json["approvedTime"] = approvedTime;
+    }
+    if (componentDetailType != null) {
+      _json["componentDetailType"] = componentDetailType;
+    }
+    if (componentId != null) {
+      _json["componentId"] = componentId;
+    }
+    if (customIds != null) {
+      _json["customIds"] = customIds;
+    }
+    if (editLevelEidrs != null) {
+      _json["editLevelEidrs"] = editLevelEidrs;
+    }
+    if (elIds != null) {
+      _json["elIds"] = elIds;
+    }
+    if (filename != null) {
+      _json["filename"] = filename;
+    }
+    if (language != null) {
+      _json["language"] = language;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (normalizedPriority != null) {
+      _json["normalizedPriority"] = normalizedPriority;
+    }
+    if (playableUnitType != null) {
+      _json["playableUnitType"] = playableUnitType;
+    }
+    if (pphName != null) {
+      _json["pphName"] = pphName;
+    }
+    if (priority != null) {
+      _json["priority"] = priority;
+    }
+    if (processingErrors != null) {
+      _json["processingErrors"] = processingErrors;
+    }
+    if (receivedTime != null) {
+      _json["receivedTime"] = receivedTime;
+    }
+    if (rejectionNote != null) {
+      _json["rejectionNote"] = rejectionNote;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (statusDetail != null) {
+      _json["statusDetail"] = statusDetail;
+    }
+    if (studioName != null) {
+      _json["studioName"] = studioName;
+    }
+    if (titleLevelEidrs != null) {
+      _json["titleLevelEidrs"] = titleLevelEidrs;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -1070,6 +1620,7 @@ class ExperienceLocale {
    * - "MOVIE" : A MOVIE.
    * - "SEASON" : A SEASON.
    * - "EPISODE" : A EPISODE.
+   * - "BUNDLE" : A BUNDLE.
    */
   core.String type;
   /**
@@ -1233,6 +1784,8 @@ class ListAvailsResponse {
   core.List<Avail> avails;
   /** See _List methods rules_ for info about this field. */
   core.String nextPageToken;
+  /** See _List methods rules_ for more information about this field. */
+  core.int totalSize;
 
   ListAvailsResponse();
 
@@ -1242,6 +1795,9 @@ class ListAvailsResponse {
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
     }
   }
 
@@ -1253,6 +1809,47 @@ class ListAvailsResponse {
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
+    }
+    return _json;
+  }
+}
+
+/** Response to the 'ListComponents' method. */
+class ListComponentsResponse {
+  /** List of Components that match the request criteria. */
+  core.List<Component> components;
+  /** See _List methods rules_ for info about this field. */
+  core.String nextPageToken;
+  /** See _List methods rules_ for more information about this field. */
+  core.int totalSize;
+
+  ListComponentsResponse();
+
+  ListComponentsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("components")) {
+      components = _json["components"].map((value) => new Component.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (components != null) {
+      _json["components"] = components.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
+    }
     return _json;
   }
 }
@@ -1263,6 +1860,8 @@ class ListExperienceLocalesResponse {
   core.List<ExperienceLocale> experienceLocales;
   /** See _List methods rules_ for info about this field. */
   core.String nextPageToken;
+  /** See _List methods rules_ for more information about this field. */
+  core.int totalSize;
 
   ListExperienceLocalesResponse();
 
@@ -1272,6 +1871,9 @@ class ListExperienceLocalesResponse {
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
     }
   }
 
@@ -1283,6 +1885,9 @@ class ListExperienceLocalesResponse {
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
+    }
     return _json;
   }
 }
@@ -1293,6 +1898,8 @@ class ListOrdersResponse {
   core.String nextPageToken;
   /** List of Orders that match the request criteria. */
   core.List<Order> orders;
+  /** See _List methods rules_ for more information about this field. */
+  core.int totalSize;
 
   ListOrdersResponse();
 
@@ -1302,6 +1909,9 @@ class ListOrdersResponse {
     }
     if (_json.containsKey("orders")) {
       orders = _json["orders"].map((value) => new Order.fromJson(value)).toList();
+    }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
     }
   }
 
@@ -1313,6 +1923,9 @@ class ListOrdersResponse {
     if (orders != null) {
       _json["orders"] = orders.map((value) => (value).toJson()).toList();
     }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
+    }
     return _json;
   }
 }
@@ -1323,6 +1936,8 @@ class ListStoreInfosResponse {
   core.String nextPageToken;
   /** List of StoreInfos that match the request criteria. */
   core.List<StoreInfo> storeInfos;
+  /** See _List methods rules_ for more information about this field. */
+  core.int totalSize;
 
   ListStoreInfosResponse();
 
@@ -1333,6 +1948,9 @@ class ListStoreInfosResponse {
     if (_json.containsKey("storeInfos")) {
       storeInfos = _json["storeInfos"].map((value) => new StoreInfo.fromJson(value)).toList();
     }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
+    }
   }
 
   core.Map toJson() {
@@ -1342,6 +1960,9 @@ class ListStoreInfosResponse {
     }
     if (storeInfos != null) {
       _json["storeInfos"] = storeInfos.map((value) => (value).toJson()).toList();
+    }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
     }
     return _json;
   }
@@ -1453,6 +2074,7 @@ class Order {
    * - "ORDER_STATUS_NOT_AVAILABLE" : A ORDER_STATUS_NOT_AVAILABLE.
    * - "ORDER_STATUS_AWAITING_REDELIVERY" : A ORDER_STATUS_AWAITING_REDELIVERY.
    * - "ORDER_STATUS_READY_FOR_QC" : A ORDER_STATUS_READY_FOR_QC.
+   * - "ORDER_STATUS_FILE_PROCESSING" : A ORDER_STATUS_FILE_PROCESSING.
    */
   core.String statusDetail;
   /** Name of the studio that owns the Edit ordered. */
@@ -1464,6 +2086,7 @@ class Order {
    * - "MOVIE" : A MOVIE.
    * - "SEASON" : A SEASON.
    * - "EPISODE" : A EPISODE.
+   * - "BUNDLE" : A BUNDLE.
    */
   core.String type;
   /**
@@ -1714,6 +2337,7 @@ class StoreInfo {
    * - "MOVIE" : A MOVIE.
    * - "SEASON" : A SEASON.
    * - "EPISODE" : A EPISODE.
+   * - "BUNDLE" : A BUNDLE.
    */
   core.String type;
   /**

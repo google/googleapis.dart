@@ -74,6 +74,7 @@ buildJob() {
   buildCounterJob++;
   if (buildCounterJob < 3) {
     o.createTime = "foo";
+    o.expireTime = "foo";
     o.id = "foo";
     o.name = "foo";
     o.reportTypeId = "foo";
@@ -87,6 +88,7 @@ checkJob(api.Job o) {
   buildCounterJob++;
   if (buildCounterJob < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
+    unittest.expect(o.expireTime, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.reportTypeId, unittest.equals('foo'));
@@ -95,14 +97,14 @@ checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-buildUnnamed1577() {
+buildUnnamed2965() {
   var o = new core.List<api.Job>();
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-checkUnnamed1577(core.List<api.Job> o) {
+checkUnnamed2965(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -113,7 +115,7 @@ buildListJobsResponse() {
   var o = new api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed1577();
+    o.jobs = buildUnnamed2965();
     o.nextPageToken = "foo";
   }
   buildCounterListJobsResponse--;
@@ -123,20 +125,20 @@ buildListJobsResponse() {
 checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed1577(o.jobs);
+    checkUnnamed2965(o.jobs);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListJobsResponse--;
 }
 
-buildUnnamed1578() {
+buildUnnamed2966() {
   var o = new core.List<api.ReportType>();
   o.add(buildReportType());
   o.add(buildReportType());
   return o;
 }
 
-checkUnnamed1578(core.List<api.ReportType> o) {
+checkUnnamed2966(core.List<api.ReportType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportType(o[0]);
   checkReportType(o[1]);
@@ -148,7 +150,7 @@ buildListReportTypesResponse() {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     o.nextPageToken = "foo";
-    o.reportTypes = buildUnnamed1578();
+    o.reportTypes = buildUnnamed2966();
   }
   buildCounterListReportTypesResponse--;
   return o;
@@ -158,19 +160,19 @@ checkListReportTypesResponse(api.ListReportTypesResponse o) {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1578(o.reportTypes);
+    checkUnnamed2966(o.reportTypes);
   }
   buildCounterListReportTypesResponse--;
 }
 
-buildUnnamed1579() {
+buildUnnamed2967() {
   var o = new core.List<api.Report>();
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-checkUnnamed1579(core.List<api.Report> o) {
+checkUnnamed2967(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -182,7 +184,7 @@ buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.nextPageToken = "foo";
-    o.reports = buildUnnamed1579();
+    o.reports = buildUnnamed2967();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -192,7 +194,7 @@ checkListReportsResponse(api.ListReportsResponse o) {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1579(o.reports);
+    checkUnnamed2967(o.reports);
   }
   buildCounterListReportsResponse--;
 }
@@ -225,6 +227,7 @@ buildReport() {
     o.downloadUrl = "foo";
     o.endTime = "foo";
     o.id = "foo";
+    o.jobExpireTime = "foo";
     o.jobId = "foo";
     o.startTime = "foo";
   }
@@ -239,6 +242,7 @@ checkReport(api.Report o) {
     unittest.expect(o.downloadUrl, unittest.equals('foo'));
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.jobExpireTime, unittest.equals('foo'));
     unittest.expect(o.jobId, unittest.equals('foo'));
     unittest.expect(o.startTime, unittest.equals('foo'));
   }
@@ -250,6 +254,7 @@ buildReportType() {
   var o = new api.ReportType();
   buildCounterReportType++;
   if (buildCounterReportType < 3) {
+    o.deprecateTime = "foo";
     o.id = "foo";
     o.name = "foo";
     o.systemManaged = true;
@@ -261,6 +266,7 @@ buildReportType() {
 checkReportType(api.ReportType o) {
   buildCounterReportType++;
   if (buildCounterReportType < 3) {
+    unittest.expect(o.deprecateTime, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.systemManaged, unittest.isTrue);

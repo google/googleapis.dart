@@ -830,7 +830,10 @@ class MarketplacedealsResourceApi {
    *
    * Request parameters:
    *
-   * [proposalId] - The proposalId to get deals for.
+   * [proposalId] - The proposalId to get deals for. To search across proposals
+   * specify order_id = '-' as part of the URL.
+   *
+   * [pqlQuery] - Query string to retrieve specific deals.
    *
    * Completes with a [GetOrderDealsResponse].
    *
@@ -840,7 +843,7 @@ class MarketplacedealsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GetOrderDealsResponse> list(core.String proposalId) {
+  async.Future<GetOrderDealsResponse> list(core.String proposalId, {core.String pqlQuery}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -850,6 +853,9 @@ class MarketplacedealsResourceApi {
 
     if (proposalId == null) {
       throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+    if (pqlQuery != null) {
+      _queryParams["pqlQuery"] = [pqlQuery];
     }
 
     _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/deals';
@@ -2336,6 +2342,7 @@ class ContactInformation {
 class CreateOrdersRequest {
   /** The list of proposals to create. */
   core.List<Proposal> proposals;
+  /** Web property id of the seller creating these orders */
   core.String webPropertyCode;
 
   CreateOrdersRequest();
@@ -2837,6 +2844,10 @@ class Creative {
   /** Account id. */
   core.int accountId;
   /**
+   * The link to the Ad Preferences page. This is only supported for native ads.
+   */
+  core.String adChoicesDestinationUrl;
+  /**
    * Detected advertiser id, if any. Read-only. This field should not be set in
    * requests.
    */
@@ -2933,6 +2944,9 @@ class Creative {
     if (_json.containsKey("accountId")) {
       accountId = _json["accountId"];
     }
+    if (_json.containsKey("adChoicesDestinationUrl")) {
+      adChoicesDestinationUrl = _json["adChoicesDestinationUrl"];
+    }
     if (_json.containsKey("advertiserId")) {
       advertiserId = _json["advertiserId"];
     }
@@ -3011,6 +3025,9 @@ class Creative {
     }
     if (accountId != null) {
       _json["accountId"] = accountId;
+    }
+    if (adChoicesDestinationUrl != null) {
+      _json["adChoicesDestinationUrl"] = adChoicesDestinationUrl;
     }
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
@@ -3156,15 +3173,21 @@ class DealServingMetadata {
 
 /**
  * Tracks which parties (if any) have paused a deal. The deal is considered
- * paused if has_buyer_paused || has_seller_paused.
+ * paused if has_buyer_paused || has_seller_paused. Each of the has_buyer_paused
+ * or the has_seller_paused bits can be set independently.
  */
 class DealServingMetadataDealPauseStatus {
+  /** If the deal is paused, records which party paused the deal first. */
+  core.String firstPausedBy;
   core.bool hasBuyerPaused;
   core.bool hasSellerPaused;
 
   DealServingMetadataDealPauseStatus();
 
   DealServingMetadataDealPauseStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("firstPausedBy")) {
+      firstPausedBy = _json["firstPausedBy"];
+    }
     if (_json.containsKey("hasBuyerPaused")) {
       hasBuyerPaused = _json["hasBuyerPaused"];
     }
@@ -3175,6 +3198,9 @@ class DealServingMetadataDealPauseStatus {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (firstPausedBy != null) {
+      _json["firstPausedBy"] = firstPausedBy;
+    }
     if (hasBuyerPaused != null) {
       _json["hasBuyerPaused"] = hasBuyerPaused;
     }
@@ -3272,6 +3298,11 @@ class DealTerms {
 }
 
 class DealTermsGuaranteedFixedPriceTerms {
+  /**
+   * External billing info for this Deal. This field is relevant when external
+   * billing info such as price has a different currency code than DFP/AdX.
+   */
+  DealTermsGuaranteedFixedPriceTermsBillingInfo billingInfo;
   /** Fixed price for the specified buyer. */
   core.List<PricePerBuyer> fixedPrices;
   /**
@@ -3285,6 +3316,9 @@ class DealTermsGuaranteedFixedPriceTerms {
   DealTermsGuaranteedFixedPriceTerms();
 
   DealTermsGuaranteedFixedPriceTerms.fromJson(core.Map _json) {
+    if (_json.containsKey("billingInfo")) {
+      billingInfo = new DealTermsGuaranteedFixedPriceTermsBillingInfo.fromJson(_json["billingInfo"]);
+    }
     if (_json.containsKey("fixedPrices")) {
       fixedPrices = _json["fixedPrices"].map((value) => new PricePerBuyer.fromJson(value)).toList();
     }
@@ -3298,6 +3332,9 @@ class DealTermsGuaranteedFixedPriceTerms {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (billingInfo != null) {
+      _json["billingInfo"] = (billingInfo).toJson();
+    }
     if (fixedPrices != null) {
       _json["fixedPrices"] = fixedPrices.map((value) => (value).toJson()).toList();
     }
@@ -3306,6 +3343,54 @@ class DealTermsGuaranteedFixedPriceTerms {
     }
     if (guaranteedLooks != null) {
       _json["guaranteedLooks"] = guaranteedLooks;
+    }
+    return _json;
+  }
+}
+
+class DealTermsGuaranteedFixedPriceTermsBillingInfo {
+  /**
+   * The timestamp (in ms since epoch) when the original reservation price for
+   * the deal was first converted to DFP currency. This is used to convert the
+   * contracted price into advertiser's currency without discrepancy.
+   */
+  core.String currencyConversionTimeMs;
+  /**
+   * The original contracted quantity (# impressions) for this deal. To ensure
+   * delivery, sometimes publisher will book the deal with a impression buffer,
+   * however clients are billed using the original contracted quantity.
+   */
+  core.String originalContractedQuantity;
+  /**
+   * The original reservation price for the deal, if the currency code is
+   * different from the one used in negotiation.
+   */
+  Price price;
+
+  DealTermsGuaranteedFixedPriceTermsBillingInfo();
+
+  DealTermsGuaranteedFixedPriceTermsBillingInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("currencyConversionTimeMs")) {
+      currencyConversionTimeMs = _json["currencyConversionTimeMs"];
+    }
+    if (_json.containsKey("originalContractedQuantity")) {
+      originalContractedQuantity = _json["originalContractedQuantity"];
+    }
+    if (_json.containsKey("price")) {
+      price = new Price.fromJson(_json["price"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (currencyConversionTimeMs != null) {
+      _json["currencyConversionTimeMs"] = currencyConversionTimeMs;
+    }
+    if (originalContractedQuantity != null) {
+      _json["originalContractedQuantity"] = originalContractedQuantity;
+    }
+    if (price != null) {
+      _json["price"] = (price).toJson();
     }
     return _json;
   }
@@ -3369,6 +3454,7 @@ class DeleteOrderDealsRequest {
   core.List<core.String> dealIds;
   /** The last known proposal revision number. */
   core.String proposalRevisionNumber;
+  /** Indicates an optional action to take on the proposal */
   core.String updateAction;
 
   DeleteOrderDealsRequest();
@@ -4883,6 +4969,8 @@ class Price {
  * for a matching rule where no buyer is set.
  */
 class PricePerBuyer {
+  /** Optional access type for this buyer. */
+  core.String auctionTier;
   /**
    * The buyer who will pay this price. If unset, all buyers can pay this price
    * (if the advertisers match, and there's no more specific rule matching the
@@ -4895,6 +4983,9 @@ class PricePerBuyer {
   PricePerBuyer();
 
   PricePerBuyer.fromJson(core.Map _json) {
+    if (_json.containsKey("auctionTier")) {
+      auctionTier = _json["auctionTier"];
+    }
     if (_json.containsKey("buyer")) {
       buyer = new Buyer.fromJson(_json["buyer"]);
     }
@@ -4905,6 +4996,9 @@ class PricePerBuyer {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (auctionTier != null) {
+      _json["auctionTier"] = auctionTier;
+    }
     if (buyer != null) {
       _json["buyer"] = (buyer).toJson();
     }
@@ -5017,6 +5111,8 @@ class Product {
    * profiles for a given seller.
    */
   core.String publisherProfileId;
+  /** Publisher self-provided forecast information. */
+  PublisherProvidedForecast publisherProvidedForecast;
   /** The revision number of the product. (readonly) */
   core.String revisionNumber;
   /**
@@ -5093,6 +5189,9 @@ class Product {
     if (_json.containsKey("publisherProfileId")) {
       publisherProfileId = _json["publisherProfileId"];
     }
+    if (_json.containsKey("publisherProvidedForecast")) {
+      publisherProvidedForecast = new PublisherProvidedForecast.fromJson(_json["publisherProvidedForecast"]);
+    }
     if (_json.containsKey("revisionNumber")) {
       revisionNumber = _json["revisionNumber"];
     }
@@ -5162,6 +5261,9 @@ class Product {
     }
     if (publisherProfileId != null) {
       _json["publisherProfileId"] = publisherProfileId;
+    }
+    if (publisherProvidedForecast != null) {
+      _json["publisherProvidedForecast"] = (publisherProvidedForecast).toJson();
     }
     if (revisionNumber != null) {
       _json["revisionNumber"] = revisionNumber;
@@ -5244,7 +5346,6 @@ class Proposal {
    * comment. (readonly)
    */
   core.String lastUpdaterOrCommentorRole;
-  core.String lastUpdaterRole;
   /** The name for the proposal (updatable) */
   core.String name;
   /** Optional negotiation id if this proposal is a preferred deal proposal. */
@@ -5308,9 +5409,6 @@ class Proposal {
     }
     if (_json.containsKey("lastUpdaterOrCommentorRole")) {
       lastUpdaterOrCommentorRole = _json["lastUpdaterOrCommentorRole"];
-    }
-    if (_json.containsKey("lastUpdaterRole")) {
-      lastUpdaterRole = _json["lastUpdaterRole"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -5382,9 +5480,6 @@ class Proposal {
     if (lastUpdaterOrCommentorRole != null) {
       _json["lastUpdaterOrCommentorRole"] = lastUpdaterOrCommentorRole;
     }
-    if (lastUpdaterRole != null) {
-      _json["lastUpdaterRole"] = lastUpdaterRole;
-    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -5427,7 +5522,7 @@ class PublisherProfileApiProto {
   /** A pitch statement for the buyer */
   core.String buyerPitchStatement;
   /** Direct contact for the publisher profile. */
-  ContactInformation directContact;
+  core.String directContact;
   /**
    * Exchange where this publisher profile is from. E.g. AdX, Rubicon etc...
    */
@@ -5459,7 +5554,7 @@ class PublisherProfileApiProto {
    */
   core.int profileId;
   /** Programmatic contact for the publisher profile. */
-  ContactInformation programmaticContact;
+  core.String programmaticContact;
   /**
    * The list of domains represented in this publisher profile. Empty if this is
    * a parent profile.
@@ -5493,7 +5588,7 @@ class PublisherProfileApiProto {
       buyerPitchStatement = _json["buyerPitchStatement"];
     }
     if (_json.containsKey("directContact")) {
-      directContact = new ContactInformation.fromJson(_json["directContact"]);
+      directContact = _json["directContact"];
     }
     if (_json.containsKey("exchange")) {
       exchange = _json["exchange"];
@@ -5526,7 +5621,7 @@ class PublisherProfileApiProto {
       profileId = _json["profileId"];
     }
     if (_json.containsKey("programmaticContact")) {
-      programmaticContact = new ContactInformation.fromJson(_json["programmaticContact"]);
+      programmaticContact = _json["programmaticContact"];
     }
     if (_json.containsKey("publisherDomains")) {
       publisherDomains = _json["publisherDomains"];
@@ -5566,7 +5661,7 @@ class PublisherProfileApiProto {
       _json["buyerPitchStatement"] = buyerPitchStatement;
     }
     if (directContact != null) {
-      _json["directContact"] = (directContact).toJson();
+      _json["directContact"] = directContact;
     }
     if (exchange != null) {
       _json["exchange"] = exchange;
@@ -5599,7 +5694,7 @@ class PublisherProfileApiProto {
       _json["profileId"] = profileId;
     }
     if (programmaticContact != null) {
-      _json["programmaticContact"] = (programmaticContact).toJson();
+      _json["programmaticContact"] = programmaticContact;
     }
     if (publisherDomains != null) {
       _json["publisherDomains"] = publisherDomains;

@@ -24,10 +24,10 @@
     "baseUrl": "https://www.googleapis.com/youtube/analytics/v1/",
     "batchPath": "batch",
     "canonicalName": "YouTube Analytics",
-    "description": "Retrieves your YouTube Analytics reports.",
+    "description": "Retrieves your YouTube Analytics data.",
     "discoveryVersion": "v1",
     "documentationLink": "http://developers.google.com/youtube/analytics/",
-    "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/e0s-XRd_GK8-7V2zCNYp-dj9JOw\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/R6NYt8plHWaGxFlvlp5Qu-Bp7c4\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -439,7 +439,7 @@
             }
         }
     },
-    "revision": "20160301",
+    "revision": "20160513",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BatchReport": {
