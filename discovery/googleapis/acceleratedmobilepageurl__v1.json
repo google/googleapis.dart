@@ -1,0 +1,222 @@
+{
+    "basePath": "",
+    "baseUrl": "https://acceleratedmobilepageurl.googleapis.com/",
+    "batchPath": "batch",
+    "description": "This API contains a single method, batchGet. Call this method to retrieve the AMP URL (and equivalent AMP Cache URL) for given public URL(s).\n",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/amp/cache/",
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "acceleratedmobilepageurl:v1",
+    "kind": "discovery#restDescription",
+    "name": "acceleratedmobilepageurl",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "ampUrls": {
+            "methods": {
+                "batchGet": {
+                    "description": "Returns AMP URL(s) and equivalent\n[AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).",
+                    "httpMethod": "POST",
+                    "id": "acceleratedmobilepageurl.ampUrls.batchGet",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/ampUrls:batchGet",
+                    "request": {
+                        "$ref": "BatchGetAmpUrlsRequest"
+                    },
+                    "response": {
+                        "$ref": "BatchGetAmpUrlsResponse"
+                    }
+                }
+            }
+        }
+    },
+    "revision": "20160524",
+    "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/",
+    "schemas": {
+        "AmpUrl": {
+            "description": "AMP URL response for a requested URL.",
+            "id": "AmpUrl",
+            "properties": {
+                "ampUrl": {
+                    "description": "The AMP URL pointing to the publisher's web server.",
+                    "type": "string"
+                },
+                "originalUrl": {
+                    "description": "The original non-AMP URL.",
+                    "type": "string"
+                },
+                "cdnAmpUrl": {
+                    "description": "The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in the Google AMP Cache.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AmpUrlError": {
+            "description": "AMP URL Error resource for a requested URL that couldn't be found.",
+            "id": "AmpUrlError",
+            "properties": {
+                "originalUrl": {
+                    "description": "The original non-AMP URL.",
+                    "type": "string"
+                },
+                "errorCode": {
+                    "description": "The error code of an API call.",
+                    "enum": [
+                        "ERROR_CODE_UNSPECIFIED",
+                        "INPUT_URL_NOT_FOUND",
+                        "NO_AMP_URL",
+                        "APPLICATION_ERROR",
+                        "URL_IS_VALID_AMP",
+                        "URL_IS_INVALID_AMP"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified error.",
+                        "Indicates the requested URL is not found for some reason -- for example,\nwe receive an HTTP error code 404 when it is crawled.",
+                        "Indicates no AMP URL has been found in the HTML of the requested URL.",
+                        "Indicates some kind of application error occurred at the server.\nClient advised to retry.",
+                        "Indicates the requested URL is a valid AMP URL.",
+                        "Indicates that the requested URL is an invalid AMP URL."
+                    ],
+                    "type": "string"
+                },
+                "errorMessage": {
+                    "description": "An optional descriptive error message.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BatchGetAmpUrlsRequest": {
+            "description": "AMP URL request for a batch of URLs.",
+            "id": "BatchGetAmpUrlsRequest",
+            "properties": {
+                "urls": {
+                    "description": "List of URLs to look up for the paired AMP URLs.\nThe URLs are case-sensitive. Up to 10 URLs per lookup\n(see [Usage Limits](/amp/cache/reference/limits)).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BatchGetAmpUrlsResponse": {
+            "description": "Batch AMP URL response.",
+            "id": "BatchGetAmpUrlsResponse",
+            "properties": {
+                "urlErrors": {
+                    "description": "The errors for requested URLs that have no AMP URL.",
+                    "items": {
+                        "$ref": "AmpUrlError"
+                    },
+                    "type": "array"
+                },
+                "ampUrls": {
+                    "description": "For each URL in BatchAmpUrlsRequest, the URL response. The response might\nnot be in the same order as URLs in the batch request.\nIf BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated\nonly once.",
+                    "items": {
+                        "$ref": "AmpUrl"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Accelerated Mobile Pages (AMP) URL API",
+    "version": "v1"
+}

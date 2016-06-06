@@ -176,6 +176,8 @@ class Groups {
   core.String allowWebPosting;
   /** If the group is archive only */
   core.String archiveOnly;
+  /** Custom footer text. */
+  core.String customFooterText;
   /** Default email to which reply to any message should go. */
   core.String customReplyTo;
   /** Default message deny notification message */
@@ -184,6 +186,8 @@ class Groups {
   core.String description;
   /** Email id of the group */
   core.String email;
+  /** Whether to include custom footer. */
+  core.String includeCustomFooter;
   /** If this groups should be included in global address list or not. */
   core.String includeInGlobalAddressList;
   /** If the contents of the group are archived. */
@@ -281,6 +285,9 @@ class Groups {
     if (_json.containsKey("archiveOnly")) {
       archiveOnly = _json["archiveOnly"];
     }
+    if (_json.containsKey("customFooterText")) {
+      customFooterText = _json["customFooterText"];
+    }
     if (_json.containsKey("customReplyTo")) {
       customReplyTo = _json["customReplyTo"];
     }
@@ -292,6 +299,9 @@ class Groups {
     }
     if (_json.containsKey("email")) {
       email = _json["email"];
+    }
+    if (_json.containsKey("includeCustomFooter")) {
+      includeCustomFooter = _json["includeCustomFooter"];
     }
     if (_json.containsKey("includeInGlobalAddressList")) {
       includeInGlobalAddressList = _json["includeInGlobalAddressList"];
@@ -372,6 +382,9 @@ class Groups {
     if (archiveOnly != null) {
       _json["archiveOnly"] = archiveOnly;
     }
+    if (customFooterText != null) {
+      _json["customFooterText"] = customFooterText;
+    }
     if (customReplyTo != null) {
       _json["customReplyTo"] = customReplyTo;
     }
@@ -383,6 +396,9 @@ class Groups {
     }
     if (email != null) {
       _json["email"] = email;
+    }
+    if (includeCustomFooter != null) {
+      _json["includeCustomFooter"] = includeCustomFooter;
     }
     if (includeInGlobalAddressList != null) {
       _json["includeInGlobalAddressList"] = includeInGlobalAddressList;

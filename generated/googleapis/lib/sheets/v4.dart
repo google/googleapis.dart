@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client sheets/v4';
 
-/** An API for reading and modifying Google Sheets. */
+/** Reads and writes Google Sheets. */
 class SheetsApi {
   /** View and manage the files in your Google Drive */
   static const DriveScope = "https://www.googleapis.com/auth/drive";
@@ -56,15 +56,15 @@ class SpreadsheetsResourceApi {
    *
    * Some requests have replies to
    * give you some information about how
-   * they applied. The replies will mirror the requests.  For example,
+   * they are applied. The replies will mirror the requests.  For example,
    * if you applied 4 updates and the 3rd one had a reply, then the
    * response will have 2 empty replies, the actual reply, and another empty
    * reply, in that order.
    *
    * Due to the collaborative nature of spreadsheets, it is not guaranteed that
    * the spreadsheet will reflect exactly your changes after this completes,
-   * however it is guaranteed that all the updates in the request will be
-   * applied atomically. Your changes may be altered with respect to
+   * however it is guaranteed that the updates in the request will be
+   * applied together atomically. Your changes may be altered with respect to
    * collaborator changes. If there are no collaborators, the spreadsheet
    * should reflect your changes.
    *
@@ -149,17 +149,18 @@ class SpreadsheetsResourceApi {
   }
 
   /**
-   * Returns the spreadsheet at the given id.
+   * Returns the spreadsheet at the given ID.
    * The caller must specify the spreadsheet ID.
    *
    * By default, data within grids will not be returned.
-   * You can include grid data one of two ways: specify a field mask listing
-   * your desired fields (using the `fields` URL parameter in HTTP,
-   * or `FieldMaskContext.response_mask` in the request extensions in an RPC),
-   * or by setting the
-   * includeGridData URL parameter
-   * to true.  If a field mask is set, the `includeGridData` parameter is
-   * ignored.
+   * You can include grid data one of two ways:
+   *
+   * * Specify a field mask listing your desired fields using the `fields` URL
+   * parameter in HTTP
+   *
+   * * Set the includeGridData
+   * URL parameter to true.  If a field mask is set, the `includeGridData`
+   * parameter is ignored
    *
    * For large spreadsheets, it is recommended to retrieve only the specific
    * fields of the spreadsheet that you want.
@@ -234,7 +235,7 @@ class SpreadsheetsSheetsResourceApi {
    *
    * Request parameters:
    *
-   * [spreadsheetId] - The id of the spreadsheet containing the sheet to copy.
+   * [spreadsheetId] - The ID of the spreadsheet containing the sheet to copy.
    *
    * [sheetId] - The ID of the sheet to copy.
    *
@@ -291,7 +292,7 @@ class SpreadsheetsValuesResourceApi {
    *
    * Request parameters:
    *
-   * [spreadsheetId] - The id of the spreadsheet to retrieve data from.
+   * [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
    *
    * [ranges] - The A1 notation of the values to retrieve.
    *
@@ -303,7 +304,7 @@ class SpreadsheetsValuesResourceApi {
    *
    * [dateTimeRenderOption] - How dates, times, and durations should be
    * represented in the output.
-   * This is ignored if ValueRenderOption option is
+   * This is ignored if value_render_option is
    * FORMATTED_VALUE.
    * Possible string values are:
    * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
@@ -366,7 +367,7 @@ class SpreadsheetsValuesResourceApi {
   }
 
   /**
-   * Sets values in a range of a spreadsheet.
+   * Sets values in one or more ranges of a spreadsheet.
    * The caller must specify the spreadsheet ID,
    * a valueInputOption, and one or more
    * ValueRanges.
@@ -375,7 +376,7 @@ class SpreadsheetsValuesResourceApi {
    *
    * Request parameters:
    *
-   * [spreadsheetId] - The id of the spreadsheet to update.
+   * [spreadsheetId] - The ID of the spreadsheet to update.
    *
    * Completes with a [BatchUpdateValuesResponse].
    *
@@ -418,7 +419,7 @@ class SpreadsheetsValuesResourceApi {
    *
    * Request parameters:
    *
-   * [spreadsheetId] - The id of the spreadsheet to retrieve data from.
+   * [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
    *
    * [range] - The A1 notation of the values to retrieve.
    *
@@ -430,7 +431,7 @@ class SpreadsheetsValuesResourceApi {
    *
    * [dateTimeRenderOption] - How dates, times, and durations should be
    * represented in the output.
-   * This is ignored if the ValueRenderOption option is
+   * This is ignored if value_render_option is
    * FORMATTED_VALUE.
    * Possible string values are:
    * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
@@ -501,7 +502,7 @@ class SpreadsheetsValuesResourceApi {
    *
    * Request parameters:
    *
-   * [spreadsheetId] - The id of the spreadsheet to update.
+   * [spreadsheetId] - The ID of the spreadsheet to update.
    *
    * [range] - The A1 notation of the values to update.
    *
@@ -777,7 +778,9 @@ class AddProtectedRangeResponse {
  * Adds a new sheet.
  * When a sheet is added at a given index,
  * all subsequent sheets' indexes are incremented.
- * To add an object sheet, use AddChartRequest instead.
+ * To add an object sheet, use AddChartRequest instead and specify
+ * EmbeddedObjectPosition.sheetId or
+ * EmbeddedObjectPosition.newSheet.
  */
 class AddSheetRequest {
   /**
@@ -829,7 +832,7 @@ class AddSheetResponse {
 }
 
 /**
- * Adds new cells to the last row with data in a sheet,
+ * Adds new cells after the last row with data in a sheet,
  * inserting new rows into the sheet if necessary.
  */
 class AppendCellsRequest {
@@ -1063,7 +1066,7 @@ class BasicChartAxis {
 class BasicChartDomain {
   /**
    * The data of the domain. For example, if charting stock prices over time,
-   * this be the data representing the dates.
+   * this is the data representing the dates.
    */
   ChartData domain;
 
@@ -1315,7 +1318,7 @@ class BasicFilter {
  * The response when retrieving more than one range of values in a spreadsheet.
  */
 class BatchGetValuesResponse {
-  /** The id of the spreadsheet to retrieve data from. */
+  /** The ID of the spreadsheet the data was retrieved from. */
   core.String spreadsheetId;
   /**
    * The requested values. The order of the ValueRanges is the same as the
@@ -1410,13 +1413,13 @@ class BatchUpdateValuesRequest {
    * Possible string values are:
    * - "INPUT_VALUE_OPTION_UNSPECIFIED" : Default input value. This value must
    * not be used.
-   * - "RAW" : The values the user is entered will not be parsed and will be
+   * - "RAW" : The values the user has entered will not be parsed and will be
    * stored
    * as-is.
    * - "USER_ENTERED" : The values will be parsed as if the user typed them into
    * the UI.
    * Numbers will stay as numbers, but strings may be converted to numbers,
-   * dates, etc.. following the same rules that are applied when entering
+   * dates, etc. following the same rules that are applied when entering
    * text into a cell via the Google Sheets UI.
    */
   core.String valueInputOption;
@@ -1719,13 +1722,13 @@ class Border {
    * - "DASHED" : The border is dashed.
    * - "SOLID" : The border is a solid line.
    * - "NONE" : No border.
-   * Used only when updating a border in order erase it.
-   * - "DOUBLE" : The border is double (two solid lines).
+   * Used only when updating a border in order to erase it.
+   * - "DOUBLE" : The border is two solid lines.
    */
   core.String style;
   /**
    * The width of the border, in pixels.
-   * Border widths must be between 0 and 3 pixels.
+   * Border widths must be between 0 and 3 pixels, inclusive.
    */
   core.int width;
 
@@ -1844,19 +1847,21 @@ class CellData {
   /**
    * A pivot table anchored at this cell. The size of pivot table itself
    * is computed dynamically based on its data, grouping, filters, values,
-   * etc... Only the top-left cell of the pivot table contains the pivot table
+   * etc. Only the top-left cell of the pivot table contains the pivot table
    * definition. The other cells will contain the calculated values of the
-   * results of the pivot in their effectiveValue fields.
+   * results of the pivot in their effective_value fields.
    */
   PivotTable pivotTable;
   /**
-   * Runs of rich text applied to subsections of the cell.
+   * Runs of rich text applied to subsections of the cell.  Runs are only valid
+   * on user entered strings, not formulas, bools, or numbers.
    * Runs start at specific indexes in the text and continue until the next
    * run. Properties of a run will continue unless explicitly changed
    * in a subsequent run (and properties of the first run will continue
    * the properties of the cell unless explicitly changed).
    *
-   * When writing, the new runs will overwrite any prior runs.
+   * When writing, the new runs will overwrite any prior runs.  When writing a
+   * new user_entered_value, previous runs will be erased.
    */
   core.List<TextFormatRun> textFormatRuns;
   /**
@@ -1950,7 +1955,7 @@ class CellFormat {
   /** The borders of the cell. */
   Borders borders;
   /**
-   * The horizontal alignment of the value in cell.
+   * The horizontal alignment of the value in the cell.
    * Possible string values are:
    * - "HORIZONTAL_ALIGN_UNSPECIFIED" : The horizontal alignment is not
    * specified. Do not use this.
@@ -1963,7 +1968,7 @@ class CellFormat {
    * How a hyperlink, if it exists, should be displayed in the cell.
    * Possible string values are:
    * - "HYPERLINK_DISPLAY_TYPE_UNSPECIFIED" : The default value: the hyperlink
-   * is clickable. Do not use this.
+   * is rendered. Do not use this.
    * - "LINKED" : A hyperlink should be explicitly rendered.
    * - "PLAIN_TEXT" : A hyperlink should not be rendered.
    */
@@ -1990,7 +1995,7 @@ class CellFormat {
    */
   TextFormat textFormat;
   /**
-   * The vertical alignment of the value in cell.
+   * The vertical alignment of the value in the cell.
    * Possible string values are:
    * - "VERTICAL_ALIGN_UNSPECIFIED" : The vertical alignment is not specified.
    * Do not use this.
@@ -2020,7 +2025,7 @@ class CellFormat {
    * Example:
    *
    *     | Cell has a |
-   *     | loooooooooo|ong <- Word is clipped.
+   *     | loooooooooo| <- Word is clipped.
    *     | word.      |
    * - "CLIP" : Lines that are longer than the cell width will be clipped.
    * The text will never wrap to the next line unless the user manually
@@ -2178,14 +2183,12 @@ class ChartSourceRange {
 class ChartSpec {
   /**
    * A basic chart specification, can be one of many kinds of charts.
-   * See BasicChartType for the list of all charts this supports.
+   * See BasicChartType for the list of all
+   * charts this supports.
    */
   BasicChartSpec basicChart;
   /**
    * Determines how the charts will use hidden rows or columns.
-   * This value is only meaningful if the
-   * ChartData.sourceRange
-   * is used for a domain or series.
    * Possible string values are:
    * - "CHART_HIDDEN_DIMENSION_STRATEGY_UNSPECIFIED" : Default value, do not
    * use.
@@ -2446,9 +2449,9 @@ class ConditionValue {
    * conditional filters.
    * Possible string values are:
    * - "RELATIVE_DATE_UNSPECIFIED" : Default value, do not use.
-   * - "PAST_YEAR" : The value is the year before today.
-   * - "PAST_MONTH" : The value is the month before today.
-   * - "PAST_WEEK" : The value is the week before today.
+   * - "PAST_YEAR" : The value is one year before today.
+   * - "PAST_MONTH" : The value is one month before today.
+   * - "PAST_WEEK" : The value is one week before today.
    * - "YESTERDAY" : The value is yesterday.
    * - "TODAY" : The value is today.
    * - "TOMORROW" : The value is tomorrow.
@@ -2553,7 +2556,8 @@ class CopyPasteRequest {
    * - "PASTE_NO_BORDERS" : Like PASTE_NORMAL but without borders.
    * - "PASTE_FORMULA" : Paste the formulas only.
    * - "PASTE_DATA_VALIDATION" : Paste the data validation only.
-   * - "PASTE_CONDITIONAL_FORMATTING" : Paste the color rules only.
+   * - "PASTE_CONDITIONAL_FORMATTING" : Paste the conditional formatting rules
+   * only.
    */
   core.String pasteType;
   /** The source range to copy. */
@@ -2631,7 +2635,8 @@ class CutPasteRequest {
    * - "PASTE_NO_BORDERS" : Like PASTE_NORMAL but without borders.
    * - "PASTE_FORMULA" : Paste the formulas only.
    * - "PASTE_DATA_VALIDATION" : Paste the data validation only.
-   * - "PASTE_CONDITIONAL_FORMATTING" : Paste the color rules only.
+   * - "PASTE_CONDITIONAL_FORMATTING" : Paste the conditional formatting rules
+   * only.
    */
   core.String pasteType;
   /** The source data to cut. */
@@ -2858,7 +2863,7 @@ class DeleteNamedRangeRequest {
   }
 }
 
-/** Deletes the protected range with the given id. */
+/** Deletes the protected range with the given ID. */
 class DeleteProtectedRangeRequest {
   /** The ID of the protected range to delete. */
   core.int protectedRangeId;
@@ -3208,7 +3213,7 @@ class EmbeddedObjectPosition {
    * is chosen for you. Used only when writing.
    */
   core.bool newSheet;
-  /** The position the object is overlaid on top of a grid. */
+  /** The position at which the object is overlaid on top of a grid. */
   OverlayPosition overlayPosition;
   /**
    * The sheet this is on. Set only if the embedded object
@@ -3357,7 +3362,7 @@ class ExtendedValue {
   }
 }
 
-/** Criteria for showing/hiding rows in a filter, filter view. */
+/** Criteria for showing/hiding rows in a filter or filter view. */
 class FilterCriteria {
   /**
    * A condition that must be true for values to be shown.
@@ -3404,14 +3409,14 @@ class FilterView {
   /**
    * The named range this filter view is backed by, if any.
    *
-   * When writing, only one of range or namedRangeId
+   * When writing, only one of range or named_range_id
    * may be set.
    */
   core.String namedRangeId;
   /**
    * The range this filter view covers.
    *
-   * When writing, only one of range or namedRangeId
+   * When writing, only one of range or named_range_id
    * may be set.
    */
   GridRange range;
@@ -3494,10 +3499,10 @@ class FindReplaceRequest {
    * The regular expression and replacement should follow Java regex rules
    * at https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html.
    * The replacement string is allowed to refer to capturing groups.
-   * For example, if one cell has the contents "`Google Sheets`" and another
-   * has "`Google Docs`", then searching for `"o.* (.*)"` with a replacement of
-   * `"$1 Rocks`"` would change the contents of the cells to
-   * "`GSheets Rocks`" and "`GDocs Rocks`" respectively.
+   * For example, if one cell has the contents `"Google Sheets"` and another
+   * has `"Google Docs"`, then searching for `"o.* (.*)"` with a replacement of
+   * `"$1 Rocks"` would change the contents of the cells to
+   * `"GSheets Rocks"` and `"GDocs Rocks"` respectively.
    */
   core.bool searchByRegex;
   /** The sheet to find/replace over. */
@@ -3574,8 +3579,8 @@ class FindReplaceResponse {
   core.int formulasChanged;
   /**
    * The number of occurrences (possibly multiple within a cell) changed.
-   * For example, if replacing "`e`" with "`o`" in "`Google Sheets`", this would
-   * be "`3`" because "`Google Sheets`" -> "`Googlo Shoots`".
+   * For example, if replacing `"e"` with `"o"` in `"Google Sheets"`, this would
+   * be `"3"` because `"Google Sheets"` -> `"Googlo Shoots"`.
    */
   core.int occurrencesChanged;
   /** The number of rows changed. */
@@ -3714,19 +3719,19 @@ class GridCoordinate {
 class GridData {
   /**
    * Metadata about the requested columns in the grid, starting with the column
-   * in startColumn.
+   * in start_column.
    */
   core.List<DimensionProperties> columnMetadata;
   /**
    * The data in the grid, one entry per row,
    * starting with the row in startRow.
    * The values in RowData will correspond to columns starting
-   * at startColumn.
+   * at start_column.
    */
   core.List<RowData> rowData;
   /**
    * Metadata about the requested rows in the grid, starting with the row
-   * in startRow.
+   * in start_row.
    */
   core.List<DimensionProperties> rowMetadata;
   /** The first column this GridData refers to, zero-based. */
@@ -3836,24 +3841,24 @@ class GridProperties {
  * and the end index is exclusive -- [start_index, end_index).
  * Missing indexes indicate the range is unbounded on that side.
  *
- * For example, if "Sheet1" is grid ID 0, then:
+ * For example, if `"Sheet1"` is sheet ID 0, then:
  *
- *   Sheet1!A1:A1 == sheet_id: 0,
+ *   `Sheet1!A1:A1 == sheet_id: 0,
  *                   start_row_index: 0, end_row_index: 1,
- *                   start_column_index: 0, end_column_index: 1
+ *                   start_column_index: 0, end_column_index: 1`
  *
- *   Sheet1!A3:B4 == sheet_id: 0,
+ *   `Sheet1!A3:B4 == sheet_id: 0,
  *                   start_row_index: 2, end_row_index: 4,
- *                   start_column_index: 0, end_column_index: 2
+ *                   start_column_index: 0, end_column_index: 2`
  *
- *   Sheet1!A:B == sheet_id: 0,
- *                 start_column_index: 0, end_column_index: 2
+ *   `Sheet1!A:B == sheet_id: 0,
+ *                 start_column_index: 0, end_column_index: 2`
  *
- *   Sheet1!A5:B == sheet_id: 0,
+ *   `Sheet1!A5:B == sheet_id: 0,
  *                  start_row_index: 4,
- *                  start_column_index: 0, end_column_index: 2
+ *                  start_column_index: 0, end_column_index: 2`
  *
- *   Sheet1 == sheet_id:0
+ *   `Sheet1 == sheet_id:0`
  *
  * The start index must always be less than or equal to the end index.
  * If the start index equals the end index, then the range is empty.
@@ -3927,7 +3932,7 @@ class InsertDimensionRequest {
    * either the green or red background.  If `inheritFromBefore` is true,
    * the two new rows will be red (because the row before the insertion point
    * was red), whereas if `inheritFromBefore` is false, the two new rows will
-   * be green (because the rows after the insertion point were green).
+   * be green (because the row after the insertion point was green).
    */
   core.bool inheritFromBefore;
   /**
@@ -3959,7 +3964,7 @@ class InsertDimensionRequest {
 }
 
 /**
- * A single interpolation point a gradient conditional format.
+ * A single interpolation point on a gradient conditional format.
  * These pin the gradient color scale according to the color,
  * type and value chosen.
  */
@@ -4072,8 +4077,8 @@ class MoveDimensionRequest {
    * the data may end up in a different index than specified.
    *
    * For example, given `A1..A5` of `0, 1, 2, 3, 4` and wanting to move
-   * "`1`" and "`2`" to between "`3`" and "`4`", the source would be
-   * `ROWS [1..3)`,and the destination index would be "`4`"
+   * `"1"` and `"2"` to between `"3"` and `"4"`, the source would be
+   * `ROWS [1..3)`,and the destination index would be `"4"`
    * (the zero-based index of row 5).
    * The end result would be `A1..A5` of `0, 3, 1, 2, 4`.
    */
@@ -4142,15 +4147,16 @@ class NamedRange {
   }
 }
 
-/**
- * The number format of a cell.
- * When updating, all fields must be set.
- */
+/** The number format of a cell. */
 class NumberFormat {
-  /** Pattern string used for formatting. */
+  /**
+   * Pattern string used for formatting.  If not set, a default pattern based on
+   * the user's locale will be used if necessary for the given type.
+   */
   core.String pattern;
   /**
    * The type of the number format.
+   * When writing, this field must be set.
    * Possible string values are:
    * - "NUMBER_FORMAT_TYPE_UNSPECIFIED" : The number format is not specified
    * and is based on the contents of the cell.
@@ -4318,7 +4324,8 @@ class PasteDataRequest {
    * - "PASTE_NO_BORDERS" : Like PASTE_NORMAL but without borders.
    * - "PASTE_FORMULA" : Paste the formulas only.
    * - "PASTE_DATA_VALIDATION" : Paste the data validation only.
-   * - "PASTE_CONDITIONAL_FORMATTING" : Paste the color rules only.
+   * - "PASTE_CONDITIONAL_FORMATTING" : Paste the conditional formatting rules
+   * only.
    */
   core.String type;
 
@@ -4464,7 +4471,7 @@ class PivotGroup {
   /**
    * The column offset of the source range that this grouping is based on.
    *
-   * For example, if the source was `C10:E15', a `sourceColumnOffset` of `0`
+   * For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`
    * means this group refers to column `C`, whereas the offset `1` would refer
    * to column `D`.
    */
@@ -4535,7 +4542,7 @@ class PivotGroupSortValueBucket {
    */
   core.List<ExtendedValue> buckets;
   /**
-   * The offset in the [PivotTable.values] list which the values in this
+   * The offset in the PivotTable.values list which the values in this
    * grouping should be sorted by.
    */
   core.int valuesIndex;
@@ -4608,7 +4615,7 @@ class PivotTable {
    * The map's key is the column offset of the source range that you want to
    * filter, and the value is the criteria for that column.
    *
-   * For example, if the source was `C10:E15', a key of `0` will have the filter
+   * For example, if the source was `C10:E15`, a key of `0` will have the filter
    * for column `C`, whereas the key `1` is for column `D`.
    */
   core.Map<core.String, PivotFilterCriteria> criteria;
@@ -4689,7 +4696,7 @@ class PivotValue {
   /**
    * The column offset of the source range that this value reads from.
    *
-   * For example, if the source was `C10:E15', a `sourceColumnOffset` of `0`
+   * For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`
    * means this value refers to column `C`, whereas the offset `1` would
    * refer to column `D`.
    */
@@ -4717,7 +4724,7 @@ class PivotValue {
    * - "VAR" : Corresponds to the `VAR` function.
    * - "VARP" : Corresponds to the `VARP` function.
    * - "CUSTOM" : Indicates the formula should be used as-is.
-   * Only valid if [PivotValue.formula] was set.
+   * Only valid if PivotValue.formula was set.
    */
   core.String summarizeFunction;
 
@@ -4764,13 +4771,13 @@ class ProtectedRange {
    * The users and groups with edit access to the protected range.
    * This field is only visible to users with edit access to the protected
    * range and the document.
-   * Editors are not supported with warningOnly protection.
+   * Editors are not supported with warning_only protection.
    */
   Editors editors;
   /**
    * The named range this protected range is backed by, if any.
    *
-   * When writing, only one of range or namedRangeId
+   * When writing, only one of range or named_range_id
    * may be set.
    */
   core.String namedRangeId;
@@ -4784,7 +4791,7 @@ class ProtectedRange {
    * The range may be fully unbounded, in which case this is considered
    * a protected sheet.
    *
-   * When writing, only one of range or namedRangeId
+   * When writing, only one of range or named_range_id
    * may be set.
    */
   GridRange range;
@@ -4800,12 +4807,12 @@ class ProtectedRange {
    */
   core.List<GridRange> unprotectedRanges;
   /**
-   * True if this this protected range will show a warning when editing.
+   * True if this protected range will show a warning when editing.
    * Warning-based protection means that every user can edit data in the
    * protected range, except editing will prompt a warning asking the user
    * to confirm the edit.
    *
-   * When warning: if this field is true, then editors is ignored.
+   * When writing: if this field is true, then editors is ignored.
    * Additionally, if this field is changed from true to false and the
    * `editors` field is not set (nor included in the field mask), then
    * the editors will be set to all the editors in the document.
@@ -4883,8 +4890,8 @@ class ProtectedRange {
  * C2 would be `=B1`, C3 would be `=B2`, C4 would be `=B3`.
  *
  * To keep the formula's ranges static, use the `$` indicator.
- * For example, using the formula was `=$A$1`, neither
- * the row nor column would increment.
+ * For example, use the formula `=$A$1` to prevent both the row and the
+ * column from incrementing.
  */
 class RepeatCellRequest {
   /** The data to write. */
@@ -4941,7 +4948,7 @@ class Request {
   AddProtectedRangeRequest addProtectedRange;
   /** Adds a sheet. */
   AddSheetRequest addSheet;
-  /** Appends cells to the last row with data in a sheet. */
+  /** Appends cells after the last row with data in a sheet. */
   AppendCellsRequest appendCells;
   /** Appends dimensions to the end of a sheet. */
   AppendDimensionRequest appendDimension;
@@ -4976,7 +4983,7 @@ class Request {
   DuplicateFilterViewRequest duplicateFilterView;
   /** Duplicates a sheet. */
   DuplicateSheetRequest duplicateSheet;
-  /** Finds and replace occurrences of some text with other text. */
+  /** Finds and replaces occurrences of some text with other text. */
   FindReplaceRequest findReplace;
   /** Inserts new rows or columns in a sheet. */
   InsertDimensionRequest insertDimension;
@@ -5846,16 +5853,20 @@ class SpreadsheetProperties {
   core.String autoRecalc;
   /**
    * The default format of all cells in the spreadsheet.
-   * CellData.effectiveFormat will not be set if the cell's format is equal
-   * to this default format.
+   * CellData.effectiveFormat will not be set if the
+   * cell's format is equal to this default format.
    * This field is read-only.
    */
   CellFormat defaultFormat;
   /**
    * The locale of the spreadsheet in one of the following formats:
+   *
    * * an ISO 639-1 language code such as `en`
+   *
    * * an ISO 639-2 language code such as `fil`, if no 639-1 code exists
+   *
    * * a combination of the ISO language code and country code, such as `en_US`
+   *
    * Note: when updating this field, not all locales/languages are supported.
    */
   core.String locale;
@@ -5983,8 +5994,8 @@ class TextFormat {
 }
 
 /**
- * A run of a text format. The format of this run continues until explicitly
- * overridden in the next run.
+ * A run of a text format. The format of this run continues until the start
+ * index of the next run.
  * When updating, all fields must be set.
  */
 class TextFormatRun {
@@ -6284,7 +6295,7 @@ class UpdateConditionalFormatRuleRequest {
   /** The rule that should replace the rule at the given index. */
   ConditionalFormatRule rule;
   /**
-   * The sheet of the rule to move.  Required if newIndex is set,
+   * The sheet of the rule to move.  Required if new_index is set,
    * unused otherwise.
    */
   core.int sheetId;
@@ -6335,12 +6346,12 @@ class UpdateConditionalFormatRuleResponse {
   ConditionalFormatRule newRule;
   /**
    * The old index of the rule. Not set if a rule was replaced
-   * (because it is the same as newIndex).
+   * (because it is the same as new_index).
    */
   core.int oldIndex;
   /**
    * The old (deleted) rule. Not set if a rule was moved
-   * (because it is the same as newRule).
+   * (because it is the same as new_rule).
    */
   ConditionalFormatRule oldRule;
 
@@ -6379,10 +6390,7 @@ class UpdateConditionalFormatRuleResponse {
   }
 }
 
-/**
- * Updates properties of dimensions within the specified range.
- * It is an error to specify read only fields in the field mask.
- */
+/** Updates properties of dimensions within the specified range. */
 class UpdateDimensionPropertiesRequest {
   /**
    * The fields that should be updated.  At least one field must be specified.
@@ -6430,8 +6438,8 @@ class UpdateDimensionPropertiesRequest {
  */
 class UpdateEmbeddedObjectPositionRequest {
   /**
-   * The fields of OverlayPosition that should be updated when
-   * setting a new position. Used only if
+   * The fields of OverlayPosition
+   * that should be updated when setting a new position. Used only if
    * newPosition.overlayPosition
    * is set, in which case at least one field must
    * be specified.  The root `newPosition.overlayPosition` is implied and
@@ -6447,7 +6455,7 @@ class UpdateEmbeddedObjectPositionRequest {
    * a new sheet will be created with an ID that will be chosen for you.
    */
   EmbeddedObjectPosition newPosition;
-  /** The id of the object to moved. */
+  /** The ID of the object to moved. */
   core.int objectId;
 
   UpdateEmbeddedObjectPositionRequest();
@@ -6538,7 +6546,6 @@ class UpdateFilterViewRequest {
 /**
  * Updates properties of the named range with the specified
  * namedRangeId.
- * It is an error to specify read only fields in the field mask.
  */
 class UpdateNamedRangeRequest {
   /**
@@ -6618,7 +6625,6 @@ class UpdateProtectedRangeRequest {
 /**
  * Updates properties of the sheet with the specified
  * sheetId.
- * It is an error to specify read only fields in the field mask.
  */
 class UpdateSheetPropertiesRequest {
   /**
@@ -6653,10 +6659,7 @@ class UpdateSheetPropertiesRequest {
   }
 }
 
-/**
- * Updates properties of a spreadsheet.
- * It is an error to specify read only fields in the field mask.
- */
+/** Updates properties of a spreadsheet. */
 class UpdateSpreadsheetPropertiesRequest {
   /**
    * The fields that should be updated.  At least one field must be specified.
@@ -6751,14 +6754,15 @@ class ValueRange {
   /**
    * The major dimension of the values.
    *
-   * For output, if the spreadsheet data is: A1=1,B1=2,A2=3,B2=4,
-   * then requesting range=A1:B2,majorDimension=ROWS will return [[1,2],[3,4]],
-   * whereas requesting range=A1:B2,majorDimension=COLUMNS will return
-   * [[1,3],[2,4]].
+   * For output, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+   * then requesting `range=A1:B2,majorDimension=ROWS` will return
+   * `[[1,2],[3,4]]`,
+   * whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+   * `[[1,3],[2,4]]`.
    *
-   * For input, with range=A1:B2,majorDimension=ROWS then [[1,2],[3,4]]
-   * will set A1=1,B1=2,A2=3,B2=4. With range=A1:B2,majorDimension=COLUMNS
-   * then [[1,2],[3,4]] will set A1=1,B1=3,A2=2,B2=4.
+   * For input, with `range=A1:B2,majorDimension=ROWS` then `[[1,2],[3,4]]`
+   * will set `A1=1,B1=2,A2=3,B2=4`. With `range=A1:B2,majorDimension=COLUMNS`
+   * then `[[1,2],[3,4]]` will set `A1=1,B1=3,A2=2,B2=4`.
    *
    * When writing, if this field is not set, it defaults to ROWS.
    * Possible string values are:
@@ -6782,7 +6786,7 @@ class ValueRange {
    * For output, empty trailing rows and columns will not be included.
    *
    * For input, supported value types are: bool, string, and double.
-   * Null and empty values will be skipped.
+   * Null values will be skipped.
    * To set a cell to an empty value, set the string value to an empty string.
    *
    * The values for Object must be JSON objects. It can consist of `num`,

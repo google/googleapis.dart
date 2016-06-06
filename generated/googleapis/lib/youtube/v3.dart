@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -4928,8 +4927,12 @@ class SubscriptionsResourceApi {
    * [mine] - Set this parameter's value to true to retrieve a feed of the
    * authenticated user's subscriptions.
    *
+   * [myRecentSubscribers] - Set this parameter's value to true to retrieve a
+   * feed of the subscribers of the authenticated user in reverse chronological
+   * order (newest first).
+   *
    * [mySubscribers] - Set this parameter's value to true to retrieve a feed of
-   * the subscribers of the authenticated user.
+   * the subscribers of the authenticated user in no particular order.
    *
    * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
    * YouTube content partners.
@@ -4983,7 +4986,7 @@ class SubscriptionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SubscriptionListResponse> list(core.String part, {core.String channelId, core.String forChannelId, core.String id, core.int maxResults, core.bool mine, core.bool mySubscribers, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.String order, core.String pageToken}) {
+  async.Future<SubscriptionListResponse> list(core.String part, {core.String channelId, core.String forChannelId, core.String id, core.int maxResults, core.bool mine, core.bool myRecentSubscribers, core.bool mySubscribers, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.String order, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5009,6 +5012,9 @@ class SubscriptionsResourceApi {
     }
     if (mine != null) {
       _queryParams["mine"] = ["${mine}"];
+    }
+    if (myRecentSubscribers != null) {
+      _queryParams["myRecentSubscribers"] = ["${myRecentSubscribers}"];
     }
     if (mySubscribers != null) {
       _queryParams["mySubscribers"] = ["${mySubscribers}"];
@@ -11383,11 +11389,11 @@ class IngestionInfo {
 class InvideoBranding {
   core.String imageBytes;
   core.List<core.int> get imageBytesAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(imageBytes);
+    return convert.BASE64.decode(imageBytes);
   }
 
   void set imageBytesAsBytes(core.List<core.int> _bytes) {
-    imageBytes = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    imageBytes = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   core.String imageUrl;
   InvideoPosition position;
@@ -12778,6 +12784,10 @@ class LiveChatMessageSnippet {
   core.String liveChatId;
   LiveChatMessageDeletedDetails messageDeletedDetails;
   LiveChatMessageRetractedDetails messageRetractedDetails;
+  LiveChatPollClosedDetails pollClosedDetails;
+  LiveChatPollEditedDetails pollEditedDetails;
+  LiveChatPollOpenedDetails pollOpenedDetails;
+  LiveChatPollVotedDetails pollVotedDetails;
   /**
    * The date and time when the message was orignally published. The value is
    * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
@@ -12797,6 +12807,10 @@ class LiveChatMessageSnippet {
    * - "messageDeletedEvent"
    * - "messageRetractedEvent"
    * - "newSponsorEvent"
+   * - "pollClosedEvent"
+   * - "pollEditedEvent"
+   * - "pollOpenedEvent"
+   * - "pollVotedEvent"
    * - "sponsorOnlyModeEndedEvent"
    * - "sponsorOnlyModeStartedEvent"
    * - "textMessageEvent"
@@ -12829,6 +12843,18 @@ class LiveChatMessageSnippet {
     }
     if (_json.containsKey("messageRetractedDetails")) {
       messageRetractedDetails = new LiveChatMessageRetractedDetails.fromJson(_json["messageRetractedDetails"]);
+    }
+    if (_json.containsKey("pollClosedDetails")) {
+      pollClosedDetails = new LiveChatPollClosedDetails.fromJson(_json["pollClosedDetails"]);
+    }
+    if (_json.containsKey("pollEditedDetails")) {
+      pollEditedDetails = new LiveChatPollEditedDetails.fromJson(_json["pollEditedDetails"]);
+    }
+    if (_json.containsKey("pollOpenedDetails")) {
+      pollOpenedDetails = new LiveChatPollOpenedDetails.fromJson(_json["pollOpenedDetails"]);
+    }
+    if (_json.containsKey("pollVotedDetails")) {
+      pollVotedDetails = new LiveChatPollVotedDetails.fromJson(_json["pollVotedDetails"]);
     }
     if (_json.containsKey("publishedAt")) {
       publishedAt = core.DateTime.parse(_json["publishedAt"]);
@@ -12866,6 +12892,18 @@ class LiveChatMessageSnippet {
     }
     if (messageRetractedDetails != null) {
       _json["messageRetractedDetails"] = (messageRetractedDetails).toJson();
+    }
+    if (pollClosedDetails != null) {
+      _json["pollClosedDetails"] = (pollClosedDetails).toJson();
+    }
+    if (pollEditedDetails != null) {
+      _json["pollEditedDetails"] = (pollEditedDetails).toJson();
+    }
+    if (pollOpenedDetails != null) {
+      _json["pollOpenedDetails"] = (pollOpenedDetails).toJson();
+    }
+    if (pollVotedDetails != null) {
+      _json["pollVotedDetails"] = (pollVotedDetails).toJson();
     }
     if (publishedAt != null) {
       _json["publishedAt"] = (publishedAt).toIso8601String();
@@ -13052,6 +13090,152 @@ class LiveChatModeratorSnippet {
     }
     if (moderatorDetails != null) {
       _json["moderatorDetails"] = (moderatorDetails).toJson();
+    }
+    return _json;
+  }
+}
+
+class LiveChatPollClosedDetails {
+  /** The id of the poll that was closed. */
+  core.String pollId;
+
+  LiveChatPollClosedDetails();
+
+  LiveChatPollClosedDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("pollId")) {
+      pollId = _json["pollId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (pollId != null) {
+      _json["pollId"] = pollId;
+    }
+    return _json;
+  }
+}
+
+class LiveChatPollEditedDetails {
+  core.String id;
+  core.List<LiveChatPollItem> items;
+  core.String prompt;
+
+  LiveChatPollEditedDetails();
+
+  LiveChatPollEditedDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new LiveChatPollItem.fromJson(value)).toList();
+    }
+    if (_json.containsKey("prompt")) {
+      prompt = _json["prompt"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (prompt != null) {
+      _json["prompt"] = prompt;
+    }
+    return _json;
+  }
+}
+
+class LiveChatPollItem {
+  /** Plain text description of the item. */
+  core.String description;
+  core.String itemId;
+
+  LiveChatPollItem();
+
+  LiveChatPollItem.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("itemId")) {
+      itemId = _json["itemId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (itemId != null) {
+      _json["itemId"] = itemId;
+    }
+    return _json;
+  }
+}
+
+class LiveChatPollOpenedDetails {
+  core.String id;
+  core.List<LiveChatPollItem> items;
+  core.String prompt;
+
+  LiveChatPollOpenedDetails();
+
+  LiveChatPollOpenedDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new LiveChatPollItem.fromJson(value)).toList();
+    }
+    if (_json.containsKey("prompt")) {
+      prompt = _json["prompt"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (prompt != null) {
+      _json["prompt"] = prompt;
+    }
+    return _json;
+  }
+}
+
+class LiveChatPollVotedDetails {
+  /** The poll item the user chose. */
+  core.String itemId;
+  /** The poll the user voted on. */
+  core.String pollId;
+
+  LiveChatPollVotedDetails();
+
+  LiveChatPollVotedDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("itemId")) {
+      itemId = _json["itemId"];
+    }
+    if (_json.containsKey("pollId")) {
+      pollId = _json["pollId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (itemId != null) {
+      _json["itemId"] = itemId;
+    }
+    if (pollId != null) {
+      _json["pollId"] = pollId;
     }
     return _json;
   }

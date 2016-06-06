@@ -17,9 +17,10 @@
     "basePath": "/consumersurveys/v2/",
     "baseUrl": "https://www.googleapis.com/consumersurveys/v2/",
     "batchPath": "batch",
+    "canonicalName": "Consumer Surveys",
     "description": "Creates and conducts surveys, lists the surveys that an authenticated user owns, and retrieves survey results and information about specified surveys.",
     "discoveryVersion": "v1",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/1vDIKJcLCHSRsEqwWRQxEL6uKNY\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/UUFfqPW5Viffl9wMWtQNrKHUs5E\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -76,6 +77,92 @@
     },
     "protocol": "rest",
     "resources": {
+        "mobileapppanels": {
+            "methods": {
+                "get": {
+                    "description": "Retrieves a MobileAppPanel that is available to the authenticated user.",
+                    "httpMethod": "GET",
+                    "id": "consumersurveys.mobileapppanels.get",
+                    "parameterOrder": [
+                        "panelId"
+                    ],
+                    "parameters": {
+                        "panelId": {
+                            "description": "External URL ID for the panel.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "mobileAppPanels/{panelId}",
+                    "response": {
+                        "$ref": "MobileAppPanel"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/consumersurveys",
+                        "https://www.googleapis.com/auth/consumersurveys.readonly",
+                        "https://www.googleapis.com/auth/userinfo.email"
+                    ]
+                },
+                "list": {
+                    "description": "Lists the MobileAppPanels available to the authenticated user.",
+                    "httpMethod": "GET",
+                    "id": "consumersurveys.mobileapppanels.list",
+                    "parameters": {
+                        "maxResults": {
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "startIndex": {
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "token": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "mobileAppPanels",
+                    "response": {
+                        "$ref": "MobileAppPanelsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/consumersurveys",
+                        "https://www.googleapis.com/auth/consumersurveys.readonly",
+                        "https://www.googleapis.com/auth/userinfo.email"
+                    ]
+                },
+                "update": {
+                    "description": "Updates a MobileAppPanel. Currently the only property that can be updated is the owners property.",
+                    "httpMethod": "PUT",
+                    "id": "consumersurveys.mobileapppanels.update",
+                    "parameterOrder": [
+                        "panelId"
+                    ],
+                    "parameters": {
+                        "panelId": {
+                            "description": "External URL ID for the panel.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "mobileAppPanels/{panelId}",
+                    "request": {
+                        "$ref": "MobileAppPanel"
+                    },
+                    "response": {
+                        "$ref": "MobileAppPanel"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/consumersurveys",
+                        "https://www.googleapis.com/auth/userinfo.email"
+                    ]
+                }
+            }
+        },
         "results": {
             "methods": {
                 "get": {
@@ -261,7 +348,7 @@
             }
         }
     },
-    "revision": "20160517",
+    "revision": "20160602",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "FieldMask": {
@@ -276,6 +363,63 @@
                 "id": {
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "MobileAppPanel": {
+            "description": "Representation of an individual pre-defined panel object defining a targeted audience of opinion rewards mobile app users.",
+            "id": "MobileAppPanel",
+            "properties": {
+                "country": {
+                    "description": "Country code for the country of the users that the panel contains. Uses standard ISO 3166-1 2-character language codes. For instance, 'US' for the United States, and 'GB' for the United Kingdom. Any survey created targeting this panel must also target the corresponding country.",
+                    "type": "string"
+                },
+                "isPublicPanel": {
+                    "description": "Whether or not the panel is accessible to all API users.",
+                    "type": "boolean"
+                },
+                "language": {
+                    "description": "Language code that the panel can target. For instance, 'en-US'. Uses standard BCP47 language codes. See specification. Any survey created targeting this panel must also target the corresponding language.",
+                    "type": "string"
+                },
+                "mobileAppPanelId": {
+                    "description": "Unique panel ID string. This corresponds to the mobile_app_panel_id used in Survey Insert requests.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human readable name of the audience panel.",
+                    "type": "string"
+                },
+                "owners": {
+                    "description": "List of email addresses for users who can target members of this panel. Must contain at least the address of the user making the API call for panels that are not public. This field will be empty for public panels.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "MobileAppPanelsListResponse": {
+            "id": "MobileAppPanelsListResponse",
+            "properties": {
+                "pageInfo": {
+                    "$ref": "PageInfo"
+                },
+                "requestId": {
+                    "description": "Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests.",
+                    "type": "string"
+                },
+                "resources": {
+                    "description": "An individual predefined panel of Opinion Rewards mobile users.",
+                    "items": {
+                        "$ref": "MobileAppPanel"
+                    },
+                    "type": "array"
+                },
+                "tokenPagination": {
+                    "$ref": "TokenPagination"
                 }
             },
             "type": "object"
@@ -368,7 +512,7 @@
                     "type": "array"
                 },
                 "state": {
-                    "description": "State that the survey is in. Can be modified to start, stop, or pause survey.",
+                    "description": "State that the survey is in.",
                     "type": "string"
                 },
                 "surveyUrlId": {
@@ -428,7 +572,7 @@
                     "type": "array"
                 },
                 "mobileAppPanelId": {
-                    "description": "Key for predefined panel that causes survey to be sent to a predefined set of Opinion Rewards App users. PopulationSource must be set to ANDROID_APP_PANEL to use this field.",
+                    "description": "Key for predefined panel that causes survey to be sent to a predefined set of Opinion Rewards App users. You must set PopulationSource to ANDROID_APP_PANEL to use this field.",
                     "type": "string"
                 },
                 "populationSource": {
@@ -442,11 +586,6 @@
             "description": "Message defining the cost to run a given survey through API.",
             "id": "SurveyCost",
             "properties": {
-                "autostartMaxCostPerResponse": {
-                    "description": "Threshold to start a survey automically if the quoted prices is at most this value. When a survey has a Screener (threshold) question, it must go through an incidence pricing test to determine the final cost per response. Typically the API consumer would have to make a followup call to start the survey given the (previously not) known cost. If the survey has no threshold_answers, setting this property will return an error. This property allows API callers to indicate the max price per response they'd be willing to pay in advance of that test. If the price turns out to be lower than the specified autostart_max, the survey should begin immediately and the user will be charged at the rate determined by the Incidence pricing test. If the price turns out to be greater than the specified autostart_max the survey will not be started and the user will instead be notified what price was determined by the incidence test. At that point they must raise the value of this property to be greater than or equal to that cost before attempting to start the survey again. This will immediately start the survey as long the incidence test was run within the last 21 days.",
-                    "format": "int64",
-                    "type": "string"
-                },
                 "costPerResponseNanos": {
                     "description": "Cost per survey response in nano units of the given currency. To get the total cost for a survey, multiply this value by wanted_response_count.",
                     "format": "int64",
@@ -454,6 +593,11 @@
                 },
                 "currencyCode": {
                     "description": "Currency code that the cost is given in.",
+                    "type": "string"
+                },
+                "maxCostPerResponseNanos": {
+                    "description": "Threshold to start a survey automatically if the quoted price is at most this value. When a survey has a Screener (threshold) question, it must go through an incidence pricing test to determine the final cost per response. Typically you will have to make a followup call to start the survey giving the final computed cost per response. If the survey has no threshold_answers, setting this property will return an error. By specifying this property, you indicate the max price per response you are willing to pay in advance of the incidence test. If the price turns out to be lower than the specified value, the survey will begin immediately and you will be charged at the rate determined by the incidence pricing test. If the price turns out to be greater than the specified value the survey will not be started and you will instead be notified what price was determined by the incidence test. At that point, you must raise the value of this property to be greater than or equal to that cost before attempting to start the survey again. This will immediately start the survey as long the incidence test was run within the last 21 days.",
+                    "format": "int64",
                     "type": "string"
                 },
                 "nanos": {
@@ -620,7 +764,7 @@
         "SurveysStartRequest": {
             "id": "SurveysStartRequest",
             "properties": {
-                "autostartMaxCostPerResponse": {
+                "maxCostPerResponseNanos": {
                     "description": "Threshold to start a survey automically if the quoted prices is less than or equal to this value. See Survey.Cost for more details.",
                     "format": "int64",
                     "type": "string"

@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -601,11 +600,11 @@ class ResultScreenshot {
   /** Image data base64 encoded. */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Height of screenshot in pixels. */
   core.int height;

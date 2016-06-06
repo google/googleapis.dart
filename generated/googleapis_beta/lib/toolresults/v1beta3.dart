@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1175,10 +1174,10 @@ class Any {
    * A URL/resource name whose content describes the type of the serialized
    * protocol buffer message.
    *
-   * For URLs which use the schema `http`, `https`, or no schema, the following
+   * For URLs which use the scheme `http`, `https`, or no scheme, the following
    * restrictions and interpretations apply:
    *
-   * * If no schema is provided, `https` is assumed. * The last segment of the
+   * * If no scheme is provided, `https` is assumed. * The last segment of the
    * URL's path must represent the fully qualified name of the type (as in
    * `path/google.protobuf.Duration`). The name should be in a canonical form
    * (e.g., leading "." is not accepted). * An HTTP GET on the URL must yield a
@@ -1188,7 +1187,7 @@ class Any {
    * compatibility needs to be preserved on changes to types. (Use versioned
    * type names to manage breaking changes.)
    *
-   * Schemas other than `http`, `https` (or the empty schema) might be used with
+   * Schemes other than `http`, `https` (or the empty scheme) might be used with
    * implementation specific semantics.
    */
   core.String typeUrl;
@@ -1197,11 +1196,11 @@ class Any {
    */
   core.String value;
   core.List<core.int> get valueAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(value);
+    return convert.BASE64.decode(value);
   }
 
   void set valueAsBytes(core.List<core.int> _bytes) {
-    value = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    value = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   Any();
@@ -2817,11 +2816,11 @@ class Thumbnail {
    */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The height of the thumbnail, in pixels.

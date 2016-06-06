@@ -8,7 +8,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1450,6 +1449,8 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   core.String captchaChallenge;
   /** Response to the captcha. */
   core.String captchaResponse;
+  /** The timestamp when the account is created. */
+  core.String createdAt;
   /**
    * GCP project number of the requesting delegated app. Currently only intended
    * for Firebase V1 migration.
@@ -1471,6 +1472,8 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   core.String idToken;
   /** Instance id token of the app. */
   core.String instanceId;
+  /** Last login timestamp. */
+  core.String lastLoginAt;
   /** The local ID of the user. */
   core.String localId;
   /** The out-of-band code of the change email request. */
@@ -1496,6 +1499,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
     if (_json.containsKey("captchaResponse")) {
       captchaResponse = _json["captchaResponse"];
+    }
+    if (_json.containsKey("createdAt")) {
+      createdAt = _json["createdAt"];
     }
     if (_json.containsKey("delegatedProjectNumber")) {
       delegatedProjectNumber = _json["delegatedProjectNumber"];
@@ -1523,6 +1529,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
     if (_json.containsKey("instanceId")) {
       instanceId = _json["instanceId"];
+    }
+    if (_json.containsKey("lastLoginAt")) {
+      lastLoginAt = _json["lastLoginAt"];
     }
     if (_json.containsKey("localId")) {
       localId = _json["localId"];
@@ -1558,6 +1567,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     if (captchaResponse != null) {
       _json["captchaResponse"] = captchaResponse;
     }
+    if (createdAt != null) {
+      _json["createdAt"] = createdAt;
+    }
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
     }
@@ -1584,6 +1596,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
     if (instanceId != null) {
       _json["instanceId"] = instanceId;
+    }
+    if (lastLoginAt != null) {
+      _json["lastLoginAt"] = lastLoginAt;
     }
     if (localId != null) {
       _json["localId"] = localId;
@@ -1880,20 +1895,20 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   /** The salt separator. */
   core.String saltSeparator;
   core.List<core.int> get saltSeparatorAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(saltSeparator);
+    return convert.BASE64.decode(saltSeparator);
   }
 
   void set saltSeparatorAsBytes(core.List<core.int> _bytes) {
-    saltSeparator = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    saltSeparator = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The key for to hash the password. */
   core.String signerKey;
   core.List<core.int> get signerKeyAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(signerKey);
+    return convert.BASE64.decode(signerKey);
   }
 
   void set signerKeyAsBytes(core.List<core.int> _bytes) {
-    signerKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    signerKey = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The account info to be stored. */
   core.List<UserInfo> users;
@@ -2204,6 +2219,8 @@ class IdpConfig {
   core.String provider;
   /** OAuth2 client secret. */
   core.String secret;
+  /** Whitelisted client IDs for audience check. */
+  core.List<core.String> whitelistedAudiences;
 
   IdpConfig();
 
@@ -2223,6 +2240,9 @@ class IdpConfig {
     if (_json.containsKey("secret")) {
       secret = _json["secret"];
     }
+    if (_json.containsKey("whitelistedAudiences")) {
+      whitelistedAudiences = _json["whitelistedAudiences"];
+    }
   }
 
   core.Map toJson() {
@@ -2241,6 +2261,9 @@ class IdpConfig {
     }
     if (secret != null) {
       _json["secret"] = secret;
+    }
+    if (whitelistedAudiences != null) {
+      _json["whitelistedAudiences"] = whitelistedAudiences;
     }
     return _json;
   }
@@ -2428,11 +2451,11 @@ class SetAccountInfoResponse {
   /** The user's hashed password. */
   core.String passwordHash;
   core.List<core.int> get passwordHashAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(passwordHash);
+    return convert.BASE64.decode(passwordHash);
   }
 
   void set passwordHashAsBytes(core.List<core.int> _bytes) {
-    passwordHash = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    passwordHash = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The photo url of the user. */
   core.String photoUrl;
@@ -2720,6 +2743,8 @@ class UserInfoProviderUserInfo {
 
 /** Template for an individual account info. */
 class UserInfo {
+  /** User creation timestamp. */
+  core.String createdAt;
   /** Whether the user is disabled. */
   core.bool disabled;
   /** The name of the user. */
@@ -2728,16 +2753,18 @@ class UserInfo {
   core.String email;
   /** Whether the email has been verified. */
   core.bool emailVerified;
+  /** last login timestamp. */
+  core.String lastLoginAt;
   /** The local ID of the user. */
   core.String localId;
   /** The user's hashed password. */
   core.String passwordHash;
   core.List<core.int> get passwordHashAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(passwordHash);
+    return convert.BASE64.decode(passwordHash);
   }
 
   void set passwordHashAsBytes(core.List<core.int> _bytes) {
-    passwordHash = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    passwordHash = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The timestamp when the password was last updated. */
   core.double passwordUpdatedAt;
@@ -2748,11 +2775,11 @@ class UserInfo {
   /** The user's password salt. */
   core.String salt;
   core.List<core.int> get saltAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(salt);
+    return convert.BASE64.decode(salt);
   }
 
   void set saltAsBytes(core.List<core.int> _bytes) {
-    salt = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    salt = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Timestamp in seconds for valid login token. */
   core.String validSince;
@@ -2762,6 +2789,9 @@ class UserInfo {
   UserInfo();
 
   UserInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("createdAt")) {
+      createdAt = _json["createdAt"];
+    }
     if (_json.containsKey("disabled")) {
       disabled = _json["disabled"];
     }
@@ -2773,6 +2803,9 @@ class UserInfo {
     }
     if (_json.containsKey("emailVerified")) {
       emailVerified = _json["emailVerified"];
+    }
+    if (_json.containsKey("lastLoginAt")) {
+      lastLoginAt = _json["lastLoginAt"];
     }
     if (_json.containsKey("localId")) {
       localId = _json["localId"];
@@ -2802,6 +2835,9 @@ class UserInfo {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (createdAt != null) {
+      _json["createdAt"] = createdAt;
+    }
     if (disabled != null) {
       _json["disabled"] = disabled;
     }
@@ -2813,6 +2849,9 @@ class UserInfo {
     }
     if (emailVerified != null) {
       _json["emailVerified"] = emailVerified;
+    }
+    if (lastLoginAt != null) {
+      _json["lastLoginAt"] = lastLoginAt;
     }
     if (localId != null) {
       _json["localId"] = localId;

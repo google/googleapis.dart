@@ -1,12 +1,13 @@
 packages:
 - googleapis:
-    version: 0.27.0
+    version: 0.28.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis/CHANGELOG.md
     apis:
+    - acceleratedmobilepageurl:v1  # https://developers.google.com/amp/cache/
     - adexchangebuyer:v1.3  # https://developers.google.com/ad-exchange/buyer-rest/
     - adexchangebuyer:v1.4  # https://developers.google.com/ad-exchange/buyer-rest/
     - adexchangeseller:v1.1  # https://developers.google.com/ad-exchange/seller-rest/
@@ -29,9 +30,7 @@ packages:
     - civicinfo:v2  # https://developers.google.com/civic-information/
     - classroom:v1  # https://developers.google.com/classroom/
     - cloudbilling:v1  # https://cloud.google.com/billing/
-    - cloudbuild:v1  # https://cloud.google.com/container-builder/docs/
     - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
-    - cloudlatencytest:v2
     - cloudtrace:v1 # https://cloud.google.com/cloud-trace/
     - cloudresourcemanager:v1  # https://cloud.google.com/resource-manager/
     - compute:v1  # https://developers.google.com/compute/
@@ -101,7 +100,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.27.0
+    version: 0.27.1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -121,6 +120,7 @@ packages:
     - datastore:v1beta3  # https://developers.google.com/datastore/
     - dataproc:v1beta1 # https://cloud.google.com/dataproc/
     - dfareporting:v2.5beta1  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dns:v2beta1  # https://cloud.google.com/dns/docs/
     - genomics:v1beta2  # https://developers.google.com/genomics/
     - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging
     - proximitybeacon:v1beta1  # https://developers.google.com/beacons/proximity/guides
@@ -152,7 +152,6 @@ skipped_apis:
 - iam:v1alpha1 # v1 included
 - datastore:v1beta1  # v1beta2 included
 - dataproc:v1alpha1 # v1beta1 included
-- drive:v1  # v2 included
 - genomics:v1alpha2 # v1 included
 - oauth2:v1  # v2 included
 - prediction:v1.2  # v1.6 included

@@ -17,7 +17,7 @@
     "description": "API for working with Fusion Tables data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fusiontables",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/H8bndsg5ucjq1laaWhA4cXUz4Bk\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/-xDlQ3Z80n_rfxYaz7dDf-mP00c\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1127,7 +1127,7 @@
             }
         }
     },
-    "revision": "20160317",
+    "revision": "20160526",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {

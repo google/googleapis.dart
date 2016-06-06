@@ -5,7 +5,7 @@
     "description": "Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/safe-browsing/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/sNqN0JiWP8e28tYjOdGK7QuKa18\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Yoew02BLq1-_QyzwsVjtSdddocY\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -158,7 +158,7 @@
             }
         }
     },
-    "revision": "20160428",
+    "revision": "20160520",
     "rootUrl": "https://safebrowsing.googleapis.com/",
     "schemas": {
         "FindThreatMatchesRequest": {
@@ -223,7 +223,7 @@
                         "Threat posed to Windows.",
                         "Threat posed to Linux.",
                         "Threat posed to Android.",
-                        "Threat posed to OSX.",
+                        "Threat posed to OS X.",
                         "Threat posed to iOS.",
                         "Threat posed to at least one of the defined platforms.",
                         "Threat posed to all defined platforms.",
@@ -249,15 +249,15 @@
                     "description": "The entry types to be checked.",
                     "enumDescriptions": [
                         "Unspecified.",
-                        "A host-suffix/path-prefix URL expression; for example, \"foo.bar.com/baz/\".",
-                        "The digest of a binary.",
+                        "A URL.",
+                        "An executable program.",
                         "An IP range."
                     ],
                     "items": {
                         "enum": [
                             "THREAT_ENTRY_TYPE_UNSPECIFIED",
-                            "URL_EXPRESSION",
-                            "BINARY_DIGEST",
+                            "URL",
+                            "EXECUTABLE",
                             "IP_RANGE"
                         ],
                         "type": "string"
@@ -279,19 +279,23 @@
             "id": "ThreatEntry",
             "properties": {
                 "hash": {
-                    "description": "A hash prefix, consisting of the most significant 4-32 bytes of a SHA256 hash.",
+                    "description": "A hash prefix, consisting of the most significant 4-32 bytes of a SHA256 hash. This field is in binary format.",
                     "format": "byte",
                     "type": "string"
                 },
                 "url": {
                     "description": "A URL.",
                     "type": "string"
+                },
+                "digest": {
+                    "description": "The digest of an executable in SHA256 format. The API supports both binary and hex digests.",
+                    "format": "byte",
+                    "type": "string"
                 }
             },
             "type": "object"
         },
         "FindThreatMatchesResponse": {
-            "description": "Response type for requests to find threat matches.",
             "id": "FindThreatMatchesResponse",
             "properties": {
                 "matches": {
@@ -338,8 +342,8 @@
                     "description": "The threat entry type matching this threat.",
                     "enum": [
                         "THREAT_ENTRY_TYPE_UNSPECIFIED",
-                        "URL_EXPRESSION",
-                        "BINARY_DIGEST",
+                        "URL",
+                        "EXECUTABLE",
                         "IP_RANGE"
                     ],
                     "type": "string"
@@ -442,14 +446,14 @@
                     "description": "The types of entries present in the list.",
                     "enum": [
                         "THREAT_ENTRY_TYPE_UNSPECIFIED",
-                        "URL_EXPRESSION",
-                        "BINARY_DIGEST",
+                        "URL",
+                        "EXECUTABLE",
                         "IP_RANGE"
                     ],
                     "type": "string"
                 },
                 "state": {
-                    "description": "The current state of the client for the requested list (the encrypted ClientState that was sent to the client from the previous update request).",
+                    "description": "The current state of the client for the requested list (the encrypted client state that was received from the last successful list update).",
                     "format": "byte",
                     "type": "string"
                 },
@@ -499,7 +503,6 @@
             "type": "object"
         },
         "FetchThreatListUpdatesResponse": {
-            "description": "Response type for threat list update requests.",
             "id": "FetchThreatListUpdatesResponse",
             "properties": {
                 "listUpdateResponses": {
@@ -535,8 +538,8 @@
                     "description": "The format of the threats.",
                     "enum": [
                         "THREAT_ENTRY_TYPE_UNSPECIFIED",
-                        "URL_EXPRESSION",
-                        "BINARY_DIGEST",
+                        "URL",
+                        "EXECUTABLE",
                         "IP_RANGE"
                     ],
                     "type": "string"
@@ -665,12 +668,12 @@
                     "type": "string"
                 },
                 "riceParameter": {
-                    "description": "The Golomb-Rice parameter which is a number between 2 and 28. This field is missing (that is, zero) if num_entries is zero.",
+                    "description": "The Golomb-Rice parameter, which is a number between 2 and 28. This field is missing (that is, zero) if `num_entries` is zero.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "numEntries": {
-                    "description": "The number of entries that are delta encoded in the encoded data. If only a single integer was encoded, this will be zero and the single value will be stored in first_value.",
+                    "description": "The number of entries that are delta encoded in the encoded data. If only a single integer was encoded, this will be zero and the single value will be stored in `first_value`.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -718,7 +721,6 @@
             "type": "object"
         },
         "FindFullHashesResponse": {
-            "description": "Response type for requests to find full hashes.",
             "id": "FindFullHashesResponse",
             "properties": {
                 "matches": {
@@ -740,7 +742,6 @@
             "type": "object"
         },
         "ListThreatListsResponse": {
-            "description": "A collection of lists available for download by the client.",
             "id": "ListThreatListsResponse",
             "properties": {
                 "threatLists": {
@@ -787,8 +788,8 @@
                     "description": "The entry types contained in the list.",
                     "enum": [
                         "THREAT_ENTRY_TYPE_UNSPECIFIED",
-                        "URL_EXPRESSION",
-                        "BINARY_DIGEST",
+                        "URL",
+                        "EXECUTABLE",
                         "IP_RANGE"
                     ],
                     "type": "string"

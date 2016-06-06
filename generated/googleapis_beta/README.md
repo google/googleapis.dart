@@ -148,6 +148,12 @@ Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud DNS API - dns v2beta1
+
+Configures and serves authoritative DNS records.
+
+Official API documentation: https://developers.google.com/cloud-dns
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1beta2
 
 Provides access to Genomics data.

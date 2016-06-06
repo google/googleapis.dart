@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -64,6 +63,8 @@ class AchievementDefinitionsResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -82,7 +83,7 @@ class AchievementDefinitionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AchievementDefinitionsListResponse> list({core.String language, core.int maxResults, core.String pageToken}) {
+  async.Future<AchievementDefinitionsListResponse> list({core.String consistencyToken, core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -90,6 +91,9 @@ class AchievementDefinitionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -131,6 +135,8 @@ class AchievementsResourceApi {
    *
    * [stepsToIncrement] - The number of steps to increment.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [requestId] - A randomly generated numeric ID for each request specified by
    * the caller. This number is used at the server to ensure that the request is
    * handled correctly across retries.
@@ -143,7 +149,7 @@ class AchievementsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AchievementIncrementResponse> increment(core.String achievementId, core.int stepsToIncrement, {core.String requestId}) {
+  async.Future<AchievementIncrementResponse> increment(core.String achievementId, core.int stepsToIncrement, {core.String consistencyToken, core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -158,6 +164,9 @@ class AchievementsResourceApi {
       throw new core.ArgumentError("Parameter stepsToIncrement is required.");
     }
     _queryParams["stepsToIncrement"] = ["${stepsToIncrement}"];
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
     }
@@ -182,6 +191,8 @@ class AchievementsResourceApi {
    *
    * [playerId] - A player ID. A value of me may be used in place of the
    * authenticated player's ID.
+   *
+   * [consistencyToken] - The last-seen mutation timestamp.
    *
    * [language] - The preferred language to use for strings returned by this
    * method.
@@ -209,7 +220,7 @@ class AchievementsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<PlayerAchievementListResponse> list(core.String playerId, {core.String language, core.int maxResults, core.String pageToken, core.String state}) {
+  async.Future<PlayerAchievementListResponse> list(core.String playerId, {core.String consistencyToken, core.String language, core.int maxResults, core.String pageToken, core.String state}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -219,6 +230,9 @@ class AchievementsResourceApi {
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -253,6 +267,8 @@ class AchievementsResourceApi {
    *
    * [achievementId] - The ID of the achievement used by this method.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [AchievementRevealResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -261,7 +277,7 @@ class AchievementsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AchievementRevealResponse> reveal(core.String achievementId) {
+  async.Future<AchievementRevealResponse> reveal(core.String achievementId, {core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -271,6 +287,9 @@ class AchievementsResourceApi {
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId') + '/reveal';
@@ -297,6 +316,8 @@ class AchievementsResourceApi {
    *
    * [steps] - The minimum value to set the steps to.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [AchievementSetStepsAtLeastResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -305,7 +326,7 @@ class AchievementsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AchievementSetStepsAtLeastResponse> setStepsAtLeast(core.String achievementId, core.int steps) {
+  async.Future<AchievementSetStepsAtLeastResponse> setStepsAtLeast(core.String achievementId, core.int steps, {core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -320,6 +341,9 @@ class AchievementsResourceApi {
       throw new core.ArgumentError("Parameter steps is required.");
     }
     _queryParams["steps"] = ["${steps}"];
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId') + '/setStepsAtLeast';
 
@@ -340,6 +364,8 @@ class AchievementsResourceApi {
    *
    * [achievementId] - The ID of the achievement used by this method.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [AchievementUnlockResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -348,7 +374,7 @@ class AchievementsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AchievementUnlockResponse> unlock(core.String achievementId) {
+  async.Future<AchievementUnlockResponse> unlock(core.String achievementId, {core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -358,6 +384,9 @@ class AchievementsResourceApi {
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId') + '/unlock';
@@ -379,6 +408,8 @@ class AchievementsResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [AchievementUpdateMultipleResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -387,7 +418,7 @@ class AchievementsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AchievementUpdateMultipleResponse> updateMultiple(AchievementUpdateMultipleRequest request) {
+  async.Future<AchievementUpdateMultipleResponse> updateMultiple(AchievementUpdateMultipleRequest request, {core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -397,6 +428,9 @@ class AchievementsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
 
     _url = 'achievements/updateMultiple';
@@ -430,6 +464,8 @@ class ApplicationsResourceApi {
    * [applicationId] - The application ID from the Google Play developer
    * console.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -448,7 +484,7 @@ class ApplicationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Application> get(core.String applicationId, {core.String language, core.String platformType}) {
+  async.Future<Application> get(core.String applicationId, {core.String consistencyToken, core.String language, core.String platformType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -458,6 +494,9 @@ class ApplicationsResourceApi {
 
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -484,13 +523,15 @@ class ApplicationsResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future played() {
+  async.Future played({core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -498,6 +539,9 @@ class ApplicationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
 
     _downloadOptions = null;
 
@@ -522,6 +566,8 @@ class ApplicationsResourceApi {
    * [applicationId] - The application ID from the Google Play developer
    * console.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [ApplicationVerifyResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -530,7 +576,7 @@ class ApplicationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ApplicationVerifyResponse> verify(core.String applicationId) {
+  async.Future<ApplicationVerifyResponse> verify(core.String applicationId, {core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -540,6 +586,9 @@ class ApplicationsResourceApi {
 
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
 
     _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId') + '/verify';
@@ -569,6 +618,8 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -587,7 +638,7 @@ class EventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<PlayerEventListResponse> listByPlayer({core.String language, core.int maxResults, core.String pageToken}) {
+  async.Future<PlayerEventListResponse> listByPlayer({core.String consistencyToken, core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -595,6 +646,9 @@ class EventsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -622,6 +676,8 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -640,7 +696,7 @@ class EventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<EventDefinitionListResponse> listDefinitions({core.String language, core.int maxResults, core.String pageToken}) {
+  async.Future<EventDefinitionListResponse> listDefinitions({core.String consistencyToken, core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -648,6 +704,9 @@ class EventsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -678,6 +737,8 @@ class EventsResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -689,7 +750,7 @@ class EventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<EventUpdateResponse> record(EventRecordRequest request, {core.String language}) {
+  async.Future<EventUpdateResponse> record(EventRecordRequest request, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -699,6 +760,9 @@ class EventsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -732,6 +796,8 @@ class LeaderboardsResourceApi {
    *
    * [leaderboardId] - The ID of the leaderboard.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -743,7 +809,7 @@ class LeaderboardsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Leaderboard> get(core.String leaderboardId, {core.String language}) {
+  async.Future<Leaderboard> get(core.String leaderboardId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -753,6 +819,9 @@ class LeaderboardsResourceApi {
 
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -775,6 +844,8 @@ class LeaderboardsResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -793,7 +864,7 @@ class LeaderboardsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LeaderboardListResponse> list({core.String language, core.int maxResults, core.String pageToken}) {
+  async.Future<LeaderboardListResponse> list({core.String consistencyToken, core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -801,6 +872,9 @@ class LeaderboardsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -837,6 +911,8 @@ class MetagameResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [MetagameConfig].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -845,7 +921,7 @@ class MetagameResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<MetagameConfig> getMetagameConfig() {
+  async.Future<MetagameConfig> getMetagameConfig({core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -853,6 +929,9 @@ class MetagameResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
 
     _url = 'metagameConfig';
 
@@ -880,6 +959,8 @@ class MetagameResourceApi {
    * Possible string values are:
    * - "all" : Retrieve data for all categories. This is the default.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -898,7 +979,7 @@ class MetagameResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<CategoryListResponse> listCategoriesByPlayer(core.String playerId, core.String collection, {core.String language, core.int maxResults, core.String pageToken}) {
+  async.Future<CategoryListResponse> listCategoriesByPlayer(core.String playerId, core.String collection, {core.String consistencyToken, core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -911,6 +992,9 @@ class MetagameResourceApi {
     }
     if (collection == null) {
       throw new core.ArgumentError("Parameter collection is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -952,6 +1036,8 @@ class PlayersResourceApi {
    * [playerId] - A player ID. A value of me may be used in place of the
    * authenticated player's ID.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -963,7 +1049,7 @@ class PlayersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Player> get(core.String playerId, {core.String language}) {
+  async.Future<Player> get(core.String playerId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -973,6 +1059,9 @@ class PlayersResourceApi {
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1007,6 +1096,8 @@ class PlayersResourceApi {
    * - "visible" : Retrieve a list of players in the user's social graph that
    * are visible to this game.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -1025,7 +1116,7 @@ class PlayersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<PlayerListResponse> list(core.String collection, {core.String language, core.int maxResults, core.String pageToken}) {
+  async.Future<PlayerListResponse> list(core.String collection, {core.String consistencyToken, core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1035,6 +1126,9 @@ class PlayersResourceApi {
 
     if (collection == null) {
       throw new core.ArgumentError("Parameter collection is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1075,13 +1169,15 @@ class PushtokensResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future remove(PushTokenId request) {
+  async.Future remove(PushTokenId request, {core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1091,6 +1187,9 @@ class PushtokensResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
 
     _downloadOptions = null;
@@ -1114,13 +1213,15 @@ class PushtokensResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future update(PushToken request) {
+  async.Future update(PushToken request, {core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1130,6 +1231,9 @@ class PushtokensResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
 
     _downloadOptions = null;
@@ -1169,13 +1273,15 @@ class QuestMilestonesResourceApi {
    * [requestId] - A numeric ID to ensure that the request is handled correctly
    * across retries. Your client application must generate this ID randomly.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future claim(core.String questId, core.String milestoneId, core.String requestId) {
+  async.Future claim(core.String questId, core.String milestoneId, core.String requestId, {core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1193,6 +1299,9 @@ class QuestMilestonesResourceApi {
       throw new core.ArgumentError("Parameter requestId is required.");
     }
     _queryParams["requestId"] = [requestId];
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
 
     _downloadOptions = null;
 
@@ -1224,6 +1333,8 @@ class QuestsResourceApi {
    *
    * [questId] - The ID of the quest.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -1235,7 +1346,7 @@ class QuestsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Quest> accept(core.String questId, {core.String language}) {
+  async.Future<Quest> accept(core.String questId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1245,6 +1356,9 @@ class QuestsResourceApi {
 
     if (questId == null) {
       throw new core.ArgumentError("Parameter questId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1271,6 +1385,8 @@ class QuestsResourceApi {
    * [playerId] - A player ID. A value of me may be used in place of the
    * authenticated player's ID.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -1290,7 +1406,7 @@ class QuestsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<QuestListResponse> list(core.String playerId, {core.String language, core.int maxResults, core.String pageToken}) {
+  async.Future<QuestListResponse> list(core.String playerId, {core.String consistencyToken, core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1300,6 +1416,9 @@ class QuestsResourceApi {
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1345,6 +1464,8 @@ class RevisionsResourceApi {
    * - "IOS" - Client is running the iOS SDK.
    * - "WEB_APP" - Client is running as a Web App.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [RevisionCheckResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1353,7 +1474,7 @@ class RevisionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RevisionCheckResponse> check(core.String clientRevision) {
+  async.Future<RevisionCheckResponse> check(core.String clientRevision, {core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1365,6 +1486,9 @@ class RevisionsResourceApi {
       throw new core.ArgumentError("Parameter clientRevision is required.");
     }
     _queryParams["clientRevision"] = [clientRevision];
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
 
     _url = 'revisions/check';
 
@@ -1395,6 +1519,8 @@ class RoomsResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -1406,7 +1532,7 @@ class RoomsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Room> create(RoomCreateRequest request, {core.String language}) {
+  async.Future<Room> create(RoomCreateRequest request, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1416,6 +1542,9 @@ class RoomsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1441,6 +1570,8 @@ class RoomsResourceApi {
    *
    * [roomId] - The ID of the room.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -1452,7 +1583,7 @@ class RoomsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Room> decline(core.String roomId, {core.String language}) {
+  async.Future<Room> decline(core.String roomId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1462,6 +1593,9 @@ class RoomsResourceApi {
 
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1487,13 +1621,15 @@ class RoomsResourceApi {
    *
    * [roomId] - The ID of the room.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future dismiss(core.String roomId) {
+  async.Future dismiss(core.String roomId, {core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1503,6 +1639,9 @@ class RoomsResourceApi {
 
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
 
     _downloadOptions = null;
@@ -1526,6 +1665,8 @@ class RoomsResourceApi {
    *
    * [roomId] - The ID of the room.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -1537,7 +1678,7 @@ class RoomsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Room> get(core.String roomId, {core.String language}) {
+  async.Future<Room> get(core.String roomId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1547,6 +1688,9 @@ class RoomsResourceApi {
 
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1574,6 +1718,8 @@ class RoomsResourceApi {
    *
    * [roomId] - The ID of the room.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -1585,7 +1731,7 @@ class RoomsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Room> join(RoomJoinRequest request, core.String roomId, {core.String language}) {
+  async.Future<Room> join(RoomJoinRequest request, core.String roomId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1598,6 +1744,9 @@ class RoomsResourceApi {
     }
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1625,6 +1774,8 @@ class RoomsResourceApi {
    *
    * [roomId] - The ID of the room.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -1636,7 +1787,7 @@ class RoomsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Room> leave(RoomLeaveRequest request, core.String roomId, {core.String language}) {
+  async.Future<Room> leave(RoomLeaveRequest request, core.String roomId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1649,6 +1800,9 @@ class RoomsResourceApi {
     }
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1671,6 +1825,8 @@ class RoomsResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -1689,7 +1845,7 @@ class RoomsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RoomList> list({core.String language, core.int maxResults, core.String pageToken}) {
+  async.Future<RoomList> list({core.String consistencyToken, core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1697,6 +1853,9 @@ class RoomsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -1730,6 +1889,8 @@ class RoomsResourceApi {
    *
    * [roomId] - The ID of the room.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -1741,7 +1902,7 @@ class RoomsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RoomStatus> reportStatus(RoomP2PStatuses request, core.String roomId, {core.String language}) {
+  async.Future<RoomStatus> reportStatus(RoomP2PStatuses request, core.String roomId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1754,6 +1915,9 @@ class RoomsResourceApi {
     }
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1803,6 +1967,8 @@ class ScoresResourceApi {
    * - "DAILY" : List the top scores for the current day.
    * - "WEEKLY" : List the top scores for the current week.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [includeRankType] - The types of ranks to return. If the parameter is
    * omitted, no ranks will be returned.
    * Possible string values are:
@@ -1829,7 +1995,7 @@ class ScoresResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<PlayerLeaderboardScoreListResponse> get(core.String playerId, core.String leaderboardId, core.String timeSpan, {core.String includeRankType, core.String language, core.int maxResults, core.String pageToken}) {
+  async.Future<PlayerLeaderboardScoreListResponse> get(core.String playerId, core.String leaderboardId, core.String timeSpan, {core.String consistencyToken, core.String includeRankType, core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1845,6 +2011,9 @@ class ScoresResourceApi {
     }
     if (timeSpan == null) {
       throw new core.ArgumentError("Parameter timeSpan is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (includeRankType != null) {
       _queryParams["includeRankType"] = [includeRankType];
@@ -1890,6 +2059,8 @@ class ScoresResourceApi {
    * - "DAILY" : List the top scores for the current day.
    * - "WEEKLY" : List the top scores for the current week.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -1908,7 +2079,7 @@ class ScoresResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LeaderboardScores> list(core.String leaderboardId, core.String collection, core.String timeSpan, {core.String language, core.int maxResults, core.String pageToken}) {
+  async.Future<LeaderboardScores> list(core.String leaderboardId, core.String collection, core.String timeSpan, {core.String consistencyToken, core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1926,6 +2097,9 @@ class ScoresResourceApi {
       throw new core.ArgumentError("Parameter timeSpan is required.");
     }
     _queryParams["timeSpan"] = [timeSpan];
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -1967,6 +2141,8 @@ class ScoresResourceApi {
    * - "DAILY" : List the top scores for the current day.
    * - "WEEKLY" : List the top scores for the current week.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -1993,7 +2169,7 @@ class ScoresResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LeaderboardScores> listWindow(core.String leaderboardId, core.String collection, core.String timeSpan, {core.String language, core.int maxResults, core.String pageToken, core.int resultsAbove, core.bool returnTopIfAbsent}) {
+  async.Future<LeaderboardScores> listWindow(core.String leaderboardId, core.String collection, core.String timeSpan, {core.String consistencyToken, core.String language, core.int maxResults, core.String pageToken, core.int resultsAbove, core.bool returnTopIfAbsent}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2011,6 +2187,9 @@ class ScoresResourceApi {
       throw new core.ArgumentError("Parameter timeSpan is required.");
     }
     _queryParams["timeSpan"] = [timeSpan];
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -2053,6 +2232,8 @@ class ScoresResourceApi {
    * value. For time, the score represents elapsed time in milliseconds. For
    * currency, the score represents a value in micro units.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -2069,7 +2250,7 @@ class ScoresResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<PlayerScoreResponse> submit(core.String leaderboardId, core.String score, {core.String language, core.String scoreTag}) {
+  async.Future<PlayerScoreResponse> submit(core.String leaderboardId, core.String score, {core.String consistencyToken, core.String language, core.String scoreTag}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2084,6 +2265,9 @@ class ScoresResourceApi {
       throw new core.ArgumentError("Parameter score is required.");
     }
     _queryParams["score"] = [score];
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -2110,6 +2294,8 @@ class ScoresResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -2121,7 +2307,7 @@ class ScoresResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<PlayerScoreListResponse> submitMultiple(PlayerScoreSubmissionList request, {core.String language}) {
+  async.Future<PlayerScoreListResponse> submitMultiple(PlayerScoreSubmissionList request, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2131,6 +2317,9 @@ class ScoresResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2164,6 +2353,8 @@ class SnapshotsResourceApi {
    *
    * [snapshotId] - The ID of the snapshot.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -2175,7 +2366,7 @@ class SnapshotsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Snapshot> get(core.String snapshotId, {core.String language}) {
+  async.Future<Snapshot> get(core.String snapshotId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2185,6 +2376,9 @@ class SnapshotsResourceApi {
 
     if (snapshotId == null) {
       throw new core.ArgumentError("Parameter snapshotId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2211,6 +2405,8 @@ class SnapshotsResourceApi {
    * [playerId] - A player ID. A value of me may be used in place of the
    * authenticated player's ID.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -2229,7 +2425,7 @@ class SnapshotsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SnapshotListResponse> list(core.String playerId, {core.String language, core.int maxResults, core.String pageToken}) {
+  async.Future<SnapshotListResponse> list(core.String playerId, {core.String consistencyToken, core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2239,6 +2435,9 @@ class SnapshotsResourceApi {
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2278,13 +2477,15 @@ class TurnBasedMatchesResourceApi {
    *
    * [matchId] - The ID of the match.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future cancel(core.String matchId) {
+  async.Future cancel(core.String matchId, {core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2294,6 +2495,9 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
 
     _downloadOptions = null;
@@ -2317,6 +2521,8 @@ class TurnBasedMatchesResourceApi {
    *
    * Request parameters:
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -2328,7 +2534,7 @@ class TurnBasedMatchesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TurnBasedMatch> create(TurnBasedMatchCreateRequest request, {core.String language}) {
+  async.Future<TurnBasedMatch> create(TurnBasedMatchCreateRequest request, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2338,6 +2544,9 @@ class TurnBasedMatchesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2362,6 +2571,8 @@ class TurnBasedMatchesResourceApi {
    *
    * [matchId] - The ID of the match.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -2373,7 +2584,7 @@ class TurnBasedMatchesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TurnBasedMatch> decline(core.String matchId, {core.String language}) {
+  async.Future<TurnBasedMatch> decline(core.String matchId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2383,6 +2594,9 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2408,13 +2622,15 @@ class TurnBasedMatchesResourceApi {
    *
    * [matchId] - The ID of the match.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future dismiss(core.String matchId) {
+  async.Future dismiss(core.String matchId, {core.String consistencyToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2424,6 +2640,9 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
 
     _downloadOptions = null;
@@ -2451,6 +2670,8 @@ class TurnBasedMatchesResourceApi {
    *
    * [matchId] - The ID of the match.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -2462,7 +2683,7 @@ class TurnBasedMatchesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TurnBasedMatch> finish(TurnBasedMatchResults request, core.String matchId, {core.String language}) {
+  async.Future<TurnBasedMatch> finish(TurnBasedMatchResults request, core.String matchId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2475,6 +2696,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2499,6 +2723,8 @@ class TurnBasedMatchesResourceApi {
    *
    * [matchId] - The ID of the match.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [includeMatchData] - Get match data along with metadata.
    *
    * [language] - The preferred language to use for strings returned by this
@@ -2512,7 +2738,7 @@ class TurnBasedMatchesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TurnBasedMatch> get(core.String matchId, {core.bool includeMatchData, core.String language}) {
+  async.Future<TurnBasedMatch> get(core.String matchId, {core.String consistencyToken, core.bool includeMatchData, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2522,6 +2748,9 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (includeMatchData != null) {
       _queryParams["includeMatchData"] = ["${includeMatchData}"];
@@ -2549,6 +2778,8 @@ class TurnBasedMatchesResourceApi {
    *
    * [matchId] - The ID of the match.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -2560,7 +2791,7 @@ class TurnBasedMatchesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TurnBasedMatch> join(core.String matchId, {core.String language}) {
+  async.Future<TurnBasedMatch> join(core.String matchId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2570,6 +2801,9 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2595,6 +2829,8 @@ class TurnBasedMatchesResourceApi {
    *
    * [matchId] - The ID of the match.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -2606,7 +2842,7 @@ class TurnBasedMatchesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TurnBasedMatch> leave(core.String matchId, {core.String language}) {
+  async.Future<TurnBasedMatch> leave(core.String matchId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2616,6 +2852,9 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2643,6 +2882,8 @@ class TurnBasedMatchesResourceApi {
    *
    * [matchVersion] - The version of the match being updated.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -2659,7 +2900,7 @@ class TurnBasedMatchesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TurnBasedMatch> leaveTurn(core.String matchId, core.int matchVersion, {core.String language, core.String pendingParticipantId}) {
+  async.Future<TurnBasedMatch> leaveTurn(core.String matchId, core.int matchVersion, {core.String consistencyToken, core.String language, core.String pendingParticipantId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2674,6 +2915,9 @@ class TurnBasedMatchesResourceApi {
       throw new core.ArgumentError("Parameter matchVersion is required.");
     }
     _queryParams["matchVersion"] = ["${matchVersion}"];
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
@@ -2697,6 +2941,8 @@ class TurnBasedMatchesResourceApi {
    * Returns turn-based matches the player is or was involved in.
    *
    * Request parameters:
+   *
+   * [consistencyToken] - The last-seen mutation timestamp.
    *
    * [includeMatchData] - True if match data should be returned in the response.
    * Note that not all data will necessarily be returned if include_match_data
@@ -2727,7 +2973,7 @@ class TurnBasedMatchesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TurnBasedMatchList> list({core.bool includeMatchData, core.String language, core.int maxCompletedMatches, core.int maxResults, core.String pageToken}) {
+  async.Future<TurnBasedMatchList> list({core.String consistencyToken, core.bool includeMatchData, core.String language, core.int maxCompletedMatches, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2735,6 +2981,9 @@ class TurnBasedMatchesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
     if (includeMatchData != null) {
       _queryParams["includeMatchData"] = ["${includeMatchData}"];
     }
@@ -2773,6 +3022,8 @@ class TurnBasedMatchesResourceApi {
    *
    * [matchId] - The ID of the match.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -2788,7 +3039,7 @@ class TurnBasedMatchesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TurnBasedMatchRematch> rematch(core.String matchId, {core.String language, core.String requestId}) {
+  async.Future<TurnBasedMatchRematch> rematch(core.String matchId, {core.String consistencyToken, core.String language, core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2798,6 +3049,9 @@ class TurnBasedMatchesResourceApi {
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2825,6 +3079,8 @@ class TurnBasedMatchesResourceApi {
    * MATCH_DELETED.
    *
    * Request parameters:
+   *
+   * [consistencyToken] - The last-seen mutation timestamp.
    *
    * [includeMatchData] - True if match data should be returned in the response.
    * Note that not all data will necessarily be returned if include_match_data
@@ -2855,7 +3111,7 @@ class TurnBasedMatchesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TurnBasedMatchSync> sync({core.bool includeMatchData, core.String language, core.int maxCompletedMatches, core.int maxResults, core.String pageToken}) {
+  async.Future<TurnBasedMatchSync> sync({core.String consistencyToken, core.bool includeMatchData, core.String language, core.int maxCompletedMatches, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2863,6 +3119,9 @@ class TurnBasedMatchesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
+    }
     if (includeMatchData != null) {
       _queryParams["includeMatchData"] = ["${includeMatchData}"];
     }
@@ -2900,6 +3159,8 @@ class TurnBasedMatchesResourceApi {
    *
    * [matchId] - The ID of the match.
    *
+   * [consistencyToken] - The last-seen mutation timestamp.
+   *
    * [language] - The preferred language to use for strings returned by this
    * method.
    *
@@ -2911,7 +3172,7 @@ class TurnBasedMatchesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TurnBasedMatch> takeTurn(TurnBasedMatchTurn request, core.String matchId, {core.String language}) {
+  async.Future<TurnBasedMatch> takeTurn(TurnBasedMatchTurn request, core.String matchId, {core.String consistencyToken, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2924,6 +3185,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
+    }
+    if (consistencyToken != null) {
+      _queryParams["consistencyToken"] = [consistencyToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -6540,11 +6804,11 @@ class PushTokenIdIos {
    */
   core.String apnsDeviceToken;
   core.List<core.int> get apnsDeviceTokenAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(apnsDeviceToken);
+    return convert.BASE64.decode(apnsDeviceToken);
   }
 
   void set apnsDeviceTokenAsBytes(core.List<core.int> _bytes) {
-    apnsDeviceToken = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    apnsDeviceToken = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Indicates whether this token should be used for the production or sandbox
@@ -6954,11 +7218,11 @@ class QuestMilestone {
    */
   core.String completionRewardData;
   core.List<core.int> get completionRewardDataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(completionRewardData);
+    return convert.BASE64.decode(completionRewardData);
   }
 
   void set completionRewardDataAsBytes(core.List<core.int> _bytes) {
-    completionRewardData = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    completionRewardData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The criteria of the milestone. */
   core.List<QuestCriterion> criteria;
@@ -8737,11 +9001,11 @@ class TurnBasedMatchData {
    */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * True if this match has data available but it wasn't returned in a list
@@ -8791,11 +9055,11 @@ class TurnBasedMatchDataRequest {
    */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed

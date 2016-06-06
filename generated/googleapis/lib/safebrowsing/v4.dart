@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -230,11 +229,11 @@ class Checksum {
    */
   core.String sha256;
   core.List<core.int> get sha256AsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(sha256);
+    return convert.BASE64.decode(sha256);
   }
 
   void set sha256AsBytes(core.List<core.int> _bytes) {
-    sha256 = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    sha256 = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   Checksum();
@@ -378,7 +377,6 @@ class FetchThreatListUpdatesRequest {
   }
 }
 
-/** Response type for threat list update requests. */
 class FetchThreatListUpdatesResponse {
   /** The list updates requested by the clients. */
   core.List<ListUpdateResponse> listUpdateResponses;
@@ -449,7 +447,6 @@ class FindFullHashesRequest {
   }
 }
 
-/** Response type for requests to find full hashes. */
 class FindFullHashesResponse {
   /** The full hashes that matched the requested prefixes. */
   core.List<ThreatMatch> matches;
@@ -524,7 +521,6 @@ class FindThreatMatchesRequest {
   }
 }
 
-/** Response type for requests to find threat matches. */
 class FindThreatMatchesResponse {
   /** The threat list matches. */
   core.List<ThreatMatch> matches;
@@ -546,7 +542,6 @@ class FindThreatMatchesResponse {
   }
 }
 
-/** A collection of lists available for download by the client. */
 class ListThreatListsResponse {
   /** The lists available for download by the client. */
   core.List<ThreatListDescriptor> threatLists;
@@ -588,22 +583,22 @@ class ListUpdateRequest {
   core.String platformType;
   /**
    * The current state of the client for the requested list (the encrypted
-   * ClientState that was sent to the client from the previous update request).
+   * client state that was received from the last successful list update).
    */
   core.String state;
   core.List<core.int> get stateAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(state);
+    return convert.BASE64.decode(state);
   }
 
   void set stateAsBytes(core.List<core.int> _bytes) {
-    state = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    state = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The types of entries present in the list.
    * Possible string values are:
    * - "THREAT_ENTRY_TYPE_UNSPECIFIED" : A THREAT_ENTRY_TYPE_UNSPECIFIED.
-   * - "URL_EXPRESSION" : A URL_EXPRESSION.
-   * - "BINARY_DIGEST" : A BINARY_DIGEST.
+   * - "URL" : A URL.
+   * - "EXECUTABLE" : A EXECUTABLE.
    * - "IP_RANGE" : A IP_RANGE.
    */
   core.String threatEntryType;
@@ -677,11 +672,11 @@ class ListUpdateResponse {
   /** The new client state, in encrypted format. Opaque to clients. */
   core.String newClientState;
   core.List<core.int> get newClientStateAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(newClientState);
+    return convert.BASE64.decode(newClientState);
   }
 
   void set newClientStateAsBytes(core.List<core.int> _bytes) {
-    newClientState = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    newClientState = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The platform type for which data is returned.
@@ -715,8 +710,8 @@ class ListUpdateResponse {
    * The format of the threats.
    * Possible string values are:
    * - "THREAT_ENTRY_TYPE_UNSPECIFIED" : A THREAT_ENTRY_TYPE_UNSPECIFIED.
-   * - "URL_EXPRESSION" : A URL_EXPRESSION.
-   * - "BINARY_DIGEST" : A BINARY_DIGEST.
+   * - "URL" : A URL.
+   * - "EXECUTABLE" : A EXECUTABLE.
    * - "IP_RANGE" : A IP_RANGE.
    */
   core.String threatEntryType;
@@ -795,20 +790,20 @@ class MetadataEntry {
   /** The metadata entry key. */
   core.String key;
   core.List<core.int> get keyAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(key);
+    return convert.BASE64.decode(key);
   }
 
   void set keyAsBytes(core.List<core.int> _bytes) {
-    key = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    key = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The metadata entry value. */
   core.String value;
   core.List<core.int> get valueAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(value);
+    return convert.BASE64.decode(value);
   }
 
   void set valueAsBytes(core.List<core.int> _bytes) {
-    value = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    value = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   MetadataEntry();
@@ -854,11 +849,11 @@ class RawHashes {
    */
   core.String rawHashes;
   core.List<core.int> get rawHashesAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(rawHashes);
+    return convert.BASE64.decode(rawHashes);
   }
 
   void set rawHashesAsBytes(core.List<core.int> _bytes) {
-    rawHashes = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    rawHashes = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   RawHashes();
@@ -914,11 +909,11 @@ class RiceDeltaEncoding {
   /** The encoded deltas that are encoded using the Golomb-Rice coder. */
   core.String encodedData;
   core.List<core.int> get encodedDataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(encodedData);
+    return convert.BASE64.decode(encodedData);
   }
 
   void set encodedDataAsBytes(core.List<core.int> _bytes) {
-    encodedData = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    encodedData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The offset of the first entry in the encoded data, or, if only a single
@@ -928,12 +923,12 @@ class RiceDeltaEncoding {
   /**
    * The number of entries that are delta encoded in the encoded data. If only a
    * single integer was encoded, this will be zero and the single value will be
-   * stored in first_value.
+   * stored in `first_value`.
    */
   core.int numEntries;
   /**
-   * The Golomb-Rice parameter which is a number between 2 and 28. This field is
-   * missing (that is, zero) if num_entries is zero.
+   * The Golomb-Rice parameter, which is a number between 2 and 28. This field
+   * is missing (that is, zero) if `num_entries` is zero.
    */
   core.int riceParameter;
 
@@ -978,16 +973,28 @@ class RiceDeltaEncoding {
  */
 class ThreatEntry {
   /**
+   * The digest of an executable in SHA256 format. The API supports both binary
+   * and hex digests.
+   */
+  core.String digest;
+  core.List<core.int> get digestAsBytes {
+    return convert.BASE64.decode(digest);
+  }
+
+  void set digestAsBytes(core.List<core.int> _bytes) {
+    digest = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  /**
    * A hash prefix, consisting of the most significant 4-32 bytes of a SHA256
-   * hash.
+   * hash. This field is in binary format.
    */
   core.String hash;
   core.List<core.int> get hashAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(hash);
+    return convert.BASE64.decode(hash);
   }
 
   void set hashAsBytes(core.List<core.int> _bytes) {
-    hash = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    hash = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** A URL. */
   core.String url;
@@ -995,6 +1002,9 @@ class ThreatEntry {
   ThreatEntry();
 
   ThreatEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("digest")) {
+      digest = _json["digest"];
+    }
     if (_json.containsKey("hash")) {
       hash = _json["hash"];
     }
@@ -1005,6 +1015,9 @@ class ThreatEntry {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (digest != null) {
+      _json["digest"] = digest;
+    }
     if (hash != null) {
       _json["hash"] = hash;
     }
@@ -1182,8 +1195,8 @@ class ThreatListDescriptor {
    * The entry types contained in the list.
    * Possible string values are:
    * - "THREAT_ENTRY_TYPE_UNSPECIFIED" : A THREAT_ENTRY_TYPE_UNSPECIFIED.
-   * - "URL_EXPRESSION" : A URL_EXPRESSION.
-   * - "BINARY_DIGEST" : A BINARY_DIGEST.
+   * - "URL" : A URL.
+   * - "EXECUTABLE" : A EXECUTABLE.
    * - "IP_RANGE" : A IP_RANGE.
    */
   core.String threatEntryType;
@@ -1256,8 +1269,8 @@ class ThreatMatch {
    * The threat entry type matching this threat.
    * Possible string values are:
    * - "THREAT_ENTRY_TYPE_UNSPECIFIED" : A THREAT_ENTRY_TYPE_UNSPECIFIED.
-   * - "URL_EXPRESSION" : A URL_EXPRESSION.
-   * - "BINARY_DIGEST" : A BINARY_DIGEST.
+   * - "URL" : A URL.
+   * - "EXECUTABLE" : A EXECUTABLE.
    * - "IP_RANGE" : A IP_RANGE.
    */
   core.String threatEntryType;

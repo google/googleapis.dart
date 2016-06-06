@@ -4,6 +4,12 @@
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
+                },
+                "https://www.googleapis.com/auth/firebase": {
+                    "description": "View and administer all your Firebase data and settings"
+                },
+                "https://www.googleapis.com/auth/firebase.readonly": {
+                    "description": "View all your Firebase data and settings"
                 }
             }
         }
@@ -140,7 +146,9 @@
                         "$ref": "TestRulesetResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/firebase",
+                        "https://www.googleapis.com/auth/firebase.readonly"
                     ]
                 }
             },
@@ -171,7 +179,8 @@
                                 "$ref": "Ruleset"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
                             ]
                         },
                         "get": {
@@ -195,7 +204,9 @@
                                 "$ref": "Ruleset"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase",
+                                "https://www.googleapis.com/auth/firebase.readonly"
                             ]
                         },
                         "list": {
@@ -230,7 +241,9 @@
                                 "$ref": "ListRulesetsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase",
+                                "https://www.googleapis.com/auth/firebase.readonly"
                             ]
                         },
                         "delete": {
@@ -254,7 +267,8 @@
                                 "$ref": "Empty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
                             ]
                         }
                     }
@@ -285,7 +299,8 @@
                                 "$ref": "Release"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
                             ]
                         },
                         "create": {
@@ -312,7 +327,8 @@
                                 "$ref": "Release"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
                             ]
                         },
                         "get": {
@@ -336,7 +352,9 @@
                                 "$ref": "Release"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase",
+                                "https://www.googleapis.com/auth/firebase.readonly"
                             ]
                         },
                         "list": {
@@ -376,7 +394,9 @@
                                 "$ref": "ListReleasesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase",
+                                "https://www.googleapis.com/auth/firebase.readonly"
                             ]
                         },
                         "delete": {
@@ -400,7 +420,8 @@
                                 "$ref": "Empty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
                             ]
                         }
                     }
@@ -408,7 +429,7 @@
             }
         }
     },
-    "revision": "20160517",
+    "revision": "20160519",
     "rootUrl": "https://firebaserules.googleapis.com/",
     "schemas": {
         "Release": {

@@ -38,7 +38,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/U-tMitOEVkWDRWQuebp1LsAKVr0\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/kTa7OeRKGY82wdzASfvor19zWXs\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1849,6 +1849,12 @@
                             "required": true,
                             "type": "string"
                         },
+                        "removeExpiration": {
+                            "default": "false",
+                            "description": "Whether to remove the expiration date.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "transferOwnership": {
                             "default": "false",
                             "description": "Whether changing a role to 'owner' downgrades the current owners to writers. Does nothing if the specified role is not 'owner'.",
@@ -1888,6 +1894,12 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "removeExpiration": {
+                            "default": "false",
+                            "description": "Whether to remove the expiration date.",
+                            "location": "query",
+                            "type": "boolean"
                         },
                         "transferOwnership": {
                             "default": "false",
@@ -2632,7 +2644,7 @@
             }
         }
     },
-    "revision": "20160506",
+    "revision": "20160526",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -4001,6 +4013,11 @@
                 },
                 "etag": {
                     "description": "The ETag of the permission.",
+                    "type": "string"
+                },
+                "expirationDate": {
+                    "description": "The time at which this permission will expire (RFC 3339 date-time).",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "id": {

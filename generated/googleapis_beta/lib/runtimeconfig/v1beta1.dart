@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -57,15 +56,16 @@ class ProjectsConfigsResourceApi {
       _requester = client;
 
   /**
-   * CreateConfig creates a new config resource object.
-   * The configuration name must be unique within project.
+   * Creates a new RuntimeConfig resource. The configuration name must be
+   * unique within project.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [parent] - The cloud project to which configuration belongs.
-   * Required. Must be a valid GCP project.
+   * [parent] - The [project
+   * ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)
+   * for this request, in the format `projects/[PROJECT_ID]`.
    * Value must have pattern "^projects/[^/]*$".
    *
    * Completes with a [RuntimeConfig].
@@ -104,12 +104,13 @@ class ProjectsConfigsResourceApi {
   }
 
   /**
-   * Deletes the config object.
+   * Deletes a RuntimeConfig resource.
    *
    * Request parameters:
    *
-   * [name] - The configuration resource object to delete.
-   * Required. Must be a valid GCP project.
+   * [name] - The RuntimeConfig resource to delete, in the format:
+   *
+   * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
    *
    * Completes with a [Empty].
@@ -145,11 +146,13 @@ class ProjectsConfigsResourceApi {
   }
 
   /**
-   * Gets the config resource object.
+   * Gets information about a RuntimeConfig resource.
    *
    * Request parameters:
    *
-   * [name] - The name of the RuntimeConfig resource object to retrieve.
+   * [name] - The name of the RuntimeConfig resource to retrieve, in the format:
+   *
+   * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
    *
    * Completes with a [RuntimeConfig].
@@ -185,19 +188,22 @@ class ProjectsConfigsResourceApi {
   }
 
   /**
-   * Lists all the config objects within project.
+   * Lists all the RuntimeConfig resources within project.
    *
    * Request parameters:
    *
-   * [parent] - The cloud project, whose configuration resources we want to
-   * list.
-   * Required. Must be a valid GCP project.
+   * [parent] - The [project
+   * ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)
+   * for this request, in the format `projects/[PROJECT_ID]`.
    * Value must have pattern "^projects/[^/]*$".
    *
-   * [pageSize] - List pagination support.
-   * The size of the page to return. We may return fewer elements.
+   * [pageSize] - Specifies the number of results to return per page. If there
+   * are fewer
+   * elements than the specified number, returns all elements.
    *
-   * [pageToken] - The token for pagination.
+   * [pageToken] - Specifies a page token to use. Set `pageToken` to a
+   * `nextPageToken`
+   * returned by a previous list request to get the next page of results.
    *
    * Completes with a [ListConfigsResponse].
    *
@@ -238,15 +244,15 @@ class ProjectsConfigsResourceApi {
   }
 
   /**
-   * Updates the config resource object.
-   * RuntimeConfig object must already exist.
+   * Updates a RuntimeConfig resource. The configuration must exist beforehand.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [name] - The name of the config resource to update.
-   * Required. Must be a valid config resource.
+   * [name] - The name of the RuntimeConfig resource to update, in the format:
+   *
+   * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
    *
    * Completes with a [RuntimeConfig].
@@ -346,18 +352,24 @@ class ProjectsConfigsVariablesResourceApi {
       _requester = client;
 
   /**
-   * Creates a variable within the given configuration.
-   * Create variable will create all required intermediate path elements.
-   * It is a FAILED_PRECONDITION error to create a variable with a name that is
-   * a prefix of an existing variable name, or that has an existing variable
-   * name as a prefix.
+   * Creates a variable within the given configuration. You cannot create
+   * a variable with a name that is a prefix of an existing variable name, or a
+   * name that has an existing variable name as a prefix.
+   *
+   * To learn more about creating a variable, read the
+   * [Setting and Getting
+   * Data](/deployment-manager/runtime-configurator/seta-and-get-variables)
+   * documentation.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [parent] - The configuration parent, that will own the variable.
-   * Required, must a valid configuration name within project_id.
+   * [parent] - The path to the RutimeConfig resource that this variable should
+   * belong to.
+   * The configuration must exist beforehand; the path must by in the format:
+   *
+   * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
    *
    * Completes with a [Variable].
@@ -396,20 +408,24 @@ class ProjectsConfigsVariablesResourceApi {
   }
 
   /**
-   * Deletes variable or variables.
-   * If name denotes a variable, that variable is deleted. If name is a prefix
-   * and recursive is true, then all variables with that prefix are deleted,
-   * it's a FAILED_PRECONDITION to delete a prefix without recursive being true.
+   * Deletes a variable or multiple variables.
+   *
+   * If you specify a variable name, then that variable is deleted. If you
+   * specify a prefix and `recursive` is true, then all variables with that
+   * prefix are deleted. You must set a `recursive` to true if you delete
+   * variables by prefix.
    *
    * Request parameters:
    *
-   * [name] - The name of the variable to delete.
+   * [name] - The name of the variable to delete, in the format:
+   *
+   * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]`
    * Value must have pattern "^projects/[^/] * / configs/[^/] * /
    * variables/.*$".
    *
-   * [recursive] - If recursive is false and name is a prefix of other
-   * variables, then
-   * the request will fail.
+   * [recursive] - Set to `true` to recursively delete multiple variables with
+   * the same
+   * prefix.
    *
    * Completes with a [Empty].
    *
@@ -447,11 +463,13 @@ class ProjectsConfigsVariablesResourceApi {
   }
 
   /**
-   * Gets the variable resource object.
+   * Gets information about a single variable.
    *
    * Request parameters:
    *
-   * [name] - What variable to return.
+   * [name] - The name of the variable to return, in the format:
+   *
+   * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIBLE_NAME]`
    * Value must have pattern "^projects/[^/] * / configs/[^/] * /
    * variables/.*$".
    *
@@ -488,22 +506,30 @@ class ProjectsConfigsVariablesResourceApi {
   }
 
   /**
-   * Lists variables within given RuntimeConfig object, matching optionally
-   * provided filter.
-   * List contains only variable metadata, but not values.
+   * Lists variables within given a configuration, matching any provided
+   * filters.
+   * This only lists variable names, not the values.
    *
    * Request parameters:
    *
-   * [parent] - Which RuntimeConfig object to list for variables.
+   * [parent] - The path to the RuntimeConfig resource for which you want to
+   * list variables.
+   * The configuration must exist beforehand; the path must by in the format:
+   *
+   * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
    *
-   * [pageSize] - List pagination support.
-   * The size of the page to return. We may return fewer elements.
+   * [pageSize] - Specifies the number of results to return per page. If there
+   * are fewer
+   * elements than the specified number, returns all elements.
    *
-   * [filter] - List only variables matching filter prefix exactly.
-   * e.g. `projects/{project_id}/config/{config_id}/variables/{variable/id}`.
+   * [filter] - Filters variables by matching the specified filter. For example:
    *
-   * [pageToken] - The token for pagination.
+   * `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
+   *
+   * [pageToken] - Specifies a page token to use. Set `pageToken` to a
+   * `nextPageToken`
+   * returned by a previous list request to get the next page of results.
    *
    * Completes with a [ListVariablesResponse].
    *
@@ -553,9 +579,9 @@ class ProjectsConfigsVariablesResourceApi {
    *
    * Request parameters:
    *
-   * [name] - The name of the variable to update.
-   * In the format of:
-   * "projects/{project_id}/configs/{config_id}/variables/{variable_id}"
+   * [name] - The name of the variable to update, in the format:
+   *
+   * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]`
    * Value must have pattern "^projects/[^/] * / configs/[^/] * /
    * variables/.*$".
    *
@@ -595,19 +621,30 @@ class ProjectsConfigsVariablesResourceApi {
   }
 
   /**
-   * WatchVariable watches for a variable to change and then returns the new
-   * value or times out.
-   * If variable is deleted while being watched, VariableState will be DELETED
-   * and the Value will contain the last known value.
-   * If the operation deadline is set to a larger value than internal timeout
-   * existing, current variable value will be returned and Variable state will
-   * be VARIABLE_STATE_UNSPECIFIED.
+   * Watches a specific variable and waits for a change in the variable's value.
+   * When there is a change, this method returns the new value or times out.
+   *
+   * If a variable is deleted while being watched, the `variableState` state is
+   * set to `DELETED` and the method returns the last known variable `value`.
+   *
+   * If you set the deadline for watching to a larger value than internal
+   * timeout
+   * (60 seconds), the current variable value is returned and the
+   * `variableState`
+   * will be `VARIABLE_STATE_UNSPECIFIED`.
+   *
+   * To learn more about creating a watcher, read the
+   * [Watching a Variable for
+   * Changes](/deployment-manager/runtime-configurator/watching-a-variable)
+   * documentation.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [name] - The name of the variable to retrieve.
+   * [name] - The name of the variable to watch, in the format:
+   *
+   * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/] * / configs/[^/] * /
    * variables/.*$".
    *
@@ -657,19 +694,19 @@ class ProjectsConfigsWaitersResourceApi {
 
   /**
    * Creates a Waiter resource. This operation returns a long-running Operation
-   * resource which can be polled for completion. However, a Waiter with the
-   * given name will exist (and can be retrieved) prior to the resultant
-   * Operation completing. If the resultant Operation indicates a failure, the
-   * failed Waiter resource will still exist and must be deleted prior to
-   * subsequent creation attempts.
+   * resource which can be polled for completion. However, a waiter with the
+   * given name will exist (and can be retrieved) prior to the operation
+   * completing. If the operation fails, the failed Waiter resource will
+   * still exist and must be deleted prior to subsequent creation attempts.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [parent] - The fully-qualified name of the configuration that will own the
-   * waiter.
-   * Required. Must be a valid configuration name.
+   * [parent] - The path to the configuration that will own the waiter.
+   * The configuration must exist beforehand; the path must by in the format:
+   *
+   * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`.
    * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
    *
    * Completes with a [Operation].
@@ -708,11 +745,13 @@ class ProjectsConfigsWaitersResourceApi {
   }
 
   /**
-   * Deletes the Waiter with the specified name.
+   * Deletes the waiter with the specified name.
    *
    * Request parameters:
    *
-   * [name] - The Waiter resource to delete.
+   * [name] - The Waiter resource to delete, in the format:
+   *
+   *  `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]`
    * Value must have pattern "^projects/[^/] * / configs/[^/] * /
    * waiters/[^/]*$".
    *
@@ -749,12 +788,15 @@ class ProjectsConfigsWaitersResourceApi {
   }
 
   /**
-   * Gets the Waiter resource with the specified name.
+   * Gets information about a single waiter.
    *
    * Request parameters:
    *
    * [name] - The fully-qualified name of the Waiter resource object to
-   * retrieve.
+   * retrieve, in the
+   * format:
+   *
+   * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]`
    * Value must have pattern "^projects/[^/] * / configs/[^/] * /
    * waiters/[^/]*$".
    *
@@ -791,18 +833,24 @@ class ProjectsConfigsWaitersResourceApi {
   }
 
   /**
-   * List Waiters within the given RuntimeConfig resource.
+   * List waiters within the given configuration.
    *
    * Request parameters:
    *
-   * [parent] - The fully-qualified name of the configuration to list.
-   * Required. Must be a valid configuration name.
+   * [parent] - The path to the configuration for which you want to get a list
+   * of waiters.
+   * The configuration must exist beforehand; the path must by in the format:
+   *
+   * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
    *
-   * [pageSize] - List pagination support.
-   * The size of the page to return. We may return fewer elements.
+   * [pageSize] - Specifies the number of results to return per page. If there
+   * are fewer
+   * elements than the specified number, returns all elements.
    *
-   * [pageToken] - The token for pagination.
+   * [pageToken] - Specifies a page token to use. Set `pageToken` to a
+   * `nextPageToken`
+   * returned by a previous list request to get the next page of results.
    *
    * Completes with a [ListWaitersResponse].
    *
@@ -847,24 +895,28 @@ class ProjectsConfigsWaitersResourceApi {
 
 
 /**
- * The Cardinality condition is met when the count of `Variable` resources
- * under the specified path prefix reaches the specified number.
- * For example, take the following variables in a RuntimeConfig object:
- *   /foo/variable1 = "value1"
- *   /foo/variable2 = "value2"
- *   /bar/variable3 = "value3"
+ * A Cardinality condition for the Waiter resource. A cardinality condition is
+ * met when the number of variables under a specified path prefix reaches a
+ * predefined number. For example, if you set a Cardinality condition where
+ * the `path` is set to `/foo` and the number of paths is set to 2, the
+ * following variables would meet the condition in a RuntimeConfig resource:
  *
- * These variables would satisfy a Cardinality condition with `path` set to
- * "/foo" and `number` set to 2, but would not satisify the same condition
- * with `number` set to 3.
+ * + `/foo/variable1 = "value1"`
+ * + `/foo/variable2 = "value2"`
+ * + `/bar/variable3 = "value3"`
+ *
+ * It would not would not satisify the same condition with the `number` set to
+ * 3, however, because there is only 2 paths that start with `/foo`.
+ * Cardinality conditions are recursive; all subtrees under the specific
+ * path prefix are counted.
  */
 class Cardinality {
   /**
-   * The number of decendents of `path` that must exist before this condition
-   * is met. Optional; defaults to 1 if not specified.
+   * The number variables under the `path` that must exist to meet this
+   * condition. Defaults to 1 if not specified.
    */
   core.int number;
-  /** The root of the variable subtree to monitor. Required. */
+  /** The root of the variable subtree to monitor. For example, `/foo`. */
   core.String path;
 
   Cardinality();
@@ -914,12 +966,9 @@ class Empty {
   }
 }
 
-/**
- * A condition that a Waiter resource is waiting for. The set of possible
- * conditions may expand over time.
- */
+/** The condition that a Waiter resource is waiting for. */
 class EndCondition {
-  /** The Cardinality condition type configuration. */
+  /** The cardinality of the `EndCondition`. */
   Cardinality cardinality;
 
   EndCondition();
@@ -939,14 +988,19 @@ class EndCondition {
   }
 }
 
-/**
- * Response for the `ListConfigs()` method.
- * Order of returned configuration objects is arbitrary.
- */
 class ListConfigsResponse {
-  /** Found configurations in the project. */
+  /**
+   * A list of the configurations in the project. The order of returned
+   * objects is arbitrary; that is, it is not ordered in any particular way.
+   */
   core.List<RuntimeConfig> configs;
-  /** Pagination support. */
+  /**
+   * This token allows you to get the next page of results for list requests.
+   * If the number of results is larger than `pageSize`, use the `nextPageToken`
+   * as a value for the query parameter `pageToken` in the next list request.
+   * Subsequent list requests will have their own `nextPageToken` to continue
+   * paging through the results
+   */
   core.String nextPageToken;
 
   ListConfigsResponse();
@@ -972,14 +1026,19 @@ class ListConfigsResponse {
   }
 }
 
-/**
- * Response for the `ListVariables()` method.
- * Order of returned variable objects is arbitrary.
- */
 class ListVariablesResponse {
-  /** Pagination support. */
+  /**
+   * This token allows you to get the next page of results for list requests.
+   * If the number of results is larger than `pageSize`, use the `nextPageToken`
+   * as a value for the query parameter `pageToken` in the next list request.
+   * Subsequent list requests will have their own `nextPageToken` to continue
+   * paging through the results
+   */
   core.String nextPageToken;
-  /** Matched variables and their values. */
+  /**
+   * A list of variables and their values. The order of returned variable
+   * objects is arbitrary.
+   */
   core.List<Variable> variables;
 
   ListVariablesResponse();
@@ -1010,7 +1069,13 @@ class ListVariablesResponse {
  * Order of returned waiter objects is arbitrary.
  */
 class ListWaitersResponse {
-  /** Pagination support. */
+  /**
+   * This token allows you to get the next page of results for list requests.
+   * If the number of results is larger than `pageSize`, use the `nextPageToken`
+   * as a value for the query parameter `pageToken` in the next list request.
+   * Subsequent list requests will have their own `nextPageToken` to continue
+   * paging through the results
+   */
   core.String nextPageToken;
   /** Found waiters in the project. */
   core.List<Waiter> waiters;
@@ -1124,24 +1189,28 @@ class Operation {
 }
 
 /**
- * RuntimeConfig is the primary resource in the Configuration service.
- * It consists of metadata and a hierarchy of variables.
+ * A RuntimeConfig resource is the primary resource in the Cloud RuntimeConfig
+ * service. A RuntimeConfig resource consists of metadata and a hierarchy of
+ * variables.
  */
 class RuntimeConfig {
   /**
-   * Description of the configuration object.
-   * `len(description)` must be less than 256.
+   * An optional description of the RuntimeConfig object.
+   * The length of the description must be less than 256 bytes.
    */
   core.String description;
   /**
-   * The resource name of a runtime config.
-   * It has the format of "projects/{project_id}/configs/{config_id}",
-   * where `project_id` is a valid Google cloud project ID, and the
-   * `config_id` must match RFC 1035 segment specification, and
-   * `len(config_id)` must be less than 64 bytes.
-   * The name is assigned by the client, but will be validated on the server
-   * side to adhere to the format.
-   * Name is immutable and cannot be changed.
+   * The resource name of a runtime config. The name must have the format:
+   *
+   *     projects/[PROJECT_ID]/configs/[CONFIG_NAME]
+   *
+   * The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an
+   * arbitrary name that matches RFC 1035 segment specification. The length of
+   * `[CONFIG_NAME]` must be less than 64 bytes.
+   *
+   * You pick the RuntimeConfig resource name, but the server will validate that
+   * the name adheres to this format. After you create the resource, you cannot
+   * change the resource's name.
    */
   core.String name;
 
@@ -1272,53 +1341,58 @@ class Status {
 }
 
 /**
- * Variable message describes a single variable within a Configuration object.
- * name denotes the hierarchical variable name, e.g.
- * ports/serving_port within flags configuration object.
- * Value is an opaque string and only leaf variables can have values.
+ * Describes a single variable within a RuntimeConfig resource.
+ * The name denotes the hierarchical variable name. For example,
+ * `ports/serving_port` is a valid variable name. The variable value is an
+ * opaque string and only leaf variables can have values (that is, variables
+ * that do not have any child variables).
  */
 class Variable {
   /**
-   * Name of the variable resource.
-   * It has format of
-   * "projects/{project_id}/configs/{config_id}/variables/{variable_id}",
-   * Where `project_id` must be a valid Google Cloud project ID, `config_id`
-   * must be a valid RuntimeConfig object and `variable_id` follows Unix
-   * file system file path naming.
-   * `variable_id` can contain ASCII letters, numbers, slashes and dashes.
-   * Slashes are used as path element separators and are not part of the
-   * `variable_id` itself, so `variable_id` must contain at least one non-slash
-   * character. Multiple slashes are coalesced into single slash character.
-   * Each path segment should follow RFC 1035 segment specification.
-   * `len(variable_id)` must be less than 256 bytes.
-   * The name is assigned by the client, but will be validated on the server
-   * side to adhere to the format.
-   * Name is immutable and cannot be changed.
+   * The name of the variable resource, in the format:
+   *
+   *     projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]
+   *
+   * The `[PROJECT_ID]` must be a valid project ID, `[CONFIG_NAME]` must be a
+   * valid RuntimeConfig reource and `[VARIABLE_NAME]` follows Unix file system
+   * file path naming.
+   *
+   * The `[VARIABLE_NAME]` can contain ASCII letters, numbers, slashes and
+   * dashes. Slashes are used as path element separators and are not part of the
+   * `[VARIABLE_NAME]` itself, so `[VARIABLE_NAME]` must contain at least one
+   * non-slash character. Multiple slashes are coalesced into single slash
+   * character. Each path segment should follow RFC 1035 segment specification.
+   * The length of a `[VARIABLE_NAME]` must be less than 256 bytes.
+   *
+   * Once you create a variable, you cannot change the variable name.
    */
   core.String name;
   /**
-   * [Ouput only] The current state of the variable.
-   * State denotes the outcome of the Watch call and is unset by the Get/List
-   * calls.
+   * [Ouput only] The current state of the variable. The variable state
+   * indicates
+   * the outcome of the `variables().watch` call and is visible through the
+   * `get` and `list` calls.
    * Possible string values are:
    * - "VARIABLE_STATE_UNSPECIFIED" : Default variable state.
-   * - "UPDATED" : Variable had been updated, while watch was executing.
-   * - "DELETED" : Variable had been deleted, while watch was executing.
+   * - "UPDATED" : The variable was updated, while `variables().watch` was
+   * executing.
+   * - "DELETED" : The variable was deleted, while `variables().watch` was
+   * executing.
    */
   core.String state;
   /** [Output Only] The time of the last variable update. */
   core.String updateTime;
   /**
-   * `len(value)` must be less than 4096 bytes. Empty values are also accepted.
-   * value must be Base64 encoded.
+   * The value of the variable. The length of the value must be less than 4096
+   * bytes. Empty values are also accepted. The value must be Base64 encoded.
    */
   core.String value;
   core.List<core.int> get valueAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(value);
+    return convert.BASE64.decode(value);
   }
 
   void set valueAsBytes(core.List<core.int> _bytes) {
-    value = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    value = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   Variable();
@@ -1357,64 +1431,77 @@ class Variable {
 }
 
 /**
- * A Waiter resource waits for some condition within a RuntimeConfig resource
- * to be met. For example: each node in a distributed system startup process
- * writes a value to a Variable resource indicating its readiness. A Waiter
- * configured with the proper `success` condition can be used to wait until
- * some number of nodes have checked in.
+ * A Waiter resource waits for some end condition within a RuntimeConfig
+ * resource
+ * to be met before it returns. For example, assume you have a distributed
+ * system where each node writes to a Variable resource indidicating the node's
+ * readiness as part of the startup process.
+ *
+ * You then configure a Waiter resource with the success condition set to wait
+ * until some number of nodes have checked in. Afterwards, your application
+ * runs some arbitrary code after the condition has been met and the waiter
+ * returns successfully.
+ *
  * Once created, a Waiter resource is immutable.
+ *
+ * To learn more about using waiters, read the
+ * [Creating a Waiter](/deployment-manager/runtime-config/creating-a-water)
+ * documentation.
  */
 class Waiter {
   /**
-   * The instant at which this Waiter was created. Adding the value of `timeout`
-   * to this instant yields the timeout deadline for this Waiter. Output only.
+   * [Output Only] The instant at which this Waiter resource was created. Adding
+   * the value of `timeout` to this instant yields the timeout deadline for the
+   * waiter.
    */
   core.String createTime;
   /**
-   * If the value is `false`, it means the Waiter is still waiting for one of
-   * its conditions to be met.
-   * If true, the Waiter has finished. If the Waiter finished due to a timeout
-   * or failure, `error` will be set. Output only.
+   * [Output Only] If the value is `false`, it means the waiter is still waiting
+   * for one of its conditions to be met.
+   *
+   * If true, the waiter has finished. If the waiter finished due to a timeout
+   * or failure, `error` will be set.
    */
   core.bool done;
   /**
-   * If the Waiter ended due to a failure or timeout, this value will be set.
-   * Output only.
+   * [Output Only] If the waiter ended due to a failure or timeout, this value
+   * will be set.
    */
   Status error;
   /**
-   * The failure condition. If this condition is met, `done` will be set to
-   * `true` and the `error` code will be set to ABORTED. The failure condition
-   * takes precedence over the success condition. If both conditions are met, a
-   * failure will be indicated. This value is optional; if no failure condition
-   * is set, the only failure scenario will be a timeout. Optional.
+   * [Optional] The failure condition of this waiter. If this condition is met,
+   * `done` will be set to `true` and the `error` code will be set to `ABORTED`.
+   * The failure condition takes precedence over the success condition. If both
+   * conditions are met, a failure will be indicated. This value is optional; if
+   * no failure condition is set, the only failure scenario will be a timeout.
    */
   EndCondition failure;
   /**
-   * Name of the variable resource.
-   * It has format of
-   * "projects/{project_id}/configs/{config_id}/waiters/{waiter_id}",
-   * Where `project_id` must be a valid Google Cloud project ID, `config_id`
-   * must be a valid RuntimeConfig object and the `waiter_id` must match
-   * RFC 1035 segment specification, and `len(waiter_id)` must be less than
-   * 64 bytes.
-   * The name is assigned by the client, but will be validated on the server
-   * side to adhere to the format.
-   * Name is immutable and cannot be changed. Required.
+   * The name of the Waiter resource, in the format:
+   *
+   *     projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]
+   *
+   * The `[PROJECT_ID]` must be a valid Google Cloud project ID,
+   * the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the
+   * `[WAITER_NAME]` must match RFC 1035 segment specification, and the length
+   * of `[WAITER_NAME]` must be less than 64 bytes.
+   *
+   * After you create a Waiter resource, you cannot change the resource name.
    */
   core.String name;
   /**
-   * The success condition. If this condition is met, `done` will be set to
-   * `true` and the `error` value will remain unset. The failure condition
+   * [Required] The success condition. If this condition is met, `done` will be
+   * set to `true` and the `error` value will remain unset. The failure
+   * condition
    * takes precedence over the success condition. If both conditions are met, a
-   * failure will be indicated. Required.
+   * failure will be indicated.
    */
   EndCondition success;
   /**
-   * The timeout, beginning from the instant that CreateWaiter is called. If
-   * this timeout elapses prior to the success or failure conditions being met,
-   * the Waiter will fail and the `error` code will be set to DEADLINE_EXCEEDED.
-   * Required.
+   * [Required] Specifies the timeout of the waiter in seconds, beginning from
+   * the instant that `waiters().create` method is called. If this time elapses
+   * before the success or failure conditions are met, the waiter fails and sets
+   * the `error` code to `DEADLINE_EXCEEDED`.
    */
   core.String timeout;
 
@@ -1474,10 +1561,12 @@ class Waiter {
 /** Request for the `WatchVariable()` method. */
 class WatchVariableRequest {
   /**
-   * If backend has a variable that has a newer value than this timestamp, then
-   * request will return immediately with current value.
-   * If not specified or variable has an older timestamp, will wait for the new
-   * value.
+   * If specified, checks the current timestamp of the variable and if the
+   * current timestamp is newer than `newerThan` timestamp, the method returns
+   * immediately.
+   *
+   * If not specified or the variable has an older timestamp, the watcher waits
+   * for a the value to change before returning.
    */
   core.String newerThan;
 

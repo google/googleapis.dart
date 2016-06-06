@@ -68,6 +68,13 @@ void main() {
 The following is a list of APIs that are currently available inside this
 package.
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Accelerated Mobile Pages (AMP) URL API - acceleratedmobilepageurl v1
+
+This API contains a single method, batchGet. Call this method to retrieve the AMP URL (and equivalent AMP Cache URL) for given public URL(s).
+
+
+Official API documentation: https://developers.google.com/amp/cache/
+
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) Ad Exchange Buyer API - adexchangebuyer v1.3
 
 Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.
@@ -200,23 +207,11 @@ Retrieves Google Developers Console billing accounts and associates them with pr
 
 Official API documentation: https://cloud.google.com/billing/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Container Builder API - cloudbuild v1
-
-Builds container images in the cloud.
-
-Official API documentation: https://cloud.google.com/container-builder/docs/
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Debugger API - clouddebugger v2
 
 Examines the call stack and variables of a running application without stopping or slowing it down.
 
 Official API documentation: https://cloud.google.com/tools/cloud-debugger
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Network Performance Monitoring API - cloudlatencytest v2
-
-Reports latency data.
-
-Official API documentation: 
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Resource Manager API - cloudresourcemanager v1
 
@@ -537,7 +532,7 @@ Official API documentation: https://developers.google.com/apps-script/execution/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Sheets API - sheets v4
 
-An API for reading and modifying Google Sheets.
+Reads and writes Google Sheets.
 
 Official API documentation: https://developers.google.com/sheets/
 

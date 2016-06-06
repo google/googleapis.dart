@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/xJN8TIpPcg1NGIZr6unBuM4TVZg\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/07E0qLkq3o7f8SkcNVom0FFgfOc\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -933,7 +933,7 @@
             }
         }
     },
-    "revision": "20160511",
+    "revision": "20160526",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BigtableColumn": {
@@ -2560,6 +2560,10 @@
                 "query": {
                     "description": "[Required] A query that BigQuery executes when the view is referenced.",
                     "type": "string"
+                },
+                "useLegacySql": {
+                    "description": "[Experimental] Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.",
+                    "type": "boolean"
                 },
                 "userDefinedFunctionResources": {
                     "description": "[Experimental] Describes user-defined function resources used in the query.",

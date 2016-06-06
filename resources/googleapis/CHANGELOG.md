@@ -1,3 +1,20 @@
+## 0.28.0
+
+* [api-new] acceleratedmobilepageurl:v1
+* [api] bigquery:v2: schema changes
+* [api] compute:v1: new resource
+* [api] consumersurveys:v2: new resource
+* [api] content:v2: schema changes
+* [api] drive:v2 schema/method changes
+* [api] drive:v3 schema/method changes
+* [api] games:v1: schema/method changes
+* [api] groupsettings:v1: schema changes
+* [api] identitytoolkit:v3: schema changes
+* [api] safebrowsing:v4: schema changes
+* [api] youtube:v3: schema changes
+* [api-removal] cloudbuild:v1
+* [api-removal] cloudlatencytest:v1
+
 ## 0.27.0
 
 * [api-new] analyticsreporting:v4

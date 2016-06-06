@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -919,11 +918,11 @@ class Image {
   /** Image content, represented as a stream of bytes. */
   core.String content;
   core.List<core.int> get contentAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(content);
+    return convert.BASE64.decode(content);
   }
 
   void set contentAsBytes(core.List<core.int> _bytes) {
-    content = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    content = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Google Cloud Storage image location. If both 'content' and 'source'

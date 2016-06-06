@@ -8,7 +8,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1256,11 +1255,11 @@ class BigtableColumn {
    */
   core.String qualifierEncoded;
   core.List<core.int> get qualifierEncodedAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(qualifierEncoded);
+    return convert.BASE64.decode(qualifierEncoded);
   }
 
   void set qualifierEncodedAsBytes(core.List<core.int> _bytes) {
-    qualifierEncoded = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    qualifierEncoded = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   core.String qualifierString;
   /**
@@ -4868,6 +4867,13 @@ class ViewDefinition {
   /** [Required] A query that BigQuery executes when the view is referenced. */
   core.String query;
   /**
+   * [Experimental] Specifies whether to use BigQuery's legacy SQL for this
+   * view. The default value is true. If set to false, the view will use
+   * BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+   * Queries and views that reference this view must use the same flag value.
+   */
+  core.bool useLegacySql;
+  /**
    * [Experimental] Describes user-defined function resources used in the query.
    */
   core.List<UserDefinedFunctionResource> userDefinedFunctionResources;
@@ -4878,6 +4884,9 @@ class ViewDefinition {
     if (_json.containsKey("query")) {
       query = _json["query"];
     }
+    if (_json.containsKey("useLegacySql")) {
+      useLegacySql = _json["useLegacySql"];
+    }
     if (_json.containsKey("userDefinedFunctionResources")) {
       userDefinedFunctionResources = _json["userDefinedFunctionResources"].map((value) => new UserDefinedFunctionResource.fromJson(value)).toList();
     }
@@ -4887,6 +4896,9 @@ class ViewDefinition {
     var _json = new core.Map();
     if (query != null) {
       _json["query"] = query;
+    }
+    if (useLegacySql != null) {
+      _json["useLegacySql"] = useLegacySql;
     }
     if (userDefinedFunctionResources != null) {
       _json["userDefinedFunctionResources"] = userDefinedFunctionResources.map((value) => (value).toJson()).toList();

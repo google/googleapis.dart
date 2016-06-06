@@ -35,7 +35,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/dH_NyTvzIUzDO8yngfbY4Xtk-Ho\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/gZ2y1eNuuFyHfp4owNVOqJZxLuw\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1033,6 +1033,12 @@
                             "required": true,
                             "type": "string"
                         },
+                        "removeExpiration": {
+                            "default": "false",
+                            "description": "Whether to remove the expiration date.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "transferOwnership": {
                             "default": "false",
                             "description": "Whether to transfer ownership to the specified user and downgrade the current owner to a writer. This parameter is required as an acknowledgement of the side effect.",
@@ -1406,7 +1412,7 @@
             }
         }
     },
-    "revision": "20160506",
+    "revision": "20160526",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -2151,6 +2157,11 @@
                 },
                 "emailAddress": {
                     "description": "The email address of the user or group to which this permission refers.",
+                    "type": "string"
+                },
+                "expirationTime": {
+                    "description": "The time at which this permission will expire (RFC 3339 date-time).",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "id": {

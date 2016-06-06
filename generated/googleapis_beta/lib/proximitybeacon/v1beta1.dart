@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1078,11 +1077,11 @@ class AdvertisedId {
    */
   core.String id;
   core.List<core.int> get idAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(id);
+    return convert.BASE64.decode(id);
   }
 
   void set idAsBytes(core.List<core.int> _bytes) {
-    id = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    id = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Specifies the identifier type. Required.
@@ -1126,11 +1125,11 @@ class AttachmentInfo {
   /** An opaque data container for client-provided data. */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Specifies what kind of attachment this is. Tells a client how to interpret
@@ -1241,11 +1240,11 @@ class Beacon {
    */
   core.String provisioningKey;
   core.List<core.int> get provisioningKeyAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(provisioningKey);
+    return convert.BASE64.decode(provisioningKey);
   }
 
   void set provisioningKeyAsBytes(core.List<core.int> _bytes) {
-    provisioningKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    provisioningKey = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Current status of the beacon. Required.
@@ -1348,11 +1347,11 @@ class BeaconAttachment {
    */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Specifies what kind of attachment this is. Tells a client how to interpret
@@ -1602,11 +1601,11 @@ class EphemeralIdRegistration {
    */
   core.String beaconEcdhPublicKey;
   core.List<core.int> get beaconEcdhPublicKeyAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(beaconEcdhPublicKey);
+    return convert.BASE64.decode(beaconEcdhPublicKey);
   }
 
   void set beaconEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
-    beaconEcdhPublicKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    beaconEcdhPublicKey = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The private key of the beacon. If this field is populated,
@@ -1615,11 +1614,11 @@ class EphemeralIdRegistration {
    */
   core.String beaconIdentityKey;
   core.List<core.int> get beaconIdentityKeyAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(beaconIdentityKey);
+    return convert.BASE64.decode(beaconIdentityKey);
   }
 
   void set beaconIdentityKeyAsBytes(core.List<core.int> _bytes) {
-    beaconIdentityKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    beaconIdentityKey = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The initial clock value of the beacon. The beacon's clock must have begun
@@ -1638,11 +1637,11 @@ class EphemeralIdRegistration {
    */
   core.String initialEid;
   core.List<core.int> get initialEidAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(initialEid);
+    return convert.BASE64.decode(initialEid);
   }
 
   void set initialEidAsBytes(core.List<core.int> _bytes) {
-    initialEid = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    initialEid = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Indicates the nominal period between each rotation of the beacon's
@@ -1661,11 +1660,11 @@ class EphemeralIdRegistration {
    */
   core.String serviceEcdhPublicKey;
   core.List<core.int> get serviceEcdhPublicKeyAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(serviceEcdhPublicKey);
+    return convert.BASE64.decode(serviceEcdhPublicKey);
   }
 
   void set serviceEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
-    serviceEcdhPublicKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    serviceEcdhPublicKey = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   EphemeralIdRegistration();
@@ -1739,11 +1738,11 @@ class EphemeralIdRegistrationParams {
    */
   core.String serviceEcdhPublicKey;
   core.List<core.int> get serviceEcdhPublicKeyAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(serviceEcdhPublicKey);
+    return convert.BASE64.decode(serviceEcdhPublicKey);
   }
 
   void set serviceEcdhPublicKeyAsBytes(core.List<core.int> _bytes) {
-    serviceEcdhPublicKey = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    serviceEcdhPublicKey = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   EphemeralIdRegistrationParams();
@@ -2104,11 +2103,11 @@ class Observation {
    */
   core.String telemetry;
   core.List<core.int> get telemetryAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(telemetry);
+    return convert.BASE64.decode(telemetry);
   }
 
   void set telemetryAsBytes(core.List<core.int> _bytes) {
-    telemetry = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    telemetry = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Time when the beacon was observed. */
   core.String timestampMs;

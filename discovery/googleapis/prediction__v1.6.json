@@ -2,6 +2,9 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/devstorage.full_control": {
                     "description": "Manage your data and permissions in Google Cloud Storage"
                 },
@@ -23,7 +26,7 @@
     "description": "Lets you access a cloud hosted machine learning service that makes it easy to build smart apps",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/prediction/docs/developer-guide",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Rb8Il9CxYvuIPXx3em3nY6uZPfg\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/YsFEJnq5UeoemkjE7DFhTi6r2Gw\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/feature/predictionapi-16.png",
         "x32": "https://www.google.com/images/icons/feature/predictionapi-32.png"
@@ -112,6 +115,7 @@
                         "$ref": "Output"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/prediction"
                     ]
                 }
@@ -146,6 +150,7 @@
                         "$ref": "Analyze"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/prediction"
                     ]
                 },
@@ -173,6 +178,7 @@
                     },
                     "path": "{project}/trainedmodels/{id}",
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/prediction"
                     ]
                 },
@@ -203,6 +209,7 @@
                         "$ref": "Insert2"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/prediction"
                     ]
                 },
@@ -229,6 +236,7 @@
                         "$ref": "Insert2"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write",
@@ -267,6 +275,7 @@
                         "$ref": "List"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/prediction"
                     ]
                 },
@@ -300,6 +309,7 @@
                         "$ref": "Output"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/prediction"
                     ]
                 },
@@ -333,13 +343,14 @@
                         "$ref": "Insert2"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/prediction"
                     ]
                 }
             }
         }
     },
-    "revision": "20160304",
+    "revision": "20160511",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Analyze": {

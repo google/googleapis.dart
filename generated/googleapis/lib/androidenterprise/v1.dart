@@ -5193,7 +5193,7 @@ class User {
    * "androidenterprise#user".
    */
   core.String kind;
-  /** The user's primary email, e.g. "jsmith@example.com". */
+  /** The user's primary email address, e.g. "jsmith@example.com". */
   core.String primaryEmail;
 
   User();

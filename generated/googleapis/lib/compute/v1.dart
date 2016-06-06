@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -61,6 +60,7 @@ class ComputeApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   RegionOperationsResourceApi get regionOperations => new RegionOperationsResourceApi(_requester);
   RegionsResourceApi get regions => new RegionsResourceApi(_requester);
+  RoutersResourceApi get routers => new RoutersResourceApi(_requester);
   RoutesResourceApi get routes => new RoutesResourceApi(_requester);
   SnapshotsResourceApi get snapshots => new SnapshotsResourceApi(_requester);
   SslCertificatesResourceApi get sslCertificates => new SslCertificatesResourceApi(_requester);
@@ -4523,11 +4523,9 @@ class ImagesResourceApi {
    * Retrieves the list of private images available to the specified project.
    * Private images are images you create that belong to your project. This
    * method does not get any images that belong to other projects, including
-   * publicly-available images, like Debian 7. If you want to get a list of
+   * publicly-available images, like Debian 8. If you want to get a list of
    * publicly-available images, use this method to make a request to the
    * respective image project, such as debian-cloud or windows-cloud.
-   *
-   * See Accessing images for more information.
    *
    * Request parameters:
    *
@@ -7321,6 +7319,65 @@ class InstancesResourceApi {
   }
 
   /**
+   * Starts an instance that was stopped using the using the instances().stop
+   * method. For more information, see Restart an instance.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The name of the zone for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [instance] - Name of the instance resource to start.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> startWithEncryptionKey(InstancesStartWithEncryptionKeyRequest request, core.String project, core.String zone, core.String instance) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/startWithEncryptionKey';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
    * Stops a running instance, shutting it down cleanly, and allows you to
    * restart the instance at a later time. Stopped instances do not incur
    * per-minute, virtual machine usage charges while they are stopped, but any
@@ -8505,6 +8562,525 @@ class RegionsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new RegionList.fromJson(data));
+  }
+
+}
+
+
+class RoutersResourceApi {
+  final commons.ApiRequester _requester;
+
+  RoutersResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves an aggregated list of routers.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
+   *
+   * Compute Engine Beta API Only: When filtering in the Beta API, you can also
+   * filter on nested fields. For example, you could filter on instances that
+   * have set the scheduling.automaticRestart field to true. Use filtering on
+   * nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions, meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [RouterAggregatedList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RouterAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/routers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RouterAggregatedList.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified Router resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [router] - Name of the Router resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String region, core.String router) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (router == null) {
+      throw new core.ArgumentError("Parameter router is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/routers/' + commons.Escaper.ecapeVariable('$router');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified Router resource. Get a list of available routers by
+   * making a list() request.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [router] - Name of the Router resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Router].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Router> get(core.String project, core.String region, core.String router) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (router == null) {
+      throw new core.ArgumentError("Parameter router is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/routers/' + commons.Escaper.ecapeVariable('$router');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Router.fromJson(data));
+  }
+
+  /**
+   * Retrieves runtime information of the specified router.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [router] - Name of the Router resource to query.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [RouterStatusResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RouterStatusResponse> getRouterStatus(core.String project, core.String region, core.String router) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (router == null) {
+      throw new core.ArgumentError("Parameter router is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/routers/' + commons.Escaper.ecapeVariable('$router') + '/getRouterStatus';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RouterStatusResponse.fromJson(data));
+  }
+
+  /**
+   * Creates a Router resource in the specified project and region using the
+   * data included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(Router request, core.String project, core.String region) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/routers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of Router resources available to the specified project.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
+   *
+   * Compute Engine Beta API Only: When filtering in the Beta API, you can also
+   * filter on nested fields. For example, you could filter on instances that
+   * have set the scheduling.automaticRestart field to true. Use filtering on
+   * nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * The Beta API also supports filtering on multiple expressions by providing
+   * each separate expression within parentheses. For example,
+   * (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+   * expressions are treated as AND expressions, meaning that resources must
+   * match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [RouterList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RouterList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/routers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RouterList.fromJson(data));
+  }
+
+  /**
+   * Updates the entire content of the Router resource. This method supports
+   * patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [router] - Name of the Router resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(Router request, core.String project, core.String region, core.String router) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (router == null) {
+      throw new core.ArgumentError("Parameter router is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/routers/' + commons.Escaper.ecapeVariable('$router');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Updates the entire content of the Router resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [router] - Name of the Router resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> update(Router request, core.String project, core.String region, core.String router) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (router == null) {
+      throw new core.ArgumentError("Parameter router is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/routers/' + commons.Escaper.ecapeVariable('$router');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
 }
@@ -13143,6 +13719,27 @@ class AttachedDisk {
    */
   core.String deviceName;
   /**
+   * Encrypts or decrypts a disk using a customer-supplied encryption key.
+   *
+   * If you are creating a new disk, this field encrypts the new disk using an
+   * encryption key that you provide. If you are attaching an existing disk that
+   * is already encrypted, this field decrypts the disk using the
+   * customer-supplied encryption key.
+   *
+   * If you encrypt a disk using a customer-supplied key, you must provide the
+   * same key again when you attempt to use this resource at a later time. For
+   * example, you must provide the key when you create a snapshot or an image
+   * from the disk or when you attach the disk to a virtual machine instance.
+   *
+   * If you do not provide an encryption key, then the disk will be encrypted
+   * using an automatically generated key and you do not need to provide a key
+   * to use the disk later.
+   *
+   * Instance templates do not store customer-supplied encryption keys, so you
+   * cannot use your own keys to encrypt disks in a managed instance group.
+   */
+  CustomerEncryptionKey diskEncryptionKey;
+  /**
    * Assigns a zero-based index to this disk, where 0 is reserved for the boot
    * disk. For example, if you have many disks attached to an instance, each
    * disk would have a unique index number. If not specified, the server will
@@ -13210,6 +13807,9 @@ class AttachedDisk {
     if (_json.containsKey("deviceName")) {
       deviceName = _json["deviceName"];
     }
+    if (_json.containsKey("diskEncryptionKey")) {
+      diskEncryptionKey = new CustomerEncryptionKey.fromJson(_json["diskEncryptionKey"]);
+    }
     if (_json.containsKey("index")) {
       index = _json["index"];
     }
@@ -13246,6 +13846,9 @@ class AttachedDisk {
     }
     if (deviceName != null) {
       _json["deviceName"] = deviceName;
+    }
+    if (diskEncryptionKey != null) {
+      _json["diskEncryptionKey"] = (diskEncryptionKey).toJson();
     }
     if (index != null) {
       _json["index"] = index;
@@ -13332,6 +13935,15 @@ class AttachedDiskInitializeParams {
    * global/images/family/my-private-family
    */
   core.String sourceImage;
+  /**
+   * The customer-supplied encryption key of the source image. Required if the
+   * source image is protected by a customer-supplied encryption key.
+   *
+   * Instance templates do not store customer-supplied encryption keys, so you
+   * cannot create disks for instances in a managed instance group if the source
+   * images are encrypted with your own keys.
+   */
+  CustomerEncryptionKey sourceImageEncryptionKey;
 
   AttachedDiskInitializeParams();
 
@@ -13348,6 +13960,9 @@ class AttachedDiskInitializeParams {
     if (_json.containsKey("sourceImage")) {
       sourceImage = _json["sourceImage"];
     }
+    if (_json.containsKey("sourceImageEncryptionKey")) {
+      sourceImageEncryptionKey = new CustomerEncryptionKey.fromJson(_json["sourceImageEncryptionKey"]);
+    }
   }
 
   core.Map toJson() {
@@ -13363,6 +13978,9 @@ class AttachedDiskInitializeParams {
     }
     if (sourceImage != null) {
       _json["sourceImage"] = sourceImage;
+    }
+    if (sourceImageEncryptionKey != null) {
+      _json["sourceImageEncryptionKey"] = (sourceImageEncryptionKey).toJson();
     }
     return _json;
   }
@@ -14084,11 +14702,11 @@ class BackendService {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
@@ -14340,6 +14958,77 @@ class BackendServiceList {
   }
 }
 
+/** Represents a customer-supplied encryption key */
+class CustomerEncryptionKey {
+  /**
+   * Specifies a 256-bit customer-supplied encryption key, encoded in base64 to
+   * either encrypt or decrypt this resource.
+   */
+  core.String rawKey;
+  /**
+   * [Output only] The base64 encoded SHA-256 hash of the customer-supplied
+   * encryption key that protects this resource.
+   */
+  core.String sha256;
+
+  CustomerEncryptionKey();
+
+  CustomerEncryptionKey.fromJson(core.Map _json) {
+    if (_json.containsKey("rawKey")) {
+      rawKey = _json["rawKey"];
+    }
+    if (_json.containsKey("sha256")) {
+      sha256 = _json["sha256"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (rawKey != null) {
+      _json["rawKey"] = rawKey;
+    }
+    if (sha256 != null) {
+      _json["sha256"] = sha256;
+    }
+    return _json;
+  }
+}
+
+class CustomerEncryptionKeyProtectedDisk {
+  /**
+   * Decrypts data associated with the disk with a customer-supplied encryption
+   * key.
+   */
+  CustomerEncryptionKey diskEncryptionKey;
+  /**
+   * Specifies a valid partial or full URL to an existing Persistent Disk
+   * resource. This field is only applicable for persistent disks.
+   */
+  core.String source;
+
+  CustomerEncryptionKeyProtectedDisk();
+
+  CustomerEncryptionKeyProtectedDisk.fromJson(core.Map _json) {
+    if (_json.containsKey("diskEncryptionKey")) {
+      diskEncryptionKey = new CustomerEncryptionKey.fromJson(_json["diskEncryptionKey"]);
+    }
+    if (_json.containsKey("source")) {
+      source = _json["source"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (diskEncryptionKey != null) {
+      _json["diskEncryptionKey"] = (diskEncryptionKey).toJson();
+    }
+    if (source != null) {
+      _json["source"] = source;
+    }
+    return _json;
+  }
+}
+
 /** Deprecation status for a public resource. */
 class DeprecationStatus {
   /**
@@ -14427,6 +15116,21 @@ class Disk {
    */
   core.String description;
   /**
+   * Encrypts the disk using a customer-supplied encryption key.
+   *
+   * After you encrypt a disk with a customer-supplied key, you must provide the
+   * same key if you use the disk later (e.g. to create a disk snapshot or an
+   * image, or to attach the disk to a virtual machine).
+   *
+   * Customer-supplied encryption keys do not protect access to metadata of the
+   * disk.
+   *
+   * If you do not provide an encryption key when creating the disk, then the
+   * disk will be encrypted using an automatically generated key and you do not
+   * need to provide a key to use the disk later.
+   */
+  CustomerEncryptionKey diskEncryptionKey;
+  /**
    * [Output Only] The unique identifier for the resource. This identifier is
    * defined by the server.
    */
@@ -14490,6 +15194,11 @@ class Disk {
    */
   core.String sourceImage;
   /**
+   * The customer-supplied encryption key of the source image. Required if the
+   * source image is protected by a customer-supplied encryption key.
+   */
+  CustomerEncryptionKey sourceImageEncryptionKey;
+  /**
    * [Output Only] The ID value of the image used to create this disk. This
    * value identifies the exact image that was used to create this persistent
    * disk. For example, if you created the persistent disk from an image that
@@ -14507,6 +15216,11 @@ class Disk {
    * - global/snapshots/snapshot
    */
   core.String sourceSnapshot;
+  /**
+   * The customer-supplied encryption key of the source snapshot. Required if
+   * the source snapshot is protected by a customer-supplied encryption key.
+   */
+  CustomerEncryptionKey sourceSnapshotEncryptionKey;
   /**
    * [Output Only] The unique ID of the snapshot used to create this disk. This
    * value identifies the exact snapshot that was used to create this persistent
@@ -14547,6 +15261,9 @@ class Disk {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("diskEncryptionKey")) {
+      diskEncryptionKey = new CustomerEncryptionKey.fromJson(_json["diskEncryptionKey"]);
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -14577,11 +15294,17 @@ class Disk {
     if (_json.containsKey("sourceImage")) {
       sourceImage = _json["sourceImage"];
     }
+    if (_json.containsKey("sourceImageEncryptionKey")) {
+      sourceImageEncryptionKey = new CustomerEncryptionKey.fromJson(_json["sourceImageEncryptionKey"]);
+    }
     if (_json.containsKey("sourceImageId")) {
       sourceImageId = _json["sourceImageId"];
     }
     if (_json.containsKey("sourceSnapshot")) {
       sourceSnapshot = _json["sourceSnapshot"];
+    }
+    if (_json.containsKey("sourceSnapshotEncryptionKey")) {
+      sourceSnapshotEncryptionKey = new CustomerEncryptionKey.fromJson(_json["sourceSnapshotEncryptionKey"]);
     }
     if (_json.containsKey("sourceSnapshotId")) {
       sourceSnapshotId = _json["sourceSnapshotId"];
@@ -14607,6 +15330,9 @@ class Disk {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (diskEncryptionKey != null) {
+      _json["diskEncryptionKey"] = (diskEncryptionKey).toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -14638,11 +15364,17 @@ class Disk {
     if (sourceImage != null) {
       _json["sourceImage"] = sourceImage;
     }
+    if (sourceImageEncryptionKey != null) {
+      _json["sourceImageEncryptionKey"] = (sourceImageEncryptionKey).toJson();
+    }
     if (sourceImageId != null) {
       _json["sourceImageId"] = sourceImageId;
     }
     if (sourceSnapshot != null) {
       _json["sourceSnapshot"] = sourceSnapshot;
+    }
+    if (sourceSnapshotEncryptionKey != null) {
+      _json["sourceSnapshotEncryptionKey"] = (sourceSnapshotEncryptionKey).toJson();
     }
     if (sourceSnapshotId != null) {
       _json["sourceSnapshotId"] = sourceSnapshotId;
@@ -16673,6 +17405,21 @@ class Image {
    * defined by the server.
    */
   core.String id;
+  /**
+   * Encrypts the image using a customer-supplied encryption key.
+   *
+   * After you encrypt an image with a customer-supplied key, you must provide
+   * the same key if you use the image later (e.g. to create a disk from the
+   * image).
+   *
+   * Customer-supplied encryption keys do not protect access to metadata of the
+   * disk.
+   *
+   * If you do not provide an encryption key when creating the image, then the
+   * disk will be encrypted using an automatically generated key and you do not
+   * need to provide a key to use the image later.
+   */
+  CustomerEncryptionKey imageEncryptionKey;
   /** [Output Only] Type of the resource. Always compute#image for images. */
   core.String kind;
   /** Any applicable publicly visible licenses. */
@@ -16702,6 +17449,11 @@ class Image {
    * - zones/zone/disks/disk
    */
   core.String sourceDisk;
+  /**
+   * The customer-supplied encryption key of the source disk. Required if the
+   * source disk is protected by a customer-supplied encryption key.
+   */
+  CustomerEncryptionKey sourceDiskEncryptionKey;
   /**
    * The ID value of the disk used to create this image. This value may be used
    * to determine whether the image was taken from the current or a previous
@@ -16751,6 +17503,9 @@ class Image {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("imageEncryptionKey")) {
+      imageEncryptionKey = new CustomerEncryptionKey.fromJson(_json["imageEncryptionKey"]);
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -16768,6 +17523,9 @@ class Image {
     }
     if (_json.containsKey("sourceDisk")) {
       sourceDisk = _json["sourceDisk"];
+    }
+    if (_json.containsKey("sourceDiskEncryptionKey")) {
+      sourceDiskEncryptionKey = new CustomerEncryptionKey.fromJson(_json["sourceDiskEncryptionKey"]);
     }
     if (_json.containsKey("sourceDiskId")) {
       sourceDiskId = _json["sourceDiskId"];
@@ -16803,6 +17561,9 @@ class Image {
     if (id != null) {
       _json["id"] = id;
     }
+    if (imageEncryptionKey != null) {
+      _json["imageEncryptionKey"] = (imageEncryptionKey).toJson();
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -16820,6 +17581,9 @@ class Image {
     }
     if (sourceDisk != null) {
       _json["sourceDisk"] = sourceDisk;
+    }
+    if (sourceDiskEncryptionKey != null) {
+      _json["sourceDiskEncryptionKey"] = (sourceDiskEncryptionKey).toJson();
     }
     if (sourceDiskId != null) {
       _json["sourceDiskId"] = sourceDiskId;
@@ -16980,13 +17744,13 @@ class Instance {
    * A list of service accounts, with their specified scopes, authorized for
    * this instance. Service accounts generate access tokens that can be accessed
    * through the metadata server and used to authenticate applications on the
-   * instance. See Authenticating from Google Compute Engine for more
-   * information.
+   * instance. See Service Accounts for more information.
    */
   core.List<ServiceAccount> serviceAccounts;
   /**
    * [Output Only] The status of the instance. One of the following values:
-   * PROVISIONING, STAGING, RUNNING, STOPPING, and TERMINATED.
+   * PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDED, SUSPENDING, and
+   * TERMINATED.
    * Possible string values are:
    * - "PROVISIONING"
    * - "RUNNING"
@@ -17212,11 +17976,11 @@ class InstanceGroup {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * [Output Only] A unique identifier for this resource type. The server
@@ -17512,11 +18276,11 @@ class InstanceGroupManager {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * [Output Only] A unique identifier for this resource type. The server
@@ -18163,11 +18927,11 @@ class InstanceGroupManagersSetTargetPoolsRequest {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The list of target pool URLs that instances in this managed instance group
@@ -18487,11 +19251,11 @@ class InstanceGroupsSetNamedPortsRequest {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The list of named ports to set for this instance group. */
   core.List<NamedPort> namedPorts;
@@ -18633,8 +19397,8 @@ class InstanceProperties {
    * source IP addresses other than their own and receive packets with
    * destination IP addresses other than their own. If these instances will be
    * used as an IP gateway or it will be set as the next-hop in a Route
-   * resource, specify true. If unsure, leave this set to false. See the
-   * canIpForward documentation for more information.
+   * resource, specify true. If unsure, leave this set to false. See the Enable
+   * IP forwarding for instances documentation for more information.
    */
   core.bool canIpForward;
   /**
@@ -19133,6 +19897,36 @@ class InstancesSetMachineTypeRequest {
   }
 }
 
+class InstancesStartWithEncryptionKeyRequest {
+  /**
+   * Array of disks associated with this instance that are protected with a
+   * customer-supplied encryption key.
+   *
+   * In order to start the instance, the disk url and its corresponding key must
+   * be provided.
+   *
+   * If the disk is not protected with a customer-supplied encryption key it
+   * should not be specified.
+   */
+  core.List<CustomerEncryptionKeyProtectedDisk> disks;
+
+  InstancesStartWithEncryptionKeyRequest();
+
+  InstancesStartWithEncryptionKeyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("disks")) {
+      disks = _json["disks"].map((value) => new CustomerEncryptionKeyProtectedDisk.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (disks != null) {
+      _json["disks"] = disks.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** A license resource. */
 class License {
   /**
@@ -19232,6 +20026,11 @@ class MachineType {
    */
   core.int imageSpaceGb;
   /**
+   * [Output Only] Whether this machine type has a shared CPU. See Shared-core
+   * machine types for more information.
+   */
+  core.bool isSharedCpu;
+  /**
    * [Output Only] The type of the resource. Always compute#machineType for
    * machine types.
    */
@@ -19278,6 +20077,9 @@ class MachineType {
     if (_json.containsKey("imageSpaceGb")) {
       imageSpaceGb = _json["imageSpaceGb"];
     }
+    if (_json.containsKey("isSharedCpu")) {
+      isSharedCpu = _json["isSharedCpu"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -19323,6 +20125,9 @@ class MachineType {
     }
     if (imageSpaceGb != null) {
       _json["imageSpaceGb"] = imageSpaceGb;
+    }
+    if (isSharedCpu != null) {
+      _json["isSharedCpu"] = isSharedCpu;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -19861,11 +20666,11 @@ class Metadata {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * Array of key/value pairs. The total size of all keys and values must be
@@ -21024,6 +21829,10 @@ class Project {
   Metadata commonInstanceMetadata;
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
+  /**
+   * [Output Only] Default service account used by VMs running in this project.
+   */
+  core.String defaultServiceAccount;
   /** An optional textual description of the resource. */
   core.String description;
   /** Restricted features enabled for use on this project. */
@@ -21062,6 +21871,9 @@ class Project {
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
+    if (_json.containsKey("defaultServiceAccount")) {
+      defaultServiceAccount = _json["defaultServiceAccount"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -21095,6 +21907,9 @@ class Project {
     }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (defaultServiceAccount != null) {
+      _json["defaultServiceAccount"] = defaultServiceAccount;
     }
     if (description != null) {
       _json["description"] = description;
@@ -21146,6 +21961,7 @@ class Quota {
    * - "IN_USE_ADDRESSES"
    * - "LOCAL_SSD_TOTAL_GB"
    * - "NETWORKS"
+   * - "ROUTERS"
    * - "ROUTES"
    * - "SNAPSHOTS"
    * - "SSD_TOTAL_GB"
@@ -21740,6 +22556,697 @@ class RouteList {
   }
 }
 
+/** Router resource. */
+class Router {
+  RouterBgp bgp;
+  core.List<RouterBgpPeer> bgpPeers;
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  core.String creationTimestamp;
+  /**
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
+   */
+  core.String description;
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  core.List<RouterInterface> interfaces;
+  /** [Output Only] Type of resource. Always compute#router for routers. */
+  core.String kind;
+  /**
+   * Name of the resource. Provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
+   */
+  core.String name;
+  /** URI of the network to which this router belongs. */
+  core.String network;
+  /** [Output Only] URI of the region where the router resides. */
+  core.String region;
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+
+  Router();
+
+  Router.fromJson(core.Map _json) {
+    if (_json.containsKey("bgp")) {
+      bgp = new RouterBgp.fromJson(_json["bgp"]);
+    }
+    if (_json.containsKey("bgpPeers")) {
+      bgpPeers = _json["bgpPeers"].map((value) => new RouterBgpPeer.fromJson(value)).toList();
+    }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("interfaces")) {
+      interfaces = _json["interfaces"].map((value) => new RouterInterface.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bgp != null) {
+      _json["bgp"] = (bgp).toJson();
+    }
+    if (bgpPeers != null) {
+      _json["bgpPeers"] = bgpPeers.map((value) => (value).toJson()).toList();
+    }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (interfaces != null) {
+      _json["interfaces"] = interfaces.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (network != null) {
+      _json["network"] = network;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of routers. */
+class RouterAggregatedList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** A map of scoped router lists. */
+  core.Map<core.String, RoutersScopedList> items;
+  /** Type of resource. */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  RouterAggregatedList();
+
+  RouterAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap(_json["items"], (item) => new RoutersScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class RouterBgp {
+  /**
+   * Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN,
+   * either 16-bit or 32-bit. The value will be fixed for this router resource.
+   * All VPN tunnels that link to this router will have the same local ASN.
+   */
+  core.int asn;
+
+  RouterBgp();
+
+  RouterBgp.fromJson(core.Map _json) {
+    if (_json.containsKey("asn")) {
+      asn = _json["asn"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (asn != null) {
+      _json["asn"] = asn;
+    }
+    return _json;
+  }
+}
+
+/**
+ * BGP information that needs to be configured into the routing stack to
+ * establish the BGP peering. It must specify peer ASN and either interface
+ * name, IP, or peer IP. Reference: https://tools.ietf.org/html/rfc4273
+ */
+class RouterBgpPeer {
+  /**
+   * The priority of routes advertised to this BGP peer. In the case where there
+   * is more than one matching route of maximum length, the routes with lowest
+   * priority value win.
+   */
+  core.int advertisedRoutePriority;
+  /** Name of the interface the BGP peer is associated with. */
+  core.String interfaceName;
+  /** IP address of the interface inside Google Cloud Platform. */
+  core.String ipAddress;
+  /**
+   * Name of this BGP peer. The name must be 1-63 characters long and comply
+   * with RFC1035.
+   */
+  core.String name;
+  /**
+   * Peer BGP Autonomous System Number (ASN). For VPN use case, this value can
+   * be different for every tunnel.
+   */
+  core.int peerAsn;
+  /** IP address of the BGP interface outside Google cloud. */
+  core.String peerIpAddress;
+
+  RouterBgpPeer();
+
+  RouterBgpPeer.fromJson(core.Map _json) {
+    if (_json.containsKey("advertisedRoutePriority")) {
+      advertisedRoutePriority = _json["advertisedRoutePriority"];
+    }
+    if (_json.containsKey("interfaceName")) {
+      interfaceName = _json["interfaceName"];
+    }
+    if (_json.containsKey("ipAddress")) {
+      ipAddress = _json["ipAddress"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("peerAsn")) {
+      peerAsn = _json["peerAsn"];
+    }
+    if (_json.containsKey("peerIpAddress")) {
+      peerIpAddress = _json["peerIpAddress"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (advertisedRoutePriority != null) {
+      _json["advertisedRoutePriority"] = advertisedRoutePriority;
+    }
+    if (interfaceName != null) {
+      _json["interfaceName"] = interfaceName;
+    }
+    if (ipAddress != null) {
+      _json["ipAddress"] = ipAddress;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (peerAsn != null) {
+      _json["peerAsn"] = peerAsn;
+    }
+    if (peerIpAddress != null) {
+      _json["peerIpAddress"] = peerIpAddress;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Router interfaces. Each interface requires either one linked resource (e.g.
+ * linked_vpn_tunnel) or IP address + range (specified in ip_range).
+ */
+class RouterInterface {
+  /**
+   * IP address and range of the interface. The IP range must be in the RFC3927
+   * link-local IP space. The value must be a CIDR-formatted string, for
+   * example: 169.254.0.1/30. NOTE: Do not truncate the address as it represents
+   * the IP address of the interface.
+   */
+  core.String ipRange;
+  /**
+   * URI of linked VPN tunnel. It must be in the same region as the router. Each
+   * interface can have at most one linked resource.
+   */
+  core.String linkedVpnTunnel;
+  /**
+   * Name of this interface entry. The name must be 1-63 characters long and
+   * comply with RFC1035.
+   */
+  core.String name;
+
+  RouterInterface();
+
+  RouterInterface.fromJson(core.Map _json) {
+    if (_json.containsKey("ipRange")) {
+      ipRange = _json["ipRange"];
+    }
+    if (_json.containsKey("linkedVpnTunnel")) {
+      linkedVpnTunnel = _json["linkedVpnTunnel"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (ipRange != null) {
+      _json["ipRange"] = ipRange;
+    }
+    if (linkedVpnTunnel != null) {
+      _json["linkedVpnTunnel"] = linkedVpnTunnel;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of Router resources. */
+class RouterList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** A list of Router resources. */
+  core.List<Router> items;
+  /** [Output Only] Type of resource. Always compute#router for routers. */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+
+  RouterList();
+
+  RouterList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Router.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class RouterStatus {
+  /** Best routes for this router's network. */
+  core.List<Route> bestRoutes;
+  core.List<RouterStatusBgpPeerStatus> bgpPeerStatus;
+  /** URI of the network to which this router belongs. */
+  core.String network;
+
+  RouterStatus();
+
+  RouterStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("bestRoutes")) {
+      bestRoutes = _json["bestRoutes"].map((value) => new Route.fromJson(value)).toList();
+    }
+    if (_json.containsKey("bgpPeerStatus")) {
+      bgpPeerStatus = _json["bgpPeerStatus"].map((value) => new RouterStatusBgpPeerStatus.fromJson(value)).toList();
+    }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bestRoutes != null) {
+      _json["bestRoutes"] = bestRoutes.map((value) => (value).toJson()).toList();
+    }
+    if (bgpPeerStatus != null) {
+      _json["bgpPeerStatus"] = bgpPeerStatus.map((value) => (value).toJson()).toList();
+    }
+    if (network != null) {
+      _json["network"] = network;
+    }
+    return _json;
+  }
+}
+
+class RouterStatusBgpPeerStatus {
+  /** Routes that were advertised to the remote BGP peer */
+  core.List<Route> advertisedRoutes;
+  /** IP address of the local BGP interface. */
+  core.String ipAddress;
+  /** URL of the VPN tunnel that this BGP peer controls. */
+  core.String linkedVpnTunnel;
+  /** Name of this BGP peer. Unique within the Routers resource. */
+  core.String name;
+  /** Number of routes learned from the remote BGP Peer. */
+  core.int numLearnedRoutes;
+  /** IP address of the remote BGP interface. */
+  core.String peerIpAddress;
+  /** BGP state as specified in RFC1771. */
+  core.String state;
+  /**
+   * Status of the BGP peer: {UP, DOWN}
+   * Possible string values are:
+   * - "DOWN"
+   * - "UNKNOWN"
+   * - "UP"
+   */
+  core.String status;
+  /**
+   * Time this session has been up. Format: 14 years, 51 weeks, 6 days, 23
+   * hours, 59 minutes, 59 seconds
+   */
+  core.String uptime;
+  /** Time this session has been up, in seconds. Format: 145 */
+  core.String uptimeSeconds;
+
+  RouterStatusBgpPeerStatus();
+
+  RouterStatusBgpPeerStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("advertisedRoutes")) {
+      advertisedRoutes = _json["advertisedRoutes"].map((value) => new Route.fromJson(value)).toList();
+    }
+    if (_json.containsKey("ipAddress")) {
+      ipAddress = _json["ipAddress"];
+    }
+    if (_json.containsKey("linkedVpnTunnel")) {
+      linkedVpnTunnel = _json["linkedVpnTunnel"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("numLearnedRoutes")) {
+      numLearnedRoutes = _json["numLearnedRoutes"];
+    }
+    if (_json.containsKey("peerIpAddress")) {
+      peerIpAddress = _json["peerIpAddress"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("uptime")) {
+      uptime = _json["uptime"];
+    }
+    if (_json.containsKey("uptimeSeconds")) {
+      uptimeSeconds = _json["uptimeSeconds"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (advertisedRoutes != null) {
+      _json["advertisedRoutes"] = advertisedRoutes.map((value) => (value).toJson()).toList();
+    }
+    if (ipAddress != null) {
+      _json["ipAddress"] = ipAddress;
+    }
+    if (linkedVpnTunnel != null) {
+      _json["linkedVpnTunnel"] = linkedVpnTunnel;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (numLearnedRoutes != null) {
+      _json["numLearnedRoutes"] = numLearnedRoutes;
+    }
+    if (peerIpAddress != null) {
+      _json["peerIpAddress"] = peerIpAddress;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (uptime != null) {
+      _json["uptime"] = uptime;
+    }
+    if (uptimeSeconds != null) {
+      _json["uptimeSeconds"] = uptimeSeconds;
+    }
+    return _json;
+  }
+}
+
+class RouterStatusResponse {
+  /** Type of resource. */
+  core.String kind;
+  RouterStatus result;
+
+  RouterStatusResponse();
+
+  RouterStatusResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("result")) {
+      result = new RouterStatus.fromJson(_json["result"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (result != null) {
+      _json["result"] = (result).toJson();
+    }
+    return _json;
+  }
+}
+
+class RoutersScopedListWarningData {
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
+   */
+  core.String key;
+  /** [Output Only] A warning data value corresponding to the key. */
+  core.String value;
+
+  RoutersScopedListWarningData();
+
+  RoutersScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Informational warning which replaces the list of routers when the list is
+ * empty.
+ */
+class RoutersScopedListWarning {
+  /**
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
+   * Possible string values are:
+   * - "CLEANUP_FAILED"
+   * - "DEPRECATED_RESOURCE_USED"
+   * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "INJECTED_KERNELS_DEPRECATED"
+   * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+   * - "NEXT_HOP_CANNOT_IP_FORWARD"
+   * - "NEXT_HOP_INSTANCE_NOT_FOUND"
+   * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+   * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
+   * - "NO_RESULTS_ON_PAGE"
+   * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+   * - "UNREACHABLE"
+   */
+  core.String code;
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
+  core.List<RoutersScopedListWarningData> data;
+  /** [Output Only] A human-readable description of the warning code. */
+  core.String message;
+
+  RoutersScopedListWarning();
+
+  RoutersScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"].map((value) => new RoutersScopedListWarningData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class RoutersScopedList {
+  /** List of routers contained in this scope. */
+  core.List<Router> routers;
+  /**
+   * Informational warning which replaces the list of routers when the list is
+   * empty.
+   */
+  RoutersScopedListWarning warning;
+
+  RoutersScopedList();
+
+  RoutersScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("routers")) {
+      routers = _json["routers"].map((value) => new Router.fromJson(value)).toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new RoutersScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (routers != null) {
+      _json["routers"] = routers.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
 /** Sets the scheduling options for an Instance. */
 class Scheduling {
   /**
@@ -21901,8 +23408,29 @@ class Snapshot {
   core.String name;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
+  /**
+   * Encrypts the snapshot using a customer-supplied encryption key.
+   *
+   * After you encrypt a snapshot using a customer-supplied key, you must
+   * provide the same key if you use the image later For example, you must
+   * provide the encryption key when you create a disk from the encrypted
+   * snapshot in a future request.
+   *
+   * Customer-supplied encryption keys do not protect access to metadata of the
+   * disk.
+   *
+   * If you do not provide an encryption key when creating the snapshot, then
+   * the snapshot will be encrypted using an automatically generated key and you
+   * do not need to provide a key to use the snapshot later.
+   */
+  CustomerEncryptionKey snapshotEncryptionKey;
   /** [Output Only] The source disk used to create this snapshot. */
   core.String sourceDisk;
+  /**
+   * The customer-supplied encryption key of the source disk. Required if the
+   * source disk is protected by a customer-supplied encryption key.
+   */
+  CustomerEncryptionKey sourceDiskEncryptionKey;
   /**
    * [Output Only] The ID value of the disk used to create this snapshot. This
    * value may be used to determine whether the snapshot was taken from the
@@ -21964,8 +23492,14 @@ class Snapshot {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("snapshotEncryptionKey")) {
+      snapshotEncryptionKey = new CustomerEncryptionKey.fromJson(_json["snapshotEncryptionKey"]);
+    }
     if (_json.containsKey("sourceDisk")) {
       sourceDisk = _json["sourceDisk"];
+    }
+    if (_json.containsKey("sourceDiskEncryptionKey")) {
+      sourceDiskEncryptionKey = new CustomerEncryptionKey.fromJson(_json["sourceDiskEncryptionKey"]);
     }
     if (_json.containsKey("sourceDiskId")) {
       sourceDiskId = _json["sourceDiskId"];
@@ -22007,8 +23541,14 @@ class Snapshot {
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
+    if (snapshotEncryptionKey != null) {
+      _json["snapshotEncryptionKey"] = (snapshotEncryptionKey).toJson();
+    }
     if (sourceDisk != null) {
       _json["sourceDisk"] = sourceDisk;
+    }
+    if (sourceDiskEncryptionKey != null) {
+      _json["sourceDiskEncryptionKey"] = (sourceDiskEncryptionKey).toJson();
     }
     if (sourceDiskId != null) {
       _json["sourceDiskId"] = sourceDiskId;
@@ -22654,11 +24194,11 @@ class Tags {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * An array of tags. Each tag must be 1-63 characters long, and comply with
@@ -24473,11 +26013,11 @@ class UrlMap {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The list of HostRules to use against the URL. */
   core.List<HostRule> hostRules;
@@ -24894,6 +26434,14 @@ class VpnTunnel {
   core.String peerIp;
   /** [Output Only] URL of the region where the VPN tunnel resides. */
   core.String region;
+  /**
+   * Remote traffic selectors to use when establishing the VPN tunnel with peer
+   * VPN gateway. The value should be a CIDR formatted string, for example:
+   * 192.168.0.0/16. The ranges should be disjoint.
+   */
+  core.List<core.String> remoteTrafficSelector;
+  /** URL of router resource to be used for dynamic routing. */
+  core.String router;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
@@ -24959,6 +26507,12 @@ class VpnTunnel {
     if (_json.containsKey("region")) {
       region = _json["region"];
     }
+    if (_json.containsKey("remoteTrafficSelector")) {
+      remoteTrafficSelector = _json["remoteTrafficSelector"];
+    }
+    if (_json.containsKey("router")) {
+      router = _json["router"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -25007,6 +26561,12 @@ class VpnTunnel {
     }
     if (region != null) {
       _json["region"] = region;
+    }
+    if (remoteTrafficSelector != null) {
+      _json["remoteTrafficSelector"] = remoteTrafficSelector;
+    }
+    if (router != null) {
+      _json["router"] = router;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;

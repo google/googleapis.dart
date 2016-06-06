@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1437,6 +1436,8 @@ class PermissionsResourceApi {
    *
    * [permissionId] - The ID of the permission.
    *
+   * [removeExpiration] - Whether to remove the expiration date.
+   *
    * [transferOwnership] - Whether to transfer ownership to the specified user
    * and downgrade the current owner to a writer. This parameter is required as
    * an acknowledgement of the side effect.
@@ -1449,7 +1450,7 @@ class PermissionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Permission> update(Permission request, core.String fileId, core.String permissionId, {core.bool transferOwnership}) {
+  async.Future<Permission> update(Permission request, core.String fileId, core.String permissionId, {core.bool removeExpiration, core.bool transferOwnership}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1465,6 +1466,9 @@ class PermissionsResourceApi {
     }
     if (permissionId == null) {
       throw new core.ArgumentError("Parameter permissionId is required.");
+    }
+    if (removeExpiration != null) {
+      _queryParams["removeExpiration"] = ["${removeExpiration}"];
     }
     if (transferOwnership != null) {
       _queryParams["transferOwnership"] = ["${transferOwnership}"];
@@ -2604,11 +2608,11 @@ class FileContentHintsThumbnail {
   /** The thumbnail data encoded with URL-safe Base64 (RFC 4648 section 5). */
   core.String image;
   core.List<core.int> get imageAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(image);
+    return convert.BASE64.decode(image);
   }
 
   void set imageAsBytes(core.List<core.int> _bytes) {
-    image = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    image = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The MIME type of the thumbnail. */
   core.String mimeType;
@@ -3501,6 +3505,8 @@ class Permission {
    * The email address of the user or group to which this permission refers.
    */
   core.String emailAddress;
+  /** The time at which this permission will expire (RFC 3339 date-time). */
+  core.DateTime expirationTime;
   /**
    * The ID of this permission. This is a unique identifier for the grantee, and
    * is published in User resources as permissionId.
@@ -3542,6 +3548,9 @@ class Permission {
     if (_json.containsKey("emailAddress")) {
       emailAddress = _json["emailAddress"];
     }
+    if (_json.containsKey("expirationTime")) {
+      expirationTime = core.DateTime.parse(_json["expirationTime"]);
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -3572,6 +3581,9 @@ class Permission {
     }
     if (emailAddress != null) {
       _json["emailAddress"] = emailAddress;
+    }
+    if (expirationTime != null) {
+      _json["expirationTime"] = (expirationTime).toIso8601String();
     }
     if (id != null) {
       _json["id"] = id;

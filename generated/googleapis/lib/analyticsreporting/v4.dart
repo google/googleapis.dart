@@ -573,7 +573,7 @@ class GetReportsRequest {
   /**
    * Requests, each request will have a separate response.
    * There can be a maximum of 5 requests. All requests should have the same
-   * `dateRange`, `viewId`, `segments`, `samplingLevel`, and `cohortGroup`.
+   * `dateRanges`, `viewId`, `segments`, `samplingLevel`, and `cohortGroup`.
    */
   core.List<ReportRequest> reportRequests;
 
@@ -904,7 +904,7 @@ class OrderBy {
    * based on value.
    * - "VALUE" : The sort order is based on the value of the chosen column;
    * looks only at
-   * the first date range
+   * the first date range.
    * - "DELTA" : The sort order is based on the difference of the values of the
    * chosen
    * column between the first two date ranges.  Usable only if there are
@@ -1082,10 +1082,7 @@ class PivotHeader {
  * requested in the pivots section of the response.
  */
 class PivotHeaderEntry {
-  /**
-   * The name of the dimensions in the pivotDimensionValues field in the
-   * response.
-   */
+  /** The name of the dimensions in the pivot response. */
   core.List<core.String> dimensionNames;
   /** The values for the dimensions in the pivot. */
   core.List<core.String> dimensionValues;
@@ -1206,13 +1203,22 @@ class ReportData {
   /** There's one ReportRow for every unique combination of dimensions. */
   core.List<ReportRow> rows;
   /**
-   * If sampling was enabled, this returns the total number of samples
-   * read, one entry per date range
+   * If the results are
+   * [sampled](https://support.google.com/analytics/answer/2637192),
+   * this returns the total number of samples read, one entry per date range.
+   * If the results are not sampled this field will not be defined. See
+   * [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+   * for details.
    */
   core.List<core.String> samplesReadCounts;
   /**
-   * If sampling was enabled, this returns the total number of samples
-   * present, one entry per date range.
+   * If the results are
+   * [sampled](https://support.google.com/analytics/answer/2637192),
+   * this returns the total number of
+   * samples present, one entry per date range. If the results are not sampled
+   * this field will not be defined. See
+   * [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+   * for details.
    */
   core.List<core.String> samplingSpaceSizes;
   /**
@@ -1290,8 +1296,9 @@ class ReportData {
 class ReportRequest {
   /**
    * Cohort group associated with this request. If there is a cohort group
-   * in the request the `ga:cohort` dimension must be present. All requests
-   * should have the same cohort definitions.
+   * in the request the `ga:cohort` dimension must be present.
+   * Every [ReportRequest](#ReportRequest) within a `batchGet` method must
+   * contain the same `cohortGroup` definition.
    */
   CohortGroup cohortGroup;
   /**
@@ -1303,7 +1310,9 @@ class ReportRequest {
    * The `reportRequest.dateRanges` field should not be specified for cohorts
    * or Lifetime value requests.
    * If a date range is not provided, the default date range is (startDate:
-   * current date - 7 days, endDate: current date - 1 day)
+   * current date - 7 days, endDate: current date - 1 day). Every
+   * [ReportRequest](#ReportRequest) within a `batchGet` method must
+   * contain the same `dateRanges` definition.
    */
   core.List<DateRange> dateRanges;
   /**
@@ -1381,12 +1390,17 @@ class ReportRequest {
   /** The pivot definitions. */
   core.List<Pivot> pivots;
   /**
-   * The desired sampling level. If the sampling level is not specified the
-   * DEFAULT sampling level will be used. All requests should have same
-   * `samplingLevel`.
+   * The desired report
+   * [sample](https://support.google.com/analytics/answer/2637192) size.
+   * If the the `samplingLevel` field is unspecified the `DEFAULT` sampling
+   * level is used. Every [ReportRequest](#ReportRequest) within a
+   * `batchGet` method must contain the same `samplingLevel` definition. See
+   * [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+   *  for details.
    * Possible string values are:
-   * - "SAMPLING_UNSPECIFIED" : If sampling level is unspecified the default
-   * sampling level is used.
+   * - "SAMPLING_UNSPECIFIED" : If the `samplingLevel` field is unspecified the
+   * `DEFAULT` sampling level
+   * is used.
    * - "DEFAULT" : Returns response with a sample size that balances speed and
    * accuracy.
    * - "SMALL" : It returns a fast response with a smaller sampling size.
@@ -1398,11 +1412,17 @@ class ReportRequest {
   /**
    * Segment the data returned for the request. A segment definition helps look
    * at a subset of the segment request. A request can contain up to four
-   * segments. All requests should have the same segment definitions. Requests
+   * segments. Every [ReportRequest](#ReportRequest) within a
+   * `batchGet` method must contain the same `segments` definition. Requests
    * with segments must have the `ga:segment` dimension.
    */
   core.List<Segment> segments;
-  /** Unique View Id for retrieving Analytics data. */
+  /**
+   * The Analytics
+   * [view ID](https://support.google.com/analytics/answer/1009618)
+   * from which to retrieve data. Every [ReportRequest](#ReportRequest)
+   * within a `batchGet` method must contain the same `viewId`.
+   */
   core.String viewId;
 
   ReportRequest();
@@ -1522,7 +1542,7 @@ class ReportRequest {
 class ReportRow {
   /** List of requested dimensions. */
   core.List<core.String> dimensions;
-  /** List of metrics for each requested DateRange */
+  /** List of metrics for each requested DateRange. */
   core.List<DateRangeValues> metrics;
 
   ReportRow();

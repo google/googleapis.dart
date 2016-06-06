@@ -8620,6 +8620,11 @@ class Price {
 class Product {
   /** Additional URLs of images of the item. */
   core.List<core.String> additionalImageLinks;
+  /**
+   * Additional categories of the item (formatted as in products feed
+   * specification).
+   */
+  core.List<core.String> additionalProductTypes;
   /** Set to true if the item is targeted towards adults. */
   core.bool adult;
   /**
@@ -8812,6 +8817,9 @@ class Product {
   Product.fromJson(core.Map _json) {
     if (_json.containsKey("additionalImageLinks")) {
       additionalImageLinks = _json["additionalImageLinks"];
+    }
+    if (_json.containsKey("additionalProductTypes")) {
+      additionalProductTypes = _json["additionalProductTypes"];
     }
     if (_json.containsKey("adult")) {
       adult = _json["adult"];
@@ -9029,6 +9037,9 @@ class Product {
     var _json = new core.Map();
     if (additionalImageLinks != null) {
       _json["additionalImageLinks"] = additionalImageLinks;
+    }
+    if (additionalProductTypes != null) {
+      _json["additionalProductTypes"] = additionalProductTypes;
     }
     if (adult != null) {
       _json["adult"] = adult;

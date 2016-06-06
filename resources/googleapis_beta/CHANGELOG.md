@@ -1,3 +1,7 @@
+## 0.27.1
+
+* [api-new] dns:v2beta1
+
 ## 0.27.0
 
 * [api-new] adexchangebuyer2:v2beta1

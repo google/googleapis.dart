@@ -6,7 +6,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/R4cuCODTYsbGjTBiFOeVYpfBJ-Q\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/IJj1jCXKrMcqhJ0zJSLG4wx2EFg\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -275,7 +275,7 @@
             }
         }
     },
-    "revision": "20160510",
+    "revision": "20160603",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -664,6 +664,11 @@
                     "description": "Response to the captcha.",
                     "type": "string"
                 },
+                "createdAt": {
+                    "description": "The timestamp when the account is created.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "delegatedProjectNumber": {
                     "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
                     "format": "int64",
@@ -705,6 +710,11 @@
                 },
                 "instanceId": {
                     "description": "Instance id token of the app.",
+                    "type": "string"
+                },
+                "lastLoginAt": {
+                    "description": "Last login timestamp.",
+                    "format": "int64",
                     "type": "string"
                 },
                 "localId": {
@@ -1055,6 +1065,13 @@
                 "secret": {
                     "description": "OAuth2 client secret.",
                     "type": "string"
+                },
+                "whitelistedAudiences": {
+                    "description": "Whitelisted client IDs for audience check.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1261,6 +1278,11 @@
             "description": "Template for an individual account info.",
             "id": "UserInfo",
             "properties": {
+                "createdAt": {
+                    "description": "User creation timestamp.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "disabled": {
                     "description": "Whether the user is disabled.",
                     "type": "boolean"
@@ -1276,6 +1298,11 @@
                 "emailVerified": {
                     "description": "Whether the email has been verified.",
                     "type": "boolean"
+                },
+                "lastLoginAt": {
+                    "description": "last login timestamp.",
+                    "format": "int64",
+                    "type": "string"
                 },
                 "localId": {
                     "description": "The local ID of the user.",

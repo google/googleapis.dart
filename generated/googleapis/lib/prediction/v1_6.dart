@@ -19,6 +19,9 @@ const core.String USER_AGENT = 'dart-api-client prediction/v1.6';
  * build smart apps
  */
 class PredictionApi {
+  /** View and manage your data across Google Cloud Platform services */
+  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
   /** Manage your data and permissions in Google Cloud Storage */
   static const DevstorageFullControlScope = "https://www.googleapis.com/auth/devstorage.full_control";
 

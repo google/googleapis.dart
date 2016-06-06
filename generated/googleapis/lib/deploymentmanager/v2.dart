@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -1156,11 +1155,11 @@ class Deployment {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
@@ -1398,11 +1397,11 @@ class DeploymentsCancelPreviewRequest {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   DeploymentsCancelPreviewRequest();
@@ -1470,11 +1469,11 @@ class DeploymentsStopRequest {
    */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   DeploymentsStopRequest();

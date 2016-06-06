@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -22,6 +21,12 @@ const core.String USER_AGENT = 'dart-api-client firebaserules/v1';
 class FirebaserulesApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
+  /** View and administer all your Firebase data and settings */
+  static const FirebaseScope = "https://www.googleapis.com/auth/firebase";
+
+  /** View all your Firebase data and settings */
+  static const FirebaseReadonlyScope = "https://www.googleapis.com/auth/firebase.readonly";
 
 
   final commons.ApiRequester _requester;
@@ -674,11 +679,11 @@ class File {
   /** Fingerprint (e.g. github sha) associated with the `File`. */
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(fingerprint);
+    return convert.BASE64.decode(fingerprint);
   }
 
   void set fingerprintAsBytes(core.List<core.int> _bytes) {
-    fingerprint = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** File name. */
   core.String name;

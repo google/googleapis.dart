@@ -369,7 +369,7 @@
             }
         }
     },
-    "revision": "20160502",
+    "revision": "20160517",
     "rootUrl": "https://clouderrorreporting.googleapis.com/",
     "schemas": {
         "SourceLocation": {

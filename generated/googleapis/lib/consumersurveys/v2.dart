@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -34,11 +33,154 @@ class ConsumersurveysApi {
 
   final commons.ApiRequester _requester;
 
+  MobileapppanelsResourceApi get mobileapppanels => new MobileapppanelsResourceApi(_requester);
   ResultsResourceApi get results => new ResultsResourceApi(_requester);
   SurveysResourceApi get surveys => new SurveysResourceApi(_requester);
 
   ConsumersurveysApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "consumersurveys/v2/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+
+class MobileapppanelsResourceApi {
+  final commons.ApiRequester _requester;
+
+  MobileapppanelsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a MobileAppPanel that is available to the authenticated user.
+   *
+   * Request parameters:
+   *
+   * [panelId] - External URL ID for the panel.
+   *
+   * Completes with a [MobileAppPanel].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<MobileAppPanel> get(core.String panelId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (panelId == null) {
+      throw new core.ArgumentError("Parameter panelId is required.");
+    }
+
+    _url = 'mobileAppPanels/' + commons.Escaper.ecapeVariable('$panelId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new MobileAppPanel.fromJson(data));
+  }
+
+  /**
+   * Lists the MobileAppPanels available to the authenticated user.
+   *
+   * Request parameters:
+   *
+   * [maxResults] - null
+   *
+   * [startIndex] - null
+   *
+   * [token] - null
+   *
+   * Completes with a [MobileAppPanelsListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<MobileAppPanelsListResponse> list({core.int maxResults, core.int startIndex, core.String token}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if (token != null) {
+      _queryParams["token"] = [token];
+    }
+
+    _url = 'mobileAppPanels';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new MobileAppPanelsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates a MobileAppPanel. Currently the only property that can be updated
+   * is the owners property.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [panelId] - External URL ID for the panel.
+   *
+   * Completes with a [MobileAppPanel].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<MobileAppPanel> update(MobileAppPanel request, core.String panelId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (panelId == null) {
+      throw new core.ArgumentError("Parameter panelId is required.");
+    }
+
+    _url = 'mobileAppPanels/' + commons.Escaper.ecapeVariable('$panelId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new MobileAppPanel.fromJson(data));
+  }
+
 }
 
 
@@ -403,6 +545,133 @@ class FieldMask {
   }
 }
 
+/**
+ * Representation of an individual pre-defined panel object defining a targeted
+ * audience of opinion rewards mobile app users.
+ */
+class MobileAppPanel {
+  /**
+   * Country code for the country of the users that the panel contains. Uses
+   * standard ISO 3166-1 2-character language codes. For instance, 'US' for the
+   * United States, and 'GB' for the United Kingdom. Any survey created
+   * targeting this panel must also target the corresponding country.
+   */
+  core.String country;
+  /** Whether or not the panel is accessible to all API users. */
+  core.bool isPublicPanel;
+  /**
+   * Language code that the panel can target. For instance, 'en-US'. Uses
+   * standard BCP47 language codes. See specification. Any survey created
+   * targeting this panel must also target the corresponding language.
+   */
+  core.String language;
+  /**
+   * Unique panel ID string. This corresponds to the mobile_app_panel_id used in
+   * Survey Insert requests.
+   */
+  core.String mobileAppPanelId;
+  /** Human readable name of the audience panel. */
+  core.String name;
+  /**
+   * List of email addresses for users who can target members of this panel.
+   * Must contain at least the address of the user making the API call for
+   * panels that are not public. This field will be empty for public panels.
+   */
+  core.List<core.String> owners;
+
+  MobileAppPanel();
+
+  MobileAppPanel.fromJson(core.Map _json) {
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
+    if (_json.containsKey("isPublicPanel")) {
+      isPublicPanel = _json["isPublicPanel"];
+    }
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+    if (_json.containsKey("mobileAppPanelId")) {
+      mobileAppPanelId = _json["mobileAppPanelId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("owners")) {
+      owners = _json["owners"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (country != null) {
+      _json["country"] = country;
+    }
+    if (isPublicPanel != null) {
+      _json["isPublicPanel"] = isPublicPanel;
+    }
+    if (language != null) {
+      _json["language"] = language;
+    }
+    if (mobileAppPanelId != null) {
+      _json["mobileAppPanelId"] = mobileAppPanelId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (owners != null) {
+      _json["owners"] = owners;
+    }
+    return _json;
+  }
+}
+
+class MobileAppPanelsListResponse {
+  PageInfo pageInfo;
+  /**
+   * Unique request ID used for logging and debugging. Please include in any
+   * error reporting or troubleshooting requests.
+   */
+  core.String requestId;
+  /** An individual predefined panel of Opinion Rewards mobile users. */
+  core.List<MobileAppPanel> resources;
+  TokenPagination tokenPagination;
+
+  MobileAppPanelsListResponse();
+
+  MobileAppPanelsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("requestId")) {
+      requestId = _json["requestId"];
+    }
+    if (_json.containsKey("resources")) {
+      resources = _json["resources"].map((value) => new MobileAppPanel.fromJson(value)).toList();
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (requestId != null) {
+      _json["requestId"] = requestId;
+    }
+    if (resources != null) {
+      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    return _json;
+  }
+}
+
 class PageInfo {
   core.int resultPerPage;
   core.int startIndex;
@@ -497,11 +766,11 @@ class Survey {
    */
   core.String customerData;
   core.List<core.int> get customerDataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(customerData);
+    return convert.BASE64.decode(customerData);
   }
 
   void set customerDataAsBytes(core.List<core.int> _bytes) {
-    customerData = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    customerData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Text description of the survey. */
   core.String description;
@@ -512,10 +781,7 @@ class Survey {
   core.List<core.String> owners;
   /** List of questions defining the survey. */
   core.List<SurveyQuestion> questions;
-  /**
-   * State that the survey is in. Can be modified to start, stop, or pause
-   * survey.
-   */
+  /** State that the survey is in. */
   core.String state;
   /** Unique survey ID, that is viewable in the URL of the Survey Creator UI */
   core.String surveyUrlId;
@@ -629,7 +895,7 @@ class SurveyAudience {
   core.List<core.String> languages;
   /**
    * Key for predefined panel that causes survey to be sent to a predefined set
-   * of Opinion Rewards App users. PopulationSource must be set to
+   * of Opinion Rewards App users. You must set PopulationSource to
    * ANDROID_APP_PANEL to use this field.
    */
   core.String mobileAppPanelId;
@@ -692,32 +958,31 @@ class SurveyAudience {
 /** Message defining the cost to run a given survey through API. */
 class SurveyCost {
   /**
-   * Threshold to start a survey automically if the quoted prices is at most
-   * this value. When a survey has a Screener (threshold) question, it must go
-   * through an incidence pricing test to determine the final cost per response.
-   * Typically the API consumer would have to make a followup call to start the
-   * survey given the (previously not) known cost. If the survey has no
-   * threshold_answers, setting this property will return an error. This
-   * property allows API callers to indicate the max price per response they'd
-   * be willing to pay in advance of that test. If the price turns out to be
-   * lower than the specified autostart_max, the survey should begin immediately
-   * and the user will be charged at the rate determined by the Incidence
-   * pricing test. If the price turns out to be greater than the specified
-   * autostart_max the survey will not be started and the user will instead be
-   * notified what price was determined by the incidence test. At that point
-   * they must raise the value of this property to be greater than or equal to
-   * that cost before attempting to start the survey again. This will
-   * immediately start the survey as long the incidence test was run within the
-   * last 21 days.
-   */
-  core.String autostartMaxCostPerResponse;
-  /**
    * Cost per survey response in nano units of the given currency. To get the
    * total cost for a survey, multiply this value by wanted_response_count.
    */
   core.String costPerResponseNanos;
   /** Currency code that the cost is given in. */
   core.String currencyCode;
+  /**
+   * Threshold to start a survey automatically if the quoted price is at most
+   * this value. When a survey has a Screener (threshold) question, it must go
+   * through an incidence pricing test to determine the final cost per response.
+   * Typically you will have to make a followup call to start the survey giving
+   * the final computed cost per response. If the survey has no
+   * threshold_answers, setting this property will return an error. By
+   * specifying this property, you indicate the max price per response you are
+   * willing to pay in advance of the incidence test. If the price turns out to
+   * be lower than the specified value, the survey will begin immediately and
+   * you will be charged at the rate determined by the incidence pricing test.
+   * If the price turns out to be greater than the specified value the survey
+   * will not be started and you will instead be notified what price was
+   * determined by the incidence test. At that point, you must raise the value
+   * of this property to be greater than or equal to that cost before attempting
+   * to start the survey again. This will immediately start the survey as long
+   * the incidence test was run within the last 21 days.
+   */
+  core.String maxCostPerResponseNanos;
   /**
    * Cost of survey in nano units of the given currency. DEPRECATED in favor of
    * cost_per_response_nanos
@@ -727,14 +992,14 @@ class SurveyCost {
   SurveyCost();
 
   SurveyCost.fromJson(core.Map _json) {
-    if (_json.containsKey("autostartMaxCostPerResponse")) {
-      autostartMaxCostPerResponse = _json["autostartMaxCostPerResponse"];
-    }
     if (_json.containsKey("costPerResponseNanos")) {
       costPerResponseNanos = _json["costPerResponseNanos"];
     }
     if (_json.containsKey("currencyCode")) {
       currencyCode = _json["currencyCode"];
+    }
+    if (_json.containsKey("maxCostPerResponseNanos")) {
+      maxCostPerResponseNanos = _json["maxCostPerResponseNanos"];
     }
     if (_json.containsKey("nanos")) {
       nanos = _json["nanos"];
@@ -743,14 +1008,14 @@ class SurveyCost {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (autostartMaxCostPerResponse != null) {
-      _json["autostartMaxCostPerResponse"] = autostartMaxCostPerResponse;
-    }
     if (costPerResponseNanos != null) {
       _json["costPerResponseNanos"] = costPerResponseNanos;
     }
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
+    }
+    if (maxCostPerResponseNanos != null) {
+      _json["maxCostPerResponseNanos"] = maxCostPerResponseNanos;
     }
     if (nanos != null) {
       _json["nanos"] = nanos;
@@ -965,11 +1230,11 @@ class SurveyQuestionImage {
    */
   core.String data;
   core.List<core.int> get dataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(data);
+    return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The read-only URL for the hosted images. */
   core.String url;
@@ -1084,20 +1349,20 @@ class SurveysStartRequest {
    * Threshold to start a survey automically if the quoted prices is less than
    * or equal to this value. See Survey.Cost for more details.
    */
-  core.String autostartMaxCostPerResponse;
+  core.String maxCostPerResponseNanos;
 
   SurveysStartRequest();
 
   SurveysStartRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("autostartMaxCostPerResponse")) {
-      autostartMaxCostPerResponse = _json["autostartMaxCostPerResponse"];
+    if (_json.containsKey("maxCostPerResponseNanos")) {
+      maxCostPerResponseNanos = _json["maxCostPerResponseNanos"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (autostartMaxCostPerResponse != null) {
-      _json["autostartMaxCostPerResponse"] = autostartMaxCostPerResponse;
+    if (maxCostPerResponseNanos != null) {
+      _json["maxCostPerResponseNanos"] = maxCostPerResponseNanos;
     }
     return _json;
   }

@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -5013,11 +5012,11 @@ class PrivateData {
   core.String referenceId;
   core.String referencePayload;
   core.List<core.int> get referencePayloadAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(referencePayload);
+    return convert.BASE64.decode(referencePayload);
   }
 
   void set referencePayloadAsBytes(core.List<core.int> _bytes) {
-    referencePayload = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    referencePayload = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   PrivateData();

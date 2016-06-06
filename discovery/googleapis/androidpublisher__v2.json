@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/kcmli-0AhQgKCzcLiKZ8WixyuKk\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/r9WkE_LmqUcVc4_Er0ylTMD2eKo\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2356,7 +2356,7 @@
             }
         }
     },
-    "revision": "20160516",
+    "revision": "20160602",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {

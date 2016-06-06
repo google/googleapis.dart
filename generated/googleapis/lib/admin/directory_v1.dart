@@ -8,7 +8,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -8726,11 +8725,11 @@ class UserPhoto {
   /** Base64 encoded photo data */
   core.String photoData;
   core.List<core.int> get photoDataAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(photoData);
+    return convert.BASE64.decode(photoData);
   }
 
   void set photoDataAsBytes(core.List<core.int> _bytes) {
-    photoData = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    photoData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** Primary email of User (Read-only) */
   core.String primaryEmail;

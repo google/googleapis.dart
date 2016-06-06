@@ -60,10 +60,12 @@ buildGroups() {
     o.allowGoogleCommunication = "foo";
     o.allowWebPosting = "foo";
     o.archiveOnly = "foo";
+    o.customFooterText = "foo";
     o.customReplyTo = "foo";
     o.defaultMessageDenyNotificationText = "foo";
     o.description = "foo";
     o.email = "foo";
+    o.includeCustomFooter = "foo";
     o.includeInGlobalAddressList = "foo";
     o.isArchived = "foo";
     o.kind = "foo";
@@ -97,10 +99,12 @@ checkGroups(api.Groups o) {
     unittest.expect(o.allowGoogleCommunication, unittest.equals('foo'));
     unittest.expect(o.allowWebPosting, unittest.equals('foo'));
     unittest.expect(o.archiveOnly, unittest.equals('foo'));
+    unittest.expect(o.customFooterText, unittest.equals('foo'));
     unittest.expect(o.customReplyTo, unittest.equals('foo'));
     unittest.expect(o.defaultMessageDenyNotificationText, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.email, unittest.equals('foo'));
+    unittest.expect(o.includeCustomFooter, unittest.equals('foo'));
     unittest.expect(o.includeInGlobalAddressList, unittest.equals('foo'));
     unittest.expect(o.isArchived, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));

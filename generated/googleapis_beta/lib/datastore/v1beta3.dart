@@ -7,7 +7,6 @@ import 'dart:async' as async;
 import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -407,11 +406,11 @@ class BeginTransactionResponse {
   /** The transaction identifier (always present). */
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(transaction);
+    return convert.BASE64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   BeginTransactionResponse();
@@ -468,11 +467,11 @@ class CommitRequest {
    */
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(transaction);
+    return convert.BASE64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   CommitRequest();
@@ -636,11 +635,11 @@ class EntityResult {
    */
   core.String cursor;
   core.List<core.int> get cursorAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(cursor);
+    return convert.BASE64.decode(cursor);
   }
 
   void set cursorAsBytes(core.List<core.int> _bytes) {
-    cursor = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    cursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The resulting entity. */
   Entity entity;
@@ -775,11 +774,11 @@ class GqlQueryParameter {
    */
   core.String cursor;
   core.List<core.int> get cursorAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(cursor);
+    return convert.BASE64.decode(cursor);
   }
 
   void set cursorAsBytes(core.List<core.int> _bytes) {
-    cursor = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    cursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** A value parameter. */
   Value value;
@@ -1373,11 +1372,11 @@ class Query {
    */
   core.String endCursor;
   core.List<core.int> get endCursorAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(endCursor);
+    return convert.BASE64.decode(endCursor);
   }
 
   void set endCursorAsBytes(core.List<core.int> _bytes) {
-    endCursor = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    endCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The filter to apply. */
   Filter filter;
@@ -1412,11 +1411,11 @@ class Query {
    */
   core.String startCursor;
   core.List<core.int> get startCursorAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(startCursor);
+    return convert.BASE64.decode(startCursor);
   }
 
   void set startCursorAsBytes(core.List<core.int> _bytes) {
-    startCursor = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    startCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   Query();
@@ -1491,11 +1490,11 @@ class QueryResultBatch {
    */
   core.String endCursor;
   core.List<core.int> get endCursorAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(endCursor);
+    return convert.BASE64.decode(endCursor);
   }
 
   void set endCursorAsBytes(core.List<core.int> _bytes) {
-    endCursor = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    endCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
    * The result type for every entity in `entity_results`.
@@ -1528,11 +1527,11 @@ class QueryResultBatch {
    */
   core.String skippedCursor;
   core.List<core.int> get skippedCursorAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(skippedCursor);
+    return convert.BASE64.decode(skippedCursor);
   }
 
   void set skippedCursorAsBytes(core.List<core.int> _bytes) {
-    skippedCursor = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    skippedCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** The number of results skipped, typically because of an offset. */
   core.int skippedResults;
@@ -1603,11 +1602,11 @@ class ReadOptions {
    */
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(transaction);
+    return convert.BASE64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   ReadOptions();
@@ -1641,11 +1640,11 @@ class RollbackRequest {
    */
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(transaction);
+    return convert.BASE64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   RollbackRequest();
@@ -1783,11 +1782,11 @@ class Value {
    */
   core.String blobValue;
   core.List<core.int> get blobValueAsBytes {
-    return crypto.CryptoUtils.base64StringToBytes(blobValue);
+    return convert.BASE64.decode(blobValue);
   }
 
   void set blobValueAsBytes(core.List<core.int> _bytes) {
-    blobValue = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
+    blobValue = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /** A boolean value. */
   core.bool booleanValue;
