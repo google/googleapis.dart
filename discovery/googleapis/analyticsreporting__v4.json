@@ -140,7 +140,7 @@
             }
         }
     },
-    "revision": "20160601",
+    "revision": "20160616",
     "rootUrl": "https://analyticsreporting.googleapis.com/",
     "schemas": {
         "PivotHeader": {

@@ -14,7 +14,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client fitness/v1';
 
-/** Google Fit API */
+/**
+ * Stores and accesses user data in the fitness store from apps on any platform.
+ */
 class FitnessApi {
   /** View your activity information in Google Fit */
   static const FitnessActivityReadScope = "https://www.googleapis.com/auth/fitness.activity.read";
@@ -117,7 +119,8 @@ class UsersDataSourcesResourceApi {
   }
 
   /**
-   * Delete the data source if there are no datapoints associated with it
+   * Deletes the specified data source. The request will fail if the data source
+   * contains any data points.
    *
    * Request parameters:
    *
@@ -162,7 +165,7 @@ class UsersDataSourcesResourceApi {
   }
 
   /**
-   * Returns a data source identified by a data stream ID.
+   * Returns the specified data source.
    *
    * Request parameters:
    *
@@ -208,8 +211,8 @@ class UsersDataSourcesResourceApi {
 
   /**
    * Lists all data sources that are visible to the developer, using the OAuth
-   * scopes provided. The list is not exhaustive: the user may have private data
-   * sources that are only visible to other developers or calls using other
+   * scopes provided. The list is not exhaustive; the user may have private data
+   * sources that are only visible to other developers, or calls using other
    * scopes.
    *
    * Request parameters:
@@ -256,12 +259,11 @@ class UsersDataSourcesResourceApi {
   }
 
   /**
-   * Updates a given data source. It is an error to modify the data source's
-   * data stream ID, data type, type, stream name or device information apart
-   * from the device version. Changing these fields would require a new unique
-   * data stream ID and separate data source.
+   * Updates the specified data source. The dataStreamId, dataType, type,
+   * dataStreamName, and device properties with the exception of version, cannot
+   * be modified.
    *
-   * Data sources are identified by their data stream ID. This method supports
+   * Data sources are identified by their dataStreamId. This method supports
    * patch semantics.
    *
    * [request] - The metadata request object.
@@ -312,12 +314,11 @@ class UsersDataSourcesResourceApi {
   }
 
   /**
-   * Updates a given data source. It is an error to modify the data source's
-   * data stream ID, data type, type, stream name or device information apart
-   * from the device version. Changing these fields would require a new unique
-   * data stream ID and separate data source.
+   * Updates the specified data source. The dataStreamId, dataType, type,
+   * dataStreamName, and device properties with the exception of version, cannot
+   * be modified.
    *
-   * Data sources are identified by their data stream ID.
+   * Data sources are identified by their dataStreamId.
    *
    * [request] - The metadata request object.
    *
@@ -1066,9 +1067,6 @@ class AggregateResponse {
   }
 }
 
-/**
- * See: google3/java/com/google/android/apps/heart/platform/api/Application.java
- */
 class Application {
   /** An optional URI that can be used to link back to the application. */
   core.String detailsUrl;
@@ -1194,6 +1192,7 @@ class BucketByTime {
    * with an empty dataset.
    */
   core.String durationMillis;
+  BucketByTimePeriod period;
 
   BucketByTime();
 
@@ -1201,12 +1200,60 @@ class BucketByTime {
     if (_json.containsKey("durationMillis")) {
       durationMillis = _json["durationMillis"];
     }
+    if (_json.containsKey("period")) {
+      period = new BucketByTimePeriod.fromJson(_json["period"]);
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (durationMillis != null) {
       _json["durationMillis"] = durationMillis;
+    }
+    if (period != null) {
+      _json["period"] = (period).toJson();
+    }
+    return _json;
+  }
+}
+
+class BucketByTimePeriod {
+  /** org.joda.timezone.DateTimeZone */
+  core.String timeZoneId;
+  /**
+   *
+   * Possible string values are:
+   * - "day"
+   * - "month"
+   * - "week"
+   */
+  core.String type;
+  core.int value;
+
+  BucketByTimePeriod();
+
+  BucketByTimePeriod.fromJson(core.Map _json) {
+    if (_json.containsKey("timeZoneId")) {
+      timeZoneId = _json["timeZoneId"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (timeZoneId != null) {
+      _json["timeZoneId"] = timeZoneId;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
@@ -1348,6 +1395,7 @@ class DataSource {
    * Information about an application which feeds sensor data into the platform.
    */
   Application application;
+  core.List<core.String> dataQualityStandard;
   /**
    * A unique identifier for the data stream produced by this data source. The
    * identifier includes:
@@ -1417,6 +1465,9 @@ class DataSource {
     if (_json.containsKey("application")) {
       application = new Application.fromJson(_json["application"]);
     }
+    if (_json.containsKey("dataQualityStandard")) {
+      dataQualityStandard = _json["dataQualityStandard"];
+    }
     if (_json.containsKey("dataStreamId")) {
       dataStreamId = _json["dataStreamId"];
     }
@@ -1442,6 +1493,9 @@ class DataSource {
     if (application != null) {
       _json["application"] = (application).toJson();
     }
+    if (dataQualityStandard != null) {
+      _json["dataQualityStandard"] = dataQualityStandard;
+    }
     if (dataStreamId != null) {
       _json["dataStreamId"] = dataStreamId;
     }
@@ -1464,9 +1518,6 @@ class DataSource {
   }
 }
 
-/**
- * See: google3/java/com/google/android/apps/heart/platform/api/DataType.java
- */
 class DataType {
   /** A field represents one dimension of a data type. */
   core.List<DataTypeField> field;

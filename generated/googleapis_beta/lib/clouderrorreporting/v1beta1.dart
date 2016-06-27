@@ -48,9 +48,12 @@ class ProjectsResourceApi {
    *
    * Request parameters:
    *
-   * [projectName] - The resource name of the Google Cloud Platform project.
-   * Required.
-   * Example: `projects/my-project`.
+   * [projectName] - [Required] The resource name of the Google Cloud Platform
+   * project. Written
+   * as `projects/` plus the
+   * [Google Cloud Platform project
+   * ID](https://support.google.com/cloud/answer/6158840).
+   * Example: `projects/my-project-123`.
    * Value must have pattern "^projects/[^/]*$".
    *
    * Completes with a [DeleteEventsResponse].
@@ -99,9 +102,12 @@ class ProjectsEventsResourceApi {
    *
    * Request parameters:
    *
-   * [projectName] - The resource name of the Google Cloud Platform project.
-   * Required.
-   * Example: projects/my-project
+   * [projectName] - [Required] The resource name of the Google Cloud Platform
+   * project. Written
+   * as `projects/` plus the
+   * [Google Cloud Platform project
+   * ID](https://support.google.com/cloud/answer/6158840).
+   * Example: `projects/my-project-123`.
    * Value must have pattern "^projects/[^/]*$".
    *
    * [timeRange_period] - Restricts the query to the specified time range.
@@ -113,17 +119,19 @@ class ProjectsEventsResourceApi {
    * - "PERIOD_1_WEEK" : A PERIOD_1_WEEK.
    * - "PERIOD_30_DAYS" : A PERIOD_30_DAYS.
    *
-   * [serviceFilter_service] - The exact value to match against
+   * [serviceFilter_service] - [Optional] The exact value to match against
    * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
    *
-   * [groupId] - The group for which events shall be returned. Required.
+   * [groupId] - [Required] The group for which events shall be returned.
    *
-   * [serviceFilter_version] - The exact value to match against
+   * [serviceFilter_version] - [Optional] The exact value to match against
    * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
    *
-   * [pageSize] - The maximum number of results to return per response.
+   * [pageSize] - [Optional] The maximum number of results to return per
+   * response.
    *
-   * [pageToken] - A `next_page_token` provided by a previous response.
+   * [pageToken] - [Optional] A `next_page_token` provided by a previous
+   * response.
    *
    * Completes with a [ListEventsResponse].
    *
@@ -189,15 +197,16 @@ class ProjectsGroupStatsResourceApi {
    *
    * Request parameters:
    *
-   * [projectName] - The resource name of the Google Cloud Platform project.
-   * Written as
-   * `projects/` plus the
-   * [Google Cloud Platform project
-   * ID](https://support.google.com/cloud/answer/6158840).
-   * Required. Example: `projects/my-project-123`.
+   * [projectName] - [Required] The resource name of the Google Cloud Platform
+   * project. Written
+   * as <code>projects/</code> plus the
+   * <a href="https://support.google.com/cloud/answer/6158840">Google Cloud
+   * Platform project ID</a>.
+   *
+   * Example: <code>projects/my-project-123</code>.
    * Value must have pattern "^projects/[^/]*$".
    *
-   * [alignment] - The alignment of the timed counts to be returned.
+   * [alignment] - [Optional] The alignment of the timed counts to be returned.
    * Default is `ALIGNMENT_EQUAL_AT_END`.
    * Possible string values are:
    * - "ERROR_COUNT_ALIGNMENT_UNSPECIFIED" : A
@@ -214,7 +223,7 @@ class ProjectsGroupStatsResourceApi {
    * - "PERIOD_1_WEEK" : A PERIOD_1_WEEK.
    * - "PERIOD_30_DAYS" : A PERIOD_30_DAYS.
    *
-   * [order] - The sort order in which the results are returned.
+   * [order] - [Optional] The sort order in which the results are returned.
    * Default is `COUNT_DESC`.
    * Possible string values are:
    * - "GROUP_ORDER_UNSPECIFIED" : A GROUP_ORDER_UNSPECIFIED.
@@ -223,31 +232,33 @@ class ProjectsGroupStatsResourceApi {
    * - "CREATED_DESC" : A CREATED_DESC.
    * - "AFFECTED_USERS_DESC" : A AFFECTED_USERS_DESC.
    *
-   * [groupId] - List all `ErrorGroupStats` with these IDs.
+   * [groupId] - [Optional] List all <code>ErrorGroupStats</code> with these
+   * IDs.
    * If not specified, all error group stats with a non-zero error count
    * for the given selection criteria are returned.
    *
-   * [serviceFilter_service] - The exact value to match against
+   * [serviceFilter_service] - [Optional] The exact value to match against
    * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
    *
-   * [alignmentTime] - Time where the timed counts shall be aligned if rounded
-   * alignment
-   * is chosen. Default is 00:00 UTC.
+   * [alignmentTime] - [Optional] Time where the timed counts shall be aligned
+   * if rounded
+   * alignment is chosen. Default is 00:00 UTC.
    *
-   * [serviceFilter_version] - The exact value to match against
+   * [serviceFilter_version] - [Optional] The exact value to match against
    * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
    *
-   * [pageSize] - The maximum number of results to return per response.
+   * [pageSize] - [Optional] The maximum number of results to return per
+   * response.
    * Default is 20.
    *
-   * [timedCountDuration] - The preferred duration for a single returned
-   * `TimedCount`.
+   * [timedCountDuration] - [Optional] The preferred duration for a single
+   * returned `TimedCount`.
    * If not set, no timed counts are returned.
    *
-   * [pageToken] - A `next_page_token` provided by a previous response. To view
-   * additional
-   * results, pass this token along with the identical query parameters as the
-   * first request.
+   * [pageToken] - [Optional] A `next_page_token` provided by a previous
+   * response. To view
+   * additional results, pass this token along with the identical query
+   * parameters as the first request.
    *
    * Completes with a [ListGroupStatsResponse].
    *
@@ -325,8 +336,14 @@ class ProjectsGroupsResourceApi {
    *
    * Request parameters:
    *
-   * [groupName] - Group resource name. Required.
-   * Example: `projects/my-project-123/groups/my-group`
+   * [groupName] - [Required] The group resource name. Written as
+   * <code>projects/<var>projectID</var>/groups/<var>group_name</var></code>.
+   * Call
+   * <a href="/error-reporting/reference/rest/v1beta1/projects.groupStats/list">
+   * <code>groupStats.list</code></a> to return a list of groups belonging to
+   * this project.
+   *
+   * Example: <code>projects/my-project-123/groups/my-group</code>
    * Value must have pattern "^projects/[^/] * / groups/[^/]*$".
    *
    * Completes with a [ErrorGroup].
@@ -369,8 +386,8 @@ class ProjectsGroupsResourceApi {
    *
    * Request parameters:
    *
-   * [name] - Group resource name.
-   * Example: `projects/my-project-123/groups/my-groupid`
+   * [name] - The group resource name.
+   * Example: <code>projects/my-project-123/groups/my-groupid</code>
    * Value must have pattern "^projects/[^/] * / groups/[^/]*$".
    *
    * Completes with a [ErrorGroup].
@@ -431,10 +448,12 @@ class DeleteEventsResponse {
  * This data should be provided by the application when reporting an error,
  * unless the
  * error report has been generated automatically from Google App Engine logs.
- * All fields are optional.
  */
 class ErrorContext {
-  /** The HTTP request which was processed when the error was triggered. */
+  /**
+   * The HTTP request which was processed when the error was
+   * triggered.
+   */
   HttpRequestContext httpRequest;
   /**
    * The location in the source code where the decision was made to
@@ -498,7 +517,7 @@ class ErrorEvent {
   core.String eventTime;
   /** The stack trace that was reported or logged by the service. */
   core.String message;
-  /** The service_context for which this error was reported. */
+  /** The `ServiceContext` for which this error was reported. */
   ServiceContext serviceContext;
 
   ErrorEvent();
@@ -544,8 +563,8 @@ class ErrorGroup {
    */
   core.String groupId;
   /**
-   * Group resource name.
-   * Example: `projects/my-project-123/groups/my-groupid`
+   * The group resource name.
+   * Example: <code>projects/my-project-123/groups/my-groupid</code>
    */
   core.String name;
   /** Associated tracking issues. */
@@ -716,7 +735,6 @@ class ErrorGroupStats {
  * This data should be provided by the application when reporting an error,
  * unless the
  * error report has been generated automatically from Google App Engine logs.
- * All fields are optional.
  */
 class HttpRequestContext {
   /** The type of HTTP request, such as `GET`, `POST`, etc. */
@@ -858,10 +876,10 @@ class ListGroupStatsResponse {
  */
 class ServiceContext {
   /**
-   * An identifier of the service, such as the name of the executable, job, or
-   * Google App Engine module name. This field is expected to have a low number
-   * of values that are relatively stable over time, as opposed to
-   * `version`, which can be changed whenever new code is deployed.
+   * An identifier of the service, such as the name of the
+   * executable, job, or Google App Engine module name. This field is expected
+   * to have a low number of values that are relatively stable over time, as
+   * opposed to `version`, which can be changed whenever new code is deployed.
    *
    * Contains the module name for error reports extracted from Google
    * App Engine logs or `default` if the App Engine default module is used.
@@ -905,8 +923,8 @@ class ServiceContext {
  */
 class SourceLocation {
   /**
-   * The source code filename, which can include a truncated relative path, or
-   * a full path from a production machine.
+   * The source code filename, which can include a truncated relative
+   * path, or a full path from a production machine.
    */
   core.String filePath;
   /**

@@ -14,12 +14,12 @@
     "description": "Provisions and manages App Engine applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/appengine/docs/admin-api/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/uLbYg19XaV3zzxJ-nkNjmqc7iVk\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/znuMABkgRDZiA5AVJHEOfBrJ318\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
-    "id": "appengine:v1beta5",
+    "id": "appengine:v1",
     "kind": "discovery#restDescription",
     "name": "appengine",
     "ownerDomain": "google.com",
@@ -116,20 +116,41 @@
                     ],
                     "parameters": {
                         "appsId": {
-                            "description": "Part of `name`. Name of the application to get. For example: \"apps/myapp\".",
+                            "description": "Part of `name`. The name of the Application resource to get. For example: \"apps/myapp\".",
                             "location": "path",
                             "required": true,
                             "type": "string"
-                        },
-                        "ensureResourcesExist": {
-                            "description": "Certain resources associated with an application are created on-demand. Controls whether these resources should be created when performing the `GET` operation. If specified and any resources could not be created, the request will fail with an error code. Additionally, this parameter can cause the request to take longer to complete. Note: This parameter will be deprecated in a future version of the API.",
-                            "location": "query",
-                            "type": "boolean"
                         }
                     },
-                    "path": "v1beta5/apps/{appsId}",
+                    "path": "v1/apps/{appsId}",
                     "response": {
                         "$ref": "Application"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "repair": {
+                    "description": "Ensures that all special features required for App Engine, such as the appspot bucket and appengine robot, exist for this project.",
+                    "httpMethod": "POST",
+                    "id": "appengine.apps.repair",
+                    "parameterOrder": [
+                        "appsId"
+                    ],
+                    "parameters": {
+                        "appsId": {
+                            "description": "Part of `name`. Name of the application to repair. For example: \"apps/myapp\".",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/apps/{appsId}:repair",
+                    "request": {
+                        "$ref": "RepairApplicationRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
@@ -161,7 +182,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "v1beta5/apps/{appsId}/operations/{operationsId}",
+                            "path": "v1/apps/{appsId}/operations/{operationsId}",
                             "response": {
                                 "$ref": "Operation"
                             },
@@ -200,7 +221,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "v1beta5/apps/{appsId}/operations",
+                            "path": "v1/apps/{appsId}/operations",
                             "response": {
                                 "$ref": "ListOperationsResponse"
                             },
@@ -212,38 +233,42 @@
                 },
                 "services": {
                     "methods": {
-                        "delete": {
-                            "description": "Deletes a service and all enclosed versions.",
-                            "httpMethod": "DELETE",
-                            "id": "appengine.apps.services.delete",
+                        "list": {
+                            "description": "Lists all the services in the application.",
+                            "httpMethod": "GET",
+                            "id": "appengine.apps.services.list",
                             "parameterOrder": [
-                                "appsId",
-                                "servicesId"
+                                "appsId"
                             ],
                             "parameters": {
                                 "appsId": {
-                                    "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/services/default\".",
+                                    "description": "Part of `parent`. Name of the parent Application resource. For example: \"apps/myapp\".",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
                                 },
-                                "servicesId": {
-                                    "description": "Part of `name`. See documentation of `appsId`.",
-                                    "location": "path",
-                                    "required": true,
+                                "pageSize": {
+                                    "description": "Maximum results to return per page.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "Continuation token for fetching the next page of results.",
+                                    "location": "query",
                                     "type": "string"
                                 }
                             },
-                            "path": "v1beta5/apps/{appsId}/services/{servicesId}",
+                            "path": "v1/apps/{appsId}/services",
                             "response": {
-                                "$ref": "Operation"
+                                "$ref": "ListServicesResponse"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
                         "get": {
-                            "description": "Gets the current configuration of the service.",
+                            "description": "Gets the current configuration of the specified service.",
                             "httpMethod": "GET",
                             "id": "appengine.apps.services.get",
                             "parameterOrder": [
@@ -264,43 +289,9 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "v1beta5/apps/{appsId}/services/{servicesId}",
+                            "path": "v1/apps/{appsId}/services/{servicesId}",
                             "response": {
                                 "$ref": "Service"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
-                            ]
-                        },
-                        "list": {
-                            "description": "Lists all the services in the application.",
-                            "httpMethod": "GET",
-                            "id": "appengine.apps.services.list",
-                            "parameterOrder": [
-                                "appsId"
-                            ],
-                            "parameters": {
-                                "appsId": {
-                                    "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp\".",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "pageSize": {
-                                    "description": "Maximum results to return per page.",
-                                    "format": "int32",
-                                    "location": "query",
-                                    "type": "integer"
-                                },
-                                "pageToken": {
-                                    "description": "Continuation token for fetching the next page of results.",
-                                    "location": "query",
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1beta5/apps/{appsId}/services",
-                            "response": {
-                                "$ref": "ListServicesResponse"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -327,21 +318,51 @@
                                     "required": true,
                                     "type": "string"
                                 },
-                                "mask": {
+                                "updateMask": {
                                     "description": "Standard field mask for the set of fields to be updated.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "migrateTraffic": {
-                                    "description": "Whether to use Traffic Migration to shift traffic gradually. Traffic can only be migrated from a single version to another single version.",
+                                    "description": "Whether to use traffic migration to shift traffic gradually. Traffic can only be migrated from a single version to another single version. More information is available in the documentation for traffic migration: https://cloud.google.com/appengine/docs/python/migrating-traffic",
                                     "location": "query",
                                     "type": "boolean"
                                 }
                             },
-                            "path": "v1beta5/apps/{appsId}/services/{servicesId}",
+                            "path": "v1/apps/{appsId}/services/{servicesId}",
                             "request": {
                                 "$ref": "Service"
                             },
+                            "response": {
+                                "$ref": "Operation"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "delete": {
+                            "description": "Deletes the specified service and all enclosed versions.",
+                            "httpMethod": "DELETE",
+                            "id": "appengine.apps.services.delete",
+                            "parameterOrder": [
+                                "appsId",
+                                "servicesId"
+                            ],
+                            "parameters": {
+                                "appsId": {
+                                    "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/services/default\".",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "servicesId": {
+                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/apps/{appsId}/services/{servicesId}",
                             "response": {
                                 "$ref": "Operation"
                             },
@@ -353,78 +374,58 @@
                     "resources": {
                         "versions": {
                             "methods": {
-                                "create": {
-                                    "description": "Deploys new code and resource files to a version.",
-                                    "httpMethod": "POST",
-                                    "id": "appengine.apps.services.versions.create",
+                                "list": {
+                                    "description": "Lists the versions of a service.",
+                                    "httpMethod": "GET",
+                                    "id": "appengine.apps.services.versions.list",
                                     "parameterOrder": [
                                         "appsId",
                                         "servicesId"
                                     ],
                                     "parameters": {
                                         "appsId": {
-                                            "description": "Part of `name`. Name of the resource to update. For example: \"apps/myapp/services/default\".",
+                                            "description": "Part of `parent`. Name of the parent resource to list versions on. For example: \"apps/myapp/services/default\".",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
                                         },
                                         "servicesId": {
-                                            "description": "Part of `name`. See documentation of `appsId`.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions",
-                                    "request": {
-                                        "$ref": "Version"
-                                    },
-                                    "response": {
-                                        "$ref": "Operation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "delete": {
-                                    "description": "Deletes an existing version.",
-                                    "httpMethod": "DELETE",
-                                    "id": "appengine.apps.services.versions.delete",
-                                    "parameterOrder": [
-                                        "appsId",
-                                        "servicesId",
-                                        "versionsId"
-                                    ],
-                                    "parameters": {
-                                        "appsId": {
-                                            "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/services/default/versions/v1\".",
+                                            "description": "Part of `parent`. See documentation of `appsId`.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
                                         },
-                                        "servicesId": {
-                                            "description": "Part of `name`. See documentation of `appsId`.",
-                                            "location": "path",
-                                            "required": true,
+                                        "view": {
+                                            "description": "Controls the set of fields returned in the `List` response.",
+                                            "enum": [
+                                                "BASIC",
+                                                "FULL"
+                                            ],
+                                            "location": "query",
                                             "type": "string"
                                         },
-                                        "versionsId": {
-                                            "description": "Part of `name`. See documentation of `appsId`.",
-                                            "location": "path",
-                                            "required": true,
+                                        "pageSize": {
+                                            "description": "Maximum results to return per page.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "Continuation token for fetching the next page of results.",
+                                            "location": "query",
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
+                                    "path": "v1/apps/{appsId}/services/{servicesId}/versions",
                                     "response": {
-                                        "$ref": "Operation"
+                                        "$ref": "ListVersionsResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
                                 "get": {
-                                    "description": "Gets application deployment information.",
+                                    "description": "Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Please specify the FULL_VIEW parameter to get the full resource.",
                                     "httpMethod": "GET",
                                     "id": "appengine.apps.services.versions.get",
                                     "parameterOrder": [
@@ -461,7 +462,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
+                                    "path": "v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
                                     "response": {
                                         "$ref": "Version"
                                     },
@@ -469,58 +470,41 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
-                                "list": {
-                                    "description": "Lists the versions of a service.",
-                                    "httpMethod": "GET",
-                                    "id": "appengine.apps.services.versions.list",
+                                "create": {
+                                    "description": "Deploys code and resource files to a new version.",
+                                    "httpMethod": "POST",
+                                    "id": "appengine.apps.services.versions.create",
                                     "parameterOrder": [
                                         "appsId",
                                         "servicesId"
                                     ],
                                     "parameters": {
                                         "appsId": {
-                                            "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/services/default\".",
+                                            "description": "Part of `parent`. Name of the parent resource to create this version under. For example: \"apps/myapp/services/default\".",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
                                         },
                                         "servicesId": {
-                                            "description": "Part of `name`. See documentation of `appsId`.",
+                                            "description": "Part of `parent`. See documentation of `appsId`.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
-                                        },
-                                        "view": {
-                                            "description": "Controls the set of fields returned in the `List` response.",
-                                            "enum": [
-                                                "BASIC",
-                                                "FULL"
-                                            ],
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "Maximum results to return per page.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
-                                        },
-                                        "pageToken": {
-                                            "description": "Continuation token for fetching the next page of results.",
-                                            "location": "query",
-                                            "type": "string"
                                         }
                                     },
-                                    "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions",
+                                    "path": "v1/apps/{appsId}/services/{servicesId}/versions",
+                                    "request": {
+                                        "$ref": "Version"
+                                    },
                                     "response": {
-                                        "$ref": "ListVersionsResponse"
+                                        "$ref": "Operation"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
                                 "patch": {
-                                    "description": "Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses: * [`serving_status`](/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.serving_status): For Version resources that use basic scaling, manual scaling, or run in the App Engine flexible environment. * [`instance_class`](/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.instance_class): For Version resources that run in the App Engine standard environment. * [`automatic_scaling.min_idle_instances`](/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.automatic_scaling): For Version resources that use automatic scaling and run in the App Engine standard environment. * [`automatic_scaling.max_idle_instances`](/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.automatic_scaling): For Version resources that use automatic scaling and run in the App Engine standard environment.",
+                                    "description": "Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses: * [`serving_status`](/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status): For Version resources that use basic scaling, manual scaling, or run in the App Engine flexible environment. * [`instance_class`](/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class): For Version resources that run in the App Engine standard environment. * [`automatic_scaling.min_idle_instances`](/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling): For Version resources that use automatic scaling and run in the App Engine standard environment. * [`automatic_scaling.max_idle_instances`](/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling): For Version resources that use automatic scaling and run in the App Engine standard environment.",
                                     "httpMethod": "PATCH",
                                     "id": "appengine.apps.services.versions.patch",
                                     "parameterOrder": [
@@ -547,16 +531,53 @@
                                             "required": true,
                                             "type": "string"
                                         },
-                                        "mask": {
+                                        "updateMask": {
                                             "description": "Standard field mask for the set of fields to be updated.",
                                             "location": "query",
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
+                                    "path": "v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
                                     "request": {
                                         "$ref": "Version"
                                     },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes an existing Version resource.",
+                                    "httpMethod": "DELETE",
+                                    "id": "appengine.apps.services.versions.delete",
+                                    "parameterOrder": [
+                                        "appsId",
+                                        "servicesId",
+                                        "versionsId"
+                                    ],
+                                    "parameters": {
+                                        "appsId": {
+                                            "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/services/default/versions/v1\".",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "servicesId": {
+                                            "description": "Part of `name`. See documentation of `appsId`.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "versionsId": {
+                                            "description": "Part of `name`. See documentation of `appsId`.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
                                     "response": {
                                         "$ref": "Operation"
                                     },
@@ -579,19 +600,19 @@
                                             ],
                                             "parameters": {
                                                 "appsId": {
-                                                    "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/services/default/versions/v1\".",
+                                                    "description": "Part of `parent`. Name of the parent Version resource to list instances for. For example: \"apps/myapp/services/default/versions/v1\".",
                                                     "location": "path",
                                                     "required": true,
                                                     "type": "string"
                                                 },
                                                 "servicesId": {
-                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "description": "Part of `parent`. See documentation of `appsId`.",
                                                     "location": "path",
                                                     "required": true,
                                                     "type": "string"
                                                 },
                                                 "versionsId": {
-                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "description": "Part of `parent`. See documentation of `appsId`.",
                                                     "location": "path",
                                                     "required": true,
                                                     "type": "string"
@@ -608,7 +629,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances",
+                                            "path": "v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances",
                                             "response": {
                                                 "$ref": "ListInstancesResponse"
                                             },
@@ -717,7 +738,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "The relative name/path of the application. Example: \"myapp\".",
+                    "description": "The relative name of the application. Example: \"myapp\".",
                     "type": "string"
                 },
                 "dispatchRules": {
@@ -731,7 +752,7 @@
                     "description": "If set, only users from the specified Google Apps authentication domain may access the application. If not set, any Google Account may access the application.",
                     "type": "string"
                 },
-                "location": {
+                "locationId": {
                     "description": "The location from which the application will be run. Application instances will run out of data centers in the chosen location and all of the application's End User Content will be stored at rest. The default is \"us-central\". Choices are: \"us-central\" - Central US \"europe-west\" - Western Europe \"us-east1\" - Eastern US",
                     "type": "string"
                 },
@@ -773,6 +794,90 @@
             },
             "type": "object"
         },
+        "RepairApplicationRequest": {
+            "description": "Request message for 'Applications.RepairApplication'.",
+            "id": "RepairApplicationRequest",
+            "type": "object"
+        },
+        "ListServicesResponse": {
+            "description": "Response message for `Services.ListServices`.",
+            "id": "ListServicesResponse",
+            "properties": {
+                "services": {
+                    "description": "The services belonging to the requested application.",
+                    "items": {
+                        "$ref": "Service"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "Continuation token for fetching the next page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Service": {
+            "description": "A service is a logical component of an application that can share state and communicate in a secure fashion with other services. For example, an application that handles customer requests might include separate services to handle other tasks such as API requests from mobile devices or backend data analysis. Each service has a collection of versions that define a specific set of code used to implement the functionality of that service.",
+            "id": "Service",
+            "properties": {
+                "name": {
+                    "description": "The full path to the Service resource in the API. Example: \"apps/myapp/services/default\" @OutputOnly",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The relative name of the service within the application. Example: \"default\" @OutputOnly",
+                    "type": "string"
+                },
+                "split": {
+                    "$ref": "TrafficSplit",
+                    "description": "A mapping that defines fractional HTTP traffic diversion to different versions within the service."
+                }
+            },
+            "type": "object"
+        },
+        "TrafficSplit": {
+            "description": "Configuration for traffic splitting for versions within a single service. Traffic splitting allows traffic directed to the service to be assigned to one of several versions in a fractional way, enabling experiments and canarying new builds, for example.",
+            "id": "TrafficSplit",
+            "properties": {
+                "shardBy": {
+                    "description": "Which mechanism should be used as a selector when choosing a version to send a request to. The traffic selection algorithm will be stable for either type until allocations are changed.",
+                    "enum": [
+                        "UNSPECIFIED",
+                        "COOKIE",
+                        "IP"
+                    ],
+                    "type": "string"
+                },
+                "allocations": {
+                    "additionalProperties": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "description": "Mapping from service version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version may only be specified once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated in this field may not be deleted until the service is deleted, or their traffic allocation is removed. Allocations must sum to 1. Supports precision up to two decimal places for IP-based splits and up to three decimal places for cookie-based splits.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ListVersionsResponse": {
+            "description": "Response message for `Versions.ListVersions`.",
+            "id": "ListVersionsResponse",
+            "properties": {
+                "versions": {
+                    "description": "The versions belonging to the requested application service.",
+                    "items": {
+                        "$ref": "Version"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "Continuation token for fetching the next page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Version": {
             "description": "A Version is a specific set of source code and configuration files deployed to a service.",
             "id": "Version",
@@ -782,7 +887,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "The relative name/path of the Version within the service. Example: \"v1\". Version specifiers can contain lowercase letters, digits, and hyphens. It cannot begin with the prefix `ah-` and the names `default` and `latest` are reserved and cannot be used.",
+                    "description": "The relative name of the Version within the service. Example: \"v1\". Version specifiers can contain lowercase letters, digits, and hyphens. It cannot begin with the prefix `ah-` and the names `default` and `latest` are reserved and cannot be used.",
                     "type": "string"
                 },
                 "automaticScaling": {
@@ -858,7 +963,7 @@
                     "type": "object"
                 },
                 "env": {
-                    "description": "The App Engine execution environment to use for this version. Default: \"1\"",
+                    "description": "The App Engine execution environment to use for this version. Default: \"standard\"",
                     "type": "string"
                 },
                 "servingStatus": {
@@ -870,11 +975,11 @@
                     ],
                     "type": "string"
                 },
-                "deployer": {
+                "createdBy": {
                     "description": "The email address of the user who created this version. @OutputOnly",
                     "type": "string"
                 },
-                "creationTime": {
+                "createTime": {
                     "description": "Creation time of this version. This will be between the start and end times of the operation that creates this version. @OutputOnly",
                     "type": "string"
                 },
@@ -930,6 +1035,10 @@
                 "deployment": {
                     "$ref": "Deployment",
                     "description": "Code and application artifacts that make up this version. Only returned in `GET` requests if `view=FULL` is set. May only be set on create requests; once created, is immutable."
+                },
+                "versionUrl": {
+                    "description": "The version's URL, which is of the form: https://service_version_id-dot-service_id-dot-app_id.appspot.com @OutputOnly",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1014,7 +1123,7 @@
             "description": "Target scaling by request utilization (for VM runtimes only).",
             "id": "RequestUtilization",
             "properties": {
-                "targetRequestCountPerSec": {
+                "targetRequestCountPerSecond": {
                     "description": "Target requests per second.",
                     "format": "int32",
                     "type": "integer"
@@ -1031,22 +1140,22 @@
             "description": "Target scaling by disk usage (for VM runtimes only).",
             "id": "DiskUtilization",
             "properties": {
-                "targetWriteBytesPerSec": {
+                "targetWriteBytesPerSecond": {
                     "description": "Target bytes per second written.",
                     "format": "int32",
                     "type": "integer"
                 },
-                "targetWriteOpsPerSec": {
+                "targetWriteOpsPerSecond": {
                     "description": "Target ops per second written.",
                     "format": "int32",
                     "type": "integer"
                 },
-                "targetReadBytesPerSec": {
+                "targetReadBytesPerSecond": {
                     "description": "Target bytes per second read.",
                     "format": "int32",
                     "type": "integer"
                 },
-                "targetReadOpsPerSec": {
+                "targetReadOpsPerSecond": {
                     "description": "Target ops per second read.",
                     "format": "int32",
                     "type": "integer"
@@ -1058,22 +1167,22 @@
             "description": "Target scaling by network usage (for VM runtimes only).",
             "id": "NetworkUtilization",
             "properties": {
-                "targetSentBytesPerSec": {
+                "targetSentBytesPerSecond": {
                     "description": "Target bytes per second sent.",
                     "format": "int32",
                     "type": "integer"
                 },
-                "targetSentPacketsPerSec": {
+                "targetSentPacketsPerSecond": {
                     "description": "Target packets per second sent.",
                     "format": "int32",
                     "type": "integer"
                 },
-                "targetReceivedBytesPerSec": {
+                "targetReceivedBytesPerSecond": {
                     "description": "Target bytes per second received.",
                     "format": "int32",
                     "type": "integer"
                 },
-                "targetReceivedPacketsPerSec": {
+                "targetReceivedPacketsPerSecond": {
                     "description": "Target packets per second received.",
                     "format": "int32",
                     "type": "integer"
@@ -1319,7 +1428,7 @@
             "type": "object"
         },
         "ApiConfigHandler": {
-            "description": "API Serving configuration for Cloud Endpoints.",
+            "description": "Google Cloud Endpoints configuration for API handlers. Used to tune behavior of optional Cloud Endpoints integration.",
             "id": "ApiConfigHandler",
             "properties": {
                 "authFailAction": {
@@ -1415,13 +1524,6 @@
                 "container": {
                     "$ref": "ContainerInfo",
                     "description": "If supplied, a docker (container) image which should be used to start the application. Only applicable to the 'vm' runtime."
-                },
-                "sourceReferences": {
-                    "description": "The origin of the source code for this deployment. There can be more than one source reference per Version if source code is distributed among multiple repositories.",
-                    "items": {
-                        "$ref": "SourceReference"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -1456,100 +1558,6 @@
             },
             "type": "object"
         },
-        "SourceReference": {
-            "description": "A reference to a particular snapshot of the source tree used to build and deploy the application.",
-            "id": "SourceReference",
-            "properties": {
-                "repository": {
-                    "description": "Optional. A URI string identifying the repository. Example: \"https://source.developers.google.com/p/app-123/r/default\"",
-                    "type": "string"
-                },
-                "revisionId": {
-                    "description": "The canonical (and persistent) identifier of the deployed revision, i.e. any kind of aliases including tags or branch names are not allowed. Example (git): \"2198322f89e0bb2e25021667c2ed489d1fd34e6b\"",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListVersionsResponse": {
-            "description": "Response message for `Versions.ListVersions`.",
-            "id": "ListVersionsResponse",
-            "properties": {
-                "versions": {
-                    "description": "The versions belonging to the requested application service.",
-                    "items": {
-                        "$ref": "Version"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "Continuation token for fetching the next page of results.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Service": {
-            "description": "A service is a logical component of an application that can share state and communicate in a secure fashion with other services. For example, an application that handles customer requests might include separate services to handle other tasks such as API requests from mobile devices or backend data analysis. Each service has a collection of versions that define a specific set of code used to implement the functionality of that service.",
-            "id": "Service",
-            "properties": {
-                "name": {
-                    "description": "The full path to the Service resource in the API. Example: \"apps/myapp/services/default\" @OutputOnly",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "The relative name/path of the service within the application. Example: \"default\" @OutputOnly",
-                    "type": "string"
-                },
-                "split": {
-                    "$ref": "TrafficSplit",
-                    "description": "A mapping that defines fractional HTTP traffic diversion to different versions within the service."
-                }
-            },
-            "type": "object"
-        },
-        "TrafficSplit": {
-            "description": "Configuration for traffic splitting for versions within a single service. Traffic splitting allows traffic directed to the service to be assigned to one of several versions in a fractional way, enabling experiments and canarying new builds, for example.",
-            "id": "TrafficSplit",
-            "properties": {
-                "shardBy": {
-                    "description": "Which mechanism should be used as a selector when choosing a version to send a request to. The traffic selection algorithm will be stable for either type until allocations are changed.",
-                    "enum": [
-                        "UNSPECIFIED",
-                        "COOKIE",
-                        "IP"
-                    ],
-                    "type": "string"
-                },
-                "allocations": {
-                    "additionalProperties": {
-                        "format": "double",
-                        "type": "number"
-                    },
-                    "description": "Mapping from service version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version may only be specified once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated in this field may not be deleted until the service is deleted, or their traffic allocation is removed. Allocations must sum to 1. Supports precision up to two decimal places for IP-based splits and up to three decimal places for cookie-based splits.",
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "ListServicesResponse": {
-            "description": "Response message for `Services.ListServices`.",
-            "id": "ListServicesResponse",
-            "properties": {
-                "services": {
-                    "description": "The services belonging to the requested application.",
-                    "items": {
-                        "$ref": "Service"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "Continuation token for fetching the next page of results.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "ListInstancesResponse": {
             "description": "Response message for `Instances.ListInstances`.",
             "id": "ListInstancesResponse",
@@ -1573,11 +1581,11 @@
             "id": "Instance",
             "properties": {
                 "name": {
-                    "description": "The full path to the Instance resource in the API. Example: \"apps/myapp/services/default/versions/v1/instances/instance-1\" @OutputOnly",
+                    "description": "The resource name of an Instance. Example: \"apps/myapp/services/default/versions/v1/instances/instance-1\" @OutputOnly",
                     "type": "string"
                 },
                 "id": {
-                    "description": "The relative name/path of the instance within the version. Example: \"instance-1\" @OutputOnly",
+                    "description": "The relative name of the instance within the version. Example: \"instance-1\" @OutputOnly",
                     "type": "string"
                 },
                 "appEngineRelease": {
@@ -1605,7 +1613,7 @@
                     "description": "For VMEngines instances, the Compute Engine VM ID of the instance. @OutputOnly",
                     "type": "string"
                 },
-                "startTimestamp": {
+                "startTime": {
                     "description": "Time when instance was started. @OutputOnly",
                     "type": "string"
                 },
@@ -1616,7 +1624,7 @@
                 },
                 "errors": {
                     "description": "Number of errors since the instance was started. @OutputOnly",
-                    "format": "uint32",
+                    "format": "int32",
                     "type": "integer"
                 },
                 "qps": {
@@ -1738,5 +1746,5 @@
     },
     "servicePath": "",
     "title": "Google App Engine Admin API",
-    "version": "v1beta5"
+    "version": "v1"
 }

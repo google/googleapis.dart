@@ -23,10 +23,10 @@
     "basePath": "",
     "baseUrl": "https://genomics.googleapis.com/",
     "batchPath": "batch",
-    "description": "Stores, processes, explores and shares genomic data. This API implements the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
+    "description": "Stores, processes, explores and shares genomic data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/genomics/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/tiMSr_rx6sAiZqgev813znobRac\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/dRlyMxJrL2EQCAcvP4wfLx3yzig\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1538,7 +1538,7 @@
             }
         }
     },
-    "revision": "20160524",
+    "revision": "20160622",
     "rootUrl": "https://genomics.googleapis.com/",
     "schemas": {
         "AnnotationSet": {
@@ -3633,6 +3633,10 @@
                     "description": "The time at which the job was submitted to the Genomics service.",
                     "type": "string"
                 },
+                "startTime": {
+                    "description": "The time at which the job began to run.",
+                    "type": "string"
+                },
                 "endTime": {
                     "description": "The time at which the job stopped running.",
                     "type": "string"
@@ -3651,6 +3655,18 @@
                         "$ref": "OperationEvent"
                     },
                     "type": "array"
+                },
+                "clientId": {
+                    "description": "Optionally provided by the caller when submitting the request that creates the operation.",
+                    "type": "string"
+                },
+                "runtimeMetadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @ype with type URL.",
+                        "type": "any"
+                    },
+                    "description": "Runtime metadata on this Operation.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -3659,9 +3675,54 @@
             "description": "An event that occurred during an Operation.",
             "id": "OperationEvent",
             "properties": {
+                "startTime": {
+                    "description": "Optional time of when event started.",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Optional time of when event finished. An event can have a start time and no finish time. If an event has a finish time, there must be a start time.",
+                    "type": "string"
+                },
                 "description": {
                     "description": "Required description of event.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RuntimeMetadata": {
+            "description": "Runtime metadata that will be populated in the runtimeMetadata field of the Operation associated with a RunPipeline execution.",
+            "id": "RuntimeMetadata",
+            "properties": {
+                "computeEngine": {
+                    "$ref": "ComputeEngine",
+                    "description": "Execution information specific to Google Compute Engine."
+                }
+            },
+            "type": "object"
+        },
+        "ComputeEngine": {
+            "description": "Describes a Compute Engine resource that is being managed by a running pipeline.",
+            "id": "ComputeEngine",
+            "properties": {
+                "instanceName": {
+                    "description": "The instance on which the operation is running.",
+                    "type": "string"
+                },
+                "zone": {
+                    "description": "The availability zone in which the instance resides.",
+                    "type": "string"
+                },
+                "machineType": {
+                    "description": "The machine type of the instance.",
+                    "type": "string"
+                },
+                "diskNames": {
+                    "description": "The names of the disks that were created for this pipeline.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

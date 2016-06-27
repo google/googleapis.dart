@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/HunW8kZz70Rw8UgbEglfvbYNW8k\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/cPnwg2U9hg8m8Y6wHWcvqIF8qSM\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -2102,7 +2102,7 @@
             }
         }
     },
-    "revision": "20160504",
+    "revision": "20160609",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -2306,14 +2306,14 @@
                     "type": "object"
                 },
                 "website": {
-                    "description": "The bucket's website configuration.",
+                    "description": "The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.",
                     "properties": {
                         "mainPageSuffix": {
-                            "description": "Behaves as the bucket's directory index where missing objects are treated as potential directories.",
+                            "description": "If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.",
                             "type": "string"
                         },
                         "notFoundPage": {
-                            "description": "The custom object to return when a requested resource is not found.",
+                            "description": "If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.",
                             "type": "string"
                         }
                     },

@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client books/v1';
 
-/** Lets you search for books and manage your Google Books library. */
+/** Searches for books and manages your Google Books library. */
 class BooksApi {
   /** Manage your books */
   static const BooksScope = "https://www.googleapis.com/auth/books";
@@ -6233,8 +6233,29 @@ class UsersettingsNotificationMoreFromAuthors {
   }
 }
 
+class UsersettingsNotificationMoreFromSeries {
+  core.String optedState;
+
+  UsersettingsNotificationMoreFromSeries();
+
+  UsersettingsNotificationMoreFromSeries.fromJson(core.Map _json) {
+    if (_json.containsKey("opted_state")) {
+      optedState = _json["opted_state"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (optedState != null) {
+      _json["opted_state"] = optedState;
+    }
+    return _json;
+  }
+}
+
 class UsersettingsNotification {
   UsersettingsNotificationMoreFromAuthors moreFromAuthors;
+  UsersettingsNotificationMoreFromSeries moreFromSeries;
 
   UsersettingsNotification();
 
@@ -6242,12 +6263,18 @@ class UsersettingsNotification {
     if (_json.containsKey("moreFromAuthors")) {
       moreFromAuthors = new UsersettingsNotificationMoreFromAuthors.fromJson(_json["moreFromAuthors"]);
     }
+    if (_json.containsKey("moreFromSeries")) {
+      moreFromSeries = new UsersettingsNotificationMoreFromSeries.fromJson(_json["moreFromSeries"]);
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (moreFromAuthors != null) {
       _json["moreFromAuthors"] = (moreFromAuthors).toJson();
+    }
+    if (moreFromSeries != null) {
+      _json["moreFromSeries"] = (moreFromSeries).toJson();
     }
     return _json;
   }
@@ -6730,6 +6757,8 @@ class VolumeSaleInfoOffersRetailPrice {
 class VolumeSaleInfoOffers {
   /** The finsky offer type (e.g., PURCHASE=0 RENTAL=3) */
   core.int finskyOfferType;
+  /** Indicates whether the offer is giftable. */
+  core.bool giftable;
   /** Offer list (=undiscounted) price in Micros. */
   VolumeSaleInfoOffersListPrice listPrice;
   /** The rental duration (for rental offers only). */
@@ -6742,6 +6771,9 @@ class VolumeSaleInfoOffers {
   VolumeSaleInfoOffers.fromJson(core.Map _json) {
     if (_json.containsKey("finskyOfferType")) {
       finskyOfferType = _json["finskyOfferType"];
+    }
+    if (_json.containsKey("giftable")) {
+      giftable = _json["giftable"];
     }
     if (_json.containsKey("listPrice")) {
       listPrice = new VolumeSaleInfoOffersListPrice.fromJson(_json["listPrice"]);
@@ -6758,6 +6790,9 @@ class VolumeSaleInfoOffers {
     var _json = new core.Map();
     if (finskyOfferType != null) {
       _json["finskyOfferType"] = finskyOfferType;
+    }
+    if (giftable != null) {
+      _json["giftable"] = giftable;
     }
     if (listPrice != null) {
       _json["listPrice"] = (listPrice).toJson();

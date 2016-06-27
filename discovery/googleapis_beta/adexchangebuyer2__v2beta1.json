@@ -504,7 +504,7 @@
             }
         }
     },
-    "revision": "20160602",
+    "revision": "20160621",
     "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "schemas": {
         "ClientUser": {
@@ -630,7 +630,7 @@
                         "AGENCY"
                     ],
                     "enumDescriptions": [
-                        "A placeholder for an undefined client entity type.",
+                        "A placeholder for an undefined client entity type. Should not be used.",
                         "An advertiser.",
                         "A brand.",
                         "An advertising agency."

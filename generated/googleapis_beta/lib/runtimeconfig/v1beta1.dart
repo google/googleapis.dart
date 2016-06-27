@@ -988,6 +988,10 @@ class EndCondition {
   }
 }
 
+/**
+ * `ListConfigs()` returns the following response. The order of returned
+ * objects is arbitrary; that is, it is not ordered in any particular way.
+ */
 class ListConfigsResponse {
   /**
    * A list of the configurations in the project. The order of returned
@@ -1026,6 +1030,7 @@ class ListConfigsResponse {
   }
 }
 
+/** Response for the `ListVariables()` method. */
 class ListVariablesResponse {
   /**
    * This token allows you to get the next page of results for list requests.

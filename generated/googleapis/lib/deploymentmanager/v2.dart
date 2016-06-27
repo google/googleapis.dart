@@ -2599,6 +2599,11 @@ class Type {
   core.String insertTime;
   /** Name of the type. */
   core.String name;
+  /**
+   * [Output Only] The Operation that most recently ran, or is currently
+   * running, on this type.
+   */
+  Operation operation;
   /** [Output Only] Self link for the type. */
   core.String selfLink;
 
@@ -2613,6 +2618,9 @@ class Type {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("operation")) {
+      operation = new Operation.fromJson(_json["operation"]);
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -2629,6 +2637,9 @@ class Type {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (operation != null) {
+      _json["operation"] = (operation).toJson();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;

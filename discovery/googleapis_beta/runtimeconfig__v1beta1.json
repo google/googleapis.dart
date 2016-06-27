@@ -17,7 +17,7 @@
     "canonicalName": "Cloud RuntimeConfig",
     "description": "Provides capabilities for dynamic configuration and coordination for applications running on Google Cloud Platform.\n",
     "discoveryVersion": "v1",
-    "documentationLink": "https://cloud.google.com/deployment-manager/docs/",
+    "documentationLink": "https://cloud.google.com/deployment-manager/runtime-configurator/",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -601,7 +601,7 @@
             }
         }
     },
-    "revision": "20160524",
+    "revision": "20160621",
     "rootUrl": "https://runtimeconfig.googleapis.com/",
     "schemas": {
         "Status": {
@@ -632,6 +632,7 @@
             "type": "object"
         },
         "ListConfigsResponse": {
+            "description": "`ListConfigs()` returns the following response. The order of returned\nobjects is arbitrary; that is, it is not ordered in any particular way.",
             "id": "ListConfigsResponse",
             "properties": {
                 "nextPageToken": {
@@ -834,6 +835,7 @@
             "type": "object"
         },
         "ListVariablesResponse": {
+            "description": "Response for the `ListVariables()` method.",
             "id": "ListVariablesResponse",
             "properties": {
                 "variables": {

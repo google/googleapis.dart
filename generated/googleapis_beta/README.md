@@ -207,7 +207,7 @@ Official API documentation: https://developers.google.com/compute/
 Provides capabilities for dynamic configuration and coordination for applications running on Google Cloud Platform.
 
 
-Official API documentation: https://cloud.google.com/deployment-manager/docs/
+Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud SQL Administration API - sqladmin v1beta3
 

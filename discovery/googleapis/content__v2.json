@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/4Rgh9MmLNBO5ZC_DMngLOgVFSQQ\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/NPNa_SEeXXVxOwTbtg9AMorWmfQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1940,7 +1940,7 @@
             }
         }
     },
-    "revision": "20160520",
+    "revision": "20160602",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -2319,6 +2319,16 @@
                 "costRuleTree": {
                     "$ref": "AccountShippingShippingServiceCostRule",
                     "description": "Decision tree for \"complicated\" shipping cost calculation."
+                },
+                "maxDaysInTransit": {
+                    "description": "The maximum number of days in transit. Must be a value between 0 and 250 included. A value of 0 means same day delivery.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "minDaysInTransit": {
+                    "description": "The minimum number of days in transit. Must be a value between 0 and maxDaysIntransit included. A value of 0 means same day delivery.",
+                    "format": "uint64",
+                    "type": "string"
                 },
                 "name": {
                     "annotations": {

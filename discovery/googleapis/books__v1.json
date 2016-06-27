@@ -11,10 +11,10 @@
     "basePath": "/books/v1/",
     "baseUrl": "https://www.googleapis.com/books/v1/",
     "batchPath": "batch",
-    "description": "Lets you search for books and manage your Google Books library.",
+    "description": "Searches for books and manages your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/EKgCMl0lR3W1RkwoySiKYH3FM7c\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/qqTEAwY0Qxp4UsR5ltoW-UrtYgA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
         "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
@@ -2385,7 +2385,7 @@
             }
         }
     },
-    "revision": "20160411",
+    "revision": "20160531",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -3758,6 +3758,14 @@
                                 }
                             },
                             "type": "object"
+                        },
+                        "moreFromSeries": {
+                            "properties": {
+                                "opted_state": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "type": "object"
@@ -3942,6 +3950,10 @@
                                         "description": "The finsky offer type (e.g., PURCHASE=0 RENTAL=3)",
                                         "format": "int32",
                                         "type": "integer"
+                                    },
+                                    "giftable": {
+                                        "description": "Indicates whether the offer is giftable.",
+                                        "type": "boolean"
                                     },
                                     "listPrice": {
                                         "description": "Offer list (=undiscounted) price in Micros.",

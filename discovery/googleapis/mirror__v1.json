@@ -14,10 +14,10 @@
     "basePath": "/mirror/v1/",
     "baseUrl": "https://www.googleapis.com/mirror/v1/",
     "batchPath": "batch",
-    "description": "API for interacting with Glass users via the timeline.",
+    "description": "Interacts with Glass users via the timeline.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/glass",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/22GY9K9VtYhN_tb0gpdw_zDH1Gg\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/OwaGZAsygqh-DVZUGXJhzHuvoBQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -735,7 +735,7 @@
             }
         }
     },
-    "revision": "20151206",
+    "revision": "20160616",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

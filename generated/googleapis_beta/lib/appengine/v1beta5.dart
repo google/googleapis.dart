@@ -646,7 +646,20 @@ class AppsServicesVersionsResourceApi {
   }
 
   /**
-   * Updates an existing version. Note: UNIMPLEMENTED.
+   * Updates the specified Version resource. You can specify the following
+   * fields depending on the App Engine environment and type of scaling that the
+   * version resource uses: *
+   * [`serving_status`](/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.serving_status):
+   * For Version resources that use basic scaling, manual scaling, or run in the
+   * App Engine flexible environment. *
+   * [`instance_class`](/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.instance_class):
+   * For Version resources that run in the App Engine standard environment. *
+   * [`automatic_scaling.min_idle_instances`](/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.automatic_scaling):
+   * For Version resources that use automatic scaling and run in the App Engine
+   * standard environment. *
+   * [`automatic_scaling.max_idle_instances`](/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.automatic_scaling):
+   * For Version resources that use automatic scaling and run in the App Engine
+   * standard environment.
    *
    * [request] - The metadata request object.
    *
@@ -1536,16 +1549,19 @@ class Instance {
   core.int requests;
   /** Time when instance was started. @OutputOnly */
   core.String startTimestamp;
-  /** For VMEngines instances, the GCE VM ID of the instance. @OutputOnly */
+  /**
+   * For VMEngines instances, the Compute Engine VM ID of the instance.
+   * @OutputOnly
+   */
   core.String vmId;
   /**
-   * For VMEngines instances, the name of GCE VM where the instance lives.
-   * @OutputOnly
+   * For VMEngines instances, the name of the Compute Engine VM where the
+   * instance lives. @OutputOnly
    */
   core.String vmName;
   /**
-   * For VMEngines instances, the status of GCE VM where the instance lives.
-   * @OutputOnly
+   * For VMEngines instances, the status of the Compute Engine VM where the
+   * instance lives. @OutputOnly
    */
   core.String vmStatus;
   /**
@@ -1554,7 +1570,8 @@ class Instance {
    */
   core.bool vmUnlocked;
   /**
-   * For VMEngines instances, the zone where the GCE VM is located. @OutputOnly
+   * For VMEngines instances, the zone where the Compute Engine VM is located.
+   * @OutputOnly
    */
   core.String vmZoneName;
 
@@ -1805,6 +1822,20 @@ class ListVersionsResponse {
     if (versions != null) {
       _json["versions"] = versions.map((value) => (value).toJson()).toList();
     }
+    return _json;
+  }
+}
+
+/** Metadata for the given google.cloud.location.Location. */
+class LocationMetadata {
+
+  LocationMetadata();
+
+  LocationMetadata.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
     return _json;
   }
 }
@@ -2077,6 +2108,69 @@ class OperationMetadata {
     }
     if (operationType != null) {
       _json["operationType"] = operationType;
+    }
+    if (target != null) {
+      _json["target"] = target;
+    }
+    if (user != null) {
+      _json["user"] = user;
+    }
+    return _json;
+  }
+}
+
+/** Metadata for the given google.longrunning.Operation. */
+class OperationMetadataV1 {
+  /**
+   * Timestamp that this operation was completed. (Not present if the operation
+   * is still in progress.) @OutputOnly
+   */
+  core.String endTime;
+  /** Timestamp that this operation was received. @OutputOnly */
+  core.String insertTime;
+  /**
+   * API method name that initiated the operation. Example:
+   * "google.appengine.v1.Version.CreateVersion". @OutputOnly
+   */
+  core.String method;
+  /**
+   * Resource that this operation is acting on. Example:
+   * "apps/myapp/services/default". @OutputOnly
+   */
+  core.String target;
+  /** The user who requested this operation. @OutputOnly */
+  core.String user;
+
+  OperationMetadataV1();
+
+  OperationMetadataV1.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("insertTime")) {
+      insertTime = _json["insertTime"];
+    }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
+    if (_json.containsKey("target")) {
+      target = _json["target"];
+    }
+    if (_json.containsKey("user")) {
+      user = _json["user"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (insertTime != null) {
+      _json["insertTime"] = insertTime;
+    }
+    if (method != null) {
+      _json["method"] = method;
     }
     if (target != null) {
       _json["target"] = target;

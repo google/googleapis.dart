@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.28.0
+    version: 0.29.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -21,6 +21,7 @@ packages:
     - analyticsreporting:v4  # https://developers.google.com/analytics/devguides/reporting/core/v4/
     - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
     - androidpublisher:v2  # https://developers.google.com/android-publisher/
+    - appengine:v1  # https://cloud.google.com/appengine/docs/admin-api/
     - appsactivity:v1  # https://developers.google.com/google-apps/activity/
     - appstate:v1  # https://developers.google.com/games/services/web/api/states
     - bigquery:v2  # https://developers.google.com/bigquery/
@@ -37,7 +38,6 @@ packages:
     - container:v1
     - content:v2  # https://developers.google.com/shopping-content/
     - content:v2sandbox
-    - coordinate:v1  # https://google-developers.appspot.com/coordinate/
     - customsearch:v1  # https://developers.google.com/custom-search/
     - consumersurveys:v2  # https://developers.google.com/consumer-surveys/
     - dataproc:v1 # https://cloud.google.com/dataproc/
@@ -100,7 +100,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.27.1
+    version: 0.28.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -149,7 +149,6 @@ skipped_apis:
 - clouduseraccounts:vm_beta # seems to be the same API as "beta"
 - compute:alpha # v1 included
 - compute:beta # v1 included
-- iam:v1alpha1 # v1 included
 - datastore:v1beta1  # v1beta2 included
 - dataproc:v1alpha1 # v1beta1 included
 - genomics:v1alpha2 # v1 included
@@ -160,7 +159,6 @@ skipped_apis:
 - prediction:v1.5  # v1.6 included
 - pubsub:v1beta1a  # v1beta1, v1bets2 and v1 included
 - replicapool:v1beta1  # Deprecated
-- serviceregistry:alpha  # Don't include alpha APIs
 - spectrum:v1explorer  # Not included, https://developers.google.com/spectrum/
 - storage:v1beta1  # v1 included
 - storage:v1beta2  # v1 included

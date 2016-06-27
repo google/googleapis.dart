@@ -17,7 +17,7 @@
     "description": "Develops and executes data processing patterns like ETL, batch computation, and continuous computation.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataflow",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/-PCQObxeMXLhOncDOKreF3FN9IU\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/zIcToutH_qQymkOoQRgRxX5M2es\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -275,6 +275,7 @@
                                 "filter": {
                                     "description": "The kind of filter to use.",
                                     "enum": [
+                                        "UNKNOWN",
                                         "ALL",
                                         "TERMINATED",
                                         "ACTIVE"
@@ -497,7 +498,7 @@
             }
         }
     },
-    "revision": "20160331",
+    "revision": "20160621",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
         "Job": {
@@ -772,7 +773,7 @@
                     "type": "string"
                 },
                 "subnetwork": {
-                    "description": "Subnetwork to which VMs will be assigned, if desired. Expected to be of the form \"zones/ZONE/subnetworks/SUBNETWORK\".",
+                    "description": "Subnetwork to which VMs will be assigned, if desired. Expected to be of the form \"regions/REGION/subnetworks/SUBNETWORK\".",
                     "type": "string"
                 },
                 "workerHarnessContainerImage": {
@@ -1211,8 +1212,15 @@
                     },
                     "type": "array"
                 },
+                "counterUpdates": {
+                    "description": "Worker output counters for this WorkItem.",
+                    "items": {
+                        "$ref": "CounterUpdate"
+                    },
+                    "type": "array"
+                },
                 "metricUpdates": {
-                    "description": "Worker output metrics (counters) for this WorkItem.",
+                    "description": "DEPRECATED in favor of counter_updates.",
                     "items": {
                         "$ref": "MetricUpdate"
                     },
@@ -1272,6 +1280,289 @@
             },
             "type": "object"
         },
+        "CounterUpdate": {
+            "description": "An update to a Counter sent from a worker.",
+            "id": "CounterUpdate",
+            "properties": {
+                "nameAndKind": {
+                    "$ref": "NameAndKind",
+                    "description": "Counter name and aggregation type."
+                },
+                "shortId": {
+                    "description": "The service-generated short identifier for this counter. The short_id -> (name, metadata) mapping is constant for the lifetime of a job.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "structuredNameAndMetadata": {
+                    "$ref": "CounterStructuredNameAndMetadata",
+                    "description": "Counter structured name and metadata."
+                },
+                "cumulative": {
+                    "description": "True if this counter is reported as the total cumulative aggregate value accumulated since the worker started working on this WorkItem. By default this is false, indicating that this counter is reported as a delta.",
+                    "type": "boolean"
+                },
+                "integer": {
+                    "$ref": "SplitInt64",
+                    "description": "Integer value for Sum, Max, Min."
+                },
+                "floatingPoint": {
+                    "description": "Floating point value for Sum, Max, Min.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "boolean": {
+                    "description": "Boolean value for And, Or.",
+                    "type": "boolean"
+                },
+                "integerMean": {
+                    "$ref": "IntegerMean",
+                    "description": "Integer mean aggregation value for Mean."
+                },
+                "floatingPointMean": {
+                    "$ref": "FloatingPointMean",
+                    "description": "Floating point mean aggregation value for Mean."
+                },
+                "integerList": {
+                    "$ref": "IntegerList",
+                    "description": "List of integers, for Set."
+                },
+                "floatingPointList": {
+                    "$ref": "FloatingPointList",
+                    "description": "List of floating point numbers, for Set."
+                },
+                "stringList": {
+                    "$ref": "StringList",
+                    "description": "List of strings, for Set."
+                },
+                "internal": {
+                    "description": "Value for internally-defined counters used by the Dataflow service.",
+                    "type": "any"
+                }
+            },
+            "type": "object"
+        },
+        "NameAndKind": {
+            "description": "Basic metadata about a counter.",
+            "id": "NameAndKind",
+            "properties": {
+                "name": {
+                    "description": "Name of the counter.",
+                    "type": "string"
+                },
+                "kind": {
+                    "description": "Counter aggregation kind.",
+                    "enum": [
+                        "INVALID",
+                        "SUM",
+                        "MAX",
+                        "MIN",
+                        "MEAN",
+                        "OR",
+                        "AND",
+                        "SET"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CounterStructuredNameAndMetadata": {
+            "description": "A single message which encapsulates structured name and metadata for a given counter.",
+            "id": "CounterStructuredNameAndMetadata",
+            "properties": {
+                "name": {
+                    "$ref": "CounterStructuredName",
+                    "description": "Structured name of the counter."
+                },
+                "metadata": {
+                    "$ref": "CounterMetadata",
+                    "description": "Metadata associated with a counter"
+                }
+            },
+            "type": "object"
+        },
+        "CounterStructuredName": {
+            "description": "Identifies a counter within a per-job namespace. Counters whose structured names are the same get merged into a single value for the job.",
+            "id": "CounterStructuredName",
+            "properties": {
+                "name": {
+                    "description": "Counter name. Not necessarily globally-unique, but unique within the context of the other fields. Required.",
+                    "type": "string"
+                },
+                "standardOrigin": {
+                    "description": "One of the standard Origins defined above.",
+                    "enum": [
+                        "DATAFLOW",
+                        "USER"
+                    ],
+                    "type": "string"
+                },
+                "otherOrigin": {
+                    "description": "A string containing the origin of the counter.",
+                    "type": "string"
+                },
+                "originalStepName": {
+                    "description": "System generated name of the original step in the user's graph, before optimization.",
+                    "type": "string"
+                },
+                "componentStepName": {
+                    "description": "Name of the optimized step being executed by the workers.",
+                    "type": "string"
+                },
+                "executionStepName": {
+                    "description": "Name of the stage. An execution step contains multiple component steps.",
+                    "type": "string"
+                },
+                "workerId": {
+                    "description": "ID of a particular worker.",
+                    "type": "string"
+                },
+                "portion": {
+                    "description": "Portion of this counter, either key or value.",
+                    "enum": [
+                        "ALL",
+                        "KEY",
+                        "VALUE"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CounterMetadata": {
+            "description": "CounterMetadata includes all static non-name non-value counter attributes.",
+            "id": "CounterMetadata",
+            "properties": {
+                "kind": {
+                    "description": "Counter aggregation kind.",
+                    "enum": [
+                        "INVALID",
+                        "SUM",
+                        "MAX",
+                        "MIN",
+                        "MEAN",
+                        "OR",
+                        "AND",
+                        "SET"
+                    ],
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Human-readable description of the counter semantics.",
+                    "type": "string"
+                },
+                "standardUnits": {
+                    "description": "System defined Units, see above enum.",
+                    "enum": [
+                        "BYTES",
+                        "BYTES_PER_SEC",
+                        "MILLISECONDS",
+                        "MICROSECONDS",
+                        "NANOSECONDS",
+                        "TIMESTAMP_MSEC",
+                        "TIMESTAMP_USEC",
+                        "TIMESTAMP_NSEC"
+                    ],
+                    "type": "string"
+                },
+                "otherUnits": {
+                    "description": "A string referring to the unit type.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SplitInt64": {
+            "description": "A representation of an int64, n, that is immune to precision loss when encoded in JSON.",
+            "id": "SplitInt64",
+            "properties": {
+                "lowBits": {
+                    "description": "The low order bits: n & 0xffffffff.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "highBits": {
+                    "description": "The high order bits, including the sign: n >> 32.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "IntegerMean": {
+            "description": "A representation of an integer mean metric contribution.",
+            "id": "IntegerMean",
+            "properties": {
+                "sum": {
+                    "$ref": "SplitInt64",
+                    "description": "The sum of all values being aggregated."
+                },
+                "count": {
+                    "$ref": "SplitInt64",
+                    "description": "The number of values being aggregated."
+                }
+            },
+            "type": "object"
+        },
+        "FloatingPointMean": {
+            "description": "A representation of a floating point mean metric contribution.",
+            "id": "FloatingPointMean",
+            "properties": {
+                "sum": {
+                    "description": "The sum of all values being aggregated.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "count": {
+                    "$ref": "SplitInt64",
+                    "description": "The number of values being aggregated."
+                }
+            },
+            "type": "object"
+        },
+        "IntegerList": {
+            "description": "A metric value representing a list of integers.",
+            "id": "IntegerList",
+            "properties": {
+                "elements": {
+                    "description": "Elements of the list.",
+                    "items": {
+                        "$ref": "SplitInt64"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "FloatingPointList": {
+            "description": "A metric value representing a list of floating point numbers.",
+            "id": "FloatingPointList",
+            "properties": {
+                "elements": {
+                    "description": "Elements of the list.",
+                    "items": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "StringList": {
+            "description": "A metric value representing a list of strings.",
+            "id": "StringList",
+            "properties": {
+                "elements": {
+                    "description": "Elements of the list.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ApproximateReportedProgress": {
             "description": "A progress measurement of a WorkItem by a worker.",
             "id": "ApproximateReportedProgress",
@@ -1287,11 +1578,11 @@
                 },
                 "remainingParallelism": {
                     "$ref": "ReportedParallelism",
-                    "description": "Total amount of parallelism in the input of this WorkItem that has not been consumed yet (i.e. can be delegated to a new WorkItem via dynamic splitting). \"Amount of parallelism\" refers to how many non-empty parts of the input can be read in parallel. This does not necessarily equal number of records. An input that can be read in parallel down to the individual records is called \"perfectly splittable\". An example of non-perfectly parallelizable input is a block-compressed file format where a block of records has to be read as a whole, but different blocks can be read in parallel. Examples: * If we have read 30 records out of 50 in a perfectly splittable 50-record input, this value should be 20. * If we are reading through block 3 in a block-compressed file consisting of 5 blocks, this value should be 2 (since blocks 4 and 5 can be processed in parallel by new work items via dynamic splitting). * If we are reading through the last block in a block-compressed file, or reading or processing the last record in a perfectly splittable input, this value should be 0, because the remainder of the work item cannot be further split."
+                    "description": "Total amount of parallelism in the input of this task that remains, (i.e. can be delegated to this task and any new tasks via dynamic splitting). Always at least 1 for non-finished work items and 0 for finished. \"Amount of parallelism\" refers to how many non-empty parts of the input can be read in parallel. This does not necessarily equal number of records. An input that can be read in parallel down to the individual records is called \"perfectly splittable\". An example of non-perfectly parallelizable input is a block-compressed file format where a block of records has to be read as a whole, but different blocks can be read in parallel. Examples: * If we are processing record #30 (starting at 1) out of 50 in a perfectly splittable 50-record input, this value should be 21 (20 remaining + 1 current). * If we are reading through block 3 in a block-compressed file consisting of 5 blocks, this value should be 3 (since blocks 4 and 5 can be processed in parallel by new tasks via dynamic splitting and the current task remains processing block 3). * If we are reading through the last block in a block-compressed file, or reading or processing the last record in a perfectly splittable input, this value should be 1, because apart from the current task, no additional remainder can be split off."
                 },
                 "consumedParallelism": {
                     "$ref": "ReportedParallelism",
-                    "description": "Total amount of parallelism in the portion of input of this work item that has already been consumed. In the first two examples above (see remaining_parallelism), the value should be 30 or 3 respectively. The sum of remaining_parallelism and consumed_parallelism should equal the total amount of parallelism in this work item. If specified, must be finite."
+                    "description": "Total amount of parallelism in the portion of input of this task that has already been consumed and is no longer active. In the first two examples above (see remaining_parallelism), the value should be 29 or 2 respectively. The sum of remaining_parallelism and consumed_parallelism should equal the total amount of parallelism in this work item. If specified, must be finite."
                 }
             },
             "type": "object"
@@ -1622,6 +1913,13 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "metricShortId": {
+                    "description": "The short ids that workers should use in subsequent metric updates. Workers should strive to use short ids whenever possible, but it is ok to request the short_id again if a worker lost track of it (e.g. if the worker is recovering from a crash). NOTE: it is possible that the response may have short ids for a subset of the metrics.",
+                    "items": {
+                        "$ref": "MetricShortId"
+                    },
+                    "type": "array"
+                },
                 "suggestedStopPosition": {
                     "$ref": "Position",
                     "description": "Obsolete, always empty."
@@ -1645,6 +1943,23 @@
                     "description": "A fraction at which to split the work item, from 0.0 (beginning of the input) to 1.0 (end of the input).",
                     "format": "double",
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "MetricShortId": {
+            "description": "The metric short id is returned to the user alongside an offset into ReportWorkItemStatusRequest",
+            "id": "MetricShortId",
+            "properties": {
+                "metricIndex": {
+                    "description": "The index of the corresponding metric in the ReportWorkItemStatusRequest. Required.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "shortId": {
+                    "description": "The service-generated short identifier for the metric.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1743,6 +2058,10 @@
                 "streamingComputationTask": {
                     "$ref": "StreamingComputationTask",
                     "description": "Additional information for StreamingComputationTask WorkItems."
+                },
+                "streamingConfigTask": {
+                    "$ref": "StreamingConfigTask",
+                    "description": "Additional information for StreamingConfigTask WorkItems."
                 },
                 "reportStatusInterval": {
                     "description": "Recommended reporting interval.",
@@ -2505,6 +2824,53 @@
                 "dataDisk": {
                     "description": "The name of the data disk where data for this range is stored. This name is local to the Google Cloud Platform project and uniquely identifies the disk within that project, for example \"myproject-1014-104817-4c2-harness-0-disk-1\".",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StreamingConfigTask": {
+            "description": "A task that carries configuration information for streaming computations.",
+            "id": "StreamingConfigTask",
+            "properties": {
+                "streamingComputationConfigs": {
+                    "description": "Set of computation configuration information.",
+                    "items": {
+                        "$ref": "StreamingComputationConfig"
+                    },
+                    "type": "array"
+                },
+                "userStepToStateFamilyNameMap": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map from user step names to state families.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "StreamingComputationConfig": {
+            "description": "Configuration information for a single streaming computation.",
+            "id": "StreamingComputationConfig",
+            "properties": {
+                "computationId": {
+                    "description": "Unique identifier for this computation.",
+                    "type": "string"
+                },
+                "systemName": {
+                    "description": "System defined name for this computation.",
+                    "type": "string"
+                },
+                "stageName": {
+                    "description": "Stage name of this computation.",
+                    "type": "string"
+                },
+                "instructions": {
+                    "description": "Instructions that comprise the computation.",
+                    "items": {
+                        "$ref": "ParallelInstruction"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

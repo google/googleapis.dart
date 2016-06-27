@@ -28,10 +28,62 @@ class CloudresourcemanagerApi {
 
   final commons.ApiRequester _requester;
 
+  OperationsResourceApi get operations => new OperationsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   CloudresourcemanagerApi(http.Client client, {core.String rootUrl: "https://cloudresourcemanager.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+
+class OperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OperationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets the latest state of a long-running operation. Clients can use this
+   * method to poll the operation result at intervals as recommended by the API
+   * service.
+   *
+   * Request parameters:
+   *
+   * [name] - The name of the operation resource.
+   * Value must have pattern "^operations/.*$".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> get(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
 }
 
 
@@ -48,12 +100,12 @@ class ProjectsResourceApi {
    * account associated with it. + The Project has a lifecycle state of ACTIVE.
    * This method changes the Project's lifecycle state from ACTIVE to
    * DELETE_REQUESTED. The deletion starts at an unspecified time, at which
-   * point the lifecycle state changes to DELETE_IN_PROGRESS. Until the deletion
-   * completes, you can check the lifecycle state checked by retrieving the
-   * Project with GetProject, and the Project remains visible to ListProjects.
-   * However, you cannot update the project. After the deletion completes, the
-   * Project is not retrievable by the GetProject and ListProjects methods. The
-   * caller must have modify permissions for this Project.
+   * point the Project is no longer accessible. Until the deletion completes,
+   * you can check the lifecycle state checked by retrieving the Project with
+   * GetProject, and the Project remains visible to ListProjects. However, you
+   * cannot update the project. After the deletion completes, the Project is not
+   * retrievable by the GetProject and ListProjects methods. The caller must
+   * have modify permissions for this Project.
    *
    * Request parameters:
    *
@@ -247,17 +299,28 @@ class ProjectsResourceApi {
   /**
    * Sets the IAM access control policy for the specified Project. Replaces any
    * existing policy. The following constraints apply when using
-   * `setIamPolicy()`: + Project currently supports only `user:{emailid}` and
-   * `serviceAccount:{emailid}` members in a `Binding` of a `Policy`. + To be
-   * added as an `owner`, a user must be invited via Cloud Platform console and
-   * must accept the invitation. + Members cannot be added to more than one role
-   * in the same policy. + There must be at least one owner who has accepted the
-   * Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to
-   * to remove the last ToS-accepted owner from the policy will fail. + Calling
-   * this method requires enabling the App Engine Admin API. Note: Removing
-   * service accounts from policies or changing their roles can render services
-   * completely inoperable. It is important to understand how the service
-   * account is being used before removing or updating its roles.
+   * `setIamPolicy()`: + Project does not support `allUsers` and
+   * `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The
+   * owner role can be granted only to `user` and `serviceAccount`. + Service
+   * accounts can be made owners of a project directly without any restrictions.
+   * However, to be added as an owner, a user must be invited via Cloud Platform
+   * console and must accept the invitation. + A user cannot be granted the
+   * owner role using `setIamPolicy()`. The user must be granted the owner role
+   * using the Cloud Platform Console and must explicitly accept the invitation.
+   * + Invitations to grant the owner role cannot be sent using
+   * `setIamPolicy()`; they must be sent only using the Cloud Platform Console.
+   * + Membership changes that leave the project without any owners that have
+   * accepted the Terms of Service (ToS) will be rejected. + Members cannot be
+   * added to more than one role in the same policy. + There must be at least
+   * one owner who has accepted the Terms of Service (ToS) agreement in the
+   * policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner
+   * from the policy will fail. This restriction also applies to legacy projects
+   * that no longer have owners who have accepted the ToS. Edits to IAM policies
+   * will be rejected until the lack of a ToS-accepting owner is rectified. +
+   * Calling this method requires enabling the App Engine Admin API. Note:
+   * Removing service accounts from policies or changing their roles can render
+   * services completely inoperable. It is important to understand how the
+   * service account is being used before removing or updating its roles.
    *
    * [request] - The metadata request object.
    *
@@ -355,9 +418,9 @@ class ProjectsResourceApi {
   /**
    * Restores the Project identified by the specified `project_id` (for example,
    * `my-project-123`). You can only use this method for a Project that has a
-   * lifecycle state of DELETE_REQUESTED. After deletion starts, as indicated by
-   * a lifecycle state of DELETE_IN_PROGRESS, the Project cannot be restored.
-   * The caller must have modify permissions for this Project.
+   * lifecycle state of DELETE_REQUESTED. After deletion starts, the Project
+   * cannot be restored. The caller must have modify permissions for this
+   * Project.
    *
    * [request] - The metadata request object.
    *
@@ -577,6 +640,90 @@ class ListProjectsResponse {
 }
 
 /**
+ * This resource represents a long-running operation that is the result of a
+ * network API call.
+ */
+class Operation {
+  /**
+   * If the value is `false`, it means the operation is still in progress. If
+   * true, the operation is completed, and either `error` or `response` is
+   * available.
+   */
+  core.bool done;
+  /** The error result of the operation in case of failure. */
+  Status error;
+  /**
+   * Service-specific metadata associated with the operation. It typically
+   * contains progress information and common metadata such as create time. Some
+   * services might not provide such metadata. Any method that returns a
+   * long-running operation should document the metadata type, if any.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.Object> metadata;
+  /**
+   * The server-assigned name, which is only unique within the same service that
+   * originally returns it. If you use the default HTTP mapping, the `name`
+   * should have the format of `operations/some/unique/name`.
+   */
+  core.String name;
+  /**
+   * The normal response of the operation in case of success. If the original
+   * method returns no data on success, such as `Delete`, the response is
+   * `google.protobuf.Empty`. If the original method is standard
+   * `Get`/`Create`/`Update`, the response should be the resource. For other
+   * methods, the response should have the type `XxxResponse`, where `Xxx` is
+   * the original method name. For example, if the original method name is
+   * `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.Object> response;
+
+  Operation();
+
+  Operation.fromJson(core.Map _json) {
+    if (_json.containsKey("done")) {
+      done = _json["done"];
+    }
+    if (_json.containsKey("error")) {
+      error = new Status.fromJson(_json["error"]);
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = _json["metadata"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("response")) {
+      response = _json["response"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (done != null) {
+      _json["done"] = done;
+    }
+    if (error != null) {
+      _json["error"] = (error).toJson();
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (response != null) {
+      _json["response"] = response;
+    }
+    return _json;
+  }
+}
+
+/**
  * Defines an Identity and Access Management (IAM) policy. It is used to specify
  * access control policies for Cloud Platform resources. A `Policy` consists of
  * a list of `bindings`. A `Binding` binds a list of `members` to a `role`,
@@ -675,10 +822,10 @@ class Project {
    */
   core.String lifecycleState;
   /**
-   * The user-assigned name of the Project. It must be 4 to 30 characters.
-   * Allowed characters are: lowercase and uppercase letters, numbers, hyphen,
-   * single-quote, double-quote, space, and exclamation point. Example: My
-   * Project Read-write.
+   * The user-assigned display name of the Project. It must be 4 to 30
+   * characters. Allowed characters are: lowercase and uppercase letters,
+   * numbers, hyphen, single-quote, double-quote, space, and exclamation point.
+   * Example: My Project Read-write.
    */
   core.String name;
   /**
@@ -813,6 +960,88 @@ class SetIamPolicyRequest {
     var _json = new core.Map();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * The `Status` type defines a logical error model that is suitable for
+ * different programming environments, including REST APIs and RPC APIs. It is
+ * used by [gRPC](https://github.com/grpc). The error model is designed to be: -
+ * Simple to use and understand for most users - Flexible enough to meet
+ * unexpected needs # Overview The `Status` message contains three pieces of
+ * data: error code, error message, and error details. The error code should be
+ * an enum value of google.rpc.Code, but it may accept additional error codes if
+ * needed. The error message should be a developer-facing English message that
+ * helps developers *understand* and *resolve* the error. If a localized
+ * user-facing error message is needed, put the localized message in the error
+ * details or localize it in the client. The optional error details may contain
+ * arbitrary information about the error. There is a predefined set of error
+ * detail types in the package `google.rpc` which can be used for common error
+ * conditions. # Language mapping The `Status` message is the logical
+ * representation of the error model, but it is not necessarily the actual wire
+ * format. When the `Status` message is exposed in different client libraries
+ * and different wire protocols, it can be mapped differently. For example, it
+ * will likely be mapped to some exceptions in Java, but more likely mapped to
+ * some error codes in C. # Other uses The error model and the `Status` message
+ * can be used in a variety of environments, either with or without APIs, to
+ * provide a consistent developer experience across different environments.
+ * Example uses of this error model include: - Partial errors. If a service
+ * needs to return partial errors to the client, it may embed the `Status` in
+ * the normal response to indicate the partial errors. - Workflow errors. A
+ * typical workflow has multiple steps. Each step may have a `Status` message
+ * for error reporting purpose. - Batch operations. If a client uses batch
+ * request and batch response, the `Status` message should be used directly
+ * inside batch response, one for each error sub-response. - Asynchronous
+ * operations. If an API call embeds asynchronous operation results in its
+ * response, the status of those operations should be represented directly using
+ * the `Status` message. - Logging. If some API errors are stored in logs, the
+ * message `Status` could be used directly after any stripping needed for
+ * security/privacy reasons.
+ */
+class Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  core.int code;
+  /**
+   * A list of messages that carry the error details. There will be a common set
+   * of message types for APIs to use.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.List<core.Map<core.String, core.Object>> details;
+  /**
+   * A developer-facing error message, which should be in English. Any
+   * user-facing error message should be localized and sent in the
+   * google.rpc.Status.details field, or localized by the client.
+   */
+  core.String message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("details")) {
+      details = _json["details"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (details != null) {
+      _json["details"] = details;
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }

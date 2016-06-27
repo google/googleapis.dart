@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-library googleapis_beta.appengine.v1beta4;
+library googleapis.appengine.v1;
 
 import 'dart:core' as core;
 import 'dart:async' as async;
@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
     ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client appengine/v1beta4';
+const core.String USER_AGENT = 'dart-api-client appengine/v1';
 
 /** Provisions and manages App Engine applications. */
 class AppengineApi {
@@ -32,8 +32,8 @@ class AppengineApi {
 class AppsResourceApi {
   final commons.ApiRequester _requester;
 
-  AppsModulesResourceApi get modules => new AppsModulesResourceApi(_requester);
   AppsOperationsResourceApi get operations => new AppsOperationsResourceApi(_requester);
+  AppsServicesResourceApi get services => new AppsServicesResourceApi(_requester);
 
   AppsResourceApi(commons.ApiRequester client) : 
       _requester = client;
@@ -43,14 +43,8 @@ class AppsResourceApi {
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the application to get. For example:
-   * "apps/myapp".
-   *
-   * [ensureResourcesExist] - Certain resources associated with an application
-   * are created on-demand. Controls whether these resources should be created
-   * when performing the `GET` operation. If specified and any resources could
-   * not be created, the request will fail with an error code. Additionally,
-   * this parameter can cause the request to take longer to complete.
+   * [appsId] - Part of `name`. The name of the Application resource to get. For
+   * example: "apps/myapp".
    *
    * Completes with a [Application].
    *
@@ -60,7 +54,7 @@ class AppsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Application> get(core.String appsId, {core.bool ensureResourcesExist}) {
+  async.Future<Application> get(core.String appsId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -71,11 +65,8 @@ class AppsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (ensureResourcesExist != null) {
-      _queryParams["ensureResourcesExist"] = ["${ensureResourcesExist}"];
-    }
 
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId');
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -87,175 +78,17 @@ class AppsResourceApi {
     return _response.then((data) => new Application.fromJson(data));
   }
 
-}
-
-
-class AppsModulesResourceApi {
-  final commons.ApiRequester _requester;
-
-  AppsModulesVersionsResourceApi get versions => new AppsModulesVersionsResourceApi(_requester);
-
-  AppsModulesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
   /**
-   * Deletes a module and all enclosed versions.
+   * Ensures that all special features required for App Engine, such as the
+   * appspot bucket and appengine robot, exist for this project.
+   *
+   * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/modules/default".
-   *
-   * [modulesId] - Part of `name`. See documentation of `appsId`.
-   *
-   * Completes with a [Operation].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Operation> delete(core.String appsId, core.String modulesId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
-    }
-    if (modulesId == null) {
-      throw new core.ArgumentError("Parameter modulesId is required.");
-    }
-
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId');
-
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
-  }
-
-  /**
-   * Gets the current configuration of the module.
-   *
-   * Request parameters:
-   *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/modules/default".
-   *
-   * [modulesId] - Part of `name`. See documentation of `appsId`.
-   *
-   * Completes with a [Module].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Module> get(core.String appsId, core.String modulesId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
-    }
-    if (modulesId == null) {
-      throw new core.ArgumentError("Parameter modulesId is required.");
-    }
-
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Module.fromJson(data));
-  }
-
-  /**
-   * Lists all the modules in the application.
-   *
-   * Request parameters:
-   *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
+   * [appsId] - Part of `name`. Name of the application to repair. For example:
    * "apps/myapp".
    *
-   * [pageSize] - Maximum results to return per page.
-   *
-   * [pageToken] - Continuation token for fetching the next page of results.
-   *
-   * Completes with a [ListModulesResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListModulesResponse> list(core.String appsId, {core.int pageSize, core.String pageToken}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListModulesResponse.fromJson(data));
-  }
-
-  /**
-   * Updates the configuration of the specified module.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [appsId] - Part of `name`. Name of the resource to update. For example:
-   * "apps/myapp/modules/default".
-   *
-   * [modulesId] - Part of `name`. See documentation of `appsId`.
-   *
-   * [mask] - Standard field mask for the set of fields to be updated.
-   *
-   * [migrateTraffic] - Whether to use Traffic Migration to shift traffic
-   * gradually. Traffic can only be migrated from a single version to another
-   * single version.
-   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -264,7 +97,7 @@ class AppsModulesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(Module request, core.String appsId, core.String modulesId, {core.String mask, core.bool migrateTraffic}) {
+  async.Future<Operation> repair(RepairApplicationRequest request, core.String appsId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -278,78 +111,8 @@ class AppsModulesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (modulesId == null) {
-      throw new core.ArgumentError("Parameter modulesId is required.");
-    }
-    if (mask != null) {
-      _queryParams["mask"] = [mask];
-    }
-    if (migrateTraffic != null) {
-      _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
-    }
 
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId');
-
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
-  }
-
-}
-
-
-class AppsModulesVersionsResourceApi {
-  final commons.ApiRequester _requester;
-
-  AppsModulesVersionsInstancesResourceApi get instances => new AppsModulesVersionsInstancesResourceApi(_requester);
-
-  AppsModulesVersionsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Deploys new code and resource files to a version.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [appsId] - Part of `name`. Name of the resource to update. For example:
-   * "apps/myapp/modules/default".
-   *
-   * [modulesId] - Part of `name`. See documentation of `appsId`.
-   *
-   * Completes with a [Operation].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Operation> create(Version request, core.String appsId, core.String modulesId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
-    }
-    if (modulesId == null) {
-      throw new core.ArgumentError("Parameter modulesId is required.");
-    }
-
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId') + '/versions';
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + ':repair';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -359,319 +122,6 @@ class AppsModulesVersionsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
-  }
-
-  /**
-   * Deletes an existing version.
-   *
-   * Request parameters:
-   *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/modules/default/versions/v1".
-   *
-   * [modulesId] - Part of `name`. See documentation of `appsId`.
-   *
-   * [versionsId] - Part of `name`. See documentation of `appsId`.
-   *
-   * Completes with a [Operation].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Operation> delete(core.String appsId, core.String modulesId, core.String versionsId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
-    }
-    if (modulesId == null) {
-      throw new core.ArgumentError("Parameter modulesId is required.");
-    }
-    if (versionsId == null) {
-      throw new core.ArgumentError("Parameter versionsId is required.");
-    }
-
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId');
-
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
-  }
-
-  /**
-   * Gets application deployment information.
-   *
-   * Request parameters:
-   *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/modules/default/versions/v1".
-   *
-   * [modulesId] - Part of `name`. See documentation of `appsId`.
-   *
-   * [versionsId] - Part of `name`. See documentation of `appsId`.
-   *
-   * [view] - Controls the set of fields returned in the `Get` response.
-   * Possible string values are:
-   * - "BASIC" : A BASIC.
-   * - "FULL" : A FULL.
-   *
-   * Completes with a [Version].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Version> get(core.String appsId, core.String modulesId, core.String versionsId, {core.String view}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
-    }
-    if (modulesId == null) {
-      throw new core.ArgumentError("Parameter modulesId is required.");
-    }
-    if (versionsId == null) {
-      throw new core.ArgumentError("Parameter versionsId is required.");
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
-
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Version.fromJson(data));
-  }
-
-  /**
-   * Lists the versions of a module.
-   *
-   * Request parameters:
-   *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/modules/default".
-   *
-   * [modulesId] - Part of `name`. See documentation of `appsId`.
-   *
-   * [view] - Controls the set of fields returned in the `List` response.
-   * Possible string values are:
-   * - "BASIC" : A BASIC.
-   * - "FULL" : A FULL.
-   *
-   * [pageSize] - Maximum results to return per page.
-   *
-   * [pageToken] - Continuation token for fetching the next page of results.
-   *
-   * Completes with a [ListVersionsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListVersionsResponse> list(core.String appsId, core.String modulesId, {core.String view, core.int pageSize, core.String pageToken}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
-    }
-    if (modulesId == null) {
-      throw new core.ArgumentError("Parameter modulesId is required.");
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId') + '/versions';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListVersionsResponse.fromJson(data));
-  }
-
-  /**
-   * Updates the specified Version resource. You can specify the following
-   * fields depending on the App Engine environment and type of scaling that the
-   * version resource uses: *
-   * [`serving_status`](/appengine/docs/admin-api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.serving_status):
-   * For Version resources that use basic scaling, manual scaling, or run in the
-   * App Engine flexible environment. *
-   * [`instance_class`](/appengine/docs/admin-api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.instance_class):
-   * For Version resources that run in the App Engine standard environment. *
-   * [`automatic_scaling.min_idle_instances`](/appengine/docs/admin-api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.automatic_scaling):
-   * For Version resources that use automatic scaling and run in the App Engine
-   * standard environment. *
-   * [`automatic_scaling.max_idle_instances`](/appengine/docs/admin-api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.automatic_scaling):
-   * For Version resources that use automatic scaling and run in the App Engine
-   * standard environment.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [appsId] - Part of `name`. Name of the resource to update. For example:
-   * "apps/myapp/modules/default/versions/1".
-   *
-   * [modulesId] - Part of `name`. See documentation of `appsId`.
-   *
-   * [versionsId] - Part of `name`. See documentation of `appsId`.
-   *
-   * [mask] - Standard field mask for the set of fields to be updated.
-   *
-   * Completes with a [Operation].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Operation> patch(Version request, core.String appsId, core.String modulesId, core.String versionsId, {core.String mask}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
-    }
-    if (modulesId == null) {
-      throw new core.ArgumentError("Parameter modulesId is required.");
-    }
-    if (versionsId == null) {
-      throw new core.ArgumentError("Parameter versionsId is required.");
-    }
-    if (mask != null) {
-      _queryParams["mask"] = [mask];
-    }
-
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId');
-
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
-  }
-
-}
-
-
-class AppsModulesVersionsInstancesResourceApi {
-  final commons.ApiRequester _requester;
-
-  AppsModulesVersionsInstancesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Lists the instances of a version.
-   *
-   * Request parameters:
-   *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/modules/default/versions/v1".
-   *
-   * [modulesId] - Part of `name`. See documentation of `appsId`.
-   *
-   * [versionsId] - Part of `name`. See documentation of `appsId`.
-   *
-   * [pageSize] - Maximum results to return per page.
-   *
-   * [pageToken] - Continuation token for fetching the next page of results.
-   *
-   * Completes with a [ListInstancesResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListInstancesResponse> list(core.String appsId, core.String modulesId, core.String versionsId, {core.int pageSize, core.String pageToken}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
-    }
-    if (modulesId == null) {
-      throw new core.ArgumentError("Parameter modulesId is required.");
-    }
-    if (versionsId == null) {
-      throw new core.ArgumentError("Parameter versionsId is required.");
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId') + '/instances';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListInstancesResponse.fromJson(data));
   }
 
 }
@@ -717,7 +167,7 @@ class AppsOperationsResourceApi {
       throw new core.ArgumentError("Parameter operationsId is required.");
     }
 
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations/' + commons.Escaper.ecapeVariable('$operationsId');
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations/' + commons.Escaper.ecapeVariable('$operationsId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -774,7 +224,7 @@ class AppsOperationsResourceApi {
       _queryParams["pageToken"] = [pageToken];
     }
 
-    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -789,8 +239,601 @@ class AppsOperationsResourceApi {
 }
 
 
+class AppsServicesResourceApi {
+  final commons.ApiRequester _requester;
 
-/** API Serving configuration for Cloud Endpoints. */
+  AppsServicesVersionsResourceApi get versions => new AppsServicesVersionsResourceApi(_requester);
+
+  AppsServicesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified service and all enclosed versions.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource requested. For example:
+   * "apps/myapp/services/default".
+   *
+   * [servicesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String appsId, core.String servicesId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (servicesId == null) {
+      throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Gets the current configuration of the specified service.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource requested. For example:
+   * "apps/myapp/services/default".
+   *
+   * [servicesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * Completes with a [Service].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Service> get(core.String appsId, core.String servicesId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (servicesId == null) {
+      throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Service.fromJson(data));
+  }
+
+  /**
+   * Lists all the services in the application.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `parent`. Name of the parent Application resource. For
+   * example: "apps/myapp".
+   *
+   * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
+   *
+   * Completes with a [ListServicesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListServicesResponse> list(core.String appsId, {core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListServicesResponse.fromJson(data));
+  }
+
+  /**
+   * Updates the configuration of the specified service.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource to update. For example:
+   * "apps/myapp/services/default".
+   *
+   * [servicesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [updateMask] - Standard field mask for the set of fields to be updated.
+   *
+   * [migrateTraffic] - Whether to use traffic migration to shift traffic
+   * gradually. Traffic can only be migrated from a single version to another
+   * single version. More information is available in the documentation for
+   * traffic migration:
+   * https://cloud.google.com/appengine/docs/python/migrating-traffic
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(Service request, core.String appsId, core.String servicesId, {core.String updateMask, core.bool migrateTraffic}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (servicesId == null) {
+      throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if (migrateTraffic != null) {
+      _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
+    }
+
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
+class AppsServicesVersionsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AppsServicesVersionsInstancesResourceApi get instances => new AppsServicesVersionsInstancesResourceApi(_requester);
+
+  AppsServicesVersionsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deploys code and resource files to a new version.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `parent`. Name of the parent resource to create this
+   * version under. For example: "apps/myapp/services/default".
+   *
+   * [servicesId] - Part of `parent`. See documentation of `appsId`.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> create(Version request, core.String appsId, core.String servicesId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (servicesId == null) {
+      throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Deletes an existing Version resource.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource requested. For example:
+   * "apps/myapp/services/default/versions/v1".
+   *
+   * [servicesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [versionsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String appsId, core.String servicesId, core.String versionsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (servicesId == null) {
+      throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+    if (versionsId == null) {
+      throw new core.ArgumentError("Parameter versionsId is required.");
+    }
+
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Gets the specified Version resource. By default, only a BASIC_VIEW will be
+   * returned. Please specify the FULL_VIEW parameter to get the full resource.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource requested. For example:
+   * "apps/myapp/services/default/versions/v1".
+   *
+   * [servicesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [versionsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [view] - Controls the set of fields returned in the `Get` response.
+   * Possible string values are:
+   * - "BASIC" : A BASIC.
+   * - "FULL" : A FULL.
+   *
+   * Completes with a [Version].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Version> get(core.String appsId, core.String servicesId, core.String versionsId, {core.String view}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (servicesId == null) {
+      throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+    if (versionsId == null) {
+      throw new core.ArgumentError("Parameter versionsId is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Version.fromJson(data));
+  }
+
+  /**
+   * Lists the versions of a service.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `parent`. Name of the parent resource to list versions
+   * on. For example: "apps/myapp/services/default".
+   *
+   * [servicesId] - Part of `parent`. See documentation of `appsId`.
+   *
+   * [view] - Controls the set of fields returned in the `List` response.
+   * Possible string values are:
+   * - "BASIC" : A BASIC.
+   * - "FULL" : A FULL.
+   *
+   * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
+   *
+   * Completes with a [ListVersionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListVersionsResponse> list(core.String appsId, core.String servicesId, {core.String view, core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (servicesId == null) {
+      throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListVersionsResponse.fromJson(data));
+  }
+
+  /**
+   * Updates the specified Version resource. You can specify the following
+   * fields depending on the App Engine environment and type of scaling that the
+   * version resource uses: *
+   * [`serving_status`](/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status):
+   * For Version resources that use basic scaling, manual scaling, or run in the
+   * App Engine flexible environment. *
+   * [`instance_class`](/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class):
+   * For Version resources that run in the App Engine standard environment. *
+   * [`automatic_scaling.min_idle_instances`](/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):
+   * For Version resources that use automatic scaling and run in the App Engine
+   * standard environment. *
+   * [`automatic_scaling.max_idle_instances`](/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):
+   * For Version resources that use automatic scaling and run in the App Engine
+   * standard environment.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource to update. For example:
+   * "apps/myapp/services/default/versions/1".
+   *
+   * [servicesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [versionsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [updateMask] - Standard field mask for the set of fields to be updated.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(Version request, core.String appsId, core.String servicesId, core.String versionsId, {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (servicesId == null) {
+      throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+    if (versionsId == null) {
+      throw new core.ArgumentError("Parameter versionsId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
+class AppsServicesVersionsInstancesResourceApi {
+  final commons.ApiRequester _requester;
+
+  AppsServicesVersionsInstancesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Lists the instances of a version.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `parent`. Name of the parent Version resource to list
+   * instances for. For example: "apps/myapp/services/default/versions/v1".
+   *
+   * [servicesId] - Part of `parent`. See documentation of `appsId`.
+   *
+   * [versionsId] - Part of `parent`. See documentation of `appsId`.
+   *
+   * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
+   *
+   * Completes with a [ListInstancesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListInstancesResponse> list(core.String appsId, core.String servicesId, core.String versionsId, {core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (servicesId == null) {
+      throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+    if (versionsId == null) {
+      throw new core.ArgumentError("Parameter versionsId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId') + '/instances';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListInstancesResponse.fromJson(data));
+  }
+
+}
+
+
+
+/**
+ * Google Cloud Endpoints configuration for API handlers. Used to tune behavior
+ * of optional Cloud Endpoints integration.
+ */
 class ApiConfigHandler {
   /**
    * For users not logged in, how to handle access to resources with required
@@ -922,10 +965,10 @@ class Application {
   core.String defaultHostname;
   /**
    * HTTP path dispatch rules for requests to the app that do not explicitly
-   * target a module or version. The rules are order-dependent. @OutputOnly
+   * target a service or version. The rules are order-dependent. @OutputOnly
    */
   core.List<UrlDispatchRule> dispatchRules;
-  /** The relative name/path of the application. Example: "myapp". */
+  /** The relative name of the application. Example: "myapp". */
   core.String id;
   /**
    * The location from which the application will be run. Application instances
@@ -934,7 +977,7 @@ class Application {
    * "us-central". Choices are: "us-central" - Central US "europe-west" -
    * Western Europe "us-east1" - Eastern US
    */
-  core.String location;
+  core.String locationId;
   /**
    * The full path to the application in the API. Example: "apps/myapp".
    * @OutputOnly
@@ -965,8 +1008,8 @@ class Application {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -996,8 +1039,8 @@ class Application {
     if (id != null) {
       _json["id"] = id;
     }
-    if (location != null) {
-      _json["location"] = location;
+    if (locationId != null) {
+      _json["locationId"] = locationId;
     }
     if (name != null) {
       _json["name"] = name;
@@ -1045,7 +1088,7 @@ class AutomaticScaling {
   core.int maxTotalInstances;
   /**
    * The minimum number of idle instances that App Engine should maintain for
-   * this version. Only applies to the default version of a module, since other
+   * this version. Only applies to the default version of a service, since other
    * versions are not expected to receive significant traffic.
    */
   core.int minIdleInstances;
@@ -1145,7 +1188,7 @@ class AutomaticScaling {
 }
 
 /**
- * A module with basic scaling will create an instance when the application
+ * A service with basic scaling will create an instance when the application
  * receives a request. The instance will be turned down when the app becomes
  * idle. Basic scaling is ideal for work that is intermittent or driven by user
  * activity.
@@ -1255,12 +1298,6 @@ class Deployment {
    * credentials supplied with this call.
    */
   core.Map<core.String, FileInfo> files;
-  /**
-   * The origin of the source code for this deployment. There can be more than
-   * one source reference per Version if source code is distributed among
-   * multiple repositories.
-   */
-  core.List<SourceReference> sourceReferences;
 
   Deployment();
 
@@ -1270,9 +1307,6 @@ class Deployment {
     }
     if (_json.containsKey("files")) {
       files = commons.mapMap(_json["files"], (item) => new FileInfo.fromJson(item));
-    }
-    if (_json.containsKey("sourceReferences")) {
-      sourceReferences = _json["sourceReferences"].map((value) => new SourceReference.fromJson(value)).toList();
     }
   }
 
@@ -1284,9 +1318,6 @@ class Deployment {
     if (files != null) {
       _json["files"] = commons.mapMap(files, (item) => (item).toJson());
     }
-    if (sourceReferences != null) {
-      _json["sourceReferences"] = sourceReferences.map((value) => (value).toJson()).toList();
-    }
     return _json;
   }
 }
@@ -1294,44 +1325,44 @@ class Deployment {
 /** Target scaling by disk usage (for VM runtimes only). */
 class DiskUtilization {
   /** Target bytes per second read. */
-  core.int targetReadBytesPerSec;
+  core.int targetReadBytesPerSecond;
   /** Target ops per second read. */
-  core.int targetReadOpsPerSec;
+  core.int targetReadOpsPerSecond;
   /** Target bytes per second written. */
-  core.int targetWriteBytesPerSec;
+  core.int targetWriteBytesPerSecond;
   /** Target ops per second written. */
-  core.int targetWriteOpsPerSec;
+  core.int targetWriteOpsPerSecond;
 
   DiskUtilization();
 
   DiskUtilization.fromJson(core.Map _json) {
-    if (_json.containsKey("targetReadBytesPerSec")) {
-      targetReadBytesPerSec = _json["targetReadBytesPerSec"];
+    if (_json.containsKey("targetReadBytesPerSecond")) {
+      targetReadBytesPerSecond = _json["targetReadBytesPerSecond"];
     }
-    if (_json.containsKey("targetReadOpsPerSec")) {
-      targetReadOpsPerSec = _json["targetReadOpsPerSec"];
+    if (_json.containsKey("targetReadOpsPerSecond")) {
+      targetReadOpsPerSecond = _json["targetReadOpsPerSecond"];
     }
-    if (_json.containsKey("targetWriteBytesPerSec")) {
-      targetWriteBytesPerSec = _json["targetWriteBytesPerSec"];
+    if (_json.containsKey("targetWriteBytesPerSecond")) {
+      targetWriteBytesPerSecond = _json["targetWriteBytesPerSecond"];
     }
-    if (_json.containsKey("targetWriteOpsPerSec")) {
-      targetWriteOpsPerSec = _json["targetWriteOpsPerSec"];
+    if (_json.containsKey("targetWriteOpsPerSecond")) {
+      targetWriteOpsPerSecond = _json["targetWriteOpsPerSecond"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (targetReadBytesPerSec != null) {
-      _json["targetReadBytesPerSec"] = targetReadBytesPerSec;
+    if (targetReadBytesPerSecond != null) {
+      _json["targetReadBytesPerSecond"] = targetReadBytesPerSecond;
     }
-    if (targetReadOpsPerSec != null) {
-      _json["targetReadOpsPerSec"] = targetReadOpsPerSec;
+    if (targetReadOpsPerSecond != null) {
+      _json["targetReadOpsPerSecond"] = targetReadOpsPerSecond;
     }
-    if (targetWriteBytesPerSec != null) {
-      _json["targetWriteBytesPerSec"] = targetWriteBytesPerSec;
+    if (targetWriteBytesPerSecond != null) {
+      _json["targetWriteBytesPerSecond"] = targetWriteBytesPerSecond;
     }
-    if (targetWriteOpsPerSec != null) {
-      _json["targetWriteOpsPerSec"] = targetWriteOpsPerSec;
+    if (targetWriteOpsPerSecond != null) {
+      _json["targetWriteOpsPerSecond"] = targetWriteOpsPerSecond;
     }
     return _json;
   }
@@ -1531,15 +1562,15 @@ class Instance {
   /** Number of errors since the instance was started. @OutputOnly */
   core.int errors;
   /**
-   * The relative name/path of the instance within the version. Example:
-   * "instance-1" @OutputOnly
+   * The relative name of the instance within the version. Example: "instance-1"
+   * @OutputOnly
    */
   core.String id;
   /** Memory usage (in bytes). @OutputOnly */
   core.String memoryUsage;
   /**
-   * The full path to the Instance resource in the API. Example:
-   * "apps/myapp/modules/default/versions/v1/instances/instance-1" @OutputOnly
+   * The resource name of an Instance. Example:
+   * "apps/myapp/services/default/versions/v1/instances/instance-1" @OutputOnly
    */
   core.String name;
   /** QPS for this instance (averaged over the last minute). @OutputOnly */
@@ -1547,7 +1578,7 @@ class Instance {
   /** Number of requests (since the clone was started). @OutputOnly */
   core.int requests;
   /** Time when instance was started. @OutputOnly */
-  core.String startTimestamp;
+  core.String startTime;
   /**
    * For VMEngines instances, the Compute Engine VM ID of the instance.
    * @OutputOnly
@@ -1604,8 +1635,8 @@ class Instance {
     if (_json.containsKey("requests")) {
       requests = _json["requests"];
     }
-    if (_json.containsKey("startTimestamp")) {
-      startTimestamp = _json["startTimestamp"];
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
     }
     if (_json.containsKey("vmId")) {
       vmId = _json["vmId"];
@@ -1653,8 +1684,8 @@ class Instance {
     if (requests != null) {
       _json["requests"] = requests;
     }
-    if (startTimestamp != null) {
-      _json["startTimestamp"] = startTimestamp;
+    if (startTime != null) {
+      _json["startTime"] = startTime;
     }
     if (vmId != null) {
       _json["vmId"] = vmId;
@@ -1735,36 +1766,6 @@ class ListInstancesResponse {
   }
 }
 
-/** Response message for `Modules.ListModules`. */
-class ListModulesResponse {
-  /** The modules belonging to the requested application. */
-  core.List<Module> modules;
-  /** Continuation token for fetching the next page of results. */
-  core.String nextPageToken;
-
-  ListModulesResponse();
-
-  ListModulesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("modules")) {
-      modules = _json["modules"].map((value) => new Module.fromJson(value)).toList();
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (modules != null) {
-      _json["modules"] = modules.map((value) => (value).toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    return _json;
-  }
-}
-
 /** The response message for Operations.ListOperations. */
 class ListOperationsResponse {
   /** The standard List next-page token. */
@@ -1795,11 +1796,41 @@ class ListOperationsResponse {
   }
 }
 
+/** Response message for `Services.ListServices`. */
+class ListServicesResponse {
+  /** Continuation token for fetching the next page of results. */
+  core.String nextPageToken;
+  /** The services belonging to the requested application. */
+  core.List<Service> services;
+
+  ListServicesResponse();
+
+  ListServicesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("services")) {
+      services = _json["services"].map((value) => new Service.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (services != null) {
+      _json["services"] = services.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** Response message for `Versions.ListVersions`. */
 class ListVersionsResponse {
   /** Continuation token for fetching the next page of results. */
   core.String nextPageToken;
-  /** The versions belonging to the requested application module. */
+  /** The versions belonging to the requested application service. */
   core.List<Version> versions;
 
   ListVersionsResponse();
@@ -1840,12 +1871,12 @@ class LocationMetadata {
 }
 
 /**
- * A module with manual scaling runs continuously, allowing you to perform
+ * A service with manual scaling runs continuously, allowing you to perform
  * complex initialization and rely on the state of its memory over time.
  */
 class ManualScaling {
   /**
-   * The number of instances to assign to the module at the start. This number
+   * The number of instances to assign to the service at the start. This number
    * can later be altered by using the [Modules
    * API](https://cloud.google.com/appengine/docs/python/modules/functions)
    * `set_num_instances()` function.
@@ -1864,57 +1895,6 @@ class ManualScaling {
     var _json = new core.Map();
     if (instances != null) {
       _json["instances"] = instances;
-    }
-    return _json;
-  }
-}
-
-/**
- * A module is a component of an application that provides a single service or
- * configuration. A module has a collection of versions that define a specific
- * set of code used to implement the functionality of that module.
- */
-class Module {
-  /**
-   * The relative name/path of the module within the application. Example:
-   * "default" @OutputOnly
-   */
-  core.String id;
-  /**
-   * The full path to the Module resource in the API. Example:
-   * "apps/myapp/modules/default" @OutputOnly
-   */
-  core.String name;
-  /**
-   * A mapping that defines fractional HTTP traffic diversion to different
-   * versions within the module.
-   */
-  TrafficSplit split;
-
-  Module();
-
-  Module.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("split")) {
-      split = new TrafficSplit.fromJson(_json["split"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (split != null) {
-      _json["split"] = (split).toJson();
     }
     return _json;
   }
@@ -1968,44 +1948,44 @@ class Network {
 /** Target scaling by network usage (for VM runtimes only). */
 class NetworkUtilization {
   /** Target bytes per second received. */
-  core.int targetReceivedBytesPerSec;
+  core.int targetReceivedBytesPerSecond;
   /** Target packets per second received. */
-  core.int targetReceivedPacketsPerSec;
+  core.int targetReceivedPacketsPerSecond;
   /** Target bytes per second sent. */
-  core.int targetSentBytesPerSec;
+  core.int targetSentBytesPerSecond;
   /** Target packets per second sent. */
-  core.int targetSentPacketsPerSec;
+  core.int targetSentPacketsPerSecond;
 
   NetworkUtilization();
 
   NetworkUtilization.fromJson(core.Map _json) {
-    if (_json.containsKey("targetReceivedBytesPerSec")) {
-      targetReceivedBytesPerSec = _json["targetReceivedBytesPerSec"];
+    if (_json.containsKey("targetReceivedBytesPerSecond")) {
+      targetReceivedBytesPerSecond = _json["targetReceivedBytesPerSecond"];
     }
-    if (_json.containsKey("targetReceivedPacketsPerSec")) {
-      targetReceivedPacketsPerSec = _json["targetReceivedPacketsPerSec"];
+    if (_json.containsKey("targetReceivedPacketsPerSecond")) {
+      targetReceivedPacketsPerSecond = _json["targetReceivedPacketsPerSecond"];
     }
-    if (_json.containsKey("targetSentBytesPerSec")) {
-      targetSentBytesPerSec = _json["targetSentBytesPerSec"];
+    if (_json.containsKey("targetSentBytesPerSecond")) {
+      targetSentBytesPerSecond = _json["targetSentBytesPerSecond"];
     }
-    if (_json.containsKey("targetSentPacketsPerSec")) {
-      targetSentPacketsPerSec = _json["targetSentPacketsPerSec"];
+    if (_json.containsKey("targetSentPacketsPerSecond")) {
+      targetSentPacketsPerSecond = _json["targetSentPacketsPerSecond"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (targetReceivedBytesPerSec != null) {
-      _json["targetReceivedBytesPerSec"] = targetReceivedBytesPerSec;
+    if (targetReceivedBytesPerSecond != null) {
+      _json["targetReceivedBytesPerSecond"] = targetReceivedBytesPerSecond;
     }
-    if (targetReceivedPacketsPerSec != null) {
-      _json["targetReceivedPacketsPerSec"] = targetReceivedPacketsPerSec;
+    if (targetReceivedPacketsPerSecond != null) {
+      _json["targetReceivedPacketsPerSecond"] = targetReceivedPacketsPerSecond;
     }
-    if (targetSentBytesPerSec != null) {
-      _json["targetSentBytesPerSec"] = targetSentBytesPerSec;
+    if (targetSentBytesPerSecond != null) {
+      _json["targetSentBytesPerSecond"] = targetSentBytesPerSecond;
     }
-    if (targetSentPacketsPerSec != null) {
-      _json["targetSentPacketsPerSec"] = targetSentPacketsPerSec;
+    if (targetSentPacketsPerSecond != null) {
+      _json["targetSentPacketsPerSecond"] = targetSentPacketsPerSecond;
     }
     return _json;
   }
@@ -2295,12 +2275,26 @@ class OperationMetadataV1Beta5 {
   }
 }
 
+/** Request message for 'Applications.RepairApplication'. */
+class RepairApplicationRequest {
+
+  RepairApplicationRequest();
+
+  RepairApplicationRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
 /** Target scaling by request utilization (for VM runtimes only). */
 class RequestUtilization {
   /** Target number of concurrent requests. */
   core.int targetConcurrentRequests;
   /** Target requests per second. */
-  core.int targetRequestCountPerSec;
+  core.int targetRequestCountPerSecond;
 
   RequestUtilization();
 
@@ -2308,8 +2302,8 @@ class RequestUtilization {
     if (_json.containsKey("targetConcurrentRequests")) {
       targetConcurrentRequests = _json["targetConcurrentRequests"];
     }
-    if (_json.containsKey("targetRequestCountPerSec")) {
-      targetRequestCountPerSec = _json["targetRequestCountPerSec"];
+    if (_json.containsKey("targetRequestCountPerSecond")) {
+      targetRequestCountPerSecond = _json["targetRequestCountPerSecond"];
     }
   }
 
@@ -2318,8 +2312,8 @@ class RequestUtilization {
     if (targetConcurrentRequests != null) {
       _json["targetConcurrentRequests"] = targetConcurrentRequests;
     }
-    if (targetRequestCountPerSec != null) {
-      _json["targetRequestCountPerSec"] = targetRequestCountPerSec;
+    if (targetRequestCountPerSecond != null) {
+      _json["targetRequestCountPerSecond"] = targetRequestCountPerSecond;
     }
     return _json;
   }
@@ -2386,127 +2380,54 @@ class ScriptHandler {
 }
 
 /**
- * A reference to a particular snapshot of the source tree used to build and
- * deploy the application.
+ * A service is a logical component of an application that can share state and
+ * communicate in a secure fashion with other services. For example, an
+ * application that handles customer requests might include separate services to
+ * handle other tasks such as API requests from mobile devices or backend data
+ * analysis. Each service has a collection of versions that define a specific
+ * set of code used to implement the functionality of that service.
  */
-class SourceReference {
+class Service {
   /**
-   * Optional. A URI string identifying the repository. Example:
-   * "https://source.developers.google.com/p/app-123/r/default"
+   * The relative name of the service within the application. Example: "default"
+   * @OutputOnly
    */
-  core.String repository;
+  core.String id;
   /**
-   * The canonical (and persistent) identifier of the deployed revision, i.e.
-   * any kind of aliases including tags or branch names are not allowed. Example
-   * (git): "2198322f89e0bb2e25021667c2ed489d1fd34e6b"
+   * The full path to the Service resource in the API. Example:
+   * "apps/myapp/services/default" @OutputOnly
    */
-  core.String revisionId;
+  core.String name;
+  /**
+   * A mapping that defines fractional HTTP traffic diversion to different
+   * versions within the service.
+   */
+  TrafficSplit split;
 
-  SourceReference();
+  Service();
 
-  SourceReference.fromJson(core.Map _json) {
-    if (_json.containsKey("repository")) {
-      repository = _json["repository"];
+  Service.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
     }
-    if (_json.containsKey("revisionId")) {
-      revisionId = _json["revisionId"];
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("split")) {
+      split = new TrafficSplit.fromJson(_json["split"]);
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (repository != null) {
-      _json["repository"] = repository;
+    if (id != null) {
+      _json["id"] = id;
     }
-    if (revisionId != null) {
-      _json["revisionId"] = revisionId;
+    if (name != null) {
+      _json["name"] = name;
     }
-    return _json;
-  }
-}
-
-/**
- * Files served directly to the user for a given URL, such as images, CSS
- * stylesheets, or JavaScript source files. Static directory handlers make it
- * easy to serve the entire contents of a directory as static files.
- */
-class StaticDirectoryHandler {
-  /**
-   * By default, files declared in static file handlers are uploaded as static
-   * data and are only served to end users, they cannot be read by an
-   * application. If this field is set to true, the files are also uploaded as
-   * code data so your application can read them. Both uploads are charged
-   * against your code and static data storage resource quotas.
-   */
-  core.bool applicationReadable;
-  /**
-   * The path to the directory containing the static files, from the application
-   * root directory. Everything after the end of the matched url pattern is
-   * appended to static_dir to form the full path to the requested file.
-   */
-  core.String directory;
-  /**
-   * The length of time a static file served by this handler ought to be cached
-   * by web proxies and browsers.
-   */
-  core.String expiration;
-  /** HTTP headers to use for all responses from these URLs. */
-  core.Map<core.String, core.String> httpHeaders;
-  /**
-   * If specified, all files served by this handler will be served using the
-   * specified MIME type. If not specified, the MIME type for a file will be
-   * derived from the file's filename extension.
-   */
-  core.String mimeType;
-  /**
-   * If true, this UrlMap entry does not match the request unless the file
-   * referenced by the handler also exists. If no such file exists, processing
-   * will continue with the next UrlMap that matches the requested URL.
-   */
-  core.bool requireMatchingFile;
-
-  StaticDirectoryHandler();
-
-  StaticDirectoryHandler.fromJson(core.Map _json) {
-    if (_json.containsKey("applicationReadable")) {
-      applicationReadable = _json["applicationReadable"];
-    }
-    if (_json.containsKey("directory")) {
-      directory = _json["directory"];
-    }
-    if (_json.containsKey("expiration")) {
-      expiration = _json["expiration"];
-    }
-    if (_json.containsKey("httpHeaders")) {
-      httpHeaders = _json["httpHeaders"];
-    }
-    if (_json.containsKey("mimeType")) {
-      mimeType = _json["mimeType"];
-    }
-    if (_json.containsKey("requireMatchingFile")) {
-      requireMatchingFile = _json["requireMatchingFile"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (applicationReadable != null) {
-      _json["applicationReadable"] = applicationReadable;
-    }
-    if (directory != null) {
-      _json["directory"] = directory;
-    }
-    if (expiration != null) {
-      _json["expiration"] = expiration;
-    }
-    if (httpHeaders != null) {
-      _json["httpHeaders"] = httpHeaders;
-    }
-    if (mimeType != null) {
-      _json["mimeType"] = mimeType;
-    }
-    if (requireMatchingFile != null) {
-      _json["requireMatchingFile"] = requireMatchingFile;
+    if (split != null) {
+      _json["split"] = (split).toJson();
     }
     return _json;
   }
@@ -2694,20 +2615,21 @@ class Status {
 }
 
 /**
- * Configuration for traffic splitting for versions within a single module.
- * Traffic splitting allows traffic directed to the module to be assigned to one
- * of several versions in a fractional way, enabling experiments and canarying
- * new builds, for example.
+ * Configuration for traffic splitting for versions within a single service.
+ * Traffic splitting allows traffic directed to the service to be assigned to
+ * one of several versions in a fractional way, enabling experiments and
+ * canarying new builds, for example.
  */
 class TrafficSplit {
   /**
-   * Mapping from module version IDs within the module to fractional (0.000, 1]
-   * allocations of traffic for that version. Each version may only be specified
-   * once, but some versions in the module may not have any traffic allocation.
-   * Modules that have traffic allocated in this field may not be deleted until
-   * the module is deleted, or their traffic allocation is removed. Allocations
-   * must sum to 1. Supports precision up to two decimal places for IP-based
-   * splits and up to three decimal places for cookie-based splits.
+   * Mapping from service version IDs within the service to fractional (0.000,
+   * 1] allocations of traffic for that version. Each version may only be
+   * specified once, but some versions in the service may not have any traffic
+   * allocation. Services that have traffic allocated in this field may not be
+   * deleted until the service is deleted, or their traffic allocation is
+   * removed. Allocations must sum to 1. Supports precision up to two decimal
+   * places for IP-based splits and up to three decimal places for cookie-based
+   * splits.
    */
   core.Map<core.String, core.double> allocations;
   /**
@@ -2744,7 +2666,7 @@ class TrafficSplit {
   }
 }
 
-/** Rules to match an HTTP request and dispatch that request to a module. */
+/** Rules to match an HTTP request and dispatch that request to a service. */
 class UrlDispatchRule {
   /**
    * The domain name to match on. Supports '*' (glob) wildcarding on the
@@ -2753,16 +2675,16 @@ class UrlDispatchRule {
    */
   core.String domain;
   /**
-   * The resource id of a Module in this application that should service the
-   * matched request. The Module must already exist. Example: "default".
-   */
-  core.String module;
-  /**
    * The pathname within the host. This must start with a '/'. A single '*'
    * (glob) can be included at the end of the path. The sum of the lengths of
    * the domain and path may not exceed 100 characters.
    */
   core.String path;
+  /**
+   * The resource id of a Service in this application that should service the
+   * matched request. The Service must already exist. Example: "default".
+   */
+  core.String service;
 
   UrlDispatchRule();
 
@@ -2770,11 +2692,11 @@ class UrlDispatchRule {
     if (_json.containsKey("domain")) {
       domain = _json["domain"];
     }
-    if (_json.containsKey("module")) {
-      module = _json["module"];
-    }
     if (_json.containsKey("path")) {
       path = _json["path"];
+    }
+    if (_json.containsKey("service")) {
+      service = _json["service"];
     }
   }
 
@@ -2783,11 +2705,11 @@ class UrlDispatchRule {
     if (domain != null) {
       _json["domain"] = domain;
     }
-    if (module != null) {
-      _json["module"] = module;
-    }
     if (path != null) {
       _json["path"] = path;
+    }
+    if (service != null) {
+      _json["service"] = service;
     }
     return _json;
   }
@@ -2843,12 +2765,6 @@ class UrlMap {
    * - "SECURE_ALWAYS" : A SECURE_ALWAYS.
    */
   core.String securityLevel;
-  /**
-   * Serves the entire contents of a directory as static files. This attribute
-   * is deprecated. You can mimic the behavior of static directories using
-   * static files.
-   */
-  StaticDirectoryHandler staticDirectory;
   /** Returns the contents of a file, such as an image, as the response. */
   StaticFilesHandler staticFiles;
   /**
@@ -2881,9 +2797,6 @@ class UrlMap {
     if (_json.containsKey("securityLevel")) {
       securityLevel = _json["securityLevel"];
     }
-    if (_json.containsKey("staticDirectory")) {
-      staticDirectory = new StaticDirectoryHandler.fromJson(_json["staticDirectory"]);
-    }
     if (_json.containsKey("staticFiles")) {
       staticFiles = new StaticFilesHandler.fromJson(_json["staticFiles"]);
     }
@@ -2912,9 +2825,6 @@ class UrlMap {
     if (securityLevel != null) {
       _json["securityLevel"] = securityLevel;
     }
-    if (staticDirectory != null) {
-      _json["staticDirectory"] = (staticDirectory).toJson();
-    }
     if (staticFiles != null) {
       _json["staticFiles"] = (staticFiles).toJson();
     }
@@ -2927,7 +2837,7 @@ class UrlMap {
 
 /**
  * A Version is a specific set of source code and configuration files deployed
- * to a module.
+ * to a service.
  */
 class Version {
   /**
@@ -2943,7 +2853,7 @@ class Version {
    */
   AutomaticScaling automaticScaling;
   /**
-   * A module with basic scaling will create an instance when the application
+   * A service with basic scaling will create an instance when the application
    * receives a request. The instance will be turned down when the app becomes
    * idle. Basic scaling is ideal for work that is intermittent or driven by
    * user activity.
@@ -2955,7 +2865,9 @@ class Version {
    * Creation time of this version. This will be between the start and end times
    * of the operation that creates this version. @OutputOnly
    */
-  core.String creationTime;
+  core.String createTime;
+  /** The email address of the user who created this version. @OutputOnly */
+  core.String createdBy;
   /**
    * The length of time a static file served by a static file handler ought to
    * be cached by web proxies and browsers, if the handler does not specify its
@@ -2963,8 +2875,6 @@ class Version {
    * only be set on create requests; once created, is immutable.
    */
   core.String defaultExpiration;
-  /** The email address of the user who created this version. @OutputOnly */
-  core.String deployer;
   /**
    * Code and application artifacts that make up this version. Only returned in
    * `GET` requests if `view=FULL` is set. May only be set on create requests;
@@ -2972,7 +2882,12 @@ class Version {
    */
   Deployment deployment;
   /**
-   * The App Engine execution environment to use for this version. Default: "1"
+   * Total size of version files hosted on App Engine disk in bytes. @OutputOnly
+   */
+  core.String diskUsageBytes;
+  /**
+   * The App Engine execution environment to use for this version. Default:
+   * "standard"
    */
   core.String env;
   /**
@@ -3002,9 +2917,9 @@ class Version {
    */
   HealthCheck healthCheck;
   /**
-   * The relative name/path of the Version within the module. Example: "v1".
-   * Version specifiers can contain lowercase letters, digits, and hyphens. It
-   * cannot begin with the prefix `ah-` and the names `default` and `latest` are
+   * The relative name of the Version within the service. Example: "v1". Version
+   * specifiers can contain lowercase letters, digits, and hyphens. It cannot
+   * begin with the prefix `ah-` and the names `default` and `latest` are
    * reserved and cannot be used.
    */
   core.String id;
@@ -3014,8 +2929,10 @@ class Version {
    */
   core.List<core.String> inboundServices;
   /**
-   * The frontend instance class to use to run this app. Valid values are `[F1,
-   * F2, F4, F4_1G]`. Default: "F1"
+   * The instance class to use to run this app. Valid values for
+   * AutomaticScaling are `[F1, F2, F4, F4_1G]`. Valid values for ManualScaling
+   * and BasicScaling are `[B1, B2, B4, B8, B4_1G]`. Default: "F1" for
+   * AutomaticScaling, "B1" for ManualScaling and BasicScaling
    */
   core.String instanceClass;
   /**
@@ -3025,13 +2942,13 @@ class Version {
    */
   core.List<Library> libraries;
   /**
-   * A module with manual scaling runs continuously, allowing you to perform
+   * A service with manual scaling runs continuously, allowing you to perform
    * complex initialization and rely on the state of its memory over time.
    */
   ManualScaling manualScaling;
   /**
    * The full path to the Version resource in the API. Example:
-   * "apps/myapp/modules/default/versions/v1". @OutputOnly
+   * "apps/myapp/services/default/versions/v1". @OutputOnly
    */
   core.String name;
   /** Used to specify extra network settings (for VM runtimes only). */
@@ -3061,6 +2978,12 @@ class Version {
   core.String servingStatus;
   /** If true, multiple requests can be dispatched to the app at once. */
   core.bool threadsafe;
+  /**
+   * The version's URL, which is of the form:
+   * https://service_version_id-dot-service_id-dot-app_id.appspot.com
+   * @OutputOnly
+   */
+  core.String versionUrl;
   /** Whether to deploy this app in a VM container. */
   core.bool vm;
 
@@ -3079,17 +3002,20 @@ class Version {
     if (_json.containsKey("betaSettings")) {
       betaSettings = _json["betaSettings"];
     }
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("createdBy")) {
+      createdBy = _json["createdBy"];
     }
     if (_json.containsKey("defaultExpiration")) {
       defaultExpiration = _json["defaultExpiration"];
     }
-    if (_json.containsKey("deployer")) {
-      deployer = _json["deployer"];
-    }
     if (_json.containsKey("deployment")) {
       deployment = new Deployment.fromJson(_json["deployment"]);
+    }
+    if (_json.containsKey("diskUsageBytes")) {
+      diskUsageBytes = _json["diskUsageBytes"];
     }
     if (_json.containsKey("env")) {
       env = _json["env"];
@@ -3142,6 +3068,9 @@ class Version {
     if (_json.containsKey("threadsafe")) {
       threadsafe = _json["threadsafe"];
     }
+    if (_json.containsKey("versionUrl")) {
+      versionUrl = _json["versionUrl"];
+    }
     if (_json.containsKey("vm")) {
       vm = _json["vm"];
     }
@@ -3161,17 +3090,20 @@ class Version {
     if (betaSettings != null) {
       _json["betaSettings"] = betaSettings;
     }
-    if (creationTime != null) {
-      _json["creationTime"] = creationTime;
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (createdBy != null) {
+      _json["createdBy"] = createdBy;
     }
     if (defaultExpiration != null) {
       _json["defaultExpiration"] = defaultExpiration;
     }
-    if (deployer != null) {
-      _json["deployer"] = deployer;
-    }
     if (deployment != null) {
       _json["deployment"] = (deployment).toJson();
+    }
+    if (diskUsageBytes != null) {
+      _json["diskUsageBytes"] = diskUsageBytes;
     }
     if (env != null) {
       _json["env"] = env;
@@ -3223,6 +3155,9 @@ class Version {
     }
     if (threadsafe != null) {
       _json["threadsafe"] = threadsafe;
+    }
+    if (versionUrl != null) {
+      _json["versionUrl"] = versionUrl;
     }
     if (vm != null) {
       _json["vm"] = vm;

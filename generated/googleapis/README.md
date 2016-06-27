@@ -153,6 +153,12 @@ Lets Android application developers access their Google Play accounts.
 
 Official API documentation: https://developers.google.com/android-publisher
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1
+
+Provisions and manages App Engine applications.
+
+Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Apps Activity API - appsactivity v1
 
 Provides a historical view of activity.
@@ -179,7 +185,7 @@ Official API documentation: https://developers.google.com/blogger/docs/3.0/getti
 
 #### ![Logo](https://www.google.com/images/icons/product/ebooks-16.png) Books API - books v1
 
-Lets you search for books and manage your Google Books library.
+Searches for books and manages your Google Books library.
 
 Official API documentation: https://developers.google.com/books/docs/v1/getting_started
 
@@ -252,12 +258,6 @@ Official API documentation: https://developers.google.com/shopping-content
 Manages product items, inventory, and Merchant Center accounts for Google Shopping.
 
 Official API documentation: https://developers.google.com/shopping-content
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Maps Coordinate API - coordinate v1
-
-Lets you view and manage jobs in a Coordinate team.
-
-Official API documentation: https://developers.google.com/coordinate/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) CustomSearch API - customsearch v1
 
@@ -346,7 +346,7 @@ Official API documentation: https://firebase.google.com/docs/storage/security/st
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Fitness - fitness v1
 
-Google Fit API
+Stores and accesses user data in the fitness store from apps on any platform.
 
 Official API documentation: https://developers.google.com/fit/rest/
 
@@ -388,7 +388,7 @@ Official API documentation: https://developers.google.com/games/services
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1
 
-Stores, processes, explores and shares genomic data. This API implements the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.
+Stores, processes, explores and shares genomic data.
 
 Official API documentation: https://cloud.google.com/genomics/
 
@@ -436,7 +436,7 @@ Official API documentation: https://developers.google.com/google-apps/licensing/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Mirror API - mirror v1
 
-API for interacting with Glass users via the timeline.
+Interacts with Glass users via the timeline.
 
 Official API documentation: https://developers.google.com/glass
 

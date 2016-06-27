@@ -9190,7 +9190,7 @@ class CommentThreadSnippet {
 
 /**
  * Ratings schemes. The country-specific ratings are mostly for movies and
- * shows. NEXT_ID: 67
+ * shows. NEXT_ID: 68
  */
 class ContentRating {
   /**
@@ -9548,6 +9548,10 @@ class ContentRating {
    * - "fpbXx"
    */
   core.String fpbRating;
+  /**
+   * Reasons that explain why the video received its FPB (South Africa) rating.
+   */
+  core.List<core.String> fpbRatingReasons;
   /**
    * The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany)
    * rating.
@@ -10081,6 +10085,9 @@ class ContentRating {
     if (_json.containsKey("fpbRating")) {
       fpbRating = _json["fpbRating"];
     }
+    if (_json.containsKey("fpbRatingReasons")) {
+      fpbRatingReasons = _json["fpbRatingReasons"];
+    }
     if (_json.containsKey("fskRating")) {
       fskRating = _json["fskRating"];
     }
@@ -10282,6 +10289,9 @@ class ContentRating {
     }
     if (fpbRating != null) {
       _json["fpbRating"] = fpbRating;
+    }
+    if (fpbRatingReasons != null) {
+      _json["fpbRatingReasons"] = fpbRatingReasons;
     }
     if (fskRating != null) {
       _json["fskRating"] = fskRating;

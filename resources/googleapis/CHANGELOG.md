@@ -1,3 +1,19 @@
+## 0.29.0
+
+* [api] acceleratedmobilepageurl:v1: schema changes
+* [api] adexchangebuyer:v1.4: schema changes
+* [api] bigquery:v2: schema changes
+* [api] books:v2: schema/method changes
+* [api] cloudresourcemanager:v1: new resource
+* [api] compute:v1: schema/method changes
+* [api] content:v2: schema changes
+* [api] deploymentmanager:v2: schema changes
+* [api] fitness:v1: schema changes
+* [api] genomics:v1: schema changes
+* [api] gmail:v1: method changes
+* [api] youtube:v3: schema changes
+* [api-removal] coordinate:v1
+
 ## 0.28.0
 
 * [api-new] acceleratedmobilepageurl:v1

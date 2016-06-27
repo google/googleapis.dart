@@ -23,7 +23,7 @@
     "description": "[Deprecated. Please use Instance Group Manager in Compute API] Provides groups of homogenous Compute Engine instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/instance-groups/manager/v1beta2",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/CgKY2mg5l5j9z2otZhpbSYAVecY\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/TpUz2pYaIGRouf7x77PYtXiOnk4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -638,7 +638,7 @@
             }
         }
     },
-    "revision": "20160509",
+    "revision": "20160512",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InstanceGroupManager": {

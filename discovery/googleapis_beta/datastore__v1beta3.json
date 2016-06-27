@@ -93,23 +93,23 @@
             "location": "query",
             "type": "string"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
         "oauth_token": {
             "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
         "bearer_token": {
             "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         }
@@ -283,7 +283,7 @@
             }
         }
     },
-    "revision": "20160502",
+    "revision": "20160614",
     "rootUrl": "https://datastore.googleapis.com/",
     "schemas": {
         "Value": {
@@ -317,14 +317,14 @@
                     "format": "double",
                     "type": "number"
                 },
-                "geoPointValue": {
-                    "$ref": "LatLng",
-                    "description": "A geo point value representing a point on the surface of Earth."
-                },
                 "blobValue": {
                     "description": "A blob value.\nMay have at most 1,000,000 bytes.\nWhen `exclude_from_indexes` is false, may have at most 1500 bytes.\nIn JSON requests, must be base64-encoded.",
                     "format": "byte",
                     "type": "string"
+                },
+                "geoPointValue": {
+                    "$ref": "LatLng",
+                    "description": "A geo point value representing a point on the surface of Earth."
                 },
                 "nullValue": {
                     "description": "A null value.",
@@ -336,13 +336,13 @@
                     ],
                     "type": "string"
                 },
-                "keyValue": {
-                    "$ref": "Key",
-                    "description": "A key value."
-                },
                 "booleanValue": {
                     "description": "A boolean value.",
                     "type": "boolean"
+                },
+                "keyValue": {
+                    "$ref": "Key",
+                    "description": "A key value."
                 },
                 "excludeFromIndexes": {
                     "description": "If the value should be excluded from all indexes including those defined\nexplicitly.",
@@ -416,13 +416,6 @@
                     "format": "byte",
                     "type": "string"
                 },
-                "mutations": {
-                    "description": "The mutations to perform.\n\nWhen mode is `TRANSACTIONAL`, mutations affecting a single entity are\napplied in order. The following sequences of mutations affecting a single\nentity are not permitted in a single `Commit` request:\n\n- `insert` followed by `insert`\n- `update` followed by `insert`\n- `upsert` followed by `insert`\n- `delete` followed by `update`\n\nWhen mode is `NON_TRANSACTIONAL`, no two mutations may affect a single\nentity.",
-                    "items": {
-                        "$ref": "Mutation"
-                    },
-                    "type": "array"
-                },
                 "mode": {
                     "description": "The type of commit to perform. Defaults to `TRANSACTIONAL`.",
                     "enum": [
@@ -436,18 +429,13 @@
                         "Non-transactional: The mutations may not apply as all or none."
                     ],
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RollbackRequest": {
-            "description": "The request for google.datastore.v1beta3.Datastore.Rollback.",
-            "id": "RollbackRequest",
-            "properties": {
-                "transaction": {
-                    "description": "The transaction identifier, returned by a call to\ngoogle.datastore.v1beta3.Datastore.BeginTransaction.",
-                    "format": "byte",
-                    "type": "string"
+                },
+                "mutations": {
+                    "description": "The mutations to perform.\n\nWhen mode is `TRANSACTIONAL`, mutations affecting a single entity are\napplied in order. The following sequences of mutations affecting a single\nentity are not permitted in a single `Commit` request:\n\n- `insert` followed by `insert`\n- `update` followed by `insert`\n- `upsert` followed by `insert`\n- `delete` followed by `update`\n\nWhen mode is `NON_TRANSACTIONAL`, no two mutations may affect a single\nentity.",
+                    "items": {
+                        "$ref": "Mutation"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -489,11 +477,6 @@
                     },
                     "type": "array"
                 },
-                "startCursor": {
-                    "description": "A starting point for the query results. Query cursors are\nreturned in query result batches and\n[can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).",
-                    "format": "byte",
-                    "type": "string"
-                },
                 "order": {
                     "description": "The order to apply to the query results (if empty, order is unspecified).",
                     "items": {
@@ -501,12 +484,29 @@
                     },
                     "type": "array"
                 },
+                "startCursor": {
+                    "description": "A starting point for the query results. Query cursors are\nreturned in query result batches and\n[can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).",
+                    "format": "byte",
+                    "type": "string"
+                },
                 "kind": {
                     "description": "The kinds to query (if empty, returns entities of all kinds).\nCurrently at most 1 kind may be specified.",
                     "items": {
                         "$ref": "KindExpression"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "RollbackRequest": {
+            "description": "The request for google.datastore.v1beta3.Datastore.Rollback.",
+            "id": "RollbackRequest",
+            "properties": {
+                "transaction": {
+                    "description": "The transaction identifier, returned by a call to\ngoogle.datastore.v1beta3.Datastore.BeginTransaction.",
+                    "format": "byte",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -531,26 +531,28 @@
             "description": "A binding parameter for a GQL query.",
             "id": "GqlQueryParameter",
             "properties": {
+                "value": {
+                    "$ref": "Value",
+                    "description": "A value parameter."
+                },
                 "cursor": {
                     "description": "A query cursor. Query cursors are returned in query\nresult batches.",
                     "format": "byte",
                     "type": "string"
-                },
-                "value": {
-                    "$ref": "Value",
-                    "description": "A value parameter."
                 }
             },
             "type": "object"
         },
-        "BeginTransactionResponse": {
-            "description": "The response for google.datastore.v1beta3.Datastore.BeginTransaction.",
-            "id": "BeginTransactionResponse",
+        "ArrayValue": {
+            "description": "An array value.",
+            "id": "ArrayValue",
             "properties": {
-                "transaction": {
-                    "description": "The transaction identifier (always present).",
-                    "format": "byte",
-                    "type": "string"
+                "values": {
+                    "description": "Values in the array.\nThe order of this array may not be preserved if it contains a mix of\nindexed and unindexed values.",
+                    "items": {
+                        "$ref": "Value"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -570,16 +572,14 @@
             },
             "type": "object"
         },
-        "ArrayValue": {
-            "description": "An array value.",
-            "id": "ArrayValue",
+        "BeginTransactionResponse": {
+            "description": "The response for google.datastore.v1beta3.Datastore.BeginTransaction.",
+            "id": "BeginTransactionResponse",
             "properties": {
-                "values": {
-                    "description": "Values in the array.\nThe order of this array may not be preserved if it contains a mix of\nindexed and unindexed values.",
-                    "items": {
-                        "$ref": "Value"
-                    },
-                    "type": "array"
+                "transaction": {
+                    "description": "The transaction identifier (always present).",
+                    "format": "byte",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -676,6 +676,17 @@
             },
             "type": "object"
         },
+        "KindExpression": {
+            "description": "A representation of a kind.",
+            "id": "KindExpression",
+            "properties": {
+                "name": {
+                    "description": "The name of the kind.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "PropertyFilter": {
             "description": "A filter on a specific property.",
             "id": "PropertyFilter",
@@ -713,17 +724,6 @@
             },
             "type": "object"
         },
-        "KindExpression": {
-            "description": "A representation of a kind.",
-            "id": "KindExpression",
-            "properties": {
-                "name": {
-                    "description": "The name of the kind.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "PathElement": {
             "description": "A (kind, ID/name) pair used to construct a key path.\n\nIf either name or ID is set, the element is complete.\nIf neither is set, the element is incomplete.",
             "id": "PathElement",
@@ -732,13 +732,13 @@
                     "description": "The kind of the entity.\nA kind matching regex `__.*__` is reserved/read-only.\nA kind must not contain more than 1500 bytes when UTF-8 encoded.\nCannot be `\"\"`.",
                     "type": "string"
                 },
-                "name": {
-                    "description": "The name of the entity.\nA name matching regex `__.*__` is reserved/read-only.\nA name must not be more than 1500 bytes when UTF-8 encoded.\nCannot be `\"\"`.",
-                    "type": "string"
-                },
                 "id": {
                     "description": "The auto-allocated ID of the entity.\nNever equal to zero. Values less than zero are discouraged and may not\nbe supported in the future.",
                     "format": "int64",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the entity.\nA name matching regex `__.*__` is reserved/read-only.\nA name must not be more than 1500 bytes when UTF-8 encoded.\nCannot be `\"\"`.",
                     "type": "string"
                 }
             },
@@ -772,6 +772,17 @@
             },
             "type": "object"
         },
+        "MutationResult": {
+            "description": "The result of applying a mutation.",
+            "id": "MutationResult",
+            "properties": {
+                "key": {
+                    "$ref": "Key",
+                    "description": "The automatically allocated key.\nSet only when the mutation allocated a key."
+                }
+            },
+            "type": "object"
+        },
         "AllocateIdsResponse": {
             "description": "The response for google.datastore.v1beta3.Datastore.AllocateIds.",
             "id": "AllocateIdsResponse",
@@ -782,17 +793,6 @@
                         "$ref": "Key"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "MutationResult": {
-            "description": "The result of applying a mutation.",
-            "id": "MutationResult",
-            "properties": {
-                "key": {
-                    "$ref": "Key",
-                    "description": "The automatically allocated key.\nSet only when the mutation allocated a key."
                 }
             },
             "type": "object"
@@ -808,17 +808,17 @@
                     },
                     "type": "array"
                 },
-                "deferred": {
-                    "description": "A list of keys that were not looked up due to resource constraints. The\norder of results in this field is undefined and has no relation to the\norder of the keys in the input.",
-                    "items": {
-                        "$ref": "Key"
-                    },
-                    "type": "array"
-                },
                 "missing": {
                     "description": "Entities not found as `ResultType.KEY_ONLY` entities. The order of results\nin this field is undefined and has no relation to the order of the keys\nin the input.",
                     "items": {
                         "$ref": "EntityResult"
+                    },
+                    "type": "array"
+                },
+                "deferred": {
+                    "description": "A list of keys that were not looked up due to resource constraints. The\norder of results in this field is undefined and has no relation to the\norder of the keys in the input.",
+                    "items": {
+                        "$ref": "Key"
                     },
                     "type": "array"
                 }
@@ -886,16 +886,16 @@
             "description": "A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).",
             "id": "GqlQuery",
             "properties": {
+                "queryString": {
+                    "description": "A string of the format described\n[here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).",
+                    "type": "string"
+                },
                 "namedBindings": {
                     "additionalProperties": {
                         "$ref": "GqlQueryParameter"
                     },
                     "description": "For each non-reserved named binding site in the query string,\nthere must be a named parameter with that name,\nbut not necessarily the inverse.\nKey must match regex `A-Za-z_$*`, must not match regex\n`__.*__`, and must not be `\"\"`.",
                     "type": "object"
-                },
-                "queryString": {
-                    "description": "A string of the format described\n[here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).",
-                    "type": "string"
                 },
                 "allowLiterals": {
                     "description": "When false, the query string must not contain any literals and instead\nmust bind all values. For example,\n`SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while\n`SELECT * FROM Kind WHERE a = @value` is.",
@@ -907,6 +907,29 @@
                         "$ref": "GqlQueryParameter"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Mutation": {
+            "description": "A mutation to apply to an entity.",
+            "id": "Mutation",
+            "properties": {
+                "insert": {
+                    "$ref": "Entity",
+                    "description": "The entity to insert. The entity must not already exist.\nThe entity key's final path element may be incomplete."
+                },
+                "update": {
+                    "$ref": "Entity",
+                    "description": "The entity to update. The entity must already exist.\nMust have a complete key path."
+                },
+                "upsert": {
+                    "$ref": "Entity",
+                    "description": "The entity to upsert. The entity may or may not already exist.\nThe entity key's final path element may be incomplete."
+                },
+                "delete": {
+                    "$ref": "Key",
+                    "description": "The key of the entity to delete. The entity may or may not already exist.\nMust have a complete key path and must not be reserved/read-only."
                 }
             },
             "type": "object"
@@ -930,29 +953,6 @@
             },
             "type": "object"
         },
-        "Mutation": {
-            "description": "A mutation to apply to an entity.",
-            "id": "Mutation",
-            "properties": {
-                "update": {
-                    "$ref": "Entity",
-                    "description": "The entity to update. The entity must already exist.\nMust have a complete key path."
-                },
-                "insert": {
-                    "$ref": "Entity",
-                    "description": "The entity to insert. The entity must not already exist.\nThe entity key's final path element may be incomplete."
-                },
-                "delete": {
-                    "$ref": "Key",
-                    "description": "The key of the entity to delete. The entity may or may not already exist.\nMust have a complete key path and must not be reserved/read-only."
-                },
-                "upsert": {
-                    "$ref": "Entity",
-                    "description": "The entity to upsert. The entity may or may not already exist.\nThe entity key's final path element may be incomplete."
-                }
-            },
-            "type": "object"
-        },
         "RunQueryRequest": {
             "description": "The request for google.datastore.v1beta3.Datastore.RunQuery.",
             "id": "RunQueryRequest",
@@ -965,13 +965,48 @@
                     "$ref": "GqlQuery",
                     "description": "The GQL query to run."
                 },
-                "query": {
-                    "$ref": "Query",
-                    "description": "The query to run."
-                },
                 "readOptions": {
                     "$ref": "ReadOptions",
                     "description": "The options for this query."
+                },
+                "query": {
+                    "$ref": "Query",
+                    "description": "The query to run."
+                }
+            },
+            "type": "object"
+        },
+        "LookupRequest": {
+            "description": "The request for google.datastore.v1beta3.Datastore.Lookup.",
+            "id": "LookupRequest",
+            "properties": {
+                "readOptions": {
+                    "$ref": "ReadOptions",
+                    "description": "The options for this lookup request."
+                },
+                "keys": {
+                    "description": "Keys of entities to look up.",
+                    "items": {
+                        "$ref": "Key"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "LatLng": {
+            "description": "An object representing a latitude/longitude pair. This is expressed as a pair\nof doubles representing degrees latitude and degrees longitude. Unless\nspecified otherwise, this must conform to the\n<a href=\"http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf\">WGS84\nstandard</a>. Values must be within normalized ranges.\n\nExample of normalization code in Python:\n\n    def NormalizeLongitude(longitude):\n      \"\"\"Wraps decimal degrees longitude to [-180.0, 180.0].\"\"\"\n      q, r = divmod(longitude, 360.0)\n      if r > 180.0 or (r == 180.0 and q <= -1.0):\n        return r - 360.0\n      return r\n\n    def NormalizeLatLng(latitude, longitude):\n      \"\"\"Wraps decimal degrees latitude and longitude to\n      [-90.0, 90.0] and [-180.0, 180.0], respectively.\"\"\"\n      r = latitude % 360.0\n      if r <= 90.0:\n        return r, NormalizeLongitude(longitude)\n      elif r >= 270.0:\n        return r - 360, NormalizeLongitude(longitude)\n      else:\n        return 180 - r, NormalizeLongitude(longitude + 180.0)\n\n    assert 180.0 == NormalizeLongitude(180.0)\n    assert -180.0 == NormalizeLongitude(-180.0)\n    assert -179.0 == NormalizeLongitude(181.0)\n    assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)\n    assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)\n    assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)\n    assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)\n    assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)\n    assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)\n    assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)\n    assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)\n    assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)\n    assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)",
+            "id": "LatLng",
+            "properties": {
+                "latitude": {
+                    "description": "The latitude in degrees. It must be in the range [-90.0, +90.0].",
+                    "format": "double",
+                    "type": "number"
+                },
+                "longitude": {
+                    "description": "The longitude in degrees. It must be in the range [-180.0, +180.0].",
+                    "format": "double",
+                    "type": "number"
                 }
             },
             "type": "object"
@@ -998,41 +1033,6 @@
                         "$ref": "Filter"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "LatLng": {
-            "description": "An object representing a latitude/longitude pair. This is expressed as a pair\nof doubles representing degrees latitude and degrees longitude. Unless\nspecified otherwise, this must conform to the\n<a href=\"http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf\">WGS84\nstandard</a>. Values must be within normalized ranges.\n\nExample of normalization code in Python:\n\n    def NormalizeLongitude(longitude):\n      \"\"\"Wraps decimal degrees longitude to [-180.0, 180.0].\"\"\"\n      q, r = divmod(longitude, 360.0)\n      if r > 180.0 or (r == 180.0 and q <= -1.0):\n        return r - 360.0\n      return r\n\n    def NormalizeLatLng(latitude, longitude):\n      \"\"\"Wraps decimal degrees latitude and longitude to\n      [-180.0, 180.0] and [-90.0, 90.0], respectively.\"\"\"\n      r = latitude % 360.0\n      if r <= 90.0:\n        return r, NormalizeLongitude(longitude)\n      elif r >= 270.0:\n        return r - 360, NormalizeLongitude(longitude)\n      else:\n        return 180 - r, NormalizeLongitude(longitude + 180.0)\n\n    assert 180.0 == NormalizeLongitude(180.0)\n    assert -180.0 == NormalizeLongitude(-180.0)\n    assert -179.0 == NormalizeLongitude(181.0)\n    assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)\n    assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)\n    assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)\n    assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)\n    assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)\n    assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)\n    assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)\n    assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)\n    assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)\n    assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)",
-            "id": "LatLng",
-            "properties": {
-                "longitude": {
-                    "description": "The longitude in degrees. It must be in the range [-180.0, +180.0].",
-                    "format": "double",
-                    "type": "number"
-                },
-                "latitude": {
-                    "description": "The latitude in degrees. It must be in the range [-90.0, +90.0].",
-                    "format": "double",
-                    "type": "number"
-                }
-            },
-            "type": "object"
-        },
-        "LookupRequest": {
-            "description": "The request for google.datastore.v1beta3.Datastore.Lookup.",
-            "id": "LookupRequest",
-            "properties": {
-                "keys": {
-                    "description": "Keys of entities to look up.",
-                    "items": {
-                        "$ref": "Key"
-                    },
-                    "type": "array"
-                },
-                "readOptions": {
-                    "$ref": "ReadOptions",
-                    "description": "The options for this lookup request."
                 }
             },
             "type": "object"

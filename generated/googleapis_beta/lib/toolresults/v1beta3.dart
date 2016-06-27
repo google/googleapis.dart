@@ -1144,6 +1144,11 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
  * Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo =
  * any.unpack(Foo.class); }
  *
+ * Example 3: Pack and unpack a message in Python.
+ *
+ * foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR):
+ * any.Unpack(foo) ...
+ *
  * The pack methods provided by protobuf library will by default use
  * 'type.googleapis.com/full.type.name' as the type URL and the unpack methods
  * only use the fully qualified type name after the last '/' in the type URL,
@@ -1638,13 +1643,6 @@ class InconclusiveDetail {
    * executes, and that provisioning can fail.
    */
   core.bool infrastructureFailure;
-  /**
-   * A native process crashed on the device, producing a tombstone. It is
-   * unclear whether the crash was related to the app under test.
-   *
-   * For example, OpenGL crashed, but it is unclear if the app is responsible.
-   */
-  core.bool nativeCrash;
 
   InconclusiveDetail();
 
@@ -1655,9 +1653,6 @@ class InconclusiveDetail {
     if (_json.containsKey("infrastructureFailure")) {
       infrastructureFailure = _json["infrastructureFailure"];
     }
-    if (_json.containsKey("nativeCrash")) {
-      nativeCrash = _json["nativeCrash"];
-    }
   }
 
   core.Map toJson() {
@@ -1667,9 +1662,6 @@ class InconclusiveDetail {
     }
     if (infrastructureFailure != null) {
       _json["infrastructureFailure"] = infrastructureFailure;
-    }
-    if (nativeCrash != null) {
-      _json["nativeCrash"] = nativeCrash;
     }
     return _json;
   }

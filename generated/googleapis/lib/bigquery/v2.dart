@@ -1266,9 +1266,9 @@ class BigtableColumn {
    * [Optional] The type to convert the value in cells of this column. The
    * values are expected to be encoded using HBase Bytes.toBytes function when
    * using the BINARY encoding value. Following BigQuery types are allowed
-   * (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Defaut type is BYTES.
-   * 'type' can also be set at the column family level. However, the setting at
-   * this level takes precedence if 'type' is set at both levels.
+   * (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is
+   * BYTES. 'type' can also be set at the column family level. However, the
+   * setting at this level takes precedence if 'type' is set at both levels.
    */
   core.String type;
 
@@ -1349,9 +1349,9 @@ class BigtableColumnFamily {
    * [Optional] The type to convert the value in cells of this column family.
    * The values are expected to be encoded using HBase Bytes.toBytes function
    * when using the BINARY encoding value. Following BigQuery types are allowed
-   * (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Defaut type is BYTES.
-   * This can be overridden for a specific column by listing that column in
-   * 'columns' and specifying a type for it.
+   * (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is
+   * BYTES. This can be overridden for a specific column by listing that column
+   * in 'columns' and specifying a type for it.
    */
   core.String type;
 
@@ -2952,6 +2952,12 @@ class JobConfigurationQuery {
    * unspecified, this will be set to your project default.
    */
   core.int maximumBillingTier;
+  /**
+   * [Optional] Limits the bytes billed for this job. Queries that will have
+   * bytes billed beyond this limit will fail (without incurring a charge). If
+   * unspecified, this will be set to your project default.
+   */
+  core.String maximumBytesBilled;
   /** [Deprecated] This property is deprecated. */
   core.bool preserveNulls;
   /**
@@ -3023,6 +3029,9 @@ class JobConfigurationQuery {
     if (_json.containsKey("maximumBillingTier")) {
       maximumBillingTier = _json["maximumBillingTier"];
     }
+    if (_json.containsKey("maximumBytesBilled")) {
+      maximumBytesBilled = _json["maximumBytesBilled"];
+    }
     if (_json.containsKey("preserveNulls")) {
       preserveNulls = _json["preserveNulls"];
     }
@@ -3068,6 +3077,9 @@ class JobConfigurationQuery {
     }
     if (maximumBillingTier != null) {
       _json["maximumBillingTier"] = maximumBillingTier;
+    }
+    if (maximumBytesBilled != null) {
+      _json["maximumBytesBilled"] = maximumBytesBilled;
     }
     if (preserveNulls != null) {
       _json["preserveNulls"] = preserveNulls;

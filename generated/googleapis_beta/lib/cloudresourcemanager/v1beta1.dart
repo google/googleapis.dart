@@ -43,12 +43,16 @@ class OrganizationsResourceApi {
       _requester = client;
 
   /**
-   * Fetches an Organization resource identified by the specified
-   * `organization_id`.
+   * Fetches an Organization resource identified by the specified resource name.
    *
    * Request parameters:
    *
-   * [organizationId] - The id of the Organization resource to fetch.
+   * [name] - The resource name of the Organization to fetch. Its format is
+   * "organizations/[organization_id]". For example, "organizations/1234".
+   * Value must have pattern "^organizations/[^/]*$".
+   *
+   * [organizationId] - The id of the Organization resource to fetch. This field
+   * is deprecated and will be removed in v1. Use name instead.
    *
    * Completes with a [Organization].
    *
@@ -58,7 +62,7 @@ class OrganizationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Organization> get(core.String organizationId) {
+  async.Future<Organization> get(core.String name, {core.String organizationId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -66,11 +70,14 @@ class OrganizationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (organizationId == null) {
-      throw new core.ArgumentError("Parameter organizationId is required.");
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (organizationId != null) {
+      _queryParams["organizationId"] = [organizationId];
     }
 
-    _url = 'v1beta1/organizations/' + commons.Escaper.ecapeVariable('$organizationId');
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -84,7 +91,10 @@ class OrganizationsResourceApi {
 
   /**
    * Gets the access control policy for an Organization resource. May be empty
-   * if no such policy or resource exists.
+   * if no such policy or resource exists. The `resource` field should be the
+   * organization's resource name, e.g. "organizations/123". For backward
+   * compatibility, the resource provided may also be the organization_id. This
+   * will not be supported in v1.
    *
    * [request] - The metadata request object.
    *
@@ -95,6 +105,7 @@ class OrganizationsResourceApi {
    * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
    * `getIamPolicy` documentation.
+   * Value must have pattern "^organizations/[^/]*$".
    *
    * Completes with a [Policy].
    *
@@ -119,7 +130,7 @@ class OrganizationsResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1beta1/organizations/' + commons.Escaper.ecapeVariable('$resource') + ':getIamPolicy';
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -194,7 +205,9 @@ class OrganizationsResourceApi {
 
   /**
    * Sets the access control policy on an Organization resource. Replaces any
-   * existing policy.
+   * existing policy. The `resource` field should be the organization's resource
+   * name, e.g. "organizations/123". For backward compatibility, the resource
+   * provided may also be the organization_id. This will not be supported in v1.
    *
    * [request] - The metadata request object.
    *
@@ -205,6 +218,7 @@ class OrganizationsResourceApi {
    * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
    * `setIamPolicy` documentation.
+   * Value must have pattern "^organizations/[^/]*$".
    *
    * Completes with a [Policy].
    *
@@ -229,7 +243,7 @@ class OrganizationsResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1beta1/organizations/' + commons.Escaper.ecapeVariable('$resource') + ':setIamPolicy';
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -242,7 +256,10 @@ class OrganizationsResourceApi {
   }
 
   /**
-   * Returns permissions that a caller has on the specified Organization.
+   * Returns permissions that a caller has on the specified Organization. The
+   * `resource` field should be the organization's resource name, e.g.
+   * "organizations/123". For backward compatibility, the resource provided may
+   * also be the organization_id. This will not be supported in v1.
    *
    * [request] - The metadata request object.
    *
@@ -253,6 +270,7 @@ class OrganizationsResourceApi {
    * project * / zones / * zone * / disks / * disk*`. The format for the path
    * specified in this value is resource specific and is specified in the
    * `testIamPermissions` documentation.
+   * Value must have pattern "^organizations/[^/]*$".
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -277,7 +295,7 @@ class OrganizationsResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1beta1/organizations/' + commons.Escaper.ecapeVariable('$resource') + ':testIamPermissions';
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -290,16 +308,16 @@ class OrganizationsResourceApi {
   }
 
   /**
-   * Updates an Organization resource identified by the specified
-   * `organization_id`.
+   * Updates an Organization resource identified by the specified resource name.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [organizationId] - An immutable id for the Organization that is assigned on
-   * creation. This should be omitted when creating a new Organization. This
-   * field is read-only.
+   * [name] - Output Only. The resource name of the organization. This is the
+   * organization's relative path in the API. Its format is
+   * "organizations/[organization_id]". For example, "organizations/1234".
+   * Value must have pattern "^organizations/[^/]*$".
    *
    * Completes with a [Organization].
    *
@@ -309,7 +327,7 @@ class OrganizationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Organization> update(Organization request, core.String organizationId) {
+  async.Future<Organization> update(Organization request, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -320,11 +338,11 @@ class OrganizationsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-    if (organizationId == null) {
-      throw new core.ArgumentError("Parameter organizationId is required.");
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/organizations/' + commons.Escaper.ecapeVariable('$organizationId');
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -394,12 +412,12 @@ class ProjectsResourceApi {
    * account associated with it. + The Project has a lifecycle state of ACTIVE.
    * This method changes the Project's lifecycle state from ACTIVE to
    * DELETE_REQUESTED. The deletion starts at an unspecified time, at which
-   * point the lifecycle state changes to DELETE_IN_PROGRESS. Until the deletion
-   * completes, you can check the lifecycle state checked by retrieving the
-   * Project with GetProject, and the Project remains visible to ListProjects.
-   * However, you cannot update the project. After the deletion completes, the
-   * Project is not retrievable by the GetProject and ListProjects methods. The
-   * caller must have modify permissions for this Project.
+   * point the project is no longer accessible. Until the deletion completes,
+   * you can check the lifecycle state checked by retrieving the Project with
+   * GetProject, and the Project remains visible to ListProjects. However, you
+   * cannot update the project. After the deletion completes, the Project is not
+   * retrievable by the GetProject and ListProjects methods. The caller must
+   * have modify permissions for this Project.
    *
    * Request parameters:
    *
@@ -639,17 +657,28 @@ class ProjectsResourceApi {
   /**
    * Sets the IAM access control policy for the specified Project. Replaces any
    * existing policy. The following constraints apply when using
-   * `setIamPolicy()`: + Project currently supports only `user:{emailid}` and
-   * `serviceAccount:{emailid}` members in a `Binding` of a `Policy`. + To be
-   * added as an `owner`, a user must be invited via Cloud Platform console and
-   * must accept the invitation. + Members cannot be added to more than one role
-   * in the same policy. + There must be at least one owner who has accepted the
-   * Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to
-   * to remove the last ToS-accepted owner from the policy will fail. + Calling
-   * this method requires enabling the App Engine Admin API. Note: Removing
-   * service accounts from policies or changing their roles can render services
-   * completely inoperable. It is important to understand how the service
-   * account is being used before removing or updating its roles.
+   * `setIamPolicy()`: + Project does not support `allUsers` and
+   * `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The
+   * owner role can be granted only to `user` and `serviceAccount`. + Service
+   * accounts can be made owners of a project directly without any restrictions.
+   * However, to be added as an owner, a user must be invited via Cloud Platform
+   * console and must accept the invitation. + A user cannot be granted the
+   * owner role using `setIamPolicy()`. The user must be granted the owner role
+   * using the Cloud Platform Console and must explicitly accept the invitation.
+   * + Invitations to grant the owner role cannot be sent using
+   * `setIamPolicy()`; they must be sent only using the Cloud Platform Console.
+   * + Membership changes that leave the project without any owners that have
+   * accepted the Terms of Service (ToS) will be rejected. + Members cannot be
+   * added to more than one role in the same policy. + There must be at least
+   * one owner who has accepted the Terms of Service (ToS) agreement in the
+   * policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner
+   * from the policy will fail. This restriction also applies to legacy projects
+   * that no longer have owners who have accepted the ToS. Edits to IAM policies
+   * will be rejected until the lack of a ToS-accepting owner is rectified. +
+   * Calling this method requires enabling the App Engine Admin API. Note:
+   * Removing service accounts from policies or changing their roles can render
+   * services completely inoperable. It is important to understand how the
+   * service account is being used before removing or updating its roles.
    *
    * [request] - The metadata request object.
    *
@@ -747,9 +776,9 @@ class ProjectsResourceApi {
   /**
    * Restores the Project identified by the specified `project_id` (for example,
    * `my-project-123`). You can only use this method for a Project that has a
-   * lifecycle state of DELETE_REQUESTED. After deletion starts, as indicated by
-   * a lifecycle state of DELETE_IN_PROGRESS, the Project cannot be restored.
-   * The caller must have modify permissions for this Project.
+   * lifecycle state of DELETE_REQUESTED. After deletion starts, the Project
+   * cannot be restored. The caller must have modify permissions for this
+   * Project.
    *
    * [request] - The metadata request object.
    *
@@ -1084,9 +1113,25 @@ class Organization {
    */
   core.String displayName;
   /**
+   * The organization's current lifecycle state. Assigned by the server.
+   * @OutputOnly
+   * Possible string values are:
+   * - "LIFECYCLE_STATE_UNSPECIFIED" : A LIFECYCLE_STATE_UNSPECIFIED.
+   * - "ACTIVE" : A ACTIVE.
+   * - "DELETE_REQUESTED" : A DELETE_REQUESTED.
+   */
+  core.String lifecycleState;
+  /**
+   * Output Only. The resource name of the organization. This is the
+   * organization's relative path in the API. Its format is
+   * "organizations/[organization_id]". For example, "organizations/1234".
+   */
+  core.String name;
+  /**
    * An immutable id for the Organization that is assigned on creation. This
    * should be omitted when creating a new Organization. This field is
-   * read-only.
+   * read-only. This field is deprecated and will be removed in v1. Use name
+   * instead.
    */
   core.String organizationId;
   /**
@@ -1104,6 +1149,12 @@ class Organization {
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
+    if (_json.containsKey("lifecycleState")) {
+      lifecycleState = _json["lifecycleState"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
     if (_json.containsKey("organizationId")) {
       organizationId = _json["organizationId"];
     }
@@ -1119,6 +1170,12 @@ class Organization {
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
+    }
+    if (lifecycleState != null) {
+      _json["lifecycleState"] = lifecycleState;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     if (organizationId != null) {
       _json["organizationId"] = organizationId;
@@ -1256,10 +1313,10 @@ class Project {
    */
   core.String lifecycleState;
   /**
-   * The user-assigned name of the Project. It must be 4 to 30 characters.
-   * Allowed characters are: lowercase and uppercase letters, numbers, hyphen,
-   * single-quote, double-quote, space, and exclamation point. Example: My
-   * Project Read-write.
+   * The user-assigned display name of the Project. It must be 4 to 30
+   * characters. Allowed characters are: lowercase and uppercase letters,
+   * numbers, hyphen, single-quote, double-quote, space, and exclamation point.
+   * Example: My Project Read-write.
    */
   core.String name;
   /**
@@ -1346,7 +1403,7 @@ class ResourceId {
   core.String id;
   /**
    * Required field representing the resource type this id is for. At present,
-   * the only valid type is "organization".
+   * the valid types are "project" and "organization".
    */
   core.String type;
 

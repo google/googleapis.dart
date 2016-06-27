@@ -32,7 +32,7 @@
     "description": "Access Gmail mailboxes including sending user email.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/5oGe4hElC9Ldx83ZJ90nbOReW1I\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/LkMck3hBuxqAAX2hwDLpkoyTBGM\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
@@ -325,6 +325,11 @@
                                 },
                                 "pageToken": {
                                     "description": "Page token to retrieve a specific page of results in the list.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "q": {
+                                    "description": "Only return draft messages matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\".",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -1445,7 +1450,7 @@
             }
         }
     },
-    "revision": "20160526",
+    "revision": "20160621",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BatchDeleteMessagesRequest": {

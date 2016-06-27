@@ -14,11 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client genomics/v1';
 
-/**
- * Stores, processes, explores and shares genomic data. This API implements the
- * Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several
- * extensions.
- */
+/** Stores, processes, explores and shares genomic data. */
 class GenomicsApi {
   /** View and manage your data in Google BigQuery */
   static const BigqueryScope = "https://www.googleapis.com/auth/bigquery";
@@ -3408,6 +3404,55 @@ class CodingSequence {
 }
 
 /**
+ * Describes a Compute Engine resource that is being managed by a running
+ * pipeline.
+ */
+class ComputeEngine {
+  /** The names of the disks that were created for this pipeline. */
+  core.List<core.String> diskNames;
+  /** The instance on which the operation is running. */
+  core.String instanceName;
+  /** The machine type of the instance. */
+  core.String machineType;
+  /** The availability zone in which the instance resides. */
+  core.String zone;
+
+  ComputeEngine();
+
+  ComputeEngine.fromJson(core.Map _json) {
+    if (_json.containsKey("diskNames")) {
+      diskNames = _json["diskNames"];
+    }
+    if (_json.containsKey("instanceName")) {
+      instanceName = _json["instanceName"];
+    }
+    if (_json.containsKey("machineType")) {
+      machineType = _json["machineType"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (diskNames != null) {
+      _json["diskNames"] = diskNames;
+    }
+    if (instanceName != null) {
+      _json["instanceName"] = instanceName;
+    }
+    if (machineType != null) {
+      _json["machineType"] = machineType;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/**
  * A bucket over which read coverage has been precomputed. A bucket corresponds
  * to a specific range of the reference sequence.
  */
@@ -4334,12 +4379,25 @@ class Operation {
 class OperationEvent {
   /** Required description of event. */
   core.String description;
+  /**
+   * Optional time of when event finished. An event can have a start time and no
+   * finish time. If an event has a finish time, there must be a start time.
+   */
+  core.String endTime;
+  /** Optional time of when event started. */
+  core.String startTime;
 
   OperationEvent();
 
   OperationEvent.fromJson(core.Map _json) {
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
     }
   }
 
@@ -4348,12 +4406,23 @@ class OperationEvent {
     if (description != null) {
       _json["description"] = description;
     }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
     return _json;
   }
 }
 
 /** Metadata describing an Operation. */
 class OperationMetadata {
+  /**
+   * Optionally provided by the caller when submitting the request that creates
+   * the operation.
+   */
+  core.String clientId;
   /** The time at which the job was submitted to the Genomics service. */
   core.String createTime;
   /** The time at which the job stopped running. */
@@ -4375,10 +4444,22 @@ class OperationMetadata {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> request;
+  /**
+   * Runtime metadata on this Operation.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.Object> runtimeMetadata;
+  /** The time at which the job began to run. */
+  core.String startTime;
 
   OperationMetadata();
 
   OperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("clientId")) {
+      clientId = _json["clientId"];
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
@@ -4394,10 +4475,19 @@ class OperationMetadata {
     if (_json.containsKey("request")) {
       request = _json["request"];
     }
+    if (_json.containsKey("runtimeMetadata")) {
+      runtimeMetadata = _json["runtimeMetadata"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (clientId != null) {
+      _json["clientId"] = clientId;
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -4412,6 +4502,12 @@ class OperationMetadata {
     }
     if (request != null) {
       _json["request"] = request;
+    }
+    if (runtimeMetadata != null) {
+      _json["runtimeMetadata"] = runtimeMetadata;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
     }
     return _json;
   }
@@ -5322,6 +5418,31 @@ class ReferenceSet {
     }
     if (sourceUri != null) {
       _json["sourceUri"] = sourceUri;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Runtime metadata that will be populated in the runtimeMetadata field of the
+ * Operation associated with a RunPipeline execution.
+ */
+class RuntimeMetadata {
+  /** Execution information specific to Google Compute Engine. */
+  ComputeEngine computeEngine;
+
+  RuntimeMetadata();
+
+  RuntimeMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("computeEngine")) {
+      computeEngine = new ComputeEngine.fromJson(_json["computeEngine"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (computeEngine != null) {
+      _json["computeEngine"] = (computeEngine).toJson();
     }
     return _json;
   }

@@ -14,7 +14,7 @@
     "description": "Provisions and manages App Engine applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/appengine/docs/admin-api/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/xOhGK-osplEL_ezCgC9eAq4dFhY\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/JDymrl7cTvTgc8y6o_7KAyRtSLk\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -447,7 +447,7 @@
                                     ]
                                 },
                                 "patch": {
-                                    "description": "Updates an existing version. Note: UNIMPLEMENTED.",
+                                    "description": "Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses: * [`serving_status`](/appengine/docs/admin-api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.serving_status): For Version resources that use basic scaling, manual scaling, or run in the App Engine flexible environment. * [`instance_class`](/appengine/docs/admin-api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.instance_class): For Version resources that run in the App Engine standard environment. * [`automatic_scaling.min_idle_instances`](/appengine/docs/admin-api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.automatic_scaling): For Version resources that use automatic scaling and run in the App Engine standard environment. * [`automatic_scaling.max_idle_instances`](/appengine/docs/admin-api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.automatic_scaling): For Version resources that use automatic scaling and run in the App Engine standard environment.",
                                     "httpMethod": "PATCH",
                                     "id": "appengine.apps.modules.versions.patch",
                                     "parameterOrder": [
@@ -625,7 +625,7 @@
             }
         }
     },
-    "revision": "20160407",
+    "revision": "20160614",
     "rootUrl": "https://appengine.googleapis.com/",
     "schemas": {
         "Application": {
@@ -1609,15 +1609,15 @@
                     "type": "string"
                 },
                 "vmName": {
-                    "description": "For VMEngines instances, the name of GCE VM where the instance lives. @OutputOnly",
+                    "description": "For VMEngines instances, the name of the Compute Engine VM where the instance lives. @OutputOnly",
                     "type": "string"
                 },
                 "vmZoneName": {
-                    "description": "For VMEngines instances, the zone where the GCE VM is located. @OutputOnly",
+                    "description": "For VMEngines instances, the zone where the Compute Engine VM is located. @OutputOnly",
                     "type": "string"
                 },
                 "vmId": {
-                    "description": "For VMEngines instances, the GCE VM ID of the instance. @OutputOnly",
+                    "description": "For VMEngines instances, the Compute Engine VM ID of the instance. @OutputOnly",
                     "type": "string"
                 },
                 "startTimestamp": {
@@ -1650,7 +1650,7 @@
                     "type": "string"
                 },
                 "vmStatus": {
-                    "description": "For VMEngines instances, the status of GCE VM where the instance lives. @OutputOnly",
+                    "description": "For VMEngines instances, the status of the Compute Engine VM where the instance lives. @OutputOnly",
                     "type": "string"
                 },
                 "vmUnlocked": {
@@ -1734,6 +1734,38 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "OperationMetadataV1": {
+            "description": "Metadata for the given google.longrunning.Operation.",
+            "id": "OperationMetadataV1",
+            "properties": {
+                "method": {
+                    "description": "API method name that initiated the operation. Example: \"google.appengine.v1.Version.CreateVersion\". @OutputOnly",
+                    "type": "string"
+                },
+                "insertTime": {
+                    "description": "Timestamp that this operation was received. @OutputOnly",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Timestamp that this operation was completed. (Not present if the operation is still in progress.) @OutputOnly",
+                    "type": "string"
+                },
+                "user": {
+                    "description": "The user who requested this operation. @OutputOnly",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "Resource that this operation is acting on. Example: \"apps/myapp/services/default\". @OutputOnly",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LocationMetadata": {
+            "description": "Metadata for the given google.cloud.location.Location.",
+            "id": "LocationMetadata",
             "type": "object"
         }
     },

@@ -678,7 +678,7 @@ class Client {
    * The type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`.
    * Possible string values are:
    * - "ENTITY_TYPE_UNSPECIFIED" : A placeholder for an undefined client entity
-   * type.
+   * type. Should not be used.
    * - "ADVERTISER" : An advertiser.
    * - "BRAND" : A brand.
    * - "AGENCY" : An advertising agency.

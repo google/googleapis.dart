@@ -12300,6 +12300,59 @@ class UrlMapsResourceApi {
   }
 
   /**
+   * Initiates a cache invalidation operation, invalidating the specified path,
+   * scoped to the specified UrlMap.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [urlMap] - Name of the UrlMap scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> invalidateCache(CacheInvalidationRule request, core.String project, core.String urlMap) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (urlMap == null) {
+      throw new core.ArgumentError("Parameter urlMap is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap') + '/invalidateCache';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
    * Retrieves the list of UrlMap resources available to the specified project.
    *
    * Request parameters:
@@ -14694,6 +14747,8 @@ class BackendService {
    * create the resource.
    */
   core.String description;
+  /** If true, enable Cloud CDN for this BackendService. */
+  core.bool enableCDN;
   /**
    * Fingerprint of this resource. A hash of the contents stored in this object.
    * This field is used in optimistic locking. This field will be ignored when
@@ -14778,6 +14833,9 @@ class BackendService {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("enableCDN")) {
+      enableCDN = _json["enableCDN"];
+    }
     if (_json.containsKey("fingerprint")) {
       fingerprint = _json["fingerprint"];
     }
@@ -14823,6 +14881,9 @@ class BackendService {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (enableCDN != null) {
+      _json["enableCDN"] = enableCDN;
     }
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
@@ -14895,8 +14956,7 @@ class BackendServiceGroupHealth {
 /** Contains a list of BackendService resources. */
 class BackendServiceList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of BackendService resources. */
@@ -14906,13 +14966,7 @@ class BackendServiceList {
    * of backend services.
    */
   core.String kind;
-  /**
-   * [Output Only] This token allows you to get the next page of results for
-   * list requests. If the number of results is larger than maxResults, use the
-   * nextPageToken as a value for the query parameter pageToken in the next list
-   * request. Subsequent list requests will have their own nextPageToken to
-   * continue paging through the results.
-   */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -14958,16 +15012,36 @@ class BackendServiceList {
   }
 }
 
+class CacheInvalidationRule {
+  core.String path;
+
+  CacheInvalidationRule();
+
+  CacheInvalidationRule.fromJson(core.Map _json) {
+    if (_json.containsKey("path")) {
+      path = _json["path"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (path != null) {
+      _json["path"] = path;
+    }
+    return _json;
+  }
+}
+
 /** Represents a customer-supplied encryption key */
 class CustomerEncryptionKey {
   /**
-   * Specifies a 256-bit customer-supplied encryption key, encoded in base64 to
-   * either encrypt or decrypt this resource.
+   * Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
+   * base64 to either encrypt or decrypt this resource.
    */
   core.String rawKey;
   /**
-   * [Output only] The base64 encoded SHA-256 hash of the customer-supplied
-   * encryption key that protects this resource.
+   * [Output only] The RFC 4648 base64 encoded SHA-256 hash of the
+   * customer-supplied encryption key that protects this resource.
    */
   core.String sha256;
 
@@ -17422,7 +17496,7 @@ class Image {
   CustomerEncryptionKey imageEncryptionKey;
   /** [Output Only] Type of the resource. Always compute#image for images. */
   core.String kind;
-  /** Any applicable publicly visible licenses. */
+  /** Any applicable license URI. */
   core.List<core.String> licenses;
   /**
    * Name of the resource; provided by the client when the resource is created.
@@ -18247,6 +18321,7 @@ class InstanceGroupList {
   }
 }
 
+/** An Instance Template Manager resource. */
 class InstanceGroupManager {
   /**
    * The base instance name to use for instances in this group. The value must

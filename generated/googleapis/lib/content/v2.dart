@@ -3457,6 +3457,16 @@ class AccountShippingShippingService {
   AccountShippingShippingServiceCalculationMethod calculationMethod;
   /** Decision tree for "complicated" shipping cost calculation. */
   AccountShippingShippingServiceCostRule costRuleTree;
+  /**
+   * The maximum number of days in transit. Must be a value between 0 and 250
+   * included. A value of 0 means same day delivery.
+   */
+  core.String maxDaysInTransit;
+  /**
+   * The minimum number of days in transit. Must be a value between 0 and
+   * maxDaysIntransit included. A value of 0 means same day delivery.
+   */
+  core.String minDaysInTransit;
   /** The name of this shipping service. */
   core.String name;
   /**
@@ -3477,6 +3487,12 @@ class AccountShippingShippingService {
     if (_json.containsKey("costRuleTree")) {
       costRuleTree = new AccountShippingShippingServiceCostRule.fromJson(_json["costRuleTree"]);
     }
+    if (_json.containsKey("maxDaysInTransit")) {
+      maxDaysInTransit = _json["maxDaysInTransit"];
+    }
+    if (_json.containsKey("minDaysInTransit")) {
+      minDaysInTransit = _json["minDaysInTransit"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -3495,6 +3511,12 @@ class AccountShippingShippingService {
     }
     if (costRuleTree != null) {
       _json["costRuleTree"] = (costRuleTree).toJson();
+    }
+    if (maxDaysInTransit != null) {
+      _json["maxDaysInTransit"] = maxDaysInTransit;
+    }
+    if (minDaysInTransit != null) {
+      _json["minDaysInTransit"] = minDaysInTransit;
     }
     if (name != null) {
       _json["name"] = name;

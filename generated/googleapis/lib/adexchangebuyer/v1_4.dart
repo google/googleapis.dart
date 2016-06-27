@@ -2388,7 +2388,65 @@ class CreateOrdersResponse {
   }
 }
 
+class CreativeCorrectionsContexts {
+  /**
+   * Only set when contextType=AUCTION_TYPE. Represents the auction types this
+   * correction applies to.
+   */
+  core.List<core.String> auctionType;
+  /**
+   * The type of context (e.g., location, platform, auction type, SSL-ness).
+   */
+  core.String contextType;
+  /**
+   * Only set when contextType=LOCATION. Represents the geo criterias this
+   * correction applies to.
+   */
+  core.List<core.int> geoCriteriaId;
+  /**
+   * Only set when contextType=PLATFORM. Represents the platforms this
+   * correction applies to.
+   */
+  core.List<core.String> platform;
+
+  CreativeCorrectionsContexts();
+
+  CreativeCorrectionsContexts.fromJson(core.Map _json) {
+    if (_json.containsKey("auctionType")) {
+      auctionType = _json["auctionType"];
+    }
+    if (_json.containsKey("contextType")) {
+      contextType = _json["contextType"];
+    }
+    if (_json.containsKey("geoCriteriaId")) {
+      geoCriteriaId = _json["geoCriteriaId"];
+    }
+    if (_json.containsKey("platform")) {
+      platform = _json["platform"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (auctionType != null) {
+      _json["auctionType"] = auctionType;
+    }
+    if (contextType != null) {
+      _json["contextType"] = contextType;
+    }
+    if (geoCriteriaId != null) {
+      _json["geoCriteriaId"] = geoCriteriaId;
+    }
+    if (platform != null) {
+      _json["platform"] = platform;
+    }
+    return _json;
+  }
+}
+
 class CreativeCorrections {
+  /** All known serving contexts containing serving status information. */
+  core.List<CreativeCorrectionsContexts> contexts;
   /** Additional details about the correction. */
   core.List<core.String> details;
   /** The type of correction that was applied to the creative. */
@@ -2397,6 +2455,9 @@ class CreativeCorrections {
   CreativeCorrections();
 
   CreativeCorrections.fromJson(core.Map _json) {
+    if (_json.containsKey("contexts")) {
+      contexts = _json["contexts"].map((value) => new CreativeCorrectionsContexts.fromJson(value)).toList();
+    }
     if (_json.containsKey("details")) {
       details = _json["details"];
     }
@@ -2407,6 +2468,9 @@ class CreativeCorrections {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (contexts != null) {
+      _json["contexts"] = contexts.map((value) => (value).toJson()).toList();
+    }
     if (details != null) {
       _json["details"] = details;
     }
@@ -2891,6 +2955,11 @@ class Creative {
   core.List<core.String> impressionTrackingUrl;
   /** Resource type. */
   core.String kind;
+  /**
+   * Detected languages for this creative. Read-only. This field should not be
+   * set in requests.
+   */
+  core.List<core.String> languages;
   /** If nativeAd is set, HTMLSnippet and videoURL should not be set. */
   CreativeNativeAd nativeAd;
   /**
@@ -2985,6 +3054,9 @@ class Creative {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("languages")) {
+      languages = _json["languages"];
+    }
     if (_json.containsKey("nativeAd")) {
       nativeAd = new CreativeNativeAd.fromJson(_json["nativeAd"]);
     }
@@ -3066,6 +3138,9 @@ class Creative {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (languages != null) {
+      _json["languages"] = languages;
     }
     if (nativeAd != null) {
       _json["nativeAd"] = (nativeAd).toJson();
@@ -3355,6 +3430,11 @@ class DealTermsGuaranteedFixedPriceTermsBillingInfo {
    */
   core.String currencyConversionTimeMs;
   /**
+   * The DFP line item id associated with this deal. For features like CPD,
+   * buyers can retrieve the DFP line item for billing reconciliation.
+   */
+  core.String dfpLineItemId;
+  /**
    * The original contracted quantity (# impressions) for this deal. To ensure
    * delivery, sometimes publisher will book the deal with a impression buffer,
    * however clients are billed using the original contracted quantity.
@@ -3372,6 +3452,9 @@ class DealTermsGuaranteedFixedPriceTermsBillingInfo {
     if (_json.containsKey("currencyConversionTimeMs")) {
       currencyConversionTimeMs = _json["currencyConversionTimeMs"];
     }
+    if (_json.containsKey("dfpLineItemId")) {
+      dfpLineItemId = _json["dfpLineItemId"];
+    }
     if (_json.containsKey("originalContractedQuantity")) {
       originalContractedQuantity = _json["originalContractedQuantity"];
     }
@@ -3384,6 +3467,9 @@ class DealTermsGuaranteedFixedPriceTermsBillingInfo {
     var _json = new core.Map();
     if (currencyConversionTimeMs != null) {
       _json["currencyConversionTimeMs"] = currencyConversionTimeMs;
+    }
+    if (dfpLineItemId != null) {
+      _json["dfpLineItemId"] = dfpLineItemId;
     }
     if (originalContractedQuantity != null) {
       _json["originalContractedQuantity"] = originalContractedQuantity;
@@ -3618,8 +3704,17 @@ class Dimension {
 class DimensionDimensionValue {
   /** Id of the dimension. */
   core.int id;
-  /** Name of the dimension mainly for debugging purposes. */
+  /**
+   * Name of the dimension mainly for debugging purposes, except for the case of
+   * CREATIVE_SIZE. For CREATIVE_SIZE, strings are used instead of ids.
+   */
   core.String name;
+  /**
+   * Percent of total impressions for a dimension type. e.g. {dimension_type:
+   * 'GENDER', [{dimension_value: {id: 1, name: 'MALE', percentage: 60}}]}
+   * Gender MALE is 60% of all impressions which have gender.
+   */
+  core.int percentage;
 
   DimensionDimensionValue();
 
@@ -3630,6 +3725,9 @@ class DimensionDimensionValue {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("percentage")) {
+      percentage = _json["percentage"];
+    }
   }
 
   core.Map toJson() {
@@ -3639,6 +3737,9 @@ class DimensionDimensionValue {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (percentage != null) {
+      _json["percentage"] = percentage;
     }
     return _json;
   }
@@ -5893,6 +5994,8 @@ class TargetingValueCreativeSize {
    * creative.
    */
   TargetingValueSize size;
+  /** The skippable ad type for video size. */
+  core.String skippableAdType;
 
   TargetingValueCreativeSize();
 
@@ -5906,6 +6009,9 @@ class TargetingValueCreativeSize {
     if (_json.containsKey("size")) {
       size = new TargetingValueSize.fromJson(_json["size"]);
     }
+    if (_json.containsKey("skippableAdType")) {
+      skippableAdType = _json["skippableAdType"];
+    }
   }
 
   core.Map toJson() {
@@ -5918,6 +6024,9 @@ class TargetingValueCreativeSize {
     }
     if (size != null) {
       _json["size"] = (size).toJson();
+    }
+    if (skippableAdType != null) {
+      _json["skippableAdType"] = skippableAdType;
     }
     return _json;
   }

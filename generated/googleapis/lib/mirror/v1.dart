@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client mirror/v1';
 
-/** API for interacting with Glass users via the timeline. */
+/** Interacts with Glass users via the timeline. */
 class MirrorApi {
   /** View your location */
   static const GlassLocationScope = "https://www.googleapis.com/auth/glass.location";

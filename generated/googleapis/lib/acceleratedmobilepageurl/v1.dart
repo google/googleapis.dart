@@ -135,6 +135,9 @@ class AmpUrlError {
    * at the server.
    * Client advised to retry.
    * - "URL_IS_VALID_AMP" : Indicates the requested URL is a valid AMP URL.
+   * DEPRECATED: API no longer returns URL_IS_INVALID_AMP error code and will
+   * be removed in API version 2. Instead of returning error, the requested
+   * URL is returned as an AMP URL in AmpUrl response.
    * - "URL_IS_INVALID_AMP" : Indicates that the requested URL is an invalid AMP
    * URL.
    */
@@ -176,6 +179,22 @@ class AmpUrlError {
 /** AMP URL request for a batch of URLs. */
 class BatchGetAmpUrlsRequest {
   /**
+   * The lookup_strategy being requested.
+   * Possible string values are:
+   * - "FETCH_LIVE_DOC" : FETCH_LIVE_DOC strategy involves live document fetch
+   * of URLs not found in
+   * the index. Any request URL not found in the index is crawled in realtime
+   * to validate if there is a corresponding AMP URL. This strategy has higher
+   * coverage but with extra latency introduced by realtime crawling. This is
+   * the default strategy. Applications using this strategy should set higher
+   * HTTP timeouts of the API calls.
+   * - "IN_INDEX_DOC" : IN_INDEX_DOC strategy skips fetching live documents of
+   * URL(s) not found
+   * in index. For applications which need low latency use of IN_INDEX_DOC
+   * strategy is recommended.
+   */
+  core.String lookupStrategy;
+  /**
    * List of URLs to look up for the paired AMP URLs.
    * The URLs are case-sensitive. Up to 10 URLs per lookup
    * (see [Usage Limits](/amp/cache/reference/limits)).
@@ -185,6 +204,9 @@ class BatchGetAmpUrlsRequest {
   BatchGetAmpUrlsRequest();
 
   BatchGetAmpUrlsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("lookupStrategy")) {
+      lookupStrategy = _json["lookupStrategy"];
+    }
     if (_json.containsKey("urls")) {
       urls = _json["urls"];
     }
@@ -192,6 +214,9 @@ class BatchGetAmpUrlsRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (lookupStrategy != null) {
+      _json["lookupStrategy"] = lookupStrategy;
+    }
     if (urls != null) {
       _json["urls"] = urls;
     }

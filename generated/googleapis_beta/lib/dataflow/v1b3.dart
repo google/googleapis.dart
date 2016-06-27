@@ -269,6 +269,7 @@ class ProjectsJobsResourceApi {
    *
    * [filter] - The kind of filter to use.
    * Possible string values are:
+   * - "UNKNOWN" : A UNKNOWN.
    * - "ALL" : A ALL.
    * - "TERMINATED" : A TERMINATED.
    * - "ACTIVE" : A ACTIVE.
@@ -625,11 +626,12 @@ class ApproximateProgress {
 /** A progress measurement of a WorkItem by a worker. */
 class ApproximateReportedProgress {
   /**
-   * Total amount of parallelism in the portion of input of this work item that
-   * has already been consumed. In the first two examples above (see
-   * remaining_parallelism), the value should be 30 or 3 respectively. The sum
-   * of remaining_parallelism and consumed_parallelism should equal the total
-   * amount of parallelism in this work item. If specified, must be finite.
+   * Total amount of parallelism in the portion of input of this task that has
+   * already been consumed and is no longer active. In the first two examples
+   * above (see remaining_parallelism), the value should be 29 or 2
+   * respectively. The sum of remaining_parallelism and consumed_parallelism
+   * should equal the total amount of parallelism in this work item. If
+   * specified, must be finite.
    */
   ReportedParallelism consumedParallelism;
   /**
@@ -640,22 +642,24 @@ class ApproximateReportedProgress {
   /** A Position within the work to represent a progress. */
   Position position;
   /**
-   * Total amount of parallelism in the input of this WorkItem that has not been
-   * consumed yet (i.e. can be delegated to a new WorkItem via dynamic
-   * splitting). "Amount of parallelism" refers to how many non-empty parts of
-   * the input can be read in parallel. This does not necessarily equal number
-   * of records. An input that can be read in parallel down to the individual
-   * records is called "perfectly splittable". An example of non-perfectly
-   * parallelizable input is a block-compressed file format where a block of
-   * records has to be read as a whole, but different blocks can be read in
-   * parallel. Examples: * If we have read 30 records out of 50 in a perfectly
-   * splittable 50-record input, this value should be 20. * If we are reading
-   * through block 3 in a block-compressed file consisting of 5 blocks, this
-   * value should be 2 (since blocks 4 and 5 can be processed in parallel by new
-   * work items via dynamic splitting). * If we are reading through the last
-   * block in a block-compressed file, or reading or processing the last record
-   * in a perfectly splittable input, this value should be 0, because the
-   * remainder of the work item cannot be further split.
+   * Total amount of parallelism in the input of this task that remains, (i.e.
+   * can be delegated to this task and any new tasks via dynamic splitting).
+   * Always at least 1 for non-finished work items and 0 for finished. "Amount
+   * of parallelism" refers to how many non-empty parts of the input can be read
+   * in parallel. This does not necessarily equal number of records. An input
+   * that can be read in parallel down to the individual records is called
+   * "perfectly splittable". An example of non-perfectly parallelizable input is
+   * a block-compressed file format where a block of records has to be read as a
+   * whole, but different blocks can be read in parallel. Examples: * If we are
+   * processing record #30 (starting at 1) out of 50 in a perfectly splittable
+   * 50-record input, this value should be 21 (20 remaining + 1 current). * If
+   * we are reading through block 3 in a block-compressed file consisting of 5
+   * blocks, this value should be 3 (since blocks 4 and 5 can be processed in
+   * parallel by new tasks via dynamic splitting and the current task remains
+   * processing block 3). * If we are reading through the last block in a
+   * block-compressed file, or reading or processing the last record in a
+   * perfectly splittable input, this value should be 1, because apart from the
+   * current task, no additional remainder can be split off.
    */
   ReportedParallelism remainingParallelism;
 
@@ -864,6 +868,339 @@ class ConcatPosition {
     }
     if (position != null) {
       _json["position"] = (position).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * CounterMetadata includes all static non-name non-value counter attributes.
+ */
+class CounterMetadata {
+  /** Human-readable description of the counter semantics. */
+  core.String description;
+  /**
+   * Counter aggregation kind.
+   * Possible string values are:
+   * - "INVALID" : A INVALID.
+   * - "SUM" : A SUM.
+   * - "MAX" : A MAX.
+   * - "MIN" : A MIN.
+   * - "MEAN" : A MEAN.
+   * - "OR" : A OR.
+   * - "AND" : A AND.
+   * - "SET" : A SET.
+   */
+  core.String kind;
+  /** A string referring to the unit type. */
+  core.String otherUnits;
+  /**
+   * System defined Units, see above enum.
+   * Possible string values are:
+   * - "BYTES" : A BYTES.
+   * - "BYTES_PER_SEC" : A BYTES_PER_SEC.
+   * - "MILLISECONDS" : A MILLISECONDS.
+   * - "MICROSECONDS" : A MICROSECONDS.
+   * - "NANOSECONDS" : A NANOSECONDS.
+   * - "TIMESTAMP_MSEC" : A TIMESTAMP_MSEC.
+   * - "TIMESTAMP_USEC" : A TIMESTAMP_USEC.
+   * - "TIMESTAMP_NSEC" : A TIMESTAMP_NSEC.
+   */
+  core.String standardUnits;
+
+  CounterMetadata();
+
+  CounterMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("otherUnits")) {
+      otherUnits = _json["otherUnits"];
+    }
+    if (_json.containsKey("standardUnits")) {
+      standardUnits = _json["standardUnits"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (otherUnits != null) {
+      _json["otherUnits"] = otherUnits;
+    }
+    if (standardUnits != null) {
+      _json["standardUnits"] = standardUnits;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Identifies a counter within a per-job namespace. Counters whose structured
+ * names are the same get merged into a single value for the job.
+ */
+class CounterStructuredName {
+  /** Name of the optimized step being executed by the workers. */
+  core.String componentStepName;
+  /**
+   * Name of the stage. An execution step contains multiple component steps.
+   */
+  core.String executionStepName;
+  /**
+   * Counter name. Not necessarily globally-unique, but unique within the
+   * context of the other fields. Required.
+   */
+  core.String name;
+  /**
+   * System generated name of the original step in the user's graph, before
+   * optimization.
+   */
+  core.String originalStepName;
+  /** A string containing the origin of the counter. */
+  core.String otherOrigin;
+  /**
+   * Portion of this counter, either key or value.
+   * Possible string values are:
+   * - "ALL" : A ALL.
+   * - "KEY" : A KEY.
+   * - "VALUE" : A VALUE.
+   */
+  core.String portion;
+  /**
+   * One of the standard Origins defined above.
+   * Possible string values are:
+   * - "DATAFLOW" : A DATAFLOW.
+   * - "USER" : A USER.
+   */
+  core.String standardOrigin;
+  /** ID of a particular worker. */
+  core.String workerId;
+
+  CounterStructuredName();
+
+  CounterStructuredName.fromJson(core.Map _json) {
+    if (_json.containsKey("componentStepName")) {
+      componentStepName = _json["componentStepName"];
+    }
+    if (_json.containsKey("executionStepName")) {
+      executionStepName = _json["executionStepName"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("originalStepName")) {
+      originalStepName = _json["originalStepName"];
+    }
+    if (_json.containsKey("otherOrigin")) {
+      otherOrigin = _json["otherOrigin"];
+    }
+    if (_json.containsKey("portion")) {
+      portion = _json["portion"];
+    }
+    if (_json.containsKey("standardOrigin")) {
+      standardOrigin = _json["standardOrigin"];
+    }
+    if (_json.containsKey("workerId")) {
+      workerId = _json["workerId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (componentStepName != null) {
+      _json["componentStepName"] = componentStepName;
+    }
+    if (executionStepName != null) {
+      _json["executionStepName"] = executionStepName;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (originalStepName != null) {
+      _json["originalStepName"] = originalStepName;
+    }
+    if (otherOrigin != null) {
+      _json["otherOrigin"] = otherOrigin;
+    }
+    if (portion != null) {
+      _json["portion"] = portion;
+    }
+    if (standardOrigin != null) {
+      _json["standardOrigin"] = standardOrigin;
+    }
+    if (workerId != null) {
+      _json["workerId"] = workerId;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A single message which encapsulates structured name and metadata for a given
+ * counter.
+ */
+class CounterStructuredNameAndMetadata {
+  /** Metadata associated with a counter */
+  CounterMetadata metadata;
+  /** Structured name of the counter. */
+  CounterStructuredName name;
+
+  CounterStructuredNameAndMetadata();
+
+  CounterStructuredNameAndMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("metadata")) {
+      metadata = new CounterMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("name")) {
+      name = new CounterStructuredName.fromJson(_json["name"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (name != null) {
+      _json["name"] = (name).toJson();
+    }
+    return _json;
+  }
+}
+
+/** An update to a Counter sent from a worker. */
+class CounterUpdate {
+  /** Boolean value for And, Or. */
+  core.bool boolean;
+  /**
+   * True if this counter is reported as the total cumulative aggregate value
+   * accumulated since the worker started working on this WorkItem. By default
+   * this is false, indicating that this counter is reported as a delta.
+   */
+  core.bool cumulative;
+  /** Floating point value for Sum, Max, Min. */
+  core.double floatingPoint;
+  /** List of floating point numbers, for Set. */
+  FloatingPointList floatingPointList;
+  /** Floating point mean aggregation value for Mean. */
+  FloatingPointMean floatingPointMean;
+  /** Integer value for Sum, Max, Min. */
+  SplitInt64 integer;
+  /** List of integers, for Set. */
+  IntegerList integerList;
+  /** Integer mean aggregation value for Mean. */
+  IntegerMean integerMean;
+  /**
+   * Value for internally-defined counters used by the Dataflow service.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object internal;
+  /** Counter name and aggregation type. */
+  NameAndKind nameAndKind;
+  /**
+   * The service-generated short identifier for this counter. The short_id ->
+   * (name, metadata) mapping is constant for the lifetime of a job.
+   */
+  core.String shortId;
+  /** List of strings, for Set. */
+  StringList stringList;
+  /** Counter structured name and metadata. */
+  CounterStructuredNameAndMetadata structuredNameAndMetadata;
+
+  CounterUpdate();
+
+  CounterUpdate.fromJson(core.Map _json) {
+    if (_json.containsKey("boolean")) {
+      boolean = _json["boolean"];
+    }
+    if (_json.containsKey("cumulative")) {
+      cumulative = _json["cumulative"];
+    }
+    if (_json.containsKey("floatingPoint")) {
+      floatingPoint = _json["floatingPoint"];
+    }
+    if (_json.containsKey("floatingPointList")) {
+      floatingPointList = new FloatingPointList.fromJson(_json["floatingPointList"]);
+    }
+    if (_json.containsKey("floatingPointMean")) {
+      floatingPointMean = new FloatingPointMean.fromJson(_json["floatingPointMean"]);
+    }
+    if (_json.containsKey("integer")) {
+      integer = new SplitInt64.fromJson(_json["integer"]);
+    }
+    if (_json.containsKey("integerList")) {
+      integerList = new IntegerList.fromJson(_json["integerList"]);
+    }
+    if (_json.containsKey("integerMean")) {
+      integerMean = new IntegerMean.fromJson(_json["integerMean"]);
+    }
+    if (_json.containsKey("internal")) {
+      internal = _json["internal"];
+    }
+    if (_json.containsKey("nameAndKind")) {
+      nameAndKind = new NameAndKind.fromJson(_json["nameAndKind"]);
+    }
+    if (_json.containsKey("shortId")) {
+      shortId = _json["shortId"];
+    }
+    if (_json.containsKey("stringList")) {
+      stringList = new StringList.fromJson(_json["stringList"]);
+    }
+    if (_json.containsKey("structuredNameAndMetadata")) {
+      structuredNameAndMetadata = new CounterStructuredNameAndMetadata.fromJson(_json["structuredNameAndMetadata"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (boolean != null) {
+      _json["boolean"] = boolean;
+    }
+    if (cumulative != null) {
+      _json["cumulative"] = cumulative;
+    }
+    if (floatingPoint != null) {
+      _json["floatingPoint"] = floatingPoint;
+    }
+    if (floatingPointList != null) {
+      _json["floatingPointList"] = (floatingPointList).toJson();
+    }
+    if (floatingPointMean != null) {
+      _json["floatingPointMean"] = (floatingPointMean).toJson();
+    }
+    if (integer != null) {
+      _json["integer"] = (integer).toJson();
+    }
+    if (integerList != null) {
+      _json["integerList"] = (integerList).toJson();
+    }
+    if (integerMean != null) {
+      _json["integerMean"] = (integerMean).toJson();
+    }
+    if (internal != null) {
+      _json["internal"] = internal;
+    }
+    if (nameAndKind != null) {
+      _json["nameAndKind"] = (nameAndKind).toJson();
+    }
+    if (shortId != null) {
+      _json["shortId"] = shortId;
+    }
+    if (stringList != null) {
+      _json["stringList"] = (stringList).toJson();
+    }
+    if (structuredNameAndMetadata != null) {
+      _json["structuredNameAndMetadata"] = (structuredNameAndMetadata).toJson();
     }
     return _json;
   }
@@ -1222,6 +1559,58 @@ class FlattenInstruction {
   }
 }
 
+/** A metric value representing a list of floating point numbers. */
+class FloatingPointList {
+  /** Elements of the list. */
+  core.List<core.double> elements;
+
+  FloatingPointList();
+
+  FloatingPointList.fromJson(core.Map _json) {
+    if (_json.containsKey("elements")) {
+      elements = _json["elements"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (elements != null) {
+      _json["elements"] = elements;
+    }
+    return _json;
+  }
+}
+
+/** A representation of a floating point mean metric contribution. */
+class FloatingPointMean {
+  /** The number of values being aggregated. */
+  SplitInt64 count;
+  /** The sum of all values being aggregated. */
+  core.double sum;
+
+  FloatingPointMean();
+
+  FloatingPointMean.fromJson(core.Map _json) {
+    if (_json.containsKey("count")) {
+      count = new SplitInt64.fromJson(_json["count"]);
+    }
+    if (_json.containsKey("sum")) {
+      sum = _json["sum"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (count != null) {
+      _json["count"] = (count).toJson();
+    }
+    if (sum != null) {
+      _json["sum"] = sum;
+    }
+    return _json;
+  }
+}
+
 /**
  * An input of an instruction, as a reference to an output of a producer
  * instruction.
@@ -1297,6 +1686,58 @@ class InstructionOutput {
     }
     if (systemName != null) {
       _json["systemName"] = systemName;
+    }
+    return _json;
+  }
+}
+
+/** A metric value representing a list of integers. */
+class IntegerList {
+  /** Elements of the list. */
+  core.List<SplitInt64> elements;
+
+  IntegerList();
+
+  IntegerList.fromJson(core.Map _json) {
+    if (_json.containsKey("elements")) {
+      elements = _json["elements"].map((value) => new SplitInt64.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (elements != null) {
+      _json["elements"] = elements.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** A representation of an integer mean metric contribution. */
+class IntegerMean {
+  /** The number of values being aggregated. */
+  SplitInt64 count;
+  /** The sum of all values being aggregated. */
+  SplitInt64 sum;
+
+  IntegerMean();
+
+  IntegerMean.fromJson(core.Map _json) {
+    if (_json.containsKey("count")) {
+      count = new SplitInt64.fromJson(_json["count"]);
+    }
+    if (_json.containsKey("sum")) {
+      sum = new SplitInt64.fromJson(_json["sum"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (count != null) {
+      _json["count"] = (count).toJson();
+    }
+    if (sum != null) {
+      _json["sum"] = (sum).toJson();
     }
     return _json;
   }
@@ -1974,6 +2415,42 @@ class MapTask {
 }
 
 /**
+ * The metric short id is returned to the user alongside an offset into
+ * ReportWorkItemStatusRequest
+ */
+class MetricShortId {
+  /**
+   * The index of the corresponding metric in the ReportWorkItemStatusRequest.
+   * Required.
+   */
+  core.int metricIndex;
+  /** The service-generated short identifier for the metric. */
+  core.String shortId;
+
+  MetricShortId();
+
+  MetricShortId.fromJson(core.Map _json) {
+    if (_json.containsKey("metricIndex")) {
+      metricIndex = _json["metricIndex"];
+    }
+    if (_json.containsKey("shortId")) {
+      shortId = _json["shortId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (metricIndex != null) {
+      _json["metricIndex"] = metricIndex;
+    }
+    if (shortId != null) {
+      _json["shortId"] = shortId;
+    }
+    return _json;
+  }
+}
+
+/**
  * Identifies a metric, by describing the source which generated the metric.
  */
 class MetricStructuredName {
@@ -2204,6 +2681,47 @@ class MultiOutputInfo {
     var _json = new core.Map();
     if (tag != null) {
       _json["tag"] = tag;
+    }
+    return _json;
+  }
+}
+
+/** Basic metadata about a counter. */
+class NameAndKind {
+  /**
+   * Counter aggregation kind.
+   * Possible string values are:
+   * - "INVALID" : A INVALID.
+   * - "SUM" : A SUM.
+   * - "MAX" : A MAX.
+   * - "MIN" : A MIN.
+   * - "MEAN" : A MEAN.
+   * - "OR" : A OR.
+   * - "AND" : A AND.
+   * - "SET" : A SET.
+   */
+  core.String kind;
+  /** Name of the counter. */
+  core.String name;
+
+  NameAndKind();
+
+  NameAndKind.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }
@@ -3468,6 +3986,39 @@ class SourceSplitShard {
   }
 }
 
+/**
+ * A representation of an int64, n, that is immune to precision loss when
+ * encoded in JSON.
+ */
+class SplitInt64 {
+  /** The high order bits, including the sign: n >> 32. */
+  core.int highBits;
+  /** The low order bits: n & 0xffffffff. */
+  core.int lowBits;
+
+  SplitInt64();
+
+  SplitInt64.fromJson(core.Map _json) {
+    if (_json.containsKey("highBits")) {
+      highBits = _json["highBits"];
+    }
+    if (_json.containsKey("lowBits")) {
+      lowBits = _json["lowBits"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (highBits != null) {
+      _json["highBits"] = highBits;
+    }
+    if (lowBits != null) {
+      _json["lowBits"] = lowBits;
+    }
+    return _json;
+  }
+}
+
 /** State family configuration. */
 class StateFamilyConfig {
   /** If true, this family corresponds to a read operation. */
@@ -3692,6 +4243,52 @@ class StreamLocation {
   }
 }
 
+/** Configuration information for a single streaming computation. */
+class StreamingComputationConfig {
+  /** Unique identifier for this computation. */
+  core.String computationId;
+  /** Instructions that comprise the computation. */
+  core.List<ParallelInstruction> instructions;
+  /** Stage name of this computation. */
+  core.String stageName;
+  /** System defined name for this computation. */
+  core.String systemName;
+
+  StreamingComputationConfig();
+
+  StreamingComputationConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("computationId")) {
+      computationId = _json["computationId"];
+    }
+    if (_json.containsKey("instructions")) {
+      instructions = _json["instructions"].map((value) => new ParallelInstruction.fromJson(value)).toList();
+    }
+    if (_json.containsKey("stageName")) {
+      stageName = _json["stageName"];
+    }
+    if (_json.containsKey("systemName")) {
+      systemName = _json["systemName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (computationId != null) {
+      _json["computationId"] = computationId;
+    }
+    if (instructions != null) {
+      _json["instructions"] = instructions.map((value) => (value).toJson()).toList();
+    }
+    if (stageName != null) {
+      _json["stageName"] = stageName;
+    }
+    if (systemName != null) {
+      _json["systemName"] = systemName;
+    }
+    return _json;
+  }
+}
+
 /**
  * Describes full or partial data disk assignment information of the computation
  * ranges.
@@ -3768,6 +4365,38 @@ class StreamingComputationTask {
     }
     if (taskType != null) {
       _json["taskType"] = taskType;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A task that carries configuration information for streaming computations.
+ */
+class StreamingConfigTask {
+  /** Set of computation configuration information. */
+  core.List<StreamingComputationConfig> streamingComputationConfigs;
+  /** Map from user step names to state families. */
+  core.Map<core.String, core.String> userStepToStateFamilyNameMap;
+
+  StreamingConfigTask();
+
+  StreamingConfigTask.fromJson(core.Map _json) {
+    if (_json.containsKey("streamingComputationConfigs")) {
+      streamingComputationConfigs = _json["streamingComputationConfigs"].map((value) => new StreamingComputationConfig.fromJson(value)).toList();
+    }
+    if (_json.containsKey("userStepToStateFamilyNameMap")) {
+      userStepToStateFamilyNameMap = _json["userStepToStateFamilyNameMap"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (streamingComputationConfigs != null) {
+      _json["streamingComputationConfigs"] = streamingComputationConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (userStepToStateFamilyNameMap != null) {
+      _json["userStepToStateFamilyNameMap"] = userStepToStateFamilyNameMap;
     }
     return _json;
   }
@@ -3877,6 +4506,28 @@ class StreamingStageLocation {
     var _json = new core.Map();
     if (streamId != null) {
       _json["streamId"] = streamId;
+    }
+    return _json;
+  }
+}
+
+/** A metric value representing a list of strings. */
+class StringList {
+  /** Elements of the list. */
+  core.List<core.String> elements;
+
+  StringList();
+
+  StringList.fromJson(core.Map _json) {
+    if (_json.containsKey("elements")) {
+      elements = _json["elements"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (elements != null) {
+      _json["elements"] = elements;
     }
     return _json;
   }
@@ -4165,6 +4816,8 @@ class WorkItem {
   SourceOperationRequest sourceOperationTask;
   /** Additional information for StreamingComputationTask WorkItems. */
   StreamingComputationTask streamingComputationTask;
+  /** Additional information for StreamingConfigTask WorkItems. */
+  StreamingConfigTask streamingConfigTask;
   /** Additional information for StreamingSetupTask WorkItems. */
   StreamingSetupTask streamingSetupTask;
 
@@ -4209,6 +4862,9 @@ class WorkItem {
     }
     if (_json.containsKey("streamingComputationTask")) {
       streamingComputationTask = new StreamingComputationTask.fromJson(_json["streamingComputationTask"]);
+    }
+    if (_json.containsKey("streamingConfigTask")) {
+      streamingConfigTask = new StreamingConfigTask.fromJson(_json["streamingConfigTask"]);
     }
     if (_json.containsKey("streamingSetupTask")) {
       streamingSetupTask = new StreamingSetupTask.fromJson(_json["streamingSetupTask"]);
@@ -4256,6 +4912,9 @@ class WorkItem {
     if (streamingComputationTask != null) {
       _json["streamingComputationTask"] = (streamingComputationTask).toJson();
     }
+    if (streamingConfigTask != null) {
+      _json["streamingConfigTask"] = (streamingConfigTask).toJson();
+    }
     if (streamingSetupTask != null) {
       _json["streamingSetupTask"] = (streamingSetupTask).toJson();
     }
@@ -4278,6 +4937,14 @@ class WorkItemServiceState {
   core.Map<core.String, core.Object> harnessData;
   /** Time at which the current lease will expire. */
   core.String leaseExpireTime;
+  /**
+   * The short ids that workers should use in subsequent metric updates. Workers
+   * should strive to use short ids whenever possible, but it is ok to request
+   * the short_id again if a worker lost track of it (e.g. if the worker is
+   * recovering from a crash). NOTE: it is possible that the response may have
+   * short ids for a subset of the metrics.
+   */
+  core.List<MetricShortId> metricShortId;
   /**
    * The index value to use for the next report sent by the worker. Note: If the
    * report call fails for whatever reason, the worker should reuse this index
@@ -4305,6 +4972,9 @@ class WorkItemServiceState {
     if (_json.containsKey("leaseExpireTime")) {
       leaseExpireTime = _json["leaseExpireTime"];
     }
+    if (_json.containsKey("metricShortId")) {
+      metricShortId = _json["metricShortId"].map((value) => new MetricShortId.fromJson(value)).toList();
+    }
     if (_json.containsKey("nextReportIndex")) {
       nextReportIndex = _json["nextReportIndex"];
     }
@@ -4330,6 +5000,9 @@ class WorkItemServiceState {
     if (leaseExpireTime != null) {
       _json["leaseExpireTime"] = leaseExpireTime;
     }
+    if (metricShortId != null) {
+      _json["metricShortId"] = metricShortId.map((value) => (value).toJson()).toList();
+    }
     if (nextReportIndex != null) {
       _json["nextReportIndex"] = nextReportIndex;
     }
@@ -4353,6 +5026,8 @@ class WorkItemServiceState {
 class WorkItemStatus {
   /** True if the WorkItem was completed (successfully or unsuccessfully). */
   core.bool completed;
+  /** Worker output counters for this WorkItem. */
+  core.List<CounterUpdate> counterUpdates;
   /** See documentation of stop_position. */
   DynamicSourceSplit dynamicSourceSplit;
   /**
@@ -4360,7 +5035,7 @@ class WorkItemStatus {
    * and completed = true, then the WorkItem is considered to have failed.
    */
   core.List<Status> errors;
-  /** Worker output metrics (counters) for this WorkItem. */
+  /** DEPRECATED in favor of counter_updates. */
   core.List<MetricUpdate> metricUpdates;
   /** DEPRECATED in favor of reported_progress. */
   ApproximateProgress progress;
@@ -4423,6 +5098,9 @@ class WorkItemStatus {
     if (_json.containsKey("completed")) {
       completed = _json["completed"];
     }
+    if (_json.containsKey("counterUpdates")) {
+      counterUpdates = _json["counterUpdates"].map((value) => new CounterUpdate.fromJson(value)).toList();
+    }
     if (_json.containsKey("dynamicSourceSplit")) {
       dynamicSourceSplit = new DynamicSourceSplit.fromJson(_json["dynamicSourceSplit"]);
     }
@@ -4462,6 +5140,9 @@ class WorkItemStatus {
     var _json = new core.Map();
     if (completed != null) {
       _json["completed"] = completed;
+    }
+    if (counterUpdates != null) {
+      _json["counterUpdates"] = counterUpdates.map((value) => (value).toJson()).toList();
     }
     if (dynamicSourceSplit != null) {
       _json["dynamicSourceSplit"] = (dynamicSourceSplit).toJson();
@@ -4807,7 +5488,7 @@ class WorkerPool {
   core.Map<core.String, core.Object> poolArgs;
   /**
    * Subnetwork to which VMs will be assigned, if desired. Expected to be of the
-   * form "zones/ZONE/subnetworks/SUBNETWORK".
+   * form "regions/REGION/subnetworks/SUBNETWORK".
    */
   core.String subnetwork;
   /**

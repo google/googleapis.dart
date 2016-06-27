@@ -371,6 +371,10 @@ class UsersDraftsResourceApi {
    * [pageToken] - Page token to retrieve a specific page of results in the
    * list.
    *
+   * [q] - Only return draft messages matching the specified query. Supports the
+   * same query format as the Gmail search box. For example,
+   * "from:someuser@example.com rfc822msgid: is:unread".
+   *
    * Completes with a [ListDraftsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -379,7 +383,7 @@ class UsersDraftsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDraftsResponse> list(core.String userId, {core.bool includeSpamTrash, core.int maxResults, core.String pageToken}) {
+  async.Future<ListDraftsResponse> list(core.String userId, {core.bool includeSpamTrash, core.int maxResults, core.String pageToken, core.String q}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -398,6 +402,9 @@ class UsersDraftsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (q != null) {
+      _queryParams["q"] = [q];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/drafts';

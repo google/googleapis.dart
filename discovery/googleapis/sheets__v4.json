@@ -449,7 +449,7 @@
             }
         }
     },
-    "revision": "20160525",
+    "revision": "20160617",
     "rootUrl": "https://sheets.googleapis.com/",
     "schemas": {
         "AddNamedRangeResponse": {
