@@ -32,11 +32,55 @@ class AppengineApi {
 class AppsResourceApi {
   final commons.ApiRequester _requester;
 
+  AppsLocationsResourceApi get locations => new AppsLocationsResourceApi(_requester);
   AppsModulesResourceApi get modules => new AppsModulesResourceApi(_requester);
   AppsOperationsResourceApi get operations => new AppsOperationsResourceApi(_requester);
 
   AppsResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Creates an App Engine application for a Google Cloud Platform project. This
+   * requires a project that excludes an App Engine application. For details
+   * about creating a project without an application, see the [Google Cloud
+   * Resource Manager create project
+   * topic](https://cloud.google.com/resource-manager/docs/creating-project).
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> create(Application request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1beta4/apps';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 
   /**
    * Gets information about an application.
@@ -85,6 +129,114 @@ class AppsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Application.fromJson(data));
+  }
+
+}
+
+
+class AppsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AppsLocationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Get information about a location.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Resource name for the location.
+   *
+   * [locationsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * Completes with a [Location].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Location> get(core.String appsId, core.String locationsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (locationsId == null) {
+      throw new core.ArgumentError("Parameter locationsId is required.");
+    }
+
+    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations/' + commons.Escaper.ecapeVariable('$locationsId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Location.fromJson(data));
+  }
+
+  /**
+   * Lists information about the supported locations for this service.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. The resource that owns the locations collection,
+   * if applicable.
+   *
+   * [filter] - The standard list filter.
+   *
+   * [pageSize] - The standard list page size.
+   *
+   * [pageToken] - The standard list page token.
+   *
+   * Completes with a [ListLocationsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListLocationsResponse> list(core.String appsId, {core.String filter, core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLocationsResponse.fromJson(data));
   }
 
 }
@@ -615,6 +767,179 @@ class AppsModulesVersionsInstancesResourceApi {
       _requester = client;
 
   /**
+   * Enable debugging of this VM instance. This call allows you to SSH to the
+   * VM. While the VM is in debug mode, it continues to serve live traffic.
+   * After you're done debugging an instance, delete the instance; the system
+   * creates a new instance when needed. You can't debug a non-VM instance.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource requested. For example:
+   * "apps/myapp/modules/default/versions/v1/instances/instance-1".
+   *
+   * [modulesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [versionsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [instancesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> debug(DebugInstanceRequest request, core.String appsId, core.String modulesId, core.String versionsId, core.String instancesId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (modulesId == null) {
+      throw new core.ArgumentError("Parameter modulesId is required.");
+    }
+    if (versionsId == null) {
+      throw new core.ArgumentError("Parameter versionsId is required.");
+    }
+    if (instancesId == null) {
+      throw new core.ArgumentError("Parameter instancesId is required.");
+    }
+
+    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId') + '/instances/' + commons.Escaper.ecapeVariable('$instancesId') + ':debug';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Stops a running instance.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource requested. For example:
+   * "apps/myapp/modules/default/versions/v1/instances/instance-1".
+   *
+   * [modulesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [versionsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [instancesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String appsId, core.String modulesId, core.String versionsId, core.String instancesId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (modulesId == null) {
+      throw new core.ArgumentError("Parameter modulesId is required.");
+    }
+    if (versionsId == null) {
+      throw new core.ArgumentError("Parameter versionsId is required.");
+    }
+    if (instancesId == null) {
+      throw new core.ArgumentError("Parameter instancesId is required.");
+    }
+
+    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId') + '/instances/' + commons.Escaper.ecapeVariable('$instancesId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Gets instance information.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource requested. For example:
+   * "apps/myapp/modules/default/versions/v1/instances/instance-1".
+   *
+   * [modulesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [versionsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [instancesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * Completes with a [Instance].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Instance> get(core.String appsId, core.String modulesId, core.String versionsId, core.String instancesId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (modulesId == null) {
+      throw new core.ArgumentError("Parameter modulesId is required.");
+    }
+    if (versionsId == null) {
+      throw new core.ArgumentError("Parameter versionsId is required.");
+    }
+    if (instancesId == null) {
+      throw new core.ArgumentError("Parameter instancesId is required.");
+    }
+
+    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/modules/' + commons.Escaper.ecapeVariable('$modulesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId') + '/instances/' + commons.Escaper.ecapeVariable('$instancesId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Instance.fromJson(data));
+  }
+
+  /**
    * Lists the instances of a version.
    *
    * Request parameters:
@@ -925,7 +1250,11 @@ class Application {
    * target a module or version. The rules are order-dependent. @OutputOnly
    */
   core.List<UrlDispatchRule> dispatchRules;
-  /** The relative name/path of the application. Example: "myapp". */
+  /**
+   * The identifier of the Application resource. This identifier is equivalent
+   * to the project ID of the Google Cloud Platform project where you want to
+   * deploy your application. Example: "myapp".
+   */
   core.String id;
   /**
    * The location from which the application will be run. Application instances
@@ -936,8 +1265,8 @@ class Application {
    */
   core.String location;
   /**
-   * The full path to the application in the API. Example: "apps/myapp".
-   * @OutputOnly
+   * The full path to the Application resource in the API. Example:
+   * "apps/myapp". @OutputOnly
    */
   core.String name;
 
@@ -1238,6 +1567,20 @@ class CpuUtilization {
     if (targetUtilization != null) {
       _json["targetUtilization"] = targetUtilization;
     }
+    return _json;
+  }
+}
+
+/** Request message for `Instances.DebugInstance`. */
+class DebugInstanceRequest {
+
+  DebugInstanceRequest();
+
+  DebugInstanceRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
     return _json;
   }
 }
@@ -1735,6 +2078,36 @@ class ListInstancesResponse {
   }
 }
 
+/** The response message for LocationService.ListLocations. */
+class ListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  core.List<Location> locations;
+  /** The standard List next-page token. */
+  core.String nextPageToken;
+
+  ListLocationsResponse();
+
+  ListLocationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("locations")) {
+      locations = _json["locations"].map((value) => new Location.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (locations != null) {
+      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /** Response message for `Modules.ListModules`. */
 class ListModulesResponse {
   /** The modules belonging to the requested application. */
@@ -1820,6 +2193,56 @@ class ListVersionsResponse {
     }
     if (versions != null) {
       _json["versions"] = versions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** A resource that represents Google Cloud Platform location. */
+class Location {
+  /**
+   * Cross-service attributes for the location. For example
+   * {"cloud.googleapis.com/region": "us-east1"}
+   */
+  core.Map<core.String, core.String> labels;
+  /**
+   * Service-specific metadata. For example the available capacity at the given
+   * location.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.Object> metadata;
+  /**
+   * Resource name for the location, which may vary between implementations.
+   * Example: `"projects/example-project/locations/us-east1"`
+   */
+  core.String name;
+
+  Location();
+
+  Location.fromJson(core.Map _json) {
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = _json["metadata"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }

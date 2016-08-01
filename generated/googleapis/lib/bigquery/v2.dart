@@ -211,6 +211,13 @@ class DatasetsResourceApi {
    *
    * [all] - Whether to list all datasets, including hidden ones
    *
+   * [filter] - An expression for filtering the results of the request by label.
+   * The syntax is "labels.[:]". Multiple filters can be ANDed together by
+   * connecting with a space. Example: "labels.department:receiving
+   * labels.active". See
+   * https://cloud.google.com/bigquery/docs/labeling-datasets#filtering_datasets_using_labels
+   * for details.
+   *
    * [maxResults] - The maximum number of results to return
    *
    * [pageToken] - Page token, returned by a previous call, to request the next
@@ -224,7 +231,7 @@ class DatasetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<DatasetList> list(core.String projectId, {core.bool all, core.int maxResults, core.String pageToken}) {
+  async.Future<DatasetList> list(core.String projectId, {core.bool all, core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -237,6 +244,9 @@ class DatasetsResourceApi {
     }
     if (all != null) {
       _queryParams["all"] = ["${all}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -1661,6 +1671,17 @@ class Dataset {
   /** [Output-only] The resource type. */
   core.String kind;
   /**
+   * [Experimental] The labels associated with this dataset. You can use these
+   * to organize and group your datasets. You can set this property when
+   * inserting or updating a dataset. Label keys and values can be no longer
+   * than 63 characters, can only contain letters, numeric characters,
+   * underscores and dashes. International characters are allowed. Label values
+   * are optional. Label keys must start with a letter and must be unique within
+   * a dataset. Both keys and values are additionally constrained to be <= 128
+   * bytes in size.
+   */
+  core.Map<core.String, core.String> labels;
+  /**
    * [Output-only] The date when this dataset or any of its tables was last
    * modified, in milliseconds since the epoch.
    */
@@ -1706,6 +1727,9 @@ class Dataset {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("lastModifiedTime")) {
       lastModifiedTime = _json["lastModifiedTime"];
     }
@@ -1746,6 +1770,9 @@ class Dataset {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
     if (lastModifiedTime != null) {
       _json["lastModifiedTime"] = lastModifiedTime;
     }
@@ -1774,6 +1801,11 @@ class DatasetListDatasets {
    * "bigquery#dataset".
    */
   core.String kind;
+  /**
+   * [Experimental] The labels associated with this dataset. You can use these
+   * to organize and group your datasets.
+   */
+  core.Map<core.String, core.String> labels;
 
   DatasetListDatasets();
 
@@ -1790,6 +1822,9 @@ class DatasetListDatasets {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
   }
 
   core.Map toJson() {
@@ -1805,6 +1840,9 @@ class DatasetListDatasets {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     return _json;
   }

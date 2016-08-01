@@ -97,14 +97,14 @@ checkApiEndpointHandler(api.ApiEndpointHandler o) {
   buildCounterApiEndpointHandler--;
 }
 
-buildUnnamed2995() {
+buildUnnamed3714() {
   var o = new core.List<api.UrlDispatchRule>();
   o.add(buildUrlDispatchRule());
   o.add(buildUrlDispatchRule());
   return o;
 }
 
-checkUnnamed2995(core.List<api.UrlDispatchRule> o) {
+checkUnnamed3714(core.List<api.UrlDispatchRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlDispatchRule(o[0]);
   checkUrlDispatchRule(o[1]);
@@ -120,7 +120,7 @@ buildApplication() {
     o.defaultBucket = "foo";
     o.defaultCookieExpiration = "foo";
     o.defaultHostname = "foo";
-    o.dispatchRules = buildUnnamed2995();
+    o.dispatchRules = buildUnnamed3714();
     o.id = "foo";
     o.location = "foo";
     o.name = "foo";
@@ -137,7 +137,7 @@ checkApplication(api.Application o) {
     unittest.expect(o.defaultBucket, unittest.equals('foo'));
     unittest.expect(o.defaultCookieExpiration, unittest.equals('foo'));
     unittest.expect(o.defaultHostname, unittest.equals('foo'));
-    checkUnnamed2995(o.dispatchRules);
+    checkUnnamed3714(o.dispatchRules);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.location, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -247,27 +247,44 @@ checkCpuUtilization(api.CpuUtilization o) {
   buildCounterCpuUtilization--;
 }
 
-buildUnnamed2996() {
+core.int buildCounterDebugInstanceRequest = 0;
+buildDebugInstanceRequest() {
+  var o = new api.DebugInstanceRequest();
+  buildCounterDebugInstanceRequest++;
+  if (buildCounterDebugInstanceRequest < 3) {
+  }
+  buildCounterDebugInstanceRequest--;
+  return o;
+}
+
+checkDebugInstanceRequest(api.DebugInstanceRequest o) {
+  buildCounterDebugInstanceRequest++;
+  if (buildCounterDebugInstanceRequest < 3) {
+  }
+  buildCounterDebugInstanceRequest--;
+}
+
+buildUnnamed3715() {
   var o = new core.Map<core.String, api.FileInfo>();
   o["x"] = buildFileInfo();
   o["y"] = buildFileInfo();
   return o;
 }
 
-checkUnnamed2996(core.Map<core.String, api.FileInfo> o) {
+checkUnnamed3715(core.Map<core.String, api.FileInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFileInfo(o["x"]);
   checkFileInfo(o["y"]);
 }
 
-buildUnnamed2997() {
+buildUnnamed3716() {
   var o = new core.List<api.SourceReference>();
   o.add(buildSourceReference());
   o.add(buildSourceReference());
   return o;
 }
 
-checkUnnamed2997(core.List<api.SourceReference> o) {
+checkUnnamed3716(core.List<api.SourceReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSourceReference(o[0]);
   checkSourceReference(o[1]);
@@ -279,8 +296,8 @@ buildDeployment() {
   buildCounterDeployment++;
   if (buildCounterDeployment < 3) {
     o.container = buildContainerInfo();
-    o.files = buildUnnamed2996();
-    o.sourceReferences = buildUnnamed2997();
+    o.files = buildUnnamed3715();
+    o.sourceReferences = buildUnnamed3716();
   }
   buildCounterDeployment--;
   return o;
@@ -290,8 +307,8 @@ checkDeployment(api.Deployment o) {
   buildCounterDeployment++;
   if (buildCounterDeployment < 3) {
     checkContainerInfo(o.container);
-    checkUnnamed2996(o.files);
-    checkUnnamed2997(o.sourceReferences);
+    checkUnnamed3715(o.files);
+    checkUnnamed3716(o.sourceReferences);
   }
   buildCounterDeployment--;
 }
@@ -466,14 +483,14 @@ checkLibrary(api.Library o) {
   buildCounterLibrary--;
 }
 
-buildUnnamed2998() {
+buildUnnamed3717() {
   var o = new core.List<api.Instance>();
   o.add(buildInstance());
   o.add(buildInstance());
   return o;
 }
 
-checkUnnamed2998(core.List<api.Instance> o) {
+checkUnnamed3717(core.List<api.Instance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstance(o[0]);
   checkInstance(o[1]);
@@ -484,7 +501,7 @@ buildListInstancesResponse() {
   var o = new api.ListInstancesResponse();
   buildCounterListInstancesResponse++;
   if (buildCounterListInstancesResponse < 3) {
-    o.instances = buildUnnamed2998();
+    o.instances = buildUnnamed3717();
     o.nextPageToken = "foo";
   }
   buildCounterListInstancesResponse--;
@@ -494,20 +511,54 @@ buildListInstancesResponse() {
 checkListInstancesResponse(api.ListInstancesResponse o) {
   buildCounterListInstancesResponse++;
   if (buildCounterListInstancesResponse < 3) {
-    checkUnnamed2998(o.instances);
+    checkUnnamed3717(o.instances);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListInstancesResponse--;
 }
 
-buildUnnamed2999() {
+buildUnnamed3718() {
+  var o = new core.List<api.Location>();
+  o.add(buildLocation());
+  o.add(buildLocation());
+  return o;
+}
+
+checkUnnamed3718(core.List<api.Location> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLocation(o[0]);
+  checkLocation(o[1]);
+}
+
+core.int buildCounterListLocationsResponse = 0;
+buildListLocationsResponse() {
+  var o = new api.ListLocationsResponse();
+  buildCounterListLocationsResponse++;
+  if (buildCounterListLocationsResponse < 3) {
+    o.locations = buildUnnamed3718();
+    o.nextPageToken = "foo";
+  }
+  buildCounterListLocationsResponse--;
+  return o;
+}
+
+checkListLocationsResponse(api.ListLocationsResponse o) {
+  buildCounterListLocationsResponse++;
+  if (buildCounterListLocationsResponse < 3) {
+    checkUnnamed3718(o.locations);
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+  }
+  buildCounterListLocationsResponse--;
+}
+
+buildUnnamed3719() {
   var o = new core.List<api.Module>();
   o.add(buildModule());
   o.add(buildModule());
   return o;
 }
 
-checkUnnamed2999(core.List<api.Module> o) {
+checkUnnamed3719(core.List<api.Module> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkModule(o[0]);
   checkModule(o[1]);
@@ -518,7 +569,7 @@ buildListModulesResponse() {
   var o = new api.ListModulesResponse();
   buildCounterListModulesResponse++;
   if (buildCounterListModulesResponse < 3) {
-    o.modules = buildUnnamed2999();
+    o.modules = buildUnnamed3719();
     o.nextPageToken = "foo";
   }
   buildCounterListModulesResponse--;
@@ -528,20 +579,20 @@ buildListModulesResponse() {
 checkListModulesResponse(api.ListModulesResponse o) {
   buildCounterListModulesResponse++;
   if (buildCounterListModulesResponse < 3) {
-    checkUnnamed2999(o.modules);
+    checkUnnamed3719(o.modules);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListModulesResponse--;
 }
 
-buildUnnamed3000() {
+buildUnnamed3720() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed3000(core.List<api.Operation> o) {
+checkUnnamed3720(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -553,7 +604,7 @@ buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed3000();
+    o.operations = buildUnnamed3720();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -563,19 +614,19 @@ checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3000(o.operations);
+    checkUnnamed3720(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
 
-buildUnnamed3001() {
+buildUnnamed3721() {
   var o = new core.List<api.Version>();
   o.add(buildVersion());
   o.add(buildVersion());
   return o;
 }
 
-checkUnnamed3001(core.List<api.Version> o) {
+checkUnnamed3721(core.List<api.Version> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVersion(o[0]);
   checkVersion(o[1]);
@@ -587,7 +638,7 @@ buildListVersionsResponse() {
   buildCounterListVersionsResponse++;
   if (buildCounterListVersionsResponse < 3) {
     o.nextPageToken = "foo";
-    o.versions = buildUnnamed3001();
+    o.versions = buildUnnamed3721();
   }
   buildCounterListVersionsResponse--;
   return o;
@@ -597,9 +648,58 @@ checkListVersionsResponse(api.ListVersionsResponse o) {
   buildCounterListVersionsResponse++;
   if (buildCounterListVersionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3001(o.versions);
+    checkUnnamed3721(o.versions);
   }
   buildCounterListVersionsResponse--;
+}
+
+buildUnnamed3722() {
+  var o = new core.Map<core.String, core.String>();
+  o["x"] = "foo";
+  o["y"] = "foo";
+  return o;
+}
+
+checkUnnamed3722(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o["x"], unittest.equals('foo'));
+  unittest.expect(o["y"], unittest.equals('foo'));
+}
+
+buildUnnamed3723() {
+  var o = new core.Map<core.String, core.Object>();
+  o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
+  o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
+  return o;
+}
+
+checkUnnamed3723(core.Map<core.String, core.Object> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
+  var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
+}
+
+core.int buildCounterLocation = 0;
+buildLocation() {
+  var o = new api.Location();
+  buildCounterLocation++;
+  if (buildCounterLocation < 3) {
+    o.labels = buildUnnamed3722();
+    o.metadata = buildUnnamed3723();
+    o.name = "foo";
+  }
+  buildCounterLocation--;
+  return o;
+}
+
+checkLocation(api.Location o) {
+  buildCounterLocation++;
+  if (buildCounterLocation < 3) {
+    checkUnnamed3722(o.labels);
+    checkUnnamed3723(o.metadata);
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterLocation--;
 }
 
 core.int buildCounterLocationMetadata = 0;
@@ -661,14 +761,14 @@ checkModule(api.Module o) {
   buildCounterModule--;
 }
 
-buildUnnamed3002() {
+buildUnnamed3724() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3002(core.List<core.String> o) {
+checkUnnamed3724(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -679,7 +779,7 @@ buildNetwork() {
   var o = new api.Network();
   buildCounterNetwork++;
   if (buildCounterNetwork < 3) {
-    o.forwardedPorts = buildUnnamed3002();
+    o.forwardedPorts = buildUnnamed3724();
     o.instanceTag = "foo";
     o.name = "foo";
   }
@@ -690,7 +790,7 @@ buildNetwork() {
 checkNetwork(api.Network o) {
   buildCounterNetwork++;
   if (buildCounterNetwork < 3) {
-    checkUnnamed3002(o.forwardedPorts);
+    checkUnnamed3724(o.forwardedPorts);
     unittest.expect(o.instanceTag, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
   }
@@ -722,30 +822,30 @@ checkNetworkUtilization(api.NetworkUtilization o) {
   buildCounterNetworkUtilization--;
 }
 
-buildUnnamed3003() {
+buildUnnamed3725() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed3003(core.Map<core.String, core.Object> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
-  var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
-}
-
-buildUnnamed3004() {
-  var o = new core.Map<core.String, core.Object>();
-  o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
-  o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
-  return o;
-}
-
-checkUnnamed3004(core.Map<core.String, core.Object> o) {
+checkUnnamed3725(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
   var casted4 = (o["y"]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
+}
+
+buildUnnamed3726() {
+  var o = new core.Map<core.String, core.Object>();
+  o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
+  o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
+  return o;
+}
+
+checkUnnamed3726(core.Map<core.String, core.Object> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted5 = (o["x"]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
+  var casted6 = (o["y"]) as core.Map; unittest.expect(casted6, unittest.hasLength(3)); unittest.expect(casted6["list"], unittest.equals([1, 2, 3])); unittest.expect(casted6["bool"], unittest.equals(true)); unittest.expect(casted6["string"], unittest.equals('foo')); 
 }
 
 core.int buildCounterOperation = 0;
@@ -755,9 +855,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed3003();
+    o.metadata = buildUnnamed3725();
     o.name = "foo";
-    o.response = buildUnnamed3004();
+    o.response = buildUnnamed3726();
   }
   buildCounterOperation--;
   return o;
@@ -768,9 +868,9 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed3003(o.metadata);
+    checkUnnamed3725(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3004(o.response);
+    checkUnnamed3726(o.response);
   }
   buildCounterOperation--;
 }
@@ -942,14 +1042,14 @@ checkSourceReference(api.SourceReference o) {
   buildCounterSourceReference--;
 }
 
-buildUnnamed3005() {
+buildUnnamed3727() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3005(core.Map<core.String, core.String> o) {
+checkUnnamed3727(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -963,7 +1063,7 @@ buildStaticDirectoryHandler() {
     o.applicationReadable = true;
     o.directory = "foo";
     o.expiration = "foo";
-    o.httpHeaders = buildUnnamed3005();
+    o.httpHeaders = buildUnnamed3727();
     o.mimeType = "foo";
     o.requireMatchingFile = true;
   }
@@ -977,21 +1077,21 @@ checkStaticDirectoryHandler(api.StaticDirectoryHandler o) {
     unittest.expect(o.applicationReadable, unittest.isTrue);
     unittest.expect(o.directory, unittest.equals('foo'));
     unittest.expect(o.expiration, unittest.equals('foo'));
-    checkUnnamed3005(o.httpHeaders);
+    checkUnnamed3727(o.httpHeaders);
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.requireMatchingFile, unittest.isTrue);
   }
   buildCounterStaticDirectoryHandler--;
 }
 
-buildUnnamed3006() {
+buildUnnamed3728() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3006(core.Map<core.String, core.String> o) {
+checkUnnamed3728(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1004,7 +1104,7 @@ buildStaticFilesHandler() {
   if (buildCounterStaticFilesHandler < 3) {
     o.applicationReadable = true;
     o.expiration = "foo";
-    o.httpHeaders = buildUnnamed3006();
+    o.httpHeaders = buildUnnamed3728();
     o.mimeType = "foo";
     o.path = "foo";
     o.requireMatchingFile = true;
@@ -1019,7 +1119,7 @@ checkStaticFilesHandler(api.StaticFilesHandler o) {
   if (buildCounterStaticFilesHandler < 3) {
     unittest.expect(o.applicationReadable, unittest.isTrue);
     unittest.expect(o.expiration, unittest.equals('foo'));
-    checkUnnamed3006(o.httpHeaders);
+    checkUnnamed3728(o.httpHeaders);
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.path, unittest.equals('foo'));
     unittest.expect(o.requireMatchingFile, unittest.isTrue);
@@ -1028,30 +1128,30 @@ checkStaticFilesHandler(api.StaticFilesHandler o) {
   buildCounterStaticFilesHandler--;
 }
 
-buildUnnamed3007() {
+buildUnnamed3729() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed3007(core.Map<core.String, core.Object> o) {
+checkUnnamed3729(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
-  var casted6 = (o["y"]) as core.Map; unittest.expect(casted6, unittest.hasLength(3)); unittest.expect(casted6["list"], unittest.equals([1, 2, 3])); unittest.expect(casted6["bool"], unittest.equals(true)); unittest.expect(casted6["string"], unittest.equals('foo')); 
+  var casted7 = (o["x"]) as core.Map; unittest.expect(casted7, unittest.hasLength(3)); unittest.expect(casted7["list"], unittest.equals([1, 2, 3])); unittest.expect(casted7["bool"], unittest.equals(true)); unittest.expect(casted7["string"], unittest.equals('foo')); 
+  var casted8 = (o["y"]) as core.Map; unittest.expect(casted8, unittest.hasLength(3)); unittest.expect(casted8["list"], unittest.equals([1, 2, 3])); unittest.expect(casted8["bool"], unittest.equals(true)); unittest.expect(casted8["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed3008() {
+buildUnnamed3730() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed3007());
-  o.add(buildUnnamed3007());
+  o.add(buildUnnamed3729());
+  o.add(buildUnnamed3729());
   return o;
 }
 
-checkUnnamed3008(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed3730(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3007(o[0]);
-  checkUnnamed3007(o[1]);
+  checkUnnamed3729(o[0]);
+  checkUnnamed3729(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1060,7 +1160,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3008();
+    o.details = buildUnnamed3730();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -1071,20 +1171,20 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3008(o.details);
+    checkUnnamed3730(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
-buildUnnamed3009() {
+buildUnnamed3731() {
   var o = new core.Map<core.String, core.double>();
   o["x"] = 42.0;
   o["y"] = 42.0;
   return o;
 }
 
-checkUnnamed3009(core.Map<core.String, core.double> o) {
+checkUnnamed3731(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals(42.0));
   unittest.expect(o["y"], unittest.equals(42.0));
@@ -1095,7 +1195,7 @@ buildTrafficSplit() {
   var o = new api.TrafficSplit();
   buildCounterTrafficSplit++;
   if (buildCounterTrafficSplit < 3) {
-    o.allocations = buildUnnamed3009();
+    o.allocations = buildUnnamed3731();
     o.shardBy = "foo";
   }
   buildCounterTrafficSplit--;
@@ -1105,7 +1205,7 @@ buildTrafficSplit() {
 checkTrafficSplit(api.TrafficSplit o) {
   buildCounterTrafficSplit++;
   if (buildCounterTrafficSplit < 3) {
-    checkUnnamed3009(o.allocations);
+    checkUnnamed3731(o.allocations);
     unittest.expect(o.shardBy, unittest.equals('foo'));
   }
   buildCounterTrafficSplit--;
@@ -1169,79 +1269,79 @@ checkUrlMap(api.UrlMap o) {
   buildCounterUrlMap--;
 }
 
-buildUnnamed3010() {
+buildUnnamed3732() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3010(core.Map<core.String, core.String> o) {
+checkUnnamed3732(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3011() {
+buildUnnamed3733() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3011(core.Map<core.String, core.String> o) {
+checkUnnamed3733(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3012() {
+buildUnnamed3734() {
   var o = new core.List<api.ErrorHandler>();
   o.add(buildErrorHandler());
   o.add(buildErrorHandler());
   return o;
 }
 
-checkUnnamed3012(core.List<api.ErrorHandler> o) {
+checkUnnamed3734(core.List<api.ErrorHandler> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkErrorHandler(o[0]);
   checkErrorHandler(o[1]);
 }
 
-buildUnnamed3013() {
+buildUnnamed3735() {
   var o = new core.List<api.UrlMap>();
   o.add(buildUrlMap());
   o.add(buildUrlMap());
   return o;
 }
 
-checkUnnamed3013(core.List<api.UrlMap> o) {
+checkUnnamed3735(core.List<api.UrlMap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlMap(o[0]);
   checkUrlMap(o[1]);
 }
 
-buildUnnamed3014() {
+buildUnnamed3736() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3014(core.List<core.String> o) {
+checkUnnamed3736(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3015() {
+buildUnnamed3737() {
   var o = new core.List<api.Library>();
   o.add(buildLibrary());
   o.add(buildLibrary());
   return o;
 }
 
-checkUnnamed3015(core.List<api.Library> o) {
+checkUnnamed3737(core.List<api.Library> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLibrary(o[0]);
   checkLibrary(o[1]);
@@ -1255,20 +1355,20 @@ buildVersion() {
     o.apiConfig = buildApiConfigHandler();
     o.automaticScaling = buildAutomaticScaling();
     o.basicScaling = buildBasicScaling();
-    o.betaSettings = buildUnnamed3010();
+    o.betaSettings = buildUnnamed3732();
     o.creationTime = "foo";
     o.defaultExpiration = "foo";
     o.deployer = "foo";
     o.deployment = buildDeployment();
     o.env = "foo";
-    o.envVariables = buildUnnamed3011();
-    o.errorHandlers = buildUnnamed3012();
-    o.handlers = buildUnnamed3013();
+    o.envVariables = buildUnnamed3733();
+    o.errorHandlers = buildUnnamed3734();
+    o.handlers = buildUnnamed3735();
     o.healthCheck = buildHealthCheck();
     o.id = "foo";
-    o.inboundServices = buildUnnamed3014();
+    o.inboundServices = buildUnnamed3736();
     o.instanceClass = "foo";
-    o.libraries = buildUnnamed3015();
+    o.libraries = buildUnnamed3737();
     o.manualScaling = buildManualScaling();
     o.name = "foo";
     o.network = buildNetwork();
@@ -1289,20 +1389,20 @@ checkVersion(api.Version o) {
     checkApiConfigHandler(o.apiConfig);
     checkAutomaticScaling(o.automaticScaling);
     checkBasicScaling(o.basicScaling);
-    checkUnnamed3010(o.betaSettings);
+    checkUnnamed3732(o.betaSettings);
     unittest.expect(o.creationTime, unittest.equals('foo'));
     unittest.expect(o.defaultExpiration, unittest.equals('foo'));
     unittest.expect(o.deployer, unittest.equals('foo'));
     checkDeployment(o.deployment);
     unittest.expect(o.env, unittest.equals('foo'));
-    checkUnnamed3011(o.envVariables);
-    checkUnnamed3012(o.errorHandlers);
-    checkUnnamed3013(o.handlers);
+    checkUnnamed3733(o.envVariables);
+    checkUnnamed3734(o.errorHandlers);
+    checkUnnamed3735(o.handlers);
     checkHealthCheck(o.healthCheck);
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3014(o.inboundServices);
+    checkUnnamed3736(o.inboundServices);
     unittest.expect(o.instanceClass, unittest.equals('foo'));
-    checkUnnamed3015(o.libraries);
+    checkUnnamed3737(o.libraries);
     checkManualScaling(o.manualScaling);
     unittest.expect(o.name, unittest.equals('foo'));
     checkNetwork(o.network);
@@ -1381,6 +1481,15 @@ main() {
   });
 
 
+  unittest.group("obj-schema-DebugInstanceRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDebugInstanceRequest();
+      var od = new api.DebugInstanceRequest.fromJson(o.toJson());
+      checkDebugInstanceRequest(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Deployment", () {
     unittest.test("to-json--from-json", () {
       var o = buildDeployment();
@@ -1453,6 +1562,15 @@ main() {
   });
 
 
+  unittest.group("obj-schema-ListLocationsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListLocationsResponse();
+      var od = new api.ListLocationsResponse.fromJson(o.toJson());
+      checkListLocationsResponse(od);
+    });
+  });
+
+
   unittest.group("obj-schema-ListModulesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListModulesResponse();
@@ -1476,6 +1594,15 @@ main() {
       var o = buildListVersionsResponse();
       var od = new api.ListVersionsResponse.fromJson(o.toJson());
       checkListVersionsResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-Location", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildLocation();
+      var od = new api.Location.fromJson(o.toJson());
+      checkLocation(od);
     });
   });
 
@@ -1661,6 +1788,53 @@ main() {
 
 
   unittest.group("resource-AppsResourceApi", () {
+    unittest.test("method--create", () {
+
+      var mock = new HttpServerMock();
+      api.AppsResourceApi res = new api.AppengineApi(mock).apps;
+      var arg_request = buildApplication();
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.Application.fromJson(json);
+        checkApplication(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("v1beta4/apps"));
+        pathOffset += 12;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.create(arg_request).then(unittest.expectAsync(((api.Operation response) {
+        checkOperation(response);
+      })));
+    });
+
     unittest.test("method--get", () {
 
       var mock = new HttpServerMock();
@@ -1707,6 +1881,122 @@ main() {
       }), true);
       res.get(arg_appsId, ensureResourcesExist: arg_ensureResourcesExist).then(unittest.expectAsync(((api.Application response) {
         checkApplication(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-AppsLocationsResourceApi", () {
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.AppsLocationsResourceApi res = new api.AppengineApi(mock).apps.locations;
+      var arg_appsId = "foo";
+      var arg_locationsId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("v1beta4/apps/"));
+        pathOffset += 13;
+        index = path.indexOf("/locations/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_appsId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("/locations/"));
+        pathOffset += 11;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_locationsId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildLocation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_appsId, arg_locationsId).then(unittest.expectAsync(((api.Location response) {
+        checkLocation(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new HttpServerMock();
+      api.AppsLocationsResourceApi res = new api.AppengineApi(mock).apps.locations;
+      var arg_appsId = "foo";
+      var arg_filter = "foo";
+      var arg_pageSize = 42;
+      var arg_pageToken = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("v1beta4/apps/"));
+        pathOffset += 13;
+        index = path.indexOf("/locations", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_appsId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/locations"));
+        pathOffset += 10;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildListLocationsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_appsId, filter: arg_filter, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListLocationsResponse response) {
+        checkListLocationsResponse(response);
       })));
     });
 
@@ -2275,6 +2565,227 @@ main() {
 
 
   unittest.group("resource-AppsModulesVersionsInstancesResourceApi", () {
+    unittest.test("method--debug", () {
+
+      var mock = new HttpServerMock();
+      api.AppsModulesVersionsInstancesResourceApi res = new api.AppengineApi(mock).apps.modules.versions.instances;
+      var arg_request = buildDebugInstanceRequest();
+      var arg_appsId = "foo";
+      var arg_modulesId = "foo";
+      var arg_versionsId = "foo";
+      var arg_instancesId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.DebugInstanceRequest.fromJson(json);
+        checkDebugInstanceRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("v1beta4/apps/"));
+        pathOffset += 13;
+        index = path.indexOf("/modules/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_appsId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/modules/"));
+        pathOffset += 9;
+        index = path.indexOf("/versions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_modulesId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/versions/"));
+        pathOffset += 10;
+        index = path.indexOf("/instances/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_versionsId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("/instances/"));
+        pathOffset += 11;
+        index = path.indexOf(":debug", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_instancesId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals(":debug"));
+        pathOffset += 6;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.debug(arg_request, arg_appsId, arg_modulesId, arg_versionsId, arg_instancesId).then(unittest.expectAsync(((api.Operation response) {
+        checkOperation(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+
+      var mock = new HttpServerMock();
+      api.AppsModulesVersionsInstancesResourceApi res = new api.AppengineApi(mock).apps.modules.versions.instances;
+      var arg_appsId = "foo";
+      var arg_modulesId = "foo";
+      var arg_versionsId = "foo";
+      var arg_instancesId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("v1beta4/apps/"));
+        pathOffset += 13;
+        index = path.indexOf("/modules/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_appsId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/modules/"));
+        pathOffset += 9;
+        index = path.indexOf("/versions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_modulesId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/versions/"));
+        pathOffset += 10;
+        index = path.indexOf("/instances/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_versionsId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("/instances/"));
+        pathOffset += 11;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_instancesId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.delete(arg_appsId, arg_modulesId, arg_versionsId, arg_instancesId).then(unittest.expectAsync(((api.Operation response) {
+        checkOperation(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.AppsModulesVersionsInstancesResourceApi res = new api.AppengineApi(mock).apps.modules.versions.instances;
+      var arg_appsId = "foo";
+      var arg_modulesId = "foo";
+      var arg_versionsId = "foo";
+      var arg_instancesId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("v1beta4/apps/"));
+        pathOffset += 13;
+        index = path.indexOf("/modules/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_appsId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/modules/"));
+        pathOffset += 9;
+        index = path.indexOf("/versions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_modulesId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/versions/"));
+        pathOffset += 10;
+        index = path.indexOf("/instances/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_versionsId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("/instances/"));
+        pathOffset += 11;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_instancesId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildInstance());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_appsId, arg_modulesId, arg_versionsId, arg_instancesId).then(unittest.expectAsync(((api.Instance response) {
+        checkInstance(response);
+      })));
+    });
+
     unittest.test("method--list", () {
 
       var mock = new HttpServerMock();

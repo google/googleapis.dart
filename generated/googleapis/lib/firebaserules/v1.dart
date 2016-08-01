@@ -399,7 +399,6 @@ class ProjectsReleasesResourceApi {
    * relationship between `Release` instances.
    *
    * Format: `projects/{project_id}/releases/{release_id}`
-   *
    * Value must have pattern "^projects/[^/] * / releases/.*$".
    *
    * Completes with a [Release].

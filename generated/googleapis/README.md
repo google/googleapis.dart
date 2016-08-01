@@ -113,7 +113,7 @@ Official API documentation: https://developers.google.com/admin-sdk/directory/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Admin Reports API - admin reports_v1
 
-Allows the administrators of Google Apps customers to fetch reports about the usage, collaboration, security and risk for their users.
+Fetches reports for the administrators of Google Apps customers about the usage, collaboration, security, and risk for their users.
 
 Official API documentation: https://developers.google.com/admin-sdk/reports/
 
@@ -153,12 +153,6 @@ Lets Android application developers access their Google Play accounts.
 
 Official API documentation: https://developers.google.com/android-publisher
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1
-
-Provisions and manages App Engine applications.
-
-Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Apps Activity API - appsactivity v1
 
 Provides a historical view of activity.
@@ -197,7 +191,7 @@ Official API documentation: https://developers.google.com/google-apps/calendar/f
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Civic Information API - civicinfo v2
 
-An API for accessing civic information.
+Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.
 
 Official API documentation: https://developers.google.com/civic-information
 
@@ -212,6 +206,12 @@ Official API documentation: https://developers.google.com/classroom/
 Retrieves Google Developers Console billing accounts and associates them with projects.
 
 Official API documentation: https://cloud.google.com/billing/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Container Builder API - cloudbuild v1
+
+Builds container images in the cloud.
+
+Official API documentation: https://cloud.google.com/container-builder/docs/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Debugger API - clouddebugger v2
 
@@ -568,7 +568,7 @@ Official API documentation: https://developers.google.com/google-apps/tasks/firs
 
 #### ![Logo](https://www.google.com/images/icons/product/translate-16.png) Translate API - translate v2
 
-Lets you translate text from one language to another
+Translates text from one language to another.
 
 Official API documentation: https://developers.google.com/translate/v2/using_rest
 

@@ -51,14 +51,37 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2429() {
+core.int buildCounterAutoForwarding = 0;
+buildAutoForwarding() {
+  var o = new api.AutoForwarding();
+  buildCounterAutoForwarding++;
+  if (buildCounterAutoForwarding < 3) {
+    o.disposition = "foo";
+    o.emailAddress = "foo";
+    o.enabled = true;
+  }
+  buildCounterAutoForwarding--;
+  return o;
+}
+
+checkAutoForwarding(api.AutoForwarding o) {
+  buildCounterAutoForwarding++;
+  if (buildCounterAutoForwarding < 3) {
+    unittest.expect(o.disposition, unittest.equals('foo'));
+    unittest.expect(o.emailAddress, unittest.equals('foo'));
+    unittest.expect(o.enabled, unittest.isTrue);
+  }
+  buildCounterAutoForwarding--;
+}
+
+buildUnnamed98() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2429(core.List<core.String> o) {
+checkUnnamed98(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,7 +92,7 @@ buildBatchDeleteMessagesRequest() {
   var o = new api.BatchDeleteMessagesRequest();
   buildCounterBatchDeleteMessagesRequest++;
   if (buildCounterBatchDeleteMessagesRequest < 3) {
-    o.ids = buildUnnamed2429();
+    o.ids = buildUnnamed98();
   }
   buildCounterBatchDeleteMessagesRequest--;
   return o;
@@ -78,7 +101,7 @@ buildBatchDeleteMessagesRequest() {
 checkBatchDeleteMessagesRequest(api.BatchDeleteMessagesRequest o) {
   buildCounterBatchDeleteMessagesRequest++;
   if (buildCounterBatchDeleteMessagesRequest < 3) {
-    checkUnnamed2429(o.ids);
+    checkUnnamed98(o.ids);
   }
   buildCounterBatchDeleteMessagesRequest--;
 }
@@ -104,66 +127,194 @@ checkDraft(api.Draft o) {
   buildCounterDraft--;
 }
 
-buildUnnamed2430() {
+core.int buildCounterFilter = 0;
+buildFilter() {
+  var o = new api.Filter();
+  buildCounterFilter++;
+  if (buildCounterFilter < 3) {
+    o.action = buildFilterAction();
+    o.criteria = buildFilterCriteria();
+    o.id = "foo";
+  }
+  buildCounterFilter--;
+  return o;
+}
+
+checkFilter(api.Filter o) {
+  buildCounterFilter++;
+  if (buildCounterFilter < 3) {
+    checkFilterAction(o.action);
+    checkFilterCriteria(o.criteria);
+    unittest.expect(o.id, unittest.equals('foo'));
+  }
+  buildCounterFilter--;
+}
+
+buildUnnamed99() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed99(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed100() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed100(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterFilterAction = 0;
+buildFilterAction() {
+  var o = new api.FilterAction();
+  buildCounterFilterAction++;
+  if (buildCounterFilterAction < 3) {
+    o.addLabelIds = buildUnnamed99();
+    o.forward = "foo";
+    o.removeLabelIds = buildUnnamed100();
+  }
+  buildCounterFilterAction--;
+  return o;
+}
+
+checkFilterAction(api.FilterAction o) {
+  buildCounterFilterAction++;
+  if (buildCounterFilterAction < 3) {
+    checkUnnamed99(o.addLabelIds);
+    unittest.expect(o.forward, unittest.equals('foo'));
+    checkUnnamed100(o.removeLabelIds);
+  }
+  buildCounterFilterAction--;
+}
+
+core.int buildCounterFilterCriteria = 0;
+buildFilterCriteria() {
+  var o = new api.FilterCriteria();
+  buildCounterFilterCriteria++;
+  if (buildCounterFilterCriteria < 3) {
+    o.excludeChats = true;
+    o.from = "foo";
+    o.hasAttachment = true;
+    o.negatedQuery = "foo";
+    o.query = "foo";
+    o.size = 42;
+    o.sizeComparison = "foo";
+    o.subject = "foo";
+    o.to = "foo";
+  }
+  buildCounterFilterCriteria--;
+  return o;
+}
+
+checkFilterCriteria(api.FilterCriteria o) {
+  buildCounterFilterCriteria++;
+  if (buildCounterFilterCriteria < 3) {
+    unittest.expect(o.excludeChats, unittest.isTrue);
+    unittest.expect(o.from, unittest.equals('foo'));
+    unittest.expect(o.hasAttachment, unittest.isTrue);
+    unittest.expect(o.negatedQuery, unittest.equals('foo'));
+    unittest.expect(o.query, unittest.equals('foo'));
+    unittest.expect(o.size, unittest.equals(42));
+    unittest.expect(o.sizeComparison, unittest.equals('foo'));
+    unittest.expect(o.subject, unittest.equals('foo'));
+    unittest.expect(o.to, unittest.equals('foo'));
+  }
+  buildCounterFilterCriteria--;
+}
+
+core.int buildCounterForwardingAddress = 0;
+buildForwardingAddress() {
+  var o = new api.ForwardingAddress();
+  buildCounterForwardingAddress++;
+  if (buildCounterForwardingAddress < 3) {
+    o.forwardingEmail = "foo";
+    o.verificationStatus = "foo";
+  }
+  buildCounterForwardingAddress--;
+  return o;
+}
+
+checkForwardingAddress(api.ForwardingAddress o) {
+  buildCounterForwardingAddress++;
+  if (buildCounterForwardingAddress < 3) {
+    unittest.expect(o.forwardingEmail, unittest.equals('foo'));
+    unittest.expect(o.verificationStatus, unittest.equals('foo'));
+  }
+  buildCounterForwardingAddress--;
+}
+
+buildUnnamed101() {
   var o = new core.List<api.HistoryLabelAdded>();
   o.add(buildHistoryLabelAdded());
   o.add(buildHistoryLabelAdded());
   return o;
 }
 
-checkUnnamed2430(core.List<api.HistoryLabelAdded> o) {
+checkUnnamed101(core.List<api.HistoryLabelAdded> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryLabelAdded(o[0]);
   checkHistoryLabelAdded(o[1]);
 }
 
-buildUnnamed2431() {
+buildUnnamed102() {
   var o = new core.List<api.HistoryLabelRemoved>();
   o.add(buildHistoryLabelRemoved());
   o.add(buildHistoryLabelRemoved());
   return o;
 }
 
-checkUnnamed2431(core.List<api.HistoryLabelRemoved> o) {
+checkUnnamed102(core.List<api.HistoryLabelRemoved> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryLabelRemoved(o[0]);
   checkHistoryLabelRemoved(o[1]);
 }
 
-buildUnnamed2432() {
+buildUnnamed103() {
   var o = new core.List<api.Message>();
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
 }
 
-checkUnnamed2432(core.List<api.Message> o) {
+checkUnnamed103(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-buildUnnamed2433() {
+buildUnnamed104() {
   var o = new core.List<api.HistoryMessageAdded>();
   o.add(buildHistoryMessageAdded());
   o.add(buildHistoryMessageAdded());
   return o;
 }
 
-checkUnnamed2433(core.List<api.HistoryMessageAdded> o) {
+checkUnnamed104(core.List<api.HistoryMessageAdded> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryMessageAdded(o[0]);
   checkHistoryMessageAdded(o[1]);
 }
 
-buildUnnamed2434() {
+buildUnnamed105() {
   var o = new core.List<api.HistoryMessageDeleted>();
   o.add(buildHistoryMessageDeleted());
   o.add(buildHistoryMessageDeleted());
   return o;
 }
 
-checkUnnamed2434(core.List<api.HistoryMessageDeleted> o) {
+checkUnnamed105(core.List<api.HistoryMessageDeleted> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryMessageDeleted(o[0]);
   checkHistoryMessageDeleted(o[1]);
@@ -175,11 +326,11 @@ buildHistory() {
   buildCounterHistory++;
   if (buildCounterHistory < 3) {
     o.id = "foo";
-    o.labelsAdded = buildUnnamed2430();
-    o.labelsRemoved = buildUnnamed2431();
-    o.messages = buildUnnamed2432();
-    o.messagesAdded = buildUnnamed2433();
-    o.messagesDeleted = buildUnnamed2434();
+    o.labelsAdded = buildUnnamed101();
+    o.labelsRemoved = buildUnnamed102();
+    o.messages = buildUnnamed103();
+    o.messagesAdded = buildUnnamed104();
+    o.messagesDeleted = buildUnnamed105();
   }
   buildCounterHistory--;
   return o;
@@ -189,23 +340,23 @@ checkHistory(api.History o) {
   buildCounterHistory++;
   if (buildCounterHistory < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed2430(o.labelsAdded);
-    checkUnnamed2431(o.labelsRemoved);
-    checkUnnamed2432(o.messages);
-    checkUnnamed2433(o.messagesAdded);
-    checkUnnamed2434(o.messagesDeleted);
+    checkUnnamed101(o.labelsAdded);
+    checkUnnamed102(o.labelsRemoved);
+    checkUnnamed103(o.messages);
+    checkUnnamed104(o.messagesAdded);
+    checkUnnamed105(o.messagesDeleted);
   }
   buildCounterHistory--;
 }
 
-buildUnnamed2435() {
+buildUnnamed106() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2435(core.List<core.String> o) {
+checkUnnamed106(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -216,7 +367,7 @@ buildHistoryLabelAdded() {
   var o = new api.HistoryLabelAdded();
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
-    o.labelIds = buildUnnamed2435();
+    o.labelIds = buildUnnamed106();
     o.message = buildMessage();
   }
   buildCounterHistoryLabelAdded--;
@@ -226,20 +377,20 @@ buildHistoryLabelAdded() {
 checkHistoryLabelAdded(api.HistoryLabelAdded o) {
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
-    checkUnnamed2435(o.labelIds);
+    checkUnnamed106(o.labelIds);
     checkMessage(o.message);
   }
   buildCounterHistoryLabelAdded--;
 }
 
-buildUnnamed2436() {
+buildUnnamed107() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2436(core.List<core.String> o) {
+checkUnnamed107(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -250,7 +401,7 @@ buildHistoryLabelRemoved() {
   var o = new api.HistoryLabelRemoved();
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
-    o.labelIds = buildUnnamed2436();
+    o.labelIds = buildUnnamed107();
     o.message = buildMessage();
   }
   buildCounterHistoryLabelRemoved--;
@@ -260,7 +411,7 @@ buildHistoryLabelRemoved() {
 checkHistoryLabelRemoved(api.HistoryLabelRemoved o) {
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
-    checkUnnamed2436(o.labelIds);
+    checkUnnamed107(o.labelIds);
     checkMessage(o.message);
   }
   buildCounterHistoryLabelRemoved--;
@@ -304,6 +455,31 @@ checkHistoryMessageDeleted(api.HistoryMessageDeleted o) {
   buildCounterHistoryMessageDeleted--;
 }
 
+core.int buildCounterImapSettings = 0;
+buildImapSettings() {
+  var o = new api.ImapSettings();
+  buildCounterImapSettings++;
+  if (buildCounterImapSettings < 3) {
+    o.autoExpunge = true;
+    o.enabled = true;
+    o.expungeBehavior = "foo";
+    o.maxFolderSize = 42;
+  }
+  buildCounterImapSettings--;
+  return o;
+}
+
+checkImapSettings(api.ImapSettings o) {
+  buildCounterImapSettings++;
+  if (buildCounterImapSettings < 3) {
+    unittest.expect(o.autoExpunge, unittest.isTrue);
+    unittest.expect(o.enabled, unittest.isTrue);
+    unittest.expect(o.expungeBehavior, unittest.equals('foo'));
+    unittest.expect(o.maxFolderSize, unittest.equals(42));
+  }
+  buildCounterImapSettings--;
+}
+
 core.int buildCounterLabel = 0;
 buildLabel() {
   var o = new api.Label();
@@ -339,14 +515,14 @@ checkLabel(api.Label o) {
   buildCounterLabel--;
 }
 
-buildUnnamed2437() {
+buildUnnamed108() {
   var o = new core.List<api.Draft>();
   o.add(buildDraft());
   o.add(buildDraft());
   return o;
 }
 
-checkUnnamed2437(core.List<api.Draft> o) {
+checkUnnamed108(core.List<api.Draft> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDraft(o[0]);
   checkDraft(o[1]);
@@ -357,7 +533,7 @@ buildListDraftsResponse() {
   var o = new api.ListDraftsResponse();
   buildCounterListDraftsResponse++;
   if (buildCounterListDraftsResponse < 3) {
-    o.drafts = buildUnnamed2437();
+    o.drafts = buildUnnamed108();
     o.nextPageToken = "foo";
     o.resultSizeEstimate = 42;
   }
@@ -368,21 +544,85 @@ buildListDraftsResponse() {
 checkListDraftsResponse(api.ListDraftsResponse o) {
   buildCounterListDraftsResponse++;
   if (buildCounterListDraftsResponse < 3) {
-    checkUnnamed2437(o.drafts);
+    checkUnnamed108(o.drafts);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.resultSizeEstimate, unittest.equals(42));
   }
   buildCounterListDraftsResponse--;
 }
 
-buildUnnamed2438() {
+buildUnnamed109() {
+  var o = new core.List<api.Filter>();
+  o.add(buildFilter());
+  o.add(buildFilter());
+  return o;
+}
+
+checkUnnamed109(core.List<api.Filter> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkFilter(o[0]);
+  checkFilter(o[1]);
+}
+
+core.int buildCounterListFiltersResponse = 0;
+buildListFiltersResponse() {
+  var o = new api.ListFiltersResponse();
+  buildCounterListFiltersResponse++;
+  if (buildCounterListFiltersResponse < 3) {
+    o.filter = buildUnnamed109();
+  }
+  buildCounterListFiltersResponse--;
+  return o;
+}
+
+checkListFiltersResponse(api.ListFiltersResponse o) {
+  buildCounterListFiltersResponse++;
+  if (buildCounterListFiltersResponse < 3) {
+    checkUnnamed109(o.filter);
+  }
+  buildCounterListFiltersResponse--;
+}
+
+buildUnnamed110() {
+  var o = new core.List<api.ForwardingAddress>();
+  o.add(buildForwardingAddress());
+  o.add(buildForwardingAddress());
+  return o;
+}
+
+checkUnnamed110(core.List<api.ForwardingAddress> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkForwardingAddress(o[0]);
+  checkForwardingAddress(o[1]);
+}
+
+core.int buildCounterListForwardingAddressesResponse = 0;
+buildListForwardingAddressesResponse() {
+  var o = new api.ListForwardingAddressesResponse();
+  buildCounterListForwardingAddressesResponse++;
+  if (buildCounterListForwardingAddressesResponse < 3) {
+    o.forwardingAddresses = buildUnnamed110();
+  }
+  buildCounterListForwardingAddressesResponse--;
+  return o;
+}
+
+checkListForwardingAddressesResponse(api.ListForwardingAddressesResponse o) {
+  buildCounterListForwardingAddressesResponse++;
+  if (buildCounterListForwardingAddressesResponse < 3) {
+    checkUnnamed110(o.forwardingAddresses);
+  }
+  buildCounterListForwardingAddressesResponse--;
+}
+
+buildUnnamed111() {
   var o = new core.List<api.History>();
   o.add(buildHistory());
   o.add(buildHistory());
   return o;
 }
 
-checkUnnamed2438(core.List<api.History> o) {
+checkUnnamed111(core.List<api.History> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistory(o[0]);
   checkHistory(o[1]);
@@ -393,7 +633,7 @@ buildListHistoryResponse() {
   var o = new api.ListHistoryResponse();
   buildCounterListHistoryResponse++;
   if (buildCounterListHistoryResponse < 3) {
-    o.history = buildUnnamed2438();
+    o.history = buildUnnamed111();
     o.historyId = "foo";
     o.nextPageToken = "foo";
   }
@@ -404,21 +644,21 @@ buildListHistoryResponse() {
 checkListHistoryResponse(api.ListHistoryResponse o) {
   buildCounterListHistoryResponse++;
   if (buildCounterListHistoryResponse < 3) {
-    checkUnnamed2438(o.history);
+    checkUnnamed111(o.history);
     unittest.expect(o.historyId, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListHistoryResponse--;
 }
 
-buildUnnamed2439() {
+buildUnnamed112() {
   var o = new core.List<api.Label>();
   o.add(buildLabel());
   o.add(buildLabel());
   return o;
 }
 
-checkUnnamed2439(core.List<api.Label> o) {
+checkUnnamed112(core.List<api.Label> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabel(o[0]);
   checkLabel(o[1]);
@@ -429,7 +669,7 @@ buildListLabelsResponse() {
   var o = new api.ListLabelsResponse();
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
-    o.labels = buildUnnamed2439();
+    o.labels = buildUnnamed112();
   }
   buildCounterListLabelsResponse--;
   return o;
@@ -438,19 +678,19 @@ buildListLabelsResponse() {
 checkListLabelsResponse(api.ListLabelsResponse o) {
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
-    checkUnnamed2439(o.labels);
+    checkUnnamed112(o.labels);
   }
   buildCounterListLabelsResponse--;
 }
 
-buildUnnamed2440() {
+buildUnnamed113() {
   var o = new core.List<api.Message>();
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
 }
 
-checkUnnamed2440(core.List<api.Message> o) {
+checkUnnamed113(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
@@ -461,7 +701,7 @@ buildListMessagesResponse() {
   var o = new api.ListMessagesResponse();
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    o.messages = buildUnnamed2440();
+    o.messages = buildUnnamed113();
     o.nextPageToken = "foo";
     o.resultSizeEstimate = 42;
   }
@@ -472,21 +712,53 @@ buildListMessagesResponse() {
 checkListMessagesResponse(api.ListMessagesResponse o) {
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    checkUnnamed2440(o.messages);
+    checkUnnamed113(o.messages);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.resultSizeEstimate, unittest.equals(42));
   }
   buildCounterListMessagesResponse--;
 }
 
-buildUnnamed2441() {
+buildUnnamed114() {
+  var o = new core.List<api.SendAs>();
+  o.add(buildSendAs());
+  o.add(buildSendAs());
+  return o;
+}
+
+checkUnnamed114(core.List<api.SendAs> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSendAs(o[0]);
+  checkSendAs(o[1]);
+}
+
+core.int buildCounterListSendAsResponse = 0;
+buildListSendAsResponse() {
+  var o = new api.ListSendAsResponse();
+  buildCounterListSendAsResponse++;
+  if (buildCounterListSendAsResponse < 3) {
+    o.sendAs = buildUnnamed114();
+  }
+  buildCounterListSendAsResponse--;
+  return o;
+}
+
+checkListSendAsResponse(api.ListSendAsResponse o) {
+  buildCounterListSendAsResponse++;
+  if (buildCounterListSendAsResponse < 3) {
+    checkUnnamed114(o.sendAs);
+  }
+  buildCounterListSendAsResponse--;
+}
+
+buildUnnamed115() {
   var o = new core.List<api.Thread>();
   o.add(buildThread());
   o.add(buildThread());
   return o;
 }
 
-checkUnnamed2441(core.List<api.Thread> o) {
+checkUnnamed115(core.List<api.Thread> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThread(o[0]);
   checkThread(o[1]);
@@ -499,7 +771,7 @@ buildListThreadsResponse() {
   if (buildCounterListThreadsResponse < 3) {
     o.nextPageToken = "foo";
     o.resultSizeEstimate = 42;
-    o.threads = buildUnnamed2441();
+    o.threads = buildUnnamed115();
   }
   buildCounterListThreadsResponse--;
   return o;
@@ -510,19 +782,19 @@ checkListThreadsResponse(api.ListThreadsResponse o) {
   if (buildCounterListThreadsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.resultSizeEstimate, unittest.equals(42));
-    checkUnnamed2441(o.threads);
+    checkUnnamed115(o.threads);
   }
   buildCounterListThreadsResponse--;
 }
 
-buildUnnamed2442() {
+buildUnnamed116() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2442(core.List<core.String> o) {
+checkUnnamed116(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -536,7 +808,7 @@ buildMessage() {
     o.historyId = "foo";
     o.id = "foo";
     o.internalDate = "foo";
-    o.labelIds = buildUnnamed2442();
+    o.labelIds = buildUnnamed116();
     o.payload = buildMessagePart();
     o.raw = "foo";
     o.sizeEstimate = 42;
@@ -553,7 +825,7 @@ checkMessage(api.Message o) {
     unittest.expect(o.historyId, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.internalDate, unittest.equals('foo'));
-    checkUnnamed2442(o.labelIds);
+    checkUnnamed116(o.labelIds);
     checkMessagePart(o.payload);
     unittest.expect(o.raw, unittest.equals('foo'));
     unittest.expect(o.sizeEstimate, unittest.equals(42));
@@ -563,27 +835,27 @@ checkMessage(api.Message o) {
   buildCounterMessage--;
 }
 
-buildUnnamed2443() {
+buildUnnamed117() {
   var o = new core.List<api.MessagePartHeader>();
   o.add(buildMessagePartHeader());
   o.add(buildMessagePartHeader());
   return o;
 }
 
-checkUnnamed2443(core.List<api.MessagePartHeader> o) {
+checkUnnamed117(core.List<api.MessagePartHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessagePartHeader(o[0]);
   checkMessagePartHeader(o[1]);
 }
 
-buildUnnamed2444() {
+buildUnnamed118() {
   var o = new core.List<api.MessagePart>();
   o.add(buildMessagePart());
   o.add(buildMessagePart());
   return o;
 }
 
-checkUnnamed2444(core.List<api.MessagePart> o) {
+checkUnnamed118(core.List<api.MessagePart> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessagePart(o[0]);
   checkMessagePart(o[1]);
@@ -596,10 +868,10 @@ buildMessagePart() {
   if (buildCounterMessagePart < 3) {
     o.body = buildMessagePartBody();
     o.filename = "foo";
-    o.headers = buildUnnamed2443();
+    o.headers = buildUnnamed117();
     o.mimeType = "foo";
     o.partId = "foo";
-    o.parts = buildUnnamed2444();
+    o.parts = buildUnnamed118();
   }
   buildCounterMessagePart--;
   return o;
@@ -610,10 +882,10 @@ checkMessagePart(api.MessagePart o) {
   if (buildCounterMessagePart < 3) {
     checkMessagePartBody(o.body);
     unittest.expect(o.filename, unittest.equals('foo'));
-    checkUnnamed2443(o.headers);
+    checkUnnamed117(o.headers);
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.partId, unittest.equals('foo'));
-    checkUnnamed2444(o.parts);
+    checkUnnamed118(o.parts);
   }
   buildCounterMessagePart--;
 }
@@ -662,27 +934,27 @@ checkMessagePartHeader(api.MessagePartHeader o) {
   buildCounterMessagePartHeader--;
 }
 
-buildUnnamed2445() {
+buildUnnamed119() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2445(core.List<core.String> o) {
+checkUnnamed119(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2446() {
+buildUnnamed120() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2446(core.List<core.String> o) {
+checkUnnamed120(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -693,8 +965,8 @@ buildModifyMessageRequest() {
   var o = new api.ModifyMessageRequest();
   buildCounterModifyMessageRequest++;
   if (buildCounterModifyMessageRequest < 3) {
-    o.addLabelIds = buildUnnamed2445();
-    o.removeLabelIds = buildUnnamed2446();
+    o.addLabelIds = buildUnnamed119();
+    o.removeLabelIds = buildUnnamed120();
   }
   buildCounterModifyMessageRequest--;
   return o;
@@ -703,33 +975,33 @@ buildModifyMessageRequest() {
 checkModifyMessageRequest(api.ModifyMessageRequest o) {
   buildCounterModifyMessageRequest++;
   if (buildCounterModifyMessageRequest < 3) {
-    checkUnnamed2445(o.addLabelIds);
-    checkUnnamed2446(o.removeLabelIds);
+    checkUnnamed119(o.addLabelIds);
+    checkUnnamed120(o.removeLabelIds);
   }
   buildCounterModifyMessageRequest--;
 }
 
-buildUnnamed2447() {
+buildUnnamed121() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2447(core.List<core.String> o) {
+checkUnnamed121(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2448() {
+buildUnnamed122() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2448(core.List<core.String> o) {
+checkUnnamed122(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -740,8 +1012,8 @@ buildModifyThreadRequest() {
   var o = new api.ModifyThreadRequest();
   buildCounterModifyThreadRequest++;
   if (buildCounterModifyThreadRequest < 3) {
-    o.addLabelIds = buildUnnamed2447();
-    o.removeLabelIds = buildUnnamed2448();
+    o.addLabelIds = buildUnnamed121();
+    o.removeLabelIds = buildUnnamed122();
   }
   buildCounterModifyThreadRequest--;
   return o;
@@ -750,10 +1022,31 @@ buildModifyThreadRequest() {
 checkModifyThreadRequest(api.ModifyThreadRequest o) {
   buildCounterModifyThreadRequest++;
   if (buildCounterModifyThreadRequest < 3) {
-    checkUnnamed2447(o.addLabelIds);
-    checkUnnamed2448(o.removeLabelIds);
+    checkUnnamed121(o.addLabelIds);
+    checkUnnamed122(o.removeLabelIds);
   }
   buildCounterModifyThreadRequest--;
+}
+
+core.int buildCounterPopSettings = 0;
+buildPopSettings() {
+  var o = new api.PopSettings();
+  buildCounterPopSettings++;
+  if (buildCounterPopSettings < 3) {
+    o.accessWindow = "foo";
+    o.disposition = "foo";
+  }
+  buildCounterPopSettings--;
+  return o;
+}
+
+checkPopSettings(api.PopSettings o) {
+  buildCounterPopSettings++;
+  if (buildCounterPopSettings < 3) {
+    unittest.expect(o.accessWindow, unittest.equals('foo'));
+    unittest.expect(o.disposition, unittest.equals('foo'));
+  }
+  buildCounterPopSettings--;
 }
 
 core.int buildCounterProfile = 0;
@@ -781,14 +1074,76 @@ checkProfile(api.Profile o) {
   buildCounterProfile--;
 }
 
-buildUnnamed2449() {
+core.int buildCounterSendAs = 0;
+buildSendAs() {
+  var o = new api.SendAs();
+  buildCounterSendAs++;
+  if (buildCounterSendAs < 3) {
+    o.displayName = "foo";
+    o.isDefault = true;
+    o.isPrimary = true;
+    o.replyToAddress = "foo";
+    o.sendAsEmail = "foo";
+    o.signature = "foo";
+    o.smtpMsa = buildSmtpMsa();
+    o.treatAsAlias = true;
+    o.verificationStatus = "foo";
+  }
+  buildCounterSendAs--;
+  return o;
+}
+
+checkSendAs(api.SendAs o) {
+  buildCounterSendAs++;
+  if (buildCounterSendAs < 3) {
+    unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.isDefault, unittest.isTrue);
+    unittest.expect(o.isPrimary, unittest.isTrue);
+    unittest.expect(o.replyToAddress, unittest.equals('foo'));
+    unittest.expect(o.sendAsEmail, unittest.equals('foo'));
+    unittest.expect(o.signature, unittest.equals('foo'));
+    checkSmtpMsa(o.smtpMsa);
+    unittest.expect(o.treatAsAlias, unittest.isTrue);
+    unittest.expect(o.verificationStatus, unittest.equals('foo'));
+  }
+  buildCounterSendAs--;
+}
+
+core.int buildCounterSmtpMsa = 0;
+buildSmtpMsa() {
+  var o = new api.SmtpMsa();
+  buildCounterSmtpMsa++;
+  if (buildCounterSmtpMsa < 3) {
+    o.host = "foo";
+    o.password = "foo";
+    o.port = 42;
+    o.securityMode = "foo";
+    o.username = "foo";
+  }
+  buildCounterSmtpMsa--;
+  return o;
+}
+
+checkSmtpMsa(api.SmtpMsa o) {
+  buildCounterSmtpMsa++;
+  if (buildCounterSmtpMsa < 3) {
+    unittest.expect(o.host, unittest.equals('foo'));
+    unittest.expect(o.password, unittest.equals('foo'));
+    unittest.expect(o.port, unittest.equals(42));
+    unittest.expect(o.securityMode, unittest.equals('foo'));
+    unittest.expect(o.username, unittest.equals('foo'));
+  }
+  buildCounterSmtpMsa--;
+}
+
+buildUnnamed123() {
   var o = new core.List<api.Message>();
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
 }
 
-checkUnnamed2449(core.List<api.Message> o) {
+checkUnnamed123(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
@@ -801,7 +1156,7 @@ buildThread() {
   if (buildCounterThread < 3) {
     o.historyId = "foo";
     o.id = "foo";
-    o.messages = buildUnnamed2449();
+    o.messages = buildUnnamed123();
     o.snippet = "foo";
   }
   buildCounterThread--;
@@ -813,20 +1168,53 @@ checkThread(api.Thread o) {
   if (buildCounterThread < 3) {
     unittest.expect(o.historyId, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed2449(o.messages);
+    checkUnnamed123(o.messages);
     unittest.expect(o.snippet, unittest.equals('foo'));
   }
   buildCounterThread--;
 }
 
-buildUnnamed2450() {
+core.int buildCounterVacationSettings = 0;
+buildVacationSettings() {
+  var o = new api.VacationSettings();
+  buildCounterVacationSettings++;
+  if (buildCounterVacationSettings < 3) {
+    o.enableAutoReply = true;
+    o.endTime = "foo";
+    o.responseBodyHtml = "foo";
+    o.responseBodyPlainText = "foo";
+    o.responseSubject = "foo";
+    o.restrictToContacts = true;
+    o.restrictToDomain = true;
+    o.startTime = "foo";
+  }
+  buildCounterVacationSettings--;
+  return o;
+}
+
+checkVacationSettings(api.VacationSettings o) {
+  buildCounterVacationSettings++;
+  if (buildCounterVacationSettings < 3) {
+    unittest.expect(o.enableAutoReply, unittest.isTrue);
+    unittest.expect(o.endTime, unittest.equals('foo'));
+    unittest.expect(o.responseBodyHtml, unittest.equals('foo'));
+    unittest.expect(o.responseBodyPlainText, unittest.equals('foo'));
+    unittest.expect(o.responseSubject, unittest.equals('foo'));
+    unittest.expect(o.restrictToContacts, unittest.isTrue);
+    unittest.expect(o.restrictToDomain, unittest.isTrue);
+    unittest.expect(o.startTime, unittest.equals('foo'));
+  }
+  buildCounterVacationSettings--;
+}
+
+buildUnnamed124() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2450(core.List<core.String> o) {
+checkUnnamed124(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -838,7 +1226,7 @@ buildWatchRequest() {
   buildCounterWatchRequest++;
   if (buildCounterWatchRequest < 3) {
     o.labelFilterAction = "foo";
-    o.labelIds = buildUnnamed2450();
+    o.labelIds = buildUnnamed124();
     o.topicName = "foo";
   }
   buildCounterWatchRequest--;
@@ -849,7 +1237,7 @@ checkWatchRequest(api.WatchRequest o) {
   buildCounterWatchRequest++;
   if (buildCounterWatchRequest < 3) {
     unittest.expect(o.labelFilterAction, unittest.equals('foo'));
-    checkUnnamed2450(o.labelIds);
+    checkUnnamed124(o.labelIds);
     unittest.expect(o.topicName, unittest.equals('foo'));
   }
   buildCounterWatchRequest--;
@@ -876,53 +1264,53 @@ checkWatchResponse(api.WatchResponse o) {
   buildCounterWatchResponse--;
 }
 
-buildUnnamed2451() {
+buildUnnamed125() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2451(core.List<core.String> o) {
+checkUnnamed125(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2452() {
+buildUnnamed126() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2452(core.List<core.String> o) {
+checkUnnamed126(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2453() {
+buildUnnamed127() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2453(core.List<core.String> o) {
+checkUnnamed127(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2454() {
+buildUnnamed128() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2454(core.List<core.String> o) {
+checkUnnamed128(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -930,6 +1318,15 @@ checkUnnamed2454(core.List<core.String> o) {
 
 
 main() {
+  unittest.group("obj-schema-AutoForwarding", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAutoForwarding();
+      var od = new api.AutoForwarding.fromJson(o.toJson());
+      checkAutoForwarding(od);
+    });
+  });
+
+
   unittest.group("obj-schema-BatchDeleteMessagesRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildBatchDeleteMessagesRequest();
@@ -944,6 +1341,42 @@ main() {
       var o = buildDraft();
       var od = new api.Draft.fromJson(o.toJson());
       checkDraft(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-Filter", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildFilter();
+      var od = new api.Filter.fromJson(o.toJson());
+      checkFilter(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-FilterAction", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildFilterAction();
+      var od = new api.FilterAction.fromJson(o.toJson());
+      checkFilterAction(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-FilterCriteria", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildFilterCriteria();
+      var od = new api.FilterCriteria.fromJson(o.toJson());
+      checkFilterCriteria(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ForwardingAddress", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildForwardingAddress();
+      var od = new api.ForwardingAddress.fromJson(o.toJson());
+      checkForwardingAddress(od);
     });
   });
 
@@ -993,6 +1426,15 @@ main() {
   });
 
 
+  unittest.group("obj-schema-ImapSettings", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildImapSettings();
+      var od = new api.ImapSettings.fromJson(o.toJson());
+      checkImapSettings(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Label", () {
     unittest.test("to-json--from-json", () {
       var o = buildLabel();
@@ -1007,6 +1449,24 @@ main() {
       var o = buildListDraftsResponse();
       var od = new api.ListDraftsResponse.fromJson(o.toJson());
       checkListDraftsResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ListFiltersResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListFiltersResponse();
+      var od = new api.ListFiltersResponse.fromJson(o.toJson());
+      checkListFiltersResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ListForwardingAddressesResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListForwardingAddressesResponse();
+      var od = new api.ListForwardingAddressesResponse.fromJson(o.toJson());
+      checkListForwardingAddressesResponse(od);
     });
   });
 
@@ -1034,6 +1494,15 @@ main() {
       var o = buildListMessagesResponse();
       var od = new api.ListMessagesResponse.fromJson(o.toJson());
       checkListMessagesResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ListSendAsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListSendAsResponse();
+      var od = new api.ListSendAsResponse.fromJson(o.toJson());
+      checkListSendAsResponse(od);
     });
   });
 
@@ -1101,6 +1570,15 @@ main() {
   });
 
 
+  unittest.group("obj-schema-PopSettings", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPopSettings();
+      var od = new api.PopSettings.fromJson(o.toJson());
+      checkPopSettings(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Profile", () {
     unittest.test("to-json--from-json", () {
       var o = buildProfile();
@@ -1110,11 +1588,38 @@ main() {
   });
 
 
+  unittest.group("obj-schema-SendAs", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSendAs();
+      var od = new api.SendAs.fromJson(o.toJson());
+      checkSendAs(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-SmtpMsa", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSmtpMsa();
+      var od = new api.SmtpMsa.fromJson(o.toJson());
+      checkSmtpMsa(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Thread", () {
     unittest.test("to-json--from-json", () {
       var o = buildThread();
       var od = new api.Thread.fromJson(o.toJson());
       checkThread(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-VacationSettings", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildVacationSettings();
+      var od = new api.VacationSettings.fromJson(o.toJson());
+      checkVacationSettings(od);
     });
   });
 
@@ -1971,7 +2476,7 @@ main() {
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_format = "foo";
-      var arg_metadataHeaders = buildUnnamed2451();
+      var arg_metadataHeaders = buildUnnamed125();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2125,7 +2630,7 @@ main() {
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
       var arg_includeSpamTrash = true;
-      var arg_labelIds = buildUnnamed2452();
+      var arg_labelIds = buildUnnamed126();
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
       var arg_q = "foo";
@@ -2403,6 +2908,1025 @@ main() {
   });
 
 
+  unittest.group("resource-UsersSettingsResourceApi", () {
+    unittest.test("method--getAutoForwarding", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildAutoForwarding());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getAutoForwarding(arg_userId).then(unittest.expectAsync(((api.AutoForwarding response) {
+        checkAutoForwarding(response);
+      })));
+    });
+
+    unittest.test("method--getImap", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildImapSettings());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getImap(arg_userId).then(unittest.expectAsync(((api.ImapSettings response) {
+        checkImapSettings(response);
+      })));
+    });
+
+    unittest.test("method--getPop", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPopSettings());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getPop(arg_userId).then(unittest.expectAsync(((api.PopSettings response) {
+        checkPopSettings(response);
+      })));
+    });
+
+    unittest.test("method--getVacation", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildVacationSettings());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getVacation(arg_userId).then(unittest.expectAsync(((api.VacationSettings response) {
+        checkVacationSettings(response);
+      })));
+    });
+
+    unittest.test("method--updateAutoForwarding", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var arg_request = buildAutoForwarding();
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.AutoForwarding.fromJson(json);
+        checkAutoForwarding(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildAutoForwarding());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.updateAutoForwarding(arg_request, arg_userId).then(unittest.expectAsync(((api.AutoForwarding response) {
+        checkAutoForwarding(response);
+      })));
+    });
+
+    unittest.test("method--updateImap", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var arg_request = buildImapSettings();
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.ImapSettings.fromJson(json);
+        checkImapSettings(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildImapSettings());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.updateImap(arg_request, arg_userId).then(unittest.expectAsync(((api.ImapSettings response) {
+        checkImapSettings(response);
+      })));
+    });
+
+    unittest.test("method--updatePop", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var arg_request = buildPopSettings();
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PopSettings.fromJson(json);
+        checkPopSettings(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPopSettings());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.updatePop(arg_request, arg_userId).then(unittest.expectAsync(((api.PopSettings response) {
+        checkPopSettings(response);
+      })));
+    });
+
+    unittest.test("method--updateVacation", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var arg_request = buildVacationSettings();
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.VacationSettings.fromJson(json);
+        checkVacationSettings(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildVacationSettings());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.updateVacation(arg_request, arg_userId).then(unittest.expectAsync(((api.VacationSettings response) {
+        checkVacationSettings(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-UsersSettingsFiltersResourceApi", () {
+    unittest.test("method--create", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsFiltersResourceApi res = new api.GmailApi(mock).users.settings.filters;
+      var arg_request = buildFilter();
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.Filter.fromJson(json);
+        checkFilter(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildFilter());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.create(arg_request, arg_userId).then(unittest.expectAsync(((api.Filter response) {
+        checkFilter(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsFiltersResourceApi res = new api.GmailApi(mock).users.settings.filters;
+      var arg_userId = "foo";
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.delete(arg_userId, arg_id).then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsFiltersResourceApi res = new api.GmailApi(mock).users.settings.filters;
+      var arg_userId = "foo";
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildFilter());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_userId, arg_id).then(unittest.expectAsync(((api.Filter response) {
+        checkFilter(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsFiltersResourceApi res = new api.GmailApi(mock).users.settings.filters;
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildListFiltersResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_userId).then(unittest.expectAsync(((api.ListFiltersResponse response) {
+        checkListFiltersResponse(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-UsersSettingsForwardingAddressesResourceApi", () {
+    unittest.test("method--create", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsForwardingAddressesResourceApi res = new api.GmailApi(mock).users.settings.forwardingAddresses;
+      var arg_request = buildForwardingAddress();
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.ForwardingAddress.fromJson(json);
+        checkForwardingAddress(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildForwardingAddress());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.create(arg_request, arg_userId).then(unittest.expectAsync(((api.ForwardingAddress response) {
+        checkForwardingAddress(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsForwardingAddressesResourceApi res = new api.GmailApi(mock).users.settings.forwardingAddresses;
+      var arg_userId = "foo";
+      var arg_forwardingEmail = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.delete(arg_userId, arg_forwardingEmail).then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsForwardingAddressesResourceApi res = new api.GmailApi(mock).users.settings.forwardingAddresses;
+      var arg_userId = "foo";
+      var arg_forwardingEmail = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildForwardingAddress());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_userId, arg_forwardingEmail).then(unittest.expectAsync(((api.ForwardingAddress response) {
+        checkForwardingAddress(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsForwardingAddressesResourceApi res = new api.GmailApi(mock).users.settings.forwardingAddresses;
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildListForwardingAddressesResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_userId).then(unittest.expectAsync(((api.ListForwardingAddressesResponse response) {
+        checkListForwardingAddressesResponse(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-UsersSettingsSendAsResourceApi", () {
+    unittest.test("method--create", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsSendAsResourceApi res = new api.GmailApi(mock).users.settings.sendAs;
+      var arg_request = buildSendAs();
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.SendAs.fromJson(json);
+        checkSendAs(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildSendAs());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.create(arg_request, arg_userId).then(unittest.expectAsync(((api.SendAs response) {
+        checkSendAs(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsSendAsResourceApi res = new api.GmailApi(mock).users.settings.sendAs;
+      var arg_userId = "foo";
+      var arg_sendAsEmail = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.delete(arg_userId, arg_sendAsEmail).then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsSendAsResourceApi res = new api.GmailApi(mock).users.settings.sendAs;
+      var arg_userId = "foo";
+      var arg_sendAsEmail = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildSendAs());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_userId, arg_sendAsEmail).then(unittest.expectAsync(((api.SendAs response) {
+        checkSendAs(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsSendAsResourceApi res = new api.GmailApi(mock).users.settings.sendAs;
+      var arg_userId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildListSendAsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_userId).then(unittest.expectAsync(((api.ListSendAsResponse response) {
+        checkListSendAsResponse(response);
+      })));
+    });
+
+    unittest.test("method--patch", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsSendAsResourceApi res = new api.GmailApi(mock).users.settings.sendAs;
+      var arg_request = buildSendAs();
+      var arg_userId = "foo";
+      var arg_sendAsEmail = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.SendAs.fromJson(json);
+        checkSendAs(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildSendAs());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.patch(arg_request, arg_userId, arg_sendAsEmail).then(unittest.expectAsync(((api.SendAs response) {
+        checkSendAs(response);
+      })));
+    });
+
+    unittest.test("method--update", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsSendAsResourceApi res = new api.GmailApi(mock).users.settings.sendAs;
+      var arg_request = buildSendAs();
+      var arg_userId = "foo";
+      var arg_sendAsEmail = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.SendAs.fromJson(json);
+        checkSendAs(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildSendAs());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.update(arg_request, arg_userId, arg_sendAsEmail).then(unittest.expectAsync(((api.SendAs response) {
+        checkSendAs(response);
+      })));
+    });
+
+    unittest.test("method--verify", () {
+
+      var mock = new HttpServerMock();
+      api.UsersSettingsSendAsResourceApi res = new api.GmailApi(mock).users.settings.sendAs;
+      var arg_userId = "foo";
+      var arg_sendAsEmail = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.verify(arg_userId, arg_sendAsEmail).then(unittest.expectAsync((_) {}));
+    });
+
+  });
+
+
   unittest.group("resource-UsersThreadsResourceApi", () {
     unittest.test("method--delete", () {
 
@@ -2452,7 +3976,7 @@ main() {
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_format = "foo";
-      var arg_metadataHeaders = buildUnnamed2453();
+      var arg_metadataHeaders = buildUnnamed127();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2498,7 +4022,7 @@ main() {
       api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
       var arg_includeSpamTrash = true;
-      var arg_labelIds = buildUnnamed2454();
+      var arg_labelIds = buildUnnamed128();
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
       var arg_q = "foo";

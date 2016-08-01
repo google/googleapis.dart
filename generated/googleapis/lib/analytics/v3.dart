@@ -10555,7 +10555,12 @@ class UnsampledReport {
   core.DateTime created;
   /** The dimensions for the unsampled report. */
   core.String dimensions;
-  /** The type of download you need to use for the report data file. */
+  /**
+   * The type of download you need to use for the report data file. Possible
+   * values include `GOOGLE_DRIVE` and `GOOGLE_CLOUD_STORAGE`. If the value is
+   * `GOOGLE_DRIVE`, see the `driveDownloadDetails` field. If the value is
+   * `GOOGLE_CLOUD_STORAGE`, see the `cloudStorageDownloadDetails` field.
+   */
   core.String downloadType;
   /** Download details for a file stored in Google Drive. */
   UnsampledReportDriveDownloadDetails driveDownloadDetails;

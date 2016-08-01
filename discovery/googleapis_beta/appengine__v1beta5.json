@@ -14,7 +14,7 @@
     "description": "Provisions and manages App Engine applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/appengine/docs/admin-api/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/uLbYg19XaV3zzxJ-nkNjmqc7iVk\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/PN4XIIKLvFT7FU0OtRuE3nmP_ao\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -107,6 +107,21 @@
     "resources": {
         "apps": {
             "methods": {
+                "create": {
+                    "description": "Creates an App Engine application for a Google Cloud Platform project. This requires a project that excludes an App Engine application. For details about creating a project without an application, see the [Google Cloud Resource Manager create project topic](https://cloud.google.com/resource-manager/docs/creating-project).",
+                    "httpMethod": "POST",
+                    "id": "appengine.apps.create",
+                    "path": "v1beta5/apps",
+                    "request": {
+                        "$ref": "Application"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
                 "get": {
                     "description": "Gets information about an application.",
                     "httpMethod": "GET",
@@ -568,6 +583,94 @@
                             "resources": {
                                 "instances": {
                                     "methods": {
+                                        "delete": {
+                                            "description": "Stops a running instance.",
+                                            "httpMethod": "DELETE",
+                                            "id": "appengine.apps.services.versions.instances.delete",
+                                            "parameterOrder": [
+                                                "appsId",
+                                                "servicesId",
+                                                "versionsId",
+                                                "instancesId"
+                                            ],
+                                            "parameters": {
+                                                "appsId": {
+                                                    "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/services/default/versions/v1/instances/instance-1\".",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "servicesId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "versionsId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "instancesId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}",
+                                            "response": {
+                                                "$ref": "Operation"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "get": {
+                                            "description": "Gets instance information.",
+                                            "httpMethod": "GET",
+                                            "id": "appengine.apps.services.versions.instances.get",
+                                            "parameterOrder": [
+                                                "appsId",
+                                                "servicesId",
+                                                "versionsId",
+                                                "instancesId"
+                                            ],
+                                            "parameters": {
+                                                "appsId": {
+                                                    "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/services/default/versions/v1/instances/instance-1\".",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "servicesId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "versionsId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "instancesId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}",
+                                            "response": {
+                                                "$ref": "Instance"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
                                         "list": {
                                             "description": "Lists the instances of a version.",
                                             "httpMethod": "GET",
@@ -615,17 +718,137 @@
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
+                                        },
+                                        "debug": {
+                                            "description": "Enable debugging of this VM instance. This call allows you to SSH to the VM. While the VM is in debug mode, it continues to serve live traffic. After you're done debugging an instance, delete the instance; the system creates a new instance when needed. You can't debug a non-VM instance.",
+                                            "httpMethod": "POST",
+                                            "id": "appengine.apps.services.versions.instances.debug",
+                                            "parameterOrder": [
+                                                "appsId",
+                                                "servicesId",
+                                                "versionsId",
+                                                "instancesId"
+                                            ],
+                                            "parameters": {
+                                                "appsId": {
+                                                    "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/services/default/versions/v1/instances/instance-1\".",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "servicesId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "versionsId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "instancesId": {
+                                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug",
+                                            "request": {
+                                                "$ref": "DebugInstanceRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "Operation"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
                                         }
                                     }
                                 }
                             }
                         }
                     }
+                },
+                "locations": {
+                    "methods": {
+                        "list": {
+                            "description": "Lists information about the supported locations for this service.",
+                            "httpMethod": "GET",
+                            "id": "appengine.apps.locations.list",
+                            "parameterOrder": [
+                                "appsId"
+                            ],
+                            "parameters": {
+                                "appsId": {
+                                    "description": "Part of `name`. The resource that owns the locations collection, if applicable.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "filter": {
+                                    "description": "The standard list filter.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "The standard list page size.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "The standard list page token.",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta5/apps/{appsId}/locations",
+                            "response": {
+                                "$ref": "ListLocationsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "get": {
+                            "description": "Get information about a location.",
+                            "httpMethod": "GET",
+                            "id": "appengine.apps.locations.get",
+                            "parameterOrder": [
+                                "appsId",
+                                "locationsId"
+                            ],
+                            "parameters": {
+                                "appsId": {
+                                    "description": "Part of `name`. Resource name for the location.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "locationsId": {
+                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta5/apps/{appsId}/locations/{locationsId}",
+                            "response": {
+                                "$ref": "Location"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    }
                 }
             }
         }
     },
-    "revision": "20160614",
+    "revision": "20160711",
     "rootUrl": "https://appengine.googleapis.com/",
     "schemas": {
         "Operation": {
@@ -713,11 +936,11 @@
             "id": "Application",
             "properties": {
                 "name": {
-                    "description": "The full path to the application in the API. Example: \"apps/myapp\". @OutputOnly",
+                    "description": "The full path to the Application resource in the API. Example: \"apps/myapp\". @OutputOnly",
                     "type": "string"
                 },
                 "id": {
-                    "description": "The relative name/path of the application. Example: \"myapp\".",
+                    "description": "The identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: \"myapp\".",
                     "type": "string"
                 },
                 "dispatchRules": {
@@ -1550,24 +1773,6 @@
             },
             "type": "object"
         },
-        "ListInstancesResponse": {
-            "description": "Response message for `Instances.ListInstances`.",
-            "id": "ListInstancesResponse",
-            "properties": {
-                "instances": {
-                    "description": "The instances belonging to the requested version.",
-                    "items": {
-                        "$ref": "Instance"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "Continuation token for fetching the next page of results.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "Instance": {
             "description": "Instances are the computing units that App Engine uses to automatically scale an application.",
             "id": "Instance",
@@ -1641,6 +1846,73 @@
                 "vmUnlocked": {
                     "description": "For VMEngines instances, whether the instance has been unlocked. @OutputOnly",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "ListInstancesResponse": {
+            "description": "Response message for `Instances.ListInstances`.",
+            "id": "ListInstancesResponse",
+            "properties": {
+                "instances": {
+                    "description": "The instances belonging to the requested version.",
+                    "items": {
+                        "$ref": "Instance"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "Continuation token for fetching the next page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DebugInstanceRequest": {
+            "description": "Request message for `Instances.DebugInstance`.",
+            "id": "DebugInstanceRequest",
+            "type": "object"
+        },
+        "ListLocationsResponse": {
+            "description": "The response message for LocationService.ListLocations.",
+            "id": "ListLocationsResponse",
+            "properties": {
+                "locations": {
+                    "description": "A list of locations that matches the specified filter in the request.",
+                    "items": {
+                        "$ref": "Location"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Location": {
+            "description": "A resource that represents Google Cloud Platform location.",
+            "id": "Location",
+            "properties": {
+                "name": {
+                    "description": "Resource name for the location, which may vary between implementations. Example: `\"projects/example-project/locations/us-east1\"`",
+                    "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+                    "type": "object"
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @ype with type URL.",
+                        "type": "any"
+                    },
+                    "description": "Service-specific metadata. For example the available capacity at the given location.",
+                    "type": "object"
                 }
             },
             "type": "object"

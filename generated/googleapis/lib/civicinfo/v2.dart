@@ -14,7 +14,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client civicinfo/v2';
 
-/** An API for accessing civic information. */
+/**
+ * Provides polling places, early vote locations, contest data, election
+ * officials, and government representatives for U.S. residential addresses.
+ */
 class CivicinfoApi {
 
   final commons.ApiRequester _requester;
@@ -385,6 +388,7 @@ class AdministrativeBody {
    * voting.
    */
   core.String absenteeVotingInfoUrl;
+  core.List<core.String> addressLines;
   /**
    * A URL provided by this administrative body to give contest information to
    * the voter.
@@ -433,6 +437,9 @@ class AdministrativeBody {
     if (_json.containsKey("absenteeVotingInfoUrl")) {
       absenteeVotingInfoUrl = _json["absenteeVotingInfoUrl"];
     }
+    if (_json.containsKey("addressLines")) {
+      addressLines = _json["addressLines"];
+    }
     if (_json.containsKey("ballotInfoUrl")) {
       ballotInfoUrl = _json["ballotInfoUrl"];
     }
@@ -475,6 +482,9 @@ class AdministrativeBody {
     var _json = new core.Map();
     if (absenteeVotingInfoUrl != null) {
       _json["absenteeVotingInfoUrl"] = absenteeVotingInfoUrl;
+    }
+    if (addressLines != null) {
+      _json["addressLines"] = addressLines;
     }
     if (ballotInfoUrl != null) {
       _json["ballotInfoUrl"] = ballotInfoUrl;

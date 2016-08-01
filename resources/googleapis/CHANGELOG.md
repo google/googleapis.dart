@@ -1,3 +1,14 @@
+## 0.30.0
+
+* [api-new] cloudbuild:v1
+* [api] androidenterprise:v1: new resource
+* [api] bigquery:v2: method changes
+* [api] books:v1: new resource
+* [api] civicinfo:v2: schema changes
+* [api] gmail:v1: new resource
+* [api] qpxexpress:v1: schema changes
+* [api-removal] appengine:v1
+
 ## 0.29.0
 
 * [api] acceleratedmobilepageurl:v1: schema changes

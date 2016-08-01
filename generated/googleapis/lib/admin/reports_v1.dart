@@ -15,8 +15,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client admin/reports_v1';
 
 /**
- * Allows the administrators of Google Apps customers to fetch reports about the
- * usage, collaboration, security and risk for their users.
+ * Fetches reports for the administrators of Google Apps customers about the
+ * usage, collaboration, security, and risk for their users.
  */
 class AdminApi {
   /** View audit reports of Google Apps for your domain */
@@ -56,7 +56,7 @@ class ActivitiesResourceApi {
    * [applicationName] - Application name for which the events are to be
    * retrieved.
    * Value must have pattern
-   * "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)".
+   * "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)".
    *
    * [actorIpAddress] - IP Address of host where the event was performed.
    * Supports both IPv4 and IPv6 addresses.
@@ -157,7 +157,7 @@ class ActivitiesResourceApi {
    * [applicationName] - Application name for which the events are to be
    * retrieved.
    * Value must have pattern
-   * "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)".
+   * "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)".
    *
    * [actorIpAddress] - IP Address of host where the event was performed.
    * Supports both IPv4 and IPv6 addresses.

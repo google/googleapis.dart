@@ -32,6 +32,7 @@ class AndroidenterpriseApi {
   InstallsResourceApi get installs => new InstallsResourceApi(_requester);
   PermissionsResourceApi get permissions => new PermissionsResourceApi(_requester);
   ProductsResourceApi get products => new ProductsResourceApi(_requester);
+  ServiceaccountkeysResourceApi get serviceaccountkeys => new ServiceaccountkeysResourceApi(_requester);
   StorelayoutclustersResourceApi get storelayoutclusters => new StorelayoutclustersResourceApi(_requester);
   StorelayoutpagesResourceApi get storelayoutpages => new StorelayoutpagesResourceApi(_requester);
   UsersResourceApi get users => new UsersResourceApi(_requester);
@@ -644,11 +645,11 @@ class DevicesResourceApi {
   }
 
   /**
-   * Retrieves whether a device is enabled or disabled for access by the user to
-   * Google services. The device state takes effect only if enforcing EMM
-   * policies on Android devices is enabled in the Google Admin Console.
-   * Otherwise, the device state is ignored and all devices are allowed access
-   * to Google services.
+   * Retrieves whether a device's access to Google services is enabled or
+   * disabled. The device state takes effect only if enforcing EMM policies on
+   * Android devices is enabled in the Google Admin Console. Otherwise, the
+   * device state is ignored and all devices are allowed access to Google
+   * services. This is only supported for Google-managed users.
    *
    * Request parameters:
    *
@@ -741,11 +742,11 @@ class DevicesResourceApi {
   }
 
   /**
-   * Sets whether a device is enabled or disabled for access by the user to
-   * Google services. The device state takes effect only if enforcing EMM
-   * policies on Android devices is enabled in the Google Admin Console.
-   * Otherwise, the device state is ignored and all devices are allowed access
-   * to Google services.
+   * Sets whether a device's access to Google services is enabled or disabled.
+   * The device state takes effect only if enforcing EMM policies on Android
+   * devices is enabled in the Google Admin Console. Otherwise, the device state
+   * is ignored and all devices are allowed access to Google services. This is
+   * only supported for Google-managed users.
    *
    * [request] - The metadata request object.
    *
@@ -806,6 +807,95 @@ class EnterprisesResourceApi {
 
   EnterprisesResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Acknowledges notifications that were received from
+   * Enterprises.PullNotificationSet to prevent subsequent calls from returning
+   * the same notifications.
+   *
+   * Request parameters:
+   *
+   * [notificationSetId] - The notification set ID as returned by
+   * Enterprises.PullNotificationSet. This must be provided.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future acknowledgeNotificationSet({core.String notificationSetId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (notificationSetId != null) {
+      _queryParams["notificationSetId"] = [notificationSetId];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'enterprises/acknowledgeNotificationSet';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Completes the signup flow, by specifying the Completion token and
+   * Enterprise token. This request must not be called multiple times for a
+   * given Enterprise Token.
+   *
+   * Request parameters:
+   *
+   * [completionToken] - The Completion token initially returned by
+   * GenerateSignupUrl.
+   *
+   * [enterpriseToken] - The Enterprise token appended to the Callback URL.
+   *
+   * Completes with a [Enterprise].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Enterprise> completeSignup({core.String completionToken, core.String enterpriseToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (completionToken != null) {
+      _queryParams["completionToken"] = [completionToken];
+    }
+    if (enterpriseToken != null) {
+      _queryParams["enterpriseToken"] = [enterpriseToken];
+    }
+
+    _url = 'enterprises/completeSignup';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Enterprise.fromJson(data));
+  }
 
   /**
    * Deletes the binding between the EMM and enterprise. This is now deprecated;
@@ -894,6 +984,53 @@ class EnterprisesResourceApi {
   }
 
   /**
+   * Generates a sign-up URL.
+   *
+   * Request parameters:
+   *
+   * [callbackUrl] - The callback URL to which the Admin will be redirected
+   * after successfully creating an enterprise. Before redirecting there the
+   * system will add a single query parameter to this URL named
+   * "enterpriseToken" which will contain an opaque token to be used for the
+   * CompleteSignup request.
+   * Beware that this means that the URL will be parsed, the parameter added and
+   * then a new URL formatted, i.e. there may be some minor formatting changes
+   * and, more importantly, the URL must be well-formed so that it can be
+   * parsed.
+   *
+   * Completes with a [SignupInfo].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SignupInfo> generateSignupUrl({core.String callbackUrl}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (callbackUrl != null) {
+      _queryParams["callbackUrl"] = [callbackUrl];
+    }
+
+    _url = 'enterprises/signupUrl';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SignupInfo.fromJson(data));
+  }
+
+  /**
    * Retrieves the name and domain of an enterprise.
    *
    * Request parameters:
@@ -930,6 +1067,67 @@ class EnterprisesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Enterprise.fromJson(data));
+  }
+
+  /**
+   * Returns a service account and credentials. The service account can be bound
+   * to the enterprise by calling setAccount. The service account is unique to
+   * this enterprise and EMM, and will be deleted if the enterprise is unbound.
+   * The credentials contain private key data and are not stored server-side.
+   *
+   * This method can only be called after calling Enterprises.Enroll or
+   * Enterprises.CompleteSignup, and before Enterprises.SetAccount; at other
+   * times it will return an error.
+   *
+   * Subsequent calls after the first will generate a new, unique set of
+   * credentials, and invalidate the previously generated credentials.
+   *
+   * Once the service account is bound to the enterprise, it can be managed
+   * using the serviceAccountKeys resource.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - null
+   *
+   * [keyType] - The type of credential to return with the service account.
+   * Required.
+   * Possible string values are:
+   * - "googleCredentials"
+   * - "pkcs12"
+   *
+   * Completes with a [ServiceAccount].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ServiceAccount> getServiceAccount(core.String enterpriseId, {core.String keyType}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (keyType != null) {
+      _queryParams["keyType"] = [keyType];
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/serviceAccount';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ServiceAccount.fromJson(data));
   }
 
   /**
@@ -1018,7 +1216,11 @@ class EnterprisesResourceApi {
   }
 
   /**
-   * Looks up an enterprise by domain name.
+   * Looks up an enterprise by domain name. This is only supported for
+   * enterprises created via the Google-initiated creation flow. Lookup of the
+   * id is not needed for enterprises created via the EMM-initiated flow since
+   * the EMM learns the enterprise ID in the callback specified in the
+   * Enterprises.generateSignupUrl call.
    *
    * Request parameters:
    *
@@ -1055,6 +1257,63 @@ class EnterprisesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new EnterprisesListResponse.fromJson(data));
+  }
+
+  /**
+   * Pulls and returns a notification set for the enterprises associated with
+   * the service account authenticated for the request. The notification set may
+   * be empty if no notification are pending.
+   * A notification set returned needs to be acknowledged within 20 seconds by
+   * calling Enterprises.AcknowledgeNotificationSet, unless the notification set
+   * is empty.
+   * Notifications that are not acknowledged within the 20 seconds will
+   * eventually be included again in the response to another PullNotificationSet
+   * request, and those that are never acknowledged will ultimately be deleted
+   * according to the Google Cloud Platform Pub/Sub system policy.
+   * Multiple requests might be performed concurrently to retrieve
+   * notifications, in which case the pending notifications (if any) will be
+   * split among each caller, if any are pending.
+   *
+   * Request parameters:
+   *
+   * [requestMode] - The request mode for pulling notifications. If omitted,
+   * defaults to WAIT_FOR_NOTIFCATIONS.
+   * If this is set to WAIT_FOR_NOTIFCATIONS, the request will eventually
+   * timeout, in which case it should be retried.
+   * Possible string values are:
+   * - "returnImmediately"
+   * - "waitForNotifications"
+   *
+   * Completes with a [NotificationSet].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<NotificationSet> pullNotificationSet({core.String requestMode}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (requestMode != null) {
+      _queryParams["requestMode"] = [requestMode];
+    }
+
+    _url = 'enterprises/pullNotificationSet';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new NotificationSet.fromJson(data));
   }
 
   /**
@@ -2269,7 +2528,8 @@ class ProductsResourceApi {
   }
 
   /**
-   * Finds approved products that match a query.
+   * Finds approved products that match a query, or all approved products if
+   * there is no query.
    *
    * Request parameters:
    *
@@ -2289,7 +2549,8 @@ class ProductsResourceApi {
    *
    * [query] - The search query as typed in the Google Play Store search box. If
    * omitted, all approved apps will be returned (using the pagination
-   * parameters).
+   * parameters), including apps that are not available in the store (e.g.
+   * unpublished apps).
    *
    * [token] - A pagination token is contained in a requests response when
    * there are more products. The token can be used in a subsequent request to
@@ -2341,6 +2602,50 @@ class ProductsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ProductsListResponse.fromJson(data));
+  }
+
+  /**
+   * Unapproves the specified product (and the relevant app permissions, if any)
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [productId] - The ID of the product.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future unapprove(core.String enterpriseId, core.String productId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (productId == null) {
+      throw new core.ArgumentError("Parameter productId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/products/' + commons.Escaper.ecapeVariable('$productId') + '/unapprove';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
   }
 
   /**
@@ -2396,6 +2701,155 @@ class ProductsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ProductPermissions.fromJson(data));
+  }
+
+}
+
+
+class ServiceaccountkeysResourceApi {
+  final commons.ApiRequester _requester;
+
+  ServiceaccountkeysResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Removes and invalidates the specified credentials for the service account
+   * associated with this enterprise. The calling service account must have been
+   * retrieved by calling Enterprises.GetServiceAccount and must have been set
+   * as the enterprise service account by calling Enterprises.SetAccount.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [keyId] - The ID of the key.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String enterpriseId, core.String keyId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (keyId == null) {
+      throw new core.ArgumentError("Parameter keyId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/serviceAccountKeys/' + commons.Escaper.ecapeVariable('$keyId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Generates new credentials for the service account associated with this
+   * enterprise. The calling service account must have been retrieved by calling
+   * Enterprises.GetServiceAccount and must have been set as the enterprise
+   * service account by calling Enterprises.SetAccount.
+   *
+   * Only the type of the key should be populated in the resource to be
+   * inserted.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * Completes with a [ServiceAccountKey].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ServiceAccountKey> insert(ServiceAccountKey request, core.String enterpriseId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/serviceAccountKeys';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ServiceAccountKey.fromJson(data));
+  }
+
+  /**
+   * Lists all active credentials for the service account associated with this
+   * enterprise. Only the ID and key type are returned. The calling service
+   * account must have been retrieved by calling Enterprises.GetServiceAccount
+   * and must have been set as the enterprise service account by calling
+   * Enterprises.SetAccount.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * Completes with a [ServiceAccountKeysListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ServiceAccountKeysListResponse> list(core.String enterpriseId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/serviceAccountKeys';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ServiceAccountKeysListResponse.fromJson(data));
   }
 
 }
@@ -2994,6 +3448,98 @@ class UsersResourceApi {
       _requester = client;
 
   /**
+   * Deleted an EMM-managed user.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String enterpriseId, core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Generates an authentication token which the device policy client can use to
+   * provision the given EMM-managed user account on a device. The generated
+   * token is single-use and expires after a few minutes.
+   *
+   * This call only works with EMM-managed accounts.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * Completes with a [AuthenticationToken].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AuthenticationToken> generateAuthenticationToken(core.String enterpriseId, core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/authenticationToken';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AuthenticationToken.fromJson(data));
+  }
+
+  /**
    * Generates a token (activation code) to allow this user to configure their
    * work account in the Android Setup Wizard. Revokes any previously generated
    * token.
@@ -3130,7 +3676,57 @@ class UsersResourceApi {
   }
 
   /**
-   * Looks up a user by their primary email address.
+   * Creates a new EMM-managed user.
+   *
+   * The required details of the user are passed in the Users resource in the
+   * body of the request. Specifically, the accountIdentifier, accountType, and
+   * displayName fields must be provided.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * Completes with a [User].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<User> insert(User request, core.String enterpriseId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new User.fromJson(data));
+  }
+
+  /**
+   * Looks up a user by their primary email address. This is only supported for
+   * Google-managed users. Lookup of the id is not needed for EMM-managed users
+   * because the id is already returned in the result of the Users.insert call.
    *
    * Request parameters:
    *
@@ -3172,6 +3768,60 @@ class UsersResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new UsersListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates the details of an EMM-managed user.
+   *
+   * This only works with EMM-managed users. Pass the new details in Users
+   * resource in the request body. Only the displayName field can be changed.
+   * Other fields must either be unset or have the currently active value. This
+   * method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * Completes with a [User].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<User> patch(User request, core.String enterpriseId, core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new User.fromJson(data));
   }
 
   /**
@@ -3267,9 +3917,87 @@ class UsersResourceApi {
     return _response.then((data) => new ProductSet.fromJson(data));
   }
 
+  /**
+   * Updates the details of an EMM-managed user.
+   *
+   * This only works with EMM-managed users. Pass the new details in Users
+   * resource in the request body. Only the displayName field can be changed.
+   * Other fields must either be unset or have the currently active value.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * Completes with a [User].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<User> update(User request, core.String enterpriseId, core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new User.fromJson(data));
+  }
+
 }
 
 
+
+/**
+ * This represents an enterprise administrator who can manage the enterprise in
+ * the Google Play for Work Store.
+ */
+class Administrator {
+  /** The administrator's email address. */
+  core.String email;
+
+  Administrator();
+
+  Administrator.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    return _json;
+  }
+}
 
 /**
  * Represents the list of app restrictions available to be pre-configured for
@@ -3302,6 +4030,35 @@ class AppRestrictionsSchema {
     }
     if (restrictions != null) {
       _json["restrictions"] = restrictions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * An event generated when a new app version is uploaded to Google Play and its
+ * app restrictions schema changed. To fetch the app restrictions schema for an
+ * app, use Products.getAppRestrictionsSchema on the EMM API.
+ */
+class AppRestrictionsSchemaChangeEvent {
+  /**
+   * The id of the product (e.g. "app:com.google.android.gm") for which the app
+   * restriction schema changed. This field will always be present.
+   */
+  core.String productId;
+
+  AppRestrictionsSchemaChangeEvent();
+
+  AppRestrictionsSchemaChangeEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (productId != null) {
+      _json["productId"] = productId;
     }
     return _json;
   }
@@ -3452,6 +4209,36 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
   }
 }
 
+/**
+ * An event generated when a new version of an app is uploaded to Google Play.
+ * Notifications are sent for new public versions only: alpha, beta, or canary
+ * versions do not generate this event. To fetch up-to-date version history for
+ * an app, use Products.Get on the EMM API.
+ */
+class AppUpdateEvent {
+  /**
+   * The id of the product (e.g. "app:com.google.android.gm") that was updated.
+   * This field will always be present.
+   */
+  core.String productId;
+
+  AppUpdateEvent();
+
+  AppUpdateEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    return _json;
+  }
+}
+
 /** This represents a single version of the app. */
 class AppVersion {
   /** Unique increasing identifier for the app version. */
@@ -3517,6 +4304,46 @@ class ApprovalUrlInfo {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/**
+ * An AuthenticationToken is used by the EMM's device policy client on a device
+ * to provision the given EMM-managed user on that device.
+ */
+class AuthenticationToken {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#authenticationToken".
+   */
+  core.String kind;
+  /**
+   * The authentication token to be passed to the device policy client on the
+   * device where it can be used to provision the account for which this token
+   * was generated.
+   */
+  core.String token;
+
+  AuthenticationToken();
+
+  AuthenticationToken.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("token")) {
+      token = _json["token"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (token != null) {
+      _json["token"] = token;
     }
     return _json;
   }
@@ -3698,8 +4525,7 @@ class Device {
    * means that the EMM's app is a device owner. "managedProfile" means that the
    * EMM's app is the profile owner (and there is a separate personal profile
    * which is not managed). "containerApp" means that the EMM's app is managing
-   * the Android for Work container app on the device. ?unmanagedProfile? means
-   * that the EMM?s app is managing a managed user on an unmanaged device
+   * the Android for Work container app on the device.
    */
   core.String managementType;
 
@@ -3807,36 +4633,37 @@ class DevicesListResponse {
 }
 
 /**
- * An enterprise resource represents a binding between an organization and their
- * EMM.
+ * An enterprise resource represents the binding between an EMM and a specific
+ * organization.
  *
- * To create an enterprise, an admin of the enterprise must first go through a
- * Play for Work sign-up flow. At the end of this the admin will be presented
- * with a token (a short opaque alphanumeric string). They must then present
- * this to the EMM, who then supplies it to the enroll method. Until this is
- * done the EMM will not have any access to the enterprise.
  *
- * After calling enroll the EMM should call setAccount to specify the service
- * account that will be allowed to act on behalf of the enterprise, which will
- * be required for access to the enterprise's data through this API. Only one
- * call of setAccount is allowed for a given enterprise; the only way to change
- * the account later is to unenroll the enterprise and enroll it again
- * (obtaining a new token).
+ * That binding can be instantiated in one of two different ways using this API
+ * as follows:
  *
- * The EMM can unenroll an enterprise in order to sever the binding between
- * them. Re-enrolling an enterprise is possible, but requires a new token to be
- * retrieved. Enterprises.unenroll requires the EMM's credentials (as enroll
- * does), not the enterprise's. Enterprises.unenroll can only be used for
- * enterprises that were previously enrolled with the enroll call. Any
- * enterprises that were enrolled using the (deprecated) Enterprises.insert call
- * must be unenrolled with Enterprises.delete and can then be re-enrolled using
- * the Enterprises.enroll call.
  *
- * The ID for an enterprise is an opaque string. It is returned by insert and
- * enroll and can also be retrieved if the enterprise's primary domain is known
- * using the list method.
+ *
+ * - For Google managed domain customers, the process involves using
+ * Enterprises.enroll and Enterprises.setAccount (in conjunction with artifacts
+ * obtained from the Admin console and the Google Developers console) and
+ * submitted to the EMM through a more-or-less manual process.
+ *
+ *
+ * - An alternative process that takes advantage of Google-provided mechanisms
+ * (Android for Work Sign-up UI) that expedite the process involves
+ * Enterprises.generateSignupUrl, Enterprises.completeSignup,
+ * Enterprises.getServiceAccount  (optional), and Enterprises.setAccount.
+ *
+ *
+ * The overall processes are very different and involve different identity
+ * models, but as an EMM, you can support either or both approaches in your EMM
+ * console. See EMM Developer's Guide for details.
  */
 class Enterprise {
+  /**
+   * Administrators of the enterprise. This is only supported for enterprises
+   * created via the EMM-initiated flow.
+   */
+  core.List<Administrator> administrator;
   /** The unique ID for the enterprise. */
   core.String id;
   /**
@@ -3852,6 +4679,9 @@ class Enterprise {
   Enterprise();
 
   Enterprise.fromJson(core.Map _json) {
+    if (_json.containsKey("administrator")) {
+      administrator = _json["administrator"].map((value) => new Administrator.fromJson(value)).toList();
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -3868,6 +4698,9 @@ class Enterprise {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (administrator != null) {
+      _json["administrator"] = administrator.map((value) => (value).toJson()).toList();
+    }
     if (id != null) {
       _json["id"] = id;
     }
@@ -4356,6 +5189,65 @@ class Install {
   }
 }
 
+/** An event generated when an app installation failed on a device */
+class InstallFailureEvent {
+  /** The Android ID of the device. This field will always be present. */
+  core.String deviceId;
+  /** Additional details on the failure if applicable. */
+  core.String failureDetails;
+  /**
+   * The reason for the installation failure. This field will always be present.
+   */
+  core.String failureReason;
+  /**
+   * The id of the product (e.g. "app:com.google.android.gm") for which the
+   * install failure event occured. This field will always be present.
+   */
+  core.String productId;
+  /** The ID of the user. This field will always be present. */
+  core.String userId;
+
+  InstallFailureEvent();
+
+  InstallFailureEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceId")) {
+      deviceId = _json["deviceId"];
+    }
+    if (_json.containsKey("failureDetails")) {
+      failureDetails = _json["failureDetails"];
+    }
+    if (_json.containsKey("failureReason")) {
+      failureReason = _json["failureReason"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("userId")) {
+      userId = _json["userId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (deviceId != null) {
+      _json["deviceId"] = deviceId;
+    }
+    if (failureDetails != null) {
+      _json["failureDetails"] = failureDetails;
+    }
+    if (failureReason != null) {
+      _json["failureReason"] = failureReason;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (userId != null) {
+      _json["userId"] = userId;
+    }
+    return _json;
+  }
+}
+
 /** The install resources for the device. */
 class InstallsListResponse {
   /**
@@ -4417,6 +5309,187 @@ class LocalizedText {
     }
     if (text != null) {
       _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
+/** An event generated when new permissions are added to an app. */
+class NewPermissionsEvent {
+  /**
+   * The set of permissions that the enterprise admin has already approved for
+   * this application. Use Permissions.Get on the EMM API to retrieve details
+   * about these permissions.
+   */
+  core.List<core.String> approvedPermissions;
+  /**
+   * The id of the product (e.g. "app:com.google.android.gm") for which new
+   * permissions were added. This field will always be present.
+   */
+  core.String productId;
+  /**
+   * The set of permissions that the app is currently requesting. Use
+   * Permissions.Get on the EMM API to retrieve details about these permissions.
+   */
+  core.List<core.String> requestedPermissions;
+
+  NewPermissionsEvent();
+
+  NewPermissionsEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("approvedPermissions")) {
+      approvedPermissions = _json["approvedPermissions"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("requestedPermissions")) {
+      requestedPermissions = _json["requestedPermissions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (approvedPermissions != null) {
+      _json["approvedPermissions"] = approvedPermissions;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (requestedPermissions != null) {
+      _json["requestedPermissions"] = requestedPermissions;
+    }
+    return _json;
+  }
+}
+
+/** A notification of one event relating to an enterprise. */
+class Notification {
+  /** Notifications about new app restrictions schema changes. */
+  AppRestrictionsSchemaChangeEvent appRestrictionsSchemaChangeEvent;
+  /** Notifications about app updates. */
+  AppUpdateEvent appUpdateEvent;
+  /**
+   * The ID of the enterprise for which the notification is sent. This will
+   * always be present.
+   */
+  core.String enterpriseId;
+  /** Notifications about an app installation failure. */
+  InstallFailureEvent installFailureEvent;
+  /** Notifications about new app permissions. */
+  NewPermissionsEvent newPermissionsEvent;
+  /** Notifications about changes to a product's approval status. */
+  ProductApprovalEvent productApprovalEvent;
+  /** Notifications about product availability changes. */
+  ProductAvailabilityChangeEvent productAvailabilityChangeEvent;
+  /**
+   * The time when the notification was published in milliseconds since
+   * 1970-01-01T00:00:00Z. This will always be present.
+   */
+  core.String timestampMillis;
+
+  Notification();
+
+  Notification.fromJson(core.Map _json) {
+    if (_json.containsKey("appRestrictionsSchemaChangeEvent")) {
+      appRestrictionsSchemaChangeEvent = new AppRestrictionsSchemaChangeEvent.fromJson(_json["appRestrictionsSchemaChangeEvent"]);
+    }
+    if (_json.containsKey("appUpdateEvent")) {
+      appUpdateEvent = new AppUpdateEvent.fromJson(_json["appUpdateEvent"]);
+    }
+    if (_json.containsKey("enterpriseId")) {
+      enterpriseId = _json["enterpriseId"];
+    }
+    if (_json.containsKey("installFailureEvent")) {
+      installFailureEvent = new InstallFailureEvent.fromJson(_json["installFailureEvent"]);
+    }
+    if (_json.containsKey("newPermissionsEvent")) {
+      newPermissionsEvent = new NewPermissionsEvent.fromJson(_json["newPermissionsEvent"]);
+    }
+    if (_json.containsKey("productApprovalEvent")) {
+      productApprovalEvent = new ProductApprovalEvent.fromJson(_json["productApprovalEvent"]);
+    }
+    if (_json.containsKey("productAvailabilityChangeEvent")) {
+      productAvailabilityChangeEvent = new ProductAvailabilityChangeEvent.fromJson(_json["productAvailabilityChangeEvent"]);
+    }
+    if (_json.containsKey("timestampMillis")) {
+      timestampMillis = _json["timestampMillis"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (appRestrictionsSchemaChangeEvent != null) {
+      _json["appRestrictionsSchemaChangeEvent"] = (appRestrictionsSchemaChangeEvent).toJson();
+    }
+    if (appUpdateEvent != null) {
+      _json["appUpdateEvent"] = (appUpdateEvent).toJson();
+    }
+    if (enterpriseId != null) {
+      _json["enterpriseId"] = enterpriseId;
+    }
+    if (installFailureEvent != null) {
+      _json["installFailureEvent"] = (installFailureEvent).toJson();
+    }
+    if (newPermissionsEvent != null) {
+      _json["newPermissionsEvent"] = (newPermissionsEvent).toJson();
+    }
+    if (productApprovalEvent != null) {
+      _json["productApprovalEvent"] = (productApprovalEvent).toJson();
+    }
+    if (productAvailabilityChangeEvent != null) {
+      _json["productAvailabilityChangeEvent"] = (productAvailabilityChangeEvent).toJson();
+    }
+    if (timestampMillis != null) {
+      _json["timestampMillis"] = timestampMillis;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A resource returned by the PullNotificationSet API, which contains a
+ * collection of notifications for enterprises associated with the service
+ * account authenticated for the request.
+ */
+class NotificationSet {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#notificationSet".
+   */
+  core.String kind;
+  /** The notifications received, or empty if no notifications are present. */
+  core.List<Notification> notification;
+  /**
+   * The notification set ID, required to mark the notification as received with
+   * the Enterprises.AcknowledgeNotification API. This will be omitted if no
+   * notifications are present.
+   */
+  core.String notificationSetId;
+
+  NotificationSet();
+
+  NotificationSet.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("notification")) {
+      notification = _json["notification"].map((value) => new Notification.fromJson(value)).toList();
+    }
+    if (_json.containsKey("notificationSetId")) {
+      notificationSetId = _json["notificationSetId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (notification != null) {
+      _json["notification"] = notification.map((value) => (value).toJson()).toList();
+    }
+    if (notificationSetId != null) {
+      _json["notificationSetId"] = notificationSetId;
     }
     return _json;
   }
@@ -4518,10 +5591,10 @@ class Permission {
 }
 
 /**
- * A product represents an app in the Google Play Store that is available to at
- * least some users in the enterprise. (Some apps are restricted to a single
- * enterprise, and no information about them is made available outside that
- * enterprise.)
+ * A Products resource represents an app in the Google Play Store that is
+ * available to at least some users in the enterprise. (Some apps are restricted
+ * to a single enterprise, and no information about them is made available
+ * outside that enterprise.)
  *
  * The information provided for each product (localized name, icon, link to the
  * full Google Play details page) is intended to allow a basic representation of
@@ -4561,7 +5634,11 @@ class Product {
    * app:com.google.android.gm represents the Gmail app.
    */
   core.String productId;
-  /** Whether this product is free, free with in-app purchases, or paid. */
+  /**
+   * Whether this product is free, free with in-app purchases, or paid. If the
+   * pricing is unknown, this means the product is not generally available
+   * anymore (even though it might still be available to people who own it).
+   */
   core.String productPricing;
   /**
    * Whether this app can only be installed on devices using the Android for
@@ -4659,6 +5736,75 @@ class Product {
     }
     if (workDetailsUrl != null) {
       _json["workDetailsUrl"] = workDetailsUrl;
+    }
+    return _json;
+  }
+}
+
+/** An event generated when a product's approval status is changed. */
+class ProductApprovalEvent {
+  /**
+   * Whether the product was approved or unapproved. This field will always be
+   * present.
+   */
+  core.String approved;
+  /**
+   * The id of the product (e.g. "app:com.google.android.gm") for which the
+   * approval status has changed. This field will always be present.
+   */
+  core.String productId;
+
+  ProductApprovalEvent();
+
+  ProductApprovalEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("approved")) {
+      approved = _json["approved"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (approved != null) {
+      _json["approved"] = approved;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    return _json;
+  }
+}
+
+/** An event generated whenever a product's availability changes. */
+class ProductAvailabilityChangeEvent {
+  /** The new state of the product. This field will always be present. */
+  core.String availabilityStatus;
+  /**
+   * The id of the product (e.g. "app:com.google.android.gm") for which the
+   * product availability changed. This field will always be present.
+   */
+  core.String productId;
+
+  ProductAvailabilityChangeEvent();
+
+  ProductAvailabilityChangeEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("availabilityStatus")) {
+      availabilityStatus = _json["availabilityStatus"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (availabilityStatus != null) {
+      _json["availabilityStatus"] = availabilityStatus;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
     }
     return _json;
   }
@@ -4885,6 +6031,180 @@ class ProductsListResponse {
     }
     if (tokenPagination != null) {
       _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * A service account identity, including the name and credentials that can be
+ * used to authenticate as the service account.
+ */
+class ServiceAccount {
+  /** Credentials that can be used to authenticate as this ServiceAccount. */
+  ServiceAccountKey key;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#serviceAccount".
+   */
+  core.String kind;
+  /**
+   * The account name of the service account, in the form of an email address.
+   * Assigned by the server.
+   */
+  core.String name;
+
+  ServiceAccount();
+
+  ServiceAccount.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = new ServiceAccountKey.fromJson(_json["key"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = (key).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/** Credentials that can be used to authenticate as a service account. */
+class ServiceAccountKey {
+  /**
+   * The body of the private key credentials file, in string format. This is
+   * only populated when the ServiceAccountKey is created, and is not stored by
+   * Google.
+   */
+  core.String data;
+  /**
+   * An opaque, unique identifier for this ServiceAccountKey. Assigned by the
+   * server.
+   */
+  core.String id;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#serviceAccountKey".
+   */
+  core.String kind;
+  /** The file format of the generated key data. */
+  core.String type;
+
+  ServiceAccountKey();
+
+  ServiceAccountKey.fromJson(core.Map _json) {
+    if (_json.containsKey("data")) {
+      data = _json["data"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (data != null) {
+      _json["data"] = data;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class ServiceAccountKeysListResponse {
+  /** The service account credentials. */
+  core.List<ServiceAccountKey> serviceAccountKey;
+
+  ServiceAccountKeysListResponse();
+
+  ServiceAccountKeysListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("serviceAccountKey")) {
+      serviceAccountKey = _json["serviceAccountKey"].map((value) => new ServiceAccountKey.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (serviceAccountKey != null) {
+      _json["serviceAccountKey"] = serviceAccountKey.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * A resource returned by the GenerateSignupUrl API, which contains the Signup
+ * URL and Completion Token.
+ */
+class SignupInfo {
+  /**
+   * An opaque token that will be required, along with the Enterprise Token, for
+   * obtaining the enterprise resource from CompleteSignup.
+   */
+  core.String completionToken;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#signupInfo".
+   */
+  core.String kind;
+  /**
+   * A URL under which the Admin can sign up for an enterprise. The page pointed
+   * to cannot be rendered in an iframe.
+   */
+  core.String url;
+
+  SignupInfo();
+
+  SignupInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("completionToken")) {
+      completionToken = _json["completionToken"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (completionToken != null) {
+      _json["completionToken"] = completionToken;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (url != null) {
+      _json["url"] = url;
     }
     return _json;
   }
@@ -5174,18 +6494,42 @@ class TokenPagination {
 }
 
 /**
- * A user resource represents an individual user within the enterprise's domain.
+ * A Users resource represents an account associated with an enterprise. The
+ * account may be specific to a device or to an individual user (who can then
+ * use the account across multiple devices). The account may provide access to
+ * Google Play for Work only, or to other Google services, depending on the
+ * identity model used:
+ * - Google managed domain identity model requires synchronization to Google
+ * account sources (via primaryEmail).
  *
- * Note that each user is associated with a Google account based on the user's
- * corporate email address (which must be in one of the enterprise's domains).
- * As part of installing the EMM's DPC app to manage a device the Google account
- * must be provisioned to the device, and so the user resource must be created
- * before that. This can be done using the Google Admin SDK Directory API.
  *
- * The ID for a user is an opaque string. It can be retrieved using the list
- * method queried by the user's primary email address.
+ * - Android for Work accounts identity model provides a dynamic means for
+ * enterprises to create user or device accounts as needed. These accounts
+ * provide access to Google Play for Work only.
  */
 class User {
+  /**
+   * The id as used by the EMM for this user, e.g. "user342" or "asset#44418".
+   * Will always be set for EMM managed users and not set for Google managed
+   * users. For privacy sensitive deployments it should not be possible to
+   * identify the individual with this identifier.
+   */
+  core.String accountIdentifier;
+  /**
+   * The type of account that this user represents. A "deviceAccount" is
+   * specific to a single device while a "userAccount" represents a traditional
+   * user account, i.e. one that can be installed on multiple devices.
+   * "googleManaged" users will always be a "userAccount" but "emmManaged" users
+   * can be either a "userAccount" or a "deviceAccount".
+   */
+  core.String accountType;
+  /**
+   * The user's name as it is to be presented in user interfaces, e.g. "John".
+   * Can optionally be set for EMM managed users and will not be set for Google
+   * managed users. For privacy sensitive deployments this should be left unset
+   * or set to something generic.
+   */
+  core.String displayName;
   /** The unique ID for the user. */
   core.String id;
   /**
@@ -5193,17 +6537,38 @@ class User {
    * "androidenterprise#user".
    */
   core.String kind;
-  /** The user's primary email address, e.g. "jsmith@example.com". */
+  /**
+   * The entity that manages the user. With "googleManaged" users, the source of
+   * truth is Google so EMMs have to make sure a Google account exists for the
+   * user. With "emmManaged" users, the EMM is in charge.
+   */
+  core.String managementType;
+  /**
+   * The user's primary email address, for example, "jsmith@example.com". Will
+   * always be set for Google managed users and not set for EMM managed users.
+   */
   core.String primaryEmail;
 
   User();
 
   User.fromJson(core.Map _json) {
+    if (_json.containsKey("accountIdentifier")) {
+      accountIdentifier = _json["accountIdentifier"];
+    }
+    if (_json.containsKey("accountType")) {
+      accountType = _json["accountType"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("managementType")) {
+      managementType = _json["managementType"];
     }
     if (_json.containsKey("primaryEmail")) {
       primaryEmail = _json["primaryEmail"];
@@ -5212,11 +6577,23 @@ class User {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (accountIdentifier != null) {
+      _json["accountIdentifier"] = accountIdentifier;
+    }
+    if (accountType != null) {
+      _json["accountType"] = accountType;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (id != null) {
       _json["id"] = id;
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (managementType != null) {
+      _json["managementType"] = managementType;
     }
     if (primaryEmail != null) {
       _json["primaryEmail"] = primaryEmail;

@@ -183,6 +183,64 @@ class ProjectsEventsResourceApi {
     return _response.then((data) => new ListEventsResponse.fromJson(data));
   }
 
+  /**
+   * Report an individual error event.
+   *
+   * This endpoint accepts <strong>either</strong> an OAuth token,
+   * <strong>or</strong> an
+   * <a href="https://support.google.com/cloud/answer/6158862">API key</a>
+   * for authentication. To use an API key, append it to the URL as the value of
+   * a `key` parameter. For example:
+   * <pre>POST
+   * https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456</pre>
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectName] - [Required] The resource name of the Google Cloud Platform
+   * project. Written
+   * as `projects/` plus the
+   * [Google Cloud Platform project
+   * ID](https://support.google.com/cloud/answer/6158840).
+   * Example: `projects/my-project-123`.
+   * Value must have pattern "^projects/[^/]*$".
+   *
+   * Completes with a [ReportErrorEventResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ReportErrorEventResponse> report(ReportedErrorEvent request, core.String projectName) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectName == null) {
+      throw new core.ArgumentError("Parameter projectName is required.");
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/events:report';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ReportErrorEventResponse.fromJson(data));
+  }
+
 }
 
 
@@ -865,6 +923,78 @@ class ListGroupStatsResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response for reporting an individual error event.
+ * Data may be added to this message in the future.
+ */
+class ReportErrorEventResponse {
+
+  ReportErrorEventResponse();
+
+  ReportErrorEventResponse.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
+/** An error event which is reported to the Error Reporting system. */
+class ReportedErrorEvent {
+  /** [Optional] A description of the context in which the error occurred. */
+  ErrorContext context;
+  /**
+   * [Optional] Time when the event occurred.
+   * If not provided, the time when the event was received by the
+   * Error Reporting system will be used.
+   */
+  core.String eventTime;
+  /**
+   * [Required] A message describing the error. The message can contain an
+   * exception stack in one of the supported programming languages and formats.
+   * In that case, the message is parsed and detailed exception information
+   * is returned when retrieving the error event again.
+   */
+  core.String message;
+  /** [Required] The service context in which this error has occurred. */
+  ServiceContext serviceContext;
+
+  ReportedErrorEvent();
+
+  ReportedErrorEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("context")) {
+      context = new ErrorContext.fromJson(_json["context"]);
+    }
+    if (_json.containsKey("eventTime")) {
+      eventTime = _json["eventTime"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+    if (_json.containsKey("serviceContext")) {
+      serviceContext = new ServiceContext.fromJson(_json["serviceContext"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (context != null) {
+      _json["context"] = (context).toJson();
+    }
+    if (eventTime != null) {
+      _json["eventTime"] = eventTime;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    if (serviceContext != null) {
+      _json["serviceContext"] = (serviceContext).toJson();
     }
     return _json;
   }

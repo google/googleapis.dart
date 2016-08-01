@@ -116,14 +116,14 @@ checkErrorEvent(api.ErrorEvent o) {
   buildCounterErrorEvent--;
 }
 
-buildUnnamed3043() {
+buildUnnamed3278() {
   var o = new core.List<api.TrackingIssue>();
   o.add(buildTrackingIssue());
   o.add(buildTrackingIssue());
   return o;
 }
 
-checkUnnamed3043(core.List<api.TrackingIssue> o) {
+checkUnnamed3278(core.List<api.TrackingIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrackingIssue(o[0]);
   checkTrackingIssue(o[1]);
@@ -136,7 +136,7 @@ buildErrorGroup() {
   if (buildCounterErrorGroup < 3) {
     o.groupId = "foo";
     o.name = "foo";
-    o.trackingIssues = buildUnnamed3043();
+    o.trackingIssues = buildUnnamed3278();
   }
   buildCounterErrorGroup--;
   return o;
@@ -147,32 +147,32 @@ checkErrorGroup(api.ErrorGroup o) {
   if (buildCounterErrorGroup < 3) {
     unittest.expect(o.groupId, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3043(o.trackingIssues);
+    checkUnnamed3278(o.trackingIssues);
   }
   buildCounterErrorGroup--;
 }
 
-buildUnnamed3044() {
+buildUnnamed3279() {
   var o = new core.List<api.ServiceContext>();
   o.add(buildServiceContext());
   o.add(buildServiceContext());
   return o;
 }
 
-checkUnnamed3044(core.List<api.ServiceContext> o) {
+checkUnnamed3279(core.List<api.ServiceContext> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceContext(o[0]);
   checkServiceContext(o[1]);
 }
 
-buildUnnamed3045() {
+buildUnnamed3280() {
   var o = new core.List<api.TimedCount>();
   o.add(buildTimedCount());
   o.add(buildTimedCount());
   return o;
 }
 
-checkUnnamed3045(core.List<api.TimedCount> o) {
+checkUnnamed3280(core.List<api.TimedCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimedCount(o[0]);
   checkTimedCount(o[1]);
@@ -183,7 +183,7 @@ buildErrorGroupStats() {
   var o = new api.ErrorGroupStats();
   buildCounterErrorGroupStats++;
   if (buildCounterErrorGroupStats < 3) {
-    o.affectedServices = buildUnnamed3044();
+    o.affectedServices = buildUnnamed3279();
     o.affectedUsersCount = "foo";
     o.count = "foo";
     o.firstSeenTime = "foo";
@@ -191,7 +191,7 @@ buildErrorGroupStats() {
     o.lastSeenTime = "foo";
     o.numAffectedServices = 42;
     o.representative = buildErrorEvent();
-    o.timedCounts = buildUnnamed3045();
+    o.timedCounts = buildUnnamed3280();
   }
   buildCounterErrorGroupStats--;
   return o;
@@ -200,7 +200,7 @@ buildErrorGroupStats() {
 checkErrorGroupStats(api.ErrorGroupStats o) {
   buildCounterErrorGroupStats++;
   if (buildCounterErrorGroupStats < 3) {
-    checkUnnamed3044(o.affectedServices);
+    checkUnnamed3279(o.affectedServices);
     unittest.expect(o.affectedUsersCount, unittest.equals('foo'));
     unittest.expect(o.count, unittest.equals('foo'));
     unittest.expect(o.firstSeenTime, unittest.equals('foo'));
@@ -208,7 +208,7 @@ checkErrorGroupStats(api.ErrorGroupStats o) {
     unittest.expect(o.lastSeenTime, unittest.equals('foo'));
     unittest.expect(o.numAffectedServices, unittest.equals(42));
     checkErrorEvent(o.representative);
-    checkUnnamed3045(o.timedCounts);
+    checkUnnamed3280(o.timedCounts);
   }
   buildCounterErrorGroupStats--;
 }
@@ -242,14 +242,14 @@ checkHttpRequestContext(api.HttpRequestContext o) {
   buildCounterHttpRequestContext--;
 }
 
-buildUnnamed3046() {
+buildUnnamed3281() {
   var o = new core.List<api.ErrorEvent>();
   o.add(buildErrorEvent());
   o.add(buildErrorEvent());
   return o;
 }
 
-checkUnnamed3046(core.List<api.ErrorEvent> o) {
+checkUnnamed3281(core.List<api.ErrorEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkErrorEvent(o[0]);
   checkErrorEvent(o[1]);
@@ -260,7 +260,7 @@ buildListEventsResponse() {
   var o = new api.ListEventsResponse();
   buildCounterListEventsResponse++;
   if (buildCounterListEventsResponse < 3) {
-    o.errorEvents = buildUnnamed3046();
+    o.errorEvents = buildUnnamed3281();
     o.nextPageToken = "foo";
   }
   buildCounterListEventsResponse--;
@@ -270,20 +270,20 @@ buildListEventsResponse() {
 checkListEventsResponse(api.ListEventsResponse o) {
   buildCounterListEventsResponse++;
   if (buildCounterListEventsResponse < 3) {
-    checkUnnamed3046(o.errorEvents);
+    checkUnnamed3281(o.errorEvents);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListEventsResponse--;
 }
 
-buildUnnamed3047() {
+buildUnnamed3282() {
   var o = new core.List<api.ErrorGroupStats>();
   o.add(buildErrorGroupStats());
   o.add(buildErrorGroupStats());
   return o;
 }
 
-checkUnnamed3047(core.List<api.ErrorGroupStats> o) {
+checkUnnamed3282(core.List<api.ErrorGroupStats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkErrorGroupStats(o[0]);
   checkErrorGroupStats(o[1]);
@@ -294,7 +294,7 @@ buildListGroupStatsResponse() {
   var o = new api.ListGroupStatsResponse();
   buildCounterListGroupStatsResponse++;
   if (buildCounterListGroupStatsResponse < 3) {
-    o.errorGroupStats = buildUnnamed3047();
+    o.errorGroupStats = buildUnnamed3282();
     o.nextPageToken = "foo";
   }
   buildCounterListGroupStatsResponse--;
@@ -304,10 +304,52 @@ buildListGroupStatsResponse() {
 checkListGroupStatsResponse(api.ListGroupStatsResponse o) {
   buildCounterListGroupStatsResponse++;
   if (buildCounterListGroupStatsResponse < 3) {
-    checkUnnamed3047(o.errorGroupStats);
+    checkUnnamed3282(o.errorGroupStats);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListGroupStatsResponse--;
+}
+
+core.int buildCounterReportErrorEventResponse = 0;
+buildReportErrorEventResponse() {
+  var o = new api.ReportErrorEventResponse();
+  buildCounterReportErrorEventResponse++;
+  if (buildCounterReportErrorEventResponse < 3) {
+  }
+  buildCounterReportErrorEventResponse--;
+  return o;
+}
+
+checkReportErrorEventResponse(api.ReportErrorEventResponse o) {
+  buildCounterReportErrorEventResponse++;
+  if (buildCounterReportErrorEventResponse < 3) {
+  }
+  buildCounterReportErrorEventResponse--;
+}
+
+core.int buildCounterReportedErrorEvent = 0;
+buildReportedErrorEvent() {
+  var o = new api.ReportedErrorEvent();
+  buildCounterReportedErrorEvent++;
+  if (buildCounterReportedErrorEvent < 3) {
+    o.context = buildErrorContext();
+    o.eventTime = "foo";
+    o.message = "foo";
+    o.serviceContext = buildServiceContext();
+  }
+  buildCounterReportedErrorEvent--;
+  return o;
+}
+
+checkReportedErrorEvent(api.ReportedErrorEvent o) {
+  buildCounterReportedErrorEvent++;
+  if (buildCounterReportedErrorEvent < 3) {
+    checkErrorContext(o.context);
+    unittest.expect(o.eventTime, unittest.equals('foo'));
+    unittest.expect(o.message, unittest.equals('foo'));
+    checkServiceContext(o.serviceContext);
+  }
+  buildCounterReportedErrorEvent--;
 }
 
 core.int buildCounterServiceContext = 0;
@@ -396,14 +438,14 @@ checkTrackingIssue(api.TrackingIssue o) {
   buildCounterTrackingIssue--;
 }
 
-buildUnnamed3048() {
+buildUnnamed3283() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3048(core.List<core.String> o) {
+checkUnnamed3283(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -479,6 +521,24 @@ main() {
       var o = buildListGroupStatsResponse();
       var od = new api.ListGroupStatsResponse.fromJson(o.toJson());
       checkListGroupStatsResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ReportErrorEventResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildReportErrorEventResponse();
+      var od = new api.ReportErrorEventResponse.fromJson(o.toJson());
+      checkReportErrorEventResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ReportedErrorEvent", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildReportedErrorEvent();
+      var od = new api.ReportedErrorEvent.fromJson(o.toJson());
+      checkReportedErrorEvent(od);
     });
   });
 
@@ -626,6 +686,55 @@ main() {
       })));
     });
 
+    unittest.test("method--report", () {
+
+      var mock = new HttpServerMock();
+      api.ProjectsEventsResourceApi res = new api.ClouderrorreportingApi(mock).projects.events;
+      var arg_request = buildReportedErrorEvent();
+      var arg_projectName = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.ReportedErrorEvent.fromJson(json);
+        checkReportedErrorEvent(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildReportErrorEventResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.report(arg_request, arg_projectName).then(unittest.expectAsync(((api.ReportErrorEventResponse response) {
+        checkReportErrorEventResponse(response);
+      })));
+    });
+
   });
 
 
@@ -638,7 +747,7 @@ main() {
       var arg_alignment = "foo";
       var arg_timeRange_period = "foo";
       var arg_order = "foo";
-      var arg_groupId = buildUnnamed3048();
+      var arg_groupId = buildUnnamed3283();
       var arg_serviceFilter_service = "foo";
       var arg_alignmentTime = "foo";
       var arg_serviceFilter_version = "foo";

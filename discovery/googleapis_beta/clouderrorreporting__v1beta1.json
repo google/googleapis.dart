@@ -206,6 +206,33 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
+                        },
+                        "report": {
+                            "description": "Report an individual error event.\n\nThis endpoint accepts <strong>either</strong> an OAuth token,\n<strong>or</strong> an\n<a href=\"https://support.google.com/cloud/answer/6158862\">API key</a>\nfor authentication. To use an API key, append it to the URL as the value of\na `key` parameter. For example:\n<pre>POST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456</pre>",
+                            "httpMethod": "POST",
+                            "id": "clouderrorreporting.projects.events.report",
+                            "parameterOrder": [
+                                "projectName"
+                            ],
+                            "parameters": {
+                                "projectName": {
+                                    "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]*$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+projectName}/events:report",
+                            "request": {
+                                "$ref": "ReportedErrorEvent"
+                            },
+                            "response": {
+                                "$ref": "ReportErrorEventResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
                         }
                     }
                 },
@@ -369,9 +396,33 @@
             }
         }
     },
-    "revision": "20160608",
+    "revision": "20160712",
     "rootUrl": "https://clouderrorreporting.googleapis.com/",
     "schemas": {
+        "ReportedErrorEvent": {
+            "description": "An error event which is reported to the Error Reporting system.",
+            "id": "ReportedErrorEvent",
+            "properties": {
+                "serviceContext": {
+                    "$ref": "ServiceContext",
+                    "description": "[Required] The service context in which this error has occurred."
+                },
+                "context": {
+                    "$ref": "ErrorContext",
+                    "description": "[Optional] A description of the context in which the error occurred."
+                },
+                "eventTime": {
+                    "description": "[Optional] Time when the event occurred.\nIf not provided, the time when the event was received by the\nError Reporting system will be used.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "[Required] A message describing the error. The message can contain an\nexception stack in one of the supported programming languages and formats.\nIn that case, the message is parsed and detailed exception information\nis returned when retrieving the error event again.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "SourceLocation": {
             "description": "Indicates a location in the source code of the service for which\nerrors are reported.\nThis data should be provided by the application when reporting an error,\nunless the error report has been generated automatically from Google App\nEngine logs. All fields are optional.",
             "id": "SourceLocation",
@@ -500,6 +551,12 @@
                     "type": "array"
                 }
             },
+            "type": "object"
+        },
+        "ReportErrorEventResponse": {
+            "description": "Response for reporting an individual error event.\nData may be added to this message in the future.",
+            "id": "ReportErrorEventResponse",
+            "properties": {},
             "type": "object"
         },
         "TrackingIssue": {

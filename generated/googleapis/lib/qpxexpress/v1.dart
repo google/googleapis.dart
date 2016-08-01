@@ -1581,6 +1581,8 @@ class TripOptionsRequest {
   core.List<SliceInput> slice;
   /** The number of solutions to return, maximum 500. */
   core.int solutions;
+  /** IATA country code representing the point of ticketing. */
+  core.String ticketingCountry;
 
   TripOptionsRequest();
 
@@ -1603,6 +1605,9 @@ class TripOptionsRequest {
     if (_json.containsKey("solutions")) {
       solutions = _json["solutions"];
     }
+    if (_json.containsKey("ticketingCountry")) {
+      ticketingCountry = _json["ticketingCountry"];
+    }
   }
 
   core.Map toJson() {
@@ -1624,6 +1629,9 @@ class TripOptionsRequest {
     }
     if (solutions != null) {
       _json["solutions"] = solutions;
+    }
+    if (ticketingCountry != null) {
+      _json["ticketingCountry"] = ticketingCountry;
     }
     return _json;
   }

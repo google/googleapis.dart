@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/cPnwg2U9hg8m8Y6wHWcvqIF8qSM\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Mnbff5qge09rhMCQlypp_9PYTEs\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -2102,7 +2102,7 @@
             }
         }
     },
-    "revision": "20160609",
+    "revision": "20160701",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -2372,7 +2372,7 @@
                             "type": "string"
                         },
                         "team": {
-                            "description": "The team. Can be owners, editors, or viewers.",
+                            "description": "The team.",
                             "type": "string"
                         }
                     },
@@ -2384,7 +2384,7 @@
                             "storage.bucketAccessControls.insert"
                         ]
                     },
-                    "description": "The access permission for the entity. Can be READER, WRITER, or OWNER.",
+                    "description": "The access permission for the entity.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -2749,14 +2749,14 @@
                             "type": "string"
                         },
                         "team": {
-                            "description": "The team. Can be owners, editors, or viewers.",
+                            "description": "The team.",
                             "type": "string"
                         }
                     },
                     "type": "object"
                 },
                 "role": {
-                    "description": "The access permission for the entity. Can be READER or OWNER.",
+                    "description": "The access permission for the entity.",
                     "type": "string"
                 },
                 "selfLink": {

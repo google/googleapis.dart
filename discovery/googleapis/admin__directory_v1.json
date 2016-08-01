@@ -93,7 +93,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/rR5KtGkUMGICtJVpSsF4OCZZlC4\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Owafb3MHMkggApMMVqFKchg9biA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -490,7 +490,7 @@
         "customers": {
             "methods": {
                 "get": {
-                    "description": "Retrives a customer.",
+                    "description": "Retrieves a customer.",
                     "httpMethod": "GET",
                     "id": "directory.customers.get",
                     "parameterOrder": [
@@ -714,7 +714,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Retrives a domain of the customer.",
+                    "description": "Retrieves a domain of the customer.",
                     "httpMethod": "GET",
                     "id": "directory.domains.get",
                     "parameterOrder": [
@@ -3393,7 +3393,7 @@
             }
         }
     },
-    "revision": "20160323",
+    "revision": "20160623",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {

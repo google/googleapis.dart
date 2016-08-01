@@ -97,14 +97,14 @@ checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-buildUnnamed2989() {
+buildUnnamed1121() {
   var o = new core.List<api.Job>();
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-checkUnnamed2989(core.List<api.Job> o) {
+checkUnnamed1121(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -115,7 +115,7 @@ buildListJobsResponse() {
   var o = new api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed2989();
+    o.jobs = buildUnnamed1121();
     o.nextPageToken = "foo";
   }
   buildCounterListJobsResponse--;
@@ -125,20 +125,20 @@ buildListJobsResponse() {
 checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed2989(o.jobs);
+    checkUnnamed1121(o.jobs);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListJobsResponse--;
 }
 
-buildUnnamed2990() {
+buildUnnamed1122() {
   var o = new core.List<api.ReportType>();
   o.add(buildReportType());
   o.add(buildReportType());
   return o;
 }
 
-checkUnnamed2990(core.List<api.ReportType> o) {
+checkUnnamed1122(core.List<api.ReportType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportType(o[0]);
   checkReportType(o[1]);
@@ -150,7 +150,7 @@ buildListReportTypesResponse() {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     o.nextPageToken = "foo";
-    o.reportTypes = buildUnnamed2990();
+    o.reportTypes = buildUnnamed1122();
   }
   buildCounterListReportTypesResponse--;
   return o;
@@ -160,19 +160,19 @@ checkListReportTypesResponse(api.ListReportTypesResponse o) {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2990(o.reportTypes);
+    checkUnnamed1122(o.reportTypes);
   }
   buildCounterListReportTypesResponse--;
 }
 
-buildUnnamed2991() {
+buildUnnamed1123() {
   var o = new core.List<api.Report>();
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-checkUnnamed2991(core.List<api.Report> o) {
+checkUnnamed1123(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -184,7 +184,7 @@ buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.nextPageToken = "foo";
-    o.reports = buildUnnamed2991();
+    o.reports = buildUnnamed1123();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -194,7 +194,7 @@ checkListReportsResponse(api.ListReportsResponse o) {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2991(o.reports);
+    checkUnnamed1123(o.reports);
   }
   buildCounterListReportsResponse--;
 }

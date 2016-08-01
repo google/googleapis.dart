@@ -3,10 +3,10 @@
     "baseUrl": "https://www.googleapis.com/civicinfo/v2/",
     "batchPath": "batch",
     "canonicalName": "Civic Info",
-    "description": "An API for accessing civic information.",
+    "description": "Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/civic-information",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/m2jEe7hMRh3PEVg32yoWNGLPJKw\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/JbLtR8qm6OXKJtUgWtmtjItfF8U\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -301,7 +301,7 @@
             }
         }
     },
-    "revision": "20150820",
+    "revision": "20160707",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AdministrationRegion": {
@@ -341,6 +341,12 @@
                 "absenteeVotingInfoUrl": {
                     "description": "A URL provided by this administrative body for information on absentee voting.",
                     "type": "string"
+                },
+                "addressLines": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "ballotInfoUrl": {
                     "description": "A URL provided by this administrative body to give contest information to the voter.",

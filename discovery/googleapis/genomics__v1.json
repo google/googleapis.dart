@@ -26,7 +26,7 @@
     "description": "Stores, processes, explores and shares genomic data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/genomics/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/dRlyMxJrL2EQCAcvP4wfLx3yzig\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/yu-G8RApkq9KATw28Rdkz2eBsto\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -731,7 +731,7 @@
                     ]
                 },
                 "export": {
-                    "description": "Exports a read group set to a BAM file in Google Cloud Storage. For the definitions of read group sets and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics) Note that currently there may be some differences between exported BAM files and the original BAM file at the time of import. See [ImportReadGroupSets](google.genomics.v1.ReadServiceV1.ImportReadGroupSets) for caveats.",
+                    "description": "Exports a read group set to a BAM file in Google Cloud Storage. For the definitions of read group sets and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics) Note that currently there may be some differences between exported BAM files and the original BAM file at the time of import. See ImportReadGroupSets for caveats.",
                     "httpMethod": "POST",
                     "id": "genomics.readgroupsets.export",
                     "parameterOrder": [
@@ -1538,7 +1538,7 @@
             }
         }
     },
-    "revision": "20160622",
+    "revision": "20160714",
     "rootUrl": "https://genomics.googleapis.com/",
     "schemas": {
         "AnnotationSet": {
@@ -1967,7 +1967,7 @@
                     "description": "A list of messages that carry the error details. There will be a common set of message types for APIs to use.",
                     "items": {
                         "additionalProperties": {
-                            "description": "Properties of the object. Contains field @ype with type URL.",
+                            "description": "Properties of the object. Contains field @type with type URL.",
                             "type": "any"
                         },
                         "type": "object"
@@ -2175,7 +2175,7 @@
                 },
                 "metadata": {
                     "additionalProperties": {
-                        "description": "Properties of the object. Contains field @ype with type URL.",
+                        "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
                     "description": "An OperationMetadata object. This will always be returned with the Operation.",
@@ -2191,7 +2191,7 @@
                 },
                 "response": {
                     "additionalProperties": {
-                        "description": "Properties of the object. Contains field @ype with type URL.",
+                        "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
                     "description": "If importing ReadGroupSets, an ImportReadGroupSetsResponse is returned. If importing Variants, an ImportVariantsResponse is returned. For exports, an empty response is returned.",
@@ -3643,7 +3643,7 @@
                 },
                 "request": {
                     "additionalProperties": {
-                        "description": "Properties of the object. Contains field @ype with type URL.",
+                        "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
                     "description": "The original request that started the operation. Note that this will be in current version of the API. If the operation was started with v1beta2 API and a GetOperation is performed on v1 API, a v1 request will be returned.",
@@ -3662,7 +3662,7 @@
                 },
                 "runtimeMetadata": {
                     "additionalProperties": {
-                        "description": "Properties of the object. Contains field @ype with type URL.",
+                        "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
                     "description": "Runtime metadata on this Operation.",

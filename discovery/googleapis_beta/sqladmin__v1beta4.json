@@ -18,7 +18,7 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/o_-sS2PEVGnMkQqyJ497hboiLWw\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Bw6HlPfCUqTIhF647hFuWCHD0c8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -154,6 +154,36 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/sqlservice.admin"
                     ]
+                },
+                "insert": {
+                    "description": "Creates a new backup run on demand.",
+                    "httpMethod": "POST",
+                    "id": "sql.backupRuns.insert",
+                    "parameterOrder": [
+                        "project",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "description": "Cloud SQL instance ID. This does not include the project ID.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID of the project that contains the instance.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "projects/{project}/instances/{instance}/backupRuns",
+                    "request": {
+                        "$ref": "BackupRun"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    }
                 },
                 "list": {
                     "description": "Lists all backup runs associated with a given instance and configuration in the reverse chronological order of the enqueued time.",
@@ -1410,7 +1440,7 @@
             }
         }
     },
-    "revision": "20160509",
+    "revision": "20160712",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -1466,6 +1496,10 @@
             "description": "A database instance backup run resource.",
             "id": "BackupRun",
             "properties": {
+                "description": {
+                    "description": "The description of this run, only applicable to on-demand backups.",
+                    "type": "string"
+                },
                 "endTime": {
                     "description": "The time the backup operation completed in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.",
                     "format": "date-time",
@@ -1505,6 +1539,10 @@
                 },
                 "status": {
                     "description": "The status of this run.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of this run; can be either \"AUTOMATED\" or \"ON_DEMAND\".",
                     "type": "string"
                 },
                 "windowStartTime": {
@@ -1678,7 +1716,7 @@
                             "type": "boolean"
                         },
                         "name": {
-                            "description": "The name of the failover replica.",
+                            "description": "The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.",
                             "type": "string"
                         }
                     },
@@ -2394,7 +2432,7 @@
             "id": "Settings",
             "properties": {
                 "activationPolicy": {
-                    "description": "The activation policy for this instance. This specifies when the instance should be activated and is applicable only when the instance state is RUNNABLE. This can be one of the following.\nALWAYS: The instance should always be active.\nNEVER: The instance should never be activated.\nON_DEMAND: The instance is activated upon receiving requests; only applicable to First Generation instances.",
+                    "description": "The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. The activation policy cannot be updated together with other settings for Second Generation instances. Valid values:\nALWAYS: The instance is on; it is not deactivated by inactivity.\nNEVER: The instance is off; it is not activated, even if a connection request arrives.\nON_DEMAND: The instance responds to incoming requests, and turns itself off when not in use. Instances with PER_USE pricing turn off after 15 minutes of inactivity. Instances with PER_PACKAGE pricing turn off after 12 hours of inactivity.",
                     "type": "string"
                 },
                 "authorizedGaeApplications": {

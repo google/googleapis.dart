@@ -319,7 +319,12 @@ class DateRangeValues {
   }
 }
 
-/** A dimension in the request. */
+/**
+ * [Dimensions](https://support.google.com/analytics/answer/1033861)
+ * are attributes of your data. For example, the dimension `ga:city`
+ * indicates the city, for example, "Paris" or "New York", from which
+ * a session originates.
+ */
 class Dimension {
   /**
    * If non-empty, we place dimension values into buckets after string to
@@ -619,7 +624,11 @@ class GetReportsResponse {
   }
 }
 
-/** A metric in the request. */
+/**
+ * [Metrics](https://support.google.com/analytics/answer/1033861)
+ * are the quantitative measurements. For example, the metric `ga:users`
+ * indicates the total number of users for the requested time period.
+ */
 class Metric {
   /**
    * An alias for the metric expression is an alternate name for the
@@ -980,14 +989,20 @@ class Pivot {
    * then only those two browsers would show up as columns.
    */
   core.List<DimensionFilterClause> dimensionFilterClauses;
-  /** A list of dimensions to show as pivot columns. */
+  /**
+   * A list of dimensions to show as pivot columns. A Pivot can have a maximum
+   * of 4 dimensions.
+   */
   core.List<Dimension> dimensions;
   /**
    * Specifies the maximum number of groups to return.
    * The default value is 10, also the maximum value is 1,000.
    */
   core.int maxGroupCount;
-  /** Metrics to aggregate and return. */
+  /**
+   * The pivot metrics. Pivot metrics are part of the
+   * restriction on total number of metrics in the request.
+   */
   core.List<Metric> metrics;
   /**
    * If k metrics were requested, then the response will contain some
@@ -1322,7 +1337,10 @@ class ReportRequest {
    * represent the total for only the relevant dimensions.
    */
   core.List<DimensionFilterClause> dimensionFilterClauses;
-  /** Dimensions requested in the request. */
+  /**
+   * The dimensions requested.
+   * Requests can have a total of 7 dimensions.
+   */
   core.List<Dimension> dimensions;
   /**
    * Dimension or metric filters that restrict the data returned for your
@@ -1359,8 +1377,9 @@ class ReportRequest {
    */
   core.List<MetricFilterClause> metricFilterClauses;
   /**
-   * Metrics, the quantitative measurements, requested in the request.
-   * Requests must specify at least one metric.
+   * The metrics requested.
+   * Requests must specify at least one metric. Requests can have a
+   * total of 10 metrics.
    */
   core.List<Metric> metrics;
   /**
@@ -1387,7 +1406,7 @@ class ReportRequest {
    * the GetReports request.
    */
   core.String pageToken;
-  /** The pivot definitions. */
+  /** The pivot definitions. Requests can have a maximum of 2 pivots. */
   core.List<Pivot> pivots;
   /**
    * The desired report

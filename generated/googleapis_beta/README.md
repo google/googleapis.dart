@@ -70,7 +70,7 @@ package.
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Ad Exchange Buyer API II - adexchangebuyer2 v2beta1
 
-Accesses the latest features for managing Ad Exchange accounts and Real-Time Bidding configurations.
+Accesses the latest features for managing Ad Exchange accounts and Real-Time Bidding configurations and auction metrics.
 
 Official API documentation: https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
 
@@ -85,12 +85,6 @@ Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 Provisions and manages App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Autoscaler API - autoscaler v1beta2
-
-The Google Compute Engine Autoscaler API provides autoscaling for groups of Cloud VMs.
-
-Official API documentation: http://developers.google.com/compute/docs/autoscaler
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Error Reporting API - clouderrorreporting v1beta1
 

@@ -148,6 +148,55 @@ class BackupRunsResourceApi {
   }
 
   /**
+   * Creates a new backup run on demand.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID of the project that contains the instance.
+   *
+   * [instance] - Cloud SQL instance ID. This does not include the project ID.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(BackupRun request, core.String project, core.String instance) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/backupRuns';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
    * Lists all backup runs associated with a given instance and configuration in
    * the reverse chronological order of the enqueued time.
    *
@@ -2077,6 +2126,8 @@ class BackupConfiguration {
 
 /** A database instance backup run resource. */
 class BackupRun {
+  /** The description of this run, only applicable to on-demand backups. */
+  core.String description;
   /**
    * The time the backup operation completed in UTC timezone in RFC 3339 format,
    * for example 2012-11-15T16:19:00.094Z.
@@ -2110,6 +2161,8 @@ class BackupRun {
   core.DateTime startTime;
   /** The status of this run. */
   core.String status;
+  /** The type of this run; can be either "AUTOMATED" or "ON_DEMAND". */
+  core.String type;
   /**
    * The start time of the backup window during which this the backup was
    * attempted in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
@@ -2119,6 +2172,9 @@ class BackupRun {
   BackupRun();
 
   BackupRun.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
     if (_json.containsKey("endTime")) {
       endTime = core.DateTime.parse(_json["endTime"]);
     }
@@ -2146,6 +2202,9 @@ class BackupRun {
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
     if (_json.containsKey("windowStartTime")) {
       windowStartTime = core.DateTime.parse(_json["windowStartTime"]);
     }
@@ -2153,6 +2212,9 @@ class BackupRun {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (description != null) {
+      _json["description"] = description;
+    }
     if (endTime != null) {
       _json["endTime"] = (endTime).toIso8601String();
     }
@@ -2179,6 +2241,9 @@ class BackupRun {
     }
     if (status != null) {
       _json["status"] = status;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     if (windowStartTime != null) {
       _json["windowStartTime"] = (windowStartTime).toIso8601String();
@@ -2446,7 +2511,12 @@ class DatabaseInstanceFailoverReplica {
    * the falover replica when the status is true.
    */
   core.bool available;
-  /** The name of the failover replica. */
+  /**
+   * The name of the failover replica. If specified at instance creation, a
+   * failover replica is created for the instance. The name doesn't include the
+   * project ID. This property is applicable only to Second Generation
+   * instances.
+   */
   core.String name;
 
   DatabaseInstanceFailoverReplica();
@@ -3979,13 +4049,17 @@ class RestoreBackupContext {
 /** Database instance settings. */
 class Settings {
   /**
-   * The activation policy for this instance. This specifies when the instance
-   * should be activated and is applicable only when the instance state is
-   * RUNNABLE. This can be one of the following.
-   * ALWAYS: The instance should always be active.
-   * NEVER: The instance should never be activated.
-   * ON_DEMAND: The instance is activated upon receiving requests; only
-   * applicable to First Generation instances.
+   * The activation policy specifies when the instance is activated; it is
+   * applicable only when the instance state is RUNNABLE. The activation policy
+   * cannot be updated together with other settings for Second Generation
+   * instances. Valid values:
+   * ALWAYS: The instance is on; it is not deactivated by inactivity.
+   * NEVER: The instance is off; it is not activated, even if a connection
+   * request arrives.
+   * ON_DEMAND: The instance responds to incoming requests, and turns itself off
+   * when not in use. Instances with PER_USE pricing turn off after 15 minutes
+   * of inactivity. Instances with PER_PACKAGE pricing turn off after 12 hours
+   * of inactivity.
    */
   core.String activationPolicy;
   /**

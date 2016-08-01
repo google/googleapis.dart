@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.29.0
+    version: 0.30.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -21,7 +21,6 @@ packages:
     - analyticsreporting:v4  # https://developers.google.com/analytics/devguides/reporting/core/v4/
     - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
     - androidpublisher:v2  # https://developers.google.com/android-publisher/
-    - appengine:v1  # https://cloud.google.com/appengine/docs/admin-api/
     - appsactivity:v1  # https://developers.google.com/google-apps/activity/
     - appstate:v1  # https://developers.google.com/games/services/web/api/states
     - bigquery:v2  # https://developers.google.com/bigquery/
@@ -30,6 +29,7 @@ packages:
     - calendar:v3  # https://developers.google.com/google-apps/calendar/
     - civicinfo:v2  # https://developers.google.com/civic-information/
     - classroom:v1  # https://developers.google.com/classroom/
+    - cloudbuild:v1  # https://cloud.google.com/container-builder/docs/
     - cloudbilling:v1  # https://cloud.google.com/billing/
     - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
     - cloudtrace:v1 # https://cloud.google.com/cloud-trace/
@@ -100,7 +100,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.28.0
+    version: 0.29.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -110,7 +110,6 @@ packages:
     - adexchangebuyer2:v2beta1  # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - appengine:v1beta4
     - appengine:v1beta5
-    - autoscaler:v1beta2  # https://developers.google.com/compute/docs/autoscaler/ (Limited Preview)
     - clouderrorreporting:v1beta1  # https://cloud.google.com/error-reporting/
     - cloudmonitoring:v2beta2  # https://developers.google.com/cloud-monitoring/
     - cloudresourcemanager:v1beta1

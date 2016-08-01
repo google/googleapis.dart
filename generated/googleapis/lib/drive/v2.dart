@@ -3817,7 +3817,7 @@ class About {
    * - UNLIMITED
    */
   core.String quotaType;
-  /** The number of remaining change ids. */
+  /** The number of remaining change ids, limited to no more than 2500. */
   core.String remainingChangeIds;
   /** The id of the root folder. */
   core.String rootFolderId;

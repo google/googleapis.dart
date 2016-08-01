@@ -2920,7 +2920,7 @@ class VolumesMybooksResourceApi {
    *
    * Request parameters:
    *
-   * [acquireMethod] - How the book was aquired
+   * [acquireMethod] - How the book was acquired
    *
    * [country] - ISO-3166-1 code to override the IP-based location.
    *
@@ -7424,6 +7424,48 @@ class VolumeVolumeInfoIndustryIdentifiers {
   }
 }
 
+/** A top-level summary of the panelization info in this volume. */
+class VolumeVolumeInfoPanelizationSummary {
+  core.bool containsEpubBubbles;
+  core.bool containsImageBubbles;
+  core.String epubBubbleVersion;
+  core.String imageBubbleVersion;
+
+  VolumeVolumeInfoPanelizationSummary();
+
+  VolumeVolumeInfoPanelizationSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("containsEpubBubbles")) {
+      containsEpubBubbles = _json["containsEpubBubbles"];
+    }
+    if (_json.containsKey("containsImageBubbles")) {
+      containsImageBubbles = _json["containsImageBubbles"];
+    }
+    if (_json.containsKey("epubBubbleVersion")) {
+      epubBubbleVersion = _json["epubBubbleVersion"];
+    }
+    if (_json.containsKey("imageBubbleVersion")) {
+      imageBubbleVersion = _json["imageBubbleVersion"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (containsEpubBubbles != null) {
+      _json["containsEpubBubbles"] = containsEpubBubbles;
+    }
+    if (containsImageBubbles != null) {
+      _json["containsImageBubbles"] = containsImageBubbles;
+    }
+    if (epubBubbleVersion != null) {
+      _json["epubBubbleVersion"] = epubBubbleVersion;
+    }
+    if (imageBubbleVersion != null) {
+      _json["imageBubbleVersion"] = imageBubbleVersion;
+    }
+    return _json;
+  }
+}
+
 /** General volume information. */
 class VolumeVolumeInfo {
   /** Whether anonymous logging should be allowed. */
@@ -7477,6 +7519,8 @@ class VolumeVolumeInfo {
   core.String maturityRating;
   /** Total number of pages as per publisher metadata. */
   core.int pageCount;
+  /** A top-level summary of the panelization info in this volume. */
+  VolumeVolumeInfoPanelizationSummary panelizationSummary;
   /** URL to preview this volume on the Google Books site. */
   core.String previewLink;
   /**
@@ -7553,6 +7597,9 @@ class VolumeVolumeInfo {
     }
     if (_json.containsKey("pageCount")) {
       pageCount = _json["pageCount"];
+    }
+    if (_json.containsKey("panelizationSummary")) {
+      panelizationSummary = new VolumeVolumeInfoPanelizationSummary.fromJson(_json["panelizationSummary"]);
     }
     if (_json.containsKey("previewLink")) {
       previewLink = _json["previewLink"];
@@ -7635,6 +7682,9 @@ class VolumeVolumeInfo {
     }
     if (pageCount != null) {
       _json["pageCount"] = pageCount;
+    }
+    if (panelizationSummary != null) {
+      _json["panelizationSummary"] = (panelizationSummary).toJson();
     }
     if (previewLink != null) {
       _json["previewLink"] = previewLink;

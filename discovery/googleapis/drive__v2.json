@@ -38,7 +38,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/qbulDsgTAqr8hAblTTg7Fz0uMCs\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/FjHEYXZVYRm-Uqcc6nzWODTa2L0\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -2644,7 +2644,7 @@
             }
         }
     },
-    "revision": "20160616",
+    "revision": "20160708",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -2844,7 +2844,7 @@
                     "type": "string"
                 },
                 "remainingChangeIds": {
-                    "description": "The number of remaining change ids.",
+                    "description": "The number of remaining change ids, limited to no more than 2500.",
                     "format": "int64",
                     "type": "string"
                 },

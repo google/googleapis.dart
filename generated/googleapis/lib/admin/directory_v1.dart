@@ -589,7 +589,7 @@ class CustomersResourceApi {
       _requester = client;
 
   /**
-   * Retrives a customer.
+   * Retrieves a customer.
    *
    * Request parameters:
    *
@@ -955,7 +955,7 @@ class DomainsResourceApi {
   }
 
   /**
-   * Retrives a domain of the customer.
+   * Retrieves a domain of the customer.
    *
    * Request parameters:
    *

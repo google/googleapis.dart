@@ -15,7 +15,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client translate/v2';
 
-/** Lets you translate text from one language to another */
+/** Translates text from one language to another. */
 class TranslateApi {
 
   final commons.ApiRequester _requester;

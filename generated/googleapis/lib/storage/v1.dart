@@ -3178,7 +3178,7 @@ class Bucket {
 class BucketAccessControlProjectTeam {
   /** The project number. */
   core.String projectNumber;
-  /** The team. Can be owners, editors, or viewers. */
+  /** The team. */
   core.String team;
 
   BucketAccessControlProjectTeam();
@@ -3242,7 +3242,7 @@ class BucketAccessControl {
   core.String kind;
   /** The project team associated with the entity, if any. */
   BucketAccessControlProjectTeam projectTeam;
-  /** The access permission for the entity. Can be READER, WRITER, or OWNER. */
+  /** The access permission for the entity. */
   core.String role;
   /** The link to this access-control entry. */
   core.String selfLink;
@@ -3928,7 +3928,7 @@ class Object {
 class ObjectAccessControlProjectTeam {
   /** The project number. */
   core.String projectNumber;
-  /** The team. Can be owners, editors, or viewers. */
+  /** The team. */
   core.String team;
 
   ObjectAccessControlProjectTeam();
@@ -3996,7 +3996,7 @@ class ObjectAccessControl {
   core.String object;
   /** The project team associated with the entity, if any. */
   ObjectAccessControlProjectTeam projectTeam;
-  /** The access permission for the entity. Can be READER or OWNER. */
+  /** The access permission for the entity. */
   core.String role;
   /** The link to this access-control entry. */
   core.String selfLink;

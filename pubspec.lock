@@ -36,7 +36,7 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.11.3+7"
+    version: "0.11.3+8"
   http_parser:
     description:
       name: http_parser

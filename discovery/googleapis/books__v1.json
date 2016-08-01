@@ -14,7 +14,7 @@
     "description": "Searches for books and manages your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/qqTEAwY0Qxp4UsR5ltoW-UrtYgA\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/dTpM2VF_m4UO2vIUhr3yxAh6Tyw\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
         "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
@@ -2148,8 +2148,9 @@
                             "id": "books.volumes.mybooks.list",
                             "parameters": {
                                 "acquireMethod": {
-                                    "description": "How the book was aquired",
+                                    "description": "How the book was acquired",
                                     "enum": [
+                                        "FAMILY_SHARED",
                                         "PREORDERED",
                                         "PREVIOUSLY_RENTED",
                                         "PUBLIC_DOMAIN",
@@ -2159,6 +2160,7 @@
                                         "UPLOADED"
                                     ],
                                     "enumDescriptions": [
+                                        "Books acquired via Family Sharing",
                                         "Preordered books (not yet available)",
                                         "User-rented books past their expiration time",
                                         "Public domain books",
@@ -2385,7 +2387,7 @@
             }
         }
     },
-    "revision": "20160531",
+    "revision": "20160629",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -4293,6 +4295,24 @@
                             "description": "Total number of pages as per publisher metadata.",
                             "format": "int32",
                             "type": "integer"
+                        },
+                        "panelizationSummary": {
+                            "description": "A top-level summary of the panelization info in this volume.",
+                            "properties": {
+                                "containsEpubBubbles": {
+                                    "type": "boolean"
+                                },
+                                "containsImageBubbles": {
+                                    "type": "boolean"
+                                },
+                                "epubBubbleVersion": {
+                                    "type": "string"
+                                },
+                                "imageBubbleVersion": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
                         },
                         "previewLink": {
                             "description": "URL to preview this volume on the Google Books site.",

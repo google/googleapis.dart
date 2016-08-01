@@ -17,7 +17,7 @@
     "description": "Develops and executes data processing patterns like ETL, batch computation, and continuous computation.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataflow",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/zIcToutH_qQymkOoQRgRxX5M2es\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/DQTAijQbFPyNgytDhH5yACXDF5M\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -498,7 +498,7 @@
             }
         }
     },
-    "revision": "20160621",
+    "revision": "20160715",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
         "Job": {
@@ -604,6 +604,13 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \\p{Ll}\\p{Lo}{0,62} * Values must conform to regexp: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -664,7 +671,7 @@
                 },
                 "internalExperiments": {
                     "additionalProperties": {
-                        "description": "Properties of the object. Contains field @ype with type URL.",
+                        "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
                     "description": "Experimental settings.",
@@ -762,7 +769,7 @@
                 },
                 "poolArgs": {
                     "additionalProperties": {
-                        "description": "Properties of the object. Contains field @ype with type URL.",
+                        "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
                     "description": "Extra arguments for this worker pool.",
@@ -1270,7 +1277,7 @@
                     "description": "A list of messages that carry the error details. There will be a common set of message types for APIs to use.",
                     "items": {
                         "additionalProperties": {
-                            "description": "Properties of the object. Contains field @ype with type URL.",
+                            "description": "Properties of the object. Contains field @type with type URL.",
                             "type": "any"
                         },
                         "type": "object"
@@ -2117,6 +2124,10 @@
                     "description": "User-provided name of this operation.",
                     "type": "string"
                 },
+                "originalName": {
+                    "description": "System-defined name for the operation in the original workflow graph.",
+                    "type": "string"
+                },
                 "read": {
                     "$ref": "ReadInstruction",
                     "description": "Additional information for Read instructions."
@@ -2318,6 +2329,14 @@
                         "$ref": "SideInputInfo"
                     },
                     "type": "array"
+                },
+                "originalCombineValuesStepName": {
+                    "description": "If this instruction includes a combining function, this is the name of the CombineValues instruction lifted into this instruction.",
+                    "type": "string"
+                },
+                "originalCombineValuesInputStoreName": {
+                    "description": "If this instruction includes a combining function this is the name of the intermediate store between the GBK and the CombineValues.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2348,6 +2367,10 @@
                     "description": "System-defined name of this output. Unique across the workflow.",
                     "type": "string"
                 },
+                "originalName": {
+                    "description": "System-defined name for this output in the original workflow graph. Outputs that do not contribute to an original instruction do not set this.",
+                    "type": "string"
+                },
                 "codec": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
@@ -2355,6 +2378,14 @@
                     },
                     "description": "The codec to use to encode data being written via this output.",
                     "type": "object"
+                },
+                "onlyCountKeyBytes": {
+                    "description": "For system-generated byte and mean byte metrics, certain instructions should only report the key size.",
+                    "type": "boolean"
+                },
+                "onlyCountValueBytes": {
+                    "description": "For system-generated byte and mean byte metrics, certain instructions should only report the value size.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

@@ -1,3 +1,13 @@
+## 0.29.0
+
+* [api] adexchangebuyer2:v2beta1: new resource
+* [api] appengine:v1beta4: new resource
+* [api] appengine:v1beta5: new resource
+* [api] clouderrorreporting:v1beta1: new methods
+* [api] dataflow:v1b3: schema changes
+* [api] sqladmin:v1beta4: schema changes
+* [api-removal] autoscaler:v1beta2
+
 ## 0.28.0
 
 * [api] appengine:v1beta4: schema changes

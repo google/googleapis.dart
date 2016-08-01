@@ -93,7 +93,7 @@ class AddressesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -180,7 +180,7 @@ class AddressesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -233,7 +233,7 @@ class AddressesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -289,7 +289,7 @@ class AddressesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -339,7 +339,7 @@ class AddressesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -441,7 +441,7 @@ class AutoscalersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -528,7 +528,7 @@ class AutoscalersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -582,7 +582,7 @@ class AutoscalersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -638,7 +638,7 @@ class AutoscalersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -688,7 +688,7 @@ class AutoscalersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -784,7 +784,7 @@ class AutoscalersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -844,7 +844,7 @@ class AutoscalersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -909,7 +909,7 @@ class BackendServicesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [backendService] - Name of the BackendService resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -957,7 +957,7 @@ class BackendServicesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [backendService] - Name of the BackendService resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -1006,7 +1006,7 @@ class BackendServicesResourceApi {
    *
    * [project] - null
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [backendService] - Name of the BackendService resource to which the queried
    * instance belongs.
@@ -1062,7 +1062,7 @@ class BackendServicesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -1107,7 +1107,7 @@ class BackendServicesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -1199,7 +1199,7 @@ class BackendServicesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [backendService] - Name of the BackendService resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -1253,7 +1253,7 @@ class BackendServicesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [backendService] - Name of the BackendService resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -1312,7 +1312,7 @@ class DiskTypesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -1400,7 +1400,7 @@ class DiskTypesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -1453,7 +1453,7 @@ class DiskTypesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -1555,7 +1555,7 @@ class DisksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -1644,7 +1644,7 @@ class DisksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -1703,7 +1703,7 @@ class DisksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -1757,7 +1757,7 @@ class DisksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -1816,7 +1816,7 @@ class DisksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -1871,7 +1871,7 @@ class DisksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -1966,7 +1966,7 @@ class DisksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -2031,7 +2031,7 @@ class FirewallsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [firewall] - Name of the firewall rule to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -2078,7 +2078,7 @@ class FirewallsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [firewall] - Name of the firewall rule to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -2128,7 +2128,7 @@ class FirewallsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -2172,7 +2172,7 @@ class FirewallsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -2262,7 +2262,7 @@ class FirewallsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [firewall] - Name of the firewall rule to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -2314,7 +2314,7 @@ class FirewallsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [firewall] - Name of the firewall rule to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -2373,7 +2373,7 @@ class ForwardingRulesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -2460,7 +2460,7 @@ class ForwardingRulesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -2513,7 +2513,7 @@ class ForwardingRulesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -2569,7 +2569,7 @@ class ForwardingRulesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -2620,7 +2620,7 @@ class ForwardingRulesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -2716,7 +2716,7 @@ class ForwardingRulesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -2782,7 +2782,7 @@ class GlobalAddressesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [address] - Name of the address resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -2830,7 +2830,7 @@ class GlobalAddressesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [address] - Name of the address resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -2880,7 +2880,7 @@ class GlobalAddressesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -2924,7 +2924,7 @@ class GlobalAddressesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -3020,7 +3020,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [forwardingRule] - Name of the ForwardingRule resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -3068,7 +3068,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [forwardingRule] - Name of the ForwardingRule resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -3118,7 +3118,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -3163,7 +3163,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -3253,7 +3253,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [forwardingRule] - Name of the ForwardingRule resource in which target is
    * to be set.
@@ -3313,7 +3313,7 @@ class GlobalOperationsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -3400,7 +3400,7 @@ class GlobalOperationsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [operation] - Name of the Operations resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -3448,7 +3448,7 @@ class GlobalOperationsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [operation] - Name of the Operations resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -3496,7 +3496,7 @@ class GlobalOperationsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -3592,7 +3592,7 @@ class HttpHealthChecksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [httpHealthCheck] - Name of the HttpHealthCheck resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -3640,7 +3640,7 @@ class HttpHealthChecksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [httpHealthCheck] - Name of the HttpHealthCheck resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -3690,7 +3690,7 @@ class HttpHealthChecksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -3735,7 +3735,7 @@ class HttpHealthChecksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -3825,7 +3825,7 @@ class HttpHealthChecksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [httpHealthCheck] - Name of the HttpHealthCheck resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -3878,7 +3878,7 @@ class HttpHealthChecksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [httpHealthCheck] - Name of the HttpHealthCheck resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -3937,7 +3937,7 @@ class HttpsHealthChecksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -3985,7 +3985,7 @@ class HttpsHealthChecksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -4035,7 +4035,7 @@ class HttpsHealthChecksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -4080,7 +4080,7 @@ class HttpsHealthChecksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -4170,7 +4170,7 @@ class HttpsHealthChecksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -4223,7 +4223,7 @@ class HttpsHealthChecksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -4282,7 +4282,7 @@ class ImagesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [image] - Name of the image resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -4333,7 +4333,7 @@ class ImagesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [image] - Image name.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -4384,7 +4384,7 @@ class ImagesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [image] - Name of the image resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -4432,9 +4432,9 @@ class ImagesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [family] - Name of the image resource to return.
+   * [family] - Name of the image family to search for.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Image].
@@ -4482,7 +4482,7 @@ class ImagesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -4531,7 +4531,7 @@ class ImagesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -4636,7 +4636,7 @@ class InstanceGroupManagersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the managed instance group is located.
    *
@@ -4690,7 +4690,7 @@ class InstanceGroupManagersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -4779,7 +4779,7 @@ class InstanceGroupManagersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the managed instance group is located.
    *
@@ -4838,7 +4838,7 @@ class InstanceGroupManagersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the managed instance group is located.
    *
@@ -4893,7 +4893,7 @@ class InstanceGroupManagersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the managed instance group is located.
    *
@@ -4951,7 +4951,7 @@ class InstanceGroupManagersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where you want to create the managed instance
    * group.
@@ -5002,7 +5002,7 @@ class InstanceGroupManagersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the managed instance group is located.
    *
@@ -5098,7 +5098,7 @@ class InstanceGroupManagersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the managed instance group is located.
    *
@@ -5156,7 +5156,7 @@ class InstanceGroupManagersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the managed instance group is located.
    *
@@ -5215,7 +5215,7 @@ class InstanceGroupManagersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the managed instance group is located.
    *
@@ -5278,7 +5278,7 @@ class InstanceGroupManagersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the managed instance group is located.
    *
@@ -5339,7 +5339,7 @@ class InstanceGroupManagersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the managed instance group is located.
    *
@@ -5406,7 +5406,7 @@ class InstanceGroupsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the instance group is located.
    *
@@ -5461,7 +5461,7 @@ class InstanceGroupsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -5550,7 +5550,7 @@ class InstanceGroupsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the instance group is located.
    *
@@ -5602,7 +5602,7 @@ class InstanceGroupsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the instance group is located.
    *
@@ -5656,7 +5656,7 @@ class InstanceGroupsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where you want to create the instance group.
    *
@@ -5706,7 +5706,7 @@ class InstanceGroupsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the instance group is located.
    *
@@ -5800,7 +5800,7 @@ class InstanceGroupsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the instance group is located.
    *
@@ -5904,7 +5904,7 @@ class InstanceGroupsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the instance group is located.
    *
@@ -5961,7 +5961,7 @@ class InstanceGroupsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone where the instance group is located.
    *
@@ -6028,7 +6028,7 @@ class InstanceTemplatesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [instanceTemplate] - The name of the instance template to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -6076,7 +6076,7 @@ class InstanceTemplatesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [instanceTemplate] - The name of the instance template.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -6128,7 +6128,7 @@ class InstanceTemplatesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -6173,7 +6173,7 @@ class InstanceTemplatesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -6271,7 +6271,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -6334,7 +6334,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -6423,7 +6423,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -6480,7 +6480,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -6533,7 +6533,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -6598,7 +6598,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -6659,7 +6659,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -6712,7 +6712,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -6774,7 +6774,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -6824,7 +6824,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -6917,7 +6917,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -6970,7 +6970,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7040,7 +7040,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7099,7 +7099,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7157,7 +7157,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7215,7 +7215,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7272,7 +7272,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7328,7 +7328,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7389,7 +7389,7 @@ class InstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7452,7 +7452,7 @@ class LicensesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [license] - Name of the License resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7508,7 +7508,7 @@ class MachineTypesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -7596,7 +7596,7 @@ class MachineTypesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7649,7 +7649,7 @@ class MachineTypesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7751,7 +7751,7 @@ class NetworksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [network] - Name of the network to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7799,7 +7799,7 @@ class NetworksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [network] - Name of the network to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -7849,7 +7849,7 @@ class NetworksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -7893,7 +7893,7 @@ class NetworksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -7989,7 +7989,7 @@ class ProjectsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Project].
    *
@@ -8032,7 +8032,7 @@ class ProjectsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -8079,7 +8079,7 @@ class ProjectsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -8126,7 +8126,7 @@ class ProjectsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -8174,7 +8174,7 @@ class ProjectsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -8227,7 +8227,7 @@ class RegionOperationsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -8280,7 +8280,7 @@ class RegionOperationsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -8334,7 +8334,7 @@ class RegionOperationsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -8437,7 +8437,7 @@ class RegionsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -8484,7 +8484,7 @@ class RegionsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -8580,7 +8580,7 @@ class RoutersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -8667,7 +8667,7 @@ class RoutersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -8721,7 +8721,7 @@ class RoutersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -8774,7 +8774,7 @@ class RoutersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -8830,7 +8830,7 @@ class RoutersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -8880,7 +8880,7 @@ class RoutersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -8976,7 +8976,7 @@ class RoutersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -9034,7 +9034,7 @@ class RoutersResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -9099,7 +9099,7 @@ class RoutesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [route] - Name of the Route resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -9147,7 +9147,7 @@ class RoutesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [route] - Name of the Route resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -9197,7 +9197,7 @@ class RoutesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -9241,7 +9241,7 @@ class RoutesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -9343,7 +9343,7 @@ class SnapshotsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [snapshot] - Name of the Snapshot resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -9391,7 +9391,7 @@ class SnapshotsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [snapshot] - Name of the Snapshot resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -9439,7 +9439,7 @@ class SnapshotsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -9535,7 +9535,7 @@ class SslCertificatesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [sslCertificate] - Name of the SslCertificate resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -9583,7 +9583,7 @@ class SslCertificatesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [sslCertificate] - Name of the SslCertificate resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -9633,7 +9633,7 @@ class SslCertificatesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -9678,7 +9678,7 @@ class SslCertificatesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -9774,7 +9774,7 @@ class SubnetworksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -9861,7 +9861,7 @@ class SubnetworksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -9915,7 +9915,7 @@ class SubnetworksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -9971,7 +9971,7 @@ class SubnetworksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -10021,7 +10021,7 @@ class SubnetworksResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -10123,7 +10123,7 @@ class TargetHttpProxiesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [targetHttpProxy] - Name of the TargetHttpProxy resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -10171,7 +10171,7 @@ class TargetHttpProxiesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [targetHttpProxy] - Name of the TargetHttpProxy resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -10221,7 +10221,7 @@ class TargetHttpProxiesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -10266,7 +10266,7 @@ class TargetHttpProxiesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -10355,7 +10355,7 @@ class TargetHttpProxiesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [targetHttpProxy] - Name of the TargetHttpProxy to set a URL map for.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -10414,7 +10414,7 @@ class TargetHttpsProxiesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [targetHttpsProxy] - Name of the TargetHttpsProxy resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -10462,7 +10462,7 @@ class TargetHttpsProxiesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [targetHttpsProxy] - Name of the TargetHttpsProxy resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -10512,7 +10512,7 @@ class TargetHttpsProxiesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -10557,7 +10557,7 @@ class TargetHttpsProxiesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -10646,7 +10646,7 @@ class TargetHttpsProxiesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [targetHttpsProxy] - Name of the TargetHttpsProxy resource to set an
    * SslCertificates resource for.
@@ -10699,7 +10699,7 @@ class TargetHttpsProxiesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [targetHttpsProxy] - Name of the TargetHttpsProxy resource whose URL map is
    * to be set.
@@ -10759,7 +10759,7 @@ class TargetInstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -10846,7 +10846,7 @@ class TargetInstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -10900,7 +10900,7 @@ class TargetInstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -10956,7 +10956,7 @@ class TargetInstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11007,7 +11007,7 @@ class TargetInstancesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11111,7 +11111,7 @@ class TargetPoolsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11169,7 +11169,7 @@ class TargetPoolsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11225,7 +11225,7 @@ class TargetPoolsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -11312,7 +11312,7 @@ class TargetPoolsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11366,7 +11366,7 @@ class TargetPoolsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11422,7 +11422,7 @@ class TargetPoolsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11482,7 +11482,7 @@ class TargetPoolsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11533,7 +11533,7 @@ class TargetPoolsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11628,7 +11628,7 @@ class TargetPoolsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11686,7 +11686,7 @@ class TargetPoolsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11744,7 +11744,7 @@ class TargetPoolsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11814,7 +11814,7 @@ class TargetVpnGatewaysResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -11901,7 +11901,7 @@ class TargetVpnGatewaysResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -11955,7 +11955,7 @@ class TargetVpnGatewaysResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12011,7 +12011,7 @@ class TargetVpnGatewaysResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12062,7 +12062,7 @@ class TargetVpnGatewaysResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12164,7 +12164,7 @@ class UrlMapsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [urlMap] - Name of the UrlMap resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12212,7 +12212,7 @@ class UrlMapsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [urlMap] - Name of the UrlMap resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12262,7 +12262,7 @@ class UrlMapsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
@@ -12309,7 +12309,7 @@ class UrlMapsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [urlMap] - Name of the UrlMap scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12359,7 +12359,7 @@ class UrlMapsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -12449,7 +12449,7 @@ class UrlMapsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [urlMap] - Name of the UrlMap resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12501,7 +12501,7 @@ class UrlMapsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [urlMap] - Name of the UrlMap resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12555,7 +12555,7 @@ class UrlMapsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [urlMap] - Name of the UrlMap resource to be validated as.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12614,7 +12614,7 @@ class VpnTunnelsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -12701,7 +12701,7 @@ class VpnTunnelsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12755,7 +12755,7 @@ class VpnTunnelsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12811,7 +12811,7 @@ class VpnTunnelsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12862,7 +12862,7 @@ class VpnTunnelsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -12964,7 +12964,7 @@ class ZoneOperationsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -13017,7 +13017,7 @@ class ZoneOperationsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -13071,7 +13071,7 @@ class ZoneOperationsResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone for request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -13174,7 +13174,7 @@ class ZonesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [zone] - Name of the zone resource to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
@@ -13221,7 +13221,7 @@ class ZonesResourceApi {
    *
    * [project] - Project ID for this request.
    * Value must have pattern
-   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [filter] - Sets a filter expression for filtering listed resources, in the
    * form filter={expression}. Your {expression} must be in the format:
@@ -13305,7 +13305,10 @@ class ZonesResourceApi {
 
 
 
-/** An access configuration attached to an instance's network interface. */
+/**
+ * An access configuration attached to an instance's network interface. Only one
+ * access config per instance is supported.
+ */
 class AccessConfig {
   /**
    * [Output Only] Type of the resource. Always compute#accessConfig for access
@@ -14631,6 +14634,8 @@ class Backend {
    * Specifies the balancing mode for this backend. For global HTTP(S) load
    * balancing, the default is UTILIZATION. Valid values are UTILIZATION and
    * RATE.
+   *
+   * This cannot be used for internal load balancing.
    * Possible string values are:
    * - "RATE"
    * - "UTILIZATION"
@@ -14642,6 +14647,8 @@ class Backend {
    * up to 100% of its configured CPU or RPS (depending on balancingMode). A
    * setting of 0 means the group is completely drained, offering 0% of its
    * available CPU or RPS. Valid range is [0.0,1.0].
+   *
+   * This cannot be used for internal load balancing.
    */
   core.double capacityScaler;
   /**
@@ -14658,12 +14665,17 @@ class Backend {
    *
    * Note that you must specify an Instance Group resource using the
    * fully-qualified URL, rather than a partial URL.
+   *
+   * When the BackendService has load balancing scheme INTERNAL, the instance
+   * group must be in a zone within the same region as the BackendService.
    */
   core.String group;
   /**
    * The max requests per second (RPS) of the group. Can be used with either
    * RATE or UTILIZATION balancing modes, but required if RATE mode. For RATE
    * mode, either maxRate or maxRatePerInstance must be set.
+   *
+   * This cannot be used for internal load balancing.
    */
   core.int maxRate;
   /**
@@ -14671,12 +14683,16 @@ class Backend {
    * handle.This is used to calculate the capacity of the group. Can be used in
    * either balancing mode. For RATE mode, either maxRate or maxRatePerInstance
    * must be set.
+   *
+   * This cannot be used for internal load balancing.
    */
   core.double maxRatePerInstance;
   /**
    * Used when balancingMode is UTILIZATION. This ratio defines the CPU
    * utilization target for the group. The default is 0.8. Valid range is [0.0,
    * 1.0].
+   *
+   * This cannot be used for internal load balancing.
    */
   core.double maxUtilization;
 
@@ -14747,7 +14763,11 @@ class BackendService {
    * create the resource.
    */
   core.String description;
-  /** If true, enable Cloud CDN for this BackendService. */
+  /**
+   * If true, enable Cloud CDN for this BackendService.
+   *
+   * When the load balancing scheme is INTERNAL, this field is not used.
+   */
   core.bool enableCDN;
   /**
    * Fingerprint of this resource. A hash of the contents stored in this object.
@@ -14767,6 +14787,9 @@ class BackendService {
    * The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
    * health checking this BackendService. Currently at most one health check can
    * be specified, and a health check is required.
+   *
+   * For internal load balancing, a URL to a HealthCheck resource must be
+   * specified instead.
    */
   core.List<core.String> healthChecks;
   /**
@@ -14792,17 +14815,25 @@ class BackendService {
   /**
    * Deprecated in favor of portName. The TCP port to connect on the backend.
    * The default value is 80.
+   *
+   * This cannot be used for internal load balancing.
    */
   core.int port;
   /**
    * Name of backend port. The same name should appear in the instance groups
-   * referenced by this service. Required.
+   * referenced by this service. Required when the load balancing scheme is
+   * EXTERNAL.
+   *
+   * When the load balancing scheme is INTERNAL, this field is not used.
    */
   core.String portName;
   /**
    * The protocol this BackendService uses to communicate with backends.
    *
-   * Possible values are HTTP, HTTPS, HTTP2, TCP and SSL.
+   * Possible values are HTTP, HTTPS, HTTP2, TCP and SSL. The default is HTTP.
+   *
+   * For internal load balancing, the possible values are TCP and UDP, and the
+   * default is TCP.
    * Possible string values are:
    * - "HTTP"
    * - "HTTPS"
@@ -15215,7 +15246,7 @@ class Disk {
   core.String lastAttachTimestamp;
   /** [Output Only] Last detach timestamp in RFC3339 text format. */
   core.String lastDetachTimestamp;
-  /** [Output Only] Any applicable publicly visible licenses. */
+  /** Any applicable publicly visible licenses. */
   core.List<core.String> licenses;
   /**
    * Name of the resource. Provided by the client when the resource is created.
@@ -16426,16 +16457,26 @@ class FirewallList {
  */
 class ForwardingRule {
   /**
-   * Value of the reserved IP address that this forwarding rule is serving on
-   * behalf of. For global forwarding rules, the address must be a global IP;
-   * for regional forwarding rules, the address must live in the same region as
-   * the forwarding rule. If left empty (default value), an ephemeral IP from
+   * The IP address that this forwarding rule is serving on behalf of.
+   *
+   * For global forwarding rules, the address must be a global IP; for regional
+   * forwarding rules, the address must live in the same region as the
+   * forwarding rule. By default, this field is empty and an ephemeral IP from
    * the same scope (global or regional) will be assigned.
+   *
+   * When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
+   * address belonging to the network/subnetwork configured for the forwarding
+   * rule. A reserved address cannot be used. If the field is empty, the IP
+   * address will be automatically allocated from the internal IP range of the
+   * subnetwork or network configured for this forwarding rule.
    */
   core.String IPAddress;
   /**
    * The IP protocol to which this rule applies. Valid options are TCP, UDP,
    * ESP, AH, SCTP or ICMP.
+   *
+   * When the load balancing scheme is INTERNAL</code, only TCP and UDP are
+   * valid.
    * Possible string values are:
    * - "AH"
    * - "ESP"
@@ -16476,6 +16517,8 @@ class ForwardingRule {
    * addressed to ports in the specified range will be forwarded to target.
    * Forwarding rules with the same [IPAddress, IPProtocol] pair must have
    * disjoint port ranges.
+   *
+   * This field is not used for internal load balancing.
    */
   core.String portRange;
   /**
@@ -16492,6 +16535,8 @@ class ForwardingRule {
    * TargetHttpProxy or TargetHttpsProxy resource. The forwarded traffic must be
    * of a type appropriate to the target object. For example, TargetHttpProxy
    * requires HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.
+   *
+   * This field is not used for internal load balancing.
    */
   core.String target;
 
@@ -17471,7 +17516,8 @@ class Image {
   /**
    * The name of the image family to which this image belongs. You can create
    * disks by specifying an image family instead of a specific image name. The
-   * image family always returns its latest image that is not deprecated.
+   * image family always returns its latest image that is not deprecated. The
+   * name of the image family must comply with RFC1035.
    */
   core.String family;
   /**
@@ -17807,7 +17853,7 @@ class Instance {
   /**
    * An array of configurations for this interface. This specifies how this
    * interface is configured to interact with other network services, such as
-   * connecting to the internet.
+   * connecting to the internet. Only one interface is supported per instance.
    */
   core.List<NetworkInterface> networkInterfaces;
   /** Scheduling options for this instance. */
@@ -18321,7 +18367,7 @@ class InstanceGroupList {
   }
 }
 
-/** An Instance Template Manager resource. */
+/** An Instance Group Manager resource. */
 class InstanceGroupManager {
   /**
    * The base instance name to use for instances in this group. The value must
@@ -18516,8 +18562,11 @@ class InstanceGroupManagerActionsSummary {
   /**
    * [Output Only] The number of instances in the managed instance group that
    * are scheduled to be created or are currently being created. If the group
-   * fails to create one of these instances, it tries again until it creates the
+   * fails to create any of these instances, it tries again until it creates the
    * instance successfully.
+   *
+   * If you have disabled creation retries, this field will not be populated;
+   * instead, the creatingWithoutRetries field will be populated.
    */
   core.int creating;
   /**
@@ -20507,7 +20556,8 @@ class ManagedInstance {
    * successful.
    * - CREATING_WITHOUT_RETRIES The managed instance group is attempting to
    * create this instance only once. If the group fails to create this instance,
-   * it does not try again and the group's target_size value is decreased.
+   * it does not try again and the group's targetSize value is decreased
+   * instead.
    * - RECREATING The managed instance group is recreating this instance.
    * - DELETING The managed instance group is permanently deleting this
    * instance.
@@ -20952,9 +21002,9 @@ class Network {
 /** A network interface resource attached to an instance. */
 class NetworkInterface {
   /**
-   * An array of configurations for this interface. Currently, ONE_TO_ONE_NAT is
-   * the only access config supported. If there are no accessConfigs specified,
-   * then this instance will have no external internet access.
+   * An array of configurations for this interface. Currently, only one access
+   * config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs
+   * specified, then this instance will have no external internet access.
    */
   core.List<AccessConfig> accessConfigs;
   /**

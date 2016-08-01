@@ -51,14 +51,14 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2883() {
+buildUnnamed1247() {
   var o = new core.List<api.Feature>();
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
 }
 
-checkUnnamed2883(core.List<api.Feature> o) {
+checkUnnamed1247(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0]);
   checkFeature(o[1]);
@@ -69,7 +69,7 @@ buildAnnotateImageRequest() {
   var o = new api.AnnotateImageRequest();
   buildCounterAnnotateImageRequest++;
   if (buildCounterAnnotateImageRequest < 3) {
-    o.features = buildUnnamed2883();
+    o.features = buildUnnamed1247();
     o.image = buildImage();
     o.imageContext = buildImageContext();
   }
@@ -80,73 +80,73 @@ buildAnnotateImageRequest() {
 checkAnnotateImageRequest(api.AnnotateImageRequest o) {
   buildCounterAnnotateImageRequest++;
   if (buildCounterAnnotateImageRequest < 3) {
-    checkUnnamed2883(o.features);
+    checkUnnamed1247(o.features);
     checkImage(o.image);
     checkImageContext(o.imageContext);
   }
   buildCounterAnnotateImageRequest--;
 }
 
-buildUnnamed2884() {
+buildUnnamed1248() {
   var o = new core.List<api.FaceAnnotation>();
   o.add(buildFaceAnnotation());
   o.add(buildFaceAnnotation());
   return o;
 }
 
-checkUnnamed2884(core.List<api.FaceAnnotation> o) {
+checkUnnamed1248(core.List<api.FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFaceAnnotation(o[0]);
   checkFaceAnnotation(o[1]);
 }
 
-buildUnnamed2885() {
+buildUnnamed1249() {
   var o = new core.List<api.EntityAnnotation>();
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
 }
 
-checkUnnamed2885(core.List<api.EntityAnnotation> o) {
+checkUnnamed1249(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityAnnotation(o[0]);
   checkEntityAnnotation(o[1]);
 }
 
-buildUnnamed2886() {
+buildUnnamed1250() {
   var o = new core.List<api.EntityAnnotation>();
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
 }
 
-checkUnnamed2886(core.List<api.EntityAnnotation> o) {
+checkUnnamed1250(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityAnnotation(o[0]);
   checkEntityAnnotation(o[1]);
 }
 
-buildUnnamed2887() {
+buildUnnamed1251() {
   var o = new core.List<api.EntityAnnotation>();
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
 }
 
-checkUnnamed2887(core.List<api.EntityAnnotation> o) {
+checkUnnamed1251(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityAnnotation(o[0]);
   checkEntityAnnotation(o[1]);
 }
 
-buildUnnamed2888() {
+buildUnnamed1252() {
   var o = new core.List<api.EntityAnnotation>();
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
 }
 
-checkUnnamed2888(core.List<api.EntityAnnotation> o) {
+checkUnnamed1252(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityAnnotation(o[0]);
   checkEntityAnnotation(o[1]);
@@ -158,13 +158,13 @@ buildAnnotateImageResponse() {
   buildCounterAnnotateImageResponse++;
   if (buildCounterAnnotateImageResponse < 3) {
     o.error = buildStatus();
-    o.faceAnnotations = buildUnnamed2884();
+    o.faceAnnotations = buildUnnamed1248();
     o.imagePropertiesAnnotation = buildImageProperties();
-    o.labelAnnotations = buildUnnamed2885();
-    o.landmarkAnnotations = buildUnnamed2886();
-    o.logoAnnotations = buildUnnamed2887();
+    o.labelAnnotations = buildUnnamed1249();
+    o.landmarkAnnotations = buildUnnamed1250();
+    o.logoAnnotations = buildUnnamed1251();
     o.safeSearchAnnotation = buildSafeSearchAnnotation();
-    o.textAnnotations = buildUnnamed2888();
+    o.textAnnotations = buildUnnamed1252();
   }
   buildCounterAnnotateImageResponse--;
   return o;
@@ -174,25 +174,25 @@ checkAnnotateImageResponse(api.AnnotateImageResponse o) {
   buildCounterAnnotateImageResponse++;
   if (buildCounterAnnotateImageResponse < 3) {
     checkStatus(o.error);
-    checkUnnamed2884(o.faceAnnotations);
+    checkUnnamed1248(o.faceAnnotations);
     checkImageProperties(o.imagePropertiesAnnotation);
-    checkUnnamed2885(o.labelAnnotations);
-    checkUnnamed2886(o.landmarkAnnotations);
-    checkUnnamed2887(o.logoAnnotations);
+    checkUnnamed1249(o.labelAnnotations);
+    checkUnnamed1250(o.landmarkAnnotations);
+    checkUnnamed1251(o.logoAnnotations);
     checkSafeSearchAnnotation(o.safeSearchAnnotation);
-    checkUnnamed2888(o.textAnnotations);
+    checkUnnamed1252(o.textAnnotations);
   }
   buildCounterAnnotateImageResponse--;
 }
 
-buildUnnamed2889() {
+buildUnnamed1253() {
   var o = new core.List<api.AnnotateImageRequest>();
   o.add(buildAnnotateImageRequest());
   o.add(buildAnnotateImageRequest());
   return o;
 }
 
-checkUnnamed2889(core.List<api.AnnotateImageRequest> o) {
+checkUnnamed1253(core.List<api.AnnotateImageRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotateImageRequest(o[0]);
   checkAnnotateImageRequest(o[1]);
@@ -203,7 +203,7 @@ buildBatchAnnotateImagesRequest() {
   var o = new api.BatchAnnotateImagesRequest();
   buildCounterBatchAnnotateImagesRequest++;
   if (buildCounterBatchAnnotateImagesRequest < 3) {
-    o.requests = buildUnnamed2889();
+    o.requests = buildUnnamed1253();
   }
   buildCounterBatchAnnotateImagesRequest--;
   return o;
@@ -212,19 +212,19 @@ buildBatchAnnotateImagesRequest() {
 checkBatchAnnotateImagesRequest(api.BatchAnnotateImagesRequest o) {
   buildCounterBatchAnnotateImagesRequest++;
   if (buildCounterBatchAnnotateImagesRequest < 3) {
-    checkUnnamed2889(o.requests);
+    checkUnnamed1253(o.requests);
   }
   buildCounterBatchAnnotateImagesRequest--;
 }
 
-buildUnnamed2890() {
+buildUnnamed1254() {
   var o = new core.List<api.AnnotateImageResponse>();
   o.add(buildAnnotateImageResponse());
   o.add(buildAnnotateImageResponse());
   return o;
 }
 
-checkUnnamed2890(core.List<api.AnnotateImageResponse> o) {
+checkUnnamed1254(core.List<api.AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotateImageResponse(o[0]);
   checkAnnotateImageResponse(o[1]);
@@ -235,7 +235,7 @@ buildBatchAnnotateImagesResponse() {
   var o = new api.BatchAnnotateImagesResponse();
   buildCounterBatchAnnotateImagesResponse++;
   if (buildCounterBatchAnnotateImagesResponse < 3) {
-    o.responses = buildUnnamed2890();
+    o.responses = buildUnnamed1254();
   }
   buildCounterBatchAnnotateImagesResponse--;
   return o;
@@ -244,19 +244,19 @@ buildBatchAnnotateImagesResponse() {
 checkBatchAnnotateImagesResponse(api.BatchAnnotateImagesResponse o) {
   buildCounterBatchAnnotateImagesResponse++;
   if (buildCounterBatchAnnotateImagesResponse < 3) {
-    checkUnnamed2890(o.responses);
+    checkUnnamed1254(o.responses);
   }
   buildCounterBatchAnnotateImagesResponse--;
 }
 
-buildUnnamed2891() {
+buildUnnamed1255() {
   var o = new core.List<api.Vertex>();
   o.add(buildVertex());
   o.add(buildVertex());
   return o;
 }
 
-checkUnnamed2891(core.List<api.Vertex> o) {
+checkUnnamed1255(core.List<api.Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVertex(o[0]);
   checkVertex(o[1]);
@@ -267,7 +267,7 @@ buildBoundingPoly() {
   var o = new api.BoundingPoly();
   buildCounterBoundingPoly++;
   if (buildCounterBoundingPoly < 3) {
-    o.vertices = buildUnnamed2891();
+    o.vertices = buildUnnamed1255();
   }
   buildCounterBoundingPoly--;
   return o;
@@ -276,7 +276,7 @@ buildBoundingPoly() {
 checkBoundingPoly(api.BoundingPoly o) {
   buildCounterBoundingPoly++;
   if (buildCounterBoundingPoly < 3) {
-    checkUnnamed2891(o.vertices);
+    checkUnnamed1255(o.vertices);
   }
   buildCounterBoundingPoly--;
 }
@@ -329,14 +329,14 @@ checkColorInfo(api.ColorInfo o) {
   buildCounterColorInfo--;
 }
 
-buildUnnamed2892() {
+buildUnnamed1256() {
   var o = new core.List<api.ColorInfo>();
   o.add(buildColorInfo());
   o.add(buildColorInfo());
   return o;
 }
 
-checkUnnamed2892(core.List<api.ColorInfo> o) {
+checkUnnamed1256(core.List<api.ColorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColorInfo(o[0]);
   checkColorInfo(o[1]);
@@ -347,7 +347,7 @@ buildDominantColorsAnnotation() {
   var o = new api.DominantColorsAnnotation();
   buildCounterDominantColorsAnnotation++;
   if (buildCounterDominantColorsAnnotation < 3) {
-    o.colors = buildUnnamed2892();
+    o.colors = buildUnnamed1256();
   }
   buildCounterDominantColorsAnnotation--;
   return o;
@@ -356,32 +356,32 @@ buildDominantColorsAnnotation() {
 checkDominantColorsAnnotation(api.DominantColorsAnnotation o) {
   buildCounterDominantColorsAnnotation++;
   if (buildCounterDominantColorsAnnotation < 3) {
-    checkUnnamed2892(o.colors);
+    checkUnnamed1256(o.colors);
   }
   buildCounterDominantColorsAnnotation--;
 }
 
-buildUnnamed2893() {
+buildUnnamed1257() {
   var o = new core.List<api.LocationInfo>();
   o.add(buildLocationInfo());
   o.add(buildLocationInfo());
   return o;
 }
 
-checkUnnamed2893(core.List<api.LocationInfo> o) {
+checkUnnamed1257(core.List<api.LocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocationInfo(o[0]);
   checkLocationInfo(o[1]);
 }
 
-buildUnnamed2894() {
+buildUnnamed1258() {
   var o = new core.List<api.Property>();
   o.add(buildProperty());
   o.add(buildProperty());
   return o;
 }
 
-checkUnnamed2894(core.List<api.Property> o) {
+checkUnnamed1258(core.List<api.Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProperty(o[0]);
   checkProperty(o[1]);
@@ -396,9 +396,9 @@ buildEntityAnnotation() {
     o.confidence = 42.0;
     o.description = "foo";
     o.locale = "foo";
-    o.locations = buildUnnamed2893();
+    o.locations = buildUnnamed1257();
     o.mid = "foo";
-    o.properties = buildUnnamed2894();
+    o.properties = buildUnnamed1258();
     o.score = 42.0;
     o.topicality = 42.0;
   }
@@ -413,23 +413,23 @@ checkEntityAnnotation(api.EntityAnnotation o) {
     unittest.expect(o.confidence, unittest.equals(42.0));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.locale, unittest.equals('foo'));
-    checkUnnamed2893(o.locations);
+    checkUnnamed1257(o.locations);
     unittest.expect(o.mid, unittest.equals('foo'));
-    checkUnnamed2894(o.properties);
+    checkUnnamed1258(o.properties);
     unittest.expect(o.score, unittest.equals(42.0));
     unittest.expect(o.topicality, unittest.equals(42.0));
   }
   buildCounterEntityAnnotation--;
 }
 
-buildUnnamed2895() {
+buildUnnamed1259() {
   var o = new core.List<api.Landmark>();
   o.add(buildLandmark());
   o.add(buildLandmark());
   return o;
 }
 
-checkUnnamed2895(core.List<api.Landmark> o) {
+checkUnnamed1259(core.List<api.Landmark> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLandmark(o[0]);
   checkLandmark(o[1]);
@@ -448,7 +448,7 @@ buildFaceAnnotation() {
     o.headwearLikelihood = "foo";
     o.joyLikelihood = "foo";
     o.landmarkingConfidence = 42.0;
-    o.landmarks = buildUnnamed2895();
+    o.landmarks = buildUnnamed1259();
     o.panAngle = 42.0;
     o.rollAngle = 42.0;
     o.sorrowLikelihood = "foo";
@@ -471,7 +471,7 @@ checkFaceAnnotation(api.FaceAnnotation o) {
     unittest.expect(o.headwearLikelihood, unittest.equals('foo'));
     unittest.expect(o.joyLikelihood, unittest.equals('foo'));
     unittest.expect(o.landmarkingConfidence, unittest.equals(42.0));
-    checkUnnamed2895(o.landmarks);
+    checkUnnamed1259(o.landmarks);
     unittest.expect(o.panAngle, unittest.equals(42.0));
     unittest.expect(o.rollAngle, unittest.equals(42.0));
     unittest.expect(o.sorrowLikelihood, unittest.equals('foo'));
@@ -524,14 +524,14 @@ checkImage(api.Image o) {
   buildCounterImage--;
 }
 
-buildUnnamed2896() {
+buildUnnamed1260() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2896(core.List<core.String> o) {
+checkUnnamed1260(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -542,7 +542,7 @@ buildImageContext() {
   var o = new api.ImageContext();
   buildCounterImageContext++;
   if (buildCounterImageContext < 3) {
-    o.languageHints = buildUnnamed2896();
+    o.languageHints = buildUnnamed1260();
     o.latLongRect = buildLatLongRect();
   }
   buildCounterImageContext--;
@@ -552,7 +552,7 @@ buildImageContext() {
 checkImageContext(api.ImageContext o) {
   buildCounterImageContext++;
   if (buildCounterImageContext < 3) {
-    checkUnnamed2896(o.languageHints);
+    checkUnnamed1260(o.languageHints);
     checkLatLongRect(o.latLongRect);
   }
   buildCounterImageContext--;
@@ -747,30 +747,30 @@ checkSafeSearchAnnotation(api.SafeSearchAnnotation o) {
   buildCounterSafeSearchAnnotation--;
 }
 
-buildUnnamed2897() {
+buildUnnamed1261() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed2897(core.Map<core.String, core.Object> o) {
+checkUnnamed1261(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed2898() {
+buildUnnamed1262() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed2897());
-  o.add(buildUnnamed2897());
+  o.add(buildUnnamed1261());
+  o.add(buildUnnamed1261());
   return o;
 }
 
-checkUnnamed2898(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed1262(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2897(o[0]);
-  checkUnnamed2897(o[1]);
+  checkUnnamed1261(o[0]);
+  checkUnnamed1261(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -779,7 +779,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed2898();
+    o.details = buildUnnamed1262();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -790,7 +790,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed2898(o.details);
+    checkUnnamed1262(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;

@@ -15,7 +15,7 @@
     "description": "Reads and publishes results from Cloud Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-test-lab/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Ny1A_4yJXZH0lc0d7skDv0h2PpQ\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/24RiHeeznw3XkPH7TIR188r4N0M\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20160624",
+    "revision": "20160715",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Any": {
@@ -1324,7 +1324,7 @@
                     "type": "integer"
                 },
                 "seconds": {
-                    "description": "Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.",
+                    "description": "Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.",
                     "format": "int64",
                     "type": "string"
                 }

@@ -6,7 +6,7 @@
     "description": "Finds the least expensive flights between an origin and a destination.",
     "discoveryVersion": "v1",
     "documentationLink": "http://developers.google.com/qpx-express",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/mP0X0J9scme9uxhB3oYtWrSUhT0\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/ijp44wmwc3ANNTETi-Hxe_Mf9S0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -80,7 +80,7 @@
             }
         }
     },
-    "revision": "20160307",
+    "revision": "20160708",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AircraftData": {
@@ -830,6 +830,10 @@
                     "description": "The number of solutions to return, maximum 500.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "ticketingCountry": {
+                    "description": "IATA country code representing the point of ticketing.",
+                    "type": "string"
                 }
             },
             "type": "object"
