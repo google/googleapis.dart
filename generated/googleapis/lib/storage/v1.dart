@@ -3682,7 +3682,11 @@ class Object {
   core.List<ObjectAccessControl> acl;
   /** The name of the bucket containing this object. */
   core.String bucket;
-  /** Cache-Control directive for the object data. */
+  /**
+   * Cache-Control directive for the object data. If omitted, and the object is
+   * accessible to all anonymous users, the default will be public,
+   * max-age=3600.
+   */
   core.String cacheControl;
   /**
    * Number of underlying components that make up this object. Components are

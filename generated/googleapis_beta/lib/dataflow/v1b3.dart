@@ -39,6 +39,7 @@ class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsJobsResourceApi get jobs => new ProjectsJobsResourceApi(_requester);
+  ProjectsTemplatesResourceApi get templates => new ProjectsTemplatesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
@@ -93,6 +94,7 @@ class ProjectsResourceApi {
 class ProjectsJobsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsJobsDebugResourceApi get debug => new ProjectsJobsDebugResourceApi(_requester);
   ProjectsJobsMessagesResourceApi get messages => new ProjectsJobsMessagesResourceApi(_requester);
   ProjectsJobsWorkItemsResourceApi get workItems => new ProjectsJobsWorkItemsResourceApi(_requester);
 
@@ -383,6 +385,113 @@ class ProjectsJobsResourceApi {
 }
 
 
+class ProjectsJobsDebugResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsJobsDebugResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Get encoded debug configuration for component. Not cacheable.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The project id.
+   *
+   * [jobId] - The job id.
+   *
+   * Completes with a [GetDebugConfigResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GetDebugConfigResponse> getConfig(GetDebugConfigRequest request, core.String projectId, core.String jobId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/debug/getConfig';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GetDebugConfigResponse.fromJson(data));
+  }
+
+  /**
+   * Send encoded debug capture data for component.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The project id.
+   *
+   * [jobId] - The job id.
+   *
+   * Completes with a [SendDebugCaptureResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SendDebugCaptureResponse> sendCapture(SendDebugCaptureRequest request, core.String projectId, core.String jobId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/debug/sendCapture';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SendDebugCaptureResponse.fromJson(data));
+  }
+
+}
+
+
 class ProjectsJobsMessagesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -577,6 +686,59 @@ class ProjectsJobsWorkItemsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ReportWorkItemStatusResponse.fromJson(data));
+  }
+
+}
+
+
+class ProjectsTemplatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsTemplatesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a dataflow job from a template.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The project which owns the job.
+   *
+   * Completes with a [Job].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Job> create(CreateJobFromTemplateRequest request, core.String projectId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/templates';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Job.fromJson(data));
   }
 
 }
@@ -1206,6 +1368,36 @@ class CounterUpdate {
   }
 }
 
+/** Request to create a Dataflow job. */
+class CreateJobFromTemplateRequest {
+  /** A path to the serialized JSON representation of the job. */
+  core.String gcsPath;
+  /** Dynamic parameterization of the job's runtime environment. */
+  core.Map<core.String, core.String> parameters;
+
+  CreateJobFromTemplateRequest();
+
+  CreateJobFromTemplateRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("gcsPath")) {
+      gcsPath = _json["gcsPath"];
+    }
+    if (_json.containsKey("parameters")) {
+      parameters = _json["parameters"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (gcsPath != null) {
+      _json["gcsPath"] = gcsPath;
+    }
+    if (parameters != null) {
+      _json["parameters"] = parameters;
+    }
+    return _json;
+  }
+}
+
 /** Identifies the location of a custom souce. */
 class CustomSourceLocation {
   /** Whether this source is stateful. */
@@ -1606,6 +1798,58 @@ class FloatingPointMean {
     }
     if (sum != null) {
       _json["sum"] = sum;
+    }
+    return _json;
+  }
+}
+
+/** Request to get updated debug configuration for component. */
+class GetDebugConfigRequest {
+  /** The internal component id for which debug configuration is requested. */
+  core.String componentId;
+  /** The worker id, i.e., VM hostname. */
+  core.String workerId;
+
+  GetDebugConfigRequest();
+
+  GetDebugConfigRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("componentId")) {
+      componentId = _json["componentId"];
+    }
+    if (_json.containsKey("workerId")) {
+      workerId = _json["workerId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (componentId != null) {
+      _json["componentId"] = componentId;
+    }
+    if (workerId != null) {
+      _json["workerId"] = workerId;
+    }
+    return _json;
+  }
+}
+
+/** Response to a get debug configuration request. */
+class GetDebugConfigResponse {
+  /** The encoded debug configuration for the requested component. */
+  core.String config;
+
+  GetDebugConfigResponse();
+
+  GetDebugConfigResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("config")) {
+      config = _json["config"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (config != null) {
+      _json["config"] = config;
     }
     return _json;
   }
@@ -3324,6 +3568,58 @@ class ReportedParallelism {
     if (value != null) {
       _json["value"] = value;
     }
+    return _json;
+  }
+}
+
+/** Request to send encoded debug information. */
+class SendDebugCaptureRequest {
+  /** The internal component id for which debug information is sent. */
+  core.String componentId;
+  /** The encoded debug information. */
+  core.String data;
+  /** The worker id, i.e., VM hostname. */
+  core.String workerId;
+
+  SendDebugCaptureRequest();
+
+  SendDebugCaptureRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("componentId")) {
+      componentId = _json["componentId"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"];
+    }
+    if (_json.containsKey("workerId")) {
+      workerId = _json["workerId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (componentId != null) {
+      _json["componentId"] = componentId;
+    }
+    if (data != null) {
+      _json["data"] = data;
+    }
+    if (workerId != null) {
+      _json["workerId"] = workerId;
+    }
+    return _json;
+  }
+}
+
+/** Response to a send capture request. nothing */
+class SendDebugCaptureResponse {
+
+  SendDebugCaptureResponse();
+
+  SendDebugCaptureResponse.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
     return _json;
   }
 }
@@ -5521,6 +5817,14 @@ class WorkerPool {
    */
   core.String diskType;
   /**
+   * Configuration for VM IPs.
+   * Possible string values are:
+   * - "WORKER_IP_UNSPECIFIED" : A WORKER_IP_UNSPECIFIED.
+   * - "WORKER_IP_PUBLIC" : A WORKER_IP_PUBLIC.
+   * - "WORKER_IP_PRIVATE" : A WORKER_IP_PRIVATE.
+   */
+  core.String ipConfiguration;
+  /**
    * The kind of the worker pool; currently only 'harness' and 'shuffle' are
    * supported.
    */
@@ -5624,6 +5928,9 @@ class WorkerPool {
     if (_json.containsKey("diskType")) {
       diskType = _json["diskType"];
     }
+    if (_json.containsKey("ipConfiguration")) {
+      ipConfiguration = _json["ipConfiguration"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -5687,6 +5994,9 @@ class WorkerPool {
     }
     if (diskType != null) {
       _json["diskType"] = diskType;
+    }
+    if (ipConfiguration != null) {
+      _json["ipConfiguration"] = ipConfiguration;
     }
     if (kind != null) {
       _json["kind"] = kind;

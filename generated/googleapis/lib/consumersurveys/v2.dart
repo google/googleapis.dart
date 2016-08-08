@@ -260,6 +260,45 @@ class SurveysResourceApi {
       _requester = client;
 
   /**
+   * Removes a survey from view in all user GET requests.
+   *
+   * Request parameters:
+   *
+   * [surveyUrlId] - External URL ID for the survey.
+   *
+   * Completes with a [SurveysDeleteResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SurveysDeleteResponse> delete(core.String surveyUrlId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (surveyUrlId == null) {
+      throw new core.ArgumentError("Parameter surveyUrlId is required.");
+    }
+
+    _url = 'surveys/' + commons.Escaper.ecapeVariable('$surveyUrlId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SurveysDeleteResponse.fromJson(data));
+  }
+
+  /**
    * Retrieves information about the specified survey.
    *
    * Request parameters:
@@ -1293,6 +1332,30 @@ class SurveyResults {
     }
     if (surveyUrlId != null) {
       _json["surveyUrlId"] = surveyUrlId;
+    }
+    return _json;
+  }
+}
+
+class SurveysDeleteResponse {
+  /**
+   * Unique request ID used for logging and debugging. Please include in any
+   * error reporting or troubleshooting requests.
+   */
+  core.String requestId;
+
+  SurveysDeleteResponse();
+
+  SurveysDeleteResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("requestId")) {
+      requestId = _json["requestId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (requestId != null) {
+      _json["requestId"] = requestId;
     }
     return _json;
   }

@@ -9569,8 +9569,11 @@ class ContentRating {
    * Possible string values are:
    * - "grfilmE"
    * - "grfilmK"
+   * - "grfilmK12"
    * - "grfilmK13"
+   * - "grfilmK15"
    * - "grfilmK17"
+   * - "grfilmK18"
    * - "grfilmUnrated"
    */
   core.String grfilmRating;

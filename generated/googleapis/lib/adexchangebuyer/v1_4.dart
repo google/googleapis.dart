@@ -829,8 +829,8 @@ class MarketplacedealsResourceApi {
    *
    * Request parameters:
    *
-   * [proposalId] - The proposalId to get deals for. To search across proposals
-   * specify order_id = '-' as part of the URL.
+   * [proposalId] - The proposalId to get deals for. To search across all
+   * proposals specify order_id = '-' as part of the URL.
    *
    * [pqlQuery] - Query string to retrieve specific deals.
    *
@@ -971,7 +971,12 @@ class MarketplacenotesResourceApi {
    *
    * Request parameters:
    *
-   * [proposalId] - The proposalId to get notes for.
+   * [proposalId] - The proposalId to get notes for. To search across all
+   * proposals specify order_id = '-' as part of the URL.
+   *
+   * [pqlQuery] - Query string to retrieve specific notes. To search the text
+   * contents of notes, please use syntax like "WHERE note.note = "foo" or
+   * "WHERE note.note LIKE "%bar%"
    *
    * Completes with a [GetOrderNotesResponse].
    *
@@ -981,7 +986,7 @@ class MarketplacenotesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GetOrderNotesResponse> list(core.String proposalId) {
+  async.Future<GetOrderNotesResponse> list(core.String proposalId, {core.String pqlQuery}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -991,6 +996,9 @@ class MarketplacenotesResourceApi {
 
     if (proposalId == null) {
       throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+    if (pqlQuery != null) {
+      _queryParams["pqlQuery"] = [pqlQuery];
     }
 
     _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/notes';
@@ -2945,6 +2953,11 @@ class Creative {
    */
   core.String dealsStatus;
   /**
+   * Detected domains for this creative. Read-only. This field should not be set
+   * in requests.
+   */
+  core.List<core.String> detectedDomains;
+  /**
    * The filtering reasons for the creative. Read-only. This field should not be
    * set in requests.
    */
@@ -3042,6 +3055,9 @@ class Creative {
     if (_json.containsKey("dealsStatus")) {
       dealsStatus = _json["dealsStatus"];
     }
+    if (_json.containsKey("detectedDomains")) {
+      detectedDomains = _json["detectedDomains"];
+    }
     if (_json.containsKey("filteringReasons")) {
       filteringReasons = new CreativeFilteringReasons.fromJson(_json["filteringReasons"]);
     }
@@ -3126,6 +3142,9 @@ class Creative {
     }
     if (dealsStatus != null) {
       _json["dealsStatus"] = dealsStatus;
+    }
+    if (detectedDomains != null) {
+      _json["detectedDomains"] = detectedDomains;
     }
     if (filteringReasons != null) {
       _json["filteringReasons"] = (filteringReasons).toJson();
@@ -3251,14 +3270,19 @@ class DealServingMetadata {
  * or the has_seller_paused bits can be set independently.
  */
 class DealServingMetadataDealPauseStatus {
+  core.String buyerPauseReason;
   /** If the deal is paused, records which party paused the deal first. */
   core.String firstPausedBy;
   core.bool hasBuyerPaused;
   core.bool hasSellerPaused;
+  core.String sellerPauseReason;
 
   DealServingMetadataDealPauseStatus();
 
   DealServingMetadataDealPauseStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("buyerPauseReason")) {
+      buyerPauseReason = _json["buyerPauseReason"];
+    }
     if (_json.containsKey("firstPausedBy")) {
       firstPausedBy = _json["firstPausedBy"];
     }
@@ -3268,10 +3292,16 @@ class DealServingMetadataDealPauseStatus {
     if (_json.containsKey("hasSellerPaused")) {
       hasSellerPaused = _json["hasSellerPaused"];
     }
+    if (_json.containsKey("sellerPauseReason")) {
+      sellerPauseReason = _json["sellerPauseReason"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (buyerPauseReason != null) {
+      _json["buyerPauseReason"] = buyerPauseReason;
+    }
     if (firstPausedBy != null) {
       _json["firstPausedBy"] = firstPausedBy;
     }
@@ -3280,6 +3310,9 @@ class DealServingMetadataDealPauseStatus {
     }
     if (hasSellerPaused != null) {
       _json["hasSellerPaused"] = hasSellerPaused;
+    }
+    if (sellerPauseReason != null) {
+      _json["sellerPauseReason"] = sellerPauseReason;
     }
     return _json;
   }
@@ -3306,6 +3339,8 @@ class DealTerms {
   DealTermsNonGuaranteedAuctionTerms nonGuaranteedAuctionTerms;
   /** The terms for non-guaranteed fixed price deals. */
   DealTermsNonGuaranteedFixedPriceTerms nonGuaranteedFixedPriceTerms;
+  /** The terms for rubicon non-guaranteed deals. */
+  DealTermsRubiconNonGuaranteedTerms rubiconNonGuaranteedTerms;
   /**
    * For deals with Cost Per Day billing, defines the timezone used to mark the
    * boundaries of a day (buyer-readonly)
@@ -3336,6 +3371,9 @@ class DealTerms {
     if (_json.containsKey("nonGuaranteedFixedPriceTerms")) {
       nonGuaranteedFixedPriceTerms = new DealTermsNonGuaranteedFixedPriceTerms.fromJson(_json["nonGuaranteedFixedPriceTerms"]);
     }
+    if (_json.containsKey("rubiconNonGuaranteedTerms")) {
+      rubiconNonGuaranteedTerms = new DealTermsRubiconNonGuaranteedTerms.fromJson(_json["rubiconNonGuaranteedTerms"]);
+    }
     if (_json.containsKey("sellerTimeZone")) {
       sellerTimeZone = _json["sellerTimeZone"];
     }
@@ -3364,6 +3402,9 @@ class DealTerms {
     if (nonGuaranteedFixedPriceTerms != null) {
       _json["nonGuaranteedFixedPriceTerms"] = (nonGuaranteedFixedPriceTerms).toJson();
     }
+    if (rubiconNonGuaranteedTerms != null) {
+      _json["rubiconNonGuaranteedTerms"] = (rubiconNonGuaranteedTerms).toJson();
+    }
     if (sellerTimeZone != null) {
       _json["sellerTimeZone"] = sellerTimeZone;
     }
@@ -3384,8 +3425,16 @@ class DealTermsGuaranteedFixedPriceTerms {
    * guaranteed looks that the buyer is guaranteeing to buy.
    */
   core.String guaranteedImpressions;
-  /** Count of guaranteed looks. Required for deal, optional for product. */
+  /**
+   * Count of guaranteed looks. Required for deal, optional for product. For CPD
+   * deals, buyer changes to guaranteed_looks will be ignored.
+   */
   core.String guaranteedLooks;
+  /**
+   * Count of minimum daily looks for a CPD deal. For CPD deals, buyer should
+   * negotiate on this field instead of guaranteed_looks.
+   */
+  core.String minimumDailyLooks;
 
   DealTermsGuaranteedFixedPriceTerms();
 
@@ -3402,6 +3451,9 @@ class DealTermsGuaranteedFixedPriceTerms {
     if (_json.containsKey("guaranteedLooks")) {
       guaranteedLooks = _json["guaranteedLooks"];
     }
+    if (_json.containsKey("minimumDailyLooks")) {
+      minimumDailyLooks = _json["minimumDailyLooks"];
+    }
   }
 
   core.Map toJson() {
@@ -3417,6 +3469,9 @@ class DealTermsGuaranteedFixedPriceTerms {
     }
     if (guaranteedLooks != null) {
       _json["guaranteedLooks"] = guaranteedLooks;
+    }
+    if (minimumDailyLooks != null) {
+      _json["minimumDailyLooks"] = minimumDailyLooks;
     }
     return _json;
   }
@@ -3436,8 +3491,9 @@ class DealTermsGuaranteedFixedPriceTermsBillingInfo {
   core.String dfpLineItemId;
   /**
    * The original contracted quantity (# impressions) for this deal. To ensure
-   * delivery, sometimes publisher will book the deal with a impression buffer,
-   * however clients are billed using the original contracted quantity.
+   * delivery, sometimes the publisher will book the deal with a impression
+   * buffer, such that guaranteed_looks is greater than the contracted quantity.
+   * However clients are billed using the original contracted quantity.
    */
   core.String originalContractedQuantity;
   /**
@@ -3529,6 +3585,35 @@ class DealTermsNonGuaranteedFixedPriceTerms {
     var _json = new core.Map();
     if (fixedPrices != null) {
       _json["fixedPrices"] = fixedPrices.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class DealTermsRubiconNonGuaranteedTerms {
+  /** Optional price for Rubicon priority access in the auction. */
+  Price priorityPrice;
+  /** Optional price for Rubicon standard access in the auction. */
+  Price standardPrice;
+
+  DealTermsRubiconNonGuaranteedTerms();
+
+  DealTermsRubiconNonGuaranteedTerms.fromJson(core.Map _json) {
+    if (_json.containsKey("priorityPrice")) {
+      priorityPrice = new Price.fromJson(_json["priorityPrice"]);
+    }
+    if (_json.containsKey("standardPrice")) {
+      standardPrice = new Price.fromJson(_json["standardPrice"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (priorityPrice != null) {
+      _json["priorityPrice"] = (priorityPrice).toJson();
+    }
+    if (standardPrice != null) {
+      _json["standardPrice"] = (standardPrice).toJson();
     }
     return _json;
   }
@@ -3878,7 +3963,12 @@ class GetOrderDealsResponse {
 }
 
 class GetOrderNotesResponse {
-  /** The list of matching notes. */
+  /**
+   * The list of matching notes. The notes for a proposal are ordered from
+   * oldest to newest. If the notes span multiple proposals, they will be
+   * grouped by proposal, with the notes for the most recently modified proposal
+   * appearing first.
+   */
   core.List<MarketplaceNote> notes;
 
   GetOrderNotesResponse();
@@ -3955,7 +4045,7 @@ class MarketplaceDeal {
    * Specifies whether the creative is safeFrame compatible (buyer-readonly)
    */
   core.String creativeSafeFrameCompatibility;
-  /** A unique deal=id for the deal (readonly). */
+  /** A unique deal-id for the deal (readonly). */
   core.String dealId;
   /**
    * Metadata about the serving status of this deal (readonly, writes via custom
@@ -5028,6 +5118,8 @@ class Price {
   core.double amountMicros;
   /** The currency code for the price. */
   core.String currencyCode;
+  /** In case of CPD deals, the expected CPM in micros. */
+  core.double expectedCpmMicros;
   /** The pricing type for the deal/product. */
   core.String pricingType;
 
@@ -5039,6 +5131,9 @@ class Price {
     }
     if (_json.containsKey("currencyCode")) {
       currencyCode = _json["currencyCode"];
+    }
+    if (_json.containsKey("expectedCpmMicros")) {
+      expectedCpmMicros = _json["expectedCpmMicros"];
     }
     if (_json.containsKey("pricingType")) {
       pricingType = _json["pricingType"];
@@ -5052,6 +5147,9 @@ class Price {
     }
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
+    }
+    if (expectedCpmMicros != null) {
+      _json["expectedCpmMicros"] = expectedCpmMicros;
     }
     if (pricingType != null) {
       _json["pricingType"] = pricingType;
@@ -5407,13 +5505,13 @@ class Proposal {
   Buyer billedBuyer;
   /** Reference to the buyer on the proposal. (readonly, except on create) */
   Buyer buyer;
-  /** Optional contact information fort the buyer. (seller-readonly) */
+  /** Optional contact information of the buyer. (seller-readonly) */
   core.List<ContactInformation> buyerContacts;
   /** Private data for buyer. (hidden from seller). */
   PrivateData buyerPrivateData;
   /**
    * When an proposal is in an accepted state, indicates whether the buyer has
-   * signed off Once both sides have signed off on a deal, the proposal can be
+   * signed off. Once both sides have signed off on a deal, the proposal can be
    * finalized by the seller. (seller-readonly)
    */
   core.bool hasBuyerSignedOff;
@@ -5468,7 +5566,7 @@ class Proposal {
   core.String revisionTimeMs;
   /** Reference to the seller on the proposal. (readonly, except on create) */
   Seller seller;
-  /** Optional contact information for the seller (buyer-readonly). */
+  /** Optional contact information of the seller (buyer-readonly). */
   core.List<ContactInformation> sellerContacts;
 
   Proposal();

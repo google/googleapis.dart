@@ -1424,6 +1424,13 @@ class BigtableOptions {
    * false.
    */
   core.bool ignoreUnspecifiedColumnFamilies;
+  /**
+   * [Optional] If field is true, then the rowkey column families will be read
+   * and converted to string. Otherwise they are read with BYTES type values and
+   * users need to manually cast them with CAST if necessary. The default value
+   * is false.
+   */
+  core.bool readRowkeyAsString;
 
   BigtableOptions();
 
@@ -1434,6 +1441,9 @@ class BigtableOptions {
     if (_json.containsKey("ignoreUnspecifiedColumnFamilies")) {
       ignoreUnspecifiedColumnFamilies = _json["ignoreUnspecifiedColumnFamilies"];
     }
+    if (_json.containsKey("readRowkeyAsString")) {
+      readRowkeyAsString = _json["readRowkeyAsString"];
+    }
   }
 
   core.Map toJson() {
@@ -1443,6 +1453,9 @@ class BigtableOptions {
     }
     if (ignoreUnspecifiedColumnFamilies != null) {
       _json["ignoreUnspecifiedColumnFamilies"] = ignoreUnspecifiedColumnFamilies;
+    }
+    if (readRowkeyAsString != null) {
+      _json["readRowkeyAsString"] = readRowkeyAsString;
     }
     return _json;
   }
@@ -2305,6 +2318,11 @@ class GetQueryResultsResponse {
   JobReference jobReference;
   /** The resource type of the response. */
   core.String kind;
+  /**
+   * [Output-only, Experimental] The number of rows affected by a DML statement.
+   * Present only for DML statements INSERT, UPDATE or DELETE.
+   */
+  core.String numDmlAffectedRows;
   /** A token used for paging results. */
   core.String pageToken;
   /**
@@ -2349,6 +2367,9 @@ class GetQueryResultsResponse {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("numDmlAffectedRows")) {
+      numDmlAffectedRows = _json["numDmlAffectedRows"];
+    }
     if (_json.containsKey("pageToken")) {
       pageToken = _json["pageToken"];
     }
@@ -2385,6 +2406,9 @@ class GetQueryResultsResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (numDmlAffectedRows != null) {
+      _json["numDmlAffectedRows"] = numDmlAffectedRows;
     }
     if (pageToken != null) {
       _json["pageToken"] = pageToken;
@@ -3476,9 +3500,11 @@ class JobStatistics2 {
    */
   core.bool cacheHit;
   /**
-   * [Output-only, Experimental] Describes execution plan for the query as a
-   * list of stages.
+   * [Output-only, Experimental] The number of rows affected by a DML statement.
+   * Present only for DML statements INSERT, UPDATE or DELETE.
    */
+  core.String numDmlAffectedRows;
+  /** [Output-only, Experimental] Describes execution plan for the query. */
   core.List<ExplainQueryStage> queryPlan;
   /**
    * [Output-only, Experimental] Referenced tables for the job. Queries that
@@ -3504,6 +3530,9 @@ class JobStatistics2 {
     if (_json.containsKey("cacheHit")) {
       cacheHit = _json["cacheHit"];
     }
+    if (_json.containsKey("numDmlAffectedRows")) {
+      numDmlAffectedRows = _json["numDmlAffectedRows"];
+    }
     if (_json.containsKey("queryPlan")) {
       queryPlan = _json["queryPlan"].map((value) => new ExplainQueryStage.fromJson(value)).toList();
     }
@@ -3528,6 +3557,9 @@ class JobStatistics2 {
     }
     if (cacheHit != null) {
       _json["cacheHit"] = cacheHit;
+    }
+    if (numDmlAffectedRows != null) {
+      _json["numDmlAffectedRows"] = numDmlAffectedRows;
     }
     if (queryPlan != null) {
       _json["queryPlan"] = queryPlan.map((value) => (value).toJson()).toList();
@@ -3983,6 +4015,11 @@ class QueryResponse {
   JobReference jobReference;
   /** The resource type. */
   core.String kind;
+  /**
+   * [Output-only, Experimental] The number of rows affected by a DML statement.
+   * Present only for DML statements INSERT, UPDATE or DELETE.
+   */
+  core.String numDmlAffectedRows;
   /** A token used for paging results. */
   core.String pageToken;
   /**
@@ -4026,6 +4063,9 @@ class QueryResponse {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("numDmlAffectedRows")) {
+      numDmlAffectedRows = _json["numDmlAffectedRows"];
+    }
     if (_json.containsKey("pageToken")) {
       pageToken = _json["pageToken"];
     }
@@ -4059,6 +4099,9 @@ class QueryResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (numDmlAffectedRows != null) {
+      _json["numDmlAffectedRows"] = numDmlAffectedRows;
     }
     if (pageToken != null) {
       _json["pageToken"] = pageToken;

@@ -259,6 +259,13 @@ class ExecutionResponse {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object result;
+  /**
+   *
+   * Possible string values are:
+   * - "SUCCESS" : A SUCCESS.
+   * - "CANCELED" : A CANCELED.
+   */
+  core.String status;
 
   ExecutionResponse();
 
@@ -266,12 +273,18 @@ class ExecutionResponse {
     if (_json.containsKey("result")) {
       result = _json["result"];
     }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (result != null) {
       _json["result"] = result;
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }

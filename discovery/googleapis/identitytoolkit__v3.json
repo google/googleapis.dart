@@ -6,7 +6,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/wq2MlZitPLJy6Iy9W56oNQSYXNY\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/PRVB_KLGJsONNxc9oRcr6WW_ekc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -275,7 +275,7 @@
             }
         }
     },
-    "revision": "20160608",
+    "revision": "20160728",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -464,6 +464,10 @@
                 },
                 "continueUri": {
                     "description": "The URI to which the IDP redirects the user after the federated login flow.",
+                    "type": "string"
+                },
+                "hostedDomain": {
+                    "description": "The hosted domain to restrict sign-in to accounts at that domain for Google Apps hosted accounts.",
                     "type": "string"
                 },
                 "identifier": {
@@ -1510,6 +1514,10 @@
                 },
                 "refreshToken": {
                     "description": "If idToken is STS id token, then this field will be refresh token.",
+                    "type": "string"
+                },
+                "screenName": {
+                    "description": "The screen_name of a Twitter user.",
                     "type": "string"
                 },
                 "timeZone": {

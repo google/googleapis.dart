@@ -1,3 +1,20 @@
+## 0.30.1
+
+* [api-new] appengine:v1
+* [api-new] dfareporting:v2.6
+* [api-new] servicecontrol:v1
+* [api-new] servicemanagement:v1
+* [api] adexchangebuyer:v1.4: method and schema changes
+* [api] admin:directory_v1: schema changes
+* [api] androidenterprise:v1: new resources, schema changes
+* [api] bigquery:v2: schema changes
+* [api] cloudbuild:v1: schema changes
+* [api] compute:v1: new methods, schema changes
+* [api] fitness:v1: schema changes
+* [api] identitytoolkit:v3: schema changes
+* [api] script:v1: schema changes
+* [api] sheets:v4: new method
+
 ## 0.30.0
 
 * [api-new] cloudbuild:v1

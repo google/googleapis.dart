@@ -26,7 +26,7 @@
     "description": "Stores, processes, explores and shares genomic data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/genomics/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/yu-G8RApkq9KATw28Rdkz2eBsto\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/X2-hhocAg6NLMPQks1elD8VdTWQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1538,7 +1538,7 @@
             }
         }
     },
-    "revision": "20160714",
+    "revision": "20160803",
     "rootUrl": "https://genomics.googleapis.com/",
     "schemas": {
         "AnnotationSet": {
@@ -3249,7 +3249,7 @@
                     "type": "string"
                 },
                 "callSetIds": {
-                    "description": "Only return variant calls which belong to call sets with these ids. Leaving this blank returns all variant calls. If a variant has no calls belonging to any of these call sets, it won't be returned at all. Currently, variants with no calls from any call set will never be returned.",
+                    "description": "Only return variant calls which belong to call sets with these ids. Leaving this blank returns all variant calls. If a variant has no calls belonging to any of these call sets, it won't be returned at all.",
                     "items": {
                         "type": "string"
                     },

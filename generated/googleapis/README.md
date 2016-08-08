@@ -89,13 +89,13 @@ Official API documentation: https://developers.google.com/ad-exchange/buyer-rest
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) Ad Exchange Seller API - adexchangeseller v1.1
 
-Gives Ad Exchange seller users access to their inventory and the ability to generate reports
+Accesses the inventory of Ad Exchange seller users and generates reports.
 
 Official API documentation: https://developers.google.com/ad-exchange/seller-rest/
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) Ad Exchange Seller API - adexchangeseller v2.0
 
-Gives Ad Exchange seller users access to their inventory and the ability to generate reports
+Accesses the inventory of Ad Exchange seller users and generates reports.
 
 Official API documentation: https://developers.google.com/ad-exchange/seller-rest/
 
@@ -152,6 +152,12 @@ Official API documentation: https://developers.google.com/android/work/play/emm-
 Lets Android application developers access their Google Play accounts.
 
 Official API documentation: https://developers.google.com/android-publisher
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1
+
+Provisions and manages App Engine applications.
+
+Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Apps Activity API - appsactivity v1
 
@@ -300,6 +306,12 @@ Official API documentation: https://developers.google.com/doubleclick-advertiser
 Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
+
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.6
+
+Manages your DoubleClick Campaign Manager ad campaigns and reports.
+
+Official API documentation: https://developers.google.com/doubleclick-advertisers/
 
 #### ![Logo](http://www.google.com/images/icons/feature/filing_cabinet_search-g16.png) APIs Discovery Service - discovery v1
 
@@ -529,6 +541,18 @@ Official API documentation: https://developers.google.com/safe-browsing/
 Executes Google Apps Script projects.
 
 Official API documentation: https://developers.google.com/apps-script/execution/rest/v1/scripts/run
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Service Control API - servicecontrol v1
+
+The Service Control API
+
+Official API documentation: https://cloud.google.com/service-control/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Service Management API - servicemanagement v1
+
+The service management API for Google Cloud Platform
+
+Official API documentation: https://cloud.google.com/service-management/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Sheets API - sheets v4
 

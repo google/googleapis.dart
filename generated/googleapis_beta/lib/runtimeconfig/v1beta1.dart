@@ -358,7 +358,7 @@ class ProjectsConfigsVariablesResourceApi {
    *
    * To learn more about creating a variable, read the
    * [Setting and Getting
-   * Data](/deployment-manager/runtime-configurator/seta-and-get-variables)
+   * Data](/deployment-manager/runtime-configurator/set-and-get-variables)
    * documentation.
    *
    * [request] - The metadata request object.
@@ -1385,11 +1385,19 @@ class Variable {
    * executing.
    */
   core.String state;
+  /**
+   * The textual value of the variable. The length of the value must be less
+   * than 4096 bytes. Empty values are also accepted.
+   * NB: Only one of value and string_value can be set at the same time.
+   */
+  core.String text;
   /** [Output Only] The time of the last variable update. */
   core.String updateTime;
   /**
-   * The value of the variable. The length of the value must be less than 4096
-   * bytes. Empty values are also accepted. The value must be Base64 encoded.
+   * The binary value of the variable. The length of the value must be less
+   * than 4096 bytes. Empty values are also accepted. The value must be
+   * Base64 encoded.
+   * NB: Only one of value and string_value can be set at the same time.
    */
   core.String value;
   core.List<core.int> get valueAsBytes {
@@ -1409,6 +1417,9 @@ class Variable {
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
     }
@@ -1424,6 +1435,9 @@ class Variable {
     }
     if (state != null) {
       _json["state"] = state;
+    }
+    if (text != null) {
+      _json["text"] = text;
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -1450,7 +1464,8 @@ class Variable {
  * Once created, a Waiter resource is immutable.
  *
  * To learn more about using waiters, read the
- * [Creating a Waiter](/deployment-manager/runtime-config/creating-a-water)
+ * [Creating a
+ * Waiter](/deployment-manager/runtime-configurator/creating-a-waiter)
  * documentation.
  */
 class Waiter {

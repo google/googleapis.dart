@@ -15,10 +15,10 @@
     "baseUrl": "https://www.googleapis.com/adexchangeseller/v2.0/",
     "batchPath": "batch",
     "canonicalName": "Ad Exchange Seller",
-    "description": "Gives Ad Exchange seller users access to their inventory and the ability to generate reports",
+    "description": "Accesses the inventory of Ad Exchange seller users and generates reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/seller-rest/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/qcigCX_caF-VOuSCOoUvd0UVxvs\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/1XDufO4826VKTkrV2WU9EmKApiQ\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -654,7 +654,7 @@
             }
         }
     },
-    "revision": "20160513",
+    "revision": "20160805",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

@@ -17,7 +17,7 @@
     "description": "Develops and executes data processing patterns like ETL, batch computation, and continuous computation.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataflow",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/DQTAijQbFPyNgytDhH5yACXDF5M\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/wZurELzsfHitAU1HvQyPOtQDL2I\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -352,6 +352,78 @@
                         }
                     },
                     "resources": {
+                        "debug": {
+                            "methods": {
+                                "getConfig": {
+                                    "description": "Get encoded debug configuration for component. Not cacheable.",
+                                    "httpMethod": "POST",
+                                    "id": "dataflow.projects.jobs.debug.getConfig",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "jobId"
+                                    ],
+                                    "parameters": {
+                                        "projectId": {
+                                            "description": "The project id.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "jobId": {
+                                            "description": "The job id.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1b3/projects/{projectId}/jobs/{jobId}/debug/getConfig",
+                                    "request": {
+                                        "$ref": "GetDebugConfigRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GetDebugConfigResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/userinfo.email"
+                                    ]
+                                },
+                                "sendCapture": {
+                                    "description": "Send encoded debug capture data for component.",
+                                    "httpMethod": "POST",
+                                    "id": "dataflow.projects.jobs.debug.sendCapture",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "jobId"
+                                    ],
+                                    "parameters": {
+                                        "projectId": {
+                                            "description": "The project id.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "jobId": {
+                                            "description": "The job id.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1b3/projects/{projectId}/jobs/{jobId}/debug/sendCapture",
+                                    "request": {
+                                        "$ref": "SendDebugCaptureRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "SendDebugCaptureResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/userinfo.email"
+                                    ]
+                                }
+                            }
+                        },
                         "messages": {
                             "methods": {
                                 "list": {
@@ -494,13 +566,94 @@
                             }
                         }
                     }
+                },
+                "templates": {
+                    "methods": {
+                        "create": {
+                            "description": "Creates a dataflow job from a template.",
+                            "httpMethod": "POST",
+                            "id": "dataflow.projects.templates.create",
+                            "parameterOrder": [
+                                "projectId"
+                            ],
+                            "parameters": {
+                                "projectId": {
+                                    "description": "The project which owns the job.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1b3/projects/{projectId}/templates",
+                            "request": {
+                                "$ref": "CreateJobFromTemplateRequest"
+                            },
+                            "response": {
+                                "$ref": "Job"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/userinfo.email"
+                            ]
+                        }
+                    }
                 }
             }
         }
     },
-    "revision": "20160715",
+    "revision": "20160727",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
+        "GetDebugConfigRequest": {
+            "description": "Request to get updated debug configuration for component.",
+            "id": "GetDebugConfigRequest",
+            "properties": {
+                "workerId": {
+                    "description": "The worker id, i.e., VM hostname.",
+                    "type": "string"
+                },
+                "componentId": {
+                    "description": "The internal component id for which debug configuration is requested.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GetDebugConfigResponse": {
+            "description": "Response to a get debug configuration request.",
+            "id": "GetDebugConfigResponse",
+            "properties": {
+                "config": {
+                    "description": "The encoded debug configuration for the requested component.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SendDebugCaptureRequest": {
+            "description": "Request to send encoded debug information.",
+            "id": "SendDebugCaptureRequest",
+            "properties": {
+                "workerId": {
+                    "description": "The worker id, i.e., VM hostname.",
+                    "type": "string"
+                },
+                "componentId": {
+                    "description": "The internal component id for which debug information is sent.",
+                    "type": "string"
+                },
+                "data": {
+                    "description": "The encoded debug information.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SendDebugCaptureResponse": {
+            "description": "Response to a send capture request. nothing",
+            "id": "SendDebugCaptureResponse",
+            "type": "object"
+        },
         "Job": {
             "description": "Defines a job to be run by the Dataflow service.",
             "id": "Job",
@@ -791,6 +944,15 @@
                     "description": "The number of threads per worker harness. If empty or unspecified, the service will choose a number of threads (according to the number of cores on the selected machine type for batch, or 1 by convention for streaming).",
                     "format": "int32",
                     "type": "integer"
+                },
+                "ipConfiguration": {
+                    "description": "Configuration for VM IPs.",
+                    "enum": [
+                        "WORKER_IP_UNSPECIFIED",
+                        "WORKER_IP_PUBLIC",
+                        "WORKER_IP_PRIVATE"
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1164,6 +1326,24 @@
                         "type": "string"
                     },
                     "description": "Zero or more labeled fields which identify the part of the job this metric is associated with, such as the name of a step or collection. For example, built-in counters associated with steps will have context['step'] = . Counters associated with PCollections in the SDK will have context['pcollection'] =\n.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CreateJobFromTemplateRequest": {
+            "description": "Request to create a Dataflow job.",
+            "id": "CreateJobFromTemplateRequest",
+            "properties": {
+                "gcsPath": {
+                    "description": "A path to the serialized JSON representation of the job.",
+                    "type": "string"
+                },
+                "parameters": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Dynamic parameterization of the job's runtime environment.",
                     "type": "object"
                 }
             },

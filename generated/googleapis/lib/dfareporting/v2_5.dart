@@ -2508,6 +2508,7 @@ class ChangeLogsResourceApi {
    * - "OBJECT_SD_SITE"
    * - "OBJECT_SIZE"
    * - "OBJECT_SUBACCOUNT"
+   * - "OBJECT_TARGETING_TEMPLATE"
    * - "OBJECT_USER_PROFILE"
    * - "OBJECT_USER_PROFILE_FILTER"
    * - "OBJECT_USER_ROLE"
@@ -11638,6 +11639,7 @@ class Account {
    * - "ACTIVE_ADS_TIER_200K"
    * - "ACTIVE_ADS_TIER_300K"
    * - "ACTIVE_ADS_TIER_40K"
+   * - "ACTIVE_ADS_TIER_500K"
    * - "ACTIVE_ADS_TIER_75K"
    */
   core.String activeAdsLimitTier;
@@ -11897,6 +11899,7 @@ class AccountActiveAdSummary {
    * - "ACTIVE_ADS_TIER_200K"
    * - "ACTIVE_ADS_TIER_300K"
    * - "ACTIVE_ADS_TIER_40K"
+   * - "ACTIVE_ADS_TIER_500K"
    * - "ACTIVE_ADS_TIER_75K"
    */
   core.String activeAdsLimitTier;
@@ -12523,7 +12526,7 @@ class Ad {
    * - "IN_STREAM_VIDEO"
    */
   core.String compatibility;
-  /** Information about the creation of this ad.This is a read-only field. */
+  /** Information about the creation of this ad. This is a read-only field. */
   LastModifiedInfo createInfo;
   /**
    * Creative group assignments for this ad. Applicable when type is
@@ -12539,7 +12542,8 @@ class Ad {
    */
   CreativeRotation creativeRotation;
   /**
-   * Time and day targeting information for this ad. Applicable when type is
+   * Time and day targeting information for this ad. This field must be left
+   * blank if the ad is using a targeting template. Applicable when type is
    * AD_SERVING_STANDARD_AD.
    */
   DayPartTargeting dayPartTargeting;
@@ -12566,7 +12570,8 @@ class Ad {
   /** Event tag overrides for this ad. */
   core.List<EventTagOverride> eventTagOverrides;
   /**
-   * Geographical targeting information for this ad.Applicable when type is
+   * Geographical targeting information for this ad. This field must be left
+   * blank if the ad is using a targeting template. Applicable when type is
    * AD_SERVING_STANDARD_AD.
    */
   GeoTargeting geoTargeting;
@@ -12578,7 +12583,8 @@ class Ad {
    */
   DimensionValue idDimensionValue;
   /**
-   * Key-value targeting information for this ad. Applicable when type is
+   * Key-value targeting information for this ad. This field must be left blank
+   * if the ad is using a targeting template. Applicable when type is
    * AD_SERVING_STANDARD_AD.
    */
   KeyValueTargetingExpression keyValueTargetingExpression;
@@ -12600,8 +12606,9 @@ class Ad {
   /** Placement assignments for this ad. */
   core.List<PlacementAssignment> placementAssignments;
   /**
-   * Applicable when type is AD_SERVING_STANDARD_AD. Remarketing list targeting
-   * expression for this ad.
+   * Remarketing list targeting expression for this ad. This field must be left
+   * blank if the ad is using a targeting template. Applicable when type is
+   * AD_SERVING_STANDARD_AD.
    */
   ListTargetingExpression remarketingListExpression;
   /** Size of this ad. Applicable when type is AD_SERVING_DEFAULT_AD. */
@@ -12626,8 +12633,9 @@ class Ad {
    */
   core.String subaccountId;
   /**
-   * Technology platform targeting information for this ad. Applicable when type
-   * is AD_SERVING_STANDARD_AD.
+   * Technology platform targeting information for this ad. This field must be
+   * left blank if the ad is using a targeting template. Applicable when type is
+   * AD_SERVING_STANDARD_AD.
    */
   TechnologyTargeting technologyTargeting;
   /**
@@ -14261,12 +14269,13 @@ class City {
 class ClickTag {
   /**
    * Advertiser event name associated with the click tag. This field is used by
-   * ENHANCED_BANNER, ENHANCED_IMAGE, and HTML5_BANNER creatives.
+   * DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives. Applicable to DISPLAY
+   * when the primary asset type is not HTML_IMAGE.
    */
   core.String eventName;
   /**
-   * Parameter name for the specified click tag. For ENHANCED_IMAGE creative
-   * assets, this field must match the value of the creative asset's
+   * Parameter name for the specified click tag. For DISPLAY_IMAGE_GALLERY
+   * creative assets, this field must match the value of the creative asset's
    * creativeAssetId.name field.
    */
   core.String name;
@@ -14701,8 +14710,9 @@ class Conversion {
   core.List<CustomFloodlightVariable> customVariables;
   /**
    * The alphanumeric encrypted user ID. When set, encryptionInfo should also be
-   * specified. This field is mutually exclusive with mobileDeviceId. This or
-   * mobileDeviceId is a required field.
+   * specified. This field is mutually exclusive with
+   * encryptedUserIdCandidates[] and mobileDeviceId. This or
+   * encryptedUserIdCandidates[] or mobileDeviceId is a required field.
    */
   core.String encryptedUserId;
   /** Floodlight Activity ID of this conversion. This is a required field. */
@@ -14719,8 +14729,9 @@ class Conversion {
   /** Whether the user has Limit Ad Tracking set. */
   core.bool limitAdTracking;
   /**
-   * The mobile device ID. This field is mutually exclusive with
-   * encryptedUserId. This or encryptedUserId is a required field.
+   * The mobile device ID. This field is mutually exclusive with encryptedUserId
+   * and encryptedUserIdCandidates[]. This or encryptedUserId or
+   * encryptedUserIdCandidates[] is a required field.
    */
   core.String mobileDeviceId;
   /**
@@ -14821,7 +14832,10 @@ class Conversion {
   }
 }
 
-/** The error code and description for a conversion that failed to insert. */
+/**
+ * The error code and description for a conversion that failed to insert or
+ * update.
+ */
 class ConversionError {
   /**
    * The error code.
@@ -14870,10 +14884,11 @@ class ConversionError {
 }
 
 /**
- * The original conversion that was inserted and whether there were any errors.
+ * The original conversion that was inserted or updated and whether there were
+ * any errors.
  */
 class ConversionStatus {
-  /** The original conversion that was inserted. */
+  /** The original conversion that was inserted or updated. */
   Conversion conversion;
   /** A list of errors related to this conversion. */
   core.List<ConversionError> errors;
@@ -15158,7 +15173,7 @@ class Creative {
    */
   core.String authoringTool;
   /**
-   * Whether images are automatically advanced for enhanced image creatives.
+   * Whether images are automatically advanced for image gallery creatives.
    * Applicable to the following creative types: DISPLAY_IMAGE_GALLERY.
    */
   core.bool autoAdvanceImages;
@@ -15230,7 +15245,7 @@ class Creative {
    * Compatibilities associated with this creative. This is a read-only field.
    * DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop or on
    * mobile devices or in mobile apps for regular or interstitial ads,
-   * respectively. APP and APP_INTERSTITIAL  are for rendering in mobile apps.
+   * respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps.
    * Only pre-existing creatives may have these compatibilities since new
    * creatives will either be assigned DISPLAY or DISPLAY_INTERSTITIAL instead.
    * IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with
@@ -15951,6 +15966,7 @@ class CreativeAsset {
    * Type of rich media asset. This is a read-only field. Applicable to the
    * following creative types: all RICH_MEDIA.
    * Possible string values are:
+   * - "ASSET_DISPLAY_TYPE_BACKDROP"
    * - "ASSET_DISPLAY_TYPE_EXPANDING"
    * - "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH"
    * - "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH_EXPANDING"
@@ -17592,6 +17608,7 @@ class CustomFloodlightVariable {
    * Possible string values are:
    * - "U1"
    * - "U10"
+   * - "U100"
    * - "U11"
    * - "U12"
    * - "U13"
@@ -17603,13 +17620,92 @@ class CustomFloodlightVariable {
    * - "U19"
    * - "U2"
    * - "U20"
+   * - "U21"
+   * - "U22"
+   * - "U23"
+   * - "U24"
+   * - "U25"
+   * - "U26"
+   * - "U27"
+   * - "U28"
+   * - "U29"
    * - "U3"
+   * - "U30"
+   * - "U31"
+   * - "U32"
+   * - "U33"
+   * - "U34"
+   * - "U35"
+   * - "U36"
+   * - "U37"
+   * - "U38"
+   * - "U39"
    * - "U4"
+   * - "U40"
+   * - "U41"
+   * - "U42"
+   * - "U43"
+   * - "U44"
+   * - "U45"
+   * - "U46"
+   * - "U47"
+   * - "U48"
+   * - "U49"
    * - "U5"
+   * - "U50"
+   * - "U51"
+   * - "U52"
+   * - "U53"
+   * - "U54"
+   * - "U55"
+   * - "U56"
+   * - "U57"
+   * - "U58"
+   * - "U59"
    * - "U6"
+   * - "U60"
+   * - "U61"
+   * - "U62"
+   * - "U63"
+   * - "U64"
+   * - "U65"
+   * - "U66"
+   * - "U67"
+   * - "U68"
+   * - "U69"
    * - "U7"
+   * - "U70"
+   * - "U71"
+   * - "U72"
+   * - "U73"
+   * - "U74"
+   * - "U75"
+   * - "U76"
+   * - "U77"
+   * - "U78"
+   * - "U79"
    * - "U8"
+   * - "U80"
+   * - "U81"
+   * - "U82"
+   * - "U83"
+   * - "U84"
+   * - "U85"
+   * - "U86"
+   * - "U87"
+   * - "U88"
+   * - "U89"
    * - "U9"
+   * - "U90"
+   * - "U91"
+   * - "U92"
+   * - "U93"
+   * - "U94"
+   * - "U95"
+   * - "U96"
+   * - "U97"
+   * - "U98"
+   * - "U99"
    */
   core.String type;
   /**
@@ -23754,6 +23850,7 @@ class Pricing {
    * - "PLANNING_PLACEMENT_PRICING_TYPE_CPA"
    * - "PLANNING_PLACEMENT_PRICING_TYPE_CPC"
    * - "PLANNING_PLACEMENT_PRICING_TYPE_CPM"
+   * - "PLANNING_PLACEMENT_PRICING_TYPE_CPM_ACTIVEVIEW"
    * - "PLANNING_PLACEMENT_PRICING_TYPE_FLAT_RATE_CLICKS"
    * - "PLANNING_PLACEMENT_PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
    * - "PLANNING_PLACEMENT_PRICING_TYPE_IMPRESSIONS"
@@ -23848,6 +23945,7 @@ class PricingSchedule {
    * - "PRICING_TYPE_CPA"
    * - "PRICING_TYPE_CPC"
    * - "PRICING_TYPE_CPM"
+   * - "PRICING_TYPE_CPM_ACTIVEVIEW"
    * - "PRICING_TYPE_FLAT_RATE_CLICKS"
    * - "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
    */
@@ -26811,13 +26909,13 @@ class TechnologyTargeting {
   /**
    * Browsers that this ad targets. For each browser either set browserVersionId
    * or dartId along with the version numbers. If both are specified, only
-   * browserVersionId will be used.The other fields are populated automatically
+   * browserVersionId will be used. The other fields are populated automatically
    * when the ad is inserted or updated.
    */
   core.List<Browser> browsers;
   /**
    * Connection types that this ad targets. For each connection type only id is
-   * required.The other fields are populated automatically when the ad is
+   * required. The other fields are populated automatically when the ad is
    * inserted or updated.
    */
   core.List<ConnectionType> connectionTypes;
@@ -27003,6 +27101,7 @@ class UserDefinedVariableConfiguration {
    * Possible string values are:
    * - "U1"
    * - "U10"
+   * - "U100"
    * - "U11"
    * - "U12"
    * - "U13"
@@ -27014,13 +27113,92 @@ class UserDefinedVariableConfiguration {
    * - "U19"
    * - "U2"
    * - "U20"
+   * - "U21"
+   * - "U22"
+   * - "U23"
+   * - "U24"
+   * - "U25"
+   * - "U26"
+   * - "U27"
+   * - "U28"
+   * - "U29"
    * - "U3"
+   * - "U30"
+   * - "U31"
+   * - "U32"
+   * - "U33"
+   * - "U34"
+   * - "U35"
+   * - "U36"
+   * - "U37"
+   * - "U38"
+   * - "U39"
    * - "U4"
+   * - "U40"
+   * - "U41"
+   * - "U42"
+   * - "U43"
+   * - "U44"
+   * - "U45"
+   * - "U46"
+   * - "U47"
+   * - "U48"
+   * - "U49"
    * - "U5"
+   * - "U50"
+   * - "U51"
+   * - "U52"
+   * - "U53"
+   * - "U54"
+   * - "U55"
+   * - "U56"
+   * - "U57"
+   * - "U58"
+   * - "U59"
    * - "U6"
+   * - "U60"
+   * - "U61"
+   * - "U62"
+   * - "U63"
+   * - "U64"
+   * - "U65"
+   * - "U66"
+   * - "U67"
+   * - "U68"
+   * - "U69"
    * - "U7"
+   * - "U70"
+   * - "U71"
+   * - "U72"
+   * - "U73"
+   * - "U74"
+   * - "U75"
+   * - "U76"
+   * - "U77"
+   * - "U78"
+   * - "U79"
    * - "U8"
+   * - "U80"
+   * - "U81"
+   * - "U82"
+   * - "U83"
+   * - "U84"
+   * - "U85"
+   * - "U86"
+   * - "U87"
+   * - "U88"
+   * - "U89"
    * - "U9"
+   * - "U90"
+   * - "U91"
+   * - "U92"
+   * - "U93"
+   * - "U94"
+   * - "U95"
+   * - "U96"
+   * - "U97"
+   * - "U98"
+   * - "U99"
    */
   core.String variableType;
 

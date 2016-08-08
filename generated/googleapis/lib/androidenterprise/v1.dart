@@ -30,6 +30,8 @@ class AndroidenterpriseApi {
   GrouplicensesResourceApi get grouplicenses => new GrouplicensesResourceApi(_requester);
   GrouplicenseusersResourceApi get grouplicenseusers => new GrouplicenseusersResourceApi(_requester);
   InstallsResourceApi get installs => new InstallsResourceApi(_requester);
+  ManagedconfigurationsfordeviceResourceApi get managedconfigurationsfordevice => new ManagedconfigurationsfordeviceResourceApi(_requester);
+  ManagedconfigurationsforuserResourceApi get managedconfigurationsforuser => new ManagedconfigurationsforuserResourceApi(_requester);
   PermissionsResourceApi get permissions => new PermissionsResourceApi(_requester);
   ProductsResourceApi get products => new ProductsResourceApi(_requester);
   ServiceaccountkeysResourceApi get serviceaccountkeys => new ServiceaccountkeysResourceApi(_requester);
@@ -1087,7 +1089,7 @@ class EnterprisesResourceApi {
    *
    * Request parameters:
    *
-   * [enterpriseId] - null
+   * [enterpriseId] - The ID of the enterprise.
    *
    * [keyType] - The type of credential to return with the service account.
    * Required.
@@ -1131,7 +1133,9 @@ class EnterprisesResourceApi {
   }
 
   /**
-   * Returns the store layout resource.
+   * Returns the store layout for the enterprise. If the store layout has not
+   * been set, or if the store layout has no homepageId set, returns a NOT_FOUND
+   * error.
    *
    * Request parameters:
    *
@@ -1402,7 +1406,7 @@ class EnterprisesResourceApi {
   }
 
   /**
-   * Sets the store layout resource.
+   * Sets the store layout for the enterprise.
    *
    * [request] - The metadata request object.
    *
@@ -2207,6 +2211,565 @@ class InstallsResourceApi {
 }
 
 
+class ManagedconfigurationsfordeviceResourceApi {
+  final commons.ApiRequester _requester;
+
+  ManagedconfigurationsfordeviceResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Removes a per-device managed configuration for an app for the specified
+   * device.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * [deviceId] - The Android ID of the device.
+   *
+   * [managedConfigurationForDeviceId] - The ID of the managed configuration (a
+   * product ID), e.g. "app:com.google.android.gm".
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String enterpriseId, core.String userId, core.String deviceId, core.String managedConfigurationForDeviceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (deviceId == null) {
+      throw new core.ArgumentError("Parameter deviceId is required.");
+    }
+    if (managedConfigurationForDeviceId == null) {
+      throw new core.ArgumentError("Parameter managedConfigurationForDeviceId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices/' + commons.Escaper.ecapeVariable('$deviceId') + '/managedConfigurationsForDevice/' + commons.Escaper.ecapeVariable('$managedConfigurationForDeviceId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Retrieves details of a per-device managed configuration.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * [deviceId] - The Android ID of the device.
+   *
+   * [managedConfigurationForDeviceId] - The ID of the managed configuration (a
+   * product ID), e.g. "app:com.google.android.gm".
+   *
+   * Completes with a [ManagedConfiguration].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ManagedConfiguration> get(core.String enterpriseId, core.String userId, core.String deviceId, core.String managedConfigurationForDeviceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (deviceId == null) {
+      throw new core.ArgumentError("Parameter deviceId is required.");
+    }
+    if (managedConfigurationForDeviceId == null) {
+      throw new core.ArgumentError("Parameter managedConfigurationForDeviceId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices/' + commons.Escaper.ecapeVariable('$deviceId') + '/managedConfigurationsForDevice/' + commons.Escaper.ecapeVariable('$managedConfigurationForDeviceId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ManagedConfiguration.fromJson(data));
+  }
+
+  /**
+   * Lists all the per-device managed configurations for the specified device.
+   * Only the ID is set.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * [deviceId] - The Android ID of the device.
+   *
+   * Completes with a [ManagedConfigurationsForDeviceListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ManagedConfigurationsForDeviceListResponse> list(core.String enterpriseId, core.String userId, core.String deviceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (deviceId == null) {
+      throw new core.ArgumentError("Parameter deviceId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices/' + commons.Escaper.ecapeVariable('$deviceId') + '/managedConfigurationsForDevice';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ManagedConfigurationsForDeviceListResponse.fromJson(data));
+  }
+
+  /**
+   * Adds or updates a per-device managed configuration for an app for the
+   * specified device. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * [deviceId] - The Android ID of the device.
+   *
+   * [managedConfigurationForDeviceId] - The ID of the managed configuration (a
+   * product ID), e.g. "app:com.google.android.gm".
+   *
+   * Completes with a [ManagedConfiguration].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ManagedConfiguration> patch(ManagedConfiguration request, core.String enterpriseId, core.String userId, core.String deviceId, core.String managedConfigurationForDeviceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (deviceId == null) {
+      throw new core.ArgumentError("Parameter deviceId is required.");
+    }
+    if (managedConfigurationForDeviceId == null) {
+      throw new core.ArgumentError("Parameter managedConfigurationForDeviceId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices/' + commons.Escaper.ecapeVariable('$deviceId') + '/managedConfigurationsForDevice/' + commons.Escaper.ecapeVariable('$managedConfigurationForDeviceId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ManagedConfiguration.fromJson(data));
+  }
+
+  /**
+   * Adds or updates a per-device managed configuration for an app for the
+   * specified device.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * [deviceId] - The Android ID of the device.
+   *
+   * [managedConfigurationForDeviceId] - The ID of the managed configuration (a
+   * product ID), e.g. "app:com.google.android.gm".
+   *
+   * Completes with a [ManagedConfiguration].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ManagedConfiguration> update(ManagedConfiguration request, core.String enterpriseId, core.String userId, core.String deviceId, core.String managedConfigurationForDeviceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (deviceId == null) {
+      throw new core.ArgumentError("Parameter deviceId is required.");
+    }
+    if (managedConfigurationForDeviceId == null) {
+      throw new core.ArgumentError("Parameter managedConfigurationForDeviceId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/devices/' + commons.Escaper.ecapeVariable('$deviceId') + '/managedConfigurationsForDevice/' + commons.Escaper.ecapeVariable('$managedConfigurationForDeviceId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ManagedConfiguration.fromJson(data));
+  }
+
+}
+
+
+class ManagedconfigurationsforuserResourceApi {
+  final commons.ApiRequester _requester;
+
+  ManagedconfigurationsforuserResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Removes a per-user managed configuration for an app for the specified user.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * [managedConfigurationForUserId] - The ID of the managed configuration (a
+   * product ID), e.g. "app:com.google.android.gm".
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String enterpriseId, core.String userId, core.String managedConfigurationForUserId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (managedConfigurationForUserId == null) {
+      throw new core.ArgumentError("Parameter managedConfigurationForUserId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/managedConfigurationsForUser/' + commons.Escaper.ecapeVariable('$managedConfigurationForUserId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Retrieves details of a per-user managed configuration for an app for the
+   * specified user.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * [managedConfigurationForUserId] - The ID of the managed configuration (a
+   * product ID), e.g. "app:com.google.android.gm".
+   *
+   * Completes with a [ManagedConfiguration].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ManagedConfiguration> get(core.String enterpriseId, core.String userId, core.String managedConfigurationForUserId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (managedConfigurationForUserId == null) {
+      throw new core.ArgumentError("Parameter managedConfigurationForUserId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/managedConfigurationsForUser/' + commons.Escaper.ecapeVariable('$managedConfigurationForUserId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ManagedConfiguration.fromJson(data));
+  }
+
+  /**
+   * Lists all the per-user managed configurations for the specified user. Only
+   * the ID is set.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * Completes with a [ManagedConfigurationsForUserListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ManagedConfigurationsForUserListResponse> list(core.String enterpriseId, core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/managedConfigurationsForUser';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ManagedConfigurationsForUserListResponse.fromJson(data));
+  }
+
+  /**
+   * Adds or updates a per-user managed configuration for an app for the
+   * specified user. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * [managedConfigurationForUserId] - The ID of the managed configuration (a
+   * product ID), e.g. "app:com.google.android.gm".
+   *
+   * Completes with a [ManagedConfiguration].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ManagedConfiguration> patch(ManagedConfiguration request, core.String enterpriseId, core.String userId, core.String managedConfigurationForUserId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (managedConfigurationForUserId == null) {
+      throw new core.ArgumentError("Parameter managedConfigurationForUserId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/managedConfigurationsForUser/' + commons.Escaper.ecapeVariable('$managedConfigurationForUserId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ManagedConfiguration.fromJson(data));
+  }
+
+  /**
+   * Adds or updates a per-user managed configuration for an app for the
+   * specified user.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * [userId] - The ID of the user.
+   *
+   * [managedConfigurationForUserId] - The ID of the managed configuration (a
+   * product ID), e.g. "app:com.google.android.gm".
+   *
+   * Completes with a [ManagedConfiguration].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ManagedConfiguration> update(ManagedConfiguration request, core.String enterpriseId, core.String userId, core.String managedConfigurationForUserId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (managedConfigurationForUserId == null) {
+      throw new core.ArgumentError("Parameter managedConfigurationForUserId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/users/' + commons.Escaper.ecapeVariable('$userId') + '/managedConfigurationsForUser/' + commons.Escaper.ecapeVariable('$managedConfigurationForUserId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ManagedConfiguration.fromJson(data));
+  }
+
+}
+
+
 class PermissionsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2432,9 +2995,12 @@ class ProductsResourceApi {
   }
 
   /**
-   * Retrieves the schema defining app restrictions configurable for this
-   * product. All products have a schema, but this may be empty if no app
-   * restrictions are defined.
+   * Retrieves the schema that defines the configurable properties for this
+   * product. All products have a schema, but this schema may be empty if no
+   * managed configurations have been defined. This schema can be used to
+   * populate a UI that allows an administrator to configure the product. To
+   * apply a managed configuration based on the schema obtained using this API,
+   * see Managed Configurations through Play.
    *
    * Request parameters:
    *
@@ -3678,9 +4244,8 @@ class UsersResourceApi {
   /**
    * Creates a new EMM-managed user.
    *
-   * The required details of the user are passed in the Users resource in the
-   * body of the request. Specifically, the accountIdentifier, accountType, and
-   * displayName fields must be provided.
+   * The Users resource passed in the body of the request should include an
+   * accountIdentifier and an accountType.
    *
    * [request] - The metadata request object.
    *
@@ -3724,7 +4289,7 @@ class UsersResourceApi {
   }
 
   /**
-   * Looks up a user by their primary email address. This is only supported for
+   * Looks up a user by primary email address. This is only supported for
    * Google-managed users. Lookup of the id is not needed for EMM-managed users
    * because the id is already returned in the result of the Users.insert call.
    *
@@ -3773,10 +4338,10 @@ class UsersResourceApi {
   /**
    * Updates the details of an EMM-managed user.
    *
-   * This only works with EMM-managed users. Pass the new details in Users
-   * resource in the request body. Only the displayName field can be changed.
-   * Other fields must either be unset or have the currently active value. This
-   * method supports patch semantics.
+   * Can be used with EMM-managed users only (not Google managed users). Pass
+   * the new details in the Users resource in the request body. Only the
+   * displayName field can be changed. Other fields must either be unset or have
+   * the currently active value. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -3920,9 +4485,10 @@ class UsersResourceApi {
   /**
    * Updates the details of an EMM-managed user.
    *
-   * This only works with EMM-managed users. Pass the new details in Users
-   * resource in the request body. Only the displayName field can be changed.
-   * Other fields must either be unset or have the currently active value.
+   * Can be used with EMM-managed users only (not Google managed users). Pass
+   * the new details in the Users resource in the request body. Only the
+   * displayName field can be changed. Other fields must either be unset or have
+   * the currently active value.
    *
    * [request] - The metadata request object.
    *
@@ -4091,6 +4657,10 @@ class AppRestrictionsSchemaRestriction {
    * "com.google.android.gm.fieldname".
    */
   core.String key;
+  /**
+   * For bundle or bundleArray restrictions, the list of nested restrictions.
+   */
+  core.List<AppRestrictionsSchemaRestriction> nestedRestriction;
   /** The type of the restriction. */
   core.String restrictionType;
   /** The name of the restriction. */
@@ -4113,6 +4683,9 @@ class AppRestrictionsSchemaRestriction {
     }
     if (_json.containsKey("key")) {
       key = _json["key"];
+    }
+    if (_json.containsKey("nestedRestriction")) {
+      nestedRestriction = _json["nestedRestriction"].map((value) => new AppRestrictionsSchemaRestriction.fromJson(value)).toList();
     }
     if (_json.containsKey("restrictionType")) {
       restrictionType = _json["restrictionType"];
@@ -4138,6 +4711,9 @@ class AppRestrictionsSchemaRestriction {
     }
     if (key != null) {
       _json["key"] = key;
+    }
+    if (nestedRestriction != null) {
+      _json["nestedRestriction"] = nestedRestriction.map((value) => (value).toJson()).toList();
     }
     if (restrictionType != null) {
       _json["restrictionType"] = restrictionType;
@@ -4633,30 +5209,18 @@ class DevicesListResponse {
 }
 
 /**
- * An enterprise resource represents the binding between an EMM and a specific
- * organization.
- *
- *
- * That binding can be instantiated in one of two different ways using this API
- * as follows:
- *
- *
- *
+ * An Enterprises resource represents the binding between an EMM and a specific
+ * organization. That binding can be instantiated in one of two different ways
+ * using this API as follows:
  * - For Google managed domain customers, the process involves using
  * Enterprises.enroll and Enterprises.setAccount (in conjunction with artifacts
- * obtained from the Admin console and the Google Developers console) and
- * submitted to the EMM through a more-or-less manual process.
- *
- *
- * - An alternative process that takes advantage of Google-provided mechanisms
- * (Android for Work Sign-up UI) that expedite the process involves
- * Enterprises.generateSignupUrl, Enterprises.completeSignup,
- * Enterprises.getServiceAccount  (optional), and Enterprises.setAccount.
- *
- *
- * The overall processes are very different and involve different identity
- * models, but as an EMM, you can support either or both approaches in your EMM
- * console. See EMM Developer's Guide for details.
+ * obtained from the Admin console and the Google API Console) and submitted to
+ * the EMM through a more-or-less manual process.
+ * - For Android for Work Accounts customers, the process involves using
+ * Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction
+ * with the Android for Work Sign-up UI (Google-provided mechanism) to create
+ * the binding without manual steps. As an EMM, you can support either or both
+ * approaches in your EMM console. See Create an Enterprise for details.
  */
 class Enterprise {
   /**
@@ -4671,9 +5235,9 @@ class Enterprise {
    * "androidenterprise#enterprise".
    */
   core.String kind;
-  /** The name of the enterprise, e.g. "Example Inc". */
+  /** The name of the enterprise, for example, "Example, Inc". */
   core.String name;
-  /** The enterprise's primary domain, e.g. "example.com". */
+  /** The enterprise's primary domain, such as "example.com". */
   core.String primaryDomain;
 
   Enterprise();
@@ -5309,6 +5873,235 @@ class LocalizedText {
     }
     if (text != null) {
       _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A managed configuration resource contains the set of managed properties that
+ * have been configured for an Android app. The app's developer would have
+ * defined configurable properties in the managed configurations schema.
+ */
+class ManagedConfiguration {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#managedConfiguration".
+   */
+  core.String kind;
+  /** The set of managed properties for this configuration. */
+  core.List<ManagedProperty> managedProperty;
+  /**
+   * The ID of the product that the managed configuration is for, e.g.
+   * "app:com.google.android.gm".
+   */
+  core.String productId;
+
+  ManagedConfiguration();
+
+  ManagedConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("managedProperty")) {
+      managedProperty = _json["managedProperty"].map((value) => new ManagedProperty.fromJson(value)).toList();
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (managedProperty != null) {
+      _json["managedProperty"] = managedProperty.map((value) => (value).toJson()).toList();
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    return _json;
+  }
+}
+
+/** The managed configuration resources for the device. */
+class ManagedConfigurationsForDeviceListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#managedConfigurationsForDeviceListResponse".
+   */
+  core.String kind;
+  /** A managed configuration for an app on a specific device. */
+  core.List<ManagedConfiguration> managedConfigurationForDevice;
+
+  ManagedConfigurationsForDeviceListResponse();
+
+  ManagedConfigurationsForDeviceListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("managedConfigurationForDevice")) {
+      managedConfigurationForDevice = _json["managedConfigurationForDevice"].map((value) => new ManagedConfiguration.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (managedConfigurationForDevice != null) {
+      _json["managedConfigurationForDevice"] = managedConfigurationForDevice.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** The managed configuration resources for the user. */
+class ManagedConfigurationsForUserListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#managedConfigurationsForUserListResponse".
+   */
+  core.String kind;
+  /** A managed configuration for an app for a specific user. */
+  core.List<ManagedConfiguration> managedConfigurationForUser;
+
+  ManagedConfigurationsForUserListResponse();
+
+  ManagedConfigurationsForUserListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("managedConfigurationForUser")) {
+      managedConfigurationForUser = _json["managedConfigurationForUser"].map((value) => new ManagedConfiguration.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (managedConfigurationForUser != null) {
+      _json["managedConfigurationForUser"] = managedConfigurationForUser.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * A managed property of a managed configuration. The property must match one of
+ * the properties in the app restrictions schema of the product. Exactly one of
+ * the value fields must be populated, and it must match the property's type in
+ * the app restrictions schema.
+ */
+class ManagedProperty {
+  /** The unique key that identifies the property. */
+  core.String key;
+  /**
+   * The boolean value - this will only be present if type of the property is
+   * bool.
+   */
+  core.bool valueBool;
+  /**
+   * The bundle of managed properties - this will only be present if type of the
+   * property is bundle.
+   */
+  ManagedPropertyBundle valueBundle;
+  /**
+   * The list of bundles of properties - this will only be present if type of
+   * the property is bundle_array.
+   */
+  core.List<ManagedPropertyBundle> valueBundleArray;
+  /**
+   * The integer value - this will only be present if type of the property is
+   * integer.
+   */
+  core.int valueInteger;
+  /**
+   * The string value - this will only be present if type of the property is
+   * string, choice or hidden.
+   */
+  core.String valueString;
+  /**
+   * The list of string values - this will only be present if type of the
+   * property is multiselect.
+   */
+  core.List<core.String> valueStringArray;
+
+  ManagedProperty();
+
+  ManagedProperty.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("valueBool")) {
+      valueBool = _json["valueBool"];
+    }
+    if (_json.containsKey("valueBundle")) {
+      valueBundle = new ManagedPropertyBundle.fromJson(_json["valueBundle"]);
+    }
+    if (_json.containsKey("valueBundleArray")) {
+      valueBundleArray = _json["valueBundleArray"].map((value) => new ManagedPropertyBundle.fromJson(value)).toList();
+    }
+    if (_json.containsKey("valueInteger")) {
+      valueInteger = _json["valueInteger"];
+    }
+    if (_json.containsKey("valueString")) {
+      valueString = _json["valueString"];
+    }
+    if (_json.containsKey("valueStringArray")) {
+      valueStringArray = _json["valueStringArray"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (valueBool != null) {
+      _json["valueBool"] = valueBool;
+    }
+    if (valueBundle != null) {
+      _json["valueBundle"] = (valueBundle).toJson();
+    }
+    if (valueBundleArray != null) {
+      _json["valueBundleArray"] = valueBundleArray.map((value) => (value).toJson()).toList();
+    }
+    if (valueInteger != null) {
+      _json["valueInteger"] = valueInteger;
+    }
+    if (valueString != null) {
+      _json["valueString"] = valueString;
+    }
+    if (valueStringArray != null) {
+      _json["valueStringArray"] = valueStringArray;
+    }
+    return _json;
+  }
+}
+
+/** A bundle of managed properties. */
+class ManagedPropertyBundle {
+  /** The list of managed properties. */
+  core.List<ManagedProperty> managedProperty;
+
+  ManagedPropertyBundle();
+
+  ManagedPropertyBundle.fromJson(core.Map _json) {
+    if (_json.containsKey("managedProperty")) {
+      managedProperty = _json["managedProperty"].map((value) => new ManagedProperty.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (managedProperty != null) {
+      _json["managedProperty"] = managedProperty.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -6296,8 +7089,9 @@ class StoreLayout {
    * The ID of the store page to be used as the homepage. The homepage will be
    * used as the first page shown in the Google Play for Work store.
    *
-   * If there is no homepage set, an empty store is shown. The homepage can be
-   * unset (by not specifying it) to empty the store.
+   * If a homepage has not been set, the Play store shown on devices will be
+   * empty. Not specifying a homepage on a store layout effectively empties the
+   * store.
    *
    * If there exists at least one page, this field must be set to the ID of a
    * valid page.
@@ -6498,36 +7292,34 @@ class TokenPagination {
  * account may be specific to a device or to an individual user (who can then
  * use the account across multiple devices). The account may provide access to
  * Google Play for Work only, or to other Google services, depending on the
- * identity model used:
+ * identity model:
  * - Google managed domain identity model requires synchronization to Google
  * account sources (via primaryEmail).
- *
- *
- * - Android for Work accounts identity model provides a dynamic means for
+ * - Android for Work Accounts identity model provides a dynamic means for
  * enterprises to create user or device accounts as needed. These accounts
  * provide access to Google Play for Work only.
  */
 class User {
   /**
-   * The id as used by the EMM for this user, e.g. "user342" or "asset#44418".
-   * Will always be set for EMM managed users and not set for Google managed
-   * users. For privacy sensitive deployments it should not be possible to
-   * identify the individual with this identifier.
+   * A unique identifier you create for this user, such as "user342" or
+   * "asset#44418". Do not use personally identifiable information (PII) for
+   * this property. Must always be set for EMM-managed users. Not set for
+   * Google-managed users.
    */
   core.String accountIdentifier;
   /**
-   * The type of account that this user represents. A "deviceAccount" is
-   * specific to a single device while a "userAccount" represents a traditional
-   * user account, i.e. one that can be installed on multiple devices.
-   * "googleManaged" users will always be a "userAccount" but "emmManaged" users
-   * can be either a "userAccount" or a "deviceAccount".
+   * The type of account that this user represents. A userAccount can be
+   * installed on multiple devices, but a deviceAccount is specific to a single
+   * device. An EMM-managed user (emmManaged) can be either type (userAccount,
+   * deviceAccount), but a Google-managed user (googleManaged) is always a
+   * userAccount.
    */
   core.String accountType;
   /**
-   * The user's name as it is to be presented in user interfaces, e.g. "John".
-   * Can optionally be set for EMM managed users and will not be set for Google
-   * managed users. For privacy sensitive deployments this should be left unset
-   * or set to something generic.
+   * The name that will appear in user interfaces. Setting this property is
+   * optional when creating EMM-managed users. If you do set this property, use
+   * something generic about the organization (such as "Example, Inc.") or your
+   * name (as EMM). Not used for Google-managed user accounts.
    */
   core.String displayName;
   /** The unique ID for the user. */
@@ -6538,9 +7330,9 @@ class User {
    */
   core.String kind;
   /**
-   * The entity that manages the user. With "googleManaged" users, the source of
-   * truth is Google so EMMs have to make sure a Google account exists for the
-   * user. With "emmManaged" users, the EMM is in charge.
+   * The entity that manages the user. With googleManaged users, the source of
+   * truth is Google so EMMs have to make sure a Google Account exists for the
+   * user. With emmManaged users, the EMM is in charge.
    */
   core.String managementType;
   /**

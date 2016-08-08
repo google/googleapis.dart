@@ -287,6 +287,86 @@ class SpreadsheetsValuesResourceApi {
       _requester = client;
 
   /**
+   * Appends values to a spreadsheet. The input range is used to search for
+   * existing data and find a "table" within that range. Values will be
+   * appended to the next row of the table, starting with the first column of
+   * the table. See the
+   * [guide](/sheets/guides/values#appending_values)
+   * and
+   * [sample code](/sheets/samples/writing#append_values)
+   * for specific details of how tables are detected and data is appended.
+   *
+   * The caller must specify the spreadsheet ID, range, and
+   * a valueInputOption.  The `valueInputOption` only
+   * controls how the input data will be added to the sheet (column-wise or
+   * row-wise), it does not influence what cell the data starts being written
+   * to.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [spreadsheetId] - The ID of the spreadsheet to update.
+   *
+   * [range] - The A1 notation of a range to search for a logical table of data.
+   * Values will be appended after the last row of the table.
+   *
+   * [valueInputOption] - How the input data should be interpreted.
+   * Possible string values are:
+   * - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
+   * - "RAW" : A RAW.
+   * - "USER_ENTERED" : A USER_ENTERED.
+   *
+   * [insertDataOption] - How the input data should be inserted.
+   * Possible string values are:
+   * - "OVERWRITE" : A OVERWRITE.
+   * - "INSERT_ROWS" : A INSERT_ROWS.
+   *
+   * Completes with a [AppendValuesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.String valueInputOption, core.String insertDataOption}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (spreadsheetId == null) {
+      throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+    if (range == null) {
+      throw new core.ArgumentError("Parameter range is required.");
+    }
+    if (valueInputOption != null) {
+      _queryParams["valueInputOption"] = [valueInputOption];
+    }
+    if (insertDataOption != null) {
+      _queryParams["insertDataOption"] = [insertDataOption];
+    }
+
+    _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values/' + commons.Escaper.ecapeVariable('$range') + ':append';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AppendValuesResponse.fromJson(data));
+  }
+
+  /**
    * Returns one or more ranges of values from a spreadsheet.
    * The caller must specify the spreadsheet ID and one or more ranges.
    *
@@ -561,7 +641,9 @@ class SpreadsheetsValuesResourceApi {
 class AddChartRequest {
   /**
    * The chart that should be added to the spreadsheet, including the position
-   * where it should be placed.
+   * where it should be placed. The chartId
+   * field is optional; if one is not set, an id will be randomly generated. (It
+   * is an error to specify the ID of a chart that already exists.)
    */
   EmbeddedChart chart;
 
@@ -639,7 +721,11 @@ class AddConditionalFormatRuleRequest {
 
 /** Adds a filter view. */
 class AddFilterViewRequest {
-  /** The filter to add. */
+  /**
+   * The filter to add. The filterViewId
+   * field is optional; if one is not set, an id will be randomly generated. (It
+   * is an error to specify the ID of a filter that already exists.)
+   */
   FilterView filter;
 
   AddFilterViewRequest();
@@ -684,10 +770,9 @@ class AddFilterViewResponse {
 /** Adds a named range to the spreadsheet. */
 class AddNamedRangeRequest {
   /**
-   * The named range to add. If a non-empty
-   * namedRangeId is specified, the named range
-   * will use that ID. (It is an error to specify the ID of a named
-   * range that already exists.)
+   * The named range to add. The namedRangeId
+   * field is optional; if one is not set, an id will be randomly generated. (It
+   * is an error to specify the ID of a range that already exists.)
    */
   NamedRange namedRange;
 
@@ -732,7 +817,12 @@ class AddNamedRangeResponse {
 
 /** Adds a new protected range. */
 class AddProtectedRangeRequest {
-  /** The protected range to be added. */
+  /**
+   * The protected range to be added. The
+   * protectedRangeId field is optional; if
+   * one is not set, an id will be randomly generated. (It is an error to
+   * specify the ID of a range that already exists.)
+   */
   ProtectedRange protectedRange;
 
   AddProtectedRangeRequest();
@@ -786,9 +876,9 @@ class AddSheetRequest {
   /**
    * The properties the new sheet should have.
    * All properties are optional.
-   * If a sheetId
-   * is specified, the sheet will use that ID.
-   * (It is an error to specify the ID of a sheet that already exists.)
+   * The sheetId field is optional; if one is not
+   * set, an id will be randomly generated. (It is an error to specify the ID
+   * of a sheet that already exists.)
    */
   SheetProperties properties;
 
@@ -916,6 +1006,48 @@ class AppendDimensionRequest {
     }
     if (sheetId != null) {
       _json["sheetId"] = sheetId;
+    }
+    return _json;
+  }
+}
+
+/** The response when updating a range of values in a spreadsheet. */
+class AppendValuesResponse {
+  /** The spreadsheet the updates were applied to. */
+  core.String spreadsheetId;
+  /**
+   * The range (in A1 notation) of the table that values are being appended to
+   * (before the values were appended).
+   * Empty if no table was found.
+   */
+  core.String tableRange;
+  /** Information about the updates that were applied. */
+  UpdateValuesResponse updates;
+
+  AppendValuesResponse();
+
+  AppendValuesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("spreadsheetId")) {
+      spreadsheetId = _json["spreadsheetId"];
+    }
+    if (_json.containsKey("tableRange")) {
+      tableRange = _json["tableRange"];
+    }
+    if (_json.containsKey("updates")) {
+      updates = new UpdateValuesResponse.fromJson(_json["updates"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (spreadsheetId != null) {
+      _json["spreadsheetId"] = spreadsheetId;
+    }
+    if (tableRange != null) {
+      _json["tableRange"] = tableRange;
+    }
+    if (updates != null) {
+      _json["updates"] = (updates).toJson();
     }
     return _json;
   }
@@ -6591,12 +6723,7 @@ class UpdateProtectedRangeRequest {
    * A single `"*"` can be used as short-hand for listing every field.
    */
   core.String fields;
-  /**
-   * The protected range to update with the new properties. If a nonzero
-   * protectedRangeId is
-   * specified, the protected range will use that ID. (It is an error to
-   * specify the ID of a protected range that already exists.)
-   */
+  /** The protected range to update with the new properties. */
   ProtectedRange protectedRange;
 
   UpdateProtectedRangeRequest();
@@ -6775,6 +6902,8 @@ class ValueRange {
    * The range the values cover, in A1 notation.
    * For output, this range indicates the entire requested range,
    * even though the values will exclude trailing rows and columns.
+   * When appending values, this field represents the range to search for a
+   * table, after which values will be appended.
    */
   core.String range;
   /**

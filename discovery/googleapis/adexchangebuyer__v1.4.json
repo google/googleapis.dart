@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/tKpytEjguJTF-o5VbDt6Z-bTBvE\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/OxFhwmXVMAvezu3DksziaPGZ_dY\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -576,7 +576,7 @@
                             "type": "string"
                         },
                         "proposalId": {
-                            "description": "The proposalId to get deals for. To search across proposals specify order_id = '-' as part of the URL.",
+                            "description": "The proposalId to get deals for. To search across all proposals specify order_id = '-' as part of the URL.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -654,8 +654,13 @@
                         "proposalId"
                     ],
                     "parameters": {
+                        "pqlQuery": {
+                            "description": "Query string to retrieve specific notes. To search the text contents of notes, please use syntax like \"WHERE note.note = \"foo\" or \"WHERE note.note LIKE \"%bar%\"",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "proposalId": {
-                            "description": "The proposalId to get notes for.",
+                            "description": "The proposalId to get notes for. To search across all proposals specify order_id = '-' as part of the URL.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1205,7 +1210,7 @@
             }
         }
     },
-    "revision": "20160606",
+    "revision": "20160721",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1631,6 +1636,13 @@
                     "description": "Top-level deals status. Read-only. This field should not be set in requests. If disapproved, an entry for auctionType=DIRECT_DEALS (or ALL) in servingRestrictions will also exist. Note that this may be nuanced with other contextual restrictions, in which case it may be preferable to read from servingRestrictions directly.",
                     "type": "string"
                 },
+                "detectedDomains": {
+                    "description": "Detected domains for this creative. Read-only. This field should not be set in requests.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "filteringReasons": {
                     "description": "The filtering reasons for the creative. Read-only. This field should not be set in requests.",
                     "properties": {
@@ -1948,6 +1960,9 @@
             "description": "Tracks which parties (if any) have paused a deal. The deal is considered paused if has_buyer_paused || has_seller_paused. Each of the has_buyer_paused or the has_seller_paused bits can be set independently.",
             "id": "DealServingMetadataDealPauseStatus",
             "properties": {
+                "buyerPauseReason": {
+                    "type": "string"
+                },
                 "firstPausedBy": {
                     "description": "If the deal is paused, records which party paused the deal first.",
                     "type": "string"
@@ -1957,6 +1972,9 @@
                 },
                 "hasSellerPaused": {
                     "type": "boolean"
+                },
+                "sellerPauseReason": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1993,6 +2011,10 @@
                     "$ref": "DealTermsNonGuaranteedFixedPriceTerms",
                     "description": "The terms for non-guaranteed fixed price deals."
                 },
+                "rubiconNonGuaranteedTerms": {
+                    "$ref": "DealTermsRubiconNonGuaranteedTerms",
+                    "description": "The terms for rubicon non-guaranteed deals."
+                },
                 "sellerTimeZone": {
                     "description": "For deals with Cost Per Day billing, defines the timezone used to mark the boundaries of a day (buyer-readonly)",
                     "type": "string"
@@ -2020,7 +2042,12 @@
                     "type": "string"
                 },
                 "guaranteedLooks": {
-                    "description": "Count of guaranteed looks. Required for deal, optional for product.",
+                    "description": "Count of guaranteed looks. Required for deal, optional for product. For CPD deals, buyer changes to guaranteed_looks will be ignored.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "minimumDailyLooks": {
+                    "description": "Count of minimum daily looks for a CPD deal. For CPD deals, buyer should negotiate on this field instead of guaranteed_looks.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -2041,7 +2068,7 @@
                     "type": "string"
                 },
                 "originalContractedQuantity": {
-                    "description": "The original contracted quantity (# impressions) for this deal. To ensure delivery, sometimes publisher will book the deal with a impression buffer, however clients are billed using the original contracted quantity.",
+                    "description": "The original contracted quantity (# impressions) for this deal. To ensure delivery, sometimes the publisher will book the deal with a impression buffer, such that guaranteed_looks is greater than the contracted quantity. However clients are billed using the original contracted quantity.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -2078,6 +2105,20 @@
                         "$ref": "PricePerBuyer"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "DealTermsRubiconNonGuaranteedTerms": {
+            "id": "DealTermsRubiconNonGuaranteedTerms",
+            "properties": {
+                "priorityPrice": {
+                    "$ref": "Price",
+                    "description": "Optional price for Rubicon priority access in the auction."
+                },
+                "standardPrice": {
+                    "$ref": "Price",
+                    "description": "Optional price for Rubicon standard access in the auction."
                 }
             },
             "type": "object"
@@ -2268,7 +2309,7 @@
             "id": "GetOrderNotesResponse",
             "properties": {
                 "notes": {
-                    "description": "The list of matching notes.",
+                    "description": "The list of matching notes. The notes for a proposal are ordered from oldest to newest. If the notes span multiple proposals, they will be grouped by proposal, with the notes for the most recently modified proposal appearing first.",
                     "items": {
                         "$ref": "MarketplaceNote"
                     },
@@ -2325,7 +2366,7 @@
                     "type": "string"
                 },
                 "dealId": {
-                    "description": "A unique deal=id for the deal (readonly).",
+                    "description": "A unique deal-id for the deal (readonly).",
                     "type": "string"
                 },
                 "dealServingMetadata": {
@@ -2886,6 +2927,11 @@
                     "description": "The currency code for the price.",
                     "type": "string"
                 },
+                "expectedCpmMicros": {
+                    "description": "In case of CPD deals, the expected CPM in micros.",
+                    "format": "double",
+                    "type": "number"
+                },
                 "pricingType": {
                     "description": "The pricing type for the deal/product.",
                     "type": "string"
@@ -3052,7 +3098,7 @@
                     "description": "Reference to the buyer on the proposal. (readonly, except on create)"
                 },
                 "buyerContacts": {
-                    "description": "Optional contact information fort the buyer. (seller-readonly)",
+                    "description": "Optional contact information of the buyer. (seller-readonly)",
                     "items": {
                         "$ref": "ContactInformation"
                     },
@@ -3063,7 +3109,7 @@
                     "description": "Private data for buyer. (hidden from seller)."
                 },
                 "hasBuyerSignedOff": {
-                    "description": "When an proposal is in an accepted state, indicates whether the buyer has signed off Once both sides have signed off on a deal, the proposal can be finalized by the seller. (seller-readonly)",
+                    "description": "When an proposal is in an accepted state, indicates whether the buyer has signed off. Once both sides have signed off on a deal, the proposal can be finalized by the seller. (seller-readonly)",
                     "type": "boolean"
                 },
                 "hasSellerSignedOff": {
@@ -3137,7 +3183,7 @@
                     "description": "Reference to the seller on the proposal. (readonly, except on create)"
                 },
                 "sellerContacts": {
-                    "description": "Optional contact information for the seller (buyer-readonly).",
+                    "description": "Optional contact information of the seller (buyer-readonly).",
                     "items": {
                         "$ref": "ContactInformation"
                     },

@@ -1030,6 +1030,11 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
    * The URI to which the IDP redirects the user after the federated login flow.
    */
   core.String continueUri;
+  /**
+   * The hosted domain to restrict sign-in to accounts at that domain for Google
+   * Apps hosted accounts.
+   */
+  core.String hostedDomain;
   /** The email or federated ID of the user. */
   core.String identifier;
   /** The developer's consumer key for OpenId OAuth Extension */
@@ -1068,6 +1073,9 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     if (_json.containsKey("continueUri")) {
       continueUri = _json["continueUri"];
     }
+    if (_json.containsKey("hostedDomain")) {
+      hostedDomain = _json["hostedDomain"];
+    }
     if (_json.containsKey("identifier")) {
       identifier = _json["identifier"];
     }
@@ -1101,6 +1109,9 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     }
     if (continueUri != null) {
       _json["continueUri"] = continueUri;
+    }
+    if (hostedDomain != null) {
+      _json["hostedDomain"] = hostedDomain;
     }
     if (identifier != null) {
       _json["identifier"] = identifier;
@@ -2982,6 +2993,8 @@ class VerifyAssertionResponse {
   core.String providerId;
   /** If idToken is STS id token, then this field will be refresh token. */
   core.String refreshToken;
+  /** The screen_name of a Twitter user. */
+  core.String screenName;
   /** The timezone of the user. */
   core.String timeZone;
   /**
@@ -3091,6 +3104,9 @@ class VerifyAssertionResponse {
     if (_json.containsKey("refreshToken")) {
       refreshToken = _json["refreshToken"];
     }
+    if (_json.containsKey("screenName")) {
+      screenName = _json["screenName"];
+    }
     if (_json.containsKey("timeZone")) {
       timeZone = _json["timeZone"];
     }
@@ -3199,6 +3215,9 @@ class VerifyAssertionResponse {
     }
     if (refreshToken != null) {
       _json["refreshToken"] = refreshToken;
+    }
+    if (screenName != null) {
+      _json["screenName"] = screenName;
     }
     if (timeZone != null) {
       _json["timeZone"] = timeZone;

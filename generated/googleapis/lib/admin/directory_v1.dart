@@ -6278,6 +6278,8 @@ class Member {
   core.String kind;
   /** Role of member */
   core.String role;
+  /** Status of member (Immutable) */
+  core.String status;
   /** Type of member (Immutable) */
   core.String type;
 
@@ -6298,6 +6300,9 @@ class Member {
     }
     if (_json.containsKey("role")) {
       role = _json["role"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -6320,6 +6325,9 @@ class Member {
     }
     if (role != null) {
       _json["role"] = role;
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     if (type != null) {
       _json["type"] = type;

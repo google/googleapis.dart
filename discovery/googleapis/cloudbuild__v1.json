@@ -314,7 +314,7 @@
             }
         }
     },
-    "revision": "20160714",
+    "revision": "20160804",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "schemas": {
         "Status": {
@@ -362,6 +362,10 @@
                 "storageSource": {
                     "$ref": "StorageSource",
                     "description": "If provided, get the source from this location in in Google Cloud\nStorage."
+                },
+                "repoSource": {
+                    "$ref": "RepoSource",
+                    "description": "If provided, get source from this location in a Cloud Repo."
                 }
             },
             "type": "object"
@@ -370,6 +374,14 @@
             "description": "Provenance of the source. Ways to find the original source, or verify that\nsome source was used for this build.",
             "id": "SourceProvenance",
             "properties": {
+                "resolvedRepoSource": {
+                    "$ref": "RepoSource",
+                    "description": "A copy of the build's source.repo_source, if exists, with any\nrevisions resolved."
+                },
+                "resolvedStorageSource": {
+                    "$ref": "StorageSource",
+                    "description": "A copy of the build's source.storage_source, if exists, with any\ngenerations resolved."
+                },
                 "fileHashes": {
                     "additionalProperties": {
                         "$ref": "FileHashes"
@@ -484,6 +496,13 @@
                         "$ref": "BuiltImage"
                     },
                     "type": "array"
+                },
+                "buildStepImages": {
+                    "description": "List of build step digests, in order corresponding to build step indices.\nnext id = 4",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -526,7 +545,7 @@
                         "Build failed to complete successfully.",
                         "Build failed due to an internal cause.",
                         "Build took longer than was allowed.",
-                        "Build was canceled by a user.\nnext_id = 9"
+                        "Build was canceled by a user."
                     ],
                     "type": "string"
                 },
@@ -625,23 +644,39 @@
             },
             "type": "object"
         },
+        "RepoSource": {
+            "description": "RepoSource describes the location of the source in a Google Cloud Source\nRepository.",
+            "id": "RepoSource",
+            "properties": {
+                "repoName": {
+                    "description": "Name of the repo. If omitted, the name \"default\" is assumed.",
+                    "type": "string"
+                },
+                "tagName": {
+                    "description": "Name of the tag to build.",
+                    "type": "string"
+                },
+                "projectId": {
+                    "description": "ID of the project that owns the repo. If omitted, the project ID requesting\nthe build is assumed.",
+                    "type": "string"
+                },
+                "branchName": {
+                    "description": "Name of the branch to build.",
+                    "type": "string"
+                },
+                "commitSha": {
+                    "description": "Explicit commit SHA to build.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "BuildStep": {
             "description": "BuildStep describes a step to perform in the build pipeline.",
             "id": "BuildStep",
             "properties": {
-                "args": {
-                    "description": "Command-line arguments to use when running this step's container.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "dir": {
-                    "description": "Working directory (relative to project source root) to use when running\nthis operation's container.",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "Name of the container image to use for creating this stage in the\npipeline, as presented to `docker pull`.",
+                "id": {
+                    "description": "Optional unique identifier for this build step, used in wait_for to\nreference this build step as a dependency.",
                     "type": "string"
                 },
                 "env": {
@@ -650,6 +685,28 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "waitFor": {
+                    "description": "The ID(s) of the step(s) that this build step depends on.\nThis build step will not start until all the build steps in wait_for\nhave completed successfully. If wait_for is empty, this build step will\nstart when all previous build steps in the Build.Steps list have completed\nsuccessfully.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "args": {
+                    "description": "Command-line arguments to use when running this step's container.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "Name of the container image to use for creating this stage in the\npipeline, as presented to `docker pull`.",
+                    "type": "string"
+                },
+                "dir": {
+                    "description": "Working directory (relative to project source root) to use when running\nthis operation's container.",
+                    "type": "string"
                 }
             },
             "type": "object"

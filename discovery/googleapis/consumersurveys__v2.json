@@ -20,7 +20,7 @@
     "canonicalName": "Consumer Surveys",
     "description": "Creates and conducts surveys, lists the surveys that an authenticated user owns, and retrieves survey results and information about specified surveys.",
     "discoveryVersion": "v1",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/UUFfqPW5Viffl9wMWtQNrKHUs5E\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/r9HedtrzUW2pbu5XQ5oErnzKmxQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -198,6 +198,30 @@
         },
         "surveys": {
             "methods": {
+                "delete": {
+                    "description": "Removes a survey from view in all user GET requests.",
+                    "httpMethod": "DELETE",
+                    "id": "consumersurveys.surveys.delete",
+                    "parameterOrder": [
+                        "surveyUrlId"
+                    ],
+                    "parameters": {
+                        "surveyUrlId": {
+                            "description": "External URL ID for the survey.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "surveys/{surveyUrlId}",
+                    "response": {
+                        "$ref": "SurveysDeleteResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/consumersurveys",
+                        "https://www.googleapis.com/auth/userinfo.email"
+                    ]
+                },
                 "get": {
                     "description": "Retrieves information about the specified survey.",
                     "httpMethod": "GET",
@@ -348,7 +372,7 @@
             }
         }
     },
-    "revision": "20160602",
+    "revision": "20160718",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "FieldMask": {
@@ -733,6 +757,16 @@
                 },
                 "surveyUrlId": {
                     "description": "External survey ID as viewable by survey owners in the editor view.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SurveysDeleteResponse": {
+            "id": "SurveysDeleteResponse",
+            "properties": {
+                "requestId": {
+                    "description": "Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests.",
                     "type": "string"
                 }
             },

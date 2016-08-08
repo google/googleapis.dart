@@ -4833,9 +4833,9 @@ class Season {
  */
 class SubscriptionDeferralInfo {
   /**
-   * The desired next expiry time for the subscription in milliseconds since
-   * Epoch. The given time must be after the current expiry time for the
-   * subscription.
+   * The desired next expiry time to assign to the subscription, in milliseconds
+   * since the Epoch. The given time must be later/greater than the current
+   * expiry time for the subscription.
    */
   core.String desiredExpiryTimeMillis;
   /**
@@ -4879,8 +4879,8 @@ class SubscriptionPurchase {
    */
   core.bool autoRenewing;
   /**
-   * The cancel reason of the subscription, if the subscription is not auto
-   * renewing. Possible values are:
+   * The reason why a subscription was cancelled or is not auto-renewing.
+   * Possible values are:
    * - User cancelled the subscription
    * - Subscription was cancelled by the system, for example because of a
    * billing problem
@@ -4897,7 +4897,8 @@ class SubscriptionPurchase {
    */
   core.String developerPayload;
   /**
-   * Time at which the subscription will expire, in milliseconds since Epoch.
+   * Time at which the subscription will expire, in milliseconds since the
+   * Epoch.
    */
   core.String expiryTimeMillis;
   /**
@@ -4913,9 +4914,9 @@ class SubscriptionPurchase {
   core.int paymentState;
   /**
    * Price of the subscription, not including tax. Price is expressed in
-   * micro-units, where 1,000,000 micro-units equal one unit of the currency.
-   * For example, if the subscription price is €1.99, price_amount_micros is
-   * 1990000.
+   * micro-units, where 1,000,000 micro-units represents one unit of the
+   * currency. For example, if the subscription price is €1.99,
+   * price_amount_micros is 1990000.
    */
   core.String priceAmountMicros;
   /**
@@ -4925,7 +4926,8 @@ class SubscriptionPurchase {
    */
   core.String priceCurrencyCode;
   /**
-   * Time at which the subscription was granted, in milliseconds since Epoch.
+   * Time at which the subscription was granted, in milliseconds since the
+   * Epoch.
    */
   core.String startTimeMillis;
 

@@ -430,7 +430,6 @@ class Build {
    * - "INTERNAL_ERROR" : Build failed due to an internal cause.
    * - "TIMEOUT" : Build took longer than was allowed.
    * - "CANCELLED" : Build was canceled by a user.
-   * next_id = 9
    */
   core.String status;
   /**
@@ -619,10 +618,23 @@ class BuildStep {
   /** Additional environment variables to set for this step's container. */
   core.List<core.String> env;
   /**
+   * Optional unique identifier for this build step, used in wait_for to
+   * reference this build step as a dependency.
+   */
+  core.String id;
+  /**
    * Name of the container image to use for creating this stage in the
    * pipeline, as presented to `docker pull`.
    */
   core.String name;
+  /**
+   * The ID(s) of the step(s) that this build step depends on.
+   * This build step will not start until all the build steps in wait_for
+   * have completed successfully. If wait_for is empty, this build step will
+   * start when all previous build steps in the Build.Steps list have completed
+   * successfully.
+   */
+  core.List<core.String> waitFor;
 
   BuildStep();
 
@@ -636,8 +648,14 @@ class BuildStep {
     if (_json.containsKey("env")) {
       env = _json["env"];
     }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("waitFor")) {
+      waitFor = _json["waitFor"];
     }
   }
 
@@ -652,8 +670,14 @@ class BuildStep {
     if (env != null) {
       _json["env"] = env;
     }
+    if (id != null) {
+      _json["id"] = id;
+    }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (waitFor != null) {
+      _json["waitFor"] = waitFor;
     }
     return _json;
   }
@@ -918,14 +942,82 @@ class Operation {
   }
 }
 
+/**
+ * RepoSource describes the location of the source in a Google Cloud Source
+ * Repository.
+ */
+class RepoSource {
+  /** Name of the branch to build. */
+  core.String branchName;
+  /** Explicit commit SHA to build. */
+  core.String commitSha;
+  /**
+   * ID of the project that owns the repo. If omitted, the project ID requesting
+   * the build is assumed.
+   */
+  core.String projectId;
+  /** Name of the repo. If omitted, the name "default" is assumed. */
+  core.String repoName;
+  /** Name of the tag to build. */
+  core.String tagName;
+
+  RepoSource();
+
+  RepoSource.fromJson(core.Map _json) {
+    if (_json.containsKey("branchName")) {
+      branchName = _json["branchName"];
+    }
+    if (_json.containsKey("commitSha")) {
+      commitSha = _json["commitSha"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("repoName")) {
+      repoName = _json["repoName"];
+    }
+    if (_json.containsKey("tagName")) {
+      tagName = _json["tagName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (branchName != null) {
+      _json["branchName"] = branchName;
+    }
+    if (commitSha != null) {
+      _json["commitSha"] = commitSha;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (repoName != null) {
+      _json["repoName"] = repoName;
+    }
+    if (tagName != null) {
+      _json["tagName"] = tagName;
+    }
+    return _json;
+  }
+}
+
 /** Results describes the artifacts created by the build pipeline. */
 class Results {
+  /**
+   * List of build step digests, in order corresponding to build step indices.
+   * next id = 4
+   */
+  core.List<core.String> buildStepImages;
   /** Images that were built as a part of the build. */
   core.List<BuiltImage> images;
 
   Results();
 
   Results.fromJson(core.Map _json) {
+    if (_json.containsKey("buildStepImages")) {
+      buildStepImages = _json["buildStepImages"];
+    }
     if (_json.containsKey("images")) {
       images = _json["images"].map((value) => new BuiltImage.fromJson(value)).toList();
     }
@@ -933,6 +1025,9 @@ class Results {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (buildStepImages != null) {
+      _json["buildStepImages"] = buildStepImages;
+    }
     if (images != null) {
       _json["images"] = images.map((value) => (value).toJson()).toList();
     }
@@ -945,6 +1040,8 @@ class Results {
  * service.
  */
 class Source {
+  /** If provided, get source from this location in a Cloud Repo. */
+  RepoSource repoSource;
   /**
    * If provided, get the source from this location in in Google Cloud
    * Storage.
@@ -954,6 +1051,9 @@ class Source {
   Source();
 
   Source.fromJson(core.Map _json) {
+    if (_json.containsKey("repoSource")) {
+      repoSource = new RepoSource.fromJson(_json["repoSource"]);
+    }
     if (_json.containsKey("storageSource")) {
       storageSource = new StorageSource.fromJson(_json["storageSource"]);
     }
@@ -961,6 +1061,9 @@ class Source {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (repoSource != null) {
+      _json["repoSource"] = (repoSource).toJson();
+    }
     if (storageSource != null) {
       _json["storageSource"] = (storageSource).toJson();
     }
@@ -986,6 +1089,16 @@ class SourceProvenance {
    * @OutputOnly
    */
   core.Map<core.String, FileHashes> fileHashes;
+  /**
+   * A copy of the build's source.repo_source, if exists, with any
+   * revisions resolved.
+   */
+  RepoSource resolvedRepoSource;
+  /**
+   * A copy of the build's source.storage_source, if exists, with any
+   * generations resolved.
+   */
+  StorageSource resolvedStorageSource;
 
   SourceProvenance();
 
@@ -993,12 +1106,24 @@ class SourceProvenance {
     if (_json.containsKey("fileHashes")) {
       fileHashes = commons.mapMap(_json["fileHashes"], (item) => new FileHashes.fromJson(item));
     }
+    if (_json.containsKey("resolvedRepoSource")) {
+      resolvedRepoSource = new RepoSource.fromJson(_json["resolvedRepoSource"]);
+    }
+    if (_json.containsKey("resolvedStorageSource")) {
+      resolvedStorageSource = new StorageSource.fromJson(_json["resolvedStorageSource"]);
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (fileHashes != null) {
       _json["fileHashes"] = commons.mapMap(fileHashes, (item) => (item).toJson());
+    }
+    if (resolvedRepoSource != null) {
+      _json["resolvedRepoSource"] = (resolvedRepoSource).toJson();
+    }
+    if (resolvedStorageSource != null) {
+      _json["resolvedStorageSource"] = (resolvedStorageSource).toJson();
     }
     return _json;
   }

@@ -17,8 +17,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client adexchangeseller/v1.1';
 
 /**
- * Gives Ad Exchange seller users access to their inventory and the ability to
- * generate reports
+ * Accesses the inventory of Ad Exchange seller users and generates reports.
  */
 class AdexchangesellerApi {
   /** View and manage your Ad Exchange data */

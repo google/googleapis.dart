@@ -16,8 +16,8 @@ const core.String USER_AGENT = 'dart-api-client clouderrorreporting/v1beta1';
 
 /**
  * Stackdriver Error Reporting groups and counts similar errors from cloud
- * services. The Stackdriver Error Reporting API provides read access to error
- * groups and their associated errors.
+ * services. The Stackdriver Error Reporting API provides a way to report new
+ * errors and read access to error groups and their associated errors.
  */
 class ClouderrorreportingApi {
   /** View and manage your data across Google Cloud Platform services */
@@ -1007,12 +1007,12 @@ class ReportedErrorEvent {
 class ServiceContext {
   /**
    * An identifier of the service, such as the name of the
-   * executable, job, or Google App Engine module name. This field is expected
+   * executable, job, or Google App Engine service name. This field is expected
    * to have a low number of values that are relatively stable over time, as
    * opposed to `version`, which can be changed whenever new code is deployed.
    *
-   * Contains the module name for error reports extracted from Google
-   * App Engine logs or `default` if the App Engine default module is used.
+   * Contains the service name for error reports extracted from Google
+   * App Engine logs or `default` if the App Engine default service is used.
    */
   core.String service;
   /**

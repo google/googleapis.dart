@@ -88,7 +88,7 @@ Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Error Reporting API - clouderrorreporting v1beta1
 
-Stackdriver Error Reporting groups and counts similar errors from cloud services. The Stackdriver Error Reporting API provides read access to error groups and their associated errors.
+Stackdriver Error Reporting groups and counts similar errors from cloud services. The Stackdriver Error Reporting API provides a way to report new errors and read access to error groups and their associated errors.
 
 
 Official API documentation: https://cloud.google.com/error-reporting/
@@ -154,6 +154,12 @@ Provides access to Genomics data.
 
 Official API documentation: https://developers.google.com/genomics/v1beta2/reference
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Natural Language API - language v1beta1
+
+Google Cloud Natural Language API provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, and text annotations.
+
+Official API documentation: https://cloud.google.com/natural-language/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v2beta1
 
 Writes log entries and manages your logs, log sinks, and logs-based metrics.
@@ -202,6 +208,12 @@ Provides capabilities for dynamic configuration and coordination for application
 
 
 Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Speech API - speech v1beta1
+
+Google Cloud Speech API.
+
+Official API documentation: https://cloud.google.com/speech/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud SQL Administration API - sqladmin v1beta3
 

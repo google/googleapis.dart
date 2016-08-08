@@ -1,3 +1,13 @@
+## 0.30.0
+
+* [api-new] language:v1beta1
+* [api-new] speech:v1beta1
+* [api] appengine:v1beta4: schema changes
+* [api] appengine:v1beta5: schema changes
+* [api] dataflow:v1b3: new resources, schema changes
+* [api] runtimeconfig:v1beta1: schema changes
+* [api-breaking] adexchangebuyer2:v2beta1: methods removed
+
 ## 0.29.0
 
 * [api] adexchangebuyer2:v2beta1: new resource

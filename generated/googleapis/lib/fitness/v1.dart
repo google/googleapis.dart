@@ -36,6 +36,12 @@ class FitnessApi {
   /** View and store your location data in Google Fit */
   static const FitnessLocationWriteScope = "https://www.googleapis.com/auth/fitness.location.write";
 
+  /** View nutrition information in Google Fit */
+  static const FitnessNutritionReadScope = "https://www.googleapis.com/auth/fitness.nutrition.read";
+
+  /** View and store nutrition information in Google Fit */
+  static const FitnessNutritionWriteScope = "https://www.googleapis.com/auth/fitness.nutrition.write";
+
 
   final commons.ApiRequester _requester;
 
@@ -468,8 +474,8 @@ class UsersDataSourcesDatasetsResourceApi {
    * startTime and endTime are 64 bit integers.
    *
    * [limit] - If specified, no more than this many data points will be included
-   * in the dataset. If the there are more data points in the dataset,
-   * nextPageToken will be set in the dataset response.
+   * in the dataset. If there are more data points in the dataset, nextPageToken
+   * will be set in the dataset response.
    *
    * [pageToken] - The continuation token, which is used to page through large
    * datasets. To get the next page of a dataset, set this parameter to the
@@ -988,6 +994,12 @@ class AggregateRequest {
    */
   core.String endTimeMillis;
   /**
+   * A list of acceptable data quality standards. Only data points which conform
+   * to at least one of the specified data quality standards will be returned.
+   * If the list is empty, all data points are returned.
+   */
+  core.List<core.String> filteredDataQualityStandard;
+  /**
    * The start of a window of time. Data that intersects with this time window
    * will be aggregated. The time is in milliseconds since epoch, inclusive.
    */
@@ -1014,6 +1026,9 @@ class AggregateRequest {
     if (_json.containsKey("endTimeMillis")) {
       endTimeMillis = _json["endTimeMillis"];
     }
+    if (_json.containsKey("filteredDataQualityStandard")) {
+      filteredDataQualityStandard = _json["filteredDataQualityStandard"];
+    }
     if (_json.containsKey("startTimeMillis")) {
       startTimeMillis = _json["startTimeMillis"];
     }
@@ -1038,6 +1053,9 @@ class AggregateRequest {
     }
     if (endTimeMillis != null) {
       _json["endTimeMillis"] = endTimeMillis;
+    }
+    if (filteredDataQualityStandard != null) {
+      _json["filteredDataQualityStandard"] = filteredDataQualityStandard;
     }
     if (startTimeMillis != null) {
       _json["startTimeMillis"] = startTimeMillis;
@@ -1710,6 +1728,7 @@ class Device {
    * A constant representing the type of the device.
    * Possible string values are:
    * - "chestStrap"
+   * - "headMounted"
    * - "phone"
    * - "scale"
    * - "tablet"

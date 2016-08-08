@@ -6347,7 +6347,7 @@ class OrderCancellation {
   core.int quantity;
   /**
    * The reason for the cancellation. Orders that are cancelled with a
-   * noIventory reason will lead to the removal of the product from POG until
+   * noInventory reason will lead to the removal of the product from POG until
    * you make an update to that product. This will not affect your Shopping ads.
    */
   core.String reason;

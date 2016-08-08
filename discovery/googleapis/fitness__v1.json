@@ -19,6 +19,12 @@
                 },
                 "https://www.googleapis.com/auth/fitness.location.write": {
                     "description": "View and store your location data in Google Fit"
+                },
+                "https://www.googleapis.com/auth/fitness.nutrition.read": {
+                    "description": "View nutrition information in Google Fit"
+                },
+                "https://www.googleapis.com/auth/fitness.nutrition.write": {
+                    "description": "View and store nutrition information in Google Fit"
                 }
             }
         }
@@ -29,7 +35,7 @@
     "description": "Stores and accesses user data in the fitness store from apps on any platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fit/rest/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/l7rO6CbXZHG1D23xOowyyvnzSns\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/C_efOoRNuMwDVzh1-1r-3k_wkJo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -115,7 +121,8 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/fitness.activity.write",
                                 "https://www.googleapis.com/auth/fitness.body.write",
-                                "https://www.googleapis.com/auth/fitness.location.write"
+                                "https://www.googleapis.com/auth/fitness.location.write",
+                                "https://www.googleapis.com/auth/fitness.nutrition.write"
                             ]
                         },
                         "delete": {
@@ -147,7 +154,8 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/fitness.activity.write",
                                 "https://www.googleapis.com/auth/fitness.body.write",
-                                "https://www.googleapis.com/auth/fitness.location.write"
+                                "https://www.googleapis.com/auth/fitness.location.write",
+                                "https://www.googleapis.com/auth/fitness.nutrition.write"
                             ]
                         },
                         "get": {
@@ -182,7 +190,9 @@
                                 "https://www.googleapis.com/auth/fitness.body.read",
                                 "https://www.googleapis.com/auth/fitness.body.write",
                                 "https://www.googleapis.com/auth/fitness.location.read",
-                                "https://www.googleapis.com/auth/fitness.location.write"
+                                "https://www.googleapis.com/auth/fitness.location.write",
+                                "https://www.googleapis.com/auth/fitness.nutrition.read",
+                                "https://www.googleapis.com/auth/fitness.nutrition.write"
                             ]
                         },
                         "list": {
@@ -216,7 +226,9 @@
                                 "https://www.googleapis.com/auth/fitness.body.read",
                                 "https://www.googleapis.com/auth/fitness.body.write",
                                 "https://www.googleapis.com/auth/fitness.location.read",
-                                "https://www.googleapis.com/auth/fitness.location.write"
+                                "https://www.googleapis.com/auth/fitness.location.write",
+                                "https://www.googleapis.com/auth/fitness.nutrition.read",
+                                "https://www.googleapis.com/auth/fitness.nutrition.write"
                             ]
                         },
                         "patch": {
@@ -251,7 +263,8 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/fitness.activity.write",
                                 "https://www.googleapis.com/auth/fitness.body.write",
-                                "https://www.googleapis.com/auth/fitness.location.write"
+                                "https://www.googleapis.com/auth/fitness.location.write",
+                                "https://www.googleapis.com/auth/fitness.nutrition.write"
                             ]
                         },
                         "update": {
@@ -286,7 +299,8 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/fitness.activity.write",
                                 "https://www.googleapis.com/auth/fitness.body.write",
-                                "https://www.googleapis.com/auth/fitness.location.write"
+                                "https://www.googleapis.com/auth/fitness.location.write",
+                                "https://www.googleapis.com/auth/fitness.nutrition.write"
                             ]
                         }
                     },
@@ -338,7 +352,8 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/fitness.activity.write",
                                         "https://www.googleapis.com/auth/fitness.body.write",
-                                        "https://www.googleapis.com/auth/fitness.location.write"
+                                        "https://www.googleapis.com/auth/fitness.location.write",
+                                        "https://www.googleapis.com/auth/fitness.nutrition.write"
                                     ]
                                 },
                                 "get": {
@@ -364,7 +379,7 @@
                                             "type": "string"
                                         },
                                         "limit": {
-                                            "description": "If specified, no more than this many data points will be included in the dataset. If the there are more data points in the dataset, nextPageToken will be set in the dataset response.",
+                                            "description": "If specified, no more than this many data points will be included in the dataset. If there are more data points in the dataset, nextPageToken will be set in the dataset response.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
@@ -391,7 +406,9 @@
                                         "https://www.googleapis.com/auth/fitness.body.read",
                                         "https://www.googleapis.com/auth/fitness.body.write",
                                         "https://www.googleapis.com/auth/fitness.location.read",
-                                        "https://www.googleapis.com/auth/fitness.location.write"
+                                        "https://www.googleapis.com/auth/fitness.location.write",
+                                        "https://www.googleapis.com/auth/fitness.nutrition.read",
+                                        "https://www.googleapis.com/auth/fitness.nutrition.write"
                                     ]
                                 },
                                 "patch": {
@@ -439,7 +456,8 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/fitness.activity.write",
                                         "https://www.googleapis.com/auth/fitness.body.write",
-                                        "https://www.googleapis.com/auth/fitness.location.write"
+                                        "https://www.googleapis.com/auth/fitness.location.write",
+                                        "https://www.googleapis.com/auth/fitness.nutrition.write"
                                     ]
                                 }
                             }
@@ -476,7 +494,9 @@
                                 "https://www.googleapis.com/auth/fitness.body.read",
                                 "https://www.googleapis.com/auth/fitness.body.write",
                                 "https://www.googleapis.com/auth/fitness.location.read",
-                                "https://www.googleapis.com/auth/fitness.location.write"
+                                "https://www.googleapis.com/auth/fitness.location.write",
+                                "https://www.googleapis.com/auth/fitness.nutrition.read",
+                                "https://www.googleapis.com/auth/fitness.nutrition.write"
                             ]
                         }
                     }
@@ -561,7 +581,9 @@
                                 "https://www.googleapis.com/auth/fitness.body.read",
                                 "https://www.googleapis.com/auth/fitness.body.write",
                                 "https://www.googleapis.com/auth/fitness.location.read",
-                                "https://www.googleapis.com/auth/fitness.location.write"
+                                "https://www.googleapis.com/auth/fitness.location.write",
+                                "https://www.googleapis.com/auth/fitness.nutrition.read",
+                                "https://www.googleapis.com/auth/fitness.nutrition.write"
                             ]
                         },
                         "update": {
@@ -608,7 +630,7 @@
             }
         }
     },
-    "revision": "20160609",
+    "revision": "20160801",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AggregateBucket": {
@@ -716,6 +738,37 @@
                     "description": "The end of a window of time. Data that intersects with this time window will be aggregated. The time is in milliseconds since epoch, inclusive.",
                     "format": "int64",
                     "type": "string"
+                },
+                "filteredDataQualityStandard": {
+                    "description": "A list of acceptable data quality standards. Only data points which conform to at least one of the specified data quality standards will be returned. If the list is empty, all data points are returned.",
+                    "items": {
+                        "enum": [
+                            "dataQualityBloodGlucoseIso151972003",
+                            "dataQualityBloodGlucoseIso151972013",
+                            "dataQualityBloodPressureAami",
+                            "dataQualityBloodPressureBhsAA",
+                            "dataQualityBloodPressureBhsAB",
+                            "dataQualityBloodPressureBhsBA",
+                            "dataQualityBloodPressureBhsBB",
+                            "dataQualityBloodPressureEsh2002",
+                            "dataQualityBloodPressureEsh2010",
+                            "dataQualityUnknown"
+                        ],
+                        "enumDescriptions": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "startTimeMillis": {
                     "annotations": {
@@ -925,10 +978,26 @@
                     "description": "",
                     "items": {
                         "enum": [
+                            "dataQualityBloodGlucoseIso151972003",
+                            "dataQualityBloodGlucoseIso151972013",
+                            "dataQualityBloodPressureAami",
+                            "dataQualityBloodPressureBhsAA",
+                            "dataQualityBloodPressureBhsAB",
+                            "dataQualityBloodPressureBhsBA",
+                            "dataQualityBloodPressureBhsBB",
                             "dataQualityBloodPressureEsh2002",
+                            "dataQualityBloodPressureEsh2010",
                             "dataQualityUnknown"
                         ],
                         "enumDescriptions": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
                             "",
                             ""
                         ],
@@ -1158,6 +1227,7 @@
                     "description": "A constant representing the type of the device.",
                     "enum": [
                         "chestStrap",
+                        "headMounted",
                         "phone",
                         "scale",
                         "tablet",
@@ -1165,6 +1235,7 @@
                         "watch"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",

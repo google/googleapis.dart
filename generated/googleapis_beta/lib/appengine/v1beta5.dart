@@ -87,8 +87,8 @@ class AppsResourceApi {
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the application to get. For example:
-   * "apps/myapp".
+   * [appsId] - Part of `name`. Name of the application to get. Example:
+   * `apps/myapp`.
    *
    * [ensureResourcesExist] - Certain resources associated with an application
    * are created on-demand. Controls whether these resources should be created
@@ -364,12 +364,12 @@ class AppsServicesResourceApi {
       _requester = client;
 
   /**
-   * Deletes a service and all enclosed versions.
+   * Deletes the specified service and all enclosed versions.
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/services/default".
+   * [appsId] - Part of `name`. Name of the resource requested. Example:
+   * `apps/myapp/services/default`.
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -409,12 +409,12 @@ class AppsServicesResourceApi {
   }
 
   /**
-   * Gets the current configuration of the service.
+   * Gets the current configuration of the specified service.
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/services/default".
+   * [appsId] - Part of `name`. Name of the resource requested. Example:
+   * `apps/myapp/services/default`.
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -458,8 +458,8 @@ class AppsServicesResourceApi {
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp".
+   * [appsId] - Part of `name`. Name of the resource requested. Example:
+   * `apps/myapp`.
    *
    * [pageSize] - Maximum results to return per page.
    *
@@ -510,16 +510,26 @@ class AppsServicesResourceApi {
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the resource to update. For example:
-   * "apps/myapp/services/default".
+   * [appsId] - Part of `name`. Name of the resource to update. Example:
+   * `apps/myapp/services/default`.
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
    * [mask] - Standard field mask for the set of fields to be updated.
    *
-   * [migrateTraffic] - Whether to use Traffic Migration to shift traffic
-   * gradually. Traffic can only be migrated from a single version to another
-   * single version.
+   * [migrateTraffic] - Set to `true` to gradually shift traffic from one
+   * version to another single version. By default, traffic is shifted
+   * immediately. For gradual traffic migration, the target version must be
+   * located within instances that are configured for both [warmup
+   * requests](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#inboundservicetype)
+   * and [automatic
+   * scaling](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#automaticscaling).
+   * You must specify the
+   * [`shardBy`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services#shardby)
+   * field in the Service resource. Gradual traffic migration is not supported
+   * in the App Engine flexible environment. For examples, see [Migrating and
+   * Splitting
+   * Traffic](https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
    *
    * Completes with a [Operation].
    *
@@ -577,7 +587,7 @@ class AppsServicesVersionsResourceApi {
       _requester = client;
 
   /**
-   * Deploys new code and resource files to a version.
+   * Deploys new code and resource files to a new version.
    *
    * [request] - The metadata request object.
    *
@@ -631,8 +641,8 @@ class AppsServicesVersionsResourceApi {
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/services/default/versions/v1".
+   * [appsId] - Part of `name`. Name of the resource requested. Example:
+   * `apps/myapp/services/default/versions/v1`.
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -677,12 +687,13 @@ class AppsServicesVersionsResourceApi {
   }
 
   /**
-   * Gets application deployment information.
+   * Gets the specified Version resource. By default, only a `BASIC_VIEW` will
+   * be returned. Specify the `FULL_VIEW` parameter to get the full resource.
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/services/default/versions/v1".
+   * [appsId] - Part of `name`. Name of the resource requested. Example:
+   * `apps/myapp/services/default/versions/v1`.
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -739,8 +750,8 @@ class AppsServicesVersionsResourceApi {
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/services/default".
+   * [appsId] - Part of `name`. Name of the resource requested. Example:
+   * `apps/myapp/services/default`.
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -801,15 +812,15 @@ class AppsServicesVersionsResourceApi {
    * Updates the specified Version resource. You can specify the following
    * fields depending on the App Engine environment and type of scaling that the
    * version resource uses: *
-   * [`serving_status`](/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.serving_status):
+   * [`serving_status`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.serving_status):
    * For Version resources that use basic scaling, manual scaling, or run in the
    * App Engine flexible environment. *
-   * [`instance_class`](/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.instance_class):
+   * [`instance_class`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.instance_class):
    * For Version resources that run in the App Engine standard environment. *
-   * [`automatic_scaling.min_idle_instances`](/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.automatic_scaling):
+   * [`automatic_scaling.min_idle_instances`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.automatic_scaling):
    * For Version resources that use automatic scaling and run in the App Engine
    * standard environment. *
-   * [`automatic_scaling.max_idle_instances`](/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.automatic_scaling):
+   * [`automatic_scaling.max_idle_instances`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.automatic_scaling):
    * For Version resources that use automatic scaling and run in the App Engine
    * standard environment.
    *
@@ -817,8 +828,8 @@ class AppsServicesVersionsResourceApi {
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the resource to update. For example:
-   * "apps/myapp/services/default/versions/1".
+   * [appsId] - Part of `name`. Name of the resource to update. Example:
+   * `apps/myapp/services/default/versions/1`.
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -880,17 +891,19 @@ class AppsServicesVersionsInstancesResourceApi {
       _requester = client;
 
   /**
-   * Enable debugging of this VM instance. This call allows you to SSH to the
-   * VM. While the VM is in debug mode, it continues to serve live traffic.
-   * After you're done debugging an instance, delete the instance; the system
-   * creates a new instance when needed. You can't debug a non-VM instance.
+   * Enables debugging on a VM instance. This allows you to use the SSH command
+   * to connect to the virtual machine where the instance lives. While in "debug
+   * mode", the instance continues to serve live traffic. You should delete the
+   * instance when you are done debugging and then allow the system to take over
+   * and determine if another instance should be started. Only applicable for
+   * instances in App Engine flexible environment.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/services/default/versions/v1/instances/instance-1".
+   * [appsId] - Part of `name`. Name of the resource requested. Example:
+   * `apps/myapp/services/default/versions/v1/instances/instance-1`.
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -1002,8 +1015,8 @@ class AppsServicesVersionsInstancesResourceApi {
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/services/default/versions/v1/instances/instance-1".
+   * [appsId] - Part of `name`. Name of the resource requested. Example:
+   * `apps/myapp/services/default/versions/v1/instances/instance-1`.
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -1057,8 +1070,8 @@ class AppsServicesVersionsInstancesResourceApi {
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the resource requested. For example:
-   * "apps/myapp/services/default/versions/v1".
+   * [appsId] - Part of `name`. Name of the resource requested. Example:
+   * `apps/myapp/services/default/versions/v1`.
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -1116,11 +1129,15 @@ class AppsServicesVersionsInstancesResourceApi {
 
 
 
-/** API Serving configuration for Cloud Endpoints. */
+/**
+ * [Google Cloud
+ * Endpoints](https://cloud.google.com/appengine/docs/python/endpoints/)
+ * configuration for API handlers.
+ */
 class ApiConfigHandler {
   /**
-   * For users not logged in, how to handle access to resources with required
-   * login. Defaults to "redirect".
+   * Action to take when users access resources that require authentication.
+   * Defaults to `redirect`.
    * Possible string values are:
    * - "AUTH_FAIL_ACTION_UNSPECIFIED" : A AUTH_FAIL_ACTION_UNSPECIFIED.
    * - "AUTH_FAIL_ACTION_REDIRECT" : A AUTH_FAIL_ACTION_REDIRECT.
@@ -1128,8 +1145,7 @@ class ApiConfigHandler {
    */
   core.String authFailAction;
   /**
-   * What level of login is required to access this resource. Default is
-   * "optional".
+   * Level of login required to access this resource. Defaults to `optional`.
    * Possible string values are:
    * - "LOGIN_UNSPECIFIED" : A LOGIN_UNSPECIFIED.
    * - "LOGIN_OPTIONAL" : A LOGIN_OPTIONAL.
@@ -1137,10 +1153,10 @@ class ApiConfigHandler {
    * - "LOGIN_REQUIRED" : A LOGIN_REQUIRED.
    */
   core.String login;
-  /** Specifies the path to the script from the application root directory. */
+  /** Path to the script from the application root directory. */
   core.String script;
   /**
-   * Configures whether security (HTTPS) should be enforced for this URL.
+   * Security (HTTPS) enforcement for this URL.
    * Possible string values are:
    * - "SECURE_UNSPECIFIED" : A SECURE_UNSPECIFIED.
    * - "SECURE_DEFAULT" : A SECURE_DEFAULT.
@@ -1193,9 +1209,9 @@ class ApiConfigHandler {
   }
 }
 
-/** Use Google Cloud Endpoints to handle requests. */
+/** Uses Google Cloud Endpoints to handle requests. */
 class ApiEndpointHandler {
-  /** Specifies the path to the script from the application root directory. */
+  /** Path to the script from the application root directory. */
   core.String scriptPath;
 
   ApiEndpointHandler();
@@ -1216,58 +1232,56 @@ class ApiEndpointHandler {
 }
 
 /**
- * An Application contains the top-level configuration of an App Engine
+ * An Application resource contains the top-level configuration of an App Engine
  * application.
  */
 class Application {
   /**
-   * If set, only users from the specified Google Apps authentication domain may
-   * access the application. If not set, any Google Account may access the
-   * application.
+   * Google Apps authentication domain that controls which users can access this
+   * application. Defaults to open access for any Google Account.
    */
   core.String authDomain;
   /**
-   * A Google Cloud Storage bucket which can be used for storing files
-   * associated with an application. This bucket is associated with the
-   * application and can be used by the gcloud deployment commands. @OutputOnly
+   * A Google Cloud Storage bucket that can be used for storing files associated
+   * with this application. This bucket is associated with the application and
+   * can be used by the gcloud deployment commands. @OutputOnly
    */
   core.String codeBucket;
   /**
-   * A Google Cloud Storage bucket which can be used by the application to store
+   * A Google Cloud Storage bucket that can be used by the application to store
    * content. @OutputOnly
    */
   core.String defaultBucket;
-  /**
-   * Determines the cookie expiration policy for the application. @OutputOnly
-   */
+  /** Cookie expiration policy for this application. @OutputOnly */
   core.String defaultCookieExpiration;
   /**
-   * The hostname used to reach the application, as resolved by App Engine.
+   * Hostname used to reach the application, as resolved by App Engine.
    * @OutputOnly
    */
   core.String defaultHostname;
   /**
-   * HTTP path dispatch rules for requests to the app that do not explicitly
-   * target a service or version. The rules are order-dependent. @OutputOnly
+   * HTTP path dispatch rules for requests to the application that do not
+   * explicitly target a service or version. Rules are order-dependent.
+   * @OutputOnly
    */
   core.List<UrlDispatchRule> dispatchRules;
   /**
-   * The identifier of the Application resource. This identifier is equivalent
-   * to the project ID of the Google Cloud Platform project where you want to
-   * deploy your application. Example: "myapp".
+   * Identifier of the Application resource. This identifier is equivalent to
+   * the project ID of the Google Cloud Platform project where you want to
+   * deploy your application. Example: `myapp`.
    */
   core.String id;
   /**
-   * The location from which the application will be run. Application instances
-   * will run out of data centers in the chosen location and all of the
-   * application's End User Content will be stored at rest. The default is
-   * "us-central". Choices are: "us-central" - Central US "europe-west" -
-   * Western Europe "us-east1" - Eastern US
+   * Location from which this application will be run. Application instances
+   * will run out of data centers in the chosen location, which is also where
+   * all of the application's end user content is stored. Defaults to
+   * `us-central`. Options are: `us-central` - Central US `europe-west` -
+   * Western Europe `us-east1` - Eastern US
    */
   core.String location;
   /**
-   * The full path to the Application resource in the API. Example:
-   * "apps/myapp". @OutputOnly
+   * Full path to the Application resource in the API. Example: `apps/myapp`.
+   * @OutputOnly
    */
   core.String name;
 
@@ -1337,16 +1351,15 @@ class Application {
 }
 
 /**
- * Automatic scaling is the scaling policy that App Engine has used since its
- * inception. It is based on request rate, response latencies, and other
+ * Automatic scaling is based on request rate, response latencies, and other
  * application metrics.
  */
 class AutomaticScaling {
   /**
-   * The amount of time that the
+   * Amount of time that the
    * [Autoscaler](https://cloud.google.com/compute/docs/autoscaler/) should wait
-   * between changes to the number of virtual machines. Applies only to the VM
-   * runtime.
+   * between changes to the number of virtual machines. Only applicable for VM
+   * runtimes.
    */
   core.String coolDownPeriod;
   /** Target scaling by CPU usage. */
@@ -1354,37 +1367,36 @@ class AutomaticScaling {
   /** Target scaling by disk usage. */
   DiskUtilization diskUtilization;
   /**
-   * The number of concurrent requests an automatic scaling instance can accept
-   * before the scheduler spawns a new instance. Default value is chosen based
-   * on the runtime.
+   * Number of concurrent requests an automatic scaling instance can accept
+   * before the scheduler spawns a new instance. Defaults to a runtime-specific
+   * value.
    */
   core.int maxConcurrentRequests;
   /**
-   * The maximum number of idle instances that App Engine should maintain for
-   * this version.
+   * Maximum number of idle instances that should be maintained for this
+   * version.
    */
   core.int maxIdleInstances;
   /**
-   * The maximum amount of time that App Engine should allow a request to wait
-   * in the pending queue before starting a new instance to handle it.
+   * Maximum amount of time that a request should wait in the pending queue
+   * before starting a new instance to handle it.
    */
   core.String maxPendingLatency;
-  /**
-   * Max number of instances that App Engine should start to handle requests.
-   */
+  /** Maximum number of instances that should be started to handle requests. */
   core.int maxTotalInstances;
   /**
-   * The minimum number of idle instances that App Engine should maintain for
-   * this version. Only applies to the default version of a service, since other
-   * versions are not expected to receive significant traffic.
+   * Minimum number of idle instances that should be maintained for this
+   * version. Only applicable for the default version of a module.
    */
   core.int minIdleInstances;
   /**
-   * The minimum amount of time that App Engine should allow a request to wait
-   * in the pending queue before starting a new instance to handle it.
+   * Minimum amount of time a request should wait in the pending queue before
+   * starting a new instance to handle it.
    */
   core.String minPendingLatency;
-  /** Minimum number of instances that App Engine should maintain. */
+  /**
+   * Minimum number of instances that should be maintained for this version.
+   */
   core.int minTotalInstances;
   /** Target scaling by network usage. */
   NetworkUtilization networkUtilization;
@@ -1482,13 +1494,11 @@ class AutomaticScaling {
  */
 class BasicScaling {
   /**
-   * The instance will be shut down this amount of time after receiving its last
-   * request.
+   * Duration of time after the last request that an instance must wait before
+   * the instance is shut down.
    */
   core.String idleTimeout;
-  /**
-   * The maximum number of instances for App Engine to create for this version.
-   */
+  /** Maximum number of instances to create for this version. */
   core.int maxInstances;
 
   BasicScaling();
@@ -1515,13 +1525,13 @@ class BasicScaling {
 }
 
 /**
- * A Docker (container) image which should be used to start the application.
+ * Docker image that is used to start a VM container for the version you deploy.
  */
 class ContainerInfo {
   /**
-   * Reference to a hosted container image. Must be a URI to a resource in a
-   * Docker repository. Must be fully qualified, including tag or digest. e.g.
-   * gcr.io/my-project/image:tag or gcr.io/my-project/image@digest
+   * URI to the hosted container image in a Docker repository. The URI must be
+   * fully qualified and include a tag or digest. Examples:
+   * "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
    */
   core.String image;
 
@@ -1544,9 +1554,12 @@ class ContainerInfo {
 
 /** Target scaling by CPU usage. */
 class CpuUtilization {
-  /** The period of time over which CPU utilization is calculated. */
+  /** Period of time over which CPU utilization is calculated. */
   core.String aggregationWindowLength;
-  /** Target (0-1) CPU utilization ratio to maintain when scaling. */
+  /**
+   * Target CPU utilization ratio to maintain when scaling. Must be between 0
+   * and 1.
+   */
   core.double targetUtilization;
 
   CpuUtilization();
@@ -1589,20 +1602,20 @@ class DebugInstanceRequest {
 /** Code and application artifacts used to deploy a version to App Engine. */
 class Deployment {
   /**
-   * If supplied, a docker (container) image which should be used to start the
-   * application. Only applicable to the 'vm' runtime.
+   * A Docker image that App Engine uses the run the version. Only applicable
+   * for instances in App Engine flexible environment.
    */
   ContainerInfo container;
   /**
-   * A manifest of files stored in Google Cloud Storage which should be included
-   * as part of this application. All files must be readable using the
-   * credentials supplied with this call.
+   * Manifest of the files stored in Google Cloud Storage that are included as
+   * part of this version. All files must be readable using the credentials
+   * supplied with this call.
    */
   core.Map<core.String, FileInfo> files;
   /**
-   * The origin of the source code for this deployment. There can be more than
-   * one source reference per Version if source code is distributed among
-   * multiple repositories.
+   * Origin of the source code for this deployment. There can be more than one
+   * source reference per version if source code is distributed among multiple
+   * repositories.
    */
   core.List<SourceReference> sourceReferences;
 
@@ -1635,15 +1648,15 @@ class Deployment {
   }
 }
 
-/** Target scaling by disk usage (for VM runtimes only). */
+/** Target scaling by disk usage. Only applicable for VM runtimes. */
 class DiskUtilization {
-  /** Target bytes per second read. */
+  /** Target bytes read per second. */
   core.int targetReadBytesPerSec;
-  /** Target ops per second read. */
+  /** Target ops read per second. */
   core.int targetReadOpsPerSec;
-  /** Target bytes per second written. */
+  /** Target bytes written per second. */
   core.int targetWriteBytesPerSec;
-  /** Target ops per second written. */
+  /** Target ops written per second. */
   core.int targetWriteOpsPerSec;
 
   DiskUtilization();
@@ -1681,10 +1694,10 @@ class DiskUtilization {
   }
 }
 
-/** A custom static error page to be served when an error occurs. */
+/** Custom static error page to be served when an error occurs. */
 class ErrorHandler {
   /**
-   * The error condition this handler applies to.
+   * Error condition this handler applies to.
    * Possible string values are:
    * - "ERROR_CODE_UNSPECIFIED" : A ERROR_CODE_UNSPECIFIED.
    * - "ERROR_CODE_DEFAULT" : A ERROR_CODE_DEFAULT.
@@ -1693,7 +1706,7 @@ class ErrorHandler {
    * - "ERROR_CODE_TIMEOUT" : A ERROR_CODE_TIMEOUT.
    */
   core.String errorCode;
-  /** MIME type of file. If unspecified, "text/html" is assumed. */
+  /** MIME type of file. Defaults to `text/html`. */
   core.String mimeType;
   /** Static file content to be served for this error. */
   core.String staticFile;
@@ -1727,18 +1740,20 @@ class ErrorHandler {
   }
 }
 
-/** A single source file which is part of the application to be deployed. */
+/**
+ * Single source file that is part of the version to be deployed. Each source
+ * file that is deployed must be specified separately.
+ */
 class FileInfo {
   /**
-   * The MIME type of the file; if unspecified, the value from Google Cloud
-   * Storage will be used.
+   * The MIME type of the file. Defaults to the value from Google Cloud Storage.
    */
   core.String mimeType;
-  /** The SHA1 (160 bits) hash of the file in hex. */
+  /** The SHA1 hash of the file, in hex. */
   core.String sha1Sum;
   /**
-   * The URL source to use to fetch this file. Must be a URL to a resource in
-   * Google Cloud Storage in the form 'http(s)://storage.googleapis.com/\/\'.
+   * URL source to use to fetch this file. Must be a URL to a resource in Google
+   * Cloud Storage in the form 'http(s)://storage.googleapis.com/\/\'.
    */
   core.String sourceUrl;
 
@@ -1772,33 +1787,35 @@ class FileInfo {
 }
 
 /**
- * Configure health checking for the VM instances. Unhealthy VM instances will
- * be killed and replaced with new instances.
+ * Health checking configuration for VM instances. Unhealthy instances are
+ * killed and replaced with new instances. Only applicable for instances in App
+ * Engine flexible environment.
  */
 class HealthCheck {
-  /** The interval between health checks. */
+  /** Interval between health checks. */
   core.String checkInterval;
   /** Whether to explicitly disable health checks for this instance. */
   core.bool disableHealthCheck;
   /**
-   * The number of consecutive successful health checks before receiving
+   * Number of consecutive successful health checks required before receiving
    * traffic.
    */
   core.int healthyThreshold;
   /**
-   * The host header to send when performing an HTTP health check (e.g.
-   * myapp.appspot.com)
+   * Host header to send when performing an HTTP health check. Example:
+   * "myapp.appspot.com"
    */
   core.String host;
   /**
-   * The number of consecutive failed health checks before an instance is
+   * Number of consecutive failed health checks required before an instance is
    * restarted.
    */
   core.int restartThreshold;
-  /** The amount of time before the health check is considered failed. */
+  /** Time before the health check is considered failed. */
   core.String timeout;
   /**
-   * The number of consecutive failed health checks before removing traffic.
+   * Number of consecutive failed health checks required before removing
+   * traffic.
    */
   core.int unhealthyThreshold;
 
@@ -1856,65 +1873,65 @@ class HealthCheck {
 }
 
 /**
- * Instances are the computing units that App Engine uses to automatically scale
- * an application.
+ * An Instance resource is the computing unit that App Engine uses to
+ * automatically scale an application.
  */
 class Instance {
-  /** The App Engine release the instance is running on. @OutputOnly */
+  /** App Engine release this instance is running on. @OutputOnly */
   core.String appEngineRelease;
   /**
-   * Availability of instance. @OutputOnly
+   * Availability of the instance. @OutputOnly
    * Possible string values are:
    * - "UNSPECIFIED" : A UNSPECIFIED.
    * - "RESIDENT" : A RESIDENT.
    * - "DYNAMIC" : A DYNAMIC.
    */
   core.String availability;
-  /** Latency in milliseconds (averaged over the last minute). @OutputOnly */
+  /** Average latency (ms) over the last minute. @OutputOnly */
   core.int averageLatency;
-  /** Number of errors since the instance was started. @OutputOnly */
+  /** Number of errors since this instance was started. @OutputOnly */
   core.int errors;
   /**
-   * The relative name/path of the instance within the version. Example:
-   * "instance-1" @OutputOnly
+   * Relative name of the instance within the version. Example: `instance-1`.
+   * @OutputOnly
    */
   core.String id;
-  /** Memory usage (in bytes). @OutputOnly */
+  /** Total memory in use (bytes). @OutputOnly */
   core.String memoryUsage;
   /**
-   * The full path to the Instance resource in the API. Example:
-   * "apps/myapp/services/default/versions/v1/instances/instance-1" @OutputOnly
+   * Full path to the Instance resource in the API. Example:
+   * `apps/myapp/services/default/versions/v1/instances/instance-1`. @OutputOnly
    */
   core.String name;
-  /** QPS for this instance (averaged over the last minute). @OutputOnly */
+  /** Average queries per second (QPS) over the last minute. @OutputOnly */
   core.double qps;
-  /** Number of requests (since the clone was started). @OutputOnly */
+  /** Number of requests since this instance was started. @OutputOnly */
   core.int requests;
-  /** Time when instance was started. @OutputOnly */
+  /** Time that this instance was started. @OutputOnly */
   core.String startTimestamp;
   /**
-   * For VMEngines instances, the Compute Engine VM ID of the instance.
-   * @OutputOnly
+   * Virtual machine ID of this instance. Only applicable for instances in App
+   * Engine flexible environment. @OutputOnly
    */
   core.String vmId;
   /**
-   * For VMEngines instances, the name of the Compute Engine VM where the
-   * instance lives. @OutputOnly
+   * Name of the virtual machine where this instance lives. Only applicable for
+   * instances in App Engine flexible environment. @OutputOnly
    */
   core.String vmName;
   /**
-   * For VMEngines instances, the status of the Compute Engine VM where the
-   * instance lives. @OutputOnly
+   * Status of the virtual machine where this instance lives. Only applicable
+   * for instances in App Engine flexible environment. @OutputOnly
    */
   core.String vmStatus;
   /**
-   * For VMEngines instances, whether the instance has been unlocked.
-   * @OutputOnly
+   * Whether this instance is in debug mode. Only applicable for instances in
+   * App Engine flexible environment. @OutputOnly
    */
   core.bool vmUnlocked;
   /**
-   * For VMEngines instances, the zone where the Compute Engine VM is located.
-   * @OutputOnly
+   * Zone where the virtual machine is located. Only applicable for instances in
+   * App Engine flexible environment. @OutputOnly
    */
   core.String vmZoneName;
 
@@ -2019,11 +2036,11 @@ class Instance {
   }
 }
 
-/** A Python runtime third-party library required by the application. */
+/** Third-party Python runtime library that is required by the application. */
 class Library {
-  /** The name of the library, e.g. "PIL" or "django". */
+  /** Name of the library. Example: "django". */
   core.String name;
-  /** The version of the library to select, or "latest". */
+  /** Version of the library to select, or "latest". */
   core.String version;
 
   Library();
@@ -2173,7 +2190,7 @@ class ListServicesResponse {
 class ListVersionsResponse {
   /** Continuation token for fetching the next page of results. */
   core.String nextPageToken;
-  /** The versions belonging to the requested application service. */
+  /** The versions belonging to the requested service. */
   core.List<Version> versions;
 
   ListVersionsResponse();
@@ -2206,6 +2223,8 @@ class Location {
    * {"cloud.googleapis.com/region": "us-east1"}
    */
   core.Map<core.String, core.String> labels;
+  /** The cononical id for this location. For example: `"us-east1"`. */
+  core.String locationId;
   /**
    * Service-specific metadata. For example the available capacity at the given
    * location.
@@ -2215,8 +2234,8 @@ class Location {
    */
   core.Map<core.String, core.Object> metadata;
   /**
-   * Resource name for the location, which may vary between implementations.
-   * Example: `"projects/example-project/locations/us-east1"`
+   * Resource name for the location, which may vary between implementations. For
+   * example: `"projects/example-project/locations/us-east1"`
    */
   core.String name;
 
@@ -2225,6 +2244,9 @@ class Location {
   Location.fromJson(core.Map _json) {
     if (_json.containsKey("labels")) {
       labels = _json["labels"];
+    }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
     }
     if (_json.containsKey("metadata")) {
       metadata = _json["metadata"];
@@ -2239,6 +2261,9 @@ class Location {
     if (labels != null) {
       _json["labels"] = labels;
     }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
+    }
     if (metadata != null) {
       _json["metadata"] = metadata;
     }
@@ -2251,14 +2276,36 @@ class Location {
 
 /** Metadata for the given google.cloud.location.Location. */
 class LocationMetadata {
+  /**
+   * App Engine Flexible Environment is available in the given location.
+   * @OutputOnly
+   */
+  core.bool flexibleEnvironmentAvailable;
+  /**
+   * App Engine Standard Environment is available in the given location.
+   * @OutputOnly
+   */
+  core.bool standardEnvironmentAvailable;
 
   LocationMetadata();
 
   LocationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("flexibleEnvironmentAvailable")) {
+      flexibleEnvironmentAvailable = _json["flexibleEnvironmentAvailable"];
+    }
+    if (_json.containsKey("standardEnvironmentAvailable")) {
+      standardEnvironmentAvailable = _json["standardEnvironmentAvailable"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (flexibleEnvironmentAvailable != null) {
+      _json["flexibleEnvironmentAvailable"] = flexibleEnvironmentAvailable;
+    }
+    if (standardEnvironmentAvailable != null) {
+      _json["standardEnvironmentAvailable"] = standardEnvironmentAvailable;
+    }
     return _json;
   }
 }
@@ -2269,8 +2316,8 @@ class LocationMetadata {
  */
 class ManualScaling {
   /**
-   * The number of instances to assign to the service at the start. This number
-   * can later be altered by using the [Modules
+   * Number of instances to assign to the service at the start. This number can
+   * later be altered by using the [Modules
    * API](https://cloud.google.com/appengine/docs/python/modules/functions)
    * `set_num_instances()` function.
    */
@@ -2293,19 +2340,18 @@ class ManualScaling {
   }
 }
 
-/** Used to specify extra network settings (for VM runtimes only). */
+/** Extra network settings. Only applicable for VM runtimes. */
 class Network {
   /**
-   * A list of ports (or port pairs) to forward from the VM into the app
-   * container.
+   * List of ports, or port pairs, to forward from the virtual machine to the
+   * application container.
    */
   core.List<core.String> forwardedPorts;
-  /** A tag to apply to the VM instance during creation. */
+  /** Tag to apply to the VM instance during creation. */
   core.String instanceTag;
   /**
-   * The Google Compute Engine network where the VMs will be created. If not
-   * specified, or empty, the network named "default" will be used. (The short
-   * name should be specified, not the resource path.)
+   * Google Cloud Platform network where the virtual machines are created.
+   * Specify the short name, not the resource path. Defaults to `default`.
    */
   core.String name;
 
@@ -2338,15 +2384,15 @@ class Network {
   }
 }
 
-/** Target scaling by network usage (for VM runtimes only). */
+/** Target scaling by network usage. Only applicable for VM runtimes. */
 class NetworkUtilization {
-  /** Target bytes per second received. */
+  /** Target bytes received per second. */
   core.int targetReceivedBytesPerSec;
-  /** Target packets per second received. */
+  /** Target packets received per second. */
   core.int targetReceivedPacketsPerSec;
-  /** Target bytes per second sent. */
+  /** Target bytes sent per second. */
   core.int targetSentBytesPerSec;
-  /** Target packets per second sent. */
+  /** Target packets sent per second. */
   core.int targetSentPacketsPerSec;
 
   NetworkUtilization();
@@ -2470,29 +2516,26 @@ class Operation {
 
 /** Metadata for the given google.longrunning.Operation. */
 class OperationMetadata {
-  /**
-   * Timestamp that this operation was completed. (Not present if the operation
-   * is still in progress.) @OutputOnly
-   */
+  /** Timestamp that this operation completed. @OutputOnly */
   core.String endTime;
-  /** Timestamp that this operation was received. @OutputOnly */
+  /** Timestamp that this operation was created. @OutputOnly */
   core.String insertTime;
   /**
-   * API method name that initiated the operation. Example:
-   * "google.appengine.v1beta4.Version.CreateVersion". @OutputOnly
+   * API method that initiated this operation. Example:
+   * `google.appengine.v1beta4.Version.CreateVersion`. @OutputOnly
    */
   core.String method;
   /**
-   * The type of the operation (deprecated, use method field instead). Example:
+   * Type of this operation. Deprecated, use method field instead. Example:
    * "create_version". @OutputOnly
    */
   core.String operationType;
   /**
-   * Resource that this operation is acting on. Example:
-   * "apps/myapp/modules/default". @OutputOnly
+   * Name of the resource that this operation is acting on. Example:
+   * `apps/myapp/modules/default`. @OutputOnly
    */
   core.String target;
-  /** The user who requested this operation. @OutputOnly */
+  /** User who requested this operation. @OutputOnly */
   core.String user;
 
   OperationMetadata();
@@ -2544,24 +2587,21 @@ class OperationMetadata {
 
 /** Metadata for the given google.longrunning.Operation. */
 class OperationMetadataV1 {
-  /**
-   * Timestamp that this operation was completed. (Not present if the operation
-   * is still in progress.) @OutputOnly
-   */
+  /** Time that this operation completed. @OutputOnly */
   core.String endTime;
-  /** Timestamp that this operation was received. @OutputOnly */
+  /** Time that this operation was created. @OutputOnly */
   core.String insertTime;
   /**
-   * API method name that initiated the operation. Example:
-   * "google.appengine.v1.Version.CreateVersion". @OutputOnly
+   * API method that initiated this operation. Example:
+   * `google.appengine.v1.Versions.CreateVersion`. @OutputOnly
    */
   core.String method;
   /**
-   * Resource that this operation is acting on. Example:
-   * "apps/myapp/services/default". @OutputOnly
+   * Name of the resource that this operation is acting on. Example:
+   * `apps/myapp/services/default`. @OutputOnly
    */
   core.String target;
-  /** The user who requested this operation. @OutputOnly */
+  /** User who requested this operation. @OutputOnly */
   core.String user;
 
   OperationMetadataV1();
@@ -2607,24 +2647,21 @@ class OperationMetadataV1 {
 
 /** Metadata for the given google.longrunning.Operation. */
 class OperationMetadataV1Beta5 {
-  /**
-   * Timestamp that this operation was completed. (Not present if the operation
-   * is still in progress.) @OutputOnly
-   */
+  /** Timestamp that this operation completed. @OutputOnly */
   core.String endTime;
-  /** Timestamp that this operation was received. @OutputOnly */
+  /** Timestamp that this operation was created. @OutputOnly */
   core.String insertTime;
   /**
-   * API method name that initiated the operation. Example:
-   * "google.appengine.v1beta5.Version.CreateVersion". @OutputOnly
+   * API method name that initiated this operation. Example:
+   * `google.appengine.v1beta5.Version.CreateVersion`. @OutputOnly
    */
   core.String method;
   /**
-   * Resource that this operation is acting on. Example:
-   * "apps/myapp/services/default". @OutputOnly
+   * Name of the resource that this operation is acting on. Example:
+   * `apps/myapp/services/default`. @OutputOnly
    */
   core.String target;
-  /** The user who requested this operation. @OutputOnly */
+  /** User who requested this operation. @OutputOnly */
   core.String user;
 
   OperationMetadataV1Beta5();
@@ -2668,7 +2705,7 @@ class OperationMetadataV1Beta5 {
   }
 }
 
-/** Target scaling by request utilization (for VM runtimes only). */
+/** Target scaling by request utilization. Only applicable for VM runtimes. */
 class RequestUtilization {
   /** Target number of concurrent requests. */
   core.int targetConcurrentRequests;
@@ -2698,13 +2735,13 @@ class RequestUtilization {
   }
 }
 
-/** Used to specify how many machine resources an app version needs. */
+/** Machine resources for a version. */
 class Resources {
-  /** How many CPU cores an app version needs. */
+  /** Number of CPU cores needed. */
   core.double cpu;
-  /** How much disk size, in GB, an app version needs. */
+  /** Disk size (GB) needed. */
   core.double diskGb;
-  /** How much memory, in GB, an app version needs. */
+  /** Memory (GB) needed. */
   core.double memoryGb;
 
   Resources();
@@ -2738,7 +2775,7 @@ class Resources {
 
 /** Executes a script to handle the request that matches the URL pattern. */
 class ScriptHandler {
-  /** Specifies the path to the script from the application root directory. */
+  /** Path to the script from the application root directory. */
   core.String scriptPath;
 
   ScriptHandler();
@@ -2759,26 +2796,26 @@ class ScriptHandler {
 }
 
 /**
- * A service is a logical component of an application that can share state and
- * communicate in a secure fashion with other services. For example, an
- * application that handles customer requests might include separate services to
- * handle other tasks such as API requests from mobile devices or backend data
- * analysis. Each service has a collection of versions that define a specific
- * set of code used to implement the functionality of that service.
+ * A Service resource is a logical component of an application that can share
+ * state and communicate in a secure fashion with other services. For example,
+ * an application that handles customer requests might include separate services
+ * to handle other tasks such as API requests from mobile devices or backend
+ * data analysis. Each service has a collection of versions that define a
+ * specific set of code used to implement the functionality of that service.
  */
 class Service {
   /**
-   * The relative name/path of the service within the application. Example:
-   * "default" @OutputOnly
+   * Relative name of the service within the application. Example: `default`.
+   * @OutputOnly
    */
   core.String id;
   /**
-   * The full path to the Service resource in the API. Example:
-   * "apps/myapp/services/default" @OutputOnly
+   * Full path to the Service resource in the API. Example:
+   * `apps/myapp/services/default`. @OutputOnly
    */
   core.String name;
   /**
-   * A mapping that defines fractional HTTP traffic diversion to different
+   * Mapping that defines fractional HTTP traffic diversion to different
    * versions within the service.
    */
   TrafficSplit split;
@@ -2813,19 +2850,19 @@ class Service {
 }
 
 /**
- * A reference to a particular snapshot of the source tree used to build and
+ * Reference to a particular snapshot of the source tree used to build and
  * deploy the application.
  */
 class SourceReference {
   /**
-   * Optional. A URI string identifying the repository. Example:
+   * URI string identifying the repository. Example:
    * "https://source.developers.google.com/p/app-123/r/default"
    */
   core.String repository;
   /**
-   * The canonical (and persistent) identifier of the deployed revision, i.e.
-   * any kind of aliases including tags or branch names are not allowed. Example
-   * (git): "2198322f89e0bb2e25021667c2ed489d1fd34e6b"
+   * The canonical, persistent identifier of the deployed revision. Aliases that
+   * include tags or branch names are not allowed. Example (git):
+   * "2198322f89e0bb2e25021667c2ed489d1fd34e6b"
    */
   core.String revisionId;
 
@@ -2860,40 +2897,36 @@ class SourceReference {
  */
 class StaticFilesHandler {
   /**
-   * By default, files declared in static file handlers are uploaded as static
-   * data and are only served to end users, they cannot be read by an
-   * application. If this field is set to true, the files are also uploaded as
-   * code data so your application can read them. Both uploads are charged
-   * against your code and static data storage resource quotas.
+   * Whether files should also be uploaded as code data. By default, files
+   * declared in static file handlers are uploaded as static data and are only
+   * served to end users; they cannot be read by the application. If enabled,
+   * uploads are charged against both your code and static data storage resource
+   * quotas.
    */
   core.bool applicationReadable;
-  /**
-   * The length of time a static file served by this handler ought to be cached
-   * by web proxies and browsers.
-   */
+  /** Time a static file served by this handler should be cached. */
   core.String expiration;
   /** HTTP headers to use for all responses from these URLs. */
   core.Map<core.String, core.String> httpHeaders;
   /**
-   * If specified, all files served by this handler will be served using the
-   * specified MIME type. If not specified, the MIME type for a file will be
-   * derived from the file's filename extension.
+   * MIME type used to serve all files served by this handler. Defaults to
+   * file-specific MIME types, which are derived from each file's filename
+   * extension.
    */
   core.String mimeType;
   /**
-   * The path to the static files matched by the URL pattern, from the
-   * application root directory. The path can refer to text matched in groupings
-   * in the URL pattern.
+   * Path to the static files matched by the URL pattern, from the application
+   * root directory. The path can refer to text matched in groupings in the URL
+   * pattern.
    */
   core.String path;
   /**
-   * If true, this UrlMap entry does not match the request unless the file
-   * referenced by the handler also exists. If no such file exists, processing
-   * will continue with the next UrlMap that matches the requested URL.
+   * Whether this handler should match the request if the file referenced by the
+   * handler does not exist.
    */
   core.bool requireMatchingFile;
   /**
-   * A regular expression that matches the file paths for all files that will be
+   * Regular expression that matches the file paths for all files that should be
    * referenced by this handler.
    */
   core.String uploadPathRegex;
@@ -3034,27 +3067,24 @@ class Status {
 }
 
 /**
- * Configuration for traffic splitting for versions within a single service.
- * Traffic splitting allows traffic directed to the service to be assigned to
- * one of several versions in a fractional way, enabling experiments and
- * canarying new builds, for example.
+ * Traffic routing configuration for versions within a single service. Traffic
+ * splits define how traffic directed to the service is assigned to versions.
  */
 class TrafficSplit {
   /**
-   * Mapping from service version IDs within the service to fractional (0.000,
-   * 1] allocations of traffic for that version. Each version may only be
-   * specified once, but some versions in the service may not have any traffic
-   * allocation. Services that have traffic allocated in this field may not be
-   * deleted until the service is deleted, or their traffic allocation is
-   * removed. Allocations must sum to 1. Supports precision up to two decimal
-   * places for IP-based splits and up to three decimal places for cookie-based
-   * splits.
+   * Mapping from version IDs within the service to fractional (0.000, 1]
+   * allocations of traffic for that version. Each version can be specified only
+   * once, but some versions in the service may not have any traffic allocation.
+   * Services that have traffic allocated cannot be deleted until either the
+   * service is deleted or their traffic allocation is removed. Allocations must
+   * sum to 1. Up to two decimal place precision is supported for IP-based
+   * splits and up to three decimal places is supported for cookie-based splits.
    */
   core.Map<core.String, core.double> allocations;
   /**
-   * Which mechanism should be used as a selector when choosing a version to
-   * send a request to. The traffic selection algorithm will be stable for
-   * either type until allocations are changed.
+   * Mechanism used to determine which version a request is sent to. The traffic
+   * selection algorithm will be stable for either type until allocations are
+   * changed.
    * Possible string values are:
    * - "UNSPECIFIED" : A UNSPECIFIED.
    * - "COOKIE" : A COOKIE.
@@ -3088,20 +3118,19 @@ class TrafficSplit {
 /** Rules to match an HTTP request and dispatch that request to a service. */
 class UrlDispatchRule {
   /**
-   * The domain name to match on. Supports '*' (glob) wildcarding on the
-   * left-hand side of a '.'. If empty, all domains will be matched (the same as
-   * '*').
+   * Domain name to match against. The wildcard "`*`" is supported if specified
+   * before a period: "`*.`". Defaults to matching all domains: "`*`".
    */
   core.String domain;
   /**
-   * The pathname within the host. This must start with a '/'. A single '*'
-   * (glob) can be included at the end of the path. The sum of the lengths of
-   * the domain and path may not exceed 100 characters.
+   * Pathname within the host. Must start with a "`/`". A single "`*`" can be
+   * included at the end of the path. The sum of the lengths of the domain and
+   * path may not exceed 100 characters.
    */
   core.String path;
   /**
-   * The resource id of a Service in this application that should service the
-   * matched request. The Service must already exist. Example: "default".
+   * Resource id of a service in this application that should serve the matched
+   * request. The service must already exist. Example: `default`.
    */
   core.String service;
 
@@ -3135,16 +3164,16 @@ class UrlDispatchRule {
 }
 
 /**
- * A URL pattern and description of how it should be handled. App Engine can
+ * URL pattern and description of how the URL should be handled. App Engine can
  * handle URLs by executing application code, or by serving static files
- * uploaded with the code, such as images, CSS or JavaScript.
+ * uploaded with the version, such as images, CSS, or JavaScript.
  */
 class UrlMap {
-  /** Use API Endpoints to handle requests. */
+  /** Uses API Endpoints to handle requests. */
   ApiEndpointHandler apiEndpoint;
   /**
-   * For users not logged in, how to handle access to resources with required
-   * login. Defaults to "redirect".
+   * Action to take when users access resources that require authentication.
+   * Defaults to `redirect`.
    * Possible string values are:
    * - "AUTH_FAIL_ACTION_UNSPECIFIED" : A AUTH_FAIL_ACTION_UNSPECIFIED.
    * - "AUTH_FAIL_ACTION_REDIRECT" : A AUTH_FAIL_ACTION_REDIRECT.
@@ -3152,7 +3181,7 @@ class UrlMap {
    */
   core.String authFailAction;
   /**
-   * What level of login is required to access this resource.
+   * Level of login required to access this resource.
    * Possible string values are:
    * - "LOGIN_UNSPECIFIED" : A LOGIN_UNSPECIFIED.
    * - "LOGIN_OPTIONAL" : A LOGIN_OPTIONAL.
@@ -3161,8 +3190,8 @@ class UrlMap {
    */
   core.String login;
   /**
-   * `30x` code to use when performing redirects for the `secure` field. A `302`
-   * is used by default.
+   * `30x` code to use when performing redirects for the `secure` field.
+   * Defaults to `302`.
    * Possible string values are:
    * - "REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED" : A
    * REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED.
@@ -3172,10 +3201,10 @@ class UrlMap {
    * - "REDIRECT_HTTP_RESPONSE_CODE_307" : A REDIRECT_HTTP_RESPONSE_CODE_307.
    */
   core.String redirectHttpResponseCode;
-  /** Executes a script to handle the request that matches the URL pattern. */
+  /** Executes a script to handle the request that matches this URL pattern. */
   ScriptHandler script;
   /**
-   * Configures whether security (HTTPS) should be enforced for this URL.
+   * Security (HTTPS) enforcement for this URL.
    * Possible string values are:
    * - "SECURE_UNSPECIFIED" : A SECURE_UNSPECIFIED.
    * - "SECURE_DEFAULT" : A SECURE_DEFAULT.
@@ -3187,11 +3216,10 @@ class UrlMap {
   /** Returns the contents of a file, such as an image, as the response. */
   StaticFilesHandler staticFiles;
   /**
-   * A URL prefix. This value uses regular expression syntax (and so regexp
-   * special characters must be escaped), but it should not contain groupings.
-   * All URLs that begin with this prefix are handled by this handler, using the
-   * portion of the URL after the prefix as part of the file path. This is
-   * always required.
+   * A URL prefix. Uses regular expression syntax, which means regexp special
+   * characters must be escaped, but should not contain groupings. All URLs that
+   * begin with this prefix are handled by this handler, using the portion of
+   * the URL after the prefix as part of the file path.
    */
   core.String urlRegex;
 
@@ -3255,19 +3283,18 @@ class UrlMap {
 }
 
 /**
- * A Version is a specific set of source code and configuration files deployed
- * to a service.
+ * A Version resource is a specific set of source code and configuration files
+ * that are deployed into a service.
  */
 class Version {
   /**
-   * Serving configuration for Google Cloud Endpoints. Only returned in `GET`
-   * requests if `view=FULL` is set. May only be set on create requests; once
-   * created, is immutable.
+   * Serving configuration for [Google Cloud
+   * Endpoints](https://cloud.google.com/appengine/docs/python/endpoints/). Only
+   * returned in `GET` requests if `view=FULL` is set.
    */
   ApiConfigHandler apiConfig;
   /**
-   * Automatic scaling is the scaling policy that App Engine has used since its
-   * inception. It is based on request rate, response latencies, and other
+   * Automatic scaling is based on request rate, response latencies, and other
    * application metrics.
    */
   AutomaticScaling automaticScaling;
@@ -3278,26 +3305,26 @@ class Version {
    * user activity.
    */
   BasicScaling basicScaling;
-  /** Beta settings supplied to the application via metadata. */
-  core.Map<core.String, core.String> betaSettings;
   /**
-   * Creation time of this version. This will be between the start and end times
-   * of the operation that creates this version. @OutputOnly
+   * Metadata settings that are supplied to this version to enable beta runtime
+   * features.
    */
+  core.Map<core.String, core.String> betaSettings;
+  /** Time that this version was created. @OutputOnly */
   core.String creationTime;
   /**
-   * The length of time a static file served by a static file handler ought to
-   * be cached by web proxies and browsers, if the handler does not specify its
-   * own expiration. Only returned in `GET` requests if `view=FULL` is set. May
-   * only be set on create requests; once created, is immutable.
+   * Duration that static files should be cached by web proxies and browsers.
+   * Only applicable if the corresponding
+   * [StaticFilesHandler](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#staticfileshandler)
+   * does not specify its own expiration time. Only returned in `GET` requests
+   * if `view=FULL` is set.
    */
   core.String defaultExpiration;
-  /** The email address of the user who created this version. @OutputOnly */
+  /** Email address of the user who created this version. @OutputOnly */
   core.String deployer;
   /**
    * Code and application artifacts that make up this version. Only returned in
-   * `GET` requests if `view=FULL` is set. May only be set on create requests;
-   * once created, is immutable.
+   * `GET` requests if `view=FULL` is set.
    */
   Deployment deployment;
   /**
@@ -3305,40 +3332,36 @@ class Version {
    */
   core.String diskUsageBytes;
   /**
-   * The App Engine execution environment to use for this version. Default: "1"
+   * App Engine execution environment to use for this version. Defaults to `1`.
    */
   core.String env;
   /**
    * Environment variables made available to the application. Only returned in
-   * `GET` requests if `view=FULL` is set. May only be set on create requests;
-   * once created, is immutable.
+   * `GET` requests if `view=FULL` is set.
    */
   core.Map<core.String, core.String> envVariables;
   /**
-   * Custom static error pages instead of these generic error pages, (limit 10
-   * KB/page) Only returned in `GET` requests if `view=FULL` is set. May only be
-   * set on create requests; once created, is immutable.
+   * Custom static error pages. Limited to 10KB per page. Only returned in `GET`
+   * requests if `view=FULL` is set.
    */
   core.List<ErrorHandler> errorHandlers;
   /**
-   * An ordered list of URL Matching patterns that should be applied to incoming
-   * requests. The first matching URL consumes the request, and subsequent
+   * An ordered list of URL-matching patterns that should be applied to incoming
+   * requests. The first matching URL handles the request and other request
    * handlers are not attempted. Only returned in `GET` requests if `view=FULL`
-   * is set. May only be set on create requests; once created, is immutable.
+   * is set.
    */
   core.List<UrlMap> handlers;
   /**
-   * Configure health checking for the VM instances. Unhealthy VM instances will
-   * be stopped and replaced with new instances. Only returned in `GET` requests
-   * if `view=FULL` is set. May only be set on create requests; once created, is
-   * immutable.
+   * Configures health checking for VM instances. Unhealthy instances are be
+   * stopped and replaced with new instances. Only applicable for VM runtimes.
+   * Only returned in `GET` requests if `view=FULL` is set.
    */
   HealthCheck healthCheck;
   /**
-   * The relative name/path of the Version within the service. Example: "v1".
-   * Version specifiers can contain lowercase letters, digits, and hyphens. It
-   * cannot begin with the prefix `ah-` and the names `default` and `latest` are
-   * reserved and cannot be used.
+   * Relative name of the version within the module. Example: `v1`. Version
+   * names can contain only lowercase letters, numbers, or hyphens. Reserved
+   * names: "default", "latest", and any name with the prefix "ah-".
    */
   core.String id;
   /**
@@ -3347,16 +3370,15 @@ class Version {
    */
   core.List<core.String> inboundServices;
   /**
-   * The instance class to use to run this app. Valid values for
-   * AutomaticScaling are `[F1, F2, F4, F4_1G]`. Valid values for ManualScaling
-   * and BasicScaling are `[B1, B2, B4, B8, B4_1G]`. Default: "F1" for
-   * AutomaticScaling, "B1" for ManualScaling and BasicScaling
+   * Instance class that is used to run this version. Valid values are: *
+   * AutomaticScaling: `F1`, `F2`, `F4`, `F4_1G` * ManualScaling or
+   * BasicScaling: `B1`, `B2`, `B4`, `B8`, `B4_1G` Defaults to `F1` for
+   * AutomaticScaling and `B1` for ManualScaling or BasicScaling.
    */
   core.String instanceClass;
   /**
-   * Configuration for Python runtime third-party libraries required by the
-   * application. Only returned in `GET` requests if `view=FULL` is set. May
-   * only be set on create requests; once created, is immutable.
+   * Configuration for third-party Python runtime libraries required by the
+   * application. Only returned in `GET` requests if `view=FULL` is set.
    */
   core.List<Library> libraries;
   /**
@@ -3365,38 +3387,35 @@ class Version {
    */
   ManualScaling manualScaling;
   /**
-   * The full path to the Version resource in the API. Example:
-   * "apps/myapp/services/default/versions/v1". @OutputOnly
+   * Full path to the Version resource in the API. Example:
+   * `apps/myapp/services/default/versions/v1`. @OutputOnly
    */
   core.String name;
-  /** Used to specify extra network settings (for VM runtimes only). */
+  /** Extra network settings. Only applicable for VM runtimes. */
   Network network;
   /**
-   * Go only. Files that match this pattern will not be built into the app. May
-   * only be set on create requests.
+   * Files that match this pattern will not be built into this version. Only
+   * applicable for Go runtimes. Only returned in `GET` requests if `view=FULL`
+   * is set.
    */
   core.String nobuildFilesRegex;
-  /**
-   * Used to specify how many machine resources an app version needs (for VM
-   * runtimes only).
-   */
+  /** Machine resources for this version. Only applicable for VM runtimes. */
   Resources resources;
-  /** The desired runtime. Values can include python27, java7, go, etc. */
+  /** Desired runtime. Example: `python27`. */
   core.String runtime;
   /**
-   * The current serving status of this version. Only `SERVING` versions will
-   * have instances created or billed for. If this field is unset when a version
-   * is created, `SERVING` status will be assumed. It is an error to explicitly
-   * set this field to `SERVING_STATUS_UNSPECIFIED`.
+   * Current serving status of this version. Only the versions with a `SERVING`
+   * status create instances and can be billed. `SERVING_STATUS_UNSPECIFIED` is
+   * an invalid value. Defaults to `SERVING`.
    * Possible string values are:
    * - "SERVING_STATUS_UNSPECIFIED" : A SERVING_STATUS_UNSPECIFIED.
    * - "SERVING" : A SERVING.
    * - "STOPPED" : A STOPPED.
    */
   core.String servingStatus;
-  /** If true, multiple requests can be dispatched to the app at once. */
+  /** Whether multiple requests can be dispatched to this version at once. */
   core.bool threadsafe;
-  /** Whether to deploy this app in a VM container. */
+  /** Whether to deploy this version in a container on a virtual machine. */
   core.bool vm;
 
   Version();

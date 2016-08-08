@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.30.0
+    version: 0.30.1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -21,6 +21,7 @@ packages:
     - analyticsreporting:v4  # https://developers.google.com/analytics/devguides/reporting/core/v4/
     - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
     - androidpublisher:v2  # https://developers.google.com/android-publisher/
+    - appengine:v1  # https://cloud.google.com/appengine/docs/admin-api/
     - appsactivity:v1  # https://developers.google.com/google-apps/activity/
     - appstate:v1  # https://developers.google.com/games/services/web/api/states
     - bigquery:v2  # https://developers.google.com/bigquery/
@@ -46,6 +47,7 @@ packages:
     - dfareporting:v2.3  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.4  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.5  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dfareporting:v2.6  # https://developers.google.com/doubleclick-advertisers/reporting/
     - discovery:v1  # https://developers.google.com/discovery/
     - dns:v1  # https://cloud.google.com/dns/api/v1/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
@@ -84,6 +86,8 @@ packages:
     - reseller:v1  # https://developers.google.com/admin-sdk/reseller/
     - safebrowsing:v4  # https://developers.google.com/safe-browsing/
     - script:v1  # https://developers.google.com/apps-script/execution/rest/v1/run
+    - servicecontrol:v1  # https://cloud.google.com/service-control/
+    - servicemanagement:v1  # https://cloud.google.com/service-management/
     - sheets:v4  # https://developers.google.com/sheets/reference/rest/
     - siteVerification:v1  # https://developers.google.com/site-verification/
     - storagetransfer:v1  # https://cloud.google.com/storage/transfer/
@@ -100,7 +104,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.29.0
+    version: 0.30.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -108,8 +112,8 @@ packages:
     changelog: resources/googleapis_beta/CHANGELOG.md
     apis:
     - adexchangebuyer2:v2beta1  # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
-    - appengine:v1beta4
-    - appengine:v1beta5
+    - appengine:v1beta4  # https://cloud.google.com/appengine/docs/admin-api/
+    - appengine:v1beta5  # https://cloud.google.com/appengine/docs/admin-api/
     - clouderrorreporting:v1beta1  # https://cloud.google.com/error-reporting/
     - cloudmonitoring:v2beta2  # https://developers.google.com/cloud-monitoring/
     - cloudresourcemanager:v1beta1
@@ -121,6 +125,7 @@ packages:
     - dfareporting:v2.5beta1  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dns:v2beta1  # https://cloud.google.com/dns/docs/
     - genomics:v1beta2  # https://developers.google.com/genomics/
+    - language:v1beta1  # https://cloud.google.com/natural-language/
     - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging
     - proximitybeacon:v1beta1  # https://developers.google.com/beacons/proximity/guides
     - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)
@@ -129,6 +134,7 @@ packages:
     - resourceviews:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/ (Limited Preview)
     - resourceviews:v1beta2  # https://cloud.google.com/compute/docs/instance-groups/
     - runtimeconfig:v1beta1  # https://cloud.google.com/deployment-manager/docs/
+    - speech:v1beta1  # https://cloud.google.com/speech/
     - sqladmin:v1beta3  # https://developers.google.com/cloud-sql/docs/admin-api/
     - sqladmin:v1beta4  # https://developers.google.com/cloud-sql/docs/admin-api/
     - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries

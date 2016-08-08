@@ -1258,6 +1258,11 @@ class Any {
  * duration.nanos;
  *
  * if (end.nanos = 1000000000) { end.seconds += 1; end.nanos -= 1000000000; }
+ *
+ * Example 3: Compute Duration from datetime.timedelta in Python.
+ *
+ * td = datetime.timedelta(days=3, minutes=10) duration = Duration()
+ * duration.FromTimedelta(td)
  */
 class Duration {
   /**
@@ -2907,8 +2912,7 @@ class Thumbnail {
  *
  * Example 5: Compute Timestamp from current time in Python.
  *
- * now = time.time() seconds = int(now) nanos = int((now - seconds) * 10**9)
- * timestamp = Timestamp(seconds=seconds, nanos=nanos)
+ * timestamp = Timestamp() timestamp.GetCurrentTime()
  */
 class Timestamp {
   /**

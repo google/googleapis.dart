@@ -26,7 +26,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/PILKhaUD4o0Hl3o-ev0pj8e99v0\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Cmx5HrERuA3cPPiKpi3zpAPafV0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1494,7 +1494,7 @@
             }
         }
     },
-    "revision": "20160713",
+    "revision": "20160803",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -3297,7 +3297,7 @@
             "id": "SearchVariantsRequest",
             "properties": {
                 "callSetIds": {
-                    "description": "Only return variant calls which belong to call sets with these ids. Leaving this blank returns all variant calls. If a variant has no calls belonging to any of these call sets, it won't be returned at all. Currently, variants with no calls from any call set will never be returned.",
+                    "description": "Only return variant calls which belong to call sets with these ids. Leaving this blank returns all variant calls. If a variant has no calls belonging to any of these call sets, it won't be returned at all.",
                     "items": {
                         "type": "string"
                     },

@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/n-xkWA82GY-8mH6npNxIdvtk5g4\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/8OSACAptUIIUJA3qAbwY7uhPqwg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -936,7 +936,7 @@
             }
         }
     },
-    "revision": "20160709",
+    "revision": "20160729",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BigtableColumn": {
@@ -1010,6 +1010,10 @@
                 },
                 "ignoreUnspecifiedColumnFamilies": {
                     "description": "[Optional] If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.",
+                    "type": "boolean"
+                },
+                "readRowkeyAsString": {
+                    "description": "[Optional] If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.",
                     "type": "boolean"
                 }
             },
@@ -1408,6 +1412,11 @@
                 "kind": {
                     "default": "bigquery#getQueryResultsResponse",
                     "description": "The resource type of the response.",
+                    "type": "string"
+                },
+                "numDmlAffectedRows": {
+                    "description": "[Output-only, Experimental] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.",
+                    "format": "int64",
                     "type": "string"
                 },
                 "pageToken": {
@@ -1904,8 +1913,13 @@
                     "description": "[Output-only] Whether the query result was fetched from the query cache.",
                     "type": "boolean"
                 },
+                "numDmlAffectedRows": {
+                    "description": "[Output-only, Experimental] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "queryPlan": {
-                    "description": "[Output-only, Experimental] Describes execution plan for the query as a list of stages.",
+                    "description": "[Output-only, Experimental] Describes execution plan for the query.",
                     "items": {
                         "$ref": "ExplainQueryStage"
                     },
@@ -2149,6 +2163,11 @@
                 "kind": {
                     "default": "bigquery#queryResponse",
                     "description": "The resource type.",
+                    "type": "string"
+                },
+                "numDmlAffectedRows": {
+                    "description": "[Output-only, Experimental] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.",
+                    "format": "int64",
                     "type": "string"
                 },
                 "pageToken": {

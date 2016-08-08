@@ -6262,8 +6262,7 @@ class SearchVariantsRequest {
   /**
    * Only return variant calls which belong to call sets with these ids. Leaving
    * this blank returns all variant calls. If a variant has no calls belonging
-   * to any of these call sets, it won't be returned at all. Currently, variants
-   * with no calls from any call set will never be returned.
+   * to any of these call sets, it won't be returned at all.
    */
   core.List<core.String> callSetIds;
   /**

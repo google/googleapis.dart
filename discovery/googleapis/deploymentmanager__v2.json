@@ -24,7 +24,7 @@
     "description": "Declares, configures, and deploys complex solutions on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/deployment-manager/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/zAoD3c2ULQD4CrM0UHM-SVOsDxw\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/oyMMQHi-RabrsOdML-FXKXh2I64\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -780,7 +780,7 @@
             }
         }
     },
-    "revision": "20160624",
+    "revision": "20160731",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ConfigFile": {
