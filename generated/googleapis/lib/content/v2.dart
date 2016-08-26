@@ -35,6 +35,7 @@ class ContentApi {
   OrdersResourceApi get orders => new OrdersResourceApi(_requester);
   ProductsResourceApi get products => new ProductsResourceApi(_requester);
   ProductstatusesResourceApi get productstatuses => new ProductstatusesResourceApi(_requester);
+  ShippingsettingsResourceApi get shippingsettings => new ShippingsettingsResourceApi(_requester);
 
   ContentApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "content/v2/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -2864,6 +2865,307 @@ class ProductstatusesResourceApi {
 }
 
 
+class ShippingsettingsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ShippingsettingsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves and updates the shipping settings of multiple accounts in a
+   * single request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
+   * Completes with a [ShippingsettingsCustomBatchResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ShippingsettingsCustomBatchResponse> custombatch(ShippingsettingsCustomBatchRequest request, {core.bool dryRun}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+
+    _url = 'shippingsettings/batch';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ShippingsettingsCustomBatchResponse.fromJson(data));
+  }
+
+  /**
+   * Retrieves the shipping settings of the account.
+   *
+   * Request parameters:
+   *
+   * [merchantId] - The ID of the managing account.
+   *
+   * [accountId] - The ID of the account for which to get/update shipping
+   * settings.
+   *
+   * Completes with a [ShippingSettings].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ShippingSettings> get(core.String merchantId, core.String accountId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/shippingsettings/' + commons.Escaper.ecapeVariable('$accountId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ShippingSettings.fromJson(data));
+  }
+
+  /**
+   * Retrieves supported carriers and carrier services for an account.
+   *
+   * Request parameters:
+   *
+   * [merchantId] - The ID of the account for which to retrieve the supported
+   * carriers.
+   *
+   * Completes with a [ShippingsettingsGetSupportedCarriersResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ShippingsettingsGetSupportedCarriersResponse> getsupportedcarriers(core.String merchantId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/supportedCarriers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ShippingsettingsGetSupportedCarriersResponse.fromJson(data));
+  }
+
+  /**
+   * Lists the shipping settings of the sub-accounts in your Merchant Center
+   * account.
+   *
+   * Request parameters:
+   *
+   * [merchantId] - The ID of the managing account.
+   *
+   * [maxResults] - The maximum number of shipping settings to return in the
+   * response, used for paging.
+   *
+   * [pageToken] - The token returned by the previous request.
+   *
+   * Completes with a [ShippingsettingsListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ShippingsettingsListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/shippingsettings';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ShippingsettingsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates the shipping settings of the account. This method supports patch
+   * semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [merchantId] - The ID of the managing account.
+   *
+   * [accountId] - The ID of the account for which to get/update shipping
+   * settings.
+   *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
+   * Completes with a [ShippingSettings].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ShippingSettings> patch(ShippingSettings request, core.String merchantId, core.String accountId, {core.bool dryRun}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/shippingsettings/' + commons.Escaper.ecapeVariable('$accountId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ShippingSettings.fromJson(data));
+  }
+
+  /**
+   * Updates the shipping settings of the account.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [merchantId] - The ID of the managing account.
+   *
+   * [accountId] - The ID of the account for which to get/update shipping
+   * settings.
+   *
+   * [dryRun] - Flag to run the request in dry-run mode.
+   *
+   * Completes with a [ShippingSettings].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ShippingSettings> update(ShippingSettings request, core.String merchantId, core.String accountId, {core.bool dryRun}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/shippingsettings/' + commons.Escaper.ecapeVariable('$accountId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ShippingSettings.fromJson(data));
+  }
+
+}
+
+
 
 /** Account data. */
 class Account {
@@ -4773,6 +5075,122 @@ class AccounttaxListResponse {
   }
 }
 
+class CarrierRate {
+  /**
+   * Carrier service, such as "UPS" or "Fedex". The list of supported carriers
+   * can be retrieved via the getSupportedCarriers method. Required.
+   */
+  core.String carrierName;
+  /**
+   * Carrier service, such as "ground" or "2 days". The list of supported
+   * services for a carrier can be retrieved via the getSupportedCarriers
+   * method. Required.
+   */
+  core.String carrierService;
+  /**
+   * Additive shipping rate modifier. Can be negative. For example { "value":
+   * "1", "currency" : "USD" } adds $1 to the rate, { "value": "-3", "currency"
+   * : "USD" } removes $3 from the rate. Optional.
+   */
+  Price flatAdjustment;
+  /** Name of the carrier rate. Must be unique per rate group. Required. */
+  core.String name;
+  /** Shipping origin for this carrier rate. Required. */
+  core.String originPostalCode;
+  /**
+   * Multiplicative shipping rate modifier as a number in decimal notation. Can
+   * be negative. For example "5.4" increases the rate by 5.4%, "-3" decreases
+   * the rate by 3%. Optional.
+   */
+  core.String percentageAdjustment;
+
+  CarrierRate();
+
+  CarrierRate.fromJson(core.Map _json) {
+    if (_json.containsKey("carrierName")) {
+      carrierName = _json["carrierName"];
+    }
+    if (_json.containsKey("carrierService")) {
+      carrierService = _json["carrierService"];
+    }
+    if (_json.containsKey("flatAdjustment")) {
+      flatAdjustment = new Price.fromJson(_json["flatAdjustment"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("originPostalCode")) {
+      originPostalCode = _json["originPostalCode"];
+    }
+    if (_json.containsKey("percentageAdjustment")) {
+      percentageAdjustment = _json["percentageAdjustment"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (carrierName != null) {
+      _json["carrierName"] = carrierName;
+    }
+    if (carrierService != null) {
+      _json["carrierService"] = carrierService;
+    }
+    if (flatAdjustment != null) {
+      _json["flatAdjustment"] = (flatAdjustment).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (originPostalCode != null) {
+      _json["originPostalCode"] = originPostalCode;
+    }
+    if (percentageAdjustment != null) {
+      _json["percentageAdjustment"] = percentageAdjustment;
+    }
+    return _json;
+  }
+}
+
+class CarriersCarrier {
+  /** The CLDR country code of the carrier (e.g., "US"). Always present. */
+  core.String country;
+  /** The name of the carrier (e.g., "UPS"). Always present. */
+  core.String name;
+  /**
+   * A list of supported services (e.g., "ground") for that carrier. Contains at
+   * least one service.
+   */
+  core.List<core.String> services;
+
+  CarriersCarrier();
+
+  CarriersCarrier.fromJson(core.Map _json) {
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("services")) {
+      services = _json["services"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (country != null) {
+      _json["country"] = country;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (services != null) {
+      _json["services"] = services;
+    }
+    return _json;
+  }
+}
+
 /** Datafeed data. */
 class Datafeed {
   /**
@@ -5560,6 +5978,42 @@ class DatafeedstatusesListResponse {
   }
 }
 
+class DeliveryTime {
+  /**
+   * Maximum number of business days that is spent in transit. 0 means same day
+   * delivery, 1 means next day delivery. Must be greater than or equal to
+   * minTransitTimeInDays. Required.
+   */
+  core.int maxTransitTimeInDays;
+  /**
+   * Minimum number of business days that is spent in transit. 0 means same day
+   * delivery, 1 means next day delivery. Required.
+   */
+  core.int minTransitTimeInDays;
+
+  DeliveryTime();
+
+  DeliveryTime.fromJson(core.Map _json) {
+    if (_json.containsKey("maxTransitTimeInDays")) {
+      maxTransitTimeInDays = _json["maxTransitTimeInDays"];
+    }
+    if (_json.containsKey("minTransitTimeInDays")) {
+      minTransitTimeInDays = _json["minTransitTimeInDays"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (maxTransitTimeInDays != null) {
+      _json["maxTransitTimeInDays"] = maxTransitTimeInDays;
+    }
+    if (minTransitTimeInDays != null) {
+      _json["minTransitTimeInDays"] = minTransitTimeInDays;
+    }
+    return _json;
+  }
+}
+
 /** An error returned by the API. */
 class Error {
   /** The domain of the error. */
@@ -5631,6 +6085,87 @@ class Errors {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A non-empty list of row or column headers for a table. Exactly one of prices,
+ * weights, numItems, postalCodeGroupNames, or locations must be set.
+ */
+class Headers {
+  /**
+   * A list of location ID sets. Must be non-empty. Can only be set if all other
+   * fields are not set.
+   */
+  core.List<LocationIdSet> locations;
+  /**
+   * A list of inclusive number of items upper bounds. The last value can be
+   * "infinity". For example ["10", "50", "infinity"] represents the headers "<=
+   * 10 items", " 50 items". Must be non-empty. Can only be set if all other
+   * fields are not set.
+   */
+  core.List<core.String> numberOfItems;
+  /**
+   * A list of postal group names. The last value can be "all other locations".
+   * Example: ["zone 1", "zone 2", "all other locations"]. The referred postal
+   * code groups must match the delivery country of the service. Must be
+   * non-empty. Can only be set if all other fields are not set.
+   */
+  core.List<core.String> postalCodeGroupNames;
+  /**
+   * be "infinity". For example [{"value": "10", "currency": "USD"}, {"value":
+   * "500", "currency": "USD"}, {"value": "infinity", "currency": "USD"}]
+   * represents the headers "<= $10", " $500". All prices within a service must
+   * have the same currency. Must be non-empty. Can only be set if all other
+   * fields are not set.
+   */
+  core.List<Price> prices;
+  /**
+   * be "infinity". For example [{"value": "10", "unit": "kg"}, {"value": "50",
+   * "unit": "kg"}, {"value": "infinity", "unit": "kg"}] represents the headers
+   * "<= 10kg", " 50kg". All weights within a service must have the same unit.
+   * Must be non-empty. Can only be set if all other fields are not set.
+   */
+  core.List<Weight> weights;
+
+  Headers();
+
+  Headers.fromJson(core.Map _json) {
+    if (_json.containsKey("locations")) {
+      locations = _json["locations"].map((value) => new LocationIdSet.fromJson(value)).toList();
+    }
+    if (_json.containsKey("numberOfItems")) {
+      numberOfItems = _json["numberOfItems"];
+    }
+    if (_json.containsKey("postalCodeGroupNames")) {
+      postalCodeGroupNames = _json["postalCodeGroupNames"];
+    }
+    if (_json.containsKey("prices")) {
+      prices = _json["prices"].map((value) => new Price.fromJson(value)).toList();
+    }
+    if (_json.containsKey("weights")) {
+      weights = _json["weights"].map((value) => new Weight.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (locations != null) {
+      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+    }
+    if (numberOfItems != null) {
+      _json["numberOfItems"] = numberOfItems;
+    }
+    if (postalCodeGroupNames != null) {
+      _json["postalCodeGroupNames"] = postalCodeGroupNames;
+    }
+    if (prices != null) {
+      _json["prices"] = prices.map((value) => (value).toJson()).toList();
+    }
+    if (weights != null) {
+      _json["weights"] = weights.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -6028,6 +6563,30 @@ class InventorySetResponse {
     var _json = new core.Map();
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class LocationIdSet {
+  /**
+   * A non-empty list of location IDs. They must all be of the same location
+   * type (e.g., state).
+   */
+  core.List<core.String> locationIds;
+
+  LocationIdSet();
+
+  LocationIdSet.fromJson(core.Map _json) {
+    if (_json.containsKey("locationIds")) {
+      locationIds = _json["locationIds"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (locationIds != null) {
+      _json["locationIds"] = locationIds;
     }
     return _json;
   }
@@ -8609,6 +9168,87 @@ class OrdersUpdateShipmentResponse {
   }
 }
 
+class PostalCodeGroup {
+  /**
+   * The CLDR territory code of the country the postal code group applies to.
+   * Required.
+   */
+  core.String country;
+  /** The name of the postal code group, referred to in headers. Required. */
+  core.String name;
+  /** A range of postal codes. Required. */
+  core.List<PostalCodeRange> postalCodeRanges;
+
+  PostalCodeGroup();
+
+  PostalCodeGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("postalCodeRanges")) {
+      postalCodeRanges = _json["postalCodeRanges"].map((value) => new PostalCodeRange.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (country != null) {
+      _json["country"] = country;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (postalCodeRanges != null) {
+      _json["postalCodeRanges"] = postalCodeRanges.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class PostalCodeRange {
+  /**
+   * A postal code or a pattern of the form prefix* denoting the inclusive lower
+   * bound of the range defining the area. Examples values: "94108", "9410*",
+   * "9*". Required.
+   */
+  core.String postalCodeRangeBegin;
+  /**
+   * A postal code or a pattern of the form prefix* denoting the inclusive upper
+   * bound of the range defining the area. It must have the same length as
+   * postalCodeRangeBegin: if postalCodeRangeBegin is a postal code then
+   * postalCodeRangeEnd must be a postal code too; if postalCodeRangeBegin is a
+   * pattern then postalCodeRangeEnd must be a pattern with the same prefix
+   * length. Optional: if not set, then the area is defined as being all the
+   * postal codes matching postalCodeRangeBegin.
+   */
+  core.String postalCodeRangeEnd;
+
+  PostalCodeRange();
+
+  PostalCodeRange.fromJson(core.Map _json) {
+    if (_json.containsKey("postalCodeRangeBegin")) {
+      postalCodeRangeBegin = _json["postalCodeRangeBegin"];
+    }
+    if (_json.containsKey("postalCodeRangeEnd")) {
+      postalCodeRangeEnd = _json["postalCodeRangeEnd"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (postalCodeRangeBegin != null) {
+      _json["postalCodeRangeBegin"] = postalCodeRangeBegin;
+    }
+    if (postalCodeRangeEnd != null) {
+      _json["postalCodeRangeEnd"] = postalCodeRangeEnd;
+    }
+    return _json;
+  }
+}
+
 class Price {
   /** The currency of the price. */
   core.String currency;
@@ -10303,6 +10943,505 @@ class ProductstatusesListResponse {
   }
 }
 
+class RateGroup {
+  /**
+   * A list of shipping labels defining the products to which this rate group
+   * applies to. This is a disjunction: only one of the labels has to match for
+   * the rate group to apply. May only be empty for the last rate group of a
+   * service. Required.
+   */
+  core.List<core.String> applicableShippingLabels;
+  /**
+   * A list of carrier rates that can be referred to by mainTable or
+   * singleValue.
+   */
+  core.List<CarrierRate> carrierRates;
+  /**
+   * A table defining the rate group, when singleValue is not expressive enough.
+   * Can only be set if singleValue is not set.
+   */
+  Table mainTable;
+  /**
+   * The value of the rate group (e.g. flat rate $10). Can only be set if
+   * mainTable and subtables are not set.
+   */
+  Value singleValue;
+  /**
+   * A list of subtables referred to by mainTable. Can only be set if mainTable
+   * is set.
+   */
+  core.List<Table> subtables;
+
+  RateGroup();
+
+  RateGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("applicableShippingLabels")) {
+      applicableShippingLabels = _json["applicableShippingLabels"];
+    }
+    if (_json.containsKey("carrierRates")) {
+      carrierRates = _json["carrierRates"].map((value) => new CarrierRate.fromJson(value)).toList();
+    }
+    if (_json.containsKey("mainTable")) {
+      mainTable = new Table.fromJson(_json["mainTable"]);
+    }
+    if (_json.containsKey("singleValue")) {
+      singleValue = new Value.fromJson(_json["singleValue"]);
+    }
+    if (_json.containsKey("subtables")) {
+      subtables = _json["subtables"].map((value) => new Table.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (applicableShippingLabels != null) {
+      _json["applicableShippingLabels"] = applicableShippingLabels;
+    }
+    if (carrierRates != null) {
+      _json["carrierRates"] = carrierRates.map((value) => (value).toJson()).toList();
+    }
+    if (mainTable != null) {
+      _json["mainTable"] = (mainTable).toJson();
+    }
+    if (singleValue != null) {
+      _json["singleValue"] = (singleValue).toJson();
+    }
+    if (subtables != null) {
+      _json["subtables"] = subtables.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class Row {
+  /**
+   * The list of cells that constitute the row. Must have the same length as
+   * columnHeaders for two-dimensional tables, a length of 1 for one-dimensional
+   * tables. Required.
+   */
+  core.List<Value> cells;
+
+  Row();
+
+  Row.fromJson(core.Map _json) {
+    if (_json.containsKey("cells")) {
+      cells = _json["cells"].map((value) => new Value.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cells != null) {
+      _json["cells"] = cells.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class Service {
+  /**
+   * A boolean exposing the active status of the shipping service. Required.
+   */
+  core.bool active;
+  /**
+   * The CLDR code of the currency to which this service applies. Must match
+   * that of the prices in rate groups.
+   */
+  core.String currency;
+  /**
+   * The CLDR territory code of the country to which the service applies.
+   * Required.
+   */
+  core.String deliveryCountry;
+  /**
+   * Time spent in various aspects from order to the delivery of the product.
+   * Required.
+   */
+  DeliveryTime deliveryTime;
+  /**
+   * Free-form name of the service. Must be unique within target account.
+   * Required.
+   */
+  core.String name;
+  /**
+   * Shipping rate group definitions. Only the last one is allowed to have an
+   * empty applicableShippingLabels, which means "everything else". The other
+   * applicableShippingLabels must not overlap.
+   */
+  core.List<RateGroup> rateGroups;
+
+  Service();
+
+  Service.fromJson(core.Map _json) {
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("currency")) {
+      currency = _json["currency"];
+    }
+    if (_json.containsKey("deliveryCountry")) {
+      deliveryCountry = _json["deliveryCountry"];
+    }
+    if (_json.containsKey("deliveryTime")) {
+      deliveryTime = new DeliveryTime.fromJson(_json["deliveryTime"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("rateGroups")) {
+      rateGroups = _json["rateGroups"].map((value) => new RateGroup.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (currency != null) {
+      _json["currency"] = currency;
+    }
+    if (deliveryCountry != null) {
+      _json["deliveryCountry"] = deliveryCountry;
+    }
+    if (deliveryTime != null) {
+      _json["deliveryTime"] = (deliveryTime).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (rateGroups != null) {
+      _json["rateGroups"] = rateGroups.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** The merchant account's shipping settings. */
+class ShippingSettings {
+  /**
+   * The ID of the account to which these account shipping settings belong.
+   * Ignored upon update, always present in get request responses.
+   */
+  core.String accountId;
+  /**
+   * A list of postal code groups that can be referred to in services. Optional.
+   */
+  core.List<PostalCodeGroup> postalCodeGroups;
+  /** The target account's list of services. Optional. */
+  core.List<Service> services;
+
+  ShippingSettings();
+
+  ShippingSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("postalCodeGroups")) {
+      postalCodeGroups = _json["postalCodeGroups"].map((value) => new PostalCodeGroup.fromJson(value)).toList();
+    }
+    if (_json.containsKey("services")) {
+      services = _json["services"].map((value) => new Service.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (postalCodeGroups != null) {
+      _json["postalCodeGroups"] = postalCodeGroups.map((value) => (value).toJson()).toList();
+    }
+    if (services != null) {
+      _json["services"] = services.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class ShippingsettingsCustomBatchRequest {
+  /** The request entries to be processed in the batch. */
+  core.List<ShippingsettingsCustomBatchRequestEntry> entries;
+
+  ShippingsettingsCustomBatchRequest();
+
+  ShippingsettingsCustomBatchRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("entries")) {
+      entries = _json["entries"].map((value) => new ShippingsettingsCustomBatchRequestEntry.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (entries != null) {
+      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** A batch entry encoding a single non-batch accountshipping request. */
+class ShippingsettingsCustomBatchRequestEntry {
+  /**
+   * The ID of the account for which to get/update account shipping settings.
+   */
+  core.String accountId;
+  /** An entry ID, unique within the batch request. */
+  core.int batchId;
+  /** The ID of the managing account. */
+  core.String merchantId;
+  core.String method;
+  /**
+   * The account shipping settings to update. Only defined if the method is
+   * update.
+   */
+  ShippingSettings shippingSettings;
+
+  ShippingsettingsCustomBatchRequestEntry();
+
+  ShippingsettingsCustomBatchRequestEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("batchId")) {
+      batchId = _json["batchId"];
+    }
+    if (_json.containsKey("merchantId")) {
+      merchantId = _json["merchantId"];
+    }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
+    if (_json.containsKey("shippingSettings")) {
+      shippingSettings = new ShippingSettings.fromJson(_json["shippingSettings"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (batchId != null) {
+      _json["batchId"] = batchId;
+    }
+    if (merchantId != null) {
+      _json["merchantId"] = merchantId;
+    }
+    if (method != null) {
+      _json["method"] = method;
+    }
+    if (shippingSettings != null) {
+      _json["shippingSettings"] = (shippingSettings).toJson();
+    }
+    return _json;
+  }
+}
+
+class ShippingsettingsCustomBatchResponse {
+  /** The result of the execution of the batch requests. */
+  core.List<ShippingsettingsCustomBatchResponseEntry> entries;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "content#shippingsettingsCustomBatchResponse".
+   */
+  core.String kind;
+
+  ShippingsettingsCustomBatchResponse();
+
+  ShippingsettingsCustomBatchResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("entries")) {
+      entries = _json["entries"].map((value) => new ShippingsettingsCustomBatchResponseEntry.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (entries != null) {
+      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/** A batch entry encoding a single non-batch shipping settings response. */
+class ShippingsettingsCustomBatchResponseEntry {
+  /** The ID of the request entry to which this entry responds. */
+  core.int batchId;
+  /** A list of errors defined if, and only if, the request failed. */
+  Errors errors;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "content#shippingsettingsCustomBatchResponseEntry".
+   */
+  core.String kind;
+  /** The retrieved or updated account shipping settings. */
+  ShippingSettings shippingSettings;
+
+  ShippingsettingsCustomBatchResponseEntry();
+
+  ShippingsettingsCustomBatchResponseEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("batchId")) {
+      batchId = _json["batchId"];
+    }
+    if (_json.containsKey("errors")) {
+      errors = new Errors.fromJson(_json["errors"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("shippingSettings")) {
+      shippingSettings = new ShippingSettings.fromJson(_json["shippingSettings"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (batchId != null) {
+      _json["batchId"] = batchId;
+    }
+    if (errors != null) {
+      _json["errors"] = (errors).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (shippingSettings != null) {
+      _json["shippingSettings"] = (shippingSettings).toJson();
+    }
+    return _json;
+  }
+}
+
+class ShippingsettingsGetSupportedCarriersResponse {
+  /** A list of supported carriers. May be empty. */
+  core.List<CarriersCarrier> carriers;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "content#shippingsettingsGetSupportedCarriersResponse".
+   */
+  core.String kind;
+
+  ShippingsettingsGetSupportedCarriersResponse();
+
+  ShippingsettingsGetSupportedCarriersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("carriers")) {
+      carriers = _json["carriers"].map((value) => new CarriersCarrier.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (carriers != null) {
+      _json["carriers"] = carriers.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class ShippingsettingsListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "content#shippingsettingsListResponse".
+   */
+  core.String kind;
+  /** The token for the retrieval of the next page of shipping settings. */
+  core.String nextPageToken;
+  core.List<ShippingSettings> resources;
+
+  ShippingsettingsListResponse();
+
+  ShippingsettingsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("resources")) {
+      resources = _json["resources"].map((value) => new ShippingSettings.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (resources != null) {
+      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class Table {
+  /**
+   * Headers of the table's columns. Optional: if not set then the table has
+   * only one dimension.
+   */
+  Headers columnHeaders;
+  /** Name of the table. Required for subtables, ignored for the main table. */
+  core.String name;
+  /** Headers of the table's rows. Required. */
+  Headers rowHeaders;
+  /**
+   * The list of rows that constitute the table. Must have the same length as
+   * rowHeaders. Required.
+   */
+  core.List<Row> rows;
+
+  Table();
+
+  Table.fromJson(core.Map _json) {
+    if (_json.containsKey("columnHeaders")) {
+      columnHeaders = new Headers.fromJson(_json["columnHeaders"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("rowHeaders")) {
+      rowHeaders = new Headers.fromJson(_json["rowHeaders"]);
+    }
+    if (_json.containsKey("rows")) {
+      rows = _json["rows"].map((value) => new Row.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (columnHeaders != null) {
+      _json["columnHeaders"] = (columnHeaders).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (rowHeaders != null) {
+      _json["rowHeaders"] = (rowHeaders).toJson();
+    }
+    if (rows != null) {
+      _json["rows"] = rows.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class TestOrder {
   /** The details of the customer who placed the order. */
   TestOrderCustomer customer;
@@ -10660,6 +11799,76 @@ class TestOrderPaymentMethod {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The single value of a rate group or the value of a rate group table's cell.
+ * Exactly one of noShipping, flatRate, pricePercentage, carrierRateName,
+ * subtableName must be set.
+ */
+class Value {
+  /**
+   * The name of a carrier rate referring to a carrier rate defined in the same
+   * rate group. Can only be set if all other fields are not set.
+   */
+  core.String carrierRateName;
+  /** A flat rate. Can only be set if all other fields are not set. */
+  Price flatRate;
+  /**
+   * If true, then the product can't ship. Must be true when set, can only be
+   * set if all other fields are not set.
+   */
+  core.bool noShipping;
+  /**
+   * A percentage of the price represented as a number in decimal notation
+   * (e.g., "5.4"). Can only be set if all other fields are not set.
+   */
+  core.String pricePercentage;
+  /**
+   * The name of a subtable. Can only be set in table cells (i.e., not for
+   * single values), and only if all other fields are not set.
+   */
+  core.String subtableName;
+
+  Value();
+
+  Value.fromJson(core.Map _json) {
+    if (_json.containsKey("carrierRateName")) {
+      carrierRateName = _json["carrierRateName"];
+    }
+    if (_json.containsKey("flatRate")) {
+      flatRate = new Price.fromJson(_json["flatRate"]);
+    }
+    if (_json.containsKey("noShipping")) {
+      noShipping = _json["noShipping"];
+    }
+    if (_json.containsKey("pricePercentage")) {
+      pricePercentage = _json["pricePercentage"];
+    }
+    if (_json.containsKey("subtableName")) {
+      subtableName = _json["subtableName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (carrierRateName != null) {
+      _json["carrierRateName"] = carrierRateName;
+    }
+    if (flatRate != null) {
+      _json["flatRate"] = (flatRate).toJson();
+    }
+    if (noShipping != null) {
+      _json["noShipping"] = noShipping;
+    }
+    if (pricePercentage != null) {
+      _json["pricePercentage"] = pricePercentage;
+    }
+    if (subtableName != null) {
+      _json["subtableName"] = subtableName;
     }
     return _json;
   }

@@ -15,7 +15,7 @@
     "description": "Reads and publishes results from Cloud Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-test-lab/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/dcuwhJF8v2eGhAkOhN_qdalBHBw\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/p6ic6q7AC2C_by7kD3p8-KJEx3w\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20160805",
+    "revision": "20160825",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Any": {

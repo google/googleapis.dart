@@ -6,13 +6,13 @@ packages:
       name: args
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.4+2"
+    version: "0.13.5"
   async:
     description:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.11.0"
+    version: "1.11.1"
   charcode:
     description:
       name: charcode
@@ -24,7 +24,7 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.9.0"
+    version: "1.9.1"
   discoveryapis_generator:
     description:
       name: discoveryapis_generator
@@ -36,7 +36,7 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.11.3+8"
+    version: "0.11.3+9"
   http_parser:
     description:
       name: http_parser

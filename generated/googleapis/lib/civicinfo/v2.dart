@@ -138,6 +138,11 @@ class ElectionsResourceApi {
    * [officialOnly] - If set to true, only data from official state sources will
    * be returned.
    *
+   * [returnAllAvailableData] - If set to true, the query will return the
+   * success codeand include any partial information when it is unable to
+   * determine a matching address or unable to determine the election for
+   * electionId=0 queries.
+   *
    * Completes with a [VoterInfoResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -146,7 +151,7 @@ class ElectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<VoterInfoResponse> voterInfoQuery(core.String address, {core.String electionId, core.bool officialOnly}) {
+  async.Future<VoterInfoResponse> voterInfoQuery(core.String address, {core.String electionId, core.bool officialOnly, core.bool returnAllAvailableData}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -163,6 +168,9 @@ class ElectionsResourceApi {
     }
     if (officialOnly != null) {
       _queryParams["officialOnly"] = ["${officialOnly}"];
+    }
+    if (returnAllAvailableData != null) {
+      _queryParams["returnAllAvailableData"] = ["${returnAllAvailableData}"];
     }
 
     _url = 'voterinfo';
@@ -680,8 +688,8 @@ class Contest {
   /**
    * The set of ballot responses for the referendum. A ballot response
    * represents a line on the ballot. Common examples might include "yes" or
-   * "no" for referenda, or a judge's name for a retention contest. This field
-   * is only populated for contests of type 'Referendum'.
+   * "no" for referenda. This field is only populated for contests of type
+   * 'Referendum'.
    */
   core.List<core.String> referendumBallotResponses;
   /**
@@ -748,7 +756,7 @@ class Contest {
   /**
    * The type of contest. Usually this will be 'General', 'Primary', or
    * 'Run-off' for contests with candidates. For referenda this will be
-   * 'Referendum'.
+   * 'Referendum'. For Retention contests this will typically be 'Retention'.
    */
   core.String type;
 
@@ -1132,6 +1140,7 @@ class ElectoralDistrict {
    * 34th State Senate district would have id "34" and a scope of stateUpper.
    */
   core.String id;
+  core.String kgForeignKey;
   /** The name of the district. */
   core.String name;
   /**
@@ -1148,6 +1157,9 @@ class ElectoralDistrict {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("kgForeignKey")) {
+      kgForeignKey = _json["kgForeignKey"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -1160,6 +1172,9 @@ class ElectoralDistrict {
     var _json = new core.Map();
     if (id != null) {
       _json["id"] = id;
+    }
+    if (kgForeignKey != null) {
+      _json["kgForeignKey"] = kgForeignKey;
     }
     if (name != null) {
       _json["name"] = name;

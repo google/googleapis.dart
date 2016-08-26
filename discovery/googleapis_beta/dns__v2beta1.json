@@ -23,7 +23,7 @@
     "description": "Configures and serves authoritative DNS records.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-dns",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/p5FXF_1mPQyFYKDH4p0vfLLFmRE\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/JQmieASg3Jazvi7OZK08WN9It0I\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -763,7 +763,7 @@
             }
         }
     },
-    "revision": "20160601",
+    "revision": "20160818",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Change": {
@@ -1049,7 +1049,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "User assigned name for this resource. Must be unique within the project. The name must be 1-32 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.",
+                    "description": "User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.",
                     "type": "string"
                 },
                 "nameServerSet": {

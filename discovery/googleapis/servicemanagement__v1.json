@@ -21,7 +21,7 @@
     "baseUrl": "https://servicemanagement.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Service Management",
-    "description": "The service management API for Google Cloud Platform",
+    "description": "Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/service-management/",
     "icons": {
@@ -211,7 +211,7 @@
                             "type": "string"
                         },
                         "serviceName": {
-                            "description": "The name of the service.  See the `ServiceManager` overview for naming\nrequirements.  For example: `example.googleapis.com`.",
+                            "description": "The name of the service.  See the [overview](/service-management/overview)\nfor naming requirements.  For example: `example.googleapis.com`.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -237,7 +237,7 @@
                     ],
                     "parameters": {
                         "serviceName": {
-                            "description": "The name of the service. See the `ServiceManager` overview for naming\nrequirements. For example: `example.googleapis.com`.",
+                            "description": "The name of the service. See the [overview](/service-management/overview)\nfor naming requirements. For example: `example.googleapis.com`.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -313,7 +313,7 @@
                     ]
                 },
                 "create": {
-                    "description": "Creates a new managed service.\n\nOperation<response: ManagedService>",
+                    "description": "Creates a new managed service.\nPlease note one producer project can own no more than 20 services.\n\nOperation<response: ManagedService>",
                     "httpMethod": "POST",
                     "id": "servicemanagement.services.create",
                     "parameterOrder": [],
@@ -331,7 +331,7 @@
                     ]
                 },
                 "enable": {
-                    "description": "Enable a managed service for a project with default setting.\n\nOperation<response: EnableServiceResponse>",
+                    "description": "Enable a managed service for a project with default setting.\n\nOperation<response: EnableServiceResponse>\n\ngoogle.rpc.Status errors may contain a\ngoogle.rpc.PreconditionFailure error detail.",
                     "httpMethod": "POST",
                     "id": "servicemanagement.services.enable",
                     "parameterOrder": [
@@ -394,7 +394,7 @@
                     ],
                     "parameters": {
                         "serviceName": {
-                            "description": "The name of the service.  See the `ServiceManager` overview for naming\nrequirements.  For example: `example.googleapis.com`.",
+                            "description": "The name of the service.  See the [overview](/service-management/overview)\nfor naming requirements.  For example: `example.googleapis.com`.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -457,7 +457,7 @@
                                     "type": "string"
                                 },
                                 "serviceName": {
-                                    "description": "The name of the service.  See the `ServiceManager` overview for naming\nrequirements.  For example: `example.googleapis.com`.",
+                                    "description": "The name of the service.  See the [overview](/service-management/overview)\nfor naming requirements.  For example: `example.googleapis.com`.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -475,7 +475,7 @@
                             ]
                         },
                         "create": {
-                            "description": "Creates a new service configuration rollout. Based on rollout, the\nGoogle Service Management will roll out the service configurations to\ndifferent backend services. For example, the logging configuration will be\npushed to Google Cloud Logging.\n\nOperation<response: Rollout>",
+                            "description": "Creates a new service configuration rollout. Based on rollout, the\nGoogle Service Management will roll out the service configurations to\ndifferent backend services. For example, the logging configuration will be\npushed to Google Cloud Logging.\n\nPlease note that any previous pending and running Rollouts and associated\nOperations will be automatically cancelled so that the latest Rollout will\nnot be blocked by previous Rollouts.\n\nOperation<response: Rollout>",
                             "httpMethod": "POST",
                             "id": "servicemanagement.services.rollouts.create",
                             "parameterOrder": [
@@ -483,7 +483,7 @@
                             ],
                             "parameters": {
                                 "serviceName": {
-                                    "description": "The name of the service.  See the `ServiceManager` overview for naming\nrequirements.  For example: `example.googleapis.com`.",
+                                    "description": "The name of the service.  See the [overview](/service-management/overview)\nfor naming requirements.  For example: `example.googleapis.com`.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -516,7 +516,7 @@
                                     "type": "integer"
                                 },
                                 "serviceName": {
-                                    "description": "The name of the service.  See the `ServiceManager` overview for naming\nrequirements.  For example: `example.googleapis.com`.",
+                                    "description": "The name of the service.  See the [overview](/service-management/overview)\nfor naming requirements.  For example: `example.googleapis.com`.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -551,7 +551,7 @@
                             ],
                             "parameters": {
                                 "serviceName": {
-                                    "description": "The name of the service.  See the `ServiceManager` overview for naming\nrequirements.  For example: `example.googleapis.com`.",
+                                    "description": "The name of the service.  See the [overview](/service-management/overview)\nfor naming requirements.  For example: `example.googleapis.com`.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -584,7 +584,7 @@
                                     "type": "string"
                                 },
                                 "serviceName": {
-                                    "description": "The name of the service.  See the `ServiceManager` overview for naming\nrequirements.  For example: `example.googleapis.com`.",
+                                    "description": "The name of the service.  See the [overview](/service-management/overview)\nfor naming requirements.  For example: `example.googleapis.com`.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -610,7 +610,7 @@
                             ],
                             "parameters": {
                                 "serviceName": {
-                                    "description": "The name of the service.  See the `ServiceManager` overview for naming\nrequirements.  For example: `example.googleapis.com`.",
+                                    "description": "The name of the service.  See the [overview](/service-management/overview)\nfor naming requirements.  For example: `example.googleapis.com`.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -643,7 +643,7 @@
                                     "type": "integer"
                                 },
                                 "serviceName": {
-                                    "description": "The name of the service.  See the `ServiceManager` overview for naming\nrequirements.  For example: `example.googleapis.com`.",
+                                    "description": "The name of the service.  See the [overview](/service-management/overview)\nfor naming requirements.  For example: `example.googleapis.com`.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20160803",
+    "revision": "20160822",
     "rootUrl": "https://servicemanagement.googleapis.com/",
     "schemas": {
         "Api": {
@@ -772,12 +772,6 @@
             },
             "type": "object"
         },
-        "ConfigOptions": {
-            "description": "A set of options to cover use of source config within `ServiceManager`\nand related tools.",
-            "id": "ConfigOptions",
-            "properties": {},
-            "type": "object"
-        },
         "Diagnostic": {
             "description": "Represents a diagnostic message (error or warning)",
             "id": "Diagnostic",
@@ -824,7 +818,7 @@
             "id": "MonitoredResourceDescriptor",
             "properties": {
                 "displayName": {
-                    "description": "Optional. A concise name for the monitored resource type that might be\ndisplayed in user interfaces. For example, `\"Google Cloud SQL Database\"`.",
+                    "description": "Optional. A concise name for the monitored resource type that might be\ndisplayed in user interfaces. It should be a Title Cased Noun Phrase,\nwithout any article or other determiners. For example,\n`\"Google Cloud SQL Database\"`.",
                     "type": "string"
                 },
                 "description": {
@@ -967,6 +961,13 @@
                 "systemParameters": {
                     "$ref": "SystemParameters",
                     "description": "Configuration for system parameters."
+                },
+                "endpoints": {
+                    "description": "Configuration for network endpoints.  If this is empty, then an endpoint\nwith the same name as the service is automatically generated to service all\ndefined APIs.",
+                    "items": {
+                        "$ref": "Endpoint"
+                    },
+                    "type": "array"
                 },
                 "name": {
                     "description": "The DNS address at which this service is available,\ne.g. `calendar.googleapis.com`.",
@@ -1197,7 +1198,7 @@
                     "type": "string"
                 },
                 "serviceName": {
-                    "description": "The name of the service. See the [overview](/service-management/overview)\nfor naming requirements.\nThis name must match `google.api.Service.name` in the\n`service_config` field.",
+                    "description": "The name of the service. See the [overview](/service-management/overview)\nfor naming requirements.",
                     "type": "string"
                 }
             },
@@ -1464,7 +1465,7 @@
                         "The Rollout has completed successfully.",
                         "The Rollout has been cancelled. This can happen if you have overlapping\nRollout pushes, and the previous ones will be cancelled.",
                         "The Rollout has failed. It is typically caused by configuration errors.",
-                        "The Rollout has started yet and is pending for execution."
+                        "The Rollout has not started yet and is pending for execution."
                     ],
                     "type": "string"
                 },
@@ -1498,10 +1499,6 @@
                         "$ref": "ConfigFile"
                     },
                     "type": "array"
-                },
-                "options": {
-                    "$ref": "ConfigOptions",
-                    "description": "Options to cover use of source configuration within ServiceManager and\ntools"
                 },
                 "id": {
                     "description": "A unique ID for a specific instance of this message, typically assigned\nby the client for tracking purpose. If empty, the server may choose to\ngenerate one instead.",
@@ -1886,6 +1883,42 @@
             },
             "type": "object"
         },
+        "Endpoint": {
+            "description": "`Endpoint` describes a network endpoint that serves a set of APIs.\nA service may expose any number of endpoints, and all endpoints share the\nsame service configuration, such as quota configuration and monitoring\nconfiguration.\n\nExample service configuration:\n\n    name: library-example.googleapis.com\n    endpoints:\n      # Below entry makes 'google.example.library.v1.Library'\n      # API be served from endpoint address library-example.googleapis.com.\n      # It also allows HTTP OPTIONS calls to be passed to the backend, for\n      # it to decide whether the subsequent cross-origin request is\n      # allowed to proceed.\n    - name: library-example.googleapis.com\n      apis: google.example.library.v1.Library\n      allow_cors: true\n      # Below entry makes 'google.example.library.v1.Library'\n      # API be served from endpoint address\n      # google.example.library-example.v1.LibraryManager.\n    - name: library-manager.googleapis.com\n      apis: google.example.library.v1.LibraryManager\n      # BNS address for a borg job. Can specify a task by appending\n      # \"/taskId\" (e.g. \"/0\") to the job spec.\n\nExample OpenAPI extension for endpoint with allow_cors set to true:\n\n    {\n      \"swagger\": \"2.0\",\n      \"info\": {\n        \"description\": \"A simple...\"\n      },\n      \"host\": \"MY_PROJECT_ID.appspot.com\",\n      \"x-google-endpoints\": [{\n        \"name\": \"MY_PROJECT_ID.appspot.com\",\n        \"allow_cors\": \"true\"\n      }]\n    }",
+            "id": "Endpoint",
+            "properties": {
+                "apis": {
+                    "description": "The list of APIs served by this endpoint.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "allowCors": {
+                    "description": "Allowing\n[CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka\ncross-domain traffic, would allow the backends served from this endpoint to\nreceive and respond to HTTP OPTIONS requests. The response will be used by\nthe browser to determine whether the subsequent cross-origin request is\nallowed to proceed.",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "The canonical name of this endpoint.",
+                    "type": "string"
+                },
+                "aliases": {
+                    "description": "DEPRECATED: This field is no longer supported. Instead of using aliases,\nplease specify multiple google.api.Endpoint for each of the intented\nalias.\n\nAdditional names that this endpoint will be hosted on.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "features": {
+                    "description": "The list of features enabled on this endpoint.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Page": {
             "description": "Represents a documentation page. A page can contain subpages to represent\nnested documentation set structure.",
             "id": "Page",
@@ -2084,7 +2117,7 @@
                     "description": "The requirements for OAuth credentials."
                 },
                 "allowWithoutCredential": {
-                    "description": "Whether to allow requests without a credential.  If quota is enabled, an\nAPI key is required for such request to pass the quota check.",
+                    "description": "Whether to allow requests without a credential. The credential can be\nan OAuth token, Google cookies (first-party auth) or EndUserCreds.\n\nFor requests without credentials, if the service control environment is\nspecified, each incoming request **must** be associated with a service\nconsumer. This can be done by passing an API key that belongs to a consumer\nproject.",
                     "type": "boolean"
                 },
                 "requirements": {

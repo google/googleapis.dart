@@ -14,7 +14,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client servicemanagement/v1';
 
-/** The service management API for Google Cloud Platform */
+/**
+ * Google Service Management allows service producers to publish their services
+ * on Google Cloud Platform so that they can be discovered and used by service
+ * consumers.
+ */
 class ServicemanagementApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -101,6 +105,7 @@ class ServicesResourceApi {
 
   /**
    * Creates a new managed service.
+   * Please note one producer project can own no more than 20 services.
    *
    * Operation<response: ManagedService>
    *
@@ -150,9 +155,9 @@ class ServicesResourceApi {
    *
    * Request parameters:
    *
-   * [serviceName] - The name of the service.  See the `ServiceManager` overview
-   * for naming
-   * requirements.  For example: `example.googleapis.com`.
+   * [serviceName] - The name of the service.  See the
+   * [overview](/service-management/overview)
+   * for naming requirements.  For example: `example.googleapis.com`.
    *
    * Completes with a [Operation].
    *
@@ -238,6 +243,9 @@ class ServicesResourceApi {
    * Enable a managed service for a project with default setting.
    *
    * Operation<response: EnableServiceResponse>
+   *
+   * google.rpc.Status errors may contain a
+   * google.rpc.PreconditionFailure error detail.
    *
    * [request] - The metadata request object.
    *
@@ -377,9 +385,9 @@ class ServicesResourceApi {
    *
    * Request parameters:
    *
-   * [serviceName] - The name of the service.  See the `ServiceManager` overview
-   * for naming
-   * requirements.  For example: `example.googleapis.com`.
+   * [serviceName] - The name of the service.  See the
+   * [overview](/service-management/overview)
+   * for naming requirements.  For example: `example.googleapis.com`.
    *
    * [configId] - null
    *
@@ -626,9 +634,9 @@ class ServicesResourceApi {
    *
    * Request parameters:
    *
-   * [serviceName] - The name of the service. See the `ServiceManager` overview
-   * for naming
-   * requirements. For example: `example.googleapis.com`.
+   * [serviceName] - The name of the service. See the
+   * [overview](/service-management/overview)
+   * for naming requirements. For example: `example.googleapis.com`.
    *
    * Completes with a [Operation].
    *
@@ -681,9 +689,9 @@ class ServicesConfigsResourceApi {
    *
    * Request parameters:
    *
-   * [serviceName] - The name of the service.  See the `ServiceManager` overview
-   * for naming
-   * requirements.  For example: `example.googleapis.com`.
+   * [serviceName] - The name of the service.  See the
+   * [overview](/service-management/overview)
+   * for naming requirements.  For example: `example.googleapis.com`.
    *
    * Completes with a [Service].
    *
@@ -725,9 +733,9 @@ class ServicesConfigsResourceApi {
    *
    * Request parameters:
    *
-   * [serviceName] - The name of the service.  See the `ServiceManager` overview
-   * for naming
-   * requirements.  For example: `example.googleapis.com`.
+   * [serviceName] - The name of the service.  See the
+   * [overview](/service-management/overview)
+   * for naming requirements.  For example: `example.googleapis.com`.
    *
    * [configId] - null
    *
@@ -772,9 +780,9 @@ class ServicesConfigsResourceApi {
    *
    * Request parameters:
    *
-   * [serviceName] - The name of the service.  See the `ServiceManager` overview
-   * for naming
-   * requirements.  For example: `example.googleapis.com`.
+   * [serviceName] - The name of the service.  See the
+   * [overview](/service-management/overview)
+   * for naming requirements.  For example: `example.googleapis.com`.
    *
    * [pageSize] - The max number of items to include in the response list.
    *
@@ -833,9 +841,9 @@ class ServicesConfigsResourceApi {
    *
    * Request parameters:
    *
-   * [serviceName] - The name of the service.  See the `ServiceManager` overview
-   * for naming
-   * requirements.  For example: `example.googleapis.com`.
+   * [serviceName] - The name of the service.  See the
+   * [overview](/service-management/overview)
+   * for naming requirements.  For example: `example.googleapis.com`.
    *
    * Completes with a [Operation].
    *
@@ -887,15 +895,19 @@ class ServicesRolloutsResourceApi {
    * different backend services. For example, the logging configuration will be
    * pushed to Google Cloud Logging.
    *
+   * Please note that any previous pending and running Rollouts and associated
+   * Operations will be automatically cancelled so that the latest Rollout will
+   * not be blocked by previous Rollouts.
+   *
    * Operation<response: Rollout>
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [serviceName] - The name of the service.  See the `ServiceManager` overview
-   * for naming
-   * requirements.  For example: `example.googleapis.com`.
+   * [serviceName] - The name of the service.  See the
+   * [overview](/service-management/overview)
+   * for naming requirements.  For example: `example.googleapis.com`.
    *
    * Completes with a [Operation].
    *
@@ -937,9 +949,9 @@ class ServicesRolloutsResourceApi {
    *
    * Request parameters:
    *
-   * [serviceName] - The name of the service.  See the `ServiceManager` overview
-   * for naming
-   * requirements.  For example: `example.googleapis.com`.
+   * [serviceName] - The name of the service.  See the
+   * [overview](/service-management/overview)
+   * for naming requirements.  For example: `example.googleapis.com`.
    *
    * [rolloutId] - The id of the rollout resource.
    *
@@ -984,9 +996,9 @@ class ServicesRolloutsResourceApi {
    *
    * Request parameters:
    *
-   * [serviceName] - The name of the service.  See the `ServiceManager` overview
-   * for naming
-   * requirements.  For example: `example.googleapis.com`.
+   * [serviceName] - The name of the service.  See the
+   * [overview](/service-management/overview)
+   * for naming requirements.  For example: `example.googleapis.com`.
    *
    * [pageSize] - The max number of items to include in the response list.
    *
@@ -1389,8 +1401,13 @@ class Authentication {
  */
 class AuthenticationRule {
   /**
-   * Whether to allow requests without a credential.  If quota is enabled, an
-   * API key is required for such request to pass the quota check.
+   * Whether to allow requests without a credential. The credential can be
+   * an OAuth token, Google cookies (first-party auth) or EndUserCreds.
+   *
+   * For requests without credentials, if the service control environment is
+   * specified, each incoming request **must** be associated with a service
+   * consumer. This can be done by passing an API key that belongs to a consumer
+   * project.
    */
   core.bool allowWithoutCredential;
   /** The requirements for OAuth credentials. */
@@ -1852,23 +1869,6 @@ class ConfigFile {
   }
 }
 
-/**
- * A set of options to cover use of source config within `ServiceManager`
- * and related tools.
- */
-class ConfigOptions {
-
-  ConfigOptions();
-
-  ConfigOptions.fromJson(core.Map _json) {
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    return _json;
-  }
-}
-
 /** Represents a service configuration with its name and id. */
 class ConfigRef {
   /**
@@ -1910,11 +1910,6 @@ class ConfigSource {
    * generate one instead.
    */
   core.String id;
-  /**
-   * Options to cover use of source configuration within ServiceManager and
-   * tools
-   */
-  ConfigOptions options;
 
   ConfigSource();
 
@@ -1925,9 +1920,6 @@ class ConfigSource {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
-    if (_json.containsKey("options")) {
-      options = new ConfigOptions.fromJson(_json["options"]);
-    }
   }
 
   core.Map toJson() {
@@ -1937,9 +1929,6 @@ class ConfigSource {
     }
     if (id != null) {
       _json["id"] = id;
-    }
-    if (options != null) {
-      _json["options"] = (options).toJson();
     }
     return _json;
   }
@@ -2520,6 +2509,112 @@ class EnableServiceRequest {
     var _json = new core.Map();
     if (consumerId != null) {
       _json["consumerId"] = consumerId;
+    }
+    return _json;
+  }
+}
+
+/**
+ * `Endpoint` describes a network endpoint that serves a set of APIs.
+ * A service may expose any number of endpoints, and all endpoints share the
+ * same service configuration, such as quota configuration and monitoring
+ * configuration.
+ *
+ * Example service configuration:
+ *
+ *     name: library-example.googleapis.com
+ *     endpoints:
+ *       # Below entry makes 'google.example.library.v1.Library'
+ *       # API be served from endpoint address library-example.googleapis.com.
+ *       # It also allows HTTP OPTIONS calls to be passed to the backend, for
+ *       # it to decide whether the subsequent cross-origin request is
+ *       # allowed to proceed.
+ *     - name: library-example.googleapis.com
+ *       apis: google.example.library.v1.Library
+ *       allow_cors: true
+ *       # Below entry makes 'google.example.library.v1.Library'
+ *       # API be served from endpoint address
+ *       # google.example.library-example.v1.LibraryManager.
+ *     - name: library-manager.googleapis.com
+ *       apis: google.example.library.v1.LibraryManager
+ *       # BNS address for a borg job. Can specify a task by appending
+ *       # "/taskId" (e.g. "/0") to the job spec.
+ *
+ * Example OpenAPI extension for endpoint with allow_cors set to true:
+ *
+ *     {
+ *       "swagger": "2.0",
+ *       "info": {
+ *         "description": "A simple..."
+ *       },
+ *       "host": "MY_PROJECT_ID.appspot.com",
+ *       "x-google-endpoints": [{
+ *         "name": "MY_PROJECT_ID.appspot.com",
+ *         "allow_cors": "true"
+ *       }]
+ *     }
+ */
+class Endpoint {
+  /**
+   * DEPRECATED: This field is no longer supported. Instead of using aliases,
+   * please specify multiple google.api.Endpoint for each of the intented
+   * alias.
+   *
+   * Additional names that this endpoint will be hosted on.
+   */
+  core.List<core.String> aliases;
+  /**
+   * Allowing
+   * [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
+   * cross-domain traffic, would allow the backends served from this endpoint to
+   * receive and respond to HTTP OPTIONS requests. The response will be used by
+   * the browser to determine whether the subsequent cross-origin request is
+   * allowed to proceed.
+   */
+  core.bool allowCors;
+  /** The list of APIs served by this endpoint. */
+  core.List<core.String> apis;
+  /** The list of features enabled on this endpoint. */
+  core.List<core.String> features;
+  /** The canonical name of this endpoint. */
+  core.String name;
+
+  Endpoint();
+
+  Endpoint.fromJson(core.Map _json) {
+    if (_json.containsKey("aliases")) {
+      aliases = _json["aliases"];
+    }
+    if (_json.containsKey("allowCors")) {
+      allowCors = _json["allowCors"];
+    }
+    if (_json.containsKey("apis")) {
+      apis = _json["apis"];
+    }
+    if (_json.containsKey("features")) {
+      features = _json["features"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (aliases != null) {
+      _json["aliases"] = aliases;
+    }
+    if (allowCors != null) {
+      _json["allowCors"] = allowCors;
+    }
+    if (apis != null) {
+      _json["apis"] = apis;
+    }
+    if (features != null) {
+      _json["features"] = features;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }
@@ -3633,8 +3728,6 @@ class ManagedService {
   /**
    * The name of the service. See the [overview](/service-management/overview)
    * for naming requirements.
-   * This name must match `google.api.Service.name` in the
-   * `service_config` field.
    */
   core.String serviceName;
 
@@ -4114,7 +4207,9 @@ class MonitoredResourceDescriptor {
   core.String description;
   /**
    * Optional. A concise name for the monitored resource type that might be
-   * displayed in user interfaces. For example, `"Google Cloud SQL Database"`.
+   * displayed in user interfaces. It should be a Title Cased Noun Phrase,
+   * without any article or other determiners. For example,
+   * `"Google Cloud SQL Database"`.
    */
   core.String displayName;
   /**
@@ -4754,7 +4849,7 @@ class Rollout {
    * Rollout pushes, and the previous ones will be cancelled.
    * - "FAILED" : The Rollout has failed. It is typically caused by
    * configuration errors.
-   * - "PENDING" : The Rollout has started yet and is pending for execution.
+   * - "PENDING" : The Rollout has not started yet and is pending for execution.
    */
   core.String status;
   /**
@@ -4962,6 +5057,12 @@ class Service {
   /** Additional API documentation. */
   Documentation documentation;
   /**
+   * Configuration for network endpoints.  If this is empty, then an endpoint
+   * with the same name as the service is automatically generated to service all
+   * defined APIs.
+   */
+  core.List<Endpoint> endpoints;
+  /**
    * A list of all enum types included in this API service.  Enums
    * referenced directly or indirectly by the `apis` are automatically
    * included.  Enums which are not referenced but shall be included
@@ -5058,6 +5159,9 @@ class Service {
     if (_json.containsKey("documentation")) {
       documentation = new Documentation.fromJson(_json["documentation"]);
     }
+    if (_json.containsKey("endpoints")) {
+      endpoints = _json["endpoints"].map((value) => new Endpoint.fromJson(value)).toList();
+    }
     if (_json.containsKey("enums")) {
       enums = _json["enums"].map((value) => new Enum.fromJson(value)).toList();
     }
@@ -5133,6 +5237,9 @@ class Service {
     }
     if (documentation != null) {
       _json["documentation"] = (documentation).toJson();
+    }
+    if (endpoints != null) {
+      _json["endpoints"] = endpoints.map((value) => (value).toJson()).toList();
     }
     if (enums != null) {
       _json["enums"] = enums.map((value) => (value).toJson()).toList();

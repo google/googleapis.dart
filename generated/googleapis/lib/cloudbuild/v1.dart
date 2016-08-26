@@ -144,6 +144,7 @@ class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsBuildsResourceApi get builds => new ProjectsBuildsResourceApi(_requester);
+  ProjectsTriggersResourceApi get triggers => new ProjectsTriggersResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
@@ -355,6 +356,245 @@ class ProjectsBuildsResourceApi {
 }
 
 
+class ProjectsTriggersResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsTriggersResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a new BuildTrigger.
+   *
+   * This API is experimental.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - ID of the project for which to configure automatic builds.
+   *
+   * Completes with a [BuildTrigger].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BuildTrigger> create(BuildTrigger request, core.String projectId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/triggers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BuildTrigger.fromJson(data));
+  }
+
+  /**
+   * Deletes an BuildTrigger by its project ID and trigger ID.
+   *
+   * This API is experimental.
+   *
+   * Request parameters:
+   *
+   * [projectId] - ID of the project that owns the trigger.
+   *
+   * [triggerId] - ID of the BuildTrigger to delete.
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String projectId, core.String triggerId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (triggerId == null) {
+      throw new core.ArgumentError("Parameter triggerId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/triggers/' + commons.Escaper.ecapeVariable('$triggerId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * Gets information about a BuildTrigger.
+   *
+   * This API is experimental.
+   *
+   * Request parameters:
+   *
+   * [projectId] - ID of the project that owns the trigger.
+   *
+   * [triggerId] - ID of the BuildTrigger to get.
+   *
+   * Completes with a [BuildTrigger].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BuildTrigger> get(core.String projectId, core.String triggerId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (triggerId == null) {
+      throw new core.ArgumentError("Parameter triggerId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/triggers/' + commons.Escaper.ecapeVariable('$triggerId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BuildTrigger.fromJson(data));
+  }
+
+  /**
+   * Lists existing BuildTrigger.
+   *
+   * This API is experimental.
+   *
+   * Request parameters:
+   *
+   * [projectId] - ID of the project for which to list BuildTriggers.
+   *
+   * Completes with a [ListBuildTriggersResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListBuildTriggersResponse> list(core.String projectId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/triggers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListBuildTriggersResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an BuildTrigger by its project ID and trigger ID.
+   *
+   * This API is experimental.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - ID of the project that owns the trigger.
+   *
+   * [triggerId] - ID of the BuildTrigger to update.
+   *
+   * Completes with a [BuildTrigger].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BuildTrigger> patch(BuildTrigger request, core.String projectId, core.String triggerId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (triggerId == null) {
+      throw new core.ArgumentError("Parameter triggerId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/triggers/' + commons.Escaper.ecapeVariable('$triggerId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BuildTrigger.fromJson(data));
+  }
+
+}
+
+
 
 /**
  * A build resource in the Container Builder API.
@@ -386,6 +626,11 @@ class Build {
    * the build steps are complete will be pushed to Container Registry.
    */
   core.List<core.String> images;
+  /**
+   * URL to logs for this build in Google Cloud Logging.
+   * @OutputOnly
+   */
+  core.String logUrl;
   /**
    * Google Cloud Storage bucket where logs should be written (see
    * [Bucket Name
@@ -463,6 +708,9 @@ class Build {
     if (_json.containsKey("images")) {
       images = _json["images"];
     }
+    if (_json.containsKey("logUrl")) {
+      logUrl = _json["logUrl"];
+    }
     if (_json.containsKey("logsBucket")) {
       logsBucket = _json["logsBucket"];
     }
@@ -511,6 +759,9 @@ class Build {
     }
     if (images != null) {
       _json["images"] = images;
+    }
+    if (logUrl != null) {
+      _json["logUrl"] = logUrl;
     }
     if (logsBucket != null) {
       _json["logsBucket"] = logsBucket;
@@ -683,6 +934,80 @@ class BuildStep {
   }
 }
 
+/**
+ * Configuration for an automated build in response to source repository
+ * changes.
+ */
+class BuildTrigger {
+  /** Contents of the build template. */
+  Build build;
+  /**
+   * Time when the trigger was created.
+   *
+   * @OutputOnly
+   */
+  core.String createTime;
+  /**
+   * Path, from the source root, to a file whose contents is used for the
+   * template.
+   */
+  core.String filename;
+  /**
+   * Unique identifier of the trigger.
+   *
+   * @OutputOnly
+   */
+  core.String id;
+  /**
+   * Template describing the types of source changes to trigger a build.
+   *
+   * Branch and tag names in trigger templates are interpreted as regular
+   * expressions. Any branch or tag change that matches that regular expression
+   * will trigger a build.
+   */
+  RepoSource triggerTemplate;
+
+  BuildTrigger();
+
+  BuildTrigger.fromJson(core.Map _json) {
+    if (_json.containsKey("build")) {
+      build = new Build.fromJson(_json["build"]);
+    }
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("filename")) {
+      filename = _json["filename"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("triggerTemplate")) {
+      triggerTemplate = new RepoSource.fromJson(_json["triggerTemplate"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (build != null) {
+      _json["build"] = (build).toJson();
+    }
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (filename != null) {
+      _json["filename"] = filename;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (triggerTemplate != null) {
+      _json["triggerTemplate"] = (triggerTemplate).toJson();
+    }
+    return _json;
+  }
+}
+
 /** BuiltImage describes an image built by the pipeline. */
 class BuiltImage {
   /** Docker Registry 2.0 digest. */
@@ -722,6 +1047,30 @@ class CancelBuildRequest {
   CancelBuildRequest();
 
   CancelBuildRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
+/**
+ * A generic empty message that you can re-use to avoid defining duplicated
+ * empty messages in your APIs. A typical example is to use it as the request
+ * or the response type of an API method. For instance:
+ *
+ *     service Foo {
+ *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+ *     }
+ *
+ * The JSON representation for `Empty` is empty JSON object `{}`.
+ */
+class Empty {
+
+  Empty();
+
+  Empty.fromJson(core.Map _json) {
   }
 
   core.Map toJson() {
@@ -792,6 +1141,28 @@ class Hash {
     }
     if (value != null) {
       _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/** Response containing existing BuildTriggers. */
+class ListBuildTriggersResponse {
+  /** BuildTriggers for the project, sorted by create_time descending. */
+  core.List<BuildTrigger> triggers;
+
+  ListBuildTriggersResponse();
+
+  ListBuildTriggersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("triggers")) {
+      triggers = _json["triggers"].map((value) => new BuildTrigger.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (triggers != null) {
+      _json["triggers"] = triggers.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1006,7 +1377,6 @@ class RepoSource {
 class Results {
   /**
    * List of build step digests, in order corresponding to build step indices.
-   * next id = 4
    */
   core.List<core.String> buildStepImages;
   /** Images that were built as a part of the build. */

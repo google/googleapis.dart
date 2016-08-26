@@ -7,9 +7,6 @@
                 },
                 "https://www.googleapis.com/auth/cloud_debugger": {
                     "description": "Manage cloud debugger"
-                },
-                "https://www.googleapis.com/auth/cloud_debugletcontroller": {
-                    "description": "Manage active breakpoints in cloud debugger"
                 }
             }
         }
@@ -20,8 +17,8 @@
     "canonicalName": "Cloud Debugger",
     "description": "Examines the call stack and variables of a running application without stopping or slowing it down.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://cloud.google.com/tools/cloud-debugger",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Q3V4GCHLmXscAyYlS-YwsHmGOX4\"",
+    "documentationLink": "http://cloud.google.com/debugger",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/QjifI48X3fgI9mRgli3ziT84a8U\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -129,7 +126,7 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/cloud_debugletcontroller"
+                                "https://www.googleapis.com/auth/cloud_debugger"
                             ]
                         }
                     },
@@ -167,7 +164,7 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform",
-                                        "https://www.googleapis.com/auth/cloud_debugletcontroller"
+                                        "https://www.googleapis.com/auth/cloud_debugger"
                                     ]
                                 },
                                 "update": {
@@ -201,7 +198,7 @@
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform",
-                                        "https://www.googleapis.com/auth/cloud_debugletcontroller"
+                                        "https://www.googleapis.com/auth/cloud_debugger"
                                     ]
                                 }
                             }
@@ -417,7 +414,7 @@
             }
         }
     },
-    "revision": "20160602",
+    "revision": "20160810",
     "rootUrl": "https://clouddebugger.googleapis.com/",
     "schemas": {
         "RegisterDebuggeeRequest": {
@@ -1008,6 +1005,6 @@
         }
     },
     "servicePath": "",
-    "title": "Google Cloud Debugger API",
+    "title": "Stackdriver Debugger API",
     "version": "v2"
 }

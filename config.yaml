@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.30.1
+    version: 0.31.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -41,6 +41,7 @@ packages:
     - content:v2sandbox
     - customsearch:v1  # https://developers.google.com/custom-search/
     - consumersurveys:v2  # https://developers.google.com/consumer-surveys/
+    - datastore:v1 # https://developers.google.com/datastore/
     - dataproc:v1 # https://cloud.google.com/dataproc/
     - deploymentmanager:v2
     - dfareporting:v2.2  # https://developers.google.com/doubleclick-advertisers/reporting/
@@ -104,7 +105,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.30.0
+    version: 0.30.1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md

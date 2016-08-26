@@ -135,7 +135,7 @@
             }
         }
     },
-    "revision": "20160726",
+    "revision": "20160822",
     "rootUrl": "https://vision.googleapis.com/",
     "schemas": {
         "ImageSource": {

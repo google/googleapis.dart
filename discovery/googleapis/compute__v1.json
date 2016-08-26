@@ -29,7 +29,7 @@
     "description": "Creates and runs virtual machines on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/kMrJsitQJ7xtk0C0WaT4LI3dNYA\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/IHPQejAPoHbj6rriHVm8lNKt_bg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -1114,7 +1114,6 @@
                         "disk": {
                             "description": "Name of the persistent disk to delete.",
                             "location": "path",
-                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
                             "type": "string"
                         },
@@ -8636,7 +8635,7 @@
             }
         }
     },
-    "revision": "20160726",
+    "revision": "20160812",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -8817,6 +8816,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -8831,6 +8831,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -8999,7 +9000,7 @@
             "properties": {
                 "autoscalingPolicy": {
                     "$ref": "AutoscalingPolicy",
-                    "description": "The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.\n\nIf none of these are specified, the default will be to autoscale based on cpuUtilization to 0.8 or 80%."
+                    "description": "The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.\n\nIf none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%."
                 },
                 "creationTimestamp": {
                     "description": "[Output Only] Creation timestamp in RFC3339 text format.",
@@ -9038,7 +9039,7 @@
                     "type": "string"
                 },
                 "zone": {
-                    "description": "[Output Only] URL of the zone where the instance group resides.",
+                    "description": "[Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).",
                     "type": "string"
                 }
             },
@@ -9125,6 +9126,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -9139,6 +9141,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -9226,7 +9229,7 @@
             "id": "AutoscalingPolicyCpuUtilization",
             "properties": {
                 "utilizationTarget": {
-                    "description": "The target CPU utilization that the autoscaler should maintain. Must be a float value in the range (0, 1]. If not specified, the default is 0.8.\n\nIf the CPU level is below the target utilization, the autoscaler scales down the number of instances until it reaches the minimum number of instances you specified or until the average CPU of your instances reaches the target utilization.\n\nIf the average CPU is above the target utilization, the autoscaler scales up until it reaches the maximum number of instances you specified or until the average utilization reaches the target utilization.",
+                    "description": "The target CPU utilization that the autoscaler should maintain. Must be a float value in the range (0, 1]. If not specified, the default is 0.6.\n\nIf the CPU level is below the target utilization, the autoscaler scales down the number of instances until it reaches the minimum number of instances you specified or until the average CPU of your instances reaches the target utilization.\n\nIf the average CPU is above the target utilization, the autoscaler scales up until it reaches the maximum number of instances you specified or until the average utilization reaches the target utilization.",
                     "format": "double",
                     "type": "number"
                 }
@@ -9883,6 +9886,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -9897,6 +9901,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -9972,6 +9977,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -9986,6 +9992,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -10296,6 +10303,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -10310,6 +10318,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -10987,7 +10996,7 @@
                     "type": "string"
                 },
                 "zone": {
-                    "description": "[Output Only] The URL of the zone where the instance group is located.",
+                    "description": "[Output Only] The URL of the zone where the instance group is located (for zonal resources).",
                     "type": "string"
                 }
             },
@@ -11143,7 +11152,7 @@
                     "type": "integer"
                 },
                 "zone": {
-                    "description": "The name of the zone where the managed instance group is located.",
+                    "description": "[Output Only] The URL of the zone where the managed instance group is located (for zonal resources).",
                     "type": "string"
                 }
             },
@@ -11159,6 +11168,11 @@
                 },
                 "creating": {
                     "description": "[Output Only] The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully.\n\nIf you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "creatingWithoutRetries": {
+                    "description": "[Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's target_size value accordingly.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -11323,6 +11337,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -11337,6 +11352,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -11503,6 +11519,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -11517,6 +11534,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -11826,6 +11844,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -11840,6 +11859,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -12104,6 +12124,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -12118,6 +12139,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -12171,6 +12193,7 @@
                     "enum": [
                         "ABANDONING",
                         "CREATING",
+                        "CREATING_WITHOUT_RETRIES",
                         "DELETING",
                         "NONE",
                         "RECREATING",
@@ -12178,6 +12201,7 @@
                         "RESTARTING"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -12586,6 +12610,7 @@
                                     "CLEANUP_FAILED",
                                     "DEPRECATED_RESOURCE_USED",
                                     "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                    "FIELD_VALUE_OVERRIDEN",
                                     "INJECTED_KERNELS_DEPRECATED",
                                     "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                     "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -12600,6 +12625,7 @@
                                     "UNREACHABLE"
                                 ],
                                 "enumDescriptions": [
+                                    "",
                                     "",
                                     "",
                                     "",
@@ -12732,6 +12758,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -12746,6 +12773,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -12932,11 +12960,13 @@
                         "TARGET_HTTP_PROXIES",
                         "TARGET_INSTANCES",
                         "TARGET_POOLS",
+                        "TARGET_SSL_PROXIES",
                         "TARGET_VPN_GATEWAYS",
                         "URL_MAPS",
                         "VPN_TUNNELS"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -13187,6 +13217,7 @@
                                     "CLEANUP_FAILED",
                                     "DEPRECATED_RESOURCE_USED",
                                     "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                    "FIELD_VALUE_OVERRIDEN",
                                     "INJECTED_KERNELS_DEPRECATED",
                                     "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                     "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -13201,6 +13232,7 @@
                                     "UNREACHABLE"
                                 ],
                                 "enumDescriptions": [
+                                    "",
                                     "",
                                     "",
                                     "",
@@ -13601,6 +13633,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -13615,6 +13648,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -14057,6 +14091,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -14071,6 +14106,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -14426,6 +14462,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -14440,6 +14477,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -14712,6 +14750,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -14726,6 +14765,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -14943,6 +14983,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -14957,6 +14998,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -15411,6 +15453,7 @@
                                 "CLEANUP_FAILED",
                                 "DEPRECATED_RESOURCE_USED",
                                 "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
                                 "INJECTED_KERNELS_DEPRECATED",
                                 "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
                                 "NEXT_HOP_CANNOT_IP_FORWARD",
@@ -15425,6 +15468,7 @@
                                 "UNREACHABLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",

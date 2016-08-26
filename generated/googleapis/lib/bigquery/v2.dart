@@ -2827,6 +2827,18 @@ class JobConfigurationLoad {
   /** [Deprecated] The format of the schemaInline property. */
   core.String schemaInlineFormat;
   /**
+   * [Experimental] Allows the schema of the desitination table to be updated as
+   * a side effect of the load job. Schema update options are supported in two
+   * cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
+   * WRITE_TRUNCATE and the destination table is a partition of a table,
+   * specified by partition decorators. For normal tables, WRITE_TRUNCATE will
+   * always overwrite the schema. One or more of the following values are
+   * specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the
+   * schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the
+   * original schema to nullable.
+   */
+  core.List<core.String> schemaUpdateOptions;
+  /**
    * [Optional] The number of rows at the top of a CSV file that BigQuery will
    * skip when loading the data. The default value is 0. This property is useful
    * if you have header rows in the file that should be skipped.
@@ -2903,6 +2915,9 @@ class JobConfigurationLoad {
     if (_json.containsKey("schemaInlineFormat")) {
       schemaInlineFormat = _json["schemaInlineFormat"];
     }
+    if (_json.containsKey("schemaUpdateOptions")) {
+      schemaUpdateOptions = _json["schemaUpdateOptions"];
+    }
     if (_json.containsKey("skipLeadingRows")) {
       skipLeadingRows = _json["skipLeadingRows"];
     }
@@ -2960,6 +2975,9 @@ class JobConfigurationLoad {
     }
     if (schemaInlineFormat != null) {
       _json["schemaInlineFormat"] = schemaInlineFormat;
+    }
+    if (schemaUpdateOptions != null) {
+      _json["schemaUpdateOptions"] = schemaUpdateOptions;
     }
     if (skipLeadingRows != null) {
       _json["skipLeadingRows"] = skipLeadingRows;
@@ -3020,6 +3038,11 @@ class JobConfigurationQuery {
    * unspecified, this will be set to your project default.
    */
   core.String maximumBytesBilled;
+  /**
+   * [Experimental] Standard SQL only. Whether to use positional (?) or named
+   * (@myparam) query parameters in this query.
+   */
+  core.String parameterMode;
   /** [Deprecated] This property is deprecated. */
   core.bool preserveNulls;
   /**
@@ -3029,6 +3052,20 @@ class JobConfigurationQuery {
   core.String priority;
   /** [Required] BigQuery SQL query to execute. */
   core.String query;
+  /** [Experimental] Query parameters for Standard SQL queries. */
+  core.List<QueryParameter> queryParameters;
+  /**
+   * [Experimental] Allows the schema of the desitination table to be updated as
+   * a side effect of the query job. Schema update options are supported in two
+   * cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
+   * WRITE_TRUNCATE and the destination table is a partition of a table,
+   * specified by partition decorators. For normal tables, WRITE_TRUNCATE will
+   * always overwrite the schema. One or more of the following values are
+   * specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the
+   * schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the
+   * original schema to nullable.
+   */
+  core.List<core.String> schemaUpdateOptions;
   /**
    * [Optional] If querying an external data source outside of BigQuery,
    * describes the data format, location and other properties of the data
@@ -3094,6 +3131,9 @@ class JobConfigurationQuery {
     if (_json.containsKey("maximumBytesBilled")) {
       maximumBytesBilled = _json["maximumBytesBilled"];
     }
+    if (_json.containsKey("parameterMode")) {
+      parameterMode = _json["parameterMode"];
+    }
     if (_json.containsKey("preserveNulls")) {
       preserveNulls = _json["preserveNulls"];
     }
@@ -3102,6 +3142,12 @@ class JobConfigurationQuery {
     }
     if (_json.containsKey("query")) {
       query = _json["query"];
+    }
+    if (_json.containsKey("queryParameters")) {
+      queryParameters = _json["queryParameters"].map((value) => new QueryParameter.fromJson(value)).toList();
+    }
+    if (_json.containsKey("schemaUpdateOptions")) {
+      schemaUpdateOptions = _json["schemaUpdateOptions"];
     }
     if (_json.containsKey("tableDefinitions")) {
       tableDefinitions = commons.mapMap(_json["tableDefinitions"], (item) => new ExternalDataConfiguration.fromJson(item));
@@ -3143,6 +3189,9 @@ class JobConfigurationQuery {
     if (maximumBytesBilled != null) {
       _json["maximumBytesBilled"] = maximumBytesBilled;
     }
+    if (parameterMode != null) {
+      _json["parameterMode"] = parameterMode;
+    }
     if (preserveNulls != null) {
       _json["preserveNulls"] = preserveNulls;
     }
@@ -3151,6 +3200,12 @@ class JobConfigurationQuery {
     }
     if (query != null) {
       _json["query"] = query;
+    }
+    if (queryParameters != null) {
+      _json["queryParameters"] = queryParameters.map((value) => (value).toJson()).toList();
+    }
+    if (schemaUpdateOptions != null) {
+      _json["schemaUpdateOptions"] = schemaUpdateOptions;
     }
     if (tableDefinitions != null) {
       _json["tableDefinitions"] = commons.mapMap(tableDefinitions, (item) => (item).toJson());
@@ -3520,6 +3575,11 @@ class JobStatistics2 {
   core.String totalBytesBilled;
   /** [Output-only] Total bytes processed for the job. */
   core.String totalBytesProcessed;
+  /**
+   * [Output-only, Experimental] Standard SQL only: list of undeclared query
+   * parameters detected during a dry run validation.
+   */
+  core.List<QueryParameter> undeclaredQueryParameters;
 
   JobStatistics2();
 
@@ -3548,6 +3608,9 @@ class JobStatistics2 {
     if (_json.containsKey("totalBytesProcessed")) {
       totalBytesProcessed = _json["totalBytesProcessed"];
     }
+    if (_json.containsKey("undeclaredQueryParameters")) {
+      undeclaredQueryParameters = _json["undeclaredQueryParameters"].map((value) => new QueryParameter.fromJson(value)).toList();
+    }
   }
 
   core.Map toJson() {
@@ -3575,6 +3638,9 @@ class JobStatistics2 {
     }
     if (totalBytesProcessed != null) {
       _json["totalBytesProcessed"] = totalBytesProcessed;
+    }
+    if (undeclaredQueryParameters != null) {
+      _json["undeclaredQueryParameters"] = undeclaredQueryParameters.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -3867,6 +3933,163 @@ class ProjectReference {
   }
 }
 
+class QueryParameter {
+  /**
+   * [Optional] If unset, this is a positional parameter. Otherwise, should be
+   * unique within a query.
+   */
+  core.String name;
+  /** [Required] The type of this parameter. */
+  QueryParameterType parameterType;
+  /** [Required] The value of this parameter. */
+  QueryParameterValue parameterValue;
+
+  QueryParameter();
+
+  QueryParameter.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("parameterType")) {
+      parameterType = new QueryParameterType.fromJson(_json["parameterType"]);
+    }
+    if (_json.containsKey("parameterValue")) {
+      parameterValue = new QueryParameterValue.fromJson(_json["parameterValue"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (parameterType != null) {
+      _json["parameterType"] = (parameterType).toJson();
+    }
+    if (parameterValue != null) {
+      _json["parameterValue"] = (parameterValue).toJson();
+    }
+    return _json;
+  }
+}
+
+class QueryParameterTypeStructTypes {
+  /** [Optional] Human-oriented description of the field. */
+  core.String description;
+  /** [Optional] The name of this field. */
+  core.String name;
+  /** [Required] The type of this field. */
+  QueryParameterType type;
+
+  QueryParameterTypeStructTypes();
+
+  QueryParameterTypeStructTypes.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("type")) {
+      type = new QueryParameterType.fromJson(_json["type"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (type != null) {
+      _json["type"] = (type).toJson();
+    }
+    return _json;
+  }
+}
+
+class QueryParameterType {
+  /** [Optional] The type of the array's elements, if this is an array. */
+  QueryParameterType arrayType;
+  /**
+   * [Optional] The types of the fields of this struct, in order, if this is a
+   * struct.
+   */
+  core.List<QueryParameterTypeStructTypes> structTypes;
+  /** [Required] The top level type of this field. */
+  core.String type;
+
+  QueryParameterType();
+
+  QueryParameterType.fromJson(core.Map _json) {
+    if (_json.containsKey("arrayType")) {
+      arrayType = new QueryParameterType.fromJson(_json["arrayType"]);
+    }
+    if (_json.containsKey("structTypes")) {
+      structTypes = _json["structTypes"].map((value) => new QueryParameterTypeStructTypes.fromJson(value)).toList();
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (arrayType != null) {
+      _json["arrayType"] = (arrayType).toJson();
+    }
+    if (structTypes != null) {
+      _json["structTypes"] = structTypes.map((value) => (value).toJson()).toList();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class QueryParameterValue {
+  /** [Optional] The array values, if this is an array type. */
+  core.List<QueryParameterValue> arrayValues;
+  /**
+   * [Optional] The struct field values, in order of the struct type's
+   * declaration.
+   */
+  core.List<QueryParameterValue> structValues;
+  /** [Optional] The value of this value, if a simple scalar type. */
+  core.String value;
+
+  QueryParameterValue();
+
+  QueryParameterValue.fromJson(core.Map _json) {
+    if (_json.containsKey("arrayValues")) {
+      arrayValues = _json["arrayValues"].map((value) => new QueryParameterValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("structValues")) {
+      structValues = _json["structValues"].map((value) => new QueryParameterValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (arrayValues != null) {
+      _json["arrayValues"] = arrayValues.map((value) => (value).toJson()).toList();
+    }
+    if (structValues != null) {
+      _json["structValues"] = structValues.map((value) => (value).toJson()).toList();
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 class QueryRequest {
   /**
    * [Optional] Specifies the default datasetId and projectId to assume for any
@@ -3891,6 +4114,11 @@ class QueryRequest {
    * default, there is no maximum row count, and only the byte limit applies.
    */
   core.int maxResults;
+  /**
+   * [Experimental] Standard SQL only. Whether to use positional (?) or named
+   * (@myparam) query parameters in this query.
+   */
+  core.String parameterMode;
   /** [Deprecated] This property is deprecated. */
   core.bool preserveNulls;
   /**
@@ -3899,6 +4127,8 @@ class QueryRequest {
    * [myProjectId:myDatasetId.myTableId]".
    */
   core.String query;
+  /** [Experimental] Query parameters for Standard SQL queries. */
+  core.List<QueryParameter> queryParameters;
   /**
    * [Optional] How long to wait for the query to complete, in milliseconds,
    * before the request times out and returns. Note that this is only a timeout
@@ -3940,11 +4170,17 @@ class QueryRequest {
     if (_json.containsKey("maxResults")) {
       maxResults = _json["maxResults"];
     }
+    if (_json.containsKey("parameterMode")) {
+      parameterMode = _json["parameterMode"];
+    }
     if (_json.containsKey("preserveNulls")) {
       preserveNulls = _json["preserveNulls"];
     }
     if (_json.containsKey("query")) {
       query = _json["query"];
+    }
+    if (_json.containsKey("queryParameters")) {
+      queryParameters = _json["queryParameters"].map((value) => new QueryParameter.fromJson(value)).toList();
     }
     if (_json.containsKey("timeoutMs")) {
       timeoutMs = _json["timeoutMs"];
@@ -3971,11 +4207,17 @@ class QueryRequest {
     if (maxResults != null) {
       _json["maxResults"] = maxResults;
     }
+    if (parameterMode != null) {
+      _json["parameterMode"] = parameterMode;
+    }
     if (preserveNulls != null) {
       _json["preserveNulls"] = preserveNulls;
     }
     if (query != null) {
       _json["query"] = query;
+    }
+    if (queryParameters != null) {
+      _json["queryParameters"] = queryParameters.map((value) => (value).toJson()).toList();
     }
     if (timeoutMs != null) {
       _json["timeoutMs"] = timeoutMs;

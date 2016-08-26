@@ -831,9 +831,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
    * [courseId] - Identifier of the course. This identifier can be either the
    * Classroom-assigned identifier or an alias.
    *
-   * [courseWorkId] - Identifer of the student work to request. If `user_id` is
-   * specified, this may be set to the string literal `"-"` to request student
-   * work for all course work in the specified course.
+   * [courseWorkId] - Identifer of the student work to request. This may be set
+   * to the string literal `"-"` to request student work for all course work in
+   * the specified course.
    *
    * [userId] - Optional argument to restrict returned student work to those
    * owned by the student with the specified identifier. The identifier can be
@@ -1952,6 +1952,9 @@ class InvitationsResourceApi {
 class UserProfilesResourceApi {
   final commons.ApiRequester _requester;
 
+  UserProfilesGuardianInvitationsResourceApi get guardianInvitations => new UserProfilesGuardianInvitationsResourceApi(_requester);
+  UserProfilesGuardiansResourceApi get guardians => new UserProfilesGuardiansResourceApi(_requester);
+
   UserProfilesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
@@ -1997,6 +2000,477 @@ class UserProfilesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new UserProfile.fromJson(data));
+  }
+
+}
+
+
+class UserProfilesGuardianInvitationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  UserProfilesGuardianInvitationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a guardian invitation, and sends an email to the guardian asking
+   * them to confirm that they are the student's guardian. Once the guardian
+   * accepts the invitation, their `state` will change to `COMPLETED` and they
+   * will start receiving guardian notifications. A `Guardian` resource will
+   * also be created to represent the active guardian. The request object must
+   * have the `student_id` and `invited_email_address` fields set. Failing to
+   * set these fields, or setting any other fields in the request, will result
+   * in an error. This method returns the following error codes: *
+   * `PERMISSION_DENIED` if the current user does not have permission to manage
+   * guardians, if the guardian in question has already rejected too many
+   * requests for that student, if guardians are not enabled for the domain in
+   * question, or for other access errors. * `RESOURCE_EXHAUSTED` if the student
+   * or guardian has exceeded the guardian link limit. * `INVALID_ARGUMENT` if
+   * the guardian email address is not valid (for example, if it is too long),
+   * or if the format of the student ID provided cannot be recognized (it is not
+   * an email address, nor a `user_id` from this API). This error will also be
+   * returned if read-only fields are set, or if the `state` field is set to to
+   * a value other than `PENDING`. * `NOT_FOUND` if the student ID provided is a
+   * valid student ID, but Classroom has no record of that student. *
+   * `ALREADY_EXISTS` if there is already a pending guardian invitation for the
+   * student and `invited_email_address` provided, or if the provided
+   * `invited_email_address` matches the Google account of an existing
+   * `Guardian` for this user.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [studentId] - ID of the student (in standard format)
+   *
+   * Completes with a [GuardianInvitation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GuardianInvitation> create(GuardianInvitation request, core.String studentId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (studentId == null) {
+      throw new core.ArgumentError("Parameter studentId is required.");
+    }
+
+    _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$studentId') + '/guardianInvitations';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GuardianInvitation.fromJson(data));
+  }
+
+  /**
+   * Returns a specific guardian invitation. This method returns the following
+   * error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
+   * to view guardian invitations for the student identified by the
+   * `student_id`, if guardians are not enabled for the domain in question, or
+   * for other access errors. * `INVALID_ARGUMENT` if a `student_id` is
+   * specified, but its format cannot be recognized (it is not an email address,
+   * nor a `student_id` from the API, nor the literal string `me`). *
+   * `NOT_FOUND` if Classroom cannot find any record of the given student or
+   * `invitation_id`. May also be returned if the student exists, but the
+   * requesting user does not have access to see that student.
+   *
+   * Request parameters:
+   *
+   * [studentId] - The ID of the student whose guardian invitation is being
+   * requested.
+   *
+   * [invitationId] - The `id` field of the `GuardianInvitation` being
+   * requested.
+   *
+   * Completes with a [GuardianInvitation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GuardianInvitation> get(core.String studentId, core.String invitationId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (studentId == null) {
+      throw new core.ArgumentError("Parameter studentId is required.");
+    }
+    if (invitationId == null) {
+      throw new core.ArgumentError("Parameter invitationId is required.");
+    }
+
+    _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$studentId') + '/guardianInvitations/' + commons.Escaper.ecapeVariable('$invitationId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GuardianInvitation.fromJson(data));
+  }
+
+  /**
+   * Returns a list of guardian invitations that the requesting user is
+   * permitted to view, filtered by the parameters provided. This method returns
+   * the following error codes: * `PERMISSION_DENIED` if a `student_id` is
+   * specified, and the requesting user is not permitted to view guardian
+   * invitations for that student, if guardians are not enabled for the domain
+   * in question, or for other access errors. * `INVALID_ARGUMENT` if a
+   * `student_id` is specified, but its format cannot be recognized (it is not
+   * an email address, nor a `student_id` from the API, nor the literal string
+   * `me`). May also be returned if an invalid `page_token` or `state` is
+   * provided. * `NOT_FOUND` if a `student_id` is specified, and its format can
+   * be recognized, but Classroom has no record of that student.
+   *
+   * Request parameters:
+   *
+   * [studentId] - The ID of the student whose guardian invitations are to be
+   * returned. The identifier can be one of the following: * the numeric
+   * identifier for the user * the email address of the user * the string
+   * literal `"me"`, indicating the requesting user
+   *
+   * [invitedEmailAddress] - If specified, only results with the specified
+   * `invited_email_address` will be returned.
+   *
+   * [states] - If specified, only results with the specified `state` values
+   * will be returned. Otherwise, results with a `state` of `PENDING` will be
+   * returned.
+   *
+   * [pageToken] - nextPageToken value returned from a previous list call,
+   * indicating that the subsequent page of results should be returned. The list
+   * request must be otherwise identical to the one that resulted in this token.
+   *
+   * [pageSize] - Maximum number of items to return. Zero or unspecified
+   * indicates that the server may assign a maximum. The server may return fewer
+   * than the specified number of results.
+   *
+   * Completes with a [ListGuardianInvitationsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListGuardianInvitationsResponse> list(core.String studentId, {core.String invitedEmailAddress, core.List<core.String> states, core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (studentId == null) {
+      throw new core.ArgumentError("Parameter studentId is required.");
+    }
+    if (invitedEmailAddress != null) {
+      _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
+    }
+    if (states != null) {
+      _queryParams["states"] = states;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$studentId') + '/guardianInvitations';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListGuardianInvitationsResponse.fromJson(data));
+  }
+
+  /**
+   * Modifies a guardian invitation. Currently, the only valid modification is
+   * to change the `state` from `PENDING` to `COMPLETE`. This has the effect of
+   * withdrawing the invitation. This method returns the following error codes:
+   * * `PERMISSION_DENIED` if the current user does not have permission to
+   * manage guardians, if guardians are not enabled for the domain in question
+   * or for other access errors. * `FAILED_PRECONDITION` if the guardian link is
+   * not in the `PENDING` state. * `INVALID_ARGUMENT` if the format of the
+   * student ID provided cannot be recognized (it is not an email address, nor a
+   * `user_id` from this API), or if the passed `GuardianInvitation` has a
+   * `state` other than `COMPLETE`, or if it modifies fields other than `state`.
+   * * `NOT_FOUND` if the student ID provided is a valid student ID, but
+   * Classroom has no record of that student, or if the `id` field does not
+   * refer to a guardian invitation known to Classroom.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [studentId] - The ID of the student whose guardian invitation is to be
+   * modified.
+   *
+   * [invitationId] - The `id` field of the `GuardianInvitation` to be modified.
+   *
+   * [updateMask] - Mask that identifies which fields on the course to update.
+   * This field is required to do an update. The update will fail if invalid
+   * fields are specified. The following fields are valid: * `state` When set in
+   * a query parameter, this field should be specified as `updateMask=,,...`
+   *
+   * Completes with a [GuardianInvitation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GuardianInvitation> patch(GuardianInvitation request, core.String studentId, core.String invitationId, {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (studentId == null) {
+      throw new core.ArgumentError("Parameter studentId is required.");
+    }
+    if (invitationId == null) {
+      throw new core.ArgumentError("Parameter invitationId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$studentId') + '/guardianInvitations/' + commons.Escaper.ecapeVariable('$invitationId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GuardianInvitation.fromJson(data));
+  }
+
+}
+
+
+class UserProfilesGuardiansResourceApi {
+  final commons.ApiRequester _requester;
+
+  UserProfilesGuardiansResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a guardian. The guardian will no longer receive guardian
+   * notifications and the guardian will no longer be accessible via the API.
+   * This method returns the following error codes: * `PERMISSION_DENIED` if the
+   * requesting user is not permitted to manage guardians for the student
+   * identified by the `student_id`, if guardians are not enabled for the domain
+   * in question, or for other access errors. * `INVALID_ARGUMENT` if a
+   * `student_id` is specified, but its format cannot be recognized (it is not
+   * an email address, nor a `student_id` from the API). * `NOT_FOUND` if
+   * Classroom cannot find any record of the given `student_id` or
+   * `guardian_id`, or if the guardian has already been disabled.
+   *
+   * Request parameters:
+   *
+   * [studentId] - The student whose guardian is to be deleted. One of the
+   * following: * the numeric identifier for the user * the email address of the
+   * user * the string literal `"me"`, indicating the requesting user
+   *
+   * [guardianId] - The `id` field from a `Guardian`.
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String studentId, core.String guardianId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (studentId == null) {
+      throw new core.ArgumentError("Parameter studentId is required.");
+    }
+    if (guardianId == null) {
+      throw new core.ArgumentError("Parameter guardianId is required.");
+    }
+
+    _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$studentId') + '/guardians/' + commons.Escaper.ecapeVariable('$guardianId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * Returns a specific guardian. This method returns the following error codes:
+   * * `PERMISSION_DENIED` if the requesting user is not permitted to view
+   * guardian information for the student identified by the `student_id`, if
+   * guardians are not enabled for the domain in question, or for other access
+   * errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format
+   * cannot be recognized (it is not an email address, nor a `student_id` from
+   * the API, nor the literal string `me`). * `NOT_FOUND` if Classroom cannot
+   * find any record of the given student or `guardian_id`, or if the guardian
+   * has been disabled.
+   *
+   * Request parameters:
+   *
+   * [studentId] - The student whose guardian is being requested. One of the
+   * following: * the numeric identifier for the user * the email address of the
+   * user * the string literal `"me"`, indicating the requesting user
+   *
+   * [guardianId] - The `id` field from a `Guardian`.
+   *
+   * Completes with a [Guardian].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Guardian> get(core.String studentId, core.String guardianId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (studentId == null) {
+      throw new core.ArgumentError("Parameter studentId is required.");
+    }
+    if (guardianId == null) {
+      throw new core.ArgumentError("Parameter guardianId is required.");
+    }
+
+    _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$studentId') + '/guardians/' + commons.Escaper.ecapeVariable('$guardianId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Guardian.fromJson(data));
+  }
+
+  /**
+   * Returns a list of guardians that the requesting user is permitted to view,
+   * restricted to those that match the request. This method returns the
+   * following error codes: * `PERMISSION_DENIED` if a `student_id` is
+   * specified, and the requesting user is not permitted to view guardian
+   * information for that student, if guardians are not enabled for the domain
+   * in question, if the `invited_email_address` filter is set by a user who is
+   * not a domain administrator, or for other access errors. *
+   * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be
+   * recognized (it is not an email address, nor a `student_id` from the API,
+   * nor the literal string `me`). May also be returned if an invalid
+   * `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and
+   * its format can be recognized, but Classroom has no record of that student.
+   *
+   * Request parameters:
+   *
+   * [studentId] - Filter results by the student who the guardian is linked to.
+   * The identifier can be one of the following: * the numeric identifier for
+   * the user * the email address of the user * the string literal `"me"`,
+   * indicating the requesting user
+   *
+   * [invitedEmailAddress] - Filter results by the email address that the
+   * original invitation was sent to, resulting in this guardian link. This
+   * filter can only be used by domain administrators.
+   *
+   * [pageToken] - nextPageToken value returned from a previous list call,
+   * indicating that the subsequent page of results should be returned. The list
+   * request must be otherwise identical to the one that resulted in this token.
+   *
+   * [pageSize] - Maximum number of items to return. Zero or unspecified
+   * indicates that the server may assign a maximum. The server may return fewer
+   * than the specified number of results.
+   *
+   * Completes with a [ListGuardiansResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListGuardiansResponse> list(core.String studentId, {core.String invitedEmailAddress, core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (studentId == null) {
+      throw new core.ArgumentError("Parameter studentId is required.");
+    }
+    if (invitedEmailAddress != null) {
+      _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$studentId') + '/guardians';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListGuardiansResponse.fromJson(data));
   }
 
 }
@@ -2472,11 +2946,13 @@ class CourseWork {
    * Read-only.
    */
   core.String id;
-  /** Additional materials. */
+  /**
+   * Additional materials. CourseWork must have no more than 20 material items.
+   */
   core.List<Material> materials;
   /**
    * Maximum grade for this course work. If zero or unspecified, this assignment
-   * is considered ungraded. This must be an integer value.
+   * is considered ungraded. This must be a non-negative integer value.
    */
   core.double maxPoints;
   /**
@@ -2485,7 +2961,7 @@ class CourseWork {
    */
   MultipleChoiceQuestion multipleChoiceQuestion;
   /**
-   * Status of this course work.. If unspecified, the default state is `DRAFT`.
+   * Status of this course work. If unspecified, the default state is `DRAFT`.
    * Possible string values are:
    * - "COURSE_WORK_STATE_UNSPECIFIED" : A COURSE_WORK_STATE_UNSPECIFIED.
    * - "PUBLISHED" : A PUBLISHED.
@@ -2868,6 +3344,125 @@ class GlobalPermission {
   }
 }
 
+/**
+ * Association between a student and a guardian of that student. The guardian
+ * may receive information about the student's course work.
+ */
+class Guardian {
+  /** Identifier for the guardian. */
+  core.String guardianId;
+  /** User profile for the guardian. */
+  UserProfile guardianProfile;
+  /**
+   * The email address to which the initial guardian invitation was sent. This
+   * field is only visible to domain administrators.
+   */
+  core.String invitedEmailAddress;
+  /** Identifier for the student to whom the guardian relationship applies. */
+  core.String studentId;
+
+  Guardian();
+
+  Guardian.fromJson(core.Map _json) {
+    if (_json.containsKey("guardianId")) {
+      guardianId = _json["guardianId"];
+    }
+    if (_json.containsKey("guardianProfile")) {
+      guardianProfile = new UserProfile.fromJson(_json["guardianProfile"]);
+    }
+    if (_json.containsKey("invitedEmailAddress")) {
+      invitedEmailAddress = _json["invitedEmailAddress"];
+    }
+    if (_json.containsKey("studentId")) {
+      studentId = _json["studentId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (guardianId != null) {
+      _json["guardianId"] = guardianId;
+    }
+    if (guardianProfile != null) {
+      _json["guardianProfile"] = (guardianProfile).toJson();
+    }
+    if (invitedEmailAddress != null) {
+      _json["invitedEmailAddress"] = invitedEmailAddress;
+    }
+    if (studentId != null) {
+      _json["studentId"] = studentId;
+    }
+    return _json;
+  }
+}
+
+/**
+ * An invitation to become the guardian of a specified user, sent to a specified
+ * email address.
+ */
+class GuardianInvitation {
+  /** The time that this invitation was created. Read-only. */
+  core.String creationTime;
+  /** Unique identifier for this invitation. Read-only. */
+  core.String invitationId;
+  /**
+   * Email address that the invitation was sent to. This field is only visible
+   * to domain administrators.
+   */
+  core.String invitedEmailAddress;
+  /**
+   * The state that this invitation is in.
+   * Possible string values are:
+   * - "GUARDIAN_INVITATION_STATE_UNSPECIFIED" : A
+   * GUARDIAN_INVITATION_STATE_UNSPECIFIED.
+   * - "PENDING" : A PENDING.
+   * - "COMPLETE" : A COMPLETE.
+   */
+  core.String state;
+  /** ID of the student (in standard format) */
+  core.String studentId;
+
+  GuardianInvitation();
+
+  GuardianInvitation.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTime")) {
+      creationTime = _json["creationTime"];
+    }
+    if (_json.containsKey("invitationId")) {
+      invitationId = _json["invitationId"];
+    }
+    if (_json.containsKey("invitedEmailAddress")) {
+      invitedEmailAddress = _json["invitedEmailAddress"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("studentId")) {
+      studentId = _json["studentId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTime != null) {
+      _json["creationTime"] = creationTime;
+    }
+    if (invitationId != null) {
+      _json["invitationId"] = invitationId;
+    }
+    if (invitedEmailAddress != null) {
+      _json["invitedEmailAddress"] = invitedEmailAddress;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (studentId != null) {
+      _json["studentId"] = studentId;
+    }
+    return _json;
+  }
+}
+
 /** An invitation to join a course. */
 class Invitation {
   /** Identifier of the course to invite the user to. */
@@ -3065,6 +3660,75 @@ class ListCoursesResponse {
   }
 }
 
+/** Response when listing guardian invitations. */
+class ListGuardianInvitationsResponse {
+  /** Guardian invitations that matched the list request. */
+  core.List<GuardianInvitation> guardianInvitations;
+  /**
+   * Token identifying the next page of results to return. If empty, no further
+   * results are available.
+   */
+  core.String nextPageToken;
+
+  ListGuardianInvitationsResponse();
+
+  ListGuardianInvitationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("guardianInvitations")) {
+      guardianInvitations = _json["guardianInvitations"].map((value) => new GuardianInvitation.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (guardianInvitations != null) {
+      _json["guardianInvitations"] = guardianInvitations.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/** Response when listing guardians. */
+class ListGuardiansResponse {
+  /**
+   * Guardians on this page of results that met the criteria specified in the
+   * request.
+   */
+  core.List<Guardian> guardians;
+  /**
+   * Token identifying the next page of results to return. If empty, no further
+   * results are available.
+   */
+  core.String nextPageToken;
+
+  ListGuardiansResponse();
+
+  ListGuardiansResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("guardians")) {
+      guardians = _json["guardians"].map((value) => new Guardian.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (guardians != null) {
+      _json["guardians"] = guardians.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /** Response when listing invitations. */
 class ListInvitationsResponse {
   /** Invitations that match the list request. */
@@ -3248,7 +3912,10 @@ class Material {
 
 /** Request to modify the attachments of a student submission. */
 class ModifyAttachmentsRequest {
-  /** Attachments to add. This may only contain link attachments. */
+  /**
+   * Attachments to add. A student submission may not have more than 20
+   * attachments. This may only contain link attachments.
+   */
   core.List<Attachment> addAttachments;
 
   ModifyAttachmentsRequest();
@@ -3504,8 +4171,8 @@ class StudentSubmission {
   /** Absolute link to the submission in the Classroom web UI. Read-only. */
   core.String alternateLink;
   /**
-   * Optional grade. If unset, no grade was set. This must be an integer value.
-   * This may be modified only by course teachers.
+   * Optional grade. If unset, no grade was set. This must be a non-negative
+   * integer value. This may be modified only by course teachers.
    */
   core.double assignedGrade;
   /** Submission content when course_work_type is ASSIGNMENT . */
@@ -3530,13 +4197,14 @@ class StudentSubmission {
    */
   core.String courseWorkType;
   /**
-   * Creation time of this submission.. This may be unset if the student has not
+   * Creation time of this submission. This may be unset if the student has not
    * accessed this item. Read-only.
    */
   core.String creationTime;
   /**
-   * Optional pending grade. If unset, no grade was set. This must be an integer
-   * value. This is only visible to and modifiable by course teachers.
+   * Optional pending grade. If unset, no grade was set. This must be a
+   * non-negative integer value. This is only visible to and modifiable by
+   * course teachers.
    */
   core.double draftGrade;
   /**
@@ -3546,7 +4214,7 @@ class StudentSubmission {
   core.String id;
   /** Whether this submission is late. Read-only. */
   core.bool late;
-  /** Submission content when course_work_type is MUTIPLE_CHOICE_QUESTION. */
+  /** Submission content when course_work_type is MULTIPLE_CHOICE_QUESTION. */
   MultipleChoiceSubmission multipleChoiceSubmission;
   /** Submission content when course_work_type is SHORT_ANSWER_QUESTION. */
   ShortAnswerSubmission shortAnswerSubmission;

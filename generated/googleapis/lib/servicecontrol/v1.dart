@@ -14,7 +14,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client servicecontrol/v1';
 
-/** The Service Control API */
+/**
+ * Google Service Control provides control plane functionality to managed
+ * services, such as logging, monitoring, and status checks.
+ */
 class ServicecontrolApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -256,6 +259,8 @@ class CheckResponse {
    * Used for logging and diagnostics purposes.
    */
   core.String operationId;
+  /** The actual config id used to process the request. */
+  core.String serviceConfigId;
 
   CheckResponse();
 
@@ -266,6 +271,9 @@ class CheckResponse {
     if (_json.containsKey("operationId")) {
       operationId = _json["operationId"];
     }
+    if (_json.containsKey("serviceConfigId")) {
+      serviceConfigId = _json["serviceConfigId"];
+    }
   }
 
   core.Map toJson() {
@@ -275,6 +283,9 @@ class CheckResponse {
     }
     if (operationId != null) {
       _json["operationId"] = operationId;
+    }
+    if (serviceConfigId != null) {
+      _json["serviceConfigId"] = serviceConfigId;
     }
     return _json;
   }
@@ -798,18 +809,13 @@ class Operation {
    */
   core.String endTime;
   /**
-   * The importance of the data contained in the operation.
+   * DO NOT USE. This is an experimental field.
    * Possible string values are:
-   * - "LOW" : The operation doesn't contain significant monetary value or audit
-   * trail. The API implementation may cache and aggregate the data.
-   * There is no deduplication based on `operation_id`. The data
-   * may be lost when rare and unexpected system failures occur.
-   * - "HIGH" : The operation contains significant monetary value or audit
-   * trail.
-   * The API implementation doesn't cache and aggregate the data.
-   * Deduplication based on `operation_id` is performed for monetary
-   * values. If the method returns successfully, it's guaranteed that
-   * the data are persisted in durable storage.
+   * - "LOW" : The API implementation may cache and aggregate the data.
+   * The data may be lost when rare and unexpected system failures occur.
+   * - "HIGH" : The API implementation doesn't cache and aggregate the data.
+   * If the method returns successfully, it's guaranteed that the data has
+   * been persisted in durable storage.
    */
   core.String importance;
   /**
@@ -1008,6 +1014,8 @@ class ReportResponse {
    *    `Operations` in the request succeeded.
    */
   core.List<ReportError> reportErrors;
+  /** The actual config id used to process the request. */
+  core.String serviceConfigId;
 
   ReportResponse();
 
@@ -1015,12 +1023,18 @@ class ReportResponse {
     if (_json.containsKey("reportErrors")) {
       reportErrors = _json["reportErrors"].map((value) => new ReportError.fromJson(value)).toList();
     }
+    if (_json.containsKey("serviceConfigId")) {
+      serviceConfigId = _json["serviceConfigId"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (reportErrors != null) {
       _json["reportErrors"] = reportErrors.map((value) => (value).toJson()).toList();
+    }
+    if (serviceConfigId != null) {
+      _json["serviceConfigId"] = serviceConfigId;
     }
     return _json;
   }

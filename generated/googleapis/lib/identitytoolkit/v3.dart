@@ -1019,6 +1019,11 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
    * BUNDLE_ID for iOS.
    */
   core.String appId;
+  /**
+   * Explicitly specify the auth flow type. Currently only support "CODE_FLOW"
+   * type. The field is only used for Google provider.
+   */
+  core.String authFlowType;
   /** The relying party OAuth client ID. */
   core.String clientId;
   /**
@@ -1057,12 +1062,17 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
    * identifier.
    */
   core.String providerId;
+  /** The session_id passed by client. */
+  core.String sessionId;
 
   IdentitytoolkitRelyingpartyCreateAuthUriRequest();
 
   IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(core.Map _json) {
     if (_json.containsKey("appId")) {
       appId = _json["appId"];
+    }
+    if (_json.containsKey("authFlowType")) {
+      authFlowType = _json["authFlowType"];
     }
     if (_json.containsKey("clientId")) {
       clientId = _json["clientId"];
@@ -1094,12 +1104,18 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     if (_json.containsKey("providerId")) {
       providerId = _json["providerId"];
     }
+    if (_json.containsKey("sessionId")) {
+      sessionId = _json["sessionId"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (appId != null) {
       _json["appId"] = appId;
+    }
+    if (authFlowType != null) {
+      _json["authFlowType"] = authFlowType;
     }
     if (clientId != null) {
       _json["clientId"] = clientId;
@@ -1130,6 +1146,9 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     }
     if (providerId != null) {
       _json["providerId"] = providerId;
+    }
+    if (sessionId != null) {
+      _json["sessionId"] = sessionId;
     }
     return _json;
   }
@@ -2000,6 +2019,11 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
    * login result params added by the IDP.
    */
   core.String requestUri;
+  /**
+   * Whether return 200 and IDP credential rather than throw exception when
+   * federated id is already linked.
+   */
+  core.bool returnIdpCredential;
   /** Whether to return refresh tokens. */
   core.bool returnRefreshToken;
   /** Whether return sts id token and refresh token instead of gitkit token. */
@@ -2029,6 +2053,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     }
     if (_json.containsKey("requestUri")) {
       requestUri = _json["requestUri"];
+    }
+    if (_json.containsKey("returnIdpCredential")) {
+      returnIdpCredential = _json["returnIdpCredential"];
     }
     if (_json.containsKey("returnRefreshToken")) {
       returnRefreshToken = _json["returnRefreshToken"];
@@ -2060,6 +2087,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     }
     if (requestUri != null) {
       _json["requestUri"] = requestUri;
+    }
+    if (returnIdpCredential != null) {
+      _json["returnIdpCredential"] = returnIdpCredential;
     }
     if (returnRefreshToken != null) {
       _json["returnRefreshToken"] = returnRefreshToken;
@@ -2704,6 +2734,10 @@ class UserInfoProviderUserInfo {
   core.String providerId;
   /** User's raw identifier directly returned from IDP. */
   core.String rawId;
+  /** Raw IDP-returned user info. */
+  core.String rawUserInfo;
+  /** User's screen name at Twitter. */
+  core.String screenName;
 
   UserInfoProviderUserInfo();
 
@@ -2726,6 +2760,12 @@ class UserInfoProviderUserInfo {
     if (_json.containsKey("rawId")) {
       rawId = _json["rawId"];
     }
+    if (_json.containsKey("rawUserInfo")) {
+      rawUserInfo = _json["rawUserInfo"];
+    }
+    if (_json.containsKey("screenName")) {
+      screenName = _json["screenName"];
+    }
   }
 
   core.Map toJson() {
@@ -2747,6 +2787,12 @@ class UserInfoProviderUserInfo {
     }
     if (rawId != null) {
       _json["rawId"] = rawId;
+    }
+    if (rawUserInfo != null) {
+      _json["rawUserInfo"] = rawUserInfo;
+    }
+    if (screenName != null) {
+      _json["screenName"] = screenName;
     }
     return _json;
   }
@@ -2792,6 +2838,8 @@ class UserInfo {
   void set saltAsBytes(core.List<core.int> _bytes) {
     salt = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
+  /** User's screen name at Twitter. */
+  core.String screenName;
   /** Timestamp in seconds for valid login token. */
   core.String validSince;
   /** Version of the user's password. */
@@ -2835,6 +2883,9 @@ class UserInfo {
     }
     if (_json.containsKey("salt")) {
       salt = _json["salt"];
+    }
+    if (_json.containsKey("screenName")) {
+      screenName = _json["screenName"];
     }
     if (_json.containsKey("validSince")) {
       validSince = _json["validSince"];
@@ -2882,6 +2933,9 @@ class UserInfo {
     if (salt != null) {
       _json["salt"] = salt;
     }
+    if (screenName != null) {
+      _json["screenName"] = screenName;
+    }
     if (validSince != null) {
       _json["validSince"] = validSince;
     }
@@ -2921,6 +2975,8 @@ class VerifyAssertionResponse {
    * owns the email.
    */
   core.bool emailVerified;
+  /** Client error code. */
+  core.String errorMessage;
   /**
    * If idToken is STS id token, then this field will be expiration time of STS
    * id token in seconds.
@@ -2991,6 +3047,8 @@ class VerifyAssertionResponse {
    * request. The domain part of the federated ID is returned.
    */
   core.String providerId;
+  /** Raw IDP-returned user info. */
+  core.String rawUserInfo;
   /** If idToken is STS id token, then this field will be refresh token. */
   core.String refreshToken;
   /** The screen_name of a Twitter user. */
@@ -3031,6 +3089,9 @@ class VerifyAssertionResponse {
     }
     if (_json.containsKey("emailVerified")) {
       emailVerified = _json["emailVerified"];
+    }
+    if (_json.containsKey("errorMessage")) {
+      errorMessage = _json["errorMessage"];
     }
     if (_json.containsKey("expiresIn")) {
       expiresIn = _json["expiresIn"];
@@ -3101,6 +3162,9 @@ class VerifyAssertionResponse {
     if (_json.containsKey("providerId")) {
       providerId = _json["providerId"];
     }
+    if (_json.containsKey("rawUserInfo")) {
+      rawUserInfo = _json["rawUserInfo"];
+    }
     if (_json.containsKey("refreshToken")) {
       refreshToken = _json["refreshToken"];
     }
@@ -3143,6 +3207,9 @@ class VerifyAssertionResponse {
     }
     if (emailVerified != null) {
       _json["emailVerified"] = emailVerified;
+    }
+    if (errorMessage != null) {
+      _json["errorMessage"] = errorMessage;
     }
     if (expiresIn != null) {
       _json["expiresIn"] = expiresIn;
@@ -3212,6 +3279,9 @@ class VerifyAssertionResponse {
     }
     if (providerId != null) {
       _json["providerId"] = providerId;
+    }
+    if (rawUserInfo != null) {
+      _json["rawUserInfo"] = rawUserInfo;
     }
     if (refreshToken != null) {
       _json["refreshToken"] = refreshToken;

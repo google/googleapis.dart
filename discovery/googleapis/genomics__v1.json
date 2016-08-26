@@ -26,7 +26,7 @@
     "description": "Stores, processes, explores and shares genomic data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/genomics/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/X2-hhocAg6NLMPQks1elD8VdTWQ\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/-uskoNWve9HRJ6Bj84XG9zPKo3o\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1538,7 +1538,7 @@
             }
         }
     },
-    "revision": "20160803",
+    "revision": "20160824",
     "rootUrl": "https://genomics.googleapis.com/",
     "schemas": {
         "AnnotationSet": {
@@ -1919,6 +1919,10 @@
                         "$ref": "Annotation"
                     },
                     "type": "array"
+                },
+                "requestId": {
+                    "description": "A unique request ID which enables the server to detect duplicated requests. If provided, duplicated requests will result in the same response; if not provided, duplicated requests may result in duplicated data. For a given annotation set, callers should not reuse `request_id`s when writing different batches of annotations - behavior in this case is undefined. A common approach is to use a UUID. For batch jobs where worker crashes are a possibility, consider using some unique variant of a worker or run ID.",
+                    "type": "string"
                 }
             },
             "type": "object"

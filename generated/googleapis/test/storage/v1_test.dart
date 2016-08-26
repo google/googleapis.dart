@@ -51,53 +51,53 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3202() {
+buildUnnamed956() {
   var o = new core.List<api.BucketAccessControl>();
   o.add(buildBucketAccessControl());
   o.add(buildBucketAccessControl());
   return o;
 }
 
-checkUnnamed3202(core.List<api.BucketAccessControl> o) {
+checkUnnamed956(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketAccessControl(o[0]);
   checkBucketAccessControl(o[1]);
 }
 
-buildUnnamed3203() {
+buildUnnamed957() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3203(core.List<core.String> o) {
+checkUnnamed957(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3204() {
+buildUnnamed958() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3204(core.List<core.String> o) {
+checkUnnamed958(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3205() {
+buildUnnamed959() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3205(core.List<core.String> o) {
+checkUnnamed959(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -109,9 +109,9 @@ buildBucketCors() {
   buildCounterBucketCors++;
   if (buildCounterBucketCors < 3) {
     o.maxAgeSeconds = 42;
-    o.method = buildUnnamed3203();
-    o.origin = buildUnnamed3204();
-    o.responseHeader = buildUnnamed3205();
+    o.method = buildUnnamed957();
+    o.origin = buildUnnamed958();
+    o.responseHeader = buildUnnamed959();
   }
   buildCounterBucketCors--;
   return o;
@@ -121,37 +121,56 @@ checkBucketCors(api.BucketCors o) {
   buildCounterBucketCors++;
   if (buildCounterBucketCors < 3) {
     unittest.expect(o.maxAgeSeconds, unittest.equals(42));
-    checkUnnamed3203(o.method);
-    checkUnnamed3204(o.origin);
-    checkUnnamed3205(o.responseHeader);
+    checkUnnamed957(o.method);
+    checkUnnamed958(o.origin);
+    checkUnnamed959(o.responseHeader);
   }
   buildCounterBucketCors--;
 }
 
-buildUnnamed3206() {
+buildUnnamed960() {
   var o = new core.List<api.BucketCors>();
   o.add(buildBucketCors());
   o.add(buildBucketCors());
   return o;
 }
 
-checkUnnamed3206(core.List<api.BucketCors> o) {
+checkUnnamed960(core.List<api.BucketCors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketCors(o[0]);
   checkBucketCors(o[1]);
 }
 
-buildUnnamed3207() {
+buildUnnamed961() {
   var o = new core.List<api.ObjectAccessControl>();
   o.add(buildObjectAccessControl());
   o.add(buildObjectAccessControl());
   return o;
 }
 
-checkUnnamed3207(core.List<api.ObjectAccessControl> o) {
+checkUnnamed961(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
+}
+
+core.int buildCounterBucketEncryption = 0;
+buildBucketEncryption() {
+  var o = new api.BucketEncryption();
+  buildCounterBucketEncryption++;
+  if (buildCounterBucketEncryption < 3) {
+    o.defaultKmsKeyName = "foo";
+  }
+  buildCounterBucketEncryption--;
+  return o;
+}
+
+checkBucketEncryption(api.BucketEncryption o) {
+  buildCounterBucketEncryption++;
+  if (buildCounterBucketEncryption < 3) {
+    unittest.expect(o.defaultKmsKeyName, unittest.equals('foo'));
+  }
+  buildCounterBucketEncryption--;
 }
 
 core.int buildCounterBucketLifecycleRuleAction = 0;
@@ -219,14 +238,14 @@ checkBucketLifecycleRule(api.BucketLifecycleRule o) {
   buildCounterBucketLifecycleRule--;
 }
 
-buildUnnamed3208() {
+buildUnnamed962() {
   var o = new core.List<api.BucketLifecycleRule>();
   o.add(buildBucketLifecycleRule());
   o.add(buildBucketLifecycleRule());
   return o;
 }
 
-checkUnnamed3208(core.List<api.BucketLifecycleRule> o) {
+checkUnnamed962(core.List<api.BucketLifecycleRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketLifecycleRule(o[0]);
   checkBucketLifecycleRule(o[1]);
@@ -237,7 +256,7 @@ buildBucketLifecycle() {
   var o = new api.BucketLifecycle();
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    o.rule = buildUnnamed3208();
+    o.rule = buildUnnamed962();
   }
   buildCounterBucketLifecycle--;
   return o;
@@ -246,7 +265,7 @@ buildBucketLifecycle() {
 checkBucketLifecycle(api.BucketLifecycle o) {
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    checkUnnamed3208(o.rule);
+    checkUnnamed962(o.rule);
   }
   buildCounterBucketLifecycle--;
 }
@@ -338,9 +357,10 @@ buildBucket() {
   var o = new api.Bucket();
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
-    o.acl = buildUnnamed3202();
-    o.cors = buildUnnamed3206();
-    o.defaultObjectAcl = buildUnnamed3207();
+    o.acl = buildUnnamed956();
+    o.cors = buildUnnamed960();
+    o.defaultObjectAcl = buildUnnamed961();
+    o.encryption = buildBucketEncryption();
     o.etag = "foo";
     o.id = "foo";
     o.kind = "foo";
@@ -365,9 +385,10 @@ buildBucket() {
 checkBucket(api.Bucket o) {
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
-    checkUnnamed3202(o.acl);
-    checkUnnamed3206(o.cors);
-    checkUnnamed3207(o.defaultObjectAcl);
+    checkUnnamed956(o.acl);
+    checkUnnamed960(o.cors);
+    checkUnnamed961(o.defaultObjectAcl);
+    checkBucketEncryption(o.encryption);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -448,14 +469,14 @@ checkBucketAccessControl(api.BucketAccessControl o) {
   buildCounterBucketAccessControl--;
 }
 
-buildUnnamed3209() {
+buildUnnamed963() {
   var o = new core.List<api.BucketAccessControl>();
   o.add(buildBucketAccessControl());
   o.add(buildBucketAccessControl());
   return o;
 }
 
-checkUnnamed3209(core.List<api.BucketAccessControl> o) {
+checkUnnamed963(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketAccessControl(o[0]);
   checkBucketAccessControl(o[1]);
@@ -466,7 +487,7 @@ buildBucketAccessControls() {
   var o = new api.BucketAccessControls();
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    o.items = buildUnnamed3209();
+    o.items = buildUnnamed963();
     o.kind = "foo";
   }
   buildCounterBucketAccessControls--;
@@ -476,20 +497,20 @@ buildBucketAccessControls() {
 checkBucketAccessControls(api.BucketAccessControls o) {
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    checkUnnamed3209(o.items);
+    checkUnnamed963(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBucketAccessControls--;
 }
 
-buildUnnamed3210() {
+buildUnnamed964() {
   var o = new core.List<api.Bucket>();
   o.add(buildBucket());
   o.add(buildBucket());
   return o;
 }
 
-checkUnnamed3210(core.List<api.Bucket> o) {
+checkUnnamed964(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0]);
   checkBucket(o[1]);
@@ -500,7 +521,7 @@ buildBuckets() {
   var o = new api.Buckets();
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    o.items = buildUnnamed3210();
+    o.items = buildUnnamed964();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -511,21 +532,21 @@ buildBuckets() {
 checkBuckets(api.Buckets o) {
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    checkUnnamed3210(o.items);
+    checkUnnamed964(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterBuckets--;
 }
 
-buildUnnamed3211() {
+buildUnnamed965() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3211(core.Map<core.String, core.String> o) {
+checkUnnamed965(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -540,7 +561,7 @@ buildChannel() {
     o.expiration = "foo";
     o.id = "foo";
     o.kind = "foo";
-    o.params = buildUnnamed3211();
+    o.params = buildUnnamed965();
     o.payload = true;
     o.resourceId = "foo";
     o.resourceUri = "foo";
@@ -558,7 +579,7 @@ checkChannel(api.Channel o) {
     unittest.expect(o.expiration, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3211(o.params);
+    checkUnnamed965(o.params);
     unittest.expect(o.payload, unittest.isTrue);
     unittest.expect(o.resourceId, unittest.equals('foo'));
     unittest.expect(o.resourceUri, unittest.equals('foo'));
@@ -610,14 +631,14 @@ checkComposeRequestSourceObjects(api.ComposeRequestSourceObjects o) {
   buildCounterComposeRequestSourceObjects--;
 }
 
-buildUnnamed3212() {
+buildUnnamed966() {
   var o = new core.List<api.ComposeRequestSourceObjects>();
   o.add(buildComposeRequestSourceObjects());
   o.add(buildComposeRequestSourceObjects());
   return o;
 }
 
-checkUnnamed3212(core.List<api.ComposeRequestSourceObjects> o) {
+checkUnnamed966(core.List<api.ComposeRequestSourceObjects> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComposeRequestSourceObjects(o[0]);
   checkComposeRequestSourceObjects(o[1]);
@@ -630,7 +651,7 @@ buildComposeRequest() {
   if (buildCounterComposeRequest < 3) {
     o.destination = buildObject();
     o.kind = "foo";
-    o.sourceObjects = buildUnnamed3212();
+    o.sourceObjects = buildUnnamed966();
   }
   buildCounterComposeRequest--;
   return o;
@@ -641,19 +662,19 @@ checkComposeRequest(api.ComposeRequest o) {
   if (buildCounterComposeRequest < 3) {
     checkObject(o.destination);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3212(o.sourceObjects);
+    checkUnnamed966(o.sourceObjects);
   }
   buildCounterComposeRequest--;
 }
 
-buildUnnamed3213() {
+buildUnnamed967() {
   var o = new core.List<api.ObjectAccessControl>();
   o.add(buildObjectAccessControl());
   o.add(buildObjectAccessControl());
   return o;
 }
 
-checkUnnamed3213(core.List<api.ObjectAccessControl> o) {
+checkUnnamed967(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
@@ -680,14 +701,14 @@ checkObjectCustomerEncryption(api.ObjectCustomerEncryption o) {
   buildCounterObjectCustomerEncryption--;
 }
 
-buildUnnamed3214() {
+buildUnnamed968() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3214(core.Map<core.String, core.String> o) {
+checkUnnamed968(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -719,7 +740,7 @@ buildObject() {
   var o = new api.Object();
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    o.acl = buildUnnamed3213();
+    o.acl = buildUnnamed967();
     o.bucket = "foo";
     o.cacheControl = "foo";
     o.componentCount = 42;
@@ -733,9 +754,10 @@ buildObject() {
     o.generation = "foo";
     o.id = "foo";
     o.kind = "foo";
+    o.kmsKeyName = "foo";
     o.md5Hash = "foo";
     o.mediaLink = "foo";
-    o.metadata = buildUnnamed3214();
+    o.metadata = buildUnnamed968();
     o.metageneration = "foo";
     o.name = "foo";
     o.owner = buildObjectOwner();
@@ -753,7 +775,7 @@ buildObject() {
 checkObject(api.Object o) {
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    checkUnnamed3213(o.acl);
+    checkUnnamed967(o.acl);
     unittest.expect(o.bucket, unittest.equals('foo'));
     unittest.expect(o.cacheControl, unittest.equals('foo'));
     unittest.expect(o.componentCount, unittest.equals(42));
@@ -767,9 +789,10 @@ checkObject(api.Object o) {
     unittest.expect(o.generation, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.kmsKeyName, unittest.equals('foo'));
     unittest.expect(o.md5Hash, unittest.equals('foo'));
     unittest.expect(o.mediaLink, unittest.equals('foo'));
-    checkUnnamed3214(o.metadata);
+    checkUnnamed968(o.metadata);
     unittest.expect(o.metageneration, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkObjectOwner(o.owner);
@@ -847,14 +870,14 @@ checkObjectAccessControl(api.ObjectAccessControl o) {
   buildCounterObjectAccessControl--;
 }
 
-buildUnnamed3215() {
+buildUnnamed969() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed3215(core.List<core.Object> o) {
+checkUnnamed969(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
@@ -865,7 +888,7 @@ buildObjectAccessControls() {
   var o = new api.ObjectAccessControls();
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    o.items = buildUnnamed3215();
+    o.items = buildUnnamed969();
     o.kind = "foo";
   }
   buildCounterObjectAccessControls--;
@@ -875,33 +898,33 @@ buildObjectAccessControls() {
 checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    checkUnnamed3215(o.items);
+    checkUnnamed969(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterObjectAccessControls--;
 }
 
-buildUnnamed3216() {
+buildUnnamed970() {
   var o = new core.List<api.Object>();
   o.add(buildObject());
   o.add(buildObject());
   return o;
 }
 
-checkUnnamed3216(core.List<api.Object> o) {
+checkUnnamed970(core.List<api.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObject(o[0]);
   checkObject(o[1]);
 }
 
-buildUnnamed3217() {
+buildUnnamed971() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3217(core.List<core.String> o) {
+checkUnnamed971(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -912,10 +935,10 @@ buildObjects() {
   var o = new api.Objects();
   buildCounterObjects++;
   if (buildCounterObjects < 3) {
-    o.items = buildUnnamed3216();
+    o.items = buildUnnamed970();
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.prefixes = buildUnnamed3217();
+    o.prefixes = buildUnnamed971();
   }
   buildCounterObjects--;
   return o;
@@ -924,10 +947,10 @@ buildObjects() {
 checkObjects(api.Objects o) {
   buildCounterObjects++;
   if (buildCounterObjects < 3) {
-    checkUnnamed3216(o.items);
+    checkUnnamed970(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3217(o.prefixes);
+    checkUnnamed971(o.prefixes);
   }
   buildCounterObjects--;
 }
@@ -968,6 +991,15 @@ main() {
       var o = buildBucketCors();
       var od = new api.BucketCors.fromJson(o.toJson());
       checkBucketCors(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-BucketEncryption", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBucketEncryption();
+      var od = new api.BucketEncryption.fromJson(o.toJson());
+      checkBucketEncryption(od);
     });
   });
 
@@ -2717,6 +2749,7 @@ main() {
       var arg_destinationPredefinedAcl = "foo";
       var arg_ifGenerationMatch = "foo";
       var arg_ifMetagenerationMatch = "foo";
+      var arg_kmsKeyName = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var obj = new api.ComposeRequest.fromJson(json);
         checkComposeRequest(obj);
@@ -2765,6 +2798,7 @@ main() {
         unittest.expect(queryMap["destinationPredefinedAcl"].first, unittest.equals(arg_destinationPredefinedAcl));
         unittest.expect(queryMap["ifGenerationMatch"].first, unittest.equals(arg_ifGenerationMatch));
         unittest.expect(queryMap["ifMetagenerationMatch"].first, unittest.equals(arg_ifMetagenerationMatch));
+        unittest.expect(queryMap["kmsKeyName"].first, unittest.equals(arg_kmsKeyName));
 
 
         var h = {
@@ -2773,7 +2807,7 @@ main() {
         var resp = convert.JSON.encode(buildObject());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.compose(arg_request, arg_destinationBucket, arg_destinationObject, destinationPredefinedAcl: arg_destinationPredefinedAcl, ifGenerationMatch: arg_ifGenerationMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch).then(unittest.expectAsync(((api.Object response) {
+      res.compose(arg_request, arg_destinationBucket, arg_destinationObject, destinationPredefinedAcl: arg_destinationPredefinedAcl, ifGenerationMatch: arg_ifGenerationMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, kmsKeyName: arg_kmsKeyName).then(unittest.expectAsync(((api.Object response) {
         checkObject(response);
       })));
     });
@@ -3028,6 +3062,7 @@ main() {
       var arg_ifGenerationNotMatch = "foo";
       var arg_ifMetagenerationMatch = "foo";
       var arg_ifMetagenerationNotMatch = "foo";
+      var arg_kmsKeyName = "foo";
       var arg_name = "foo";
       var arg_predefinedAcl = "foo";
       var arg_projection = "foo";
@@ -3074,6 +3109,7 @@ main() {
         unittest.expect(queryMap["ifGenerationNotMatch"].first, unittest.equals(arg_ifGenerationNotMatch));
         unittest.expect(queryMap["ifMetagenerationMatch"].first, unittest.equals(arg_ifMetagenerationMatch));
         unittest.expect(queryMap["ifMetagenerationNotMatch"].first, unittest.equals(arg_ifMetagenerationNotMatch));
+        unittest.expect(queryMap["kmsKeyName"].first, unittest.equals(arg_kmsKeyName));
         unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
         unittest.expect(queryMap["predefinedAcl"].first, unittest.equals(arg_predefinedAcl));
         unittest.expect(queryMap["projection"].first, unittest.equals(arg_projection));
@@ -3085,7 +3121,7 @@ main() {
         var resp = convert.JSON.encode(buildObject());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_bucket, contentEncoding: arg_contentEncoding, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, name: arg_name, predefinedAcl: arg_predefinedAcl, projection: arg_projection).then(unittest.expectAsync(((api.Object response) {
+      res.insert(arg_request, arg_bucket, contentEncoding: arg_contentEncoding, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, kmsKeyName: arg_kmsKeyName, name: arg_name, predefinedAcl: arg_predefinedAcl, projection: arg_projection).then(unittest.expectAsync(((api.Object response) {
         checkObject(response);
       })));
     });
@@ -3239,6 +3275,7 @@ main() {
       var arg_sourceObject = "foo";
       var arg_destinationBucket = "foo";
       var arg_destinationObject = "foo";
+      var arg_destinationKmsKeyName = "foo";
       var arg_destinationPredefinedAcl = "foo";
       var arg_ifGenerationMatch = "foo";
       var arg_ifGenerationNotMatch = "foo";
@@ -3307,6 +3344,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["destinationKmsKeyName"].first, unittest.equals(arg_destinationKmsKeyName));
         unittest.expect(queryMap["destinationPredefinedAcl"].first, unittest.equals(arg_destinationPredefinedAcl));
         unittest.expect(queryMap["ifGenerationMatch"].first, unittest.equals(arg_ifGenerationMatch));
         unittest.expect(queryMap["ifGenerationNotMatch"].first, unittest.equals(arg_ifGenerationNotMatch));
@@ -3328,7 +3366,7 @@ main() {
         var resp = convert.JSON.encode(buildRewriteResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.rewrite(arg_request, arg_sourceBucket, arg_sourceObject, arg_destinationBucket, arg_destinationObject, destinationPredefinedAcl: arg_destinationPredefinedAcl, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, ifSourceGenerationMatch: arg_ifSourceGenerationMatch, ifSourceGenerationNotMatch: arg_ifSourceGenerationNotMatch, ifSourceMetagenerationMatch: arg_ifSourceMetagenerationMatch, ifSourceMetagenerationNotMatch: arg_ifSourceMetagenerationNotMatch, maxBytesRewrittenPerCall: arg_maxBytesRewrittenPerCall, projection: arg_projection, rewriteToken: arg_rewriteToken, sourceGeneration: arg_sourceGeneration).then(unittest.expectAsync(((api.RewriteResponse response) {
+      res.rewrite(arg_request, arg_sourceBucket, arg_sourceObject, arg_destinationBucket, arg_destinationObject, destinationKmsKeyName: arg_destinationKmsKeyName, destinationPredefinedAcl: arg_destinationPredefinedAcl, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, ifSourceGenerationMatch: arg_ifSourceGenerationMatch, ifSourceGenerationNotMatch: arg_ifSourceGenerationNotMatch, ifSourceMetagenerationMatch: arg_ifSourceMetagenerationMatch, ifSourceMetagenerationNotMatch: arg_ifSourceMetagenerationNotMatch, maxBytesRewrittenPerCall: arg_maxBytesRewrittenPerCall, projection: arg_projection, rewriteToken: arg_rewriteToken, sourceGeneration: arg_sourceGeneration).then(unittest.expectAsync(((api.RewriteResponse response) {
         checkRewriteResponse(response);
       })));
     });

@@ -1693,7 +1693,6 @@ class DisksResourceApi {
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [disk] - Name of the persistent disk to delete.
-   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
    *
@@ -13621,6 +13620,7 @@ class AddressesScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -14011,7 +14011,7 @@ class Autoscaler {
    * customMetricUtilizations, and loadBalancingUtilization.
    *
    * If none of these are specified, the default will be to autoscale based on
-   * cpuUtilization to 0.8 or 80%.
+   * cpuUtilization to 0.6 or 60%.
    */
   AutoscalingPolicy autoscalingPolicy;
   /** [Output Only] Creation timestamp in RFC3339 text format. */
@@ -14045,7 +14045,10 @@ class Autoscaler {
   core.String selfLink;
   /** URL of the managed instance group that this autoscaler will scale. */
   core.String target;
-  /** [Output Only] URL of the zone where the instance group resides. */
+  /**
+   * [Output Only] URL of the zone where the instance group resides (for
+   * autoscalers living in zonal scope).
+   */
   core.String zone;
 
   Autoscaler();
@@ -14293,6 +14296,7 @@ class AutoscalersScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -14464,7 +14468,7 @@ class AutoscalingPolicy {
 class AutoscalingPolicyCpuUtilization {
   /**
    * The target CPU utilization that the autoscaler should maintain. Must be a
-   * float value in the range (0, 1]. If not specified, the default is 0.8.
+   * float value in the range (0, 1]. If not specified, the default is 0.6.
    *
    * If the CPU level is below the target utilization, the autoscaler scales
    * down the number of instances until it reaches the minimum number of
@@ -15944,6 +15948,7 @@ class DiskTypesScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -16098,6 +16103,7 @@ class DisksScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -16785,6 +16791,7 @@ class ForwardingRulesScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -18137,7 +18144,10 @@ class InstanceGroup {
    * belong.
    */
   core.String subnetwork;
-  /** [Output Only] The URL of the zone where the instance group is located. */
+  /**
+   * [Output Only] The URL of the zone where the instance group is located (for
+   * zonal resources).
+   */
   core.String zone;
 
   InstanceGroup();
@@ -18442,7 +18452,10 @@ class InstanceGroupManager {
    * changes this number.
    */
   core.int targetSize;
-  /** The name of the zone where the managed instance group is located. */
+  /**
+   * [Output Only] The URL of the zone where the managed instance group is
+   * located (for zonal resources).
+   */
   core.String zone;
 
   InstanceGroupManager();
@@ -18564,6 +18577,13 @@ class InstanceGroupManagerActionsSummary {
    */
   core.int creating;
   /**
+   * [Output Only] The number of instances that the managed instance group will
+   * attempt to create. The group attempts to create each instance only once. If
+   * the group fails to create any of these instances, it decreases the group's
+   * target_size value accordingly.
+   */
+  core.int creatingWithoutRetries;
+  /**
    * [Output Only] The number of instances in the managed instance group that
    * are scheduled to be deleted or are currently being deleted.
    */
@@ -18602,6 +18622,9 @@ class InstanceGroupManagerActionsSummary {
     if (_json.containsKey("creating")) {
       creating = _json["creating"];
     }
+    if (_json.containsKey("creatingWithoutRetries")) {
+      creatingWithoutRetries = _json["creatingWithoutRetries"];
+    }
     if (_json.containsKey("deleting")) {
       deleting = _json["deleting"];
     }
@@ -18626,6 +18649,9 @@ class InstanceGroupManagerActionsSummary {
     }
     if (creating != null) {
       _json["creating"] = creating;
+    }
+    if (creatingWithoutRetries != null) {
+      _json["creatingWithoutRetries"] = creatingWithoutRetries;
     }
     if (deleting != null) {
       _json["deleting"] = deleting;
@@ -18923,6 +18949,7 @@ class InstanceGroupManagersScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -19273,6 +19300,7 @@ class InstanceGroupsScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -19907,6 +19935,7 @@ class InstancesScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -20456,6 +20485,7 @@ class MachineTypesScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -20566,6 +20596,7 @@ class ManagedInstance {
    * Possible string values are:
    * - "ABANDONING"
    * - "CREATING"
+   * - "CREATING_WITHOUT_RETRIES"
    * - "DELETING"
    * - "NONE"
    * - "RECREATING"
@@ -21261,6 +21292,7 @@ class OperationWarnings {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -21753,6 +21785,7 @@ class OperationsScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -22092,6 +22125,7 @@ class Quota {
    * - "TARGET_HTTP_PROXIES"
    * - "TARGET_INSTANCES"
    * - "TARGET_POOLS"
+   * - "TARGET_SSL_PROXIES"
    * - "TARGET_VPN_GATEWAYS"
    * - "URL_MAPS"
    * - "VPN_TUNNELS"
@@ -22368,6 +22402,7 @@ class RouteWarnings {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -23305,6 +23340,7 @@ class RoutersScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -24240,6 +24276,7 @@ class SubnetworksScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -25016,6 +25053,7 @@ class TargetInstancesScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -25588,6 +25626,7 @@ class TargetPoolsScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -26008,6 +26047,7 @@ class TargetVpnGatewaysScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -26908,6 +26948,7 @@ class VpnTunnelsScopedListWarning {
    * - "CLEANUP_FAILED"
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
    * - "INJECTED_KERNELS_DEPRECATED"
    * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
    * - "NEXT_HOP_CANNOT_IP_FORWARD"

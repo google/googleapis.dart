@@ -429,6 +429,7 @@ class ManagementResourceApi {
   ManagementProfileFilterLinksResourceApi get profileFilterLinks => new ManagementProfileFilterLinksResourceApi(_requester);
   ManagementProfileUserLinksResourceApi get profileUserLinks => new ManagementProfileUserLinksResourceApi(_requester);
   ManagementProfilesResourceApi get profiles => new ManagementProfilesResourceApi(_requester);
+  ManagementRemarketingAudienceResourceApi get remarketingAudience => new ManagementRemarketingAudienceResourceApi(_requester);
   ManagementSegmentsResourceApi get segments => new ManagementSegmentsResourceApi(_requester);
   ManagementUnsampledReportsResourceApi get unsampledReports => new ManagementUnsampledReportsResourceApi(_requester);
   ManagementUploadsResourceApi get uploads => new ManagementUploadsResourceApi(_requester);
@@ -3272,6 +3273,285 @@ class ManagementProfilesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Profile.fromJson(data));
+  }
+
+}
+
+
+class ManagementRemarketingAudienceResourceApi {
+  final commons.ApiRequester _requester;
+
+  ManagementRemarketingAudienceResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets remarketing audiences to which the user has access.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the remarketing audience to retrieve.
+   *
+   * [webPropertyId] - Web property ID for the remarketing audience to retrieve.
+   *
+   * [remarketingAudienceId] - The ID to retrieve the Remarketing Audience for.
+   *
+   * Completes with a [RemarketingAudience].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RemarketingAudience> get(core.String accountId, core.String webPropertyId, core.String remarketingAudienceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (remarketingAudienceId == null) {
+      throw new core.ArgumentError("Parameter remarketingAudienceId is required.");
+    }
+
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/remarketingAudiences/' + commons.Escaper.ecapeVariable('$remarketingAudienceId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RemarketingAudience.fromJson(data));
+  }
+
+  /**
+   * Creates a new remarketing audiences.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID to create the remarketing audience for.
+   *
+   * [webPropertyId] - Web property ID to create the remarketing audience for.
+   *
+   * Completes with a [RemarketingAudience].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RemarketingAudience> insert(RemarketingAudience request, core.String accountId, core.String webPropertyId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/remarketingAudiences';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RemarketingAudience.fromJson(data));
+  }
+
+  /**
+   * Lists remarketing audiences to which the user has access.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the remarketing audience to retrieve.
+   *
+   * [webPropertyId] - Web property ID for the remarketing audience to retrieve.
+   *
+   * [max_results] - The maximum number of remarketing audiences to include in
+   * this response.
+   *
+   * [start_index] - An index of the first entity to retrieve. Use this
+   * parameter as a pagination mechanism along with the max-results parameter.
+   *
+   * [type] - null
+   *
+   * Completes with a [RemarketingAudiences].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RemarketingAudiences> list(core.String accountId, core.String webPropertyId, {core.int max_results, core.int start_index, core.String type}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (max_results != null) {
+      _queryParams["max-results"] = ["${max_results}"];
+    }
+    if (start_index != null) {
+      _queryParams["start-index"] = ["${start_index}"];
+    }
+    if (type != null) {
+      _queryParams["type"] = [type];
+    }
+
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/remarketingAudiences';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RemarketingAudiences.fromJson(data));
+  }
+
+  /**
+   * Updates an existing remarketing audiences. This method supports patch
+   * semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the remarketing audience to update.
+   *
+   * [webPropertyId] - Web property ID for the remarketing audience to update.
+   *
+   * [remarketingAudienceId] - Remarketing audience ID of the remarketing
+   * audience to update.
+   *
+   * Completes with a [RemarketingAudience].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RemarketingAudience> patch(RemarketingAudience request, core.String accountId, core.String webPropertyId, core.String remarketingAudienceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (remarketingAudienceId == null) {
+      throw new core.ArgumentError("Parameter remarketingAudienceId is required.");
+    }
+
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/remarketingAudiences/' + commons.Escaper.ecapeVariable('$remarketingAudienceId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RemarketingAudience.fromJson(data));
+  }
+
+  /**
+   * Updates an existing remarketing audiences.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the remarketing audience to update.
+   *
+   * [webPropertyId] - Web property ID for the remarketing audience to update.
+   *
+   * [remarketingAudienceId] - Remarketing audience ID of the remarketing
+   * audience to update.
+   *
+   * Completes with a [RemarketingAudience].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RemarketingAudience> update(RemarketingAudience request, core.String accountId, core.String webPropertyId, core.String remarketingAudienceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (remarketingAudienceId == null) {
+      throw new core.ArgumentError("Parameter remarketingAudienceId is required.");
+    }
+
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/remarketingAudiences/' + commons.Escaper.ecapeVariable('$remarketingAudienceId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RemarketingAudience.fromJson(data));
   }
 
 }
@@ -8875,6 +9155,179 @@ class Goals {
   }
 }
 
+/** JSON template for an Analytics Remarketing Include Conditions. */
+class IncludeConditions {
+  /**
+   * The look-back window lets you specify a time frame for evaluating the
+   * behavior that qualifies users for your audience. For example, if your
+   * filters include users from Central Asia, and Transactions Greater than 2,
+   * and you set the look-back window to 14 days, then any user from Central
+   * Asia whose cumulative transactions exceed 2 during the last 14 days is
+   * added to the audience.
+   */
+  core.int daysToLookBack;
+  /**
+   * Boolean indicating whether this segment is a smart list.
+   * https://support.google.com/analytics/answer/4628577
+   */
+  core.bool isSmartList;
+  /** Resource type for include conditions. */
+  core.String kind;
+  /**
+   * Number of days a user remains in the audience. Use any integer from 1-540.
+   * In remarketing audiences for search ads, membership duration is truncated
+   * to 180 days.
+   */
+  core.int membershipDurationDays;
+  /**
+   * The segment condition that will cause a user to be added to an audience.
+   */
+  core.String segment;
+
+  IncludeConditions();
+
+  IncludeConditions.fromJson(core.Map _json) {
+    if (_json.containsKey("daysToLookBack")) {
+      daysToLookBack = _json["daysToLookBack"];
+    }
+    if (_json.containsKey("isSmartList")) {
+      isSmartList = _json["isSmartList"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("membershipDurationDays")) {
+      membershipDurationDays = _json["membershipDurationDays"];
+    }
+    if (_json.containsKey("segment")) {
+      segment = _json["segment"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (daysToLookBack != null) {
+      _json["daysToLookBack"] = daysToLookBack;
+    }
+    if (isSmartList != null) {
+      _json["isSmartList"] = isSmartList;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (membershipDurationDays != null) {
+      _json["membershipDurationDays"] = membershipDurationDays;
+    }
+    if (segment != null) {
+      _json["segment"] = segment;
+    }
+    return _json;
+  }
+}
+
+/** JSON template for an Analytics Remarketing Audience Foreign Link. */
+class LinkedForeignAccount {
+  /** Account ID to which this linked foreign account belongs. */
+  core.String accountId;
+  /** Boolean indicating whether this is eligible for search. */
+  core.bool eligibleForSearch;
+  /** Entity ad account link ID. */
+  core.String id;
+  /**
+   * Internal ID for the web property to which this linked foreign account
+   * belongs.
+   */
+  core.String internalWebPropertyId;
+  /** Resource type for linked foreign account. */
+  core.String kind;
+  /**
+   * The foreign account ID. For example the an AdWords `linkedAccountId` has
+   * the following format XXX-XXX-XXXX.
+   */
+  core.String linkedAccountId;
+  /** Remarketing audience ID to which this linked foreign account belongs. */
+  core.String remarketingAudienceId;
+  /** The status of this foreign account link. */
+  core.String status;
+  /** The type of the foreign account. For example `ADWORDS_LINKS`. */
+  core.String type;
+  /**
+   * Web property ID of the form UA-XXXXX-YY to which this linked foreign
+   * account belongs.
+   */
+  core.String webPropertyId;
+
+  LinkedForeignAccount();
+
+  LinkedForeignAccount.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("eligibleForSearch")) {
+      eligibleForSearch = _json["eligibleForSearch"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("internalWebPropertyId")) {
+      internalWebPropertyId = _json["internalWebPropertyId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("linkedAccountId")) {
+      linkedAccountId = _json["linkedAccountId"];
+    }
+    if (_json.containsKey("remarketingAudienceId")) {
+      remarketingAudienceId = _json["remarketingAudienceId"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("webPropertyId")) {
+      webPropertyId = _json["webPropertyId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (eligibleForSearch != null) {
+      _json["eligibleForSearch"] = eligibleForSearch;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (internalWebPropertyId != null) {
+      _json["internalWebPropertyId"] = internalWebPropertyId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (linkedAccountId != null) {
+      _json["linkedAccountId"] = linkedAccountId;
+    }
+    if (remarketingAudienceId != null) {
+      _json["remarketingAudienceId"] = remarketingAudienceId;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (webPropertyId != null) {
+      _json["webPropertyId"] = webPropertyId;
+    }
+    return _json;
+  }
+}
+
 class McfDataColumnHeaders {
   /** Column Type. Either DIMENSION or METRIC. */
   core.String columnType;
@@ -10308,6 +10761,331 @@ class RealtimeData {
     }
     if (totalsForAllResults != null) {
       _json["totalsForAllResults"] = totalsForAllResults;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The simple audience definition that will cause a user to be added to an
+ * audience.
+ */
+class RemarketingAudienceAudienceDefinition {
+  /** Defines the conditions to include users to the audience. */
+  IncludeConditions includeConditions;
+
+  RemarketingAudienceAudienceDefinition();
+
+  RemarketingAudienceAudienceDefinition.fromJson(core.Map _json) {
+    if (_json.containsKey("includeConditions")) {
+      includeConditions = new IncludeConditions.fromJson(_json["includeConditions"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (includeConditions != null) {
+      _json["includeConditions"] = (includeConditions).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Defines the conditions to exclude users from the audience. */
+class RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions {
+  /** Whether to make the exclusion TEMPORARY or PERMANENT. */
+  core.String exclusionDuration;
+  /**
+   * The segment condition that will cause a user to be removed from an
+   * audience.
+   */
+  core.String segment;
+
+  RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions();
+
+  RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions.fromJson(core.Map _json) {
+    if (_json.containsKey("exclusionDuration")) {
+      exclusionDuration = _json["exclusionDuration"];
+    }
+    if (_json.containsKey("segment")) {
+      segment = _json["segment"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (exclusionDuration != null) {
+      _json["exclusionDuration"] = exclusionDuration;
+    }
+    if (segment != null) {
+      _json["segment"] = segment;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A state based audience definition that will cause a user to be added or
+ * removed from an audience.
+ */
+class RemarketingAudienceStateBasedAudienceDefinition {
+  /** Defines the conditions to exclude users from the audience. */
+  RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions excludeConditions;
+  /** Defines the conditions to include users to the audience. */
+  IncludeConditions includeConditions;
+
+  RemarketingAudienceStateBasedAudienceDefinition();
+
+  RemarketingAudienceStateBasedAudienceDefinition.fromJson(core.Map _json) {
+    if (_json.containsKey("excludeConditions")) {
+      excludeConditions = new RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions.fromJson(_json["excludeConditions"]);
+    }
+    if (_json.containsKey("includeConditions")) {
+      includeConditions = new IncludeConditions.fromJson(_json["includeConditions"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (excludeConditions != null) {
+      _json["excludeConditions"] = (excludeConditions).toJson();
+    }
+    if (includeConditions != null) {
+      _json["includeConditions"] = (includeConditions).toJson();
+    }
+    return _json;
+  }
+}
+
+/** JSON template for an Analytics remarketing audience. */
+class RemarketingAudience {
+  /** Account ID to which this remarketing audience belongs. */
+  core.String accountId;
+  /**
+   * The simple audience definition that will cause a user to be added to an
+   * audience.
+   */
+  RemarketingAudienceAudienceDefinition audienceDefinition;
+  /** The type of audience, either SIMPLE or STATE_BASED. */
+  core.String audienceType;
+  /** Time this remarketing audience was created. */
+  core.DateTime created;
+  /** The description of this remarketing audience. */
+  core.String description;
+  /** Remarketing Audience ID. */
+  core.String id;
+  /**
+   * Internal ID for the web property to which this remarketing audience
+   * belongs.
+   */
+  core.String internalWebPropertyId;
+  /** Collection type. */
+  core.String kind;
+  /**
+   * The linked ad accounts associated with this remarketing audience. A
+   * remarketing audience can have only one linkedAdAccount currently.
+   */
+  core.List<LinkedForeignAccount> linkedAdAccounts;
+  /** The views (profiles) that this remarketing audience is linked to. */
+  core.List<core.String> linkedViews;
+  /** The name of this remarketing audience. */
+  core.String name;
+  /**
+   * A state based audience definition that will cause a user to be added or
+   * removed from an audience.
+   */
+  RemarketingAudienceStateBasedAudienceDefinition stateBasedAudienceDefinition;
+  /** Time this remarketing audience was last modified. */
+  core.DateTime updated;
+  /**
+   * Web property ID of the form UA-XXXXX-YY to which this remarketing audience
+   * belongs.
+   */
+  core.String webPropertyId;
+
+  RemarketingAudience();
+
+  RemarketingAudience.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("audienceDefinition")) {
+      audienceDefinition = new RemarketingAudienceAudienceDefinition.fromJson(_json["audienceDefinition"]);
+    }
+    if (_json.containsKey("audienceType")) {
+      audienceType = _json["audienceType"];
+    }
+    if (_json.containsKey("created")) {
+      created = core.DateTime.parse(_json["created"]);
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("internalWebPropertyId")) {
+      internalWebPropertyId = _json["internalWebPropertyId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("linkedAdAccounts")) {
+      linkedAdAccounts = _json["linkedAdAccounts"].map((value) => new LinkedForeignAccount.fromJson(value)).toList();
+    }
+    if (_json.containsKey("linkedViews")) {
+      linkedViews = _json["linkedViews"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("stateBasedAudienceDefinition")) {
+      stateBasedAudienceDefinition = new RemarketingAudienceStateBasedAudienceDefinition.fromJson(_json["stateBasedAudienceDefinition"]);
+    }
+    if (_json.containsKey("updated")) {
+      updated = core.DateTime.parse(_json["updated"]);
+    }
+    if (_json.containsKey("webPropertyId")) {
+      webPropertyId = _json["webPropertyId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (audienceDefinition != null) {
+      _json["audienceDefinition"] = (audienceDefinition).toJson();
+    }
+    if (audienceType != null) {
+      _json["audienceType"] = audienceType;
+    }
+    if (created != null) {
+      _json["created"] = (created).toIso8601String();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (internalWebPropertyId != null) {
+      _json["internalWebPropertyId"] = internalWebPropertyId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (linkedAdAccounts != null) {
+      _json["linkedAdAccounts"] = linkedAdAccounts.map((value) => (value).toJson()).toList();
+    }
+    if (linkedViews != null) {
+      _json["linkedViews"] = linkedViews;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (stateBasedAudienceDefinition != null) {
+      _json["stateBasedAudienceDefinition"] = (stateBasedAudienceDefinition).toJson();
+    }
+    if (updated != null) {
+      _json["updated"] = (updated).toIso8601String();
+    }
+    if (webPropertyId != null) {
+      _json["webPropertyId"] = webPropertyId;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A remarketing audience collection lists Analytics remarketing audiences to
+ * which the user has access. Each resource in the collection corresponds to a
+ * single Analytics remarketing audience.
+ */
+class RemarketingAudiences {
+  /** A list of remarketing audiences. */
+  core.List<RemarketingAudience> items;
+  /**
+   * The maximum number of resources the response can contain, regardless of the
+   * actual number of resources returned. Its value ranges from 1 to 1000 with a
+   * value of 1000 by default, or otherwise specified by the max-results query
+   * parameter.
+   */
+  core.int itemsPerPage;
+  /** Collection type. */
+  core.String kind;
+  /** Link to next page for this remarketing audience collection. */
+  core.String nextLink;
+  /** Link to previous page for this view (profile) collection. */
+  core.String previousLink;
+  /**
+   * The starting index of the resources, which is 1 by default or otherwise
+   * specified by the start-index query parameter.
+   */
+  core.int startIndex;
+  /**
+   * The total number of results for the query, regardless of the number of
+   * results in the response.
+   */
+  core.int totalResults;
+  /** Email ID of the authenticated user */
+  core.String username;
+
+  RemarketingAudiences();
+
+  RemarketingAudiences.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new RemarketingAudience.fromJson(value)).toList();
+    }
+    if (_json.containsKey("itemsPerPage")) {
+      itemsPerPage = _json["itemsPerPage"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextLink")) {
+      nextLink = _json["nextLink"];
+    }
+    if (_json.containsKey("previousLink")) {
+      previousLink = _json["previousLink"];
+    }
+    if (_json.containsKey("startIndex")) {
+      startIndex = _json["startIndex"];
+    }
+    if (_json.containsKey("totalResults")) {
+      totalResults = _json["totalResults"];
+    }
+    if (_json.containsKey("username")) {
+      username = _json["username"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (itemsPerPage != null) {
+      _json["itemsPerPage"] = itemsPerPage;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextLink != null) {
+      _json["nextLink"] = nextLink;
+    }
+    if (previousLink != null) {
+      _json["previousLink"] = previousLink;
+    }
+    if (startIndex != null) {
+      _json["startIndex"] = startIndex;
+    }
+    if (totalResults != null) {
+      _json["totalResults"] = totalResults;
+    }
+    if (username != null) {
+      _json["username"] = username;
     }
     return _json;
   }

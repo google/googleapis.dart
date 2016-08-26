@@ -1556,6 +1556,11 @@ class ObjectsResourceApi {
    * [ifMetagenerationMatch] - Makes the operation conditional on whether the
    * object's current metageneration matches the given value.
    *
+   * [kmsKeyName] - Resource name of the Cloud KMS key, of the form
+   * projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that
+   * will be used to encrypt the object. Overrides the object metadata's
+   * kms_key_name value, if any.
+   *
    * [downloadOptions] - Options for downloading. A download can be either a
    * Metadata (default) or Media download. Partial Media downloads are possible
    * as well.
@@ -1572,7 +1577,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future compose(ComposeRequest request, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifMetagenerationMatch, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future compose(ComposeRequest request, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifMetagenerationMatch, core.String kmsKeyName, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1597,6 +1602,9 @@ class ObjectsResourceApi {
     }
     if (ifMetagenerationMatch != null) {
       _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+    }
+    if (kmsKeyName != null) {
+      _queryParams["kmsKeyName"] = [kmsKeyName];
     }
 
     _downloadOptions = downloadOptions;
@@ -1983,6 +1991,11 @@ class ObjectsResourceApi {
    * [ifMetagenerationNotMatch] - Makes the operation conditional on whether the
    * object's current metageneration does not match the given value.
    *
+   * [kmsKeyName] - Resource name of the Cloud KMS key, of the form
+   * projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that
+   * will be used to encrypt the object. Overrides the object metadata's
+   * kms_key_name value, if any.
+   *
    * [name] - Name of the object. Required when the object metadata is not
    * otherwise provided. Overrides the object metadata's name value, if any. For
    * information about how to URL encode object names to be path safe, see
@@ -2029,7 +2042,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future insert(Object request, core.String bucket, {core.String contentEncoding, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String name, core.String predefinedAcl, core.String projection, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future insert(Object request, core.String bucket, {core.String contentEncoding, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String kmsKeyName, core.String name, core.String predefinedAcl, core.String projection, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2057,6 +2070,9 @@ class ObjectsResourceApi {
     }
     if (ifMetagenerationNotMatch != null) {
       _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+    }
+    if (kmsKeyName != null) {
+      _queryParams["kmsKeyName"] = [kmsKeyName];
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -2303,6 +2319,11 @@ class ObjectsResourceApi {
    * value, if any. For information about how to URL encode object names to be
    * path safe, see Encoding URI Path Parts.
    *
+   * [destinationKmsKeyName] - Resource name of the Cloud KMS key, of the form
+   * projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that
+   * will be used to encrypt the object. Overrides the object metadata's
+   * kms_key_name value, if any.
+   *
    * [destinationPredefinedAcl] - Apply a predefined set of access controls to
    * the destination object.
    * Possible string values are:
@@ -2374,7 +2395,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RewriteResponse> rewrite(Object request, core.String sourceBucket, core.String sourceObject, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String ifSourceGenerationMatch, core.String ifSourceGenerationNotMatch, core.String ifSourceMetagenerationMatch, core.String ifSourceMetagenerationNotMatch, core.String maxBytesRewrittenPerCall, core.String projection, core.String rewriteToken, core.String sourceGeneration}) {
+  async.Future<RewriteResponse> rewrite(Object request, core.String sourceBucket, core.String sourceObject, core.String destinationBucket, core.String destinationObject, {core.String destinationKmsKeyName, core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String ifSourceGenerationMatch, core.String ifSourceGenerationNotMatch, core.String ifSourceMetagenerationMatch, core.String ifSourceMetagenerationNotMatch, core.String maxBytesRewrittenPerCall, core.String projection, core.String rewriteToken, core.String sourceGeneration}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2396,6 +2417,9 @@ class ObjectsResourceApi {
     }
     if (destinationObject == null) {
       throw new core.ArgumentError("Parameter destinationObject is required.");
+    }
+    if (destinationKmsKeyName != null) {
+      _queryParams["destinationKmsKeyName"] = [destinationKmsKeyName];
     }
     if (destinationPredefinedAcl != null) {
       _queryParams["destinationPredefinedAcl"] = [destinationPredefinedAcl];
@@ -2716,6 +2740,30 @@ class BucketCors {
   }
 }
 
+/**
+ * Encryption configuration used by default for newly inserted objects, when no
+ * encryption config is specified.
+ */
+class BucketEncryption {
+  core.String defaultKmsKeyName;
+
+  BucketEncryption();
+
+  BucketEncryption.fromJson(core.Map _json) {
+    if (_json.containsKey("default_kms_key_name")) {
+      defaultKmsKeyName = _json["default_kms_key_name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (defaultKmsKeyName != null) {
+      _json["default_kms_key_name"] = defaultKmsKeyName;
+    }
+    return _json;
+  }
+}
+
 /** The action to take. */
 class BucketLifecycleRuleAction {
   /** Type of the action. Currently, only Delete is supported. */
@@ -2995,6 +3043,11 @@ class Bucket {
    * Default access controls to apply to new objects when no ACL is provided.
    */
   core.List<ObjectAccessControl> defaultObjectAcl;
+  /**
+   * Encryption configuration used by default for newly inserted objects, when
+   * no encryption config is specified.
+   */
+  BucketEncryption encryption;
   /** HTTP 1.1 Entity tag for the bucket. */
   core.String etag;
   /** The ID of the bucket. */
@@ -3061,6 +3114,9 @@ class Bucket {
     if (_json.containsKey("defaultObjectAcl")) {
       defaultObjectAcl = _json["defaultObjectAcl"].map((value) => new ObjectAccessControl.fromJson(value)).toList();
     }
+    if (_json.containsKey("encryption")) {
+      encryption = new BucketEncryption.fromJson(_json["encryption"]);
+    }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
@@ -3121,6 +3177,9 @@ class Bucket {
     }
     if (defaultObjectAcl != null) {
       _json["defaultObjectAcl"] = defaultObjectAcl.map((value) => (value).toJson()).toList();
+    }
+    if (encryption != null) {
+      _json["encryption"] = (encryption).toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -3724,6 +3783,11 @@ class Object {
   /** The kind of item this is. For objects, this is always storage#object. */
   core.String kind;
   /**
+   * Cloud KMS Key used to encrypt this object, if the object is encrypted by
+   * such a key.
+   */
+  core.String kmsKeyName;
+  /**
    * MD5 hash of the data; encoded using base64. For more information about
    * using the MD5 hash, see Hashes and ETags: Best Practices.
    */
@@ -3806,6 +3870,9 @@ class Object {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("kmsKeyName")) {
+      kmsKeyName = _json["kmsKeyName"];
+    }
     if (_json.containsKey("md5Hash")) {
       md5Hash = _json["md5Hash"];
     }
@@ -3887,6 +3954,9 @@ class Object {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (kmsKeyName != null) {
+      _json["kmsKeyName"] = kmsKeyName;
     }
     if (md5Hash != null) {
       _json["md5Hash"] = md5Hash;

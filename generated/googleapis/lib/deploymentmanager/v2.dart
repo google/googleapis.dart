@@ -1868,7 +1868,11 @@ class Operation {
    * of the target resource.
    */
   core.String targetId;
-  /** [Output Only] The URL of the resource that the operation modifies. */
+  /**
+   * [Output Only] The URL of the resource that the operation modifies. If
+   * creating a persistent disk snapshot, this points to the persistent disk
+   * that the snapshot was created from.
+   */
   core.String targetLink;
   /**
    * [Output Only] User who requested the operation, for example:
@@ -2180,7 +2184,7 @@ class Resource {
   core.String properties;
   /**
    * [Output Only] The type of the resource, for example compute.v1.instance, or
-   * replicaPools.v1beta2.instanceGroupManager.
+   * cloudfunctions.v1beta1.function.
    */
   core.String type;
   /**

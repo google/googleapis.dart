@@ -1,3 +1,7 @@
+## 0.30.1
+
+* [api] datastore:v1beta3: schema changes
+
 ## 0.30.0
 
 * [api-new] language:v1beta1

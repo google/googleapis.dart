@@ -786,7 +786,7 @@ class CallsetsResourceApi {
    *
    * Request parameters:
    *
-   * [callSetId] - The ID of the call set to be updated.
+   * [callSetId] - Required. The ID of the call set to be updated.
    *
    * Completes with a [CallSet].
    *
@@ -871,7 +871,7 @@ class CallsetsResourceApi {
    *
    * Request parameters:
    *
-   * [callSetId] - The ID of the call set to be updated.
+   * [callSetId] - Required. The ID of the call set to be updated.
    *
    * Completes with a [CallSet].
    *

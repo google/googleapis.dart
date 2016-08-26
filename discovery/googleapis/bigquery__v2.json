@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/8OSACAptUIIUJA3qAbwY7uhPqwg\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Ib6OxmyUT7luxrAe5VQ1tJgZykA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -936,7 +936,7 @@
             }
         }
     },
-    "revision": "20160729",
+    "revision": "20160822",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BigtableColumn": {
@@ -1645,6 +1645,13 @@
                     "description": "[Deprecated] The format of the schemaInline property.",
                     "type": "string"
                 },
+                "schemaUpdateOptions": {
+                    "description": "[Experimental] Allows the schema of the desitination table to be updated as a side effect of the load job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "skipLeadingRows": {
                     "description": "[Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.",
                     "format": "int32",
@@ -1703,6 +1710,10 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "parameterMode": {
+                    "description": "[Experimental] Standard SQL only. Whether to use positional (?) or named (@myparam) query parameters in this query.",
+                    "type": "string"
+                },
                 "preserveNulls": {
                     "description": "[Deprecated] This property is deprecated.",
                     "type": "boolean"
@@ -1714,6 +1725,20 @@
                 "query": {
                     "description": "[Required] BigQuery SQL query to execute.",
                     "type": "string"
+                },
+                "queryParameters": {
+                    "description": "[Experimental] Query parameters for Standard SQL queries.",
+                    "items": {
+                        "$ref": "QueryParameter"
+                    },
+                    "type": "array"
+                },
+                "schemaUpdateOptions": {
+                    "description": "[Experimental] Allows the schema of the desitination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "tableDefinitions": {
                     "additionalProperties": {
@@ -1945,6 +1970,13 @@
                     "description": "[Output-only] Total bytes processed for the job.",
                     "format": "int64",
                     "type": "string"
+                },
+                "undeclaredQueryParameters": {
+                    "description": "[Output-only, Experimental] Standard SQL only: list of undeclared query parameters detected during a dry run validation.",
+                    "items": {
+                        "$ref": "QueryParameter"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -2087,6 +2119,83 @@
             },
             "type": "object"
         },
+        "QueryParameter": {
+            "id": "QueryParameter",
+            "properties": {
+                "name": {
+                    "description": "[Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.",
+                    "type": "string"
+                },
+                "parameterType": {
+                    "$ref": "QueryParameterType",
+                    "description": "[Required] The type of this parameter."
+                },
+                "parameterValue": {
+                    "$ref": "QueryParameterValue",
+                    "description": "[Required] The value of this parameter."
+                }
+            },
+            "type": "object"
+        },
+        "QueryParameterType": {
+            "id": "QueryParameterType",
+            "properties": {
+                "arrayType": {
+                    "$ref": "QueryParameterType",
+                    "description": "[Optional] The type of the array's elements, if this is an array."
+                },
+                "structTypes": {
+                    "description": "[Optional] The types of the fields of this struct, in order, if this is a struct.",
+                    "items": {
+                        "properties": {
+                            "description": {
+                                "description": "[Optional] Human-oriented description of the field.",
+                                "type": "string"
+                            },
+                            "name": {
+                                "description": "[Optional] The name of this field.",
+                                "type": "string"
+                            },
+                            "type": {
+                                "$ref": "QueryParameterType",
+                                "description": "[Required] The type of this field."
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "description": "[Required] The top level type of this field.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryParameterValue": {
+            "id": "QueryParameterValue",
+            "properties": {
+                "arrayValues": {
+                    "description": "[Optional] The array values, if this is an array type.",
+                    "items": {
+                        "$ref": "QueryParameterValue"
+                    },
+                    "type": "array"
+                },
+                "structValues": {
+                    "description": "[Optional] The struct field values, in order of the struct type's declaration.",
+                    "items": {
+                        "$ref": "QueryParameterValue"
+                    },
+                    "type": "array"
+                },
+                "value": {
+                    "description": "[Optional] The value of this value, if a simple scalar type.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "QueryRequest": {
             "id": "QueryRequest",
             "properties": {
@@ -2108,6 +2217,10 @@
                     "format": "uint32",
                     "type": "integer"
                 },
+                "parameterMode": {
+                    "description": "[Experimental] Standard SQL only. Whether to use positional (?) or named (@myparam) query parameters in this query.",
+                    "type": "string"
+                },
                 "preserveNulls": {
                     "description": "[Deprecated] This property is deprecated.",
                     "type": "boolean"
@@ -2121,12 +2234,20 @@
                     "description": "[Required] A query string, following the BigQuery query syntax, of the query to execute. Example: \"SELECT count(f1) FROM [myProjectId:myDatasetId.myTableId]\".",
                     "type": "string"
                 },
+                "queryParameters": {
+                    "description": "[Experimental] Query parameters for Standard SQL queries.",
+                    "items": {
+                        "$ref": "QueryParameter"
+                    },
+                    "type": "array"
+                },
                 "timeoutMs": {
                     "description": "[Optional] How long to wait for the query to complete, in milliseconds, before the request times out and returns. Note that this is only a timeout for the request, not the query. If the query takes longer to run than the timeout value, the call returns without any results and with the 'jobComplete' flag set to false. You can call GetQueryResults() to wait for the query to complete and read the results. The default value is 10000 milliseconds (10 seconds).",
                     "format": "uint32",
                     "type": "integer"
                 },
                 "useLegacySql": {
+                    "default": "true",
                     "description": "[Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the values of allowLargeResults and flattenResults are ignored; query will be run as if allowLargeResults is true and flattenResults is false.",
                     "type": "boolean"
                 },

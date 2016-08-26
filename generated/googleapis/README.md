@@ -219,11 +219,11 @@ Builds container images in the cloud.
 
 Official API documentation: https://cloud.google.com/container-builder/docs/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Debugger API - clouddebugger v2
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Debugger API - clouddebugger v2
 
 Examines the call stack and variables of a running application without stopping or slowing it down.
 
-Official API documentation: https://cloud.google.com/tools/cloud-debugger
+Official API documentation: http://cloud.google.com/debugger
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Resource Manager API - cloudresourcemanager v1
 
@@ -276,6 +276,13 @@ Official API documentation: https://developers.google.com/custom-search/v1/using
 Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataproc/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Datastore API - datastore v1
+
+Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.
+
+
+Official API documentation: https://cloud.google.com/datastore/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Deployment Manager API - deploymentmanager v2
 
@@ -544,13 +551,13 @@ Official API documentation: https://developers.google.com/apps-script/execution/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Service Control API - servicecontrol v1
 
-The Service Control API
+Google Service Control provides control plane functionality to managed services, such as logging, monitoring, and status checks.
 
 Official API documentation: https://cloud.google.com/service-control/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Service Management API - servicemanagement v1
 
-The service management API for Google Cloud Platform
+Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.
 
 Official API documentation: https://cloud.google.com/service-management/
 

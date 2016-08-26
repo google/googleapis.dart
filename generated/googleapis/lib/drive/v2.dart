@@ -6244,7 +6244,8 @@ class Permission {
    * The ID of the user this permission refers to, and identical to the
    * permissionId in the About and Files resources. When making a
    * drive.permissions.insert request, exactly one of the id or value fields
-   * must be specified.
+   * must be specified unless the permission type anyone, in which case both id
+   * and value are ignored.
    */
   core.String id;
   /** This is always drive#permission. */
@@ -6274,7 +6275,8 @@ class Permission {
    * The email address or domain name for the entity. This is used during
    * inserts and is not populated in responses. When making a
    * drive.permissions.insert request, exactly one of the id or value fields
-   * must be specified.
+   * must be specified unless the permission type anyone, in which case both id
+   * and value are ignored.
    */
   core.String value;
   /** Whether the link is required for this permission. */

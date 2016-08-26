@@ -3079,6 +3079,16 @@ class BatchCreateAnnotationsRequest {
    * request.
    */
   core.List<Annotation> annotations;
+  /**
+   * A unique request ID which enables the server to detect duplicated requests.
+   * If provided, duplicated requests will result in the same response; if not
+   * provided, duplicated requests may result in duplicated data. For a given
+   * annotation set, callers should not reuse `request_id`s when writing
+   * different batches of annotations - behavior in this case is undefined. A
+   * common approach is to use a UUID. For batch jobs where worker crashes are a
+   * possibility, consider using some unique variant of a worker or run ID.
+   */
+  core.String requestId;
 
   BatchCreateAnnotationsRequest();
 
@@ -3086,12 +3096,18 @@ class BatchCreateAnnotationsRequest {
     if (_json.containsKey("annotations")) {
       annotations = _json["annotations"].map((value) => new Annotation.fromJson(value)).toList();
     }
+    if (_json.containsKey("requestId")) {
+      requestId = _json["requestId"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (annotations != null) {
       _json["annotations"] = annotations.map((value) => (value).toJson()).toList();
+    }
+    if (requestId != null) {
+      _json["requestId"] = requestId;
     }
     return _json;
   }

@@ -17,7 +17,7 @@
     "description": "Develops and executes data processing patterns like ETL, batch computation, and continuous computation.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataflow",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/wZurELzsfHitAU1HvQyPOtQDL2I\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/rUlGxspJhyyK9tNPWVxsxLTODuQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -601,7 +601,7 @@
             }
         }
     },
-    "revision": "20160727",
+    "revision": "20160821",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
         "GetDebugConfigRequest": {

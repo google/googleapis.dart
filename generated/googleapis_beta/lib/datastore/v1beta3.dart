@@ -311,7 +311,7 @@ class ProjectsResourceApi {
 
 
 
-/** The request for google.datastore.v1beta3.Datastore.AllocateIds. */
+/** The request for Datastore.AllocateIds. */
 class AllocateIdsRequest {
   /**
    * A list of keys with incomplete key paths for which to allocate IDs.
@@ -336,7 +336,7 @@ class AllocateIdsRequest {
   }
 }
 
-/** The response for google.datastore.v1beta3.Datastore.AllocateIds. */
+/** The response for Datastore.AllocateIds. */
 class AllocateIdsResponse {
   /**
    * The keys specified in the request (in the same order), each with
@@ -387,7 +387,7 @@ class ArrayValue {
   }
 }
 
-/** The request for google.datastore.v1beta3.Datastore.BeginTransaction. */
+/** The request for Datastore.BeginTransaction. */
 class BeginTransactionRequest {
 
   BeginTransactionRequest();
@@ -401,7 +401,7 @@ class BeginTransactionRequest {
   }
 }
 
-/** The response for google.datastore.v1beta3.Datastore.BeginTransaction. */
+/** The response for Datastore.BeginTransaction. */
 class BeginTransactionResponse {
   /** The transaction identifier (always present). */
   core.String transaction;
@@ -430,7 +430,7 @@ class BeginTransactionResponse {
   }
 }
 
-/** The request for google.datastore.v1beta3.Datastore.Commit. */
+/** The request for Datastore.Commit. */
 class CommitRequest {
   /**
    * The type of commit to perform. Defaults to `TRANSACTIONAL`.
@@ -463,7 +463,7 @@ class CommitRequest {
   /**
    * The identifier of the transaction associated with the commit. A
    * transaction identifier is returned by a call to
-   * BeginTransaction.
+   * Datastore.BeginTransaction.
    */
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
@@ -503,7 +503,7 @@ class CommitRequest {
   }
 }
 
-/** The response for google.datastore.v1beta3.Datastore.Commit. */
+/** The response for Datastore.Commit. */
 class CommitResponse {
   /**
    * The number of index entries updated during the commit, or zero if none were
@@ -643,6 +643,18 @@ class EntityResult {
   }
   /** The resulting entity. */
   Entity entity;
+  /**
+   * The version of the entity, a strictly positive number that monotonically
+   * increases with changes to the entity.
+   *
+   * This field is set for `FULL` entity
+   * results.
+   *
+   * For missing entities in `LookupResponse`, this
+   * is the version of the snapshot that was used to look up the entity, and it
+   * is always set except for eventually consistent reads.
+   */
+  core.String version;
 
   EntityResult();
 
@@ -653,6 +665,9 @@ class EntityResult {
     if (_json.containsKey("entity")) {
       entity = new Entity.fromJson(_json["entity"]);
     }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
   }
 
   core.Map toJson() {
@@ -662,6 +677,9 @@ class EntityResult {
     }
     if (entity != null) {
       _json["entity"] = (entity).toJson();
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }
@@ -703,16 +721,16 @@ class Filter {
  */
 class GqlQuery {
   /**
-   * When false, the query string must not contain any literals and instead
-   * must bind all values. For example,
+   * When false, the query string must not contain any literals and instead must
+   * bind all values. For example,
    * `SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while
    * `SELECT * FROM Kind WHERE a = @value` is.
    */
   core.bool allowLiterals;
   /**
-   * For each non-reserved named binding site in the query string,
-   * there must be a named parameter with that name,
-   * but not necessarily the inverse.
+   * For each non-reserved named binding site in the query string, there must be
+   * a named parameter with that name, but not necessarily the inverse.
+   *
    * Key must match regex `A-Za-z_$*`, must not match regex
    * `__.*__`, and must not be `""`.
    */
@@ -720,9 +738,9 @@ class GqlQuery {
   /**
    * Numbered binding site @1 references the first numbered parameter,
    * effectively using 1-based indexing, rather than the usual 0.
-   * For each binding site numbered i in `query_string`,
-   * there must be an i-th numbered parameter.
-   * The inverse must also be true.
+   *
+   * For each binding site numbered i in `query_string`, there must be an i-th
+   * numbered parameter. The inverse must also be true.
    */
   core.List<GqlQueryParameter> positionalBindings;
   /**
@@ -954,7 +972,7 @@ class LatLng {
   }
 }
 
-/** The request for google.datastore.v1beta3.Datastore.Lookup. */
+/** The request for Datastore.Lookup. */
 class LookupRequest {
   /** Keys of entities to look up. */
   core.List<Key> keys;
@@ -984,7 +1002,7 @@ class LookupRequest {
   }
 }
 
-/** The response for google.datastore.v1beta3.Datastore.Lookup. */
+/** The response for Datastore.Lookup. */
 class LookupResponse {
   /**
    * A list of keys that were not looked up due to resource constraints. The
@@ -1037,6 +1055,11 @@ class LookupResponse {
 /** A mutation to apply to an entity. */
 class Mutation {
   /**
+   * The version of the entity that this mutation is being applied to. If this
+   * does not match the current version on the server, the mutation conflicts.
+   */
+  core.String baseVersion;
+  /**
    * The key of the entity to delete. The entity may or may not already exist.
    * Must have a complete key path and must not be reserved/read-only.
    */
@@ -1060,6 +1083,9 @@ class Mutation {
   Mutation();
 
   Mutation.fromJson(core.Map _json) {
+    if (_json.containsKey("baseVersion")) {
+      baseVersion = _json["baseVersion"];
+    }
     if (_json.containsKey("delete")) {
       delete = new Key.fromJson(_json["delete"]);
     }
@@ -1076,6 +1102,9 @@ class Mutation {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (baseVersion != null) {
+      _json["baseVersion"] = baseVersion;
+    }
     if (delete != null) {
       _json["delete"] = (delete).toJson();
     }
@@ -1095,23 +1124,48 @@ class Mutation {
 /** The result of applying a mutation. */
 class MutationResult {
   /**
+   * Whether a conflict was detected for this mutation. Always false when a
+   * conflict detection strategy field is not set in the mutation.
+   */
+  core.bool conflictDetected;
+  /**
    * The automatically allocated key.
    * Set only when the mutation allocated a key.
    */
   Key key;
+  /**
+   * The version of the entity on the server after processing the mutation. If
+   * the mutation doesn't change anything on the server, then the version will
+   * be the version of the current entity or, if no entity is present, a version
+   * that is strictly greater than the version of any previous entity and less
+   * than the version of any possible future entity.
+   */
+  core.String version;
 
   MutationResult();
 
   MutationResult.fromJson(core.Map _json) {
+    if (_json.containsKey("conflictDetected")) {
+      conflictDetected = _json["conflictDetected"];
+    }
     if (_json.containsKey("key")) {
       key = new Key.fromJson(_json["key"]);
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (conflictDetected != null) {
+      _json["conflictDetected"] = conflictDetected;
+    }
     if (key != null) {
       _json["key"] = (key).toJson();
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }
@@ -1517,7 +1571,8 @@ class QueryResultBatch {
    * - "MORE_RESULTS_AFTER_LIMIT" : The query is finished, but there may be more
    * results after the limit.
    * - "MORE_RESULTS_AFTER_CURSOR" : The query is finished, but there may be
-   * more results after the end cursor.
+   * more results after the end
+   * cursor.
    * - "NO_MORE_RESULTS" : The query has been exhausted.
    */
   core.String moreResults;
@@ -1535,6 +1590,17 @@ class QueryResultBatch {
   }
   /** The number of results skipped, typically because of an offset. */
   core.int skippedResults;
+  /**
+   * The version number of the snapshot this batch was returned from.
+   * This applies to the range of results from the query's `start_cursor` (or
+   * the beginning of the query if no cursor was given) to this batch's
+   * `end_cursor` (not the query's `end_cursor`).
+   *
+   * In a single transaction, subsequent query result batches for the same query
+   * can have a greater snapshot version number. Each batch's snapshot version
+   * is valid for all preceding batches.
+   */
+  core.String snapshotVersion;
 
   QueryResultBatch();
 
@@ -1556,6 +1622,9 @@ class QueryResultBatch {
     }
     if (_json.containsKey("skippedResults")) {
       skippedResults = _json["skippedResults"];
+    }
+    if (_json.containsKey("snapshotVersion")) {
+      snapshotVersion = _json["snapshotVersion"];
     }
   }
 
@@ -1579,6 +1648,9 @@ class QueryResultBatch {
     if (skippedResults != null) {
       _json["skippedResults"] = skippedResults;
     }
+    if (snapshotVersion != null) {
+      _json["snapshotVersion"] = snapshotVersion;
+    }
     return _json;
   }
 }
@@ -1598,7 +1670,7 @@ class ReadOptions {
   /**
    * The identifier of the transaction in which to read. A
    * transaction identifier is returned by a call to
-   * BeginTransaction.
+   * Datastore.BeginTransaction.
    */
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
@@ -1632,11 +1704,11 @@ class ReadOptions {
   }
 }
 
-/** The request for google.datastore.v1beta3.Datastore.Rollback. */
+/** The request for Datastore.Rollback. */
 class RollbackRequest {
   /**
    * The transaction identifier, returned by a call to
-   * google.datastore.v1beta3.Datastore.BeginTransaction.
+   * Datastore.BeginTransaction.
    */
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
@@ -1665,7 +1737,7 @@ class RollbackRequest {
 }
 
 /**
- * The response for google.datastore.v1beta3.Datastore.Rollback
+ * The response for Datastore.Rollback.
  * (an empty message).
  */
 class RollbackResponse {
@@ -1681,7 +1753,7 @@ class RollbackResponse {
   }
 }
 
-/** The request for google.datastore.v1beta3.Datastore.RunQuery. */
+/** The request for Datastore.RunQuery. */
 class RunQueryRequest {
   /** The GQL query to run. */
   GqlQuery gqlQuery;
@@ -1732,7 +1804,7 @@ class RunQueryRequest {
   }
 }
 
-/** The response for google.datastore.v1beta3.Datastore.RunQuery. */
+/** The response for Datastore.RunQuery. */
 class RunQueryResponse {
   /** A batch of query results (always present). */
   QueryResultBatch batch;

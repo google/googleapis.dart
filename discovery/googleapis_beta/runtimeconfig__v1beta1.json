@@ -601,7 +601,7 @@
             }
         }
     },
-    "revision": "20160801",
+    "revision": "20160823",
     "rootUrl": "https://runtimeconfig.googleapis.com/",
     "schemas": {
         "Status": {

@@ -140,7 +140,7 @@
             }
         }
     },
-    "revision": "20160714",
+    "revision": "20160809",
     "rootUrl": "https://analyticsreporting.googleapis.com/",
     "schemas": {
         "PivotHeader": {
@@ -883,14 +883,14 @@
             "id": "Pivot",
             "properties": {
                 "dimensions": {
-                    "description": "A list of dimensions to show as pivot columns. A Pivot can have a maximum\nof 4 dimensions.",
+                    "description": "A list of dimensions to show as pivot columns. A Pivot can have a maximum\nof 4 dimensions. Pivot dimensions are part of the restriction on the\ntotal number of dimensions allowed in the request.",
                     "items": {
                         "$ref": "Dimension"
                     },
                     "type": "array"
                 },
                 "metrics": {
-                    "description": "The pivot metrics. Pivot metrics are part of the\nrestriction on total number of metrics in the request.",
+                    "description": "The pivot metrics. Pivot metrics are part of the\nrestriction on total number of metrics allowed in the request.",
                     "items": {
                         "$ref": "Metric"
                     },

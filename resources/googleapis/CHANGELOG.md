@@ -1,3 +1,20 @@
+## 0.31.0
+
+* [api-new] datastore:v1
+* [api] analytics:v3: schema changes
+* [api] bigquery:v2: schema changes
+* [api] civicinfo:v2: method changes
+* [api] classroom:v1: schema changes
+* [api] cloudbuild:v1: schema changes
+* [api] computeengine:v1: schema changes
+* [api] content:v2: schema changes
+* [api] genomics:v1: method change
+* [api] identitytoolkit:v3: schema changes
+* [api] servicecontrol:v1: schema changes
+* [api] storage:v1: schema changes
+* [api-breaking] servicemanagement:v1: schema changes
+* [api-breaking] clouddebugger:v2: removed scope
+
 ## 0.30.1
 
 * [api-new] appengine:v1

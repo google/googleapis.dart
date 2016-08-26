@@ -283,7 +283,7 @@
             }
         }
     },
-    "revision": "20160706",
+    "revision": "20160816",
     "rootUrl": "https://datastore.googleapis.com/",
     "schemas": {
         "Value": {
@@ -361,7 +361,7 @@
             "id": "ReadOptions",
             "properties": {
                 "transaction": {
-                    "description": "The identifier of the transaction in which to read. A\ntransaction identifier is returned by a call to\nBeginTransaction.",
+                    "description": "The identifier of the transaction in which to read. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction.",
                     "format": "byte",
                     "type": "string"
                 },
@@ -408,11 +408,11 @@
             "type": "object"
         },
         "CommitRequest": {
-            "description": "The request for google.datastore.v1beta3.Datastore.Commit.",
+            "description": "The request for Datastore.Commit.",
             "id": "CommitRequest",
             "properties": {
                 "transaction": {
-                    "description": "The identifier of the transaction associated with the commit. A\ntransaction identifier is returned by a call to\nBeginTransaction.",
+                    "description": "The identifier of the transaction associated with the commit. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction.",
                     "format": "byte",
                     "type": "string"
                 },
@@ -500,11 +500,11 @@
             "type": "object"
         },
         "RollbackRequest": {
-            "description": "The request for google.datastore.v1beta3.Datastore.Rollback.",
+            "description": "The request for Datastore.Rollback.",
             "id": "RollbackRequest",
             "properties": {
                 "transaction": {
-                    "description": "The transaction identifier, returned by a call to\ngoogle.datastore.v1beta3.Datastore.BeginTransaction.",
+                    "description": "The transaction identifier, returned by a call to\nDatastore.BeginTransaction.",
                     "format": "byte",
                     "type": "string"
                 }
@@ -523,6 +523,11 @@
                 "entity": {
                     "$ref": "Entity",
                     "description": "The resulting entity."
+                },
+                "version": {
+                    "description": "The version of the entity, a strictly positive number that monotonically\nincreases with changes to the entity.\n\nThis field is set for `FULL` entity\nresults.\n\nFor missing entities in `LookupResponse`, this\nis the version of the snapshot that was used to look up the entity, and it\nis always set except for eventually consistent reads.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -573,7 +578,7 @@
             "type": "object"
         },
         "BeginTransactionResponse": {
-            "description": "The response for google.datastore.v1beta3.Datastore.BeginTransaction.",
+            "description": "The response for Datastore.BeginTransaction.",
             "id": "BeginTransactionResponse",
             "properties": {
                 "transaction": {
@@ -603,6 +608,11 @@
             "description": "A batch of results produced by a query.",
             "id": "QueryResultBatch",
             "properties": {
+                "snapshotVersion": {
+                    "description": "The version number of the snapshot this batch was returned from.\nThis applies to the range of results from the query's `start_cursor` (or\nthe beginning of the query if no cursor was given) to this batch's\n`end_cursor` (not the query's `end_cursor`).\n\nIn a single transaction, subsequent query result batches for the same query\ncan have a greater snapshot version number. Each batch's snapshot version\nis valid for all preceding batches.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "endCursor": {
                     "description": "A cursor that points to the position after the last result in the batch.",
                     "format": "byte",
@@ -642,7 +652,7 @@
                         "Unspecified. This value is never used.",
                         "There may be additional batches to fetch from this query.",
                         "The query is finished, but there may be more results after the limit.",
-                        "The query is finished, but there may be more results after the end cursor.",
+                        "The query is finished, but there may be more results after the end\ncursor.",
                         "The query has been exhausted."
                     ],
                     "type": "string"
@@ -663,7 +673,7 @@
             "type": "object"
         },
         "AllocateIdsRequest": {
-            "description": "The request for google.datastore.v1beta3.Datastore.AllocateIds.",
+            "description": "The request for Datastore.AllocateIds.",
             "id": "AllocateIdsRequest",
             "properties": {
                 "keys": {
@@ -745,7 +755,7 @@
             "type": "object"
         },
         "RollbackResponse": {
-            "description": "The response for google.datastore.v1beta3.Datastore.Rollback\n(an empty message).",
+            "description": "The response for Datastore.Rollback.\n(an empty message).",
             "id": "RollbackResponse",
             "properties": {},
             "type": "object"
@@ -776,15 +786,24 @@
             "description": "The result of applying a mutation.",
             "id": "MutationResult",
             "properties": {
+                "conflictDetected": {
+                    "description": "Whether a conflict was detected for this mutation. Always false when a\nconflict detection strategy field is not set in the mutation.",
+                    "type": "boolean"
+                },
                 "key": {
                     "$ref": "Key",
                     "description": "The automatically allocated key.\nSet only when the mutation allocated a key."
+                },
+                "version": {
+                    "description": "The version of the entity on the server after processing the mutation. If\nthe mutation doesn't change anything on the server, then the version will\nbe the version of the current entity or, if no entity is present, a version\nthat is strictly greater than the version of any previous entity and less\nthan the version of any possible future entity.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
         },
         "AllocateIdsResponse": {
-            "description": "The response for google.datastore.v1beta3.Datastore.AllocateIds.",
+            "description": "The response for Datastore.AllocateIds.",
             "id": "AllocateIdsResponse",
             "properties": {
                 "keys": {
@@ -798,7 +817,7 @@
             "type": "object"
         },
         "LookupResponse": {
-            "description": "The response for google.datastore.v1beta3.Datastore.Lookup.",
+            "description": "The response for Datastore.Lookup.",
             "id": "LookupResponse",
             "properties": {
                 "found": {
@@ -826,7 +845,7 @@
             "type": "object"
         },
         "BeginTransactionRequest": {
-            "description": "The request for google.datastore.v1beta3.Datastore.BeginTransaction.",
+            "description": "The request for Datastore.BeginTransaction.",
             "id": "BeginTransactionRequest",
             "properties": {},
             "type": "object"
@@ -850,7 +869,7 @@
             "type": "object"
         },
         "RunQueryResponse": {
-            "description": "The response for google.datastore.v1beta3.Datastore.RunQuery.",
+            "description": "The response for Datastore.RunQuery.",
             "id": "RunQueryResponse",
             "properties": {
                 "batch": {
@@ -894,15 +913,15 @@
                     "additionalProperties": {
                         "$ref": "GqlQueryParameter"
                     },
-                    "description": "For each non-reserved named binding site in the query string,\nthere must be a named parameter with that name,\nbut not necessarily the inverse.\nKey must match regex `A-Za-z_$*`, must not match regex\n`__.*__`, and must not be `\"\"`.",
+                    "description": "For each non-reserved named binding site in the query string, there must be\na named parameter with that name, but not necessarily the inverse.\n\nKey must match regex `A-Za-z_$*`, must not match regex\n`__.*__`, and must not be `\"\"`.",
                     "type": "object"
                 },
                 "allowLiterals": {
-                    "description": "When false, the query string must not contain any literals and instead\nmust bind all values. For example,\n`SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while\n`SELECT * FROM Kind WHERE a = @value` is.",
+                    "description": "When false, the query string must not contain any literals and instead must\nbind all values. For example,\n`SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while\n`SELECT * FROM Kind WHERE a = @value` is.",
                     "type": "boolean"
                 },
                 "positionalBindings": {
-                    "description": "Numbered binding site @1 references the first numbered parameter,\neffectively using 1-based indexing, rather than the usual 0.\nFor each binding site numbered i in `query_string`,\nthere must be an i-th numbered parameter.\nThe inverse must also be true.",
+                    "description": "Numbered binding site @1 references the first numbered parameter,\neffectively using 1-based indexing, rather than the usual 0.\n\nFor each binding site numbered i in `query_string`, there must be an i-th\nnumbered parameter. The inverse must also be true.",
                     "items": {
                         "$ref": "GqlQueryParameter"
                     },
@@ -923,6 +942,11 @@
                     "$ref": "Entity",
                     "description": "The entity to update. The entity must already exist.\nMust have a complete key path."
                 },
+                "baseVersion": {
+                    "description": "The version of the entity that this mutation is being applied to. If this\ndoes not match the current version on the server, the mutation conflicts.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "upsert": {
                     "$ref": "Entity",
                     "description": "The entity to upsert. The entity may or may not already exist.\nThe entity key's final path element may be incomplete."
@@ -935,7 +959,7 @@
             "type": "object"
         },
         "CommitResponse": {
-            "description": "The response for google.datastore.v1beta3.Datastore.Commit.",
+            "description": "The response for Datastore.Commit.",
             "id": "CommitResponse",
             "properties": {
                 "mutationResults": {
@@ -954,7 +978,7 @@
             "type": "object"
         },
         "RunQueryRequest": {
-            "description": "The request for google.datastore.v1beta3.Datastore.RunQuery.",
+            "description": "The request for Datastore.RunQuery.",
             "id": "RunQueryRequest",
             "properties": {
                 "partitionId": {
@@ -977,7 +1001,7 @@
             "type": "object"
         },
         "LookupRequest": {
-            "description": "The request for google.datastore.v1beta3.Datastore.Lookup.",
+            "description": "The request for Datastore.Lookup.",
             "id": "LookupRequest",
             "properties": {
                 "readOptions": {

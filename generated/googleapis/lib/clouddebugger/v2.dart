@@ -25,9 +25,6 @@ class ClouddebuggerApi {
   /** Manage cloud debugger */
   static const CloudDebuggerScope = "https://www.googleapis.com/auth/cloud_debugger";
 
-  /** Manage active breakpoints in cloud debugger */
-  static const CloudDebugletcontrollerScope = "https://www.googleapis.com/auth/cloud_debugletcontroller";
-
 
   final commons.ApiRequester _requester;
 
