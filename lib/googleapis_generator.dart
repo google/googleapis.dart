@@ -46,18 +46,20 @@ Future<List<RestDescription>> fetchDiscoveryDocuments({List<String> ids}) {
 
   var client = new http.Client();
   var discovery = _discoveryClient(client);
-  return discovery.apis.list().then((DirectoryList list) {
-    var futures = <Future>[];
+  return discovery.apis.list().then((DirectoryList list) async {
     for (var item in list.items) {
       if (ids == null || ids.contains(item.id)) {
-        futures.add(discovery.apis.getRest(item.name, item.version).then((doc) {
+        try {
+          var doc = await discovery.apis.getRest(item.name, item.version);
           apiDescriptions.add(doc);
-        }));
+        } catch (e) {
+          print('Failed to retrieve document for "${item.name}:${item.version}"'
+                ' -> Ignoring!');
+        }
       }
     }
-    return Future.wait(futures)
-        .whenComplete(() => client.close())
-        .then((_) => apiDescriptions);
+    await client.close();
+    return apiDescriptions;
   });
 }
 
